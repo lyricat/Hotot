@@ -167,6 +167,7 @@ def main():
     config.loads();
     agent.init_notify()
     app = MainWindow()
+    agent.app = app
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()

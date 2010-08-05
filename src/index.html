@@ -115,6 +115,13 @@ jQuery(function($) {
     globals.layout.close('west');
     globals.layout.close('south');
 
+    $(document).keyup(
+    function (event) {
+        if (event.ctrlKey && event.keyCode == 81) {
+            hotot_action('system/quit');
+        } 
+    });
+
     $(window).resize(
     function () {
         update_tweet_block_width();

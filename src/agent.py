@@ -7,9 +7,11 @@ import base64
 import pynotify
 import gtk
 
-view = None 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
+
+view = None 
+app = None
 
 def init_notify():
     notify.set_icon_from_pixbuf(
@@ -59,6 +61,8 @@ def crack_system(params):
             body = base64.decodestring(params[3])
             notify.update(summary, body)
             notify.show()
+    elif params[1] == 'quit':
+        app.quit(); 
     pass
 
 def push_option(set, name, value):
