@@ -143,7 +143,7 @@ bind_tweets_action:
 function bind_tweets_action(tweets_obj, pagename) {
     for (var i = 0; i < tweets_obj.length; i += 1) {
         var id = pagename + '-' + tweets_obj[i].id;
-        utility.Console.out(id);
+        // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
             ui.Main.on_reply_click(this, event);
@@ -189,7 +189,7 @@ function on_reply_click(btn, event) {
     var text = li.find('.text').text();
     ui.Header.reply_to_id = ui.Main.normalize_id(li.attr('id'));
     ui.Header.change_mode(ui.Header.MODE_REPLY);
-    ui.Header.set_status_info('Reply to `'+text+'`');
+    ui.Header.set_status_info('Reply to `'+ text +'`');
     ui.Header.append_status_text('@' + who_name + ' ');
 },
 

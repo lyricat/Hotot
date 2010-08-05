@@ -130,12 +130,12 @@ function change_mode(mode) {
         globals.status_hint = globals.dm_hint;
         $('#status_box').addClass('dm_mode');
         $('#bubble_shape').addClass('dm_mode');
-        $('#tbox_status').attr('value', globals.status_hint);
+        globals.status_hint = globals.dm_hint;
     } else {
         globals.status_hint = globals.tweet_hint;
         $('#status_box').removeClass('dm_mode');
         $('#bubble_shape').removeClass('dm_mode');
-        $('#tbox_status').attr('value', globals.status_hint);
+        globals.status_hint = globals.tweet_hint;
     }
     ui.Header.current_mode = mode;
 },

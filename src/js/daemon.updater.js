@@ -46,8 +46,9 @@ function work() {
         for (var pagename in daemon.Updater.watch_pages) {
             if (daemon.Updater.watch_pages[pagename].watch) {
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
-                    , (step + 1) * 500);
+                    , (step + 1) * 5000);
                 step += 1;
+                // utility.Console.out('Going to update ' + pagename);
             }
         }
         ui.Notification.set('Update '+ step +' page(s) on schedule.').show();

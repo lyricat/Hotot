@@ -25,20 +25,12 @@ function init () {
             return
         jsOAuth.get_access_token(pin_code,
         function (result) {
-            globals.myself = eval(result);
-            $('#my_profile_img').attr('src'
-                    , globals.myself.profile_image_url);
-
             ui.Notification.set('Authentication OK!')
             // get a new access_token, dump it to disk.
             hotot_action(
                 'token/dump/' + jsOAuth.dump_token(jsOAuth.access_token));
             // change to main view
             ui.PinDlg.hide();
-            ui.Welcome.hide();
-            ui.Main.show();
-            globals.layout.open('north');
-            globals.layout.open('south');
         },
         function (xhr, textStatus, errorThrown) {
             ui.PinDlg.hide();

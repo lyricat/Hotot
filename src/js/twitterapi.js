@@ -39,8 +39,8 @@ function do_ajax(method, ajax_url, params, on_success) {
             , jsOAuth.access_token
             , method
             , params);
-        utility.Console.out('PARAMS:'+signed_params);
-        $.ajax({    
+        // utility.Console.out('PARAMS:'+signed_params);
+        jQuery.ajaxQueue({    
             type: method,
             url: lib.twitterapi.api_base + ajax_url,
             data: signed_params,
@@ -55,7 +55,7 @@ function do_ajax(method, ajax_url, params, on_success) {
             }
         }); 
     } else {
-        $.ajax({    
+        jQuery.ajaxQueue({    
             type: method,
             url: lib.twitterapi.api_base + ajax_url,
             data: params,

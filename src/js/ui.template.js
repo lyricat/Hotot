@@ -111,7 +111,7 @@ function form_tweet (tweet_obj, pagename) {
     if (retweeted_name != '') {
         scheme = ui.Template.schemes['blue'];
     }
-    utility.Console.out(pagename);
+    // utility.Console.out(pagename);
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
