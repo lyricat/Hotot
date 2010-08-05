@@ -42,7 +42,7 @@ class MainWindow:
         self.window.add(vbox)
 
         self.menu_tray = gtk.Menu()
-        mitem_resume = gtk.MenuItem('Resume')
+        mitem_resume = gtk.MenuItem('Resume/Active')
         mitem_resume.connect('activate', self.on_mitem_resume_activate);
         self.menu_tray.append(mitem_resume)
         mitem_prefs = gtk.MenuItem('Preferences')
