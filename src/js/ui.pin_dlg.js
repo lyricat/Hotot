@@ -69,6 +69,7 @@ function show () {
 set_auth_url:
 function set_auth_url(url) {
     $('#btn_oauth_user_auth').attr('href', url);
+    $('#tbox_oauth_auth_url').attr('value', url);
 },
 
 }
