@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Home | Hotot</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.layout.js"></script>
+    <script type="text/javascript" src="js/base64.js"></script>
+    <script type="text/javascript" src="js/sha1.js"></script>
+    <script type="text/javascript" src="js/twitterapi.js"></script>
+    <script type="text/javascript" src="js/js-oauth.js"></script>
+    
+    <script type="text/javascript" src="js/utility.console.js"></script>
+    <script type="text/javascript" src="js/daemon.updater.js"></script>
+    <script type="text/javascript" src="js/ui.header.js"></script>
+    <script type="text/javascript" src="js/ui.notification.js"></script>
+    <script type="text/javascript" src="js/ui.slider.js"></script>
+    <script type="text/javascript" src="js/ui.welcome.js"></script>
+    <script type="text/javascript" src="js/ui.template.js"></script>
+    <script type="text/javascript" src="js/ui.main.js"></script>
+    <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.message_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.about_dlg.js"></script>
+<script type="text/javascript">
+var layout_opts = {
+        closable:				true	
+    ,	resizable:				true	
+    ,	slidable:				true	
+    ,   paneClass: 'ui-layout-pane'
+    ,	north__slidable:		false
+    ,   north__closable:    true
+    ,   north__size:        80
+    ,   north__showOverflowOnHover:	true
+    ,   north__spacing_open :    0
+    ,   north__spacing_closed: 0
+    ,   north__initClosed: true
+    ,   west__spacing_open: 0
+    ,   west__spacing_closed: 0
+    ,   west__size:         0
+    ,   south__size:        40
+    ,   south__spacing_open: 0
+    ,   south__spacing_closed: 0
+    ,   south__initClosed: true
+    ,   north__paneSelector:    '#header'
+    ,   west__paneSelector:     '#aside'
+    ,   center__paneSelector:   '#center'
+    ,   south__paneSelector:    '#bottom'
+};
+
+function update_tweet_block_width() {
+    globals.tweet_block_width = $(window).width();
+    $('.tweet_block').width(globals.tweet_block_width);
+}
+
+function show_dialog(dialog) {
+    var dlg = null;
+    if (dialog == 'prefs') {
+        dlg = ui.PrefsDlg;
+    } else if (dialog == 'about') {
+        dlg = ui.AboutDlg;
+    } else if (dialog == 'pin') {
+        dlg = ui.PinDlg;
+    }
+    if (dlg != null) {
+        dlg.show();
+    }
+}
+
+function hotot_action(uri) {
+    window.location.href = 'hotot:'+uri;
+}
+
+function navigate_action(uri) {
+    window.location.href = uri;
+}
+
+function on_twitterapi_error(xhr, textStatus, errorThrown) {
+    var err_infos = {};
+    var title = 'Ooops, an Error occurred!';
+    var content = '<label>Unknow Error</label>';
+    try {
+        err_infos = eval(
+            xhr.responseText.replace(/"errors"/g, 'errors'));
+        err_arr = []
+        for (var i = 0; i< err_infos.length; i += 1) {
+            err = '<p><label>Error code:</label> '
+                    + err_infos[i].code+'<br/>'
+                + '<label>Error message:</label> '
+                    + err_infos[i].message
+                + '<br/></p>';
+            err_arr.push(err);
+        }
+        content = err_arr.join('');
+    } catch (e) {
+        content += '<br/><p>' + textStatus + '</p>';
+    }
+    ui.MessageDlg.set_text(title, content);
+    ui.MessageDlg.show();
+}
+
+var globals = {
+    status_hint: 'What\'s happening?',
+    tweet_hint: 'What\'s happening?',
+    dm_hint: 'Click here to Compose a Meassage ...',
+    tweet_block_width: 600,
+    max_status_len: 140,
+    myself: {},
+};
+
+jQuery(function($) {
+    globals.layout = $('#container').layout(layout_opts);
+    globals.layout.close('west');
+    globals.layout.close('south');
+
+    $(window).resize(
+    function () {
+        update_tweet_block_width();
+    });
+
+    $('#count').hover(
+    function () {
+        $('#count > ul').show();
+    },
+    function () {
+        $('#count > ul').hide();
+    });
+    utility.Console.init();
+    daemon.Updater.init();
+    ui.Header.init();
+    ui.Welcome.init();
+    ui.Main.init();
+    ui.Notification.init();
+    ui.Slider.init();
+    ui.PinDlg.init();
+    ui.PrefsDlg.init();
+    ui.MessageDlg.init();
+    ui.AboutDlg.init();
+
+    lib.twitterapi.error_handle = on_twitterapi_error;
+    update_tweet_block_width();
+});
+</script>
+
+</head>
+<body>
+<div id="container">
+<header id="header">
+    <div id="ctrl_panel">
+        <div id="my_profile_img_wrapper" class="profile_img_wrapper">
+            <img id="my_profile_img" src="imgs/ic48_profile_image.png"/>
+        </div>
+
+        <div id="ctrl_right">
+            <ul id="ctrl_nav">
+            	<li>
+            		<a id="btn_reload" class="ic_reload" href="javascript:void(0);">Reload</a>
+            	</li>
+            	<li>
+            		<a id="btn_prefs" class="ic_prefs" href="javascript:void(0);">Preferences</a>
+            	</li>
+            	<li>
+            		<a id="btn_about" class="ic_about" href="javascript:void(0);">Help &amp; About</a>
+            	</li>
+                <li>
+            		<a id="btn_sign_out" class="ic_sign_out" href="javascript:void(0);">Sign out</a>
+            	</li>
+
+            </ul>
+        </div>
+
+        <div id="status_box">
+            <div id="status_info">
+                <div id="status_info_text"></div>
+                <a id="btn_clear_status_info" href="javascript:void(0);"></a>
+            </div>
+            <textarea id="tbox_status"></textarea>
+            <div id="status_ctrl">
+                <label id="status_len"></label>
+                <a id="btn_clear" class="button" href="javascript:void(0);">Clear</a>
+                <a id="btn_update" class="button default" href="javascript:void(0);">Update</a>
+                <span class="clear"></span>
+                <div><label id="status_tips">Press Ctrl+Enter to Update</label></div>
+            </div>
+            <span id="bubble_shape"></span>
+        </div>
+    </div>
+</header>
+
+<aside id="aside"></aside>
+
+<section id="center">
+<section id="welcome_page" class="page">
+    <h1>Greeting! </h1>
+    <div id="sign_in_block" class="dialog">
+        <h2>Sign in to Hotot!</h2>
+        <p>
+            <label>Username:</label><br/>
+            <input id="tbox_basic_auth_username" type="text" value=""/>
+        </p>
+        <p>
+            <label>Password:</label><br/>
+            <input id="tbox_basic_auth_password" type="password" value=""/>
+        </p>
+        <p>
+            <input id="chk_remember_password" type="checkbox"/ checked="1"/><label>Remember Password</label><br/>
+
+            <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">Sign In</a>
+        </p>
+        <p>Or use Twitter OAuth<br/>
+            <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title="Sign in with Twitter"></a>
+        </p>
+        <div id="sign_in_block_bottom">
+            <p>
+            <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">Preferences</a>
+            <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">Help &amp; About</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="main_page" class="page">
+    <div id="main_page_slider">
+    <div id="home_timeline_tweet_block" class="tweet_block">
+        <ul>
+<!--
+<li id="{%TWEET_ID%}" class="tweet">
+    <div class="profile_img_wrapper">
+        <img src="imgs/ic48_profile_image.png">
+    </div>
+    <div class="tweet_body orange_body">
+        <div class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>
+        <div class="text">{%TEXT%}</div>
+    </div>
+    <ul class="tweet_ctrl">
+        <li><a class="tweet_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>
+        <li><a class="tweet_rt tweet_ctrl_btn" href="javascript:void(0);"></a></li>
+        <li><a class="tweet_retweet tweet_ctrl_btn" href="javascript:void(0);"></a></li>   
+        <li><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>
+            <ul class="tweet_more_menu">
+            <li>
+            	<a class="tweet_reply_all tweet_ctrl_menu_btn"
+                    href="javascript:void(0);">Reply All</a>
+            </li>
+            <li>
+            	<a class="tweet_dm tweet_ctrl_menu_btn"
+                    href="javascript:void(0);">Send Message</a>
+            </li>
+            <li>
+            	<a class="tweet_fav tweet_ctrl_menu_btn"
+                    href="javascript:void(0);">Love it!</a>
+            </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tweet_meta">via: {%SOURCE%}</div>
+    <span class="shape"></span>
+    <span class="shape_mask" style="border-right-color:#fff;"></span>
+</li> 
+-->
+
+        </ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+    <div id="mentions_tweet_block" class="tweet_block">
+        <ul>
+        </ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+    <div id="direct_messages_tweet_block" class="tweet_block">
+        <ul></ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+    <div id="favorites_tweet_block" class="tweet_block">
+        <ul></ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+    <div id="retweets_to_me_tweet_block" class="tweet_block">
+        <ul></ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+    </div>
+</section>
+
+</section><!-- center -->
+
+<section id="bottom">
+    <div id="indication">
+        <ul>
+        	<li>
+        		<a id="idx_btn_home" class="idx_btn" href="#home_timeline"><span class="ic_home"></span></a>
+                <span class="shape"></span>
+        	</li>
+            <li>
+        		<a id="idx_btn_mention" class="idx_btn" href="#mentions"><span class="ic_mention"></span></a>
+                <span class="shape"></span>
+        	</li>        	
+            <li>
+        		<a id="idx_btn_dm" class="idx_btn" href="#direct_messages"><span class="ic_dm"></span></a>
+                <span class="shape"></span>
+        	</li>        	
+            <li>
+        		<a id="idx_btn_fav" class="idx_btn" href="#favorites"><span class="ic_fav"></span></a>
+                <span class="shape"></span>
+        	</li>        	
+            <li>
+        		<a id="idx_btn_retweet" class="idx_btn" href="#retweets_to_me"><span class="ic_retweet"></span></a>
+                <span class="shape"></span>
+        	</li>
+        </ul>
+    </div>
+</section> <!-- bottom -->
+
+</div><!-- container -->
+
+<section id="notification_area">
+<span id="notification"> Notification here</span>
+</section>
+
+<section id="count">
+    <div id="count_trigger">&#9827;(0)</div>
+    <ul>
+    	<li>
+    		<a href="javascript:void(0)">Home</a>
+    	</li>
+        <li>
+    		<a href="javascript:void(0)">@</a>
+    	</li>
+    	<li>
+    		<a href="javascript:void(0)">DM</a>
+    	</li>
+    </ul>
+</section>
+
+<section id="console">
+    <h1>Console</h1>
+    <div id="console_out">
+    </div>
+    <input id="console_in" type="text" value=""/>
+</section>
+
+<section id="dialog_mask">
+<!--dialogs-->
+    <!-- preferences dialog -->
+    <div id="prefs_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="prefs_dlg" class="dialog">
+        <h2>Preferences</h2>
+        <div id="prefs_dlg_body" class="dialog_body">
+            <div id="prefs_tabs">
+                <ul>
+                    <li>
+                        <a id="btn_prefs_account"
+                            href="#prefs_account" 
+                            class="prefs_tabs_btn">Account</a>
+                    </li>
+                    <li>
+                        <a id="btn_prefs_system"
+                            href="#prefs_system" 
+                            class="prefs_tabs_btn">System</a>
+                    </li>
+                    <li>
+                        <a id="btn_prefs_appearance"
+                            href="#prefs_appearance" 
+                            class="prefs_tabs_btn">Appearance</a>
+                    </li>
+                    <li>
+                        <a id="btn_prefs_networks"
+                            href="#prefs_networks" 
+                            class="prefs_tabs_btn">Networks</a>
+                    </li>
+                </ul>
+                <div id='prefs_account' class="prefs_tabs_page">
+                    <h3>- Basic Auth Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <input id="chk_prefs_remember_password"
+                            type="checkbox" checked="1"/>
+                        <label>Remember Password</label><br/>
+                    </p>
+                    </div>
+
+                    <h3>- OAuth Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <label>Consumer Key</label><br/>
+                        <input id="tbox_prefs_consumer_key" type="text"/><br/>
+                        <label>Consumer Secret</label><br/>
+                        <input id="tbox_prefs_consumer_secret" type="text"/><br/>
+                    </p>
+                    <p>
+                        <label>Regain Access Token</label><br/>
+                        <a id="btn_regain_token"
+                            class="button" 
+                            href="javascript:void(0)" title="Sign in with Twitter"></a> 
+                    </p>
+                    </div>
+                </div>
+                <div id='prefs_system' class="prefs_tabs_page">
+                    <h3>- Keybinding Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <label>Summon Hotot</label><br/>
+                        <input id="tbox_prefs_shortcut_summon_hotot" type="text"/><br/>
+                    </p>
+                    </div>
+                </div>
+                <div id='prefs_appearance' class="prefs_tabs_page">
+                    <h3>- Display Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <input id="chk_prefs_use_native_input"
+                            type="checkbox"/>
+                        <label>Use Native Input Dialog</label><br/>
+                        <input id="chk_prefs_use_native_notify"
+                            type="checkbox"/>
+                        <label>Use Native Notify System</label><br/>
+                    </p>
+                    </div>
+                </div>
+                <div id='prefs_networks' class="prefs_tabs_page"> 
+                    <h3>- API Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <label>API Base</label><br/>
+                        <input id="tbox_prefs_api_base" type="text"/><br/>
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_prefs_cancel" class="button" href="javascript:void(0);">Cancel</a>
+        <a id="btn_prefs_ok" class="button" href="javascript:void(0);">OK</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- oauth dialog -->
+    <div id="oauth_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="oauth_dlg" class="dialog">
+        <h2>First time to Sign in with Twitter</h2>
+        <div id="oauth_dlg_body" class="dialog_body">
+            <p>
+                Step 1: click the button below:<br/>
+            </p>
+            <p style="text-align: center;">
+                <a id="btn_oauth_user_auth" class="button" href="javascript:void(0);">Click me to continue</a>
+            </p>
+            <p>
+                Step 2: copy the PIN Code and paste it into the box below;
+            </p>
+            <p style="text-align: center;">
+                <label>PIN Code:</label>
+                <input id="tbox_oauth_pin" type="text" /><br/>
+            </p>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);">Cancel</a>
+        <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);">OK</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- about dialog -->
+    <div id="about_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="about_dlg" class="dialog">
+        <h2>About Hotot</h2>
+        <div id="about_dlg_body" class="dialog_body">
+            <h3>- About -</h3>
+            <div class="prefs_group">
+            <p>
+            <strong>Hotot</strong> is a lightweight client for the <a
+            href="http://twitter.com">twitter</a> microblogging service.
+            </p>
+            <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
+            <p>
+            Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
+            </p>
+            <p>Project Site: <a href="http://lab.shellex.info/hotot">http://lab.shellex.info/hotot/</a></p>
+            </div>
+
+            <h3>- Credits -</h3>
+            <div class="prefs_group">
+            <p>
+                <label>Written by</label>:<br/>
+                - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; <br/>
+                - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
+            </p>
+            <p>
+                <label>Artwork by</label>: <br/>
+                - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
+            </p>
+            </div>
+
+            <h3>- License -</h3>
+            <div class="prefs_group">
+            <p>
+                Hotot is free software; you can redistribute it and/or
+                modify it under the terms of the GNU General Public License
+                as published by the Free Software Foundation; either version
+                2 of the License, or (at your option) any later version.
+            </p>
+            <p>
+                Hotot is distributed in the hope that it will be useful, but
+                WITHOUT ANY WARRANTY; without even the implied warranty of
+                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
+                the GNU General Public License for more details.
+            </p>
+            <p>
+                You should have received a copy of the GNU General Public
+                License along with Hotot; if not, write to the Free Software
+                Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+                MA 02110-1301, USA.  
+            </p>
+            </div>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_about_ok" class="button" href="javascript:void(0);">OK</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- Message dialog -->
+    <div id="message_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="message_dlg" class="dialog">
+        <h2 id="message_dlg_title">Message</h2>
+        <div id="message_dlg_body" class="dialog_body">
+            <div id="message_dlg_text" class="prefs_group">
+            </div>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_message_ok" class="button" href="javascript:void(0);">OK</a>
+        </div>
+    </div>
+    </div>
+</section> <!-- END de dialog_mask -->
+
+</body>
+</html>

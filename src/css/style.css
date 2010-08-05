@@ -1,0 +1,906 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    background:none repeat scroll 0 0 transparent;
+    border:0 none;
+    font-size:100%;
+    margin:0;
+    outline:0 none;
+    padding:0;
+    vertical-align:baseline;
+}
+
+html, body {
+    height:100%;
+    margin:0;
+    overflow:auto;
+    padding:0;
+    width:100%;
+}
+
+body {
+    background: None repeat-x scroll left top #fff;
+    color: #333;
+    font-family: MuseoSans,Helvetica,Arial,Verdana,sans-serif;
+}
+
+a {
+    color: blue;
+}
+
+#container {
+    height:100%;
+    margin:0 auto;
+    width:100%;
+}
+
+/* ===== header ==============================*/
+#header {
+    background: #eee;
+    border-bottom: #ccc solid 1px;
+    padding: 3px 5px;
+    font-size: 12px;
+}
+
+#ctrl_panel {
+    height: 100%;
+}
+
+#bubble_shape {
+    content: "\00a0";
+    display: block; /* reduce the damage in FF3.0 */
+    position: absolute;
+    width:0;
+    height:0;
+    top: 14px; 
+    left: -14px; /* value = - border-left-width - border-right-width */
+    border-style: solid;
+    bottom: auto;
+    border-width: 7px 7px 7px; /* vary these values to change the angle of the vertex */
+    border-color: transparent #2e88c4 transparent transparent; 
+}
+
+#bubble_shape.dm_mode {
+    border-color: transparent #2ec436 transparent transparent !important; 
+}
+
+#status_box {
+    margin-left: 64px;
+    background-color: #2e88c4;
+    background-image: url(../imgs/welcome_bg.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+    width: 310px;
+    -webkit-box-shadow: 1px 1px 5px #222;
+    -webkit-border-radius: 5px 5px;
+    padding: 5px;
+    position: absolute;
+}
+
+#status_box.dm_mode {
+    background: #2ec436 !important;
+}
+
+#tbox_status {
+    width: 300px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+    overflow:hidden;
+    -webkit-border-radius: 5px 5px;
+}
+
+#tbox_status.hint_style {
+    font-style: italic;
+    color: rgba(255,255,255, 0.7) !important; 
+}
+
+#status_ctrl {
+    margin-top: 10px;
+    text-align: right;
+    display: none;
+}
+
+#status_len {
+    padding: 2px 5px;
+    background: #22264e;
+    float: left;
+    color: white;
+    display: block;
+    text-align: left;
+    -webkit-border-radius: 8px 8px;
+}
+
+#status_info {
+    border: 1px #ffda8b dashed;
+    display: none;
+    padding: 3px;
+    min-height: 30px;
+    margin: 2px;
+}
+
+#btn_clear_status_info {
+    height: 20px;
+    width: 20px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    display: block;
+    border: 1px #ffda8b solid;
+    background: transparent url(../imgs/ic16_clear.png) no-repeat;
+    background-position: 2px 2px;
+}
+
+#btn_clear_status_info:hover {
+    border-color: #fff;
+}
+
+#status_info_text {
+    padding-right: 30px;
+    color: rgba(255,255,255, 0.7); 
+}
+
+#status_tips {
+    font-style: italic;
+    color: white;
+    font-weight: lighter;
+}
+
+#ctrl_right {
+    float: right;
+}
+
+#ctrl_nav {
+    list-style-type: none;
+}
+
+#ctrl_nav > li {
+    display: inline;
+    padding: 0 5px;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    font-size: 10px;
+}
+
+#ctrl_nav > li > a {
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+/* ===== Buttom =================================== */
+#indication {
+    height: 40px;
+    text-align: center;
+    background: transparent url(../imgs/panel_bg.png) repeat-x 0 -2px;
+    border-top: #ccc 1px solid;
+}
+
+#indication > ul {
+    height: 40px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#indication li {
+    display: block;
+    float: left;
+    height: 40px;
+    width: 45px;
+    padding:0;
+    border-right: #ccc 1px solid;
+    text-align: center;
+    position: relative;
+}
+
+#indication li:first-child {
+    border-left: #ccc 1px solid;
+}
+
+#indication li > a {
+    display: block;
+    padding: 0 5px;
+    margin: 1px;
+    font-size: 12px;
+    height: 38px;
+}
+
+#indication li > span.shape {
+    content: "\00a0";
+    display: none; /* reduce the damage in FF3.0 */
+    position: absolute;
+    width:0;
+    height:0;
+    left: 15px; /* value = - border-left-width - border-right-width */
+    top: 0px;
+    border-style: solid;
+    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
+    border-color: #fff transparent transparent transparent; 
+}
+
+#indication li > a:hover {
+    font-size: 12px;
+    -webkit-box-shadow: inset 0px 1px 50px #aaaaff !important;
+}
+
+#indication li > a.selected {
+    -webkit-box-shadow: inset 0px 1px 50px #aaa;
+}
+
+#indication li > a > span {
+    display: block;
+    height: 38px;
+    background-position: 5px ;
+}
+
+#console {
+    background: rgba(0,0,0,0.8);
+    width: 90%;
+    height: 300px;
+    position: fixed;
+    z-index: 999999999999;
+    bottom: 0px;
+    left: 5%;
+    right: 5%;
+    -webkit-border-top-left-radius: 8px 8px;
+    -webkit-border-top-right-radius: 8px 8px;
+    overflow:hidden;
+    display: none;
+}
+
+#console > h1 {
+    margin: 5px 10px;
+    color: #ccc;
+    border-bottom: #ccc solid 1px;
+}
+
+#console_out {
+    font-family: Monaco, Consolas,'Courier New',Courier, monospace;
+    margin: 0 10px;
+    height: 250px;
+    overflow: auto;
+    font-size: 12px;
+    color: #ccc;
+    word-wrap: break-word;
+}
+
+#console_in {
+    background: #222;
+    border: 0;
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+.console_ps_in {
+    color: lightgreen;
+}
+
+.console_ps_out {
+    color: #ff0000;
+}
+
+.console_ps_err {
+    color: #ff0000;
+}
+
+
+/* ===== Side Nav ================================== */
+#aside {
+    background: #faa;
+}
+
+/* ===== Notification ============================== */
+#notification_area {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    z-index: 999999999;
+    width: 100%;
+}
+
+#notification {
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px;
+    background: yellow;
+    color: black;
+    display:none;
+    -webkit-border-radius: 3px 3px;
+}
+
+/* ===== count =================================== */
+#count {
+    position: fixed;
+    z-index: 9999999;
+    background: rgba(0, 0, 0, 0.7);
+    top: 100px;
+    left: 0;
+    padding: 5px 0;
+    font-size: 10px;
+    color: white;
+    -webkit-border-top-right-radius: 3px 3px;
+    -webkit-border-bottom-right-radius: 3px 3px;
+}
+
+#count_trigger {
+    margin: 0 5px 0 3px;
+    font-size: 12px;
+}
+
+#count > ul {
+    list-style-type: none;
+    display: none;
+}
+
+#count li > a {
+    padding: 3px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+#count li > a:hover {
+    color: orange;
+    background: black;
+}
+
+/* ===== Widgets =================================== */
+label {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+input[type="text"], input[type="password"], textarea{
+    background:none repeat scroll 0 0 #eee;
+    border:1px solid #aaa;
+    padding:3px;
+    width:300px;
+    outline: none;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, textarea:hover {
+    border:1px solid #fff;
+}
+
+input[type="button"], .button {
+    border:1px solid #aaa;
+    color: #111;
+    text-shadow: 0 1px 0px #fff;
+    padding: 0 10px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    outline: none;
+    text-align: center;
+    min-width: 60px;
+    display: inline-block;
+    background: url(../imgs/btn_bg.png) repeat-x;
+    text-decoration: none;
+    text-shadow: 0 1px 0px #fff;
+    -webkit-border-radius: 3px 3px;
+}
+
+input[type="button"].default, .button.default {
+    background: url(../imgs/default_btn_bg.png) repeat-x !important;
+    text-shadow: 0 1px 0px #ffda8b !important;
+}
+
+input[type="button"].default:active, .button.default:active {
+    -webkit-box-shadow: inset 0px -1px 10px #ff9900 !important;
+}
+
+input[type="button"]:active, .button:active {
+    -webkit-box-shadow: inset 0px -1px 10px #ddd !important;
+}
+
+input[type="button"].default:hover, .button.default:hover {
+    -webkit-box-shadow: inset 0px -1px 10px #ffda8b;
+    color: white !important;
+}
+
+input[type="button"]:hover, .button:hover {
+    -webkit-box-shadow: inset 0px -1px 10px #fff;
+}
+
+/*===== Main Page ================================*/
+#main_page {
+    display: none;
+    background: #f2f2f2;
+}
+
+#main_page_slider {
+    height: 100%;
+    width: 1000%;
+}
+
+/*===== Welcome Page ================================*/
+#welcome_page {
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+    width: 100%;
+    border-left: 1px #eee solid;
+    border-right: 1px #aaa solid;
+}
+
+#welcome_page h1 {
+    padding: 10px 10px;
+    font-size: 30px;
+    color: #777;
+    text-shadow: 0 1px 0px #fff;
+}
+
+#sign_in_block {
+    width: 400px;
+    margin: 50px auto 0 auto;
+    background: #ddd url(../imgs/welcome_bg.png) no-repeat 180px 100px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 3px #ccc;
+    -webkit-border-radius: 8px 8px;
+}
+
+#sign_in_block h2 {
+    font-size: 20px; 
+    padding-bottom: 10px;
+    color: #777;
+    border-bottom: 1px #ccc solid; 
+}
+
+#sign_in_block_bottom {
+    border-top: 1px #ccc solid; 
+    text-align: right;
+}
+
+#btn_welcome_prefs, #btn_welcome_about {
+    padding-left: 20px;
+    height: 20px;
+    display:inline-block;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+#btn_oauth_sign_in, #btn_regain_token {
+    background: url(../imgs/signin_twitter.png) no-repeat;
+    width: 150px;
+    padding: 0;
+    border: 0 !important;
+}
+
+/*===== OAuth Dialog ================================*/
+
+#dialog_mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%:
+    height: 100%;
+    z-index: 1000;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.dialog p {
+    font-size: 12px;
+    line-height: 1.6em;
+    margin: 10px 0;
+}
+
+.dialog p, .dialog h1, .dialog h2, .dialog h3, .dialog label {
+    text-shadow: 0 1px 0px #fff;
+}
+
+.dialog h2 {
+    font-size: 20px; 
+    padding-bottom: 10px;
+    color: #777;
+    border-bottom: 1px #ccc solid; 
+}
+
+.dialog_border {
+    background: rgba(0,0,0, 0.5);
+    padding: 20px;
+    -webkit-border-radius: 8px 8px;
+    display: none;
+} 
+
+.dialog_close_btn {
+    height: 48px;
+    width: 48px;
+    float: right;
+    display: block;
+    margin-top: -40px;
+    margin-right: -40px;
+}
+
+.dialog_body h3{
+    font-size: 12px;
+}
+
+.dialog_bottom {
+    text-align: right; 
+    clear:both; 
+    padding: 10px;
+}
+
+#oauth_dlg {
+    display: block;
+    width: 400px;
+    background: #ddd;
+}
+
+#oauth_dlg_border {
+    z-index: 1001;
+    width: 400px;
+    margin: 100px auto;
+}
+
+#oauth_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#oauth_dlg_body {
+    padding: 10px 20px;
+}
+
+/*===== Preferences Dialog ================================*/
+
+#prefs_dlg {
+    display: block;
+    width: 600px;
+    background: #ddd;
+}
+
+#prefs_dlg_border {
+    z-index: 1001;
+    width: 600px;
+    margin: 50px auto;
+}
+
+#prefs_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#prefs_dlg_body {
+    padding: 0;
+}
+
+#prefs_tabs {
+    font-size: 12px;
+}
+
+#prefs_tabs > ul {
+    list-style-type: none;
+    float: left;
+}
+
+#prefs_tabs > ul > li {
+    display: block;
+    width: 150px;
+}
+
+.prefs_tabs_btn {
+    height: 22px;
+    padding-left: 20px;
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    color: #555;
+    line-height: 22px;
+    border-bottom: 1px #ccc solid;
+    text-shadow: 0 1px 0px #fff;
+}
+
+
+.prefs_tabs_btn.selected {
+    color: #000;
+}
+
+.prefs_tabs_page {
+    margin-left: 150px;
+    border-left: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    padding: 10px 10px;
+    display: none;
+    min-height: 200px;
+}
+
+.prefs_group {
+    padding-left: 10px;
+}
+
+/*===== Preferences Dialog ================================*/
+#about_dlg {
+    display: block;
+    width: 600px;
+    background: #ddd;
+}
+
+#about_dlg_border {
+    z-index: 10504;
+    width: 600px;
+    margin: 50px auto;
+}
+
+#about_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#about_dlg_body {
+    padding: 10px 20px;
+    height: 300px;
+    overflow: auto;
+}
+
+/*===== Message Dialog ================================*/
+#message_dlg {
+    display: block;
+    width: 400px;
+    background: #ddd;
+}
+
+#message_dlg_border {
+    z-index: 10005;
+    width: 400px;
+    margin: 100px auto;
+}
+
+#message_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#message_dlg_body {
+    padding: 10px 20px;
+    max-height: 300px;
+    overflow: auto;
+}
+/*===== Class styles ================================*/
+.page {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.tweet_block {
+    float: left;
+    width: 600px;
+    height: 100%;
+    overflow: auto;
+    font-size: 12px;
+}
+
+.tweet_block > ul {
+    list-style-type: none;
+    padding: 0 20px;
+}
+
+.tweet_block_bottom {
+    padding: 0 20px;
+    text-align: center;
+}
+
+.btn_load_more {
+    margin: 10px auto;
+    width: 80%;
+    display: inline-block;
+}
+
+.tweet {
+    margin: 2px;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    min-height: 64px;
+    background: #fff;
+    position: relative;
+}
+.tweet > span.shape {
+    content: "\00a0";
+    display: block; /* reduce the damage in FF3.0 */
+    position: absolute;
+    width:0;
+    height:0;
+    left: 52px; /* value = - border-left-width - border-right-width */
+    top: 22px;
+    border-style: solid;
+    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
+    border-color: transparent #bbb  transparent transparent; 
+}
+
+.tweet > span.shape_mask {
+    content: "\00a0";
+    display: block; /* reduce the damage in FF3.0 */
+    position: absolute;
+    width:0;
+    height:0;
+    left: 53px; /* value = - border-left-width - border-right-width */
+    top: 22px;
+    border-style: solid;
+    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
+    border-color: transparent #fff  transparent transparent; 
+}
+
+.profile_img_wrapper {
+    /*-webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 0px 0px 5px;*/
+    border: 1px #ccc solid; 
+    padding: 1px;
+    margin: 5px;
+    width: 48px;
+    height: 48px;
+    float: left;            
+}
+
+.profile_img_wrapper > img {
+    width: 48px;
+    height: 48px;
+    border: 0;
+}
+
+.tweet_body {
+    margin: 0 0 0 65px;
+    padding: 5px 5px 15px 5px;
+    border-left: #ccc 1px solid;
+    min-height: 64px;
+}
+
+.tweet_body > .who {
+    height: 20px;
+}
+
+.tweet_body a {
+    text-decoration: none;
+}
+
+.tweet_body > .text {
+    word-break: break-all;
+}
+
+.tweet_ctrl {
+    list-style-type: none;
+    width: 300px;
+    height: 20px;
+    text-align: right;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.tweet_ctrl > li {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+.tweet_ctrl_btn {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+.tweet_reply {
+    background: transparent url(../imgs/ic16_reply.png) no-repeat;
+}
+.tweet_rt {
+    background: transparent url(../imgs/ic16_rt.png) no-repeat;
+}
+.tweet_retweet {
+    background: transparent url(../imgs/ic16_retweet.png) no-repeat;
+}
+.tweet_more {
+    background: transparent url(../imgs/ic16_more.png) no-repeat;
+}
+.tweet_reply_all {
+    background: transparent url(../imgs/ic16_reply_all.png) no-repeat;
+}
+.tweet_dm {
+    background: transparent url(../imgs/ic16_dm.png) no-repeat;
+}
+.tweet_fav {
+    background: transparent url(../imgs/ic16_fav.png) no-repeat;
+}
+
+
+.tweet_more_menu {
+    position: absolute;
+    display: none;
+    list-style-type:none;
+    text-align: left;
+    top: 19px;
+    right: -20px;
+    background: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #eee #ccc #ccc #eee;
+    width: 100px;
+    z-index: 10004;
+    -webkit-box-shadow: 1px 1px 5px #ccc;
+}
+
+.tweet_more_menu > li{
+    border-top: 1px #ccc solid;
+}
+
+.tweet_more_menu > li:first-child {
+    border-top: 0;
+}
+
+.tweet_ctrl_menu_btn {
+    display: block;
+    height: 20px;
+    font-size: 10px;
+    width: 80px;
+    color: #333;
+    line-height: 20px;
+    text-decoration: none;
+    background-position: 2px 2px;
+    padding-left: 20px;
+}
+
+.tweet_ctrl_menu_btn:hover {
+    background-color: #2e88c4;
+    color: #fff; 
+}
+
+.tweet_meta {
+    color: gray;
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    height: 10px;
+    line-height: 10px;
+}
+
+.tweet_meta > a {
+    color: gray;
+}
+
+/*=====*/
+.float_right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+
+.ic_home {
+    background: transparent url(../imgs/ic_home.png) no-repeat;
+}
+
+.ic_mention {
+    background: transparent url(../imgs/ic_mention.png) no-repeat;
+}
+.ic_dm {
+    background: transparent url(../imgs/ic_dm.png) no-repeat;
+}
+.ic_fav {
+    background: transparent url(../imgs/ic_fav.png) no-repeat;
+}
+.ic_retweet {
+    background: transparent url(../imgs/ic_retweet.png) no-repeat;
+}
+.ic_about {
+    background: transparent url(../imgs/ic16_help.png) no-repeat;
+}
+.ic_prefs {
+    background: transparent url(../imgs/ic16_prefs.png) no-repeat;
+}
+.ic_reload {
+    background: transparent url(../imgs/ic16_reload.png) no-repeat;
+}
+.ic_sign_out {
+    background: transparent url(../imgs/ic16_sign_out.png) no-repeat;
+}
+.ic_close {
+    background: transparent url(../imgs/ic48_close.png) no-repeat;
+}
