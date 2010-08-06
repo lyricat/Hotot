@@ -128,12 +128,14 @@ function add_tweets(json_obj, is_append, pagename) {
         var tweet_li = form_proc(tweet_obj, pagename);
         buff.push(tweet_li);
     }
+    // add as DOM 
     var html = buff.join('')
     if ( !is_append ) {
         $(pagename + '_tweet_block > ul').prepend(html);
     } else {
         $(pagename + '_tweet_block > ul').append(html);
     }
+    // bind events
     ui.Main.bind_tweets_action(json_obj, pagename);
     ui.Notification.hide();
     return json_obj.length;
@@ -142,20 +144,27 @@ function add_tweets(json_obj, is_append, pagename) {
 bind_tweets_action:
 function bind_tweets_action(tweets_obj, pagename) {
     for (var i = 0; i < tweets_obj.length; i += 1) {
-        var id = pagename + '-' + tweets_obj[i].id;
+        var tweet_obj = tweets_obj[i]
+        if (tweet_obj.hasOwnProperty('retweeted_status')) {
+            tweet_obj = tweet_obj['retweeted_status'];
+        }
+        var id = pagename + '-' + tweet_obj.id;
         // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
             ui.Main.on_reply_click(this, event);
         });
+
         $(id).find('.tweet_rt').click(
         function (event) {
             ui.Main.on_rt_click(this, event);
         });
+
         $(id).find('.tweet_retweet').click(
         function (event) {
             ui.Main.on_retweet_click(this, event);
         });
+
         $(id).find('.tweet_more_menu_trigger').hover(
         function (event) {
             $(this).find('.tweet_more_menu').slideDown('fast');
@@ -163,18 +172,22 @@ function bind_tweets_action(tweets_obj, pagename) {
         function (event) {
             $(this).find('.tweet_more_menu').slideUp('fast');
         });
+
         $(id).find('.tweet_reply_all').click(
         function (event) {
             ui.Main.on_reply_all_click(this, event);
         });
+
         $(id).find('.tweet_dm').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
         });
+
         $(id).find('.tweet_fav').click(
         function (event) {
             ui.Main.on_fav_click(this, event);
         });
+
         $(id).find('.tweet_dm_reply').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
@@ -234,6 +247,7 @@ function on_dm_click(btn, event) {
     ui.Header.set_status_info('Compose Direct Messages to @'+who_name);
     ui.Header.dm_to_id = user_id;
     ui.Header.dm_to_screen_name = who_name;
+    globals.status_hint = globals.dm_hint
     ui.Header.change_mode(ui.Header.MODE_DM);
 },
 

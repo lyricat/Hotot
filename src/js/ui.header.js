@@ -127,14 +127,16 @@ function init () {
 change_mode:
 function change_mode(mode) {
     if (mode == ui.Header.MODE_DM) {
-        globals.status_hint = globals.dm_hint;
         $('#status_box').addClass('dm_mode');
         $('#bubble_shape').addClass('dm_mode');
+        if ($('#tbox_status').attr('value') == globals.tweet_hint)
+            $('#tbox_status').attr('value', globals.dm_hint)
         globals.status_hint = globals.dm_hint;
     } else {
-        globals.status_hint = globals.tweet_hint;
         $('#status_box').removeClass('dm_mode');
         $('#bubble_shape').removeClass('dm_mode');
+        if ($('#tbox_status').attr('value') == globals.dm_hint)
+            $('#tbox_status').attr('value', globals.tweet_hint)
         globals.status_hint = globals.tweet_hint;
     }
     ui.Header.current_mode = mode;

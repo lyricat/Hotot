@@ -93,9 +93,8 @@ function form_tweet (tweet_obj, pagename) {
     pagename = pagename.substring(1);
     var retweeted_name = '';
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
-        retweeted = tweet_obj['retweeted_status'];
+        tweet_obj = tweet_obj['retweeted_status'];
         retweeted_name = tweet_obj['user']['screen_name'];
-        tweet_obj = retweeted;
     }
     var id = tweet_obj.id;
     var user_id = tweet_obj.user.id;
