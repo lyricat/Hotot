@@ -210,7 +210,8 @@ on_rt_click:
 function on_rt_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var text = li.find('.text').text();
-    ui.Header.set_status_text('RT '+text);
+    var who_name = li.find('.who_href').text();
+    ui.Header.set_status_text('RT @' + who_name + ' ' + text);
 },
 
 on_retweet_click:
