@@ -752,6 +752,7 @@ input[type="button"]:hover, .button:hover {
     padding: 5px 5px 15px 5px;
     border-left: #ccc 1px solid;
     min-height: 64px;
+    position: relative;
 }
 
 .tweet_body > .who {
@@ -809,7 +810,6 @@ input[type="button"]:hover, .button:hover {
     background: transparent url(../imgs/ic16_fav.png) no-repeat;
 }
 
-
 .tweet_more_menu {
     position: absolute;
     display: none;
@@ -852,17 +852,56 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet_meta {
+    left: 5px;
+    right: 5px;
     color: gray;
     font-size: 10px;
     position: absolute;
     bottom: 5px;
-    right: 5px;
     height: 10px;
     line-height: 10px;
 }
 
-.tweet_meta > a {
+.btn_tweet_thread {
+    display: block;
+    float: left;
+    height: 10px;
+    width: 15px;
+    background: transparent url(../imgs/fold.png) no-repeat;
+}
+
+.btn_tweet_thread.expand {
+    background-image: url(../imgs/expand.png) !important;
+}
+
+.tweet_source {
+    float: right;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tweet_meta a {
     color: gray;
+}
+
+.tweet_thread {
+    background: #f2f2f2;
+    display: none;
+    list-style-type: none;
+    padding: 5px;
+    margin-left: 65px;
+    border-left: #ccc 1px solid;
+}
+
+.tweet_thread_hint {
+    margin: 0 auto;
+    font-size: 12px;
+    padding: 3px 10px;
+    background: yellow;
+    color: black;
+    -webkit-border-radius: 3px 3px; 
 }
 
 /*=====*/

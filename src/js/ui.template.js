@@ -22,31 +22,40 @@ tweet_t:
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>\
         <div class="text">{%TEXT%}</div>\
+        <ul class="tweet_ctrl">\
+            <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
+            <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
+            <li><a class="tweet_retweet tweet_ctrl_btn" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
+            <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
+                <ul class="tweet_more_menu">\
+                <li>\
+                    <a class="tweet_reply_all tweet_ctrl_menu_btn"\
+                        href="javascript:void(0);">Reply All</a>\
+                </li>\
+                <li>\
+                    <a class="tweet_dm tweet_ctrl_menu_btn"\
+                        href="javascript:void(0);">Send Message</a>\
+                </li>\
+                <li>\
+                    <a class="tweet_fav tweet_ctrl_menu_btn"\
+                        href="javascript:void(0);">Love it!</a>\
+                </li>\
+                </ul>\
+            </li>\
+        </ul>\
+        <div class="tweet_meta">\
+            <div class="tweet_source">via: {%SOURCE%}</div>\
+            <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
+                <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
+                {%REPLY_TEXT%}\
+            </div>\
+        </div>\
     </div>\
-    <ul class="tweet_ctrl">\
-        <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_retweet tweet_ctrl_btn" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
-        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
-            <ul class="tweet_more_menu">\
-            <li>\
-            	<a class="tweet_reply_all tweet_ctrl_menu_btn"\
-                    href="javascript:void(0);">Reply All</a>\
-            </li>\
-            <li>\
-            	<a class="tweet_dm tweet_ctrl_menu_btn"\
-                    href="javascript:void(0);">Send Message</a>\
-            </li>\
-            <li>\
-            	<a class="tweet_fav tweet_ctrl_menu_btn"\
-                    href="javascript:void(0);">Love it!</a>\
-            </li>\
-            </ul>\
-        </li>\
-    </ul>\
-    <div class="tweet_meta">via: {%SOURCE%}</div>\
     <span class="shape"></span>\
     <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
+    <ul class="tweet_thread" style="border-right-color:{%SCHEME%};">\
+        <div class="tweet_thread_hint">Loading...</div>\
+    </ul>\
 </li>',
 
 dm_t: 
@@ -59,7 +68,7 @@ dm_t:
         <div class="text">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
-        <li><a class="tweet_dm_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_dm tweet_ctrl_btn" href="javascript:void(0);"></a></li>\
     </ul>\
     <span class="shape"></span>\
     <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
@@ -99,18 +108,24 @@ function form_tweet (tweet_obj, pagename) {
     var id = tweet_obj.id;
     var user_id = tweet_obj.user.id;
     var screen_name = tweet_obj.user.screen_name;
+    var reply_name = tweet_obj.in_reply_to_screen_name;
+    var reply_id = tweet_obj.in_reply_to_status_id;    
     var profile_img = tweet_obj.user.profile_image_url;
     var text = ui.Template.form_text(tweet_obj.text);
     var source = tweet_obj.source;
     var ret = '';
     var scheme = ui.Template.schemes['white'];
+    var reply_str = (reply_name != null) ?
+        'reply to <a href="http://twitter.com/'
+            + reply_name + '">'
+            + reply_name + '</a> '
+        : '';
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['orange'];
     }
     if (retweeted_name != '') {
         scheme = ui.Template.schemes['blue'];
     }
-    // utility.Console.out(pagename);
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
@@ -119,6 +134,10 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SOURCE%}/g, source);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
+
+    ret = ret.replace(/{%IN_REPLY%}/g, 
+        (reply_name!=null && pagename.split('-').length < 2) ? 'block' : 'none');
+    ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     return ret;
 },
 

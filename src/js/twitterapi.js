@@ -165,6 +165,12 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     return;
 },
 
+show_status:
+function show_status(id, on_success) {
+    var url = '/statuses/show/'+id+'.json';
+    lib.twitterapi.get(url, {}, on_success);
+},
+
 verify:
 function verify(on_success) {
     var url = '/account/verify_credentials.json';

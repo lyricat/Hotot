@@ -79,8 +79,12 @@ function load_more_tweets () {
 load_tweets_cb:
 function load_tweets_cb(result, pagename) {
     var json_obj = eval(result);
-    var tweet_count = ui.Main.add_tweets(result, false, pagename);
+    var container = $(pagename + '_tweet_block > ul');
+    container.pagename = pagename;
+    var tweet_count = ui.Main.add_tweets(result, false, container);
+    
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
+    
     if (tweet_count != 0 ) {
         if (pagename != '#favorites') {
             ui.Main.block_info[pagename].since_id 
@@ -101,42 +105,58 @@ function load_tweets_cb(result, pagename) {
 load_more_tweets_cb:
 function load_more_tweets_cb(result) {
     var json_obj = eval(result);
-    var current_block = ui.Slider.current;
-    var tweet_count = ui.Main.add_tweets(json_obj, true, current_block);
+    var pagename = ui.Slider.current;
+    var container = $(pagename + '_tweet_block > ul');
+    container.pagename = pagename;
+    var tweet_count = ui.Main.add_tweets(json_obj, true, container);
 
     if (tweet_count != 0) {
-        if (current_block != '#favorites') {
-            ui.Main.block_info[current_block].max_id 
+        if (pagename != '#favorites') {
+            ui.Main.block_info[pagename].max_id 
                 = json_obj[tweet_count - 1].id - 1;  
             var first_id = json_obj[0].id;
-            if (ui.Main.block_info[current_block].since_id == 1)
-                ui.Main.block_info[current_block].since_id = first_id;
+            if (ui.Main.block_info[pagename].since_id == 1)
+                ui.Main.block_info[pagename].since_id = first_id;
         } else {
-            ui.Main.block_info[current_block].page += 1; 
+            ui.Main.block_info[pagename].page += 1; 
         }
     }
 },
 
 add_tweets:
-function add_tweets(json_obj, is_append, pagename) {
-    var form_proc = ui.Template.form_tweet
-    if (pagename == '#direct_messages')
+function add_tweets(json_obj, is_append, container) {
+/* Add one or more tweets to a specifed container.
+ * - Choose a template-filled function which correspond to the json_obj and
+ *   Add it to the container with a specifed method (append or prepend).
+ * - Argument container is the jQuery object where the json_obj will be add.
+ *   The container.pagename indicate the pagename of the container. If the
+ *   tweet in a thread, the container.pagename should be assigned with the
+ *   id of the lastest tweet.
+ */
+    var form_proc = ui.Template.form_tweet;
+    if (container.pagename == '#direct_messages')
         form_proc = ui.Template.form_dm
     var buff = [];
-    for (var i = 0; i < json_obj.length; i += 1) {
-        var tweet_obj = json_obj[i];
-        var tweet_li = form_proc(tweet_obj, pagename);
-        buff.push(tweet_li);
-    }
-    // add as DOM 
-    var html = buff.join('')
-    if ( !is_append ) {
-        $(pagename + '_tweet_block > ul').prepend(html);
+    if (json_obj.constructor == Array) { 
+        for (var i = 0; i < json_obj.length; i += 1) {
+            var tweet_obj = json_obj[i];
+            buff.push(form_proc(tweet_obj, container.pagename));
+        }
     } else {
-        $(pagename + '_tweet_block > ul').append(html);
+        buff.push(form_proc(json_obj, container.pagename));
     }
+    // add 
+    var html = buff.join('');
+    if ( !is_append ) {
+        //$(pagename + '_tweet_block > ul').prepend(html);
+        container.prepend(html);
+    } else {
+        container.append(html);
+    }
+    // dumps to cache
+    // utility.DB.dump_tweets(json_obj);
     // bind events
-    ui.Main.bind_tweets_action(json_obj, pagename);
+    ui.Main.bind_tweets_action(json_obj, container.pagename);
     ui.Notification.hide();
     return json_obj.length;
 },
@@ -191,6 +211,11 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).find('.tweet_dm_reply').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
+        });
+
+        $(id).find('.btn_tweet_thread').click(
+        function (event) {
+            ui.Main.on_expander_click(this, event);
         });
     }
 },
@@ -262,6 +287,37 @@ function on_fav_click(btn, event) {
     ui.Notification.set('set it as favorite ...').show(-1);
 },
 
+on_expander_click:
+function on_expander_click(btn, event) {
+    var li = $(btn).parents('.tweet');
+    var thread_container = $(li.find('.tweet_thread')[0]);
+    thread_container.pagename = li.attr('id');
+     
+    var load_thread_proc = function (tweet_id) {
+        lib.twitterapi.show_status(tweet_id,
+        function (result) {
+            var tweet_obj = eval(result);
+            ui.Main.add_tweets(tweet_obj, true, thread_container);
+            
+            // load the prev tweet in the thread.
+            var reply_id = tweet_obj.in_reply_to_status_id;
+            if (reply_id == null) { // end of thread. 
+                li.find('.tweet_thread_hint').hide();
+                return;
+            } else { 
+                load_thread_proc(reply_id.toString());
+            }
+        });
+    }
+    if ($(btn).hasClass('expand')) {
+        $(btn).removeClass('expand');
+    } else {
+        $(btn).addClass('expand');
+        load_thread_proc(ui.Main.normalize_id(li.attr('id')));
+    }
+    thread_container.toggle();
+},
+
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
     return $(btn).parent().parent().parent();
@@ -274,8 +330,9 @@ function normalize_id(id) {
 
 normalize_user_id:
 function normalize_user_id(id) {
-    return id.split('-')[2];
-}
+    var arr = id.split('-');
+    return arr[arr.length - 1];
+},
 
 };
 

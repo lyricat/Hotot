@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/js-oauth.js"></script>
     
     <script type="text/javascript" src="js/utility.console.js"></script>
+    <script type="text/javascript" src="js/utility.db.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.notification.js"></script>
@@ -232,7 +233,7 @@ jQuery(function($) {
     <div id="main_page_slider">
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul>
-<!--
+<!-- 
 <li id="{%TWEET_ID%}" class="tweet">
     <div class="profile_img_wrapper">
         <img src="imgs/ic48_profile_image.png">
@@ -240,31 +241,38 @@ jQuery(function($) {
     <div class="tweet_body orange_body">
         <div class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>
         <div class="text">{%TEXT%}</div>
+        <ul class="tweet_ctrl">
+            <li><a class="tweet_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>
+            <li><a class="tweet_rt tweet_ctrl_btn" href="javascript:void(0);"></a></li>
+            <li><a class="tweet_retweet tweet_ctrl_btn" href="javascript:void(0);"></a></li>   
+            <li><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>
+                <ul class="tweet_more_menu">
+                <li>
+                    <a class="tweet_reply_all tweet_ctrl_menu_btn"
+                        href="javascript:void(0);">Reply All</a>
+                </li>
+                <li>
+                    <a class="tweet_dm tweet_ctrl_menu_btn"
+                        href="javascript:void(0);">Send Message</a>
+                </li>
+                <li>
+                    <a class="tweet_fav tweet_ctrl_menu_btn"
+                        href="javascript:void(0);">Love it!</a>
+                </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tweet_meta">
+            <div class="tweet_source">via: {%SOURCE%}</div>
+            <div class="tweet_thread_info" style="display:{%IN_REPLY%}">
+                <a class="btn_tweet_thread" href="javascript:void(0);"></a>
+                {%REPLY_TEXT%}
+            </div>
+        </div>
     </div>
-    <ul class="tweet_ctrl">
-        <li><a class="tweet_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>
-        <li><a class="tweet_rt tweet_ctrl_btn" href="javascript:void(0);"></a></li>
-        <li><a class="tweet_retweet tweet_ctrl_btn" href="javascript:void(0);"></a></li>   
-        <li><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>
-            <ul class="tweet_more_menu">
-            <li>
-            	<a class="tweet_reply_all tweet_ctrl_menu_btn"
-                    href="javascript:void(0);">Reply All</a>
-            </li>
-            <li>
-            	<a class="tweet_dm tweet_ctrl_menu_btn"
-                    href="javascript:void(0);">Send Message</a>
-            </li>
-            <li>
-            	<a class="tweet_fav tweet_ctrl_menu_btn"
-                    href="javascript:void(0);">Love it!</a>
-            </li>
-            </ul>
-        </li>
-    </ul>
-    <div class="tweet_meta">via: {%SOURCE%}</div>
     <span class="shape"></span>
     <span class="shape_mask" style="border-right-color:#fff;"></span>
+    <ul class="tweet_thread">Loading...</ul>
 </li> 
 -->
 
@@ -559,5 +567,6 @@ jQuery(function($) {
     </div>
 </section> <!-- END de dialog_mask -->
 
+<span id="cache"></span>
 </body>
 </html>
