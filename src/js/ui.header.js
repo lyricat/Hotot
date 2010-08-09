@@ -148,7 +148,6 @@ function update_status(status_text) {
         lib.twitterapi.update_status(
             status_text, ui.Header.reply_to_id, ui.Header.update_status_cb);
         ui.Notification.set('Updating...').show(-1);
-        ui.Header.reply_to_id = null;
     }
     return this;
 },
@@ -158,6 +157,7 @@ function update_status_cb(result) {
     $('#tbox_status').addClass('hint_style')
         .attr('value', globals.status_hint);
     ui.Notification.set('Update Successfully!').show();
+    ui.Header.reply_to_id = null;
     return this;
 },
 
@@ -181,7 +181,6 @@ function post_message(message_text) {
             , ui.Header.dm_to_screen_name
             , ui.Header.post_message_cb);
         ui.Notification.set('Posting...').show(-1);
-        ui.Header.reply_to_id = null;
     }
 },
 

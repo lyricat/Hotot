@@ -154,7 +154,7 @@ function add_tweets(json_obj, is_append, container) {
         container.append(html);
     }
     // dumps to cache
-    // utility.DB.dump_tweets(json_obj);
+    utility.DB.dump_tweets(json_obj);
     // bind events
     ui.Main.bind_tweets_action(json_obj, container.pagename);
     ui.Notification.hide();
@@ -223,26 +223,31 @@ function bind_tweets_action(tweets_obj, pagename) {
 on_reply_click:
 function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var who_name = li.find('.who_href').text();
-    var text = li.find('.text').text();
-    ui.Header.reply_to_id = ui.Main.normalize_id(li.attr('id'));
+    var id = ui.Main.normalize_id(li.attr('id'));
+    var tweet_obj = utility.DB.get(id)
+    utility.Console.out('##'+id)
     ui.Header.change_mode(ui.Header.MODE_REPLY);
-    ui.Header.set_status_info('Reply to `'+ text +'`');
-    ui.Header.append_status_text('@' + who_name + ' ');
+    ui.Header.reply_to_id = id;
+    ui.Header.set_status_info('Reply to `'+ tweet_obj.text +'`');
+    ui.Header.append_status_text('@' + tweet_obj.user.screen_name + ' ');
 },
 
 on_rt_click:
 function on_rt_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var text = li.find('.text').text();
-    var who_name = li.find('.who_href').text();
-    ui.Header.set_status_text('RT @' + who_name + ' ' + text);
+    var id = ui.Main.normalize_id(li.attr('id'));
+    var tweet_obj = utility.DB.get(id)
+
+    ui.Header.set_status_text('RT @' + tweet_obj.user.screen_name
+        + ' ' + tweet_obj.text);
 },
 
 on_retweet_click:
 function on_retweet_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    lib.twitterapi.retweet_status(ui.Main.normalize_id(li.attr('id')), 
+    var id = ui.Main.normalize_id(li.attr('id'));
+
+    lib.twitterapi.retweet_status(id, 
     function (result) {
         ui.Notification.set('Retweet Successfully!').show();
     });
@@ -251,36 +256,42 @@ function on_retweet_click(btn, event) {
 
 on_reply_all_click:
 function on_reply_all_click(btn, event) {
-    var li = $(btn).parents('.tweet');
-    var who_names = [ '@' + li.find('.who_href').text() +' '];
-    var text = li.find('.text').text();
+    var li = ui.Main.ctrl_btn_to_li(btn);
+    var id = ui.Main.normalize_id(li.attr('id'));
+    var tweet_obj = utility.DB.get(id);
+
+    var who_names = [ '@' + tweet_obj.user.screen_name +' '];
+    var text = tweet_obj.text;
     var match = ui.Template.reg_user.exec(text);
     while (match != null ) {
         who_names.push('@' + match[2] + ' ');
         match = ui.Template.reg_user.exec(text);
     }
-    ui.Header.reply_to_id = ui.Main.normalize_id(li.attr('id'));
+    ui.Header.reply_to_id = id;
     ui.Header.change_mode(ui.Header.MODE_REPLY);
-    ui.Header.set_status_info('Reply to `'+text+'`');
+    ui.Header.set_status_info('Reply to `' + text + '`');
     ui.Header.append_status_text(who_names.join(''));
 },
 
 on_dm_click:
 function on_dm_click(btn, event) {
-    var li = $(btn).parents('.tweet');
-    var who_name = li.find('.who_href').text();
-    var user_id = ui.Main.normalize_user_id(li.find('.who').attr('id'));
-    ui.Header.set_status_info('Compose Direct Messages to @'+who_name);
-    ui.Header.dm_to_id = user_id;
-    ui.Header.dm_to_screen_name = who_name;
+    var li = ui.Main.ctrl_btn_to_li(btn);
+    var id = ui.Main.normalize_id(li.attr('id'));
+    var tweet_obj = utility.DB.get(id);
+
+    ui.Header.set_status_info('Compose Direct Messages to @' + tweet_obj.sender.screen_name);
+    ui.Header.dm_to_id = tweet_obj.sender.id;
+    ui.Header.dm_to_screen_name = tweet_obj.sender.screen_name;
     globals.status_hint = globals.dm_hint
     ui.Header.change_mode(ui.Header.MODE_DM);
 },
 
 on_fav_click:
 function on_fav_click(btn, event) {
-    var li = $(btn).parents('.tweet');
-    lib.twitterapi.create_favorite(ui.Main.normalize_id(li.attr('id')), 
+    var li = ui.Main.ctrl_btn_to_li(btn);
+    var id = ui.Main.normalize_id(li.attr('id'));
+
+    lib.twitterapi.create_favorite(id, 
     function (result) {
         ui.Notification.set('Successfully!').show();
     });
@@ -289,7 +300,10 @@ function on_fav_click(btn, event) {
 
 on_expander_click:
 function on_expander_click(btn, event) {
-    var li = $(btn).parents('.tweet');
+    var li = ui.Main.ctrl_btn_to_li(btn);
+    var id = ui.Main.normalize_id(li.attr('id'));
+    var tweet_obj = utility.DB.get(id);
+
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
      
@@ -313,19 +327,20 @@ function on_expander_click(btn, event) {
         $(btn).removeClass('expand');
     } else {
         $(btn).addClass('expand');
-        load_thread_proc(ui.Main.normalize_id(li.attr('id')));
+        load_thread_proc(id);
     }
     thread_container.toggle();
 },
 
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
-    return $(btn).parent().parent().parent();
+    return $($(btn).parents('.tweet')[0]);
 },
 
 normalize_id:
 function normalize_id(id) {
-    return id.split('-')[1];
+    var arr = id.split('-');
+    return arr[arr.length - 1];
 },
 
 normalize_user_id:

@@ -115,7 +115,7 @@ function form_tweet (tweet_obj, pagename) {
     var source = tweet_obj.source;
     var ret = '';
     var scheme = ui.Template.schemes['white'];
-    var reply_str = (reply_name != null) ?
+    var reply_str = (reply_id != null) ?
         'reply to <a href="http://twitter.com/'
             + reply_name + '">'
             + reply_name + '</a> '
@@ -136,7 +136,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%SCHEME%}/g, scheme);
 
     ret = ret.replace(/{%IN_REPLY%}/g, 
-        (reply_name!=null && pagename.split('-').length < 2) ? 'block' : 'none');
+        (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     return ret;
 },
