@@ -24,10 +24,12 @@ class MainWindow:
 
     def build_gui(self):
         self.window = gtk.Window()
-        gtk.window_set_default_icon_name("gtk-dnd")
-        self.window.set_icon_name("gtk-dnd")
+        gtk.window_set_default_icon_from_file(
+            config.abspath + '/imgs/ic64_hotot.png')
+        self.window.set_icon_from_file(
+            config.abspath + '/imgs/ic64_hotot.png')
         self.window.set_default_size(750, 550)
-        self.window.set_title("Hotot")
+        self.window.set_title('Hotot')
         self.window.set_position(gtk.WIN_POS_CENTER)
 
         vbox = gtk.VBox()
@@ -165,6 +167,12 @@ class MainWindow:
 
 def main():
     config.loads();
+    try:
+        import dl
+        libc = dl.open('/lib/libc.so.6')
+        libc.call('prctl', 15, 'hotot', 0, 0, 0)
+    except:
+        pass
     agent.init_notify()
     app = MainWindow()
     agent.app = app

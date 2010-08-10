@@ -302,7 +302,7 @@ on_expander_click:
 function on_expander_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var tweet_obj = utility.DB.get(id);
+    var orig_tweet_obj = utility.DB.get(id);
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
@@ -314,14 +314,14 @@ function on_expander_click(btn, event) {
             // load the prev tweet in the thread.
             var reply_id = prev_tweet_obj.in_reply_to_status_id;
             if (reply_id == null) { // end of thread. 
-                li.find('.tweet_thread_hint').hide();
+                li.find('.tweet_thread_hint').fadeOut();
                 return;
             } else { 
-                load_thread_proc(reply_id.toString());
+                load_thread_proc(reply_id);
             }
         }
 
-        var prev_tweet_obj = utility.DB.get(tweet_id);
+        var prev_tweet_obj = utility.DB.get(tweet_id.toString());
         if (typeof prev_tweet_obj == 'undefined') {
             lib.twitterapi.show_status(tweet_id,
             function (result) {
@@ -333,15 +333,15 @@ function on_expander_click(btn, event) {
         }
     };
 
+    thread_container.toggle();
     if ($(btn).hasClass('expand')) {
         $(btn).removeClass('expand');
     } else {
         $(btn).addClass('expand');
         if (thread_container.children('.tweet').length == 0) {
-            load_thread_proc(tweet_obj.in_reply_to_status_id.toString());
+            load_thread_proc(orig_tweet_obj.in_reply_to_status_id);
         }
     }
-    thread_container.toggle();
 },
 
 ctrl_btn_to_li:

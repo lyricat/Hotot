@@ -7,13 +7,17 @@ function init () {
 },
 
 dump_tweets:
-function dump_tweets(tweets_obj) {
-    if (tweets_obj.constructor == Array) { 
-        for (var i = 0; i < tweets_obj.length; i += 1) {
-            $('#cache').data(tweets_obj[i].id.toString(), tweets_obj[i]);
+function dump_tweets(json_obj) {
+    if (json_obj.constructor == Array) { 
+        for (var i = 0; i < json_obj.length; i += 1) {
+            var tweet_obj = json_obj[i]
+            if (tweet_obj.hasOwnProperty('retweeted_status')) {
+                tweet_obj = tweet_obj['retweeted_status'];
+            }
+            $('#cache').data(tweet_obj.id.toString(), tweet_obj);
         }
     } else {
-        $('#cache').data(tweets_obj.id.toString(), tweets_obj);
+        $('#cache').data(json_obj.id.toString(), json_obj);
     }
 },
 
