@@ -76,7 +76,6 @@ dm_t:
 
 form_dm:
 function form_dm(dm_obj, pagename) {
-    pagename = pagename.substring(1);
     var id = dm_obj.id;
     var screen_name = dm_obj.sender.screen_name;
     var profile_img = dm_obj.sender.profile_image_url;
@@ -99,7 +98,6 @@ function form_dm(dm_obj, pagename) {
 
 form_tweet:
 function form_tweet (tweet_obj, pagename) {
-    pagename = pagename.substring(1);
     var retweeted_name = '';
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         tweet_obj = tweet_obj['retweeted_status'];

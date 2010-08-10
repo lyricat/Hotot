@@ -80,7 +80,7 @@ load_tweets_cb:
 function load_tweets_cb(result, pagename) {
     var json_obj = eval(result);
     var container = $(pagename + '_tweet_block > ul');
-    container.pagename = pagename;
+    container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, false, container);
     
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
@@ -107,7 +107,7 @@ function load_more_tweets_cb(result) {
     var json_obj = eval(result);
     var pagename = ui.Slider.current;
     var container = $(pagename + '_tweet_block > ul');
-    container.pagename = pagename;
+    container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(json_obj, true, container);
 
     if (tweet_count != 0) {
@@ -134,7 +134,7 @@ function add_tweets(json_obj, is_append, container) {
  *   id of the lastest tweet.
  */
     var form_proc = ui.Template.form_tweet;
-    if (container.pagename == '#direct_messages')
+    if (container.pagename == 'direct_messages')
         form_proc = ui.Template.form_dm
     var buff = [];
     if (json_obj.constructor == Array) { 
@@ -163,12 +163,11 @@ function add_tweets(json_obj, is_append, container) {
 
 bind_tweets_action:
 function bind_tweets_action(tweets_obj, pagename) {
-    for (var i = 0; i < tweets_obj.length; i += 1) {
-        var tweet_obj = tweets_obj[i]
+    var bind_sigle_action = function (tweet_obj) {
         if (tweet_obj.hasOwnProperty('retweeted_status')) {
             tweet_obj = tweet_obj['retweeted_status'];
         }
-        var id = pagename + '-' + tweet_obj.id;
+        var id = '#' + pagename + '-' + tweet_obj.id;
         // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
@@ -217,6 +216,13 @@ function bind_tweets_action(tweets_obj, pagename) {
         function (event) {
             ui.Main.on_expander_click(this, event);
         });
+    };
+    if (tweets_obj.constructor == Array) {
+        for (var i = 0; i < tweets_obj.length; i += 1) {
+            bind_sigle_action(tweets_obj[i]);
+        }
+    } else {
+        bind_sigle_action(tweets_obj);
     }
 },
 
@@ -311,6 +317,7 @@ function on_expander_click(btn, event) {
         
         var load_thread_proc_cb = function (prev_tweet_obj) {
             ui.Main.add_tweets(prev_tweet_obj, true, thread_container);
+            ui.Main.bind_tweets_action(prev_tweet_obj, true, thread_container.pagename);
             // load the prev tweet in the thread.
             var reply_id = prev_tweet_obj.in_reply_to_status_id;
             if (reply_id == null) { // end of thread. 
