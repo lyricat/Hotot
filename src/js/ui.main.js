@@ -306,28 +306,40 @@ function on_expander_click(btn, event) {
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
-     
+
     var load_thread_proc = function (tweet_id) {
-        lib.twitterapi.show_status(tweet_id,
-        function (result) {
-            var tweet_obj = eval(result);
-            ui.Main.add_tweets(tweet_obj, true, thread_container);
-            
+        
+        var load_thread_proc_cb = function (prev_tweet_obj) {
+            ui.Main.add_tweets(prev_tweet_obj, true, thread_container);
             // load the prev tweet in the thread.
-            var reply_id = tweet_obj.in_reply_to_status_id;
+            var reply_id = prev_tweet_obj.in_reply_to_status_id;
             if (reply_id == null) { // end of thread. 
                 li.find('.tweet_thread_hint').hide();
                 return;
             } else { 
                 load_thread_proc(reply_id.toString());
             }
-        });
-    }
+        }
+
+        var prev_tweet_obj = utility.DB.get(tweet_id);
+        if (typeof prev_tweet_obj == 'undefined') {
+            lib.twitterapi.show_status(tweet_id,
+            function (result) {
+                var prev_tweet_obj = eval(result);
+                load_thread_proc_cb(prev_tweet_obj);
+            });
+        } else {
+            load_thread_proc_cb(prev_tweet_obj);
+        }
+    };
+
     if ($(btn).hasClass('expand')) {
         $(btn).removeClass('expand');
     } else {
         $(btn).addClass('expand');
-        load_thread_proc(id);
+        if (thread_container.children('.tweet').length == 0) {
+            load_thread_proc(tweet_obj.in_reply_to_status_id.toString());
+        }
     }
     thread_container.toggle();
 },

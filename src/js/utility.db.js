@@ -8,8 +8,12 @@ function init () {
 
 dump_tweets:
 function dump_tweets(tweets_obj) {
-    for (var i = 0; i < tweets_obj.length; i += 1) {
-        $('#cache').data(tweets_obj[i].id.toString(), tweets_obj[i]);
+    if (tweets_obj.constructor == Array) { 
+        for (var i = 0; i < tweets_obj.length; i += 1) {
+            $('#cache').data(tweets_obj[i].id.toString(), tweets_obj[i]);
+        }
+    } else {
+        $('#cache').data(tweets_obj.id.toString(), tweets_obj);
     }
 },
 
