@@ -74,7 +74,7 @@ function interpret_predefined(cmd) {
     break;
     case 'post':
         if (args != '')
-            result = ui.Header.update_status(args)
+            result = ui.StatusBox.update_status(args)
         else 
             result = '';
     break;

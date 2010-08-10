@@ -16,6 +16,7 @@
     <script type="text/javascript" src="js/utility.db.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
+    <script type="text/javascript" src="js/ui.status_box.js"></script>
     <script type="text/javascript" src="js/ui.notification.js"></script>
     <script type="text/javascript" src="js/ui.slider.js"></script>
     <script type="text/javascript" src="js/ui.welcome.js"></script>
@@ -121,6 +122,18 @@ jQuery(function($) {
         if (event.ctrlKey && event.keyCode == 81) {
             hotot_action('system/quit');
         } 
+    }).click(
+    function (event) {
+        $('#status_ctrl').hide();
+        $('#status_info').hide();
+        $('#tbox_status').animate({ 
+            height: "50px", 
+        }
+        , 50
+        , 'linear'
+        , function () {
+            $(this).blur();
+        });
     });
 
     $(window).resize(
@@ -138,6 +151,7 @@ jQuery(function($) {
     utility.Console.init();
     daemon.Updater.init();
     ui.Header.init();
+    ui.StatusBox.init();
     ui.Welcome.init();
     ui.Main.init();
     ui.Notification.init();
@@ -154,6 +168,7 @@ jQuery(function($) {
 
 </head>
 <body>
+
 <div id="container">
 <header id="header">
     <div id="ctrl_panel">
@@ -179,21 +194,6 @@ jQuery(function($) {
             </ul>
         </div>
 
-        <div id="status_box">
-            <div id="status_info">
-                <div id="status_info_text"></div>
-                <a id="btn_clear_status_info" href="javascript:void(0);"></a>
-            </div>
-            <textarea id="tbox_status"></textarea>
-            <div id="status_ctrl">
-                <label id="status_len"></label>
-                <a id="btn_clear" class="button" href="javascript:void(0);">Clear</a>
-                <a id="btn_update" class="button default" href="javascript:void(0);">Update</a>
-                <span class="clear"></span>
-                <div><label id="status_tips">Press Ctrl+Enter to Update</label></div>
-            </div>
-            <span id="bubble_shape"></span>
-        </div>
     </div>
 </header>
 
@@ -566,6 +566,22 @@ jQuery(function($) {
     </div>
     </div>
 </section> <!-- END de dialog_mask -->
+        
+<section id="status_box">
+    <div id="status_info">
+        <div id="status_info_text"></div>
+        <a id="btn_clear_status_info" href="javascript:void(0);"></a>
+    </div>
+    <textarea id="tbox_status"></textarea>
+    <div id="status_ctrl">
+        <label id="status_len"></label>
+        <a id="btn_clear" class="button" href="javascript:void(0);">Clear</a>
+        <a id="btn_update" class="button default" href="javascript:void(0);">Update</a>
+        <span class="clear"></span>
+        <div><label id="status_tips">Press Ctrl+Enter to Update</label></div>
+    </div>
+    <span id="bubble_shape"></span>
+</section> <!-- status_box -->
 
 <span id="cache"></span>
 </body>

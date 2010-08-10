@@ -63,7 +63,6 @@ a {
 }
 
 #status_box {
-    margin-left: 64px;
     background-color: #2e88c4;
     background-image: url(../imgs/welcome_bg.png);
     background-repeat: no-repeat;
@@ -73,6 +72,10 @@ a {
     -webkit-border-radius: 5px 5px;
     padding: 5px;
     position: absolute;
+    left: 70px;
+    top: 5px;
+    z-index: 10009;
+    display: none;
 }
 
 #status_box.dm_mode {
@@ -117,6 +120,7 @@ a {
     padding: 3px;
     min-height: 30px;
     margin: 2px;
+    font-size: 12px;
 }
 
 #btn_clear_status_info {

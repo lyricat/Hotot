@@ -71,7 +71,7 @@ def push_option(set, name, value):
 
 def update_status(text):
     view.execute_script('''
-        ui.Header.update_status('%s');
+        ui.StatusBox.update_status('%s');
         ''' % text);
     pass
 

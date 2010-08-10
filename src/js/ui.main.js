@@ -38,12 +38,14 @@ function init () {
 hide:
 function hide () {
     daemon.Updater.stop();
+    ui.StatusBox.hide();
     this.me.hide();
 },
 
 show:
 function show () {
     daemon.Updater.start();
+    ui.StatusBox.show();
     this.me.show();
 },
 
@@ -232,10 +234,10 @@ function on_reply_click(btn, event) {
     var id = ui.Main.normalize_id(li.attr('id'));
     var tweet_obj = utility.DB.get(id)
     utility.Console.out('##'+id)
-    ui.Header.change_mode(ui.Header.MODE_REPLY);
-    ui.Header.reply_to_id = id;
-    ui.Header.set_status_info('Reply to `'+ tweet_obj.text +'`');
-    ui.Header.append_status_text('@' + tweet_obj.user.screen_name + ' ');
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+    ui.StatusBox.reply_to_id = id;
+    ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');
+    ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
 },
 
 on_rt_click:
@@ -244,7 +246,7 @@ function on_rt_click(btn, event) {
     var id = ui.Main.normalize_id(li.attr('id'));
     var tweet_obj = utility.DB.get(id)
 
-    ui.Header.set_status_text('RT @' + tweet_obj.user.screen_name
+    ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
         + ' ' + tweet_obj.text);
 },
 
@@ -273,10 +275,10 @@ function on_reply_all_click(btn, event) {
         who_names.push('@' + match[2] + ' ');
         match = ui.Template.reg_user.exec(text);
     }
-    ui.Header.reply_to_id = id;
-    ui.Header.change_mode(ui.Header.MODE_REPLY);
-    ui.Header.set_status_info('Reply to `' + text + '`');
-    ui.Header.append_status_text(who_names.join(''));
+    ui.StatusBox.reply_to_id = id;
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+    ui.StatusBox.set_status_info('Reply to `' + text + '`');
+    ui.StatusBox.append_status_text(who_names.join(''));
 },
 
 on_dm_click:
@@ -285,11 +287,11 @@ function on_dm_click(btn, event) {
     var id = ui.Main.normalize_id(li.attr('id'));
     var tweet_obj = utility.DB.get(id);
 
-    ui.Header.set_status_info('Compose Direct Messages to @' + tweet_obj.sender.screen_name);
-    ui.Header.dm_to_id = tweet_obj.sender.id;
-    ui.Header.dm_to_screen_name = tweet_obj.sender.screen_name;
+    ui.StatusBox.set_status_info('Compose Direct Messages to @' + tweet_obj.sender.screen_name);
+    ui.StatusBox.dm_to_id = tweet_obj.sender.id;
+    ui.StatusBox.dm_to_screen_name = tweet_obj.sender.screen_name;
     globals.status_hint = globals.dm_hint
-    ui.Header.change_mode(ui.Header.MODE_DM);
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
 },
 
 on_fav_click:
