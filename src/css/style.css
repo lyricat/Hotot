@@ -76,7 +76,7 @@ a {
 }
 
 #status_box.dm_mode {
-    background: #2ec436 !important;
+    background-color: #2ec436 !important;
 }
 
 #tbox_status {
