@@ -74,7 +74,7 @@ a {
     position: absolute;
     left: 70px;
     top: 5px;
-    z-index: 10009;
+    z-index: 9999;
     display: none;
 }
 
@@ -476,14 +476,14 @@ input[type="button"]:hover, .button:hover {
 
 #dialog_mask {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%:
     height: 100%;
-    z-index: 1000;
+    z-index: 10000;
     background: rgba(0,0,0,0.5);
     display: none;
 }
@@ -538,7 +538,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 #oauth_dlg_border {
-    z-index: 1001;
+    z-index: 10001;
     width: 400px;
     margin: 100px auto;
 }
@@ -562,7 +562,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 #prefs_dlg_border {
-    z-index: 1001;
+    z-index: 10001;
     width: 600px;
     margin: 50px auto;
 }

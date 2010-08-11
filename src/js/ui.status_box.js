@@ -66,7 +66,6 @@ function init () {
         $('#status_ctrl').show();
     }, 
     function () {
-        $(this).css('position', 'absolute').css('z-index', '9999999');
     }).click(
     function () {
         return false;
