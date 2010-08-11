@@ -22,6 +22,10 @@ watch_pages: {
           watch: false
         , proc : function () {daemon.Updater.update_favorites();}
     }
+    , '#people': {
+          watch: false
+        , proc : function () {daemon.Updater.update_people();}
+    }
 },
 
 init: 
@@ -93,6 +97,20 @@ function update_favorites() {
     lib.twitterapi.get_favorites(globals.my_id, 1, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#favorites');
+        });
+},
+
+update_people:
+function update_people() {
+    lib.twitterapi.get_user_timeline(
+        ui.Main.block_info['#people'].id,
+        ui.Main.block_info['#people'].screen_name,
+        ui.Main.block_info['#people'].since_id, null, 20,
+        function (result) {
+            $('#people_tweet_block .vcard').show();
+            $('#people_tweet_block .tweet_block_bottom').show();
+            ui.Slider.slide_to('#people');
+            ui.Main.load_tweets_cb(result, '#people');
         });
 },
 

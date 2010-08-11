@@ -15,6 +15,7 @@ block_info: {
     '#direct_messages': {since_id: 1, max_id: null },
     '#favorites': { page: 1 },
     '#retweets_to_me': {since_id: 1, max_id: null },
+    '#people': {id: null, screen_name: null, since_id: 1, max_id: null },
 },
 
 init:
@@ -33,6 +34,11 @@ function init () {
         ui.Notification.set('Loading Tweets...').show(-1);
         ui.Main.load_more_tweets();
     });
+
+    $('#people_vcard vcard_follow').click(
+    function (event) {
+        // @TODO
+    });
 },
 
 hide:
@@ -47,6 +53,15 @@ function show () {
     daemon.Updater.start();
     ui.StatusBox.show();
     this.me.show();
+},
+
+reset_people_page:
+function set_people_page(id, screen_name) {
+    ui.Main.block_info['#people'].id = id;
+    ui.Main.block_info['#people'].screen_name = screen_name;
+    ui.Main.block_info['#people'].since_id = 1;
+    ui.Main.block_info['#people'].max_id = null;
+    $('#people_tweet_block > ul').html();
 },
 
 load_tweets:
@@ -75,6 +90,12 @@ function load_more_tweets () {
         lib.twitterapi.get_favorites(globals.my_id
             , ui.Main.block_info[current_block].page
             , ui.Main.load_more_tweets_cb);
+    } else if (ui.Slider.current == '#people') {
+        lib.twitterapi.get_user_timeline(
+              ui.Main.block_info[current_block].id
+            , ui.Main.block_info[current_block].screen_name
+            , 1, ui.Main.block_info[current_block].max_id
+            , 20, ui.Main.load_more_tweets_cb);
     }
 },
 
@@ -88,14 +109,21 @@ function load_tweets_cb(result, pagename) {
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
     
     if (tweet_count != 0 ) {
-        if (pagename != '#favorites') {
+        // fill vcard if wanna load tweets in people page
+        if (pagename == '#people') {
+            ui.Template.fill_vcard(json_obj[0].user
+                , $('#people_tweet_block .vcard'));
+        }
+
+        // favorites page have differet mechanism to display more tweets.
+        if (pagename == '#favorites') {
+            ui.Main.block_info[pagename].page += 1; 
+        } else {
             ui.Main.block_info[pagename].since_id 
                 = json_obj[0].id;  
             var last_id = json_obj[tweet_count - 1].id;
             if (ui.Main.block_info[pagename].max_id == null)
                 ui.Main.block_info[pagename].max_id = last_id - 1;
-        } else {
-            ui.Main.block_info[pagename].page += 1; 
         }
         hotot_action('system/notify/'
             + encodeBase64('Update page '+pagename)
@@ -233,7 +261,6 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
     var tweet_obj = utility.DB.get(id)
-    utility.Console.out('##'+id)
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');

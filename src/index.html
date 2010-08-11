@@ -306,6 +306,48 @@ jQuery(function($) {
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
         </div>
     </div>
+    <div id="people_tweet_block" class="tweet_block">
+        <div class="tweet_block_top">
+            <div id="people_vcard" class="vcard">
+                <ul class="vcard_ctrl">
+                    <li>
+                        <a class="vcard_follow vcard_ctrl_btn"
+                            href="javascript:void(0);"
+                            style="display:none;">Follow</a>
+                    </li>
+                    <li>
+                        <a class="vcard_block vcard_ctrl_btn"
+                        href="javascript:void(0);"
+                        style="display:none;">Block</a>
+                    </li>
+                    <li>
+                        <a class="vcard_Spam vcard_ctrl_btn" 
+                        href="javascript:void(0);"
+                        style="display:none;">Spam</a>
+                    </li>
+                </ul>
+                <div class="profile_img_wrapper">
+                    <img class="profile_img" src="" onerror="void(0);"/>
+                </div>
+                <ol class="vcard_info">
+                    <li>Name: <span class="screen_name"></span> (<span class="name"></span>) &bull; Tweets: <span class="tweet_cnt"></span></li>
+                    <li>Bio: <span class="bio"></span></li>
+                    <li>Web: 
+                        <a class="web" href="%s" class="link"></a>
+                    </li>
+                    <li>Location:<span class="location"></span></li>
+                    <li>Join: <span class="join"></span></li>
+                    <li>Followers: <span class="follower_cnt"></span>
+                        &bull; Friends: <span class="friend_cnt"></span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <ul></ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
     </div>
 </section>
 
@@ -315,23 +357,27 @@ jQuery(function($) {
     <div id="indication">
         <ul>
         	<li>
-        		<a id="idx_btn_home" class="idx_btn" href="#home_timeline"><span class="ic_home"></span></a>
+        		<a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline"><span class="ic_home"></span></a>
                 <span class="shape"></span>
         	</li>
             <li>
-        		<a id="idx_btn_mention" class="idx_btn" href="#mentions"><span class="ic_mention"></span></a>
+        		<a id="idx_btn_mentions" class="idx_btn" href="#mentions"><span class="ic_mention"></span></a>
                 <span class="shape"></span>
         	</li>        	
             <li>
-        		<a id="idx_btn_dm" class="idx_btn" href="#direct_messages"><span class="ic_dm"></span></a>
+        		<a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages"><span class="ic_dm"></span></a>
                 <span class="shape"></span>
         	</li>        	
             <li>
-        		<a id="idx_btn_fav" class="idx_btn" href="#favorites"><span class="ic_fav"></span></a>
+        		<a id="idx_btn_favorites" class="idx_btn" href="#favorites"><span class="ic_fav"></span></a>
                 <span class="shape"></span>
         	</li>        	
             <li>
-        		<a id="idx_btn_retweet" class="idx_btn" href="#retweets_to_me"><span class="ic_retweet"></span></a>
+        		<a id="idx_btn_retweets_to_me" class="idx_btn" href="#retweets_to_me"><span class="ic_retweet"></span></a>
+                <span class="shape"></span>
+        	</li>
+            <li>
+        		<a id="idx_btn_people" class="idx_btn" href="#people"><span class="ic_people"></span></a>
                 <span class="shape"></span>
         	</li>
         </ul>

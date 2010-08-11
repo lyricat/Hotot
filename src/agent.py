@@ -27,6 +27,8 @@ def crack_hotot(uri):
         crack_config(params)
     elif params[0] == 'system':
         crack_system(params)
+    elif params[0] == 'action':
+        crack_action(params)
     else:
         pass
 
@@ -42,6 +44,12 @@ def crack_token(params):
         push_option('lib.twitterapi', 'access_token', json.loads(token))
     elif params[1] == 'dump':
         config.dump_token(params[2])
+    pass
+    
+def crack_action(params):
+    if params[1] == 'user':
+        screen_name = params[2]
+        load_user(screen_name)
     pass
 
 def crack_system(params):
@@ -79,5 +87,14 @@ def show_dialog(dialog):
     view.execute_script('''
         show_dialog('%s');
         ''' % dialog);
+    pass
+
+def load_user(screen_name):
+    view.execute_script('''
+        ui.Main.reset_people_page(null, '%s');
+        $('#people_tweet_block > ul').html('');
+        ui.Notification.set("Loading @%s\'s timeline...").show();
+        daemon.Updater.update_people();
+        ''' % (screen_name, screen_name));
     pass
 

@@ -180,8 +180,6 @@ function load_token(token_raw) {
     return token;
 },
 
-
-
 verify:
 function verify(on_success, on_error) {
     if (this.access_token != null) {

@@ -373,7 +373,6 @@ input[type="text"]:hover, input[type="password"]:hover, textarea:hover {
 input[type="button"], .button {
     border:1px solid #aaa;
     color: #111;
-    text-shadow: 0 1px 0px #fff;
     padding: 0 10px;
     height: 22px;
     line-height: 22px;
@@ -419,6 +418,10 @@ input[type="button"]:hover, .button:hover {
 #main_page_slider {
     height: 100%;
     width: 1000%;
+}
+
+#people_tweet_block .tweet_block_bottom {
+    display:none;
 }
 
 /*===== Welcome Page ================================*/
@@ -686,11 +689,64 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet_block > ul {
+    padding: 0 20px;
     list-style-type: none;
+}
+
+.tweet_block_top {
     padding: 0 20px;
 }
 
-.tweet_block_bottom {
+.vcard {
+    display: none;
+    font-size: 10px;
+    background: #fff;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    position: relative;
+}
+
+.vcard_info {
+    padding: 5px;
+    margin: 0 100px 0 70px;
+}
+
+.vcard ol {
+    list-style-type: none;
+}
+
+.vcard_info > li {
+    margin: 3px 0;
+}
+
+.vcard_ctrl {
+    list-style-type: none;
+    width: 300px;
+    text-align: right;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.vcard_ctrl > li {
+    display: inline-block;
+    height: 20px;
+}
+
+.vcard_ctrl_btn {
+    text-align: center;
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.vcard_ctrl_btn:hover {
+    background: #f2f2f2;
+}
+
+.tweet_block_bottom{
     padding: 0 20px;
     text-align: center;
 }
@@ -702,7 +758,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet {
-    margin: 2px;
+    margin: 2px 0;
     border-bottom: #ccc solid 1px;
     border-right: #ccc solid 1px;
     min-height: 64px;
@@ -940,6 +996,10 @@ input[type="button"]:hover, .button:hover {
 .ic_retweet {
     background: transparent url(../imgs/ic_retweet.png) no-repeat;
 }
+.ic_people {
+    background: transparent url(../imgs/ic_people.png) no-repeat;
+}
+
 .ic_about {
     background: transparent url(../imgs/ic16_help.png) no-repeat;
 }

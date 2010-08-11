@@ -13,6 +13,7 @@ tweet_blocks: {
     '#direct_messages':2,
     '#favorites': 3,
     '#retweets_to_me': 4,
+    '#people': 5,
 },
 
 init:
@@ -22,14 +23,10 @@ function init () {
 
     $('#indication').find('.idx_btn').click(
     function (event) {
-        var prev_sel = $('#indication').find('.selected');
-        if (prev_sel)
-            prev_sel.removeClass('selected');
         ui.Slider.slide_to($(this).attr('href'));
-        $(this).addClass('selected');
     });
-    $('#idx_btn_home').click();
-    $('#idx_btn_home').parent().children('.shape').show();
+    $('#idx_btn_home_timeline').click();
+    $('#idx_btn_home_timeline').parent().children('.shape').show();
 
     $('#indication > ul >li').hover(
     function () {
@@ -48,6 +45,10 @@ function slide_to(id) {
     var width = globals.tweet_block_width;
     this.me.stop().animate({marginLeft:'-'+ idx * width +'px'}, 500);
     this.current = id;
+    var prev_sel = $('#indication').find('.selected');
+    if (prev_sel)
+        prev_sel.removeClass('selected');
+    $('#idx_btn_' + id.substring(1)).addClass('selected');
 },
 
 };

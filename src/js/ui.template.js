@@ -17,10 +17,10 @@ reg_hash_tag: new RegExp('#([^\\s]+)', 'g'),
 tweet_t: 
 '<li id="{%TWEET_ID%}" class="tweet">\
     <div class="profile_img_wrapper">\
-        <img src="{%PROFILE_IMG%}" onerror="void(0);">\
+        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
         <div class="text">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
@@ -64,7 +64,7 @@ dm_t:
         <img src="{%PROFILE_IMG%}" >\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}:</a></div>\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a></div>\
         <div class="text">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
@@ -118,12 +118,12 @@ function form_tweet (tweet_obj, pagename) {
     var scheme = ui.Template.schemes['white'];
 
     var reply_str = (reply_id != null) ?
-        'reply to <a href="http://twitter.com/'
+        'reply to <a href="hotot:action/user/'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
     var retweet_str = (retweet_name != '') ?
-        'retweeted by <a href="http://twitter.com/'
+        'retweeted by <a href="hotot:action/user/'
             + retweet_name + '">'
             + retweet_name + '</a>, '
         : '';
@@ -156,11 +156,33 @@ function form_tweet (tweet_obj, pagename) {
     return ret;
 },
 
+fill_vcard:
+function fill_vcard(user_obj, vcard_container) {
+    vcard_container.find('.profile_img')
+        .attr('src', user_obj.profile_image_url);
+    vcard_container.find('.screen_name').text(user_obj.screen_name);
+    vcard_container.find('.name').text(user_obj.name);
+    vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);
+    vcard_container.find('.follower_cnt').text(user_obj.followers_count);
+    vcard_container.find('.friend_cnt').text(user_obj.friends_count);
+    vcard_container.find('.bio').text(user_obj.description);
+    vcard_container.find('.location').text(user_obj.location);
+    vcard_container.find('.join').text(
+        new Date(Date.parse(user_obj.created_at)).toLocaleDateString());
+    vcard_container.find('.web').text(user_obj.url)
+    vcard_container.find('.web').attr('href', user_obj.url);
+    if (user_obj.following) {
+        vcard_container.find('.vcard_follow').html('Follow');
+    } else {
+        vcard_container.find('.vcard_follow').html('Unfollow');
+    }
+},
+
 form_text:
 function form_text(text) {
     text = text.replace(ui.Template.reg_link, '<a href="$1">$1</a>');
     text = text.replace(ui.Template.reg_user
-        , '$1<a href="http://www.twitter.com/$2">@$2</a>');
+        , '$1<a href="hotot:action/user/$2">@$2</a>');
     return text;
 },
 

@@ -165,6 +165,25 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     return;
 },
 
+get_user_timeline:
+function get_user_timeline(user_id, screen_name, since_id, 
+    max_id, count, on_success) {
+    var url = '/statuses/user_timeline.json';
+    var params={
+        'page': '0',
+        'since_id': since_id,
+        'count': count,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    if (user_id != null) 
+        params['user_id'] = user_id;
+    if (screen_name!=null)
+        params['screen_name'] = screen_name;
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
 show_status:
 function show_status(id, on_success) {
     var url = '/statuses/show/'+id+'.json';
