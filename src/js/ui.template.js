@@ -20,7 +20,7 @@ tweet_t:
         <img src="{%PROFILE_IMG%}" onerror="void(0);">\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
         <div class="text">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
@@ -44,7 +44,7 @@ tweet_t:
             </li>\
         </ul>\
         <div class="tweet_meta">\
-            <div class="tweet_source">via: {%SOURCE%}</div>\
+            <div class="tweet_source">{%RETWEET_TEXT%} via: {%SOURCE%}</div>\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
@@ -64,7 +64,7 @@ dm_t:
         <img src="{%PROFILE_IMG%}" >\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}:</a></div>\
         <div class="text">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
@@ -98,12 +98,15 @@ function form_dm(dm_obj, pagename) {
 
 form_tweet:
 function form_tweet (tweet_obj, pagename) {
-    var retweeted_name = '';
+    var retweet_name = '';
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         tweet_obj = tweet_obj['retweeted_status'];
-        retweeted_name = tweet_obj['user']['screen_name'];
+        retweet_name = tweet_obj['user']['screen_name'];
     }
     var id = tweet_obj.id;
+    var timestamp = Date.parse(tweet_obj.created_at);
+    var create_at = new Date();
+    create_at.setTime(timestamp);
     var user_id = tweet_obj.user.id;
     var screen_name = tweet_obj.user.screen_name;
     var reply_name = tweet_obj.in_reply_to_screen_name;
@@ -113,15 +116,27 @@ function form_tweet (tweet_obj, pagename) {
     var source = tweet_obj.source;
     var ret = '';
     var scheme = ui.Template.schemes['white'];
+
     var reply_str = (reply_id != null) ?
         'reply to <a href="http://twitter.com/'
             + reply_name + '">'
-            + reply_name + '</a> '
+            + reply_name + '</a>'
         : '';
+    var retweet_str = (retweet_name != '') ?
+        'retweeted by <a href="http://twitter.com/'
+            + retweet_name + '">'
+            + retweet_name + '</a>, '
+        : '';
+    var create_at_str = create_at.toLocaleTimeString()
+        + ' ' + create_at.toDateString();
+    // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
+        scheme = ui.Template.schemes['green'];
+    }
+    if (screen_name == globals.myself.screen_name) {
         scheme = ui.Template.schemes['orange'];
     }
-    if (retweeted_name != '') {
+    if (retweet_name != '') {
         scheme = ui.Template.schemes['blue'];
     }
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
@@ -136,6 +151,8 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%IN_REPLY%}/g, 
         (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
+    ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
+    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     return ret;
 },
 

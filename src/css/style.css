@@ -753,7 +753,7 @@ input[type="button"]:hover, .button:hover {
 
 .tweet_body {
     margin: 0 0 0 65px;
-    padding: 5px 5px 15px 5px;
+    padding: 5px 5px 20px 5px;
     border-left: #ccc 1px solid;
     min-height: 64px;
     position: relative;
@@ -866,28 +866,36 @@ input[type="button"]:hover, .button:hover {
     line-height: 10px;
 }
 
+.tweet_meta a {
+    color: gray;
+    text-decoration: underline !important;
+}
+
+.tweet_source {
+    float: right;
+    max-width: 300px;
+    height: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tweet_timestamp {
+    font-size: 10px;
+    color: gray;
+    margin-left: 20px;
+}
+
 .btn_tweet_thread {
     display: block;
     float: left;
-    height: 10px;
+    height: 15px;
     width: 15px;
     background: transparent url(../imgs/fold.png) no-repeat;
 }
 
 .btn_tweet_thread.expand {
     background-image: url(../imgs/expand.png) !important;
-}
-
-.tweet_source {
-    float: right;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.tweet_meta a {
-    color: gray;
 }
 
 .tweet_thread {
