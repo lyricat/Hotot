@@ -84,22 +84,27 @@ function on_twitterapi_error(xhr, textStatus, errorThrown) {
     var title = 'Ooops, an Error occurred!';
     var content = '<label>Unknow Error</label>';
     try {
-        err_infos = eval(
-            xhr.responseText.replace(/"errors"/g, 'errors'));
-        err_arr = []
-        for (var i = 0; i< err_infos.length; i += 1) {
-            err = '<p><label>Error code:</label> '
-                    + err_infos[i].code+'<br/>'
-                + '<label>Error message:</label> '
-                    + err_infos[i].message
-                + '<br/></p>';
-            err_arr.push(err);
+        eval('var err_info='
+            + xhr.responseText);
+        if (err_info.errors)
+            err_info = err_info.errors[0]
+        var err_arr = []
+        for (var k in err_info) {
+            err_arr.push('<label>'+ k.toUpperCase() +':</label> '
+                +  err_info[k] + '<br/>');
         }
-        content = err_arr.join('');
+        content = '<p>'
+            + '<label>HTTP Code:</label> '
+                +  xhr.status+'<br/>'
+            + err_arr.join('')
+            + '</p>';
     } catch (e) {
-        content +=  '<br/><p>' + xhr.status + '</p>'
-            + '<br/><p>'+xhr.responseText+'</p>'
-            + '<br/><p>' + textStatus + '</p>';
+        content = '<p>'
+            + '<label>HTTP Code:</label> '
+                +  xhr.status+'<br/>'
+            + '<label>Details:</label> '
+                + xhr.responseText
+            + '<br/></p>';
     }
     ui.MessageDlg.set_text(title, content);
     ui.MessageDlg.show();
