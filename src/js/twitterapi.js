@@ -111,6 +111,12 @@ function create_favorite(fav_id, on_success) {
     lib.twitterapi.post(url, {}, on_success);
 },
 
+destroy_favorite:
+function destroy_favorite(fav_id, on_success) {
+    var url = '/favorites/destroy/'+fav_id+'.json';
+    lib.twitterapi.post(url, {}, on_success);
+},
+
 get_home_timeline:
 function get_home_timeline(since_id, max_id, count, on_success) {
     var url = '/statuses/home_timeline.json';

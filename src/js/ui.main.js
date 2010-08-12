@@ -214,6 +214,11 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.on_retweet_click(this, event);
         });
 
+        $(id).find('.tweet_fav').click(
+        function (event) {
+            ui.Main.on_fav_click(this, event);
+        });
+
         $(id).find('.tweet_more_menu_trigger').hover(
         function (event) {
             $(this).find('.tweet_more_menu').slideDown('fast');
@@ -230,11 +235,6 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).find('.tweet_dm').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
-        });
-
-        $(id).find('.tweet_fav').click(
-        function (event) {
-            ui.Main.on_fav_click(this, event);
         });
 
         $(id).find('.tweet_dm_reply').click(
@@ -325,12 +325,22 @@ on_fav_click:
 function on_fav_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
+    if ($(btn).hasClass('unfav')) {
+        lib.twitterapi.destroy_favorite(id, 
+        function (result) {
+            ui.Notification.set('Successfully!').show();
+            $(btn).removeClass('unfav');
+        });
+        ui.Notification.set('un-favorite this tweet ...').show(-1);
+    } else {
+        lib.twitterapi.create_favorite(id, 
+        function (result) {
+            ui.Notification.set('Successfully!').show();
+            $(btn).addClass('unfav');
+        });
+        ui.Notification.set('favorite this tweet ...').show(-1);
+    }
 
-    lib.twitterapi.create_favorite(id, 
-    function (result) {
-        ui.Notification.set('Successfully!').show();
-    });
-    ui.Notification.set('set it as favorite ...').show(-1);
 },
 
 on_expander_click:

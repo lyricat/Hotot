@@ -26,6 +26,7 @@ tweet_t:
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
             <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
             <li><a class="tweet_retweet tweet_ctrl_btn" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
+            <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li>\
             <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
                 <ul class="tweet_more_menu">\
                 <li>\
@@ -113,6 +114,7 @@ function form_tweet (tweet_obj, pagename) {
     var reply_id = tweet_obj.in_reply_to_status_id;    
     var profile_img = tweet_obj.user.profile_image_url;
     var text = ui.Template.form_text(tweet_obj.text);
+    var favorited = tweet_obj.favorited;
     var source = tweet_obj.source;
     var ret = '';
     var scheme = ui.Template.schemes['white'];
@@ -153,6 +155,8 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
+    ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
+    ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
     return ret;
 },
 

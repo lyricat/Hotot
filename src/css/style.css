@@ -869,6 +869,9 @@ input[type="button"]:hover, .button:hover {
 .tweet_fav {
     background: transparent url(../imgs/ic16_fav.png) no-repeat;
 }
+.tweet_fav.unfav {
+    background-image: url(../imgs/ic16_unfav.png) !important;
+}
 
 .tweet_more_menu {
     position: absolute;
