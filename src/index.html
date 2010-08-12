@@ -97,7 +97,9 @@ function on_twitterapi_error(xhr, textStatus, errorThrown) {
         }
         content = err_arr.join('');
     } catch (e) {
-        content += '<br/><p>' + textStatus + '</p>';
+        content +=  '<br/><p>' + xhr.status + '</p>'
+            + '<br/><p>'+xhr.responseText+'</p>'
+            + '<br/><p>' + textStatus + '</p>';
     }
     ui.MessageDlg.set_text(title, content);
     ui.MessageDlg.show();
