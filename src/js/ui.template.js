@@ -100,8 +100,8 @@ form_tweet:
 function form_tweet (tweet_obj, pagename) {
     var retweet_name = '';
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
-        tweet_obj = tweet_obj['retweeted_status'];
         retweet_name = tweet_obj['user']['screen_name'];
+        tweet_obj = tweet_obj['retweeted_status'];
     }
     var id = tweet_obj.id;
     var timestamp = Date.parse(tweet_obj.created_at);
