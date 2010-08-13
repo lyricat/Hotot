@@ -173,8 +173,14 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.location').text(user_obj.location);
     vcard_container.find('.join').text(
         new Date(Date.parse(user_obj.created_at)).toLocaleDateString());
-    vcard_container.find('.web').text(user_obj.url)
-    vcard_container.find('.web').attr('href', user_obj.url);
+    if (user_obj.url) {
+        vcard_container.find('.web').text(user_obj.url)
+        vcard_container.find('.web').attr('href', user_obj.url);
+    } else {
+        vcard_container.find('.web').text('')
+        vcard_container.find('.web').attr('href', '#');
+    }
+
     if (user_obj.following) {
         vcard_container.find('.vcard_follow').html('Follow');
     } else {
