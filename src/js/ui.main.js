@@ -180,6 +180,7 @@ function add_tweets(json_obj, is_append, container) {
     if ( !is_append ) {
         //$(pagename + '_tweet_block > ul').prepend(html);
         container.prepend(html);
+        ui.Main.trim_page(container);
     } else {
         container.append(html);
     }
@@ -189,6 +190,11 @@ function add_tweets(json_obj, is_append, container) {
     ui.Main.bind_tweets_action(json_obj, container.pagename);
     ui.Notification.hide();
     return json_obj.length;
+},
+
+trim_page:
+function trim_page(container) {
+    container.children('.tweet:gt('+globals.trim_bound+')').remove();
 },
 
 bind_tweets_action:
