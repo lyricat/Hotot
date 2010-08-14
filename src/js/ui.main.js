@@ -243,6 +243,11 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.on_dm_click(this, event);
         });
 
+        $(id).find('.tweet_del').click(
+        function (event) {
+            ui.Main.on_del_click(this, event);
+        });
+
         $(id).find('.tweet_dm_reply').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
@@ -327,6 +332,19 @@ function on_dm_click(btn, event) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
 },
 
+on_del_click:
+function on_del_click(btn, event) {
+    var li = ui.Main.ctrl_btn_to_li(btn);
+    var id = ui.Main.normalize_id(li.attr('id'));
+
+    lib.twitterapi.destroy_status(id, 
+    function (result) {
+        li.remove();
+        ui.Notification.set('Destroy Successfully!').show();
+    });
+    ui.Notification.set('Destroy ...').show(-1);
+},
+
 on_fav_click:
 function on_fav_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
@@ -334,8 +352,8 @@ function on_fav_click(btn, event) {
     if ($(btn).hasClass('unfav')) {
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
+            li.remove();
             ui.Notification.set('Successfully!').show();
-            $(btn).removeClass('unfav');
         });
         ui.Notification.set('un-favorite this tweet ...').show(-1);
     } else {

@@ -38,8 +38,9 @@ tweet_t:
                         href="javascript:void(0);">Send Message</a>\
                 </li>\
                 <li>\
-                    <a class="tweet_fav tweet_ctrl_menu_btn"\
-                        href="javascript:void(0);">Love it!</a>\
+                    <a class="tweet_del tweet_ctrl_menu_btn"\
+                        style="{%CAN_DELETE%}"\
+                        href="javascript:void(0);">Delete</a>\
                 </li>\
                 </ul>\
             </li>\
@@ -157,6 +158,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
+    ret = ret.replace(/{%CAN_DELETE%}/g, screen_name == globals.myself.screen_name? '': 'display:none');
     return ret;
 },
 

@@ -93,6 +93,12 @@ function retweet_status(retweet_id, on_success) {
     lib.twitterapi.post(url, {}, on_success);
 },
 
+destroy_status:
+function destroy_status(retweet_id, on_success) {
+    var url = '/statuses/destroy/'+retweet_id+'.json';
+    lib.twitterapi.post(url, {}, on_success);
+},
+
 new_direct_messages:
 function new_direct_messages(text, user_id, screen_name, on_success) {
     var url = '/direct_messages/new.json';
