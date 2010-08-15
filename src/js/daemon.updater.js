@@ -125,11 +125,12 @@ function update_retweets() {
         '#retweeted_to_me': lib.twitterapi.get_retweeted_to_me,
         '#retweets_of_me': lib.twitterapi.get_retweets_of_me,
     };
-    var since_id = ui.Main.block_info[ui.RetweetTabs.current];
-    proc_map[ui.RetweetTabs.current](
+    var pagename = ui.RetweetTabs.current;
+    var since_id = ui.Main.block_info[pagename].since_id;
+    proc_map[pagename](
         since_id , null, 20, 
         function (result) {
-            ui.Main.load_tweets_cb(result, '#retweets');
+            ui.Main.load_tweets_cb(result, pagename);
         });
 },
 

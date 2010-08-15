@@ -107,10 +107,9 @@ function load_tweets_cb(result, pagename) {
     var json_obj = eval(result);
     var container = null;
     // tweets in retweets page shoul be display in sub blocks
-    // and use the name of subpage as pagenams.
+    // and use the name of subpage as pagename.
     // others display in normal blocks.
-    if (pagename == '#retweets') { 
-        pagename = ui.RetweetTabs.current;
+    if (pagename.substring(0, 8) == '#retweet') { 
         container = $(pagename + '_sub_block > ul');
     } else {
         container = $(pagename + '_tweet_block > ul');
