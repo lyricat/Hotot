@@ -25,6 +25,11 @@ function init () {
     function (event) {
         ui.Slider.slide_to($(this).attr('href'));
     });
+    $('#indication').find('.shape').click(
+    function (event) {
+        $(this).parent().children('.idx_btn').click();
+    });
+
     $('#idx_btn_home_timeline').click();
     $('#idx_btn_home_timeline').parent().children('.shape').show();
 
@@ -34,9 +39,8 @@ function init () {
     },
     function () {
         if (!$(this).children('.idx_btn').hasClass('selected'))
-        $(this).children('.shape').hide();
+            $(this).children('.shape').hide();
     });
-
 },
 
 slide_to:
