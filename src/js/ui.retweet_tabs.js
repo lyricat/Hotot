@@ -19,6 +19,8 @@ function init() {
         }
         return false;
     });
+    ui.RetweetTabs.current = '#retweeted_to_me';
+    $(ui.RetweetTabs.current + '_sub_block').show();
 },
 
 };
