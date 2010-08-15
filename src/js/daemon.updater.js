@@ -26,6 +26,10 @@ watch_pages: {
           watch: false
         , proc : function () {daemon.Updater.update_people();}
     }
+    , '#retweets': {
+          watch: false
+        , proc : function () {daemon.Updater.update_retweets();}
+    }
 },
 
 init: 
@@ -111,6 +115,21 @@ function update_people() {
             $('#people_tweet_block .tweet_block_bottom').show();
             ui.Slider.slide_to('#people');
             ui.Main.load_tweets_cb(result, '#people');
+        });
+},
+
+update_retweets:
+function update_retweets() {
+    var proc_map = {
+        '#retweeted_by_me': lib.twitterapi.get_retweeted_by_me,
+        '#retweeted_to_me': lib.twitterapi.get_retweeted_to_me,
+        '#retweets_of_me': lib.twitterapi.get_retweets_of_me,
+    };
+    var since_id = ui.Main.block_info[ui.RetweetTabs.current];
+    proc_map[ui.RetweetTabs.current](
+        since_id , null, 20, 
+        function (result) {
+            ui.Main.load_tweets_cb(result, '#retweets');
         });
 },
 

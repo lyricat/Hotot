@@ -9,12 +9,15 @@ since_id: 1,
 
 max_id: null,
 
+// info of blocks. all pages use as containers to display tweets.
 block_info: {
     '#home_timeline': {since_id: 1, max_id: null },
     '#mentions': {since_id: 1, max_id: null },
     '#direct_messages': {since_id: 1, max_id: null },
     '#favorites': { page: 1 },
-    '#retweets_to_me': {since_id: 1, max_id: null },
+    '#retweeted_to_me': {since_id: 1, max_id: null },
+    '#retweeted_by_me': {since_id: 1, max_id: null },
+    '#retweets_of_me': {since_id: 1, max_id: null },
     '#people': {id: null, screen_name: null, since_id: 1, max_id: null },
 },
 
@@ -102,10 +105,20 @@ function load_more_tweets () {
 load_tweets_cb:
 function load_tweets_cb(result, pagename) {
     var json_obj = eval(result);
-    var container = $(pagename + '_tweet_block > ul');
+    var container = null;
+    // tweets in retweets page shoul be display in sub blocks
+    // and use the name of subpage as pagenams.
+    // others display in normal blocks.
+    if (pagename == '#retweets') { 
+        pagename = ui.RetweetTabs.current;
+        container = $(pagename + '_sub_block > ul');
+    } else {
+        container = $(pagename + '_tweet_block > ul');
+    }
     container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, false, container);
-    
+
+    // just for debug.
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
     
     if (tweet_count != 0 ) {
@@ -114,7 +127,7 @@ function load_tweets_cb(result, pagename) {
             ui.Template.fill_vcard(json_obj[0].user
                 , $('#people_tweet_block .vcard'));
         }
-
+        
         // favorites page have differet mechanism to display more tweets.
         if (pagename == '#favorites') {
             ui.Main.block_info[pagename].page += 1; 

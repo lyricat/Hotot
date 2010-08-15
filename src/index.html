@@ -22,6 +22,7 @@
     <script type="text/javascript" src="js/ui.welcome.js"></script>
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
+    <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
@@ -162,6 +163,7 @@ jQuery(function($) {
     ui.StatusBox.init();
     ui.Welcome.init();
     ui.Main.init();
+    ui.RetweetTabs.init();
     ui.Notification.init();
     ui.Slider.init();
     ui.PinDlg.init();
@@ -308,8 +310,23 @@ jQuery(function($) {
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
         </div>
     </div>
-    <div id="retweets_to_me_tweet_block" class="tweet_block">
-        <ul></ul>
+    <div id="retweets_tweet_block" class="tweet_block">
+        <div class="tweet_block_top">
+            <ol>
+                <li><a id="btn_retweeted_by_me" class="retweet_tabs_btn selected" href="#retweeted_by_me">Retweeted By Me</a></li>
+                <li><a id="btn_retweeted_to_me" class="retweet_tabs_btn" href="#retweeted_to_me">Retweeted To Me</a></li>
+                <li><a id="btn_retweets_of_me" class="retweet_tabs_btn" href="#retweets_of_me">Retweets Of Me</a></li>
+            </ol>
+        </div>
+        <div id="retweeted_by_me_sub_block" class="retweet_tabs_page tweet_sub_block">
+            <ul></ul>
+        </div>
+        <div id="retweeted_to_me_sub_block" class="retweet_tabs_page tweet_sub_block">
+            <ul></ul>
+        </div>
+        <div id="retweets_of_me_sub_block" class="retweet_tabs_page  tweet_sub_block">
+            <ul></ul>
+        </div>
         <div class="tweet_block_bottom">
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
         </div>
@@ -381,7 +398,7 @@ jQuery(function($) {
                 <span class="shape"></span>
         	</li>        	
             <li>
-        		<a id="idx_btn_retweets_to_me" class="idx_btn" href="#retweets_to_me"><span class="ic_retweet"></span></a>
+        		<a id="idx_btn_retweets" class="idx_btn" href="#retweets"><span class="ic_retweet"></span></a>
                 <span class="shape"></span>
         	</li>
             <li>

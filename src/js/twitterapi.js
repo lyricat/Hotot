@@ -177,6 +177,48 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     return;
 },
 
+get_retweeted_by_me:
+function get_retweeted_by_me(since_id, max_id, count, on_success) {
+    var url = '/statuses/retweeted_by_me.json';
+    var params={
+        'page': '0',
+        'since_id': since_id,
+        'count': count,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
+get_retweeted_to_me:
+function get_retweeted_to_me(since_id, max_id, count, on_success) {
+    var url = '/statuses/retweeted_to_me.json';
+    var params={
+        'page': '0',
+        'since_id': since_id,
+        'count': count,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
+get_retweets_of_me:
+function get_retweets_of_me(since_id, max_id, count, on_success) {
+    var url = '/statuses/retweets_of_me.json';
+    var params={
+        'page': '0',
+        'since_id': since_id,
+        'count': count,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
 get_user_timeline:
 function get_user_timeline(user_id, screen_name, since_id, 
     max_id, count, on_success) {

@@ -12,7 +12,7 @@ tweet_blocks: {
     '#mentions': 1,
     '#direct_messages':2,
     '#favorites': 3,
-    '#retweets_to_me': 4,
+    '#retweets': 4,
     '#people': 5,
 },
 

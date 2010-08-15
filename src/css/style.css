@@ -421,7 +421,35 @@ input[type="button"]:hover, .button:hover {
 }
 
 #people_tweet_block .tweet_block_bottom {
-    display:none;
+    display: none;
+}
+
+#retweets_tweet_block > .tweet_block_top ol {
+    list-style-type: none;
+    margin: 3px 0;
+    text-align: center;
+}
+
+#retweets_tweet_block > .tweet_block_top ol li {
+    display: inline-block;
+}
+
+#retweets_tweet_block .retweet_tabs_btn {
+    display: inline-block;
+    padding: 3px 10px;
+    text-shadow: 0 1px 0px #fff;
+    text-decoration: none;
+    color:#333; 
+    font-size: 10px;
+    -webkit-border-radius: 8px 8px; 
+}
+
+#retweets_tweet_block .retweet_tabs_btn.selected {
+    background: #ccc;
+}
+
+#retweets_tweet_block .tweet_sub_block {
+    display: none;
 }
 
 /*===== Welcome Page ================================*/
@@ -695,6 +723,11 @@ input[type="button"]:hover, .button:hover {
 
 .tweet_block_top {
     padding: 0 20px;
+}
+
+.tweet_sub_block > ul {
+    padding: 0 20px;
+    list-style-type: none;
 }
 
 .vcard {
