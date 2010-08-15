@@ -343,18 +343,7 @@ jQuery(function($) {
                 <ul class="vcard_ctrl">
                     <li>
                         <a class="vcard_follow vcard_ctrl_btn"
-                            href="javascript:void(0);"
-                            style="display:none;">Follow</a>
-                    </li>
-                    <li>
-                        <a class="vcard_block vcard_ctrl_btn"
-                        href="javascript:void(0);"
-                        style="display:none;">Block</a>
-                    </li>
-                    <li>
-                        <a class="vcard_Spam vcard_ctrl_btn" 
-                        href="javascript:void(0);"
-                        style="display:none;">Spam</a>
+                            href="javascript:void(0);">Follow</a>
                     </li>
                 </ul>
                 <div class="profile_img_wrapper">
@@ -375,6 +364,17 @@ jQuery(function($) {
             </div>
         </div>
         <ul></ul>
+        <div id="people_request_hint">
+            <h1>
+            @<label id="request_screen_name"></label> has protected his/her tweets.
+            </h1>
+            <p>
+            You need to go to twitter.com to send a request before you can start following this person...
+            </p>
+            <div style="text-align:center;">
+            <a id="btn_people_request" class="button" href="#"/>Send Request</a>
+            </div>
+        </div>
         <div class="tweet_block_bottom">
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
         </div>

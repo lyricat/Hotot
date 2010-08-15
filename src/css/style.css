@@ -424,6 +424,35 @@ input[type="button"]:hover, .button:hover {
     display: none;
 }
 
+#people_entry {
+    font-size: 10px;
+    background: #fff;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    padding: 3px 5px;
+}
+
+#people_request_hint {
+    background: #fef6a8 url(../imgs/ic48_lock.png) no-repeat 20px center;
+    border: 1px solid #fcfc19;
+    color: #990000;
+    display: none;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+#people_request_hint > h1, #request_screen_name {
+    font-size: 18px;
+}
+
+#people_request_hint > p, #people_request_hint > h1{
+    margin: 5px 0 5px 60px;
+}
+
+#btn_people_request {
+    margin: 0 auto;
+}
+
 #retweets_tweet_block > .tweet_block_top ol {
     list-style-type: none;
     margin: 3px 0;
@@ -728,14 +757,6 @@ input[type="button"]:hover, .button:hover {
 .tweet_sub_block > ul {
     padding: 0 20px;
     list-style-type: none;
-}
-
-#people_entry {
-    font-size: 10px;
-    background: #fff;
-    border-bottom: #ccc solid 1px;
-    border-right: #ccc solid 1px;
-    padding: 3px 5px;
 }
 
 .vcard {

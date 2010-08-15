@@ -244,6 +244,44 @@ function show_status(id, on_success) {
     lib.twitterapi.get(url, {}, on_success);
 },
 
+show_user:
+function show_user(screen_name, on_success) {
+    var url = '/users/show.json';
+    var params={
+        'screen_name': screen_name,
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+show_friendships:
+function show_friendships(source, target, on_success) {
+    var url = '/friendships/exists.json';
+    var params={
+        'user_a': source,
+        'user_b': target,
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+create_friendships:
+function create_friendships(screen_name, on_success) {
+    var url = '/friendships/create.json';
+    var params={
+        'screen_name': screen_name,
+        'follow': true,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+destroy_friendships:
+function destroy_friendships(screen_name, on_success) {
+    var url = '/friendships/destroy.json';
+    var params={
+        'screen_name': screen_name,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
 verify:
 function verify(on_success) {
     var url = '/account/verify_credentials.json';

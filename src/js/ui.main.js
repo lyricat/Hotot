@@ -69,9 +69,27 @@ function init () {
         ui.Main.load_more_tweets();
     });
 
-    $('#people_vcard vcard_follow').click(
+    $('#people_vcard .vcard_follow').click(
     function (event) {
-        // @TODO
+        var screen_name = ui.Main.block_info['#people'].screen_name;
+        var _this = this;
+        if ($(this).hasClass('unfo')) {
+            ui.Notification.set('Unfollow @' + screen_name + ' ...').show();
+            lib.twitterapi.destroy_friendships(screen_name,
+            function () {
+                ui.Notification.set(
+                    'Unfollow @'+ screen_name+' Successfully!').show();
+                $(_this).text('Follow').removeClass('unfo');
+            });
+        } else {
+            ui.Notification.set('Follow @' + screen_name + ' ...').show();
+            lib.twitterapi.create_friendships(screen_name,
+            function () {
+                ui.Notification.set(
+                    'Follow @'+ screen_name+' Successfully!').show();
+                $(_this).text('Unfollow').addClass('unfo');
+            });
+        }
     });
 
     $('#tbox_people_entry').keypress(
@@ -169,12 +187,6 @@ function load_tweets_cb(result, pagename) {
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
     
     if (tweet_count != 0 ) {
-        // fill vcard if wanna load tweets in people page
-        if (pagename == '#people') {
-            ui.Template.fill_vcard(json_obj[0].user
-                , $('#people_tweet_block .vcard'));
-        }
-        
         // favorites page have differet mechanism to display more tweets.
         if (pagename == '#favorites') {
             ui.Main.block_info[pagename].page += 1; 

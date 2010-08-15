@@ -182,11 +182,22 @@ function fill_vcard(user_obj, vcard_container) {
         vcard_container.find('.web').text('')
         vcard_container.find('.web').attr('href', '#');
     }
-
-    if (user_obj.following) {
-        vcard_container.find('.vcard_follow').html('Follow');
+    if (! user_obj.protected) {
+        lib.twitterapi.show_friendships(
+            globals.myself.screen_name, user_obj.screen_name,
+        function (result) {
+            var btn_follow = vcard_container.find('.vcard_follow');
+            btn_follow.show();
+            if (result) {
+                btn_follow.html('Unfollow');
+                btn_follow.addClass('unfo');
+            } else {
+                btn_follow.html('Follow');
+                btn_follow.removeClass('unfo');
+            }
+        });
     } else {
-        vcard_container.find('.vcard_follow').html('Unfollow');
+        vcard_container.find('.vcard_follow').hide();
     }
 },
 

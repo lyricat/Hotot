@@ -106,16 +106,36 @@ function update_favorites() {
 
 update_people:
 function update_people() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        ui.Main.block_info['#people'].screen_name,
-        ui.Main.block_info['#people'].since_id, null, 20,
+    $('#people_request_hint').hide();
+    var load_people_tl = function () {
+        lib.twitterapi.get_user_timeline(
+            ui.Main.block_info['#people'].id,
+            ui.Main.block_info['#people'].screen_name,
+            ui.Main.block_info['#people'].since_id, null, 20,
         function (result) {
-            $('#people_tweet_block .vcard').show();
             $('#people_tweet_block .tweet_block_bottom').show();
             ui.Slider.slide_to('#people');
             ui.Main.load_tweets_cb(result, '#people');
         });
+    };
+    lib.twitterapi.show_user(
+        ui.Main.block_info['#people'].screen_name, 
+    function (user_obj) {
+        ui.Template.fill_vcard(user_obj, $('#people_vcard')); 
+        $('#people_vcard').show();
+        if (! user_obj.protected) { 
+            // not a protected user, then load timeline
+            load_people_tl();
+        } else {
+            // else
+            // @TODO display request box.
+            $('#people_request_hint').show();
+            $('#people_tweet_block .tweet_block_bottom').hide();
+            $('#btn_people_request').attr('href'
+                , 'http://twitter.com/' + user_obj.screen_name)
+            $('#request_screen_name').text(user_obj.screen_name)
+        }
+    });
 },
 
 update_retweets:
