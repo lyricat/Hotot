@@ -730,6 +730,14 @@ input[type="button"]:hover, .button:hover {
     list-style-type: none;
 }
 
+#people_entry {
+    font-size: 10px;
+    background: #fff;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    padding: 3px 5px;
+}
+
 .vcard {
     display: none;
     font-size: 10px;

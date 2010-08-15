@@ -73,6 +73,19 @@ function init () {
     function (event) {
         // @TODO
     });
+
+    $('#tbox_people_entry').keypress(
+    function (event) {
+        if (event.keyCode == 13)
+            $('#btn_people_entry').click();
+    });
+    $('#btn_people_entry').click(
+    function (event) {
+        ui.Main.reset_people_page(null
+            , $('#tbox_people_entry').attr('value'));
+        daemon.Updater.update_people();
+        $('#people_entry').css('border-bottom', '0')
+    });
 },
 
 hide:
@@ -95,7 +108,7 @@ function set_people_page(id, screen_name) {
     ui.Main.block_info['#people'].screen_name = screen_name;
     ui.Main.block_info['#people'].since_id = 1;
     ui.Main.block_info['#people'].max_id = null;
-    $('#people_tweet_block > ul').html();
+    $('#people_tweet_block > ul').html('');
 },
 
 load_tweets:
@@ -114,15 +127,15 @@ function load_more_tweets () {
 
     switch (pagename){
     case '#favorites':
-        proc(globals.my_id, ui.Main.block_info[current_block].page, 
+        proc(globals.my_id, ui.Main.block_info[pagename].page, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
         });
     break;
     case '#people':
-        proc(ui.Main.block_info[current_block].id
-            , ui.Main.block_info[current_block].screen_name
-            , 1, ui.Main.block_info[current_block].max_id
+        proc(ui.Main.block_info[pagename].id
+            , ui.Main.block_info[pagename].screen_name
+            , 1, ui.Main.block_info[pagename].max_id
             , 20, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
