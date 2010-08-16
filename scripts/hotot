@@ -9,8 +9,6 @@
 """
 __revision__ = '0.1'
 
-
-
 if __name__=="__main__":
     import hotot.hotot
     hotot.hotot.main()

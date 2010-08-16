@@ -1,5 +1,5 @@
 #!/bin/bash -x
-#msgmerge -U po/zh_CN.po po/gwrite.pot      &&
-./setup.py build &&
-sudo ./setup.py install 
-#sudo cp -av /usr/lib/python2.6/site-packages/gwrite* /usr/lib/python2.6/dist-packages/
+./setup.py build
+sudo ./setup.py install
+sudo mkdir -p /usr/local/share/hotot/
+sudo cp -R ./data/ui /usr/local/share/hotot/

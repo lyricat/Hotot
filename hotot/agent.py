@@ -15,7 +15,8 @@ app = None
 
 def init_notify():
     notify.set_icon_from_pixbuf(
-        gtk.gdk.pixbuf_new_from_file(config.abspath + '/imgs/ic64_hotot.png'))
+        gtk.gdk.pixbuf_new_from_file(
+            config.get_ui_object ('imgs/ic64_hotot.png')))
     notify.set_timeout(3000)
     pass
 

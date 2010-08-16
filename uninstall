@@ -1,0 +1,6 @@
+#!/bin/bash -x
+rm /usr/local/bin/hotot
+rm -rf /usr/local/lib/python2.6/dist-packages/hotot
+rm -rf /usr/local/share/hotot
+rm /usr/local/lib/python2.6/dist-packages/hotot*.egg-info
+rm /usr/local/share/pixmaps/hotot.png

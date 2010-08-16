@@ -3,6 +3,22 @@
 import os
 import pickle
 import json
+import sys
+
+PROGRAM_NAME = "hotot"
+UI_DIR_NAME = "ui"
+LAUNCH_DIR = os.path.abspath(sys.path[0])
+CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
+CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
+
+DATA_DIRS = [os.path.abspath('./data')]
+
+DATA_BASE_DIRS = [
+      os.path.join(os.path.expanduser('~'), '.local', 'share')
+    , '/usr/local/share', '/usr/share']
+
+DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
+
 
 opts = {
     'remember_password': False,
@@ -186,4 +202,10 @@ def set(name, value):
 
 def get(name):
     return globals()[name];
+
+def get_ui_object(name):
+    for base in DATA_DIRS:
+        fullpath = os.path.join(base, UI_DIR_NAME, name)
+        if os.path.exists(fullpath):
+            return fullpath
 

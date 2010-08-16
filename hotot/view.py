@@ -56,7 +56,7 @@ class MainView(webkit.WebView):
         self.connect('navigation-requested',
             self.on_navigation_requested);
         self.connect('load-finished', self.on_load_finish);
-        self.open('file://'+config.abspath+'/'+config.template);
+        self.open('file://'+config.get_ui_object(config.template));
         pass
 
     def ctx(self, *args):

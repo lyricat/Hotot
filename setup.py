@@ -29,11 +29,10 @@ Features include:
       url="http://code.google.com/p/hotot",
       download_url="http://code.google.com/p/hotot/downloads/list",
       platforms = ['Linux'],
-      scripts=['src/hotot.py'],
-      packages = ['src'], 
+      scripts=['scripts/hotot'],
+      packages = ['hotot'], 
       data_files = [
-          ('js', ['js']),
-
+          ('share/pixmaps', ['hotot.png']),
       ],
       cmdclass = { "build" :  build_extra.build_extra,
                  }

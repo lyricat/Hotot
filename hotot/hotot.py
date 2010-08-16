@@ -25,9 +25,9 @@ class MainWindow:
     def build_gui(self):
         self.window = gtk.Window()
         gtk.window_set_default_icon_from_file(
-            config.abspath + '/imgs/ic64_hotot.png')
+            config.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_icon_from_file(
-            config.abspath + '/imgs/ic64_hotot.png')
+            config.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_default_size(750, 550)
         self.window.set_title('Hotot')
         self.window.set_position(gtk.WIN_POS_CENTER)
@@ -140,7 +140,8 @@ class MainWindow:
         self.trayicon.connect('activate', self.on_trayicon_activate)
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip('Hotot: Click to Active.')
-        self.trayicon.set_from_file(config.abspath+'/imgs/ic64_hotot.png')
+        self.trayicon.set_from_file(
+            config.get_ui_object('imgs/ic64_hotot.png'))
         self.trayicon.set_visible(True)
         pass
 
