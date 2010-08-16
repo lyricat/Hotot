@@ -120,8 +120,9 @@ function change_mode(mode) {
 update_status:
 function update_status(status_text) {
     if (status_text.length != 0) {
-        lib.twitterapi.update_status(
-            status_text, ui.StatusBox.reply_to_id, ui.StatusBox.update_status_cb);
+        lib.twitterapi.update_status(status_text
+            , ui.StatusBox.reply_to_id
+            , ui.StatusBox.update_status_cb);
         ui.Notification.set('Updating...').show(-1);
     }
     return this;
@@ -162,8 +163,9 @@ function post_message(message_text) {
 
 post_message_cb:
 function post_message_cb(result) {
-    $('#tbox_status').addClass('hint_style');
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+    $('#tbox_status').addClass('hint_style')
+        .attr('value', globals.status_hint);
     ui.Notification.set('Post Successfully!').show();
     $('#status_info').hide();
     return this;

@@ -403,11 +403,12 @@ function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
     var tweet_obj = utility.DB.get(id);
+    var user = tweet_obj.sender? tweet_obj.sender : tweet_obj.user;
 
-    ui.StatusBox.set_status_info('Compose Direct Messages to @' + tweet_obj.sender.screen_name);
-    ui.StatusBox.dm_to_id = tweet_obj.sender.id;
-    ui.StatusBox.dm_to_screen_name = tweet_obj.sender.screen_name;
-    globals.status_hint = globals.dm_hint
+    ui.StatusBox.set_status_info(
+        'Compose Direct Messages to @' + user.screen_name);
+    ui.StatusBox.dm_to_id = user.id;
+    ui.StatusBox.dm_to_screen_name = user.screen_name;
     ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
 },
 
