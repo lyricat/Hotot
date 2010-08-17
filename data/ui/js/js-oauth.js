@@ -1,11 +1,18 @@
+/*
+ * A JavaScript implementation for twitter's OAuth
+ * Version 0.1 Copyright Shellex Wai<5h3ll3x@gmail.com> 2009 - 2010.
+ * Distributed under the LGPLv3
+ * See http://oauth.net/ for details.
+ */
+
 if (!lib) var lib = {}
 jsOAuth = {
 
-request_token_url :'http://twitter.com/oauth/request_token',
+request_token_url :'https://twitter.com/oauth/request_token',
 
-access_token_url :'http://twitter.com/oauth/access_token',
+access_token_url :'https://twitter.com/oauth/access_token',
 
-user_auth_url :'http://twitter.com/oauth/authorize',
+user_auth_url :'https://twitter.com/oauth/authorize',
 
 key: '',
 
@@ -184,11 +191,11 @@ verify:
 function verify(on_success, on_error) {
     if (this.access_token != null) {
         var params = this.form_signed_params(
-            'http://twitter.com/account/verify_credentials.json',
+            'https://twitter.com/account/verify_credentials.json',
             this.access_token, 'GET', null)
         jQuery.ajax({
             type: 'GET',
-            url: 'http://twitter.com/account/verify_credentials.json',
+            url: 'https://twitter.com/account/verify_credentials.json',
             data: params, 
             success: on_success,
             error: on_error,
