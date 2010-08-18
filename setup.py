@@ -33,6 +33,10 @@ Features include:
       packages = ['hotot'], 
       data_files = [
           ('share/pixmaps', ['hotot.png']),
+          ('share/hotot/ui', ['data/ui/index.html']),
+          ('share/hotot/ui/js', glob('data/ui/js/*')),
+          ('share/hotot/ui/imgs', glob('data/ui/imgs/*')),
+          ('share/hotot/ui/css', glob('data/ui/css/*')),
       ],
       cmdclass = { "build" :  build_extra.build_extra,
                  }
