@@ -136,6 +136,7 @@ function update_status_cb(result) {
     ui.Notification.set('Update Successfully!').show();
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
+    ui.StatusBox.close();
     return this;
 },
 
@@ -169,6 +170,7 @@ function post_message_cb(result) {
         .attr('value', globals.status_hint);
     ui.Notification.set('Post Successfully!').show();
     $('#status_info').hide();
+    ui.StatusBox.close();
     return this;
 },
 
