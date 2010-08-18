@@ -14,11 +14,19 @@ import config
 import agent
 import keybinder
 
+try:
+    import appindicator
+except ImportError:
+    HAS_INDICATOR = False
+else:
+    HAS_INDICATOR = True
+
 class MainWindow:
     def __init__(self):
         self.build_gui()
         self.build_inputw()
-        self.create_trayicon()
+        if not HAS_INDICATOR:
+            self.create_trayicon()
         self.init_hotkey()
         pass
 
@@ -56,6 +64,7 @@ class MainWindow:
         mitem_quit = gtk.MenuItem('Quit')
         mitem_quit.connect('activate', self.on_mitem_quit_activate);
         self.menu_tray.append(mitem_quit)
+
         self.menu_tray.show_all()
 
         self.window.show()
@@ -178,6 +187,14 @@ def main():
     app = MainWindow()
     agent.app = app
     gtk.gdk.threads_enter()
+    if HAS_INDICATOR:
+        #TODO the icon is only work when installed to /usr/share/icons/hicolor/
+        indicator = appindicator.Indicator('hotot',
+                                           'hotot',
+                                           appindicator.CATEGORY_COMMUNICATIONS)
+        indicator.set_status(appindicator.STATUS_ACTIVE)
+        indicator.set_attention_icon(config.get_ui_object('imgs/ic64_hotot.png'))
+        indicator.set_menu(app.menu_tray)
     gtk.main()
     gtk.gdk.threads_leave()
 
