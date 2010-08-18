@@ -15,6 +15,10 @@ MODE_DM: 2,
 
 current_mode: 0,
 
+close_timeout: 10000,
+
+is_closed: true,
+
 init:
 function init () {
     
@@ -51,21 +55,10 @@ function init () {
 
     $('#status_box').hover(
     function () {
-        if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY
-            || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
-            $('#status_info').show();
-        }
-        $('#tbox_status').animate({ 
-            height: "150px", 
-        }
-        , 50
-        , 'linear'
-        , function () {
-            $(this).focus();
-        });
-        $('#status_ctrl').show();
+        ui.StatusBox.open();
     }, 
     function () {
+        ui.StatusBox.reset_close_countdown_timer();
     }).click(
     function () {
         return false;
@@ -97,6 +90,14 @@ function init () {
     });
 
     $('#status_len').html('0/' + globals.max_status_len);
+},
+
+reset_close_countdown_timer:
+function reset_close_countdown_timer() {
+    utility.Console.out('F')
+    window.clearTimeout(ui.StatusBox.close_countdown_timer);
+    ui.StatusBox.close_countdown_timer = window.setTimeout(
+        ui.StatusBox.close, ui.StatusBox.close_timeout);
 },
 
 change_mode:
@@ -203,6 +204,44 @@ function show() {
 hide:
 function hide() {
     $('#status_box').hide()
+},
+
+close:
+function close() {
+    utility.Console.out('OK')
+    if (! ui.StatusBox.is_closed) {
+        $('#status_ctrl').hide();
+        $('#status_info').hide();
+        $('#tbox_status').animate({ 
+            height: "50px", 
+        }
+        , 50
+        , 'linear'
+        , function () {
+            $(this).blur();
+        });
+        ui.StatusBox.is_closed = true;
+    }
+},
+
+open:
+function open() {
+    if (ui.StatusBox.is_closed) {
+        if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY
+            || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
+            $('#status_info').show();
+        }
+        $('#tbox_status').animate({ 
+            height: "150px", 
+        }
+        , 50
+        , 'linear'
+        , function () {
+            $(this).focus();
+        });
+        $('#status_ctrl').show();
+        ui.StatusBox.is_closed = false;
+    }
 },
 
 };

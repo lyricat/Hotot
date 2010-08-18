@@ -287,11 +287,13 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).find('.tweet_reply').click(
         function (event) {
             ui.Main.on_reply_click(this, event);
+            return false;
         });
 
         $(id).find('.tweet_rt').click(
         function (event) {
             ui.Main.on_rt_click(this, event);
+            return false;
         });
 
         $(id).find('.tweet_retweet').click(
@@ -315,11 +317,13 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).find('.tweet_reply_all').click(
         function (event) {
             ui.Main.on_reply_all_click(this, event);
+            return false;
         });
 
         $(id).find('.tweet_dm').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
+            return false;
         });
 
         $(id).find('.tweet_del').click(
@@ -330,6 +334,7 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).find('.tweet_dm_reply').click(
         function (event) {
             ui.Main.on_dm_click(this, event);
+            return false;
         });
 
         $(id).find('.btn_tweet_thread').click(
@@ -355,6 +360,7 @@ function on_reply_click(btn, event) {
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');
     ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
+    ui.StatusBox.open();
 },
 
 on_rt_click:
@@ -365,6 +371,7 @@ function on_rt_click(btn, event) {
 
     ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
         + ' ' + tweet_obj.text);
+    ui.StatusBox.open();
 },
 
 on_retweet_click:
@@ -396,6 +403,7 @@ function on_reply_all_click(btn, event) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.set_status_info('Reply to `' + text + '`');
     ui.StatusBox.append_status_text(who_names.join(''));
+    ui.StatusBox.open();
 },
 
 on_dm_click:
@@ -410,6 +418,7 @@ function on_dm_click(btn, event) {
     ui.StatusBox.dm_to_id = user.id;
     ui.StatusBox.dm_to_screen_name = user.screen_name;
     ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+    ui.StatusBox.open();
 },
 
 on_del_click:
@@ -444,7 +453,6 @@ function on_fav_click(btn, event) {
         });
         ui.Notification.set('favorite this tweet ...').show(-1);
     }
-
 },
 
 on_expander_click:

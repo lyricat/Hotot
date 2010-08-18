@@ -133,16 +133,7 @@ jQuery(function($) {
         } 
     }).click(
     function (event) {
-        $('#status_ctrl').hide();
-        $('#status_info').hide();
-        $('#tbox_status').animate({ 
-            height: "50px", 
-        }
-        , 50
-        , 'linear'
-        , function () {
-            $(this).blur();
-        });
+        ui.StatusBox.close();
     });
 
     $(window).resize(
