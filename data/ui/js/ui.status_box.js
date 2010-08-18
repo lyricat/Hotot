@@ -94,7 +94,6 @@ function init () {
 
 reset_close_countdown_timer:
 function reset_close_countdown_timer() {
-    utility.Console.out('F')
     window.clearTimeout(ui.StatusBox.close_countdown_timer);
     ui.StatusBox.close_countdown_timer = window.setTimeout(
         ui.StatusBox.close, ui.StatusBox.close_timeout);
@@ -210,7 +209,6 @@ function hide() {
 
 close:
 function close() {
-    utility.Console.out('OK')
     if (! ui.StatusBox.is_closed) {
         $('#status_ctrl').hide();
         $('#status_info').hide();
@@ -228,6 +226,7 @@ function close() {
 
 open:
 function open() {
+    window.clearTimeout(ui.StatusBox.close_countdown_timer);
     if (ui.StatusBox.is_closed) {
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY
             || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
@@ -243,6 +242,8 @@ function open() {
         });
         $('#status_ctrl').show();
         ui.StatusBox.is_closed = false;
+    } else {
+        $('#tbox_status').focus();
     }
 },
 
