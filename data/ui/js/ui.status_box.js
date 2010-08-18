@@ -13,6 +13,10 @@ MODE_REPLY: 1,
 
 MODE_DM: 2,
 
+POS_BEGIN: 0,
+
+POS_END: -1,
+
 current_mode: 0,
 
 close_timeout: 10000,
@@ -225,8 +229,10 @@ function close() {
 },
 
 open:
-function open() {
+function open(on_finish) {
     window.clearTimeout(ui.StatusBox.close_countdown_timer);
+    if (!on_finish) 
+        on_finish = function () {$('#tbox_status').focus();};
     if (ui.StatusBox.is_closed) {
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY
             || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
@@ -237,14 +243,51 @@ function open() {
         }
         , 50
         , 'linear'
-        , function () {
-            $(this).focus();
-        });
+        , on_finish);
         $('#status_ctrl').show();
         ui.StatusBox.is_closed = false;
     } else {
-        $('#tbox_status').focus();
+        if (on_finish) on_finish();
     }
+},
+
+move_cursor:
+function move_cursor(pos) {
+    if (typeof pos == 'undefined')
+        return;
+    if (pos == ui.StatusBox.POS_END) 
+        pos = $('#tbox_status').attr('value').length;
+
+    $('#tbox_status').focus();
+    var box = $('#tbox_status').get(0);
+	if(box.setSelectionRange) {
+        // others
+		box.setSelectionRange(pos, pos);
+	} else if (box.createTextRange) {
+        // IE
+		var range = box.createTextRange();
+		range.collapse(true);
+		range.moveEnd('character', pos);
+		range.moveStart('character', pos);
+		range.select();
+	}
+},
+
+get_cursor_pos:
+function get_cursor_pos(){
+	var pos = 0;	
+    var box = $('#tbox_status').get(0);
+    $('#tbox_status').focus();
+	if (document.selection) {
+        // IE
+		var sel = document.selection.createRange();
+		sel.moveStart('character', -box.value.length);
+		pos = sel.text.length;
+	} else if (box.selectionStart || box.selectionStart == '0') {
+    	// others
+		pos = box.selectionStart;
+    }
+	return pos;
 },
 
 };

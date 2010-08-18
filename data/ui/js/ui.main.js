@@ -360,7 +360,10 @@ function on_reply_click(btn, event) {
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');
     ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
-    ui.StatusBox.open();
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+    });
 },
 
 on_rt_click:
@@ -370,8 +373,11 @@ function on_rt_click(btn, event) {
     var tweet_obj = utility.DB.get(id)
 
     ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
-        + ' ' + tweet_obj.text);
-    ui.StatusBox.open();
+        + ' ' + tweet_obj.text + ' ');
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+    });
 },
 
 on_retweet_click:
@@ -403,7 +409,11 @@ function on_reply_all_click(btn, event) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.set_status_info('Reply to `' + text + '`');
     ui.StatusBox.append_status_text(who_names.join(''));
-    ui.StatusBox.open();
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+    });
+
 },
 
 on_dm_click:
