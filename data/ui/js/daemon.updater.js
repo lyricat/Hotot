@@ -118,23 +118,37 @@ function update_people() {
             ui.Main.load_tweets_cb(result, '#people');
         });
     };
+    
     lib.twitterapi.show_user(
         ui.Main.block_info['#people'].screen_name, 
     function (user_obj) {
-        ui.Template.fill_vcard(user_obj, $('#people_vcard')); 
-        $('#people_vcard').show();
-        if (! user_obj.protected) { 
-            // not a protected user, then load timeline
+        var container = $('#people_vcard'); 
+        var btn_follow = container.find('.vcard_follow');
+        btn_follow.show();
+        ui.Template.fill_vcard(user_obj, container);
+
+        if (user_obj.following) {
+            btn_follow.html('Unfollow');
+            btn_follow.addClass('unfo');
             load_people_tl();
         } else {
-            // else
-            // @TODO display request box.
-            $('#people_request_hint').show();
-            $('#people_tweet_block .tweet_block_bottom').hide();
-            $('#btn_people_request').attr('href'
-                , 'http://twitter.com/' + user_obj.screen_name)
-            $('#request_screen_name').text(user_obj.screen_name)
+            if (user_obj.protected) {
+                // not friend and user protect his tweets,
+                // then hide follow btn.
+                btn_follow.hide();
+                // and display request box.
+                $('#people_request_hint').show();
+                $('#people_tweet_block .tweet_block_bottom').hide();
+                $('#btn_people_request').attr('href'
+                    , 'http://twitter.com/' + user_obj.screen_name)
+                $('#request_screen_name').text(user_obj.screen_name)
+            } else {
+                btn_follow.html('Follow');
+                btn_follow.removeClass('unfo');
+                load_people_tl();
+            }
         }
+        $('#people_vcard').show();
     });
 },
 
