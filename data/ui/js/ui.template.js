@@ -21,7 +21,7 @@ tweet_t:
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
-        <div class="text">{%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
             <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
@@ -67,7 +67,7 @@ dm_t:
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a></div>\
-        <div class="text">{%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
         <li><a class="tweet_dm tweet_ctrl_btn" href="javascript:void(0);"></a></li>\
@@ -95,6 +95,7 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
     return ret;
 },
 
@@ -159,6 +160,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
     ret = ret.replace(/{%CAN_DELETE%}/g, screen_name == globals.myself.screen_name? '': 'display:none');
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
     return ret;
 },
 

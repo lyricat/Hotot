@@ -681,6 +681,15 @@ input[type="button"]:hover, .button:hover {
     padding-left: 10px;
 }
 
+#prefs_font_preview {
+    text-align: center;
+    border: 1px #ccc solid;
+    padding: 10px 0;
+    height: 30px;
+    margin: 0 10px;
+    overflow: auto;
+}
+
 /*===== Preferences Dialog ================================*/
 #about_dlg {
     display: block;
@@ -887,6 +896,8 @@ input[type="button"]:hover, .button:hover {
 
 .tweet_body > .text {
     word-break: break-all;
+    font-size: 12px;
+    line-height: 1.5em;
 }
 
 .tweet_ctrl {

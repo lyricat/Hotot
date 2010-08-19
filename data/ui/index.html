@@ -118,6 +118,7 @@ var globals = {
     tweet_block_width: 600,
     max_status_len: 140,
     trim_bound: 200,
+    tweet_font_size: 12,
     myself: {},
 };
 
@@ -517,6 +518,25 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div id='prefs_appearance' class="prefs_tabs_page">
+                    <h3>- Font Settings -</h3>
+                    <div class="prefs_group">
+                    <p>
+                        <label>Font Family</label>
+                        <select id="sel_prefs_font_family"
+                            style="width: 85px">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> 
+                        <label>Font Size</label>
+                        <input id="tbox_prefs_font_size"
+                            style="width:50px" type="text"/>
+                        <label>px</label><br/>
+                        <label>Preview</label>
+                        <div id="prefs_font_preview">abcdefghijk ABCDEFGHIJK</div>
+                    </p>
+                    </div>
                     <h3>- Display Settings -</h3>
                     <div class="prefs_group">
                     <p>

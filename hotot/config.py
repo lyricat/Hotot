@@ -3,6 +3,7 @@
 import os
 import pickle
 import json
+import gtk
 import sys
 
 PROGRAM_NAME = "hotot"
@@ -25,6 +26,8 @@ opts = {
     'default_username':'',
     'default_password':'',
 #template:
+    'font_family_used': 'Sans',
+    'font_size': 12,
     'use_native_input': False,
     'use_native_notify': True,
     'shortcut_summon_hotot': '<Alt>C',
@@ -78,9 +81,12 @@ def loads():
     config = getconf()
     ##
     try: 
+        for k, v in opts.iteritems():
+            config[k] = v
         config_raw = json.loads(file(config['prof']).read().encode('utf-8'))
-        for k,v in config_raw.iteritems():
-            config[k.encode('utf-8')]=v.encode('utf-8') if isinstance(v, unicode) else v
+        for k, v in config_raw.iteritems():
+            config[k.encode('utf-8')] \
+                = v.encode('utf-8') if isinstance(v, unicode) else v
     except Exception, e: 
         print 'error:%s'% str(e)
     ##
@@ -127,6 +133,9 @@ def apply_config(webv):
     default_username = config['default_username']
     default_password = config['default_password']
     remember_password = config['remember_password']
+    font_family_used = config['font_family_used']
+    font_size = config['font_size']
+
     consumer_key = config['consumer_key']
     consumer_secret = config['consumer_secret']
     api_base = config['api_base'];
@@ -135,12 +144,16 @@ def apply_config(webv):
         $('#tbox_basic_auth_username').attr('value', '%s');
         $('#tbox_basic_auth_password').attr('value', '%s');
         $('#chk_remember_password').attr('checked', eval('%s'));
+        $('body').css('font-family', '%s');
+        globals.tweet_font_size = %s;
+        
         lib.twitterapi.api_base = '%s';
         jsOAuth.key = '%s';
         jsOAuth.secret = '%s';
         jsOAuth.access_token = jsOAuth.load_token('%s');
         ''' % (default_username, default_password
             , 'true' if remember_password else 'false'
+            , font_family_used, font_size
             , api_base
             , consumer_key, consumer_secret
             , access_token))
@@ -165,6 +178,10 @@ def push_prefs(webv):
     shortcut_summon_hotot = config['shortcut_summon_hotot']
 
     # display settings 
+    font_family_list = [ff.get_name() for ff in gtk.gdk.pango_context_get().list_families()]
+    font_family_list.sort()
+    font_family_used = config['font_family_used']
+    font_size = config['font_size']
     use_native_input = 'true' if config['use_native_input'] else 'false'
     use_native_notify = 'true' if config['use_native_notify'] else 'false'
 
@@ -177,6 +194,9 @@ def push_prefs(webv):
         , "consumer_key": "%s"
         , "consumer_secret": "%s"
         , "shortcut_summon_hotot": "%s"
+        , "font_family_list":  %s
+        , "font_family_used": "%s"
+        , "font_size": "%s"
         , "use_native_input": %s
         , "use_native_notify": %s
         , "api_base": "%s"
@@ -185,6 +205,7 @@ def push_prefs(webv):
         ''' % (remember_password
             , consumer_key, consumer_secret
             , shortcut_summon_hotot
+            , font_family_list, font_family_used, font_size
             , use_native_input, use_native_notify
             , api_base));
     pass
