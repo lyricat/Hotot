@@ -355,7 +355,7 @@ on_reply_click:
 function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var tweet_obj = utility.DB.get(id)
+    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');
@@ -370,7 +370,7 @@ on_rt_click:
 function on_rt_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var tweet_obj = utility.DB.get(id)
+    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
 
     ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
         + ' ' + tweet_obj.text + ' ');
@@ -396,7 +396,7 @@ on_reply_all_click:
 function on_reply_all_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var tweet_obj = utility.DB.get(id);
+    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
     var who_names = [ '@' + tweet_obj.user.screen_name +' '];
     var text = tweet_obj.text;
@@ -420,7 +420,7 @@ on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var tweet_obj = utility.DB.get(id);
+    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
     var user = tweet_obj.sender? tweet_obj.sender : tweet_obj.user;
 
     ui.StatusBox.set_status_info(
@@ -469,7 +469,7 @@ on_expander_click:
 function on_expander_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    var orig_tweet_obj = utility.DB.get(id);
+    var orig_tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
@@ -489,7 +489,8 @@ function on_expander_click(btn, event) {
             }
         }
 
-        var prev_tweet_obj = utility.DB.get(tweet_id.toString());
+        var prev_tweet_obj = utility.DB.get(
+            utility.DB.TWEET_CACHE, tweet_id.toString());
         if (typeof prev_tweet_obj == 'undefined') {
             lib.twitterapi.show_status(tweet_id,
             function (result) {

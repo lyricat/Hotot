@@ -1,6 +1,10 @@
 if (typeof utility == 'undefined') var utility = {};
 utility.DB = {
 
+USER_CACHE: '#user_cache',
+
+TWEET_CACHE: '#tweet_cache',
+
 init:
 function init () {
     
@@ -14,26 +18,30 @@ function dump_tweets(json_obj) {
             if (tweet_obj.hasOwnProperty('retweeted_status')) {
                 tweet_obj = tweet_obj['retweeted_status'];
             }
-            $('#cache').data(tweet_obj.id.toString(), tweet_obj);
+            var user = json_obj.user? user: json_obj.sender;
+            $(utility.DB.USER_CACHE).data(user.id.toString(), user);
+            $(utility.DB.TWEET_CACHE).data(tweet_obj.id.toString(), tweet_obj);
         }
     } else {
-        $('#cache').data(json_obj.id.toString(), json_obj);
+        var user = json_obj.user? user: json_obj.sender;
+        $(utility.DB.USER_CACHE).data(user.id.toString(), user);
+        $(utility.DB.TWEET_CACHE).data(json_obj.id.toString(), json_obj);
     }
 },
 
 set:
-function set(name, value) {
-    return $('#cache').data(name, value)
+function set(db_name, key, value) {
+    return $(db_name).data(key, value)
 },
 
 get:
-function get(name) {
-    return $('#cache').data(name);
+function get(db_name, key) {
+    return $(db_name).data(key);
 },
 
 remove:
-function remove(name) {
-    return $('#cache').removeData(name);
+function remove(db_name, key) {
+    return $(db_name).removeData(key);
 },
 
 };
