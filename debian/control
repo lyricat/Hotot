@@ -1,0 +1,28 @@
+Source: hotot
+Section: net
+Priority: optional
+Maintainer: Shellex Wai <5h3ll3x@gmail.com>
+Build-Depends: debhelper (>= 7), python-support, python (>=2.5)
+XS-Python-Version: >=2.5
+Standards-Version: 3.8.4
+Homepage: http://code.google.com/p/hotot
+#Vcs-Git: git://git.debian.org/collab-maint/hotot.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/hotot.git;a=summary
+
+Package: hotot
+Architecture: any
+XB-Python-Version: 2.5, 2.6
+Depends: ${shlibs:Depends}, ${misc:Depends}, python-webkit, python-jswebkit, python-keybinder, python-notify
+Description: Lightweight Twitter Client base on Gtk2 and Webkit.
+ Lightweight Twitter Client base on Gtk2 and Webkit.
+ .
+ Features include:
+   - Update/View Timelines.
+   - Follow/Unfollow peoples.
+   - Post status.
+   - Reply tweets.
+   - Post direct messages.
+   - View people profile.
+   - Native notification.
+   - Global key-shortcut.
+
