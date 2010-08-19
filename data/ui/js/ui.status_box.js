@@ -47,6 +47,7 @@ function init () {
     $('#btn_clear').click(
     function (event) {
         $('#tbox_status').attr('value', '');
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
     });
     
     $('#btn_clear_status_info').click(
