@@ -23,6 +23,14 @@ close_timeout: 10000,
 
 is_closed: true,
 
+auto_complete_hlight_idx: 0,
+
+auto_complete_selected: '',
+
+is_detecting_name: false,
+
+keydown_twice_flag: 0,
+
 init:
 function init () {
     
@@ -80,18 +88,68 @@ function init () {
         }
     }).attr('value',globals.status_hint).addClass('hint_style');
 
-    // shortcut binding Ctrl+Enter
-    $('#tbox_status').keyup(
+    $('#tbox_status').keydown(
     function (event) {
-        if (event.ctrlKey && event.keyCode == 13) {
+        var key_code = event.keyCode;
+        if (event.ctrlKey && key_code == 13) {
+        // shortcut binding Ctrl+Enter
             $('#btn_update').click();
             return false;
-        } else {
-            ui.StatusBox.update_status_len();
+        } 
+        if (key_code == 38 || key_code == 40) { 
+        // up or down
+            if (! ui.StatusBox.is_detecting_name)
+                return;
+
+            ui.StatusBox.keydown_twice_flag += 1;
+            if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
+                return;
+            var screen_name_list = $('#screen_name_auto_complete');
+            var items = screen_name_list.find('li');
+            items.eq(ui.StatusBox.auto_complete_hlight_idx)
+                .removeClass('hlight');
+            
+            if (key_code == 38) ui.StatusBox.auto_complete_hlight_idx -= 1;
+            if (key_code == 40) ui.StatusBox.auto_complete_hlight_idx += 1;
+            if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
+                ui.StatusBox.auto_complete_hlight_idx = items.length;
+            } 
+            if (ui.StatusBox.auto_complete_hlight_idx 
+                == items.length) {
+                ui.StatusBox.auto_complete_hlight_idx = 0;
+            } 
+            items.eq(ui.StatusBox.auto_complete_hlight_idx)
+                .addClass('hlight');
+            ui.StatusBox.auto_complete_selected 
+                = items.eq(ui.StatusBox.auto_complete_hlight_idx).text();
+            return false;
+        } 
+        if (key_code == 13) {
+            ui.StatusBox.keydown_twice_flag += 1;
+            if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
+                return;
+            var append = ui.StatusBox.auto_complete_selected
+                .substring(ui.StatusBox.get_screen_name().length - 1)
+            ui.StatusBox.append_status_text(append + ' ');
+            ui.StatusBox.stop_screen_name_detect();
+            return false;
         }
+        ui.StatusBox.auto_complete_hlight_idx = 0;
+        ui.StatusBox.update_status_len();
     }).focus(
     function (event) {
         ui.StatusBox.update_status_len();
+    }).keypress(
+    function (event) {
+        if (event.keyCode == 64) { //@
+            ui.StatusBox.start_screen_name_detect();
+        }
+        if (event.keyCode == 32) { // space
+            ui.StatusBox.stop_screen_name_detect();
+        }
+    }).keyup(
+    function (event) {
+        ui.StatusBox.auto_complete(event);
     });
 
     $('#status_len').html('0/' + globals.max_status_len);
@@ -202,6 +260,53 @@ function set_status_info(info) {
     $('#status_info_text').text(info);
 },
 
+auto_complete:
+function auto_complete(event) {
+    if (! ui.StatusBox.is_detecting_name)
+        return;
+    var key_code = event.keyCode;
+    if ((key_code <= 90 && 65<=key_code)
+        || (48 <= key_code && key_code <= 57)
+        || 95 == key_code || key_code == 8) {
+        var name = ui.StatusBox.get_screen_name().substring(1);
+        if (name == '') {
+            $('#screen_name_auto_complete').html('').hide();
+        } else {
+            result_list = utility.DB.auto_complete_list.filter(
+            function(element, index, array) {
+                return element.indexOf(name) == 0;
+            });
+            result_list.sort();
+            var str = '<li>'+result_list.join('</li><li>')+'</li>';
+            $('#screen_name_auto_complete').html(str).show();
+            
+            $('#screen_name_auto_complete li:first').addClass('hlight');
+            ui.StatusBox.auto_complete_selected 
+                = $('#screen_name_auto_complete li:first').text();
+        }
+    } 
+},
+
+get_screen_name:
+function get_screen_name() {
+    var current_pos = ui.StatusBox.get_cursor_pos();
+    var screen_name = $('#tbox_status').val().substring(
+        ui.StatusBox.screen_name_start_pos, current_pos);
+    return screen_name;
+},
+
+start_screen_name_detect:
+function start_screen_name_detect() {
+    ui.StatusBox.screen_name_start_pos = ui.StatusBox.get_cursor_pos();
+    ui.StatusBox.is_detecting_name = true;
+},
+
+stop_screen_name_detect:
+function stop_screen_name_detect() {
+    ui.StatusBox.is_detecting_name = false;
+    $('#screen_name_auto_complete').hide();
+},
+
 show:
 function show() {
     $('#status_box').show()
@@ -225,6 +330,7 @@ function close() {
         , function () {
             $(this).blur();
         });
+        ui.StatusBox.stop_screen_name_detect();
         ui.StatusBox.is_closed = true;
     }
 },

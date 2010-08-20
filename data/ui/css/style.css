@@ -150,6 +150,17 @@ a {
     font-weight: lighter;
 }
 
+#screen_name_auto_complete {
+    list-style-type:none; 
+    color: #white;
+    font-size: 12px;
+}
+
+#screen_name_auto_complete > li.hlight {
+    background: #fef6a8;
+    color: #000;
+}
+
 #ctrl_right {
     float: right;
 }
