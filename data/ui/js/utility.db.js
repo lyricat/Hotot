@@ -18,12 +18,12 @@ function dump_tweets(json_obj) {
             if (tweet_obj.hasOwnProperty('retweeted_status')) {
                 tweet_obj = tweet_obj['retweeted_status'];
             }
-            var user = json_obj.user? user: json_obj.sender;
+            var user = typeof tweet_obj.user != 'undefined'? tweet_obj.user: tweet_obj.sender;
             $(utility.DB.USER_CACHE).data(user.id.toString(), user);
             $(utility.DB.TWEET_CACHE).data(tweet_obj.id.toString(), tweet_obj);
         }
     } else {
-        var user = json_obj.user? user: json_obj.sender;
+        var user = json_obj.user? json_obj.user: json_obj.sender;
         $(utility.DB.USER_CACHE).data(user.id.toString(), user);
         $(utility.DB.TWEET_CACHE).data(json_obj.id.toString(), json_obj);
     }
