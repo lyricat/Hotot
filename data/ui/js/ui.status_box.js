@@ -94,6 +94,8 @@ function init () {
 
     $('#tbox_status').keydown(
     function (event) {
+        ui.StatusBox.update_status_len();
+
         var key_code = event.keyCode;
         
         // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
