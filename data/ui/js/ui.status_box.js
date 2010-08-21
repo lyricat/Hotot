@@ -103,6 +103,14 @@ function init () {
         // backspace doesn't work, can't type english characters, etc. 
         // so i only ignore event associate with program's behaviors.
         if (key_code == 13 || key_code == 38 || key_code == 40) {
+            // But, textarea in webkitgtk have to invoke two keydown
+            // events to move cursor up and down.
+            // so i only ignore the duplicate out of detecting mode.
+            if (key_code == 38 || key_code == 40){
+                if (! ui.StatusBox.is_detecting_name)
+                    return true;
+            }
+
             ui.StatusBox.keydown_twice_flag += 1;
             if (ui.StatusBox.keydown_twice_flag % 2 == 0) 
                 return false;
@@ -113,12 +121,13 @@ function init () {
             $('#btn_update').click();
             return false;
         } 
-
+        
         if (key_code == 38 || key_code == 40) { 
+            utility.Console.out('!')
         // up or down
             if (! ui.StatusBox.is_detecting_name)
-                return;
-
+                return true;
+            
             var screen_name_list = $('#screen_name_auto_complete');
             var items = screen_name_list.find('li');
             items.eq(ui.StatusBox.auto_complete_hlight_idx)
@@ -161,6 +170,7 @@ function init () {
         if (event.keyCode == 32) { // space
             ui.StatusBox.stop_screen_name_detect();
         }
+        ui.StatusBox.update_status_len();
     });
      
     $('#tbox_status').keyup(
@@ -171,6 +181,9 @@ function init () {
     });
     
     $('#tbox_status').focus(
+    function (event) {
+        ui.StatusBox.update_status_len();
+    }).change(
     function (event) {
         ui.StatusBox.update_status_len();
     });
