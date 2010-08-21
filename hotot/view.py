@@ -5,10 +5,11 @@ import webkit
 import agent
 import config
 import webbrowser
+from webkit import WebView
 
-class MainView(webkit.WebView):
+class MainView(WebView):
     def __init__(self):
-        webkit.WebView.__init__(self)
+        WebView.__init__(self)
         self.load_finish_flag = False
         self.set_property('can-focus', True)
         self.set_property('can-default', True)
@@ -16,7 +17,6 @@ class MainView(webkit.WebView):
         self.clipbord = gtk.Clipboard()
 
         settings = self.get_settings()
-        settings.set_property('enable-xss-auditor', False)
         settings.set_property('enable-universal-access-from-file-uris', True)
         settings.set_property('enable-file-access-from-file-uris', True)
         settings.set_property('enable-page-cache', True)
