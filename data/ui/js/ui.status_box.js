@@ -29,6 +29,10 @@ auto_complete_selected: '',
 
 is_detecting_name: false,
 
+// @BUG (webkit for linux)
+// keyup and keydown will fire twice in Chrome
+// keydown will fire twice in WebkitGtk.
+// @WORKAROUND use the flag to ignore the first one.
 keydown_twice_flag: 0,
 
 init:
@@ -90,20 +94,25 @@ function init () {
 
     $('#tbox_status').keydown(
     function (event) {
+        utility.Console.out(event.keyCode)
+        // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
+        ui.StatusBox.keydown_twice_flag += 1;
+        if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
+            return;
+
         var key_code = event.keyCode;
+
         if (event.ctrlKey && key_code == 13) {
         // shortcut binding Ctrl+Enter
             $('#btn_update').click();
             return false;
         } 
+
         if (key_code == 38 || key_code == 40) { 
         // up or down
             if (! ui.StatusBox.is_detecting_name)
                 return;
 
-            ui.StatusBox.keydown_twice_flag += 1;
-            if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
-                return;
             var screen_name_list = $('#screen_name_auto_complete');
             var items = screen_name_list.find('li');
             items.eq(ui.StatusBox.auto_complete_hlight_idx)
@@ -124,22 +133,23 @@ function init () {
                 = items.eq(ui.StatusBox.auto_complete_hlight_idx).text();
             return false;
         } 
+
         if (key_code == 13) {
-            ui.StatusBox.keydown_twice_flag += 1;
-            if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
+            utility.Console.out('Enter')
+            if (! ui.StatusBox.is_detecting_name)
                 return;
+            
             var append = ui.StatusBox.auto_complete_selected
                 .substring(ui.StatusBox.get_screen_name().length - 1)
             ui.StatusBox.append_status_text(append + ' ');
             ui.StatusBox.stop_screen_name_detect();
             return false;
         }
+
         ui.StatusBox.auto_complete_hlight_idx = 0;
-        ui.StatusBox.update_status_len();
-    }).focus(
-    function (event) {
-        ui.StatusBox.update_status_len();
-    }).keypress(
+    });
+    
+    $('#tbox_status').keypress(
     function (event) {
         if (event.keyCode == 64) { //@
             ui.StatusBox.start_screen_name_detect();
@@ -147,9 +157,18 @@ function init () {
         if (event.keyCode == 32) { // space
             ui.StatusBox.stop_screen_name_detect();
         }
-    }).keyup(
+        ui.StatusBox.update_status_len();
+    });
+    
+    $('#tbox_status').keyup(
     function (event) {
+        var key_code = event.keyCode;
         ui.StatusBox.auto_complete(event);
+    });
+    
+    $('#tbox_status').focus(
+    function (event) {
+        ui.StatusBox.update_status_len();
     });
 
     $('#status_len').html('0/' + globals.max_status_len);
