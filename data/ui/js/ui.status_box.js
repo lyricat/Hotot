@@ -98,7 +98,7 @@ function init () {
         // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
         ui.StatusBox.keydown_twice_flag += 1;
         if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
-            return;
+            return false;
 
         var key_code = event.keyCode;
 
@@ -137,8 +137,8 @@ function init () {
         if (key_code == 13) {
             utility.Console.out('Enter')
             if (! ui.StatusBox.is_detecting_name)
-                return;
-            
+                return ;
+
             var append = ui.StatusBox.auto_complete_selected
                 .substring(ui.StatusBox.get_screen_name().length - 1)
             ui.StatusBox.append_status_text(append + ' ');
