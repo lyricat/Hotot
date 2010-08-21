@@ -92,6 +92,30 @@ function init () {
         }
     });
 
+    $('#people_vcard .vcard_block').click(
+    function (event) {
+        var screen_name = ui.Main.block_info['#people'].screen_name;
+        if (!confirm('Are you sure you want to block @'+screen_name+'?!\n'))
+            return;
+        ui.Notification.set('Block @' + screen_name + ' ...').show();
+        lib.twitterapi.create_blocks(screen_name,
+        function () {
+            ui.Notification.set(
+                'Block @'+ screen_name+' Successfully!').show();
+        });
+    });
+
+    $('#people_vcard .vcard_unblock').click(
+    function (event) {
+        var screen_name = ui.Main.block_info['#people'].screen_name;
+        ui.Notification.set('unblock @' + screen_name + ' ...').show();
+        lib.twitterapi.create_blocks(screen_name,
+        function () {
+            ui.Notification.set(
+                'UnBlock @'+ screen_name+' Successfully!').show();
+        });
+    });
+
     $('#tbox_people_entry').keypress(
     function (event) {
         if (event.keyCode == 13)

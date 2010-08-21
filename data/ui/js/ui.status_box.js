@@ -150,7 +150,6 @@ function init () {
             ui.StatusBox.stop_screen_name_detect();
             return false;
         }
-
         ui.StatusBox.auto_complete_hlight_idx = 0;
     });
     
@@ -162,13 +161,13 @@ function init () {
         if (event.keyCode == 32) { // space
             ui.StatusBox.stop_screen_name_detect();
         }
-        ui.StatusBox.update_status_len();
     });
-    
+     
     $('#tbox_status').keyup(
     function (event) {
         var key_code = event.keyCode;
         ui.StatusBox.auto_complete(event);
+        ui.StatusBox.update_status_len();
     });
     
     $('#tbox_status').focus(

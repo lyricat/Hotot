@@ -253,7 +253,7 @@ function show_user(screen_name, on_success) {
     lib.twitterapi.get(url, params, on_success);
 },
 
-show_friendships:
+exists_friendships:
 function show_friendships(source, target, on_success) {
     var url = '/friendships/exists.json';
     var params={
@@ -276,6 +276,25 @@ function create_friendships(screen_name, on_success) {
 destroy_friendships:
 function destroy_friendships(screen_name, on_success) {
     var url = '/friendships/destroy.json';
+    var params={
+        'screen_name': screen_name,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+create_blocks:
+function create_blocks(screen_name, on_success) {
+    var url = '/blocks/create.json';
+    var params={
+        'screen_name': screen_name,
+        'follow': true,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+destroy_blocks:
+function destroy_blocks(screen_name, on_success) {
+    var url = '/blocks/destroy.json';
     var params={
         'screen_name': screen_name,
     };
