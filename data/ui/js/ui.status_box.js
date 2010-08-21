@@ -125,7 +125,6 @@ function init () {
         } 
         
         if (key_code == 38 || key_code == 40) { 
-            utility.Console.out('!')
         // up or down
             if (! ui.StatusBox.is_detecting_name)
                 return true;
