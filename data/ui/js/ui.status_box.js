@@ -94,13 +94,19 @@ function init () {
 
     $('#tbox_status').keydown(
     function (event) {
-        utility.Console.out(event.keyCode)
-        // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
-        ui.StatusBox.keydown_twice_flag += 1;
-        if (ui.StatusBox.keydown_twice_flag % 2 != 0) 
-            return false;
-
         var key_code = event.keyCode;
+        
+        // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
+        // However, if ignore all keydown event will cause some bugs
+        // if user use IM to compose status text. 
+        // for example, 
+        // backspace doesn't work, can't type english characters, etc. 
+        // so i only ignore event associate with program's behaviors.
+        if (key_code == 13 || key_code == 38 || key_code == 40) {
+            ui.StatusBox.keydown_twice_flag += 1;
+            if (ui.StatusBox.keydown_twice_flag % 2 == 0) 
+                return false;
+        }
 
         if (event.ctrlKey && key_code == 13) {
         // shortcut binding Ctrl+Enter
@@ -135,7 +141,6 @@ function init () {
         } 
 
         if (key_code == 13) {
-            utility.Console.out('Enter')
             if (! ui.StatusBox.is_detecting_name)
                 return ;
 
