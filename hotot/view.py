@@ -89,7 +89,9 @@ class MainView(WebView):
 
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;
-        config.apply_config(self)
+        agent.webv = self
+        agent.apply_config()
+        agent.load_cache()
         pass
 
     def on_mitem_copy_activated(self, item):

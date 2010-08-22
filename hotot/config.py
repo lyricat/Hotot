@@ -5,12 +5,14 @@ import pickle
 import json
 import gtk
 import sys
+import db
 
 PROGRAM_NAME = "hotot"
 UI_DIR_NAME = "ui"
 LAUNCH_DIR = os.path.abspath(sys.path[0])
 CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
+AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 
 DATA_DIRS = [os.path.abspath('./data')]
 
@@ -46,15 +48,16 @@ def getconf():
     config = {}
     ##
     abspath = os.path.abspath('./')
-    profdir = os.environ['HOME'] + '/.config/hotot'
-    avatarcachedir = profdir + '/picscache'
-    if not os.path.isdir(profdir): os.makedirs(profdir)    
-    if not os.path.isdir(avatarcachedir): os.makedirs(avatarcachedir) 
+
+    if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)    
+    if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR) 
     
-    tokenfile = profdir + '/profile.token'
-    prof = profdir + '/hotot.conf'
-    if not os.path.exists(prof): 
-        write_to_disk(prof)
+
+    tokenfile = CONF_DIR + '/profile.token'
+    prefs = CONF_DIR + '/hotot.conf'
+    screen_name_cache = CACHE_DIR + '/screen_name.cache'
+    if not os.path.exists(prefs): 
+        write_to_disk(prefs)
     ##    
     for k, v in globals().items():
         if not k.startswith('__') and (
@@ -69,10 +72,9 @@ def getconf():
             config[k] = v
             pass
     config['abspath'] = abspath
-    config['profdir'] = profdir
-    config['avatarcachedir'] = avatarcachedir
-    config['prof'] = prof
+    config['prefs'] = prefs
     config['tokenfile'] = tokenfile
+    config['screen_name_cache'] = screen_name_cache
     return config
 
 def loads():
@@ -83,7 +85,7 @@ def loads():
     try: 
         for k, v in opts.iteritems():
             config[k] = v
-        config_raw = json.loads(file(config['prof']).read().encode('utf-8'))
+        config_raw = json.loads(file(config['prefs']).read().encode('utf-8'))
         for k, v in config_raw.iteritems():
             config[k.encode('utf-8')] \
                 = v.encode('utf-8') if isinstance(v, unicode) else v
@@ -98,11 +100,11 @@ def dumps():
     '''
     config = getconf()
     globals().update(config)
-    write_to_disk(config['prof'])
+    write_to_disk(config['prefs'])
     pass
 
-def write_to_disk(prof):
-    conf_file = open(prof, 'w')
+def write_to_disk(prefs):
+    conf_file = open(prefs, 'w')
     conf_file.write('{ "version": 0 \n')
     for key, val in opts.iteritems():
         r_val =  globals()[key] if globals().has_key(key) else val
@@ -127,37 +129,6 @@ def dump_token(token):
     config = getconf()
     file(config['tokenfile'], 'w').write(pickle.dumps(token))
     return config
-
-def apply_config(webv):
-    config = getconf()
-    default_username = config['default_username']
-    default_password = config['default_password']
-    remember_password = config['remember_password']
-    font_family_used = config['font_family_used']
-    font_size = config['font_size']
-
-    consumer_key = config['consumer_key']
-    consumer_secret = config['consumer_secret']
-    api_base = config['api_base'];
-    access_token = load_token()
-    webv.execute_script('''
-        $('#tbox_basic_auth_username').attr('value', '%s');
-        $('#tbox_basic_auth_password').attr('value', '%s');
-        $('#chk_remember_password').attr('checked', eval('%s'));
-        $('body').css('font-family', '%s');
-        globals.tweet_font_size = %s;
-        
-        lib.twitterapi.api_base = '%s';
-        jsOAuth.key = '%s';
-        jsOAuth.secret = '%s';
-        jsOAuth.access_token = jsOAuth.load_token('%s');
-        ''' % (default_username, default_password
-            , 'true' if remember_password else 'false'
-            , font_family_used, font_size
-            , api_base
-            , consumer_key, consumer_secret
-            , access_token))
-    pass
 
 def save_prefs(prefs_obj):
     config = getconf()

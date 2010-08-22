@@ -121,7 +121,7 @@ function get_request_token(on_success) {
         data: jsOAuth.form_signed_params(jsOAuth.request_token_url, null, 'GET', null),
         success: function (result) {
             var token_info = result;
-            jsOAuth.request_token = jsOAuth.load_token(token_info)
+            jsOAuth.request_token = utility.DB.unserialize_dict(token_info)
             // utility.Console.out('[i]req_token: ' + token_info);
             // utility.Console.out('[i]auth_url: ');
             // utility.Console.href_out(jsOAuth.get_auth_url());
@@ -153,7 +153,7 @@ function get_access_token(pin, on_success, on_error) {
         data: params, 
         success: function (result) {
             var token_info = result;
-            jsOAuth.access_token = jsOAuth.load_token(token_info)
+            jsOAuth.access_token = utility.DB.unserialize_dict(token_info)
             // utility.Console.out('[i]acc_token: ' + token_info);
             if (on_success != null)
                 on_success(result);
@@ -163,28 +163,6 @@ function get_access_token(pin, on_success, on_error) {
                 on_error(xhr);
         }
     });
-},
-
-dump_token:
-function dump_token(token) {
-    var arr = []
-    for (var name in token) {
-        arr.push(name+'='+token[name]);
-    }
-    return arr.join('&');
-},
-
-load_token:
-function load_token(token_raw) {
-    var pairs = token_raw.split('&');
-    token = {}
-    if (pairs.length < 2) // return null if token is invalid.
-        return null;
-    for (var i = 0; i < pairs.length; i += 1) {
-        var pair = pairs[i].split('=');
-        token[pair[0]] = pair[1];
-    }
-    return token;
 },
 
 verify:

@@ -21,18 +21,18 @@ function init () {
             = false;
         ui.Notification.set('Sign in ...').show();
         
-        hotot_action('config/default_username/' + lib.twitterapi.username);
+        hotot_action('config/set_opt/default_username/' + lib.twitterapi.username);
         if ($('#chk_remember_password').attr('checked') == true) {
             setTimeout(function () {
-            hotot_action('config/default_password/' + lib.twitterapi.password);
+            hotot_action('config/set_opt/default_password/' + lib.twitterapi.password);
             }, 200);
         } else {
             setTimeout(function () {
-            hotot_action('config/default_password/');
+            hotot_action('config/set_opt/default_password/');
             }, 200);
         }
         setTimeout(function () {
-            hotot_action('system/dumps');
+            hotot_action('config/dumps');
         }, 400);
 
         // verify ...
@@ -52,10 +52,10 @@ function init () {
     function (event) {
         var remember_password = $(this).attr('checked')
         var flag = (remember_password != true)? 'False':'True';
-        hotot_action('config/remember_password/' + flag);
+        hotot_action('config/set_opt/remember_password/' + flag);
 
         setTimeout(function () {
-            hotot_action('system/dumps');
+            hotot_action('config/dumps');
         }, 200);
     });
     

@@ -71,7 +71,7 @@ function init () {
 
 request_prefs:
 function request_prefs() {
-    hotot_action('system/push_prefs');
+    hotot_action('config/push_prefs');
 },
 
 request_prefs_cb:
@@ -136,11 +136,8 @@ function save_prefs() {
 
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');
-    var arr = []
-    for (var name in prefs_obj) {
-        arr.push(name+'='+prefs_obj[name]);
-    }
-    hotot_action('system/save_prefs/' + encodeBase64(arr.join('&')));
+    hotot_action('config/save_prefs/'
+        + utility.DB.serialize_dict(prefs_obj));
 },
 
 update_font_preview:

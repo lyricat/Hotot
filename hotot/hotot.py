@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
-'''GWrite
+'''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
 
-__version__ = '0.1.1'
+__version__ = '0.1'
 
 import gtk
 import gobject
@@ -13,6 +13,7 @@ import view
 import config
 import agent
 import keybinder
+import db
 
 try:
     import appindicator
@@ -132,6 +133,8 @@ class MainWindow:
         pass
 
     def quit(self, *args):
+        db.dump_screen_name(db.get_screen_name(self.webv))
+
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 
