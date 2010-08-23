@@ -8,7 +8,7 @@ schemes: {
     'green' : '#daffd1',
 },
 
-reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@]*)', 'g'),
+reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'),
 
 reg_user: new RegExp('(^|\\s)@(\\w+)', 'g'),
 
@@ -66,7 +66,7 @@ dm_t:
         <img src="{%PROFILE_IMG%}" >\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a></div>\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
@@ -79,6 +79,9 @@ dm_t:
 form_dm:
 function form_dm(dm_obj, pagename) {
     var id = dm_obj.id;
+    var timestamp = Date.parse(dm_obj.created_at);
+    var create_at = new Date();
+    create_at.setTime(timestamp);
     var screen_name = dm_obj.sender.screen_name;
     var profile_img = dm_obj.sender.profile_image_url;
     var text = ui.Template.form_text(dm_obj.text);
@@ -88,6 +91,9 @@ function form_dm(dm_obj, pagename) {
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['orange'];
     }
+    var create_at_str = create_at.toLocaleTimeString()
+        + ' ' + create_at.toDateString();
+
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
@@ -95,6 +101,7 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
+    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
     return ret;
 },
