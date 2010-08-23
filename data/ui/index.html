@@ -505,6 +505,7 @@ jQuery(function($) {
 
                     <h3>- OAuth Settings -</h3>
                     <div class="prefs_group">
+                    <p>* You MUST Regain Access Token if you change Consumer Key/Secret below.</p>
                     <p>
                         <label>Consumer Key</label><br/>
                         <input id="tbox_prefs_consumer_key" type="text"/><br/>
@@ -522,7 +523,7 @@ jQuery(function($) {
                 <div id='prefs_system' class="prefs_tabs_page">
                     <h3>- Keybinding Settings -</h3>
                     <div class="prefs_group">
-                    <p>* You must restart Hotot for the changes below to take effect.</p>
+                    <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
                         <label>Summon Hotot</label><br/>
                         <input id="tbox_prefs_shortcut_summon_hotot" type="text"/><br/>
@@ -573,6 +574,7 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
+        <a id="btn_prefs_restore_defaults" class="button" href="javascript:void(0);">Restore Defaults</a>
         <a id="btn_prefs_cancel" class="button" href="javascript:void(0);">Cancel</a>
         <a id="btn_prefs_ok" class="button" href="javascript:void(0);">OK</a>
         </div>

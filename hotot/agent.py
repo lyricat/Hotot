@@ -43,11 +43,16 @@ def crack_config(params):
     elif params[1] == 'loads': # useless
         config.loads()
     elif params[1] == 'push_prefs':
-        config.push_prefs(webv)
+        config.loads()
+        push_prefs()
     elif params[1] == 'save_prefs':
         prefs = db.unserialize_dict(params[2])
         config.save_prefs(prefs)
         apply_prefs()
+    elif params[1] == 'restore_defaults':
+        config.restore_defaults()
+        apply_config()
+        push_prefs()
     elif params[1] == 'set_opt':
         opt = params[2]
         value = params[3]
@@ -135,6 +140,7 @@ def apply_prefs():
             , font_family_used, font_size
             , api_base
             , consumer_key, consumer_secret ))
+    pass
 
 def apply_config():
     default_username = config.default_username
@@ -146,11 +152,53 @@ def apply_config():
         jsOAuth.access_token = utility.DB.unserialize_dict('%s');
         ''' % (default_username, default_password
             , access_token))
-
     apply_prefs()
+    pass
+
+def push_prefs():
+    # account settings
+    remember_password = 'true' if config.remember_password else 'false'
+    consumer_key = config.consumer_key
+    consumer_secret = config.consumer_secret
+    
+    # system settings
+    shortcut_summon_hotot = config.shortcut_summon_hotot
+
+    # display settings 
+    font_family_list = [ff.get_name() for ff in gtk.gdk.pango_context_get().list_families()]
+    font_family_list.sort()
+    font_family_used = config.font_family_used
+    font_size = config.font_size
+    use_native_input = 'true' if config.use_native_input else 'false'
+    use_native_notify = 'true' if config.use_native_notify else 'false'
+
+    # networks settings
+    api_base = config.api_base;
+    
+    webv.execute_script('''
+        var prefs_obj = {
+          "remember_password": %s
+        , "consumer_key": "%s"
+        , "consumer_secret": "%s"
+        , "shortcut_summon_hotot": "%s"
+        , "font_family_list":  %s
+        , "font_family_used": "%s"
+        , "font_size": "%s"
+        , "use_native_input": %s
+        , "use_native_notify": %s
+        , "api_base": "%s"
+        };
+        ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
+        ''' % (remember_password
+            , consumer_key, consumer_secret
+            , shortcut_summon_hotot
+            , font_family_list, font_family_used, font_size
+            , use_native_input, use_native_notify
+            , api_base));
     pass
 
 def load_cache():
     # load screen_names
     execute_script(db.load_screen_name())
+    pass
 

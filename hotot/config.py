@@ -23,7 +23,7 @@ DATA_BASE_DIRS = [
 DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
 
 
-opts = {
+default_config = {
     'remember_password': False,
     'default_username':'',
     'default_password':'',
@@ -83,7 +83,7 @@ def loads():
     config = getconf()
     ##
     try: 
-        for k, v in opts.iteritems():
+        for k, v in default_config.iteritems():
             config[k] = v
         config_raw = json.loads(file(config['prefs']).read().encode('utf-8'))
         for k, v in config_raw.iteritems():
@@ -106,7 +106,7 @@ def dumps():
 def write_to_disk(prefs):
     conf_file = open(prefs, 'w')
     conf_file.write('{ "version": 0 \n')
-    for key, val in opts.iteritems():
+    for key, val in default_config.iteritems():
         r_val =  globals()[key] if globals().has_key(key) else val
         if isinstance(val, str):
             conf_file.write(',    "%s": "%s"\n' % (key, r_val))
@@ -137,48 +137,8 @@ def save_prefs(prefs_obj):
     dumps()
     pass
 
-def push_prefs(webv):
-    loads()
-    config = getconf()
-    # account settings
-    remember_password = 'true' if config['remember_password'] else 'false'
-    consumer_key = config['consumer_key']
-    consumer_secret = config['consumer_secret']
-    
-    # system settings
-    shortcut_summon_hotot = config['shortcut_summon_hotot']
-
-    # display settings 
-    font_family_list = [ff.get_name() for ff in gtk.gdk.pango_context_get().list_families()]
-    font_family_list.sort()
-    font_family_used = config['font_family_used']
-    font_size = config['font_size']
-    use_native_input = 'true' if config['use_native_input'] else 'false'
-    use_native_notify = 'true' if config['use_native_notify'] else 'false'
-
-    # networks settings
-    api_base = config['api_base'];
-    
-    webv.execute_script('''
-        var prefs_obj = {
-          "remember_password": %s
-        , "consumer_key": "%s"
-        , "consumer_secret": "%s"
-        , "shortcut_summon_hotot": "%s"
-        , "font_family_list":  %s
-        , "font_family_used": "%s"
-        , "font_size": "%s"
-        , "use_native_input": %s
-        , "use_native_notify": %s
-        , "api_base": "%s"
-        };
-        ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
-        ''' % (remember_password
-            , consumer_key, consumer_secret
-            , shortcut_summon_hotot
-            , font_family_list, font_family_used, font_size
-            , use_native_input, use_native_notify
-            , api_base));
+def restore_defaults():
+    globals().update(default_config)
     pass
 
 def set(name, value):

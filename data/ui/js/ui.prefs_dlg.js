@@ -66,6 +66,12 @@ function init () {
     function (event) {
         ui.PrefsDlg.hide();
     });
+
+    $('#btn_prefs_restore_defaults').click(
+    function (event) {
+        ui.PrefsDlg.restore_defaults();
+    });
+
     return this;
 },
 
@@ -138,6 +144,11 @@ function save_prefs() {
         = $('#tbox_prefs_api_base').attr('value');
     hotot_action('config/save_prefs/'
         + utility.DB.serialize_dict(prefs_obj));
+},
+
+restore_defaults:
+function restore_defaults() {
+    hotot_action('config/restore_defaults');
 },
 
 update_font_preview:
