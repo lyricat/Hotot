@@ -53,6 +53,41 @@ function slide_to(id) {
     if (prev_sel)
         prev_sel.removeClass('selected');
     $('#idx_btn_' + id.substring(1)).addClass('selected');
+    ui.Main.actived_tweet_id = null;
+},
+
+slide_to_prev:
+function slide_to_prev() {
+    var prev_id = '';
+    var idx = ui.Slider.tweet_blocks[ui.Slider.current];
+    if (idx == 0) {
+        prev_id = '#people';
+    } else {
+        for (var k in ui.Slider.tweet_blocks) {
+            if (ui.Slider.tweet_blocks[k] == idx - 1) {
+                prev_id = k;
+                break;
+            }
+        }
+    }
+    ui.Slider.slide_to(prev_id);
+},
+
+slide_to_next:
+function slide_to_next() {
+    var next_id = '';
+    var idx = ui.Slider.tweet_blocks[ui.Slider.current];
+    if (idx == 5) {
+        next_id = '#home_timeline';
+    } else {
+        for (var k in ui.Slider.tweet_blocks) {
+            if (ui.Slider.tweet_blocks[k] == idx + 1) {
+                next_id = k;
+                break;
+            }
+        }
+    }
+    ui.Slider.slide_to(next_id);
 },
 
 };

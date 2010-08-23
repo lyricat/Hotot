@@ -176,7 +176,10 @@ function init () {
      
     $('#tbox_status').keyup(
     function (event) {
-        var key_code = event.keyCode;
+        if (event.keyCode == 27) {
+            ui.StatusBox.close();
+            return false;
+        }
         ui.StatusBox.auto_complete(event);
         ui.StatusBox.update_status_len();
     });
@@ -302,7 +305,7 @@ function auto_complete(event) {
     if (! ui.StatusBox.is_detecting_name)
         return;
     var key_code = event.keyCode;
-    if ((key_code <= 90 && 65<=key_code)
+    if ((key_code <= 90 && 65 <= key_code)
         || (48 <= key_code && key_code <= 57)
         || 95 == key_code || key_code == 8) {
         var name = ui.StatusBox.get_screen_name().substring(1);

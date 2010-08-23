@@ -120,6 +120,8 @@ var globals = {
     trim_bound: 200,
     tweet_font_size: 12,
     myself: {},
+    focus_input: false,
+    in_main_view: false,
 };
 
 jQuery(function($) {
@@ -130,13 +132,56 @@ jQuery(function($) {
     $(document).keyup(
     function (event) {
         if (event.ctrlKey && event.keyCode == 81) {
+            // <Ctrl> + q to quit
             hotot_action('system/quit');
+        } else {
+            if (globals.focus_input || !globals.in_main_view)
+                return
+            if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
+                if (event.keyCode == 116 || event.keyCode == 82) {
+                    // <F5> or 'r' to reload timeline
+                    $('#btn_reload').click();
+                } else if (event.keyCode == 72) {
+                    // 'h' to slide to prev tab
+                    ui.Slider.slide_to_prev();
+                } else if (event.keyCode == 76) {
+                    // 'l' to slide to next tab
+                    ui.Slider.slide_to_next();
+                } else if (event.keyCode == 75) {
+                    // 'k' to move to prev tweet
+                    ui.Main.move_to_tweet('prev');
+                } else if (event.keyCode == 74) {
+                    // 'j' to move to next tweet
+                    ui.Main.move_to_tweet('next');
+                } else if (event.keyCode == 67) {
+                    // 'c' to compose
+                    ui.StatusBox.open();
+                }
+            }
+
+            if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
+                if (event.keyCode == 75) {
+                    // <Shift> + 'k' to move to top
+                    ui.Main.move_to_tweet('top');
+                } else if (event.keyCode == 74) {
+                    // <Shift> + 'j' to move to bottom
+                    ui.Main.move_to_tweet('bottom');
+                } else if (event.keyCode == 119) {
+                    // '?' to 
+                    
+                }
+            }
         }
         return true;
     }).click(
     function (event) {
         ui.StatusBox.close();
     });
+
+    $('input').focus(function () {globals.focus_input = true;})
+        .blur(function () {globals.focus_input = false;});
+    $('textarea').focus(function () {globals.focus_input = true;})
+        .blur(function () {globals.focus_input = false;});
 
     $(window).resize(
     function () {
@@ -521,11 +566,11 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div id='prefs_system' class="prefs_tabs_page">
-                    <h3>- Keybinding Settings -</h3>
+                    <h3>- Global Keybinding -</h3>
                     <div class="prefs_group">
                     <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
-                        <label>Summon Hotot</label><br/>
+                        <label>Summon Hotot</label>
                         <input id="tbox_prefs_shortcut_summon_hotot" type="text"/><br/>
                     </p>
                     </div>

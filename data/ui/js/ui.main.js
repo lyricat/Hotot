@@ -9,6 +9,10 @@ since_id: 1,
 
 max_id: null,
 
+actived_tweet_id: 1,
+
+scroll_offset_record: 0,
+
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
     '#home_timeline': {
@@ -134,6 +138,7 @@ hide:
 function hide () {
     daemon.Updater.stop();
     ui.StatusBox.hide();
+    globals.in_main_view = false;
     this.me.hide();
 },
 
@@ -141,6 +146,7 @@ show:
 function show () {
     daemon.Updater.start();
     ui.StatusBox.show();
+    globals.in_main_view = true;
     this.me.show();
 },
 
@@ -307,6 +313,7 @@ function bind_tweets_action(tweets_obj, pagename) {
             tweet_obj = tweet_obj['retweeted_status'];
         }
         var id = '#' + pagename + '-' + tweet_obj.id;
+
         // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
@@ -538,6 +545,47 @@ function on_expander_click(btn, event) {
             load_thread_proc(orig_tweet_obj.in_reply_to_status_id);
         }
     }
+},
+
+move_to_tweet:
+function move_to_tweet(pos) {
+    var target = null;
+    var current = $(ui.Main.actived_tweet_id);
+    var container = $(current.parents('.tweet_block').get(0))
+
+    if (current.length == 0) {
+        ui.Main.actived_tweet_id = 
+            '#' + $(ui.Slider.current +'_tweet_block .tweet:first')
+                .attr('id');
+        var current = $(ui.Main.actived_tweet_id);
+    }
+    
+    //reset offset for keyborder fans
+    container.attr('scrollTop', ui.Main.scroll_offset_record);
+    var offset = container.attr('scrollTop');
+    if (pos == 'top') {
+        target = current.siblings('.tweet:first');
+        container.attr('scrollTop', 0);
+    } else if (pos == 'bottom') {
+        target = current.siblings('.tweet:last');
+        container.attr('scrollTop', 
+            container.children('ul').attr('clientHeight'));
+    } else if (pos == 'next') {
+        target = current.next('.tweet');
+        container.attr('scrollTop', 
+            ui.Main.scroll_offset_record + current.height());
+    } else if (pos == 'prev') {
+        target = current.prev('.tweet');
+        container.attr('scrollTop', 
+            ui.Main.scroll_offset_record - current.height());
+    }
+    if (target.length == 0)
+        return;
+    ui.Main.scroll_offset_record = container.attr('scrollTop')
+    current.removeClass('active');
+    target.addClass('active');
+    ui.Main.actived_tweet_id ='#'+ target.attr('id');
+    target.focus();
 },
 
 ctrl_btn_to_li:

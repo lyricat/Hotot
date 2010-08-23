@@ -841,12 +841,18 @@ input[type="button"]:hover, .button:hover {
 
 .tweet {
     margin: 2px 0;
-    border-bottom: #ccc solid 1px;
-    border-right: #ccc solid 1px;
+    border-width: 1px;
+    border-color: transparent #ccc #ccc transparent;
+    border-style: solid;
     min-height: 64px;
     background: #fff;
     position: relative;
 }
+
+.tweet.active {
+    border-color: #fef6a8;
+}
+
 .tweet > span.shape {
     content: "\00a0";
     display: block; /* reduce the damage in FF3.0 */
