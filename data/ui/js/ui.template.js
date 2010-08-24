@@ -25,7 +25,7 @@ tweet_t:
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
             <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
-            <li><a class="tweet_retweet tweet_ctrl_btn" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
+            <li style="{%CAN_RETWEET%}" ><a class="tweet_retweet tweet_ctrl_btn" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
             <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li>\
             <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
                 <ul class="tweet_more_menu">\
@@ -125,6 +125,8 @@ function form_tweet (tweet_obj, pagename) {
     var text = ui.Template.form_text(tweet_obj.text);
     var favorited = tweet_obj.favorited;
     var source = tweet_obj.source;
+    var protected_user = tweet_obj.user.protected;
+    var is_self = (screen_name == globals.myself.screen_name);
     var ret = '';
     var scheme = ui.Template.schemes['white'];
 
@@ -144,12 +146,13 @@ function form_tweet (tweet_obj, pagename) {
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['green'];
     }
-    if (screen_name == globals.myself.screen_name) {
+    if (is_self) {
         scheme = ui.Template.schemes['orange'];
     }
     if (retweet_name != '') {
         scheme = ui.Template.schemes['blue'];
     }
+
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
@@ -161,12 +164,15 @@ function form_tweet (tweet_obj, pagename) {
 
     ret = ret.replace(/{%IN_REPLY%}/g, 
         (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
+    ret = ret.replace(/{%CAN_RETWEET%}/g, 
+        (protected_user || is_self )? 'display:none':'');
+
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
-    ret = ret.replace(/{%CAN_DELETE%}/g, screen_name == globals.myself.screen_name? '': 'display:none');
+    ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
     return ret;
 },

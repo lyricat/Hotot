@@ -929,8 +929,6 @@ input[type="button"]:hover, .button:hover {
 
 .tweet_ctrl > li {
     display: inline-block;
-    height: 20px;
-    width: 20px;
 }
 
 .tweet_ctrl_btn {
