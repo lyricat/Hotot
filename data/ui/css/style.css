@@ -543,6 +543,44 @@ input[type="button"]:hover, .button:hover {
     border: 0 !important;
 }
 
+#action_menu {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 100px;
+    width: 40%;
+    background: rgba(0,0,0, 0.7);
+    display: none;
+    z-index: 100011;
+    color: #fff;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+}
+
+#action_menu ul {
+    list-style-type: none;
+}
+
+#action_menu li {
+    margin: 5px;
+}
+
+#action_menu li > a {
+    font-size: 14px;
+    padding: 5px 20px;
+    font-style: bold;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#action_menu li > a:hover, #action_menu li > a.selected {
+    background: #fef6a8;
+    color: #990000;
+    -webkit-border-radius: 8px;
+}
+
+
 /*===== OAuth Dialog ================================*/
 
 #dialog_mask {

@@ -7,7 +7,7 @@ running: false,
 
 watch_pages: {
       '#home_timeline': {
-          watch: true 
+          watch: false 
         , proc : function () {daemon.Updater.update_home_timeline();}
     }
     , '#mentions':  {

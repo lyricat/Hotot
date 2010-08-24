@@ -104,15 +104,7 @@ function init () {
         // for example, 
         // backspace doesn't work, can't type english characters, etc. 
         // so i only ignore event associate with program's behaviors.
-        if (key_code == 13 || key_code == 38 || key_code == 40) {
-            // But, textarea in webkitgtk have to invoke two keydown
-            // events to move cursor up and down.
-            // so i only ignore the duplicate out of detecting mode.
-            if (key_code == 38 || key_code == 40){
-                if (! ui.StatusBox.is_detecting_name)
-                    return true;
-            }
-
+        if (key_code == 13) {
             ui.StatusBox.keydown_twice_flag += 1;
             if (ui.StatusBox.keydown_twice_flag % 2 == 0) 
                 return false;
@@ -121,32 +113,6 @@ function init () {
         if (event.ctrlKey && key_code == 13) {
         // shortcut binding Ctrl+Enter
             $('#btn_update').click();
-            return false;
-        } 
-        
-        if (key_code == 38 || key_code == 40) { 
-        // up or down
-            if (! ui.StatusBox.is_detecting_name)
-                return true;
-            
-            var screen_name_list = $('#screen_name_auto_complete');
-            var items = screen_name_list.find('li');
-            items.eq(ui.StatusBox.auto_complete_hlight_idx)
-                .removeClass('hlight');
-            
-            if (key_code == 38) ui.StatusBox.auto_complete_hlight_idx -= 1;
-            if (key_code == 40) ui.StatusBox.auto_complete_hlight_idx += 1;
-            if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
-                ui.StatusBox.auto_complete_hlight_idx = items.length;
-            } 
-            if (ui.StatusBox.auto_complete_hlight_idx 
-                == items.length) {
-                ui.StatusBox.auto_complete_hlight_idx = 0;
-            } 
-            items.eq(ui.StatusBox.auto_complete_hlight_idx)
-                .addClass('hlight');
-            ui.StatusBox.auto_complete_selected 
-                = items.eq(ui.StatusBox.auto_complete_hlight_idx).text();
             return false;
         } 
 
@@ -160,7 +126,6 @@ function init () {
             ui.StatusBox.stop_screen_name_detect();
             return false;
         }
-        ui.StatusBox.auto_complete_hlight_idx = 0;
     });
     
     $('#tbox_status').keypress(
@@ -176,10 +141,38 @@ function init () {
      
     $('#tbox_status').keyup(
     function (event) {
-        if (event.keyCode == 27) {
+        var key_code = event.keyCode;
+        if (event.keyCode == 27) { //ESC to close
             ui.StatusBox.close();
             return false;
         }
+
+        if (key_code == 38 || key_code == 40) { 
+        // up or down
+            if (! ui.StatusBox.is_detecting_name)
+                return true;
+            
+            var screen_name_list = $('#screen_name_auto_complete');
+            var items = screen_name_list.find('li');
+            items.eq(ui.StatusBox.auto_complete_hlight_idx)
+                .removeClass('hlight');
+
+            if (key_code == 38) ui.StatusBox.auto_complete_hlight_idx -= 1;
+            if (key_code == 40) ui.StatusBox.auto_complete_hlight_idx += 1;
+            if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
+                ui.StatusBox.auto_complete_hlight_idx = items.length - 1;
+            } 
+            if (ui.StatusBox.auto_complete_hlight_idx == items.length) {
+                ui.StatusBox.auto_complete_hlight_idx = 0;
+            } 
+            items.eq(ui.StatusBox.auto_complete_hlight_idx)
+                .addClass('hlight');
+            ui.StatusBox.auto_complete_selected 
+                = items.eq(ui.StatusBox.auto_complete_hlight_idx).text();
+            return false;
+        } 
+        ui.StatusBox.auto_complete_hlight_idx = 0;
+
         ui.StatusBox.auto_complete(event);
         ui.StatusBox.update_status_len();
     });

@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.action_menu.js"></script>
 <script type="text/javascript">
 var layout_opts = {
         closable:				true	
@@ -87,8 +88,10 @@ function on_twitterapi_error(xhr, textStatus, errorThrown) {
     try {
         eval('var err_info='
             + xhr.responseText);
-        if (err_info.errors)
-            err_info = err_info.errors[0]
+        if (err_info.errors.constructor == Array)
+            err_info = err_info.errors[0];
+        else if (err_info.errors.constructor == String)
+            err_info = {'Error': err_info.errors};
         var err_arr = []
         for (var k in err_info) {
             err_arr.push('<label>'+ k.toUpperCase() +':</label> '
@@ -137,6 +140,9 @@ jQuery(function($) {
         } else {
             if (globals.focus_input || !globals.in_main_view)
                 return
+            if (! ui.ActionMenu.is_hide) {
+                return ui.ActionMenu.handle_keyup(event.keyCode);
+            }
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
@@ -157,12 +163,15 @@ jQuery(function($) {
                     // 'c' to compose
                     ui.StatusBox.open();
                 } else if (event.keyCode == 84) {
-                    // <Shift> + 't' to move to top
+                    // 't' to move to top
                     ui.Main.move_to_tweet('top');
                 } else if (event.keyCode == 66) {
-                    // <Shift> + 'b' to move to bottom
+                    // 'b' to move to bottom
                     ui.Main.move_to_tweet('bottom');
-                } 
+                } else if (event.keyCode == 65) {
+                    // 'a' to open action menu
+                    ui.ActionMenu.show();
+                }
             }
 
             if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
@@ -208,6 +217,7 @@ jQuery(function($) {
     ui.PrefsDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
+    ui.ActionMenu.init();
 
     lib.twitterapi.error_handle = on_twitterapi_error;
     update_tweet_block_width();
@@ -779,6 +789,11 @@ jQuery(function($) {
     </div>
 </section> <!-- END de dialog_mask -->
 
+<section id="action_menu">
+    <ul>
+        <li>dsdsds</li>
+    </ul>
+</section>
 
 <span id="user_cache"></span>
 <span id="tweet_cache"></span>

@@ -279,6 +279,8 @@ function add_tweets(json_obj, is_append, container) {
     if (json_obj.constructor == Array) { 
         for (var i = 0; i < json_obj.length; i += 1) {
             var tweet_obj = json_obj[i];
+            if (tweet_obj == null) 
+                return;
             buff.push(form_proc(tweet_obj, container.pagename));
         }
     } else {

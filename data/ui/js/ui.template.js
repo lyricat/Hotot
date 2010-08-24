@@ -31,16 +31,19 @@ tweet_t:
                 <ul class="tweet_more_menu">\
                 <li>\
                     <a class="tweet_reply_all tweet_ctrl_menu_btn"\
-                        href="javascript:void(0);">Reply All</a>\
+                        href="javascript:void(0);" \
+                        title="Reply all">Reply All</a>\
                 </li>\
                 <li>\
                     <a class="tweet_dm tweet_ctrl_menu_btn"\
-                        href="javascript:void(0);">Send Message</a>\
+                        href="javascript:void(0);" \
+                        title="Send Message to him/her">Send Message</a>\
                 </li>\
                 <li>\
                     <a class="tweet_del tweet_ctrl_menu_btn"\
                         style="{%CAN_DELETE%}"\
-                        href="javascript:void(0);">Delete</a>\
+                        href="javascript:void(0);"\
+                        title="Delete this tweet">Delete</a>\
                 </li>\
                 </ul>\
             </li>\
