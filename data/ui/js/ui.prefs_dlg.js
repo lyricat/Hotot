@@ -12,11 +12,13 @@ function init () {
     ui.PrefsDlg.id = '#prefs_dlg';
     ui.PrefsDlg.me = $('#prefs_dlg');
     ui.PrefsDlg.mask = $('#dialog_mask');
-    $('.prefs_tabs_btn').click(
+
+    $(ui.PrefsDlg.id +' .dlg_tabs_btn').click(
     function (event) {
         var page_name = $(this).attr('href');
-        $('.prefs_tabs_btn').not(this).removeClass('selected');
-        $('.prefs_tabs_page').not(page_name).hide();
+        $(ui.PrefsDlg.id +' .dlg_tabs_btn')
+            .not(this).removeClass('selected');
+        $(ui.PrefsDlg.id +' .dlg_tabs_page').not(page_name).hide();
         $(page_name).show();
         $(this).addClass('selected');
     });

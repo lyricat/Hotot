@@ -565,7 +565,7 @@ input[type="button"]:hover, .button:hover {
     margin: 10px 0;
 }
 
-.dialog p, .dialog h1, .dialog h2, .dialog h3, .dialog label {
+.dialog p, .dialog h1, .dialog h2, .dialog h3, .dialog label, .dialog table {
     text-shadow: 0 1px 0px #fff;
 }
 
@@ -648,21 +648,21 @@ input[type="button"]:hover, .button:hover {
     padding: 0;
 }
 
-#prefs_tabs {
+.dlg_tabs {
     font-size: 12px;
 }
 
-#prefs_tabs > ul {
+.dlg_tabs > ul {
     list-style-type: none;
     float: left;
 }
 
-#prefs_tabs > ul > li {
+.dlg_tabs > ul > li {
     display: block;
     width: 150px;
 }
 
-.prefs_tabs_btn {
+.dlg_tabs_btn {
     height: 22px;
     padding-left: 20px;
     display: block;
@@ -675,11 +675,11 @@ input[type="button"]:hover, .button:hover {
 }
 
 
-.prefs_tabs_btn.selected {
+.dlg_tabs_btn.selected {
     color: #000;
 }
 
-.prefs_tabs_page {
+.dlg_tabs_page {
     margin-left: 150px;
     border-left: 1px #ccc solid;
     border-bottom: 1px #ccc solid;
@@ -688,7 +688,7 @@ input[type="button"]:hover, .button:hover {
     min-height: 200px;
 }
 
-.prefs_group {
+.dlg_group {
     padding-left: 10px;
 }
 
@@ -721,9 +721,8 @@ input[type="button"]:hover, .button:hover {
 }
 
 #about_dlg_body {
-    padding: 10px 20px;
-    height: 300px;
-    overflow: auto;
+    padding: 0;
+    max-height: 500px;
 }
 
 /*===== Message Dialog ================================*/
@@ -1064,6 +1063,28 @@ input[type="button"]:hover, .button:hover {
     background: yellow;
     color: black;
     -webkit-border-radius: 3px 3px; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #d3d3d3;
+    font-style: bold;
+    border: 1px solid #ccc;
+}
+
+td {
+    text-align: left;
+    padding: 3px 10px 2px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+}
+
+tr:nth-child(odd) {
+    background: #d3d3d3;   
 }
 
 /*=====*/

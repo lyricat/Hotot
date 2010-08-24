@@ -156,19 +156,19 @@ jQuery(function($) {
                 } else if (event.keyCode == 67) {
                     // 'c' to compose
                     ui.StatusBox.open();
-                }
+                } else if (event.keyCode == 84) {
+                    // <Shift> + 't' to move to top
+                    ui.Main.move_to_tweet('top');
+                } else if (event.keyCode == 66) {
+                    // <Shift> + 'b' to move to bottom
+                    ui.Main.move_to_tweet('bottom');
+                } 
             }
 
             if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
-                if (event.keyCode == 75) {
-                    // <Shift> + 'k' to move to top
-                    ui.Main.move_to_tweet('top');
-                } else if (event.keyCode == 74) {
-                    // <Shift> + 'j' to move to bottom
-                    ui.Main.move_to_tweet('bottom');
-                } else if (event.keyCode == 119) {
+                if (event.keyCode == 119) {
                     // '?' to 
-                    
+                        
                 }
             }
         }
@@ -515,32 +515,32 @@ jQuery(function($) {
     <div id="prefs_dlg" class="dialog">
         <h2>Preferences</h2>
         <div id="prefs_dlg_body" class="dialog_body">
-            <div id="prefs_tabs">
+            <div id="prefs_tabs" class="dlg_tabs">
                 <ul>
                     <li>
                         <a id="btn_prefs_account"
                             href="#prefs_account" 
-                            class="prefs_tabs_btn">Account</a>
+                            class="dlg_tabs_btn">Account</a>
                     </li>
                     <li>
                         <a id="btn_prefs_system"
                             href="#prefs_system" 
-                            class="prefs_tabs_btn">System</a>
+                            class="dlg_tabs_btn">System</a>
                     </li>
                     <li>
                         <a id="btn_prefs_appearance"
                             href="#prefs_appearance" 
-                            class="prefs_tabs_btn">Appearance</a>
+                            class="dlg_tabs_btn">Appearance</a>
                     </li>
                     <li>
                         <a id="btn_prefs_networks"
                             href="#prefs_networks" 
-                            class="prefs_tabs_btn">Networks</a>
+                            class="dlg_tabs_btn">Networks</a>
                     </li>
                 </ul>
-                <div id='prefs_account' class="prefs_tabs_page">
+                <div id='prefs_account' class="dlg_tabs_page">
                     <h3>- Basic Auth Settings -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_remember_password"
                             type="checkbox" checked="1"/>
@@ -549,7 +549,7 @@ jQuery(function($) {
                     </div>
 
                     <h3>- OAuth Settings -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>* You MUST Regain Access Token if you change Consumer Key/Secret below.</p>
                     <p>
                         <label>Consumer Key</label><br/>
@@ -565,9 +565,9 @@ jQuery(function($) {
                     </p>
                     </div>
                 </div>
-                <div id='prefs_system' class="prefs_tabs_page">
+                <div id='prefs_system' class="dlg_tabs_page">
                     <h3>- Global Keybinding -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
                         <label>Summon Hotot</label>
@@ -575,9 +575,9 @@ jQuery(function($) {
                     </p>
                     </div>
                 </div>
-                <div id='prefs_appearance' class="prefs_tabs_page">
+                <div id='prefs_appearance' class="dlg_tabs_page">
                     <h3>- Font Settings -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>
                         <label>Font Family</label>
                         <select id="sel_prefs_font_family"
@@ -596,7 +596,7 @@ jQuery(function($) {
                     </p>
                     </div>
                     <h3>- Display Settings -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_use_native_input"
                             type="checkbox"/>
@@ -607,9 +607,9 @@ jQuery(function($) {
                     </p>
                     </div>
                 </div>
-                <div id='prefs_networks' class="prefs_tabs_page"> 
+                <div id='prefs_networks' class="dlg_tabs_page"> 
                     <h3>- API Settings -</h3>
-                    <div class="prefs_group">
+                    <div class="dlg_group">
                     <p>
                         <label>API Base</label><br/>
                         <input id="tbox_prefs_api_base" type="text"/><br/>
@@ -654,58 +654,107 @@ jQuery(function($) {
     </div>
     </div>
 
-    <!-- about dialog -->
+    <!-- help & about dialog -->
     <div id="about_dlg_border" class="dialog_border">
     <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="about_dlg" class="dialog">
-        <h2>About Hotot</h2>
+        <h2>About &amp; Help</h2>
         <div id="about_dlg_body" class="dialog_body">
-            <h3>- About -</h3>
-            <div class="prefs_group">
-            <p>
-            <strong>Hotot</strong> is a lightweight client for the <a
-            href="http://twitter.com">twitter</a> microblogging service.
-            </p>
-            <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
-            <p>
-            Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
-            </p>
-            <p>Project Site: <a href="http://lab.shellex.info/hotot">http://lab.shellex.info/hotot/</a></p>
-            </div>
+            <div id="about_tabs" class="dlg_tabs">
+                <ul>
+                    <li>
+                        <a id="btn_about_about"
+                            href="#about_about" 
+                            class="dlg_tabs_btn">About</a>
+                    </li>
+                    <li>
+                        <a id="btn_about_keyborad"
+                            href="#about_keyborad" 
+                            class="dlg_tabs_btn">Keyborad</a>
+                    </li>
+                    <li>
+                        <a id="btn_about_credits"
+                            href="#about_credits" 
+                            class="dlg_tabs_btn">Credits</a>
+                    </li>
+                    <li>
+                        <a id="btn_about_license"
+                            href="#about_license" 
+                            class="dlg_tabs_btn">License</a>
+                    </li>
+                </ul>
+                <div id="about_about" class="dlg_tabs_page">
+                    <h3>- About -</h3>
+                    <div class="dlg_group">
+                    <p>
+                    <strong>Hotot</strong> is a lightweight client for the <a
+                    href="http://twitter.com">twitter</a> microblogging service.
+                    </p>
+                    <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
+                    <p>
+                    Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
+                    </p>
+                    <p>Project Site: <a href="http://lab.shellex.info/hotot">http://lab.shellex.info/hotot/</a></p>
+                    </div>
+                </div>
+                <div id="about_keyborad" class="dlg_tabs_page">
+                    <h3>- Keyborad shortcuts -</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <table>
+                            <tbody>
+                            <tr><th>Action</th><th>Shortcut</th></tr>
+                            <tr><td>Reload</td><td>r</td></tr>
+                            <tr><td>Slide to prev page</td><td>h</td></tr>
+                            <tr><td>Slide to next page</td><td>l</td></tr>
+                            <tr><td>Move to prev tweet</td><td>j</td></tr>
+                            <tr><td>Move to next tweet</td><td>k</td></tr>
+                            <tr><td>Move to top</td><td>t</td></tr>
+                            <tr><td>Move to bottom</td><td>b</td></tr>
+                            <tr><td>Compose mode</td><td>c</td></tr>
+                            <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
+                            <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
+                            </tbody>
+                        </table>
+                    </p>
+                    </div>
 
-            <h3>- Credits -</h3>
-            <div class="prefs_group">
-            <p>
-                <label>Written by</label>:<br/>
-                - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; <br/>
-                - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
-            </p>
-            <p>
-                <label>Artwork by</label>: <br/>
-                - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
-            </p>
-            </div>
-
-            <h3>- License -</h3>
-            <div class="prefs_group">
-            <p>
-                Hotot is free software; you can redistribute it and/or
-                modify it under the terms of the GNU General Public License
-                as published by the Free Software Foundation; either version
-                2 of the License, or (at your option) any later version.
-            </p>
-            <p>
-                Hotot is distributed in the hope that it will be useful, but
-                WITHOUT ANY WARRANTY; without even the implied warranty of
-                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
-                the GNU General Public License for more details.
-            </p>
-            <p>
-                You should have received a copy of the GNU General Public
-                License along with Hotot; if not, write to the Free Software
-                Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-                MA 02110-1301, USA.  
-            </p>
+                </div>
+                <div id="about_credits" class="dlg_tabs_page">
+                    <h3>- Credits -</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <label>Written by</label>:<br/>
+                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; <br/>
+                        - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
+                    </p>
+                    <p>
+                        <label>Artwork by</label>: <br/>
+                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
+                    </p>
+                    </div>
+                </div>
+                <div id="about_license" class="dlg_tabs_page">
+                    <h3>- License -</h3>
+                    <div class="dlg_group">
+                    <p>
+    Hotot package is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+                    </p>
+                    <p>
+    This package is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+                    </p>
+                    <p>
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>http://www.gnu.org/licenses/</a>.
+                    </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="dialog_bottom">
@@ -720,7 +769,7 @@ jQuery(function($) {
     <div id="message_dlg" class="dialog">
         <h2 id="message_dlg_title">Message</h2>
         <div id="message_dlg_body" class="dialog_body">
-            <div id="message_dlg_text" class="prefs_group">
+            <div id="message_dlg_text" class="dlg_group">
             </div>
         </div>
         <div class="dialog_bottom">
