@@ -2,10 +2,23 @@
 # -*- coding:utf8 -*-
 import gtk
 import webkit
+import subprocess
 import agent
 import config
-import webbrowser
 from webkit import WebView
+
+_browsers = []
+
+def _open_webbrowser(uri):
+    '''open a URI in the registered default application
+    '''
+    global _browsers
+    _browsers = _browsers or subprocess.Popen('''which xdg-open gvfs-open
+            gnome-open exo-open google-chrome opera firefox'''.split(),
+            stdout=subprocess.PIPE).stdout.read().splitlines()
+    browser = _browsers[0] if _browsers else 'echo'
+    subprocess.Popen([browser, uri])
+    pass
 
 class MainView(WebView):
     def __init__(self):
@@ -84,7 +97,7 @@ class MainView(WebView):
         elif uri.startswith('hotot:'):
             agent.crack_hotot(uri[6:])
         else:
-            webbrowser.open_new_tab(uri)
+            _open_webbrowser(uri)
         return 1
 
     def on_load_finish(self, view, webframe):
@@ -114,7 +127,7 @@ class MainView(WebView):
 
     def on_mitem_google_activated(self, item):
         selection = self.get_selection()
-        webbrowser.open_new_tab('http://google.com/search?sourceid=chrome&ie=UTF-8&q=%s' % selection)
+        _open_webbrowser('http://google.com/search?sourceid=chrome&ie=UTF-8&q=%s' % selection)
         pass
 
     def on_button_pressed(self, widget, event):
