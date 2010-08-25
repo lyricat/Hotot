@@ -34,7 +34,6 @@ a {
 
 /* ===== header ==============================*/
 #header {
-    background: #d6d6d6;
     border-bottom: #ccc solid 1px;
     padding: 3px 5px;
     font-size: 12px;
@@ -76,6 +75,7 @@ a {
     top: 5px;
     z-index: 9999;
     display: none;
+    height: 40px;
 }
 
 #status_box.dm_mode {
@@ -1201,3 +1201,5 @@ td {
 .ic_close {
     background: transparent url(../imgs/ic48_close.png) no-repeat;
 }
+
+

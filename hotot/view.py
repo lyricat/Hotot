@@ -104,6 +104,7 @@ class MainView(WebView):
         self.load_finish_flag = True;
         agent.webv = self
         agent.apply_config()
+        agent.set_style_scheme()
         agent.load_cache()
         pass
 

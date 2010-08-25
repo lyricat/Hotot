@@ -197,6 +197,14 @@ def push_prefs():
             , api_base));
     pass
 
+def set_style_scheme():
+    style = app.window.get_style()
+    base, fg, bg, text = style.base, style.fg, style.bg, style.text
+    webv.execute_script('''
+        $('#header').css('background-color', '%s');    
+    ''' % str(bg[gtk.STATE_NORMAL]));
+    pass
+
 def load_cache():
     # load screen_names
     execute_script(db.load_screen_name())

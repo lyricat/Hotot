@@ -356,7 +356,7 @@ function close() {
         $('#status_ctrl').hide();
         $('#status_info').hide();
         $('#tbox_status').animate({ 
-            height: "50px", 
+            height: "40px", 
         }
         , 50
         , 'linear'
