@@ -313,7 +313,12 @@ function bind_tweets_action(tweets_obj, pagename) {
             tweet_obj = tweet_obj['retweeted_status'];
         }
         var id = '#' + pagename + '-' + tweet_obj.id;
-
+        $(id).click(
+        function (event) {
+            $(ui.Main.actived_tweet_id).removeClass('active');
+            ui.Main.actived_tweet_id = id;
+            $(ui.Main.actived_tweet_id).addClass('active');
+        });
         // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
