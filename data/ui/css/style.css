@@ -377,8 +377,13 @@ input[type="text"], input[type="password"], textarea{
     outline: none;
 }
 
-input[type="text"]:hover, input[type="password"]:hover, textarea:hover {
-    border:1px solid #fff;
+input[type="text"]:hover, input[type="password"]:hover, textarea:hover, input[type="checkbox"]:hover {
+    border:1px solid #8484ff;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[type="checkbox"]:focus {
+    border:1px solid #8484ff;
+    background: #a8b1fe;
 }
 
 input[type="button"], .button {
@@ -418,6 +423,10 @@ input[type="button"].default:hover, .button.default:hover {
 
 input[type="button"]:hover, .button:hover {
     -webkit-box-shadow: inset 0px -1px 10px #fff;
+}
+
+input[type="button"]:focus, .button:focus {
+    border:1px solid #8484ff;
 }
 
 /*===== Main Page ================================*/
@@ -567,6 +576,7 @@ input[type="button"]:hover, .button:hover {
 
 #action_menu li > a {
     font-size: 14px;
+    border: 1px transparent solid;
     padding: 5px 20px;
     font-style: bold;
     color: #fff;
@@ -575,8 +585,8 @@ input[type="button"]:hover, .button:hover {
 }
 
 #action_menu li > a:hover, #action_menu li > a.selected {
-    background: #fef6a8;
-    color: #990000;
+    background: #a8b1fe;
+    color: #000;
     -webkit-border-radius: 8px;
 }
 
@@ -724,6 +734,8 @@ input[type="button"]:hover, .button:hover {
     padding: 10px 10px;
     display: none;
     min-height: 200px;
+    width: 426px;
+    overflow-y: auto;
 }
 
 .dlg_group {
@@ -739,7 +751,7 @@ input[type="button"]:hover, .button:hover {
     overflow: auto;
 }
 
-/*===== Preferences Dialog ================================*/
+/*===== About Dialog ================================*/
 #about_dlg {
     display: block;
     width: 600px;
@@ -760,7 +772,10 @@ input[type="button"]:hover, .button:hover {
 
 #about_dlg_body {
     padding: 0;
-    max-height: 500px;
+}
+
+#about_keyborad {
+    max-height: 300px;
 }
 
 /*===== Message Dialog ================================*/
@@ -887,7 +902,8 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet.active {
-    border-color: #fef6a8;
+    background: #a8b1fe;
+    border-color: #8484ff;
 }
 
 .tweet > span.shape {
@@ -1038,7 +1054,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet_ctrl_menu_btn:hover {
-    background-color: #2e88c4;
+    background-color: #a8b1fe;
     color: #fff; 
 }
 
@@ -1109,9 +1125,13 @@ table {
 }
 
 th {
-    background: #d3d3d3;
+    background-color: #ccc;
     font-style: bold;
     border: 1px solid #ccc;
+}
+
+th.sub {
+    background-color: #d3d3d3 !important;
 }
 
 td {
@@ -1119,10 +1139,6 @@ td {
     padding: 3px 10px 2px;
     border: 1px solid #ccc;
     font-family: monospace;
-}
-
-tr:nth-child(odd) {
-    background: #d3d3d3;   
 }
 
 /*=====*/

@@ -555,13 +555,12 @@ function move_to_tweet(pos) {
             +'_tweet_block .tweet:first').attr('id');
     }
     var current = $(ui.Main.actived_tweet_id);
-    var container = $(current.parents('.tweet_block').get(0));
 
     if (current.length == 0) {
-        container.attr('scrollTop', 0);
-    } 
-    //reset offset for keyborder fans
-    var offset = container.attr('scrollTop');
+        return;
+    }
+
+    var container = $(current.parents('.tweet_block').get(0));
     if (pos == 'top') {
         target = container.find('.tweet:first');
     } else if (pos == 'bottom') {
@@ -576,7 +575,7 @@ function move_to_tweet(pos) {
     if (target.length == 0) {
         target = current;
     }
-    container.attr('scrollTop', target.get(0).offsetTop);
+    container.stop().animate({scrollTop: target.get(0).offsetTop}, 300);
     current.removeClass('active');
     target.addClass('active');
     ui.Main.actived_tweet_id ='#'+ target.attr('id');

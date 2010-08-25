@@ -134,9 +134,16 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
+        if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
+            if (event.keyCode == 191) {
+                // '?' to open help & about dialog
+                ui.AboutDlg.show();            
+            }
+        }
         if (event.ctrlKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
             hotot_action('system/quit');
+
         } else {
             if (globals.focus_input || !globals.in_main_view)
                 return
@@ -171,13 +178,6 @@ jQuery(function($) {
                 } else if (event.keyCode == 65) {
                     // 'a' to open action menu
                     ui.ActionMenu.show();
-                }
-            }
-
-            if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
-                if (event.keyCode == 119) {
-                    // '?' to 
-                        
                 }
             }
         }
@@ -712,19 +712,30 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <table>
-                            <tbody>
-                            <tr><th>Action</th><th>Shortcut</th></tr>
-                            <tr><td>Reload</td><td>r</td></tr>
-                            <tr><td>Slide to prev page</td><td>h</td></tr>
-                            <tr><td>Slide to next page</td><td>l</td></tr>
-                            <tr><td>Move to prev tweet</td><td>j</td></tr>
-                            <tr><td>Move to next tweet</td><td>k</td></tr>
-                            <tr><td>Move to top</td><td>t</td></tr>
-                            <tr><td>Move to bottom</td><td>b</td></tr>
-                            <tr><td>Compose mode</td><td>c</td></tr>
-                            <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
-                            <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
-                            </tbody>
+                        <tbody>
+                        <tr><th>Action</th><th>Shortcut</th></tr>
+                        <tr><th class="sub" colspan="2">Global</th></tr>
+                        <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
+                        <tr><td>Help</td><td>?</td></tr>
+
+                        <tr><th class="sub" colspan="2">Tweet List</th></tr>
+                        <tr><td>Reload</td><td>r</td></tr>
+                        <tr><td>Slide to prev page</td><td>h</td></tr>
+                        <tr><td>Slide to next page</td><td>l</td></tr>
+                        <tr><td>Move to prev tweet</td><td>k</td></tr>
+                        <tr><td>Move to next tweet</td><td>j</td></tr>
+                        <tr><td>Move to top</td><td>t</td></tr>
+                        <tr><td>Move to bottom</td><td>b</td></tr>
+                        <tr><td>Enter compose mode</td><td>c</td></tr>
+                        <tr><td>Enter action mode</td><td>a</td></tr>
+                        <tr><th class="sub" colspan="2">Compose Mode</th></tr>
+                        <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
+                        <tr><th class="sub" colspan="2">Action Mode</th></tr>
+                        <tr><td>Move to prev tweet</td><td>k</td></tr>
+                        <tr><td>Move to next tweet</td><td>j</td></tr>
+                        <tr><td>Trigger action</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
+                        <tr><td>Exit action mode</td><td>&lt;ESC&gt; or a</td></tr>
+                        </tbody>
                         </table>
                     </p>
                     </div>
