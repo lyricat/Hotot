@@ -75,7 +75,6 @@ a {
     top: 5px;
     z-index: 9999;
     display: none;
-    height: 40px;
 }
 
 #status_box.dm_mode {
