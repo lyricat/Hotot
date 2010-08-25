@@ -917,8 +917,6 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet.active {
-    margin: 0 0 0 -3px;
-    -webkit-box-shadow: 1px 1px 3px #ccc;
     background: #fff url(../imgs/tweet_indicator.png) repeat-y 0 center;
 }
 

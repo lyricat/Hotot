@@ -134,7 +134,7 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        if (event.shiftKey && !event.ctrlKey && !event.metaKey) {
+        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !globals.focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
                 ui.AboutDlg.show();            
