@@ -46,7 +46,7 @@ bind_action:
 function bind_action() {
     $('#action_menu .action_menu_item').click(
     function (event) {
-        var trigger_btn = ui.ActionMenu.btns[$(this).attr('id')]
+        var trigger_btn = ui.ActionMenu.btns[$(this).prevAll('.action_menu_item').length]
         $(trigger_btn).click();
         ui.ActionMenu.hide();
         return false;
