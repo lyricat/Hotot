@@ -34,7 +34,7 @@ a {
 
 /* ===== header ==============================*/
 #header {
-    background: #eee;
+    background: #d6d6d6;
     border-bottom: #ccc solid 1px;
     padding: 3px 5px;
     font-size: 12px;
@@ -64,7 +64,7 @@ a {
 
 #status_box {
     background-color: #2e88c4;
-    background-image: url(../imgs/welcome_bg.png);
+    background-image: url(../imgs/status_box_bg.png);
     background-repeat: no-repeat;
     background-position: right top;
     width: 310px;
@@ -182,6 +182,7 @@ a {
     line-height: 20px;
     display: inline-block;
     padding-left: 20px;
+    text-decoration:none;
 }
 
 /* ===== Buttom =================================== */
@@ -378,12 +379,12 @@ input[type="text"], input[type="password"], textarea{
 }
 
 input[type="text"]:hover, input[type="password"]:hover, textarea:hover, input[type="checkbox"]:hover {
-    border:1px solid #8484ff;
+    border:1px solid #a8b1fe;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[type="checkbox"]:focus {
-    border:1px solid #8484ff;
-    background: #a8b1fe;
+    border:1px solid #a8b1fe;
+    background: #b9d4e2;
 }
 
 input[type="button"], .button {
@@ -406,6 +407,7 @@ input[type="button"], .button {
 input[type="button"].default, .button.default {
     background: url(../imgs/default_btn_bg.png) repeat-x !important;
     text-shadow: 0 1px 0px #ffda8b !important;
+    border-color: #ffaa00 !important; 
 }
 
 input[type="button"].default:active, .button.default:active {
@@ -418,7 +420,6 @@ input[type="button"]:active, .button:active {
 
 input[type="button"].default:hover, .button.default:hover {
     -webkit-box-shadow: inset 0px -1px 10px #ffda8b;
-    color: white !important;
 }
 
 input[type="button"]:hover, .button:hover {
@@ -426,7 +427,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 input[type="button"]:focus, .button:focus {
-    border:1px solid #8484ff;
+    border:1px solid #a8b1fe;
 }
 
 /*===== Main Page ================================*/
@@ -503,36 +504,49 @@ input[type="button"]:focus, .button:focus {
 
 /*===== Welcome Page ================================*/
 #welcome_page {
-    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+    background: #5599bb url(../imgs/welcome_bg.png) no-repeat 50% 0;
     width: 100%;
     border-left: 1px #eee solid;
     border-right: 1px #aaa solid;
 }
 
 #welcome_page h1 {
-    padding: 10px 10px;
-    font-size: 30px;
-    color: #777;
-    text-shadow: 0 1px 0px #fff;
+    padding-left: 70px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 24px;
+    color: #fff;
+    background: #214365 url(../imgs/ic32_hotot.png) no-repeat 20px;
+    text-shadow: 0 -1px 0px #000;
 }
 
 #sign_in_block {
-    width: 400px;
-    margin: 50px auto 0 auto;
-    background: #ddd url(../imgs/welcome_bg.png) no-repeat 180px 100px;
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 3px #ccc;
+    width: 300px;
+    margin: 70px auto 0 auto;
+    background: #eee  no-repeat 180px 100px;
+    padding: 0px;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
     -webkit-border-radius: 8px 8px;
 }
 
 #sign_in_block h2 {
     font-size: 20px; 
-    padding-bottom: 10px;
-    color: #777;
+    padding: 10px 20px ;
+    color: #fff;
+    text-shadow: 0 -1px 0px #111;
+    text-align: center;
+    background: #214365 none no-repeat 20%;
     border-bottom: 1px #ccc solid; 
+    -webkit-border-top-left-radius: 8px 8px;
+    -webkit-border-top-right-radius: 8px 8px;
+}
+
+#sign_in_block_body {
+    margin: 10px;
 }
 
 #sign_in_block_bottom {
+    padding: 0 10px 3px 10px;
     border-top: 1px #ccc solid; 
     text-align: right;
 }
@@ -543,6 +557,7 @@ input[type="button"]:focus, .button:focus {
     display:inline-block;
     font-size: 10px;
     line-height: 20px;
+    text-decoration: none;
 }
 
 #btn_oauth_sign_in, #btn_regain_token {
@@ -818,7 +833,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_block > ul {
-    padding: 0 20px;
+    padding: 5px 20px;
     list-style-type: none;
 }
 
@@ -892,7 +907,8 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet {
-    margin: 2px 0;
+    margin: 5px 0;
+    padding-left: 5px;
     border-width: 1px;
     border-color: transparent #ccc #ccc transparent;
     border-style: solid;
@@ -902,8 +918,9 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet.active {
-    background: #a8b1fe;
-    border-color: #8484ff;
+    margin: 0 0 0 -3px;
+    -webkit-box-shadow: 1px 1px 3px #ccc;
+    background: #fff url(../imgs/tweet_indicator.png) repeat-y 0 center;
 }
 
 .tweet > span.shape {
@@ -912,7 +929,7 @@ input[type="button"]:focus, .button:focus {
     position: absolute;
     width:0;
     height:0;
-    left: 52px; /* value = - border-left-width - border-right-width */
+    left: 57px; /* value = - border-left-width - border-right-width */
     top: 22px;
     border-style: solid;
     border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
@@ -925,7 +942,7 @@ input[type="button"]:focus, .button:focus {
     position: absolute;
     width:0;
     height:0;
-    left: 53px; /* value = - border-left-width - border-right-width */
+    left: 58px; /* value = - border-left-width - border-right-width */
     top: 22px;
     border-style: solid;
     border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
@@ -1054,8 +1071,8 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_ctrl_menu_btn:hover {
-    background-color: #a8b1fe;
-    color: #fff; 
+    background-color: #b9d4e2;
+    color: #000; 
 }
 
 .tweet_meta {

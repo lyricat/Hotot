@@ -580,7 +580,9 @@ function move_to_tweet(pos) {
     if (target.length == 0) {
         target = current;
     }
-    container.stop().animate({scrollTop: target.get(0).offsetTop}, 300);
+    container.stop().animate(
+        {scrollTop: target.get(0).offsetTop - current.height()}
+        , 300);
     current.removeClass('active');
     target.addClass('active');
     ui.Main.actived_tweet_id ='#'+ target.attr('id');

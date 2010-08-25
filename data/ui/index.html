@@ -259,25 +259,30 @@ jQuery(function($) {
 
 <section id="center">
 <section id="welcome_page" class="page">
-    <h1>Greeting! </h1>
+    <h1>Hotot </h1>
     <div id="sign_in_block" class="dialog">
-        <h2>Sign in to Hotot!</h2>
+        <h2>Greeting!</h2>
+        <div id="sign_in_block_body" class="dialog_body">
+        <h3>Sign in to Hotot</h3>
+        <div class="dlg_group">
         <p>
             <label>Username:</label><br/>
-            <input id="tbox_basic_auth_username" type="text" value=""/>
-        </p>
-        <p>
+            <input id="tbox_basic_auth_username" style="width: 250px;" type="text" value=""/><br/>
             <label>Password:</label><br/>
-            <input id="tbox_basic_auth_password" type="password" value=""/>
-        </p>
-        <p>
+            <input id="tbox_basic_auth_password" style="width: 250px;" type="password" value=""/><br/>
             <input id="chk_remember_password" type="checkbox"/ checked="1"/><label>Remember Password</label><br/>
 
-            <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">Sign In</a>
+            <a id="btn_basic_auth_sign_in" class="button default" href="javascript:void(0);">Sign In</a>
         </p>
-        <p>Or use Twitter OAuth<br/>
+        </div>
+
+        <h3>Or use Twitter OAuth</h3>
+        <div class="dlg_group">
+        <p>
             <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title="Sign in with Twitter"></a>
         </p>
+        </div>
+        </div>
         <div id="sign_in_block_bottom">
             <p>
             <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">Preferences</a>
