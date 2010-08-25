@@ -53,7 +53,12 @@ function slide_to(id) {
     if (prev_sel)
         prev_sel.removeClass('selected');
     $('#idx_btn_' + id.substring(1)).addClass('selected');
-    ui.Main.actived_tweet_id = null;
+    
+    var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
+    if (first_one.length != 0) {
+        ui.Main.actived_tweet_id = '#' + first_one.attr('id');
+        ui.Main.move_to_tweet('top');
+    }
 },
 
 slide_to_prev:

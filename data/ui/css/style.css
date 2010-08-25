@@ -965,7 +965,7 @@ input[type="button"]:hover, .button:hover {
 }
 
 .tweet_ctrl > li {
-    display: inline-block;
+    display: inline;
 }
 
 .tweet_ctrl_btn {

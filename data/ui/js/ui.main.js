@@ -9,9 +9,7 @@ since_id: 1,
 
 max_id: null,
 
-actived_tweet_id: 1,
-
-scroll_offset_record: 0,
+actived_tweet_id: null,
 
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
@@ -552,38 +550,33 @@ function on_expander_click(btn, event) {
 move_to_tweet:
 function move_to_tweet(pos) {
     var target = null;
+    if (ui.Main.actived_tweet_id == null) {
+        ui.Main.actived_tweet_id = '#' + $(ui.Slider.current
+            +'_tweet_block .tweet:first').attr('id');
+    }
     var current = $(ui.Main.actived_tweet_id);
-    var container = $(current.parents('.tweet_block').get(0))
+    var container = $(current.parents('.tweet_block').get(0));
 
     if (current.length == 0) {
-        ui.Main.actived_tweet_id = 
-            '#' + $(ui.Slider.current +'_tweet_block .tweet:first')
-                .attr('id');
-        var current = $(ui.Main.actived_tweet_id);
-    }
-    
+        container.attr('scrollTop', 0);
+    } 
     //reset offset for keyborder fans
-    container.attr('scrollTop', ui.Main.scroll_offset_record);
     var offset = container.attr('scrollTop');
     if (pos == 'top') {
-        target = current.siblings('.tweet:first');
-        container.attr('scrollTop', 0);
+        target = container.find('.tweet:first');
     } else if (pos == 'bottom') {
-        target = current.siblings('.tweet:last');
-        container.attr('scrollTop', 
-            container.children('ul').attr('clientHeight'));
+        target = container.find('.tweet:last');
     } else if (pos == 'next') {
         target = current.next('.tweet');
-        container.attr('scrollTop', 
-            ui.Main.scroll_offset_record + current.height());
     } else if (pos == 'prev') {
         target = current.prev('.tweet');
-        container.attr('scrollTop', 
-            ui.Main.scroll_offset_record - current.height());
+    } else {
+        
     }
-    if (target.length == 0)
-        return;
-    ui.Main.scroll_offset_record = container.attr('scrollTop')
+    if (target.length == 0) {
+        target = current;
+    }
+    container.attr('scrollTop', target.get(0).offsetTop);
     current.removeClass('active');
     target.addClass('active');
     ui.Main.actived_tweet_id ='#'+ target.attr('id');

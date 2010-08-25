@@ -7,8 +7,6 @@ btns: [],
 
 selected_idx: 0,
 
-selected_id: '',
-
 init:
 function init() {
 },
@@ -29,12 +27,10 @@ function handle_keyup(key_code) {
             ui.ActionMenu.selected_idx = 0;
         } 
         items.eq(ui.ActionMenu.selected_idx).addClass('selected');
-        ui.ActionMenu.selected_id
-            = items.eq(ui.ActionMenu.selected_idx).attr('id');
         return false;
     }
     if (key_code == 13 || key_code == 9) {
-        var trigger_btn = ui.ActionMenu.btns[ui.ActionMenu.selected_id]
+        var trigger_btn = ui.ActionMenu.btns[ui.ActionMenu.selected_idx]
         $(trigger_btn).click();
         ui.ActionMenu.hide();
         return false;
@@ -65,39 +61,32 @@ function generate() {
     var menu_btns = $(tweet_dom_id).find('.tweet_ctrl_menu_btn');
     var arr = [];
     var idx = 0;
-    for (var i = 0; i < btns.length; i += 1, idx +=1 ) {
-        if ($(btns[i]).attr('title') ==''
-            || $(btns[i]).css('display') == 'none') 
-            continue;
-        var id = 'action_menu_item_' + idx;
-        arr.push('<li><a id="' 
-            + id
-            + '" href="javascript:void(0);" class="action_menu_item">'
-            + $(btns[i]).attr('title') 
-            + '</a></li>');
-        ui.ActionMenu.btns[id] = btns[i];
+
+    var form_items = function (btn_arr) {
+        for (var i = 0; i < btn_arr.length; i += 1 ) {
+            if ($(btn_arr[i]).attr('title') ==''
+                || $(btn_arr[i]).css('display') == 'none') 
+                continue;
+            arr.push(
+                '<li><a href="javascript:void(0);" class="action_menu_item">'
+                + $(btn_arr[i]).attr('title') 
+                + '</a></li>');
+            ui.ActionMenu.btns[idx] = btn_arr[i];
+            idx +=1;
+        }
     }
-    for (var i = 0; i < menu_btns.length; i += 1, idx +=1 ) {
-        if ($(menu_btns[i]).attr('title') ==''
-            || $(menu_btns[i]).css('display') == 'none') 
-            continue;
-        var id = 'action_menu_item_' + idx;
-        arr.push('<li><a id="' 
-            + id
-            + '" href="javascript:void(0);" class="action_menu_item">'
-            + $(menu_btns[i]).attr('title') 
-            + '</a></li>');
-        ui.ActionMenu.btns[id] = menu_btns[i];
-    }
+    form_items(btns);
+    form_items(menu_btns);
     $('#action_menu > ul').html(arr.join(''));
     $('#action_menu .action_menu_item:first').addClass('selected');
     ui.ActionMenu.selected_idx = 0;
-    ui.ActionMenu.selected_id = 'action_menu_item_0';
     ui.ActionMenu.bind_action();
 },
 
 show:
 function show() {
+    if (ui.Main.actived_tweet_id == null)
+        return;
     ui.ActionMenu.generate();
     $('#action_menu').show().focus();
     ui.ActionMenu.is_hide = false;
