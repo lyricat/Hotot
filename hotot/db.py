@@ -13,7 +13,7 @@ else:
     CAN_EVAL_SCRIPT = True
 
 
-DEFAULT_SCREEN_NAME = ['hotot']
+DEFAULT_SCREEN_NAME = ["hotot"]
 
 def unserialize_dict(str):
      return dict([(urllib.unquote(each[0]), urllib.unquote(each[1]))
@@ -29,7 +29,7 @@ def get_screen_name(webv):
             utility.DB.json(utility.DB.auto_complete_list)
         ''')
     else:
-        return DEFAULT_SCREEN_NAME
+        return json.dumps(DEFAULT_SCREEN_NAME)
 
 def dump_screen_name(screen_name_list):
     # screen_name_list = unserialize_array(str)
