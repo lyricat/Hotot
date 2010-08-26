@@ -18,11 +18,11 @@ def get_desktop_environment_name():
         return 'win'
     elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
         return 'gnome'
-    elif 'gnome' in desktop_srssion_name:
+    elif 'gnome' in desktop_session_name:
         return 'gnome'
-    elif 'unity' in desktop_srssion_name:
+    elif 'unity' in desktop_session_name:
         return 'gnome'
-    elif 'moblin' in desktop_srssion_name:
+    elif 'moblin' in desktop_session_name:
         return 'gnome'
     elif os.environ.get('KDE_FULL_SESSION'):
         return 'kde'
