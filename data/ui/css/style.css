@@ -765,6 +765,44 @@ input[type="button"]:focus, .button:focus {
     overflow: auto;
 }
 
+/*===== Profile Dialog ================================*/
+#profile_dlg {
+    display: block;
+    width: 600px;
+    background: #ddd;
+}
+
+#profile_dlg_border {
+    z-index: 10504;
+    width: 600px;
+    margin: 50px auto;
+}
+
+#profile_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#profile_dlg_body {
+    padding: 20px;
+}
+
+#profile_avator {
+    margin: 0 auto;
+    border: 1px #ccc solid;
+    padding: 1px;
+}
+
+#profile_stat * {
+    font-size: 10px;
+}
+
+.off_limit {
+    background-color: #e2c4b9 !important;
+    border-color: #febaa8 !important;
+}
+
 /*===== About Dialog ================================*/
 #about_dlg {
     display: block;
@@ -791,7 +829,6 @@ input[type="button"]:focus, .button:focus {
 #about_keyborad {
     max-height: 300px;
 }
-
 /*===== Message Dialog ================================*/
 #message_dlg {
     display: block;
