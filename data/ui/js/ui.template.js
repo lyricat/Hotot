@@ -94,7 +94,9 @@ function form_dm(dm_obj, pagename) {
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['orange'];
     }
-    var create_at_str = create_at.toLocaleTimeString()
+    var create_at_str = create_at.getHours() 
+        + ':' + create_at.getMinutes()
+        + ':' + create_at.getSeconds()
         + ' ' + create_at.toDateString();
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
@@ -143,7 +145,9 @@ function form_tweet (tweet_obj, pagename) {
             + retweet_name + '">'
             + retweet_name + '</a>, '
         : '';
-    var create_at_str = create_at.toLocaleTimeString()
+    var create_at_str = create_at.getHours() 
+        + ':' + create_at.getMinutes()
+        + ':' + create_at.getSeconds()
         + ' ' + create_at.toDateString();
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {

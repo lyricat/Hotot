@@ -165,7 +165,8 @@ def push_prefs():
     shortcut_summon_hotot = config.shortcut_summon_hotot
 
     # display settings 
-    font_family_list = [ff.get_name() for ff in gtk.gdk.pango_context_get().list_families()]
+    font_family_list = [ff.get_name()
+        for ff in gtk.gdk.pango_context_get().list_families()]
     font_family_list.sort()
     font_family_used = config.font_family_used
     font_size = config.font_size
@@ -192,7 +193,7 @@ def push_prefs():
         ''' % (remember_password
             , consumer_key, consumer_secret
             , shortcut_summon_hotot
-            , font_family_list, font_family_used, font_size
+            , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
             , api_base));
     pass
