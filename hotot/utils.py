@@ -13,7 +13,7 @@ _browser = ''
 def get_desktop_environment_name():
     screen = gtk.gdk.screen_get_default()
     window_manager_name = screen.get_window_manager_name().lower() if screen else ''
-    desktop_session_name = os.environ.get('DESKTOP_SESSION', '').lower(
+    desktop_session_name = os.environ.get('DESKTOP_SESSION', '').lower()
     if sys.platform[:3] == "win":
         return 'win'
     elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
