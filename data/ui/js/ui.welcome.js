@@ -37,8 +37,8 @@ function init () {
 
         // verify ...
         lib.twitterapi.verify(
-        function (result) { 
-            globals.myself = eval(result);
+        function (result) {
+            globals.myself = result;
             $('#my_profile_img').attr('src'
                 , globals.myself.profile_image_url);
             ui.Welcome.hide();
@@ -79,7 +79,7 @@ function init () {
             function (result) { 
             // access_token is valid
             // change to main page
-                globals.myself = eval(result);
+                globals.myself = result;
                 $('#my_profile_img').attr('src'
                     , globals.myself.profile_image_url);
 

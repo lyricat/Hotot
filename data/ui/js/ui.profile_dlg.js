@@ -81,7 +81,7 @@ function update_profile() {
 
     lib.twitterapi.update_profile(name, website, location, bio,
     function (result) {
-        globals.myself = eval(result);
+        globals.myself = result;
         ui.Notification.set('Update profile successfully!').show();
         ui.ProfileDlg.hide();
     });

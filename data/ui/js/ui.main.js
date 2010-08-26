@@ -198,7 +198,7 @@ function load_more_tweets () {
 
 load_tweets_cb:
 function load_tweets_cb(result, pagename) {
-    var json_obj = eval(result);
+    var json_obj = result;
     var container = null;
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
@@ -234,7 +234,7 @@ function load_tweets_cb(result, pagename) {
 
 load_more_tweets_cb:
 function load_more_tweets_cb(result, pagename) {
-    var json_obj = eval(result);
+    var json_obj = result;
     var container = null;
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
@@ -533,7 +533,7 @@ function on_expander_click(btn, event) {
         if (typeof prev_tweet_obj == 'undefined') {
             lib.twitterapi.show_status(tweet_id,
             function (result) {
-                var prev_tweet_obj = eval(result);
+                var prev_tweet_obj = result;
                 load_thread_proc_cb(prev_tweet_obj);
             });
         } else {

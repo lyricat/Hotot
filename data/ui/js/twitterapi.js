@@ -15,6 +15,13 @@ function error_handle(xhr, textStatus, errorThrown) {
     return;
 },
 
+normalize_result:
+function normalize_result(result) {
+    if (result.constructor == String)
+        eval('result='+result)
+    return result;
+},
+
 basic_auth:
 function basic_auth() {
     return 'Basic ' + encodeBase64(
@@ -46,11 +53,14 @@ function do_ajax(method, ajax_url, params, on_success) {
             data: signed_params,
             success: 
             function(result) {
-                if ( on_success != null)
+                if ( on_success != null) {
+                    result = lib.twitterapi.normalize_result(result);
                     on_success(result);
+                }
             },
             error:
             function(result) {
+                result = lib.twitterapi.normalize_result(result);
                 lib.twitterapi.error_handle(result);
             }
         }); 
@@ -67,10 +77,12 @@ function do_ajax(method, ajax_url, params, on_success) {
             success: 
             function(result) {
                 if ( on_success != null)
+                    result = lib.twitterapi.normalize_result(result);
                     on_success(result);
             },
             error:
             function(result) {
+                result = lib.twitterapi.normalize_result(result);
                 lib.twitterapi.error_handle(result);
             }
         }); 
