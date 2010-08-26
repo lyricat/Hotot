@@ -25,6 +25,7 @@
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
@@ -215,6 +216,7 @@ jQuery(function($) {
     ui.Slider.init();
     ui.PinDlg.init();
     ui.PrefsDlg.init();
+    ui.ProfileDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
     ui.ActionMenu.init();
@@ -231,7 +233,7 @@ jQuery(function($) {
 <header id="header">
     <div id="ctrl_panel">
         <div id="my_profile_img_wrapper" class="profile_img_wrapper">
-            <img id="my_profile_img" src="imgs/ic48_profile_image.png"/>
+            <a id="btn_my_profile" href="javascript:void(0);"><img id="my_profile_img" src="imgs/ic48_profile_image.png"/></a>
         </div>
 
         <div id="ctrl_right">
@@ -758,6 +760,10 @@ jQuery(function($) {
                         <label>Artwork by</label>: <br/>
                         - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
                     </p>
+                    <p>
+                        <label>Document by</label>: <br/>
+                        - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt;
+                    </p>
                     </div>
                 </div>
                 <div id="about_license" class="dlg_tabs_page">
@@ -785,6 +791,58 @@ jQuery(function($) {
         </div>
         <div class="dialog_bottom">
         <a id="btn_about_ok" class="button" href="javascript:void(0);">OK</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- Profile dialog -->
+    <div id="profile_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="profile_dlg" class="dialog">
+        <h2 id="profile_dlg_title">Profile</h2>
+        <div id="profile_dlg_body" class="dialog_body">
+        <div style="float:left; width: 200px;">
+            <h3>- Picture -</h3>
+            <div class="dlg_group">
+            <p style="text-align: center;">
+                <img id="profile_avator" src="#"/><br/>
+            </p>
+            </div>
+            <h3>- Stat -</h3>
+            <div class="dlg_group">
+            <p id="profile_stat">
+                <label>Join</label>: 
+                <span id="profile_join"></span><br/>
+                <label>Tweets</label>:
+                <span id="profile_tweet_cnt"></span><br/>
+                <label>Friends<label>: 
+                <span id="profile_friend_cnt"></span><br/>
+                <label>Followers<label>: 
+                <span id="profile_follower_cnt"></span><br/>
+                <label>Favourites</label>: 
+                <span id="profile_favourite_cnt"></span><br/>
+            </p>
+            </div>
+        </div>
+        <div style="margin-left: 220px">
+            <h3>- Information -</h3>
+            <div class="dlg_group">
+            <p>
+                <label>Name</label><br/>
+                <input id="tbox_profile_name" type="text"/><br/>
+                <label>Location</label><br/>
+                <input id="tbox_profile_location" type="text"/><br/>
+                <label>Website</label><br/>
+                <input id="tbox_profile_website" type="text"/><br/>
+                <label>Bio</label><br/>
+                <textarea id="tbox_profile_bio" style="height: 70px;"></textarea>
+            </p>
+            </div>
+        </div>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_profile_cancel" class="button" href="javascript:void(0);">Cancel</a>
+        <a id="btn_profile_update" class="button" href="javascript:void(0);">Update</a>
         </div>
     </div>
     </div>

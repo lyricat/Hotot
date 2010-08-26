@@ -253,6 +253,26 @@ function show_user(screen_name, on_success) {
     lib.twitterapi.get(url, params, on_success);
 },
 
+get_user_profile_image:
+function get_user_profile_image(screen_name, size) {
+    var url = '/users/profile_image/twitter.json'
+        + '?size='+ size
+        + '&screen_name=' + screen_name;
+    return lib.twitterapi.api_base + url;
+},
+
+update_profile:
+function update_profile(name, website, location, description, on_success) {
+    var url = '/account/update_profile.json';
+    var params={
+        'name': name,
+        'website': website,
+        'location': location,
+        'description': description
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
 exists_friendships:
 function show_friendships(source, target, on_success) {
     var url = '/friendships/exists.json';
