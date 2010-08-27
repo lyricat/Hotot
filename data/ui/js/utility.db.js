@@ -165,7 +165,12 @@ function json(obj) {
         ret = obj.toString();
     break;
     case String :
-        ret = obj.toString().replace(/\"/g, '\\"');
+        ret = obj.toString();
+        ret = ret.replace(/\\/g, '\\\\');
+        ret = ret.replace(/\n/g, '\\n');
+        ret = ret.replace(/\r/g, '\\r');
+        ret = ret.replace(/\t/g, '\\t');
+        ret = ret.replace(/\"/g, '\\"');
         ret = '"' + ret + '"';
     break;
     }

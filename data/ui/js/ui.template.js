@@ -12,7 +12,7 @@ reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'
 
 reg_user: new RegExp('(^|\\s)@(\\w+)', 'g'),
 
-reg_hash_tag: new RegExp('#([^\\s]+)', 'g'),
+reg_hash_tag: new RegExp('(^|\\s)#([^\\s]+)', 'g'),
 
 tweet_t: 
 '<li id="{%TWEET_ID%}" class="tweet">\
@@ -216,6 +216,9 @@ function form_text(text) {
     text = text.replace(ui.Template.reg_link, '<a href="$1">$1</a>');
     text = text.replace(ui.Template.reg_user
         , '$1<a href="hotot:action/user/$2">@$2</a>');
+    text = text.replace(ui.Template.reg_hash_tag
+        , '$1<a href="http://twitter.com/search?q=$2">#$2</a>');
+    text = text.replace(/\n/g, '<br/>');
     return text;
 },
 

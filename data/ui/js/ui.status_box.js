@@ -104,14 +104,11 @@ function init () {
         // for example, 
         // backspace doesn't work, can't type english characters, etc. 
         // so i only ignore event associate with program's behaviors.
-        if (key_code == 13) {
+        if (event.ctrlKey && key_code == 13) {
             ui.StatusBox.keydown_twice_flag += 1;
             if (ui.StatusBox.keydown_twice_flag % 2 == 0) 
                 return false;
-        }
-
-        if (event.ctrlKey && key_code == 13) {
-        // shortcut binding Ctrl+Enter
+            // shortcut binding Ctrl+Enter
             $('#btn_update').click();
             return false;
         } 
@@ -119,7 +116,6 @@ function init () {
         if (key_code == 13) {
             if (! ui.StatusBox.is_detecting_name)
                 return ;
-
             var append = ui.StatusBox.auto_complete_selected
                 .substring(ui.StatusBox.get_screen_name().length - 1)
             ui.StatusBox.append_status_text(append + ' ');
