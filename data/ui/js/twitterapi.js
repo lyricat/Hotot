@@ -18,7 +18,6 @@ error_task_table: {},
 
 error_handle:
 function error_handle(xhr, textStatus, errorThrown) {
-    alert(xhr.status);
     return;
 },
 
@@ -352,7 +351,7 @@ function create_friendships(screen_name, on_success) {
     var url = 'friendships/create.json';
     var params={
         'screen_name': screen_name,
-        'follow': true,
+        'follow': 'true',
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -371,7 +370,7 @@ function create_blocks(screen_name, on_success) {
     var url = 'blocks/create.json';
     var params={
         'screen_name': screen_name,
-        'follow': true,
+        'follow': 'true',
     };
     lib.twitterapi.post(url, params, on_success);
 },

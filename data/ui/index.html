@@ -82,39 +82,6 @@ function navigate_action(uri) {
     window.location.href = uri;
 }
 
-function on_twitterapi_error(xhr, textStatus, errorThrown) {
-    var err_infos = {};
-    var title = 'Ooops, an Error occurred!';
-    var content = '<label>Unknow Error</label>';
-    try {
-        eval('var err_info='
-            + xhr.responseText);
-        if (err_info.errors.constructor == Array)
-            err_info = err_info.errors[0];
-        else if (err_info.errors.constructor == String)
-            err_info = {'Error': err_info.errors};
-        var err_arr = []
-        for (var k in err_info) {
-            err_arr.push('<label>'+ k.toUpperCase() +':</label> '
-                +  err_info[k] + '<br/>');
-        }
-        content = '<p>'
-            + '<label>HTTP Code:</label> '
-                +  xhr.status+'<br/>'
-            + err_arr.join('')
-            + '</p>';
-    } catch (e) {
-        content = '<p>'
-            + '<label>HTTP Code:</label> '
-                +  xhr.status+'<br/>'
-            + '<label>Details:</label> '
-                + xhr.responseText
-            + '<br/></p>';
-    }
-    ui.MessageDlg.set_text(title, content);
-    ui.MessageDlg.show();
-}
-
 var globals = {
     status_hint: 'What\'s happening?',
     tweet_hint: 'What\'s happening?',
@@ -221,7 +188,6 @@ jQuery(function($) {
     ui.AboutDlg.init();
     ui.ActionMenu.init();
 
-    lib.twitterapi.error_handle = on_twitterapi_error;
     update_tweet_block_width();
 });
 </script>
