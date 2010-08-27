@@ -4,10 +4,11 @@ import json
 import config
 import time
 import base64
-import urllib
+import urllib, urllib2
 import pynotify
 import gtk
 import db
+import threading 
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -34,6 +35,8 @@ def crack_hotot(uri):
         crack_action(params)
     elif params[0] == 'cache':
         crack_cache(params)
+    elif params[0] == 'request':
+        crack_request(params)
     else:
         pass
 
@@ -91,8 +94,22 @@ def crack_system(params):
         app.quit(); 
     pass
 
-def execute_script(script):
-    return webv.execute_script(script)
+def crack_request(params):
+    raw_json = urllib.unquote(params[1])
+    request_info = dict([(k.encode('utf8'), v)
+        for k, v in json.loads(raw_json).items()])
+    args = ( request_info['uuid']
+        , request_info['method']
+        , request_info['url']
+        , request_info['params']
+        , request_info['headers'])
+    th = threading.Thread(target = request, args=args)
+    th.start() 
+    th.join()
+    pass
+
+def execute_script(scripts):
+    return webv.execute_script(scripts)
 
 def push_option(set, name, value):
     webv.execute_script('%s[%s]=%s' % (set, name, value));
@@ -210,4 +227,36 @@ def load_cache():
     # load screen_names
     execute_script(db.load_screen_name())
     pass
+
+def request(uuid, method, url, params={}, headers={}):
+    if (method == 'POST'):
+        result = _post(url, params, headers)
+    else:
+        result = _get(url, params, headers)
+    webv.execute_script('''
+        lib.twitterapi.task_table['%s'](%s);
+        ''' % (uuid, result));
+
+def _get(url, params={}, req_headers={}):
+    urlopen = urllib2.urlopen
+    request =  urllib2.Request(url, headers=req_headers)
+    ret = urlopen(request).read()
+    return ret
+
+def _post(url, params={}, req_headers={}):
+    urlopen = urllib2.urlopen
+    params = dict([(k.encode('utf8')
+            , v.encode('utf8') if type(v)==unicode else v) 
+                for k, v in params.items()])
+    request = urllib2.Request(url, urlencode(params), headers=req_headers);
+    ret = urlopen(request).read()
+    return ret
+
+def urlencode(query):
+    for k,v in query.items():
+        if not v:
+            del query[k]
+            pass
+        pass
+    return urllib.urlencode(query)
 

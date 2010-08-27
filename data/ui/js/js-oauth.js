@@ -75,7 +75,7 @@ function form_signed_url(url, token, method, params) {
 },
     
 form_signed_params:
-function form_signed_params(url, token, method, addition_params) {
+function form_signed_params(url, token, method, addition_params, use_dict) {
     var kwargs = {
         'oauth_consumer_key': jsOAuth.key,
         'oauth_signature_method': 'HMAC-SHA1',
@@ -107,7 +107,11 @@ function form_signed_params(url, token, method, addition_params) {
     var b64pad = '=';
     var signature = b64_hmac_sha1(service_key, message);
     kwargs['oauth_signature'] = signature + b64pad;
-    return jsOAuth.normalize_params(kwargs);
+    if (use_dict) {
+        return kwargs;
+    } else {
+        return jsOAuth.normalize_params(kwargs);
+    }
 },
 
 get_request_token:
