@@ -216,10 +216,10 @@ function change_mode(mode) {
 update_status:
 function update_status(status_text) {
     if (status_text.length != 0) {
+        ui.Notification.set('Updating...').show(-1);
         lib.twitterapi.update_status(status_text
             , ui.StatusBox.reply_to_id
             , ui.StatusBox.update_status_cb);
-        ui.Notification.set('Updating...').show(-1);
     }
     return this;
 },

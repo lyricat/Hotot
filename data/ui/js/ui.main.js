@@ -421,11 +421,11 @@ function on_retweet_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
 
+    ui.Notification.set('Retweeting ...').show(-1);
     lib.twitterapi.retweet_status(id, 
     function (result) {
         ui.Notification.set('Retweet Successfully!').show();
     });
-    ui.Notification.set('Retweeting ...').show(-1);
 },
 
 on_reply_all_click:
@@ -475,12 +475,12 @@ function on_del_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
 
+    ui.Notification.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
     function (result) {
         li.remove();
         ui.Notification.set('Destroy Successfully!').show();
     });
-    ui.Notification.set('Destroy ...').show(-1);
 },
 
 on_fav_click:
@@ -488,19 +488,19 @@ function on_fav_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
     if ($(btn).hasClass('unfav')) {
+        ui.Notification.set('un-favorite this tweet ...').show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             li.remove();
             ui.Notification.set('Successfully!').show();
         });
-        ui.Notification.set('un-favorite this tweet ...').show(-1);
     } else {
+        ui.Notification.set('favorite this tweet ...').show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
             $(btn).addClass('unfav');
         });
-        ui.Notification.set('favorite this tweet ...').show(-1);
     }
 },
 

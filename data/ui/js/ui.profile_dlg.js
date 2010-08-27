@@ -77,8 +77,8 @@ function update_profile() {
     var website = $('#tbox_profile_website').val();
     var location = $('#tbox_profile_location').val();
     var bio = $('#tbox_profile_bio').val();
-    ui.Notification.set('Update profile ...').show();
 
+    ui.Notification.set('Update profile ...').show();
     lib.twitterapi.update_profile(name, website, location, bio,
     function (result) {
         globals.myself = result;
