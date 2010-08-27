@@ -95,14 +95,19 @@ function request_profile() {
     var timestamp = Date.parse(globals.myself.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
+    var now = new Date();
+    var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
     $('#profile_join').text(
         create_at.toLocaleTimeString()
         + ' ' + create_at.toDateString());
     $('#profile_tweet_cnt').text(globals.myself.statuses_count);
+    $('#profile_tweet_per_day_cnt').text(
+         Math.round( globals.myself.statuses_count / differ * 100)/ 100);
+
     $('#profile_friend_cnt').text(globals.myself.friends_count);
     $('#profile_follower_cnt').text(globals.myself.followers_count);
     $('#profile_favourite_cnt').text(globals.myself.favourites_count);
-    
+     
     $('#tbox_profile_name').val(globals.myself.name);
     $('#tbox_profile_website').val(globals.myself.url);
     $('#tbox_profile_location').val(globals.myself.location);

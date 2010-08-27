@@ -186,17 +186,22 @@ function form_tweet (tweet_obj, pagename) {
 
 fill_vcard:
 function fill_vcard(user_obj, vcard_container) {
+    var create_at = new Date(Date.parse(user_obj.created_at));
+    var now = new Date();
+    var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
+    
     vcard_container.find('.profile_img')
         .attr('src', user_obj.profile_image_url);
     vcard_container.find('.screen_name').text(user_obj.screen_name);
     vcard_container.find('.name').text(user_obj.name);
     vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);
+    vcard_container.find('.tweet_per_day_cnt').text(
+        Math.round(user_obj.statuses_count / differ * 100)/ 100);
     vcard_container.find('.follower_cnt').text(user_obj.followers_count);
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
     vcard_container.find('.bio').text(user_obj.description);
     vcard_container.find('.location').text(user_obj.location);
-    vcard_container.find('.join').text(
-        new Date(Date.parse(user_obj.created_at)).toLocaleDateString());
+    vcard_container.find('.join').text(create_at.toLocaleDateString());
     if (user_obj.url) {
         vcard_container.find('.web').text(user_obj.url)
         vcard_container.find('.web').attr('href', user_obj.url);
