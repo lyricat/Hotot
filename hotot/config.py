@@ -35,7 +35,7 @@ default_config = {
     'shortcut_summon_hotot': '<Alt>C',
     'template':'index.html',
 #api url:
-    'api_base': 'http://api.twitter.com/1',
+    'api_base': 'http://api.twitter.com/1/',
 #update interval:
     'update_interval': 120,
     'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ',

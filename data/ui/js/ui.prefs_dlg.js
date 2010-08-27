@@ -144,6 +144,9 @@ function save_prefs() {
 
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');
+    if (prefs_obj['api_base'][prefs_obj['api_base'].length - 1] != '/')
+        prefs_obj['api_base'] += '/';
+
     hotot_action('config/save_prefs/'
         + utility.DB.serialize_dict(prefs_obj));
 },

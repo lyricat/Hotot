@@ -145,6 +145,8 @@ def apply_prefs():
     consumer_secret = config.consumer_secret
 
     api_base = config.api_base
+    if api_base[-1] != '/': api_base += '/'
+
     webv.execute_script('''
         $('#chk_remember_password').attr('checked', eval('%s'));
         $('body').css('font-family', '%s');

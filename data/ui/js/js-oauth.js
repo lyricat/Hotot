@@ -8,11 +8,13 @@
 if (!lib) var lib = {}
 jsOAuth = {
 
-request_token_url :'https://twitter.com/oauth/request_token',
+oauth_base: 'https://twitter.com/oauth/',
 
-access_token_url :'https://twitter.com/oauth/access_token',
+request_token_url :'request_token',
 
-user_auth_url :'https://twitter.com/oauth/authorize',
+access_token_url :'access_token',
+
+user_auth_url :'authorize',
 
 key: '',
 
@@ -121,8 +123,10 @@ function get_request_token(on_success) {
     */    
     jQuery.ajax({
         type: 'GET',
-        url: jsOAuth.request_token_url, 
-        data: jsOAuth.form_signed_params(jsOAuth.request_token_url, null, 'GET', null),
+        url: jsOAuth.oauth_base + jsOAuth.request_token_url, 
+        data: jsOAuth.form_signed_params(
+            jsOAuth.oauth_base + jsOAuth.request_token_url
+            , null, 'GET', null),
         success: function (result) {
             var token_info = result;
             jsOAuth.request_token = utility.DB.unserialize_dict(token_info)
@@ -138,7 +142,7 @@ function get_request_token(on_success) {
 
 get_auth_url:
 function get_auth_url() {
-    return jsOAuth.user_auth_url
+    return jsOAuth.oauth_base + jsOAuth.user_auth_url
         +'?oauth_token'
         +'='+jsOAuth.request_token['oauth_token'];
 },
@@ -149,11 +153,12 @@ function get_access_token(pin, on_success, on_error) {
         return ;
     }
     var addition_params = {'oauth_verifier': pin};
-    var params = jsOAuth.form_signed_url(jsOAuth.access_token_url, 
+    var params = jsOAuth.form_signed_url(
+        jsOAuth.oauth_base + jsOAuth.access_token_url, 
         jsOAuth.request_token, 'GET', addition_params);
     jQuery.ajax({
         type: 'GET',
-        url: jsOAuth.access_token_url, 
+        url: jsOAuth.oauth_base + jsOAuth.access_token_url, 
         data: params, 
         success: function (result) {
             var token_info = result;
@@ -167,22 +172,6 @@ function get_access_token(pin, on_success, on_error) {
                 on_error(xhr);
         }
     });
-},
-
-verify:
-function verify(on_success, on_error) {
-    if (this.access_token != null) {
-        var params = this.form_signed_params(
-            'https://twitter.com/account/verify_credentials.json',
-            this.access_token, 'GET', null)
-        jQuery.ajax({
-            type: 'GET',
-            url: 'https://twitter.com/account/verify_credentials.json',
-            data: params, 
-            success: on_success,
-            error: on_error,
-        });
-    }
 },
 
 };

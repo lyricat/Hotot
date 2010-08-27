@@ -8,7 +8,7 @@ username: '',
 
 password: '',
 
-api_base: 'http://api.twitter.com/1',
+api_base: 'http://api.twitter.com/1/',
 
 py_request: true,
 
@@ -138,7 +138,7 @@ function do_ajax(ajax_method, ajax_url, ajax_params, on_success) {
 
 update_status:
 function update_status(text, reply_to_id, on_success) {
-    var url = '/statuses/update.json';
+    var url = 'statuses/update.json';
     var params = {
         'status': text,
         'in_reply_to_status_id': reply_to_id,
@@ -148,19 +148,19 @@ function update_status(text, reply_to_id, on_success) {
 
 retweet_status:
 function retweet_status(retweet_id, on_success) {
-    var url = '/statuses/retweet/'+retweet_id+'.json';
+    var url = 'statuses/retweet/'+retweet_id+'.json';
     lib.twitterapi.post(url, {}, on_success);
 },
 
 destroy_status:
 function destroy_status(retweet_id, on_success) {
-    var url = '/statuses/destroy/'+retweet_id+'.json';
+    var url = 'statuses/destroy/'+retweet_id+'.json';
     lib.twitterapi.post(url, {}, on_success);
 },
 
 new_direct_messages:
 function new_direct_messages(text, user_id, screen_name, on_success) {
-    var url = '/direct_messages/new.json';
+    var url = 'direct_messages/new.json';
     var params = {
         'text': text,
         'screen_name': screen_name,
@@ -172,19 +172,19 @@ function new_direct_messages(text, user_id, screen_name, on_success) {
 
 create_favorite:
 function create_favorite(fav_id, on_success) {
-    var url = '/favorites/create/'+fav_id+'.json';
+    var url = 'favorites/create/'+fav_id+'.json';
     lib.twitterapi.post(url, {}, on_success);
 },
 
 destroy_favorite:
 function destroy_favorite(fav_id, on_success) {
-    var url = '/favorites/destroy/'+fav_id+'.json';
+    var url = 'favorites/destroy/'+fav_id+'.json';
     lib.twitterapi.post(url, {}, on_success);
 },
 
 get_home_timeline:
 function get_home_timeline(since_id, max_id, count, on_success) {
-    var url = '/statuses/home_timeline.json';
+    var url = 'statuses/home_timeline.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -199,7 +199,7 @@ function get_home_timeline(since_id, max_id, count, on_success) {
 
 get_mentions:
 function get_mentions(since_id, max_id, count, on_success) {
-    var url = '/statuses/mentions.json';
+    var url = 'statuses/mentions.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -213,7 +213,7 @@ function get_mentions(since_id, max_id, count, on_success) {
 
 get_favorites:
 function get_favorites(id, page, on_success) {
-    var url = '/favorites.json';
+    var url = 'favorites.json';
     var params={
         'id': id,
         'page': page,
@@ -224,7 +224,7 @@ function get_favorites(id, page, on_success) {
 
 get_direct_messages:
 function get_direct_messages(since_id, max_id, count, on_success) {
-    var url = '/direct_messages.json';
+    var url = 'direct_messages.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -238,7 +238,7 @@ function get_direct_messages(since_id, max_id, count, on_success) {
 
 get_retweeted_by_me:
 function get_retweeted_by_me(since_id, max_id, count, on_success) {
-    var url = '/statuses/retweeted_by_me.json';
+    var url = 'statuses/retweeted_by_me.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -266,7 +266,7 @@ function get_retweeted_to_me(since_id, max_id, count, on_success) {
 
 get_retweets_of_me:
 function get_retweets_of_me(since_id, max_id, count, on_success) {
-    var url = '/statuses/retweets_of_me.json';
+    var url = 'statuses/retweets_of_me.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -281,7 +281,7 @@ function get_retweets_of_me(since_id, max_id, count, on_success) {
 get_user_timeline:
 function get_user_timeline(user_id, screen_name, since_id, 
     max_id, count, on_success) {
-    var url = '/statuses/user_timeline.json';
+    var url = 'statuses/user_timeline.json';
     var params={
         'page': '0',
         'since_id': since_id,
@@ -299,13 +299,13 @@ function get_user_timeline(user_id, screen_name, since_id,
 
 show_status:
 function show_status(id, on_success) {
-    var url = '/statuses/show/'+id+'.json';
+    var url = 'statuses/show/'+id+'.json';
     lib.twitterapi.get(url, {}, on_success);
 },
 
 show_user:
 function show_user(screen_name, on_success) {
-    var url = '/users/show.json';
+    var url = 'users/show.json';
     var params={
         'screen_name': screen_name,
     };
@@ -314,7 +314,7 @@ function show_user(screen_name, on_success) {
 
 get_user_profile_image:
 function get_user_profile_image(screen_name, size) {
-    var url = '/users/profile_image/twitter.json'
+    var url = 'users/profile_image/twitter.json'
         + '?size='+ size
         + '&screen_name=' + screen_name;
     return lib.twitterapi.api_base + url;
@@ -322,7 +322,7 @@ function get_user_profile_image(screen_name, size) {
 
 update_profile:
 function update_profile(name, website, location, description, on_success) {
-    var url = '/account/update_profile.json';
+    var url = 'account/update_profile.json';
     var params={
         'name': name,
         'website': website,
@@ -334,7 +334,7 @@ function update_profile(name, website, location, description, on_success) {
 
 exists_friendships:
 function show_friendships(source, target, on_success) {
-    var url = '/friendships/exists.json';
+    var url = 'friendships/exists.json';
     var params={
         'user_a': source,
         'user_b': target,
@@ -344,7 +344,7 @@ function show_friendships(source, target, on_success) {
 
 create_friendships:
 function create_friendships(screen_name, on_success) {
-    var url = '/friendships/create.json';
+    var url = 'friendships/create.json';
     var params={
         'screen_name': screen_name,
         'follow': true,
@@ -354,7 +354,7 @@ function create_friendships(screen_name, on_success) {
 
 destroy_friendships:
 function destroy_friendships(screen_name, on_success) {
-    var url = '/friendships/destroy.json';
+    var url = 'friendships/destroy.json';
     var params={
         'screen_name': screen_name,
     };
@@ -363,7 +363,7 @@ function destroy_friendships(screen_name, on_success) {
 
 create_blocks:
 function create_blocks(screen_name, on_success) {
-    var url = '/blocks/create.json';
+    var url = 'blocks/create.json';
     var params={
         'screen_name': screen_name,
         'follow': true,
@@ -373,7 +373,7 @@ function create_blocks(screen_name, on_success) {
 
 destroy_blocks:
 function destroy_blocks(screen_name, on_success) {
-    var url = '/blocks/destroy.json';
+    var url = 'blocks/destroy.json';
     var params={
         'screen_name': screen_name,
     };
@@ -382,7 +382,7 @@ function destroy_blocks(screen_name, on_success) {
 
 verify:
 function verify(on_success) {
-    var url = '/account/verify_credentials.json';
+    var url = 'account/verify_credentials.json';
     lib.twitterapi.get(url, {}, on_success);
 },
 

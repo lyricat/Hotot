@@ -75,7 +75,7 @@ function init () {
         // access_token is existed
         // then test it
         // utility.Console.out('[i]access_token: ' + jsOAuth.access_token);
-            jsOAuth.verify(
+            lib.twitterapi.verify(
             function (result) { 
             // access_token is valid
             // change to main page
@@ -90,17 +90,6 @@ function init () {
                 ui.Main.show();
                 globals.layout.open('north');
                 globals.layout.open('south');
-            },
-            function (xhr) { 
-            // access_token is invalid
-            // to get a new one
-                ui.Notification.set('Failure to Authenticate ... Request new Token ...').show();
-                utility.Console.out('[i]: test fail! '+ xhr.status);
-                jsOAuth.get_request_token(
-                function (result) {
-                    ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                    ui.PinDlg.show();
-                });
             });
         }
     });
