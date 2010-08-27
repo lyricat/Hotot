@@ -36,6 +36,8 @@ default_config = {
     'template':'index.html',
 #api url:
     'api_base': 'http://api.twitter.com/1/',
+    'oauth_base': 'https://twitter.com/oauth/',
+    'use_pyrequest'
 #update interval:
     'update_interval': 120,
     'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ',

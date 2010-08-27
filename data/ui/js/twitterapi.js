@@ -12,7 +12,9 @@ api_base: 'http://api.twitter.com/1/',
 
 py_request: true,
 
-task_table: {},
+success_task_table: {},
+
+error_task_table: {},
 
 error_handle:
 function error_handle(xhr, textStatus, errorThrown) {
@@ -101,7 +103,8 @@ function do_requset(req_method, req_url, req_params, req_headers, on_success, on
     if (!req_headers) req_headers = {};
     if (lib.twitterapi.py_request) {
         var task_uuid = lib.twitterapi.generate_uuid();
-        lib.twitterapi.task_table[task_uuid] = on_success;
+        lib.twitterapi.success_task_table[task_uuid] = on_success;
+        lib.twitterapi.error_task_table[task_uuid] = on_error;
         hotot_action('request/' +
             encodeURIComponent(utility.DB.json(
                 { uuid: task_uuid
@@ -141,10 +144,10 @@ function do_requset(req_method, req_url, req_params, req_headers, on_success, on
 update_status:
 function update_status(text, reply_to_id, on_success) {
     var url = 'statuses/update.json';
-    var params = {
-        'status': text,
-        'in_reply_to_status_id': reply_to_id,
-    };
+    var params = {'status': text};
+    if (reply_to_id) {
+        params['in_reply_to_status_id'] = reply_to_id;
+    }
     lib.twitterapi.post(url, params, on_success);
 },
 

@@ -238,10 +238,10 @@ def request(uuid, method, url, params={}, headers={}):
 
     scripts = ''
     if result[0] != '{' and result[0] != '[':
-        scripts = '''lib.twitterapi.task_table['%s']('%s');
+        scripts = '''lib.twitterapi.success_task_table['%s']('%s');
         ''' % (uuid, result)
     else:
-        scripts = '''lib.twitterapi.task_table['%s'](%s);
+        scripts = '''lib.twitterapi.success_task_table['%s'](%s);
         ''' % (uuid, result)
     gobject.idle_add(webv.execute_script, scripts)
     pass
