@@ -121,7 +121,7 @@ def write_to_disk(prefs):
 def load_token():
     config = getconf()
     if not os.path.exists(config['tokenfile']):
-        return 'null'
+        return None
     token = pickle.loads(file(config['tokenfile']).read())
     return token
 

@@ -120,24 +120,26 @@ get_request_token:
 function get_request_token(on_success) {
     /*
     jsOAuth.form_signed_url(jsOAuth.request_token_url, null, 'GET', null),
-    */    
-    jQuery.ajax({
-        type: 'GET',
-        url: jsOAuth.oauth_base + jsOAuth.request_token_url, 
-        data: jsOAuth.form_signed_params(
-            jsOAuth.oauth_base + jsOAuth.request_token_url
-            , null, 'GET', null),
-        success: function (result) {
+    */   
+    lib.twitterapi.do_requset(
+        'GET'
+        , jsOAuth.oauth_base 
+            + jsOAuth.request_token_url + '?'
+            + jsOAuth.form_signed_params(
+                jsOAuth.oauth_base + jsOAuth.request_token_url
+                , null, 'GET', null)
+        , {}
+        , {}
+        , function (result) {
             var token_info = result;
             jsOAuth.request_token = utility.DB.unserialize_dict(token_info)
             // utility.Console.out('[i]req_token: ' + token_info);
             // utility.Console.out('[i]auth_url: ');
             // utility.Console.href_out(jsOAuth.get_auth_url());
-            if (on_success!=null) {
+            if (on_success != null) {
                 on_success(result);
             }
-        },
-    });
+        });
 },
 
 get_auth_url:
@@ -153,25 +155,26 @@ function get_access_token(pin, on_success, on_error) {
         return ;
     }
     var addition_params = {'oauth_verifier': pin};
-    var params = jsOAuth.form_signed_url(
+    var params = jsOAuth.form_signed_params(
         jsOAuth.oauth_base + jsOAuth.access_token_url, 
         jsOAuth.request_token, 'GET', addition_params);
-    jQuery.ajax({
-        type: 'GET',
-        url: jsOAuth.oauth_base + jsOAuth.access_token_url, 
-        data: params, 
-        success: function (result) {
+    lib.twitterapi.do_requset(
+        'GET'
+        , jsOAuth.oauth_base + jsOAuth.access_token_url + '?' + params
+        , {}
+        , {}
+        , function (result) {
             var token_info = result;
             jsOAuth.access_token = utility.DB.unserialize_dict(token_info)
             // utility.Console.out('[i]acc_token: ' + token_info);
             if (on_success != null)
                 on_success(result);
-        },
-        error: function (xhr) {
+        }
+        , function (xhr) {
             if (on_error != null) 
                 on_error(xhr);
         }
-    });
+    );
 },
 
 };

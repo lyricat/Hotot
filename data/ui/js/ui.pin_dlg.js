@@ -29,7 +29,7 @@ function init () {
             // get a new access_token, dump it to disk.
             hotot_action(
                 'token/dump/'
-                + utility.DB.serialize_dict(jsOAuth.access_token));
+                +encodeURIComponent(utility.DB.json(jsOAuth.access_token)));
             // change to main view
             ui.PinDlg.hide();
         },

@@ -63,7 +63,8 @@ function init () {
     function(event) {
         lib.twitterapi.use_oauth = true;
         ui.Notification.set('Begin to OAuth ...').show();
-        if (jsOAuth.access_token == null) { 
+        if (jsOAuth.access_token == null
+            || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
         // then get a new one.
             jsOAuth.get_request_token(
@@ -82,7 +83,6 @@ function init () {
                 globals.myself = result;
                 $('#my_profile_img').attr('src'
                     , globals.myself.profile_image_url);
-
                 ui.Notification.set('Authentication OK!').show();
                 utility.Console.out('[i]: test pass! '+ result);
                 ui.PinDlg.hide();

@@ -66,9 +66,9 @@ def crack_config(params):
 def crack_token(params):
     if params[1] == 'load':
         token = config.load_token()
-        push_option('lib.twitterapi', 'access_token', json.loads(token))
+        push_option('lib.twitterapi', 'access_token', json.dumps(token))
     elif params[1] == 'dump':
-        config.dump_token(params[2])
+        config.dump_token(json.loads(urllib.unquote(params[2])))
     pass
     
 def crack_cache(params):
@@ -164,11 +164,11 @@ def apply_prefs():
 def apply_config():
     default_username = config.default_username
     default_password = config.default_password
-    access_token = config.load_token()
+    access_token = json.dumps(config.load_token())
     webv.execute_script('''
         $('#tbox_basic_auth_username').attr('value', '%s');
         $('#tbox_basic_auth_password').attr('value', '%s');
-        jsOAuth.access_token = utility.DB.unserialize_dict('%s');
+        jsOAuth.access_token = %s;
         ''' % (default_username, default_password
             , access_token))
     apply_prefs()
@@ -235,9 +235,16 @@ def request(uuid, method, url, params={}, headers={}):
         result = _post(url, params, headers)
     else:
         result = _get(url, params, headers)
-    gobject.idle_add(webv.execute_script
-        , '''lib.twitterapi.task_table['%s'](%s);
-        ''' % (uuid, result));
+
+    scripts = ''
+    if result[0] != '{' and result[0] != '[':
+        scripts = '''lib.twitterapi.task_table['%s']('%s');
+        ''' % (uuid, result)
+    else:
+        scripts = '''lib.twitterapi.task_table['%s'](%s);
+        ''' % (uuid, result)
+    gobject.idle_add(webv.execute_script, scripts)
+    pass
 
 def _get(url, params={}, req_headers={}):
     urlopen = urllib2.urlopen

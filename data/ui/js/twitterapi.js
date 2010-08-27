@@ -43,96 +43,98 @@ function basic_auth() {
 
 get:
 function get(ajax_url, ajax_params, on_success) {
-    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, on_success);
+    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {}, 
+        on_success,
+        function(result) {
+            lib.twitterapi.error_handle(result);
+        }
+    );
 },
 
 post:
 function post(ajax_url, ajax_params, on_success) {
-    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, on_success);
+    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {}, 
+        on_success,
+        function(result) {
+            lib.twitterapi.error_handle(result);
+        }
+    );
+},
+do_ajax:
+function do_ajax(method, url, params, headers, on_success, on_error) {
+    if (lib.twitterapi.use_oauth) {
+        var signed_params = jsOAuth.form_signed_params(
+            lib.twitterapi.api_base + url
+            , jsOAuth.access_token
+            , method
+            , params
+            , lib.twitterapi.py_request && method == 'POST');
+        if (method == 'GET') {
+            url = url + '?' + signed_params;
+            params = {};
+        } else {
+            params = signed_params
+        }
+        lib.twitterapi.do_requset(
+            method
+            , lib.twitterapi.api_base + url
+            , params
+            , headers
+            , on_success
+            , on_error
+            );
+    } else {
+        headers['Authorization']= lib.twitterapi.basic_auth();
+        lib.twitterapi.do_requset(
+            method
+            , lib.twitterapi.api_base + url
+            , params
+            , headers
+            , on_success
+            , on_error
+            );
+    }
 },
 
-do_ajax:
-function do_ajax(ajax_method, ajax_url, ajax_params, on_success) {
-    if (lib.twitterapi.use_oauth) {
-        // utility.Console.out('PARAMS:'+signed_params);
-        var signed_params = jsOAuth.form_signed_params(
-            lib.twitterapi.api_base + ajax_url
-            , jsOAuth.access_token
-            , ajax_method
-            , ajax_params
-            , lib.twitterapi.py_request && ajax_method == 'POST');
-
-        if (lib.twitterapi.py_request) {
-            var task_uuid = lib.twitterapi.generate_uuid();
-            lib.twitterapi.task_table[task_uuid] = on_success;
-
-            var req_url = lib.twitterapi.api_base + ajax_url
-            if (ajax_method == 'GET') {
-                req_url = req_url + '?' + signed_params;
-            }
-            hotot_action('request/' +
-                encodeURIComponent(utility.DB.json(
-                    { uuid: task_uuid
-                    , url: req_url
-                    , params: signed_params
-                    , method: ajax_method
-                    , headers: {} })));
-        } else {
-            jQuery.ajaxQueue({    
-                type: ajax_method,
-                url: lib.twitterapi.api_base + ajax_url,
-                data: signed_params,
-                success: 
-                function(result) {
-                    if ( on_success != null) {
-                        result = lib.twitterapi.normalize_result(result);
-                        on_success(result);
-                    }
-                },
-                error:
-                function(result) {
-                    result = lib.twitterapi.normalize_result(result);
-                    lib.twitterapi.error_handle(result);
-                }
-            }); 
-        }
+do_requset:
+function do_requset(req_method, req_url, req_params, req_headers, on_success, on_error) {
+    if (!req_headers) req_headers = {};
+    if (lib.twitterapi.py_request) {
+        var task_uuid = lib.twitterapi.generate_uuid();
+        lib.twitterapi.task_table[task_uuid] = on_success;
+        hotot_action('request/' +
+            encodeURIComponent(utility.DB.json(
+                { uuid: task_uuid
+                , url: req_url
+                , params: req_params
+                , method: req_method
+                , headers: req_headers })));
     } else {
-        if (lib.twitterapi.py_request) {
-            var task_uuid = lib.twitterapi.generate_uuid();
-            lib.twitterapi.task_table[task_uuid] = on_success;
-
-            hotot_action('request/' + 
-                encodeURIComponent(utility.DB.json(
-                    { uuid: task_uuid
-                    , url: lib.twitterapi.api_base + ajax_url
-                    , params: ajax_params
-                    , method: ajax_method
-                    , headers: 
-                        {'Authorization': lib.twitterapi.basic_auth()}
-                    })));
-        } else {
-            jQuery.ajaxQueue({    
-                type: ajax_method,
-                url: lib.twitterapi.api_base + ajax_url,
-                data: ajax_params,
-                beforeSend: 
-                function(xhr) {
-                    xhr.setRequestHeader('Authorization', 
-                        lib.twitterapi.basic_auth());
-                },
-                success: 
-                function(result) {
-                    if ( on_success != null)
-                        result = lib.twitterapi.normalize_result(result);
-                        on_success(result);
-                },
-                error:
-                function(result) {
-                    result = lib.twitterapi.normalize_result(result);
-                    lib.twitterapi.error_handle(result);
+        jQuery.ajaxQueue({    
+            type: ajax_method,
+            url: lib.twitterapi.api_base + ajax_url,
+            data: signed_params,
+            beforeSend: 
+            function(xhr) {
+                for (var k in req_headers) {
+                    xhr.setRequestHeader(k, req_headers[k]);
                 }
-            }); 
-        }
+            },
+            success: 
+            function(result) {
+                if ( on_success != null) {
+                    result = lib.twitterapi.normalize_result(result);
+                    on_success(result);
+                }
+            },
+            error: 
+            function (result) {
+                if ( on_error != null) {
+                    result = lib.twitterapi.normalize_result(result);
+                    on_error(result);
+                }
+            }
+        }); 
     }
 },
 
