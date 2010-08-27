@@ -9,6 +9,7 @@ import pynotify
 import gtk
 import db
 import threading 
+import gobject
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -105,7 +106,6 @@ def crack_request(params):
         , request_info['headers'])
     th = threading.Thread(target = request, args=args)
     th.start() 
-    th.join()
     pass
 
 def execute_script(scripts):
@@ -233,8 +233,8 @@ def request(uuid, method, url, params={}, headers={}):
         result = _post(url, params, headers)
     else:
         result = _get(url, params, headers)
-    webv.execute_script('''
-        lib.twitterapi.task_table['%s'](%s);
+    gobject.idle_add(webv.execute_script
+        , '''lib.twitterapi.task_table['%s'](%s);
         ''' % (uuid, result));
 
 def _get(url, params={}, req_headers={}):

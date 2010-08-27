@@ -10,7 +10,7 @@ password: '',
 
 api_base: 'http://api.twitter.com/1',
 
-py_request: false,
+py_request: true,
 
 task_table: {},
 

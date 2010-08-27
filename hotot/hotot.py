@@ -179,6 +179,7 @@ class MainWindow:
         pass
 
 def main():
+    gtk.gdk.threads_init()
     config.loads();
     try:
         import dl
@@ -189,7 +190,6 @@ def main():
     agent.init_notify()
     app = MainWindow()
     agent.app = app
-    gtk.gdk.threads_enter()
     if HAS_INDICATOR:
         #TODO the icon is only work when installed to /usr/share/icons/hicolor/
         indicator = appindicator.Indicator('hotot',
@@ -198,6 +198,7 @@ def main():
         indicator.set_status(appindicator.STATUS_ACTIVE)
         indicator.set_attention_icon(config.get_ui_object('imgs/ic64_hotot.png'))
         indicator.set_menu(app.menu_tray)
+    gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()
 
