@@ -256,7 +256,7 @@ function get_retweeted_by_me(since_id, max_id, count, on_success) {
 
 get_retweeted_to_me:
 function get_retweeted_to_me(since_id, max_id, count, on_success) {
-    var url = '/statuses/retweeted_to_me.json';
+    var url = 'statuses/retweeted_to_me.json';
     var params={
         'page': '0',
         'since_id': since_id,

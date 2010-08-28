@@ -97,7 +97,6 @@ def crack_system(params):
 
 def crack_request(params):
     raw_json = urllib.unquote(params[1])
-    print raw_json
     request_info = dict([(k.encode('utf8'), v)
         for k, v in json.loads(raw_json).items()])
     args = ( request_info['uuid']

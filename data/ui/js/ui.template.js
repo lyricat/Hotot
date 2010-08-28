@@ -15,7 +15,7 @@ reg_user: new RegExp('(^|\\s)@(\\w+)', 'g'),
 reg_hash_tag: new RegExp('(^|\\s)#([^\\s]+)', 'g'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="tweet">\
+'<li id="{%TWEET_ID%}" class="tweet" retweet_id="{%RETWEET_ID%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
     </div>\
@@ -114,11 +114,14 @@ function form_dm(dm_obj, pagename) {
 form_tweet:
 function form_tweet (tweet_obj, pagename) {
     var retweet_name = '';
+    var retweet_str = '';
+    var retweet_id = '';
+    var id = tweet_obj.id;
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         retweet_name = tweet_obj['user']['screen_name'];
         tweet_obj = tweet_obj['retweeted_status'];
+        retweet_id = tweet_obj.id;
     }
-    var id = tweet_obj.id;
     var timestamp = Date.parse(tweet_obj.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
@@ -140,11 +143,6 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var retweet_str = (retweet_name != '') ?
-        'retweeted by <a href="hotot:action/user/'
-            + retweet_name + '">'
-            + retweet_name + '</a>, '
-        : '';
     var create_at_str = create_at.getHours() 
         + ':' + create_at.getMinutes()
         + ':' + create_at.getSeconds()
@@ -158,11 +156,14 @@ function form_tweet (tweet_obj, pagename) {
     }
     if (retweet_name != '') {
         scheme = ui.Template.schemes['blue'];
+        retweet_str = 'retweeted by <a href="hotot:action/user/'
+            + retweet_name + '">'
+            + retweet_name + '</a>, ';
     }
 
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
-    ret = ret.replace(/{%USER_ID%}/g
-        , pagename+'-'+id+'-'+ user_id);
+    ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
+    ret = ret.replace(/{%RETWEET_ID%}/g, retweet_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);

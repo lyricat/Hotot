@@ -264,7 +264,12 @@ add_tweets:
 function add_tweets(json_obj, is_append, container) {
 /* Add one or more tweets to a specifed container.
  * - Choose a template-filled function which correspond to the json_obj and
- *   Add it to the container with a specifed method (append or prepend).
+ *   Add it to the container in order of tweets' id (in order of post time).
+ *   ** Note that as some tweets was retweeted by users, whose appearance is
+ *   different, include timestamp, text, screen_name, etc. However, the DOM
+ *   id of them are the original id and they have a new DOM attribute
+ *   'retweet_id' which should be used to handle retweeted tweets by Hotot.
+ *
  * - Argument container is the jQuery object where the json_obj will be add.
  *   The container.pagename indicate the pagename of the container. If the
  *   tweet in a thread, the container.pagename should be assigned with the
@@ -273,26 +278,71 @@ function add_tweets(json_obj, is_append, container) {
     var form_proc = ui.Template.form_tweet;
     if (container.pagename == 'direct_messages')
         form_proc = ui.Template.form_dm
-    var buff = [];
-    if (json_obj.constructor == Array) { 
-        for (var i = 0; i < json_obj.length; i += 1) {
-            var tweet_obj = json_obj[i];
-            if (tweet_obj == null) 
+
+    var sort_tweets = function (tweets) {
+        /* sort tweets in order of id. smaller first.
+         * */
+        tweets.sort(function (a, b) {
+            return a.id > b.id; 
+        });
+        return tweets;
+    };
+
+    var get_next_tweet_dom = function (current) {
+        /* return the next tweet DOM of current. 
+         * if current is null, return the first tweet DOM
+         * if no tweet at the next position, return null
+         * */
+        var next_one = null;
+        if (current == null) {
+            next_one = container.find('.tweet:first');
+        } else {
+            next_one = $(current).next('.tweet');
+        }
+        if (next_one.length == 0) next_one = null;
+        return next_one;
+    };
+    
+    var insert_tweet = function (tweet) {
+        /* insert this tweet into a correct position.
+         * in the order of id.
+         * and drop duplicate tweets who has same id.
+         * */
+        var this_one = tweet;
+        var next_one = get_next_tweet_dom(null);
+        while (true) {
+            if (next_one == null) {
+                // insert to end of container 
+                container.append(form_proc(this_one, container.pagename));
                 return;
-            buff.push(form_proc(tweet_obj, container.pagename));
+            } else {
+                var next_one_id 
+                    = ui.Main.normalize_id($(next_one).attr('id'));
+                if (next_one_id < this_one.id) {
+                    $(next_one).before(
+                        form_proc(this_one, container.pagename)
+                    );
+                    return;
+                } else if (next_one_id == this_one.id) {
+                    // simply drop the duplicate tweet.
+                    return;
+                } else {
+                    next_one = get_next_tweet_dom(next_one);
+                }
+            }
+        }
+    };
+
+    // insert tweets.
+    if (json_obj.constructor == Array) {
+        json_obj = sort_tweets(json_obj);
+        for (var i = 0; i < json_obj.length; i += 1) {
+            insert_tweet(json_obj[i]);
         }
     } else {
-        buff.push(form_proc(json_obj, container.pagename));
+        insert_tweet(json_obj);
     }
-    // add 
-    var html = buff.join('');
-    if ( !is_append ) {
-        //$(pagename + '_tweet_block > ul').prepend(html);
-        container.prepend(html);
-        ui.Main.trim_page(container);
-    } else {
-        container.append(html);
-    }
+
     // dumps to cache
     utility.DB.dump_tweets(json_obj);
     // bind events
@@ -309,9 +359,6 @@ function trim_page(container) {
 bind_tweets_action:
 function bind_tweets_action(tweets_obj, pagename) {
     var bind_sigle_action = function (tweet_obj) {
-        if (tweet_obj.hasOwnProperty('retweeted_status')) {
-            tweet_obj = tweet_obj['retweeted_status'];
-        }
         var id = '#' + pagename + '-' + tweet_obj.id;
         $(id).click(
         function (event) {
@@ -319,7 +366,6 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.actived_tweet_id = id;
             $(ui.Main.actived_tweet_id).addClass('active');
         });
-        // utility.Console.out(id);
         $(id).find('.tweet_reply').click(
         function (event) {
             ui.Main.on_reply_click(this, event);
@@ -390,7 +436,9 @@ function bind_tweets_action(tweets_obj, pagename) {
 on_reply_click:
 function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    utility.Console.out(id);
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.reply_to_id = id;
@@ -405,7 +453,8 @@ function on_reply_click(btn, event) {
 on_rt_click:
 function on_rt_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
 
     ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
@@ -419,7 +468,8 @@ function on_rt_click(btn, event) {
 on_retweet_click:
 function on_retweet_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
     ui.Notification.set('Retweeting ...').show(-1);
     lib.twitterapi.retweet_status(id, 
@@ -431,7 +481,8 @@ function on_retweet_click(btn, event) {
 on_reply_all_click:
 function on_reply_all_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
     var who_names = [ '@' + tweet_obj.user.screen_name +' '];
@@ -458,7 +509,8 @@ function on_reply_all_click(btn, event) {
 on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
     var user = tweet_obj.sender? tweet_obj.sender : tweet_obj.user;
 
@@ -473,7 +525,8 @@ function on_dm_click(btn, event) {
 on_del_click:
 function on_del_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
     ui.Notification.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
@@ -486,7 +539,8 @@ function on_del_click(btn, event) {
 on_fav_click:
 function on_fav_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     if ($(btn).hasClass('unfav')) {
         ui.Notification.set('un-favorite this tweet ...').show(-1);
         lib.twitterapi.destroy_favorite(id, 
@@ -507,7 +561,8 @@ function on_fav_click(btn, event) {
 on_expander_click:
 function on_expander_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = ui.Main.normalize_id(li.attr('id'));
+    var id = li.attr('retweet_id') == ''? 
+        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     var orig_tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
     var thread_container = $(li.find('.tweet_thread')[0]);

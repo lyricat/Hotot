@@ -30,7 +30,7 @@ function dump_tweets(json_obj) {
         for (var i = 0; i < json_obj.length; i += 1) {
             var tweet_obj = json_obj[i]
             if (tweet_obj.hasOwnProperty('retweeted_status')) {
-                tweet_obj = tweet_obj['retweeted_status'];
+                dump_single_tweet(tweet_obj['retweeted_status']);
             }
             dump_single_tweet(tweet_obj);
         }
