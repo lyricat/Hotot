@@ -65,9 +65,9 @@ limit_test:
 function limit_test(widget, limit) {
     ui.ProfileDlg.is_change = true;
     if (limit < $(widget).val().length) {
-        $(widget).addClass('off_limit');
+        $(widget).addClass('test_fail');
     } else {
-        $(widget).removeClass('off_limit');
+        $(widget).removeClass('test_fail');
     }
 },
 

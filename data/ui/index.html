@@ -530,7 +530,8 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_remember_password"
-                            type="checkbox" checked="1"/>
+                            type="checkbox" 
+                            title="Remember Password" checked="1"/>
                         <label>Remember Password</label><br/>
                     </p>
                     </div>
@@ -540,9 +541,11 @@ jQuery(function($) {
                     <p>* You MUST Regain Access Token if you change Consumer Key/Secret below.</p>
                     <p>
                         <label>Consumer Key</label><br/>
-                        <input id="tbox_prefs_consumer_key" type="text"/><br/>
+                        <input id="tbox_prefs_consumer_key"
+                            title="Consumer Key" type="text"/><br/>
                         <label>Consumer Secret</label><br/>
-                        <input id="tbox_prefs_consumer_secret" type="text"/><br/>
+                        <input id="tbox_prefs_consumer_secret" 
+                            title="Consumer Secret" type="text"/><br/>
                     </p>
                     <p>
                         <label>Regain Access Token</label><br/>
@@ -558,7 +561,8 @@ jQuery(function($) {
                     <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
                         <label>Summon Hotot</label>
-                        <input id="tbox_prefs_shortcut_summon_hotot" type="text"/><br/>
+                        <input id="tbox_prefs_shortcut_summon_hotot" 
+                            title="Summon Hot Key" type="text"/><br/>
                     </p>
                     </div>
                 </div>
@@ -568,14 +572,14 @@ jQuery(function($) {
                     <p>
                         <label>Font Family</label>
                         <select id="sel_prefs_font_family"
-                            style="width: 85px">
+                            title="Font Family" style="width: 85px">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select> 
                         <label>Font Size</label>
-                        <input id="tbox_prefs_font_size"
+                        <input id="tbox_prefs_font_size" title="Font Size" 
                             style="width:50px" type="text"/>
                         <label>px</label><br/>
                         <label>Preview</label>
@@ -586,10 +590,10 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_use_native_input"
-                            type="checkbox"/>
+                            title="Use Native Input" type="checkbox"/>
                         <label>Use Native Input Dialog</label><br/>
                         <input id="chk_prefs_use_native_notify"
-                            type="checkbox"/>
+                            title="Use Native Notify" type="checkbox"/>
                         <label>Use Native Notify System</label><br/>
                     </p>
                     </div>
@@ -599,9 +603,11 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <label>API Base</label><br/>
-                        <input id="tbox_prefs_api_base" type="text"/><br/>
+                        <input id="tbox_prefs_api_base" 
+                            title="API Base" type="text"/><br/>
                         <label>OAuth Base</label><br/>
-                        <input id="tbox_prefs_oauth_base" type="text"/><br/>
+                        <input id="tbox_prefs_oauth_base" 
+                            title="OAuth Base" type="text"/><br/>
                     </p>
                     </div>
                     <h3>- Proxy Settings -</h3>
@@ -609,25 +615,25 @@ jQuery(function($) {
                     <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
                         <input id="chk_prefs_use_http_proxy"
-                            type="checkbox"/>
+                            title="Use HTTP Proxy" type="checkbox"/>
                         <label>Use HTTP Proxy</label><br/>
                         <label>Host</label>
                         <input id="tbox_prefs_http_proxy_host" 
-                            style="width: 150px;" type="text"/>
+                            title="HTTP Proxy Host" style="width: 150px;" type="text"/>
                         <label>Port</label>
                         <input id="tbox_prefs_http_proxy_port" 
-                            style="width: 50px;" type="text"/><br/>
-                        <!--
+                            title="HTTP Proxy Port" style="width: 50px;" type="text"/><br/>
+    
                         <input id="chk_prefs_use_socks_proxy"
-                            type="checkbox"/>
-                        <label>Use Socks Proxy</label><br/>
+                            title="Use Socks Proxy" type="checkbox"/>
+                        <label>Use Socks Proxy (don't check it)</label><br/>
                         <label>Host</label>
                         <input id="tbox_prefs_socks_proxy_host" 
-                            style="width: 150px;" type="text"/>
+                            title="Socks Proxy Host" style="width: 150px;" type="text"/>
                         <label>Port</label>
                         <input id="tbox_prefs_socks_proxy_port" 
-                            style="width: 50px;" type="text"/><br/>
-                        -->
+                            title="Socks Proxy Port" style="width: 50px;" type="text"/><br/>
+                        
                     </p>
                     </div>
                 </div>

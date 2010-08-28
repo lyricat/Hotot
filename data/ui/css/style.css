@@ -798,7 +798,7 @@ input[type="button"]:focus, .button:focus {
     font-size: 10px;
 }
 
-.off_limit {
+.test_fail {
     background-color: #e2c4b9 !important;
     border-color: #febaa8 !important;
 }

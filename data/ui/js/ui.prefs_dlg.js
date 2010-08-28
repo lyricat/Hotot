@@ -45,23 +45,43 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
-    $('#tbox_prefs_font_size').blur(
+    $('#tbox_prefs_font_size, #tbox_prefs_http_proxy_port, #tbox_prefs_socks_proxy_port').blur(
     function (event) {
-        ui.PrefsDlg.update_font_preview();
-    }).keypress(
+        ui.PrefsDlg.test_int_value(this);
+    });
+    $('#tbox_prefs_font_size').keypress(
     function (event) {
         if (event.keyCode == 13){
             ui.PrefsDlg.update_font_preview();
-        } else {
-            if (event.keyCode < 48 || 57 < event.keyCode )
-                return false;
         }
+    }).blur(
+    function (event) {
+        ui.PrefsDlg.update_font_preview();
     });
 
+    var check_config_error = function () {
+        var result = [];
+        var count = 0
+        $(ui.PrefsDlg.id + ' input').each(
+        function (idx, widget) {
+            if ($(widget).data('error') == true) {
+                count += 1;
+                result.push($(widget).attr('title'));
+            }
+        });
+        return {'count':count, 'error_values':result};
+    };
     $('#btn_prefs_ok').click(
     function (event) {
-        ui.PrefsDlg.save_prefs();
-        ui.PrefsDlg.hide();
+        var err = check_config_error();
+        if ( err.count == 0 ) {
+            ui.PrefsDlg.save_prefs();
+            ui.PrefsDlg.hide();
+        } else {
+            ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
+            alert('Please check errors in the options below:\n'
+                + err.error_values.join('\n'));
+        }
     });
 
     $('#btn_prefs_cancel').click(
@@ -75,6 +95,19 @@ function init () {
     });
 
     return this;
+},
+
+test_int_value:
+function test_number(widget) {
+    var c_val = parseInt($(widget).val());
+    if (!isNaN(c_val)) {
+        $(widget).removeClass('test_fail');
+        $(widget).val(c_val);
+        $(widget).data('error', false);
+    } else {
+        $(widget).addClass('test_fail');
+        $(widget).data('error', true);
+    }
 },
 
 request_prefs:
@@ -174,6 +207,7 @@ function save_prefs() {
         = $('#tbox_prefs_http_proxy_host').attr('value');
     prefs_obj['http_proxy_port'] 
         = $('#tbox_prefs_http_proxy_port').attr('value');
+    if (prefs_obj['http_proxy_port']=='') prefs_obj['http_proxy_port']=0;
 
     prefs_obj['use_socks_proxy']
         = $('#chk_prefs_use_socks_proxy').attr('checked');
@@ -181,6 +215,7 @@ function save_prefs() {
         = $('#tbox_prefs_socks_proxy_host').attr('value');
     prefs_obj['socks_proxy_port']
         = $('#tbox_prefs_socks_proxy_port').attr('value');
+    if (prefs_obj['socks_proxy_port']=='') prefs_obj['socks_proxy_port']=0;
 
     hotot_action('config/save_prefs/'
         + utility.DB.serialize_dict(prefs_obj));
