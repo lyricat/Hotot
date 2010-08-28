@@ -600,6 +600,34 @@ jQuery(function($) {
                     <p>
                         <label>API Base</label><br/>
                         <input id="tbox_prefs_api_base" type="text"/><br/>
+                        <label>OAuth Base</label><br/>
+                        <input id="tbox_prefs_oauth_base" type="text"/><br/>
+                    </p>
+                    </div>
+                    <h3>- Proxy Settings -</h3>
+                    <div class="dlg_group">
+                    <p>* You MUST restart Hotot for the changes below to take effect.</p>
+                    <p>
+                        <input id="chk_prefs_use_http_proxy"
+                            type="checkbox"/>
+                        <label>Use HTTP Proxy</label><br/>
+                        <label>Host</label>
+                        <input id="tbox_prefs_http_proxy_host" 
+                            style="width: 150px;" type="text"/>
+                        <label>Port</label>
+                        <input id="tbox_prefs_http_proxy_port" 
+                            style="width: 50px;" type="text"/><br/>
+                        <!--
+                        <input id="chk_prefs_use_socks_proxy"
+                            type="checkbox"/>
+                        <label>Use Socks Proxy</label><br/>
+                        <label>Host</label>
+                        <input id="tbox_prefs_socks_proxy_host" 
+                            style="width: 150px;" type="text"/>
+                        <label>Port</label>
+                        <input id="tbox_prefs_socks_proxy_port" 
+                            style="width: 50px;" type="text"/><br/>
+                        -->
                     </p>
                     </div>
                 </div>

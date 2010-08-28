@@ -146,18 +146,21 @@ def apply_prefs():
 
     api_base = config.api_base
     if api_base[-1] != '/': api_base += '/'
+    oauth_base = config.oauth_base
+    if oauth_base[-1] != '/': oauth_base += '/'
 
     webv.execute_script('''
         $('#chk_remember_password').attr('checked', eval('%s'));
         $('body').css('font-family', '%s');
         globals.tweet_font_size = %s;
         lib.twitterapi.api_base = '%s';
+        jsOAuth.oauth_base = '%s';
         jsOAuth.key = '%s';
         jsOAuth.secret = '%s';
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
-            , api_base
+            , api_base, oauth_base
             , consumer_key, consumer_secret ))
     pass
 
@@ -194,7 +197,16 @@ def push_prefs():
 
     # networks settings
     api_base = config.api_base;
-    
+    oauth_base = config.oauth_base;
+
+    use_http_proxy = 'true' if config.use_http_proxy else 'false'
+    http_proxy_host = config.http_proxy_host
+    http_proxy_port = config.http_proxy_port
+
+    use_socks_proxy = 'true' if config.use_socks_proxy else 'false'
+    socks_proxy_host = config.socks_proxy_host
+    socks_proxy_port = config.socks_proxy_port
+
     webv.execute_script('''
         var prefs_obj = {
           "remember_password": %s
@@ -207,6 +219,13 @@ def push_prefs():
         , "use_native_input": %s
         , "use_native_notify": %s
         , "api_base": "%s"
+        , "oauth_base": "%s"
+        , "use_http_proxy" : %s
+        , "http_proxy_host": "%s"
+        , "http_proxy_port": "%s"
+        , "use_socks_proxy": %s
+        , "socks_proxy_host": "%s"
+        , "socks_proxy_port": "%s"
         };
         ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
         ''' % (remember_password
@@ -214,7 +233,10 @@ def push_prefs():
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
-            , api_base));
+            , api_base, oauth_base
+            , use_http_proxy, http_proxy_host, http_proxy_port
+            , use_socks_proxy, socks_proxy_host, socks_proxy_port
+            ));
     pass
 
 def set_style_scheme():
@@ -245,6 +267,13 @@ def request(uuid, method, url, params={}, headers={}):
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass 
+    except urllib2.URLError, e:
+        content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
+        scripts = '''
+            ui.MessageDlg.set_text('%s', '%s');
+            ui.MessageDlg.show();
+            lib.twitterapi.error_task_table['%s']('');
+            ''' % ('Ooops, an Error occurred!', content, uuid);
     else:
         if result[0] != '{' and result[0] != '[':
             scripts = '''lib.twitterapi.success_task_table['%s']('%s');
@@ -261,12 +290,22 @@ def request(uuid, method, url, params={}, headers={}):
 
 def _get(url, params={}, req_headers={}):
     urlopen = urllib2.urlopen
+    if config.use_http_proxy:
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+        urlopen = urllib2.build_opener(proxy_support).open
+        pass
     request =  urllib2.Request(url, headers=req_headers)
     ret = urlopen(request).read()
     return ret
 
 def _post(url, params={}, req_headers={}):
     urlopen = urllib2.urlopen
+    if config.use_http_proxy:
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+        urlopen = urllib2.build_opener(proxy_support).open
+        pass
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])

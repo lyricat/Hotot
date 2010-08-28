@@ -119,6 +119,22 @@ function request_prefs_cb(prefs_obj) {
     // Networks
     $('#tbox_prefs_api_base').attr('value'
         , prefs_obj['api_base']);
+    $('#tbox_prefs_oauth_base').attr('value'
+        , prefs_obj['oauth_base']);
+
+    $('#chk_prefs_use_http_proxy').attr('checked'
+        , prefs_obj['use_http_proxy']);
+    $('#tbox_prefs_http_proxy_host').attr('value'
+        , prefs_obj['http_proxy_host']);
+    $('#tbox_prefs_http_proxy_port').attr('value'
+        , prefs_obj['http_proxy_port']);
+
+    $('#chk_prefs_use_socks_proxy').attr('checked'
+        , prefs_obj['use_socks_proxy']);
+    $('#tbox_prefs_socks_proxy_host').attr('value'
+        , prefs_obj['socks_proxy_hos']);
+    $('#tbox_prefs_socks_proxy_port').attr('value'
+        , prefs_obj['socks_proxy_port']);
 },
 
 save_prefs:
@@ -146,6 +162,25 @@ function save_prefs() {
         = $('#tbox_prefs_api_base').attr('value');
     if (prefs_obj['api_base'][prefs_obj['api_base'].length - 1] != '/')
         prefs_obj['api_base'] += '/';
+
+    prefs_obj['oauth_base'] 
+        = $('#tbox_prefs_oauth_base').attr('value');
+    if (prefs_obj['oauth_base'][prefs_obj['oauth_base'].length - 1] != '/')
+        prefs_obj['oauth_base'] += '/';
+
+    prefs_obj['use_http_proxy']
+        = $('#chk_prefs_use_http_proxy').attr('checked');
+    prefs_obj['http_proxy_host']
+        = $('#tbox_prefs_http_proxy_host').attr('value');
+    prefs_obj['http_proxy_port'] 
+        = $('#tbox_prefs_http_proxy_port').attr('value');
+
+    prefs_obj['use_socks_proxy']
+        = $('#chk_prefs_use_socks_proxy').attr('checked');
+    prefs_obj['socks_proxy_hos']
+        = $('#tbox_prefs_socks_proxy_host').attr('value');
+    prefs_obj['socks_proxy_port']
+        = $('#tbox_prefs_socks_proxy_port').attr('value');
 
     hotot_action('config/save_prefs/'
         + utility.DB.serialize_dict(prefs_obj));
