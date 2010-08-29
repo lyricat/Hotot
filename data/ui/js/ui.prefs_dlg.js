@@ -47,7 +47,7 @@ function init () {
 
     $('#tbox_prefs_font_size, #tbox_prefs_http_proxy_port, #tbox_prefs_socks_proxy_port').blur(
     function (event) {
-        ui.PrefsDlg.test_int_value(this);
+        ui.FormChecker.test_int_value(this);
     });
     $('#tbox_prefs_font_size').keypress(
     function (event) {
@@ -59,21 +59,10 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
-    var check_config_error = function () {
-        var result = [];
-        var count = 0
-        $(ui.PrefsDlg.id + ' input').each(
-        function (idx, widget) {
-            if ($(widget).data('error') == true) {
-                count += 1;
-                result.push($(widget).attr('title'));
-            }
-        });
-        return {'count':count, 'error_values':result};
-    };
     $('#btn_prefs_ok').click(
     function (event) {
-        var err = check_config_error();
+        var err = ui.FormChecker.check_config_error(
+            ui.PrefsDlg.id + ' input');
         if ( err.count == 0 ) {
             ui.PrefsDlg.save_prefs();
             ui.PrefsDlg.hide();
@@ -95,19 +84,6 @@ function init () {
     });
 
     return this;
-},
-
-test_int_value:
-function test_number(widget) {
-    var c_val = parseInt($(widget).val());
-    if (!isNaN(c_val)) {
-        $(widget).removeClass('test_fail');
-        $(widget).val(c_val);
-        $(widget).data('error', false);
-    } else {
-        $(widget).addClass('test_fail');
-        $(widget).data('error', true);
-    }
 },
 
 request_prefs:
@@ -165,7 +141,7 @@ function request_prefs_cb(prefs_obj) {
     $('#chk_prefs_use_socks_proxy').attr('checked'
         , prefs_obj['use_socks_proxy']);
     $('#tbox_prefs_socks_proxy_host').attr('value'
-        , prefs_obj['socks_proxy_hos']);
+        , prefs_obj['socks_proxy_host']);
     $('#tbox_prefs_socks_proxy_port').attr('value'
         , prefs_obj['socks_proxy_port']);
 },
@@ -211,7 +187,7 @@ function save_prefs() {
 
     prefs_obj['use_socks_proxy']
         = $('#chk_prefs_use_socks_proxy').attr('checked');
-    prefs_obj['socks_proxy_hos']
+    prefs_obj['socks_proxy_host']
         = $('#tbox_prefs_socks_proxy_host').attr('value');
     prefs_obj['socks_proxy_port']
         = $('#tbox_prefs_socks_proxy_port').attr('value');
