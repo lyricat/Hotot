@@ -200,6 +200,14 @@ function load_more_tweets () {
             ui.Main.load_more_tweets_cb(result, pagename);
         });
     break;
+    case '#search':
+        proc(ui.Main.block_info[pagename].query
+            , ui.Main.block_info[pagename].page, 
+            function (result) {
+                result = result.results;
+                ui.Main.load_more_tweets_cb(result, pagename);
+            })
+        break;
     case '#people':
         proc(ui.Main.block_info[pagename].id
             , ui.Main.block_info[pagename].screen_name
@@ -270,7 +278,8 @@ function load_more_tweets_cb(result, pagename) {
     var tweet_count = ui.Main.add_tweets(json_obj, true, container);
 
     if (tweet_count != 0) {
-        if (pagename == '#favorites') {
+        if (pagename == '#favorites'
+            || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].max_id 

@@ -392,9 +392,9 @@ function verify(on_success) {
 },
 
 search:
-function search(query, on_success) {
+function search(query, page, on_success) {
     var url = 'http://search.twitter.com/search.json';
-    var params = {'q': query};
+    var params = {'q': query, 'page': page};
     lib.twitterapi.get(url, params, on_success);
 },
 

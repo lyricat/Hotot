@@ -177,16 +177,17 @@ update_search:
 function update_search() {
     $('#search_tweet_block > ul').html('');
     var query = ui.Main.block_info['#search'].query;
-    lib.twitterapi.search(query, 
-        function (result) {
-            var tweets = [];
-            if (result.constructor == Object 
-                && typeof result.results != 'undefined') {
-                tweets = result.results;
-            }
-            $('#search_tweet_block .tweet_block_bottom').show();
-            ui.Main.load_tweets_cb(tweets, '#search');
-        });
+    var page = ui.Main.block_info['#search'].page;
+    lib.twitterapi.search(query, 1,
+    function (result) {
+        var tweets = [];
+        if (result.constructor == Object 
+            && typeof result.results != 'undefined') {
+            tweets = result.results;
+        }
+        $('#search_tweet_block .tweet_block_bottom').show();
+        ui.Main.load_tweets_cb(tweets, '#search');
+    });
 },
 };
 
