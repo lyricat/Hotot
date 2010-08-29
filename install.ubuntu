@@ -1,0 +1,3 @@
+#!/bin/bash -x
+./setup.py build
+sudo ./setup.py install --install-layout deb
