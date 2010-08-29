@@ -82,6 +82,8 @@ def crack_action(params):
     if params[1] == 'user':
         screen_name = params[2]
         load_user(screen_name)
+    elif params[1] == 'search':
+        load_search(params[2])
     pass
 
 def crack_system(params):
@@ -134,6 +136,15 @@ def load_user(screen_name):
         ui.Notification.set("Loading @%s\'s timeline...").show();
         daemon.Updater.update_people();
         ''' % (screen_name, screen_name));
+    pass
+
+def load_search(query):
+    webv.execute_script('''
+        ui.Main.reset_search_page('%s');
+        $('#search_tweet_block > ul').html('');
+        ui.Notification.set("Loading Search result %s ...").show();
+        daemon.Updater.update_search();
+        ''' % (query, query));
     pass
 
 def apply_prefs(): 

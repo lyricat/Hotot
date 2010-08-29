@@ -991,12 +991,14 @@ input[type="button"]:focus, .button:focus {
 
 .profile_img_wrapper {
     /*-webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 0px 0px 5px;*/
-    border: 1px #ccc solid; 
+    background: #fff;
+    border: 1px #fff solid; 
     padding: 1px;
     margin: 5px;
     width: 48px;
     height: 48px;
-    float: left;            
+    float: left;  
+    position: relative;
 }
 
 .profile_img_wrapper > img {
@@ -1004,7 +1006,16 @@ input[type="button"]:focus, .button:focus {
     height: 48px;
     border: 0;
 }
-
+.avator_hlight {
+    background: url(../imgs/avator_hlight.png) no-repeat;
+    display: block;
+    height: 48px;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 48px;
+    z-index: 000;
+}
 .tweet_body {
     margin: 0 0 0 65px;
     padding: 5px 5px 20px 5px;

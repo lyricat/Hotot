@@ -18,6 +18,7 @@ tweet_t:
 '<li id="{%TWEET_ID%}" class="tweet" retweet_id="{%RETWEET_ID%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
@@ -92,7 +93,7 @@ search_t:
             <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
         </ul>\
         <div class="tweet_meta">\
-            <div class="tweet_source">{%RETWEET_TEXT%} via: {%SOURCE%}</div>\
+            <div class="tweet_source">via: {%SOURCE%}</div>\
         </div>\
     </div>\
     <span class="shape"></span>\
@@ -216,7 +217,7 @@ function form_search(tweet_obj, pagename) {
     var screen_name = tweet_obj.from_user;
     var profile_img = tweet_obj.profile_image_url;
     var text = ui.Template.form_text(tweet_obj.text);
-    var source = tweet_obj.source;
+    var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     var is_self = (screen_name == globals.myself.screen_name);
     var ret = '';
     var scheme = ui.Template.schemes['white'];
@@ -278,7 +279,7 @@ function form_text(text) {
     text = text.replace(ui.Template.reg_user
         , '$1<a href="hotot:action/user/$2">@$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
-        , '$1<a href="http://twitter.com/search?q=$2">#$2</a>');
+        , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/\n/g, '<br/>');
     return text;
 },
