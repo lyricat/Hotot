@@ -98,7 +98,7 @@ function update_direct_messages() {
 update_favorites:
 function update_favorites() {
     $('#favorites_tweet_block > ul').html('');
-    lib.twitterapi.get_favorites(globals.my_id, 1, 
+    lib.twitterapi.get_favorites(globals.myself.id, 1, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#favorites');
         });

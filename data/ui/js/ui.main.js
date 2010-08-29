@@ -173,7 +173,7 @@ function load_more_tweets () {
 
     switch (pagename){
     case '#favorites':
-        proc(globals.my_id, ui.Main.block_info[pagename].page, 
+        proc(globals.myself.id, ui.Main.block_info[pagename].page, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
         });
