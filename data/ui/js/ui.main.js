@@ -52,6 +52,10 @@ block_info: {
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
     },
+    '#search': { 
+          query: '', page: 1
+        , api_proc: lib.twitterapi.search 
+    },
 },
 
 init:
@@ -130,6 +134,19 @@ function init () {
         daemon.Updater.update_people();
         $('#people_entry').css('border-bottom', '0')
     });
+
+    $('#tbox_search_entry').keypress(
+    function (event) {
+        if (event.keyCode == 13)
+            $('#btn_search_entry').click();
+    });
+    $('#btn_search_entry').click(
+    function (event) {
+        ui.Main.reset_search_page($('#tbox_search_entry').attr('value'));
+        daemon.Updater.update_search();
+        $('#search_entry').css('border-bottom', '0')
+    });
+
 },
 
 hide:
@@ -149,12 +166,19 @@ function show () {
 },
 
 reset_people_page:
-function set_people_page(id, screen_name) {
+function reset_people_page(id, screen_name) {
     ui.Main.block_info['#people'].id = id;
     ui.Main.block_info['#people'].screen_name = screen_name;
     ui.Main.block_info['#people'].since_id = 1;
     ui.Main.block_info['#people'].max_id = null;
     $('#people_tweet_block > ul').html('');
+},
+
+reset_search_page:
+function reset_search_page(query) {
+    ui.Main.block_info['#search'].query = query;
+    ui.Main.block_info['#search'].page = 1;
+    $('#search_tweet_block > ul').html('');
 },
 
 load_tweets:
@@ -210,13 +234,13 @@ function load_tweets_cb(result, pagename) {
     }
     container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, false, container);
-
+    
     // just for debug.
     utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
     
     if (tweet_count != 0 ) {
         // favorites page have differet mechanism to display more tweets.
-        if (pagename == '#favorites') {
+        if (pagename == '#favorites' || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].since_id 
@@ -278,6 +302,8 @@ function add_tweets(json_obj, is_append, container) {
     var form_proc = ui.Template.form_tweet;
     if (container.pagename == 'direct_messages')
         form_proc = ui.Template.form_dm
+    if (container.pagename == 'search')
+        form_proc = ui.Template.form_search
 
     var sort_tweets = function (tweets) {
         /* sort tweets in order of id. smaller first.
@@ -344,7 +370,8 @@ function add_tweets(json_obj, is_append, container) {
     }
 
     // dumps to cache
-    utility.DB.dump_tweets(json_obj);
+    if (container.pagename != 'search')
+        utility.DB.dump_tweets(json_obj);
     // bind events
     ui.Main.bind_tweets_action(json_obj, container.pagename);
     ui.Notification.hide();

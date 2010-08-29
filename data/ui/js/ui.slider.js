@@ -14,6 +14,7 @@ tweet_blocks: {
     '#favorites': 3,
     '#retweets': 4,
     '#people': 5,
+    '#search': 6,
 },
 
 init:

@@ -209,6 +209,12 @@ a {
     position: relative;
 }
 
+#indication li.stick_right {
+    position: absolute !important;
+    right: 0 !important;
+    border-left: #ccc 1px solid;
+}
+
 #indication li:first-child {
     border-left: #ccc 1px solid;
 }
@@ -444,7 +450,7 @@ input[type="button"]:focus, .button:focus {
     display: none;
 }
 
-#people_entry {
+#people_entry, #search_entry {
     font-size: 10px;
     background: #fff;
     border-bottom: #ccc solid 1px;
@@ -1219,7 +1225,9 @@ td {
 .ic_people {
     background: transparent url(../imgs/ic_people.png) no-repeat;
 }
-
+.ic_search {
+    background: transparent url(../imgs/ic_search.png) no-repeat;
+}
 .ic_about {
     background: transparent url(../imgs/ic16_help.png) no-repeat;
 }

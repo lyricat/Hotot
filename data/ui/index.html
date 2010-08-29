@@ -414,6 +414,21 @@ jQuery(function($) {
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
         </div>
     </div>
+    <div id="search_tweet_block" class="tweet_block">
+        <div class="tweet_block_top">
+            <div id="search_entry">
+                <label>Search for: </label>
+                <input id="tbox_search_entry" type="text" value=""/>
+                <a id="btn_search_entry" href="javascript:void(0);"
+                    class="button">GO</a>
+            </div>
+        </div>
+        <ul></ul>
+        <div class="tweet_block_bottom">
+            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        </div>
+    </div>
+
     </div>
 </section>
 
@@ -444,6 +459,10 @@ jQuery(function($) {
         	</li>
             <li>
         		<a id="idx_btn_people" class="idx_btn" href="#people"><span class="ic_people"></span></a>
+                <span class="shape"></span>
+        	</li>
+            <li class="stick_right">
+        		<a id="idx_btn_search" class="idx_btn" href="#search"><span class="ic_search"></span></a>
                 <span class="shape"></span>
         	</li>
         </ul>

@@ -79,6 +79,27 @@ dm_t:
     <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
 </li>',
 
+search_t:
+'<li id="{%TWEET_ID%}" class="tweet">\
+    <div class="profile_img_wrapper">\
+        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+    </div>\
+    <div class="tweet_body" style="background-color:{%SCHEME%};">\
+        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <ul class="tweet_ctrl">\
+            <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
+            <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
+        </ul>\
+        <div class="tweet_meta">\
+            <div class="tweet_source">{%RETWEET_TEXT%} via: {%SOURCE%}</div>\
+        </div>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
+</li>',
+
+
 form_dm:
 function form_dm(dm_obj, pagename) {
     var id = dm_obj.id;
@@ -181,6 +202,45 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
     ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
+    return ret;
+},
+
+form_search:
+function form_search(tweet_obj, pagename) {
+    var id = tweet_obj.id;
+    var timestamp = Date.parse(tweet_obj.created_at);
+    var create_at = new Date();
+    create_at.setTime(timestamp);
+    var user_id = tweet_obj.from_user_id;
+    var screen_name = tweet_obj.from_user;
+    var profile_img = tweet_obj.profile_image_url;
+    var text = ui.Template.form_text(tweet_obj.text);
+    var source = tweet_obj.source;
+    var is_self = (screen_name == globals.myself.screen_name);
+    var ret = '';
+    var scheme = ui.Template.schemes['white'];
+
+    var create_at_str = create_at.getHours() 
+        + ':' + create_at.getMinutes()
+        + ':' + create_at.getSeconds()
+        + ' ' + create_at.toDateString();
+    // choose color scheme
+    if (text.indexOf(globals.myself.screen_name) != -1) {
+        scheme = ui.Template.schemes['green'];
+    }
+    if (is_self) {
+        scheme = ui.Template.schemes['orange'];
+    }
+
+    ret = ui.Template.search_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
+    ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
+    ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
+    ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
+    ret = ret.replace(/{%TEXT%}/g, text);
+    ret = ret.replace(/{%SOURCE%}/g, source);
+    ret = ret.replace(/{%SCHEME%}/g, scheme);
+    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
     return ret;
 },

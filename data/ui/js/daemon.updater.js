@@ -30,6 +30,10 @@ watch_pages: {
           watch: false
         , proc : function () {daemon.Updater.update_retweets();}
     }
+    , '#search': {
+          watch: false
+        , proc : function () {daemon.Updater.update_search();}
+    }
 },
 
 init: 
@@ -168,5 +172,19 @@ function update_retweets() {
         });
 },
 
+update_search:
+function update_search() {
+    $('#search_tweet_block > ul').html('');
+    var query = ui.Main.block_info['#search'].query;
+    lib.twitterapi.search(query, 
+        function (result) {
+            var tweets = [];
+            if (result.constructor == Object 
+                && typeof result.results != 'undefined') {
+                tweets = result.results;
+            }
+            ui.Main.load_tweets_cb(tweets, '#search');
+        });
+},
 };
 
