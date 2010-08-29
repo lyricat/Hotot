@@ -5,6 +5,13 @@ me: {},
 
 id: '',
 
+        
+sign_opts : {
+      'remember_password': false
+    , 'default_username': ''
+    , 'default_password': ''
+},
+
 init:
 function init () {
     ui.Welcome.id = '#welcome_page';
@@ -21,19 +28,22 @@ function init () {
             = false;
         ui.Notification.set('Sign in ...').show();
         
-        hotot_action('config/set_opt/default_username/' + lib.twitterapi.username);
-        if ($('#chk_remember_password').attr('checked') == true) {
-            setTimeout(function () {
-            hotot_action('config/set_opt/default_password/' + lib.twitterapi.password);
-            }, 200);
+        if (ui.Welcome.sign_opts.remember_password) {
+            ui.Welcome.sign_opts.default_password 
+                = lib.twitterapi.password;
         } else {
-            setTimeout(function () {
-            hotot_action('config/set_opt/default_password/');
-            }, 200);
+            ui.Welcome.sign_opts.default_password = '';
         }
+        ui.Welcome.sign_opts.default_username 
+            = lib.twitterapi.username;
+        setTimeout(function () {
+            hotot_action('config/set_opts/'
+                + encodeURIComponent(
+                    utility.DB.json(ui.Welcome.sign_opts)));
+        }, 500);
         setTimeout(function () {
             hotot_action('config/dumps');
-        }, 400);
+        }, 1000);
 
         // verify ...
         lib.twitterapi.verify(
@@ -50,13 +60,7 @@ function init () {
 
     $('#chk_remember_password').click(
     function (event) {
-        var remember_password = $(this).attr('checked')
-        var flag = (remember_password != true)? 'False':'True';
-        hotot_action('config/set_opt/remember_password/' + flag);
-
-        setTimeout(function () {
-            hotot_action('config/dumps');
-        }, 200);
+        ui.Welcome.sign_opts.remember_password = $(this).attr('checked');
     });
     
     $('#btn_oauth_sign_in').click(

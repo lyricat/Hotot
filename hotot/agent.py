@@ -57,10 +57,10 @@ def crack_config(params):
         config.restore_defaults()
         apply_config()
         push_prefs()
-    elif params[1] == 'set_opt':
-        opt = params[2]
-        value = params[3]
-        config.set(opt, value);
+    elif params[1] == 'set_opts':
+        opts = json.loads(urllib2.unquote(params[2]))
+        for key, value in opts.items():
+            config.set(key, value);
     pass
     
 def crack_token(params):

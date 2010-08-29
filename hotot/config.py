@@ -151,13 +151,6 @@ def restore_defaults():
     pass
 
 def set(name, value):
-    if value.isdigit():
-        value = int(value)
-    else:
-        if value =='True':
-            value = True
-        elif value == 'False':
-            value = False
     globals()[name] = value;
     pass
 
