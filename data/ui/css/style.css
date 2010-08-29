@@ -446,7 +446,7 @@ input[type="button"]:focus, .button:focus {
     width: 1000%;
 }
 
-#people_tweet_block .tweet_block_bottom {
+#people_tweet_block .tweet_block_bottom, #search_tweet_block .tweet_block_bottom {
     display: none;
 }
 

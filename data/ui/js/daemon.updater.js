@@ -153,6 +153,7 @@ function update_people() {
             }
         }
         $('#people_vcard').show();
+        $('#people_entry').css('border-bottom', '0')
     });
 },
 
@@ -183,6 +184,7 @@ function update_search() {
                 && typeof result.results != 'undefined') {
                 tweets = result.results;
             }
+            $('#search_tweet_block .tweet_block_bottom').show();
             ui.Main.load_tweets_cb(tweets, '#search');
         });
 },

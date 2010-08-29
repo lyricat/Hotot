@@ -132,7 +132,6 @@ function init () {
         ui.Main.reset_people_page(null
             , $('#tbox_people_entry').attr('value'));
         daemon.Updater.update_people();
-        $('#people_entry').css('border-bottom', '0')
     });
 
     $('#tbox_search_entry').keypress(
@@ -144,7 +143,6 @@ function init () {
     function (event) {
         ui.Main.reset_search_page($('#tbox_search_entry').attr('value'));
         daemon.Updater.update_search();
-        $('#search_entry').css('border-bottom', '0')
     });
 
 },
