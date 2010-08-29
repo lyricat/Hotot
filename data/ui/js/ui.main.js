@@ -458,7 +458,7 @@ function on_rt_click(btn, event) {
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
 
     ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
-        + ' ' + tweet_obj.text + ' ');
+        + ': ' + tweet_obj.text + ' ');
     ui.StatusBox.open(
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
