@@ -679,7 +679,6 @@ input[type="button"]:focus, .button:focus {
 #oauth_dlg_border {
     z-index: 10001;
     width: 400px;
-    margin: 100px auto;
 }
 
 #oauth_dlg > h2 {
@@ -703,7 +702,6 @@ input[type="button"]:focus, .button:focus {
 #prefs_dlg_border {
     z-index: 10001;
     width: 600px;
-    margin: 50px auto;
 }
 
 #prefs_dlg > h2 {
@@ -781,7 +779,6 @@ input[type="button"]:focus, .button:focus {
 #profile_dlg_border {
     z-index: 10504;
     width: 600px;
-    margin: 50px auto;
 }
 
 #profile_dlg > h2 {
@@ -819,7 +816,6 @@ input[type="button"]:focus, .button:focus {
 #about_dlg_border {
     z-index: 10504;
     width: 600px;
-    margin: 50px auto;
 }
 
 #about_dlg > h2 {
@@ -845,7 +841,6 @@ input[type="button"]:focus, .button:focus {
 #message_dlg_border {
     z-index: 10005;
     width: 400px;
-    margin: 100px auto;
 }
 
 #message_dlg > h2 {
@@ -858,6 +853,9 @@ input[type="button"]:focus, .button:focus {
     padding: 10px 20px;
     max-height: 300px;
     overflow: auto;
+}
+#message_dlg_text p, #message_dlg_text p * {
+    font-size: 12px;
 }
 /*===== Class styles ================================*/
 .page {

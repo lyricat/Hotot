@@ -5,12 +5,12 @@ init:
 function init () {
     $('#btn_prefs').click(
     function (event) {
-        ui.PrefsDlg.show();
+        ui.DialogHelper.open(ui.PrefsDlg);
     });
     
     $('#btn_about').click(
     function (event) {
-        ui.AboutDlg.show();
+        ui.DialogHelper.open(ui.AboutDlg);
     });
 
     $('#btn_sign_out').click(

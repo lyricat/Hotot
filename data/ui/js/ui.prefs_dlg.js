@@ -7,6 +7,8 @@ id: '',
 
 mask: {},
 
+is_show: false,
+
 init:
 function init () {
     ui.PrefsDlg.id = '#prefs_dlg';
@@ -26,7 +28,7 @@ function init () {
 
     $(ui.PrefsDlg.me).parent().children('.dialog_close_btn').click(
     function (event) {
-        ui.PrefsDlg.hide();
+        ui.DialogHelper.close(ui.PrefsDlg);
     });
 
     $('#btn_regain_token').click(
@@ -34,9 +36,8 @@ function init () {
         jsOAuth.access_token = null;
         jsOAuth.get_request_token(
             function (result) {
-                ui.PrefsDlg.hide();
                 ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                ui.PinDlg.show();
+                ui.DialogHelper.open(ui.PinDlg);
             }); 
     });
 
@@ -65,17 +66,20 @@ function init () {
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
             ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
-            alert('Please check errors in the options below:\n'
-                + err.error_values.join('\n'));
+            ui.MessageDlg.set_text(
+                ui.MessageDlg.TITLE_STR_ERROR,
+                '<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - '
+                + err.error_values.join('<br/> - ') + '</p>');
+            ui.DialogHelper.open(ui.MessageDlg);
         } else {
             ui.PrefsDlg.save_prefs();
-            ui.PrefsDlg.hide();
+            ui.DialogHelper.close(ui.PrefsDlg);
         }
     });
 
     $('#btn_prefs_cancel').click(
     function (event) {
-        ui.PrefsDlg.hide();
+        ui.DialogHelper.close(ui.PrefsDlg);
     });
 
     $('#btn_prefs_restore_defaults').click(
@@ -213,8 +217,8 @@ function update_font_preview() {
 
 hide:
 function hide () {
-    this.mask.fadeOut();
     this.me.parent().hide();
+    this.is_show = false;
     return this;
 },
 
@@ -222,7 +226,7 @@ show:
 function show () {
     this.request_prefs();
     this.me.parent().show();
-    this.mask.fadeIn();
+    this.is_show = true;
     return this;
 },
 

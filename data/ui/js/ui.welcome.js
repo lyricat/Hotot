@@ -74,7 +74,7 @@ function init () {
             jsOAuth.get_request_token(
             function (result) {
                 ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                ui.PinDlg.show();
+                ui.DialogHelper.open(ui.PinDlg);
             }); 
         } else {
         // access_token is existed
@@ -89,7 +89,7 @@ function init () {
                     , globals.myself.profile_image_url);
                 ui.Notification.set('Authentication OK!').show();
                 utility.Console.out('[i]: test pass! '+ result);
-                ui.PinDlg.hide();
+                ui.DialogHelper.close(ui.PinDlg);
                 ui.Welcome.hide();
                 ui.Main.show();
                 globals.layout.open('north');
@@ -100,12 +100,12 @@ function init () {
     
     $('#btn_welcome_prefs').click(
     function (event) {
-        ui.PrefsDlg.show();
+        ui.DialogHelper.open(ui.PrefsDlg);
     });
     
     $('#btn_welcome_about').click(
     function (event) {
-        ui.AboutDlg.show();
+        ui.DialogHelper.open(ui.AboutDlg);
     });
     return this;
 },

@@ -7,6 +7,10 @@ id: '',
 
 mask: {},
 
+is_show: false,
+
+TITLE_STR_ERROR: 'Ooops, an Error occurred!',
+
 init:
 function init () {
     ui.MessageDlg.id = '#message_dlg';
@@ -15,12 +19,12 @@ function init () {
     // bind events
     $(ui.MessageDlg.me).parent().children('.dialog_close_btn').click(
     function (event) {
-        ui.MessageDlg.hide();
+        ui.DialogHelper.close(ui.MessageDlg);
     });
 
     $('#btn_message_ok').click(
     function (event) {
-        ui.MessageDlg.hide();
+        ui.DialogHelper.close(ui.MessageDlg);
     });
 
     return this;
@@ -34,15 +38,15 @@ function set_text(title, content) {
 
 hide:
 function hide () {
-    this.mask.fadeOut();
     this.me.parent().hide();
+    this.is_show = false;
     return this;
 },
 
 show:
 function show () {
     this.me.parent().show();
-    this.mask.fadeIn();
+    this.is_show = true;
     return this;
 },
 

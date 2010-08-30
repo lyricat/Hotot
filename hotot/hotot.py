@@ -119,12 +119,12 @@ class MainWindow:
         pass
 
     def on_mitem_prefs_activate(self, item):
-        agent.show_dialog('prefs');
+        agent.execute_script('ui.DialogHelper.open(ui.PrefsDlg);');
         self.window.present()
         pass
 
     def on_mitem_about_activate(self, item):
-        agent.show_dialog('about');
+        agent.execute_script('ui.DialogHelper.open(ui.AboutDlg);');
         self.window.present()
         pass
 

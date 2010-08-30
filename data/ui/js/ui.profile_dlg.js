@@ -7,6 +7,8 @@ id: '',
 
 mask: {},
 
+is_show: false,
+
 is_change: false,
 
 init:
@@ -17,12 +19,12 @@ function init () {
 
     $(ui.ProfileDlg.me).parent().children('.dialog_close_btn').click(
     function (event) {
-        ui.ProfileDlg.hide();
+        ui.DialogHelper.close(ui.ProfileDlg)
     });
 
     $('#btn_my_profile').click(
     function (event) {
-        ui.ProfileDlg.show();
+        ui.DialogHelper.open(ui.ProfileDlg);
     })
 
     $('#btn_profile_update').click(
@@ -31,13 +33,16 @@ function init () {
             ui.ProfileDlg.id + ' input');
         if ( err.count != 0 ) {
             ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
-            alert('Please check errors in the options below:\n'
-                + err.error_values.join('\n'));
+            ui.MessageDlg.set_text(
+                ui.MessageDlg.TITLE_STR_ERROR,
+                '<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - '
+                + err.error_values.join('<br/> - ') + '</p>');
+            ui.DialogHelper.open(ui.MessageDlg);
         } else {
             if (ui.ProfileDlg.is_change) {
                 ui.ProfileDlg.update_profile();
             } else {
-                ui.ProfileDlg.hide();
+                ui.DialogHelper.close(ui.ProfileDlg);
             }
         }
 
@@ -45,7 +50,7 @@ function init () {
 
     $('#btn_profile_cancel').click(
     function (event) {
-        ui.ProfileDlg.hide();
+        ui.DialogHelper.close(ui.ProfileDlg);
     });
     
     $('#tbox_profile_name').keyup(
@@ -89,7 +94,7 @@ function update_profile() {
     function (result) {
         globals.myself = result;
         ui.Notification.set('Update profile successfully!').show();
-        ui.ProfileDlg.hide();
+        ui.DialogHelper.close(ui.ProfileDlg);
     });
 },
 
@@ -122,7 +127,6 @@ function request_profile() {
 
 update_avator:
 function update_avator() {
-    
     lib.twitterapi.update_profile_image(raw_img, 
     function (result){
         alert(result);
@@ -131,8 +135,8 @@ function update_avator() {
 
 hide:
 function hide () {
-    ui.ProfileDlg.mask.fadeOut();
     ui.ProfileDlg.me.parent().hide();
+    ui.ProfileDlg.is_show = false;
     return this;
 },
 
@@ -140,7 +144,7 @@ show:
 function show () {
     ui.ProfileDlg.request_profile();
     ui.ProfileDlg.me.parent().show();
-    ui.ProfileDlg.mask.fadeIn();
+    ui.ProfileDlg.is_show = true;
     return this;
 },
 }

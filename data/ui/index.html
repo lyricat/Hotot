@@ -28,6 +28,7 @@
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
 <script type="text/javascript">
@@ -61,20 +62,6 @@ function update_tweet_block_width() {
     $('.tweet_block').width(globals.tweet_block_width);
 }
 
-function show_dialog(dialog) {
-    var dlg = null;
-    if (dialog == 'prefs') {
-        dlg = ui.PrefsDlg;
-    } else if (dialog == 'about') {
-        dlg = ui.AboutDlg;
-    } else if (dialog == 'pin') {
-        dlg = ui.PinDlg;
-    }
-    if (dlg != null) {
-        dlg.show();
-    }
-}
-
 function hotot_action(uri) {
     window.location.href = 'hotot:'+uri;
 }
@@ -106,7 +93,7 @@ jQuery(function($) {
         if (event.shiftKey && !event.ctrlKey && !event.metaKey && !globals.focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
-                ui.AboutDlg.show();            
+                ui.DialogHelper.open(ui.AboutDlg);            
             }
         }
         if (event.ctrlKey && event.keyCode == 81) {
@@ -187,6 +174,7 @@ jQuery(function($) {
     ui.ProfileDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
+    ui.DialogHelper.init();
     ui.ActionMenu.init();
 
     update_tweet_block_width();

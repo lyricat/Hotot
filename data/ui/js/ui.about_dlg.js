@@ -7,6 +7,8 @@ id: '',
 
 mask: {},
 
+is_show: false,
+
 init:
 function init () {
     ui.AboutDlg.id = '#about_dlg';
@@ -27,12 +29,12 @@ function init () {
     // bind events
     $(ui.AboutDlg.me).parent().children('.dialog_close_btn').click(
     function (event) {
-        ui.AboutDlg.hide();
+        ui.DialogHelper.close(ui.AboutDlg);
     });
 
     $('#btn_about_ok').click(
     function (event) {
-        ui.AboutDlg.hide();
+        ui.DialogHelper.close(ui.AboutDlg);
     });
 
     return this;
@@ -40,15 +42,15 @@ function init () {
 
 hide:
 function hide () {
-    this.mask.fadeOut();
     this.me.parent().hide();
+    this.is_show = false;
     return this;
 },
 
 show:
 function show () {
     this.me.parent().show();
-    this.mask.fadeIn();
+    this.is_show = true;
     return this;
 },
 

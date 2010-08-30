@@ -123,12 +123,6 @@ def update_status(text):
         ''' % text);
     pass
 
-def show_dialog(dialog):
-    webv.execute_script('''
-        show_dialog('%s');
-        ''' % dialog);
-    pass
-
 def load_user(screen_name):
     webv.execute_script('''
         ui.Main.reset_people_page(null, '%s');
@@ -274,7 +268,7 @@ def request(uuid, method, url, params={}, headers={}):
         content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), e.geturl(), str(e))
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
-            ui.MessageDlg.show();
+            ui.DialogHelper.open(ui.MessageDlg);
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass 
@@ -282,7 +276,7 @@ def request(uuid, method, url, params={}, headers={}):
         content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
-            ui.MessageDlg.show();
+            ui.DialogHelper.open(ui.MessageDlg);
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
     else:

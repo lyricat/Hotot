@@ -7,6 +7,8 @@ id: '',
 
 mask: {},
 
+is_show: false,
+
 init:
 function init () {
     ui.PinDlg.id = '#oauth_dlg';
@@ -15,7 +17,7 @@ function init () {
     // bind events
     $(ui.PinDlg.me).parent().children('.dialog_close_btn').click(
     function (event) {
-        ui.PinDlg.hide();
+        ui.DialogHelper.close(ui.PinDlg);
     });
 
     $('#btn_oauth_pin_ok').click(
@@ -31,17 +33,17 @@ function init () {
                 'token/dump/'
                 +encodeURIComponent(utility.DB.json(jsOAuth.access_token)));
             // change to main view
-            ui.PinDlg.hide();
+            ui.DialogHelper.close(ui.PinDlg);
         },
         function (xhr, textStatus, errorThrown) {
-            ui.PinDlg.hide();
+            ui.DialogHelper.close(ui.PinDlg);
             on_twitterapi_error(xhr, textStatus, errorThrown);
         });
     });
 
     $('#btn_oauth_pin_cancel').click(
     function (event) {
-        ui.PinDlg.hide();
+        ui.DialogHelper.close(ui.PinDlg);
     });
 
     $('#btn_oauth_user_auth').click(
@@ -55,15 +57,15 @@ function init () {
 
 hide:
 function hide () {
-    this.mask.fadeOut();
     this.me.parent().hide();
+    this.is_show = false;
     return this;
 },
 
 show:
 function show () {
     this.me.parent().show();
-    this.mask.fadeIn();
+    this.is_show = true;
     return this;
 },
 
