@@ -63,13 +63,13 @@ function init () {
     function (event) {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
-        if ( err.count == 0 ) {
-            ui.PrefsDlg.save_prefs();
-            ui.PrefsDlg.hide();
-        } else {
+        if ( err.count != 0 ) {
             ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
             alert('Please check errors in the options below:\n'
                 + err.error_values.join('\n'));
+        } else {
+            ui.PrefsDlg.save_prefs();
+            ui.PrefsDlg.hide();
         }
     });
 

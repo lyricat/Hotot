@@ -27,10 +27,20 @@ function init () {
 
     $('#btn_profile_update').click(
     function (event) {
-        if (ui.ProfileDlg.is_change)
-            ui.ProfileDlg.update_profile();
-        else
-            ui.ProfileDlg.hide();
+        var err = ui.FormChecker.check_config_error(
+            ui.ProfileDlg.id + ' input');
+        if ( err.count != 0 ) {
+            ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
+            alert('Please check errors in the options below:\n'
+                + err.error_values.join('\n'));
+        } else {
+            if (ui.ProfileDlg.is_change) {
+                ui.ProfileDlg.update_profile();
+            } else {
+                ui.ProfileDlg.hide();
+            }
+        }
+
     });
 
     $('#btn_profile_cancel').click(
@@ -64,11 +74,7 @@ function init () {
 limit_test:
 function limit_test(widget, limit) {
     ui.ProfileDlg.is_change = true;
-    if (limit < $(widget).val().length) {
-        $(widget).addClass('test_fail');
-    } else {
-        $(widget).removeClass('test_fail');
-    }
+    ui.FormChecker.test_text_len_limit(widget, limit);
 },
 
 update_profile:
