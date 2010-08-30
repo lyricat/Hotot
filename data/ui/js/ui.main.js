@@ -376,6 +376,8 @@ function add_tweets(json_obj, is_append, container) {
         insert_tweet(json_obj);
     }
 
+    ui.Main.trim_page(container);
+
     // dumps to cache
     if (container.pagename != 'search')
         utility.DB.dump_tweets(json_obj);
