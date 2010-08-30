@@ -458,8 +458,8 @@ input[type="button"]:focus, .button:focus {
     padding: 3px 5px;
 }
 
-#people_request_hint {
-    background: #fef6a8 url(../imgs/ic48_lock.png) no-repeat 20px center;
+#people_request_hint, #search_no_result_hint {
+    background: #fef6a8 none no-repeat 20px center;
     border: 1px solid #fcfc19;
     color: #990000;
     display: none;
@@ -467,8 +467,17 @@ input[type="button"]:focus, .button:focus {
     padding: 10px 20px 10px 20px;
 }
 
+#people_request_hint {
+    background-image: url(../imgs/ic48_lock.png) !important;
+}
+
+
 #people_request_hint > h1, #request_screen_name {
     font-size: 18px;
+}
+
+#search_query_keywords {
+    font-weight: bold;
 }
 
 #people_request_hint > p, #people_request_hint > h1{
@@ -598,7 +607,6 @@ input[type="button"]:focus, .button:focus {
     font-size: 14px;
     border: 1px transparent solid;
     padding: 5px 20px;
-    font-style: bold;
     color: #fff;
     text-decoration: none;
     display: block;
@@ -1192,7 +1200,7 @@ table {
 
 th {
     background-color: #ccc;
-    font-style: bold;
+    font-weight: bold;
     border: 1px solid #ccc;
 }
 
