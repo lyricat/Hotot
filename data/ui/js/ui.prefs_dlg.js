@@ -84,7 +84,8 @@ function init () {
 
     $('#btn_prefs_restore_defaults').click(
     function (event) {
-        ui.PrefsDlg.restore_defaults();
+        if (confirm('Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n'))
+            ui.PrefsDlg.restore_defaults();
     });
 
     return this;
