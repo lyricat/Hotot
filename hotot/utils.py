@@ -65,6 +65,6 @@ def get_system_default_browser():
 def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
-    browser = get_system_default_browser()
+    browser = 'xdg-open'
     subprocess.Popen([browser, uri])
     pass
