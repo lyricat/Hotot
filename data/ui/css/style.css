@@ -1034,6 +1034,11 @@ input[type="button"]:focus, .button:focus {
     height: 20px;
 }
 
+.tweet_body > .retweet_mark {
+    padding-left: 20px;
+    background: transparent url(../imgs/ic16_retweet_light.png) no-repeat;
+}
+
 .tweet_body a {
     text-decoration: none;
 }

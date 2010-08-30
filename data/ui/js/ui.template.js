@@ -21,7 +21,7 @@ tweet_t:
         <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
@@ -177,7 +177,6 @@ function form_tweet (tweet_obj, pagename) {
         scheme = ui.Template.schemes['orange'];
     }
     if (retweet_name != '') {
-        scheme = ui.Template.schemes['blue'];
         retweet_str = 'retweeted by <a href="hotot:action/user/'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
@@ -199,6 +198,8 @@ function form_tweet (tweet_obj, pagename) {
 
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
+    ret = ret.replace(/{%RETWEET_MARK%}/g,
+        retweet_name != ''? 'retweet_mark': '')
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
