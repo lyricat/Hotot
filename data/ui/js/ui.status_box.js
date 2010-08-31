@@ -119,7 +119,6 @@ function init () {
             var append = ui.StatusBox.auto_complete_selected
                 .substring(ui.StatusBox.get_screen_name().length - 1)
             ui.StatusBox.append_status_text(append + ' ');
-            ui.StatusBox.stop_screen_name_detect();
             return false;
         }
     });
@@ -141,6 +140,13 @@ function init () {
         if (event.keyCode == 27) { //ESC to close
             ui.StatusBox.close();
             return false;
+        }
+
+        if (event.keyCode == 13) {
+            if (ui.StatusBox.is_detecting_name) {
+                ui.StatusBox.stop_screen_name_detect();
+                return false;
+            }
         }
 
         if (key_code == 38 || key_code == 40) { 
