@@ -262,8 +262,8 @@ function fill_vcard(user_obj, vcard_container) {
         Math.round(user_obj.statuses_count / differ * 100)/ 100);
     vcard_container.find('.follower_cnt').text(user_obj.followers_count);
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
-    vcard_container.find('.bio').text(user_obj.description);
-    vcard_container.find('.location').text(user_obj.location);
+    vcard_container.find('.bio').text('').text(user_obj.description);
+    vcard_container.find('.location').text('').text(user_obj.location);
     vcard_container.find('.join').text(create_at.toLocaleDateString());
     if (user_obj.url) {
         vcard_container.find('.web').text(user_obj.url)
