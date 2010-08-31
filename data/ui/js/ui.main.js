@@ -130,7 +130,7 @@ function init () {
     $('#btn_people_entry').click(
     function (event) {
         ui.Main.reset_people_page(null
-            , $('#tbox_people_entry').attr('value')).trim();
+            , $('#tbox_people_entry').attr('value').trim());
         daemon.Updater.update_people();
     });
 
@@ -142,7 +142,7 @@ function init () {
     $('#btn_search_entry').click(
     function (event) {
         ui.Main.reset_search_page(
-            $('#tbox_search_entry').attr('value')).trim();
+            $('#tbox_search_entry').attr('value').trim());
         daemon.Updater.update_search();
     });
 
