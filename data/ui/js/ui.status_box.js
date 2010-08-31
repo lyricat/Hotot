@@ -117,10 +117,15 @@ function init () {
             if (! ui.StatusBox.is_detecting_name)
                 return ;
             var append = ui.StatusBox.auto_complete_selected
-                .substring(ui.StatusBox.get_screen_name().length - 1)
-            ui.StatusBox.append_status_text(append + ' ');
+                .substring(ui.StatusBox.get_screen_name().length - 1); 
+            ui.StatusBox.insert_status_text(append+' ', null);
             return false;
         }
+        if (key_code == 38 || key_code == 40) {         
+            if (ui.StatusBox.is_detecting_name)
+                return false;
+        }
+        
     });
     
     $('#tbox_status').keypress(
@@ -136,7 +141,6 @@ function init () {
      
     $('#tbox_status').keyup(
     function (event) {
-        var key_code = event.keyCode;
         if (event.keyCode == 27) { //ESC to close
             ui.StatusBox.close();
             return false;
@@ -149,7 +153,7 @@ function init () {
             }
         }
 
-        if (key_code == 38 || key_code == 40) { 
+        if (event.keyCode == 38 || event.keyCode == 40) { 
         // up or down
             if (! ui.StatusBox.is_detecting_name)
                 return true;
@@ -159,8 +163,10 @@ function init () {
             items.eq(ui.StatusBox.auto_complete_hlight_idx)
                 .removeClass('hlight');
 
-            if (key_code == 38) ui.StatusBox.auto_complete_hlight_idx -= 1;
-            if (key_code == 40) ui.StatusBox.auto_complete_hlight_idx += 1;
+            if (event.keyCode == 38) 
+                ui.StatusBox.auto_complete_hlight_idx -= 1;
+            if (event.keyCode == 40) 
+                ui.StatusBox.auto_complete_hlight_idx += 1;
             if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
                 ui.StatusBox.auto_complete_hlight_idx = items.length - 1;
             } 
@@ -282,6 +288,19 @@ function append_status_text(text) {
         $('#tbox_status').attr('value', orig + text);
     }
     $('#tbox_status').removeClass('hint_style');
+},
+
+insert_status_text:
+function insert_status_text(text, pos) {
+    if (pos == null) {
+        pos = $('#tbox_status').get(0).selectionStart;
+    } else {
+        $('#tbox_status').get(0).selectionStart = pos;
+    }
+    $('#tbox_status').val(
+        $('#tbox_status').val().substr(0, pos)
+        + text 
+        + $('#tbox_status').val().substring(pos));
 },
 
 set_status_text:
