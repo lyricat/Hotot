@@ -123,6 +123,9 @@ function update_people() {
         });
     };
     
+
+    if (ui.Main.block_info['#people'].screen_name == '') 
+        return;
     lib.twitterapi.show_user(
         ui.Main.block_info['#people'].screen_name, 
     function (user_obj) {
@@ -178,6 +181,8 @@ function update_search() {
     $('#search_tweet_block > ul').html('');
     var query = ui.Main.block_info['#search'].query;
     var page = ui.Main.block_info['#search'].page;
+    if (query == '') 
+        return;
     lib.twitterapi.search(query, 1,
     function (result) {
         var tweets = [];

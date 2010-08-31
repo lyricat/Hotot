@@ -47,7 +47,7 @@ block_info: {
         , is_sub: true
     },
     '#people': {
-          id: null, screen_name: null
+          id: null, screen_name: '' 
         , since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
@@ -130,7 +130,7 @@ function init () {
     $('#btn_people_entry').click(
     function (event) {
         ui.Main.reset_people_page(null
-            , $('#tbox_people_entry').attr('value'));
+            , $('#tbox_people_entry').attr('value')).trim();
         daemon.Updater.update_people();
     });
 
@@ -141,7 +141,8 @@ function init () {
     });
     $('#btn_search_entry').click(
     function (event) {
-        ui.Main.reset_search_page($('#tbox_search_entry').attr('value'));
+        ui.Main.reset_search_page(
+            $('#tbox_search_entry').attr('value')).trim();
         daemon.Updater.update_search();
     });
 
