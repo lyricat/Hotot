@@ -10,7 +10,7 @@ schemes: {
 
 reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'),
 
-reg_user: new RegExp('(^|\\s)@(\\w+)[^\\w]', 'g'),
+reg_user: new RegExp('(^|\\s)@(\\w+)', 'g'),
 
 reg_hash_tag: new RegExp('(^|\\s)#([^\\s]+)', 'g'),
 
