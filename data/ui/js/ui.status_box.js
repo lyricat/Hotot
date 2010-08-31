@@ -118,7 +118,7 @@ function init () {
                 return ;
             var append = ui.StatusBox.auto_complete_selected
                 .substring(ui.StatusBox.get_screen_name().length - 1); 
-            ui.StatusBox.insert_status_text(append+' ', null);
+            ui.StatusBox.insert_status_text(append, null);
             return false;
         }
         if (key_code == 38 || key_code == 40) {         
