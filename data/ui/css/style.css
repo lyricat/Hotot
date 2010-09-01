@@ -372,7 +372,7 @@ a {
 /* ===== Filter =================================== */
 #filter_bar {
     top: 100px;    
-    z-index: 100000;
+    z-index: 10000;
     position: fixed;
     right: 20px;
     font-size:12px;
@@ -382,6 +382,8 @@ a {
     border-right: #ccc solid 1px;
     border-left: #ccc solid 1px;
     display: none;
+    -webkit-border-bottom-left-radius: 3px 3px;
+    -webkit-border-bottom-right-radius: 3px 3px;
 }
 
 #tbox_filter {

@@ -107,6 +107,11 @@ jQuery(function($) {
             if (! ui.ActionMenu.is_hide) {
                 return ui.ActionMenu.handle_keyup(event.keyCode);
             }
+
+            if (event.keyCode == 70 && event.ctrlKey) {
+                // '<Ctrl> + f' to open filter
+                ui.Filter.show();
+            }
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
@@ -136,7 +141,7 @@ jQuery(function($) {
                     // 'a' to open action menu
                     ui.ActionMenu.show();
                 } else if (event.keyCode == 191) {
-                    // '/' to open help & about dialog
+                    // '/' to open filter
                     ui.Filter.show();
                 }
             }
@@ -770,7 +775,7 @@ jQuery(function($) {
                         <tr><td>Move to bottom</td><td>b</td></tr>
                         <tr><td>Enter compose mode</td><td>c</td></tr>
                         <tr><td>Enter action mode</td><td>a</td></tr>
-                        <tr><td>Enter filter mode</td><td>/</td></tr>
+                        <tr><td>Enter filter mode</td><td>/ or &lt;Ctrl&gt;f</td></tr>
                         <tr><th class="sub" colspan="2">Compose Mode</th></tr>
                         <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
                         <tr><th class="sub" colspan="2">Action Mode</th></tr>
