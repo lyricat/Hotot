@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
 import gtk
+gtk.gdk.threads_init() ## fix issue 24
 import webkit
 import agent
 import config
