@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
     <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
+    <script type="text/javascript" src="js/ui.filter.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
 <script type="text/javascript">
 var layout_opts = {
@@ -134,6 +135,9 @@ jQuery(function($) {
                 } else if (event.keyCode == 65) {
                     // 'a' to open action menu
                     ui.ActionMenu.show();
+                } else if (event.keyCode == 191) {
+                    // '/' to open help & about dialog
+                    ui.Filter.show();
                 }
             }
         }
@@ -174,6 +178,7 @@ jQuery(function($) {
     ui.ProfileDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
+    ui.Filter.init();
     ui.DialogHelper.init();
     ui.ActionMenu.init();
 
@@ -506,6 +511,11 @@ jQuery(function($) {
     		<a href="javascript:void(0)">DM</a>
     	</li>
     </ul>
+</section>
+
+<section id="filter_bar">
+    <input type="text" id="tbox_filter"/>
+    <a id="btn_filter_close" href="javascript:void(0);"></a>
 </section>
 
 <section id="console">

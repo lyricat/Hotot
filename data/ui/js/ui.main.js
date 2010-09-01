@@ -681,6 +681,21 @@ function move_to_tweet(pos) {
     target.focus();
 },
 
+filter:
+function filter(query){
+    var current = ui.Slider.current;
+    var tweets = $(current + '_tweet_block .tweet');
+    tweets.each(
+    function(idx, tweet) {
+        if ($(tweet).find('.text').text().indexOf(query) != -1
+            || $(tweet).find('.who').text().indexOf(query) != -1) {
+            $(tweet).show()
+        } else {
+            $(tweet).hide();
+        }
+    });
+}, 
+
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
     return $($(btn).parents('.tweet')[0]);

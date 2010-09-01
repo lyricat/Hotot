@@ -336,7 +336,7 @@ a {
 /* ===== count =================================== */
 #count {
     position: fixed;
-    z-index: 9999999;
+    z-index: 100000;
     background: rgba(0, 0, 0, 0.7);
     top: 100px;
     left: 0;
@@ -367,6 +367,33 @@ a {
 #count li > a:hover {
     color: orange;
     background: black;
+}
+
+/* ===== Filter =================================== */
+#filter_bar {
+    top: 100px;    
+    z-index: 100000;
+    position: fixed;
+    right: 20px;
+    font-size:12px;
+    height: 20px;
+    padding: 0px 5px 2px 5px;
+    border-bottom: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+    border-left: #ccc solid 1px;
+    display: none;
+}
+
+#tbox_filter {
+    width: 100px;
+    padding: 0 5px;
+}
+
+#btn_filter_close {
+    background: transparent url(../imgs/ic16_clear.png) no-repeat;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
 }
 
 /* ===== Widgets =================================== */
