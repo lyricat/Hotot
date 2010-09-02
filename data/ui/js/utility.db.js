@@ -18,11 +18,11 @@ function dump_tweets(json_obj) {
         var user = typeof tweet_obj.user != 'undefined'? 
             tweet_obj.user: tweet_obj.sender;
         var old_user = utility.DB.get(utility.DB.USER_CACHE
-            , user.id.toString());
+            , user.screen_name.toString());
         if (utility.DB.auto_complete_list.indexOf(user.screen_name)==-1) {
             utility.DB.auto_complete_list.push(user.screen_name);
         }
-        $(utility.DB.USER_CACHE).data(user.id.toString(), user);
+        $(utility.DB.USER_CACHE).data(user.screen_name.toString(), user);
         $(utility.DB.TWEET_CACHE).data(tweet_obj.id.toString(), tweet_obj);
     };
 
@@ -43,7 +43,7 @@ set:
 function set(db_name, key, value) {
     if (db_name == utility.DB.USER_CACHE) {
         var old_user = utility.DB.get(utility.DB.USER_CACHE
-            , user.id.toString());
+            , user.screen_name.toString());
         if (utility.DB.auto_complete_list.indexOf(user.screen_name)==-1) {
             utility.DB.auto_complete_list.push(user.screen_name);
         }

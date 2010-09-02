@@ -21,7 +21,11 @@ tweet_t:
         <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
+        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
+        </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
@@ -67,10 +71,15 @@ tweet_t:
 dm_t: 
 '<li id="{%TWEET_ID%}" class="tweet">\
     <div class="profile_img_wrapper">\
-        <img src="{%PROFILE_IMG%}" >\
+        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div id="{%USER_ID%}" class="who">\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
+        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
+        </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
@@ -84,9 +93,14 @@ search_t:
 '<li id="{%TWEET_ID%}" class="tweet">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
-        <div id="{%USER_ID%}" class="who"><a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a><span class="tweet_timestamp">{%TIMESTAMP%}</span></div>\
+        <div id="{%USER_ID%}" class="who">\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
+        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
+        </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
             <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
@@ -122,6 +136,7 @@ function form_dm(dm_obj, pagename) {
         + ' ' + create_at.toDateString();
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
+    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
@@ -183,6 +198,7 @@ function form_tweet (tweet_obj, pagename) {
     }
 
     ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
+    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%RETWEET_ID%}/g, retweet_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
@@ -236,6 +252,7 @@ function form_search(tweet_obj, pagename) {
     }
 
     ret = ui.Template.search_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
+    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
@@ -255,7 +272,9 @@ function fill_vcard(user_obj, vcard_container) {
     
     vcard_container.find('.profile_img')
         .attr('src', user_obj.profile_image_url);
-    vcard_container.find('.screen_name').text(user_obj.screen_name);
+    vcard_container.find('.screen_name')
+        .html(user_obj.screen_name)
+        .attr('href', 'http://twitter.com/'+user_obj.screen_name);
     vcard_container.find('.name').text(user_obj.name);
     vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);
     vcard_container.find('.tweet_per_day_cnt').text(
