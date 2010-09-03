@@ -518,20 +518,22 @@ function on_reply_all_click(btn, event) {
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
-    var who_names = [ '@' + tweet_obj.user.screen_name +' '];
+    var who_names = [ '@' + tweet_obj.user.screen_name];
     var text = tweet_obj.text;
 
     var match = ui.Template.reg_user.exec(text);
     while (match != null ) {
-        var name = '@' + match[2];
-        if (who_names.indexOf(name) == -1)
-            who_names.push(name);
+        if (match[2] != globals.myself.screen_name) {
+            var name = '@' + match[2];
+            if (who_names.indexOf(name) == -1)
+                who_names.push(name);
+        }
         match = ui.Template.reg_user.exec(text);
     }
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.set_status_info('Reply to `' + text + '`');
-    ui.StatusBox.append_status_text(who_names.join(' '));
+    ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     ui.StatusBox.open(
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
