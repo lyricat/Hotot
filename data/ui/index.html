@@ -32,6 +32,10 @@
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.filter.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
+    
+    <script type="text/javascript" src="../ext/ext.js"></script>
+    <script type="text/javascript" src="../ext/sample/entry.js"></script>
+    <script type="text/javascript" src="../ext/image_preview/entry.js"></script>
 <script type="text/javascript">
 var layout_opts = {
         closable:				true	
@@ -186,6 +190,15 @@ jQuery(function($) {
     ui.Filter.init();
     ui.DialogHelper.init();
     ui.ActionMenu.init();
+    ext.init();
+    for (var key in ext) {
+        // Extension package MUST be Capital
+        // and MUST have a method named 'init'
+        if (65 <= key.charCodeAt(0) && key.charCodeAt(0) <= 90) {
+            if (typeof ext[key].init != 'undefined')
+                ext[key].init();
+        }
+    }
 
     update_tweet_block_width();
 });
@@ -265,14 +278,18 @@ jQuery(function($) {
     <div id="main_page_slider">
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul>
-<!-- 
+<!--  
 <li id="{%TWEET_ID%}" class="tweet">
     <div class="profile_img_wrapper">
         <img src="imgs/ic48_profile_image.png">
     </div>
     <div class="tweet_body orange_body">
         <div class="who"><a class="who_href" href="javascript:void(0);">{%SCREEN_NAME%}</a>:</div>
-        <div class="text">{%TEXT%}</div>
+        <div class="text">{%TEXT%}
+        <a href="#" style="margin:2px 5px; padding:0 !important; border:1px #ccc solid; display:inline-block;">
+            <img style="padding:1px; border:5px #fff solid; background:#ccc; margin:0;" src="http://yfrog.com/mwlggxj.th.jpg"/>
+        </a>
+        </div>
         <ul class="tweet_ctrl">
             <li><a class="tweet_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>
             <li><a class="tweet_rt tweet_ctrl_btn" href="javascript:void(0);"></a></li>
@@ -307,7 +324,6 @@ jQuery(function($) {
     <ul class="tweet_thread">Loading...</ul>
 </li> 
 -->
-
         </ul>
         <div class="tweet_block_bottom">
             <a class="btn_load_more button" href="javascript:void(0);">Load more</a>

@@ -240,10 +240,8 @@ function load_tweets_cb(result, pagename) {
         container = $(pagename + '_tweet_block > ul');
     }
     container.pagename = pagename.substring(1);
-    var tweet_count = ui.Main.add_tweets(result, false, container);
+    var tweet_count = ui.Main.add_tweets(result, container);
     
-    // just for debug.
-    utility.Console.out('Update ['+pagename+'], '+ tweet_count +' items');
     
     if (tweet_count != 0 ) {
         // favorites page have differet mechanism to display more tweets.
@@ -276,7 +274,7 @@ function load_more_tweets_cb(result, pagename) {
         container = $(pagename + '_tweet_block > ul');
     }
     container.pagename = pagename.substring(1);
-    var tweet_count = ui.Main.add_tweets(json_obj, true, container);
+    var tweet_count = ui.Main.add_tweets(json_obj, container);
 
     if (tweet_count != 0) {
         if (pagename == '#favorites'
@@ -293,7 +291,7 @@ function load_more_tweets_cb(result, pagename) {
 },
 
 add_tweets:
-function add_tweets(json_obj, is_append, container) {
+function add_tweets(json_obj, container) {
 /* Add one or more tweets to a specifed container.
  * - Choose a template-filled function which correspond to the json_obj and
  *   Add it to the container in order of tweets' id (in order of post time).
@@ -344,18 +342,17 @@ function add_tweets(json_obj, is_append, container) {
          * */
         var this_one = tweet;
         var next_one = get_next_tweet_dom(null);
+        var this_one_html = form_proc(this_one, container.pagename);
         while (true) {
             if (next_one == null) {
                 // insert to end of container 
-                container.append(form_proc(this_one, container.pagename));
+                container.append(this_one_html);
                 return;
             } else {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
                 if (next_one_id < this_one.id) {
-                    $(next_one).before(
-                        form_proc(this_one, container.pagename)
-                    );
+                    $(next_one).before(this_one_html);
                     return;
                 } else if (next_one_id == this_one.id) {
                     // simply drop the duplicate tweet.
@@ -475,7 +472,6 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    utility.Console.out(id);
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
     ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     ui.StatusBox.reply_to_id = id;
@@ -608,7 +604,7 @@ function on_expander_click(btn, event) {
     var load_thread_proc = function (tweet_id) {
         
         var load_thread_proc_cb = function (prev_tweet_obj) {
-            ui.Main.add_tweets(prev_tweet_obj, true, thread_container);
+            ui.Main.add_tweets(prev_tweet_obj, thread_container);
             ui.Main.bind_tweets_action(prev_tweet_obj, true, thread_container.pagename);
             // load the prev tweet in the thread.
             var reply_id = prev_tweet_obj.in_reply_to_status_id;
