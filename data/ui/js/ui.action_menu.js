@@ -46,7 +46,9 @@ bind_action:
 function bind_action() {
     $('#action_menu .action_menu_item').click(
     function (event) {
-        var trigger_btn = ui.ActionMenu.btns[$(this).prevAll('.action_menu_item').length]
+        var trigger_btn = ui.ActionMenu.btns[
+            $(this).parent().prevAll('li').length
+        ];
         $(trigger_btn).click();
         ui.ActionMenu.hide();
         return false;
@@ -57,8 +59,8 @@ generate:
 function generate() {
     ui.ActionMenu.btns = [];
     var tweet_dom_id = ui.Main.actived_tweet_id;
-    var btns = $(tweet_dom_id).find('.tweet_ctrl_btn')
-    var menu_btns = $(tweet_dom_id).find('.tweet_ctrl_menu_btn');
+    var btns = $(tweet_dom_id +' .tweet_ctrl:first').find('.tweet_ctrl_btn');
+    var menu_btns = $(tweet_dom_id +' .tweet_more_menu:first').find('.tweet_ctrl_menu_btn');
     var arr = [];
     var idx = 0;
 
