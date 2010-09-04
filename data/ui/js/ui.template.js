@@ -102,10 +102,6 @@ search_t:
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
-        <ul class="tweet_ctrl">\
-            <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
-            <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
-        </ul>\
         <div class="tweet_meta">\
             <div class="tweet_source">via: {%SOURCE%}</div>\
         </div>\
@@ -130,9 +126,8 @@ function form_dm(dm_obj, pagename) {
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['orange'];
     }
-    var create_at_str = create_at.getHours() 
-        + ':' + create_at.getMinutes()
-        + ':' + create_at.getSeconds()
+
+    var create_at_str = create_at.toTimeString().substring(0, 8)
         + ' ' + create_at.toDateString();
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
@@ -180,10 +175,9 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var create_at_str = create_at.getHours() 
-        + ':' + create_at.getMinutes()
-        + ':' + create_at.getSeconds()
+    var create_at_str = create_at.toTimeString().substring(0, 8)
         + ' ' + create_at.toDateString();
+
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['green'];
@@ -239,9 +233,7 @@ function form_search(tweet_obj, pagename) {
     var ret = '';
     var scheme = ui.Template.schemes['white'];
 
-    var create_at_str = create_at.getHours() 
-        + ':' + create_at.getMinutes()
-        + ':' + create_at.getSeconds()
+    var create_at_str = create_at.toTimeString().substring(0, 8)
         + ' ' + create_at.toDateString();
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
