@@ -19,11 +19,14 @@ class MainView(WebView):
         self.clipbord = gtk.Clipboard()
 
         settings = self.get_settings()
-        settings.set_property('enable-universal-access-from-file-uris', True)
-        settings.set_property('enable-file-access-from-file-uris', True)
-        settings.set_property('enable-page-cache', True)
-        settings.set_property('tab-key-cycles-through-elements', True)
-        settings.set_property('enable-default-context-menu', False)
+        try:
+            settings.set_property('enable-universal-access-from-file-uris', True)
+            settings.set_property('enable-default-context-menu', False)
+            settings.set_property('enable-page-cache', True)
+            settings.set_property('tab-key-cycles-through-elements', True)
+            settings.set_property('enable-file-access-from-file-uris', True)
+        except:
+            pass
 
         ## context menu
         self.contextmenu = gtk.Menu()
