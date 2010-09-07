@@ -20,8 +20,9 @@ FORM_TWEET_TEXT_LISTENER_AFTER: 0x06,
 // callback(text);
 
 // listeners: {listener_type: [callbacks ... ], ... };
-listeners: {
-},
+listeners: {},
+
+ext_infos: {},
 
 init: 
 function init() {
@@ -80,9 +81,58 @@ function init() {
 
 },
 
+init_exts:
+function init_exts() {
+    for (var key in ext) {
+        // Extension package MUST be Capital
+        // and MUST have a method named 'init'
+        if (65 <= key.charCodeAt(0) && key.charCodeAt(0) <= 90) {
+            if (typeof ext[key].init != 'undefined') {
+                utility.Console.out('[i]Init Extension: ' + ext[key].name)
+                ext[key].init();
+                if (typeof ext[key].icon == 'undefined') {
+                    icon = 'imgs/ic64_ext.png';
+                } else {
+                    icon = '../ext/' + ext[key].id + '/' + ext[key].icon;
+                }
+                ext.ext_infos[ext[key].id] = {
+                      name: ext[key].name
+                    , description: ext[key].description
+                    , version: ext[key].version
+                    , author: ext[key].author
+                    , url: ext[key].url
+                    , icon: icon
+                };
+            }
+        }
+    }
+},
+
+load_exts:
+function load_exts(exts) {
+    procs = [];
+    var _load = function (idx) {
+        var path = exts[i];
+        procs.push(function () {
+            $.getScript(path,
+            function () {
+                utility.Console.out('[i]Load Extension: ' + path);
+                $(window).dequeue('_load_exts');
+            });
+        });    
+    };
+
+    for (var i = 0; i < exts.length; i += 1) {
+        _load(i)
+    }
+    procs.push(function () { ext.init_exts(); });
+    $(window).queue('_load_exts', procs);
+    $(window).dequeue('_load_exts');
+},
+
 notify:
 function notify(type){
-    
+    // #TODO
 },
 
 register_listener:

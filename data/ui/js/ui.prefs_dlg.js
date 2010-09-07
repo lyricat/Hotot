@@ -216,19 +216,40 @@ function update_font_preview() {
         , $('#tbox_prefs_font_size').attr('value') + 'px');
 },
 
+load_ext_list:
+function load_ext_list() {
+    ext_arr = [];
+    for (var ext_id in ext.ext_infos) {
+        var info = ext.ext_infos[ext_id];
+        ext_arr.push('<li class="ext_item">'
+            + '<div class="ext_icon_wrap">'
+                + '<img class="ext_icon" src="'+info.icon+'"/></div>'
+            + '<div class="ext_item_body">'
+                + '<span class="ext_name">'+info.name+'</span> - Version  <span>'+ info.version + '</span><br/>'
+                + '<span>Author:</span> <span>'+info.author+'</span><br/>'
+                + '<span>Website:</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
+                + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
+                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable">Enable</a> <a href="javascript:void(0);" class="enable">Disable</a></div>'
+            + '</div></li>');
+    }
+    $('#prefs_exts_container > ul').html(ext_arr.join(''));
+    
+},
+
 hide:
 function hide () {
-    this.me.parent().hide();
-    this.is_show = false;
-    return this;
+    ui.PrefsDlg.me.parent().hide();
+    ui.PrefsDlg.is_show = false;
+    return ui.PrefsDlg;
 },
 
 show:
 function show () {
-    this.request_prefs();
-    this.me.parent().show();
-    this.is_show = true;
-    return this;
+    ui.PrefsDlg.load_ext_list();
+    ui.PrefsDlg.request_prefs();
+    ui.PrefsDlg.me.parent().show();
+    ui.PrefsDlg.is_show = true;
+    return ui.PrefsDlg;
 },
 
 }

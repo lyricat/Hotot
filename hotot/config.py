@@ -7,8 +7,9 @@ import gtk
 import sys
 import db
 
-PROGRAM_NAME = "hotot"
-UI_DIR_NAME = "ui"
+PROGRAM_NAME = 'hotot'
+UI_DIR_NAME = 'ui'
+EXT_DIR_NAME = 'ext'
 LAUNCH_DIR = os.path.abspath(sys.path[0])
 CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
@@ -162,4 +163,19 @@ def get_ui_object(name):
         fullpath = os.path.join(base, UI_DIR_NAME, name)
         if os.path.exists(fullpath):
             return fullpath
+
+def get_exts():
+    import glob
+    exts = []
+    for base in DATA_DIRS:
+        files = glob.glob(os.path.join(base, EXT_DIR_NAME) + '/*')
+        ext_dirs = filter(lambda x: os.path.isdir(x), files)
+        for dir in ext_dirs:
+            ext_js = os.path.join(dir, 'entry.js')
+            if os.path.exists(ext_js):
+                exts.append('file://%s' % ext_js)
+            pass
+        pass
+    return exts
+
 

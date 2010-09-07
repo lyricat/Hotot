@@ -1,6 +1,25 @@
 if (typeof ext == 'undefined') var ext = {};
 ext.HototImagePreview = {
 
+id: 'org.hotot.imagepreview',
+
+name: 'Hotot Image Preview',
+
+description: 'To preview picture thumbs in timeline.\nSupport sites:\n\
+    - img.ly\n\
+    - twitpic.com\n\
+    - twitgoo.com\n\
+    - yfrog.com\n\
+    - moby.to\n',
+
+version: '0.1',
+
+author: 'Shellex Wai',
+
+url: 'http://hotot.org',
+
+icon: 'icon.png',
+
 img_link_reg: {
 'img.ly': {
     reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9]+))"', 'g'),

@@ -30,7 +30,6 @@ function open(dlg) {
         }
     }
     if (!any_dlg_exists) $(ui.DialogHelper.mask).show();
-    //alert(1)
     dlg.show();
     var dlg_w = $(dlg.id).width();
     var dlg_h = $(dlg.id).height();

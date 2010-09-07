@@ -141,6 +141,17 @@ def load_search(query):
         ''' % (query, query));
     pass
 
+def load_exts():
+    scripts = []
+    exts = config.get_exts()
+    webv.execute_script('''
+        var exts = %s;
+        ext.load_exts(exts);
+        '''
+        # @TODO
+        % json.dumps(exts))
+    pass
+
 def apply_prefs(): 
     remember_password = config.remember_password
     font_family_used = config.font_family_used

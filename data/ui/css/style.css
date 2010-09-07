@@ -806,6 +806,55 @@ input[type="button"]:focus, .button:focus {
     overflow: auto;
 }
 
+#prefs_exts_container {
+    overflow: auto;
+    height: 200px;
+    width: 100%;
+    border: 1px #ccc solid;
+    background: #f2f2f2;
+}
+
+#prefs_exts_container ul {
+    list-style-type:none;
+}
+
+.ext_item {
+    margin: 5px;
+    background: #fff;
+    border-width: 1px;
+    border-color: transparent #ccc #ccc transparent;
+    border-style: solid;
+    color: #000;
+    min-height: 80px;
+}
+
+.ext_icon_wrap {
+    width: 70px;
+    padding: 5px;
+    float: left;
+}
+
+.ext_icon {
+    width: 64px;
+    height: 64px;
+    display:block;
+    border: 0;
+}
+
+.ext_item_body {
+    margin-left:  77px;
+    border-left: 1px #ccc solid;
+    padding: 5px;
+}
+
+.ext_name {
+    font-weight: bold;
+}
+
+.ext_description {
+    padding: 0 15px;
+}
+
 /*===== Profile Dialog ================================*/
 #profile_dlg {
     display: block;

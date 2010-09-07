@@ -98,6 +98,7 @@ class MainView(WebView):
         agent.apply_config()
         agent.set_style_scheme()
         agent.load_cache()
+        agent.load_exts()
         pass
 
     def on_mitem_copy_activated(self, item):
