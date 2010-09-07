@@ -828,6 +828,11 @@ input[type="button"]:focus, .button:focus {
     min-height: 80px;
 }
 
+.ext_item.disabled {
+    background: #eee;
+    color: #777;
+}
+
 .ext_icon_wrap {
     width: 70px;
     padding: 5px;

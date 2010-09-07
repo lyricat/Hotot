@@ -270,6 +270,7 @@ def load_cache():
 
 def request(uuid, method, url, params={}, headers={}):
     scripts = ''
+    print url, params
     try:
         if (method == 'POST'):
             result = _post(url, params, headers)

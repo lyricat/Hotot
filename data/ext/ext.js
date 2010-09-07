@@ -24,6 +24,8 @@ listeners: {},
 
 ext_infos: {},
 
+ext_enabled: ['org.hotot.sample'],
+
 init: 
 function init() {
     // listeners: {listener_type: [callbacks ... ], ... };
@@ -85,24 +87,36 @@ init_exts:
 function init_exts() {
     for (var key in ext) {
         // Extension package MUST be Capital
-        // and MUST have a method named 'init'
-        if (65 <= key.charCodeAt(0) && key.charCodeAt(0) <= 90) {
-            if (typeof ext[key].init != 'undefined') {
-                utility.Console.out('[i]Init Extension: ' + ext[key].name)
-                ext[key].init();
-                if (typeof ext[key].icon == 'undefined') {
-                    icon = 'imgs/ic64_ext.png';
-                } else {
-                    icon = '../ext/' + ext[key].id + '/' + ext[key].icon;
-                }
-                ext.ext_infos[ext[key].id] = {
-                      name: ext[key].name
-                    , description: ext[key].description
-                    , version: ext[key].version
-                    , author: ext[key].author
-                    , url: ext[key].url
-                    , icon: icon
-                };
+        // and MUST have two methods named 'load' and 'unload'
+        if (65 <= key.charCodeAt(0) 
+            && key.charCodeAt(0) <= 90
+            && typeof  ext[key].load != 'undefined' 
+            && typeof  ext[key].unload != 'undefined') {
+
+            var extension = ext[key];
+            utility.Console.out('[i]Init Extension: ' + extension.name);
+
+            if (typeof extension.icon == 'undefined') {
+                icon = 'imgs/ic64_ext.png';
+            } else {
+                icon = '../ext/' + extension.id + '/' + extension.icon;
+            }
+
+            ext.ext_infos[extension.id] = {
+                  name: extension.name
+                , description: extension.description
+                , version: extension.version
+                , author: extension.author
+                , url: extension.url
+                , icon: icon
+                , extension: extension
+            };
+
+            if (ext.ext_enabled.indexOf(extension.id) != -1) {
+                extension.load();
+                ext.ext_infos[extension.id]['enable'] = true;
+            } else {
+                ext.ext_infos[extension.id]['enable'] = false;
             }
         }
     }
