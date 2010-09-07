@@ -49,7 +49,7 @@ BORDER_STYLE: 'margin:2px 5px; padding:0; display:inline-block;',
 IMG_STYLE: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0;',
 
 on_form_tweet_text:
-function on_form_tweet_text() {
+function on_form_tweet_text(text) {
     var img_html_arr = [];
     var img_link_reg = ext.HototImagePreview.img_link_reg;
     for (var pvd_name in img_link_reg) {

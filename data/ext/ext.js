@@ -24,7 +24,7 @@ listeners: {},
 
 ext_infos: {},
 
-ext_enabled: ['org.hotot.sample'],
+ext_enabled: [], // @TODO
 
 init: 
 function init() {
@@ -112,12 +112,16 @@ function init_exts() {
                 , extension: extension
             };
 
+            // @TODO Issue 31
+            /*
             if (ext.ext_enabled.indexOf(extension.id) != -1) {
                 extension.load();
                 ext.ext_infos[extension.id]['enable'] = true;
             } else {
                 ext.ext_infos[extension.id]['enable'] = false;
             }
+            */
+            extension.load();
         }
     }
 },
