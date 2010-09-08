@@ -12,6 +12,10 @@ api_base: 'https://api.twitter.com/',
 
 sign_api_base: 'https://api.twitter.com/',
 
+search_api_base: 'http://search.twitter.com/',
+
+use_same_sign_api_base: true,
+
 py_request: true,
 
 source: 'Hotot',
@@ -69,8 +73,8 @@ function post(ajax_url, ajax_params, on_success) {
 do_ajax:
 function do_ajax(method, url, params, headers, on_success, on_error) {
     params['source'] = lib.twitterapi.source;
-    sign_url = url.replace(lib.twitterapi.api_base
-        , lib.twitterapi.sign_api_base);
+    sign_url = lib.twitterapi.use_same_sign_api_base? url
+        :url.replace(lib.twitterapi.api_base, lib.twitterapi.sign_api_base);
     if (lib.twitterapi.use_oauth) {
         var signed_params = jsOAuth.form_signed_params(
               sign_url
@@ -329,6 +333,7 @@ function get_user_profile_image(screen_name, size) {
     var url = lib.twitterapi.api_base + 'users/profile_image/twitter.json'
         + '?size='+ size
         + '&screen_name=' + screen_name;
+    utility.Console.out(url);
     return url;
 },
 

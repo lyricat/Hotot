@@ -37,7 +37,10 @@ default_config = {
     'template':'index.html',
 #api url:
     'api_base': 'https://api.twitter.com/',
+    'sign_api_base': 'https://api.twitter.com/',
+    'search_api_base': 'http://search.twitter.com/',
     'oauth_base': 'https://twitter.com/oauth/',
+    'use_same_sign_api_base': True,
 #proxy:
     'use_http_proxy': False,
     'http_proxy_host': '',

@@ -60,6 +60,24 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
+    $('#chk_prefs_use_same_sign_api_base').click(
+    function (event) {
+        $('#tbox_prefs_sign_api_base').attr('disabled', $(this).attr('checked'));
+    });
+
+    $('#chk_prefs_use_http_proxy').click(
+    function (event) {
+        $('#tbox_prefs_http_proxy_host').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_port').attr('disabled', $(this).attr('checked'));
+    });
+
+    $('#chk_prefs_use_socks_proxy').click(
+    function (event) {
+        $('#tbox_prefs_socks_proxy_host').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_socks_proxy_port').attr('disabled', $(this).attr('checked'));
+    });
+
+
     $('#btn_prefs_ok').click(
     function (event) {
         var err = ui.FormChecker.check_config_error(
@@ -133,15 +151,28 @@ function request_prefs_cb(prefs_obj) {
     // Networks
     $('#tbox_prefs_api_base').attr('value'
         , prefs_obj['api_base']);
+    $('#tbox_prefs_sign_api_base').attr('value'
+        , prefs_obj['sign_api_base']);
+    $('#tbox_prefs_search_api_base').attr('value'
+        , prefs_obj['search_api_base']);
     $('#tbox_prefs_oauth_base').attr('value'
         , prefs_obj['oauth_base']);
-
+    $('#chk_prefs_use_same_sign_api_base').attr('checked'
+        , prefs_obj['use_same_sign_api_base']);
+    if (prefs_obj['use_same_sign_api_base']) {
+        $('#tbox_prefs_sign_api_base').attr('disabled', true);
+    }
+    
     $('#chk_prefs_use_http_proxy').attr('checked'
         , prefs_obj['use_http_proxy']);
     $('#tbox_prefs_http_proxy_host').attr('value'
         , prefs_obj['http_proxy_host']);
     $('#tbox_prefs_http_proxy_port').attr('value'
         , prefs_obj['http_proxy_port']);
+    if (! prefs_obj['use_http_proxy']) {
+        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+    }
 
     $('#chk_prefs_use_socks_proxy').attr('checked'
         , prefs_obj['use_socks_proxy']);
@@ -149,6 +180,11 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['socks_proxy_host']);
     $('#tbox_prefs_socks_proxy_port').attr('value'
         , prefs_obj['socks_proxy_port']);
+    if (! prefs_obj['use_socks_proxy']) {
+        $('#tbox_prefs_socks_proxy_host').attr('disabled', true);
+        $('#tbox_prefs_socks_proxy_port').attr('disabled', true);
+    }
+
 },
 
 save_prefs:
@@ -176,11 +212,12 @@ function save_prefs() {
         = $('#tbox_prefs_api_base').attr('value');
     if (prefs_obj['api_base'][prefs_obj['api_base'].length - 1] != '/')
         prefs_obj['api_base'] += '/';
-
+    prefs_obj['sign_api_base'] 
+        = $('#tbox_prefs_sign_api_base').attr('value');
+    prefs_obj['search_api_base'] 
+        = $('#tbox_prefs_search_api_base').attr('value');
     prefs_obj['oauth_base'] 
         = $('#tbox_prefs_oauth_base').attr('value');
-    if (prefs_obj['oauth_base'][prefs_obj['oauth_base'].length - 1] != '/')
-        prefs_obj['oauth_base'] += '/';
 
     prefs_obj['use_http_proxy']
         = $('#chk_prefs_use_http_proxy').attr('checked');

@@ -774,6 +774,7 @@ input[type="button"]:focus, .button:focus {
 
 #prefs_dlg_body {
     padding: 0;
+    max-height: 300px;
 }
 
 .dlg_tabs {
@@ -816,6 +817,10 @@ input[type="button"]:focus, .button:focus {
     min-height: 200px;
     width: 426px;
     overflow-y: auto;
+}
+
+#prefs_networks {
+    max-height: 260px;
 }
 
 .dlg_group {

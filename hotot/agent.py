@@ -175,6 +175,10 @@ def apply_prefs():
 
     api_base = config.api_base
     if api_base[-1] != '/': api_base += '/'
+    sign_api_base = config.sign_api_base
+    if sign_api_base[-1] != '/': sign_api_base += '/'
+    search_api_base = config.search_api_base
+    if search_api_base[-1] != '/': search_api_base += '/'
     oauth_base = config.oauth_base
     if oauth_base[-1] != '/': oauth_base += '/'
 
@@ -183,13 +187,17 @@ def apply_prefs():
         $('body').css('font-family', '%s');
         globals.tweet_font_size = %s;
         lib.twitterapi.api_base = '%s';
+        lib.twitterapi.sign_api_base = '%s';
+        lib.twitterapi.search_api_base = '%s';
         jsOAuth.oauth_base = '%s';
+        lib.twitterapi.use_same_sign_api_base = %s;
         jsOAuth.key = '%s';
         jsOAuth.secret = '%s';
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
-            , api_base, oauth_base
+            , api_base, sign_api_base, search_api_base, oauth_base
+            , 'true' if config.use_same_sign_api_base else 'false'
             , consumer_key, consumer_secret ))
     pass
 
@@ -229,7 +237,10 @@ def push_prefs():
 
     # networks settings
     api_base = config.api_base;
+    sign_api_base = config.sign_api_base;
+    search_api_base = config.search_api_base;
     oauth_base = config.oauth_base;
+    use_same_sign_api_base = 'true' if config.use_same_sign_api_base else 'false'
 
     use_http_proxy = 'true' if config.use_http_proxy else 'false'
     http_proxy_host = config.http_proxy_host
@@ -251,7 +262,10 @@ def push_prefs():
         , "use_native_input": %s
         , "use_native_notify": %s
         , "api_base": "%s"
+        , "sign_api_base": "%s"
+        , "search_api_base": "%s"
         , "oauth_base": "%s"
+        , "use_same_sign_api_base": %s
         , "use_http_proxy" : %s
         , "http_proxy_host": "%s"
         , "http_proxy_port": "%s"
@@ -265,7 +279,8 @@ def push_prefs():
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
-            , api_base, oauth_base
+            , api_base, sign_api_base, search_api_base, oauth_base
+            , use_same_sign_api_base
             , use_http_proxy, http_proxy_host, http_proxy_port
             , use_socks_proxy, socks_proxy_host, socks_proxy_port
             ));
@@ -292,7 +307,7 @@ def request(uuid, method, url, params={}, headers={}):
         else:
             result = _get(url, params, headers)
     except urllib2.HTTPError, e:
-        content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), e.geturl(), str(e))
+        content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), url, e.msg)
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
@@ -335,20 +350,24 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
 
     if header:
         curl.setopt(pycurl.HTTPHEADER, [str(k) + ':' + str(v) for k, v in header.items()])
+        pass
 
     if post:
         curl.setopt(pycurl.POST, 1)
+        pass
 
     if params:
         if post:
             curl.setopt(pycurl.POSTFIELDS, urllib.urlencode(params))
         else:
             url = "?".join((url, urllib.urlencode(params)))
+        pass
     
     curl.setopt(pycurl.URL, str(url))
     
     if username and password:
         curl.setopt(pycurl.USERPWD, "%s:%s" % (str(username), str(password)))
+        pass
 
     curl.setopt(pycurl.FOLLOWLOCATION, 1)
     curl.setopt(pycurl.MAXREDIRS, 5)
@@ -361,24 +380,18 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     curl.setopt(pycurl.WRITEFUNCTION, content.write)
     curl.setopt(pycurl.HEADERFUNCTION, hdr.write)
 
-    print curl, url, header
+    #print curl, url, header
     curl.perform()
-
+    
     http_code = curl.getinfo(pycurl.HTTP_CODE)
-    if http_code != '200':
+    if http_code != 200:
         status_line = hdr.getvalue().splitlines()[0]
-        import re
-        m = re.match(r'HTTP\/\S*\s*\d+\s*(.*?)\s*$', status_line)
-        if m:
-            status_message = m.groups(1)
-        else:
-            status_message = ''
-        print "status message: %s" % status_message
+        status_message = status_line
         e =urllib2.HTTPError (str(url), http_code, status_message, {}, None)
         e.url = url
         raise e
-
-    return content.getvalue()
+    else:
+        return content.getvalue()
 
 def _get(url, params={}, req_headers={}):
     return _curl(url, params=params, post=False, header=req_headers)
