@@ -35,9 +35,8 @@ a {
 /* ===== header ==============================*/
 #header {
     border-bottom: #ccc solid 1px;
-    background-image: url(../imgs/status_box_bg.png);
     background-repeat:no-repeat;
-    background-position: 70% 50%;
+    background-position: 70% 0;
     padding: 3px 5px;
     font-size: 12px;
 }
