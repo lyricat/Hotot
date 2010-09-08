@@ -122,7 +122,8 @@ jQuery(function($) {
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
-                    $('#btn_reload').click();
+                    ui.Notification.set('Loading Tweets...').show(-1);
+                    ui.Main.load_tweets();    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
                     ui.Slider.slide_to_prev();
