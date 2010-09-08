@@ -199,11 +199,6 @@ def main():
         indicator.set_attention_icon(config.get_ui_object('imgs/ic64_hotot.png'))
         indicator.set_menu(app.menu_tray)
         pass
-    if config.use_socks_proxy:
-        import socks, socket
-        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5
-            , config.socks_proxy_host, config.socks_proxy_port)
-        pass
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()

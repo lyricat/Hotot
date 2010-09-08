@@ -5,11 +5,15 @@ import config
 import time
 import base64
 import urllib, urllib2
+import pycurl
 import pynotify
 import gtk
 import db
 import threading 
 import gobject
+
+try: import cStringIO as StringIO
+except: import StringIO
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -316,30 +320,55 @@ def request(uuid, method, url, params={}, headers={}):
     gobject.idle_add(webv.execute_script, scripts)
     pass
 
-def _get(url, params={}, req_headers={}):
-    urlopen = urllib2.urlopen
-    if config.use_http_proxy:
-        proxy_support = urllib2.ProxyHandler(
-            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
-        urlopen = urllib2.build_opener(proxy_support).open
+def _curl(url, params=None, post=False, username=None, password=None, header=None, body=None):
+    curl = pycurl.Curl()
+
+    if config.use_socks_proxy:
+        SOCKS5_PROXY = '%s:%s' % (config.socks_proxy_host, config.socks_proxy_port)
+        curl.setopt(pycurl.PROXYTYPE, pycurl.PROXYTYPE_SOCKS5)
+        curl.setopt(pycurl.PROXY, SOCKS5_PROXY)
         pass
-    request =  urllib2.Request(url, headers=req_headers)
-    ret = urlopen(request).read()
-    return ret
+    elif config.use_http_proxy:
+        HTTP_PROXY = '%s:%s' % (config.http_proxy_host, config.http_proxy_port)
+        curl.setopt(pycurl.PROXY, HTTP_PROXY)
+        pass
+
+    if header:
+      curl.setopt(pycurl.HTTPHEADER, header)
+
+    if body:
+      curl.setopt(pycurl.POST, 1)
+      curl.setopt(pycurl.POSTFIELDS, body)
+
+    if params:
+      if post:
+        curl.setopt(pycurl.HTTPPOST, [(x, str(y)) for x,y in params.items()])
+      else:
+        url = "?".join((url, urllib.urlencode(params)))
+    
+    curl.setopt(pycurl.URL, str(url))
+    
+    if username and password:
+      curl.setopt(pycurl.USERPWD, "%s:%s" % (str(username), str(password)))
+
+    curl.setopt(pycurl.FOLLOWLOCATION, 1)
+    curl.setopt(pycurl.MAXREDIRS, 5)
+    curl.setopt(pycurl.TIMEOUT, 15)
+    curl.setopt(pycurl.CONNECTTIMEOUT, 8)
+    curl.setopt(pycurl.HTTP_VERSION, pycurl.CURL_HTTP_VERSION_1_0)
+
+    content = StringIO.StringIO()
+    curl.setopt(pycurl.WRITEFUNCTION, content.write)
+
+    curl.perform()
+    print curl, url, header
+    return content.getvalue()
+
+def _get(url, params={}, req_headers={}):
+    return _curl(url, params=params, post=False, header=req_headers)
 
 def _post(url, params={}, req_headers={}):
-    urlopen = urllib2.urlopen
-    if config.use_http_proxy:
-        proxy_support = urllib2.ProxyHandler(
-            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
-        urlopen = urllib2.build_opener(proxy_support).open
-        pass
-    params = dict([(k.encode('utf8')
-            , v.encode('utf8') if type(v)==unicode else v) 
-                for k, v in params.items()])
-    request = urllib2.Request(url, urlencode(params), headers=req_headers);
-    ret = urlopen(request).read()
-    return ret
+    return _curl(url, params=params, post=True, header=req_headers)
 
 def urlencode(query):
     for k,v in query.items():
