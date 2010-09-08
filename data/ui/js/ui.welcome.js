@@ -104,7 +104,12 @@ function init () {
     function (event) {
         ui.DialogHelper.open(ui.PrefsDlg);
     });
-    
+        
+    $('#btn_welcome_exts').click(
+    function (event) {
+        ui.DialogHelper.open(ui.ExtsDlg);
+    });
+
     $('#btn_welcome_about').click(
     function (event) {
         ui.DialogHelper.open(ui.AboutDlg);

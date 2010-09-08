@@ -8,9 +8,13 @@ username: '',
 
 password: '',
 
-api_base: 'http://api.twitter.com/1/',
+api_base: 'https://api.twitter.com/',
+
+sign_api_base: 'https://api.twitter.com/',
 
 py_request: true,
+
+source: 'Hotot',
 
 success_task_table: {},
 
@@ -64,9 +68,12 @@ function post(ajax_url, ajax_params, on_success) {
 
 do_ajax:
 function do_ajax(method, url, params, headers, on_success, on_error) {
+    params['source'] = lib.twitterapi.source;
+    sign_url = url.replace(lib.twitterapi.api_base
+        , lib.twitterapi.sign_api_base);
     if (lib.twitterapi.use_oauth) {
         var signed_params = jsOAuth.form_signed_params(
-              url
+              sign_url
             , jsOAuth.access_token
             , method
             , params

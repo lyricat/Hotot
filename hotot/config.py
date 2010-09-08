@@ -36,7 +36,7 @@ default_config = {
     'shortcut_summon_hotot': '<Alt>C',
     'template':'index.html',
 #api url:
-    'api_base': 'http://api.twitter.com/1/',
+    'api_base': 'https://api.twitter.com/',
     'oauth_base': 'https://twitter.com/oauth/',
 #proxy:
     'use_http_proxy': False,

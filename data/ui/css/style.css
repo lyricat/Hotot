@@ -35,6 +35,9 @@ a {
 /* ===== header ==============================*/
 #header {
     border-bottom: #ccc solid 1px;
+    background-image: url(../imgs/status_box_bg.png);
+    background-repeat:no-repeat;
+    background-position: 70% 50%;
     padding: 3px 5px;
     font-size: 12px;
 }
@@ -613,10 +616,10 @@ input[type="button"]:focus, .button:focus {
 #sign_in_block_bottom {
     padding: 0 10px 3px 10px;
     border-top: 1px #ccc solid; 
-    text-align: right;
+    text-align: center;
 }
 
-#btn_welcome_prefs, #btn_welcome_about {
+#sign_in_block_bottom a {
     padding-left: 20px;
     height: 20px;
     display:inline-block;
