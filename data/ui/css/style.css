@@ -160,28 +160,52 @@ a {
     color: #000;
 }
 
-#ctrl_right {
+#btn_hotot_wrap {
     float: right;
 }
 
-#ctrl_nav {
-    list-style-type: none;
+#btn_hotot {
+    padding: 3px 5px;
+    text-align: right;
+    float:right;
+    display:block;
+    font-size: 10px;
+    text-decoration:none;
 }
 
-#ctrl_nav > li {
-    display: inline;
-    padding: 0 5px;
-    text-align: center;
-    border-right: 1px solid #ccc;
+#btn_hotot.hover {
+    background: #fff;
+    border-right: 1px #ccc solid;
+}
+
+#hotot_menu {
+    clear: both;
+    list-style-type: none;
+    display: none;
+    background: #fff;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+
+#hotot_menu > li {
+    display: block;
     font-size: 10px;
 }
 
-#ctrl_nav > li > a {
+#hotot_menu > li > a {
+    padding: 2px 5px;
     height: 20px;
     line-height: 20px;
-    display: inline-block;
+    display: block;
     padding-left: 20px;
     text-decoration:none;
+    background-position: 2px 5px;
+}
+
+
+#hotot_menu > li > a:hover {
+    color: #fff;
+    background-color: #a8b1fe;
 }
 
 /* ===== Buttom =================================== */
@@ -806,7 +830,29 @@ input[type="button"]:focus, .button:focus {
     overflow: auto;
 }
 
-#prefs_exts_container {
+/*===== Extensions Dialog ================================*/
+#exts_dlg {
+    display: block;
+    width: 600px;
+    background: #ddd;
+}
+
+#exts_dlg_border {
+    z-index: 10504;
+    width: 600px;
+}
+
+#exts_dlg > h2 {
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#exts_dlg_body {
+    padding: 20px;
+}
+
+#exts_container {
     overflow: auto;
     height: 200px;
     width: 100%;
@@ -814,9 +860,10 @@ input[type="button"]:focus, .button:focus {
     background: #f2f2f2;
 }
 
-#prefs_exts_container ul {
+#exts_container ul {
     list-style-type:none;
 }
+
 
 .ext_item {
     margin: 5px;
@@ -859,7 +906,6 @@ input[type="button"]:focus, .button:focus {
 .ext_description {
     padding: 0 15px;
 }
-
 /*===== Profile Dialog ================================*/
 #profile_dlg {
     display: block;
@@ -1216,7 +1262,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_ctrl_menu_btn:hover {
-    background-color: #b9d4e2;
+    background-color: #a8b1fe;
     color: #000; 
 }
 

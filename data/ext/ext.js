@@ -113,15 +113,15 @@ function init_exts() {
             };
 
             // @TODO Issue 31
-            /*
             if (ext.ext_enabled.indexOf(extension.id) != -1) {
                 extension.load();
                 ext.ext_infos[extension.id]['enable'] = true;
             } else {
                 ext.ext_infos[extension.id]['enable'] = false;
             }
-            */
+            /*
             extension.load();
+            */
         }
     }
 },

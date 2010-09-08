@@ -51,6 +51,7 @@ def crack_config(params):
         push_prefs()
     elif params[1] == 'save_prefs':
         prefs = db.unserialize_dict(params[2])
+        print prefs
         config.save_prefs(prefs)
         apply_prefs()
     elif params[1] == 'restore_defaults':

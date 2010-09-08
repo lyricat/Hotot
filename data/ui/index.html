@@ -26,6 +26,7 @@
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
     <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
@@ -187,6 +188,7 @@ jQuery(function($) {
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
+    ui.ExtsDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
     ui.Filter.init();
@@ -210,13 +212,17 @@ jQuery(function($) {
             </a>
         </div>
 
-        <div id="ctrl_right">
-            <ul id="ctrl_nav">
+        <div id="btn_hotot_wrap">
+            <a id="btn_hotot" class="default_button" href="javascript:void(0);">Hotot</a>
+            <ul id="hotot_menu">
             	<li>
             		<a id="btn_reload" class="ic_reload" href="javascript:void(0);">Reload</a>
             	</li>
             	<li>
             		<a id="btn_prefs" class="ic_prefs" href="javascript:void(0);">Preferences</a>
+            	</li>
+                <li>
+            		<a id="btn_exts" class="ic_exts" href="javascript:void(0);">Extensions</a>
             	</li>
             	<li>
             		<a id="btn_about" class="ic_about" href="javascript:void(0);">Help &amp; About</a>
@@ -573,11 +579,6 @@ jQuery(function($) {
                             href="#prefs_networks" 
                             class="dlg_tabs_btn">Networks</a>
                     </li>
-                    <li>
-                        <a id="btn_prefs_exts"
-                            href="#prefs_exts" 
-                            class="dlg_tabs_btn">Extensions</a>
-                    </li>
                 </ul>
                 <div id='prefs_account' class="dlg_tabs_page">
                     <h3>- Basic Auth Settings -</h3>
@@ -690,20 +691,7 @@ jQuery(function($) {
                         
                     </p>
                     </div>
-                </div><!-- END of prefs_exts -->
-                <div id='prefs_exts' class="dlg_tabs_page"> 
-                    <h3>- Extensions -</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <div id="prefs_exts_container">
-                        <ul>
-                            <li class="prefs_exts_info">
-                            </li>
-                        </ul>
-                        </div>
-                    </p>
-                    </div>
-                </div><!-- END of  prefs_exts-->
+                </div><!-- END of prefs_networks -->
             </div>
         </div>
         <div class="dialog_bottom">
@@ -920,6 +908,28 @@ jQuery(function($) {
         <div class="dialog_bottom">
         <a id="btn_profile_cancel" class="button" href="javascript:void(0);">Cancel</a>
         <a id="btn_profile_update" class="button" href="javascript:void(0);">Update</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- Extensions dialog -->
+    <div id="exts_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="exts_dlg" class="dialog">
+        <h2 id="exts_dlg_title">Extenstions</h2>
+        <div id="exts_dlg_body" class="dialog_body">
+            <h3>- Extensions -</h3>
+            <div class="dlg_group">
+            <p>
+                <div id="exts_container">
+                <ul>
+                </ul>
+                </div>
+            </p>
+            </div>
+        </div>
+        <div class="dialog_bottom">
+        <a id="btn_exts_close" class="button" href="javascript:void(0);">Close</a>
         </div>
     </div>
     </div>

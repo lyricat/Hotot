@@ -229,13 +229,14 @@ function load_ext_list() {
                 + '<span>Author:</span> <span>'+info.author+'</span><br/>'
                 + '<span>Website:</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
                 + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
-                + '<div class="ext_ctrl" style="display:none"><a href="javascript:void(0);" class="enable_btn">Enable</a> <a href="javascript:void(0);" class="options_btn">Options</a></div>'
+                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable_btn">Enable</a> <a href="javascript:void(0);" class="options_btn">Options</a></div>'
             + '</div></li>');
     }
     $('#prefs_exts_container > ul').html(ext_arr.join(''));
 
     // @TODO enable enabled ext items cause Issue 31
     /*
+    */
     $('#prefs_exts_container .ext_item').each(
     function (idx, obj) {
         var id = $(obj).attr('id').substring(4);
@@ -243,7 +244,6 @@ function load_ext_list() {
         ui.PrefsDlg.enable_ext_item(obj, exists);
     });
     ui.PrefsDlg.bind_exts_btns();
-    */
 },
 
 enable_ext_item:
