@@ -328,28 +328,27 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
         curl.setopt(pycurl.PROXYTYPE, pycurl.PROXYTYPE_SOCKS5)
         curl.setopt(pycurl.PROXY, SOCKS5_PROXY)
         pass
-    elif config.use_http_proxy:
+    if config.use_http_proxy:
         HTTP_PROXY = '%s:%s' % (config.http_proxy_host, config.http_proxy_port)
         curl.setopt(pycurl.PROXY, HTTP_PROXY)
         pass
 
     if header:
-      curl.setopt(pycurl.HTTPHEADER, header)
+        curl.setopt(pycurl.HTTPHEADER, [str(k) + ':' + str(v) for k, v in header.items()])
 
-    if body:
-      curl.setopt(pycurl.POST, 1)
-      curl.setopt(pycurl.POSTFIELDS, body)
+    if post:
+        curl.setopt(pycurl.POST, 1)
 
     if params:
-      if post:
-        curl.setopt(pycurl.HTTPPOST, [(x, str(y)) for x,y in params.items()])
-      else:
-        url = "?".join((url, urllib.urlencode(params)))
+        if post:
+            curl.setopt(pycurl.POSTFIELDS, urllib.urlencode(params))
+        else:
+            url = "?".join((url, urllib.urlencode(params)))
     
     curl.setopt(pycurl.URL, str(url))
     
     if username and password:
-      curl.setopt(pycurl.USERPWD, "%s:%s" % (str(username), str(password)))
+        curl.setopt(pycurl.USERPWD, "%s:%s" % (str(username), str(password)))
 
     curl.setopt(pycurl.FOLLOWLOCATION, 1)
     curl.setopt(pycurl.MAXREDIRS, 5)
@@ -358,10 +357,27 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     curl.setopt(pycurl.HTTP_VERSION, pycurl.CURL_HTTP_VERSION_1_0)
 
     content = StringIO.StringIO()
+    hdr = StringIO.StringIO()
     curl.setopt(pycurl.WRITEFUNCTION, content.write)
+    curl.setopt(pycurl.HEADERFUNCTION, hdr.write)
 
-    curl.perform()
     print curl, url, header
+    curl.perform()
+
+    http_code = curl.getinfo(pycurl.HTTP_CODE)
+    if http_code != '200':
+        status_line = hdr.getvalue().splitlines()[0]
+        import re
+        m = re.match(r'HTTP\/\S*\s*\d+\s*(.*?)\s*$', status_line)
+        if m:
+            status_message = m.groups(1)
+        else:
+            status_message = ''
+        print "status message: %s" % status_message
+        e =urllib2.HTTPError (str(url), http_code, status_message, {}, None)
+        e.url = url
+        raise e
+
     return content.getvalue()
 
 def _get(url, params={}, req_headers={}):
@@ -371,7 +387,7 @@ def _post(url, params={}, req_headers={}):
     return _curl(url, params=params, post=True, header=req_headers)
 
 def urlencode(query):
-    for k,v in query.items():
+    for k, v in query.items():
         if not v:
             del query[k]
             pass
