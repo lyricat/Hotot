@@ -6,11 +6,13 @@ function init () {
     $('#btn_hotot_wrap').hover(
     function (event) {
         $('#btn_hotot').addClass('hover');
-        $('#hotot_menu').show();
     },
     function (event) {
         $('#btn_hotot').removeClass('hover');
         $('#hotot_menu').hide();
+    }).click(
+    function (event) {
+        $('#hotot_menu').toggle();
     });
 
     $('#btn_prefs').click(
