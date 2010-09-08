@@ -26,8 +26,10 @@ function init () {
             = $('#tbox_basic_auth_password').attr('value');
         lib.twitterapi.use_oauth 
             = false;
+        ui.Welcome.sign_opts.remember_password
+            = $('#chk_remember_password').attr('checked'); 
+
         ui.Notification.set('Sign in ...').show();
-        
         if (ui.Welcome.sign_opts.remember_password) {
             ui.Welcome.sign_opts.default_password 
                 = lib.twitterapi.password;
