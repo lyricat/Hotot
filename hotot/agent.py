@@ -28,6 +28,8 @@ def crack_hotot(uri):
     params = uri.split('/')
     if params[0] == 'token':
         crack_token(params)
+    elif params[0] == 'exts':
+        crack_exts(params)
     elif params[0] == 'config':
         crack_config(params)
     elif params[0] == 'system':
@@ -41,6 +43,13 @@ def crack_hotot(uri):
     else:
         pass
 
+def crack_exts(params):
+    if params[1] == 'save_enabled':
+        exts_enabled = json.loads(urllib2.unquote(params[2]))
+        config.set('exts_enabled', exts_enabled)
+        config.dumps()
+    pass
+
 def crack_config(params):
     if params[1] == 'dumps':
         config.dumps()
@@ -51,7 +60,6 @@ def crack_config(params):
         push_prefs()
     elif params[1] == 'save_prefs':
         prefs = db.unserialize_dict(params[2])
-        print prefs
         config.save_prefs(prefs)
         apply_prefs()
     elif params[1] == 'restore_defaults':
@@ -61,7 +69,7 @@ def crack_config(params):
     elif params[1] == 'set_opts':
         opts = json.loads(urllib2.unquote(params[2]))
         for key, value in opts.items():
-            config.set(key, value);
+            config.set(key, value)
     pass
     
 def crack_token(params):
@@ -185,12 +193,15 @@ def apply_config():
     default_username = config.default_username
     default_password = config.default_password
     access_token = json.dumps(config.load_token())
+    exts_enabled = json.dumps(config.exts_enabled)
     webv.execute_script('''
         $('#tbox_basic_auth_username').attr('value', '%s');
         $('#tbox_basic_auth_password').attr('value', '%s');
         jsOAuth.access_token = %s;
+        ext.exts_enabled = %s;
         ''' % (default_username, default_password
-            , access_token))
+            , access_token
+            , exts_enabled))
     apply_prefs()
     pass
 

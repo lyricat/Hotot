@@ -50,6 +50,9 @@ default_config = {
     'update_interval': 120,
     'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ',
     'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw',
+
+#others:
+    'exts_enabled': [],
 }
 
 def getconf():
@@ -122,6 +125,8 @@ def write_to_disk(prefs):
             conf_file.write(',    "%s": "%s"\n' % (key, r_val))
         elif isinstance(val, bool):
             conf_file.write(',    "%s": %s\n' % (key, str(r_val).lower()))
+        elif isinstance(val, list):
+            conf_file.write(',    "%s": %s\n' % (key, json.dumps(r_val)))
         else:
             conf_file.write(',    "%s": %s\n' % (key, r_val))
     conf_file.write('}\n')

@@ -22,9 +22,9 @@ FORM_TWEET_TEXT_LISTENER_AFTER: 0x06,
 // listeners: {listener_type: [callbacks ... ], ... };
 listeners: {},
 
-ext_infos: {},
+exts_info: {},
 
-ext_enabled: [], // @TODO
+exts_enabled: [], // @TODO
 
 init: 
 function init() {
@@ -94,15 +94,14 @@ function init_exts() {
             && typeof  ext[key].unload != 'undefined') {
 
             var extension = ext[key];
-            utility.Console.out('[i]Init Extension: ' + extension.name);
 
             if (typeof extension.icon == 'undefined') {
-                icon = 'imgs/ic64_ext.png';
+                icon = 'imgs/ic64_exts.png';
             } else {
                 icon = '../ext/' + extension.id + '/' + extension.icon;
             }
 
-            ext.ext_infos[extension.id] = {
+            ext.exts_info[extension.id] = {
                   name: extension.name
                 , description: extension.description
                 , version: extension.version
@@ -113,11 +112,12 @@ function init_exts() {
             };
 
             // @TODO Issue 31
-            if (ext.ext_enabled.indexOf(extension.id) != -1) {
+            if (ext.exts_enabled.indexOf(extension.id) != -1) {
+                utility.Console.out('[i]Load Extension: ' + extension.name);
                 extension.load();
-                ext.ext_infos[extension.id]['enable'] = true;
+                ext.exts_info[extension.id]['enable'] = true;
             } else {
-                ext.ext_infos[extension.id]['enable'] = false;
+                ext.exts_info[extension.id]['enable'] = false;
             }
             /*
             extension.load();

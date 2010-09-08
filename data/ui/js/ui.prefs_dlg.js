@@ -216,66 +216,6 @@ function update_font_preview() {
         , $('#tbox_prefs_font_size').attr('value') + 'px');
 },
 
-load_ext_list:
-function load_ext_list() {
-    ext_arr = [];
-    for (var ext_id in ext.ext_infos) {
-        var info = ext.ext_infos[ext_id];
-        ext_arr.push('<li id="ext_' + ext_id + '" class="ext_item"">'
-            + '<div class="ext_icon_wrap">'
-                + '<img class="ext_icon" src="'+info.icon+'"/></div>'
-            + '<div class="ext_item_body">'
-                + '<span class="ext_name">'+info.name+'</span> - Version  <span>'+ info.version + '</span><br/>'
-                + '<span>Author:</span> <span>'+info.author+'</span><br/>'
-                + '<span>Website:</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
-                + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
-                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable_btn">Enable</a> <a href="javascript:void(0);" class="options_btn">Options</a></div>'
-            + '</div></li>');
-    }
-    $('#prefs_exts_container > ul').html(ext_arr.join(''));
-
-    // @TODO enable enabled ext items cause Issue 31
-    /*
-    */
-    $('#prefs_exts_container .ext_item').each(
-    function (idx, obj) {
-        var id = $(obj).attr('id').substring(4);
-        var exists = (ext.ext_enabled.indexOf(id) != -1);
-        ui.PrefsDlg.enable_ext_item(obj, exists);
-    });
-    ui.PrefsDlg.bind_exts_btns();
-},
-
-enable_ext_item:
-function enable_ext_item(item, enable) {
-    if (enable) {
-        $(item).removeClass('disabled');
-        $(item).find('.enable_btn').text('Disable').addClass('disable');
-    } else {
-        $(item).addClass('disabled');
-        $(item).find('.enable_btn').text('Enable').removeClass('disable');
-    }
-},
-
-bind_exts_btns:
-function bind_exts_btns() {
-    $('#prefs_exts_container .ext_ctrl').find('.enable_btn').click(
-    function (event) {
-        var item = $(this).parents('.ext_item').get(0);
-        var id = $(item).attr('id').substring(4);
-        var enable = !$(this).hasClass('disable');
-        ext.ext_infos[id].enable = enable;
-        if (enable) {
-            ext.ext_enabled.push(id)
-            ext.ext_infos[id].extension.load();
-        } else {
-            ext.ext_enabled.splice(ext.ext_enabled.indexOf(id), 1);
-            ext.ext_infos[id].extension.unload();
-        }
-        ui.PrefsDlg.enable_ext_item(item, enable);
-    });
-},
-
 hide:
 function hide () {
     ui.PrefsDlg.me.parent().hide();
@@ -285,7 +225,6 @@ function hide () {
 
 show:
 function show () {
-    ui.PrefsDlg.load_ext_list();
     ui.PrefsDlg.request_prefs();
     ui.PrefsDlg.me.parent().show();
     ui.PrefsDlg.is_show = true;

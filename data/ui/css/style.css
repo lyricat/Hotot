@@ -165,8 +165,7 @@ a {
 }
 
 #btn_hotot {
-    padding: 3px 5px;
-    text-align: right;
+    text-align: center;
     float:right;
     display:block;
     font-size: 10px;
@@ -174,8 +173,7 @@ a {
 }
 
 #btn_hotot.hover {
-    background: #fff;
-    border-right: 1px #ccc solid;
+    color: #fff;
 }
 
 #hotot_menu {
@@ -698,10 +696,11 @@ input[type="button"]:focus, .button:focus {
     text-shadow: 0 1px 0px #fff;
 }
 
-.dialog h2 {
+.dialog > h2 {
     font-size: 20px; 
-    padding-bottom: 10px;
+    padding: 10px 10px 10px 50px;
     color: #777;
+    background: #f2f2f2 url(../imgs/ic32_hotot.png) no-repeat 10px 50%;
     border-bottom: 1px #ccc solid; 
 }
 
@@ -725,6 +724,10 @@ input[type="button"]:focus, .button:focus {
     font-size: 12px;
 }
 
+.dialog_body {
+    font-size: 12px;
+}
+
 .dialog_bottom {
     text-align: right; 
     clear:both; 
@@ -743,9 +746,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #oauth_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_twitter.png);
 }
 
 #oauth_dlg_body {
@@ -766,9 +767,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #prefs_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_prefs.png);
 }
 
 #prefs_dlg_body {
@@ -843,9 +842,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #exts_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_exts.png);
 }
 
 #exts_dlg_body {
@@ -863,7 +860,6 @@ input[type="button"]:focus, .button:focus {
 #exts_container ul {
     list-style-type:none;
 }
-
 
 .ext_item {
     margin: 5px;
@@ -919,9 +915,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #profile_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_profile.png);
 }
 
 #profile_dlg_body {
@@ -956,9 +950,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #about_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_help.png);
 }
 
 #about_dlg_body {
@@ -981,9 +973,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #message_dlg > h2 {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    background-image: url(../imgs/ic32_warning.png);
 }
 
 #message_dlg_body {
@@ -1384,6 +1374,9 @@ td {
 }
 .ic_prefs {
     background: transparent url(../imgs/ic16_prefs.png) no-repeat;
+}
+.ic_exts {
+    background: transparent url(../imgs/ic16_exts.png) no-repeat;
 }
 .ic_reload {
     background: transparent url(../imgs/ic16_reload.png) no-repeat;
