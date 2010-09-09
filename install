@@ -1,5 +1,3 @@
 #!/bin/bash -x
 ./setup.py build
-sudo ./setup.py install
-#sudo mkdir -p /usr/local/share/hotot/
-#sudo cp -R ./data/ui /usr/local/share/hotot/
+sudo ./setup.py install --record record.log
