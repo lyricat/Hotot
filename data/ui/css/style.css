@@ -93,7 +93,8 @@ a {
 }
 
 #btn_hotot.hover {
-    color: #fff;
+    border: 1px #ccc solid;
+    background-color: #f2f2f2;
 }
 
 #hotot_menu {
