@@ -23,6 +23,7 @@
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
@@ -184,6 +185,7 @@ jQuery(function($) {
     ui.Welcome.init();
     ui.Main.init();
     ui.RetweetTabs.init();
+    ui.DMTabs.init();
     ui.Notification.init();
     ui.Slider.init();
     ui.PinDlg.init();
@@ -340,9 +342,23 @@ jQuery(function($) {
         </div>
     </div>
     <div id="direct_messages_tweet_block" class="tweet_block">
-        <ul></ul>
-        <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+        <div class="tweet_block_top tweet_tabs">
+            <ol>
+                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">Inbox</a></li>
+                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">Outbox</a></li>
+            </ol>
+        </div>
+        <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            </div>
+        </div>
+        <div id="direct_messages_outbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            </div>
         </div>
     </div>
     <div id="favorites_tweet_block" class="tweet_block">
@@ -352,28 +368,26 @@ jQuery(function($) {
         </div>
     </div>
     <div id="retweets_tweet_block" class="tweet_block">
-        <div class="tweet_block_top">
+        <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_retweeted_to_me" class="retweet_tabs_btn selected" href="#retweeted_to_me">Retweeted By Others</a></li>
-                <li><a id="btn_retweeted_by_me" class="retweet_tabs_btn" href="#retweeted_by_me">Retweeted By Me</a></li>
-                <li><a id="btn_retweets_of_me" class="retweet_tabs_btn" href="#retweets_of_me">My Tweets, Retweeted</a></li>
+                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">Retweeted By Others</a></li>
+                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">Retweeted By Me</a></li>
+                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">My Tweets, Retweeted</a></li>
             </ol>
         </div>
-        <div id="retweeted_by_me_sub_block" class="retweet_tabs_page tweet_sub_block">
+        <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
             </div>
-
         </div>
-        <div id="retweeted_to_me_sub_block" class="retweet_tabs_page tweet_sub_block">
+        <div id="retweeted_to_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
             </div>
-
         </div>
-        <div id="retweets_of_me_sub_block" class="retweet_tabs_page  tweet_sub_block">
+        <div id="retweets_of_me_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <a class="btn_load_more button" href="javascript:void(0);">Load more</a>

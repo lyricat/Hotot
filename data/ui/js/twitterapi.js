@@ -252,6 +252,20 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     return;
 },
 
+get_sent_direct_messages:
+function get_sent_direct_messages(since_id, max_id, count, on_success) {
+    var url = lib.twitterapi.api_base + 'direct_messages/sent.json';
+    var params={
+        'page': '0',
+        'since_id': since_id,
+        'count': count,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
 get_retweeted_by_me:
 function get_retweeted_by_me(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweeted_by_me.json';

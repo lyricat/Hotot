@@ -23,9 +23,14 @@ block_info: {
         , api_proc: lib.twitterapi.get_mentions
         , is_sub: false
     },
-    '#direct_messages': {
+    '#direct_messages_inbox': {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_direct_messages
+        , is_sub: false
+    },
+    '#direct_messages_outbox': {
+          since_id: 1, max_id: null 
+        , api_proc: lib.twitterapi.get_sent_direct_messages
         , is_sub: false
     },
     '#favorites': { page: 1
@@ -185,6 +190,8 @@ function load_more_tweets () {
     var pagename = ui.Slider.current;
     if (pagename == '#retweets')
         pagename = ui.RetweetTabs.current;
+    if (pagename == '#direct_messages')
+        pagename = ui.DMTabs.current;
 
     var proc = ui.Main.block_info[pagename].api_proc;
 
@@ -228,7 +235,8 @@ function load_tweets_cb(result, pagename) {
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
     // others display in normal blocks.
-    if (pagename.substring(0, 8) == '#retweet') { 
+    if (pagename.indexOf('#retweet') == 0
+        || pagename.indexOf('#direct_messages') == 0) {
         container = $(pagename + '_sub_block > ul');
     } else {
         container = $(pagename + '_tweet_block > ul');
@@ -262,7 +270,8 @@ function load_more_tweets_cb(result, pagename) {
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
     // others display in normal blocks.
-    if (pagename.substring(0, 8) == '#retweet') { 
+    if (pagename.indexOf('#retweet') == 0
+        || pagename.indexOf('#direct_messages') == 0) { 
         container = $(pagename + '_sub_block > ul');
     } else {
         container = $(pagename + '_tweet_block > ul');
@@ -300,7 +309,7 @@ function add_tweets(json_obj, container) {
  *   id of the lastest tweet.
  */
     var form_proc = ui.Template.form_tweet;
-    if (container.pagename == 'direct_messages')
+    if (container.pagename.indexOf('direct_messages') == 0)
         form_proc = ui.Template.form_dm
     if (container.pagename == 'search')
         form_proc = ui.Template.form_search

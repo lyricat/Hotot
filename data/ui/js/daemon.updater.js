@@ -91,11 +91,16 @@ function update_mentions() {
 
 update_direct_messages:
 function update_direct_messages() {
-    lib.twitterapi.get_direct_messages(
-         ui.Main.block_info['#direct_messages'].since_id
+    var proc_map = {
+        '#direct_messages_inbox': lib.twitterapi.get_direct_messages,
+        '#direct_messages_outbox': lib.twitterapi.get_sent_direct_messages,
+    };
+    var pagename = ui.DMTabs.current;
+    proc_map[pagename](
+         ui.Main.block_info[pagename].since_id
         , null, 20, 
         function (result) {
-            ui.Main.load_tweets_cb(result, '#direct_messages');
+            ui.Main.load_tweets_cb(result, pagename);
         });
 },
 

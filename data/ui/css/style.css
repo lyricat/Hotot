@@ -579,23 +579,25 @@ input[type="button"]:focus, .button:focus {
     margin: 0 auto;
 }
 
-#retweets_tweet_block > .tweet_block_top {
+.tweet_tabs {
     position: fixed;
     width: 100%;
     z-index: 1000000;
 }
 
-#retweets_tweet_block > .tweet_block_top ol {
+.tweet_tabs ol {
     list-style-type: none;
     margin: 3px 0;
     text-align: center;
 }
 
-#retweets_tweet_block > .tweet_block_top ol li {
+.tweet_tabs ol li {
     display: inline-block;
 }
 
-#retweets_tweet_block .retweet_tabs_btn {
+.tweet_tabs_btn {
+    min-width: 80px;
+    text-align: center;
     display: inline-block;
     padding: 3px 10px;
     text-shadow: 0 1px 0px #fff;
@@ -606,21 +608,21 @@ input[type="button"]:focus, .button:focus {
     background: #f2f2f2;
 }
 
-#retweets_tweet_block .retweet_tabs_btn.selected {
+.tweet_tabs_btn.selected {
     background: #ccc;
 }
 
-#retweets_tweet_block .tweet_sub_block {
+.tweet_sub_block {
     display: none;
     overflow: auto;
     max-height: 100%;
 }
 
-#retweets_tweet_block .tweet_sub_block > ul > li:first-child {
+.tweet_sub_block > ul > li:first-child {
     margin-top: 25px;
 }
 
-#retweets_tweet_block .tweet_sub_block > .tweet_block_bottom {
+.tweet_sub_block > .tweet_block_bottom {
     margin-top: 25px;
 } 
 
