@@ -5,13 +5,12 @@ import config
 import time
 import base64
 import urllib, urllib2
-import pycurl
 import pynotify
 import gtk
 import db
 import threading 
 import gobject
-
+import pycurl
 try: import cStringIO as StringIO
 except: import StringIO
 
@@ -308,15 +307,15 @@ def request(uuid, method, url, params={}, headers={}):
             result = _get(url, params, headers)
         pass
     except urllib2.HTTPError, e:
-        content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), url, e.msg)
+        content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), e.geturl(), str(e))
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass 
-    except pycurl.error, e:
-        content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s <br/></p>' % (e[0], str(e[1]).replace('\'', '\\\''))
+    except urllib2.URLError, e:
+        content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
@@ -336,6 +335,31 @@ def request(uuid, method, url, params={}, headers={}):
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
     pass
+
+def _get(url, params={}, req_headers={}):
+    urlopen = urllib2.urlopen
+    if config.use_http_proxy:
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+        urlopen = urllib2.build_opener(proxy_support).open
+        pass
+    request =  urllib2.Request(url, headers=req_headers)
+    ret = urlopen(request).read()
+    return ret
+
+def _post(url, params={}, req_headers={}):
+    urlopen = urllib2.urlopen
+    if config.use_http_proxy:
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+        urlopen = urllib2.build_opener(proxy_support).open
+        pass
+    params = dict([(k.encode('utf8')
+            , v.encode('utf8') if type(v)==unicode else v) 
+                for k, v in params.items()])
+    request = urllib2.Request(url, urlencode(params), headers=req_headers);
+    ret = urlopen(request).read()
+    return ret
 
 def _curl(url, params=None, post=False, username=None, password=None, header=None, body=None):
     curl = pycurl.Curl()
@@ -398,14 +422,8 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     else:
         return content.getvalue()
 
-def _get(url, params={}, req_headers={}):
-    return _curl(url, params=params, post=False, header=req_headers)
-
-def _post(url, params={}, req_headers={}):
-    return _curl(url, params=params, post=True, header=req_headers)
-
 def urlencode(query):
-    for k, v in query.items():
+    for k,v in query.items():
         if not v:
             del query[k]
             pass
