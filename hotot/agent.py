@@ -359,7 +359,7 @@ def _post(url, params={}, req_headers={}):
     ret = urlopen(request).read()
     return ret
 
-pycurl = none
+pycurl = None
 StringIO = None
 def _curl(url, params=None, post=False, username=None, password=None, header=None, body=None):
     global pycurl, StringIO

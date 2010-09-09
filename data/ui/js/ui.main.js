@@ -430,10 +430,10 @@ function bind_tweets_action(tweets_obj, pagename) {
 
         $(id).find('.tweet_more_menu_trigger').hover(
         function (event) {
-            $(this).find('.tweet_more_menu').slideDown('fast');
+            $(this).find('.tweet_more_menu').show();
         },
         function (event) {
-            $(this).find('.tweet_more_menu').slideUp('fast');
+            $(this).find('.tweet_more_menu').hide();
         });
 
         $(id).find('.tweet_reply_all').click(
