@@ -341,16 +341,16 @@ function add_tweets(json_obj, container) {
             if (next_one == null) {
                 // insert to end of container 
                 container.append(this_one_html);
-                return;
+                return true;
             } else {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
                 if (next_one_id < this_one.id) {
                     $(next_one).before(this_one_html);
-                    return;
+                    return true;
                 } else if (next_one_id == this_one.id) {
                     // simply drop the duplicate tweet.
-                    return;
+                    return false;
                 } else {
                     next_one = get_next_tweet_dom(next_one);
                 }
@@ -362,7 +362,10 @@ function add_tweets(json_obj, container) {
     if (json_obj.constructor == Array) {
         json_obj = sort_tweets(json_obj);
         for (var i = 0; i < json_obj.length; i += 1) {
-            insert_tweet(json_obj[i]);
+            if (! insert_tweet(json_obj[i])) {
+                // remove the duplicate tweet from json_obj
+                json_obj.splice(i, 1);
+            }
         }
     } else {
         insert_tweet(json_obj);
