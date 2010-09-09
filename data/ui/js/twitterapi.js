@@ -405,7 +405,7 @@ function verify(on_success) {
 
 search:
 function search(query, page, on_success) {
-    var url = 'http://search.twitter.com/search.json';
+    var url = lib.twitterapi.search_api_base + 'search.json';
     var params = {'q': query, 'page': page};
     lib.twitterapi.get(url, params, on_success);
 },

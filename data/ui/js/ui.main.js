@@ -63,12 +63,6 @@ function init () {
     this.id = '#main_page';
     this.me = $('#main_page');
 
-    $('#btn_reload').click(
-    function(event) {
-        ui.Notification.set('Loading Tweets...').show(-1);
-        ui.Main.load_tweets();    
-    });
-
     $('.btn_load_more').click(
     function(event) {
         ui.Notification.set('Loading Tweets...').show(-1);

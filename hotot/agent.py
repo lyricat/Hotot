@@ -306,6 +306,7 @@ def request(uuid, method, url, params={}, headers={}):
             result = _post(url, params, headers)
         else:
             result = _get(url, params, headers)
+        pass
     except urllib2.HTTPError, e:
         content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), url, e.msg)
         scripts = '''
@@ -314,13 +315,14 @@ def request(uuid, method, url, params={}, headers={}):
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass 
-    except urllib2.URLError, e:
-        content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
+    except pycurl.error, e:
+        content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s <br/></p>' % (e[0], str(e[1]).replace('\'', '\\\''))
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
             lib.twitterapi.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
+        pass
     else:
         if result[0] != '{' and result[0] != '[':
             scripts = '''lib.twitterapi.success_task_table['%s']('%s');
@@ -380,9 +382,12 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     curl.setopt(pycurl.WRITEFUNCTION, content.write)
     curl.setopt(pycurl.HEADERFUNCTION, hdr.write)
 
-    #print curl, url, header
-    curl.perform()
-    
+    print curl, url, header
+    try:
+        curl.perform()
+    except pycurl.error, e:
+        raise e    
+
     http_code = curl.getinfo(pycurl.HTTP_CODE)
     if http_code != 200:
         status_line = hdr.getvalue().splitlines()[0]

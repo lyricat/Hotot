@@ -15,6 +15,17 @@ function init () {
         $('#hotot_menu').toggle();
     });
 
+    $('#btn_filter').click(
+    function (event) {
+        ui.Filter.show();
+    });
+
+    $('#btn_reload').click(
+    function(event) {
+        ui.Notification.set('Loading Tweets...').show(-1);
+        ui.Main.load_tweets();    
+    });
+    
     $('#btn_prefs').click(
     function (event) {
         ui.DialogHelper.open(ui.PrefsDlg);

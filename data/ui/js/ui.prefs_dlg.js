@@ -210,14 +210,14 @@ function save_prefs() {
 
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');
-    if (prefs_obj['api_base'][prefs_obj['api_base'].length - 1] != '/')
-        prefs_obj['api_base'] += '/';
     prefs_obj['sign_api_base'] 
         = $('#tbox_prefs_sign_api_base').attr('value');
     prefs_obj['search_api_base'] 
         = $('#tbox_prefs_search_api_base').attr('value');
     prefs_obj['oauth_base'] 
         = $('#tbox_prefs_oauth_base').attr('value');
+    prefs_obj['use_same_sign_api_base']
+        = $('#chk_prefs_use_same_sign_api_base').attr('checked');
 
     prefs_obj['use_http_proxy']
         = $('#chk_prefs_use_http_proxy').attr('checked');
