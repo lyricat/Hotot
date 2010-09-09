@@ -11,9 +11,9 @@ function init() {
             // activate another sub page.
             ui.RetweetTabs.current = $(this).attr('href');
             var pagename = ui.RetweetTabs.current + '_sub_block';
-            $('.tweet_tabs_btn').not(this).removeClass('selected');
+            $('#retweets_tweet_block .tweet_tabs_btn').not(this).removeClass('selected');
             $(this).addClass('selected');
-            $('.tweet_tabs_page').not(pagename).hide();
+            $('#retweets_tweet_block .tweet_tabs_page').not(pagename).hide();
             $(pagename).show();
             daemon.Updater.update_retweets();
         }

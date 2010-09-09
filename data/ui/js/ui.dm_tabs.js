@@ -11,9 +11,9 @@ function init() {
             // activate another sub page.
             ui.DMTabs.current = $(this).attr('href');
             var pagename = ui.DMTabs.current + '_sub_block';
-            $('.tweet_tabs_btn').not(this).removeClass('selected');
+            $('#direct_messages_tweet_block .tweet_tabs_btn').not(this).removeClass('selected');
             $(this).addClass('selected');
-            $('.tweet_tabs_page').not(pagename).hide();
+            $('#direct_messages_tweet_block .tweet_tabs_page').not(pagename).hide();
             $(pagename).show();
             daemon.Updater.update_direct_messages();
         }
