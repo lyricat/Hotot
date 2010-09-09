@@ -10,9 +10,7 @@ import gtk
 import db
 import threading 
 import gobject
-import pycurl
-try: import cStringIO as StringIO
-except: import StringIO
+
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -361,7 +359,15 @@ def _post(url, params={}, req_headers={}):
     ret = urlopen(request).read()
     return ret
 
+pycurl = none
+StringIO = None
 def _curl(url, params=None, post=False, username=None, password=None, header=None, body=None):
+    global pycurl, StringIO
+    if not pycurl:
+        import pycurl
+    try: import cStringIO as StringIO
+    except: import StringIO
+
     curl = pycurl.Curl()
 
     if config.use_socks_proxy:
