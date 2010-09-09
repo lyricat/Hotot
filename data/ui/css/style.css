@@ -579,6 +579,12 @@ input[type="button"]:focus, .button:focus {
     margin: 0 auto;
 }
 
+#retweets_tweet_block > .tweet_block_top {
+    position: fixed;
+    width: 100%;
+    z-index: 1000000;
+}
+
 #retweets_tweet_block > .tweet_block_top ol {
     list-style-type: none;
     margin: 3px 0;
@@ -597,6 +603,7 @@ input[type="button"]:focus, .button:focus {
     color:#333; 
     font-size: 10px;
     -webkit-border-radius: 8px 8px; 
+    background: #f2f2f2;
 }
 
 #retweets_tweet_block .retweet_tabs_btn.selected {
@@ -605,7 +612,17 @@ input[type="button"]:focus, .button:focus {
 
 #retweets_tweet_block .tweet_sub_block {
     display: none;
+    overflow: auto;
+    max-height: 100%;
 }
+
+#retweets_tweet_block .tweet_sub_block > ul > li:first-child {
+    margin-top: 25px;
+}
+
+#retweets_tweet_block .tweet_sub_block > .tweet_block_bottom {
+    margin-top: 25px;
+} 
 
 /*===== Welcome Page ================================*/
 #welcome_page {
