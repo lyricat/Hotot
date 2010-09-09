@@ -550,10 +550,11 @@ function on_reply_all_click(btn, event) {
 on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = ui.Main.normalize_id(li.attr('id'));
+    utility.Console.out(id);
     var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
-    var user = tweet_obj.sender? tweet_obj.sender : tweet_obj.user;
+    var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
+        : tweet_obj.user;
 
     ui.StatusBox.set_status_info(
         'Compose Direct Messages to @' + user.screen_name);

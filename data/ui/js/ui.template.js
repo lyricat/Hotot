@@ -78,7 +78,6 @@ dm_t:
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
-        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
@@ -131,7 +130,6 @@ function form_dm(dm_obj, pagename) {
         + ' ' + create_at.toDateString();
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
-    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
