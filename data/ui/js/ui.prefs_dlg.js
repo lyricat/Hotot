@@ -65,6 +65,11 @@ function init () {
         $('#tbox_prefs_sign_api_base').attr('disabled', $(this).attr('checked'));
     });
 
+    $('#chk_prefs_use_same_sign_oauth_base').click(
+    function (event) {
+        $('#tbox_prefs_sign_oauth_base').attr('disabled', $(this).attr('checked'));
+    });
+    
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
         $('#tbox_prefs_http_proxy_host').attr('disabled', $(this).attr('checked'));
@@ -157,12 +162,20 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['search_api_base']);
     $('#tbox_prefs_oauth_base').attr('value'
         , prefs_obj['oauth_base']);
+    $('#tbox_prefs_sign_oauth_base').attr('value'
+        , prefs_obj['sign_oauth_base']);
+
     $('#chk_prefs_use_same_sign_api_base').attr('checked'
         , prefs_obj['use_same_sign_api_base']);
+    $('#chk_prefs_use_same_sign_oauth_base').attr('checked'
+        , prefs_obj['use_same_sign_oauth_base']);
     if (prefs_obj['use_same_sign_api_base']) {
         $('#tbox_prefs_sign_api_base').attr('disabled', true);
     }
-    
+    if (prefs_obj['use_same_sign_oauth_base']) {
+        $('#tbox_prefs_sign_oauth_base').attr('disabled', true);
+    }
+
     $('#chk_prefs_use_http_proxy').attr('checked'
         , prefs_obj['use_http_proxy']);
     $('#tbox_prefs_http_proxy_host').attr('value'
@@ -215,9 +228,13 @@ function save_prefs() {
     prefs_obj['search_api_base'] 
         = $('#tbox_prefs_search_api_base').attr('value');
     prefs_obj['oauth_base'] 
-        = $('#tbox_prefs_oauth_base').attr('value');
+        = $('#tbox_prefs_oauth_base').attr('value');    
+    prefs_obj['sign_oauth_base'] 
+        = $('#tbox_prefs_sign_oauth_base').attr('value');
     prefs_obj['use_same_sign_api_base']
         = $('#chk_prefs_use_same_sign_api_base').attr('checked');
+    prefs_obj['use_same_sign_oauth_base']
+        = $('#chk_prefs_use_same_sign_oauth_base').attr('checked');
 
     prefs_obj['use_http_proxy']
         = $('#chk_prefs_use_http_proxy').attr('checked');

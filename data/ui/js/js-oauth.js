@@ -8,7 +8,11 @@
 if (!lib) var lib = {}
 jsOAuth = {
 
-oauth_base: 'https://twitter.com/oauth/',
+oauth_base: 'https://api.twitter.com/oauth/',
+
+sign_oauth_base: 'https://api.twitter.com/oauth/',
+
+use_same_sign_oauth_base: false,
 
 request_token_url :'request_token',
 
@@ -120,13 +124,16 @@ get_request_token:
 function get_request_token(on_success) {
     /*
     jsOAuth.form_signed_url(jsOAuth.request_token_url, null, 'GET', null),
-    */   
+    */  
+    sign_base = jsOAuth.use_same_sign_oauth_base? jsOAuth.oauth_base 
+        :jsOAuth.sign_oauth_base;
+
     lib.twitterapi.do_requset(
         'GET'
         , jsOAuth.oauth_base 
             + jsOAuth.request_token_url + '?'
             + jsOAuth.form_signed_params(
-                jsOAuth.oauth_base + jsOAuth.request_token_url
+                sign_base + jsOAuth.request_token_url
                 , null, 'GET', null)
         , {}
         , {}
@@ -154,9 +161,12 @@ function get_access_token(pin, on_success, on_error) {
     if (jsOAuth.request_token == {}) {
         return ;
     }
+    sign_base = jsOAuth.use_same_sign_oauth_base? jsOAuth.oauth_base 
+        :jsOAuth.sign_oauth_base;
+
     var addition_params = {'oauth_verifier': pin};
     var params = jsOAuth.form_signed_params(
-        jsOAuth.oauth_base + jsOAuth.access_token_url, 
+        sign_base + jsOAuth.access_token_url, 
         jsOAuth.request_token, 'GET', addition_params);
     lib.twitterapi.do_requset(
         'GET'

@@ -75,6 +75,7 @@ function do_ajax(method, url, params, headers, on_success, on_error) {
     params['source'] = lib.twitterapi.source;
     sign_url = lib.twitterapi.use_same_sign_api_base? url
         :url.replace(lib.twitterapi.api_base, lib.twitterapi.sign_api_base);
+
     if (lib.twitterapi.use_oauth) {
         var signed_params = jsOAuth.form_signed_params(
               sign_url

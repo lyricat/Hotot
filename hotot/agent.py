@@ -178,6 +178,8 @@ def apply_prefs():
     if search_api_base[-1] != '/': search_api_base += '/'
     oauth_base = config.oauth_base
     if oauth_base[-1] != '/': oauth_base += '/'
+    sign_oauth_base = config.sign_oauth_base
+    if sign_oauth_base[-1] != '/': sign_oauth_base += '/'
 
     webv.execute_script('''
         $('#chk_remember_password').attr('checked', eval('%s'));
@@ -186,15 +188,19 @@ def apply_prefs():
         lib.twitterapi.api_base = '%s';
         lib.twitterapi.sign_api_base = '%s';
         lib.twitterapi.search_api_base = '%s';
-        jsOAuth.oauth_base = '%s';
         lib.twitterapi.use_same_sign_api_base = %s;
+        jsOAuth.oauth_base = '%s';
+        jsOAuth.sign_oauth_base = '%s';
+        jsOAuth.use_same_sign_oauth_base = %s;
         jsOAuth.key = '%s';
         jsOAuth.secret = '%s';
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
-            , api_base, sign_api_base, search_api_base, oauth_base
+            , api_base, sign_api_base, search_api_base
             , 'true' if config.use_same_sign_api_base else 'false'
+            , oauth_base, sign_oauth_base
+            , 'true' if config.use_same_sign_oauth_base else 'false'
             , consumer_key, consumer_secret ))
     pass
 
@@ -237,7 +243,9 @@ def push_prefs():
     sign_api_base = config.sign_api_base;
     search_api_base = config.search_api_base;
     oauth_base = config.oauth_base;
+    sign_oauth_base = config.sign_oauth_base;
     use_same_sign_api_base = 'true' if config.use_same_sign_api_base else 'false'
+    use_same_sign_oauth_base = 'true' if config.use_same_sign_oauth_base else 'false'
 
     use_http_proxy = 'true' if config.use_http_proxy else 'false'
     http_proxy_host = config.http_proxy_host
@@ -261,8 +269,10 @@ def push_prefs():
         , "api_base": "%s"
         , "sign_api_base": "%s"
         , "search_api_base": "%s"
-        , "oauth_base": "%s"
         , "use_same_sign_api_base": %s
+        , "oauth_base": "%s"
+        , "sign_oauth_base": "%s"
+        , "use_same_sign_oauth_base": %s
         , "use_http_proxy" : %s
         , "http_proxy_host": "%s"
         , "http_proxy_port": "%s"
@@ -276,8 +286,10 @@ def push_prefs():
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
-            , api_base, sign_api_base, search_api_base, oauth_base
+            , api_base, sign_api_base, search_api_base
             , use_same_sign_api_base
+            , oauth_base, sign_oauth_base
+            , use_same_sign_oauth_base
             , use_http_proxy, http_proxy_host, http_proxy_port
             , use_socks_proxy, socks_proxy_host, socks_proxy_port
             ));
