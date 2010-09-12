@@ -1214,7 +1214,16 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_body > .who {
-    height: 20px;
+    position: absolute;
+    height: 16px;
+    line-height: 16px;
+    top: 0;
+}
+
+.tweet_body .status_bar {
+    height: 16px;
+    display: inline-block;
+    line-height: 16px;
 }
 
 .tweet_body > .retweet_mark {
@@ -1230,6 +1239,7 @@ input[type="button"]:focus, .button:focus {
     word-break: break-all;
     font-size: 12px;
     line-height: 1.5em;
+    margin-top: 20px;
 }
 
 .tweet_ctrl {

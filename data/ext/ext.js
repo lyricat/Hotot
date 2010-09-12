@@ -19,6 +19,9 @@ FORM_TWEET_TEXT_LISTENER: 0x05,
 FORM_TWEET_TEXT_LISTENER_AFTER: 0x06,
 // callback(text);
 
+FORM_TWEET_STATUS_INDICATOR_LISTENER: 0x07,
+// callback(text);
+
 // listeners: {listener_type: [callbacks ... ], ... };
 listeners: {},
 
@@ -60,9 +63,20 @@ function init() {
         result_html = ui_template_form_tweet(tweet_obj, pagename);
 
         for (var i = 0; i < cbs_after.length; i += 1) {
-            cbs_after[i](tweet_obj, pagename, result_html);
+            result_html = cbs_after[i](tweet_obj, pagename, result_html);
         }
         return result_html;
+    };
+
+    var ui_template_form_status_indicators
+        = ui.Template.form_status_indicators;
+    ui.Template.form_status_indicators = function (tweet, text) {
+        var cbs = ext.listeners[ext.FORM_TWEET_STATUS_INDICATOR_LISTENER];
+        text = '';
+        for (var i = 0; i < cbs.length; i += 1) {
+            text = cbs[i](tweet, text);
+        }
+        return text;
     };
 
     var ui_template_form_text = ui.Template.form_text;

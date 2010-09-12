@@ -25,6 +25,7 @@ tweet_t:
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
+        <span class="status_bar">{%STATUS_INDICATOR%}</span>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
@@ -54,7 +55,8 @@ tweet_t:
             </li>\
         </ul>\
         <div class="tweet_meta">\
-            <div class="tweet_source">{%RETWEET_TEXT%} via: {%SOURCE%}</div>\
+            <div class="tweet_source">\
+                {%RETWEET_TEXT%} via: {%SOURCE%}</div>\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
@@ -212,7 +214,8 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
     ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
+    ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj))
     return ret;
 },
 
@@ -292,6 +295,11 @@ function form_text(text) {
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/\n/g, '<br/>');
     return text;
+},
+
+form_status_indicators:
+function form_status_indicators(tweet) {
+     
 },
 
 }
