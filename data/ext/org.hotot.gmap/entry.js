@@ -63,8 +63,6 @@ function load_map(x, y) {\
 }\
     </script></head><body><div id=\"map\" style=\"width:100%;height:100%;\"></div></body></html>");
     ext.HototGMap.map_doc.close();
-
-
 },
 
 load:
