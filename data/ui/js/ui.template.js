@@ -25,7 +25,6 @@ tweet_t:
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
-        <span class="status_bar">{%STATUS_INDICATOR%}</span>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <ul class="tweet_ctrl">\
@@ -55,12 +54,12 @@ tweet_t:
             </li>\
         </ul>\
         <div class="tweet_meta">\
-            <div class="tweet_source">\
-                {%RETWEET_TEXT%} via: {%SOURCE%}</div>\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
             </div>\
+            <div class="tweet_source"> {%RETWEET_TEXT%} via: {%SOURCE%}</div>\
+            <div class="status_bar">{%STATUS_INDICATOR%}</div>\
         </div>\
     </div>\
     <span class="shape"></span>\

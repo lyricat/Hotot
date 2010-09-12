@@ -745,6 +745,10 @@ input[type="button"]:focus, .button:focus {
     display: none;
 }
 
+.dialog {
+    background: #ddd;
+}
+
 .dialog p {
     font-size: 12px;
     line-height: 1.6em;
@@ -1215,15 +1219,10 @@ input[type="button"]:focus, .button:focus {
 
 .tweet_body > .who {
     position: absolute;
-    height: 16px;
-    line-height: 16px;
-    top: 0;
-}
-
-.tweet_body .status_bar {
-    height: 16px;
+    height: 20px;
+    line-height: 20px;
     display: inline-block;
-    line-height: 16px;
+    top: 0;
 }
 
 .tweet_body > .retweet_mark {
@@ -1347,23 +1346,42 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_source {
-    float: right;
-    max-width: 300px;
+    float: left;
+    max-width: 200px;
     height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.tweet_timestamp, .tweet_link{
+.tweet_timestamp, .tweet_link {
     font-size: 10px;
     color: gray;
     margin-left: 5px;
 }
 
-.btn_tweet_thread {
-    display: block;
+.tweet_body .status_bar {
+    position: absolute;
+    height: 16px;
+    display: inline-block;
+    line-height: 16px;
+    bottom: 2px;
+    right: 2px;
+}
+
+.tweet_body .status_bar * {
+    display: inline-block;
+    background-position: left center;
+}
+
+.tweet_thread_info {
     float: left;
+    margin-right: 10px;
+}
+
+.btn_tweet_thread {
+    float: left;
+    display: block;
     height: 15px;
     width: 15px;
     background: transparent url(../imgs/fold.png) no-repeat;
