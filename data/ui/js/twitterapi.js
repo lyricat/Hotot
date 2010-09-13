@@ -348,10 +348,18 @@ function get_user_profile_image(screen_name, size) {
     var url = lib.twitterapi.api_base + 'users/profile_image/twitter.json'
         + '?size='+ size
         + '&screen_name=' + screen_name;
-    utility.Console.out(url);
     return url;
 },
 
+update_profile_image:
+function update_profile_image() {
+    var url = lib.twitterapi.api_base + 'account/update_profile_image.json'
+    var sign_url = lib.twitterapi.use_same_sign_api_base? url
+        :url.replace(lib.twitterapi.api_base, lib.twitterapi.sign_api_base);
+    var signed_params = jsOAuth.form_signed_params(
+          sign_url, jsOAuth.access_token, 'POST', {} , true);
+    return [url, signed_params];
+},
 update_profile:
 function update_profile(name, website, location, description, on_success) {
     var url = lib.twitterapi.api_base + 'account/update_profile.json';

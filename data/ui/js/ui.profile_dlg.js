@@ -25,7 +25,12 @@ function init () {
     $('#btn_my_profile').click(
     function (event) {
         ui.DialogHelper.open(ui.ProfileDlg);
-    })
+    });
+
+    $('#btn_change_profile_avator').click(
+    function (event) {
+        hotot_action('action/choose_file');
+    });
 
     $('#btn_profile_update').click(
     function (event) {

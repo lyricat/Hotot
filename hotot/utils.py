@@ -7,6 +7,7 @@ import os
 import sys
 from webbrowser import _iscommand as is_command
 import gtk
+import mimetypes, mimetools
 
 _browser = ''
 
@@ -61,10 +62,48 @@ def get_system_default_browser():
             return _browser
         pass
     pass
-
 def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
     browser = 'xdg-open'
     subprocess.Popen([browser, uri])
     pass
+
+def open_file_chooser_dialog():
+    sel_file = None
+    fc_dlg = gtk.FileChooserDialog(title='Open ... '
+        , parent=None
+        , action=gtk.FILE_CHOOSER_ACTION_OPEN
+        , buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OPEN,gtk.RESPONSE_OK))
+    fc_dlg.set_default_response(gtk.RESPONSE_OK)
+    resp = fc_dlg.run()
+    if resp == gtk.RESPONSE_OK:
+        sel_file =  fc_dlg.get_filename()
+    fc_dlg.destroy()
+    gtk.gdk.threads_leave() 
+    return sel_file
+    
+def encode_multipart_formdata(fields, filename):
+    BOUNDARY = mimetools.choose_boundary()
+    CRLF = '\r\n'
+    L = []
+    for (key, value) in fields.items():
+        L.append('--' + BOUNDARY)
+        L.append('Content-Disposition: form-data; name="%s"' % key)
+        L.append('')
+        L.append(str(value))
+        L.append('--' + BOUNDARY)
+
+    L.append('Content-Disposition: form-data; name="image"; filename="%s"' % filename)
+    L.append('Content-Type: %s' % get_content_type(filename))
+    L.append('')
+    L.append(file(filename).read())
+    L.append('--' + BOUNDARY + '--')
+    L.append('')
+    body = CRLF.join(L)
+    header = {'content-type':'multipart/form-data; boundary=%s' % BOUNDARY
+        , 'content-length': os.path.get_size(filename)}
+    return header, body
+
+def get_content_type(filename):
+    return mimetypes.guess_type(filename)[0] or 'application/octet-stream'

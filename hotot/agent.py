@@ -10,7 +10,7 @@ import gtk
 import db
 import threading 
 import gobject
-
+import utils
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -94,6 +94,13 @@ def crack_action(params):
         load_user(screen_name)
     elif params[1] == 'search':
         load_search(params[2])
+    elif params[1] == 'choose_file':
+        file_path = utils.open_file_chooser_dialog()
+        ret = json.loads(webv.ctx().EvaluateScript('''
+            utility.DB.json(lib.twitterapi.update_profile_image())'''))
+        url, params = ret[0], ret[1]
+        header, buffer = utils.encode_multipart_formdata(params, file_path)
+        request(None, 'POST', url, {}, header, buffer)
     pass
 
 def crack_system(params):
@@ -308,11 +315,11 @@ def load_cache():
     execute_script(db.load_screen_name())
     pass
 
-def request(uuid, method, url, params={}, headers={}):
+def request(uuid, method, url, params={}, headers={}, additions=''):
     scripts = ''
     try:
         if (method == 'POST'):
-            result = _post(url, params, headers)
+            result = _post(url, params, headers, additions)
         else:
             result = _get(url, params, headers)
         pass
@@ -333,13 +340,14 @@ def request(uuid, method, url, params={}, headers={}):
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass
     else:
-        if result[0] != '{' and result[0] != '[':
-            scripts = '''lib.twitterapi.success_task_table['%s']('%s');
-            ''' % (uuid, result)
-        else:
-            scripts = '''lib.twitterapi.success_task_table['%s'](%s);
-            ''' % (uuid, result)
-        pass
+        if uuid != None:
+            if result[0] != '{' and result[0] != '[':
+                scripts = '''lib.twitterapi.success_task_table['%s']('%s');
+                ''' % (uuid, result)
+            else:
+                scripts = '''lib.twitterapi.success_task_table['%s'](%s);
+                ''' % (uuid, result)
+            pass
     scripts += '''delete lib.twitterapi.error_task_table['%s'];
     delete lib.twitterapi.error_task_table['%s'];
     '''  % (uuid, uuid);
@@ -357,7 +365,7 @@ def _get(url, params={}, req_headers={}):
     ret = urlopen(request).read()
     return ret
 
-def _post(url, params={}, req_headers={}):
+def _post(url, params={}, req_headers={}, additions=''):
     urlopen = urllib2.urlopen
     if config.use_http_proxy:
         proxy_support = urllib2.ProxyHandler(
@@ -367,7 +375,8 @@ def _post(url, params={}, req_headers={}):
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])
-    request = urllib2.Request(url, urlencode(params), headers=req_headers);
+    request = urllib2.Request(url, 
+        urlencode(params) + additions, headers=req_headers);
     ret = urlopen(request).read()
     return ret
 
