@@ -420,9 +420,10 @@ function verify(on_success) {
 
 search:
 function search(query, page, on_success) {
-    var url = lib.twitterapi.search_api_base + 'search.json';
-    var params = {'q': query, 'page': page};
-    lib.twitterapi.get(url, params, on_success);
+    var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
+    lib.twitterapi.do_requset('GET', url, {}, {}, on_success,
+    function(result) {
+    });
 },
 
 };
