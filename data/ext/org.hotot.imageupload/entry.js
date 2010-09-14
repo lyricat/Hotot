@@ -25,18 +25,31 @@ function on_btn_upload_clicked(event) {
             <span id="ext_hotot_upload_image_path"></span><br/>\
             <label>Add a message<label><br/>\
             <textarea id="ext_hotot_upload_image_message"></textarea>\
-            </p>\
-            <p><a id="ext_btn_hotot_upload_image_upload" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_upload_clicked();">Upload</a><br/></p>';
+            </p>';
+
+        ui.CommonDlg.reset(); 
+        ui.CommonDlg.set_title('Upload Image');
+        ui.CommonDlg.set_content(content);
+        ui.CommonDlg.add_button('ext_btn_hotot_upload_image_upload'
+            , 'Upload', 'Click to upload.'
+            , ext.HototImageUpload.on_btn_upload_clicked);
+        ui.CommonDlg.set_icon('../ext/'+ext.HototImageUpload.id+'/ic24_upload.png')
+        ui.DialogHelper.open(ui.CommonDlg);
     } else {
         title = 'Error !'
         content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
+        ui.MessageDlg.set_text(title, content); 
+        ui.DialogHelper.open(ui.MessageDlg);
     }
-    ui.MessageDlg.set_text(title, content); 
-    ui.DialogHelper.open(ui.MessageDlg);
 },
 
 on_btn_upload_clicked:
 function on_btn_upload_clicked(event) {
+    if (ext.HototImageUpload.select_filename == '') {
+        ui.Notification.set('Please choose an image.').show();
+        return;
+    }
+
     var signed_params = jsOAuth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
             , jsOAuth.access_token
@@ -82,17 +95,19 @@ function select_finish(filename) {
 
 success:
 function success(result) {
-    ui.DialogHelper.close(ui.MessageDlg);
+    ui.DialogHelper.close(ui.CommonDlg);
     
     ui.Notification.set('Uploading Successfully!').show();
     ui.StatusBox.open();
     ui.StatusBox.append_status_text(result.text + ' '+ result.url);
+    ext.HototImageUpload.select_filename = '';
 },
 
 fail:
 function fail(result) {
     ui.MessageDlg.set_text('Upload Fail!', '<p>'+result+'</p>');
     ui.DialogHelper.open(ui.MessageDlg);
+    ext.HototImageUpload.select_filename = '';
 },
 
 load:

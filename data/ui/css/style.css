@@ -1051,6 +1051,25 @@ input[type="button"]:focus, .button:focus {
 #message_dlg_text p, #message_dlg_text p * {
     font-size: 12px;
 }
+
+/*===== Common Dialog ================================*/
+#common_dlg {
+    display: block;
+    width: 400px;
+    background: #ddd;
+}
+
+#common_dlg_border {
+    z-index: 10005;
+    width: 400px;
+}
+
+#common_dlg_body {
+    padding: 10px 20px;
+    max-height: 300px;
+    overflow: auto;
+}
+
 /*===== Class styles ================================*/
 .page {
     margin: 0 auto;

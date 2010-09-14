@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.common_dlg.js"></script>
     <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.filter.js"></script>
@@ -195,6 +196,7 @@ jQuery(function($) {
     ui.ExtsDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
+    ui.CommonDlg.init();
     ui.Filter.init();
     ui.DialogHelper.init();
     ui.ActionMenu.init();
@@ -991,6 +993,19 @@ jQuery(function($) {
         </div>
     </div>
     </div>
+
+    <!-- Common dialog -->
+    <div id="common_dlg_border" class="dialog_border">
+    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+    <div id="common_dlg" class="dialog">
+        <h2 id="common_dlg_title"></h2>
+        <div id="common_dlg_body" class="dialog_body">
+        </div>
+        <div class="dialog_bottom">
+        </div>
+    </div>
+    </div>
+
 </section> <!-- END de dialog_mask -->
 
 <section id="action_menu">
