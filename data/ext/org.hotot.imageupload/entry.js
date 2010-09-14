@@ -50,6 +50,8 @@ function on_btn_upload_clicked(event) {
     headers = {'X-Verify-Credentials-Authorization': auth_str
         , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
     msg = $('#ext_hotot_upload_image_message').attr('value');
+    
+    ui.Notification.set('Uploading ... ').show();
     lib.twitterapi.do_requset(
         'POST'
         , 'http://img.ly/api/2/upload.json' 
@@ -76,7 +78,7 @@ success:
 function success(result) {
     ui.DialogHelper.close(ui.MessageDlg);
     
-    ui.Notification.set('Uploading Successfully!');
+    ui.Notification.set('Uploading Successfully!').show();
     ui.StatusBox.open();
     ui.StatusBox.append_status_text(result.text + ' '+ result.url);
 },
