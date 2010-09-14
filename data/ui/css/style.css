@@ -1027,7 +1027,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 #about_keyborad {
-    max-height: 300px;
+    max-height: 260px;
 }
 /*===== Message Dialog ================================*/
 #message_dlg {
