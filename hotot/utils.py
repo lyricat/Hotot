@@ -83,23 +83,36 @@ def open_file_chooser_dialog():
     gtk.gdk.threads_leave() 
     return sel_file
     
-def encode_multipart_formdata(fields, filename):
+def encode_multipart_formdata(fields, files):
     BOUNDARY = mimetools.choose_boundary()
     CRLF = '\r\n'
-    params_arr = ['%s="%s"' % (k, v) for k, v in fields.items()]
-    
     L = []
-    L.append('Content-Disposition: form-data; name="image"; filename="%s"' % filename)
-    L.append('Content-Type: %s' % get_content_type(filename))
-    L.append('')
-    L.append(file(filename).read())
+    total_size = 0
+    L = []
+    for key, value in fields.items():
+        key, value = key.encode('utf8'), value.encode('utf8')
+        L.append('--' + BOUNDARY)
+        L.append('Content-Disposition: form-data; name="%s"' % key)
+        L.append('')
+        L.append(value)
+        pass
+
+    for pair in files:
+        key, filename = pair[0].encode('utf8'), pair[1].encode('utf8')
+        L.append('--' + BOUNDARY)
+        L.append('Content-Disposition: form-data; name="%s"; filename="%s"' %
+            (key, 'hotot.png'));
+        L.append('Content-Type: %s' % get_content_type(filename))
+        L.append('')
+        L.append(file(filename).read())
+        total_size += os.path.getsize(filename)
+        pass
     L.append('--' + BOUNDARY + '--')
     L.append('')
     body = CRLF.join(L)
-    header = {'content-type':'multipart/form-data; boundary=%s' % BOUNDARY
-        , 'content-length': os.path.getsize(filename)
-        , 'X-Verify-Credentials-Authorizatio': ', '.join(params_arr)}
-    return header, body
+    headers = {'content-type':'multipart/form-data; boundary=%s' % BOUNDARY
+        , 'content-length': str(len(body))};
+    return headers, body
 
 def get_content_type(filename):
     return mimetypes.guess_type(filename)[0] or 'application/octet-stream'

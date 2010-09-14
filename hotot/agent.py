@@ -95,12 +95,9 @@ def crack_action(params):
     elif params[1] == 'search':
         load_search(params[2])
     elif params[1] == 'choose_file':
+        callback = params[2]
         file_path = utils.open_file_chooser_dialog()
-        ret = json.loads(webv.ctx().EvaluateScript('''
-            utility.DB.json(lib.twitterapi.update_profile_image())'''))
-        url, params = ret[0], ret[1]
-        header, buffer = utils.encode_multipart_formdata(params, file_path)
-        request(None, 'POST', url, {}, header, buffer)
+        webv.execute_script('%s("%s")' % (callback, file_path))
     pass
 
 def crack_system(params):
@@ -122,7 +119,8 @@ def crack_request(params):
         , request_info['method']
         , request_info['url']
         , request_info['params']
-        , request_info['headers'])
+        , request_info['headers']
+        , request_info['files'])
     th = threading.Thread(target = request, args=args)
     th.start() 
     pass
@@ -315,11 +313,11 @@ def load_cache():
     execute_script(db.load_screen_name())
     pass
 
-def request(uuid, method, url, params={}, headers={}, additions=''):
+def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     scripts = ''
     try:
         if (method == 'POST'):
-            result = _post(url, params, headers, additions)
+            result = _post(url, params, headers, files, additions)
         else:
             result = _get(url, params, headers)
         pass
@@ -365,7 +363,14 @@ def _get(url, params={}, req_headers={}):
     ret = urlopen(request).read()
     return ret
 
-def _post(url, params={}, req_headers={}, additions=''):
+def _post(url, params={}, req_headers={}, files=[], additions=''):
+    if files != []:
+        files_headers, files_data = utils.encode_multipart_formdata(params, files)
+        params ={}
+        req_headers.update(files_headers)
+        additions += files_data
+        pass
+
     urlopen = urllib2.urlopen
     if config.use_http_proxy:
         proxy_support = urllib2.ProxyHandler(
@@ -375,6 +380,7 @@ def _post(url, params={}, req_headers={}, additions=''):
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])
+
     request = urllib2.Request(url, 
         urlencode(params) + additions, headers=req_headers);
     ret = urlopen(request).read()

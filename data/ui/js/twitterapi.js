@@ -52,7 +52,7 @@ function basic_auth() {
 
 get:
 function get(ajax_url, ajax_params, on_success) {
-    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {}, 
+    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {},
         on_success,
         function(result) {
             lib.twitterapi.error_handle(result);
@@ -62,7 +62,7 @@ function get(ajax_url, ajax_params, on_success) {
 
 post:
 function post(ajax_url, ajax_params, on_success) {
-    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {}, 
+    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {},
         on_success,
         function(result) {
             lib.twitterapi.error_handle(result);
@@ -71,7 +71,7 @@ function post(ajax_url, ajax_params, on_success) {
 },
 
 do_ajax:
-function do_ajax(method, url, params, headers, on_success, on_error) {
+function do_ajax(method, url, params, headers, on_success, on_error){
     params['source'] = lib.twitterapi.source;
     sign_url = lib.twitterapi.use_same_sign_api_base? url
         :url.replace(lib.twitterapi.api_base, lib.twitterapi.sign_api_base);
@@ -94,6 +94,7 @@ function do_ajax(method, url, params, headers, on_success, on_error) {
             , url
             , params
             , headers
+            , [] 
             , on_success
             , on_error
             );
@@ -111,7 +112,7 @@ function do_ajax(method, url, params, headers, on_success, on_error) {
 },
 
 do_requset:
-function do_requset(req_method, req_url, req_params, req_headers, on_success, on_error) {
+function do_requset(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
     if (!req_headers) req_headers = {};
     if (lib.twitterapi.py_request) {
         var task_uuid = lib.twitterapi.generate_uuid();
@@ -120,9 +121,10 @@ function do_requset(req_method, req_url, req_params, req_headers, on_success, on
         hotot_action('request/' +
             encodeURIComponent(utility.DB.json(
                 { uuid: task_uuid
+                , method: req_method
                 , url: req_url
                 , params: req_params
-                , method: req_method
+                , files: req_files
                 , headers: req_headers })));
     } else {
         jQuery.ajaxQueue({    
@@ -429,7 +431,7 @@ function verify(on_success) {
 search:
 function search(query, page, on_success) {
     var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
-    lib.twitterapi.do_requset('GET', url, {}, {}, on_success,
+    lib.twitterapi.do_requset('GET', url, {}, {}, [], on_success,
     function(result) {
     });
 },
