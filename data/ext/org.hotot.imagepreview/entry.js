@@ -12,7 +12,7 @@ description: 'To preview picture thumbs in timeline.\nSupport sites:\n\
     - yfrog.com\n\
     - moby.to\n',
 
-version: '0.1',
+version: '1.0',
 
 author: 'Shellex Wai',
 

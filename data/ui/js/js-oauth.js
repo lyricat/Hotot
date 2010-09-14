@@ -1,6 +1,6 @@
 /*
  * A JavaScript implementation for twitter's OAuth
- * Version 0.1 Copyright Shellex Wai<5h3ll3x@gmail.com> 2009 - 2010.
+ * Version 1.0 Copyright Shellex Wai<5h3ll3x@gmail.com> 2009 - 2010.
  * Distributed under the LGPLv3
  * See http://oauth.net/ for details.
  */

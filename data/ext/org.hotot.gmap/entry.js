@@ -7,7 +7,7 @@ name: 'Hotot GMap',
 
 description: 'View geolocation information of tweets.',
 
-version: '0.1',
+version: '1.0',
 
 author: 'Shellex Wai',
 

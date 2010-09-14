@@ -6,7 +6,7 @@ from DistUtilsExtra.command import *
 from glob import glob
 
 setup(name='hotot',
-      version='0.1.0',
+      version='1.0',
       description='Lightweight Twitter Client',
       long_description =
 """

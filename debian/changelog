@@ -1,3 +1,9 @@
+hotot (1.0-1) maverick; urgency=low
+
+  * New upstream release.
+
+ -- Jiahua Huang <jhuangjiahua@gmail.com>  Tue, 14 Sep 2010 22:14:12 +0800
+
 hotot (0.1-1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>

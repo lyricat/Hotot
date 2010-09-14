@@ -7,7 +7,7 @@ name: 'Sample',
 
 description: 'Only A Sample Extention.',
 
-version: '0.1',
+version: '1.0',
 
 author: 'Shellex Wai',
 

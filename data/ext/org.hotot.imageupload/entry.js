@@ -6,7 +6,7 @@ name: 'Hotot Image Uploader',
 
 description: 'To upload picture to social photo sharing services img.ly.',
 
-version: '0.1',
+version: '1.0',
 
 author: 'Shellex Wai',
 
