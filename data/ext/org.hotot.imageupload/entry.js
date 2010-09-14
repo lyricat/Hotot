@@ -45,7 +45,8 @@ function on_btn_upload_clicked(event) {
 
 on_btn_upload_clicked:
 function on_btn_upload_clicked(event) {
-    if (ext.HototImageUpload.select_filename == '') {
+    if (ext.HototImageUpload.select_filename == ''
+        || ext.HototImageUpload.select_filename == 'None') {
         ui.Notification.set('Please choose an image.').show();
         return;
     }
