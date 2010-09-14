@@ -137,6 +137,7 @@ function get_request_token(on_success) {
                 , null, 'GET', null)
         , {}
         , {}
+        , []
         , function (result) {
             var token_info = result;
             jsOAuth.request_token = utility.DB.unserialize_dict(token_info)
@@ -173,6 +174,7 @@ function get_access_token(pin, on_success, on_error) {
         , jsOAuth.oauth_base + jsOAuth.access_token_url + '?' + params
         , {}
         , {}
+        , []
         , function (result) {
             var token_info = result;
             jsOAuth.access_token = utility.DB.unserialize_dict(token_info)
