@@ -18,14 +18,20 @@ select_filename: '',
 
 on_ext_btn_clicked:
 function on_btn_upload_clicked(event) {
-    var content = '<p>\
-        <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a><br/>\
-        <span id="ext_hotot_upload_image_path"></span><br/>\
-        <label>Add a message<label><br/>\
-        <textarea id="ext_hotot_upload_image_message"></textarea>\
-        </p>\
-        <p><a id="ext_btn_hotot_upload_image_upload" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_upload_clicked();">Upload</a><br/></p>';
-    ui.MessageDlg.set_text('Upload to img.ly', content); 
+    if (lib.twitterapi.use_oauth) {
+        title = 'Upload image to ...'
+        content = '<p>\
+            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a><br/>\
+            <span id="ext_hotot_upload_image_path"></span><br/>\
+            <label>Add a message<label><br/>\
+            <textarea id="ext_hotot_upload_image_message"></textarea>\
+            </p>\
+            <p><a id="ext_btn_hotot_upload_image_upload" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_upload_clicked();">Upload</a><br/></p>';
+    } else {
+        title = 'Error !'
+        content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
+    }
+    ui.MessageDlg.set_text(title, content); 
     ui.DialogHelper.open(ui.MessageDlg);
 },
 

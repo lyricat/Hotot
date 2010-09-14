@@ -29,7 +29,7 @@ function init () {
 
     $('#btn_change_profile_avator').click(
     function (event) {
-        hotot_action('action/choose_file');
+        hotot_action('action/choose_file/ui.profile_dlg.select_finish');
     });
 
     $('#btn_profile_update').click(

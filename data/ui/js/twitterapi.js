@@ -105,6 +105,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , url
             , params
             , headers
+            , []
             , on_success
             , on_error
             );
@@ -362,6 +363,7 @@ function update_profile_image() {
           sign_url, jsOAuth.access_token, 'POST', {} , true);
     return [url, signed_params];
 },
+
 update_profile:
 function update_profile(name, website, location, description, on_success) {
     var url = lib.twitterapi.api_base + 'account/update_profile.json';
