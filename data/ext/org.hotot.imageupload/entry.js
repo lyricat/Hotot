@@ -4,7 +4,7 @@ id: 'org.hotot.imageupload',
 
 name: 'Hotot Image Uploader',
 
-description: 'To upload picture to social photo sharing services img.ly.',
+description: 'To upload picture to social photo sharing services.',
 
 version: '1.0',
 
@@ -16,12 +16,28 @@ icon: 'icon.png',
 
 select_filename: '',
 
+services : {
+    'img.ly': {
+          url: 'http://img.ly/api/2/upload.json'
+    },
+    'twitpic.com': {
+          url: 'http://api.twitpic.com/2/upload.json'
+        , key: 'de89b69c11e1ac0f874ec5266c5c4f46'
+    },
+},
+
 on_ext_btn_clicked:
 function on_btn_upload_clicked(event) {
     if (lib.twitterapi.use_oauth) {
         title = 'Upload image to ...'
         content = '<p>\
-            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a><br/>\
+            <label>Upload to </label>\
+            <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px">\
+                <option value="img.ly" default="1">img.ly</option>\
+                <option value="twitpic.com">twitpic.com</option>\
+            </select>\
+            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a>\
+            </p><p>\
             <span id="ext_hotot_upload_image_path"></span><br/>\
             <label>Add a message<label><br/>\
             <textarea id="ext_hotot_upload_image_message"></textarea>\
@@ -67,15 +83,22 @@ function on_btn_upload_clicked(event) {
     + ', oauth_signature="'
         + encodeURIComponent(signed_params.oauth_signature)+'"';
 
-    headers = {'X-Verify-Credentials-Authorization': auth_str
+    var headers = {'X-Verify-Credentials-Authorization': auth_str
         , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
-    msg = $('#ext_hotot_upload_image_message').attr('value');
-    
+    var msg = $('#ext_hotot_upload_image_message').attr('value');
+    var service_name = $('#ext_hotot_upload_image_services').attr('value');
+    var params = {'message': msg};
+    switch (service_name) {
+    case 'twitpic.com' :
+        params['key'] = ext.HototImageUpload.services[service_name].key;
+    break;
+    }
+
     ui.Notification.set('Uploading ... ').show();
     lib.twitterapi.do_requset(
         'POST'
-        , 'http://img.ly/api/2/upload.json' 
-        , {'message': msg } 
+        , ext.HototImageUpload.services[service_name].url
+        , params 
         , headers
         , [['media', ext.HototImageUpload.select_filename]] 
         , ext.HototImageUpload.success
@@ -98,9 +121,12 @@ success:
 function success(result) {
     ui.DialogHelper.close(ui.CommonDlg);
     
+    var service_name = $('#ext_hotot_upload_image_services').attr('value');
     ui.Notification.set('Uploading Successfully!').show();
     ui.StatusBox.open();
-    ui.StatusBox.append_status_text(result.text + ' '+ result.url);
+    var url = result.url;
+    var text = result.text;
+    ui.StatusBox.append_status_text(text + ' '+ url);
     ext.HototImageUpload.select_filename = '';
 },
 

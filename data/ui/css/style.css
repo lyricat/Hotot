@@ -238,6 +238,8 @@ a {
     list-style-type:none; 
     color: #white;
     font-size: 12px;
+    max-height: 100px;
+    overflow: auto;
 }
 
 #screen_name_auto_complete > li.hlight {
@@ -465,6 +467,10 @@ a {
 label {
     font-size: 12px;
     line-height: 18px;
+}
+
+select {
+    padding: 2px 5px;
 }
 
 input[type="text"], input[type="password"], textarea{
