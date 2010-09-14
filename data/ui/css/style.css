@@ -372,6 +372,7 @@ a {
 /* ===== Side Nav ================================== */
 #aside {
     background: #faa;
+    display: none;
 }
 
 /* ===== Notification ============================== */
@@ -406,6 +407,7 @@ a {
     color: white;
     -webkit-border-top-right-radius: 3px 3px;
     -webkit-border-bottom-right-radius: 3px 3px;
+    display: none;
 }
 
 #count_trigger {

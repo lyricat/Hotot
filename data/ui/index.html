@@ -171,6 +171,7 @@ jQuery(function($) {
     $(window).resize(
     function () {
         update_tweet_block_width();
+        ui.Slider.slide_to(ui.Slider.current);
     });
 
     $('#count').hover(
@@ -807,7 +808,7 @@ jQuery(function($) {
                     </li>
                 </ul>
                 <div id="about_about" class="dlg_tabs_page">
-                    <h3>- About -</h3>
+                    <h3>- Hotot 0.9.0 -</h3>
                     <div class="dlg_group">
                     <p>
                     <strong>Hotot</strong> is a lightweight client for the <a
@@ -817,7 +818,7 @@ jQuery(function($) {
                     <p>
                     Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
                     </p>
-                    <p>Project Site: <a href="http://lab.shellex.info/hotot">http://lab.shellex.info/hotot/</a></p>
+                    <p>Project Site: <a href="http://lab.shellex.info/hotot">http://hotot.org</a></p>
                     </div>
                 </div>
                 <div id="about_keyborad" class="dlg_tabs_page">
@@ -865,16 +866,25 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <label>Written by</label>:<br/>
-                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; <br/>
+                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
+                        (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
+
                         - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
+                        (<a href="http://twitter.com/shellexy">@shellexy</a>)<br/>
+
+                        - Tualatrix Chou &lt;<a href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
+                        (<a href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
+
                     </p>
                     <p>
                         <label>Artwork by</label>: <br/>
-                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
+                        - Shellex Wai <br/>
                     </p>
                     <p>
                         <label>Document by</label>: <br/>
-                        - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt;
+                        - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
+                        (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
+
                     </p>
                     </div>
                 </div>
