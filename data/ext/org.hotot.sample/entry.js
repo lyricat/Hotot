@@ -11,7 +11,7 @@ version: '1.0',
 
 author: 'Shellex Wai',
 
-url: 'http://hotot.org',
+url: 'http://www.hotot.org',
 
 on_add_tweets:
 function on_add_tweets(tweets, container) {

@@ -10,7 +10,7 @@ version: '1.0',
 
 author: 'Shellex Wai',
 
-url: 'http://hotot.org',
+url: 'http://www.hotot.org',
 
 icon: 'icon.png',
 
