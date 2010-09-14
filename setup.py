@@ -37,6 +37,14 @@ Features include:
           ('share/hotot/ui/js', glob('data/ui/js/*')),
           ('share/hotot/ui/imgs', glob('data/ui/imgs/*')),
           ('share/hotot/ui/css', glob('data/ui/css/*')),
+
+          ('share/hotot/ext', ['data/ext/ext.js']),
+          ('share/hotot/ext/org.hotot.imagepreview'
+            , glob('data/ext/org.hotot.imagepreview/*')),
+          ('share/hotot/ext/org.hotot.sample'
+            , glob('data/ext/org.hotot.sample/*')),
+          ('share/hotot/ext/org.hotot.gmap'
+            , glob('data/ext/org.hotot.gmap/*')),
       ],
       cmdclass = { "build" :  build_extra.build_extra,
                  }

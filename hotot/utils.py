@@ -86,14 +86,9 @@ def open_file_chooser_dialog():
 def encode_multipart_formdata(fields, filename):
     BOUNDARY = mimetools.choose_boundary()
     CRLF = '\r\n'
+    params_arr = ['%s="%s"' % (k, v) for k, v in fields.items()]
+    
     L = []
-    for (key, value) in fields.items():
-        L.append('--' + BOUNDARY)
-        L.append('Content-Disposition: form-data; name="%s"' % key)
-        L.append('')
-        L.append(str(value))
-        L.append('--' + BOUNDARY)
-
     L.append('Content-Disposition: form-data; name="image"; filename="%s"' % filename)
     L.append('Content-Type: %s' % get_content_type(filename))
     L.append('')
@@ -102,7 +97,8 @@ def encode_multipart_formdata(fields, filename):
     L.append('')
     body = CRLF.join(L)
     header = {'content-type':'multipart/form-data; boundary=%s' % BOUNDARY
-        , 'content-length': os.path.get_size(filename)}
+        , 'content-length': os.path.getsize(filename)
+        , 'X-Verify-Credentials-Authorizatio': ', '.join(params_arr)}
     return header, body
 
 def get_content_type(filename):
