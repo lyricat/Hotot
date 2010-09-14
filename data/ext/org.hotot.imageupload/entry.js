@@ -78,7 +78,7 @@ function success(result) {
     
     ui.Notification.set('Uploading Successfully!');
     ui.StatusBox.open();
-    ui.StatusBox.append_status_text(' ' + result.text + ' '+ result.url);
+    ui.StatusBox.append_status_text(result.text + ' '+ result.url);
 },
 
 fail:

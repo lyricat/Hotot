@@ -121,7 +121,7 @@ jQuery(function($) {
                 // '<Ctrl> + f' to open filter
                 ui.Filter.show();
             }
-            if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
+            if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
                     ui.Notification.set('Loading Tweets...').show(-1);
