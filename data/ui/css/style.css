@@ -792,8 +792,10 @@ input[type="button"]:focus, .button:focus {
 
 .dialog_bottom {
     text-align: right; 
+    border-top: 1px #ccc solid; 
     clear:both; 
     padding: 10px;
+    margin-top: 5px;
 }
 
 #oauth_dlg {
@@ -834,7 +836,7 @@ input[type="button"]:focus, .button:focus {
 
 #prefs_dlg_body {
     padding: 0;
-    max-height: 300px;
+    max-height: 330px;
 }
 
 .dlg_tabs {
