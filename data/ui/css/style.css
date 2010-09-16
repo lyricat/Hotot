@@ -139,15 +139,15 @@ a {
     border-style: solid;
     bottom: auto;
     border-width: 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent #2e88c4 transparent transparent; 
+    border-color: transparent rgba(0,0,0,0.75) transparent transparent; 
 }
 
 #bubble_shape.dm_mode {
-    border-color: transparent #2ec436 transparent transparent !important; 
+    border-color: transparent rgba(0, 90, 0, 75) transparent transparent !important; 
 }
 
 #status_box {
-    background-color: #2e88c4;
+    background-color: rgba(0,0,0,0.75);
     background-repeat: no-repeat;
     background-position: right top;
     width: 310px;
@@ -162,7 +162,7 @@ a {
 }
 
 #status_box.dm_mode {
-    background-color: #2ec436 !important;
+    background-color: rgba(0, 90, 0, 75)  !important;
 }
 
 #tbox_status {
@@ -173,9 +173,6 @@ a {
     background-color: #fff;
     font-size: 14px;
     overflow:hidden;
-    border-width: 1px;
-    border-color: #2222ee #6666ff #6666ff #2222ee;
-    border-style: solid;
     -webkit-border-radius: 5px 5px;
     resize: none;
 }
@@ -199,7 +196,7 @@ a {
 
 #status_len {
     padding: 2px 5px;
-    background: #22264e;
+    background: #242424;
     float: left;
     color: white;
     display: block;
@@ -510,7 +507,7 @@ input[type="button"], .button {
     text-align: center;
     min-width: 60px;
     display: inline-block;
-    background: url(../imgs/btn_bg.png) repeat-x;
+    background: #ababab;/*url(../imgs/btn_bg.png) repeat-x;*/
     text-decoration: none;
     text-shadow: 0 1px 0px #fff;
     -webkit-border-radius: 3px 3px;
@@ -520,6 +517,12 @@ input[type="button"].default, .button.default {
     background: url(../imgs/default_btn_bg.png) repeat-x !important;
     text-shadow: 0 1px 0px #ffda8b !important;
     border-color: #ffaa00 !important; 
+}
+
+.button.dark {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(67,67,67,0.9)), to(rgba(27,27,27,0.9))) !important;
+    color: #fff;
+    border: 1px #888 solid;
 }
 
 input[type="button"].default:active, .button.default:active {

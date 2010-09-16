@@ -249,7 +249,7 @@ function update_status_len() {
     if (status_len > globals.max_status_len)
         $('#status_len').css('background-color', '#cc0000');
     else
-        $('#status_len').css('background-color', '#22264e');
+        $('#status_len').css('background-color', '#242424');
     $('#status_len').html(status_len + '/' + globals.max_status_len);
     return this;
 },
