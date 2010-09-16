@@ -148,7 +148,6 @@ a {
 
 #status_box {
     background-color: #2e88c4;
-    background-image: url(../imgs/status_box_bg.png);
     background-repeat: no-repeat;
     background-position: right top;
     width: 310px;
@@ -167,14 +166,24 @@ a {
 }
 
 #tbox_status {
-    width: 300px;
-    height: 40px;
+    width: 302px;
+    height: 45px;
     border: 0;
-    background: transparent;
-    color: white;
+    color: #333;
+    background-color: #fff;
     font-size: 14px;
     overflow:hidden;
+    border-width: 1px;
+    border-color: #2222ee #6666ff #6666ff #2222ee;
+    border-style: solid;
     -webkit-border-radius: 5px 5px;
+    resize: none;
+}
+
+#tbox_status.closed {
+    color: #fff;
+    background: transparent;
+    border: none;
 }
 
 #tbox_status.hint_style {

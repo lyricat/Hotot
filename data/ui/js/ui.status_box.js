@@ -377,13 +377,14 @@ function close() {
         $('#status_ctrl').hide();
         $('#status_info').hide();
         $('#tbox_status').animate({ 
-            height: "40px", 
+            height: "45px", 
         }
         , 50
         , 'linear'
         , function () {
             $(this).blur();
         });
+        $('#tbox_status').addClass('closed');
         ui.StatusBox.stop_screen_name_detect();
         ui.StatusBox.is_closed = true;
     }
@@ -406,6 +407,7 @@ function open(on_finish) {
         , 'linear'
         , on_finish);
         $('#status_ctrl').show();
+        $('#tbox_status').removeClass('closed');
         ui.StatusBox.is_closed = false;
     } else {
         if (on_finish) on_finish();
