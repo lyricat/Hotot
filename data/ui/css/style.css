@@ -34,7 +34,7 @@ a {
 
 /* ===== header ==============================*/
 #header {
-    border-bottom: #ccc solid 1px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#595f62), to(#474c4e));
     background-repeat:no-repeat;
     background-position: 70% 0;
     padding: 3px 5px;
@@ -52,7 +52,7 @@ a {
     top: 2px;
     right: 10px;
     font-size: 10px;
-    color: #333;
+    color: #fff;
 }
 
 #ctrl_panel {
@@ -67,30 +67,37 @@ a {
 }
 
 #ctrl_panel > li {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     margin: 0 2px;
     display: inline-block;
 }
 
 .panel_btn {
     padding: 2px;
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     display: inline-block;
     border: 1px transparent solid;
     -webkit-border-radius: 5px 5px;
     background-position: 50% 50% !important;
+    background-repeat: no-repeat;
 }
 
 .panel_btn:hover {
-    border: 1px #ccc solid;
-    background-color: #f2f2f2;
+    background-color: #aaa;
 }
 
 .panel_btn:active {
-    border: 1px #ccc solid;
-    background-color: #a8b1fe;
+    background-color: #222;
+}
+
+#btn_reload {
+    background-image: url(../imgs/ic16_reload.png) ;
+}
+
+#btn_filter {
+    background-image: url(../imgs/ic16_exts.png) ;
 }
 
 #btn_hotot_wrap {
@@ -102,11 +109,7 @@ a {
     display:block;
     font-size: 10px;
     text-decoration:none;
-}
-
-#btn_hotot.hover {
-    border: 1px #ccc solid;
-    background-color: #f2f2f2;
+    background-image: url(../imgs/ic16_menu.png);
 }
 
 #hotot_menu {
@@ -416,8 +419,9 @@ a {
     font-size: 12px;
     font-weight: bold;
     padding: 3px 10px;
-    background: yellow;
-    color: black;
+    background: #fef6a8 none no-repeat 20px center;
+    border: 1px solid #fcfc19;
+    color: #990000;
     display:none;
     -webkit-border-radius: 3px 3px;
 }
@@ -468,10 +472,8 @@ a {
     font-size:12px;
     height: 20px;
     padding: 0px 5px 2px 5px;
-    border-bottom: #ccc solid 1px;
-    border-right: #ccc solid 1px;
-    border-left: #ccc solid 1px;
     display: none;
+    background: #474c4e;
     border-bottom-left-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
 }
@@ -601,12 +603,27 @@ input[type="button"]:focus, .button:focus {
     display: none;
 }
 
-#people_entry, #search_entry {
+#people_entry, #search_entry, #people_vcard {
     font-size: 10px;
-    background: #fff;
-    border-bottom: #ccc solid 1px;
-    border-right: #ccc solid 1px;
+    background: #474c4e;
+    color: #fff;
     padding: 3px 5px;
+}
+
+#people_entry a, #search_entry a, #people_vcard a{
+    color: #fff;
+}
+
+#people_entry, #search_entry {
+    text-align: center;
+}
+
+#tbox_people_entry, #tbox_search_entry {
+    width: 200px;
+}
+
+#people_entry *, #search_entry *{
+    font-size: 10px;
 }
 
 #people_request_hint, #search_no_result_hint {
@@ -1081,11 +1098,6 @@ input[type="button"]:focus, .button:focus {
     list-style-type: none;
 }
 
-.tweet_block_top {
-    padding: 0 20px;
-}
-
-
 .vcard {
     display: none;
     font-size: 10px;
@@ -1524,17 +1536,5 @@ td {
 }
 .ic_close {
     background: transparent url(../imgs/ic16_close.png) no-repeat;
-}
-.ic24_reload {
-    background: transparent url(../imgs/ic24_reload.png) no-repeat;
-}
-.ic24_hotot {
-    background: transparent url(../imgs/ic24_hotot.png) no-repeat;
-}
-.ic24_magic {
-    background: transparent url(../imgs/ic24_magic.png) no-repeat;
-}
-.ic24_filter {
-    background: transparent url(../imgs/ic24_filter.png) no-repeat;
 }
 
