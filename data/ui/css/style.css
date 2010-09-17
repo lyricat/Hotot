@@ -1164,6 +1164,13 @@ input[type="button"]:focus, .button:focus {
 .tweet.normal a {
     color: #585858;
 }
+.tweet.normal .who_href {
+    color: #2c2e36;
+}
+.tweet.normal .tweet_thread {
+    border: 1px #c4c7cb solid;
+    border-bottom: 0;
+}
 
 .tweet.mention {
     background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
@@ -1172,6 +1179,13 @@ input[type="button"]:focus, .button:focus {
 }
 .tweet.mention a {
     color: #D67514;
+}
+.tweet.mention .who_href {
+    color: #502805;
+}
+.tweet.mention .tweet_thread {
+    border: 1px #c4987d solid;
+    border-bottom: 0;
 }
 
 .tweet.message {
@@ -1182,14 +1196,28 @@ input[type="button"]:focus, .button:focus {
 .tweet.message a {
     color: #376AE4;
 }
+.tweet.message .who_href {
+    color: #14465f;
+}
+.tweet.message .tweet_thread {
+    border: 1px #90abc4 solid;
+    border-bottom: 0;
+}
 
 .tweet.me {
     background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
     border-bottom: 1px #75A565 solid;
-    color: #629850;
+    color: #264408;
 }
 .tweet.me a {
-    color: #2C9804;
+    color: #238000;
+}
+.tweet.me .who_href {
+    color: #264408;
+}
+.tweet.me .tweet_thread {
+    border: 1px #75A565 solid;
+    border-bottom: 0;
 }
 
 
@@ -1410,9 +1438,11 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_thread {
+    border-width: 1px;
+    border-style: solid;
     display: none;
     list-style-type: none;
-    padding: 5px;
+    padding: 0px;
     margin-left: 65px;
 }
 
@@ -1420,8 +1450,9 @@ input[type="button"]:focus, .button:focus {
     margin: 0 auto;
     font-size: 12px;
     padding: 3px 10px;
-    background: yellow;
-    color: black;
+    background: #fef6a8 none no-repeat 20px center;
+    border: 1px solid #fcfc19;
+    color: #990000;
     -webkit-border-radius: 3px 3px; 
 }
 
