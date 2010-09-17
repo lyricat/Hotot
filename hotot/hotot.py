@@ -38,7 +38,7 @@ class MainWindow:
             config.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_icon_from_file(
             config.get_ui_object('imgs/ic64_hotot.png'))
-        self.window.set_default_size(750, 550)
+        self.window.set_default_size(550, 550)
         self.window.set_title('Hotot')
         self.window.set_position(gtk.WIN_POS_CENTER)
 
