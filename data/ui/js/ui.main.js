@@ -129,7 +129,7 @@ function init () {
     $('#btn_people_entry').click(
     function (event) {
         ui.Main.reset_people_page(null
-            , $('#tbox_people_entry').attr('value').trim());
+            , $.trim($('#tbox_people_entry').attr('value')));
         daemon.Updater.update_people();
     });
 
@@ -141,7 +141,7 @@ function init () {
     $('#btn_search_entry').click(
     function (event) {
         ui.Main.reset_search_page(
-            $('#tbox_search_entry').attr('value').trim());
+            $.trim($('#tbox_search_entry').attr('value')));
         daemon.Updater.update_search();
     });
 
@@ -405,6 +405,13 @@ function bind_tweets_action(tweets_obj, pagename) {
             $(ui.Main.actived_tweet_id).removeClass('active');
             ui.Main.actived_tweet_id = id;
             $(ui.Main.actived_tweet_id).addClass('active');
+        });
+        $(id).hover(
+        function (event) {
+            $(id + '> .tweet_body').children('.tweet_ctrl').show();
+        },
+        function (event) {
+            $(id + '> .tweet_body').children('.tweet_ctrl').hide();
         });
         $(id).find('.tweet_reply').click(
         function (event) {

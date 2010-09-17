@@ -116,12 +116,15 @@ a {
 }
 
 .hotot_menu {
+    padding: 5px 0;
     right: 0;
     list-style-type: none;
     display: none;
     background: rgba(0,0,0,0.75);
     -webkit-box-shadow: 1px 1px 5px #333;
+    border-radius: 5px 5px;
 }
+
 
 .hotot_menu > li {
     display: block;
@@ -136,13 +139,12 @@ a {
     padding-left: 20px;
     text-decoration:none;
     color: #fff;
-    background-position: 2px 5px;
 }
 
 
 .hotot_menu > li > a:hover {
     color: #fff;
-    background-color: #a8b1fe;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
 #bubble_shape {
@@ -528,13 +530,13 @@ input[type="button"], .button {
     display: inline-block;
     background: url(../imgs/btn_bg.png) repeat-x;
     text-decoration: none;
-    text-shadow: 0 1px 0px #fff;
     -webkit-border-radius: 3px 3px;
 }
 
 input[type="button"].default, .button.default {
     background: url(../imgs/default_btn_bg.png) repeat-x !important;
     border-color: #ffaa00 !important; 
+    text-shadow: none;
 }
 
 .button.dark, select.dark, input[type="checkbox"].dark {
@@ -758,38 +760,24 @@ input[type="button"]:focus, .button:focus {
     top: 100px;
     width: 40%;
     background: rgba(0,0,0, 0.7);
-    display: none;
     z-index: 100011;
     color: #fff;
-    padding: 10px;
+    display: none;
     -webkit-border-radius: 5px;
 }
 
 #action_menu ul {
     list-style-type: none;
-}
-
-#action_menu li {
-    margin: 5px;
+    display: block;
 }
 
 #action_menu li > a {
     font-size: 14px;
-    border: 1px transparent solid;
     padding: 5px 20px;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-}
-
-#action_menu li > a:hover {
-    color: #a8b1fe;
 }
 
 #action_menu li > a.selected, #action_menu li > a:active {
-    background: #a8b1fe;
-    color: #000;
-    -webkit-border-radius: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
 
@@ -810,7 +798,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 .dialog {
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.8);
     border-radius: 5px 5px;
     color: #fff;
     -webkit-box-shadow: 1px 1px 5px #000;
@@ -1161,19 +1149,29 @@ input[type="button"]:focus, .button:focus {
 .tweet {
     margin: 5px 0;
     padding-left: 5px;
-    border-width: 1px;
-    border-color: transparent #ccc #ccc transparent;
-    border-style: solid;
     min-height: 64px;
-    background: #fff;
+    background: #f2f2f2;
     position: relative;
 }
 
 .tweet.active {
-    background: #fff url(../imgs/tweet_indicator.png) repeat-y 0 center;
+    background: transparent url(../imgs/tweet_indicator.png) repeat-y 0 center;
 }
 
 .tweet > span.shape {
+    content: "\00a0";
+    display: block; /* reduce the damage in FF3.0 */
+    position: absolute;
+    width:0;
+    height:0;
+    left: 56px; /* value = - border-left-width - border-right-width */
+    top: 22px;
+    border-style: solid;
+    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
+    border-color: transparent transparent transparent transparent; 
+}
+
+.tweet > span.shape_mask {
     content: "\00a0";
     display: block; /* reduce the damage in FF3.0 */
     position: absolute;
@@ -1183,26 +1181,11 @@ input[type="button"]:focus, .button:focus {
     top: 22px;
     border-style: solid;
     border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent #bbb  transparent transparent; 
-}
-
-.tweet > span.shape_mask {
-    content: "\00a0";
-    display: block; /* reduce the damage in FF3.0 */
-    position: absolute;
-    width:0;
-    height:0;
-    left: 58px; /* value = - border-left-width - border-right-width */
-    top: 22px;
-    border-style: solid;
-    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
     border-color: transparent #fff  transparent transparent; 
 }
 
 .profile_img_wrapper {
     /*-webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 0px 0px 5px;*/
-    background: #fff;
-    border: 1px #fff solid; 
     padding: 1px;
     margin: 5px;
     width: 48px;
@@ -1229,9 +1212,9 @@ input[type="button"]:focus, .button:focus {
 .tweet_body {
     margin: 0 0 0 65px;
     padding: 5px 5px 20px 5px;
-    border-left: #ccc 1px solid;
     min-height: 64px;
     position: relative;
+    border-radius: 5px 5px;
 }
 
 .tweet_body > .who {
@@ -1266,6 +1249,7 @@ input[type="button"]:focus, .button:focus {
     position: absolute;
     top: 5px;
     right: 5px;
+    display: none;
 }
 
 .tweet_ctrl > li {
@@ -1400,7 +1384,6 @@ input[type="button"]:focus, .button:focus {
     list-style-type: none;
     padding: 5px;
     margin-left: 65px;
-    border-left: #ccc 1px solid;
 }
 
 .tweet_thread_hint {

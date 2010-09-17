@@ -3,9 +3,9 @@ ui.Template = {
 
 schemes: {
     'white' : '#fff',
-    'orange': '#ffebc3',
-    'blue'  : '#d0d9ff',
-    'green' : '#daffd1',
+    'orange': '#ffdca8',
+    'blue'  : '#a5d0f9',
+    'green' : '#cffcc7',
 },
 
 reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'),
@@ -122,7 +122,7 @@ function form_dm(dm_obj, pagename) {
     var text = ui.Template.form_text(dm_obj.text);
     var ret = '';
     var user_id = dm_obj.sender.id;
-    var scheme = ui.Template.schemes['white'];
+    var scheme = ui.Template.schemes['blue'];
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = ui.Template.schemes['orange'];
     }
@@ -179,10 +179,10 @@ function form_tweet (tweet_obj, pagename) {
 
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = ui.Template.schemes['green'];
+        scheme = ui.Template.schemes['orange'];
     }
     if (is_self) {
-        scheme = ui.Template.schemes['orange'];
+        scheme = ui.Template.schemes['green'];
     }
     if (retweet_name != '') {
         retweet_str = 'retweeted by <a href="hotot:action/user/'

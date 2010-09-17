@@ -40,7 +40,7 @@ function init () {
     
     $('#btn_update').click(
     function(event){
-        var status_text = $('#tbox_status').attr('value').trim();
+        var status_text = $.trim($('#tbox_status').attr('value'));
         if (status_text.length > 140) {
             ui.Notification.set('Status is over 140 characters').show();
             return;
