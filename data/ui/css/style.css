@@ -23,7 +23,7 @@ body {
 }
 
 a {
-    color: blue;
+    color: #2048F3;
 }
 
 #container {
@@ -1225,6 +1225,10 @@ input[type="button"]:focus, .button:focus {
     top: 0;
 }
 
+.tweet_body .who_href {
+    font-weight: bold;
+}
+
 .tweet_body > .retweet_mark {
     padding-left: 20px;
     background: transparent url(../imgs/ic16_retweet_light.png) no-repeat;
@@ -1273,9 +1277,6 @@ input[type="button"]:focus, .button:focus {
 .tweet_more {
     background: transparent url(../imgs/ic16_more.png) no-repeat;
 }
-.tweet_reply_all {
-    background: transparent url(../imgs/ic16_reply_all.png) no-repeat;
-}
 .tweet_dm {
     background: transparent url(../imgs/ic16_dm.png) no-repeat;
 }
@@ -1284,9 +1285,6 @@ input[type="button"]:focus, .button:focus {
 }
 .tweet_fav.unfav {
     background-image: url(../imgs/ic16_unfav.png) !important;
-}
-.tweet_del {
-    background: transparent url(../imgs/ic16_del.png) no-repeat;
 }
 
 .tweet_more_menu {

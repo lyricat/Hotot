@@ -22,7 +22,7 @@ tweet_t:
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
@@ -35,17 +35,17 @@ tweet_t:
             <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
                 <ul class="tweet_more_menu hotot_menu">\
                 <li>\
-                    <a class="tweet_reply_all tweet_ctrl_menu_btn"\
+                    <a class="tweet_ctrl_menu_btn"\
                         href="javascript:void(0);" \
                         title="Reply all">Reply All</a>\
                 </li>\
                 <li>\
-                    <a class="tweet_dm tweet_ctrl_menu_btn"\
+                    <a class="tweet_ctrl_menu_btn"\
                         href="javascript:void(0);" \
                         title="Send Message to him/her">Send Message</a>\
                 </li>\
                 <li>\
-                    <a class="tweet_del tweet_ctrl_menu_btn"\
+                    <a class="tweet_ctrl_menu_btn"\
                         style="{%CAN_DELETE%}"\
                         href="javascript:void(0);"\
                         title="Delete this tweet">Delete</a>\
@@ -77,7 +77,7 @@ dm_t:
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
@@ -97,7 +97,7 @@ search_t:
     </div>\
     <div class="tweet_body" style="background-color:{%SCHEME%};">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}:</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
