@@ -377,7 +377,7 @@ function close() {
         $('#status_ctrl').hide();
         $('#status_info').hide();
         $('#tbox_status').animate({ 
-            height: "45px", 
+            height: "15px", 
         }
         , 50
         , 'linear'

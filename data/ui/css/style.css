@@ -42,6 +42,19 @@ a {
     position:relative;
 }
 
+#my_profile_img, #my_profile_img_wrapper {
+    width: 28px;
+    height: 28px;
+}
+
+#version {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    font-size: 10px;
+    color: #000;
+}
+
 #ctrl_panel {
     position: absolute;
     right: 7px;
@@ -97,33 +110,37 @@ a {
 }
 
 #hotot_menu {
-    width: 100px;
     text-align: left;
     position:absolute;
+    width: 100px;
+}
+
+.hotot_menu {
     right: 0;
     list-style-type: none;
     display: none;
-    background: #fff;
-    border: 1px #ccc solid;
+    background: rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 1px 5px #333;
 }
 
-#hotot_menu > li {
+.hotot_menu > li {
     display: block;
     font-size: 10px;
 }
 
-#hotot_menu > li > a {
+.hotot_menu > li > a {
     padding: 2px 5px;
     height: 20px;
     line-height: 20px;
     display: block;
     padding-left: 20px;
     text-decoration:none;
+    color: #fff;
     background-position: 2px 5px;
 }
 
 
-#hotot_menu > li > a:hover {
+.hotot_menu > li > a:hover {
     color: #fff;
     background-color: #a8b1fe;
 }
@@ -134,7 +151,7 @@ a {
     position: absolute;
     width:0;
     height:0;
-    top: 14px; 
+    top: 10px; 
     left: -14px; /* value = - border-left-width - border-right-width */
     border-style: solid;
     bottom: auto;
@@ -143,7 +160,7 @@ a {
 }
 
 #bubble_shape.dm_mode {
-    border-color: transparent rgba(0, 90, 0, 75) transparent transparent !important; 
+    border-color: transparent rgba(0, 90, 0, 0.75) transparent transparent !important; 
 }
 
 #status_box {
@@ -155,19 +172,19 @@ a {
     -webkit-border-radius: 5px 5px;
     padding: 5px;
     position: absolute;
-    left: 70px;
+    left: 50px;
     top: 5px;
     z-index: 9999;
     display: none;
 }
 
 #status_box.dm_mode {
-    background-color: rgba(0, 90, 0, 75)  !important;
+    background-color: rgba(0, 90, 0, 0.75)  !important;
 }
 
 #tbox_status {
-    width: 302px;
-    height: 45px;
+    width: 305px;
+    height: 15px;
     border: 0;
     color: #333;
     background-color: #fff;
@@ -208,8 +225,8 @@ a {
     border: 1px #ffda8b dashed;
     display: none;
     padding: 3px;
+    margin-bottom: 5px;
     min-height: 30px;
-    margin: 2px;
     font-size: 12px;
 }
 
@@ -507,7 +524,7 @@ input[type="button"], .button {
     text-align: center;
     min-width: 60px;
     display: inline-block;
-    background: #ababab;/*url(../imgs/btn_bg.png) repeat-x;*/
+    background: url(../imgs/btn_bg.png) repeat-x;
     text-decoration: none;
     text-shadow: 0 1px 0px #fff;
     -webkit-border-radius: 3px 3px;
@@ -741,7 +758,11 @@ input[type="button"]:focus, .button:focus {
     display: block;
 }
 
-#action_menu li > a:hover, #action_menu li > a.selected {
+#action_menu li > a:hover {
+    color: #a8b1fe;
+}
+
+#action_menu li > a.selected, #action_menu li > a:active {
     background: #a8b1fe;
     color: #000;
     -webkit-border-radius: 8px;
@@ -1335,28 +1356,14 @@ input[type="button"]:focus, .button:focus {
     text-align: left;
     top: 19px;
     right: -20px;
-    background: #fff;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #eee #ccc #ccc #eee;
     width: 100px;
     z-index: 10004;
-    -webkit-box-shadow: 1px 1px 5px #ccc;
-}
-
-.tweet_more_menu > li{
-    border-top: 1px #ccc solid;
-}
-
-.tweet_more_menu > li:first-child {
-    border-top: 0;
 }
 
 .tweet_ctrl_menu_btn {
     display: block;
     height: 20px;
     font-size: 10px;
-    width: 80px;
     color: #333;
     line-height: 20px;
     text-decoration: none;

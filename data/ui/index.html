@@ -49,7 +49,7 @@ var layout_opts = {
     ,   paneClass: 'ui-layout-pane'
     ,	north__slidable:		false
     ,   north__closable:    true
-    ,   north__size:        75
+    ,   north__size:        50
     ,   north__showOverflowOnHover:	true
     ,   north__spacing_open :    0
     ,   north__spacing_closed: 0
@@ -214,9 +214,9 @@ jQuery(function($) {
 <header id="header">
     <div id="my_profile_img_wrapper" class="profile_img_wrapper">
         <a id="btn_my_profile" href="javascript:void(0);"><img id="my_profile_img" src="imgs/ic48_profile_image.png"/>
-        <span class="avator_hlight"></span>
         </a>
     </div>
+    <div id="version">ver 0.9.1 Ada</div>
     <ul id="ctrl_panel">
         <li>
             <a id="btn_reload" class="panel_btn ic24_reload" href="javascript:void(0);" title="Reload timeline."></a>
@@ -226,7 +226,7 @@ jQuery(function($) {
         </li>
         <li id="btn_hotot_wrap">
             <a id="btn_hotot" class="panel_btn ic24_magic" href="javascript:void(0);" title="More ..."></a>
-            <ul id="hotot_menu">
+            <ul id="hotot_menu" class="hotot_menu">
             	<li>
             		<a id="btn_prefs" class="ic_prefs" href="javascript:void(0);">Preferences</a>
             	</li>
@@ -644,7 +644,7 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>* You MUST restart Hotot for the changes below to take effect.</p>
                     <p>
-                        <label>Summon Hotot</label>
+                        <label>Summon Hotot (like: &lt;ALT&gt;C)</label>
                         <input id="tbox_prefs_shortcut_summon_hotot" 
                             title="Summon Hot Key" type="text"/><br/>
                     </p>
