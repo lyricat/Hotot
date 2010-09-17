@@ -1176,8 +1176,8 @@ input[type="button"]:focus, .button:focus {
 
 .tweet.message {
     background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
-    border-bottom: 1px #4977a2 solid;
-    color: #14465F;
+    border-bottom: 1px #90abc4 solid;
+    color: #14465f;
 }
 .tweet.message a {
     color: #376AE4;
@@ -1185,7 +1185,7 @@ input[type="button"]:focus, .button:focus {
 
 .tweet.me {
     background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
-    border-bottom: 1px #506e46 solid;
+    border-bottom: 1px #75A565 solid;
     color: #629850;
 }
 .tweet.me a {
