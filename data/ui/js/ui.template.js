@@ -1,13 +1,6 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.Template = {
 
-schemes: {
-    'white' : '#fff',
-    'orange': '#ffdca8',
-    'blue'  : '#a5d0f9',
-    'green' : '#cffcc7',
-},
-
 reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'),
 
 reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
@@ -15,12 +8,12 @@ reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
 reg_hash_tag: new RegExp('(^|\\s)[#＃]([^\\s]+)', 'g'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="tweet" retweet_id="{%RETWEET_ID%}">\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" retweet_id="{%RETWEET_ID%}" >\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
         <span class="avator_hlight"></span>\
     </div>\
-    <div class="tweet_body" style="background-color:{%SCHEME%};">\
+    <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -63,19 +56,19 @@ tweet_t:
         </div>\
     </div>\
     <span class="shape"></span>\
-    <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
-    <ul class="tweet_thread" style="border-right-color:{%SCHEME%};">\
+    <span class="shape_mask" ></span>\
+    <ul class="tweet_thread" >\
         <div class="tweet_thread_hint">Loading...</div>\
     </ul>\
 </li>',
 
 dm_t: 
-'<li id="{%TWEET_ID%}" class="tweet">\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
         <span class="avator_hlight"></span>\
     </div>\
-    <div class="tweet_body" style="background-color:{%SCHEME%};">\
+    <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -86,16 +79,16 @@ dm_t:
         <li><a class="tweet_dm tweet_ctrl_btn" href="javascript:void(0);"></a></li>\
     </ul>\
     <span class="shape"></span>\
-    <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
+    <span class="shape_mask"></span>\
 </li>',
 
 search_t:
-'<li id="{%TWEET_ID%}" class="tweet">\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
         <span class="avator_hlight"></span>\
     </div>\
-    <div class="tweet_body" style="background-color:{%SCHEME%};">\
+    <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -107,7 +100,7 @@ search_t:
         </div>\
     </div>\
     <span class="shape"></span>\
-    <span class="shape_mask" style="border-right-color:{%SCHEME%};"></span>\
+    <span class="shape_mask"></span>\
 </li>',
 
 
@@ -122,9 +115,9 @@ function form_dm(dm_obj, pagename) {
     var text = ui.Template.form_text(dm_obj.text);
     var ret = '';
     var user_id = dm_obj.sender.id;
-    var scheme = ui.Template.schemes['blue'];
+    var scheme = 'message';
     if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = ui.Template.schemes['orange'];
+        scheme = 'mention';
     }
 
     var create_at_str = create_at.toTimeString().substring(0, 8)
@@ -167,7 +160,7 @@ function form_tweet (tweet_obj, pagename) {
     var protected_user = tweet_obj.user.protected;
     var is_self = (screen_name == globals.myself.screen_name);
     var ret = '';
-    var scheme = ui.Template.schemes['white'];
+    var scheme = 'normal';
 
     var reply_str = (reply_id != null) ?
         'reply to <a href="hotot:action/user/'
@@ -179,10 +172,10 @@ function form_tweet (tweet_obj, pagename) {
 
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = ui.Template.schemes['orange'];
+        scheme = 'mention';
     }
     if (is_self) {
-        scheme = ui.Template.schemes['green'];
+        scheme = 'me';
     }
     if (retweet_name != '') {
         retweet_str = 'retweeted by <a href="hotot:action/user/'
@@ -231,16 +224,16 @@ function form_search(tweet_obj, pagename) {
     var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     var is_self = (screen_name == globals.myself.screen_name);
     var ret = '';
-    var scheme = ui.Template.schemes['white'];
+    var scheme = 'normal';
 
     var create_at_str = create_at.toTimeString().substring(0, 8)
         + ' ' + create_at.toDateString();
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = ui.Template.schemes['green'];
+        scheme = 'mention';
     }
     if (is_self) {
-        scheme = ui.Template.schemes['orange'];
+        scheme = 'me';
     }
 
     ret = ui.Template.search_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
@@ -289,7 +282,7 @@ form_text:
 function form_text(text) {
     text = text.replace(ui.Template.reg_link, '<a href="$1">$1</a>');
     text = text.replace(ui.Template.reg_user
-        , '$1<a href="hotot:action/user/$2">@$2</a>');
+        , '$1@<a href="hotot:action/user/$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/\n/g, '<br/>');

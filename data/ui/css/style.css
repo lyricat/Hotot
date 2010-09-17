@@ -138,7 +138,7 @@ a {
     display: block;
     padding-left: 20px;
     text-decoration:none;
-    color: #fff;
+    color: #fff !important;
 }
 
 
@@ -220,11 +220,12 @@ a {
     color: white;
     display: block;
     text-align: left;
-    -webkit-border-radius: 5px 5px;
+    border-radius: 5px 5px;
 }
 
 #status_info {
-    border: 1px #ffda8b dashed;
+    border-radius: 5px 5px;
+    border: 1px #666 solid;
     display: none;
     padding: 3px;
     margin-bottom: 5px;
@@ -239,8 +240,7 @@ a {
     top: 10px;
     position: absolute;
     display: block;
-    border: 1px #ffda8b solid;
-    background: transparent url(../imgs/ic16_clear.png) no-repeat;
+    background: transparent url(../imgs/ic16_close.png) no-repeat;
     background-position: 2px 2px;
 }
 
@@ -472,8 +472,8 @@ a {
     border-right: #ccc solid 1px;
     border-left: #ccc solid 1px;
     display: none;
-    -webkit-border-bottom-left-radius: 3px 3px;
-    -webkit-border-bottom-right-radius: 3px 3px;
+    border-bottom-left-radius: 3px 3px;
+    border-bottom-right-radius: 3px 3px;
 }
 
 #tbox_filter {
@@ -482,9 +482,10 @@ a {
 }
 
 #btn_filter_close {
-    background: transparent url(../imgs/ic16_clear.png) no-repeat;
-    width: 14px;
-    height: 14px;
+    background: transparent url(../imgs/ic16_close.png) no-repeat center center;
+    float: right;
+    width: 20px;
+    height: 20px;
     display: inline-block;
 }
 
@@ -498,6 +499,10 @@ select {
     padding: 2px 5px;
     height: 22px;
     display: inline-block;
+}
+
+input[type="checkbox"] {
+    border-width: 1px;
 }
 
 input[type="text"], input[type="password"], textarea{
@@ -584,7 +589,7 @@ input[type="button"]:focus, .button:focus {
 /*===== Main Page ================================*/
 #main_page {
     display: none;
-    background: #f2f2f2;
+    background: transparent url(../imgs/body_bg.png);
 }
 
 #main_page_slider {
@@ -673,14 +678,13 @@ input[type="button"]:focus, .button:focus {
     max-height: 100%;
 }
 
-.tweet_sub_block > ul > li:first-child {
-    margin-top: 25px;
-}
-
 .tweet_sub_block > .tweet_block_bottom {
     margin-top: 25px;
 } 
 
+.tweet_sub_block > ul {
+    list-style-type: none;
+}
 /*===== Welcome Page ================================*/
 #welcome_page {
     background: #5599bb url(../imgs/welcome_bg.png) no-repeat 50% 0;
@@ -1073,7 +1077,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_block > ul {
-    padding: 5px 20px;
+    padding: 0px 0px;
     list-style-type: none;
 }
 
@@ -1081,10 +1085,6 @@ input[type="button"]:focus, .button:focus {
     padding: 0 20px;
 }
 
-.tweet_sub_block > ul {
-    padding: 0 20px;
-    list-style-type: none;
-}
 
 .vcard {
     display: none;
@@ -1147,16 +1147,51 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet {
-    margin: 5px 0;
-    padding-left: 5px;
+    padding: 5px;
     min-height: 64px;
-    background: #f2f2f2;
     position: relative;
 }
 
 .tweet.active {
     background: transparent url(../imgs/tweet_indicator.png) repeat-y 0 center;
 }
+
+.tweet.normal {
+    background:-webkit-gradient(linear, left top, left bottom, from(#eceef3), to(#dfe2e5));
+    border-bottom: 1px #c4c7cb solid;
+    color: #2c2e36;
+}
+.tweet.normal a {
+    color: #585858;
+}
+
+.tweet.mention {
+    background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
+    border-bottom: 1px #c4987d solid;
+    color: #502805;
+}
+.tweet.mention a {
+    color: #D67514;
+}
+
+.tweet.message {
+    background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
+    border-bottom: 1px #4977a2 solid;
+    color: #14465F;
+}
+.tweet.message a {
+    color: #376AE4;
+}
+
+.tweet.me {
+    background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
+    border-bottom: 1px #506e46 solid;
+    color: #629850;
+}
+.tweet.me a {
+    color: #2C9804;
+}
+
 
 .tweet > span.shape {
     content: "\00a0";
@@ -1181,11 +1216,10 @@ input[type="button"]:focus, .button:focus {
     top: 22px;
     border-style: solid;
     border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent #fff  transparent transparent; 
+    border-color: transparent transparent  transparent transparent; 
 }
 
 .profile_img_wrapper {
-    /*-webkit-box-shadow: inset rgba(0, 0, 0, 0.3) 0px 0px 5px;*/
     padding: 1px;
     margin: 5px;
     width: 48px;
@@ -1198,7 +1232,9 @@ input[type="button"]:focus, .button:focus {
     width: 48px;
     height: 48px;
     border: 0;
+    border-radius: 5px 5px;
 }
+
 .avator_hlight {
     background: url(../imgs/avator_hlight.png) no-repeat;
     display: block;
@@ -1211,7 +1247,7 @@ input[type="button"]:focus, .button:focus {
 }
 .tweet_body {
     margin: 0 0 0 65px;
-    padding: 5px 5px 20px 5px;
+    padding: 5px 10px 20px 10px;
     min-height: 64px;
     position: relative;
     border-radius: 5px 5px;
@@ -1293,7 +1329,7 @@ input[type="button"]:focus, .button:focus {
     list-style-type:none;
     text-align: left;
     top: 19px;
-    right: -20px;
+    right: 0px;
     width: 100px;
     z-index: 10004;
 }
@@ -1302,7 +1338,7 @@ input[type="button"]:focus, .button:focus {
     display: block;
     height: 20px;
     font-size: 10px;
-    color: #333;
+    color: #fff;
     line-height: 20px;
     text-decoration: none;
     background-position: 2px 2px;
@@ -1315,9 +1351,8 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_meta {
-    left: 5px;
+    left: 10px;
     right: 5px;
-    color: gray;
     font-size: 10px;
     position: absolute;
     bottom: 5px;
@@ -1326,7 +1361,6 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_meta a {
-    color: gray;
     text-decoration: underline !important;
 }
 
@@ -1341,7 +1375,6 @@ input[type="button"]:focus, .button:focus {
 
 .tweet_timestamp, .tweet_link {
     font-size: 10px;
-    color: gray;
     margin-left: 5px;
 }
 
@@ -1377,7 +1410,6 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_thread {
-    background: #f2f2f2;
     display: none;
     list-style-type: none;
     padding: 5px;
@@ -1399,13 +1431,12 @@ table {
 }
 
 th {
-    background-color: #ccc;
     font-weight: bold;
     border: 1px solid #ccc;
 }
 
 th.sub {
-    background-color: #d3d3d3 !important;
+    background-color: #222 !important;
 }
 
 td {
