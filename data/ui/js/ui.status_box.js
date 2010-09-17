@@ -157,26 +157,27 @@ function init () {
         // up or down
             if (! ui.StatusBox.is_detecting_name)
                 return true;
-            
             var screen_name_list = $('#screen_name_auto_complete');
             var items = screen_name_list.find('li');
-            items.eq(ui.StatusBox.auto_complete_hlight_idx)
-                .removeClass('hlight');
-
+            var item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
+            item.removeClass('hlight');
+            
+            $('#screen_name_auto_complete').attr({scrollTop: item.get(0).offsetTop}); 
             if (event.keyCode == 38) 
                 ui.StatusBox.auto_complete_hlight_idx -= 1;
             if (event.keyCode == 40) 
                 ui.StatusBox.auto_complete_hlight_idx += 1;
+
             if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
                 ui.StatusBox.auto_complete_hlight_idx = items.length - 1;
             } 
             if (ui.StatusBox.auto_complete_hlight_idx == items.length) {
                 ui.StatusBox.auto_complete_hlight_idx = 0;
             } 
-            items.eq(ui.StatusBox.auto_complete_hlight_idx)
-                .addClass('hlight');
-            ui.StatusBox.auto_complete_selected 
-                = items.eq(ui.StatusBox.auto_complete_hlight_idx).text();
+
+            item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
+            item.addClass('hlight');
+            ui.StatusBox.auto_complete_selected = item.text();
             return false;
         } 
         ui.StatusBox.auto_complete_hlight_idx = 0;

@@ -5,7 +5,8 @@
 @license: LGPLv3+
 '''
 
-__version__ = '1.0'
+__version__ = '0.9.1'
+__codename__ = 'Ada'
 
 import gtk
 import gobject

@@ -11,6 +11,7 @@ import db
 import threading 
 import gobject
 import utils
+import hotot
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -210,16 +211,19 @@ def apply_prefs():
     pass
 
 def apply_config():
+    version = 'ver %s (%s)'% (hotot.__version__, hotot.__codename__)
     default_username = config.default_username
     default_password = config.default_password
     access_token = json.dumps(config.load_token())
     exts_enabled = json.dumps(config.exts_enabled)
     webv.execute_script('''
+        $('#version').text('%s');
         $('#tbox_basic_auth_username').attr('value', '%s');
         $('#tbox_basic_auth_password').attr('value', '%s');
         jsOAuth.access_token = %s;
         ext.exts_enabled = %s;
-        ''' % (default_username, default_password
+        ''' % (version
+            , default_username, default_password
             , access_token
             , exts_enabled))
     apply_prefs()
