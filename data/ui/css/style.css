@@ -623,6 +623,7 @@ input[type="button"]:focus, .button:focus {
     font-size: 10px;
     background: #474c4e;
     color: #fff;
+    border: 0;
     padding: 3px 5px;
 }
 
