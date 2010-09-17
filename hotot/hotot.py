@@ -139,6 +139,8 @@ class MainWindow:
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 
+        import sys
+        sys.exit(0)
         pass
         
     def init_hotkey(self):
