@@ -15,7 +15,7 @@ function init () {
     ui.PinDlg.me = $('#oauth_dlg');
     ui.PinDlg.mask = $('#dialog_mask');
     // bind events
-    $(ui.PinDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.PinDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.PinDlg);
     });
@@ -57,14 +57,14 @@ function init () {
 
 hide:
 function hide () {
-    this.me.parent().hide();
+    this.me.hide();
     this.is_show = false;
     return this;
 },
 
 show:
 function show () {
-    this.me.parent().show();
+    this.me.show();
     this.is_show = true;
     return this;
 },

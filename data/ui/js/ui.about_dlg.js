@@ -27,7 +27,7 @@ function init () {
     $(ui.AboutDlg.id +' .dlg_tabs_btn:first').click()
     
     // bind events
-    $(ui.AboutDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.AboutDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.AboutDlg);
     });
@@ -42,14 +42,14 @@ function init () {
 
 hide:
 function hide () {
-    this.me.parent().hide();
+    this.me.hide();
     this.is_show = false;
     return this;
 },
 
 show:
 function show () {
-    this.me.parent().show();
+    this.me.show();
     this.is_show = true;
     return this;
 },

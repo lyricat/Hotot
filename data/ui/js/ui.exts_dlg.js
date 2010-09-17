@@ -17,7 +17,7 @@ function init () {
     ui.ExtsDlg.me = $('#exts_dlg');
     ui.ExtsDlg.mask = $('#dialog_mask');
 
-    $(ui.ExtsDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.ExtsDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.ExtsDlg);
     });
@@ -93,7 +93,7 @@ hide:
 function hide () {
     hotot_action('exts/save_enabled/'
         + encodeURIComponent(utility.DB.json(ext.exts_enabled)));
-    ui.ExtsDlg.me.parent().hide();
+    ui.ExtsDlg.me.hide();
     ui.ExtsDlg.is_show = false;
     return this;
 },
@@ -101,7 +101,7 @@ function hide () {
 show:
 function show () {
     ui.ExtsDlg.load_ext_list();
-    ui.ExtsDlg.me.parent().show();
+    ui.ExtsDlg.me.show();
     ui.ExtsDlg.is_show = true;
     return this;
 },

@@ -26,7 +26,7 @@ function init () {
     });
     $('#btn_prefs_account').click()
 
-    $(ui.PrefsDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.PrefsDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.PrefsDlg);
     });
@@ -272,7 +272,7 @@ function update_font_preview() {
 
 hide:
 function hide () {
-    ui.PrefsDlg.me.parent().hide();
+    ui.PrefsDlg.me.hide();
     ui.PrefsDlg.is_show = false;
     return ui.PrefsDlg;
 },
@@ -280,7 +280,7 @@ function hide () {
 show:
 function show () {
     ui.PrefsDlg.request_prefs();
-    ui.PrefsDlg.me.parent().show();
+    ui.PrefsDlg.me.show();
     ui.PrefsDlg.is_show = true;
     return ui.PrefsDlg;
 },

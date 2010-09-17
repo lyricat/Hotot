@@ -216,7 +216,7 @@ jQuery(function($) {
         <a id="btn_my_profile" href="javascript:void(0);"><img id="my_profile_img" src="imgs/ic48_profile_image.png"/>
         </a>
     </div>
-    <div id="version">ver 0.9.1 Ada</div>
+    <div id="version"></div>
     <ul id="ctrl_panel">
         <li>
             <a id="btn_reload" class="panel_btn ic24_reload" href="javascript:void(0);" title="Reload timeline."></a>
@@ -581,10 +581,11 @@ jQuery(function($) {
 <section id="dialog_mask">
 <!--dialogs-->
     <!-- preferences dialog -->
-    <div id="prefs_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="prefs_dlg" class="dialog">
-        <h2>Preferences</h2>
+        <div class="dialog_bar">
+            <h2>Preferences</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="prefs_dlg_body" class="dialog_body">
             <div id="prefs_tabs" class="dlg_tabs">
                 <ul>
@@ -614,7 +615,7 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_remember_password"
-                            type="checkbox" 
+                            type="checkbox" class="dark" 
                             title="Remember Password" checked="1"/>
                         <label>Remember Password</label><br/>
                     </p>
@@ -625,10 +626,10 @@ jQuery(function($) {
                     <p>* You MUST Regain Access Token if you change Consumer Key/Secret below.</p>
                     <p>
                         <label>Consumer Key</label><br/>
-                        <input id="tbox_prefs_consumer_key"
+                        <input id="tbox_prefs_consumer_key" class="dark"
                             title="Consumer Key" type="text"/><br/>
                         <label>Consumer Secret</label><br/>
-                        <input id="tbox_prefs_consumer_secret" 
+                        <input id="tbox_prefs_consumer_secret" class="dark"
                             title="Consumer Secret" type="text"/><br/>
                     </p>
                     <p>
@@ -646,7 +647,8 @@ jQuery(function($) {
                     <p>
                         <label>Summon Hotot (like: &lt;ALT&gt;C)</label>
                         <input id="tbox_prefs_shortcut_summon_hotot" 
-                            title="Summon Hot Key" type="text"/><br/>
+                             class="dark" title="Summon Hot Key"
+                             type="text"/><br/>
                     </p>
                     </div>
                 </div>
@@ -655,7 +657,7 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <label>Font Family</label>
-                        <select id="sel_prefs_font_family"
+                        <select id="sel_prefs_font_family" class="dark"
                             title="Font Family" style="width: 85px">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -664,7 +666,7 @@ jQuery(function($) {
                         </select> 
                         <label>Font Size</label>
                         <input id="tbox_prefs_font_size" title="Font Size" 
-                            style="width:50px" type="text"/>
+                             class="dark" style="width:50px" type="text"/>
                         <label>px</label><br/>
                         <label>Preview</label>
                         <div id="prefs_font_preview">abcdefghijk ABCDEFGHIJK</div>
@@ -673,11 +675,12 @@ jQuery(function($) {
                     <h3>- Display Settings -</h3>
                     <div class="dlg_group">
                     <p>
-                        <input id="chk_prefs_use_native_input"
+                        <input id="chk_prefs_use_native_input" class="dark"
                             title="Use Native Input" type="checkbox"/>
                         <label>Use Native Input Dialog</label><br/>
-                        <input id="chk_prefs_use_native_notify"
-                            title="Use Native Notify" type="checkbox"/>
+                        <input id="chk_prefs_use_native_notify" 
+                            class="dark" title="Use Native Notify"
+                            type="checkbox"/>
                         <label>Use Native Notify System</label><br/>
                     </p>
                     </div>
@@ -687,29 +690,29 @@ jQuery(function($) {
                     <div class="dlg_group">
                     <p>
                         <label>API Base</label><br/>
-                        <input id="tbox_prefs_api_base" 
+                        <input id="tbox_prefs_api_base" class="dark"
                             title="API Base" type="text"/><br/>
                         <input id="chk_prefs_use_same_sign_api_base"
-                            title="Use same Signing Api" 
+                            title="Use same Signing Api" class="dark"
                             type="checkbox"/>
                         <label>Same signing API base: </label><br/>
                         <label>Signing API Base</label>
-                        <input id="tbox_prefs_sign_api_base" 
+                        <input id="tbox_prefs_sign_api_base" class="dark" 
                             title="Signing API Base" type="text"/><br/>
 
                         <label>OAuth Base</label><br/>
-                        <input id="tbox_prefs_oauth_base" 
+                        <input id="tbox_prefs_oauth_base" class="dark" 
                             title="OAuth Base" type="text"/><br/>
                         <input id="chk_prefs_use_same_sign_oauth_base"
                             title="Use same Signing OAuth Base" 
                             type="checkbox"/>
                         <label>Same signing OAuth base: </label><br/>
                         <label>Signing OAuth Base</label>
-                        <input id="tbox_prefs_sign_oauth_base" 
+                        <input id="tbox_prefs_sign_oauth_base" class="dark"
                             title="Signing OAuth Base" type="text"/><br/>
 
                         <label>Search API Base</label><br/>
-                        <input id="tbox_prefs_search_api_base" 
+                        <input id="tbox_prefs_search_api_base" class="dark"
                             title="Search API Base" type="text"/><br/>
                     </p>
                     </div>
@@ -721,10 +724,10 @@ jQuery(function($) {
                             title="Use HTTP Proxy" type="checkbox"/>
                         <label>Use HTTP Proxy</label><br/>
                         <label>Host</label>
-                        <input id="tbox_prefs_http_proxy_host" 
+                        <input id="tbox_prefs_http_proxy_host" class="dark"
                             title="HTTP Proxy Host" style="width: 150px;" type="text"/>
                         <label>Port</label>
-                        <input id="tbox_prefs_http_proxy_port" 
+                        <input id="tbox_prefs_http_proxy_port" class="dark"
                             title="HTTP Proxy Port" style="width: 50px;" type="text"/><br/>
     
                         <input id="chk_prefs_use_socks_proxy"
@@ -732,57 +735,59 @@ jQuery(function($) {
                         <label>Use Socks Proxy</label><br/>
                         <label>Host</label>
                         <input id="tbox_prefs_socks_proxy_host" 
-                            title="Socks Proxy Host" style="width: 150px;" type="text"/>
+                            class="dark" title="Socks Proxy Host"
+                            style="width: 150px;" type="text"/>
                         <label>Port</label>
-                        <input id="tbox_prefs_socks_proxy_port" 
-                            title="Socks Proxy Port" style="width: 50px;" type="text"/><br/>
-                        
+                        <input id="tbox_prefs_socks_proxy_port"  
+                            class="dark" title="Socks Proxy Port" 
+                            style="width: 50px;" type="text"/><br/>
                     </p>
                     </div>
                 </div><!-- END of prefs_networks -->
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_prefs_restore_defaults" class="button" href="javascript:void(0);">Restore Defaults</a>
-        <a id="btn_prefs_cancel" class="button" href="javascript:void(0);">Cancel</a>
-        <a id="btn_prefs_ok" class="button" href="javascript:void(0);">OK</a>
+        <a id="btn_prefs_restore_defaults" class="button dark" href="javascript:void(0);">Restore Defaults</a>
+        <a id="btn_prefs_cancel" class="button dark" href="javascript:void(0);">Cancel</a>
+        <a id="btn_prefs_ok" class="button dark" href="javascript:void(0);">OK</a>
         </div>
-    </div>
     </div>
 
     <!-- oauth dialog -->
-    <div id="oauth_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="oauth_dlg" class="dialog">
-        <h2>First time to Sign in with Twitter</h2>
+        <div class="dialog_bar">
+            <h2>First time to Sign in with Twitter</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
+
         <div id="oauth_dlg_body" class="dialog_body">
             <p>
                 Step 1: click the button below or copy the address and open it in your browser.<br/>
             </p>
             <p style="text-align: center;">
-                <a id="btn_oauth_user_auth" class="button" href="javascript:void(0);">Click me to continue</a><br/>
-                <input id="tbox_oauth_auth_url" type="text" value=""/>
+                <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">Click me to continue</a><br/>
+                <input id="tbox_oauth_auth_url" type="text" class="dark" value=""/>
             </p>
             <p>
                 Step 2: copy the PIN Code and paste it into the box below;
             </p>
             <p style="text-align: center;">
                 <label>PIN Code:</label>
-                <input id="tbox_oauth_pin" type="text" /><br/>
+                <input id="tbox_oauth_pin" type="text" class="dark"/><br/>
             </p>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);">Cancel</a>
-        <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);">OK</a>
+        <a id="btn_oauth_pin_cancel" class="button dark" href="javascript:void(0);">Cancel</a>
+        <a id="btn_oauth_pin_ok" class="button dark" href="javascript:void(0);">OK</a>
         </div>
-    </div>
     </div>
 
     <!-- help & about dialog -->
-    <div id="about_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="about_dlg" class="dialog">
-        <h2>About &amp; Help</h2>
+        <div class="dialog_bar">
+            <h2>About &amp; Help</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="about_dlg_body" class="dialog_body">
             <div id="about_tabs" class="dlg_tabs">
                 <ul>
@@ -912,23 +917,23 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_about_ok" class="button" href="javascript:void(0);">OK</a>
+        <a id="btn_about_ok" class="button dark" href="javascript:void(0);">OK</a>
         </div>
-    </div>
     </div>
 
     <!-- Profile dialog -->
-    <div id="profile_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="profile_dlg" class="dialog">
-        <h2 id="profile_dlg_title">Profile</h2>
+        <div class="dialog_bar">
+            <h2 id="profile_dlg_title">Profile</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="profile_dlg_body" class="dialog_body">
         <div style="float:left; width: 200px;">
             <h3>- Picture -</h3>
             <div class="dlg_group">
             <p style="text-align: center;">
                 <img id="profile_avator" src="#"/><br/>
-                <a id="btn_change_profile_avator" class="button" style="font-size: 10px; display:none">Change avator</a><br/>
+                <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">Change avator</a><br/>
             </p>
             </div>
             <h3>- Stat -</h3>
@@ -954,29 +959,29 @@ jQuery(function($) {
             <div class="dlg_group">
             <p>
                 <label>Name</label><br/>
-                <input id="tbox_profile_name" title="Name" type="text"/><br/>
+                <input id="tbox_profile_name" title="Name" type="text" class="dark"/><br/>
                 <label>Location</label><br/>
-                <input id="tbox_profile_location" title="Location" type="text"/><br/>
+                <input id="tbox_profile_location" title="Location" type="text" class="dark"/><br/>
                 <label>Website</label><br/>
-                <input id="tbox_profile_website" title="Website" type="text"/><br/>
+                <input id="tbox_profile_website" title="Website" type="text" class="dark"/><br/>
                 <label>Bio</label><br/>
-                <textarea id="tbox_profile_bio" title="Bio" style="height: 70px;"></textarea>
+                <textarea id="tbox_profile_bio" title="Bio" class="dark" style="height: 70px;"></textarea>
             </p>
             </div>
         </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_profile_cancel" class="button" href="javascript:void(0);">Cancel</a>
-        <a id="btn_profile_update" class="button" href="javascript:void(0);">Update</a>
+        <a id="btn_profile_cancel" class="button dark" href="javascript:void(0);">Cancel</a>
+        <a id="btn_profile_update" class="button dark" href="javascript:void(0);">Update</a>
         </div>
-    </div>
     </div>
 
     <!-- Extensions dialog -->
-    <div id="exts_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="exts_dlg" class="dialog">
-        <h2 id="exts_dlg_title">Extenstions</h2>
+        <div class="dialog_bar">
+            <h2 id="exts_dlg_title">Extenstions</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="exts_dlg_body" class="dialog_body">
             <div id="exts_container">
             <ul>
@@ -984,36 +989,35 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_exts_close" class="button" href="javascript:void(0);">Close</a>
+        <a id="btn_exts_close" class="button dark" href="javascript:void(0);">Close</a>
         </div>
-    </div>
     </div>
 
     <!-- Common dialog -->
-    <div id="common_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="common_dlg" class="dialog">
-        <h2 id="common_dlg_title"></h2>
+        <div class="dialog_bar">
+            <h2 id="common_dlg_title"></h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="common_dlg_body" class="dialog_body">
         </div>
         <div class="dialog_bottom">
         </div>
     </div>
-    </div>
 
     <!-- Message dialog -->
-    <div id="message_dlg_border" class="dialog_border">
-    <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
     <div id="message_dlg" class="dialog">
-        <h2 id="message_dlg_title">Message</h2>
+        <div class="dialog_bar">
+            <h2 id="message_dlg_title">Message</h2>
+            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+        </div>
         <div id="message_dlg_body" class="dialog_body">
             <div id="message_dlg_text" class="dlg_group">
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_message_ok" class="button" href="javascript:void(0);">OK</a>
+        <a id="btn_message_ok" class="button dark" href="javascript:void(0);">OK</a>
         </div>
-    </div>
     </div>
 
 </section> <!-- END de dialog_mask -->

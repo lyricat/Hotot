@@ -17,7 +17,7 @@ function init () {
     ui.CommonDlg.me = $('#common_dlg');
     ui.CommonDlg.mask = $('#dialog_mask');
     // bind events
-    $(ui.CommonDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.CommonDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.CommonDlg);
     });
@@ -33,15 +33,10 @@ function reset() {
     $('#common_dlg_title').css('background-image', 'none');
 },
 
-set_icon:
-function set_icon(icon) {
-    $('#common_dlg_title').css('background-image', 'url('+icon+')');
-},
-
 add_button:
 function show_button(id, label, title, callback) {
     $(ui.CommonDlg.id + ' .dialog_bottom')
-        .append('<a id="'+id+'" class="button" href="javascript:void(0);" title="'+title+'">'+label+'</a>');
+        .append('<a id="'+id+'" class="button dark" href="javascript:void(0);" title="'+title+'">'+label+'</a>');
     $('#'+id).click(callback);
 },
 
@@ -57,14 +52,14 @@ function set_content(content) {
 
 hide:
 function hide () {
-    this.me.parent().hide();
+    this.me.hide();
     this.is_show = false;
     return this;
 },
 
 show:
 function show () {
-    this.me.parent().show();
+    this.me.show();
     this.is_show = true;
     return this;
 },

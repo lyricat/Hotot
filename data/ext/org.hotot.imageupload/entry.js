@@ -32,11 +32,11 @@ function on_btn_upload_clicked(event) {
         title = 'Upload image to ...'
         content = '<p>\
             <label>Upload to </label>\
-            <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px">\
+            <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="dark">\
                 <option value="img.ly" default="1">img.ly</option>\
                 <option value="twitpic.com">twitpic.com</option>\
             </select>\
-            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a>\
+            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a>\
             </p><p>\
             <span id="ext_hotot_upload_image_path"></span><br/>\
             <label>Add a message<label><br/>\
@@ -49,7 +49,6 @@ function on_btn_upload_clicked(event) {
         ui.CommonDlg.add_button('ext_btn_hotot_upload_image_upload'
             , 'Upload', 'Click to upload.'
             , ext.HototImageUpload.on_btn_upload_clicked);
-        ui.CommonDlg.set_icon('../ext/'+ext.HototImageUpload.id+'/ic24_upload.png')
         ui.DialogHelper.open(ui.CommonDlg);
     } else {
         title = 'Error !'

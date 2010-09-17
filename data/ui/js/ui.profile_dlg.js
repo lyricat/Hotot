@@ -17,7 +17,7 @@ function init () {
     ui.ProfileDlg.me = $('#profile_dlg');
     ui.ProfileDlg.mask = $('#dialog_mask');
 
-    $(ui.ProfileDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.ProfileDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.ProfileDlg)
     });
@@ -140,7 +140,7 @@ function update_avator() {
 
 hide:
 function hide () {
-    ui.ProfileDlg.me.parent().hide();
+    ui.ProfileDlg.me.hide();
     ui.ProfileDlg.is_show = false;
     return this;
 },
@@ -148,7 +148,7 @@ function hide () {
 show:
 function show () {
     ui.ProfileDlg.request_profile();
-    ui.ProfileDlg.me.parent().show();
+    ui.ProfileDlg.me.show();
     ui.ProfileDlg.is_show = true;
     return this;
 },

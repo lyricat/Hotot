@@ -218,7 +218,7 @@ a {
     color: white;
     display: block;
     text-align: left;
-    -webkit-border-radius: 8px 8px;
+    -webkit-border-radius: 5px 5px;
 }
 
 #status_info {
@@ -350,8 +350,8 @@ a {
     bottom: 0px;
     left: 5%;
     right: 5%;
-    -webkit-border-top-left-radius: 8px 8px;
-    -webkit-border-top-right-radius: 8px 8px;
+    -webkit-border-top-left-radius: 5px 5px;
+    -webkit-border-top-right-radius: 5px 5px;
     overflow:hidden;
     display: none;
 }
@@ -494,6 +494,8 @@ label {
 
 select {
     padding: 2px 5px;
+    height: 22px;
+    display: inline-block;
 }
 
 input[type="text"], input[type="password"], textarea{
@@ -517,8 +519,8 @@ input[type="button"], .button {
     border:1px solid #aaa;
     color: #111;
     padding: 0 10px;
-    height: 22px;
-    line-height: 22px;
+    height: 20px;
+    line-height: 20px;
     font-size: 12px;
     outline: none;
     text-align: center;
@@ -532,15 +534,26 @@ input[type="button"], .button {
 
 input[type="button"].default, .button.default {
     background: url(../imgs/default_btn_bg.png) repeat-x !important;
-    text-shadow: 0 1px 0px #ffda8b !important;
     border-color: #ffaa00 !important; 
 }
 
-.button.dark {
+.button.dark, select.dark, input[type="checkbox"].dark {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(67,67,67,0.9)), to(rgba(27,27,27,0.9))) !important;
     color: #fff;
-    border: 1px #888 solid;
+    border: 1px #666 solid;
+    text-shadow: none;
 }
+
+input[type="text"].dark, input[type="password"].dark, textarea.dark{
+    background: rgba(27,27,27,0.9) !important;
+    border: 1px #666 solid;
+    color: #fff !important;
+}
+
+input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:focus {
+    background: rgba(67,67,67,0.9) !important;
+}
+
 
 input[type="button"].default:active, .button.default:active {
     -webkit-box-shadow: inset 0px -1px 10px #ff9900 !important;
@@ -552,6 +565,10 @@ input[type="button"]:active, .button:active {
 
 input[type="button"].default:hover, .button.default:hover {
     -webkit-box-shadow: inset 0px -1px 10px #ffda8b;
+}
+
+input[type="button"]:hover, .button.dark:hover {
+    -webkit-box-shadow: inset 0px -1px 5px #666 !important;
 }
 
 input[type="button"]:hover, .button:hover {
@@ -640,7 +657,7 @@ input[type="button"]:focus, .button:focus {
     text-decoration: none;
     color:#333; 
     font-size: 10px;
-    -webkit-border-radius: 8px 8px; 
+    -webkit-border-radius: 5px 5px; 
     background: #f2f2f2;
 }
 
@@ -686,7 +703,13 @@ input[type="button"]:focus, .button:focus {
     background: #eee  no-repeat 180px 100px;
     padding: 0px;
     -webkit-box-shadow: 0px 0px 5px #ccc;
-    -webkit-border-radius: 8px 8px;
+    -webkit-border-radius: 5px 5px;
+    display: block;
+}
+
+#sign_in_block p, #sign_in_block label, #sign_in_block h3 {
+    text-shadow: 0 1px 0px #fff !important;
+    color: #333;
 }
 
 #sign_in_block h2 {
@@ -697,8 +720,8 @@ input[type="button"]:focus, .button:focus {
     text-align: center;
     background: #214365 none no-repeat 20%;
     border-bottom: 1px #ccc solid; 
-    -webkit-border-top-left-radius: 8px 8px;
-    -webkit-border-top-right-radius: 8px 8px;
+    -webkit-border-top-left-radius: 5px 5px;
+    -webkit-border-top-right-radius: 5px 5px;
 }
 
 #sign_in_block_body {
@@ -724,6 +747,7 @@ input[type="button"]:focus, .button:focus {
     background: url(../imgs/signin_twitter.png) no-repeat;
     width: 150px;
     padding: 0;
+    height: 22px;
     border: 0 !important;
 }
 
@@ -738,7 +762,7 @@ input[type="button"]:focus, .button:focus {
     z-index: 100011;
     color: #fff;
     padding: 10px;
-    -webkit-border-radius: 8px;
+    -webkit-border-radius: 5px;
 }
 
 #action_menu ul {
@@ -765,7 +789,7 @@ input[type="button"]:focus, .button:focus {
 #action_menu li > a.selected, #action_menu li > a:active {
     background: #a8b1fe;
     color: #000;
-    -webkit-border-radius: 8px;
+    -webkit-border-radius: 5px;
 }
 
 
@@ -786,7 +810,11 @@ input[type="button"]:focus, .button:focus {
 }
 
 .dialog {
-    background: #ddd;
+    background: rgba(0,0,0,0.75);
+    border-radius: 5px 5px;
+    color: #fff;
+    -webkit-box-shadow: 1px 1px 5px #000;
+    display: none;
 }
 
 .dialog p {
@@ -795,32 +823,34 @@ input[type="button"]:focus, .button:focus {
     margin: 10px 0;
 }
 
-.dialog p, .dialog h1, .dialog h2, .dialog h3, .dialog label, .dialog table {
-    text-shadow: 0 1px 0px #fff;
+.dialog_bar {
+    height: 20px;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    position:relative;
 }
 
-.dialog > h2 {
-    font-size: 20px; 
-    padding: 10px 10px 10px 50px;
-    color: #777;
-    background: #f2f2f2 url(../imgs/ic32_hotot.png) no-repeat 10px 50%;
-    border-bottom: 1px #ccc solid; 
-}
-
-.dialog_border {
-    background: rgba(0,0,0, 0.5);
-    padding: 20px;
-    -webkit-border-radius: 8px 8px;
-    display: none;
-} 
-
-.dialog_close_btn {
-    height: 48px;
-    width: 48px;
-    float: right;
+.dialog_bar > .dialog_close_btn {
+    height: 16px;
+    width: 16px;
     display: block;
-    margin-top: -40px;
-    margin-right: -40px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.dialog_bar > h2 {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px; 
+    font-weight: normal;
+    color: #f2f2f2;
+    text-align: center;
+    text-shadow: 0 1px 0px #000;
+    background: #333;
+    border-bottom: 1px #333 solid; 
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
 }
 
 .dialog_body h3{
@@ -833,25 +863,14 @@ input[type="button"]:focus, .button:focus {
 
 .dialog_bottom {
     text-align: right; 
-    border-top: 1px #ccc solid; 
+    border-top: 1px #333 solid; 
     clear:both; 
     padding: 10px;
     margin-top: 5px;
 }
 
 #oauth_dlg {
-    display: block;
     width: 400px;
-    background: #ddd;
-}
-
-#oauth_dlg_border {
-    z-index: 10001;
-    width: 400px;
-}
-
-#oauth_dlg > h2 {
-    background-image: url(../imgs/ic32_twitter.png);
 }
 
 #oauth_dlg_body {
@@ -861,18 +880,7 @@ input[type="button"]:focus, .button:focus {
 /*===== Preferences Dialog ================================*/
 
 #prefs_dlg {
-    display: block;
     width: 600px;
-    background: #ddd;
-}
-
-#prefs_dlg_border {
-    z-index: 10001;
-    width: 600px;
-}
-
-#prefs_dlg > h2 {
-    background-image: url(../imgs/ic32_prefs.png);
 }
 
 #prefs_dlg_body {
@@ -900,21 +908,20 @@ input[type="button"]:focus, .button:focus {
     display: block;
     text-decoration: none;
     text-align: left;
-    color: #555;
+    color: #ababab;
     line-height: 22px;
-    border-bottom: 1px #ccc solid;
-    text-shadow: 0 1px 0px #fff;
+    border-bottom: 1px #333 solid;
 }
 
 
 .dlg_tabs_btn.selected {
-    color: #000;
+    color: #fff;
 }
 
 .dlg_tabs_page {
     margin-left: 150px;
-    border-left: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
+    border-left: 1px #333 solid;
+    border-bottom: 1px #333 solid;
     padding: 10px 10px;
     display: none;
     min-height: 200px;
@@ -932,7 +939,7 @@ input[type="button"]:focus, .button:focus {
 
 #prefs_font_preview {
     text-align: center;
-    border: 1px #ccc solid;
+    border: 1px #333 solid;
     padding: 10px 0;
     height: 30px;
     margin: 0 10px;
@@ -941,18 +948,7 @@ input[type="button"]:focus, .button:focus {
 
 /*===== Extensions Dialog ================================*/
 #exts_dlg {
-    display: block;
     width: 600px;
-    background: #ddd;
-}
-
-#exts_dlg_border {
-    z-index: 10504;
-    width: 600px;
-}
-
-#exts_dlg > h2 {
-    background-image: url(../imgs/ic32_exts.png);
 }
 
 #exts_dlg_body {
@@ -1014,18 +1010,7 @@ input[type="button"]:focus, .button:focus {
 }
 /*===== Profile Dialog ================================*/
 #profile_dlg {
-    display: block;
     width: 600px;
-    background: #ddd;
-}
-
-#profile_dlg_border {
-    z-index: 10504;
-    width: 600px;
-}
-
-#profile_dlg > h2 {
-    background-image: url(../imgs/ic32_profile.png);
 }
 
 #profile_dlg_body {
@@ -1049,18 +1034,7 @@ input[type="button"]:focus, .button:focus {
 
 /*===== About Dialog ================================*/
 #about_dlg {
-    display: block;
     width: 600px;
-    background: #ddd;
-}
-
-#about_dlg_border {
-    z-index: 10504;
-    width: 600px;
-}
-
-#about_dlg > h2 {
-    background-image: url(../imgs/ic32_help.png);
 }
 
 #about_dlg_body {
@@ -1072,18 +1046,7 @@ input[type="button"]:focus, .button:focus {
 }
 /*===== Message Dialog ================================*/
 #message_dlg {
-    display: block;
     width: 400px;
-    background: #ddd;
-}
-
-#message_dlg_border {
-    z-index: 10005;
-    width: 400px;
-}
-
-#message_dlg > h2 {
-    background-image: url(../imgs/ic32_warning.png);
 }
 
 #message_dlg_body {
@@ -1097,13 +1060,6 @@ input[type="button"]:focus, .button:focus {
 
 /*===== Common Dialog ================================*/
 #common_dlg {
-    display: block;
-    width: 400px;
-    background: #ddd;
-}
-
-#common_dlg_border {
-    z-index: 10005;
     width: 400px;
 }
 
@@ -1524,7 +1480,7 @@ td {
     background: transparent url(../imgs/ic16_sign_out.png) no-repeat;
 }
 .ic_close {
-    background: transparent url(../imgs/ic48_close.png) no-repeat;
+    background: transparent url(../imgs/ic16_close.png) no-repeat;
 }
 .ic24_reload {
     background: transparent url(../imgs/ic24_reload.png) no-repeat;

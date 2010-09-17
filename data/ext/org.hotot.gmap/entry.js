@@ -33,20 +33,18 @@ function on_form_indicator(tweet, html) {
 on_map_indicator_clicked:
 function on_map_indicator_clicked(x, y) {
     $('#hotot_gmap_frame').get(0).contentWindow.load_map(x, y);
-    $('#hotot_gmap_canvas').show();
+    $('#hotot_gmap_canvas').css({'position':'absolute', 'z-index':'111111', 'left':'20%', 'top':'20%', 'height': '60%', 'width': '60%', 'display':'none'});
+    $('#hotot_gmap_frame').css({'height': ($('#hotot_gmap_canvas').height() - 20) + 'px', 'width': '100%'});
+    $('#hotot_gmap_canvas').show();   
 },
 
 create:
 function create() {
-    $('body').append('<div id="hotot_gmap_canvas"></div>');
-    $('#hotot_gmap_canvas').append('<a class="dialog_close_btn ic_close" href="javascript:void(0);" onclick="$(\'#hotot_gmap_canvas\').hide();"></a>\
-    <iframe id="hotot_gmap_frame" class="dialog dialog_body">\
+    $('body').append('<div id="hotot_gmap_canvas" class="dialog"></div>');
+    $('#hotot_gmap_canvas').append('<div class="dialog_bar"><h2>View Geo Info</h2><a class="dialog_close_btn ic_close" href="javascript:void(0);" onclick="$(\'#hotot_gmap_canvas\').hide();"></a></div>\
+    <iframe id="hotot_gmap_frame" class="dialog_body">\
     </iframe>');
     
-    $('#hotot_gmap_canvas').css({'position':'absolute', 'z-index':'111111', 'left':'20%', 'top':'20%', 'height': '60%', 'width': '60%', 'display':'none'});
-    $('#hotot_gmap_canvas').addClass('dialog_border')
-    $('#hotot_gmap_frame').css({'height': '100%', 'width': '100%'});
-
     ext.HototGMap.map_doc = $('#hotot_gmap_frame').get(0).contentWindow.document;
     ext.HototGMap.map_doc.open();
     ext.HototGMap.map_doc.write("<html><head><script src=\"http://maps.google.com/maps/api/js?sensor=false\"></script><script>\

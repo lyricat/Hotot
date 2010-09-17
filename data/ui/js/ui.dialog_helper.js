@@ -46,10 +46,10 @@ function open(dlg) {
     dlg.show();
     var dlg_w = $(dlg.id).width();
     var dlg_h = $(dlg.id).height();
-    $(dlg.id).parent().css('position', 'absolute');
-    $(dlg.id).parent().css('z-index', 1111111);
-    $(dlg.id).parent().css('left', ($(window).width()-dlg_w)/2 - 20 + 'px');
-    $(dlg.id).parent().css('top', ($(window).height()-dlg_h)/2 - 20 + 'px');
+    $(dlg.id).css('position', 'absolute');
+    $(dlg.id).css('z-index', 1111111);
+    $(dlg.id).css('left', ($(window).width()-dlg_w)/2 + 'px');
+    $(dlg.id).css('top', ($(window).height()-dlg_h)/2 + 'px');
 },
 
 close:

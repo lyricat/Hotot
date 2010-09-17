@@ -17,7 +17,7 @@ function init () {
     ui.MessageDlg.me = $('#message_dlg');
     ui.MessageDlg.mask = $('#dialog_mask');
     // bind events
-    $(ui.MessageDlg.me).parent().children('.dialog_close_btn').click(
+    $(ui.MessageDlg.id).find('.dialog_close_btn').click(
     function (event) {
         ui.DialogHelper.close(ui.MessageDlg);
     });
@@ -38,14 +38,14 @@ function set_text(title, content) {
 
 hide:
 function hide () {
-    this.me.parent().hide();
+    this.me.hide();
     this.is_show = false;
     return this;
 },
 
 show:
 function show () {
-    this.me.parent().show();
+    this.me.show();
     this.is_show = true;
     return this;
 },
