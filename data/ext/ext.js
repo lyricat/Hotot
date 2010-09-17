@@ -186,9 +186,9 @@ function unregister_listener(type, callback) {
     }
 },
 
-add_toolbar_button:
-function add_toolbar_button(id, icon, title, callback) {
-    $('#ctrl_panel').prepend('<li><a id="'+id+'" class="panel_btn"  style="background-image:url('+icon+'); background-repeat: no-repeat;" href="javascript:void(0);" title="'+title+'"></a></li>');
+add_to_exts_menu:
+function add_to_exts_menu(id, icon, label, callback) {
+    $('#exts_menu').prepend('<li><a id="'+id+'" style="background-image:url('+icon+');" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
     $('#'+id).click(callback);
 },
 

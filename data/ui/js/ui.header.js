@@ -5,19 +5,22 @@ init:
 function init () {
     $('#btn_hotot_wrap').hover(
     function (event) {
-        $('#btn_hotot').addClass('hover');
     },
     function (event) {
-        $('#btn_hotot').removeClass('hover');
         $('#hotot_menu').hide();
     }).click(
     function (event) {
         $('#hotot_menu').toggle();
     });
 
-    $('#btn_filter').click(
+    $('#btn_exts_menu_wrap').hover(
     function (event) {
-        ui.Filter.show();
+    },
+    function (event) {
+        $('#exts_menu').hide();
+    }).click(
+    function (event) {
+        $('#exts_menu').toggle();
     });
 
     $('#btn_reload').click(

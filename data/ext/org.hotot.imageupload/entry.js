@@ -138,8 +138,8 @@ function fail(result) {
 
 load:
 function load() {
-    ext.add_toolbar_button('ext_btn_hotot_upload_image'
-        , '../ext/'+ext.HototImageUpload.id+'/ic24_upload.png'
+    ext.add_to_exts_menu('ext_btn_hotot_upload_image'
+        , '../ext/'+ext.HototImageUpload.id+'/ic16_upload.png'
         , 'Upload Images ...'
         , ext.HototImageUpload.on_ext_btn_clicked);
 },
