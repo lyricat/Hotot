@@ -2,7 +2,7 @@ Source: hotot
 Section: net
 Priority: optional
 Maintainer: Shellex Wai <5h3ll3x@gmail.com>
-Build-Depends: debhelper (>= 7), python-support, python (>=2.5)
+Build-Depends: debhelper (>= 7), python-support, python (>=2.5), python-distutils-extra
 XS-Python-Version: >=2.5
 Standards-Version: 3.8.4
 Homepage: http://code.google.com/p/hotot
@@ -12,7 +12,13 @@ Homepage: http://code.google.com/p/hotot
 Package: hotot
 Architecture: any
 XB-Python-Version: 2.5, 2.6
-Depends: ${shlibs:Depends}, ${misc:Depends}, python-webkit, python-jswebkit, python-keybinder, python-notify
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         ${python:Depends}, 
+         python-webkit,
+         python-jswebkit,
+         python-keybinder,
+         python-notify
 Description: Lightweight Twitter Client base on Gtk2 and Webkit.
  Lightweight Twitter Client base on Gtk2 and Webkit.
  .
