@@ -495,7 +495,7 @@ pre {
 
 /* ===== Filter =================================== */
 #filter_bar {
-    top: 100px;    
+    top: 0px;    
     z-index: 10000;
     position: fixed;
     right: 20px;
@@ -504,6 +504,9 @@ pre {
     padding: 0px 5px 2px 5px;
     display: none;
     background: #ececec;
+    border-color: transparent #ccc #ccc #ccc;
+    border-width: 1px;
+    border-style: solid; 
     border-bottom-left-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
 }

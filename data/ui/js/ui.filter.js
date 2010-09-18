@@ -52,7 +52,7 @@ show:
 function show() {
     $(ui.Filter.id)
     .css('background', $('#header').css('background'))
-    .css('top', ($(header).height() + 5)+'px')
+    .css('top', ($(header).height() + 6)+'px')
     .show();
     $(ui.Filter.tbox).focus();
     return this;
