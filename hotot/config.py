@@ -29,7 +29,7 @@ default_config = {
     'default_username':'',
     'default_password':'',
 #template:
-    'font_family_used': 'Sans',
+    'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun',
     'font_size': 12,
     'use_native_input': False,
     'use_native_notify': True,
