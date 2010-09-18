@@ -917,7 +917,7 @@ input[type="button"]:focus, .button:focus {
 /*===== Preferences Dialog ================================*/
 
 #prefs_dlg {
-    width: 600px;
+    width: 550px;
 }
 
 #prefs_dlg_body {
@@ -962,7 +962,7 @@ input[type="button"]:focus, .button:focus {
     padding: 10px 10px;
     display: none;
     min-height: 200px;
-    width: 426px;
+    width: 427px;
     overflow-y: auto;
 }
 

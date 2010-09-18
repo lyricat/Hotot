@@ -50,13 +50,13 @@ function init () {
         // verify ...
         lib.twitterapi.verify(
         function (result) {
-            globals.myself = result;
-            $('#my_profile_img').attr('src'
-                , globals.myself.profile_image_url);
-            ui.Welcome.hide();
-            ui.Main.show();
-            globals.layout.open('north');
-            globals.layout.open('south');
+            if (result.screen_name) {
+                ui.Welcome.authenticate_pass(result);
+            } else {
+                ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                    , '<p>Cannot Authenticate You! Please check your username/password and API base</p>');
+                ui.DialogHelper.open(ui.MessageDlg);
+            }
         });
     });
 
@@ -85,17 +85,13 @@ function init () {
             lib.twitterapi.verify(
             function (result) { 
             // access_token is valid
-            // change to main page
-                globals.myself = result;
-                $('#my_profile_img').attr('src'
-                    , globals.myself.profile_image_url);
-                ui.Notification.set('Authentication OK!').show();
-                utility.Console.out('[i]: test pass! '+ result);
-                ui.DialogHelper.close(ui.PinDlg);
-                ui.Welcome.hide();
-                ui.Main.show();
-                globals.layout.open('north');
-                globals.layout.open('south');
+                if (result.screen_name) {
+                    ui.Welcome.authenticate_pass(result);
+                } else {
+                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                        , '<p>Cannot Authenticate You! Please check your username/password and API base</p>');
+                    ui.DialogHelper.open(ui.MessageDlg);
+                }
             });
         }
     });
@@ -115,6 +111,19 @@ function init () {
         ui.DialogHelper.open(ui.AboutDlg);
     });
     return this;
+},
+
+authenticate_pass:
+function authenticate_pass(result) {
+    globals.myself = result;
+    $('#my_profile_img').attr('src'
+        , globals.myself.profile_image_url);
+    ui.Notification.set('Authentication OK!').show();
+    ui.DialogHelper.close(ui.PinDlg);
+    ui.Welcome.hide();
+    ui.Main.show();
+    globals.layout.open('north');
+    globals.layout.open('south');
 },
 
 hide:
