@@ -799,7 +799,7 @@ input[type="button"]:focus, .button:focus {
 #sign_in_block_bottom {
     padding: 0 10px 3px 10px;
     border-top: 1px #ccc solid; 
-    text-align: center;
+    text-align: right;
 }
 
 #sign_in_block_bottom a {
@@ -807,6 +807,7 @@ input[type="button"]:focus, .button:focus {
     display:inline-block;
     font-size: 10px;
     line-height: 20px;
+    margin: 0 10px;
     text-decoration: none;
 }
 
