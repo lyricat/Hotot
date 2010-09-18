@@ -315,7 +315,7 @@ def set_style_scheme():
     style = app.window.get_style()
     base, fg, bg, text = style.base, style.fg, style.bg, style.text
     webv.execute_script('''
-        $('#header').css('background-color', '%s');    
+        $('#header').css('background', '%s');    
     ''' % str(bg[gtk.STATE_NORMAL]));
     pass
 

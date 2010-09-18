@@ -803,7 +803,6 @@ input[type="button"]:focus, .button:focus {
 }
 
 #sign_in_block_bottom a {
-    padding-left: 20px;
     height: 20px;
     display:inline-block;
     font-size: 10px;
