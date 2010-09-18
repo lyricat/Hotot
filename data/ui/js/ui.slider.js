@@ -52,9 +52,12 @@ function slide_to(id) {
     this.me.stop().animate({marginLeft:'-'+ idx * width +'px'}, 500);
     this.current = id;
     var prev_sel = $('#indication').find('.selected');
-    if (prev_sel)
+    if (prev_sel) {
         prev_sel.removeClass('selected');
+        prev_sel.next('.shape').hide();
+    }
     $('#idx_btn_' + id.substring(1)).addClass('selected');
+    $('#idx_btn_' + id.substring(1)).next('.shape').show();
 
     $(ui.Main.actived_tweet_id).removeClass('active');
     var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
