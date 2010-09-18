@@ -24,6 +24,7 @@ def unserialize_array(str):
     return [urllib.unquote(elem) for elem in str.split('&')]
 
 def get_screen_name(webv):
+    # @TODO remove this function to remove the dependence of js webkit
     if CAN_EVAL_SCRIPT:
         return  webv.ctx().EvaluateScript('''
             utility.DB.json(utility.DB.auto_complete_list)

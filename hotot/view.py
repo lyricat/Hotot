@@ -46,12 +46,6 @@ class MainView(WebView):
                 self.get_main_frame().get_global_context())
         return ctx
 
-    def get_selection(self, *args):
-        text = self.ctx().EvaluateScript('''
-            document.getSelection().toString();
-        ''')
-        return text
-
     def on_navigation_requested(self, view, webframe, request):
         # get uri from request object
         uri=request.get_uri()
