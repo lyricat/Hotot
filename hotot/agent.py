@@ -250,6 +250,8 @@ def push_prefs():
         for ff in gtk.gdk.pango_context_get().list_families()]
     font_family_list.sort()
     font_family_used = config.font_family_used
+    if font_family_used not in font_family_list:
+        font_family_list.insert(0, font_family_used)
     font_size = config.font_size
     use_native_input = 'true' if config.use_native_input else 'false'
     use_native_notify = 'true' if config.use_native_notify else 'false'

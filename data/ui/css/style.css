@@ -19,7 +19,7 @@ html, body {
 body {
     background: None repeat-x scroll left top #fff;
     color: #333;
-    font-family: MuseoSans,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun;
     overflow: hidden;
 }
 
