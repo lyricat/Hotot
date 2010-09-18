@@ -20,6 +20,7 @@ body {
     background: None repeat-x scroll left top #fff;
     color: #333;
     font-family: MuseoSans,Helvetica,Arial,Verdana,sans-serif;
+    overflow: hidden;
 }
 
 a {
@@ -89,7 +90,7 @@ a {
 }
 
 .panel_btn:active {
-    background-color: #222;
+    background-color: #666;
 }
 
 #btn_reload {
@@ -130,6 +131,7 @@ a {
     text-align: left;
     position:absolute;
     width: 100px;
+    right: -10px;
 }
 
 .hotot_menu {
@@ -631,6 +633,9 @@ input[type="button"]:focus, .button:focus {
     color: #fff;
 }
 
+#people_vcard .vcard_ctrl_btn:hover {
+    background: #aaa;
+}
 #people_entry, #search_entry {
     text-align: center;
 }
@@ -833,6 +838,7 @@ input[type="button"]:focus, .button:focus {
     z-index: 10000;
     background: rgba(0,0,0,0.5);
     display: none;
+    overflow: hidden;
 }
 
 .dialog {
@@ -1162,6 +1168,7 @@ input[type="button"]:focus, .button:focus {
 
 .vcard_ctrl_btn:hover {
     background: #f2f2f2;
+    border-radius: 5px 5px;
 }
 
 .tweet_block_bottom{
@@ -1370,7 +1377,7 @@ input[type="button"]:focus, .button:focus {
 .tweet_more {
     background: transparent url(../imgs/ic16_more.png) no-repeat;
 }
-.tweet_dm {
+.tweet_dm_reply {
     background: transparent url(../imgs/ic16_dm.png) no-repeat;
 }
 .tweet_fav {

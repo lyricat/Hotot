@@ -408,10 +408,10 @@ function bind_tweets_action(tweets_obj, pagename) {
         });
         $(id).hover(
         function (event) {
-            $(id + '> .tweet_body').children('.tweet_ctrl').show();
+            $(id + '> .tweet_ctrl').show();
         },
         function (event) {
-            $(id + '> .tweet_body').children('.tweet_ctrl').hide();
+            $(id + '> .tweet_ctrl').hide();
         });
         $(id).find('.tweet_reply').click(
         function (event) {
