@@ -20,7 +20,17 @@ function init () {
         $('#exts_menu').hide();
     }).click(
     function (event) {
+        if ($('#exts_menu > li').length == 1) {
+            $('#exts_menu_empty_hint').show();
+        } else if (1 < $('#exts_menu > li').length) {
+            $('#exts_menu_empty_hint').hide();
+        }
         $('#exts_menu').toggle();
+    });
+
+    $('#exts_menu_empty_hint').click(
+    function (event) {
+        ui.DialogHelper.open(ui.ExtsDlg);
     });
 
     $('#btn_reload').click(

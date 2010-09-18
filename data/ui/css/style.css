@@ -35,12 +35,13 @@ a {
 
 /* ===== header ==============================*/
 #header {
-    background: -webkit-gradient(linear, left top, left bottom, from(#595f62), to(#474c4e));
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#ececec));
     background-repeat:no-repeat;
     background-position: 70% 0;
     padding: 3px 5px;
     font-size: 12px;
     position:relative;
+    border-bottom: 1px #ccc solid;
 }
 
 #my_profile_img, #my_profile_img_wrapper {
@@ -53,7 +54,7 @@ a {
     top: 2px;
     right: 10px;
     font-size: 10px;
-    color: #fff;
+    color: #333;
 }
 
 #ctrl_panel {
@@ -104,7 +105,7 @@ a {
 #exts_menu {
     text-align: left;
     position:absolute;
-    width: 100px;
+    width: 150px;
 }
 
 #exts_menu >li >a {
@@ -113,6 +114,10 @@ a {
 
 #exts_menu >li >a:hover {
     background-color: #2048F3 !important;
+}
+
+#exts_menu_empty_hint {
+    display: none;
 }
 
 #btn_hotot_wrap {
@@ -297,7 +302,7 @@ a {
 #indication {
     height: 40px;
     text-align: center;
-    background: transparent url(../imgs/panel_bg.png) repeat-x 0 -2px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#ececec));
     border-top: #ccc 1px solid;
 }
 
