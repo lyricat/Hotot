@@ -18,6 +18,13 @@ notify = pynotify.Notification('Init', '')
 
 webv = None 
 app = None
+http_code_msg_table = {
+      404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
+    , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
+    , 500: 'Server is broken. Please try again later.'
+    , 502: 'Server is down or being upgraded. Please try again later.'
+    , 503: 'Server is overcapacity. Please try again later.'
+}
 
 def init_notify():
     notify.set_icon_from_pixbuf(
@@ -326,7 +333,12 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             result = _get(url, params, headers)
         pass
     except urllib2.HTTPError, e:
-        content = '<p><label>HTTP Code:</label> %s <br/><label>URL:</label> %s<br/><label>Details:</label> %s<br/></p>' % (e.getcode(), e.geturl(), str(e))
+        msg = 'Unknow Errors ... '
+        if http_code_msg_table.has_key(e.getcode()):
+            msg = http_code_msg_table[e.getcode()]
+        pass
+        tech_info = 'HTTP Code: %s\\nURL: %s\\nDetails: %s' % (e.getcode(), e.geturl(), str(e))
+        content = '<p>%s</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>%s</pre></div>' % (msg, tech_info)
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);

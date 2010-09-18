@@ -27,6 +27,13 @@ a {
     color: #2048F3;
 }
 
+pre {
+    padding: 5px;
+    overflow:auto; 
+    border: 1px #333 solid;
+    margin: 10px 0;
+}
+
 #container {
     height:100%;
     margin:0 auto;
