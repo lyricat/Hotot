@@ -985,7 +985,7 @@ input[type="button"]:focus, .button:focus {
 
 /*===== Extensions Dialog ================================*/
 #exts_dlg {
-    width: 600px;
+    width: 550px;
 }
 
 #exts_dlg_body {
@@ -1071,7 +1071,7 @@ input[type="button"]:focus, .button:focus {
 
 /*===== About Dialog ================================*/
 #about_dlg {
-    width: 600px;
+    width: 550px;
 }
 
 #about_dlg_body {
