@@ -28,36 +28,7 @@ class MainView(WebView):
         except:
             pass
 
-        ## context menu
-        self.contextmenu = gtk.Menu()
-        # edit menu items: copy cut past delete
-        self.edit_mitems = {} 
-        self.edit_mitems['copy'] = gtk.MenuItem('Copy')
-        self.edit_mitems['copy'].connect('activate'
-            , self.on_mitem_copy_activated)
-        self.edit_mitems['cut'] = gtk.MenuItem('Cut')
-        self.edit_mitems['cut'].connect('activate'
-            , self.on_mitem_cut_activated)
-        self.edit_mitems['paste'] = gtk.MenuItem('Paste')
-        self.edit_mitems['paste'].connect('activate'
-            , self.on_mitem_copy_activated)
-        self.edit_mitems['remove'] = gtk.MenuItem('Remove')
-        self.edit_mitems['remove'].connect('activate'
-            , self.on_mitem_copy_activated)
-        map(self.contextmenu.append, self.edit_mitems.values())
-        self.contextmenu.append(gtk.MenuItem())
-
-        self.mitem_google = gtk.MenuItem('Buscar con Google')
-        self.mitem_google.connect('activate',
-            self.on_mitem_google_activated);
-        mitem_prefs = gtk.MenuItem('Preferences')
-        
-        self.contextmenu.append(self.mitem_google)
-        self.contextmenu.append(mitem_prefs)
-        self.contextmenu.show()
-
         ## bind events
-        self.connect('button-press-event', self.on_button_pressed)
         self.connect('navigation-requested',
             self.on_navigation_requested);
         self.connect('load-finished', self.on_load_finish);
@@ -101,67 +72,5 @@ class MainView(WebView):
         agent.load_exts()
         pass
 
-    def on_mitem_copy_activated(self, item):
-        self.clipbord.set_text(self.get_selection().encode('utf-8'))
-        pass
-        
-    def on_mitem_cut_activated(self, item):
-        self.execute_script('''
-            range = window.getSelection().createRange();
-            range.execCommand('Cut');
-        ''' % text)
-        pass
 
-    def on_mitem_paste_activated(self, item):
-        self.execute_script('''
-            range = document.createTextRange();
-            range.execCommand('Paste');
-        ''')
-        pass
 
-    def on_mitem_google_activated(self, item):
-        selection = self.get_selection()
-        utils.open_webbrowser('http://google.com/search?sourceid=chrome&ie=UTF-8&q=%s' % selection)
-        pass
-
-    def on_button_pressed(self, widget, event):
-        def display_edit_mitems():
-            # for mitem in self.edit_mitems.values():
-            #    mitem.show()
-            can_copy = self.has_selection() \
-                    and len(self.get_selection()) != 0
-            self.edit_mitems['copy'].set_sensitive(can_copy)
-            self.edit_mitems['copy'].show()
-            
-            can_cut = self.can_cut_clipboard()
-            self.edit_mitems['cut'].set_sensitive(can_cut)
-            can_remove = self.has_selection()
-            self.edit_mitems['remove'].set_sensitive(can_remove)
-            can_paste = self.can_paste_clipboard()
-            self.edit_mitems['paste'].set_sensitive(can_paste)
-            pass
-
-        if event.button == 3:
-            if self.has_selection():
-                # has selection and selection is not null 
-                selection = self.get_selection()
-                selection = selection[:32] + '...' \
-                    if 10 < len(selection) else selection
-                display_edit_mitems()
-                # show search menu item
-                if len(selection) != 0:
-                    self.mitem_google.get_child().set_text(
-                        'Buscar \'%s\' con Google' % selection)
-                    self.mitem_google.show()
-                else:
-                    self.mitem_google.hide()
-            else:
-                # hide edit menu items & search menu item
-                display_edit_mitems()
-                self.mitem_google.hide()
-            pass
-
-            self.contextmenu.popup(None, None
-                , None, button=event.button
-                , activate_time=event.time)
-        pass
