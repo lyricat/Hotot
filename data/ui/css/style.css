@@ -87,11 +87,11 @@ a {
 }
 
 .panel_btn:hover {
-    background-color: #aaa;
+    background-color: #ccc;
 }
 
 .panel_btn:active {
-    background-color: #666;
+    background-color: #aaa;
 }
 
 #btn_reload {
