@@ -99,6 +99,16 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , on_error
             );
     } else {
+        if (method == 'GET') {
+            arr = []
+            for (var k in params) {
+                arr.push(encodeURIComponent(k)
+                    + '='
+                    + encodeURIComponent(params[k]));
+            }
+            url = url + '?' + arr.join('&');
+            params = {};
+        }
         headers['Authorization']= lib.twitterapi.basic_auth();
         lib.twitterapi.do_requset(
             method

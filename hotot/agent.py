@@ -333,7 +333,7 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             result = _get(url, params, headers)
         pass
     except urllib2.HTTPError, e:
-        msg = 'Unknow Errors ... '
+        msg = 'Unknown Errors ... '
         if http_code_msg_table.has_key(e.getcode()):
             msg = http_code_msg_table[e.getcode()]
         pass
