@@ -931,7 +931,7 @@ input[type="button"]:focus, .button:focus {
 
 .dlg_tabs > ul > li {
     display: block;
-    width: 150px;
+    width: 100px;
 }
 
 .dlg_tabs_btn {
@@ -951,7 +951,7 @@ input[type="button"]:focus, .button:focus {
 }
 
 .dlg_tabs_page {
-    margin-left: 150px;
+    margin-left: 100px;
     border-left: 1px #333 solid;
     border-bottom: 1px #333 solid;
     padding: 10px 10px;

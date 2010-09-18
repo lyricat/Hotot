@@ -199,6 +199,7 @@ function update_search() {
             $('#search_no_result_hint').show();
             $('#search_query_keywords').text(query);
         } else {
+            $('#search_no_result_hint').hide();
             $('#search_tweet_block .tweet_block_bottom').show();
             ui.Main.load_tweets_cb(tweets, '#search');
         }
