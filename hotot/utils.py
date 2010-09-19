@@ -66,6 +66,8 @@ def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
     browser = 'xdg-open'
+    if sys.platform[:3] == "win":
+        browser = 'start'
     subprocess.Popen([browser, uri])
     pass
 
