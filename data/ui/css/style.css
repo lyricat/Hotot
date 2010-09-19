@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html, body {
     height:100%;
     margin:0;
-    overflow:auto;
+    overflow:hidden;
     padding:0;
     width:100%;
 }
@@ -20,7 +20,6 @@ body {
     background: None repeat-x scroll left top #fff;
     color: #333;
     font-family: Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun;
-    overflow: hidden;
 }
 
 a {
@@ -159,7 +158,7 @@ pre {
     right: 0;
     list-style-type: none;
     display: none;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.85);
     -webkit-box-shadow: 1px 1px 5px #333;
     border-radius: 5px 5px;
 }
@@ -171,11 +170,10 @@ pre {
 }
 
 .hotot_menu > li > a {
-    padding: 2px 5px;
-    height: 20px;
+    padding: 2px 10px 2px 20px;
+    min-height: 20px;
     line-height: 20px;
     display: block;
-    padding-left: 20px;
     text-decoration:none;
     background-position: 0 center !important;
     background-repeat: no-repeat !important;
@@ -817,33 +815,6 @@ input[type="button"]:focus, .button:focus {
     padding: 0;
     height: 22px;
     border: 0 !important;
-}
-
-#action_menu {
-    position: absolute;
-    left: 30%;
-    right: 30%;
-    top: 100px;
-    width: 40%;
-    background: rgba(0,0,0, 0.7);
-    z-index: 100011;
-    color: #fff;
-    display: none;
-    -webkit-border-radius: 5px;
-}
-
-#action_menu ul {
-    list-style-type: none;
-    display: block;
-}
-
-#action_menu li > a {
-    font-size: 14px;
-    padding: 5px 20px;
-}
-
-#action_menu li > a.selected, #action_menu li > a:active {
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
 
@@ -1513,6 +1484,47 @@ input[type="button"]:focus, .button:focus {
     border: 1px solid #fcfc19;
     color: #990000;
     -webkit-border-radius: 3px 3px; 
+}
+
+/* == Menus ==*/
+#action_menu {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 100px;
+    width: 40%;
+    z-index: 100011;
+    color: #fff;
+    display: none;
+    -webkit-border-radius: 5px;
+}
+
+#action_menu ul {
+    list-style-type: none;
+    display: block;
+}
+
+#action_menu li > a {
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+#action_menu li > a.selected, #action_menu li > a:active {
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+}
+
+#context_menu {
+    position: absolute;
+    z-index: 100011;
+    display: none;
+}
+#context_menu ul {
+    display: block;
+    min-width: 150px;
+}
+#context_menu ul a {
+    font-size: 11px;
+    display: block;
 }
 
 table {

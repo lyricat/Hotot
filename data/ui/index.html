@@ -35,6 +35,7 @@
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.filter.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
+    <script type="text/javascript" src="js/ui.context_menu.js"></script>
     
     <script type="text/javascript" src="../ext/ext.js"></script>
     <!--
@@ -158,9 +159,14 @@ jQuery(function($) {
             }
         }
         return true;
-    }).click(
+    });
+
+    $(document).click(
     function (event) {
-        ui.StatusBox.close();
+        if (event.button == 0) {
+            ui.StatusBox.close();
+            ui.ContextMenu.hide();
+        }
     });
 
     $('input').focus(function () {globals.focus_input = true;})
@@ -201,6 +207,7 @@ jQuery(function($) {
     ui.Filter.init();
     ui.DialogHelper.init();
     ui.ActionMenu.init();
+    ui.ContextMenu.init();
     ext.init();
 
     update_tweet_block_width();
@@ -984,6 +991,13 @@ jQuery(function($) {
 
 <section id="action_menu">
     <ul class="hotot_menu">
+    </ul>
+</section>
+
+<section id="context_menu">
+    <ul class="hotot_menu">
+        <li><a id="context_menuitem_web_search" href="javascript:void(0);">Search in Google</a></li>
+        <li><a id="context_menuitem_twitter_search" href="javascript:void(0);">Search in Twitter</a></li>
     </ul>
 </section>
 
