@@ -33,6 +33,49 @@ pre {
     margin: 10px 0;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.dialog ::-webkit-scrollbar-button:start:decrement,
+.dialog ::-webkit-scrollbar-button:end:increment {
+    height: 30px;
+    display: block;
+    background-color: transparent;
+}
+
+.dialog ::-webkit-scrollbar-track-piece {
+    background: #2b2b2b;
+    border-radius: 6px;
+    float: right;
+}
+.dialog ::-webkit-scrollbar-thumb:vertical {
+    background: #666;
+}
+
+.dialog ::-webkit-scrollbar-thumb:horizontal {
+    background: #666;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 50px;
+    background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
+
+    border-radius: 6px;
+}
+
 #container {
     height:100%;
     margin:0 auto;
