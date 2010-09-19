@@ -60,6 +60,7 @@ tweet_t:
     <ul class="tweet_thread" >\
         <div class="tweet_thread_hint">Loading...</div>\
     </ul>\
+    <div class="tweet_indicator"></div>\
 </li>',
 
 dm_t: 
@@ -76,10 +77,11 @@ dm_t:
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
-        <li><a class="tweet_dm_reply tweet_ctrl_btn" href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_dm_reply tweet_ctrl_btn" title="Reply Them." href="javascript:void(0);"></a></li>\
     </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
+    <div class="tweet_indicator"></div>\
 </li>',
 
 search_t:
@@ -101,6 +103,7 @@ search_t:
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
+    <div class="tweet_indicator"></div>\
 </li>',
 
 

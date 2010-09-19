@@ -642,6 +642,14 @@ input[type="button"]:focus, .button:focus {
     display: none;
 }
 
+#people_vcard {
+    font-size: 10px;
+    background: #474c4e;
+    color: #fff;
+    border: 0;
+    padding: 3px 5px;
+}
+
 #people_vcard .vcard_ctrl_btn:hover {
     background: #aaa;
 }
@@ -1173,7 +1181,15 @@ input[type="button"]:focus, .button:focus {
     position: relative;
 }
 
-.tweet.active {
+.tweet > .tweet_indicator {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 32px;
+    height: 32px;
+}
+
+.tweet.active > .tweet_indicator{
     background: transparent url(../imgs/tweet_indicator.png) repeat-y 0 center;
 }
 
