@@ -60,6 +60,7 @@ function slide_to(id) {
     $('#idx_btn_' + id.substring(1)).next('.shape').show();
 
     $(ui.Main.actived_tweet_id).removeClass('active');
+
     var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
     if (first_one.length != 0) {
         ui.Main.actived_tweet_id = '#' + first_one.attr('id');

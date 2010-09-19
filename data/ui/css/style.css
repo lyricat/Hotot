@@ -642,18 +642,6 @@ input[type="button"]:focus, .button:focus {
     display: none;
 }
 
-#people_entry, #search_entry, #people_vcard {
-    font-size: 10px;
-    background: #474c4e;
-    color: #fff;
-    border: 0;
-    padding: 3px 5px;
-}
-
-#people_entry a, #search_entry a, #people_vcard a{
-    color: #fff;
-}
-
 #people_vcard .vcard_ctrl_btn:hover {
     background: #aaa;
 }
@@ -699,20 +687,19 @@ input[type="button"]:focus, .button:focus {
     margin: 0 auto;
 }
 
-.tweet_tabs {
-    position: fixed;
-    width: 100%;
-    z-index: 1000000;
-}
-
 .tweet_tabs ol {
     list-style-type: none;
     margin: 3px 0;
     text-align: center;
 }
 
+.tweet_tabs ol li:first-child {
+    border-left: #2c2c2c;
+}
+
 .tweet_tabs ol li {
     display: inline-block;
+    border-right: #2c2c2c;
 }
 
 .tweet_tabs_btn {
@@ -720,27 +707,19 @@ input[type="button"]:focus, .button:focus {
     text-align: center;
     display: inline-block;
     padding: 3px 10px;
-    text-shadow: 0 1px 0px #fff;
     text-decoration: none;
-    color:#333; 
     font-size: 10px;
     -webkit-border-radius: 5px 5px; 
-    background: #f2f2f2;
 }
 
 .tweet_tabs_btn.selected {
-    background: #ccc;
+    background: #222;
 }
 
 .tweet_sub_block {
     display: none;
-    overflow: auto;
     max-height: 100%;
 }
-
-.tweet_sub_block > .tweet_block_bottom {
-    margin-top: 25px;
-} 
 
 .tweet_sub_block > ul {
     list-style-type: none;
@@ -1163,6 +1142,18 @@ input[type="button"]:focus, .button:focus {
 .vcard_ctrl_btn:hover {
     background: #f2f2f2;
     border-radius: 5px 5px;
+}
+
+.tweet_block_top {
+    font-size: 10px;
+    background: #474c4e;
+    color: #fff;
+    border: 0;
+    padding: 3px 5px;
+}
+
+.tweet_block_top a {
+    color: #fff;
 }
 
 .tweet_block_bottom{
