@@ -44,7 +44,7 @@ tweet_t:
             <li>\
                 <a class="tweet_dm tweet_ctrl_menu_btn"\
                     href="javascript:void(0);" \
-                    title="Send Message to him/her">Send Message</a>\
+                    title="Send Message to them">Send Message</a>\
             </li>\
             <li>\
                 <a class="tweet_del tweet_ctrl_menu_btn"\
