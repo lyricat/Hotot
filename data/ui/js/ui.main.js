@@ -485,14 +485,14 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
-    ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('Reply to `'+ tweet_obj.text +'`');
+    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ tweet_obj.user.screen_name + ':"' + tweet_obj.text + '"');
     ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
     ui.StatusBox.open(
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     });
 },
 
@@ -544,12 +544,12 @@ function on_reply_all_click(btn, event) {
         match = ui.Template.reg_user.exec(text);
     }
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
-    ui.StatusBox.set_status_info('Reply to `' + text + '`');
+    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span>  ' + text);
     ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     ui.StatusBox.open(
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     });
 
 },
@@ -564,11 +564,12 @@ function on_dm_click(btn, event) {
         : tweet_obj.user;
 
     ui.StatusBox.set_status_info(
-        'Compose Direct Messages to @' + user.screen_name);
+        '<span class="info_hint">COMPOSE MESSAGES TO</span> @' + user.screen_name);
     ui.StatusBox.dm_to_id = user.id;
     ui.StatusBox.dm_to_screen_name = user.screen_name;
-    ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
-    ui.StatusBox.open();
+    ui.StatusBox.open(function () {
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+    });
 },
 
 on_del_click:

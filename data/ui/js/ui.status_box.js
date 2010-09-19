@@ -19,6 +19,8 @@ POS_END: -1,
 
 current_mode: 0,
 
+mode_backup: null,
+
 close_timeout: 10000,
 
 is_closed: true,
@@ -207,14 +209,19 @@ function reset_close_countdown_timer() {
 change_mode:
 function change_mode(mode) {
     if (mode == ui.StatusBox.MODE_DM) {
-        $('#status_box').addClass('dm_mode');
-        $('#bubble_shape').addClass('dm_mode');
+        $('#status_box').removeClass('reply_mode').addClass('dm_mode');
         if ($('#tbox_status').attr('value') == globals.tweet_hint)
             $('#tbox_status').attr('value', globals.dm_hint)
+        $('#status_info').show();
         globals.status_hint = globals.dm_hint;
+    } else if (mode == ui.StatusBox.MODE_REPLY){
+        $('#status_box').removeClass('dm_mode').addClass('reply_mode');
+        if ($('#tbox_status').attr('value') == globals.dm_hint)
+            $('#tbox_status').attr('value', globals.tweet_hint)
+        $('#status_info').show();
+        globals.status_hint = globals.tweet_hint;
     } else {
-        $('#status_box').removeClass('dm_mode');
-        $('#bubble_shape').removeClass('dm_mode');
+        $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
         if ($('#tbox_status').attr('value') == globals.dm_hint)
             $('#tbox_status').attr('value', globals.tweet_hint)
         globals.status_hint = globals.tweet_hint;
@@ -312,7 +319,7 @@ function set_status_text(text) {
 
 set_status_info:
 function set_status_info(info) {
-    $('#status_info_text').text(info);
+    $('#status_info_text').html(info);
 },
 
 auto_complete:
@@ -386,6 +393,9 @@ function close() {
             $(this).blur();
         });
         $('#tbox_status').addClass('closed');
+        // backup the mode
+        ui.StatusBox.mode_backup = ui.StatusBox.current_mode;
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET)
         ui.StatusBox.stop_screen_name_detect();
         ui.StatusBox.is_closed = true;
     }
@@ -397,6 +407,12 @@ function open(on_finish) {
     if (!on_finish) 
         on_finish = function () {$('#tbox_status').focus();};
     if (ui.StatusBox.is_closed) {
+        // resume the mode.
+        if (ui.StatusBox.mode_backup != null 
+            && ui.StatusBox.mode_backup != ui.StatusBox.MODE_TWEET){
+            ui.StatusBox.current_mode = ui.StatusBox.mode_backup;
+        }
+        ui.StatusBox.change_mode(ui.StatusBox.current_mode)
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY
             || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
             $('#status_info').show();
@@ -409,6 +425,7 @@ function open(on_finish) {
         , on_finish);
         $('#status_ctrl').show();
         $('#tbox_status').removeClass('closed');
+        ui.StatusBox.mode_backup != null;
         ui.StatusBox.is_closed = false;
     } else {
         if (on_finish) on_finish();
