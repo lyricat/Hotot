@@ -53,6 +53,8 @@ class MainView(WebView):
             return 0
         elif uri.startswith('hotot:'):
             agent.crack_hotot(uri[6:])
+        elif uri.startswith('about:'):
+            return 1
         else:
             utils.open_webbrowser(uri)
         return 1
