@@ -243,10 +243,6 @@ pre {
     border-color: transparent rgba(0,0,0,0.75) transparent transparent; 
 }
 
-#bubble_shape.dm_mode {
-    border-color: transparent rgba(0, 90, 0, 0.75) transparent transparent !important; 
-}
-
 #status_box {
     background-color: rgba(0,0,0,0.75);
     background-repeat: no-repeat;
@@ -262,16 +258,16 @@ pre {
     display: none;
 }
 
-#status_box.dm_mode {
-    background-color: rgba(0, 90, 0, 0.75)  !important;
+#status_box.dm_mode #status_info{
+    background-color: rgba(60, 60, 150, 0.75)  !important;
 }
 
 #tbox_status {
     width: 305px;
     height: 15px;
-    border: 0;
-    color: #333;
-    background-color: #fff;
+    border: 1px #282828 solid;
+    color: white;
+    background-color: #494949;
     font-size: 14px;
     overflow:hidden;
     -webkit-border-radius: 5px 5px;
