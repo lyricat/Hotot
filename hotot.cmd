@@ -1,3 +1,3 @@
 
-start win7\pythonw.exe hotot\hotot.py
+start winepython\pythonw.exe hotot\hotot.py
 
