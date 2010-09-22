@@ -8,6 +8,8 @@ import config
 from webkit import WebView
 import utils
 
+try: import i18n
+except: from gettext import gettext as _
 
 class MainView(WebView):
     def __init__(self):
@@ -32,7 +34,9 @@ class MainView(WebView):
         self.connect('navigation-requested',
             self.on_navigation_requested);
         self.connect('load-finished', self.on_load_finish);
-        self.open('file://'+config.get_ui_object(config.template));
+        templatefile = config.get_ui_object(config.template)
+        template = open(templatefile, 'rb').read()
+        self.load_html_string(template, 'file://' + templatefile)
         pass
 
     def ctx(self, *args):
@@ -61,6 +65,12 @@ class MainView(WebView):
 
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;
+        view.execute_script("""
+        i18n_dict = %s;
+        function _(msg){
+            return msg && i18n_dict[msg] || msg;
+        };
+        """ % i18n.get_i18n_json())
         agent.webv = self
         agent.apply_config()
         agent.set_style_scheme()

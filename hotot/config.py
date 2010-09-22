@@ -1,4 +1,4 @@
-# -*- coding:utf8 -*-
+# -*- coding: UTF-8 -*-
 
 import os
 import pickle
@@ -58,6 +58,7 @@ default_config = {
 
 #others:
     'exts_enabled': [],
+    'no_use_indicator': False,
 }
 
 def getconf():

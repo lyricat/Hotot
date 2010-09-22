@@ -12,7 +12,6 @@ except ImportError:
 else:
     CAN_EVAL_SCRIPT = True
 
-
 DEFAULT_SCREEN_NAME = ["hotot"]
 
 def unserialize_dict(str):

@@ -9,6 +9,9 @@ from webbrowser import _iscommand as is_command
 import gtk
 import mimetypes, mimetools
 
+try: import i18n
+except: from gettext import gettext as _
+
 _browser = ''
 
 def get_desktop_environment_name():
