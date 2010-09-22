@@ -81,7 +81,7 @@ function init () {
     function () {
         ui.StatusBox.lazy_close();
     }).click(
-    function () {
+    function (event) {
         ui.StatusBox.open();
         return false;
     });
@@ -211,9 +211,12 @@ function lazy_close() {
 
 lazy_open:
 function lazy_open() {
-    window.clearTimeout(ui.StatusBox.open_countdown_timer);
-    ui.StatusBox.close_countdown_timer = window.setTimeout(
-        ui.StatusBox.open, ui.StatusBox.open_timeout);
+    if (ui.StatusBox.is_closed) {
+        window.clearTimeout(ui.StatusBox.close_countdown_timer);
+        window.clearTimeout(ui.StatusBox.open_countdown_timer);
+        ui.StatusBox.close_countdown_timer = window.setTimeout(
+            ui.StatusBox.open, ui.StatusBox.open_timeout);
+    }
 },
 
 change_mode:
