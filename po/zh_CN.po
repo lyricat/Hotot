@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 01:59+0800\n"
+"POT-Creation-Date: 2010-09-24 07:49+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -25,19 +25,19 @@ msgstr "主线 | 热推"
 
 #: ../data/ui/index.html:85 ../data/ui/index.html:86
 msgid "'What's happening?'"
-msgstr "有什么消息么？"
+msgstr "'有什么消息么？'"
 
 #: ../data/ui/index.html:87
 msgid "'Click here to Compose a Meassage ...'"
-msgstr "'点击撰写新消息……'"
+msgstr "'点击撰写新消息…'"
 
 #: ../data/ui/index.html:229
 msgid "'Reload timeline.'"
-msgstr "刷新时间线"
+msgstr "'刷新时间线'"
 
 #: ../data/ui/index.html:232
 msgid "'Extensions ... '"
-msgstr "扩展……"
+msgstr "'扩展…'"
 
 #: ../data/ui/index.html:235
 msgid "No Extension Icon"
@@ -45,7 +45,7 @@ msgstr "没有扩展图标"
 
 #: ../data/ui/index.html:240
 msgid "'More ...'"
-msgstr "更多……"
+msgstr "'更多…'"
 
 #: ../data/ui/index.html:243 ../data/ui/index.html:291
 #: ../data/ui/index.html:554
@@ -66,7 +66,7 @@ msgstr "注销"
 
 #: ../data/ui/index.html:264
 msgid "Hotot "
-msgstr "热兔"
+msgstr "热推"
 
 #: ../data/ui/index.html:266
 msgid "Greeting!"
@@ -75,6 +75,14 @@ msgstr "殿下您好！"
 #: ../data/ui/index.html:268
 msgid "Sign in to Hotot"
 msgstr "用热推登录"
+
+#: ../data/ui/index.html:271
+msgid "Username:"
+msgstr "帐号："
+
+#: ../data/ui/index.html:273
+msgid "Password:"
+msgstr "密码："
 
 #: ../data/ui/index.html:275 ../data/ui/index.html:588
 msgid "Remember Password"
@@ -86,11 +94,15 @@ msgstr "登录"
 
 #: ../data/ui/index.html:281
 msgid "Or use Twitter OAuth"
-msgstr "或使用推特 OAuth 验证"
+msgstr "或使用推特 OAuth 验证登录"
 
 #: ../data/ui/index.html:284
 msgid "'Sign in with Twitter'"
-msgstr "登录推特"
+msgstr "'从推特官网登录'"
+
+#: ../data/ui/index.html:284 ../data/ui/index.html:607
+msgid "Sign in with Twitter"
+msgstr "从推特官网登录"
 
 #: ../data/ui/index.html:292 ../data/ui/index.html:806
 msgid "Help"
@@ -222,13 +234,13 @@ msgstr "- 试试更通用的关键词。"
 msgid "Clear"
 msgstr "清空"
 
-#: ../data/ui/index.html:511 ../data/ui/index.html:945
+#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:125
 msgid "Update"
 msgstr "发布"
 
 #: ../data/ui/index.html:513
 msgid "Press Ctrl+Enter to Update"
-msgstr "按 Ctrl + 回车发布"
+msgstr "按 Ctrl + 回车 发布"
 
 #: ../data/ui/index.html:526
 msgid "Home"
@@ -270,9 +282,29 @@ msgstr "Consumer Secret"
 msgid "Regain Access Token"
 msgstr "Regain Access Token"
 
+#: ../data/ui/index.html:614 ../data/ui/index.html:689
+msgid "* You MUST restart Hotot for the changes below to take effect."
+msgstr ""
+
+#: ../data/ui/index.html:616
+msgid "Summon Hotot (like: &lt;ALT&gt;C)"
+msgstr ""
+
+#: ../data/ui/index.html:618
+msgid "'Summon Hot Key'"
+msgstr ""
+
+#: ../data/ui/index.html:624
+msgid "- Font Settings -"
+msgstr ""
+
 #: ../data/ui/index.html:627
 msgid "Font Family"
 msgstr "字体"
+
+#: ../data/ui/index.html:629
+msgid "'Font Family'"
+msgstr "'字体'"
 
 #: ../data/ui/index.html:635
 msgid "Font Size"
@@ -290,32 +322,88 @@ msgstr "预览"
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "ABCD 测试字体"
 
+#: ../data/ui/index.html:643
+msgid "- Display Settings -"
+msgstr ""
+
+#: ../data/ui/index.html:647
+msgid "'Use Native Input'"
+msgstr "'使用原生输入对话框'"
+
 #: ../data/ui/index.html:648
 msgid "Use Native Input Dialog"
 msgstr "使用原生输入对话框"
+
+#: ../data/ui/index.html:650
+msgid "'Use Native Notify'"
+msgstr "'使用原生通知机制'"
 
 #: ../data/ui/index.html:652
 msgid "Use Native Notify System"
 msgstr "使用原生通知机制"
 
+#: ../data/ui/index.html:657
+msgid "- API Settings -"
+msgstr ""
+
 #: ../data/ui/index.html:660
 msgid "API Base"
+msgstr ""
+
+#: ../data/ui/index.html:662
+msgid "'API Base'"
+msgstr ""
+
+#: ../data/ui/index.html:664
+msgid "'Use same Signing Api'"
 msgstr ""
 
 #: ../data/ui/index.html:667
 msgid "Signing API Base"
 msgstr ""
 
+#: ../data/ui/index.html:669
+msgid "'Signing API Base'"
+msgstr ""
+
 #: ../data/ui/index.html:671
 msgid "OAuth Base"
+msgstr ""
+
+#: ../data/ui/index.html:673
+msgid "'OAuth Base'"
+msgstr ""
+
+#: ../data/ui/index.html:675
+msgid "'Use same Signing OAuth Base'"
+msgstr ""
+
+#: ../data/ui/index.html:677
+msgid "Same signing OAuth base: "
 msgstr ""
 
 #: ../data/ui/index.html:678
 msgid "Signing OAuth Base"
 msgstr ""
 
+#: ../data/ui/index.html:680
+msgid "'Signing OAuth Base'"
+msgstr ""
+
 #: ../data/ui/index.html:682
 msgid "Search API Base"
+msgstr ""
+
+#: ../data/ui/index.html:684
+msgid "'Search API Base'"
+msgstr ""
+
+#: ../data/ui/index.html:687
+msgid "- Proxy Settings -"
+msgstr ""
+
+#: ../data/ui/index.html:692
+msgid "'Use HTTP Proxy'"
 msgstr ""
 
 #: ../data/ui/index.html:693
@@ -326,12 +414,28 @@ msgstr ""
 msgid "Host"
 msgstr ""
 
+#: ../data/ui/index.html:696
+msgid "'HTTP Proxy Host'"
+msgstr ""
+
 #: ../data/ui/index.html:697 ../data/ui/index.html:708
 msgid "Port"
 msgstr ""
 
+#: ../data/ui/index.html:699
+msgid "'HTTP Proxy Port'"
+msgstr ""
+
+#: ../data/ui/index.html:702
+msgid "'Use Socks Proxy'"
+msgstr ""
+
 #: ../data/ui/index.html:703
 msgid "Use Socks Proxy"
+msgstr ""
+
+#: ../data/ui/index.html:710
+msgid "'Socks Proxy Port'"
 msgstr ""
 
 #: ../data/ui/index.html:718
@@ -349,9 +453,8 @@ msgid "OK"
 msgstr "确定"
 
 #: ../data/ui/index.html:727
-#, fuzzy
 msgid "First time to Sign in with Twitter"
-msgstr "登录推特"
+msgstr ""
 
 #: ../data/ui/index.html:736
 msgid "Click me to continue"
@@ -377,9 +480,9 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ../data/ui/index.html:787
+#: ../data/ui/index.html:787 ../hotot/hotot.py:45
 msgid "Hotot"
-msgstr ""
+msgstr "热推"
 
 #: ../data/ui/index.html:788
 msgid "twitter"
@@ -514,32 +617,28 @@ msgid "Change avator"
 msgstr ""
 
 #: ../data/ui/index.html:912
-#, fuzzy
 msgid "Join"
-msgstr "加入："
+msgstr "加入"
 
 #: ../data/ui/index.html:914
 msgid "Tweets"
-msgstr ""
+msgstr "消息"
 
 #: ../data/ui/index.html:916
-#, fuzzy
 msgid "Tweets per Day"
-msgstr "每天发推："
+msgstr "每天发推"
 
 #: ../data/ui/index.html:922
 msgid "Favourites"
 msgstr ""
 
 #: ../data/ui/index.html:931
-#, fuzzy
 msgid "Name"
-msgstr "名字："
+msgstr "名字"
 
 #: ../data/ui/index.html:933
-#, fuzzy
 msgid "Location"
-msgstr "位置："
+msgstr "位置"
 
 #: ../data/ui/index.html:935
 msgid "Website"
@@ -550,7 +649,6 @@ msgid "Bio"
 msgstr ""
 
 #: ../data/ui/index.html:952
-#, fuzzy
 msgid "Extenstions"
 msgstr "扩展"
 
@@ -567,6 +665,25 @@ msgid "Search in Google"
 msgstr ""
 
 #: ../data/ui/index.html:1003
-#, fuzzy
 msgid "Search in Twitter"
-msgstr "登录推特"
+msgstr "从推特搜索"
+
+#: ../data/ui/index.html:636
+msgid "'Font Size"
+msgstr "'字号'"
+
+#: ../hotot/hotot.py:60 ../hotot/hotot.py:80
+msgid "_Resume/Active"
+msgstr "恢复(_R)"
+
+#: ../hotot/hotot.py:77
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../hotot/hotot.py:93
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../hotot/hotot.py:116
+msgid "What's happening?"
+msgstr "有什么消息么？"

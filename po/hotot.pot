@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 02:04+0800\n"
+"POT-Creation-Date: 2010-09-24 07:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,14 @@ msgstr ""
 msgid "Sign in to Hotot"
 msgstr ""
 
+#: ../data/ui/index.html:271
+msgid "Username:"
+msgstr ""
+
+#: ../data/ui/index.html:273
+msgid "Password:"
+msgstr ""
+
 #: ../data/ui/index.html:275 ../data/ui/index.html:588
 msgid "Remember Password"
 msgstr ""
@@ -88,6 +96,10 @@ msgstr ""
 
 #: ../data/ui/index.html:284
 msgid "'Sign in with Twitter'"
+msgstr ""
+
+#: ../data/ui/index.html:284 ../data/ui/index.html:607
+msgid "Sign in with Twitter"
 msgstr ""
 
 #: ../data/ui/index.html:292 ../data/ui/index.html:806
@@ -220,7 +232,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: ../data/ui/index.html:511 ../data/ui/index.html:945
+#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:125
 msgid "Update"
 msgstr ""
 
@@ -268,8 +280,28 @@ msgstr ""
 msgid "Regain Access Token"
 msgstr ""
 
+#: ../data/ui/index.html:614 ../data/ui/index.html:689
+msgid "* You MUST restart Hotot for the changes below to take effect."
+msgstr ""
+
+#: ../data/ui/index.html:616
+msgid "Summon Hotot (like: &lt;ALT&gt;C)"
+msgstr ""
+
+#: ../data/ui/index.html:618
+msgid "'Summon Hot Key'"
+msgstr ""
+
+#: ../data/ui/index.html:624
+msgid "- Font Settings -"
+msgstr ""
+
 #: ../data/ui/index.html:627
 msgid "Font Family"
+msgstr ""
+
+#: ../data/ui/index.html:629
+msgid "'Font Family'"
 msgstr ""
 
 #: ../data/ui/index.html:635
@@ -288,32 +320,88 @@ msgstr ""
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr ""
 
+#: ../data/ui/index.html:643
+msgid "- Display Settings -"
+msgstr ""
+
+#: ../data/ui/index.html:647
+msgid "'Use Native Input'"
+msgstr ""
+
 #: ../data/ui/index.html:648
 msgid "Use Native Input Dialog"
+msgstr ""
+
+#: ../data/ui/index.html:650
+msgid "'Use Native Notify'"
 msgstr ""
 
 #: ../data/ui/index.html:652
 msgid "Use Native Notify System"
 msgstr ""
 
+#: ../data/ui/index.html:657
+msgid "- API Settings -"
+msgstr ""
+
 #: ../data/ui/index.html:660
 msgid "API Base"
+msgstr ""
+
+#: ../data/ui/index.html:662
+msgid "'API Base'"
+msgstr ""
+
+#: ../data/ui/index.html:664
+msgid "'Use same Signing Api'"
 msgstr ""
 
 #: ../data/ui/index.html:667
 msgid "Signing API Base"
 msgstr ""
 
+#: ../data/ui/index.html:669
+msgid "'Signing API Base'"
+msgstr ""
+
 #: ../data/ui/index.html:671
 msgid "OAuth Base"
+msgstr ""
+
+#: ../data/ui/index.html:673
+msgid "'OAuth Base'"
+msgstr ""
+
+#: ../data/ui/index.html:675
+msgid "'Use same Signing OAuth Base'"
+msgstr ""
+
+#: ../data/ui/index.html:677
+msgid "Same signing OAuth base: "
 msgstr ""
 
 #: ../data/ui/index.html:678
 msgid "Signing OAuth Base"
 msgstr ""
 
+#: ../data/ui/index.html:680
+msgid "'Signing OAuth Base'"
+msgstr ""
+
 #: ../data/ui/index.html:682
 msgid "Search API Base"
+msgstr ""
+
+#: ../data/ui/index.html:684
+msgid "'Search API Base'"
+msgstr ""
+
+#: ../data/ui/index.html:687
+msgid "- Proxy Settings -"
+msgstr ""
+
+#: ../data/ui/index.html:692
+msgid "'Use HTTP Proxy'"
 msgstr ""
 
 #: ../data/ui/index.html:693
@@ -324,12 +412,28 @@ msgstr ""
 msgid "Host"
 msgstr ""
 
+#: ../data/ui/index.html:696
+msgid "'HTTP Proxy Host'"
+msgstr ""
+
 #: ../data/ui/index.html:697 ../data/ui/index.html:708
 msgid "Port"
 msgstr ""
 
+#: ../data/ui/index.html:699
+msgid "'HTTP Proxy Port'"
+msgstr ""
+
+#: ../data/ui/index.html:702
+msgid "'Use Socks Proxy'"
+msgstr ""
+
 #: ../data/ui/index.html:703
 msgid "Use Socks Proxy"
+msgstr ""
+
+#: ../data/ui/index.html:710
+msgid "'Socks Proxy Port'"
 msgstr ""
 
 #: ../data/ui/index.html:718
@@ -374,7 +478,7 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ../data/ui/index.html:787
+#: ../data/ui/index.html:787 ../hotot/hotot.py:45
 msgid "Hotot"
 msgstr ""
 
@@ -560,4 +664,24 @@ msgstr ""
 
 #: ../data/ui/index.html:1003
 msgid "Search in Twitter"
+msgstr ""
+
+#: ../data/ui/index.html:636
+msgid "'Font Size"
+msgstr ""
+
+#: ../hotot/hotot.py:60 ../hotot/hotot.py:80
+msgid "_Resume/Active"
+msgstr ""
+
+#: ../hotot/hotot.py:77
+msgid "_File"
+msgstr ""
+
+#: ../hotot/hotot.py:93
+msgid "_Help"
+msgstr ""
+
+#: ../hotot/hotot.py:116
+msgid "What's happening?"
 msgstr ""
