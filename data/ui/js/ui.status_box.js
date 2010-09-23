@@ -33,6 +33,7 @@ auto_complete_selected: '',
 
 is_detecting_name: false,
 
+short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa64b6d311ff19d48030d6c&format=json&longUrl=',
 // @BUG (webkit for linux)
 // keyup and keydown will fire twice in Chrome
 // keydown will fire twice in WebkitGtk.
@@ -57,6 +58,21 @@ function init () {
                 ui.StatusBox.update_status(status_text);
             }
             ui.StatusBox.current_mode = ui.StatusBox.MODE_TWEET;
+        }
+    });
+
+    $('#btn_shorturl').click(
+    function (event) {
+        var match = ui.Template.reg_link($('#tbox_status').val());
+        while (match != null) {
+            var url = match[0];
+            $.getJSON(ui.StatusBox.short_url_base + url, 
+            function (results) {
+                var text = $('#tbox_status').val();
+                text = text.replace(results.data.long_url,results.data.url);
+                $('#tbox_status').val(text);
+            })
+            match = ui.Template.reg_link($('#tbox_status').val());
         }
     });
 
