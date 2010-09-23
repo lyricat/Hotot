@@ -63,17 +63,36 @@ function init () {
 
     $('#btn_shorturl').click(
     function (event) {
+        var procs = [];
+        var urls = [];
+        var _requset = function (i) {
+            var req_url = ui.StatusBox.short_url_base + urls[i];
+            procs.push(function () {
+                lib.twitterapi.do_requset('GET',
+                req_url, 
+                {},
+                {},
+                [],
+                function (results) {
+                    var text = $('#tbox_status').val();
+                    text = text.replace(results.data.long_url, results.data.url);
+                    $('#tbox_status').val(text);
+                    $(window).dequeue('_short_url');
+                },
+                function () {}
+                );
+            });
+        };
         var match = ui.Template.reg_link($('#tbox_status').val());
         while (match != null) {
-            var url = match[0];
-            $.getJSON(ui.StatusBox.short_url_base + url, 
-            function (results) {
-                var text = $('#tbox_status').val();
-                text = text.replace(results.data.long_url,results.data.url);
-                $('#tbox_status').val(text);
-            })
+            urls.push(match[0]);
             match = ui.Template.reg_link($('#tbox_status').val());
         }
+        for (var i = 0; i < urls.length; i += 1) {
+            _requset(i);
+        }
+        $(window).queue('_short_url', procs);
+        $(window).dequeue('_short_url');
     });
 
     $('#btn_clear').click(
