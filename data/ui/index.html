@@ -611,95 +611,95 @@ jQuery(function($) {
                 <div id='prefs_system' class="dlg_tabs_page">
                     <h3>- Global Keybinding -</h3>
                     <div class="dlg_group">
-                    <p>* You MUST restart Hotot for the changes below to take effect.</p>
+                    <p>_("* You MUST restart Hotot for the changes below to take effect.")</p>
                     <p>
-                        <label>Summon Hotot (like: &lt;ALT&gt;C)</label>
+                        <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label>
                         <input id="tbox_prefs_shortcut_summon_hotot" 
-                             class="dark" title="Summon Hot Key"
+                             class="dark" title=_("'Summon Hot Key'")
                              type="text"/><br/>
                     </p>
                     </div>
                 </div>
                 <div id='prefs_appearance' class="dlg_tabs_page">
-                    <h3>- Font Settings -</h3>
+                    <h3>_("- Font Settings -")</h3>
                     <div class="dlg_group">
                     <p>
                         <label>_("Font Family")</label>
                         <select id="sel_prefs_font_family" class="dark"
-                            title="Font Family" style="width: 85px">
+                            title=_("'Font Family'") style="width: 85px">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select> 
                         <label>_("Font Size")</label>
-                        <input id="tbox_prefs_font_size" title="Font Size" 
+                        <input id="tbox_prefs_font_size" title=_("'Font Size"') 
                              class="dark" style="width:50px" type="text"/>
                         <label>_("px")</label><br/>
                         <label>_("Preview")</label>
                         <div id="prefs_font_preview">_("abcdefghijk ABCDEFGHIJK")</div>
                     </p>
                     </div>
-                    <h3>- Display Settings -</h3>
+                    <h3>_("- Display Settings -")</h3>
                     <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_use_native_input" class="dark"
-                            title="Use Native Input" type="checkbox"/>
+                            title=_("'Use Native Input'") type="checkbox"/>
                         <label>_("Use Native Input Dialog")</label><br/>
                         <input id="chk_prefs_use_native_notify" 
-                            class="dark" title="Use Native Notify"
+                            class="dark" title=_("'Use Native Notify'")
                             type="checkbox"/>
                         <label>_("Use Native Notify System")</label><br/>
                     </p>
                     </div>
                 </div><!-- END of prefs_appearance -->
                 <div id='prefs_networks' class="dlg_tabs_page"> 
-                    <h3>- API Settings -</h3>
+                    <h3>_("- API Settings -")</h3>
                     <div class="dlg_group">
                     <p>
                         <label>_("API Base")</label><br/>
                         <input id="tbox_prefs_api_base" class="dark"
-                            title="API Base" type="text"/><br/>
+                            title=_("'API Base'") type="text"/><br/>
                         <input id="chk_prefs_use_same_sign_api_base"
-                            title="Use same Signing Api" class="dark"
+                            title=_("'Use same Signing Api'") class="dark"
                             type="checkbox"/>
                         <label>Same signing API base: </label><br/>
                         <label>_("Signing API Base")</label>
                         <input id="tbox_prefs_sign_api_base" class="dark" 
-                            title="Signing API Base" type="text"/><br/>
+                            title=_("'Signing API Base'") type="text"/><br/>
 
                         <label>_("OAuth Base")</label><br/>
                         <input id="tbox_prefs_oauth_base" class="dark" 
-                            title="OAuth Base" type="text"/><br/>
+                            title=_("'OAuth Base'") type="text"/><br/>
                         <input id="chk_prefs_use_same_sign_oauth_base"
-                            title="Use same Signing OAuth Base" 
+                            title=_("'Use same Signing OAuth Base'") 
                             type="checkbox"/>
-                        <label>Same signing OAuth base: </label><br/>
+                        <label>_("Same signing OAuth base: ")</label><br/>
                         <label>_("Signing OAuth Base")</label>
                         <input id="tbox_prefs_sign_oauth_base" class="dark"
-                            title="Signing OAuth Base" type="text"/><br/>
+                            title=_("'Signing OAuth Base'") type="text"/><br/>
 
                         <label>_("Search API Base")</label><br/>
                         <input id="tbox_prefs_search_api_base" class="dark"
-                            title="Search API Base" type="text"/><br/>
+                            title=_("'Search API Base'") type="text"/><br/>
                     </p>
                     </div>
-                    <h3>- Proxy Settings -</h3>
+                    <h3>_("- Proxy Settings -")</h3>
                     <div class="dlg_group">
-                    <p>* You MUST restart Hotot for the changes below to take effect.</p>
+                    <p>_("* You MUST restart Hotot for the changes below to take effect.")</p>
                     <p>
                         <input id="chk_prefs_use_http_proxy"
-                            title="Use HTTP Proxy" type="checkbox"/>
+                            title=_("'Use HTTP Proxy'") type="checkbox"/>
                         <label>_("Use HTTP Proxy")</label><br/>
                         <label>_("Host")</label>
                         <input id="tbox_prefs_http_proxy_host" class="dark"
-                            title="HTTP Proxy Host" style="width: 150px;" type="text"/>
+                            title=_("'HTTP Proxy Host'") style="width: 150px;" type="text"/>
                         <label>_("Port")</label>
                         <input id="tbox_prefs_http_proxy_port" class="dark"
-                            title="HTTP Proxy Port" style="width: 50px;" type="text"/><br/>
+                            title=_("'HTTP Proxy Port'") style="width: 50px;" type="text"/><br/>
     
                         <input id="chk_prefs_use_socks_proxy"
-                            title="Use Socks Proxy" type="checkbox"/>
+                            title=_("'Use Socks Proxy'") type="checkbox"/>
                         <label>_("Use Socks Proxy")</label><br/>
                         <label>_("Host")</label>
                         <input id="tbox_prefs_socks_proxy_host" 
@@ -707,7 +707,7 @@ jQuery(function($) {
                             style="width: 150px;" type="text"/>
                         <label>_("Port")</label>
                         <input id="tbox_prefs_socks_proxy_port"  
-                            class="dark" title="Socks Proxy Port" 
+                            class="dark" title=_("'Socks Proxy Port'")
                             style="width: 50px;" type="text"/><br/>
                     </p>
                     </div>
