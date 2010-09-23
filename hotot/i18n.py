@@ -28,8 +28,7 @@ def get_i18n_json(domain=app, localedir=None, languages=None):
         return '{}'
 
 def trans_html(html):
-    html = re.sub('(_\("(.*)"\))', lambda m: _(m.group(2)), html)
-    html = re.sub("(_\('(.*)'\))", lambda m: _(m.group(2)), html)
+    html = re.sub('(_\("(.*?)"\))', lambda m: _(m.group(2)), html)
     return html
 
 if __name__=="__main__":
