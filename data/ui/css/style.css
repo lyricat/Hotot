@@ -310,6 +310,20 @@ pre {
     display: none;
 }
 
+#btn_shorturl {
+    background: transparent url(../imgs/ic16_link.png) no-repeat center center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px #666 solid;
+    text-decoration: none;
+}
+
+#btn_shorturl:hover {
+    background-color: #242424;
+}
+
 #status_len {
     padding: 2px 5px;
     background: #242424;
