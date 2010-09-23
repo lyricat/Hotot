@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-23 21:43+0800\n"
+"POT-Creation-Date: 2010-09-24 00:52+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -19,14 +19,205 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/ui/index.html:717
+#: ../data/ui/index.html:85 ../data/ui/index.html:86
+msgid "'What's happening?'"
+msgstr "有什么消息么？"
+
+#: ../data/ui/index.html:87
+msgid "'Click here to Compose a Meassage ...'"
+msgstr "'点击撰写新消息……'"
+
+#: ../data/ui/index.html:229
+msgid "'Reload timeline.'"
+msgstr "刷新时间线"
+
+#: ../data/ui/index.html:232
+#, fuzzy
+msgid "'Extensions ... '"
+msgstr "扩展"
+
+#: ../data/ui/index.html:235
+msgid "No Extension Icon"
+msgstr "没有扩展图标"
+
+#: ../data/ui/index.html:240
+msgid "'More ...'"
+msgstr "更多……"
+
+#: ../data/ui/index.html:243 ../data/ui/index.html:291
+msgid "Preferences"
+msgstr "首选项"
+
+#: ../data/ui/index.html:246 ../data/ui/index.html:290
+msgid "Extensions"
+msgstr "扩展"
+
+#: ../data/ui/index.html:249
+msgid "Help &amp; About"
+msgstr "帮助和关于"
+
+#: ../data/ui/index.html:252
+msgid "Sign out"
+msgstr "注销"
+
+#: ../data/ui/index.html:284
+msgid "'Sign in with Twitter'"
+msgstr "登录推特"
+
+#: ../data/ui/index.html:292
+msgid "Help"
+msgstr "帮助"
+
+#: ../data/ui/index.html:303 ../data/ui/index.html:310
+#: ../data/ui/index.html:323 ../data/ui/index.html:329
+#: ../data/ui/index.html:336 ../data/ui/index.html:350
+#: ../data/ui/index.html:356 ../data/ui/index.html:362
+#: ../data/ui/index.html:427 ../data/ui/index.html:452
+msgid "Load more"
+msgstr "显示更多"
+
+#: ../data/ui/index.html:316
+msgid "Inbox"
+msgstr "收件箱"
+
+#: ../data/ui/index.html:317
+msgid "Outbox"
+msgstr "发件箱"
+
+#: ../data/ui/index.html:342
+msgid "Retweeted By Others"
+msgstr "朋友的转推"
+
+#: ../data/ui/index.html:344
+msgid "My Tweets, Retweeted"
+msgstr "我被转推的消息"
+
+#: ../data/ui/index.html:369
+msgid "Look up: "
+msgstr "查看："
+
+#: ../data/ui/index.html:372
+msgid "GO"
+msgstr "去"
+
+#: ../data/ui/index.html:378
+msgid "Follow"
+msgstr "跟随"
+
+#: ../data/ui/index.html:382
+msgid "Block"
+msgstr "屏蔽"
+
+#: ../data/ui/index.html:386
+msgid "Unblock"
+msgstr "解除屏蔽"
+
+#: ../data/ui/index.html:394
+msgid "Name: "
+msgstr "名字："
+
+#: ../data/ui/index.html:398
+msgid "Tweets: "
+msgstr ""
+
+#: ../data/ui/index.html:399
+msgid "Tweets per Day: "
+msgstr "每天发推："
+
+#: ../data/ui/index.html:403
+msgid "Web: "
+msgstr "网站："
+
+#: ../data/ui/index.html:406
+msgid "Location: "
+msgstr "位置："
+
+#: ../data/ui/index.html:407
+msgid "Join: "
+msgstr "加入："
+
+#: ../data/ui/index.html:408
+msgid "Followers: "
+msgstr "关注："
+
+#: ../data/ui/index.html:409
+msgid "Friends: "
+msgstr "朋友："
+
+#: ../data/ui/index.html:417
+msgid " has protected his/her tweets."
+msgstr " 给她/他的消息设置了隐私保护"
+
+#: ../data/ui/index.html:420
+msgid ""
+"You need to go to twitter.com to send a request before you can start "
+"following this person..."
+msgstr "给她/他发送好友验证请求"
+
+#: ../data/ui/index.html:423
+msgid "Send Request"
+msgstr "发送请求"
+
+#: ../data/ui/index.html:433
+msgid "Search for: "
+msgstr "搜索："
+
+#: ../data/ui/index.html:442
+msgid "Your search - "
+msgstr "您的搜索 - "
+
+#: ../data/ui/index.html:442
+msgid " - did not match any result."
+msgstr " - 没有结果"
+
+#: ../data/ui/index.html:445
+msgid "Suggestions:"
+msgstr "建议"
+
+#: ../data/ui/index.html:446
+msgid "- Make sure all words are spelled correctly."
+msgstr ""
+
+#: ../data/ui/index.html:447
+msgid "- Try different keywords."
+msgstr ""
+
+#: ../data/ui/index.html:448
+msgid "- Try more general keywords."
+msgstr ""
+
+#: ../data/ui/index.html:510
+msgid "Clear"
+msgstr ""
+
+#: ../data/ui/index.html:511
+msgid "Update"
+msgstr ""
+
+#: ../data/ui/index.html:513
+msgid "Press Ctrl+Enter to Update"
+msgstr ""
+
+#: ../data/ui/index.html:519
+msgid " Notification here"
+msgstr ""
+
+#: ../data/ui/index.html:640
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr "ABCD 测试字体"
+
+#: ../data/ui/index.html:718
 msgid "Restore Defaults"
 msgstr "还原默认设置"
 
-#: ../data/ui/index.html:718
+#: ../data/ui/index.html:719
 msgid "Cancel"
 msgstr "取消"
 
-#: ../data/ui/index.html:719
+#: ../data/ui/index.html:720
 msgid "OK"
 msgstr "确定"
+
+#: ../data/ui/index.html:343
+msgid "Retweeted By Me</a></li>"
+msgstr ""

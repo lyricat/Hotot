@@ -70,7 +70,7 @@ var layout_opts = {
 
 function update_tweet_block_width() {
     globals.tweet_block_width = $(window).width();
-    $('.tweet_block').width(globals.tweet_block_width);
+    $(".tweet_block").width(globals.tweet_block_width);
 }
 
 function hotot_action(uri) {
@@ -82,9 +82,9 @@ function navigate_action(uri) {
 }
 
 var globals = {
-    status_hint: 'What\'s happening?',
-    tweet_hint: 'What\'s happening?',
-    dm_hint: 'Click here to Compose a Meassage ...',
+    status_hint: _("'What\'s happening?'"),
+    tweet_hint: _("'What\'s happening?'"),
+    dm_hint: _("'Click here to Compose a Meassage ...'"),
     tweet_block_width: 600,
     max_status_len: 140,
     trim_bound: 200,
@@ -96,9 +96,9 @@ var globals = {
 
 jQuery(function($) {
 
-    globals.layout = $('#container').layout(layout_opts);
-    globals.layout.close('west');
-    globals.layout.close('south');
+    globals.layout = $("#container").layout(layout_opts);
+    globals.layout.close("west");
+    globals.layout.close("south");
 
     $(document).keyup(
     function (event) {
@@ -110,7 +110,7 @@ jQuery(function($) {
         }
         if (event.ctrlKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
-            hotot_action('system/quit');
+            hotot_action("system/quit");
 
         } else {
             if (globals.focus_input || !globals.in_main_view)
@@ -126,7 +126,7 @@ jQuery(function($) {
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
-                    ui.Notification.set('Loading Tweets...').show(-1);
+                    ui.Notification.set("Loading Tweets...").show(-1);
                     ui.Main.load_tweets();    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
@@ -136,19 +136,19 @@ jQuery(function($) {
                     ui.Slider.slide_to_next();
                 } else if (event.keyCode == 75) {
                     // 'k' to move to prev tweet
-                    ui.Main.move_to_tweet('prev');
+                    ui.Main.move_to_tweet("prev");
                 } else if (event.keyCode == 74) {
                     // 'j' to move to next tweet
-                    ui.Main.move_to_tweet('next');
+                    ui.Main.move_to_tweet("next");
                 } else if (event.keyCode == 67) {
                     // 'c' to compose
                     ui.StatusBox.open();
                 } else if (event.keyCode == 84) {
                     // 't' to move to top
-                    ui.Main.move_to_tweet('top');
+                    ui.Main.move_to_tweet("top");
                 } else if (event.keyCode == 66) {
                     // 'b' to move to bottom
-                    ui.Main.move_to_tweet('bottom');
+                    ui.Main.move_to_tweet("bottom");
                 } else if (event.keyCode == 65) {
                     // 'a' to open action menu
                     ui.ActionMenu.show();
@@ -169,9 +169,9 @@ jQuery(function($) {
         }
     });
 
-    $('input').focus(function () {globals.focus_input = true;})
+    $("input").focus(function () {globals.focus_input = true;})
         .blur(function () {globals.focus_input = false;});
-    $('textarea').focus(function () {globals.focus_input = true;})
+    $("textarea").focus(function () {globals.focus_input = true;})
         .blur(function () {globals.focus_input = false;});
 
     $(window).resize(
@@ -180,12 +180,12 @@ jQuery(function($) {
         ui.Slider.slide_to(ui.Slider.current);
     });
 
-    $('#count').hover(
+    $("#count").hover(
     function () {
-        $('#count > ul').show();
+        $("#count > ul").show();
     },
     function () {
-        $('#count > ul').hide();
+        $("#count > ul").hide();
     });
     utility.Console.init();
     daemon.Updater.init();
@@ -226,30 +226,30 @@ jQuery(function($) {
     <div id="version"></div>
     <ul id="ctrl_panel">
         <li>
-            <a id="btn_reload" class="panel_btn" href="javascript:void(0);" title="Reload timeline."></a>
+            <a id="btn_reload" class="panel_btn" href="javascript:void(0);" title=_("'Reload timeline.'")></a>
         </li>
         <li id="btn_exts_menu_wrap">
-            <a id="btn_exts_menu" class="panel_btn" href="javascript:void(0);" title="Extensions ... "></a>
+            <a id="btn_exts_menu" class="panel_btn" href="javascript:void(0);" title=_("'Extensions ... '")></a>
             <ul id="exts_menu" class="hotot_menu">
                 <li id="exts_menu_empty_hint">
-                    <a href="javascript:void(0);">No Extension Icon</a>
+                    <a href="javascript:void(0);">_("No Extension Icon")</a>
                 </li>
             </ul>
         </li>
         <li id="btn_hotot_wrap">
-            <a id="btn_hotot" class="panel_btn" href="javascript:void(0);" title="More ..."></a>
+            <a id="btn_hotot" class="panel_btn" href="javascript:void(0);" title=_("'More ...'")></a>
             <ul id="hotot_menu" class="hotot_menu">
             	<li>
-            		<a id="btn_prefs" href="javascript:void(0);">Preferences</a>
+            		<a id="btn_prefs" href="javascript:void(0);">_("Preferences")</a>
             	</li>
                 <li>
-            		<a id="btn_exts" href="javascript:void(0);">Extensions</a>
+            		<a id="btn_exts" href="javascript:void(0);">_("Extensions")</a>
             	</li>
             	<li>
-            		<a id="btn_about" href="javascript:void(0);">Help &amp; About</a>
+            		<a id="btn_about" href="javascript:void(0);">_("Help &amp; About")</a>
             	</li>
                 <li>
-            		<a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
+            		<a id="btn_sign_out" href="javascript:void(0);">_("Sign out")</a>
             	</li>
 
             </ul>
@@ -281,15 +281,15 @@ jQuery(function($) {
         <h3>Or use Twitter OAuth</h3>
         <div class="dlg_group">
         <p>
-            <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title="Sign in with Twitter"></a>
+            <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title=_("'Sign in with Twitter'")></a>
         </p>
         </div>
         </div>
         <div id="sign_in_block_bottom">
             <p>
-            <a id="btn_welcome_exts" class="ic_exts" href="javascript:void(0)">Extensions</a> 
-            <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">Preferences</a> 
-            <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">Help</a>
+            <a id="btn_welcome_exts" class="ic_exts" href="javascript:void(0)">_("Extensions")</a> 
+            <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">_("Preferences")</a> 
+            <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">_("Help")</a>
             </p>
         </div>
     </div>
@@ -300,90 +300,90 @@ jQuery(function($) {
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
         </div>
     </div>
     <div id="mentions_tweet_block" class="tweet_block">
         <ul>
         </ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
         </div>
     </div>
     <div id="direct_messages_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">Inbox</a></li>
-                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">Outbox</a></li>
+                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">_("Inbox")</a></li>
+                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">_("Outbox")</a></li>
             </ol>
         </div>
         <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
             </div>
         </div>
         <div id="direct_messages_outbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
             </div>
         </div>
     </div>
     <div id="favorites_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
         </div>
     </div>
     <div id="retweets_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">Retweeted By Others</a></li>
-                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">Retweeted By Me</a></li>
-                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">My Tweets, Retweeted</a></li>
+                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">_("Retweeted By Others")</a></li>
+                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">_("Retweeted By Me</a></li>
+                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">_("My Tweets, Retweeted")</a></li>
             </ol>
         </div>
         <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
             </div>
         </div>
         <div id="retweeted_to_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
             </div>
         </div>
         <div id="retweets_of_me_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
             </div>
         </div>
     </div>
     <div id="people_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="people_entry">
-                <label>Look up: </label>
+                <label>_("Look up: ")</label>
                 <input id="tbox_people_entry" type="text" value=""/>
                 <a id="btn_people_entry" href="javascript:void(0);"
-                    class="button dark">GO</a>
+                    class="button dark">_("GO")</a>
             </div>
             <div id="people_vcard" class="vcard">
                 <ul class="vcard_ctrl">
                     <li>
                         <a class="vcard_follow vcard_ctrl_btn"
-                            href="javascript:void(0);">Follow</a>
+                            href="javascript:void(0);">_("Follow")</a>
                     </li>
                     <li>
                         <a class="vcard_block vcard_ctrl_btn"
-                            href="javascript:void(0);">Block</a>
+                            href="javascript:void(0);">_("Block")</a>
                     </li>
                     <li>
                         <a class="vcard_unblock vcard_ctrl_btn"
-                            href="javascript:void(0);">Unblock</a>
+                            href="javascript:void(0);">_("Unblock")</a>
                     </li>
 
                 </ul>
@@ -391,22 +391,22 @@ jQuery(function($) {
                     <img class="profile_img" src="" onerror="void(0);"/>
                 </div>
                 <ol class="vcard_info">
-                    <li>Name: 
+                    <li>_("Name: ")
                         <a class="screen_name" href="#"></a> 
                         (<span class="name"></span>) 
                     </li>
-                    <li>Tweets: <span class="tweet_cnt"></span>
-                    &bull; Tweets per Day:
+                    <li>_("Tweets: ")<span class="tweet_cnt"></span>
+                    &bull; _("Tweets per Day: ")
                     <span class="tweet_per_day_cnt"></span>
                     </li>
                     <li>Bio: <span class="bio"></span></li>
-                    <li>Web: 
+                    <li>_("Web: ")
                         <a class="web" href="#" class="link"></a>
                     </li>
-                    <li>Location: <span class="location"></span></li>
-                    <li>Join: <span class="join"></span></li>
-                    <li>Followers: <span class="follower_cnt"></span>
-                        &bull; Friends: <span class="friend_cnt"></span>
+                    <li>_("Location: ")<span class="location"></span></li>
+                    <li>_("Join: ")<span class="join"></span></li>
+                    <li>_("Followers: ")<span class="follower_cnt"></span>
+                        &bull; _("Friends: ")<span class="friend_cnt"></span>
                     </li>
                 </ol>
             </div>
@@ -414,23 +414,23 @@ jQuery(function($) {
         <ul></ul>
         <div id="people_request_hint">
             <h1>
-            @<label id="request_screen_name"></label> has protected his/her tweets.
+            @<label id="request_screen_name"></label>_(" has protected his/her tweets.")
             </h1>
             <p>
-            You need to go to twitter.com to send a request before you can start following this person...
+            _("You need to go to twitter.com to send a request before you can start following this person...")
             </p>
             <div style="text-align:center;">
-            <a id="btn_people_request" class="button" href="#"/>Send Request</a>
+            <a id="btn_people_request" class="button" href="#"/>_("Send Request")</a>
             </div>
         </div>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
         </div>
     </div>
     <div id="search_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="search_entry">
-                <label>Search for: </label>
+                <label>_("Search for: ")</label>
                 <input id="tbox_search_entry" type="text" value=""/>
                 <a id="btn_search_entry" href="javascript:void(0);"
                     class="button dark">GO</a>
@@ -439,17 +439,17 @@ jQuery(function($) {
         <ul></ul>
         <div id="search_no_result_hint"> <!-- @TODO -->
             <p>
-            Your search - <label id="search_query_keywords"></label> - did not match any result.
+            _("Your search - ")<label id="search_query_keywords"></label>_(" - did not match any result.")
             </p>
             <p>
-            Suggestions:<br/>
-             - Make sure all words are spelled correctly.<br/>
-             - Try different keywords.<br/>
-             - Try more general keywords.<br/>
+            _("Suggestions:")<br/>
+             _("- Make sure all words are spelled correctly.")<br/>
+             _("- Try different keywords.")<br/>
+             _("- Try more general keywords.")<br/>
             </p>
         </div>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">Load more</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
         </div>
     </div>
 
@@ -507,16 +507,16 @@ jQuery(function($) {
     <div id="status_ctrl">
         <label id="status_len"></label>
         <a id="btn_shorturl" href="javascript:void(0);">&nbsp;</a>
-        <a id="btn_clear" class="button dark" href="javascript:void(0);">Clear</a>
-        <a id="btn_update" class="button default" href="javascript:void(0);">Update</a>
+        <a id="btn_clear" class="button dark" href="javascript:void(0);">_("Clear")</a>
+        <a id="btn_update" class="button default" href="javascript:void(0);">_("Update")</a>
         <span class="clear"></span>
-        <div><label id="status_tips">Press Ctrl+Enter to Update</label></div>
+        <div><label id="status_tips">_("Press Ctrl+Enter to Update")</label></div>
     </div>
     <ul id="screen_name_auto_complete"></ul>
 </section> <!-- status_box -->
 
 <section id="notification_area">
-<span id="notification"> Notification here</span>
+<span id="notification">_(" Notification here")</span>
 </section>
 
 <section id="count">
@@ -637,7 +637,7 @@ jQuery(function($) {
                              class="dark" style="width:50px" type="text"/>
                         <label>px</label><br/>
                         <label>Preview</label>
-                        <div id="prefs_font_preview">abcdefghijk ABCDEFGHIJK</div>
+                        <div id="prefs_font_preview">_("abcdefghijk ABCDEFGHIJK")</div>
                     </p>
                     </div>
                     <h3>- Display Settings -</h3>
