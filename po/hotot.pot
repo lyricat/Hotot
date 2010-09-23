@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 01:39+0800\n"
+"POT-Creation-Date: 2010-09-24 02:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/ui/index.html:5
+msgid "Home | Hotot"
+msgstr ""
 
 #: ../data/ui/index.html:85 ../data/ui/index.html:86
 msgid "'What's happening?'"
@@ -348,6 +352,10 @@ msgstr ""
 
 #: ../data/ui/index.html:736
 msgid "Click me to continue"
+msgstr ""
+
+#: ../data/ui/index.html:756
+msgid "About &amp; Help"
 msgstr ""
 
 #: ../data/ui/index.html:765
