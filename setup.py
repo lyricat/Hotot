@@ -50,6 +50,7 @@ Features include:
             , glob('data/ext/org.hotot.imageupload/*')),
       ],
       cmdclass = { "build" :  build_extra.build_extra,
+                   "build_i18n" :  build_i18n.build_i18n,
                  }
       )
 

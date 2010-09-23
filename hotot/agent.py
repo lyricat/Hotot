@@ -16,6 +16,9 @@ import hotot
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
 
+try: import i18n
+except: from gettext import gettext as _
+
 webv = None 
 app = None
 http_code_msg_table = {

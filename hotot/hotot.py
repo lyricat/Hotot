@@ -23,6 +23,9 @@ except ImportError:
 else:
     HAS_INDICATOR = True
 
+try: import i18n
+except: from gettext import gettext as _
+
 class MainWindow:
     def __init__(self):
         self.build_gui()
@@ -182,8 +185,11 @@ class MainWindow:
         pass
 
 def main():
+    global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
+    if config.get('no_use_indicator'):
+        HAS_INDICATOR = False
     try:
         import dl
         libc = dl.open('/lib/libc.so.6')

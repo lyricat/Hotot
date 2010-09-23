@@ -3,9 +3,9 @@ ext.HototGMap = {
 
 id: 'org.hotot.gmap',
 
-name: 'Hotot GMap',
+name: _('Hotot GMap'),
 
-description: 'View geolocation information of tweets.',
+description: _('View geolocation information of tweets.'),
 
 version: '1.0',
 
