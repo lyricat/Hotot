@@ -186,8 +186,9 @@ function init () {
             return false;
         } 
         ui.StatusBox.auto_complete_hlight_idx = 0;
-
         ui.StatusBox.auto_complete(event);
+
+        ui.StatusBox.lazy_close()
         ui.StatusBox.update_status_len();
     });
     
