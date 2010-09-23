@@ -883,11 +883,12 @@ input[type="button"]:focus, .button:focus {
 }
 
 #btn_oauth_sign_in, #btn_regain_token {
-    background: url(../imgs/signin_twitter.png) no-repeat;
+    background: url(../imgs/signin_twitter_without_text.png) no-repeat;
     width: 150px;
     padding: 0;
     height: 22px;
     border: 0 !important;
+    color: #37799C;
 }
 
 
