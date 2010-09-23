@@ -252,6 +252,16 @@ def push_prefs():
     font_family_list = [ff.get_name()
         for ff in gtk.gdk.pango_context_get().list_families()]
     font_family_list.sort()
+    # raise CJK fontnames
+    for font_family in font_family_list:
+        try:
+            font_family.decode('ascii')
+            pass
+        except:
+            font_family_list.remove(font_family)
+            font_family_list.insert(0, font_family)
+            pass
+        pass
     font_family_used = config.font_family_used
     if font_family_used not in font_family_list:
         font_family_list.insert(0, font_family_used)
