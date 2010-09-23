@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 01:05+0800\n"
+"POT-Creation-Date: 2010-09-24 01:17+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -45,6 +45,7 @@ msgid "'More ...'"
 msgstr "更多……"
 
 #: ../data/ui/index.html:243 ../data/ui/index.html:291
+#: ../data/ui/index.html:554
 msgid "Preferences"
 msgstr "首选项"
 
@@ -60,11 +61,37 @@ msgstr "帮助和关于"
 msgid "Sign out"
 msgstr "注销"
 
+#: ../data/ui/index.html:264
+msgid "Hotot "
+msgstr ""
+
+#: ../data/ui/index.html:266
+msgid "Greeting!"
+msgstr ""
+
+#: ../data/ui/index.html:268
+#, fuzzy
+msgid "Sign in to Hotot"
+msgstr "登录推特"
+
+#: ../data/ui/index.html:275 ../data/ui/index.html:588
+msgid "Remember Password"
+msgstr ""
+
+#: ../data/ui/index.html:277
+#, fuzzy
+msgid "Sign In"
+msgstr "注销"
+
+#: ../data/ui/index.html:281
+msgid "Or use Twitter OAuth"
+msgstr ""
+
 #: ../data/ui/index.html:284
 msgid "'Sign in with Twitter'"
 msgstr "登录推特"
 
-#: ../data/ui/index.html:292
+#: ../data/ui/index.html:292 ../data/ui/index.html:806
 msgid "Help"
 msgstr "帮助"
 
@@ -100,7 +127,7 @@ msgstr "我被转推的消息"
 msgid "Look up: "
 msgstr "查看："
 
-#: ../data/ui/index.html:372
+#: ../data/ui/index.html:372 ../data/ui/index.html:436
 msgid "GO"
 msgstr "去"
 
@@ -194,7 +221,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: ../data/ui/index.html:511
+#: ../data/ui/index.html:511 ../data/ui/index.html:945
 msgid "Update"
 msgstr ""
 
@@ -206,18 +233,340 @@ msgstr ""
 msgid " Notification here"
 msgstr ""
 
+#: ../data/ui/index.html:526
+msgid "Home"
+msgstr ""
+
+#: ../data/ui/index.html:532
+msgid "DM"
+msgstr ""
+
+#: ../data/ui/index.html:543
+msgid "Console"
+msgstr ""
+
+#: ../data/ui/index.html:563
+msgid "Account"
+msgstr ""
+
+#: ../data/ui/index.html:568
+msgid "System"
+msgstr ""
+
+#: ../data/ui/index.html:573
+msgid "Appearance"
+msgstr ""
+
+#: ../data/ui/index.html:578
+msgid "Networks"
+msgstr ""
+
+#: ../data/ui/index.html:596
+msgid "Consumer Key"
+msgstr ""
+
+#: ../data/ui/index.html:599
+msgid "Consumer Secret"
+msgstr ""
+
+#: ../data/ui/index.html:604
+msgid "Regain Access Token"
+msgstr ""
+
+#: ../data/ui/index.html:627
+msgid "Font Family"
+msgstr ""
+
+#: ../data/ui/index.html:635
+msgid "Font Size"
+msgstr ""
+
+#: ../data/ui/index.html:638
+msgid "px"
+msgstr ""
+
+#: ../data/ui/index.html:639
+msgid "Preview"
+msgstr ""
+
 #: ../data/ui/index.html:640
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "ABCD 测试字体"
+
+#: ../data/ui/index.html:648
+msgid "Use Native Input Dialog"
+msgstr ""
+
+#: ../data/ui/index.html:652
+msgid "Use Native Notify System"
+msgstr ""
+
+#: ../data/ui/index.html:660
+msgid "API Base"
+msgstr ""
+
+#: ../data/ui/index.html:667
+msgid "Signing API Base"
+msgstr ""
+
+#: ../data/ui/index.html:671
+msgid "OAuth Base"
+msgstr ""
+
+#: ../data/ui/index.html:678
+msgid "Signing OAuth Base"
+msgstr ""
+
+#: ../data/ui/index.html:682
+msgid "Search API Base"
+msgstr ""
+
+#: ../data/ui/index.html:693
+msgid "Use HTTP Proxy"
+msgstr ""
+
+#: ../data/ui/index.html:694 ../data/ui/index.html:704
+msgid "Host"
+msgstr ""
+
+#: ../data/ui/index.html:697 ../data/ui/index.html:708
+msgid "Port"
+msgstr ""
+
+#: ../data/ui/index.html:703
+msgid "Use Socks Proxy"
+msgstr ""
 
 #: ../data/ui/index.html:718
 msgid "Restore Defaults"
 msgstr "还原默认设置"
 
-#: ../data/ui/index.html:719
+#: ../data/ui/index.html:719 ../data/ui/index.html:748
+#: ../data/ui/index.html:944
 msgid "Cancel"
 msgstr "取消"
 
-#: ../data/ui/index.html:720
+#: ../data/ui/index.html:720 ../data/ui/index.html:749
+#: ../data/ui/index.html:890 ../data/ui/index.html:989
 msgid "OK"
 msgstr "确定"
+
+#: ../data/ui/index.html:727
+#, fuzzy
+msgid "First time to Sign in with Twitter"
+msgstr "登录推特"
+
+#: ../data/ui/index.html:736
+msgid "Click me to continue"
+msgstr ""
+
+#: ../data/ui/index.html:765
+msgid "About"
+msgstr ""
+
+#: ../data/ui/index.html:770
+msgid "Keyborad"
+msgstr ""
+
+#: ../data/ui/index.html:775
+msgid "Credits"
+msgstr ""
+
+#: ../data/ui/index.html:780
+msgid "License"
+msgstr ""
+
+#: ../data/ui/index.html:787
+msgid "Hotot"
+msgstr ""
+
+#: ../data/ui/index.html:788
+msgid "twitter"
+msgstr ""
+
+#: ../data/ui/index.html:803
+#, fuzzy
+msgid "Action"
+msgstr "位置："
+
+#: ../data/ui/index.html:803
+msgid "Shortcut"
+msgstr ""
+
+#: ../data/ui/index.html:804
+msgid "Global"
+msgstr ""
+
+#: ../data/ui/index.html:805
+msgid "Quit Hotot"
+msgstr ""
+
+#: ../data/ui/index.html:808
+msgid "Tweet List"
+msgstr ""
+
+#: ../data/ui/index.html:809
+msgid "Reload"
+msgstr ""
+
+#: ../data/ui/index.html:810
+msgid "Slide to prev page"
+msgstr ""
+
+#: ../data/ui/index.html:811
+msgid "Slide to next page"
+msgstr ""
+
+#: ../data/ui/index.html:812
+msgid "Move to prev tweet"
+msgstr ""
+
+#: ../data/ui/index.html:813
+msgid "Move to next tweet"
+msgstr ""
+
+#: ../data/ui/index.html:814
+msgid "Move to top"
+msgstr ""
+
+#: ../data/ui/index.html:815
+msgid "Move to bottom"
+msgstr ""
+
+#: ../data/ui/index.html:816
+msgid "Toggle toolbar"
+msgstr ""
+
+#: ../data/ui/index.html:817
+msgid "Toggle nav tabs"
+msgstr ""
+
+#: ../data/ui/index.html:818
+msgid "Enter compose mode"
+msgstr ""
+
+#: ../data/ui/index.html:819
+msgid "Enter action mode"
+msgstr ""
+
+#: ../data/ui/index.html:820
+msgid "Enter filter mode"
+msgstr ""
+
+#: ../data/ui/index.html:821
+msgid "Compose Mode"
+msgstr ""
+
+#: ../data/ui/index.html:822
+msgid "Exit compose mode"
+msgstr ""
+
+#: ../data/ui/index.html:823
+msgid "Action Mode"
+msgstr ""
+
+#: ../data/ui/index.html:824
+msgid "Prev action"
+msgstr ""
+
+#: ../data/ui/index.html:825
+msgid "Next action"
+msgstr ""
+
+#: ../data/ui/index.html:826
+msgid "Trigger action"
+msgstr ""
+
+#: ../data/ui/index.html:827
+msgid "Exit action mode"
+msgstr ""
+
+#: ../data/ui/index.html:828
+msgid "Filter Mode"
+msgstr ""
+
+#: ../data/ui/index.html:829
+msgid "Apply keywords"
+msgstr ""
+
+#: ../data/ui/index.html:830
+msgid "Exit filter mode"
+msgstr ""
+
+#: ../data/ui/index.html:841
+msgid "Written by"
+msgstr ""
+
+#: ../data/ui/index.html:853
+msgid "Artwork by"
+msgstr ""
+
+#: ../data/ui/index.html:859
+msgid "Document by"
+msgstr ""
+
+#: ../data/ui/index.html:897
+msgid "Profile"
+msgstr ""
+
+#: ../data/ui/index.html:906
+msgid "Change avator"
+msgstr ""
+
+#: ../data/ui/index.html:912
+#, fuzzy
+msgid "Join"
+msgstr "加入："
+
+#: ../data/ui/index.html:914
+msgid "Tweets"
+msgstr ""
+
+#: ../data/ui/index.html:916
+#, fuzzy
+msgid "Tweets per Day"
+msgstr "每天发推："
+
+#: ../data/ui/index.html:922
+msgid "Favourites"
+msgstr ""
+
+#: ../data/ui/index.html:931
+#, fuzzy
+msgid "Name"
+msgstr "名字："
+
+#: ../data/ui/index.html:933
+#, fuzzy
+msgid "Location"
+msgstr "位置："
+
+#: ../data/ui/index.html:935
+msgid "Website"
+msgstr ""
+
+#: ../data/ui/index.html:937
+msgid "Bio"
+msgstr ""
+
+#: ../data/ui/index.html:952
+#, fuzzy
+msgid "Extenstions"
+msgstr "扩展"
+
+#: ../data/ui/index.html:962
+msgid "Close"
+msgstr ""
+
+#: ../data/ui/index.html:981
+msgid "Message"
+msgstr ""
+
+#: ../data/ui/index.html:1002
+msgid "Search in Google"
+msgstr ""
+
+#: ../data/ui/index.html:1003
+#, fuzzy
+msgid "Search in Twitter"
+msgstr "登录推特"
