@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 00:52+0800\n"
+"POT-Creation-Date: 2010-09-24 01:05+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -87,6 +87,10 @@ msgstr "发件箱"
 #: ../data/ui/index.html:342
 msgid "Retweeted By Others"
 msgstr "朋友的转推"
+
+#: ../data/ui/index.html:343
+msgid "Retweeted By Me"
+msgstr "我的转推"
 
 #: ../data/ui/index.html:344
 msgid "My Tweets, Retweeted"
@@ -217,7 +221,3 @@ msgstr "取消"
 #: ../data/ui/index.html:720
 msgid "OK"
 msgstr "确定"
-
-#: ../data/ui/index.html:343
-msgid "Retweeted By Me</a></li>"
-msgstr ""
