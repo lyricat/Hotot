@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Shellex Wei, 2010
+# Copyright (C) Jiahua Huang, 2010
+# This file is distributed under the same license as the PACKAGE package.
+# Shellex Wei <5h3ll3x@gmail.com>
+# Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotot 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-23 21:43+0800\n"
+"PO-Revision-Date: 2010-09-23 21:43+0800\n"
+"Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
+"Language-Team: Chinese/Simplified\n"
+"Language: Chinese/Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/ui/index.html:717
+msgid "Restore Defaults"
+msgstr "还原默认设置"
+
+#: ../data/ui/index.html:718
+msgid "Cancel"
+msgstr "取消"
+
+#: ../data/ui/index.html:719
+msgid "OK"
+msgstr "确定"
