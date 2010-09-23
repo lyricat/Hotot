@@ -57,20 +57,51 @@ class MainWindow:
         self.window.add(vbox)
 
         self.menu_tray = gtk.Menu()
-        mitem_resume = gtk.MenuItem('Resume/Active')
+        mitem_resume = gtk.MenuItem(_("_Resume/Active"))
         mitem_resume.connect('activate', self.on_mitem_resume_activate);
         self.menu_tray.append(mitem_resume)
-        mitem_prefs = gtk.MenuItem('Preferences')
+        mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
         self.menu_tray.append(mitem_prefs)
-        mitem_about = gtk.MenuItem('About')
+        mitem_about = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
         mitem_about.connect('activate', self.on_mitem_about_activate);
         self.menu_tray.append(mitem_about)
-        mitem_quit = gtk.MenuItem('Quit')
+        mitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
         mitem_quit.connect('activate', self.on_mitem_quit_activate);
         self.menu_tray.append(mitem_quit)
 
         self.menu_tray.show_all()
+
+        ## support for ubuntu unity indicator-appmenu
+        menubar = gtk.MenuBar()
+        menuitem_file = gtk.MenuItem(_("_File"))
+        menuitem_file_menu = gtk.Menu()
+
+        mitem_resume = gtk.MenuItem(_("_Resume/Active"))
+        mitem_resume.connect('activate', self.on_mitem_resume_activate);
+        menuitem_file_menu.append(mitem_resume)
+        mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
+        mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
+        menuitem_file_menu.append(mitem_prefs)
+
+        menuitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+        menuitem_quit.connect("activate", self.quit)
+        menuitem_file_menu.append(menuitem_quit)
+        menuitem_file.set_submenu(menuitem_file_menu)
+        menubar.append(menuitem_file)
+
+        menuitem_help = gtk.MenuItem(_("_Help"))
+        menuitem_help_menu = gtk.Menu()
+        menuitem_about = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
+        menuitem_about.connect("activate", self.on_mitem_about_activate)
+        menuitem_help_menu.append(menuitem_about)
+        menuitem_help.set_submenu(menuitem_help_menu)
+        menubar.append(menuitem_help)
+
+        menubar.set_size_request(0, 0)
+        menubar.show_all()
+        vbox.pack_start(menubar, expand=0, fill=0, padding=0)
+        ##
 
         self.window.show()
         self.window.connect("delete-event", gtk.Widget.hide_on_delete)
