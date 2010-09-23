@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 01:17+0800\n"
+"POT-Creation-Date: 2010-09-24 01:39+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -222,10 +222,6 @@ msgstr ""
 
 #: ../data/ui/index.html:513
 msgid "Press Ctrl+Enter to Update"
-msgstr ""
-
-#: ../data/ui/index.html:519
-msgid " Notification here"
 msgstr ""
 
 #: ../data/ui/index.html:526

@@ -63,29 +63,27 @@ msgstr "注销"
 
 #: ../data/ui/index.html:264
 msgid "Hotot "
-msgstr ""
+msgstr "热兔"
 
 #: ../data/ui/index.html:266
 msgid "Greeting!"
-msgstr ""
+msgstr "向丽萨殿下致礼！"
 
 #: ../data/ui/index.html:268
-#, fuzzy
 msgid "Sign in to Hotot"
-msgstr "登录推特"
+msgstr ""
 
 #: ../data/ui/index.html:275 ../data/ui/index.html:588
 msgid "Remember Password"
-msgstr ""
+msgstr "记住密码"
 
 #: ../data/ui/index.html:277
-#, fuzzy
 msgid "Sign In"
-msgstr "注销"
+msgstr "登录"
 
 #: ../data/ui/index.html:281
 msgid "Or use Twitter OAuth"
-msgstr ""
+msgstr "或使用推特 OAuth 验证"
 
 #: ../data/ui/index.html:284
 msgid "'Sign in with Twitter'"
@@ -207,87 +205,83 @@ msgstr "建议"
 
 #: ../data/ui/index.html:446
 msgid "- Make sure all words are spelled correctly."
-msgstr ""
+msgstr "- 您可否有拼错单词。"
 
 #: ../data/ui/index.html:447
 msgid "- Try different keywords."
-msgstr ""
+msgstr "- 试试别的搜索关键词。"
 
 #: ../data/ui/index.html:448
 msgid "- Try more general keywords."
-msgstr ""
+msgstr "- 试试更通用的关键词。"
 
 #: ../data/ui/index.html:510
 msgid "Clear"
-msgstr ""
+msgstr "清空"
 
 #: ../data/ui/index.html:511 ../data/ui/index.html:945
 msgid "Update"
-msgstr ""
+msgstr "发布"
 
 #: ../data/ui/index.html:513
 msgid "Press Ctrl+Enter to Update"
-msgstr ""
-
-#: ../data/ui/index.html:519
-msgid " Notification here"
-msgstr ""
+msgstr "按 Ctrl + 回车发布"
 
 #: ../data/ui/index.html:526
 msgid "Home"
-msgstr ""
+msgstr "主线"
 
 #: ../data/ui/index.html:532
 msgid "DM"
-msgstr ""
+msgstr "私信"
 
 #: ../data/ui/index.html:543
 msgid "Console"
-msgstr ""
+msgstr "控制台"
 
 #: ../data/ui/index.html:563
 msgid "Account"
-msgstr ""
+msgstr "帐号"
 
 #: ../data/ui/index.html:568
 msgid "System"
-msgstr ""
+msgstr "系统"
 
 #: ../data/ui/index.html:573
 msgid "Appearance"
-msgstr ""
+msgstr "外观"
 
 #: ../data/ui/index.html:578
 msgid "Networks"
-msgstr ""
+msgstr "网络"
 
 #: ../data/ui/index.html:596
 msgid "Consumer Key"
-msgstr ""
+msgstr "Consumer Key"
 
 #: ../data/ui/index.html:599
 msgid "Consumer Secret"
-msgstr ""
+msgstr "Consumer Secret"
 
 #: ../data/ui/index.html:604
 msgid "Regain Access Token"
-msgstr ""
+msgstr "Regain Access Token"
 
 #: ../data/ui/index.html:627
 msgid "Font Family"
-msgstr ""
+msgstr "字体"
 
 #: ../data/ui/index.html:635
 msgid "Font Size"
-msgstr ""
+msgstr "字号"
 
 #: ../data/ui/index.html:638
 msgid "px"
-msgstr ""
+msgstr "像素"
 
 #: ../data/ui/index.html:639
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 #: ../data/ui/index.html:640
 msgid "abcdefghijk ABCDEFGHIJK"
@@ -295,11 +289,11 @@ msgstr "ABCD 测试字体"
 
 #: ../data/ui/index.html:648
 msgid "Use Native Input Dialog"
-msgstr ""
+msgstr "使用原生输入对话框"
 
 #: ../data/ui/index.html:652
 msgid "Use Native Notify System"
-msgstr ""
+msgstr "使用原生通知机制"
 
 #: ../data/ui/index.html:660
 msgid "API Base"
@@ -385,9 +379,8 @@ msgid "twitter"
 msgstr ""
 
 #: ../data/ui/index.html:803
-#, fuzzy
 msgid "Action"
-msgstr "位置："
+msgstr "动作"
 
 #: ../data/ui/index.html:803
 msgid "Shortcut"
