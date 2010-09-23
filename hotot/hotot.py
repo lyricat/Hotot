@@ -26,6 +26,13 @@ else:
 try: import i18n
 except: from gettext import gettext as _
 
+try:
+    import glib
+    glib.set_application_name(_("Hotot"))
+    pass
+except:
+    pass
+
 class MainWindow:
     def __init__(self):
         self.build_gui()
@@ -42,7 +49,7 @@ class MainWindow:
         self.window.set_icon_from_file(
             config.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_default_size(750, 550)
-        self.window.set_title('Hotot')
+        self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
 
         vbox = gtk.VBox()
@@ -110,8 +117,10 @@ class MainWindow:
     def build_inputw(self):
         # input window
         self.inputw = gtk.Window()
+        self.inputw.set_default_size(300, 10)
+        self.inputw.set_transient_for(self.window)
         self.inputw.set_position(gtk.WIN_POS_CENTER)
-        self.inputw.set_title('What\'s happening?')
+        self.inputw.set_title(_("What's happening?"))
         hbox = gtk.HBox()
 
         self.tbox_status = gtk.Entry()
@@ -120,9 +129,9 @@ class MainWindow:
             , self.on_tbox_status_key_released)
         hbox.pack_start(self.tbox_status)
 
-        self.btn_update = gtk.Button('Update')
+        self.btn_update = gtk.Button(_("Update"))
         self.btn_update.connect('clicked', self.on_btn_update_clicked) 
-        hbox.pack_start(self.btn_update)
+        hbox.pack_start(self.btn_update, expand=0, fill=0, padding=0)
 
         hbox.show_all() 
         self.inputw.add(hbox)
