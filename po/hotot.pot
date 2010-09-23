@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-24 01:02+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/ui/index.html:85 ../data/ui/index.html:86
+msgid "'What's happening?'"
+msgstr ""
+
+#: ../data/ui/index.html:87
+msgid "'Click here to Compose a Meassage ...'"
+msgstr ""
+
+#: ../data/ui/index.html:229
+msgid "'Reload timeline.'"
+msgstr ""
+
+#: ../data/ui/index.html:232
+msgid "'Extensions ... '"
+msgstr ""
+
+#: ../data/ui/index.html:235
+msgid "No Extension Icon"
+msgstr ""
+
+#: ../data/ui/index.html:240
+msgid "'More ...'"
+msgstr ""
+
+#: ../data/ui/index.html:243 ../data/ui/index.html:291
+msgid "Preferences"
+msgstr ""
+
+#: ../data/ui/index.html:246 ../data/ui/index.html:290
+msgid "Extensions"
+msgstr ""
+
+#: ../data/ui/index.html:249
+msgid "Help &amp; About"
+msgstr ""
+
+#: ../data/ui/index.html:252
+msgid "Sign out"
+msgstr ""
+
+#: ../data/ui/index.html:284
+msgid "'Sign in with Twitter'"
+msgstr ""
+
+#: ../data/ui/index.html:292
+msgid "Help"
+msgstr ""
+
+#: ../data/ui/index.html:303 ../data/ui/index.html:310
+#: ../data/ui/index.html:323 ../data/ui/index.html:329
+#: ../data/ui/index.html:336 ../data/ui/index.html:350
+#: ../data/ui/index.html:356 ../data/ui/index.html:362
+#: ../data/ui/index.html:427 ../data/ui/index.html:452
+msgid "Load more"
+msgstr ""
+
+#: ../data/ui/index.html:316
+msgid "Inbox"
+msgstr ""
+
+#: ../data/ui/index.html:317
+msgid "Outbox"
+msgstr ""
+
+#: ../data/ui/index.html:342
+msgid "Retweeted By Others"
+msgstr ""
+
+#: ../data/ui/index.html:344
+msgid "My Tweets, Retweeted"
+msgstr ""
+
+#: ../data/ui/index.html:369
+msgid "Look up: "
+msgstr ""
+
+#: ../data/ui/index.html:372
+msgid "GO"
+msgstr ""
+
+#: ../data/ui/index.html:378
+msgid "Follow"
+msgstr ""
+
+#: ../data/ui/index.html:382
+msgid "Block"
+msgstr ""
+
+#: ../data/ui/index.html:386
+msgid "Unblock"
+msgstr ""
+
+#: ../data/ui/index.html:394
+msgid "Name: "
+msgstr ""
+
+#: ../data/ui/index.html:398
+msgid "Tweets: "
+msgstr ""
+
+#: ../data/ui/index.html:399
+msgid "Tweets per Day: "
+msgstr ""
+
+#: ../data/ui/index.html:403
+msgid "Web: "
+msgstr ""
+
+#: ../data/ui/index.html:406
+msgid "Location: "
+msgstr ""
+
+#: ../data/ui/index.html:407
+msgid "Join: "
+msgstr ""
+
+#: ../data/ui/index.html:408
+msgid "Followers: "
+msgstr ""
+
+#: ../data/ui/index.html:409
+msgid "Friends: "
+msgstr ""
+
+#: ../data/ui/index.html:417
+msgid " has protected his/her tweets."
+msgstr ""
+
+#: ../data/ui/index.html:420
+msgid ""
+"You need to go to twitter.com to send a request before you can start "
+"following this person..."
+msgstr ""
+
+#: ../data/ui/index.html:423
+msgid "Send Request"
+msgstr ""
+
+#: ../data/ui/index.html:433
+msgid "Search for: "
+msgstr ""
+
+#: ../data/ui/index.html:442
+msgid "Your search - "
+msgstr ""
+
+#: ../data/ui/index.html:442
+msgid " - did not match any result."
+msgstr ""
+
+#: ../data/ui/index.html:445
+msgid "Suggestions:"
+msgstr ""
+
+#: ../data/ui/index.html:446
+msgid "- Make sure all words are spelled correctly."
+msgstr ""
+
+#: ../data/ui/index.html:447
+msgid "- Try different keywords."
+msgstr ""
+
+#: ../data/ui/index.html:448
+msgid "- Try more general keywords."
+msgstr ""
+
+#: ../data/ui/index.html:510
+msgid "Clear"
+msgstr ""
+
+#: ../data/ui/index.html:511
+msgid "Update"
+msgstr ""
+
+#: ../data/ui/index.html:513
+msgid "Press Ctrl+Enter to Update"
+msgstr ""
+
+#: ../data/ui/index.html:519
+msgid " Notification here"
+msgstr ""
+
+#: ../data/ui/index.html:640
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr ""
+
+#: ../data/ui/index.html:718
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../data/ui/index.html:719
+msgid "Cancel"
+msgstr ""
+
+#: ../data/ui/index.html:720
+msgid "OK"
+msgstr ""
+
+#: ../data/ui/index.html:343
+msgid "Retweeted By Me</a></li>"
+msgstr ""

@@ -10,6 +10,7 @@ app = 'hotot'
 import os, sys
 import gettext
 import json
+import re
 
 if os.path.isdir(os.path.dirname(sys.argv[0]) + '/../build/mo'):
     gettext.install(app, os.path.dirname(sys.argv[0]) + '/../build/mo', unicode=True)
@@ -25,6 +26,11 @@ def get_i18n_json(domain=app, localedir=None, languages=None):
         return json.dumps(translations._catalog, ensure_ascii=0)
     except:
         return '{}'
+
+def trans_html(html):
+    html = re.sub('(_\("(.*)"\))', lambda m: _(m.group(2)), html)
+    html = re.sub("(_\('(.*)'\))", lambda m: _(m.group(2)), html)
+    return html
 
 if __name__=="__main__":
 	print _('')
