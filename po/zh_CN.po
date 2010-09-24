@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 07:49+0800\n"
+"POT-Creation-Date: 2010-09-24 09:06+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../data/ui/index.html:5
 msgid "Home | Hotot"
-msgstr "主线 | 热推"
+msgstr "主线 | 热兔"
 
 #: ../data/ui/index.html:85 ../data/ui/index.html:86
 msgid "'What's happening?'"
@@ -66,7 +66,7 @@ msgstr "注销"
 
 #: ../data/ui/index.html:264
 msgid "Hotot "
-msgstr "热推"
+msgstr "热兔"
 
 #: ../data/ui/index.html:266
 msgid "Greeting!"
@@ -74,7 +74,7 @@ msgstr "殿下您好！"
 
 #: ../data/ui/index.html:268
 msgid "Sign in to Hotot"
-msgstr "用热推登录"
+msgstr "用热兔登录"
 
 #: ../data/ui/index.html:271
 msgid "Username:"
@@ -234,7 +234,7 @@ msgstr "- 试试更通用的关键词。"
 msgid "Clear"
 msgstr "清空"
 
-#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:125
+#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:131
 msgid "Update"
 msgstr "发布"
 
@@ -480,9 +480,9 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ../data/ui/index.html:787 ../hotot/hotot.py:45
+#: ../data/ui/index.html:787 ../hotot/hotot.py:31 ../hotot/hotot.py:52
 msgid "Hotot"
-msgstr "热推"
+msgstr "热兔"
 
 #: ../data/ui/index.html:788
 msgid "twitter"
@@ -672,18 +672,18 @@ msgstr "从推特搜索"
 msgid "'Font Size"
 msgstr "'字号'"
 
-#: ../hotot/hotot.py:60 ../hotot/hotot.py:80
+#: ../hotot/hotot.py:67 ../hotot/hotot.py:87
 msgid "_Resume/Active"
 msgstr "恢复(_R)"
 
-#: ../hotot/hotot.py:77
+#: ../hotot/hotot.py:84
 msgid "_File"
 msgstr "文件(_F)"
 
-#: ../hotot/hotot.py:93
+#: ../hotot/hotot.py:100
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../hotot/hotot.py:116
+#: ../hotot/hotot.py:122
 msgid "What's happening?"
 msgstr "有什么消息么？"

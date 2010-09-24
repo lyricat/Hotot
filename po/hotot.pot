@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 07:49+0800\n"
+"POT-Creation-Date: 2010-09-24 09:06+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:125
+#: ../data/ui/index.html:511 ../data/ui/index.html:945 ../hotot/hotot.py:131
 msgid "Update"
 msgstr ""
 
@@ -478,7 +478,7 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ../data/ui/index.html:787 ../hotot/hotot.py:45
+#: ../data/ui/index.html:787 ../hotot/hotot.py:31 ../hotot/hotot.py:52
 msgid "Hotot"
 msgstr ""
 
@@ -670,18 +670,18 @@ msgstr ""
 msgid "'Font Size"
 msgstr ""
 
-#: ../hotot/hotot.py:60 ../hotot/hotot.py:80
+#: ../hotot/hotot.py:67 ../hotot/hotot.py:87
 msgid "_Resume/Active"
 msgstr ""
 
-#: ../hotot/hotot.py:77
+#: ../hotot/hotot.py:84
 msgid "_File"
 msgstr ""
 
-#: ../hotot/hotot.py:93
+#: ../hotot/hotot.py:100
 msgid "_Help"
 msgstr ""
 
-#: ../hotot/hotot.py:116
+#: ../hotot/hotot.py:122
 msgid "What's happening?"
 msgstr ""
