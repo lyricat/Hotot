@@ -31,7 +31,7 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
         hotot_action('request/' +
-            encodeURIComponent(utility.DB.json(
+            encodeURIComponent(JSON.stringify(
                 { uuid: task_uuid
                 , method: req_method
                 , url: req_url

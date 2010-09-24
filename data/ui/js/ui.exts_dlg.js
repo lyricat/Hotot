@@ -92,7 +92,7 @@ function bind_exts_btns() {
 hide:
 function hide () {
     hotot_action('exts/save_enabled/'
-        + encodeURIComponent(utility.DB.json(ext.exts_enabled)));
+        + encodeURIComponent(JSON.stringify(ext.exts_enabled)));
     ui.ExtsDlg.me.hide();
     ui.ExtsDlg.is_show = false;
     return this;

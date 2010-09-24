@@ -41,7 +41,7 @@ function init () {
         setTimeout(function () {
             hotot_action('config/set_opts/'
                 + encodeURIComponent(
-                    utility.DB.json(ui.Welcome.sign_opts)));
+                    JSON.stringify(ui.Welcome.sign_opts)));
         }, 500);
         setTimeout(function () {
             hotot_action('config/dumps');

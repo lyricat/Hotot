@@ -31,7 +31,7 @@ function init () {
             // get a new access_token, dump it to disk.
             hotot_action(
                 'token/dump/'
-                +encodeURIComponent(utility.DB.json(jsOAuth.access_token)));
+                +encodeURIComponent(JSON.stringify(jsOAuth.access_token)));
             // change to main view
             ui.DialogHelper.close(ui.PinDlg);
         },
