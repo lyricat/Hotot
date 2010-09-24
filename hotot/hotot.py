@@ -118,7 +118,6 @@ class MainWindow:
         # input window
         self.inputw = gtk.Window()
         self.inputw.set_default_size(300, 10)
-        self.inputw.set_transient_for(self.window)
         self.inputw.set_position(gtk.WIN_POS_CENTER)
         self.inputw.set_title(_("What's happening?"))
         hbox = gtk.HBox()
