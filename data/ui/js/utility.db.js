@@ -1,15 +1,21 @@
 if (typeof utility == 'undefined') var utility = {};
 utility.DB = {
 
-USER_CACHE: '#user_cache',
-
-TWEET_CACHE: '#tweet_cache',
+cache: null,
 
 auto_complete_list: ['shellex', 'basic', 'linux', 'mac', 'windows', 'hao123', '4sq'],
 
 init:
 function init () {
-    
+    utility.DB.cache = window.openDatabase('hotot_cache', '', 'Cache of Hotot', 10);
+
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('CREATE TABLE "TweetCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "json" TEXT NOT NULL  check(typeof("json") = \'text\') )', []);    
+    });
+
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('CREATE TABLE "UserCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "screen_name" CHAR(64) NOT NULL , "json" TEXT NOT NULL )', []);    
+    });
 },
 
 dump_tweets:
@@ -17,15 +23,16 @@ function dump_tweets(json_obj) {
     var dump_single_tweet = function (tweet_obj) {
         var user = typeof tweet_obj.user != 'undefined'? 
             tweet_obj.user: tweet_obj.sender;
-        var old_user = utility.DB.get(utility.DB.USER_CACHE
-            , user.screen_name.toString());
         if (utility.DB.auto_complete_list.indexOf(user.screen_name)==-1) {
             utility.DB.auto_complete_list.push(user.screen_name);
         }
-        $(utility.DB.USER_CACHE).data(user.screen_name.toString(), user);
-        $(utility.DB.TWEET_CACHE).data(tweet_obj.id.toString(), tweet_obj);
+        utility.DB.cache.transaction(function (tx) {
+            tx.executeSql('INSERT INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)]);
+        });
+        utility.DB.cache.transaction(function (tx) {
+            tx.executeSql('INSERT INTO TweetCache VALUES (?, ?)', [tweet_obj.id, JSON.stringify(tweet_obj)]);
+        });
     };
-
     if (json_obj.constructor == Array) { 
         for (var i = 0; i < json_obj.length; i += 1) {
             var tweet_obj = json_obj[i]
@@ -39,28 +46,20 @@ function dump_tweets(json_obj) {
     }
 },
 
-set:
-function set(db_name, key, value) {
-    if (db_name == utility.DB.USER_CACHE) {
-        var old_user = utility.DB.get(utility.DB.USER_CACHE
-            , user.screen_name.toString());
-        if (utility.DB.auto_complete_list.indexOf(user.screen_name)==-1) {
-            utility.DB.auto_complete_list.push(user.screen_name);
-        }
-        utility.DB.auto_complete_list.push(user.screen_name);
-    } else {
-        $(db_name).data(key, value)
-    }
+get_tweet:
+function get_tweet(key, callback) {
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('SELECT id, json FROM TweetCache WHERE id=?', [key], 
+            function(tx, rs) {callback(tx,rs);});
+    });
 },
 
-get:
-function get(db_name, key) {
-    return $(db_name).data(key);
-},
-
-remove:
-function remove(db_name, key) {
-    return $(db_name).removeData(key);
+get_user:
+function get_user(screen_name, callback) {
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('SELECT id, screen_name, json FROM TweetCache WHERE screen_name=?', [screen_name], 
+            function(tx, rs) {callback(tx,rs);});
+    });
 },
 
 unserialize_dict:
