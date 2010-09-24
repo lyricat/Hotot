@@ -5,7 +5,6 @@ data/ui/js/utility.db.js
 data/ui/js/sha1.js
 data/ui/js/ui.retweet_tabs.js
 data/ui/js/ui.exts_dlg.js
-data/ui/js/twitterapi.js
 data/ui/js/ui.message_dlg.js
 data/ui/js/daemon.updater.js
 data/ui/js/ui.dialog_helper.js
@@ -43,3 +42,4 @@ hotot/view.py
 hotot/__init__.py
 hotot/socks.py
 hotot/utils.py
+hotot.desktop.in
