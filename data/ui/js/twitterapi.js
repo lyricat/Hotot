@@ -89,7 +89,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
         } else {
             params = signed_params
         }
-        lib.twitterapi.do_requset(
+        lib.twitterapi.do_request(
             method
             , url
             , params
@@ -110,7 +110,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             params = {};
         }
         headers['Authorization']= lib.twitterapi.basic_auth();
-        lib.twitterapi.do_requset(
+        lib.twitterapi.do_request(
             method
             , url
             , params
@@ -122,8 +122,8 @@ function do_ajax(method, url, params, headers, on_success, on_error){
     }
 },
 
-do_requset:
-function do_requset(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
+do_request:
+function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
     if (!req_headers) req_headers = {};
     if (lib.twitterapi.py_request) {
         var task_uuid = lib.twitterapi.generate_uuid();
@@ -443,7 +443,7 @@ function verify(on_success) {
 search:
 function search(query, page, on_success) {
     var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
-    lib.twitterapi.do_requset('GET', url, {}, {}, [], on_success,
+    lib.twitterapi.do_request('GET', url, {}, {}, [], on_success,
     function(result) {
     });
 },

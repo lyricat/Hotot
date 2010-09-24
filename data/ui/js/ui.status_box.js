@@ -68,7 +68,7 @@ function init () {
         var _requset = function (i) {
             var req_url = ui.StatusBox.short_url_base + urls[i];
             procs.push(function () {
-                lib.twitterapi.do_requset('GET',
+                lib.twitterapi.do_request('GET',
                 req_url, 
                 {},
                 {},
