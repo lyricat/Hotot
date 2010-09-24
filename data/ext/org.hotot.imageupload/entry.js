@@ -146,7 +146,7 @@ function load() {
 
 unload:
 function unload() {
-    ext.remove_toolbar_button('ext_btn_hotot_upload_image');
+    ext.remove_from_exts_menu('ext_btn_hotot_upload_image');
 },
 
 }

@@ -386,7 +386,9 @@ function add_tweets(json_obj, container) {
     if (container.pagename != 'search')
         utility.DB.dump_tweets(json_obj);
     // bind events
-    ui.Main.bind_tweets_action(json_obj, container.pagename);
+    setTimeout(function () {
+        ui.Main.bind_tweets_action(json_obj, container.pagename);
+        }, 1000);
     ui.Notification.hide();
     return json_obj.length;
 },
@@ -485,14 +487,19 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
-    ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ tweet_obj.user.screen_name + ':"' + tweet_obj.text + '"');
-    ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
-    ui.StatusBox.open(
-    function() {
-        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
-        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+    utility.DB.get_tweet(parseInt(id), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var tweet_obj = JSON.parse(row.json);
+        ui.StatusBox.reply_to_id = id;
+        ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ tweet_obj.user.screen_name + ':"' + tweet_obj.text + '"');
+        ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
+        ui.StatusBox.open(
+        function() {
+            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+        });
     });
 },
 
@@ -501,13 +508,19 @@ function on_rt_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id)
 
-    ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
-        + ': ' + tweet_obj.text + ' ');
-    ui.StatusBox.open(
-    function() {
-        ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+    utility.DB.get_tweet(parseInt(id), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var tweet_obj = JSON.parse(row.json);
+
+        ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
+            + ': ' + tweet_obj.text + ' ');
+        ui.StatusBox.open(
+        function() {
+            ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+        });
     });
 },
 
@@ -529,27 +542,32 @@ function on_reply_all_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
+    utility.DB.get_tweet(parseInt(id), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var tweet_obj = JSON.parse(row.json);
 
-    var who_names = [ '@' + tweet_obj.user.screen_name];
-    var text = tweet_obj.text;
+        var who_names = [ '@' + tweet_obj.user.screen_name];
+        var text = tweet_obj.text;
 
-    var match = ui.Template.reg_user.exec(text);
-    while (match != null ) {
-        if (match[2] != globals.myself.screen_name) {
-            var name = '@' + match[2];
-            if (who_names.indexOf(name) == -1)
-                who_names.push(name);
+        var match = ui.Template.reg_user.exec(text);
+        while (match != null ) {
+            if (match[2] != globals.myself.screen_name) {
+                var name = '@' + match[2];
+                if (who_names.indexOf(name) == -1)
+                    who_names.push(name);
+            }
+            match = ui.Template.reg_user.exec(text);
         }
-        match = ui.Template.reg_user.exec(text);
-    }
-    ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span>  ' + text);
-    ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
-    ui.StatusBox.open(
-    function() {
-        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
-        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+        ui.StatusBox.reply_to_id = id;
+        ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span>  ' + text);
+        ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
+        ui.StatusBox.open(
+        function() {
+            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
+        });
     });
 
 },
@@ -558,17 +576,22 @@ on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    utility.Console.out(id);
-    var tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
-    var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
-        : tweet_obj.user;
+    utility.DB.get_tweet(parseInt(id), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var tweet_obj = JSON.parse(row.json);
 
-    ui.StatusBox.set_status_info(
-        '<span class="info_hint">COMPOSE MESSAGES TO</span> @' + user.screen_name);
-    ui.StatusBox.dm_to_id = user.id;
-    ui.StatusBox.dm_to_screen_name = user.screen_name;
-    ui.StatusBox.open(function () {
-        ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+        var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
+            : tweet_obj.user;
+
+        ui.StatusBox.set_status_info(
+            '<span class="info_hint">COMPOSE MESSAGES TO</span> @' + user.screen_name);
+        ui.StatusBox.dm_to_id = user.id;
+        ui.StatusBox.dm_to_screen_name = user.screen_name;
+        ui.StatusBox.open(function () {
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+        });
     });
 },
 
@@ -613,7 +636,6 @@ function on_expander_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    var orig_tweet_obj = utility.DB.get(utility.DB.TWEET_CACHE, id);
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
@@ -633,28 +655,37 @@ function on_expander_click(btn, event) {
             }
         }
 
-        var prev_tweet_obj = utility.DB.get(
-            utility.DB.TWEET_CACHE, tweet_id.toString());
-        if (typeof prev_tweet_obj == 'undefined') {
-            lib.twitterapi.show_status(tweet_id,
-            function (result) {
-                var prev_tweet_obj = result;
+        utility.DB.get_tweet(tweet_id,
+        function (tx, rs) {
+            var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
+            if (typeof prev_tweet_obj == 'undefined') {
+                lib.twitterapi.show_status(tweet_id,
+                function (result) {
+                    var prev_tweet_obj = result;
+                    load_thread_proc_cb(prev_tweet_obj);
+                });
+            } else {
                 load_thread_proc_cb(prev_tweet_obj);
-            });
-        } else {
-            load_thread_proc_cb(prev_tweet_obj);
-        }
+            }
+        });
     };
 
-    thread_container.toggle();
-    if ($(btn).hasClass('expand')) {
-        $(btn).removeClass('expand');
-    } else {
-        $(btn).addClass('expand');
-        if (thread_container.children('.tweet').length == 0) {
-            load_thread_proc(orig_tweet_obj.in_reply_to_status_id);
+    utility.DB.get_tweet(parseInt(id), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var orig_tweet_obj = JSON.parse(row.json);
+
+        thread_container.toggle();
+        if ($(btn).hasClass('expand')) {
+            $(btn).removeClass('expand');
+        } else {
+            $(btn).addClass('expand');
+            if (thread_container.children('.tweet').length == 0) {
+                load_thread_proc(orig_tweet_obj.in_reply_to_status_id);
+            }
         }
-    }
+    });
 },
 
 move_to_tweet:

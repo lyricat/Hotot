@@ -192,8 +192,8 @@ function add_to_exts_menu(id, icon, label, callback) {
     $('#'+id).click(callback);
 },
 
-remove_toolbar_button:
-function remove_toolbar_button(id) {
+remove_from_exts_menu:
+function remove_from_exts_menu(id) {
     $('#'+id).unbind('click');
     var li = $('#'+id).parent();
     li.remove();
