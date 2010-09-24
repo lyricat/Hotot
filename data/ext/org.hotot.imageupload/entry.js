@@ -94,7 +94,7 @@ function on_btn_upload_clicked(event) {
     }
 
     ui.Notification.set('Uploading ... ').show();
-    lib.twitterapi.do_requset(
+    lib.network.do_request(
         'POST'
         , ext.HototImageUpload.services[service_name].url
         , params 
