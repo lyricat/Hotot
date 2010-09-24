@@ -357,7 +357,7 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
-            lib.twitterapi.error_task_table['%s']('');
+            lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass 
     except urllib2.URLError, e:
@@ -365,20 +365,20 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
         scripts = '''
             ui.MessageDlg.set_text('%s', '%s');
             ui.DialogHelper.open(ui.MessageDlg);
-            lib.twitterapi.error_task_table['%s']('');
+            lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
         pass
     else:
         if uuid != None:
             if result[0] != '{' and result[0] != '[':
-                scripts = '''lib.twitterapi.success_task_table['%s']('%s');
+                scripts = '''lib.network.success_task_table['%s']('%s');
                 ''' % (uuid, result)
             else:
-                scripts = '''lib.twitterapi.success_task_table['%s'](%s);
+                scripts = '''lib.network.success_task_table['%s'](%s);
                 ''' % (uuid, result)
             pass
-    scripts += '''delete lib.twitterapi.error_task_table['%s'];
-    delete lib.twitterapi.error_task_table['%s'];
+    scripts += '''delete lib.network.success_task_table['%s'];
+    delete lib.network.error_task_table['%s'];
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
     pass

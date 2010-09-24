@@ -16,32 +16,11 @@ search_api_base: 'http://search.twitter.com/',
 
 use_same_sign_api_base: true,
 
-py_request: true,
-
 source: 'Hotot',
-
-success_task_table: {},
-
-error_task_table: {},
 
 error_handle:
 function error_handle(xhr, textStatus, errorThrown) {
     return;
-},
-
-generate_uuid:
-function generate_uuid() {
-    var S4 = function() {
-        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    }
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-},
-
-normalize_result:
-function normalize_result(result) {
-    if (result.constructor == String)
-        eval('result='+result)
-    return result;
 },
 
 basic_auth:
@@ -82,14 +61,14 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , jsOAuth.access_token
             , method
             , params
-            , lib.twitterapi.py_request && method == 'POST');
+            , lib.network.py_request && method == 'POST');
         if (method == 'GET') {
             url = url + '?' + signed_params;
             params = {};
         } else {
             params = signed_params
         }
-        lib.twitterapi.do_request(
+        lib.network.do_request(
             method
             , url
             , params
@@ -110,7 +89,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             params = {};
         }
         headers['Authorization']= lib.twitterapi.basic_auth();
-        lib.twitterapi.do_request(
+        lib.network.do_request(
             method
             , url
             , params
@@ -119,50 +98,6 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , on_success
             , on_error
             );
-    }
-},
-
-do_request:
-function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
-    if (!req_headers) req_headers = {};
-    if (lib.twitterapi.py_request) {
-        var task_uuid = lib.twitterapi.generate_uuid();
-        lib.twitterapi.success_task_table[task_uuid] = on_success;
-        lib.twitterapi.error_task_table[task_uuid] = on_error;
-        hotot_action('request/' +
-            encodeURIComponent(utility.DB.json(
-                { uuid: task_uuid
-                , method: req_method
-                , url: req_url
-                , params: req_params
-                , files: req_files
-                , headers: req_headers })));
-    } else {
-        jQuery.ajaxQueue({    
-            type: req_method,
-            url: req_url,
-            data: req_params,
-            beforeSend: 
-            function(xhr) {
-                for (var k in req_headers) {
-                    xhr.setRequestHeader(k, req_headers[k]);
-                }
-            },
-            success: 
-            function(result) {
-                if ( on_success != null) {
-                    result = lib.twitterapi.normalize_result(result);
-                    on_success(result);
-                }
-            },
-            error: 
-            function (result) {
-                if ( on_error != null) {
-                    result = lib.twitterapi.normalize_result(result);
-                    on_error(result);
-                }
-            }
-        }); 
     }
 },
 
@@ -443,7 +378,7 @@ function verify(on_success) {
 search:
 function search(query, page, on_success) {
     var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
-    lib.twitterapi.do_request('GET', url, {}, {}, [], on_success,
+    lib.network.do_request('GET', url, {}, {}, [], on_success,
     function(result) {
     });
 },
