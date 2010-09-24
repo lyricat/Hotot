@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-24 10:10+0800\n"
+"POT-Creation-Date: 2010-09-24 21:49+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -24,7 +24,7 @@ msgid "Home | Hotot"
 msgstr "主线 | 傲兔"
 
 #: ../data/ui/index.html:86 ../data/ui/index.html:87
-msgid "'What's happening?'"
+msgid "'What is happening?'"
 msgstr "'有什么消息么？'"
 
 #: ../data/ui/index.html:88
