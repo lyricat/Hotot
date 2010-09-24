@@ -889,6 +889,7 @@ input[type="button"]:focus, .button:focus {
     height: 22px;
     border: 0 !important;
     color: #37799C;
+    padding:2px 0 0 10px;
 }
 
 
