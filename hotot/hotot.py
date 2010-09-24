@@ -176,8 +176,6 @@ class MainWindow:
         pass
 
     def quit(self, *args):
-        db.dump_screen_name(db.get_screen_name(self.webv))
-
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 

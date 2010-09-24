@@ -74,7 +74,6 @@ def getconf():
 
     tokenfile = CONF_DIR + '/profile.token'
     prefs = CONF_DIR + '/hotot.conf'
-    screen_name_cache = CACHE_DIR + '/screen_name.cache'
     if not os.path.exists(prefs): 
         write_to_disk(prefs)
     ##    
@@ -93,7 +92,6 @@ def getconf():
     config['abspath'] = abspath
     config['prefs'] = prefs
     config['tokenfile'] = tokenfile
-    config['screen_name_cache'] = screen_name_cache
     return config
 
 def loads():

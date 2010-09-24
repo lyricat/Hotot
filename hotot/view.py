@@ -75,7 +75,6 @@ class MainView(WebView):
         agent.webv = self
         agent.apply_config()
         agent.set_style_scheme()
-        agent.load_cache()
         agent.load_exts()
         pass
 

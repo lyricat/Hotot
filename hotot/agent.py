@@ -48,8 +48,6 @@ def crack_hotot(uri):
         crack_system(params)
     elif params[0] == 'action':
         crack_action(params)
-    elif params[0] == 'cache':
-        crack_cache(params)
     elif params[0] == 'request':
         crack_request(params)
     else:
@@ -90,13 +88,6 @@ def crack_token(params):
         push_option('lib.twitterapi', 'access_token', json.dumps(token))
     elif params[1] == 'dump':
         config.dump_token(json.loads(urllib.unquote(params[2])))
-    pass
-    
-def crack_cache(params):
-    if params[1] == 'load_screen_name':
-        execute_script(db.load_screen_name())
-    elif params[1] == 'dump_screen_name':
-        db.dump_screen_name(webv)
     pass
 
 def crack_action(params):
@@ -332,11 +323,6 @@ def set_style_scheme():
     webv.execute_script('''
         $('#header').css('background', '%s');    
     ''' % str(bg[gtk.STATE_NORMAL]));
-    pass
-
-def load_cache():
-    # load screen_names
-    execute_script(db.load_screen_name())
     pass
 
 def request(uuid, method, url, params={}, headers={},files=[],additions=''):

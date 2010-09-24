@@ -3,8 +3,6 @@ utility.DB = {
 
 cache: null,
 
-auto_complete_list: ['shellex', 'basic', 'linux', 'mac', 'windows', 'hao123', '4sq'],
-
 init:
 function init () {
     utility.DB.cache = window.openDatabase('hotot_cache', '', 'Cache of Hotot', 10);
@@ -23,9 +21,7 @@ function dump_tweets(json_obj) {
     var dump_single_tweet = function (tweet_obj) {
         var user = typeof tweet_obj.user != 'undefined'? 
             tweet_obj.user: tweet_obj.sender;
-        if (utility.DB.auto_complete_list.indexOf(user.screen_name)==-1) {
-            utility.DB.auto_complete_list.push(user.screen_name);
-        }
+
         utility.DB.cache.transaction(function (tx) {
             tx.executeSql('INSERT INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)]);
         });
@@ -57,7 +53,23 @@ function get_tweet(key, callback) {
 get_user:
 function get_user(screen_name, callback) {
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('SELECT id, screen_name, json FROM TweetCache WHERE screen_name=?', [screen_name], 
+        tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name=?', [screen_name], 
+            function(tx, rs) {callback(tx,rs);});
+    });
+},
+
+search_user:
+function search_user(query, callback) {
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name LIKE \'%'+query+'%\'', [], 
+            function(tx, rs) {callback(tx,rs);});
+    });
+},
+
+get_screen_names_starts_with:
+function get_users_starts_with(starts, callback) {
+    utility.DB.cache.transaction(function (tx) {
+        tx.executeSql('SELECT screen_name FROM UserCache WHERE screen_name LIKE \''+starts+'%\'', [], 
             function(tx, rs) {callback(tx,rs);});
     });
 },

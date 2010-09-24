@@ -657,15 +657,13 @@ function on_expander_click(btn, event) {
 
         utility.DB.get_tweet(tweet_id,
         function (tx, rs) {
-            var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
-            if (typeof prev_tweet_obj == 'undefined') {
+            if (rs.rows.length == 0) {
                 lib.twitterapi.show_status(tweet_id,
                 function (result) {
-                    var prev_tweet_obj = result;
-                    load_thread_proc_cb(prev_tweet_obj);
+                    load_thread_proc_cb(result);
                 });
             } else {
-                load_thread_proc_cb(prev_tweet_obj);
+                load_thread_proc_cb(JSON.parse(rs.rows.item(0).json));
             }
         });
     };

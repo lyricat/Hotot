@@ -383,17 +383,19 @@ function auto_complete(event) {
         if (name == '') {
             $('#screen_name_auto_complete').html('').hide();
         } else {
-            result_list = utility.DB.auto_complete_list.filter(
-            function(element, index, array) {
-                return element.indexOf(name) == 0;
+            utility.DB.get_screen_names_starts_with(name,
+            function (tx, rs) {
+                var result_list = []
+                for (var i = 0; i < rs.rows.length; i += 1) { 
+                    result_list.push(rs.rows.item(i).screen_name)
+                }
+                var str = '<li>'+result_list.join('</li><li>')+'</li>';
+                $('#screen_name_auto_complete').html(str).show();
+                
+                $('#screen_name_auto_complete li:first').addClass('hlight');
+                ui.StatusBox.auto_complete_selected 
+                    = $('#screen_name_auto_complete li:first').text();
             });
-            result_list.sort();
-            var str = '<li>'+result_list.join('</li><li>')+'</li>';
-            $('#screen_name_auto_complete').html(str).show();
-            
-            $('#screen_name_auto_complete li:first').addClass('hlight');
-            ui.StatusBox.auto_complete_selected 
-                = $('#screen_name_auto_complete li:first').text();
         }
     } 
 },
