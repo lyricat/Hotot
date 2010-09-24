@@ -33,7 +33,6 @@ Features include:
       packages = ['hotot'], 
       data_files = [
           ('share/pixmaps', ['hotot.png']),
-          ('share/applications', ['hotot.desktop']),
           ('share/hotot/ui', ['data/ui/index.html']),
           ('share/hotot/ui/js', glob('data/ui/js/*')),
           ('share/hotot/ui/imgs', glob('data/ui/imgs/*')),
