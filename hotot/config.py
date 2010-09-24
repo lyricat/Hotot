@@ -12,6 +12,7 @@ UI_DIR_NAME = 'ui'
 EXT_DIR_NAME = 'ext'
 LAUNCH_DIR = os.path.abspath(sys.path[0])
 CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
+DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 

@@ -29,7 +29,7 @@ class MainView(WebView):
             settings.set_property('enable-file-access-from-file-uris', True)
         except:
             pass
-        webkit.set_web_database_directory_path(config.CACHE_DIR)
+        webkit.set_web_database_directory_path(config.DB_DIR)
         ## bind events
         self.connect('navigation-requested',
             self.on_navigation_requested);
