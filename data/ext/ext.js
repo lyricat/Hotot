@@ -192,16 +192,32 @@ function unregister_listener(type, callback) {
     }
 },
 
-add_to_exts_menu:
-function add_to_exts_menu(id, icon, label, callback) {
-    $('#exts_menu').prepend('<li><a id="'+id+'" style="background-image:url('+icon+');" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
-    $('#'+id).click(callback);
+add_exts_menuitem:
+function add_exts_menuitem(id, icon, label, callback) {
+    $('#exts_menu').append('<li><a class="'+id+'" style="background-image:url('+icon+');" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
+    $('#exts_menu .'+id).click(callback);
 },
 
-remove_from_exts_menu:
-function remove_from_exts_menu(id) {
-    $('#'+id).unbind('click');
-    var li = $('#'+id).parent();
+remove_exts_menuitem:
+function remove_exts_menuitem(id) {
+    var a= $('#exts_menu .'+id)
+    a.unbind('click');
+    var li = a.parent();
+    li.remove();
+},
+
+add_context_menuitem:
+function add_context_menuitem(id, label, select_only , callback) {
+    var item_class = select_only ? id + ' select_only': id;
+    $('#context_menu > ul').append('<li><a class="'+item_class+'" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
+    $('#context_menu .'+id).click(callback);
+},
+
+remove_context_menuitem:
+function remove_context_menuitem(id) {
+    var a = $('#context_menu .'+id);
+    a.unbind('click');
+    var li = a.parent();
     li.remove();
 },
 
@@ -236,7 +252,6 @@ ext.Preferences = function (prefs_name) {
     function set(key, val, callback) {
         val = JSON.stringify(val);
         var _this = this;
-        utility.Console.out('sql:'+ 'INSERT INTO "'+ _this.name+'" VALUES ("'+key+'", "' + val +'")');
         ext.prefs.transaction(function (tx) {
             tx.executeSql('INSERT or REPLACE INTO "'+ _this.name+'" VALUES (?, ?)', [key, val],
             function (tx, rs) {
