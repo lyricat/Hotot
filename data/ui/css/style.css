@@ -520,10 +520,13 @@ pre {
     color: #ff0000;
 }
 
+#center {
+    overflow: hidden;
+}
 
 /* ===== Side Nav ================================== */
 #aside {
-    background: #faa;
+    background: #d6d6d6;
     display: none;
 }
 

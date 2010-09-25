@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/ui.status_box.js"></script>
     <script type="text/javascript" src="js/ui.notification.js"></script>
     <script type="text/javascript" src="js/ui.slider.js"></script>
+    <script type="text/javascript" src="js/ui.sidebar.js"></script>
     <script type="text/javascript" src="js/ui.welcome.js"></script>
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
@@ -56,21 +57,22 @@ var layout_opts = {
     ,   north__spacing_open :    0
     ,   north__spacing_closed: 0
     ,   north__initClosed: true
-    ,   west__spacing_open: 0
-    ,   west__spacing_closed: 0
-    ,   west__size:         0
+    ,   east__spacing_open: 0
+    ,   east__spacing_closed: 0
+    ,   east__size:         0
+    ,   east__initClosed: true
     ,   south__size:        40
     ,   south__spacing_open: 0
     ,   south__spacing_closed: 0
     ,   south__initClosed: true
     ,   north__paneSelector:    '#header'
-    ,   west__paneSelector:     '#aside'
+    ,   east__paneSelector:     '#aside'
     ,   center__paneSelector:   '#center'
     ,   south__paneSelector:    '#bottom'
 };
 
 function update_tweet_block_width() {
-    globals.tweet_block_width = $(window).width();
+    globals.tweet_block_width = $(window).width() - $('#aside').width();
     $(".tweet_block").width(globals.tweet_block_width);
 }
 
@@ -156,6 +158,9 @@ jQuery(function($) {
                 } else if (event.keyCode == 191) {
                     // '/' to open filter
                     ui.Filter.show();
+                } else if (event.keyCode == 120) {
+                    // <F9> to toggle sidebar
+                    ui.Sidebar.toggle();
                 }
             }
         }
@@ -259,7 +264,8 @@ jQuery(function($) {
     </ul>
 </header>
 
-<aside id="aside"></aside>
+<aside id="aside">
+</aside>
 
 <section id="center">
 <section id="welcome_page" class="page">
