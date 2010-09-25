@@ -383,8 +383,21 @@ function add_tweets(json_obj, container) {
     ui.Main.trim_page(container);
 
     // dumps to cache
-    if (container.pagename != 'search')
-        utility.DB.dump_tweets(json_obj);
+    if (container.pagename != 'search') {
+        utility.DB.get_tweet_cache_size(function (size) {
+            if (utility.DB.MAX_TWEET_CACHE_SIZE < size) {
+                ui.Notification.set('Reducing ... ').show(-1);
+                utility.DB.reduce_tweet_cache(
+                    parseInt(utility.DB.MAX_TWEET_CACHE_SIZE*2/3)
+                , function () {
+                    ui.Notification.set('Reduce Successfully!').show();
+                    utility.DB.dump_tweets(json_obj);
+                })
+            } else {
+                utility.DB.dump_tweets(json_obj);
+            }
+        });
+    }
     // bind events
     setTimeout(function () {
         ui.Main.bind_tweets_action(json_obj, container.pagename);
