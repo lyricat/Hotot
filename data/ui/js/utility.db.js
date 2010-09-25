@@ -26,35 +26,50 @@ function init () {
 
 dump_tweets:
 function dump_tweets(json_obj) {
-    var dump_single_tweet = function (tweet_obj) {
-        var user = typeof tweet_obj.user != 'undefined'? 
-            tweet_obj.user: tweet_obj.sender;
-
-        utility.DB.user_cache.transaction(function (tx) {
-            tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)],
-            function (tx, rs) {},
-            function (tx, error) {
-                utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
-            });
-        });
-        utility.DB.tweet_cache.transaction(function (tx) {
-            tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)],
-            function (tx, rs) {},
-            function (tx, error) {
-                utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
-            });
+    var dump_single_user = function (tx, user) {
+        tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(user)],
+        function (tx, rs) {},
+        function (tx, error) {
+            utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
         });
     };
+    var dump_single_tweet = function (tx, tweet_obj) {
+        tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)],
+        function (tx, rs) {},
+        function (tx, error) {
+            utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+        });
+    };
+
     if (json_obj.constructor == Array) { 
-        for (var i = 0; i < json_obj.length; i += 1) {
-            var tweet_obj = json_obj[i]
-            if (tweet_obj.hasOwnProperty('retweeted_status')) {
-                dump_single_tweet(tweet_obj['retweeted_status']);
+        // dump tweets
+        utility.DB.tweet_cache.transaction(function (tx) {
+            for (var i = 0; i < json_obj.length; i += 1) {
+                var tweet_obj = json_obj[i];
+                if (tweet_obj.hasOwnProperty('retweeted_status')) {
+                    dump_single_tweet(tx, tweet_obj['retweeted_status']);
+                }
+                dump_single_tweet(tx, tweet_obj);
             }
-            dump_single_tweet(tweet_obj);
-        }
+        });
+        // dump users
+        utility.DB.user_cache.transaction(function (tx) {
+            for (var i = 0; i < json_obj.length; i += 1) {
+                var tweet_obj = json_obj[i];
+                var user = typeof tweet_obj.user != 'undefined'? tweet_obj.user: tweet_obj.sender;
+                dump_single_user(tx, user);
+            }
+        });
     } else {
-        dump_single_tweet(json_obj);
+        var user = typeof json_obj.user != 'undefined'? json_obj.user: json_obj.sender;
+
+        utility.DB.tweet_cache.transaction(function (tx) {
+            dump_single_tweet(tx, json_obj);
+        });
+
+        utility.DB.user_cache.transaction(function (tx) {
+            dump_single_user(tx, user);
+        });
     }
 },
 
