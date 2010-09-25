@@ -1049,7 +1049,7 @@ input[type="button"]:focus, .button:focus {
 
 /*===== Extensions Dialog ================================*/
 #exts_dlg {
-    width: 550px;
+    width: 400px;
 }
 
 #exts_dlg_body {
@@ -1058,7 +1058,7 @@ input[type="button"]:focus, .button:focus {
 
 #exts_container {
     overflow: auto;
-    height: 200px;
+    height: 350px;
     width: 100%;
     border: 1px #ccc solid;
     background: #f2f2f2;
