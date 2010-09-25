@@ -58,7 +58,7 @@ default_config = {
     'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw',
 
 #others:
-    'exts_enabled': [],
+    'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"],
     'no_use_indicator': False,
 }
 
