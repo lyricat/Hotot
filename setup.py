@@ -4,6 +4,13 @@
 from distutils.core import setup
 from DistUtilsExtra.command import *
 from glob import glob
+import os, os.path
+
+def get_data_files(root, directory):
+    return [
+            (root + parent[len(directory):], [ os.path.join(parent, fn) for fn in files ])
+                for parent, dirs, files in os.walk(directory) if files
+           ]
 
 setup(name='hotot',
       version='1.0',
@@ -33,23 +40,7 @@ Features include:
       packages = ['hotot'], 
       data_files = [
           ('share/pixmaps', ['hotot.png']),
-          ('share/hotot/ui', ['data/ui/index.html']),
-          ('share/hotot/ui/js', glob('data/ui/js/*')),
-          ('share/hotot/ui/imgs', glob('data/ui/imgs/*')),
-          ('share/hotot/ui/css', glob('data/ui/css/*')),
-
-          ('share/hotot/ext', ['data/ext/ext.js']),
-          ('share/hotot/ext/org.hotot.imagepreview'
-            , glob('data/ext/org.hotot.imagepreview/*')),
-          ('share/hotot/ext/org.hotot.sample'
-            , glob('data/ext/org.hotot.sample/*')),
-          ('share/hotot/ext/org.hotot.gmap'
-            , glob('data/ext/org.hotot.gmap/*')),
-          ('share/hotot/ext/org.hotot.imageupload'
-            , glob('data/ext/org.hotot.imageupload/*')),
-          ('share/hotot/ext/org.hotot.translate'
-            , glob('data/ext/org.hotot.translate/*')),
-      ],
+      ] + get_data_files('share/hotot', 'data'),
       cmdclass = { "build" :  build_extra.build_extra,
                    "build_i18n" :  build_i18n.build_i18n,
                  }
