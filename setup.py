@@ -6,10 +6,10 @@ from DistUtilsExtra.command import *
 from glob import glob
 import os, os.path
 
-def get_data_files(root, directory):
+def get_data_files(root, data_dir):
     return [
-            (root + parent[len(directory):], [ os.path.join(parent, fn) for fn in files ])
-                for parent, dirs, files in os.walk(directory) if files
+            (root + parent[len(data_dir):], [ os.path.join(parent, fn) for fn in files ])
+                for parent, dirs, files in os.walk(data_dir) if files
            ]
 
 setup(name='hotot',

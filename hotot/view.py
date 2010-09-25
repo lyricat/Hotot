@@ -30,6 +30,7 @@ class MainView(WebView):
         except:
             pass
         webkit.set_web_database_directory_path(config.DB_DIR)
+        webkit.set_default_web_database_quota(1024**3L)
         ## bind events
         self.connect('navigation-requested',
             self.on_navigation_requested);
