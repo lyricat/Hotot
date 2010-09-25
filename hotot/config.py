@@ -16,14 +16,16 @@ DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 
-DATA_DIRS = [os.path.abspath('./data')]
+DATA_DIRS = []
 
 DATA_BASE_DIRS = [
-      os.path.join(os.path.expanduser('~'), '.local', 'share')
-    , '/usr/local/share', '/usr/share']
+      '/usr/local/share'
+    , '/usr/share'
+    , os.path.join(os.path.expanduser('~'), '.local', 'share')
+    ]
 
 DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
-
+DATA_DIRS.append(os.path.abspath('./data'))
 
 default_config = {
     'remember_password': False,
