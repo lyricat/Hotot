@@ -220,7 +220,7 @@ msgstr "Sugerencias:"
 
 #: ../data/ui/index.html:454
 msgid "- Make sure all words are spelled correctly."
-msgstr " - Asegurate de que todas las palabras esté correctamente escritas."
+msgstr " - Asegurate de que todas las palabras estén correctamente escritas."
 
 #: ../data/ui/index.html:455
 msgid "- Try different keywords."
