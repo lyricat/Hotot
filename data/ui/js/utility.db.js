@@ -1,17 +1,25 @@
 if (typeof utility == 'undefined') var utility = {};
 utility.DB = {
 
-cache: null,
+tweet_cache: null,
+
+user_cache: null,
+
+MAX_TWEET_CACHE_SIZE: 10240,
+
+MAX_USER_CACHE_SIZE: 512,
 
 init:
 function init () {
-    utility.DB.cache = window.openDatabase('hotot.cache', '', 'Cache of Hotot', 10);
+    utility.DB.user_cache = window.openDatabase('hotot.user_cache', '', 'User Cache of Hotot', 10);
+    
+    utility.DB.tweet_cache = window.openDatabase('hotot.tweet_cache', '', 'User Cache of Hotot', 10);
 
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.tweet_cache.transaction(function (tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS "TweetCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "status" NCHAR(140) NOT NULL, "json" TEXT NOT NULL )', []);    
     });
 
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.user_cache.transaction(function (tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS "UserCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "screen_name" CHAR(64) NOT NULL , "json" TEXT NOT NULL )', []);    
     });
 },
@@ -22,11 +30,19 @@ function dump_tweets(json_obj) {
         var user = typeof tweet_obj.user != 'undefined'? 
             tweet_obj.user: tweet_obj.sender;
 
-        utility.DB.cache.transaction(function (tx) {
-            tx.executeSql('INSERT INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)]);
+        utility.DB.user_cache.transaction(function (tx) {
+            tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)],
+            function (tx, rs) {},
+            function (tx, error) {
+                utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+            });
         });
-        utility.DB.cache.transaction(function (tx) {
-            tx.executeSql('INSERT INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)]);
+        utility.DB.tweet_cache.transaction(function (tx) {
+            tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)],
+            function (tx, rs) {},
+            function (tx, error) {
+                utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+            });
         });
     };
     if (json_obj.constructor == Array) { 
@@ -44,7 +60,7 @@ function dump_tweets(json_obj) {
 
 get_tweet:
 function get_tweet(key, callback) {
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.tweet_cache.transaction(function (tx) {
         tx.executeSql('SELECT id, status, json FROM TweetCache WHERE id=?', [key], 
             function(tx, rs) {callback(tx,rs);});
     });
@@ -52,7 +68,7 @@ function get_tweet(key, callback) {
 
 get_user:
 function get_user(screen_name, callback) {
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.user_cache.transaction(function (tx) {
         tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name=?', [screen_name], 
             function(tx, rs) {callback(tx,rs);});
     });
@@ -60,7 +76,7 @@ function get_user(screen_name, callback) {
 
 search_user:
 function search_user(query, callback) {
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.user_cache.transaction(function (tx) {
         tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name LIKE \'%'+query+'%\'', [], 
             function(tx, rs) {callback(tx,rs);});
     });
@@ -68,9 +84,43 @@ function search_user(query, callback) {
 
 get_screen_names_starts_with:
 function get_users_starts_with(starts, callback) {
-    utility.DB.cache.transaction(function (tx) {
+    utility.DB.user_cache.transaction(function (tx) {
         tx.executeSql('SELECT screen_name FROM UserCache WHERE screen_name LIKE \''+starts+'%\'', [], 
             function(tx, rs) {callback(tx,rs);});
+    });
+},
+
+reduce_user_cache:
+function reduce_user_cache(limit, callback) {
+    utility.DB.user_cache.transaction(function (tx) {
+        tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM TweetCache limit ?)', [limit], callback);
+    });
+},
+
+reduce_tweet_cache:
+function reduce_tweet_cache(limit, callback) {
+    utility.DB.tweet_cache.transaction(function (tx) {
+        tx.executeSql('DELETE FROM TweetCache WHERE id in (SELECT id FROM TweetCache limit ?)', [limit], callback);
+    });
+},
+
+get_tweet_cache_size:
+function get_tweet_cache_size(callback) {
+    utility.DB.tweet_cache.transaction(function (tx) {
+        tx.executeSql('SELECT count(*) FROM TweetCache', [],
+        function (tx, rs) {
+            callback(rs.rows.item(0)['count(*)']);
+        });
+    });
+},
+
+get_user_cache_size:
+function get_user_cache_size(callback) {
+    utility.DB.user_cache.transaction(function (tx) {
+        tx.executeSql('SELECT count(*) FROM UserCache', [],
+        function (tx, rs) {
+            callback(rs.rows.item(0)['count(*)']);
+        });
     });
 },
 
