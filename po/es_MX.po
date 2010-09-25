@@ -25,11 +25,11 @@ msgstr "Inicio | Hotot"
 
 #: ../data/ui/index.html:88 ../data/ui/index.html:89
 msgid "'What is happening?'"
-msgstr "'¿Qu&eacute; est&aacute; pasando?'"
+msgstr "'¿Qué está pasando?'"
 
 #: ../data/ui/index.html:90
 msgid "'Click here to Compose a Meassage ...'"
-msgstr "'Haz click aqu&iacute; para Escribir un Mensaje ...'"
+msgstr "'Haz click aquí para Escribir un Mensaje ...'"
 
 #: ../data/ui/index.html:236
 msgid "'Reload timeline.'"
@@ -41,11 +41,11 @@ msgstr "'Extensiones ... '"
 
 #: ../data/ui/index.html:242
 msgid "No Extension Icon"
-msgstr "Extensi&oacute;n sin icono"
+msgstr "Extensión sin icono"
 
 #: ../data/ui/index.html:247
 msgid "'More ...'"
-msgstr "'M&aacute;s ...'"
+msgstr "'Más ...'"
 
 #: ../data/ui/index.html:250 ../data/ui/index.html:299
 #: ../data/ui/index.html:562
@@ -114,7 +114,7 @@ msgstr "Ayuda"
 #: ../data/ui/index.html:364 ../data/ui/index.html:370
 #: ../data/ui/index.html:435 ../data/ui/index.html:460
 msgid "Load more"
-msgstr "Mostrar m&aacute;s"
+msgstr "Mostrar más"
 
 #: ../data/ui/index.html:324
 msgid "Inbox"
@@ -166,7 +166,7 @@ msgstr "Tweets: "
 
 #: ../data/ui/index.html:407
 msgid "Tweets per Day: "
-msgstr "Tweets por d&iacute;a: "
+msgstr "Tweets por día: "
 
 #: ../data/ui/index.html:411
 msgid "Web: "
@@ -174,7 +174,7 @@ msgstr "Web: "
 
 #: ../data/ui/index.html:414
 msgid "Location: "
-msgstr "Ubicaci&oacute;n"
+msgstr "Ubicación"
 
 #: ../data/ui/index.html:415
 msgid "Join: "
@@ -200,7 +200,7 @@ msgstr ""
 
 #: ../data/ui/index.html:431
 msgid "Send Request"
-msgstr "Enviar Petici&oacute;"
+msgstr "Enviar Petició"
 
 #: ../data/ui/index.html:441
 msgid "Search for: "
@@ -212,7 +212,7 @@ msgstr "Tu busqueda - "
 
 #: ../data/ui/index.html:450
 msgid " - did not match any result."
-msgstr " - no coincide con alg&uacute;n resultado."
+msgstr " - no coincide con algún resultado."
 
 #: ../data/ui/index.html:453
 msgid "Suggestions:"
@@ -220,7 +220,7 @@ msgstr "Sugerencias:"
 
 #: ../data/ui/index.html:454
 msgid "- Make sure all words are spelled correctly."
-msgstr " - Asegurate de que todas las palabras est&eacute; correctamente escritas."
+msgstr " - Asegurate de que todas las palabras esté correctamente escritas."
 
 #: ../data/ui/index.html:455
 msgid "- Try different keywords."
@@ -292,7 +292,7 @@ msgstr "Invocar Hotot (como: &lt;ALT&gt;C)"
 
 #: ../data/ui/index.html:626
 msgid "'Summon Hot Key'"
-msgstr "'Invocar Tecla r&aacute;pida'"
+msgstr "'Invocar Tecla rápida'"
 
 #: ../data/ui/index.html:632
 msgid "- Font Settings -"
@@ -324,7 +324,7 @@ msgstr "abcdefghijk ABCDEFGHIJK"
 
 #: ../data/ui/index.html:651
 msgid "- Display Settings -"
-msgstr " - Configuraci&oacute;n de Ventana -"
+msgstr " - Configuración de Ventana -"
 
 #: ../data/ui/index.html:655
 msgid "'Use Native Input'"
@@ -336,15 +336,15 @@ msgstr "Usar Dialogo de Entrada Nativo"
 
 #: ../data/ui/index.html:658
 msgid "'Use Native Notify'"
-msgstr "'Usar Notificaci&oacute;n Nativa'"
+msgstr "'Usar Notificación Nativa'"
 
 #: ../data/ui/index.html:660
 msgid "Use Native Notify System"
-msgstr "Usar Notificaci&oacute;n Nativa del Sistema"
+msgstr "Usar Notificación Nativa del Sistema"
 
 #: ../data/ui/index.html:665
 msgid "- API Settings -"
-msgstr "- Configuraci&oacute;n de API -"
+msgstr "- Configuración de API -"
 
 #: ../data/ui/index.html:668
 msgid "API Base"
@@ -356,15 +356,15 @@ msgstr "'API Base'"
 
 #: ../data/ui/index.html:672
 msgid "'Use same Signing Api'"
-msgstr "'Usar la misma Api de Autentificaci&oacute;n'"
+msgstr "'Usar la misma Api de Autentificación'"
 
 #: ../data/ui/index.html:675
 msgid "Signing API Base"
-msgstr "Autentificaci&oacute;n API Base"
+msgstr "Autentificación API Base"
 
 #: ../data/ui/index.html:677
 msgid "'Signing API Base'"
-msgstr "'Autentificaci&oacute;n API Base'"
+msgstr "'Autentificación API Base'"
 
 #: ../data/ui/index.html:679
 msgid "OAuth Base"
@@ -376,19 +376,19 @@ msgstr "'OAuth Base'"
 
 #: ../data/ui/index.html:683
 msgid "'Use same Signing OAuth Base'"
-msgstr "'Usar la misma Autentificaci&oacute;n OAuth Base'"
+msgstr "'Usar la misma Autentificación OAuth Base'"
 
 #: ../data/ui/index.html:685
 msgid "Same signing OAuth base: "
-msgstr "Misma Autentificaci&oacute;n OAuth base:"
+msgstr "Misma Autentificación OAuth base:"
 
 #: ../data/ui/index.html:686
 msgid "Signing OAuth Base"
-msgstr "Autentificaci&oacute;n OAuth Base"
+msgstr "Autentificación OAuth Base"
 
 #: ../data/ui/index.html:688
 msgid "'Signing OAuth Base'"
-msgstr "'Autentificaci&oacute;n OAuth Base'"
+msgstr "'Autentificación OAuth Base'"
 
 #: ../data/ui/index.html:690
 msgid "Search API Base"
@@ -400,7 +400,7 @@ msgstr "'Buscar API Base'"
 
 #: ../data/ui/index.html:695
 msgid "- Proxy Settings -"
-msgstr "- Configuraci&oacute;n de Proxy-"
+msgstr "- Configuración de Proxy-"
 
 #: ../data/ui/index.html:700
 msgid "'Use HTTP Proxy'"
@@ -491,7 +491,7 @@ msgstr "twitter"
 
 #: ../data/ui/index.html:811
 msgid "Action"
-msgstr "Acci&oacute;n"
+msgstr "Acción"
 
 #: ../data/ui/index.html:811
 msgid "Shortcut"
@@ -515,11 +515,11 @@ msgstr "Recargar"
 
 #: ../data/ui/index.html:818
 msgid "Slide to prev page"
-msgstr "Ir a la siguiente p&aacute;gina"
+msgstr "Ir a la siguiente página"
 
 #: ../data/ui/index.html:819
 msgid "Slide to next page"
-msgstr "Ir a la siguiente p&aacute;gina"
+msgstr "Ir a la siguiente página"
 
 #: ../data/ui/index.html:820
 msgid "Move to prev tweet"
@@ -547,11 +547,11 @@ msgstr "Alternar pestaña"
 
 #: ../data/ui/index.html:826
 msgid "Enter compose mode"
-msgstr "Entrar a modo de composici&oacute;n"
+msgstr "Entrar a modo de composición"
 
 #: ../data/ui/index.html:827
 msgid "Enter action mode"
-msgstr "Entrar a modo acci&oacute;n"
+msgstr "Entrar a modo acción"
 
 #: ../data/ui/index.html:828
 msgid "Enter filter mode"
@@ -559,31 +559,31 @@ msgstr "Entrar a modo filtro"
 
 #: ../data/ui/index.html:829
 msgid "Compose Mode"
-msgstr "Modo composici&oacute;n"
+msgstr "Modo composición"
 
 #: ../data/ui/index.html:830
 msgid "Exit compose mode"
-msgstr "Salir de modo composici&oacute;n"
+msgstr "Salir de modo composición"
 
 #: ../data/ui/index.html:831
 msgid "Action Mode"
-msgstr "Modo acci&oacute;n"
+msgstr "Modo acción"
 
 #: ../data/ui/index.html:832
 msgid "Prev action"
-msgstr "Acci&oacute;n anterior"
+msgstr "Acción anterior"
 
 #: ../data/ui/index.html:833
 msgid "Next action"
-msgstr "Acci&oacute;n siguiente"
+msgstr "Acción siguiente"
 
 #: ../data/ui/index.html:834
 msgid "Trigger action"
-msgstr "Ejecutar acci&oacute;n"
+msgstr "Ejecutar acción"
 
 #: ../data/ui/index.html:835
 msgid "Exit action mode"
-msgstr "Salir de modo acci&oacute;n"
+msgstr "Salir de modo acción"
 
 #: ../data/ui/index.html:836
 msgid "Filter Mode"
@@ -627,7 +627,7 @@ msgstr "Tweets"
 
 #: ../data/ui/index.html:924
 msgid "Tweets per Day"
-msgstr "Tweets por d&iacute;a"
+msgstr "Tweets por día"
 
 #: ../data/ui/index.html:930
 msgid "Favourites"
@@ -639,7 +639,7 @@ msgstr "Nombre"
 
 #: ../data/ui/index.html:941
 msgid "Location"
-msgstr "Ubicaci&oacute;n"
+msgstr "Ubicación"
 
 #: ../data/ui/index.html:943
 msgid "Website"
@@ -687,7 +687,7 @@ msgstr "_Ayuda"
 
 #: ../hotot/hotot.py:122
 msgid "What's happening?"
-msgstr "¿Qu&eacute; est&aacute; pasando?"
+msgstr "¿Qué está pasando?"
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
