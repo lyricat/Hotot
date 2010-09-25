@@ -22,7 +22,7 @@ function init () {
 
     $('#btn_oauth_pin_ok').click(
     function (event) {
-        var pin_code = $('#tbox_oauth_pin').attr('value').trim();
+        var pin_code = $.trim($('#tbox_oauth_pin').attr('value'));
         if (pin_code == '') 
             return
         jsOAuth.get_access_token(pin_code,
