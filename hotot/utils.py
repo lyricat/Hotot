@@ -68,6 +68,10 @@ def get_system_default_browser():
 def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
+    ## for proxychains
+    os.environ['LD_PRELOAD'] = ' '.join(
+            [ ld for ld in os.environ.get('LD_PRELOAD', '').split(' ') if 'libproxychains.so' not in ld ]
+        )
     browser = 'xdg-open'
     if sys.platform[:3] == "win":
         browser = 'start'
