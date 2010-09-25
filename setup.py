@@ -47,6 +47,8 @@ Features include:
             , glob('data/ext/org.hotot.gmap/*')),
           ('share/hotot/ext/org.hotot.imageupload'
             , glob('data/ext/org.hotot.imageupload/*')),
+          ('share/hotot/ext/org.hotot.translate'
+            , glob('data/ext/org.hotot.translate/*')),
       ],
       cmdclass = { "build" :  build_extra.build_extra,
                    "build_i18n" :  build_i18n.build_i18n,
