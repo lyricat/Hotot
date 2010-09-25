@@ -1,8 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) mishudar 2010
+# Copyright (C) mishudark 2010
 # Copyright (C) sidragasum 2010
 # This file is distributed under the same license as the PACKAGE package.
-# Victor Mishel Vera Sanchez <moonsadly@gmail.com>, 2010.
+# Victor Mishel Vera Sanchez(mishudark) <moonsadly@gmail.com>, 2010.
 # Fernando Rojas Vargas <sidragasum666@gmail.com>, 2010.
 #
 #, fuzzy
@@ -13,7 +13,7 @@ msgstr ""
 "POT-Creation-Date: 2010-09-25 11:01-0500\n"
 "PO-Revision-Date: 2010-09-25 15:07-06:00\n"
 "Last-Translator: Victor Mishel Vera Sanchez <moonsadly@gmail.com>\n"
-"Language-Team: ktrionix-labs <ktrionix-labs@gmail.com>\n"
+"Language-Team: ktrionix-labs <ktrionixlabs@gmail.com>\n"
 "Language: Spanish/Mexico \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr "Extensiones"
 
 #: ../data/ui/index.html:256
 msgid "Help &amp; About"
-msgstr "Ayuda; Acerca de ..."
+msgstr "Ayuda y Acerca de ..."
 
 #: ../data/ui/index.html:259
 msgid "Sign out"
@@ -462,7 +462,7 @@ msgstr "Haz click para continuar"
 
 #: ../data/ui/index.html:764
 msgid "About &amp; Help"
-msgstr "Acerca de; Ayuda"
+msgstr "Acerca de y Ayuda"
 
 #: ../data/ui/index.html:773
 msgid "About"
