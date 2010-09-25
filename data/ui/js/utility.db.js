@@ -5,14 +5,14 @@ cache: null,
 
 init:
 function init () {
-    utility.DB.cache = window.openDatabase('hotot_cache', '', 'Cache of Hotot', 10);
+    utility.DB.cache = window.openDatabase('hotot.cache', '', 'Cache of Hotot', 10);
 
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('CREATE TABLE "TweetCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "json" TEXT NOT NULL  check(typeof("json") = \'text\') )', []);    
+        tx.executeSql('CREATE TABLE IF NOT EXISTS "TweetCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "status" NCHAR(140) NOT NULL, "json" TEXT NOT NULL )', []);    
     });
 
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('CREATE TABLE "UserCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "screen_name" CHAR(64) NOT NULL , "json" TEXT NOT NULL )', []);    
+        tx.executeSql('CREATE TABLE IF NOT EXISTS "UserCache" ("id" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "screen_name" CHAR(64) NOT NULL , "json" TEXT NOT NULL )', []);    
     });
 },
 
@@ -26,7 +26,7 @@ function dump_tweets(json_obj) {
             tx.executeSql('INSERT INTO UserCache VALUES (?, ?, ?)', [user.id, user.screen_name, JSON.stringify(tweet_obj)]);
         });
         utility.DB.cache.transaction(function (tx) {
-            tx.executeSql('INSERT INTO TweetCache VALUES (?, ?)', [tweet_obj.id, JSON.stringify(tweet_obj)]);
+            tx.executeSql('INSERT INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)]);
         });
     };
     if (json_obj.constructor == Array) { 
@@ -45,7 +45,7 @@ function dump_tweets(json_obj) {
 get_tweet:
 function get_tweet(key, callback) {
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('SELECT id, json FROM TweetCache WHERE id=?', [key], 
+        tx.executeSql('SELECT id, status, json FROM TweetCache WHERE id=?', [key], 
             function(tx, rs) {callback(tx,rs);});
     });
 },

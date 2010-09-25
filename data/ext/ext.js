@@ -29,8 +29,11 @@ exts_info: {},
 
 exts_enabled: [], // @TODO
 
+prefs: null,
+
 init: 
 function init() {
+    ext.prefs = window.openDatabase('hotot.exts_prefs', '', 'Preferences of extensions', 10);
     // listeners: {listener_type: [callbacks ... ], ... };
     for (var i = 0x01; i < 0xff; i += 0x01) {
         ext.listeners[i] = [];
@@ -122,6 +125,7 @@ function init_exts() {
                 , author: extension.author
                 , url: extension.url
                 , icon: icon
+                , has_options: typeof extension.options != 'undefined'
                 , extension: extension
             };
 
@@ -159,7 +163,9 @@ function load_exts(exts) {
     }
     procs.push(function () { ext.init_exts(); });
     $(window).queue('_load_exts', procs);
+    setTimeout(function () {
     $(window).dequeue('_load_exts');
+    }, 1000);
 },
 
 notify:
@@ -199,5 +205,54 @@ function remove_from_exts_menu(id) {
     li.remove();
 },
 
-
 };
+
+ext.Preferences = function (prefs_name) {
+    function init(prefs_name) {
+        ext.prefs.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS "'+prefs_name+'" ("name" CHAR(64) PRIMARY KEY  NOT NULL  UNIQUE , "val" TEXT NOT NULL )', []);    
+        });
+    }
+
+    function get(key, callback) {
+        var _this = this;
+        ext.prefs.transaction(function (tx) {
+            tx.executeSql('SELECT name, val FROM "'+ _this.name+'" WHERE name=?', [key],
+            function (tx, rs) {
+                if (callback) {
+                    var val = null;
+                    if (rs.rows.length != 0) {
+                        val = JSON.parse(rs.rows.item(0).val);
+                    }
+                    callback(key, val);
+                }
+            },
+            function (tx, error) {
+                utility.Console.out('sql:'+ error.message);
+            });
+        });
+    }
+
+    function set(key, val, callback) {
+        val = JSON.stringify(val);
+        var _this = this;
+        utility.Console.out('sql:'+ 'INSERT INTO "'+ _this.name+'" VALUES ("'+key+'", "' + val +'")');
+        ext.prefs.transaction(function (tx) {
+            tx.executeSql('INSERT or REPLACE INTO "'+ _this.name+'" VALUES (?, ?)', [key, val],
+            function (tx, rs) {
+                if (callback) {
+                    callback(key, val);
+                }
+            },
+            function (tx, error) {
+                utility.Console.out('sql:'+ error.message);
+            });
+        });
+    }
+    this.name = prefs_name;
+    this.set = set;
+    this.get = get;
+    init(prefs_name);
+    return this;
+}
+

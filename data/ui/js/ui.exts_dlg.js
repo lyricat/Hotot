@@ -42,8 +42,9 @@ function load_ext_list() {
                 + '<span>Author:</span> <span>'+info.author+'</span><br/>'
                 + '<span>Website:</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
                 + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
-                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable_btn">Enable</a> <a href="javascript:void(0);" class="options_btn">Options</a></div>'
-            + '</div></li>');
+                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable_btn">Enable</a> '
+                + (info.has_options?' <a href="javascript:void(0);" class="options_btn">Options</a>': '')
+            + '</div></div></li>');
     }
     $('#exts_container > ul').html(ext_arr.join(''));
 
@@ -72,7 +73,7 @@ function enable_ext_item(item, enable) {
 
 bind_exts_btns:
 function bind_exts_btns() {
-    $('#exts_container .ext_ctrl').find('.enable_btn').click(
+    $('#exts_container .enable_btn').click(
     function (event) {
         var item = $(this).parents('.ext_item').get(0);
         var id = $(item).attr('id').substring(4);
@@ -87,6 +88,13 @@ function bind_exts_btns() {
         }
         ui.ExtsDlg.enable_ext_item(item, enable);
     });
+    $('#exts_container .options_btn').click(
+    function (event) {
+        var item = $(this).parents('.ext_item').get(0);
+        var id = $(item).attr('id').substring(4);
+        ext.exts_info[id].extension.options();
+    });
+
 },
 
 hide:
