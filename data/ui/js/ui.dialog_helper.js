@@ -15,6 +15,7 @@ function init() {
     , ui.PrefsDlg
     , ui.PinDlg
     , ui.AboutDlg
+    , ui.ExtsDlg
     , ui.CommonDlg
     ];
 },
