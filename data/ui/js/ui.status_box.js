@@ -297,6 +297,11 @@ function update_status_cb(result) {
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
+    
+    var container = $('#home_timeline_tweet_block > ul');
+    container.pagename = 'home_timeline'
+    ui.Main.add_tweets(result, container);
+    
     return this;
 },
 
