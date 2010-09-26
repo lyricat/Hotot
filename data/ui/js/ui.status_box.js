@@ -455,8 +455,11 @@ function close() {
 open:
 function open(on_finish) {
     window.clearTimeout(ui.StatusBox.close_countdown_timer);
-    if (!on_finish) 
-        on_finish = function () {$('#tbox_status').focus();};
+    if (!on_finish) {
+        on_finish = function() { 
+            $('#tbox_status').blur().focus();
+        };
+    }
     if (ui.StatusBox.is_closed) {
         // resume the mode.
         if (ui.StatusBox.mode_backup != null 

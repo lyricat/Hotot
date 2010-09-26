@@ -1431,7 +1431,6 @@ input[type="button"]:focus, .button:focus {
 }
 
 .tweet_body > .text {
-    word-break: break-all;
     font-size: 12px;
     line-height: 1.5em;
     margin-top: 20px;

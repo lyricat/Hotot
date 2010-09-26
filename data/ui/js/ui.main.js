@@ -632,6 +632,7 @@ function on_fav_click(btn, event) {
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
+            $(btn).removeClass('unfav');
         });
     } else {
         ui.Notification.set('favorite this tweet ...').show(-1);
