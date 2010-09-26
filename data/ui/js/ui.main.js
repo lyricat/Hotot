@@ -244,7 +244,6 @@ function load_tweets_cb(result, pagename) {
     container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, container);
     
-    
     if (tweet_count != 0 ) {
         // favorites page have differet mechanism to display more tweets.
         if (pagename == '#favorites' || pagename == '#search') {
@@ -657,7 +656,6 @@ function on_expander_click(btn, event) {
         
         var load_thread_proc_cb = function (prev_tweet_obj) {
             ui.Main.add_tweets(prev_tweet_obj, thread_container);
-            ui.Main.bind_tweets_action(prev_tweet_obj, true, thread_container.pagename);
             // load the prev tweet in the thread.
             var reply_id = prev_tweet_obj.in_reply_to_status_id;
             if (reply_id == null) { // end of thread. 
