@@ -63,8 +63,14 @@ function slide_to(id) {
 
     var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
     if (first_one.length != 0) {
-        ui.Main.actived_tweet_id = '#' + first_one.attr('id');
-        ui.Main.move_to_tweet('top');
+        var block_name = ui.Slider.current;
+        if (ui.Slider.current == '#retweets') {
+            block_name = ui.RetweetTabs.current;
+        } else if (ui.Slider.current == '#direct_messages') {
+            block_name = ui.DMTabs.current;
+        }
+        ui.Main.actived_tweet_id = ui.Main.block_info[block_name].actived_tweet_id;
+        ui.Main.move_to_tweet('orig');
     } else {
         ui.Main.actived_tweet_id = null;
     }
