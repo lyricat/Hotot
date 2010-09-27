@@ -182,11 +182,11 @@ msgstr "加入："
 
 #: ../data/ui/index.html:416
 msgid "Followers: "
-msgstr "关注："
+msgstr "被关注："
 
 #: ../data/ui/index.html:417
 msgid "Friends: "
-msgstr "朋友："
+msgstr "关注了："
 
 #: ../data/ui/index.html:425
 msgid " has protected his/her tweets."
