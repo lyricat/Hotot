@@ -123,8 +123,8 @@ function form_dm(dm_obj, pagename) {
         scheme = 'mention';
     }
 
-    var create_at_str = create_at.toTimeString().substring(0, 8)
-        + ' ' + create_at.toDateString();
+    var create_at_str = decodeURI(escape(create_at.toLocaleTimeString()))
+	+ ' ' + decodeURI(escape(create_at.toLocaleDateString()));
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
@@ -170,8 +170,8 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var create_at_str = create_at.toTimeString().substring(0, 8)
-        + ' ' + create_at.toDateString();
+    var create_at_str = decodeURI(escape(create_at.toLocaleTimeString()))
+	+ ' ' + decodeURI(escape(create_at.toLocaleDateString()));
 
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
@@ -229,8 +229,8 @@ function form_search(tweet_obj, pagename) {
     var ret = '';
     var scheme = 'normal';
 
-    var create_at_str = create_at.toTimeString().substring(0, 8)
-        + ' ' + create_at.toDateString();
+    var create_at_str = decodeURI(escape(create_at.toLocaleTimeString()))
+	+ ' ' + decodeURI(escape(create_at.toLocaleDateString()));
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = 'mention';
@@ -257,6 +257,9 @@ function fill_vcard(user_obj, vcard_container) {
     var create_at = new Date(Date.parse(user_obj.created_at));
     var now = new Date();
     var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
+
+    var create_at_str = decodeURI(escape(create_at.toLocaleTimeString()))
+	+ ' ' + decodeURI(escape(create_at.toLocaleDateString()));
     
     vcard_container.find('.profile_img')
         .attr('src', user_obj.profile_image_url);
@@ -271,7 +274,7 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
     vcard_container.find('.bio').text('').text(user_obj.description);
     vcard_container.find('.location').text('').text(user_obj.location);
-    vcard_container.find('.join').text(create_at.toLocaleDateString());
+    vcard_container.find('.join').text(create_at_str);
     if (user_obj.url) {
         vcard_container.find('.web').text(user_obj.url)
         vcard_container.find('.web').attr('href', user_obj.url);
