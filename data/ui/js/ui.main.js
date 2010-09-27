@@ -254,10 +254,6 @@ function load_tweets_cb(result, pagename) {
     container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, container);
     
-    if (pagename == ui.Slider.current) {
-        ui.Main.move_to_tweet('orig');
-    }
-    
     if (tweet_count != 0 ) {
         // favorites page have differet mechanism to display more tweets.
         if (pagename == '#favorites' || pagename == '#search') {
