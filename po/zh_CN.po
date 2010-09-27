@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-27 21:42+0800\n"
+"POT-Creation-Date: 2010-09-27 23:01+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -160,11 +160,11 @@ msgstr "解除屏蔽"
 msgid "Name: "
 msgstr "名字："
 
-#: ../data/ui/index.html:406
+#: ../data/ui/index.html:406 ../data/ui/index.html:922
 msgid "Tweets: "
 msgstr "消息："
 
-#: ../data/ui/index.html:407
+#: ../data/ui/index.html:407 ../data/ui/index.html:924
 msgid "Tweets per Day: "
 msgstr "每天发推："
 
@@ -176,15 +176,15 @@ msgstr "网站："
 msgid "Location: "
 msgstr "位置："
 
-#: ../data/ui/index.html:415
+#: ../data/ui/index.html:415 ../data/ui/index.html:920
 msgid "Join: "
 msgstr "加入："
 
-#: ../data/ui/index.html:416
+#: ../data/ui/index.html:416 ../data/ui/index.html:928
 msgid "Followers: "
 msgstr "被关注："
 
-#: ../data/ui/index.html:417
+#: ../data/ui/index.html:417 ../data/ui/index.html:926
 msgid "Friends: "
 msgstr "关注了："
 
@@ -617,20 +617,8 @@ msgstr ""
 msgid "Change avator"
 msgstr ""
 
-#: ../data/ui/index.html:920
-msgid "Join"
-msgstr "加入"
-
-#: ../data/ui/index.html:922
-msgid "Tweets"
-msgstr "消息"
-
-#: ../data/ui/index.html:924
-msgid "Tweets per Day"
-msgstr "每天发推"
-
 #: ../data/ui/index.html:930
-msgid "Favourites"
+msgid "Favourites: "
 msgstr ""
 
 #: ../data/ui/index.html:939
@@ -696,3 +684,12 @@ msgstr "傲兔推特客户端"
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
+
+#~ msgid "Join"
+#~ msgstr "加入"
+
+#~ msgid "Tweets"
+#~ msgstr "消息"
+
+#~ msgid "Tweets per Day"
+#~ msgstr "每天发推"

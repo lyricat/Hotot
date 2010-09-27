@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-27 21:42+0800\n"
+"POT-Creation-Date: 2010-09-27 23:01+0800\n"
 "PO-Revision-Date: 2010-09-25 15:07-06:00\n"
 "Last-Translator: Victor Mishel Vera Sanchez <moonsadly@gmail.com>\n"
 "Language-Team: ktrionix-labs <ktrionixlabs@gmail.com>\n"
@@ -160,11 +160,11 @@ msgstr "Desbloquear"
 msgid "Name: "
 msgstr "Nombre: "
 
-#: ../data/ui/index.html:406
+#: ../data/ui/index.html:406 ../data/ui/index.html:922
 msgid "Tweets: "
 msgstr "Tweets: "
 
-#: ../data/ui/index.html:407
+#: ../data/ui/index.html:407 ../data/ui/index.html:924
 msgid "Tweets per Day: "
 msgstr "Tweets por día: "
 
@@ -176,15 +176,15 @@ msgstr "Web: "
 msgid "Location: "
 msgstr "Ubicación"
 
-#: ../data/ui/index.html:415
+#: ../data/ui/index.html:415 ../data/ui/index.html:920
 msgid "Join: "
 msgstr "Unirse: "
 
-#: ../data/ui/index.html:416
+#: ../data/ui/index.html:416 ../data/ui/index.html:928
 msgid "Followers: "
 msgstr "Seguidores: "
 
-#: ../data/ui/index.html:417
+#: ../data/ui/index.html:417 ../data/ui/index.html:926
 msgid "Friends: "
 msgstr "Amigos: "
 
@@ -617,20 +617,9 @@ msgstr "Perfil"
 msgid "Change avator"
 msgstr "Cambiar avatar"
 
-#: ../data/ui/index.html:920
-msgid "Join"
-msgstr "Unirse"
-
-#: ../data/ui/index.html:922
-msgid "Tweets"
-msgstr "Tweets"
-
-#: ../data/ui/index.html:924
-msgid "Tweets per Day"
-msgstr "Tweets por día"
-
 #: ../data/ui/index.html:930
-msgid "Favourites"
+#, fuzzy
+msgid "Favourites: "
 msgstr "Favoritos"
 
 #: ../data/ui/index.html:939
@@ -696,3 +685,12 @@ msgstr "Hotot Cliente Twitter"
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Cliente Twitter liviano basado en Gtk2 y Webkit"
+
+#~ msgid "Join"
+#~ msgstr "Unirse"
+
+#~ msgid "Tweets"
+#~ msgstr "Tweets"
+
+#~ msgid "Tweets per Day"
+#~ msgstr "Tweets por día"
