@@ -86,7 +86,7 @@ msgstr "Memorizar senha"
 
 #: ../data/ui/index.html:285
 msgid "Sign In"
-msgstr "Ligar
+msgstr "Ligar"
 
 #: ../data/ui/index.html:289
 msgid "Or use Twitter OAuth"
