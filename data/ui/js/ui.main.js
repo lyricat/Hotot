@@ -17,49 +17,59 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_home_timeline
         , is_sub: false
+        , actived_tweet_id: null 
     },
     '#mentions': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_mentions
         , is_sub: false
+        , actived_tweet_id: null 
     },
     '#direct_messages_inbox': {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_direct_messages
         , is_sub: false
+        , actived_tweet_id: null 
     },
     '#direct_messages_outbox': {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_sent_direct_messages
         , is_sub: false
+        , actived_tweet_id: null 
     },
     '#favorites': { page: 1
         , api_proc: lib.twitterapi.get_favorites
+        , actived_tweet_id: null 
     },
     '#retweeted_to_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_to_me
         , is_sub: true
+        , actived_tweet_id: null 
     },
     '#retweeted_by_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_by_me
         , is_sub: true
+        , actived_tweet_id: null 
     },
     '#retweets_of_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweets_of_me
         , is_sub: true
+        , actived_tweet_id: null 
     },
     '#people': {
           id: null, screen_name: '' 
         , since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
+        , actived_tweet_id: null 
     },
     '#search': { 
           query: '', page: 1
         , api_proc: lib.twitterapi.search 
+        , actived_tweet_id: null 
     },
 },
 
@@ -417,7 +427,7 @@ function bind_tweets_action(tweets_obj, pagename) {
         $(id).click(
         function (event) {
             $(ui.Main.actived_tweet_id).removeClass('active');
-            ui.Main.actived_tweet_id = id;
+            ui.Main.set_actived_tweet_id(id);
             $(ui.Main.actived_tweet_id).addClass('active');
         });
         $(id).hover(
@@ -719,9 +729,12 @@ function move_to_tweet(pos) {
         target = current.next('.tweet');
     } else if (pos == 'prev') {
         target = current.prev('.tweet');
+    } else if (pos == 'orig') {
+        target = current;
     } else {
-        
+    
     }
+
     if (target.length == 0) {
         target = current;
     }
@@ -730,8 +743,20 @@ function move_to_tweet(pos) {
         , 300);
     current.removeClass('active');
     target.addClass('active');
-    ui.Main.actived_tweet_id ='#'+ target.attr('id');
+    ui.Main.set_actived_tweet_id('#'+ target.attr('id'));
     target.focus();
+},
+
+set_actived_tweet_id:
+function set_actived_tweet_id(id) {
+    var block_name = ui.Slider.current;
+    if (ui.Slider.current == '#retweets') {
+        block_name = ui.RetweetTabs.current;
+    } else if (ui.Slider.current == '#direct_messages') {
+        block_name = ui.DMTabs.current;
+    }
+    ui.Main.actived_tweet_id = id;
+    ui.Main.block_info[block_name].actived_tweet_id = id;
 },
 
 filter:
