@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-27 11:01-0500\n"
+"POT-Creation-Date: 2010-09-28 19:53+0800\n"
 "Last-Translator: Carlos Fernando Dias Martins(ogalho) <ogalho@gmail.com>\n"
 "Language: Português/Portugal \n"
 "MIME-Version: 1.0\n"
@@ -156,11 +156,11 @@ msgstr "Desbloquear"
 msgid "Name: "
 msgstr "Nome: "
 
-#: ../data/ui/index.html:406
+#: ../data/ui/index.html:406 ../data/ui/index.html:922
 msgid "Tweets: "
 msgstr "Tweets: "
 
-#: ../data/ui/index.html:407
+#: ../data/ui/index.html:407 ../data/ui/index.html:924
 msgid "Tweets per Day: "
 msgstr "Tweets por dia: "
 
@@ -172,15 +172,15 @@ msgstr "Web: "
 msgid "Location: "
 msgstr "Localização:"
 
-#: ../data/ui/index.html:415
+#: ../data/ui/index.html:415 ../data/ui/index.html:920
 msgid "Join: "
 msgstr "Subscrever: "
 
-#: ../data/ui/index.html:416
+#: ../data/ui/index.html:416 ../data/ui/index.html:928
 msgid "Followers: "
 msgstr "Seguidores: "
 
-#: ../data/ui/index.html:417
+#: ../data/ui/index.html:417 ../data/ui/index.html:926
 msgid "Friends: "
 msgstr "Amigos: "
 
@@ -192,8 +192,9 @@ msgstr "protegeu os tweets."
 msgid ""
 "You need to go to twitter.com to send a request before you can start "
 "following this person..."
-msgstr "Necessita de ir a twitter.com fazer um pedido antes de poder"
-"seguir esta pessoa..."
+msgstr ""
+"Necessita de ir a twitter.com fazer um pedido antes de poderseguir esta "
+"pessoa..."
 
 #: ../data/ui/index.html:431
 msgid "Send Request"
@@ -614,20 +615,9 @@ msgstr "Perfil"
 msgid "Change avator"
 msgstr "Alterar avatar"
 
-#: ../data/ui/index.html:920
-msgid "Join"
-msgstr "Subscrever"
-
-#: ../data/ui/index.html:922
-msgid "Tweets"
-msgstr "Tweets"
-
-#: ../data/ui/index.html:924
-msgid "Tweets per Day"
-msgstr "Tweets por dia"
-
 #: ../data/ui/index.html:930
-msgid "Favourites"
+#, fuzzy
+msgid "Favourites: "
 msgstr "Favoritos"
 
 #: ../data/ui/index.html:939
@@ -693,3 +683,12 @@ msgstr "Hotot Cliente Twitter"
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Cliente Twitter baseado em Gtk2 e Webkit"
+
+#~ msgid "Join"
+#~ msgstr "Subscrever"
+
+#~ msgid "Tweets"
+#~ msgstr "Tweets"
+
+#~ msgid "Tweets per Day"
+#~ msgstr "Tweets por dia"
