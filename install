@@ -1,3 +1,5 @@
 #!/bin/bash -x
 python setup.py build_i18n -m
 python setup.py build
+[ -a /usr/bin/dpkg ] && INSTALL_LAYOUT='--install-layout deb'
+sudo python setup.py install $INSTALL_LAYOUT --record record.log
