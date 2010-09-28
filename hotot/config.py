@@ -5,7 +5,6 @@ import pickle
 import json
 import gtk
 import sys
-import db
 
 PROGRAM_NAME = 'hotot'
 UI_DIR_NAME = 'ui'

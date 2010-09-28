@@ -253,7 +253,7 @@ function save_prefs() {
     if (prefs_obj['socks_proxy_port']=='') prefs_obj['socks_proxy_port']=0;
 
     hotot_action('config/save_prefs/'
-        + utility.DB.serialize_dict(prefs_obj));
+        + encodeURIComponent(JSON.stringify(prefs_obj)));
 },
 
 restore_defaults:

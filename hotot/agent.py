@@ -7,7 +7,6 @@ import base64
 import urllib, urllib2
 import pynotify
 import gtk
-import db
 import threading 
 import gobject
 import utils
@@ -69,7 +68,7 @@ def crack_config(params):
         config.loads()
         push_prefs()
     elif params[1] == 'save_prefs':
-        prefs = db.unserialize_dict(params[2])
+        prefs = json.loads(urllib2.unquote(params[2]))
         config.save_prefs(prefs)
         apply_prefs()
     elif params[1] == 'restore_defaults':

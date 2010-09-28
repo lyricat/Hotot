@@ -14,7 +14,6 @@ import view
 import config
 import agent
 import keybinder
-import db
 
 try:
     import appindicator
