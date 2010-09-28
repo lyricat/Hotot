@@ -113,7 +113,7 @@ function request_profile() {
     create_at.setTime(timestamp);
     var now = new Date();
     var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
-    $('#profile_join').text(decodeURI(escape(create_at.toLocaleDateString())));
+    $('#profile_join').text(decodeURIComponent(escape(create_at.toLocaleDateString())));
     $('#profile_tweet_cnt').text(globals.myself.statuses_count);
     $('#profile_tweet_per_day_cnt').text(
          Math.round( globals.myself.statuses_count / differ * 100)/ 100);
