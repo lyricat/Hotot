@@ -45,16 +45,16 @@ pre {
     background-color: transparent;
 }
 
-.dialog ::-webkit-scrollbar-track-piece {
+.dialog ::-webkit-scrollbar-track-piece,  #status_box ::-webkit-scrollbar-track-piece {
     background: #2b2b2b;
     border-radius: 6px;
     float: right;
 }
-.dialog ::-webkit-scrollbar-thumb:vertical {
+.dialog ::-webkit-scrollbar-thumb:vertical, #status_box ::-webkit-scrollbar-thumb:vertical  {
     background: #666;
 }
 
-.dialog ::-webkit-scrollbar-thumb:horizontal {
+.dialog ::-webkit-scrollbar-thumb:horizontal, #status_box ::-webkit-scrollbar-thumb:horizontal  {
     background: #666;
 }
 
@@ -385,16 +385,17 @@ pre {
 }
 
 #screen_name_auto_complete {
+    margin: 5px;
     list-style-type:none; 
     color: #white;
     font-size: 12px;
     max-height: 100px;
     overflow: auto;
+    color: #fff;
 }
 
 #screen_name_auto_complete > li.hlight {
-    background: #fef6a8;
-    color: #000;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
 /* ===== Buttom =================================== */
