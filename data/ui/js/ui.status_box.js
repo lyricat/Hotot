@@ -202,7 +202,6 @@ function init () {
             var item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
             item.removeClass('hlight');
             
-            $('#screen_name_auto_complete').attr({scrollTop: item.get(0).offsetTop}); 
             if (event.keyCode == 38) 
                 ui.StatusBox.auto_complete_hlight_idx -= 1;
             if (event.keyCode == 40) 
@@ -217,13 +216,17 @@ function init () {
 
             item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
             item.addClass('hlight');
+
+            utility.Console.out( item.get(0).offsetTop);
+            screen_name_list.stop().animate({scrollTop: item.get(0).offsetTop - screen_name_list.get(0).offsetTop}); 
             ui.StatusBox.auto_complete_selected = item.text();
+            ui.StatusBox.lazy_close();
             return false;
         } 
+        ui.StatusBox.lazy_close();
         ui.StatusBox.auto_complete_hlight_idx = 0;
         ui.StatusBox.auto_complete(event);
 
-        ui.StatusBox.lazy_close()
         ui.StatusBox.update_status_len();
     });
     
@@ -396,7 +399,14 @@ function auto_complete(event) {
                 }
                 var str = '<li>'+result_list.join('</li><li>')+'</li>';
                 $('#screen_name_auto_complete').html(str).show();
-                
+                $('#screen_name_auto_complete > li').unbind('click');
+                $('#screen_name_auto_complete > li').click(
+                function (event) {
+                    var append = $(this).text().substring(ui.StatusBox.get_screen_name().length - 1); 
+                    ui.StatusBox.insert_status_text(append, null);
+                    ui.StatusBox.stop_screen_name_detect();
+                });
+
                 $('#screen_name_auto_complete li:first').addClass('hlight');
                 ui.StatusBox.auto_complete_selected 
                     = $('#screen_name_auto_complete li:first').text();
