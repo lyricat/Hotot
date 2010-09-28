@@ -1,112 +1,108 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) Shellex Wei, 2010
-# Copyright (C) Jiahua Huang, 2010
+# Copyright (C) ogalho 2010
 # This file is distributed under the same license as the PACKAGE package.
-# Shellex Wei <5h3ll3x@gmail.com>
-# Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
+# Carlos Fernando Dias Martins(ogalho) <ogalho@gmail.com>, 2010.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-27 23:06+0800\n"
-"PO-Revision-Date: 2010-09-23 21:43+0800\n"
-"Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
-"Language-Team: Chinese/Simplified\n"
-"Language: Chinese/Simplified\n"
+"POT-Creation-Date: 2010-10-27 11:01-0500\n"
+"Last-Translator: Carlos Fernando Dias Martins(ogalho) <ogalho@gmail.com>\n"
+"Language: Português/Portugal \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../data/ui/index.html:5
 msgid "Home | Hotot"
-msgstr "主线 | 傲兔"
+msgstr "Inicio | Hotot"
 
 #: ../data/ui/index.html:88 ../data/ui/index.html:89
 msgid "'What is happening?'"
-msgstr "'有什么消息么？'"
+msgstr "'O que está a acontecer?'"
 
 #: ../data/ui/index.html:90
 msgid "'Click here to Compose a Meassage ...'"
-msgstr "'点击撰写新消息…'"
+msgstr "'Clica aqui para escrever uma mensagem ...'"
 
 #: ../data/ui/index.html:236
 msgid "'Reload timeline.'"
-msgstr "'刷新时间线'"
+msgstr "'Actualizar'"
 
 #: ../data/ui/index.html:239
 msgid "'Extensions ... '"
-msgstr "'扩展…'"
+msgstr "'Extensões ... '"
 
 #: ../data/ui/index.html:242
 msgid "No Extension Icon"
-msgstr "没有扩展图标"
+msgstr "Extensão sem ícone"
 
 #: ../data/ui/index.html:247
 msgid "'More ...'"
-msgstr "'更多…'"
+msgstr "'Mais ...'"
 
 #: ../data/ui/index.html:250 ../data/ui/index.html:299
 #: ../data/ui/index.html:562
 msgid "Preferences"
-msgstr "首选项"
+msgstr "Definições"
 
 #: ../data/ui/index.html:253 ../data/ui/index.html:298
 msgid "Extensions"
-msgstr "扩展"
+msgstr "Extensões"
 
 #: ../data/ui/index.html:256
 msgid "Help &amp; About"
-msgstr "帮助和关于"
+msgstr "Ajuda e Sobre a aplicação ..."
 
 #: ../data/ui/index.html:259
 msgid "Sign out"
-msgstr "注销"
+msgstr "Sair"
 
 #: ../data/ui/index.html:272
 msgid "Hotot "
-msgstr "傲兔"
+msgstr ""
 
 #: ../data/ui/index.html:274
 msgid "Greeting!"
-msgstr "殿下您好！"
+msgstr "Seja Bem-Vindo!"
 
 #: ../data/ui/index.html:276
 msgid "Sign in to Hotot"
-msgstr "用傲兔登录"
+msgstr "Ligar a Hotot"
 
 #: ../data/ui/index.html:279
 msgid "Username:"
-msgstr "帐号："
+msgstr "Utilizador:"
 
 #: ../data/ui/index.html:281
 msgid "Password:"
-msgstr "密码："
+msgstr "Senha:"
 
 #: ../data/ui/index.html:283 ../data/ui/index.html:596
 msgid "Remember Password"
-msgstr "记住密码"
+msgstr "Memorizar senha"
 
 #: ../data/ui/index.html:285
 msgid "Sign In"
-msgstr "登录"
+msgstr "Ligar
 
 #: ../data/ui/index.html:289
 msgid "Or use Twitter OAuth"
-msgstr "或使用推特 OAuth 验证登录"
+msgstr "Ou usar Twitter OAuth"
 
 #: ../data/ui/index.html:292
 msgid "'Sign in with Twitter'"
-msgstr "'从推特官网登录'"
+msgstr "'Ligar com Twitter'"
 
 #: ../data/ui/index.html:292 ../data/ui/index.html:615
 msgid "Sign in with Twitter"
-msgstr "从推特官网登录"
+msgstr "Ligar com Twitter"
 
 #: ../data/ui/index.html:300 ../data/ui/index.html:814
 msgid "Help"
-msgstr "帮助"
+msgstr "Ajuda"
 
 #: ../data/ui/index.html:311 ../data/ui/index.html:318
 #: ../data/ui/index.html:331 ../data/ui/index.html:337
@@ -114,161 +110,162 @@ msgstr "帮助"
 #: ../data/ui/index.html:364 ../data/ui/index.html:370
 #: ../data/ui/index.html:435 ../data/ui/index.html:460
 msgid "Load more"
-msgstr "显示更多"
+msgstr "Carregar mais"
 
 #: ../data/ui/index.html:324
 msgid "Inbox"
-msgstr "收件箱"
+msgstr "Recebidos"
 
 #: ../data/ui/index.html:325
 msgid "Outbox"
-msgstr "发件箱"
+msgstr "Enviados"
 
 #: ../data/ui/index.html:350
 msgid "Retweeted By Others"
-msgstr "朋友的转推"
+msgstr "Retweetados por Outros"
 
 #: ../data/ui/index.html:351
 msgid "Retweeted By Me"
-msgstr "我的转推"
+msgstr "Retweettados por Mim"
 
 #: ../data/ui/index.html:352
 msgid "My Tweets, Retweeted"
-msgstr "我被转推的消息"
+msgstr "Meus Tweets, Retweettados"
 
 #: ../data/ui/index.html:377
 msgid "Look up: "
-msgstr "查看："
+msgstr "Pesquisar: "
 
 #: ../data/ui/index.html:380 ../data/ui/index.html:444
 msgid "GO"
-msgstr "开始"
+msgstr "Ir"
 
 #: ../data/ui/index.html:386
 msgid "Follow"
-msgstr "跟随"
+msgstr "Seguir"
 
 #: ../data/ui/index.html:390
 msgid "Block"
-msgstr "屏蔽"
+msgstr "Bloquear"
 
 #: ../data/ui/index.html:394
 msgid "Unblock"
-msgstr "解除屏蔽"
+msgstr "Desbloquear"
 
 #: ../data/ui/index.html:402
 msgid "Name: "
-msgstr "名字："
+msgstr "Nome: "
 
-#: ../data/ui/index.html:406 ../data/ui/index.html:922
+#: ../data/ui/index.html:406
 msgid "Tweets: "
-msgstr "消息："
+msgstr "Tweets: "
 
-#: ../data/ui/index.html:407 ../data/ui/index.html:924
+#: ../data/ui/index.html:407
 msgid "Tweets per Day: "
-msgstr "每天发推："
+msgstr "Tweets por dia: "
 
 #: ../data/ui/index.html:411
 msgid "Web: "
-msgstr "网站："
+msgstr "Web: "
 
 #: ../data/ui/index.html:414
 msgid "Location: "
-msgstr "位置："
+msgstr "Localização:"
 
-#: ../data/ui/index.html:415 ../data/ui/index.html:920
+#: ../data/ui/index.html:415
 msgid "Join: "
-msgstr "加入："
+msgstr "Subscrever: "
 
-#: ../data/ui/index.html:416 ../data/ui/index.html:928
+#: ../data/ui/index.html:416
 msgid "Followers: "
-msgstr "被关注："
+msgstr "Seguidores: "
 
-#: ../data/ui/index.html:417 ../data/ui/index.html:926
+#: ../data/ui/index.html:417
 msgid "Friends: "
-msgstr "关注了："
+msgstr "Amigos: "
 
 #: ../data/ui/index.html:425
 msgid " has protected his/her tweets."
-msgstr " 给她/他的消息设置了隐私保护"
+msgstr "protegeu os tweets."
 
 #: ../data/ui/index.html:428
 msgid ""
 "You need to go to twitter.com to send a request before you can start "
 "following this person..."
-msgstr "给她/他发送好友验证请求"
+msgstr "Necessita de ir a twitter.com fazer um pedido antes de poder"
+"seguir esta pessoa..."
 
 #: ../data/ui/index.html:431
 msgid "Send Request"
-msgstr "发送请求"
+msgstr "Enviar Pedido"
 
 #: ../data/ui/index.html:441
 msgid "Search for: "
-msgstr "搜索："
+msgstr "Pesquisar: "
 
 #: ../data/ui/index.html:450
 msgid "Your search - "
-msgstr "您的搜索 - "
+msgstr "A sua pesquisa - "
 
 #: ../data/ui/index.html:450
 msgid " - did not match any result."
-msgstr " - 没有结果"
+msgstr " - sem resultados."
 
 #: ../data/ui/index.html:453
 msgid "Suggestions:"
-msgstr "建议"
+msgstr "Sugestões:"
 
 #: ../data/ui/index.html:454
 msgid "- Make sure all words are spelled correctly."
-msgstr "- 您可否有拼错单词。"
+msgstr " - Assegure-se que as palavras estão bem escritas."
 
 #: ../data/ui/index.html:455
 msgid "- Try different keywords."
-msgstr "- 试试别的搜索关键词。"
+msgstr " - Tente palavras chave diferentes."
 
 #: ../data/ui/index.html:456
 msgid "- Try more general keywords."
-msgstr "- 试试更通用的关键词。"
+msgstr " - Tente palavras chave comuns."
 
 #: ../data/ui/index.html:518
 msgid "Clear"
-msgstr "清空"
+msgstr "Limpar"
 
 #: ../data/ui/index.html:519 ../data/ui/index.html:953 ../hotot/hotot.py:131
 msgid "Update"
-msgstr "发布"
+msgstr "Actualizar"
 
 #: ../data/ui/index.html:521
 msgid "Press Ctrl+Enter to Update"
-msgstr "按 Ctrl + 回车 发布"
+msgstr "Pressione Crtl+Enter para Actualizar"
 
 #: ../data/ui/index.html:534
 msgid "Home"
-msgstr "主线"
+msgstr "Inicio"
 
 #: ../data/ui/index.html:540
 msgid "DM"
-msgstr "私信"
+msgstr "DM"
 
 #: ../data/ui/index.html:551
 msgid "Console"
-msgstr "控制台"
+msgstr "Consola"
 
 #: ../data/ui/index.html:571
 msgid "Account"
-msgstr "帐号"
+msgstr "Conta"
 
 #: ../data/ui/index.html:576
 msgid "System"
-msgstr "系统"
+msgstr "Sistema"
 
 #: ../data/ui/index.html:581
 msgid "Appearance"
-msgstr "外观"
+msgstr "Aparência"
 
 #: ../data/ui/index.html:586
 msgid "Networks"
-msgstr "网络"
+msgstr "Redes"
 
 #: ../data/ui/index.html:604
 msgid "Consumer Key"
@@ -280,416 +277,419 @@ msgstr "Consumer Secret"
 
 #: ../data/ui/index.html:612
 msgid "Regain Access Token"
-msgstr "Regain Access Token"
+msgstr "Obter Token de Acesso"
 
 #: ../data/ui/index.html:622 ../data/ui/index.html:697
 msgid "* You MUST restart Hotot for the changes below to take effect."
-msgstr ""
+msgstr "' Hotot tem de ser reiniciado para que as alterações tenham efeito.'"
 
 #: ../data/ui/index.html:624
 msgid "Summon Hotot (like: &lt;ALT&gt;C)"
-msgstr ""
+msgstr "Invocar Hotot (como: &lt;ALT&gt;C)"
 
 #: ../data/ui/index.html:626
 msgid "'Summon Hot Key'"
-msgstr ""
+msgstr "'Invocar Tecla rápida'"
 
 #: ../data/ui/index.html:632
 msgid "- Font Settings -"
-msgstr ""
+msgstr "- Configurações de Fontes -"
 
 #: ../data/ui/index.html:635
 msgid "Font Family"
-msgstr "字体"
+msgstr "Familia de Fonte"
 
 #: ../data/ui/index.html:637
 msgid "'Font Family'"
-msgstr "'字体'"
+msgstr "'Familia de Fonte"
 
 #: ../data/ui/index.html:643
 msgid "Font Size"
-msgstr "字号"
+msgstr "Tamanho de Fonte"
 
 #: ../data/ui/index.html:646
 msgid "px"
-msgstr "像素"
+msgstr "px"
 
 #: ../data/ui/index.html:647
 msgid "Preview"
-msgstr "预览"
+msgstr "Pré-Visualização"
 
 #: ../data/ui/index.html:648
 msgid "abcdefghijk ABCDEFGHIJK"
-msgstr "ABCD 测试字体"
+msgstr "abcdefghijk ABCDEFGHIJK"
 
 #: ../data/ui/index.html:651
 msgid "- Display Settings -"
-msgstr ""
+msgstr " - Configuração de Janela -"
 
 #: ../data/ui/index.html:655
 msgid "'Use Native Input'"
-msgstr "'使用原生输入对话框'"
+msgstr "'Usar Entrada Nativa'"
 
 #: ../data/ui/index.html:656
 msgid "Use Native Input Dialog"
-msgstr "使用原生输入对话框"
+msgstr "Usar Dialogo de Entrada Nativo"
 
 #: ../data/ui/index.html:658
 msgid "'Use Native Notify'"
-msgstr "'使用原生通知机制'"
+msgstr "'Usar Notificação Nativa'"
 
 #: ../data/ui/index.html:660
 msgid "Use Native Notify System"
-msgstr "使用原生通知机制"
+msgstr "Usar Notificação Nativa do Sistema"
 
 #: ../data/ui/index.html:665
 msgid "- API Settings -"
-msgstr ""
+msgstr "- Configuração de API -"
 
 #: ../data/ui/index.html:668
 msgid "API Base"
-msgstr ""
+msgstr "API Base"
 
 #: ../data/ui/index.html:670
 msgid "'API Base'"
-msgstr ""
+msgstr "'API Base'"
 
 #: ../data/ui/index.html:672
 msgid "'Use same Signing Api'"
-msgstr ""
+msgstr "'Usar a mesma API de Autenticação'"
 
 #: ../data/ui/index.html:675
 msgid "Signing API Base"
-msgstr ""
+msgstr "Autenticação API Base"
 
 #: ../data/ui/index.html:677
 msgid "'Signing API Base'"
-msgstr ""
+msgstr "'Autenticação API Base'"
 
 #: ../data/ui/index.html:679
 msgid "OAuth Base"
-msgstr ""
+msgstr "OAuth Base"
 
 #: ../data/ui/index.html:681
 msgid "'OAuth Base'"
-msgstr ""
+msgstr "'OAuth Base'"
 
 #: ../data/ui/index.html:683
 msgid "'Use same Signing OAuth Base'"
-msgstr ""
+msgstr "'Usar a mesma Autenticação OAuth Base'"
 
 #: ../data/ui/index.html:685
 msgid "Same signing OAuth base: "
-msgstr ""
+msgstr "Mesma Autenticação OAuth base:"
 
 #: ../data/ui/index.html:686
 msgid "Signing OAuth Base"
-msgstr ""
+msgstr "Autenticação OAuth Base"
 
 #: ../data/ui/index.html:688
 msgid "'Signing OAuth Base'"
-msgstr ""
+msgstr "'Autenticação OAuth Base'"
 
 #: ../data/ui/index.html:690
 msgid "Search API Base"
-msgstr ""
+msgstr "Pesquisar API Base"
 
 #: ../data/ui/index.html:692
 msgid "'Search API Base'"
-msgstr ""
+msgstr "'Pesquisar API Base'"
 
 #: ../data/ui/index.html:695
 msgid "- Proxy Settings -"
-msgstr ""
+msgstr "- Configuração de Proxy-"
 
 #: ../data/ui/index.html:700
 msgid "'Use HTTP Proxy'"
-msgstr ""
+msgstr "'Usar HTTP Proxy'"
 
 #: ../data/ui/index.html:701
 msgid "Use HTTP Proxy"
-msgstr ""
+msgstr "Usar HTTP Proxy"
 
 #: ../data/ui/index.html:702 ../data/ui/index.html:712
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: ../data/ui/index.html:704
 msgid "'HTTP Proxy Host'"
-msgstr ""
+msgstr "'HTTP Proxy Host'"
 
 #: ../data/ui/index.html:705 ../data/ui/index.html:716
 msgid "Port"
-msgstr ""
+msgstr "Porta"
 
 #: ../data/ui/index.html:707
 msgid "'HTTP Proxy Port'"
-msgstr ""
+msgstr "'Porta HTTP Proxy'"
 
 #: ../data/ui/index.html:710
 msgid "'Use Socks Proxy'"
-msgstr ""
+msgstr "'Usar Sockets Proxy'"
 
 #: ../data/ui/index.html:711
 msgid "Use Socks Proxy"
-msgstr ""
+msgstr "Usar Sockets Proxy"
 
 #: ../data/ui/index.html:718
 msgid "'Socks Proxy Port'"
-msgstr ""
+msgstr "'Porta Proxy do Socket '"
 
 #: ../data/ui/index.html:726
 msgid "Restore Defaults"
-msgstr "还原默认设置"
+msgstr "Restaurar pré-definição"
 
 #: ../data/ui/index.html:727 ../data/ui/index.html:756
 #: ../data/ui/index.html:952
 msgid "Cancel"
-msgstr "取消"
+msgstr "Cancelar"
 
 #: ../data/ui/index.html:728 ../data/ui/index.html:757
 #: ../data/ui/index.html:898 ../data/ui/index.html:997
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
 
 #: ../data/ui/index.html:735
 msgid "First time to Sign in with Twitter"
-msgstr ""
+msgstr "Primeira vez a ligar-se ao Twitter"
 
 #: ../data/ui/index.html:744
 msgid "Click me to continue"
-msgstr ""
+msgstr "Faça clique para continuar"
 
 #: ../data/ui/index.html:764
 msgid "About &amp; Help"
-msgstr ""
+msgstr "Acerca &amp; Ajuda"
 
 #: ../data/ui/index.html:773
 msgid "About"
-msgstr ""
+msgstr "Acerca de ..."
 
 #: ../data/ui/index.html:778
 msgid "Keyborad"
-msgstr ""
+msgstr "Teclado"
 
 #: ../data/ui/index.html:783
 msgid "Credits"
-msgstr ""
+msgstr "Creditos"
 
 #: ../data/ui/index.html:788
 msgid "License"
-msgstr ""
+msgstr "Licença"
 
 #: ../data/ui/index.html:795 ../hotot/hotot.py:31 ../hotot/hotot.py:52
 #: ../hotot.desktop.in.h:1
 msgid "Hotot"
-msgstr "傲兔"
+msgstr "Hotot"
 
 #: ../data/ui/index.html:796
 msgid "twitter"
-msgstr "推特"
+msgstr "twitter"
 
 #: ../data/ui/index.html:811
 msgid "Action"
-msgstr "动作"
+msgstr "Acção"
 
 #: ../data/ui/index.html:811
 msgid "Shortcut"
-msgstr ""
+msgstr "Atalho"
 
 #: ../data/ui/index.html:812
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
 #: ../data/ui/index.html:813
 msgid "Quit Hotot"
-msgstr ""
+msgstr "Fechar Hotot"
 
 #: ../data/ui/index.html:816
 msgid "Tweet List"
-msgstr ""
+msgstr "Lista de Tweets"
 
 #: ../data/ui/index.html:817
 msgid "Reload"
-msgstr ""
+msgstr "Recargar"
 
 #: ../data/ui/index.html:818
 msgid "Slide to prev page"
-msgstr ""
+msgstr "Ir para a página anterior"
 
 #: ../data/ui/index.html:819
 msgid "Slide to next page"
-msgstr ""
+msgstr "Ir para a página seguinte"
 
 #: ../data/ui/index.html:820
 msgid "Move to prev tweet"
-msgstr ""
+msgstr "Ir para tweet anterior"
 
 #: ../data/ui/index.html:821
 msgid "Move to next tweet"
-msgstr ""
+msgstr "Ir para tweet seguinte"
 
 #: ../data/ui/index.html:822
 msgid "Move to top"
-msgstr ""
+msgstr "Ir para o inicio"
 
 #: ../data/ui/index.html:823
 msgid "Move to bottom"
-msgstr ""
+msgstr "Ir para o final"
 
 #: ../data/ui/index.html:824
 msgid "Toggle toolbar"
-msgstr ""
+msgstr "Alternar barra de ferramentas"
 
 #: ../data/ui/index.html:825
 msgid "Toggle nav tabs"
-msgstr ""
+msgstr "Alternar tab"
 
 #: ../data/ui/index.html:826
 msgid "Enter compose mode"
-msgstr ""
+msgstr "Entrar a modo de composição"
 
 #: ../data/ui/index.html:827
 msgid "Enter action mode"
-msgstr ""
+msgstr "Entrar no modo de acção"
 
 #: ../data/ui/index.html:828
 msgid "Enter filter mode"
-msgstr ""
+msgstr "Entrar em modo filtro"
 
 #: ../data/ui/index.html:829
 msgid "Compose Mode"
-msgstr ""
+msgstr "Modo composição"
 
 #: ../data/ui/index.html:830
 msgid "Exit compose mode"
-msgstr ""
+msgstr "Sair de modo de composição"
 
 #: ../data/ui/index.html:831
 msgid "Action Mode"
-msgstr ""
+msgstr "Modo de acção"
 
 #: ../data/ui/index.html:832
 msgid "Prev action"
-msgstr ""
+msgstr "Acção anterior"
 
 #: ../data/ui/index.html:833
 msgid "Next action"
-msgstr ""
+msgstr "Acção seguinte"
 
 #: ../data/ui/index.html:834
 msgid "Trigger action"
-msgstr ""
+msgstr "Executar acção"
 
 #: ../data/ui/index.html:835
 msgid "Exit action mode"
-msgstr ""
+msgstr "Sair de modo de acção"
 
 #: ../data/ui/index.html:836
 msgid "Filter Mode"
-msgstr ""
+msgstr "Modo Filtro"
 
 #: ../data/ui/index.html:837
 msgid "Apply keywords"
-msgstr ""
+msgstr "Aplicar palavras chave"
 
 #: ../data/ui/index.html:838
 msgid "Exit filter mode"
-msgstr ""
+msgstr "Sair de modo filtro"
 
 #: ../data/ui/index.html:849
 msgid "Written by"
-msgstr ""
+msgstr "Escrito por"
 
 #: ../data/ui/index.html:861
 msgid "Artwork by"
-msgstr ""
+msgstr "Grafismo por"
 
 #: ../data/ui/index.html:867
 msgid "Document by"
-msgstr ""
+msgstr "Documentado por"
 
 #: ../data/ui/index.html:905
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: ../data/ui/index.html:914
 msgid "Change avator"
-msgstr ""
+msgstr "Alterar avatar"
+
+#: ../data/ui/index.html:920
+msgid "Join"
+msgstr "Subscrever"
+
+#: ../data/ui/index.html:922
+msgid "Tweets"
+msgstr "Tweets"
+
+#: ../data/ui/index.html:924
+msgid "Tweets per Day"
+msgstr "Tweets por dia"
 
 #: ../data/ui/index.html:930
-msgid "Favourites: "
-msgstr "收藏："
+msgid "Favourites"
+msgstr "Favoritos"
 
 #: ../data/ui/index.html:939
 msgid "Name"
-msgstr "名字"
+msgstr "Nome"
 
 #: ../data/ui/index.html:941
 msgid "Location"
-msgstr "位置"
+msgstr "Localização"
 
 #: ../data/ui/index.html:943
 msgid "Website"
-msgstr ""
+msgstr "Sitio Web"
 
 #: ../data/ui/index.html:945
 msgid "Bio"
-msgstr ""
+msgstr "Bio"
 
 #: ../data/ui/index.html:960
 msgid "Extenstions"
-msgstr "扩展"
+msgstr "Extensões"
 
 #: ../data/ui/index.html:970
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: ../data/ui/index.html:989
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #: ../data/ui/index.html:1010
 msgid "Search in Google"
-msgstr ""
+msgstr "Pesquisar no Google"
 
 #: ../data/ui/index.html:1011
 msgid "Search in Twitter"
-msgstr "从推特搜索"
+msgstr "Pesquisar no Twitter"
 
 #: ../data/ui/index.html:644
 msgid "'Font Size"
-msgstr "'字号'"
+msgstr "'Tamanho de Fonte'"
 
 #: ../hotot/hotot.py:67 ../hotot/hotot.py:87
 msgid "_Resume/Active"
-msgstr "恢复(_R)"
+msgstr "_Continuar/Activar"
 
 #: ../hotot/hotot.py:84
 msgid "_File"
-msgstr "文件(_F)"
+msgstr "_Ficheiro"
 
 #: ../hotot/hotot.py:100
 msgid "_Help"
-msgstr "帮助(_H)"
+msgstr "_Ajuda"
 
 #: ../hotot/hotot.py:122
 msgid "What's happening?"
-msgstr "有什么消息么？"
+msgstr "O que está a acontecer?"
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
-msgstr "傲兔推特客户端"
+msgstr "Hotot Cliente Twitter"
 
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
-msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
-
-#~ msgid "Join"
-#~ msgstr "加入"
-
-#~ msgid "Tweets"
-#~ msgstr "消息"
-
-#~ msgid "Tweets per Day"
-#~ msgstr "每天发推"
+msgstr "Cliente Twitter baseado em Gtk2 e Webkit"
