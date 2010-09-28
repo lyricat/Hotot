@@ -72,14 +72,14 @@ function init () {
     
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
-        $('#tbox_prefs_http_proxy_host').attr('disabled', $(this).attr('checked'));
-        $('#tbox_prefs_http_proxy_port').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_host').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_port').attr('disabled', !$(this).attr('checked'));
     });
 
     $('#chk_prefs_use_socks_proxy').click(
     function (event) {
-        $('#tbox_prefs_socks_proxy_host').attr('disabled', $(this).attr('checked'));
-        $('#tbox_prefs_socks_proxy_port').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_socks_proxy_host').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_socks_proxy_port').attr('disabled', !$(this).attr('checked'));
     });
 
 
