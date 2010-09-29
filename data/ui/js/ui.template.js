@@ -30,11 +30,7 @@ tweet_t:
         </div>\
     </div>\
     <ul class="tweet_ctrl">\
-        <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title="Official retweet this tweet." href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li>\
-        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
+        <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title="Official retweet this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li><li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
             <ul class="tweet_more_menu hotot_menu">\
             <li>\
                 <a class="tweet_reply_all tweet_ctrl_menu_btn"\
@@ -114,8 +110,9 @@ function form_dm(dm_obj, pagename) {
     var create_at = new Date();
     create_at.setTime(timestamp);
     var screen_name = dm_obj.sender.screen_name;
+    var recipient_screen_name = dm_obj.recipient.screen_name;
     var profile_img = dm_obj.sender.profile_image_url;
-    var text = ui.Template.form_text(dm_obj.text);
+    var text = ui.Template.form_text('@'+recipient_screen_name +' ' + dm_obj.text);
     var ret = '';
     var user_id = dm_obj.sender.id;
     var scheme = 'message';

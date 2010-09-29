@@ -1515,10 +1515,10 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .tweet_ctrl > li {
     display: inline-block;
-    
 }
 
 .tweet_ctrl_btn {
+    margin: 0;
     height: 24px;
     width: 24px;
     display: inline-block;
