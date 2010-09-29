@@ -75,9 +75,7 @@ def open_webbrowser(uri):
     browser = 'xdg-open'
     if sys.platform[:3] == "win":
         browser = 'start'
-        subprocess.Popen([browser, uri])
-        return
-    os.spawnvp(os.P_NOWAIT, browser, [browser, uri])
+    subprocess.Popen([browser, uri])
     pass
 
 def open_file_chooser_dialog():
