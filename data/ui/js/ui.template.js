@@ -9,12 +9,13 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃]([^\\s]+)', 'g'),
 
 tweet_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" retweet_id="{%RETWEET_ID%}" >\
-    <div class="profile_img_wrapper">\
-        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+            {%SCREEN_NAME%}\
+        </a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
@@ -60,12 +61,13 @@ tweet_t:
 
 dm_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
-    <div class="profile_img_wrapper">\
-        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+            {%SCREEN_NAME%}\
+        </a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
@@ -80,12 +82,13 @@ dm_t:
 
 search_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
-    <div class="profile_img_wrapper">\
-        <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}">{%SCREEN_NAME%}</a>\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+            {%SCREEN_NAME%}\
+        </a>\
         <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
@@ -108,6 +111,7 @@ function form_dm(dm_obj, pagename) {
     create_at.setTime(timestamp);
     var screen_name = dm_obj.sender.screen_name;
     var recipient_screen_name = dm_obj.recipient.screen_name;
+    var user_name = dm_obj.sender.name;
     var profile_img = dm_obj.sender.profile_image_url;
     var text = ui.Template.form_text('@'+recipient_screen_name +' ' + dm_obj.text);
     var ret = '';
@@ -124,6 +128,7 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%USER_ID%}/g
         , pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
+    ret = ret.replace(/{%USER_NAME%}/g, user_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
@@ -148,6 +153,7 @@ function form_tweet (tweet_obj, pagename) {
     create_at.setTime(timestamp);
     var user_id = tweet_obj.user.id;
     var screen_name = tweet_obj.user.screen_name;
+    var user_name = tweet_obj.user.name;
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.in_reply_to_status_id;    
     var profile_img = tweet_obj.user.profile_image_url;
@@ -185,6 +191,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%RETWEET_ID%}/g, retweet_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
+    ret = ret.replace(/{%USER_NAME%}/g, user_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SOURCE%}/g, source);
@@ -216,6 +223,7 @@ function form_search(tweet_obj, pagename) {
     create_at.setTime(timestamp);
     var user_id = tweet_obj.from_user_id;
     var screen_name = tweet_obj.from_user;
+    var user_name = tweet_obj.from_user_name;
     var profile_img = tweet_obj.profile_image_url;
     var text = ui.Template.form_text(tweet_obj.text);
     var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
@@ -237,6 +245,7 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
+    ret = ret.replace(/{%USER_NAME%}/g, user_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SOURCE%}/g, source);

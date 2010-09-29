@@ -1448,12 +1448,15 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 
 .profile_img_wrapper {
-    padding: 1px;
+    padding: 0px;
     margin: 5px;
     width: 48px;
     height: 48px;
     float: left;  
     position: relative;
+    background-image: url('');
+    background-repeat: no-repeat;
+    -webkit-border-radius: 7px;
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
 
