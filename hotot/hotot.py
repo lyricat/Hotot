@@ -47,7 +47,8 @@ class MainWindow:
             config.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_icon_from_file(
             config.get_ui_object('imgs/ic64_hotot.png'))
-        self.window.set_default_size(750, 550)
+
+        self.window.set_default_size(config.size_w, config.size_h)
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
 
@@ -108,9 +109,10 @@ class MainWindow:
         menubar.show_all()
         vbox.pack_start(menubar, expand=0, fill=0, padding=0)
         ##
-
+        self.window.set_geometry_hints(min_height=500, min_width=460)
         self.window.show()
-        self.window.connect("delete-event", gtk.Widget.hide_on_delete)
+        self.window.connect('delete-event', gtk.Widget.hide_on_delete)
+        self.window.connect('size-allocate', self.on_size_allocate)
         pass
     
     def build_inputw(self):
@@ -175,6 +177,7 @@ class MainWindow:
         pass
 
     def quit(self, *args):
+        config.dumps()
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 
@@ -218,6 +221,11 @@ class MainWindow:
             self.tbox_status.grab_focus()
         else:
             self.window.present()
+        pass
+
+    def on_size_allocate(self, win, req):
+        config.set('size_h', req.height)
+        config.set('size_w', req.width)
         pass
 
 def main():

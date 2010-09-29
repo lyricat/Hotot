@@ -61,6 +61,8 @@ default_config = {
 #others:
     'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"],
     'no_use_indicator': False,
+    'size_w': 750,
+    'size_h': 550,
 }
 
 def getconf():
@@ -188,5 +190,4 @@ def get_exts():
             pass
         pass
     return exts
-
 

@@ -31,7 +31,7 @@ http_code_msg_table = {
 def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
-            config.get_ui_object ('imgs/ic64_hotot.png')))
+            config.get_ui_object('imgs/ic64_hotot.png')))
     notify.set_timeout(3000)
     pass
 
