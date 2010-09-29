@@ -332,17 +332,14 @@ pre {
 }
 
 #btn_shorturl {
-    background: transparent url(../imgs/ic16_link.png) no-repeat center center;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    background-image: url(../imgs/ic16_link.png);
+    background-repeat: no-repeat;
+    background-position: center center;
     border-radius: 5px;
-    border: 1px #666 solid;
+    width: 20px;
+    min-width: 0;
+    padding: 0;
     text-decoration: none;
-}
-
-#btn_shorturl:hover {
-    background-color: #242424;
 }
 
 #status_len {
@@ -719,8 +716,8 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[ty
     content: ' ';
     display: block;
     background: -webkit-gradient(linear, left top, left bottom , from(rgba(117, 117, 117, 0.2)), to(rgba(94, 94, 94, 0.2)));
+    border: 1px rgba(255, 255, 255, 0.1) solid;
     border-bottom: none;
-    border: 1px rgba(255, 255, 255, 0.5);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     bottom: 50%;
