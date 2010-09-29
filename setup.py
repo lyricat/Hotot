@@ -36,6 +36,7 @@ Features include:
       url="http://code.google.com/p/hotot",
       download_url="http://code.google.com/p/hotot/downloads/list",
       platforms = ['Linux'],
+      requires = ['webit', 'gtk', 'gobject', 'keybinder', 'pynotify'],
       scripts=['scripts/hotot'],
       packages = ['hotot'], 
       data_files = [
