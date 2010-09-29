@@ -1454,6 +1454,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     height: 48px;
     float: left;  
     position: relative;
+    -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
 
 .profile_img_wrapper > img {

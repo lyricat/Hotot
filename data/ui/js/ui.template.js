@@ -11,7 +11,6 @@ tweet_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" retweet_id="{%RETWEET_ID%}" >\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
-        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
@@ -63,7 +62,6 @@ dm_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
-        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
@@ -84,7 +82,6 @@ search_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
     <div class="profile_img_wrapper">\
         <img src="{%PROFILE_IMG%}" onerror="void(0);"/>\
-        <span class="avator_hlight"></span>\
     </div>\
     <div class="tweet_body">\
         <div id="{%USER_ID%}" class="who">\
