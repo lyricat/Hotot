@@ -273,7 +273,19 @@ jQuery(function($) {
     <div id="sign_in_block" class="dialog">
         <h2>_("Greeting!")</h2>
         <div id="sign_in_block_body" class="dialog_body">
-        <h3>_("Sign in to Hotot")</h3>
+        <h3>_("Login to Hotot")</h3>
+        <div class="dlg_group">
+        <p>
+        <center>
+            <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")
+                <span class="placeholder"></span>            
+            </a>
+        </center>
+        </p>
+        <p></p>
+        </div>
+
+        <h3>_("or use Basic Auth")</h3>
         <div class="dlg_group">
         <p>
             <label>_("Username:")</label><br/>
@@ -281,17 +293,14 @@ jQuery(function($) {
             <label>_("Password:")</label><br/>
             <input id="tbox_basic_auth_password" style="width: 250px;" type="password" value=""/><br/>
             <input id="chk_remember_password" type="checkbox"/ checked="1"/><label>_("Remember Password")</label><br/>
-
-            <a id="btn_basic_auth_sign_in" class="button default" href="javascript:void(0);">_("Sign In")</a>
+            <div style="text-align:right;margin-right:20px;">
+            <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">_("Sign In")
+                <span class="placeholder"></span>
+            </a>
+            </div>
         </p>
         </div>
 
-        <h3>_("Or use Twitter OAuth")</h3>
-        <div class="dlg_group">
-        <p>
-            <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")</a>
-        </p>
-        </div>
         </div>
         <div id="sign_in_block_bottom">
             <p>
@@ -300,6 +309,7 @@ jQuery(function($) {
             <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">_("Help")</a>
             </p>
         </div>
+
     </div>
 </section>
 
@@ -308,14 +318,18 @@ jQuery(function($) {
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                <span class="placeholder"></span>            
+            </a>
         </div>
     </div>
     <div id="mentions_tweet_block" class="tweet_block">
         <ul>
         </ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                <span class="placeholder"></span>            
+            </a>
         </div>
     </div>
     <div id="direct_messages_tweet_block" class="tweet_block">
@@ -328,7 +342,9 @@ jQuery(function($) {
         <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")                
+                    <span class="placeholder"></span>            
+                </a>
             </div>
         </div>
         <div id="direct_messages_outbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
@@ -341,7 +357,9 @@ jQuery(function($) {
     <div id="favorites_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")                
+            <span class="placeholder"></span>            
+            </a>
         </div>
     </div>
     <div id="retweets_tweet_block" class="tweet_block">
@@ -355,19 +373,25 @@ jQuery(function($) {
         <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
             </div>
         </div>
         <div id="retweeted_to_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
             </div>
         </div>
         <div id="retweets_of_me_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
             </div>
         </div>
     </div>
@@ -377,7 +401,9 @@ jQuery(function($) {
                 <label>_("Look up: ")</label>
                 <input id="tbox_people_entry" type="text" value=""/>
                 <a id="btn_people_entry" href="javascript:void(0);"
-                    class="button dark">_("GO")</a>
+                    class="button dark">_("GO")
+                    <span class="placeholder"></span>            
+                </a>
             </div>
             <div id="people_vcard" class="vcard">
                 <ul class="vcard_ctrl">
@@ -428,11 +454,15 @@ jQuery(function($) {
             _("You need to go to twitter.com to send a request before you can start following this person...")
             </p>
             <div style="text-align:center;">
-            <a id="btn_people_request" class="button" href="#"/>_("Send Request")</a>
+            <a id="btn_people_request" class="button" href="#"/>_("Send Request")
+            <span class="placeholder"></span>            
+            </a>
             </div>
         </div>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+            <span class="placeholder"></span>            
+            </a>
         </div>
     </div>
     <div id="search_tweet_block" class="tweet_block">
@@ -441,7 +471,9 @@ jQuery(function($) {
                 <label>_("Search for: ")</label>
                 <input id="tbox_search_entry" type="text" value=""/>
                 <a id="btn_search_entry" href="javascript:void(0);"
-                    class="button dark">_("GO")</a>
+                    class="button dark">_("GO")
+                    <span class="placeholder"></span>            
+                </a>
             </div>
         </div>
         <ul></ul>
@@ -457,7 +489,9 @@ jQuery(function($) {
             </p>
         </div>
         <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")</a>
+            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+            <span class="placeholder"></span>            
+            </a>
         </div>
     </div>
 
@@ -515,8 +549,12 @@ jQuery(function($) {
     <div id="status_ctrl">
         <label id="status_len"></label>
         <a id="btn_shorturl" title="URL shortener" href="javascript:void(0);">&nbsp;</a>
-        <a id="btn_clear" class="button dark" href="javascript:void(0);">_("Clear")</a>
-        <a id="btn_update" class="button default" href="javascript:void(0);">_("Update")</a>
+        <a id="btn_clear" class="button dark" href="javascript:void(0);">_("Clear")
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_update" class="button default" href="javascript:void(0);">_("Update")
+            <span class="placeholder"></span>            
+        </a>
         <span class="clear"></span>
         <div><label id="status_tips">_("Press Ctrl+Enter to Update")</label></div>
     </div>
@@ -612,7 +650,9 @@ jQuery(function($) {
                         <label>_("Regain Access Token")</label><br/>
                         <a id="btn_regain_token"
                             class="button" 
-                            href="javascript:void(0)" title="Sign in with Twitter">_("Sign in with Twitter")</a>
+                            href="javascript:void(0)" title="Sign in with Twitter">_("Sign in with Twitter")
+                            <span class="placeholder"></span>            
+                            </a>
                     </p>
                     </div>
                 </div>
@@ -723,9 +763,15 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_prefs_restore_defaults" class="button dark" href="javascript:void(0);">_("Restore Defaults")</a>
-        <a id="btn_prefs_cancel" class="button dark" href="javascript:void(0);">_("Cancel")</a>
-        <a id="btn_prefs_ok" class="button dark" href="javascript:void(0);">_("OK")</a>
+        <a id="btn_prefs_restore_defaults" class="button dark" href="javascript:void(0);">_("Restore Defaults")
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_prefs_cancel" class="button dark" href="javascript:void(0);">_("Cancel")
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_prefs_ok" class="button dark" href="javascript:void(0);">_("OK")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 
@@ -741,7 +787,9 @@ jQuery(function($) {
                 Step 1: click the button below or copy the address and open it in your browser.<br/>
             </p>
             <p style="text-align: center;">
-                <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">_("Click me to continue")</a><br/>
+                <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">_("Click me to continue")
+                    <span class="placeholder"></span>            
+                </a><br/>
                 <input id="tbox_oauth_auth_url" type="text" class="dark" value=""/>
             </p>
             <p>
@@ -753,8 +801,12 @@ jQuery(function($) {
             </p>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_oauth_pin_cancel" class="button dark" href="javascript:void(0);">_("Cancel")</a>
-        <a id="btn_oauth_pin_ok" class="button dark" href="javascript:void(0);">_("OK")</a>
+        <a id="btn_oauth_pin_cancel" class="button dark" href="javascript:void(0);">_("Cancel")
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_oauth_pin_ok" class="button dark" href="javascript:void(0);">_("OK")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 
@@ -895,7 +947,9 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_about_ok" class="button dark" href="javascript:void(0);">_("OK")</a>
+        <a id="btn_about_ok" class="button dark" href="javascript:void(0);">_("OK")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 
@@ -911,7 +965,9 @@ jQuery(function($) {
             <div class="dlg_group">
             <p style="text-align: center;">
                 <img id="profile_avator" src="#"/><br/>
-                <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">_("Change avator")</a><br/>
+                <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">_("Change avator")
+                    <span class="placeholder"></span>            
+                </a><br/>
             </p>
             </div>
             <h3>- Stat -</h3>
@@ -949,8 +1005,12 @@ jQuery(function($) {
         </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_profile_cancel" class="button dark" href="javascript:void(0);">_("Cancel")</a>
-        <a id="btn_profile_update" class="button dark" href="javascript:void(0);">_("Update")</a>
+        <a id="btn_profile_cancel" class="button dark" href="javascript:void(0);">_("Cancel")
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_profile_update" class="button default" href="javascript:void(0);">_("Update")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 
@@ -967,7 +1027,9 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_exts_close" class="button dark" href="javascript:void(0);">_("Close")</a>
+        <a id="btn_exts_close" class="button dark" href="javascript:void(0);">_("Close")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 
@@ -994,7 +1056,9 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_message_ok" class="button dark" href="javascript:void(0);">_("OK")</a>
+        <a id="btn_message_ok" class="button dark" href="javascript:void(0);">_("OK")
+            <span class="placeholder"></span>            
+        </a>
         </div>
     </div>
 

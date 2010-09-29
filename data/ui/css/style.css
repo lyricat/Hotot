@@ -112,8 +112,8 @@ pre {
     bottom: 7px;
     height: 24px;
     text-align: right;
-    -webkit-border-top-left-radius: 5px 5px;
-    -webkit-border-bottom-left-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
     list-style-type: none;
 }
 
@@ -130,7 +130,7 @@ pre {
     width: 20px;
     display: inline-block;
     border: 1px transparent solid;
-    -webkit-border-radius: 5px 5px;
+    border-radius: 5px 5px;
     background-position: 50% 50% !important;
     background-repeat: no-repeat;
 }
@@ -151,6 +151,10 @@ pre {
     background-image: url(../imgs/refresh_h.png) ;
 }
 
+#btn_exts_menu_wrap {
+    position:relative;
+}
+
 #btn_exts_menu {
     background-image: url(../imgs/plus-in_b.png) ;
 }
@@ -160,6 +164,7 @@ pre {
 }
 
 #exts_menu {
+    right: -10px;
     text-align: left;
     position:absolute;
 }
@@ -195,6 +200,22 @@ pre {
     right: -10px;
 }
 
+.hotot_menu:after {
+	content:"\00a0";
+	display:block; /* reduce the damage in FF3.0 */
+	position:absolute;
+	z-index: 100000;
+	width:0;
+	height:0;
+	border-width: 7px 7px; /* vary these values to change the angle of the vertex */
+	border-style:solid;
+    top:-14px; /* value = - border-top-width - border-bottom-width */
+	right:10px; /* controls horizontal position */
+	bottom:auto;
+	left:auto;
+	border-color:transparent transparent rgba(0,0,0,0.85) ;
+}
+
 .hotot_menu {
     padding: 5px 0;
     right: 0;
@@ -203,8 +224,8 @@ pre {
     background: rgba(0,0,0,0.85);
     -webkit-box-shadow: 1px 1px 5px #333;
     border-radius: 5px 5px;
+    position:relative;
 }
-
 
 .hotot_menu > li {
     display: block;
@@ -271,7 +292,7 @@ pre {
     background-position: right top;
     width: 310px;
     -webkit-box-shadow: 0px 1px 5px #333;
-    -webkit-border-radius: 5px 5px;
+    border-radius: 5px 5px;
     padding: 0;
     position: absolute;
     left: 50px;
@@ -478,8 +499,8 @@ pre {
     bottom: 0px;
     left: 5%;
     right: 5%;
-    -webkit-border-top-left-radius: 5px 5px;
-    -webkit-border-top-right-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
     overflow:hidden;
     display: none;
 }
@@ -549,7 +570,7 @@ pre {
     border: 1px solid #fcfc19;
     color: #990000;
     display:none;
-    -webkit-border-radius: 3px 3px;
+    border-radius: 3px 3px;
 }
 
 /* ===== count =================================== */
@@ -562,8 +583,8 @@ pre {
     padding: 5px 0;
     font-size: 10px;
     color: white;
-    -webkit-border-top-right-radius: 3px 3px;
-    -webkit-border-bottom-right-radius: 3px 3px;
+    border-top-right-radius: 3px 3px;
+    border-bottom-right-radius: 3px 3px;
     display: none;
 }
 
@@ -628,7 +649,7 @@ label {
 
 select {
     padding: 2px 5px;
-    height: 22px;
+    height: 20px;
     display: inline-block;
 }
 
@@ -653,33 +674,71 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[ty
     background: #b9d4e2;
 }
 
-input[type="button"], .button {
-    border:1px solid #aaa;
-    color: #111;
+.button {
+    position: relative;
     padding: 0 10px;
     height: 20px;
     line-height: 20px;
     font-size: 12px;
     outline: none;
-    text-align: center;
     min-width: 60px;
+    text-align: center;
     display: inline-block;
-    background: url(../imgs/btn_bg.png) repeat-x;
+    background: #fff; 
     text-decoration: none;
-    -webkit-border-radius: 3px 3px;
+    border-radius: 3px;
+    color: #000;
+    -webkit-box-shadow: #888 0px 1px 3px;
 }
 
-input[type="button"].default, .button.default {
-    background: url(../imgs/default_btn_bg.png) repeat-x !important;
-    border-color: #ffaa00 !important; 
-    text-shadow: none;
+
+.button > .placeholder {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.button > .placeholder:before {
+    content: ' ';
+    display: block;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top: none;
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+    top: 50%;
+}
+
+.button > .placeholder:after {
+    content: ' ';
+    display: block;
+    background: -webkit-gradient(linear, left top, left bottom , from(rgba(117, 117, 117, 0.2)), to(rgba(94, 94, 94, 0.2)));
+    border-bottom: none;
+    border: 1px rgba(255, 255, 255, 0.5);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    bottom: 50%;
+    left: 1px;
+    right: 1px;
+    top: 1px;
+    position: absolute;
 }
 
 .button.dark, select.dark, input[type="checkbox"].dark {
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(67,67,67,0.9)), to(rgba(27,27,27,0.9))) !important;
+    background-color: #111 !important;
     color: #fff;
-    border: 1px #666 solid;
     text-shadow: none;
+    -webkit-box-shadow:none;
+}
+
+.button.default {
+    background-color: #ff9900;
 }
 
 input[type="text"].dark, input[type="password"].dark, textarea.dark{
@@ -692,29 +751,20 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background: rgba(67,67,67,0.9) !important;
 }
 
-
-input[type="button"].default:active, .button.default:active {
-    -webkit-box-shadow: inset 0px -1px 10px #ff9900 !important;
+.button:active {
+    -webkit-box-shadow: #666 0px 0px 3px;
 }
 
-input[type="button"]:active, .button:active {
-    -webkit-box-shadow: inset 0px -1px 10px #ddd !important;
-}
-
-input[type="button"].default:hover, .button.default:hover {
-    -webkit-box-shadow: inset 0px -1px 10px #ffda8b;
-}
-
-input[type="button"]:hover, .button.dark:hover {
+.button.dark:hover {
     -webkit-box-shadow: inset 0px -1px 5px #666 !important;
 }
 
-input[type="button"]:hover, .button:hover {
-    -webkit-box-shadow: inset 0px -1px 10px #fff;
+.button:hover {
+    -webkit-box-shadow: #666 0px 1px 3px;
 }
 
-input[type="button"]:focus, .button:focus {
-    border:1px solid #a8b1fe;
+.button:focus {
+    -webkit-box-shadow: #666 0px 0px 3px;
 }
 
 /*===== Main Page ================================*/
@@ -887,15 +937,17 @@ input[type="button"]:focus, .button:focus {
 }
 
 #btn_oauth_sign_in, #btn_regain_token {
-    background: url(../imgs/signin_twitter_without_text.png) no-repeat;
-    width: 150px;
-    padding: 0;
-    height: 22px;
+    background-color: #C0FBFD;
+    background-image: url(../imgs/ic16_twitter.png);
+    background-repeat:no-repeat;
+    background-position: 5px center;
     border: 0 !important;
-    color: #37799C;
-    padding:2px 0 0 10px;
+    color: #1B7AA3;
+    padding-left: 25px;
 }
-
+#btn_regain_token {
+    -webkit-box-shadow: none;
+} 
 
 /*===== OAuth Dialog ================================*/
 
@@ -1300,6 +1352,9 @@ input[type="button"]:focus, .button:focus {
     border: 1px #c4c7cb solid;
     border-bottom: 0;
 }
+.tweet.normal .tweet_ctrl {
+    border-color: #c4c7cb;
+}
 
 .tweet.mention {
     background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
@@ -1315,6 +1370,9 @@ input[type="button"]:focus, .button:focus {
 .tweet.mention .tweet_thread {
     border: 1px #c4987d solid;
     border-bottom: 0;
+}
+.tweet.mention .tweet_ctrl {
+    border-color: #c4987d;
 }
 
 .tweet.message {
@@ -1332,6 +1390,9 @@ input[type="button"]:focus, .button:focus {
     border: 1px #90abc4 solid;
     border-bottom: 0;
 }
+.tweet.message .tweet_ctrl {
+    border-color: #90abc4;
+}
 
 .tweet.me {
     background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
@@ -1347,6 +1408,9 @@ input[type="button"]:focus, .button:focus {
 .tweet.me .tweet_thread {
     border: 1px #75A565 solid;
     border-bottom: 0;
+}
+.tweet.me .tweet_ctrl {
+    border-color: #75A565;
 }
 
 
@@ -1439,44 +1503,68 @@ input[type="button"]:focus, .button:focus {
 
 .tweet_ctrl {
     list-style-type: none;
-    width: 300px;
-    height: 20px;
+    height: 24px;
     text-align: right;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0px;
+    right: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
     display: none;
 }
 
 .tweet_ctrl > li {
-    display: inline;
+    display: inline-block;
+    
 }
 
 .tweet_ctrl_btn {
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
     display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
+
+.tweet_ctrl > li:first-child > .tweet_ctrl_btn{
+    border-bottom-left-radius: 5px;
+}
+
+.tweet_ctrl > li:last-child > .tweet_ctrl_btn{
+    border-bottom-right-radius: 5px;
+}
+
+.tweet_ctrl_btn:hover {
+    background-color: rgba(0,0,0, 0.1);
+}
+
 .tweet_reply {
-    background: transparent url(../imgs/ic16_reply.png) no-repeat;
+    background-image: url(../imgs/ic16_reply.png) ;
 }
 .tweet_rt {
-    background: transparent url(../imgs/ic16_rt.png) no-repeat;
+    background-image: url(../imgs/ic16_rt.png);
 }
 .tweet_retweet {
-    background: transparent url(../imgs/ic16_retweet.png) no-repeat;
+    background-image: url(../imgs/ic16_retweet.png);
 }
 .tweet_more {
-    background: transparent url(../imgs/ic16_more.png) no-repeat;
+    background-image: url(../imgs/ic16_more.png);
 }
 .tweet_dm_reply {
-    background: transparent url(../imgs/ic16_dm.png) no-repeat;
+    background-image: url(../imgs/ic16_dm.png);
 }
 .tweet_fav {
-    background: transparent url(../imgs/ic16_fav.png) no-repeat;
+    background-image: url(../imgs/ic16_fav.png); 
 }
 .tweet_fav.unfav {
     background-image: url(../imgs/ic16_unfav.png) !important;
+}
+
+.tweet_more_menu_trigger {
+    position: relative;
 }
 
 .tweet_more_menu {
@@ -1484,8 +1572,8 @@ input[type="button"]:focus, .button:focus {
     display: none;
     list-style-type:none;
     text-align: left;
-    top: 19px;
-    right: 0px;
+    top: 25px;
+    right: -5px;
     width: 100px;
     z-index: 10004;
 }
@@ -1581,7 +1669,7 @@ input[type="button"]:focus, .button:focus {
     background: #fef6a8 none no-repeat 20px center;
     border: 1px solid #fcfc19;
     color: #990000;
-    -webkit-border-radius: 3px 3px; 
+    border-radius: 3px; 
 }
 
 /* == Menus ==*/
@@ -1594,7 +1682,7 @@ input[type="button"]:focus, .button:focus {
     z-index: 100011;
     color: #fff;
     display: none;
-    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #action_menu ul {

@@ -36,8 +36,9 @@ function on_btn_upload_clicked(event) {
                 <option value="img.ly" default="1">img.ly</option>\
                 <option value="twitpic.com">twitpic.com</option>\
             </select>\
-            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a>\
-            </p><p>\
+            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
+            <span class="placeholder"></span>\
+            </a></p><p>\
             <span id="ext_hotot_upload_image_path"></span><br/>\
             <label>Add a message<label><br/>\
             <textarea id="ext_hotot_upload_image_message"></textarea>\
