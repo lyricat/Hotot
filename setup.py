@@ -37,6 +37,7 @@ Features include:
       download_url="http://code.google.com/p/hotot/downloads/list",
       platforms = ['Linux'],
       requires = ['webit', 'gtk', 'gobject', 'keybinder', 'pynotify'],
+      install_requires = ['distutils-extra'],
       scripts=['scripts/hotot'],
       packages = ['hotot'], 
       data_files = [
