@@ -658,7 +658,7 @@ input[type="text"], input[type="password"], textarea{
     background:none repeat scroll 0 0 #eee;
     border:1px solid #aaa;
     padding:3px;
-    width:300px;
+    width:200px;
     outline: none;
 }
 
@@ -975,6 +975,13 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     font-size: 12px;
     line-height: 1.6em;
     margin: 10px 0;
+    word-wrap: break-all; 
+    white-space:normal;
+}
+
+.dialog p * {
+    word-wrap: break-all; 
+    white-space:normal;
 }
 
 .dialog_bar {
@@ -1034,12 +1041,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 /*===== Preferences Dialog ================================*/
 
 #prefs_dlg {
-    width: 550px;
+    width: 90%;
 }
 
 #prefs_dlg_body {
     padding: 0;
-    max-height: 330px;
 }
 
 .dlg_tabs {
@@ -1073,14 +1079,12 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 
 .dlg_tabs_page {
-    margin-left: 100px;
     border-left: 1px #333 solid;
     border-bottom: 1px #333 solid;
     padding: 10px 10px;
     display: none;
     min-height: 200px;
-    width: 427px;
-    overflow-y: auto;
+    overflow: auto;
 }
 
 #prefs_networks {
@@ -1102,17 +1106,21 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 /*===== Extensions Dialog ================================*/
 #exts_dlg {
-    width: 400px;
 }
 
 #exts_dlg_body {
     padding: 20px;
+    position: relative;
+    height: 300px;
 }
 
 #exts_container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     overflow: auto;
-    height: 350px;
-    width: 100%;
     border: 1px #ccc solid;
     background: #f2f2f2;
 }
@@ -1164,11 +1172,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 /*===== Profile Dialog ================================*/
 #profile_dlg {
-    width: 600px;
 }
 
 #profile_dlg_body {
     padding: 20px;
+    height: 300px;
 }
 
 #profile_avator {
@@ -1188,19 +1196,22 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 /*===== About Dialog ================================*/
 #about_dlg {
-    width: 550px;
 }
 
 #about_dlg_body {
     padding: 0;
+    max-height: 300px;
+}
+
+#about_dlg_body .dlg_tabs_page {
+    overflow: auto !important;
+    max-height: 260px;
 }
 
 #about_keyborad {
-    max-height: 260px;
 }
 /*===== Message Dialog ================================*/
 #message_dlg {
-    width: 400px;
 }
 
 #message_dlg_body {
@@ -1214,7 +1225,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 /*===== Common Dialog ================================*/
 #common_dlg {
-    width: 400px;
 }
 
 #common_dlg_body {

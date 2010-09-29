@@ -44,13 +44,16 @@ function open(dlg) {
         }
     }
     if (!any_dlg_exists) $(ui.DialogHelper.mask).show();
-    dlg.show();
-    var dlg_w = $(dlg.id).width();
     var dlg_h = $(dlg.id).height();
     $(dlg.id).css('position', 'absolute');
     $(dlg.id).css('z-index', 1111111);
-    $(dlg.id).css('left', ($(window).width()-dlg_w)/2 + 'px');
-    $(dlg.id).css('top', ($(window).height()-dlg_h)/2 + 'px');
+    $(dlg.id).css('left', '5%');
+    $(dlg.id).css('right', '5%');
+    $(dlg.id).css('top',  ($(window).height() - dlg_h)/2 + 'px');
+    if (dlg_h > $(window).height() * 0.8){
+        $(dlg.id).css('bottom', '10%');
+    }
+    dlg.show();
 },
 
 close:
