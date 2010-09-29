@@ -35,7 +35,6 @@ data/ext/ext.js
 data/ext/org.hotot.gmap/entry.js
 data/ext/org.hotot.sample/entry.js
 hotot/agent.py
-hotot/db.py
 hotot/config.py
 hotot/hotot.py
 hotot/view.py
