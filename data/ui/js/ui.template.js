@@ -1,7 +1,7 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.Template = {
 
-reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,]*)', 'g'),
+reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,#]*)', 'g'),
 
 reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
 

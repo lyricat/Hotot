@@ -1509,6 +1509,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     font-size: 12px;
     line-height: 1.5em;
     margin-top: 20px;
+    word-wrap: break-word;
 }
 
 .tweet_ctrl {
