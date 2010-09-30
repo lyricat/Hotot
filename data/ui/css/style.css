@@ -1325,7 +1325,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .tweet {
     padding: 5px;
-    min-height: 64px;
+    min-height: 50px;
     position: relative;
 }
 
@@ -1479,7 +1479,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 .tweet_body {
     margin: 0 0 0 65px;
     padding: 5px 10px 20px 10px;
-    min-height: 64px;
+    min-height: 50px;
     position: relative;
     border-radius: 5px 5px;
 }
