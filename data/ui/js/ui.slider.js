@@ -70,7 +70,6 @@ function slide_to(id) {
             block_name = ui.DMTabs.current;
         }
         ui.Main.actived_tweet_id = ui.Main.block_info[block_name].actived_tweet_id;
-        ui.Main.move_to_tweet('orig');
     } else {
         ui.Main.actived_tweet_id = null;
     }
