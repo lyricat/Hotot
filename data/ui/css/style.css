@@ -749,10 +749,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background: rgba(67,67,67,0.9) !important;
 }
 
-.button:active {
-    -webkit-box-shadow: #666 0px 0px 3px;
-}
-
 .button.dark:hover {
     -webkit-box-shadow: inset 0px -1px 5px #666 !important;
 }
