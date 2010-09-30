@@ -57,6 +57,17 @@ function bind_action() {
 
 generate:
 function generate() {
+    utility.DB.get_tweet(parseInt(ui.Main.normalize_id(ui.Main.actived_tweet_id)), 
+    function (tx, rs) {
+        var row = rs.rows.item(0);
+        var id = row.id;
+        var tweet_obj = JSON.parse(row.json);
+        var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
+            : tweet_obj.user;
+        var info ='<span class="info_hint">'+ user.screen_name + ':</span>"' + tweet_obj.text + '"';
+        $('#action_menu_info').html(info);
+    });
+
     ui.ActionMenu.btns = [];
     var tweet_dom_id = ui.Main.actived_tweet_id;
     var btns = $(tweet_dom_id +' .tweet_ctrl:first').find('.tweet_ctrl_btn');
