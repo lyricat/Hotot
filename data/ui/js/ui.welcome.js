@@ -116,8 +116,8 @@ function init () {
 authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
-    $('#my_profile_img').attr('src'
-        , globals.myself.profile_image_url);
+    $('#btn_my_profile').css('background-image'
+        , 'url('+globals.myself.profile_image_url+')');
     ui.Notification.set('Authentication OK!').show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();

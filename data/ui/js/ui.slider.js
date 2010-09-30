@@ -24,7 +24,11 @@ function init () {
 
     $('#indication').find('.idx_btn').click(
     function (event) {
-        ui.Slider.slide_to($(this).attr('href'));
+        if ($(this).attr('href') != ui.Slider.current) {
+            ui.Slider.slide_to($(this).attr('href'));
+        } else {
+            ui.Main.move_to_tweet('top')
+        }
     });
     $('#indication').find('.shape').click(
     function (event) {

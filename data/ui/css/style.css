@@ -93,9 +93,10 @@ pre {
     border-bottom: 1px #ccc solid;
 }
 
-#my_profile_img, #my_profile_img_wrapper {
+#btn_my_profile {
     width: 28px;
     height: 28px;
+    display: block;
 }
 
 #version {
@@ -1452,10 +1453,12 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     margin: 5px;
     width: 48px;
     height: 48px;
-    float: left;  
+    float: left; 
     position: relative;
+    border-bottom: 1px #333 solid;
     background-image: url('');
     background-repeat: no-repeat;
+    background-size: contain;
     -webkit-border-radius: 7px;
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
