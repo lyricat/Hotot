@@ -253,7 +253,7 @@ function load_tweets_cb(result, pagename) {
     }
     container.pagename = pagename.substring(1);
     var tweet_count = ui.Main.add_tweets(result, container);
-    
+ 
     if (tweet_count != 0 ) {
         // favorites page have differet mechanism to display more tweets.
         if (pagename == '#favorites' || pagename == '#search') {
@@ -376,6 +376,7 @@ function add_tweets(json_obj, container) {
         }
     };
 
+    var new_tweets_height = 0;
     // insert tweets.
     if (json_obj.constructor == Array) {
         json_obj = sort_tweets(json_obj);
@@ -383,10 +384,23 @@ function add_tweets(json_obj, container) {
             if (! insert_tweet(json_obj[i])) {
                 // remove the duplicate tweet from json_obj
                 json_obj.splice(i, 1);
+            } else {
+                new_tweets_height += $('#'+container.pagename+'-'+json_obj[i].id).get(0).clientHeight;
             }
         }
     } else {
-        insert_tweet(json_obj);
+        if (insert_tweet(json_obj)) {
+            new_tweets_height += $('#'+container.pagename +'-'+ json_obj.id).get(0).clientHeight;
+        }
+    }
+
+    // if timeline is not on the top
+    // resume to the postion before new tweets were added
+    // offset = N* (clientHeight + border-width)
+    if (container.parent().get(0).scrollTop != 0 ) {
+        container.parent().get(0).scrollTop 
+            += new_tweets_height 
+                + (json_obj.constructor == Array?json_obj.length:1);
     }
 
     ui.Main.trim_page(container);
