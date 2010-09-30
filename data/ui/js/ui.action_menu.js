@@ -85,11 +85,20 @@ function generate() {
                 + $(btn_arr[i]).attr('title') 
                 + '</a></li>');
             ui.ActionMenu.btns[idx] = btn_arr[i];
-            idx +=1;
+            idx += 1;
         }
     }
+
     form_items(btns);
     form_items(menu_btns);
+        
+    if ($(tweet_dom_id + ' .tweet_thread_info:first').css('display') != 'none') {
+        var btn_expander = $(tweet_dom_id + ' .tweet_thread_info:first').children('.btn_tweet_thread');
+        arr.push('<li><a href="javascript:void(0);" class="action_menu_item">Expand/Collapse</a></li>');
+        ui.ActionMenu.btns[idx] = btn_expander;
+        idx += 1;
+    }
+    
     $('#action_menu > ul').html(arr.join(''));
     $('#action_menu .action_menu_item:first').addClass('selected');
     ui.ActionMenu.selected_idx = 0;
