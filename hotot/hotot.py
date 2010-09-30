@@ -221,6 +221,7 @@ class MainWindow:
             self.tbox_status.grab_focus()
         else:
             self.window.present()
+            self.webv.grab_focus()
         pass
 
     def on_size_allocate(self, win, req):
