@@ -1451,7 +1451,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     height: 48px;
     float: left; 
     position: relative;
-    border-bottom: 1px #333 solid;
     background-image: url('');
     background-repeat: no-repeat;
     background-size: contain;
