@@ -152,7 +152,11 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['use_native_notify']);
     $('#chk_prefs_use_native_input').attr('checked'
         , prefs_obj['use_native_input']);
-    
+    $('#chk_prefs_use_ubuntu_indicator').attr('checked'
+        , prefs_obj['use_ubuntu_indicator']);
+    $('#chk_prefs_use_hover_box').attr('checked'
+        , prefs_obj['use_hover_box']);
+
     // Networks
     $('#tbox_prefs_api_base').attr('value'
         , prefs_obj['api_base']);
@@ -220,7 +224,12 @@ function save_prefs() {
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs_obj['use_native_input']
         = $('#chk_prefs_use_native_input').attr('checked');
-
+    prefs_obj['use_ubuntu_indicator']
+        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
+    prefs_obj['use_hover_box']
+        = $('#chk_prefs_use_hover_box').attr('checked');   
+    
+    
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');
     prefs_obj['sign_api_base'] 

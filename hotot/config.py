@@ -31,12 +31,17 @@ default_config = {
     'default_username':'',
     'default_password':'',
 #template:
+    'template':'index.html',
+#Appearance:
     'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun',
     'font_size': 12,
     'use_native_input': False,
     'use_native_notify': True,
+    'use_ubuntu_indicator': True,
+    'use_hover_box': True,
+#System:
     'shortcut_summon_hotot': '<Alt>C',
-    'template':'index.html',
+    
 #api url:
     'api_base': 'https://api.twitter.com/1/',
     'sign_api_base': 'https://api.twitter.com/',
@@ -60,7 +65,6 @@ default_config = {
 
 #others:
     'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"],
-    'no_use_indicator': False,
     'size_w': 750,
     'size_h': 550,
 }

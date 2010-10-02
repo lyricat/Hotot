@@ -233,7 +233,7 @@ def main():
     global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
-    if config.get('no_use_indicator'):
+    if not config.get('use_ubuntu_indicator'):
         HAS_INDICATOR = False
     try:
         import dl

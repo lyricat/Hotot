@@ -191,6 +191,7 @@ def apply_prefs():
         $('#chk_remember_password').attr('checked', eval('%s'));
         $('body').css('font-family', '%s');
         globals.tweet_font_size = %s;
+        ui.StatusBox.use_hover_box = %s;
         lib.twitterapi.api_base = '%s';
         lib.twitterapi.sign_api_base = '%s';
         lib.twitterapi.search_api_base = '%s';
@@ -203,6 +204,7 @@ def apply_prefs():
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
+            , 'true' if config.use_hover_box else 'false'
             , api_base, sign_api_base, search_api_base
             , 'true' if config.use_same_sign_api_base else 'false'
             , oauth_base, sign_oauth_base
@@ -258,6 +260,8 @@ def push_prefs():
     font_size = config.font_size
     use_native_input = 'true' if config.use_native_input else 'false'
     use_native_notify = 'true' if config.use_native_notify else 'false'
+    use_hover_box = 'true' if config.use_hover_box else 'false'
+    
 
     # networks settings
     api_base = config.api_base;
@@ -287,6 +291,7 @@ def push_prefs():
         , "font_size": "%s"
         , "use_native_input": %s
         , "use_native_notify": %s
+        , "use_hover_box": %s
         , "api_base": "%s"
         , "sign_api_base": "%s"
         , "search_api_base": "%s"
@@ -306,7 +311,7 @@ def push_prefs():
             , consumer_key, consumer_secret
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
-            , use_native_input, use_native_notify
+            , use_native_input, use_native_notify, use_hover_box
             , api_base, sign_api_base, search_api_base
             , use_same_sign_api_base
             , oauth_base, sign_oauth_base
