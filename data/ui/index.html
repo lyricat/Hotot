@@ -290,7 +290,7 @@ jQuery(function($) {
             <input id="tbox_basic_auth_username" style="width: 250px;" type="text" value=""/><br/>
             <label>_("Password:")</label><br/>
             <input id="tbox_basic_auth_password" style="width: 250px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox"/ checked="1"/><label>_("Remember Password")</label><br/>
+            <input id="chk_remember_password" type="checkbox" checked="1"/><label for="chk_remember_password">_("Remember Password")</label><br/>
             <div style="text-align:right;margin-right:20px;">
             <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">_("Sign In")
                 <span class="placeholder"></span>
@@ -633,7 +633,9 @@ jQuery(function($) {
                         <input id="chk_prefs_remember_password"
                             type="checkbox" class="dark" 
                             title="Remember Password" checked="1"/>
-                        <label>_("Remember Password")</label><br/>
+                        <label for="chk_prefs_remember_password">
+                            _("Remember Password")
+                        </label><br/>
                     </p>
                     </div>
 
@@ -695,15 +697,15 @@ jQuery(function($) {
                     <p>
                         <input id="chk_prefs_use_native_input" class="dark"
                             title=_("'Use Native Input'") type="checkbox"/>
-                        <label>_("Use Native Input Dialog")</label><br/>
+                        <label for="chk_prefs_use_native_input">_("Use Native Input Dialog")</label><br/>
                         <input id="chk_prefs_use_native_notify" 
                             class="dark" title=_("'Use Native Notify'")
                             type="checkbox"/>
-                        <label>_("Use Native Notify System")</label><br/>
+                        <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
                         <input id="chk_prefs_use_ubuntu_indicator"
                             class="dark" title=_("'Use Ubuntu Indicator'") 
                             type="checkbox"/>
-                        <label>_("Use Ubuntu Indicator")</label><br/>
+                        <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu Indicator")</label><br/>
                         <input id="chk_prefs_use_hover_box" class="dark"
                             title=_("'Hover to open tweet box.'") 
                             type="checkbox"/>
@@ -721,7 +723,9 @@ jQuery(function($) {
                         <input id="chk_prefs_use_same_sign_api_base"
                             title=_("'Use same Signing Api'") class="dark"
                             type="checkbox"/>
-                        <label>Same signing API base: </label><br/>
+                        <label for="chk_prefs_use_same_sign_api_base">
+                            _("Same signing API base: ")
+                        </label><br/>
                         <label>_("Signing API Base")</label>
                         <input id="tbox_prefs_sign_api_base" class="dark" 
                             title=_("'Signing API Base'") type="text"/><br/>
@@ -732,7 +736,9 @@ jQuery(function($) {
                         <input id="chk_prefs_use_same_sign_oauth_base"
                             title=_("'Use same Signing OAuth Base'") 
                             type="checkbox"/>
-                        <label>_("Same signing OAuth base: ")</label><br/>
+                        <label for="chk_prefs_use_same_sign_oauth_base">
+                            _("Same signing OAuth base: ")
+                        </label><br/>
                         <label>_("Signing OAuth Base")</label>
                         <input id="tbox_prefs_sign_oauth_base" class="dark"
                             title=_("'Signing OAuth Base'") type="text"/><br/>
@@ -748,7 +754,9 @@ jQuery(function($) {
                     <p>
                         <input id="chk_prefs_use_http_proxy"
                             title=_("'Use HTTP Proxy'") type="checkbox"/>
-                        <label>_("Use HTTP Proxy")</label><br/>
+                        <label for="chk_prefs_use_http_proxy">
+                            _("Use HTTP Proxy")
+                        </label><br/>
                         <label>_("Host")</label>
                         <input id="tbox_prefs_http_proxy_host" class="dark"
                             title=_("'HTTP Proxy Host'") style="width: 150px;" type="text"/>
@@ -758,7 +766,9 @@ jQuery(function($) {
     
                         <input id="chk_prefs_use_socks_proxy"
                             title=_("'Use Socks Proxy'") type="checkbox"/>
-                        <label>_("Use Socks Proxy")</label><br/>
+                        <label for="chk_prefs_use_socks_proxy">
+                            _("Use Socks Proxy")
+                        </label><br/>
                         <label>_("Host")</label>
                         <input id="tbox_prefs_socks_proxy_host" 
                             class="dark" title="Socks Proxy Host"
