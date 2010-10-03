@@ -427,9 +427,7 @@ function add_tweets(json_obj, container) {
         });
     }
     // bind events
-    setTimeout(function () {
-        ui.Main.bind_tweets_action(json_obj, container.pagename);
-        }, 1000);
+    ui.Main.bind_tweets_action(json_obj, container.pagename);
     ui.Notification.hide();
     return json_obj.length;
 },
