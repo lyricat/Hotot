@@ -21,7 +21,7 @@ current_mode: 0,
 
 mode_backup: null,
 
-close_timeout: 10000,
+close_timeout: 30000,
 
 open_timeout: 700,
 
@@ -227,7 +227,6 @@ function init () {
             ui.StatusBox.lazy_close();
             return false;
         } 
-        ui.StatusBox.lazy_close();
         ui.StatusBox.auto_complete_hlight_idx = 0;
         ui.StatusBox.auto_complete(event);
 
