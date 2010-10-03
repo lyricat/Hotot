@@ -1663,13 +1663,16 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background-image: url(../imgs/expand.png) !important;
 }
 
+.tweet_thread_wrapper {
+    margin-left: 65px;
+    display: none;
+}
+
 .tweet_thread {
     border-width: 1px;
     border-style: solid;
-    display: none;
     list-style-type: none;
     padding: 0px;
-    margin-left: 65px;
 }
 
 .tweet_thread_hint {
@@ -1680,6 +1683,17 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     border: 1px solid #fcfc19;
     color: #990000;
     border-radius: 3px; 
+}
+
+.btn_tweet_thread_more {
+    margin: 3px 10px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_tweet_thread_more:hover {
+    text-decoration: underline;
 }
 
 /* == Menus ==*/

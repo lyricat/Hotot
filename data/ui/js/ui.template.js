@@ -52,10 +52,12 @@ tweet_t:
         </li>\
     </ul>\
     <span class="shape"></span>\
-    <span class="shape_mask" ></span>\
-    <ul class="tweet_thread" >\
+    <span class="shape_mask"></span>\
+    <div class="tweet_thread_wrapper">\
         <div class="tweet_thread_hint">Loading...</div>\
-    </ul>\
+        <ul class="tweet_thread"></ul>\
+        <a class="btn_tweet_thread_more">view more conversation</a>\
+    </div>\
     <div class="tweet_indicator"></div>\
 </li>',
 
@@ -251,7 +253,7 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%SOURCE%}/g, source);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     return ret;
 },
 
@@ -298,6 +300,30 @@ function form_text(text) {
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/\n/g, '<br/>');
     return text;
+},
+
+pre_load_thread:
+function pre_load_thread(tweet_obj, thread_container) {
+
+    var id = tweet_obj.in_reply_to_status_id;
+    if (id == null) {
+        return;
+    }
+    utility.DB.get_tweet(id, 
+    function (tx, rs) {
+        if (rs.rows.length != 0) {
+            var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
+            var li = $(thread_container.parents('.tweet')[0]);
+            ui.Main.add_tweets(prev_tweet_obj, thread_container);
+            
+            li.find('.btn_tweet_thread').addClass('expand');
+            li.find('.tweet_thread_hint').hide();
+            if (prev_tweet_obj.in_reply_to_status_id == null) {
+                li.find('.btn_tweet_thread_more').hide();
+            }
+            thread_container.parent().show();
+        }
+    }); 
 },
 
 form_status_indicators:

@@ -221,7 +221,6 @@ function init () {
             item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
             item.addClass('hlight');
 
-            utility.Console.out( item.get(0).offsetTop);
             screen_name_list.stop().animate({scrollTop: item.get(0).offsetTop - screen_name_list.get(0).offsetTop}); 
             ui.StatusBox.auto_complete_selected = item.text();
             ui.StatusBox.lazy_close();
