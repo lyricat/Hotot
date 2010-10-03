@@ -252,6 +252,9 @@ function load_tweets_cb(result, pagename) {
         container = $(pagename + '_tweet_block > ul');
     }
     container.pagename = pagename.substring(1);
+
+    // resume position if timeline is not on the top
+    container.resume_pos = (container.parent().get(0).scrollTop != 0);
     var tweet_count = ui.Main.add_tweets(result, container);
  
     if (tweet_count != 0 ) {
@@ -286,6 +289,8 @@ function load_more_tweets_cb(result, pagename) {
         container = $(pagename + '_tweet_block > ul');
     }
     container.pagename = pagename.substring(1);
+    // never resume position after loading more tweet
+    container.resume_pos = false;
     var tweet_count = ui.Main.add_tweets(json_obj, container);
 
     if (tweet_count != 0) {
@@ -397,7 +402,7 @@ function add_tweets(json_obj, container) {
     // if timeline is not on the top
     // resume to the postion before new tweets were added
     // offset = N* (clientHeight + border-width)
-    if (container.parent().get(0).scrollTop != 0 ) {
+    if (container.resume_pos) {
         container.parent().get(0).scrollTop 
             += new_tweets_height 
                 + (json_obj.constructor == Array?json_obj.length:1);
