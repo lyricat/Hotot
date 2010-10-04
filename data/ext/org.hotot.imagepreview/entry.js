@@ -69,23 +69,15 @@ function on_form_tweet_text(text) {
             case 'img.ly':
             case 'twitpic.com':  
             case 'twitgoo.com':
-                img_html_arr.push('<a style="' 
-                    + ext.HototImagePreview.BORDER_STYLE
-                    + '" href="'+match[1]+'"><img style="'
-                    + ext.HototImagePreview.IMG_STYLE
-                    + '" src="'
-                    + img_link_reg[pvd_name].base
-                    + match[2] +'" /></a>');
+                img_html_arr.push(
+                    ext.HototImagePreview.form_image(
+                        match[1], img_link_reg[pvd_name].base));
             break;
             case 'yfrog.com':
             case 'moby.to':
-                img_html_arr.push('<a style="' 
-                    + ext.HototImagePreview.BORDER_STYLE
-                    + '" href="'+match[1]+'"><img style="'
-                    + ext.HototImagePreview.IMG_STYLE
-                    + '" src="'
-                    + match[1] + img_link_reg[pvd_name].tail
-                    + '" /></a>');
+                img_html_arr.push(
+                    ext.HototImagePreview.form_image(
+                        match[1], match[1] + img_link_reg[pvd_name].tail));
             break;
             case 'plixi.com':
                 img_html_arr.push(
