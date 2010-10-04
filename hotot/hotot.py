@@ -65,7 +65,7 @@ class MainWindow:
 
         self.menu_tray = gtk.Menu()
         mitem_resume = gtk.MenuItem(_("_Resume/Active"))
-        mitem_resume.connect('activate', self.on_mitem_resume_activate);
+        mitem_resume.connect('activate', self.on_trayicon_activate);
         self.menu_tray.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
@@ -203,6 +203,10 @@ class MainWindow:
         pass
 
     def on_trayicon_activate(self, icon):
+        gobject.idle_add(self._on_trayicon_activate, icon)
+        pass
+
+    def _on_trayicon_activate(self, icon):
         if self.window.is_active():
             self.window.hide()
         else:
@@ -216,10 +220,20 @@ class MainWindow:
         pass
 
     def on_hotkey_compose(self):
+        gobject.idle_add(self._on_hotkey_compose)
+        pass
+
+    def _on_hotkey_compose(self):
         if config.use_native_input:
+            if not self.tbox_status.is_focus():
+                self.inputw.hide()
+                pass
             self.inputw.present()
             self.tbox_status.grab_focus()
         else:
+            if not self.webv.is_focus():
+                self.window.hide()
+                pass
             self.window.present()
             self.webv.grab_focus()
         pass
