@@ -80,6 +80,17 @@ function init () {
     this.id = '#main_page';
     this.me = $('#main_page');
 
+    $('.tweet_block').scroll(
+    function (event) {
+        if (this.scrollTop + this.clientHeight == this.scrollHeight) {
+            $(ui.Slider.current + '_tweet_block >ul')
+                .children('.tweet:hidden:lt(20)').show();
+        }
+        if (this.scrollTop == 0) {
+            ui.Main.compress_page($(ui.Slider.current + '_tweet_block >ul'))
+        }
+    });
+
     $('.btn_load_more').click(
     function(event) {
         ui.Notification.set('Loading Tweets...').show(-1);
@@ -428,6 +439,9 @@ function add_tweets(json_obj, container) {
     }
 
     ui.Main.trim_page(container);
+    if (container.parent().get(0).scrollTop < 100) {
+        ui.Main.compress_page(container);
+    }
 
     // dumps to cache
     if (container.pagename != 'search') {
@@ -454,6 +468,11 @@ function add_tweets(json_obj, container) {
 trim_page:
 function trim_page(container) {
     container.children('.tweet:gt('+globals.trim_bound+')').remove();
+},
+
+compress_page:
+function compress_page(container) {
+    container.children('.tweet:gt(20)').hide();
 },
 
 bind_tweets_action:
