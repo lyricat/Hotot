@@ -6,11 +6,7 @@ id: 'org.hotot.imagepreview',
 name: 'Hotot Image Preview',
 
 description: 'To preview picture thumbs in timeline.\nSupport sites:\n\
-    - img.ly\n\
-    - twitpic.com\n\
-    - twitgoo.com\n\
-    - yfrog.com\n\
-    - moby.to\n',
+    - img.ly, twitpic.com, twitgoo.com, yfrog.com, moby.to\n',
 
 version: '1.0',
 
@@ -41,12 +37,26 @@ img_link_reg: {
     reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"', 'g'),
     tail: ':thumbnail'
 },
+'plixi.com': {
+    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"', 'g'),
+    base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
+},
 
 },
 
 BORDER_STYLE: 'margin:2px 5px; padding:0; display:inline-block;',
 
 IMG_STYLE: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0;',
+
+form_image:
+function form_image(href, src) {
+    var html = '<a style="' 
+        + ext.HototImagePreview.BORDER_STYLE
+        + '" href="'+href+'"><img style="'
+        + ext.HototImagePreview.IMG_STYLE
+        + '" src="'+ src +'" /></a>'
+    return html;
+},
 
 on_form_tweet_text:
 function on_form_tweet_text(text) {
@@ -76,6 +86,11 @@ function on_form_tweet_text(text) {
                     + '" src="'
                     + match[1] + img_link_reg[pvd_name].tail
                     + '" /></a>');
+            break;
+            case 'plixi.com':
+                img_html_arr.push(
+                    ext.HototImagePreview.form_image(
+                        match[1], img_link_reg[pvd_name].base +match[1]));
             break;
             }
         }

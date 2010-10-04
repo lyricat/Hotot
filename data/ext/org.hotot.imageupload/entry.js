@@ -24,6 +24,10 @@ services : {
           url: 'http://api.twitpic.com/2/upload.json'
         , key: 'de89b69c11e1ac0f874ec5266c5c4f46'
     },
+    'plixi.com': {
+          url: 'http://api.plixi.com/api/upload.aspx'
+        , key: 'a3beab3a-d1ae-46c0-a4ab-5ac73d8eb43a'
+    },
 },
 
 on_ext_btn_clicked:
@@ -35,6 +39,7 @@ function on_btn_upload_clicked(event) {
             <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="dark">\
                 <option value="img.ly" default="1">img.ly</option>\
                 <option value="twitpic.com">twitpic.com</option>\
+                <option value="plixi.com">plixi.com</option>\
             </select>\
             <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
             <span class="placeholder"></span>\
@@ -87,10 +92,16 @@ function on_btn_upload_clicked(event) {
         , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
     var msg = $('#ext_hotot_upload_image_message').attr('value');
     var service_name = $('#ext_hotot_upload_image_services').attr('value');
+    ext.HototImageUpload.sel_service_name = service_name;
     var params = {'message': msg};
     switch (service_name) {
     case 'twitpic.com' :
         params['key'] = ext.HototImageUpload.services[service_name].key;
+    break;
+    case 'plixi.com' :
+        params['isoauth'] = 'true';
+        params['response_format'] = 'JSON';
+        params['api_key'] = ext.HototImageUpload.services[service_name].key;
     break;
     }
 
@@ -124,8 +135,16 @@ function success(result) {
     var service_name = $('#ext_hotot_upload_image_services').attr('value');
     ui.Notification.set('Uploading Successfully!').show();
     ui.StatusBox.open();
-    var url = result.url;
-    var text = result.text;
+    switch (ext.HototImageUpload.sel_service_name) {
+    case 'plixi.com':
+        url = result.MediaUrl;
+        text = $('#ext_hotot_upload_image_message').attr('value');
+    break;
+    default:
+        url = result.url;
+        text = result.text;
+    break;
+    }
     ui.StatusBox.append_status_text(text + ' '+ url);
     ext.HototImageUpload.select_filename = '';
 },

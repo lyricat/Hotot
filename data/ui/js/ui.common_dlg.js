@@ -36,7 +36,7 @@ function reset() {
 add_button:
 function show_button(id, label, title, callback) {
     $(ui.CommonDlg.id + ' .dialog_bottom')
-        .append('<a id="'+id+'" class="button dark" href="javascript:void(0);" title="'+title+'">'+label+'</a>');
+        .append('<a id="'+id+'" class="button dark" href="javascript:void(0);" title="'+title+'">'+label+'<span class="placeholder"></span></a>');
     $('#'+id).click(callback);
 },
 
