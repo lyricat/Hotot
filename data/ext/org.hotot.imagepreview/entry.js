@@ -71,7 +71,7 @@ function on_form_tweet_text(text) {
             case 'twitgoo.com':
                 img_html_arr.push(
                     ext.HototImagePreview.form_image(
-                        match[1], img_link_reg[pvd_name].base));
+                        match[1], img_link_reg[pvd_name].base + match[2]));
             break;
             case 'yfrog.com':
             case 'moby.to':
