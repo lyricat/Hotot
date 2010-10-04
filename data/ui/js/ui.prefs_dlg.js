@@ -156,6 +156,8 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['use_ubuntu_indicator']);
     $('#chk_prefs_use_hover_box').attr('checked'
         , prefs_obj['use_hover_box']);
+    $('#chk_prefs_use_preload_conversation').attr('checked'
+        , prefs_obj['use_preload_conversation']);
 
     // Networks
     $('#tbox_prefs_api_base').attr('value'
@@ -228,7 +230,8 @@ function save_prefs() {
         = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
     prefs_obj['use_hover_box']
         = $('#chk_prefs_use_hover_box').attr('checked');   
-    
+    prefs_obj['use_preload_conversation']
+        = $('#chk_prefs_use_preload_conversation').attr('checked');  
     
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');

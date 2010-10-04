@@ -39,6 +39,7 @@ default_config = {
     'use_native_notify': True,
     'use_ubuntu_indicator': True,
     'use_hover_box': True,
+    'use_preload_conversation': True,
 #System:
     'shortcut_summon_hotot': '<Alt>C',
     
