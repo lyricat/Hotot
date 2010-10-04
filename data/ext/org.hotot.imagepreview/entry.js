@@ -6,7 +6,7 @@ id: 'org.hotot.imagepreview',
 name: 'Hotot Image Preview',
 
 description: 'To preview picture thumbs in timeline.\nSupport sites:\n\
-    - img.ly, twitpic.com, twitgoo.com, yfrog.com, moby.to\n',
+    - img.ly, twitpic.com, twitgoo.com, yfrog.com, moby.to, plixi.com\n',
 
 version: '1.0',
 
