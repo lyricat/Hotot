@@ -302,30 +302,6 @@ function form_text(text) {
     return text;
 },
 
-pre_load_thread:
-function pre_load_thread(tweet_obj, thread_container) {
-
-    var id = tweet_obj.in_reply_to_status_id;
-    if (id == null) {
-        return;
-    }
-    utility.DB.get_tweet(id, 
-    function (tx, rs) {
-        if (rs.rows.length != 0) {
-            var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
-            var li = $(thread_container.parents('.tweet')[0]);
-            ui.Main.add_tweets(prev_tweet_obj, thread_container);
-            
-            li.find('.btn_tweet_thread').addClass('expand');
-            li.find('.tweet_thread_hint').hide();
-            if (prev_tweet_obj.in_reply_to_status_id == null) {
-                li.find('.btn_tweet_thread_more').hide();
-            }
-            thread_container.parent().show();
-        }
-    }); 
-},
-
 form_status_indicators:
 function form_status_indicators(tweet) {
      

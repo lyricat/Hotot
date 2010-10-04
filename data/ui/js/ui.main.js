@@ -11,6 +11,8 @@ max_id: null,
 
 actived_tweet_id: null,
 
+use_preload_conversation: true,
+
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
     '#home_timeline': {
@@ -391,16 +393,28 @@ function add_tweets(json_obj, container) {
                 json_obj.splice(i, 1);
             } else {
                 var dom_id = container.pagename+'-'+json_obj[i].id;
-                var thread_container = $($('#'+dom_id+' .tweet_thread')[0]);
-                thread_container.pagename = dom_id;
-                ui.Template.pre_load_thread(json_obj[i], thread_container);
-                
                 new_tweets_height += $('#'+dom_id).get(0).clientHeight;
+                if (ui.Main.use_preload_conversation) {
+                    var thread_container = $($(
+                        '#'+dom_id+' .tweet_thread')[0]);
+                    thread_container.pagename = dom_id;
+                    ui.Main.preload_thread(
+                        json_obj[i], thread_container);
+                }
             }
         }
     } else {
         if (insert_tweet(json_obj)) {
-            new_tweets_height += $('#'+container.pagename +'-'+ json_obj.id).get(0).clientHeight;
+            new_tweets_height += 
+                $('#'+container.pagename +'-'+ json_obj.id)
+                    .get(0).clientHeight;
+            
+            if (ui.Main.use_preload_conversation) {
+                var dom_id = container.pagename+'-'+json_obj.id;
+                var thread_container = $($('#'+dom_id+' .tweet_thread')[0]);
+                thread_container.pagename = dom_id;
+                ui.Main.preload_thread(json_obj, thread_container);
+            }
         }
     }
 
@@ -766,6 +780,33 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
             load_thread_proc_cb(JSON.parse(rs.rows.item(0).json));
         }
     });
+},
+
+preload_thread:
+function preload_thread(tweet_obj, thread_container) {
+
+    var id = tweet_obj.in_reply_to_status_id;
+    if (id == null) {
+        return;
+    }
+    if (2 < thread_container.pagename.split('-').length) {
+        return;
+    }
+    utility.DB.get_tweet(id, 
+    function (tx, rs) {
+        if (rs.rows.length != 0) {
+            var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
+            var li = $(thread_container.parents('.tweet')[0]);
+            ui.Main.add_tweets(prev_tweet_obj, thread_container);
+            
+            li.find('.btn_tweet_thread').addClass('expand');
+            li.find('.tweet_thread_hint').hide();
+            if (prev_tweet_obj.in_reply_to_status_id == null) {
+                li.find('.btn_tweet_thread_more').hide();
+            }
+            thread_container.parent().show();
+        }
+    }); 
 },
 
 move_to_tweet:
