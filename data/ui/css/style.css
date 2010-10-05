@@ -1088,6 +1088,9 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     max-height: 260px;
 }
 
+#prefs_appearance {
+    max-height: 260px;
+}
 .dlg_group {
     padding-left: 10px;
 }
