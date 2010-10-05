@@ -152,8 +152,8 @@ function request_prefs_cb(prefs_obj) {
     for (var i = 0; i < pages.length; i += 1) {
         $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked'
             , prefs_obj['use_'+pages[i]+'_notify']);
-        $('#chk_prefs_use_'+pages[i]+'_sound').attr('checked'
-            , prefs_obj['use_'+pages[i]+'_sound']);
+        $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked'
+            , prefs_obj['use_'+pages[i]+'_notify_sound']);
     }
 
     $('#chk_prefs_use_native_notify').attr('checked'
@@ -235,8 +235,8 @@ function save_prefs() {
     for (var i = 0; i < pages.length; i += 1) {
         prefs_obj['use_'+pages[i]+'_notify']
             = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
-        prefs_obj['use_'+pages[i]+'_sound']
-            = $('#chk_prefs_use_'+pages[i]+'_sound').attr('checked');
+        prefs_obj['use_'+pages[i]+'_notify_sound']
+            = $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked');
     }
 
     prefs_obj['use_native_notify']

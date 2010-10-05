@@ -193,18 +193,18 @@ def apply_prefs():
 
     notification_settings = '''
         ui.Main.block_info['#home_timeline'].use_notify=%s;
-        ui.Main.block_info['#home_timeline'].use_sound=%s;
+        ui.Main.block_info['#home_timeline'].use_notify_sound=%s;
         ui.Main.block_info['#mentions'].use_notify=%s;
-        ui.Main.block_info['#mentions'].use_sound=%s;
+        ui.Main.block_info['#mentions'].use_notify_sound=%s;
         ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
-        ui.Main.block_info['#direct_messages_inbox'].use_sound=%s;
+        ui.Main.block_info['#direct_messages_inbox'].use_notify_sound=%s;
     ''' % (
         str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_home_timeline_notify_sound).lower(), 
         str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_sound).lower(), 
+        str(config.use_mentions_notify_sound).lower(), 
         str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify_sound).lower(), 
     )
 
     webv.execute_script('''
@@ -308,18 +308,18 @@ def push_prefs():
 
     notification_settings = '''
         , "use_home_timeline_notify": %s
-        , "use_home_timeline_sound": %s
+        , "use_home_timeline_notify_sound": %s
         , "use_mentions_notify": %s
-        , "use_mentions_sound": %s
+        , "use_mentions_notify_sound": %s
         , "use_direct_messages_inbox_notify": %s
-        , "use_direct_messages_inbox_sound": %s
+        , "use_direct_messages_inbox_notify_sound": %s
     ''' % (
         str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_home_timeline_notify_sound).lower(), 
         str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_sound).lower(), 
+        str(config.use_mentions_notify_sound).lower(), 
         str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify_sound).lower(), 
     )
     webv.execute_script('''
         var prefs_obj = {
