@@ -33,7 +33,7 @@ def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
             config.get_ui_object('imgs/ic64_hotot.png')))
-    notify.set_timeout(3000)
+    notify.set_timeout(5000)
     pass
 
 def crack_hotot(uri):
@@ -106,8 +106,8 @@ def crack_system(params):
     if params[1] == 'notify' or params[1] == 'notify_with_sound':
         if not config.use_native_notify:
             return
-        summary = base64.decodestring(params[2])
-        body = base64.decodestring(params[3])
+        summary = urllib.unquote(params[2])
+        body = urllib.unquote(params[3])
         notify.update(summary, body)
         notify.show()
         if params[1] == 'notify_with_sound':
@@ -193,18 +193,18 @@ def apply_prefs():
 
     notification_settings = '''
         ui.Main.block_info['#home_timeline'].use_notify=%s;
-        ui.Main.block_info['#home_timeline'].use_sound=%s;
+        ui.Main.block_info['#home_timeline'].use_notify_sound=%s;
         ui.Main.block_info['#mentions'].use_notify=%s;
-        ui.Main.block_info['#mentions'].use_sound=%s;
+        ui.Main.block_info['#mentions'].use_notify_sound=%s;
         ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
-        ui.Main.block_info['#direct_messages_inbox'].use_sound=%s;
+        ui.Main.block_info['#direct_messages_inbox'].use_notify_sound=%s;
     ''' % (
         str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_home_timeline_notify_sound).lower(), 
         str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_sound).lower(), 
+        str(config.use_mentions_notify_sound).lower(), 
         str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify_sound).lower(), 
     )
 
     webv.execute_script('''
@@ -308,18 +308,18 @@ def push_prefs():
 
     notification_settings = '''
         , "use_home_timeline_notify": %s
-        , "use_home_timeline_sound": %s
+        , "use_home_timeline_notify_sound": %s
         , "use_mentions_notify": %s
-        , "use_mentions_sound": %s
+        , "use_mentions_notify_sound": %s
         , "use_direct_messages_inbox_notify": %s
-        , "use_direct_messages_inbox_sound": %s
+        , "use_direct_messages_inbox_notify_sound": %s
     ''' % (
         str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_home_timeline_notify_sound).lower(), 
         str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_sound).lower(), 
+        str(config.use_mentions_notify_sound).lower(), 
         str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify_sound).lower(), 
     )
     webv.execute_script('''
         var prefs_obj = {
