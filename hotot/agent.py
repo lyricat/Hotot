@@ -11,6 +11,7 @@ import threading
 import gobject
 import utils
 import hotot
+import os
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -102,12 +103,15 @@ def crack_action(params):
     pass
 
 def crack_system(params):
-    if params[1] == 'notify':
-        if config.use_native_notify:
-            summary = base64.decodestring(params[2])
-            body = base64.decodestring(params[3])
-            notify.update(summary, body)
-            notify.show()
+    if params[1] == 'notify' or params[1] == 'notify_with_sound':
+        if not config.use_native_notify:
+            return
+        summary = base64.decodestring(params[2])
+        body = base64.decodestring(params[3])
+        notify.update(summary, body)
+        notify.show()
+        if params[1] == 'notify_with_sound':
+            gobject.idle_add(os.system, 'aplay -q "%s"' % config.get_sound('notify'))
     elif params[1] == 'quit':
         app.quit(); 
     pass
@@ -187,6 +191,22 @@ def apply_prefs():
     sign_oauth_base = config.sign_oauth_base
     if sign_oauth_base[-1] != '/': sign_oauth_base += '/'
 
+    notification_settings = '''
+        ui.Main.block_info['#home_timeline'].use_notify=%s;
+        ui.Main.block_info['#home_timeline'].use_sound=%s;
+        ui.Main.block_info['#mentions'].use_notify=%s;
+        ui.Main.block_info['#mentions'].use_sound=%s;
+        ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
+        ui.Main.block_info['#direct_messages_inbox'].use_sound=%s;
+    ''' % (
+        str(config.use_home_timeline_notify).lower(), 
+        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_mentions_notify).lower(), 
+        str(config.use_mentions_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify).lower(), 
+        str(config.use_direct_messages_inbox_sound).lower(), 
+    )
+
     webv.execute_script('''
         $('#chk_remember_password').attr('checked', eval('%s'));
         $('body').css('font-family', '%s');
@@ -202,6 +222,7 @@ def apply_prefs():
         jsOAuth.use_same_sign_oauth_base = %s;
         jsOAuth.key = '%s';
         jsOAuth.secret = '%s';
+        %s
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
@@ -211,7 +232,9 @@ def apply_prefs():
             , 'true' if config.use_same_sign_api_base else 'false'
             , oauth_base, sign_oauth_base
             , 'true' if config.use_same_sign_oauth_base else 'false'
-            , consumer_key, consumer_secret ))
+            , consumer_key, consumer_secret
+            , notification_settings
+            ))
     pass
 
 def apply_config():
@@ -283,6 +306,21 @@ def push_prefs():
     socks_proxy_host = config.socks_proxy_host
     socks_proxy_port = config.socks_proxy_port
 
+    notification_settings = '''
+        , "use_home_timeline_notify": %s
+        , "use_home_timeline_sound": %s
+        , "use_mentions_notify": %s
+        , "use_mentions_sound": %s
+        , "use_direct_messages_inbox_notify": %s
+        , "use_direct_messages_inbox_sound": %s
+    ''' % (
+        str(config.use_home_timeline_notify).lower(), 
+        str(config.use_home_timeline_sound).lower(), 
+        str(config.use_mentions_notify).lower(), 
+        str(config.use_mentions_sound).lower(), 
+        str(config.use_direct_messages_inbox_notify).lower(), 
+        str(config.use_direct_messages_inbox_sound).lower(), 
+    )
     webv.execute_script('''
         var prefs_obj = {
           "remember_password": %s
@@ -309,6 +347,7 @@ def push_prefs():
         , "use_socks_proxy": %s
         , "socks_proxy_host": "%s"
         , "socks_proxy_port": "%s"
+        %s
         };
         ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
         ''' % (remember_password
@@ -323,6 +362,7 @@ def push_prefs():
             , use_same_sign_oauth_base
             , use_http_proxy, http_proxy_host, http_proxy_port
             , use_socks_proxy, socks_proxy_host, socks_proxy_port
+            , notification_settings
             ));
     pass
 

@@ -19,59 +19,79 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_home_timeline
         , is_sub: false
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_notify: true
+        , use_sound: true
     },
     '#mentions': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_mentions
         , is_sub: false
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_notify: true
+        , use_sound: true
     },
     '#direct_messages_inbox': {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_direct_messages
         , is_sub: false
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_notify: true
+        , use_sound: true
     },
     '#direct_messages_outbox': {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_sent_direct_messages
         , is_sub: false
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#favorites': { page: 1
         , api_proc: lib.twitterapi.get_favorites
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#retweeted_to_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_to_me
         , is_sub: true
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#retweeted_by_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_by_me
         , is_sub: true
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#retweets_of_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweets_of_me
         , is_sub: true
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#people': {
           id: null, screen_name: '' 
         , since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
     '#search': { 
           query: '', page: 1
         , api_proc: lib.twitterapi.search 
-        , actived_tweet_id: null 
+        , actived_tweet_id: null
+        , use_sound: false
+        , use_sound: false
     },
 },
 
@@ -281,10 +301,14 @@ function load_tweets_cb(result, pagename) {
             if (ui.Main.block_info[pagename].max_id == null)
                 ui.Main.block_info[pagename].max_id = last_id - 1;
         }
-        hotot_action('system/notify/'
-            + encodeBase64('Update page '+pagename)
-            + '/'
-            + encodeBase64(tweet_count + ' new items.'))
+        if (ui.Main.block_info[pagename].use_notify) {
+            var action = ui.Main.block_info[pagename].use_sound
+                ? 'notify_with_sound':'notify';
+            hotot_action('system/' + action + '/'
+                + encodeBase64('Update page '+pagename)
+                + '/'
+                + encodeBase64(tweet_count + ' new items.'))
+        }
     }
 },
 
@@ -416,9 +440,11 @@ function add_tweets(json_obj, container) {
         }
     } else {
         if (insert_tweet(json_obj)) {
-            new_tweets_height += 
-                $('#'+container.pagename +'-'+ json_obj.id)
-                    .get(0).clientHeight;
+            if (container.pagename.split('-').length <= 2) {
+                new_tweets_height += 
+                    $('#'+container.pagename +'-'+ json_obj.id)
+                        .get(0).clientHeight;
+            }
             
             if (ui.Main.use_preload_conversation) {
                 var dom_id = container.pagename+'-'+json_obj.id;

@@ -60,7 +60,6 @@ function work() {
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
                     , (step + 1) * 5000);
                 step += 1;
-                // utility.Console.out('Going to update ' + pagename);
             }
         }
         ui.Notification.set('Update '+ step +' page(s) on schedule.').show();

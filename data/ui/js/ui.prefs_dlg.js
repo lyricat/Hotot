@@ -148,6 +148,14 @@ function request_prefs_cb(prefs_obj) {
     $('#tbox_prefs_font_size').attr('value', prefs_obj['font_size']);    
     ui.PrefsDlg.update_font_preview()
 
+    var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
+    for (var i = 0; i < pages.length; i += 1) {
+        $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked'
+            , prefs_obj['use_'+pages[i]+'_notify']);
+        $('#chk_prefs_use_'+pages[i]+'_sound').attr('checked'
+            , prefs_obj['use_'+pages[i]+'_sound']);
+    }
+
     $('#chk_prefs_use_native_notify').attr('checked'
         , prefs_obj['use_native_notify']);
     $('#chk_prefs_use_native_input').attr('checked'
@@ -222,6 +230,15 @@ function save_prefs() {
     prefs_obj['font_family_used'] = $('#sel_prefs_font_family').attr('value');
     prefs_obj['font_size'] = $('#tbox_prefs_font_size').attr('value');
     if (prefs_obj['font_size'] == '') prefs_obj['font_size'] = 12;
+
+    var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
+    for (var i = 0; i < pages.length; i += 1) {
+        prefs_obj['use_'+pages[i]+'_notify']
+            = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
+        prefs_obj['use_'+pages[i]+'_sound']
+            = $('#chk_prefs_use_'+pages[i]+'_sound').attr('checked');
+    }
+
     prefs_obj['use_native_notify']
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs_obj['use_native_input']

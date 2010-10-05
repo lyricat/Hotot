@@ -9,6 +9,7 @@ import sys
 PROGRAM_NAME = 'hotot'
 UI_DIR_NAME = 'ui'
 EXT_DIR_NAME = 'ext'
+SOUND_DIR_NAME = 'sound'
 LAUNCH_DIR = os.path.abspath(sys.path[0])
 CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
 DB_DIR = os.path.join(CONF_DIR, 'db')
@@ -40,6 +41,13 @@ default_config = {
     'use_ubuntu_indicator': True,
     'use_hover_box': True,
     'use_preload_conversation': True,
+    # Appearance > Notification:
+    'use_home_timeline_notify': True,
+    'use_home_timeline_sound': True,
+    'use_mentions_notify': True,
+    'use_mentions_sound': True,
+    'use_direct_messages_inbox_notify': True,
+    'use_direct_messages_inbox_sound': True,
 #System:
     'shortcut_summon_hotot': '<Alt>C',
     
@@ -182,6 +190,12 @@ def get_ui_object(name):
         if os.path.exists(fullpath):
             return fullpath
 
+def get_sound(name):
+    for base in DATA_DIRS:
+        fullpath = os.path.join(base, SOUND_DIR_NAME, name + '.wav')
+        if os.path.exists(fullpath):
+            return fullpath
+
 def get_exts():
     import glob
     exts = []
@@ -195,4 +209,5 @@ def get_exts():
             pass
         pass
     return exts
+
 
