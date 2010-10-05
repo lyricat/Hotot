@@ -41,36 +41,25 @@ function dump_tweets(json_obj) {
         });
     };
 
-    if (json_obj.constructor == Array) { 
-        // dump tweets
-        utility.DB.tweet_cache.transaction(function (tx) {
-            for (var i = 0; i < json_obj.length; i += 1) {
-                var tweet_obj = json_obj[i];
-                if (tweet_obj.hasOwnProperty('retweeted_status')) {
-                    dump_single_tweet(tx, tweet_obj['retweeted_status']);
-                }
-                dump_single_tweet(tx, tweet_obj);
+    // dump tweets
+    utility.DB.tweet_cache.transaction(function (tx) {
+        for (var i = 0; i < json_obj.length; i += 1) {
+            var tweet_obj = json_obj[i];
+            if (tweet_obj.hasOwnProperty('retweeted_status')) {
+                dump_single_tweet(tx, tweet_obj['retweeted_status']);
             }
-        });
-        // dump users
-        utility.DB.user_cache.transaction(function (tx) {
-            for (var i = 0; i < json_obj.length; i += 1) {
-                var tweet_obj = json_obj[i];
-                var user = typeof tweet_obj.user != 'undefined'? tweet_obj.user: tweet_obj.sender;
-                dump_single_user(tx, user);
-            }
-        });
-    } else {
-        var user = typeof json_obj.user != 'undefined'? json_obj.user: json_obj.sender;
-
-        utility.DB.tweet_cache.transaction(function (tx) {
-            dump_single_tweet(tx, json_obj);
-        });
-
-        utility.DB.user_cache.transaction(function (tx) {
+            dump_single_tweet(tx, tweet_obj);
+        }
+    });
+    // dump users
+    utility.DB.user_cache.transaction(function (tx) {
+        for (var i = 0; i < json_obj.length; i += 1) {
+            var tweet_obj = json_obj[i];
+            var user = typeof tweet_obj.user != 'undefined'
+                ? tweet_obj.user: tweet_obj.sender;
             dump_single_user(tx, user);
-        });
-    }
+        }
+    });
 },
 
 get_tweet:
