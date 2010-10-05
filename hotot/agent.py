@@ -33,7 +33,7 @@ def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
             config.get_ui_object('imgs/ic64_hotot.png')))
-    notify.set_timeout(3000)
+    notify.set_timeout(5000)
     pass
 
 def crack_hotot(uri):
@@ -106,8 +106,8 @@ def crack_system(params):
     if params[1] == 'notify' or params[1] == 'notify_with_sound':
         if not config.use_native_notify:
             return
-        summary = base64.decodestring(params[2])
-        body = base64.decodestring(params[3])
+        summary = urllib.unquote(params[2])
+        body = urllib.unquote(params[3])
         notify.update(summary, body)
         notify.show()
         if params[1] == 'notify_with_sound':
