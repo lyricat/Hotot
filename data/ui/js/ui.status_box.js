@@ -305,7 +305,7 @@ function update_status_cb(result) {
     
     var container = $('#home_timeline_tweet_block > ul');
     container.pagename = 'home_timeline'
-    ui.Main.add_tweets(result, container);
+    ui.Main.add_tweets([result], container);
     
     return this;
 },

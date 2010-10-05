@@ -420,7 +420,9 @@ function add_tweets(json_obj, container) {
 
     var new_tweets_height = 0;
     // insert tweets.
-    json_obj = sort_tweets(json_obj);
+    if (1 < json_obj.length) {
+        json_obj = sort_tweets(json_obj);
+    }
     for (var i = 0; i < json_obj.length; i += 1) {
         if (! insert_tweet(json_obj[i])) {
             // remove the duplicate tweet from json_obj
