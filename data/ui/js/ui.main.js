@@ -21,6 +21,7 @@ block_info: {
         , is_sub: false
         , actived_tweet_id: null
         , use_notify: true
+        , use_notify_type: 'summary'
         , use_notify_sound: true
     },
     '#mentions': {
@@ -29,6 +30,7 @@ block_info: {
         , is_sub: false
         , actived_tweet_id: null
         , use_notify: true
+        , use_notify_type: 'individual'
         , use_notify_sound: true
     },
     '#direct_messages_inbox': {
@@ -37,6 +39,7 @@ block_info: {
         , is_sub: false
         , actived_tweet_id: null
         , use_notify: true
+        , use_notify_type: 'individual'
         , use_notify_sound: true
     },
     '#direct_messages_outbox': {
@@ -45,12 +48,14 @@ block_info: {
         , is_sub: false
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#favorites': { page: 1
         , api_proc: lib.twitterapi.get_favorites
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#retweeted_to_me': {
@@ -59,6 +64,7 @@ block_info: {
         , is_sub: true
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#retweeted_by_me': {
@@ -67,6 +73,7 @@ block_info: {
         , is_sub: true
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#retweets_of_me': {
@@ -75,6 +82,7 @@ block_info: {
         , is_sub: true
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#people': {
@@ -84,6 +92,7 @@ block_info: {
         , is_sub: false
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
     '#search': { 
@@ -91,6 +100,7 @@ block_info: {
         , api_proc: lib.twitterapi.search 
         , actived_tweet_id: null
         , use_notify: false 
+        , use_notify_type: 'summary'
         , use_notify_sound: false
     },
 },
