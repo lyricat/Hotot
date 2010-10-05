@@ -32,7 +32,7 @@ try:
 except:
     pass
 
-class MainWindow:
+class Hotot:
     def __init__(self):
         self.build_gui()
         self.build_inputw()
@@ -256,7 +256,7 @@ def main():
     except:
         pass
     agent.init_notify()
-    app = MainWindow()
+    app = Hotot()
     agent.app = app
     if HAS_INDICATOR:
         #TODO the icon is only work when installed to /usr/share/icons/hicolor/
