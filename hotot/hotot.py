@@ -64,7 +64,7 @@ class Hotot:
         self.window.add(vbox)
 
         self.menu_tray = gtk.Menu()
-        mitem_resume = gtk.MenuItem(_("_Resume/Active"))
+        mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_trayicon_activate);
         self.menu_tray.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
@@ -84,7 +84,7 @@ class Hotot:
         menuitem_file = gtk.MenuItem(_("_File"))
         menuitem_file_menu = gtk.Menu()
 
-        mitem_resume = gtk.MenuItem(_("_Resume/Active"))
+        mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_mitem_resume_activate);
         menuitem_file_menu.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
