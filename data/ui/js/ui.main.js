@@ -429,13 +429,15 @@ function add_tweets(json_obj, container) {
             json_obj.splice(i, 1);
         } else {
             var dom_id = container.pagename+'-'+json_obj[i].id;
-            new_tweets_height += $('#'+dom_id).get(0).clientHeight;
             if (ui.Main.use_preload_conversation) {
                 var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
                 thread_container.pagename = dom_id;
                 ui.Main.preload_thread(
                     json_obj[i], thread_container);
+                new_tweets_height += $('#'+dom_id).get(0).clientHeight * 2;
+            } else {
+                new_tweets_height += $('#'+dom_id).get(0).clientHeight;
             }
         }
     }
