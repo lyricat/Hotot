@@ -419,10 +419,11 @@ pre {
 
 /* ===== Buttom =================================== */
 #indication {
-    height: 40px;
+    height: 42px;
     text-align: center;
     background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#2c2c2c));
     border-top: #2c2c2c 1px solid;
+    border-bottom: #2c2c2c 1px solid;
 }
 
 #indication > ul {
