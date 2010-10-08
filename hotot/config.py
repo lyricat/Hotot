@@ -38,7 +38,7 @@ default_config = {
     'font_size': 12,
     'use_native_input': False,
     'use_native_notify': True,
-    'use_ubuntu_indicator': True,
+    'use_ubuntu_indicator': False,
     'use_hover_box': True,
     'use_preload_conversation': True,
     # Appearance > Notification:
