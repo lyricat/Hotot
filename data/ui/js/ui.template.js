@@ -1,7 +1,11 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.Template = {
 
-reg_link: new RegExp('([a-zA-Z]+:\\/\\/[a-zA-Z0-9_\\-%./\\+!\\?=&:;~`@,#]*)', 'g'),
+reg_vaild_preceding_chars: '(?:[^-\\/"\':!=a-zA-Z0-9_]|^)',
+
+reg_url_path_chars: '[a-zA-Z0-9!\\*\';:=\\+\\$/%#\\[\\]\\?\\-_,~\\(\\)&\\.`@]',
+
+reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 
 reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
 
@@ -104,6 +108,18 @@ search_t:
     <div class="tweet_indicator"></div>\
 </li>',
 
+init:
+function init() {
+    ui.Template.reg_url = ui.Template.reg_vaild_preceding_chars
+    + '('
+        + ui.Template.reg_url_proto_chars 
+        + ui.Template.reg_url_path_chars
+    + '+)',
+
+    ui.Template.reg_link = new RegExp(ui.Template.reg_url),
+
+    ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g'),
+},
 
 form_dm:
 function form_dm(dm_obj, pagename) {
@@ -293,7 +309,7 @@ form_text:
 function form_text(text) {
     text = text.replace(/"/g, '&#34;');
     text = text.replace(/'/g, '&#39;');
-    text = text.replace(ui.Template.reg_link, '<a href="$1">$1</a>');
+    text = text.replace(ui.Template.reg_link_g, ' <a href="$1">$1</a>');
     text = text.replace(ui.Template.reg_user
         , '$1@<a href="hotot:action/user/$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
