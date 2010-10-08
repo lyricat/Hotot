@@ -77,7 +77,7 @@ function init () {
                 [],
                 function (results) {
                     var text = $('#tbox_status').val();
-                    text = text.replace(results.data.long_url, results.data.url);
+                    text = text.replace(urls[i], results.data.url);
                     $('#tbox_status').val(text);
                     $(window).dequeue('_short_url');
                 },
@@ -85,11 +85,12 @@ function init () {
                 );
             });
         };
-        var match = ui.Template.reg_link($('#tbox_status').val());
+        var match = ui.Template.reg_link_g.exec($('#tbox_status').val());
         while (match != null) {
-            urls.push(match[0]);
-            match = ui.Template.reg_link($('#tbox_status').val());
+            urls.push(match[1]);
+            match = ui.Template.reg_link_g.exec($('#tbox_status').val());
         }
+        utility.Console.out(JSON.stringify(urls))
         for (var i = 0; i < urls.length; i += 1) {
             _requset(i);
         }

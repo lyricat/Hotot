@@ -18,27 +18,27 @@ icon: 'icon.png',
 
 img_link_reg: {
 'img.ly': {
-    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9]+))"','g'),
     base: 'http://img.ly/show/thumb/'
 },
 'twitpic.com': {
-    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9]+))"','g'),
     base: 'http://twitpic.com/show/thumb/'
 },
 'twitgoo.com': {
-    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9]+))"','g'),
     base: 'http://twitgoo.com/show/thumb/'
 },
 'yfrog.com': {
-    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9]+))"','g'),
     tail: '.th.jpg'
 },
 'moby.to': {
-    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"','g'),
     tail: ':thumbnail'
 },
 'plixi.com': {
-    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"', 'g'),
+    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"','g'),
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
 },
 
@@ -64,7 +64,7 @@ function on_form_tweet_text(text) {
     var img_link_reg = ext.HototImagePreview.img_link_reg;
     for (var pvd_name in img_link_reg) {
         var match = img_link_reg[pvd_name].reg.exec(text);
-        if (match != null) {
+        while (match != null) {
             switch (pvd_name) {
             case 'img.ly':
             case 'twitpic.com':  
@@ -85,6 +85,7 @@ function on_form_tweet_text(text) {
                         match[1], img_link_reg[pvd_name].base +match[1]));
             break;
             }
+            match = img_link_reg[pvd_name].reg.exec(text);
         }
     }
     if (img_html_arr.length != 0) {
