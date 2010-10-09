@@ -12,6 +12,7 @@ import gobject
 import utils
 import hotot
 import os
+import ctypes
 
 pynotify.init('Hotot Notification')
 notify = pynotify.Notification('Init', '')
@@ -28,6 +29,37 @@ http_code_msg_table = {
     , 502: 'Server is down or being upgraded. Please try again later.'
     , 503: 'Server is overcapacity. Please try again later.'
 }
+
+def webkit_set_proxy_uri(uri):
+    if uri and '://' not in uri:
+        uri = 'http://' + uri
+        pass
+    try:
+        libgobject = ctypes.CDLL('libgobject-2.0.so.0')
+        libsoup = ctypes.CDLL('libsoup-2.4.so.1')
+        libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
+        proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
+        session = libwebkit.webkit_get_default_session()
+        libgobject.g_object_set(session, "proxy-uri", proxy_uri, None)
+        if proxy_uri:
+            libsoup.soup_uri_free(proxy_uri)
+            pass
+        libgobject.g_object_set(session, "max-conns", 20, None)
+        libgobject.g_object_set(session, "max-conns-per-host", 5, None)
+        return 0
+    except:
+        return 1
+    pass
+
+def apply_proxy_setting():
+    if config.use_http_proxy:
+        proxy_uri = "http://%s:%s" % (config.http_proxy_host, config.http_proxy_port)
+        webkit_set_proxy_uri(proxy_uri)
+        pass
+    else:
+        webkit_set_proxy_uri("")
+        pass
+    pass
 
 def init_notify():
     notify.set_icon_from_pixbuf(
@@ -173,6 +205,7 @@ def load_exts():
     pass
 
 def apply_prefs(): 
+    apply_proxy_setting()
     remember_password = config.remember_password
     font_family_used = config.font_family_used
     font_size = config.font_size
@@ -257,6 +290,7 @@ def apply_config():
     pass
 
 def push_prefs():
+    apply_proxy_setting()
     # account settings
     remember_password = 'true' if config.remember_password else 'false'
     consumer_key = config.consumer_key
