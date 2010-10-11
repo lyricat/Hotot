@@ -310,6 +310,7 @@ function form_text(text) {
     text = text.replace(/"/g, '&#34;');
     text = text.replace(/'/g, '&#39;');
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1">$1</a>');
+    text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_user
         , '$1@<a href="hotot:action/user/$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
