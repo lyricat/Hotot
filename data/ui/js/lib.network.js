@@ -19,7 +19,7 @@ function generate_uuid() {
 normalize_result:
 function normalize_result(result) {
     if (result.constructor == String)
-        eval('result='+result)
+        return JSON.parse(result);
     return result;
 },
 
@@ -39,7 +39,10 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
                 , files: req_files
                 , headers: req_headers })));
     } else {
-        jQuery.ajaxQueue({    
+        var task_uuid = lib.network.generate_uuid();
+        lib.network.success_task_table[task_uuid] = on_success;
+        lib.network.error_task_table[task_uuid] = on_error;
+        jQuery.ajax({    
             type: req_method,
             url: req_url,
             data: req_params,
@@ -53,14 +56,18 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
             function(result) {
                 if ( on_success != null) {
                     result = lib.network.normalize_result(result);
-                    on_success(result);
+                    lib.network.success_task_table[task_uuid](result);
+                    delete lib.network.success_task_table[task_uuid];
+                    delete lib.network.error_task_table[task_uuid];
                 }
             },
             error: 
             function (result) {
                 if ( on_error != null) {
                     result = lib.network.normalize_result(result);
-                    on_error(result);
+                    lib.network.error_task_table[task_uuid](result);
+                    delete lib.network.success_task_table[task_uuid];
+                    delete lib.network.error_task_table[task_uuid];
                 }
             }
         }); 
