@@ -538,7 +538,7 @@ jQuery(function($) {
 
 </div><!-- container -->
         
-<section id="status_box">
+<section id="status_box" class="closed">
     <span id="bubble_shape_shadow"></span>
     <span id="bubble_shape"></span>
 
@@ -548,18 +548,22 @@ jQuery(function($) {
     </div>
     <textarea id="tbox_status" class="closed"></textarea>
     <div id="status_ctrl">
-        <label id="status_len"></label>
-        <a id="btn_shorturl" title="URL shortener" class="button dark" href="javascript:void(0);">&nbsp;
+        <a id="toggle_mode" title="Switch to Message Mode" href="javascript:void(0);" class="button">
             <span class="placeholder"></span>            
         </a>
-        <a id="btn_clear" class="button dark" href="javascript:void(0);">_("Clear")
+        <label id="status_len"></label>
+        <a id="btn_shorturl" title="URL shortener" class="button" href="javascript:void(0);">&nbsp;
+            <span class="placeholder"></span>            
+        </a>
+        <a id="btn_clear" class="button" href="javascript:void(0);">_("Clear")
             <span class="placeholder"></span>            
         </a>
         <a id="btn_update" class="button default" href="javascript:void(0);">_("Update")
             <span class="placeholder"></span>            
         </a>
         <span class="clear"></span>
-        <div><label id="status_tips">_("Press Ctrl+Enter to Update")</label></div>
+        <div>
+        <label id="status_tips">_("Press Ctrl+Enter to Update")</label></div>
     </div>
     <ul id="screen_name_auto_complete"></ul>
 </section> <!-- status_box -->

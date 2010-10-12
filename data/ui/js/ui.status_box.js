@@ -25,7 +25,7 @@ close_timeout: 30000,
 
 open_timeout: 700,
 
-is_closed: true,
+is_closed: false,
 
 auto_complete_hlight_idx: 0,
 
@@ -241,7 +241,9 @@ function init () {
         ui.StatusBox.update_status_len();
     });
 
-    $('#status_len').html('0/' + globals.max_status_len);
+    $('#status_len').html('0/' + globals.max_status_len);      
+
+    ui.StatusBox.close(); 
 },
 
 lazy_close:
@@ -318,7 +320,7 @@ function update_status_len() {
     if (status_len > globals.max_status_len)
         $('#status_len').css('background-color', '#cc0000');
     else
-        $('#status_len').css('background-color', '#242424');
+        $('#status_len').css('background-color', '#aaa');
     $('#status_len').html(status_len + '/' + globals.max_status_len);
     return this;
 },
@@ -463,6 +465,7 @@ function close() {
             $(this).blur();
         });
         $('#tbox_status').addClass('closed');
+        $('#status_box').addClass('closed');
         // backup the mode
         ui.StatusBox.mode_backup = ui.StatusBox.current_mode;
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET)
@@ -490,14 +493,11 @@ function open(on_finish) {
             || ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
             $('#status_info').show();
         }
-        $('#tbox_status').animate({ 
-            height: "150px", 
-        }
-        , 50
-        , 'linear'
-        , on_finish);
+        $('#tbox_status').css('height', '150px');
+        on_finish();
         $('#status_ctrl').show();
         $('#tbox_status').removeClass('closed');
+        $('#status_box').removeClass('closed');
         ui.StatusBox.mode_backup != null;
         ui.StatusBox.is_closed = false;
     } else {

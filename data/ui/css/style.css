@@ -257,7 +257,7 @@ pre {
     position: absolute;
     width:0;
     height:0;
-    top: 10px; 
+    top: 9px; 
     left: -16px; /* value = - border-left-width - border-right-width */
     border-style: solid;
     bottom: auto;
@@ -276,7 +276,7 @@ pre {
     border-style: solid;
     bottom: auto;
     border-width: 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent rgba(0,0,0,0.50) transparent transparent; 
+    border-color: transparent rgba(255,255,255,0.9) transparent transparent; 
 }
 
 #status_box.dm_mode #bubble_shape {
@@ -288,7 +288,7 @@ pre {
 }
 
 #status_box {
-    background-color: rgba(0,0,0,0.75);
+    background:-webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ededed));
     background-repeat: no-repeat;
     background-position: right top;
     width: 310px;
@@ -302,34 +302,52 @@ pre {
     display: none;
 }
 
+#status_box.closed {
+    -webkit-box-shadow: none;
+    border: 1px #999 solid;
+}
+
 #tbox_status {
     width: 290px;
     height: 15px;
-    border: 1px #282828 solid;
-    color: white;
-    background-color: #494949;
+    border: 1px #ccc solid;
+    color: #333;
+    background-color: #fff;
     font-size: 14px;
-    overflow:hidden;
-    margin: 5px;
-    border-radius: 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 0px;
     resize: none;
 }
 
 #tbox_status.closed {
-    color: #fff;
+    -webkit-box-shadow: none;
+    color: #333;
     background: transparent;
     border: none;
+    overflow: hidden;
 }
 
 #tbox_status.hint_style {
     font-style: italic;
-    color: rgba(255,255,255, 0.7) !important; 
+    color: rgba(0,0,0, 0.7) !important; 
 }
 
 #status_ctrl {
-    margin: 5px;
+    margin: 0 5px 5px 5px;
     text-align: right;
     display: none;
+}
+
+#toggle_mode {
+    background-image: url(../imgs/ic16_link.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 5px;
+    width: 20px;
+    min-width: 0;
+    padding: 0;
+    text-decoration: none;
+    float: left;
 }
 
 #btn_shorturl {
@@ -344,13 +362,15 @@ pre {
 }
 
 #status_len {
+    margin-left: 5px;
     padding: 2px 5px;
-    background: #242424;
+    background: #aaa;
     float: left;
-    color: white;
+    color: #fff;
     display: block;
     text-align: left;
-    border-radius: 5px 5px;
+    border-radius: 5px;
+    font-size: 10px;
 }
 
 #status_info {
@@ -399,22 +419,24 @@ pre {
 
 #status_tips {
     font-style: italic;
-    color: white;
+    color: #333;
     font-weight: lighter;
+    font-size: 10px;
 }
 
 #screen_name_auto_complete {
     margin: 5px;
     list-style-type:none; 
-    color: #white;
     font-size: 12px;
     max-height: 100px;
     overflow: auto;
-    color: #fff;
+    color: #333;
+    border-top: 1px #ccc solid;
 }
 
 #screen_name_auto_complete > li.hlight {
     background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+    color: #fff;
 }
 
 /* ===== Buttom =================================== */
