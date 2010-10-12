@@ -610,6 +610,7 @@ function on_rt_click(btn, event) {
         ui.StatusBox.open(
         function() {
             ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+            $('#btn_clear_status_info').click();
         });
     });
 },
@@ -681,6 +682,7 @@ function on_dm_click(btn, event) {
         ui.StatusBox.dm_to_screen_name = user.screen_name;
         ui.StatusBox.open(function () {
             ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
         });
     });
 },

@@ -92,7 +92,8 @@ function generate() {
     form_items(btns);
     form_items(menu_btns);
         
-    if ($(tweet_dom_id + ' .tweet_thread_info:first').css('display') != 'none') {
+    if ($(tweet_dom_id + ' .tweet_thread_info').length != 0
+        && $(tweet_dom_id + ' .tweet_thread_info:first').css('display') != 'none') {
         var btn_expander = $(tweet_dom_id + ' .tweet_thread_info:first').children('.btn_tweet_thread');
         arr.push('<li><a href="javascript:void(0);" class="action_menu_item">Expand/Collapse</a></li>');
         ui.ActionMenu.btns[idx] = btn_expander;
