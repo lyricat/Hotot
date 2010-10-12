@@ -676,10 +676,7 @@ function on_dm_click(btn, event) {
         var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
             : tweet_obj.user;
 
-        ui.StatusBox.set_status_info(
-            '<span class="info_hint">COMPOSE MESSAGES TO</span> @' + user.screen_name);
-        ui.StatusBox.dm_to_id = user.id;
-        ui.StatusBox.dm_to_screen_name = user.screen_name;
+        ui.StatusBox.set_dm_target(user.screen_name);
         ui.StatusBox.open(function () {
             ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
             ui.StatusBox.move_cursor(ui.StatusBox.POS_END);

@@ -304,6 +304,7 @@ pre {
 
 #status_box.closed {
     -webkit-box-shadow: none;
+    -webkit-box-shadow: #888 0px 1px 3px;
     border: 1px #999 solid;
 }
 
@@ -339,7 +340,7 @@ pre {
 }
 
 #toggle_mode {
-    background-image: url(../imgs/ic16_link.png);
+    background-image: url(../imgs/ic16_dm.png);
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 5px;
@@ -348,6 +349,18 @@ pre {
     padding: 0;
     text-decoration: none;
     float: left;
+}
+
+#dm_target {
+    border: 1px #90abc4 solid;
+    width: 200px;
+    padding: 1px 5px;
+}
+
+#tbox_dm_target {
+    padding: 0;
+    border: 0px transparent none;
+    background: transparent;
 }
 
 #btn_shorturl {
@@ -363,7 +376,7 @@ pre {
 
 #status_len {
     margin-left: 5px;
-    padding: 2px 5px;
+    padding: 1px 5px;
     background: #aaa;
     float: left;
     color: #fff;
@@ -674,10 +687,6 @@ select {
     display: inline-block;
 }
 
-input[type="checkbox"] {
-    border-width: 1px;
-}
-
 input[type="text"], input[type="password"], textarea{
     background:none repeat scroll 0 0 #eee;
     border:1px solid #aaa;
@@ -690,7 +699,7 @@ input[type="text"]:hover, input[type="password"]:hover, textarea:hover, input[ty
     border:1px solid #a8b1fe;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, textarea:focus, input[type="checkbox"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     border:1px solid #a8b1fe;
     background: #b9d4e2;
 }

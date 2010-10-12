@@ -3,10 +3,6 @@ ui.StatusBox = {
 
 reply_to_id: null,
 
-dm_to_id: null,
-
-dm_to_screen_name: '',
-
 MODE_TWEET: 0,
 
 MODE_REPLY: 1,
@@ -103,7 +99,12 @@ function init () {
         $('#tbox_status').attr('value', '');
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
     });
-    
+
+    $('#toggle_mode').click(
+    function (event) {
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+    });
+
     $('#btn_clear_status_info').click(
     function (event) {
         $(this).parent().hide();
@@ -241,6 +242,10 @@ function init () {
         ui.StatusBox.update_status_len();
     });
 
+    $('#tbox_dm_target').click(
+    function (event) {
+        return false;
+    })
     $('#status_len').html('0/' + globals.max_status_len);      
 
     ui.StatusBox.close(); 
@@ -269,18 +274,22 @@ function change_mode(mode) {
         $('#status_box').removeClass('reply_mode').addClass('dm_mode');
         if ($('#tbox_status').attr('value') == globals.tweet_hint)
             $('#tbox_status').attr('value', globals.dm_hint)
+        $('#dm_target').show();
         $('#status_info').show();
+        $('#status_info_text').html('<span class="info_hint">COMPOSE MESSAGES TO</span>');
         globals.status_hint = globals.dm_hint;
     } else if (mode == ui.StatusBox.MODE_REPLY){
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
         if ($('#tbox_status').attr('value') == globals.dm_hint)
             $('#tbox_status').attr('value', globals.tweet_hint)
         $('#status_info').show();
+        $('#dm_target').hide();
         globals.status_hint = globals.tweet_hint;
     } else {
         $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
         if ($('#tbox_status').attr('value') == globals.dm_hint)
             $('#tbox_status').attr('value', globals.tweet_hint)
+        $('#dm_target').hide();
         globals.status_hint = globals.tweet_hint;
     }
     ui.StatusBox.current_mode = mode;
@@ -328,12 +337,18 @@ function update_status_len() {
 post_message:
 function post_message(message_text) {
     if (message_text.length != 0) {
-        lib.twitterapi.new_direct_messages(
-              message_text
-            , ui.StatusBox.dm_to_id
-            , ui.StatusBox.dm_to_screen_name
-            , ui.StatusBox.post_message_cb);
-        ui.Notification.set('Posting...').show(-1);
+        var name = $.trim($('#tbox_dm_target').val());
+        if (name == '') {
+            ui.Notification.set('Please enter the recipient.').show(-1);
+        } else {
+            if (name[0] == '@') name = name.substring(1);
+            ui.Notification.set('Posting...').show(-1);
+            lib.twitterapi.new_direct_messages(
+                  message_text
+                , null
+                , name
+                , ui.StatusBox.post_message_cb);
+        }
     }
 },
 
@@ -383,6 +398,11 @@ function set_status_text(text) {
 set_status_info:
 function set_status_info(info) {
     $('#status_info_text').html(info);
+},
+
+set_dm_target:
+function set_dm_target(screen_name) {
+    $('#tbox_dm_target').val(screen_name);
 },
 
 auto_complete:
