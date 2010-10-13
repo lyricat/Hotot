@@ -32,7 +32,7 @@ http_code_msg_table = {
 
 def webkit_set_proxy_uri(uri):
     if uri and '://' not in uri:
-        uri = 'http://' + uri
+        uri = 'https://' + uri
         pass
     try:
         libgobject = ctypes.CDLL('libgobject-2.0.so.0')
