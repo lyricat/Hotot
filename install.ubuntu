@@ -1,4 +1,15 @@
-#!/bin/bash -x
+#!/bin/bash -
+# Contributor: Victor Mishel Vera Sanchez (mishudark) <moonsadly@gmail.com>
+
+if [[ $EUID -ne 0 ]]; then
+    echo "You need superuser privileges. Run this script again with \`sudo'."
+    exit 1
+fi
+
+echo "Installing dependencies ..."
+apt-get install python-webkit python-notify python-keybinder python-distutils-extra
+
+echo "Installing Hotot ..."
 python setup.py build_i18n -m
 python setup.py build
 sudo python setup.py install --install-layout deb --record record.log
