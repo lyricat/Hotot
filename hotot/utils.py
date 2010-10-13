@@ -9,6 +9,8 @@ from webbrowser import _iscommand as is_command
 import gtk
 import mimetypes, mimetools
 
+import config
+
 try: import i18n
 except: from gettext import gettext as _
 
@@ -125,3 +127,30 @@ def encode_multipart_formdata(fields, files):
 
 def get_content_type(filename):
     return mimetypes.guess_type(filename)[0] or 'application/octet-stream'
+
+def get_ui_object(name):
+    for base in config.DATA_DIRS:
+        fullpath = os.path.join(base, config.UI_DIR_NAME, name)
+        if os.path.exists(fullpath):
+            return fullpath
+
+def get_sound(name):
+    for base in config.DATA_DIRS:
+        fullpath = os.path.join(base, config.SOUND_DIR_NAME, name + '.wav')
+        if os.path.exists(fullpath):
+            return fullpath
+
+def get_exts():
+    import glob
+    exts = []
+    for base in config.DATA_DIRS:
+        files = glob.glob(os.path.join(base, config.EXT_DIR_NAME) + '/*')
+        ext_dirs = filter(lambda x: os.path.isdir(x), files)
+        for dir in ext_dirs:
+            ext_js = os.path.join(dir, 'entry.js')
+            if os.path.exists(ext_js):
+                exts.append('file://%s' % ext_js)
+            pass
+        pass
+    return exts
+

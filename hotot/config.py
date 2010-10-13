@@ -90,6 +90,7 @@ def getconf():
     
 
     tokenfile = CONF_DIR + '/profile.token'
+    accounts = CONF_DIR + '/account.conf'
     prefs = CONF_DIR + '/hotot.conf'
     if not os.path.exists(prefs): 
         write_to_disk(prefs)
@@ -184,30 +185,6 @@ def set(name, value):
 def get(name):
     return globals()[name];
 
-def get_ui_object(name):
-    for base in DATA_DIRS:
-        fullpath = os.path.join(base, UI_DIR_NAME, name)
-        if os.path.exists(fullpath):
-            return fullpath
 
-def get_sound(name):
-    for base in DATA_DIRS:
-        fullpath = os.path.join(base, SOUND_DIR_NAME, name + '.wav')
-        if os.path.exists(fullpath):
-            return fullpath
-
-def get_exts():
-    import glob
-    exts = []
-    for base in DATA_DIRS:
-        files = glob.glob(os.path.join(base, EXT_DIR_NAME) + '/*')
-        ext_dirs = filter(lambda x: os.path.isdir(x), files)
-        for dir in ext_dirs:
-            ext_js = os.path.join(dir, 'entry.js')
-            if os.path.exists(ext_js):
-                exts.append('file://%s' % ext_js)
-            pass
-        pass
-    return exts
 
 

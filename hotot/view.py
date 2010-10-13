@@ -36,7 +36,7 @@ class MainView(WebView):
         self.connect('navigation-requested',
             self.on_navigation_requested);
         self.connect('load-finished', self.on_load_finish);
-        templatefile = config.get_ui_object(config.template)
+        templatefile = utils.get_ui_object(config.template)
         template = open(templatefile, 'rb').read()
         template = i18n.trans_html(template)
         self.load_html_string(template, 'file://' + templatefile)

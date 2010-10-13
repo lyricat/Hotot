@@ -64,7 +64,7 @@ def apply_proxy_setting():
 def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
-            config.get_ui_object('imgs/ic64_hotot.png')))
+            utils.get_ui_object('imgs/ic64_hotot.png')))
     notify.set_timeout(5000)
     pass
 
@@ -143,9 +143,14 @@ def crack_system(params):
         notify.update(summary, body)
         notify.show()
         if params[1] == 'notify_with_sound':
-            gobject.idle_add(os.system, 'aplay -q "%s"' % config.get_sound('notify'))
+            gobject.idle_add(os.system, 'aplay -q "%s"' % utils.get_sound('notify'))
+    elif params[1] == 'sign_in':
+        profile = params[2]
+        app.on_sign_in(profile)
+    elif params[1] == 'sign_out':
+        app.on_sign_out()
     elif params[1] == 'quit':
-        app.quit(); 
+        app.quit()
     pass
 
 def crack_request(params):
@@ -195,7 +200,7 @@ def load_search(query):
 
 def load_exts():
     scripts = []
-    exts = config.get_exts()
+    exts = utils.get_exts()
     webv.execute_script('''
         var exts = %s;
         ext.load_exts(exts);

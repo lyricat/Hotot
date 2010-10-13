@@ -14,6 +14,7 @@ import view
 import config
 import agent
 import keybinder
+import utils
 
 try:
     import appindicator
@@ -34,6 +35,8 @@ except:
 
 class Hotot:
     def __init__(self):
+        self.is_sign_in = False
+        self.profile = None
         self.build_gui()
         self.build_inputw()
         if not HAS_INDICATOR:
@@ -44,9 +47,9 @@ class Hotot:
     def build_gui(self):
         self.window = gtk.Window()
         gtk.window_set_default_icon_from_file(
-            config.get_ui_object('imgs/ic64_hotot.png'))
+            utils.get_ui_object('imgs/ic64_hotot.png'))
         self.window.set_icon_from_file(
-            config.get_ui_object('imgs/ic64_hotot.png'))
+            utils.get_ui_object('imgs/ic64_hotot.png'))
 
         self.window.set_default_size(config.size_w, config.size_h)
         self.window.set_title(_("Hotot"))
@@ -198,7 +201,7 @@ class Hotot:
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip('Hotot: Click to Active.')
         self.trayicon.set_from_file(
-            config.get_ui_object('imgs/ic64_hotot.png'))
+            utils.get_ui_object('imgs/ic64_hotot.png'))
         self.trayicon.set_visible(True)
         pass
 
@@ -239,9 +242,20 @@ class Hotot:
         pass
 
     def on_size_allocate(self, win, req):
-        config.set('size_h', req.height)
-        config.set('size_w', req.width)
+        if self.is_sign_in:
+            config.set('size_h', req.height)
+            config.set('size_w', req.width)
         pass
+
+    def on_sign_in(self, profile_name):
+        self.is_sign_in = True
+        self.profile = profile_name
+        pass
+
+    def on_sign_out(self):
+        self.is_sign_in = False
+        pass
+
 
 def main():
     global HAS_INDICATOR
@@ -264,7 +278,7 @@ def main():
                                            'hotot',
                                            appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_attention_icon(config.get_ui_object('imgs/ic64_hotot.png'))
+        indicator.set_attention_icon(utils.get_ui_object('imgs/ic64_hotot.png'))
         indicator.set_menu(app.menu_tray)
         pass
     gtk.gdk.threads_enter()
