@@ -5,6 +5,7 @@ from distutils.core import setup
 from DistUtilsExtra.command import *
 from glob import glob
 import os, os.path
+from hotot.hotot import __version__
 
 def get_data_files(root, data_dir):
     return [
@@ -13,7 +14,7 @@ def get_data_files(root, data_dir):
            ]
 
 setup(name='hotot',
-      version='1.0',
+      version=__version__,
       description='Lightweight Twitter Client',
       long_description =
 """

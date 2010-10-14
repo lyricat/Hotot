@@ -1,5 +1,16 @@
-#!/bin/bash -x
+#!/bin/bash -
+# Contributor: Victor Mishel Vera Sanchez (mishudark) <moonsadly@gmail.com>
+
+if [[ $EUID -ne 0 ]]; then
+    echo "You need superuser privileges. Run this script again with \`sudo'."
+    exit 1
+fi
+
+[ -x /usr/bin/apt-get ] &&
+	echo "Installing dependencies ..." &&
+	apt-get install python-webkit python-notify python-keybinder python-distutils-extra
+# TODO: more distros
+
 python setup.py build_i18n -m
 python setup.py build
-[ -a /usr/bin/dpkg ] && INSTALL_LAYOUT='--install-layout deb'
-sudo python setup.py install $INSTALL_LAYOUT --record record.log
+python setup.py install --record record.log
