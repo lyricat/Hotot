@@ -52,8 +52,10 @@ def webkit_set_proxy_uri(uri):
     pass
 
 def apply_proxy_setting():
-    if config.use_http_proxy:
-        proxy_uri = "http://%s:%s" % (config.http_proxy_host, config.http_proxy_port)
+    if get_prefs('use_http_proxy'):
+        proxy_uri = "http://%s:%s" % (
+              get_prefs('http_proxy_host')
+            , get_prefs('http_proxy_port'))
         webkit_set_proxy_uri(proxy_uri)
         pass
     else:
@@ -88,38 +90,40 @@ def crack_hotot(uri):
 def crack_exts(params):
     if params[1] == 'save_enabled':
         exts_enabled = json.loads(urllib2.unquote(params[2]))
-        config.set('exts_enabled', exts_enabled)
-        config.dumps()
+        set_prefs('exts_enabled', exts_enabled)
+        config.dumps(app.active_profile)
     pass
 
 def crack_config(params):
     if params[1] == 'dumps':
-        config.dumps()
+        config.dumps(app.active_profile)
     elif params[1] == 'loads': # useless
-        config.loads()
+        config.loads(app.active_profile)
     elif params[1] == 'push_prefs':
-        config.loads()
+        config.loads(app.active_profile)
         push_prefs()
     elif params[1] == 'save_prefs':
         prefs = json.loads(urllib2.unquote(params[2]))
-        config.save_prefs(prefs)
+        config.save_prefs(app.active_profile, prefs)
         apply_prefs()
     elif params[1] == 'restore_defaults':
-        config.restore_defaults()
+        config.restore_defaults(app.active_profile)
+        select_config(app.protocol)
         apply_config()
         push_prefs()
     elif params[1] == 'set_opts':
         opts = json.loads(urllib2.unquote(params[2]))
         for key, value in opts.items():
-            config.set(key, value)
+            set_prefs(key, value)
     pass
     
 def crack_token(params):
     if params[1] == 'load':
-        token = config.load_token()
+        token = config.load_token(app.active_profile)
         push_option('lib.twitterapi', 'access_token', json.dumps(token))
     elif params[1] == 'dump':
-        config.dump_token(json.loads(urllib.unquote(params[2])))
+        config.dump_token(app.active_profile
+            , json.loads(urllib.unquote(params[2])))
     pass
 
 def crack_action(params):
@@ -136,7 +140,7 @@ def crack_action(params):
 
 def crack_system(params):
     if params[1] == 'notify' or params[1] == 'notify_with_sound':
-        if not config.use_native_notify:
+        if not get_prefs('use_native_notify'):
             return
         summary = urllib.unquote(params[2])
         body = urllib.unquote(params[3])
@@ -144,8 +148,15 @@ def crack_system(params):
         notify.show()
         if params[1] == 'notify_with_sound':
             gobject.idle_add(os.system, 'aplay -q "%s"' % utils.get_sound('notify'))
+    elif params[1] == 'select_profile':
+        app.active_profile = urllib.unquote(params[2])
+        app.window.set_title('Hotot | %s' % app.active_profile)
+        apply_config()
+    elif params[1] == 'select_protocol':
+        app.protocol = urllib.unquote(params[2])
+        select_config(app.protocol)
     elif params[1] == 'sign_in':
-        profile = params[2]
+        profile = urllib.unquote(params[2])
         app.on_sign_in(profile)
     elif params[1] == 'sign_out':
         app.on_sign_out()
@@ -172,6 +183,12 @@ def execute_script(scripts):
 
 def push_option(set, name, value):
     webv.execute_script('%s[%s]=%s' % (set, name, value));
+    pass
+
+def select_config(protocol):
+    if protocol == 'identica':
+        config.set(app.active_profile, 'api_base', 'https://identi.ca/api')
+        print app.active_profile, get_prefs('api_base')
     pass
 
 def update_status(text):
@@ -211,22 +228,22 @@ def load_exts():
 
 def apply_prefs(): 
     apply_proxy_setting()
-    remember_password = config.remember_password
-    font_family_used = config.font_family_used
-    font_size = config.font_size
+    remember_password = get_prefs('remember_password')
+    font_family_used = get_prefs('font_family_used')
+    font_size = get_prefs('font_size')
 
-    consumer_key = config.consumer_key
-    consumer_secret = config.consumer_secret
+    consumer_key = get_prefs('consumer_key')
+    consumer_secret = get_prefs('consumer_secret')
 
-    api_base = config.api_base
+    api_base = get_prefs('api_base')
     if api_base[-1] != '/': api_base += '/'
-    sign_api_base = config.sign_api_base
+    sign_api_base = get_prefs('sign_api_base')
     if sign_api_base[-1] != '/': sign_api_base += '/'
-    search_api_base = config.search_api_base
+    search_api_base = get_prefs('search_api_base')
     if search_api_base[-1] != '/': search_api_base += '/'
-    oauth_base = config.oauth_base
+    oauth_base = get_prefs('oauth_base')
     if oauth_base[-1] != '/': oauth_base += '/'
-    sign_oauth_base = config.sign_oauth_base
+    sign_oauth_base = get_prefs('sign_oauth_base')
     if sign_oauth_base[-1] != '/': sign_oauth_base += '/'
 
     notification_settings = '''
@@ -237,12 +254,12 @@ def apply_prefs():
         ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
         ui.Main.block_info['#direct_messages_inbox'].use_notify_sound=%s;
     ''' % (
-        str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_notify_sound).lower(), 
-        str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_notify_sound).lower(), 
-        str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_notify_sound).lower(), 
+        str(get_prefs('use_home_timeline_notify')).lower(), 
+        str(get_prefs('use_home_timeline_notify_sound')).lower(), 
+        str(get_prefs('use_mentions_notify')).lower(), 
+        str(get_prefs('use_mentions_notify_sound')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
     )
 
     webv.execute_script('''
@@ -264,12 +281,12 @@ def apply_prefs():
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
-            , 'true' if config.use_hover_box else 'false'
-            , 'true' if config.use_preload_conversation else 'false'
+            , 'true' if get_prefs('use_hover_box') else 'false'
+            , 'true' if get_prefs('use_preload_conversation') else 'false'
             , api_base, sign_api_base, search_api_base
-            , 'true' if config.use_same_sign_api_base else 'false'
+            , 'true' if get_prefs('use_same_sign_api_base') else 'false'
             , oauth_base, sign_oauth_base
-            , 'true' if config.use_same_sign_oauth_base else 'false'
+            , 'true' if get_prefs('use_same_sign_oauth_base') else 'false'
             , consumer_key, consumer_secret
             , notification_settings
             ))
@@ -277,19 +294,11 @@ def apply_prefs():
 
 def apply_config():
     version = 'ver %s (%s)'% (hotot.__version__, hotot.__codename__)
-    default_username = config.default_username
-    default_password = config.default_password
-    access_token = json.dumps(config.load_token())
-    exts_enabled = json.dumps(config.exts_enabled)
+    exts_enabled = json.dumps(get_prefs('exts_enabled'))
     webv.execute_script('''
         $('#version').text('%s');
-        $('#tbox_basic_auth_username').attr('value', '%s');
-        $('#tbox_basic_auth_password').attr('value', '%s');
-        jsOAuth.access_token = %s;
         ext.exts_enabled = %s;
         ''' % (version
-            , default_username, default_password
-            , access_token
             , exts_enabled))
     apply_prefs()
     pass
@@ -297,12 +306,12 @@ def apply_config():
 def push_prefs():
     apply_proxy_setting()
     # account settings
-    remember_password = 'true' if config.remember_password else 'false'
-    consumer_key = config.consumer_key
-    consumer_secret = config.consumer_secret
+    remember_password = str(get_prefs('remember_password')).lower()
+    consumer_key = get_prefs('consumer_key')
+    consumer_secret = get_prefs('consumer_secret')
     
     # system settings
-    shortcut_summon_hotot = config.shortcut_summon_hotot
+    shortcut_summon_hotot = get_prefs('shortcut_summon_hotot')
 
     # display settings 
     font_family_list = [ff.get_name()
@@ -318,32 +327,33 @@ def push_prefs():
             font_family_list.insert(0, font_family)
             pass
         pass
-    font_family_used = config.font_family_used
+    font_family_used = get_prefs('font_family_used')
     if font_family_used not in font_family_list:
         font_family_list.insert(0, font_family_used)
-    font_size = config.font_size
-    use_native_input = 'true' if config.use_native_input else 'false'
-    use_native_notify = 'true' if config.use_native_notify else 'false'
-    use_hover_box = 'true' if config.use_hover_box else 'false'
-    use_preload_conversation = 'true' if config.use_preload_conversation else 'false'
+    font_size = get_prefs('font_size')
+    use_native_input = str(get_prefs('use_native_input')).lower()
+    use_native_notify = str(get_prefs('use_native_notify')).lower()
+    use_hover_box = str(get_prefs('use_hover_box')).lower()
+    use_preload_conversation = str(get_prefs('use_preload_conversation')).lower()
     
 
     # networks settings
-    api_base = config.api_base;
-    sign_api_base = config.sign_api_base;
-    search_api_base = config.search_api_base;
-    oauth_base = config.oauth_base;
-    sign_oauth_base = config.sign_oauth_base;
-    use_same_sign_api_base = 'true' if config.use_same_sign_api_base else 'false'
-    use_same_sign_oauth_base = 'true' if config.use_same_sign_oauth_base else 'false'
+    api_base = get_prefs('api_base')
+    print app.active_profile, api_base
+    sign_api_base = get_prefs('sign_api_base')
+    search_api_base = get_prefs('search_api_base')
+    oauth_base = get_prefs('oauth_base')
+    sign_oauth_base = get_prefs('sign_oauth_base')
+    use_same_sign_api_base = str(get_prefs('use_same_sign_api_base')).lower()
+    use_same_sign_oauth_base = str(get_prefs('use_same_sign_oauth_base')).lower()
 
-    use_http_proxy = 'true' if config.use_http_proxy else 'false'
-    http_proxy_host = config.http_proxy_host
-    http_proxy_port = config.http_proxy_port
+    use_http_proxy = str(get_prefs('use_http_proxy')).lower()
+    http_proxy_host = get_prefs('http_proxy_host')
+    http_proxy_port = get_prefs('http_proxy_port')
 
-    use_socks_proxy = 'true' if config.use_socks_proxy else 'false'
-    socks_proxy_host = config.socks_proxy_host
-    socks_proxy_port = config.socks_proxy_port
+    use_socks_proxy = str(get_prefs('use_socks_proxy')).lower()
+    socks_proxy_host = get_prefs('socks_proxy_host')
+    socks_proxy_port = get_prefs('socks_proxy_port')
 
     notification_settings = '''
         , "use_home_timeline_notify": %s
@@ -353,12 +363,12 @@ def push_prefs():
         , "use_direct_messages_inbox_notify": %s
         , "use_direct_messages_inbox_notify_sound": %s
     ''' % (
-        str(config.use_home_timeline_notify).lower(), 
-        str(config.use_home_timeline_notify_sound).lower(), 
-        str(config.use_mentions_notify).lower(), 
-        str(config.use_mentions_notify_sound).lower(), 
-        str(config.use_direct_messages_inbox_notify).lower(), 
-        str(config.use_direct_messages_inbox_notify_sound).lower(), 
+        str(get_prefs('use_home_timeline_notify')).lower(), 
+        str(get_prefs('use_home_timeline_notify_sound')).lower(), 
+        str(get_prefs('use_mentions_notify')).lower(), 
+        str(get_prefs('use_mentions_notify_sound')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
     )
     webv.execute_script('''
         var prefs_obj = {
@@ -405,6 +415,21 @@ def push_prefs():
             ));
     pass
 
+def push_profiles():
+    profiles_info = {}
+    for name, prof in config.profiles.iteritems():
+        token = config.load_token(name)
+        profiles_info[name] = {
+              'name': name
+            , 'username': prof['default_username']
+            , 'password': prof['default_password']
+            , 'access_token': token
+        };
+    webv.execute_script('''
+        var profiles_info = %s
+        ui.Welcome.load_profiles_info(profiles_info)
+        ''' % json.dumps(profiles_info))
+
 def set_style_scheme():
     style = app.window.get_style()
     base, fg, bg, text = style.base, style.fg, style.bg, style.text
@@ -412,6 +437,12 @@ def set_style_scheme():
         $('#header').css('background', '%s');    
     ''' % str(bg[gtk.STATE_NORMAL]));
     pass
+
+def get_prefs(name):
+    return config.get(app.active_profile, name)
+
+def set_prefs(name, value):
+    return config.set(app.active_profile, name, value)
 
 def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     scripts = ''
@@ -459,9 +490,9 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
 
 def _get(url, params={}, req_headers={}):
     urlopen = urllib2.urlopen
-    if config.use_http_proxy:
+    if get_prefs('use_http_proxy'):
         proxy_support = urllib2.ProxyHandler(
-            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
         urlopen = urllib2.build_opener(proxy_support).open
         pass
     request =  urllib2.Request(url, headers=req_headers)
@@ -477,9 +508,9 @@ def _post(url, params={}, req_headers={}, files=[], additions=''):
         pass
 
     urlopen = urllib2.urlopen
-    if config.use_http_proxy:
+    if get_prefs('use_http_proxy'):
         proxy_support = urllib2.ProxyHandler(
-            {"http" : config.http_proxy_host+':'+str(config.http_proxy_port)})
+            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
         urlopen = urllib2.build_opener(proxy_support).open
         pass
     params = dict([(k.encode('utf8')
@@ -502,13 +533,13 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
 
     curl = pycurl.Curl()
 
-    if config.use_socks_proxy:
-        SOCKS5_PROXY = '%s:%s' % (config.socks_proxy_host, config.socks_proxy_port)
+    if get_prefs('use_socks_proxy'):
+        SOCKS5_PROXY = '%s:%s' % (get_prefs('socks_proxy_host'), get_prefs('socks_proxy_port'))
         curl.setopt(pycurl.PROXYTYPE, pycurl.PROXYTYPE_SOCKS5)
         curl.setopt(pycurl.PROXY, SOCKS5_PROXY)
         pass
-    if config.use_http_proxy:
-        HTTP_PROXY = '%s:%s' % (config.http_proxy_host, config.http_proxy_port)
+    if get_prefs('use_http_proxy'):
+        HTTP_PROXY = '%s:%s' % (get_prefs('http_proxy_host'), get_prefs('http_proxy_port'))
         curl.setopt(pycurl.PROXY, HTTP_PROXY)
         pass
 

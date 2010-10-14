@@ -5,6 +5,8 @@ import pickle
 import json
 import gtk
 import sys
+import glob
+import shutil
 
 PROGRAM_NAME = 'hotot'
 UI_DIR_NAME = 'ui'
@@ -15,6 +17,8 @@ CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
 DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
+PROFILES_DIR = os.path.join(CONF_DIR, 'profiles')
+
 
 DATA_DIRS = []
 
@@ -27,12 +31,12 @@ DATA_BASE_DIRS = [
 DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
 DATA_DIRS.append(os.path.abspath('./data'))
 
+TEMPLATE = 'index.html'
+
 default_config = {
     'remember_password': False,
     'default_username':'',
     'default_password':'',
-#template:
-    'template':'index.html',
 #Appearance:
     'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun',
     'font_size': 12,
@@ -78,22 +82,40 @@ default_config = {
     'size_h': 550,
 }
 
+active_profile = ''
+
+profiles = {'default': {}}
+profiles['default'].update(default_config)
+profiles['default']['tokenfile'] = CONF_DIR + '/tmp.token'
+profiles['default']['name'] = 'default'
+
+profile_paths = glob.glob(PROFILES_DIR +'/*@*')
+for path in profile_paths:
+    _ , name = os.path.split(path)
+    if not profiles.has_key(name):
+        profiles[name]= {
+              'name': name
+            , 'path': path + '/profile.conf'
+            , 'tokenfile': path + '/profile.token'}
+    else:
+        profiles[name]['name'] = name 
+        profiles[name]['path'] = path + '/profile.conf'
+        profiles[name]['tokenfile'] = path + '/profile.token'
+    if not os.path.exists(profiles[name]['path']): 
+        write_to_disk(profiles[name])
+
 def getconf():
     '''获取 config
     '''
     config = {}
+    config['profiles'] = {}
     ##
     abspath = os.path.abspath('./')
 
     if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)    
+    if not os.path.isdir(PROFILES_DIR): os.makedirs(PROFILES_DIR)
     if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR) 
-    
 
-    tokenfile = CONF_DIR + '/profile.token'
-    accounts = CONF_DIR + '/account.conf'
-    prefs = CONF_DIR + '/hotot.conf'
-    if not os.path.exists(prefs): 
-        write_to_disk(prefs)
     ##    
     for k, v in globals().items():
         if not k.startswith('__') and (
@@ -108,41 +130,78 @@ def getconf():
             config[k] = v
             pass
     config['abspath'] = abspath
-    config['prefs'] = prefs
-    config['tokenfile'] = tokenfile
     return config
 
-def loads():
+def create_profile(profile_name):
+    config = getconf()
+    path = os.path.join(PROFILES_DIR, profile_name)
+    conf = os.path.join(path, 'profile.conf')
+    token = os.path.join(path, 'profile.token')
+    config['profiles'][profile_name] = {
+          'name': profile_name
+        , 'path': conf
+        , 'token': token
+    }
+    if not os.path.exists(path): 
+        os.makedirs(path)
+    dumps(profile_name)
+    shutil.move(os.path.join(CONF_DIR, 'tmp.token')
+        , os.path.join(token))
+    loads(profile_name)
+    pass
+
+def loads(profile_name=None):
     '''读取 config
     '''
     config = getconf()
-    ##
-    try: 
+    loaded_profiles = None
+    if profile_name == None or not config['profiles'].has_key(profile_name):
+        loaded_profiles = config['profiles']
+    else:
+        loaded_profiles = {profile_name: config['profiles'][profile_name]}
+    pass
+    
+    for name, prof in loaded_profiles.iteritems():
+        if name == 'default':
+            continue
+        # load default 
         for k, v in default_config.iteritems():
-            config[k] = v
-        config_raw = json.loads(file(config['prefs']).read().encode('utf-8'))
-        for k, v in config_raw.iteritems():
-            config[k.encode('utf-8')] \
-                = v.encode('utf-8') if isinstance(v, unicode) else v
-    except Exception, e: 
-        print 'error:%s'% str(e)
-    ##
-    globals().update(config)
+            prof[k] = v
+        # load from file
+        try: 
+            config_raw = json.loads(file(prof['path']).read().encode('utf-8'))
+            for k, v in config_raw.iteritems():
+                prof[k.encode('utf-8')] \
+                    = v.encode('utf-8') if isinstance(v, unicode) else v
+        except Exception, e: 
+            print 'error:%s'% str(e)
+        globals()['profiles'][name].update(prof)
+        pass
     return config
 
-def dumps():
+def dumps(profile_name=None):
     '''保存 config
     '''
     config = getconf()
-    globals().update(config)
-    write_to_disk(config['prefs'])
+    dumped_profiles = None
+    if profile_name == None or not config['profiles'].has_key(profile_name):
+        dumped_profiles = config['profiles']
+    else:
+        dumped_profiles = {
+            profile_name: config['profiles'][profile_name]}
+    pass
+    for name, prof in dumped_profiles.iteritems():
+        write_to_disk(prof)
+    globals()['profiles'].update(config['profiles'])
     pass
 
-def write_to_disk(prefs):
-    conf_file = open(prefs, 'w')
+def write_to_disk(prof):
+    if prof['name'] == 'default':
+        return None
+    conf_file = open(prof['path'], 'w')
     conf_file.write('{ "version": 0 \n')
     for key, val in default_config.iteritems():
-        r_val =  globals()[key] if globals().has_key(key) else val
+        r_val =  prof[key] if prof.has_key(key) else val
         if isinstance(val, str):
             conf_file.write(',    "%s": "%s"\n' % (key, r_val))
         elif isinstance(val, bool):
@@ -155,35 +214,35 @@ def write_to_disk(prefs):
     conf_file.close()
     pass
 
-def load_token():
+def load_token(prof_name):
     config = getconf()
-    if not os.path.exists(config['tokenfile']):
+    if not os.path.exists(config['profiles'][prof_name]['tokenfile']):
         return None
-    token = pickle.loads(file(config['tokenfile']).read())
+    token = pickle.loads(file(config['profiles'][prof_name]['tokenfile']).read())
     return token
 
-def dump_token(token):
+def dump_token(prof_name, token):
     config = getconf()
-    file(config['tokenfile'], 'w').write(pickle.dumps(token))
+    file(config['profiles'][prof_name]['tokenfile'], 'w').write(pickle.dumps(token))
     return config
 
-def save_prefs(prefs_obj):
+def save_prefs(prof_name, prefs_obj):
     config = getconf()
-    config.update(prefs_obj);
-    globals().update(config)
-    dumps()
+    config['profiles'][prof_name].update(prefs_obj);
+    globals()['profiles'][prof_name].update(config['profiles'][prof_name])
+    dumps(prof_name)
     pass
 
-def restore_defaults():
-    globals().update(default_config)
+def restore_defaults(prof_name):
+    globals()['profiles'][prof_name].update(default_config)
     pass
 
-def set(name, value):
-    globals()[name] = value;
+def set(prof_name, name, value):
+    globals()['profiles'][prof_name][name] = value;
     pass
 
-def get(name):
-    return globals()[name];
+def get(prof_name, name):
+    return globals()['profiles'][prof_name][name];
 
 
 

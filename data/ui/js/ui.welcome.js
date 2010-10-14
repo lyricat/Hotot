@@ -5,17 +5,33 @@ me: {},
 
 id: '',
 
-        
-sign_opts : {
+sign_opts: {
       'remember_password': false
     , 'default_username': ''
     , 'default_password': ''
 },
 
+profiles_info: [],
+
 init:
 function init () {
     ui.Welcome.id = '#welcome_page';
     ui.Welcome.me = $('#welcome_page');
+
+    $('.service_tabs_btn').click(
+    function (event) {
+        var page_name = $(this).attr('href');
+        $('.service_tabs_btn')
+            .not(this).removeClass('selected');
+        $(this).addClass('selected');
+        $('.service_tabs_page').not(page_name).hide();
+        $(page_name).show();
+        ui.Welcome.selected_service = $(this).attr('service');
+        
+        hotot_action('system/select_protocol/'
+            + encodeURIComponent(ui.Welcome.selected_service));
+    });
+    $('.service_tabs_btn:first').click();
 
     // bind events
     $('#btn_basic_auth_sign_in').click(
@@ -113,17 +129,81 @@ function init () {
     return this;
 },
 
+load_profiles_info:
+function load_profiles_info(profiles_info) {
+    ui.Welcome.profiles_info = profiles_info;
+    for (var name in profiles_info ) {
+        var profile = profiles_info[name];
+        if (name == 'default') {
+            continue;
+        }
+        var type = name.split('@')[1];
+        $('#profile_avator_list').prepend(
+            '<li><a title="'+name+'" href="'+name+'" class="'+type+'"></a></li>');
+    }
+    $('#profile_avator_list a').click(
+    function (event) {
+        var profile_name = $(this).attr('href');                    
+        default_username = '';
+        default_password = '';
+        access_token = '';
+        if (profile_name == 'default') {
+            // @TODO clear 
+            $('.service_tabs_page, .service_tabs_btn').show();
+            $('#profile_title').text('New Profile');
+            $('.service_tabs_btn:first').click();
+
+        } else {
+            var type = profile_name.split('@')[1];
+            $('#btn_service_'+ type).click();
+            
+            $('#btn_service_' + type).show();
+            $('.service_tabs_btn').not('#btn_service_' + type).hide();
+
+            $('#service_page_' + type).show();
+            $('.service_tabs_page').not('#service_page_' + type).hide();
+
+            $('#profile_title').text(profile_name)
+
+            default_username
+                = ui.Welcome.profiles_info[profile_name].username;
+            default_password
+                = ui.Welcome.profiles_info[profile_name].password;
+            access_token 
+                = ui.Welcome.profiles_info[profile_name].access_token;
+        }
+
+        $('#tbox_basic_auth_username').attr('value', default_username);
+        $('#tbox_basic_auth_password').attr('value', default_password);
+        jsOAuth.access_token = access_token;
+
+        $('#profile_avator_list a').not(this).removeClass('selected');
+        $(this).addClass('selected');
+
+        hotot_action('system/select_profile/'
+            + encodeURIComponent(profile_name));
+        ui.Welcome.selected_profile = profile_name;
+        return false;
+    });
+     
+    $('#profile_avator_list a:first').click();
+},
+
 authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
-    $('#btn_my_profile').css('background-image'
-        , 'url('+globals.myself.profile_image_url+')');
+    $('#btn_my_profile').css('background-image', 'url('+globals.myself.profile_image_url+')');
+    utility.Console.out($('#btn_my_profile').css('background-image'));
     ui.Notification.set('Authentication OK!').show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
+
+    ui.Welcome.selected_profile = result.screen_name + '@' + ui.Welcome.selected_service;
+    hotot_action('system/sign_in/'
+        + encodeURIComponent(ui.Welcome.selected_profile))
 },
 
 hide:

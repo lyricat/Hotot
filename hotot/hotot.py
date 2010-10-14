@@ -36,12 +36,12 @@ except:
 class Hotot:
     def __init__(self):
         self.is_sign_in = False
-        self.profile = None
+        self.active_profile = 'default'
+        self.protocol = ''
         self.build_gui()
         self.build_inputw()
         if not HAS_INDICATOR:
             self.create_trayicon()
-        self.init_hotkey()
         pass
 
     def build_gui(self):
@@ -51,7 +51,6 @@ class Hotot:
         self.window.set_icon_from_file(
             utils.get_ui_object('imgs/ic64_hotot.png'))
 
-        self.window.set_default_size(config.size_w, config.size_h)
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
 
@@ -180,7 +179,8 @@ class Hotot:
         pass
 
     def quit(self, *args):
-        config.dumps()
+        if self.active_profile != 'default':
+            config.dumps(self.active_profile)
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 
@@ -189,7 +189,12 @@ class Hotot:
         pass
         
     def init_hotkey(self):
-        keybinder.bind(config.shortcut_summon_hotot, self.on_hotkey_compose)
+        try:
+            keybinder.bind(
+                  config.get(self.active_profile, 'shortcut_summon_hotot')
+                , self.on_hotkey_compose)
+        except:
+            pass
         pass
 
     def create_trayicon(self):
@@ -227,7 +232,7 @@ class Hotot:
         pass
 
     def _on_hotkey_compose(self):
-        if config.use_native_input:
+        if config.get(self.active_profile, 'use_native_input'):
             if not self.tbox_status.is_focus():
                 self.inputw.hide()
                 pass
@@ -243,26 +248,35 @@ class Hotot:
 
     def on_size_allocate(self, win, req):
         if self.is_sign_in:
-            config.set('size_h', req.height)
-            config.set('size_w', req.width)
+            config.set(self.active_profile, 'size_h', req.height)
+            config.set(self.active_profile, 'size_w', req.width)
         pass
 
-    def on_sign_in(self, profile_name):
+    def on_sign_in(self, profile):
         self.is_sign_in = True
-        self.profile = profile_name
+        self.active_profile = profile
+        if not config.profiles.has_key(self.active_profile):
+            config.create_profile(self.active_profile)
+         
+        self.window.set_title('Hotot | %s' % self.active_profile)
+        self.window.set_default_size(
+              config.get(self.active_profile, 'size_w')
+            , config.get(self.active_profile, 'size_h'))
+        self.init_hotkey()
+        agent.apply_config()
+        agent.load_exts()
         pass
 
     def on_sign_out(self):
         self.is_sign_in = False
         pass
 
-
 def main():
     global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
-    if not config.get('use_ubuntu_indicator'):
-        HAS_INDICATOR = False
+#    if not config.get('use_ubuntu_indicator'):
+#        HAS_INDICATOR = False
     try:
         import dl
         libc = dl.open('/lib/libc.so.6')
