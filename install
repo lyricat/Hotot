@@ -1,17 +1,11 @@
 #!/bin/bash -
 # Contributor: Victor Mishel Vera Sanchez (mishudark) <moonsadly@gmail.com>
 
-if [[ $EUID -ne 0 ]]; then
-    echo "You need superuser privileges. Run this script again with \`sudo'."
-    exit 1
-fi
-
-# Debian
-[ -x /usr/bin/apt-get ] &&
-	echo "Installing dependencies ..." &&
-	INSTALL_LAYOUT='--install-layout deb' &&
-	apt-get install python-webkit python-notify python-keybinder python-distutils-extra
-# TODO: more distros
+[ -x /usr/bin/apt-get ] && {
+    INSTALL_LAYOUT='--install-layout deb'
+    python -c 'import webkit, keybinder, pynotify, DistUtilsExtra.command' \
+    || sudo apt-get install python-webkit python-notify python-keybinder python-distutils-extra
+}
 
 python setup.py build_i18n -m
 python setup.py build

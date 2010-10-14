@@ -55,6 +55,7 @@ def webkit_set_proxy_uri(uri):
         libgobject.g_object_set(session, "max-conns-per-host", 5, None)
         return 0
     except:
+        print 'error: webkit_set_proxy_uri'
         return 1
     pass
 
