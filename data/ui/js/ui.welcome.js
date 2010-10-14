@@ -116,7 +116,22 @@ function init () {
     function (event) {
         ui.DialogHelper.open(ui.PrefsDlg);
     });
-        
+    
+    $('#btn_welcome_delete_profile').click(
+    function (event) {
+        if (confirm('Delete profile "'+ui.Welcome.selected_profile+'" will erases all data of this profile.\n Are you sure you want to continue?!\n')) 
+        {
+            var cb = "\
+                $('#profile_avator_list a.selected').parent().remove();\
+                $('#profile_avator_list a:first').click();\
+            ";
+            hotot_action('system/delete_profile/'
+                + encodeURIComponent(ui.Welcome.selected_profile)
+                + '/' + encodeURIComponent(cb)
+            );
+        }
+    });
+
     $('#btn_welcome_about').click(
     function (event) {
         ui.DialogHelper.open(ui.AboutDlg);

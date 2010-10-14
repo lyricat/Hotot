@@ -1004,7 +1004,9 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 #sign_in_block .bottom {
     position: absolute;
     right: 10px;
+    left: 10px;
     bottom: 10px;
+    display: block;
 }
 
 #sign_in_block .bottom a {
@@ -1012,6 +1014,15 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     color: #333;
     text-decoration: none;
     margin-left: 10px;
+}
+
+#btn_welcome_prefs {
+    float: right;
+}
+
+#btn_welcome_delete_profile {
+    float: left;
+    color: #f00 !important;
 }
 
 #service_tabs {

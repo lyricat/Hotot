@@ -154,6 +154,14 @@ def create_profile(profile_name):
     loads(profile_name)
     pass
 
+def delete_profile(profile_name):
+    config = getconf()    
+    if config['profiles'].has_key(profile_name):
+        prof_path = os.path.join(PROFILES_DIR, profile_name)
+        if os.path.exists(prof_path):
+            shutil.rmtree(prof_path)
+            del globals()['profiles'][profile_name]
+
 def loads(profile_name=None):
     '''读取 config
     '''

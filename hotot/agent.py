@@ -155,6 +155,10 @@ def crack_system(params):
         notify.show()
         if params[1] == 'notify_with_sound':
             gobject.idle_add(os.system, 'aplay -q "%s"' % utils.get_sound('notify'))
+    elif params[1] == 'delete_profile':
+        profile = urllib.unquote(params[2])
+        config.delete_profile(profile)
+        webv.execute_script(urllib.unquote(params[3]).replace('\n',''))
     elif params[1] == 'select_profile':
         app.active_profile = urllib.unquote(params[2])
         app.window.set_title('Hotot | %s' % app.active_profile)
