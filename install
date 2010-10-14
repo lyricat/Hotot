@@ -6,11 +6,13 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+# Debian
 [ -x /usr/bin/apt-get ] &&
 	echo "Installing dependencies ..." &&
+	INSTALL_LAYOUT='--install-layout deb' &&
 	apt-get install python-webkit python-notify python-keybinder python-distutils-extra
 # TODO: more distros
 
 python setup.py build_i18n -m
 python setup.py build
-python setup.py install --record record.log
+python setup.py install $INSTALL_LAYOUT --record record.log
