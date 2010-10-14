@@ -269,11 +269,23 @@ jQuery(function($) {
 <section id="center">
 <section id="welcome_page" class="page">
     <h1>_("Hotot ")</h1>
-    <div id="sign_in_block" class="dialog">
-        <h2>_("Greeting!")</h2>
-        <div id="sign_in_block_body" class="dialog_body">
-        <h3>_("Login to Hotot")</h3>
-        <div class="dlg_group">
+    <ul id="profile_avator_list">
+        <li><a id="empty_profile_item" title="Create a new profile" href="default"></a></li>
+    </ul>
+    <div id="sign_in_block">
+        <h2 id="profile_title">Greeting!</h2>
+        <div id="service_tabs">
+        <ul class="service_tabs_btns">
+            <li>
+            <a id="btn_service_twitter" service="twitter" href="#service_page_twitter" class="service_tabs_btn" title="Twitter">Twitter</a>
+            </li>
+            <li>
+            <a id="btn_service_identica" service="identica" href="#service_page_identica" class="service_tabs_btn" title="Identi.ca">Identi.ca</a>
+            </li>
+        </ul>
+        <div id="service_page_twitter" class="service_tabs_page">
+        <h3>Sign in with Twitter</h3>
+        <p><br/></p>
         <p>
         <center>
             <a id="btn_oauth_sign_in" class="button" href="javascript:void(0);" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")
@@ -281,16 +293,14 @@ jQuery(function($) {
             </a>
         </center>
         </p>
-        <p></p>
         </div>
 
-        <h3>_("or use Basic Auth")</h3>
-        <div class="dlg_group">
+        <div id="service_page_identica" class="service_tabs_page">
         <p>
             <label>_("Username:")</label><br/>
-            <input id="tbox_basic_auth_username" style="width: 250px;" type="text" value=""/><br/>
+            <input id="tbox_basic_auth_username" style="width: 170px;" type="text" value=""/><br/>
             <label>_("Password:")</label><br/>
-            <input id="tbox_basic_auth_password" style="width: 250px;" type="password" value=""/><br/>
+            <input id="tbox_basic_auth_password" style="width: 170px;" type="password" value=""/><br/>
             <input id="chk_remember_password" type="checkbox" checked="1"/><label for="chk_remember_password">_("Remember Password")</label><br/>
             <div style="text-align:right;margin-right:20px;">
             <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">_("Sign In")
@@ -299,16 +309,16 @@ jQuery(function($) {
             </div>
         </p>
         </div>
-
-        </div>
-        <div id="sign_in_block_bottom">
-            <p>
+        </div><!--tabs-->
+        <div class="bottom">
             <a id="btn_welcome_exts" class="ic_exts" href="javascript:void(0)">_("Extensions")</a> 
-            <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">_("Preferences")</a> 
-            <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">_("Help")</a>
-            </p>
+            <a id="btn_welcome_prefs" class="ic_prefs" href="javascript:void(0)">_("Preferences")</a>     
         </div>
-
+    </div>
+    <div id="welcome_bottom">
+        <p>
+        <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">_("Help")</a>
+        </p>
     </div>
 </section>
 

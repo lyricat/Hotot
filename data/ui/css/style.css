@@ -97,6 +97,7 @@ pre {
     width: 28px;
     height: 28px;
     display: block;
+    background-image: url(../imgs/ic48_profile_image.png);
 }
 
 #version {
@@ -908,6 +909,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     width: 100%;
     border-left: 1px #eee solid;
     border-right: 1px #aaa solid;
+    position: relative;
 }
 
 #welcome_page h1 {
@@ -920,50 +922,175 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     text-shadow: 0 -1px 0px #000;
 }
 
-#sign_in_block {
-    width: 300px;
-    margin: 70px auto 0 auto;
-    background: #eee  no-repeat 180px 100px;
-    padding: 0px;
-    -webkit-box-shadow: 0px 0px 5px #ccc;
-    -webkit-border-radius: 5px 5px;
-    display: block;
-}
-
-#sign_in_block p, #sign_in_block label, #sign_in_block h3 {
-    text-shadow: 0 1px 0px #fff !important;
-    color: #333;
-}
-
-#sign_in_block h2 {
-    font-size: 20px; 
-    padding: 10px 20px ;
-    color: #fff;
-    text-shadow: 0 -1px 0px #111;
-    text-align: center;
-    background: #214365 none no-repeat 20%;
-    border-bottom: 1px #ccc solid; 
-    -webkit-border-top-left-radius: 5px 5px;
-    -webkit-border-top-right-radius: 5px 5px;
-}
-
-#sign_in_block_body {
-    margin: 10px;
-}
-
-#sign_in_block_bottom {
+#welcome_bottom {
+    background-color: #214365;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 0 10px 3px 10px;
-    border-top: 1px #ccc solid; 
     text-align: right;
 }
 
-#sign_in_block_bottom a {
+#welcome_bottom a {
     height: 20px;
     display:inline-block;
     font-size: 10px;
     line-height: 20px;
     margin: 0 10px;
     text-decoration: none;
+    color: #fff;
+}
+
+#profile_avator_list {
+    list-style-type: none;
+    margin: 20px auto 0px auto;
+    text-align: center;
+}
+
+#profile_avator_list > li {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 0 2px;
+}
+
+#profile_avator_list > li > a {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-transition: all 0.2s ease-in;
+    -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));c
+}
+
+#profile_avator_list > li > a:hover {
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 15px #fff;
+}
+
+#profile_avator_list > li > a.selected {
+    background-color: #f2f2f2;
+}
+
+#profile_avator_list > li > a.twitter {
+    background-image: url(../imgs/ic32_profile_twitter.png);
+}
+
+#profile_avator_list > li > a.identica {
+    background-image: url(../imgs/ic32_profile_identica.png);
+}
+
+#empty_profile_item {
+    background-image: url(../imgs/ic32_profile_add.png);
+}
+
+#sign_in_block {
+    clear: both;
+    width: 200px;
+    margin: 20px auto 0 auto;
+    background: #eee  no-repeat 180px 100px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    -webkit-border-radius: 5px 5px;
+    display: block;
+    font-size: 12px;
+    min-height: 220px;
+    position: relative;
+}
+
+#sign_in_block .bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#sign_in_block .bottom a {
+    font-size: 10px;
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+#service_tabs {
+    position: relative;
+    width: 200px;
+}
+
+#service_tabs .service_tabs_btns {
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin-top:10px;
+    margin-left: -25px;
+    min-width: 100px;
+}
+
+#service_tabs .service_tabs_btn {
+    display: block;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 2px 5px 2px 25px;
+    text-decoration: none;
+    -webkit-box-shadow: 0 0 5px #aaa;
+    -webkit-transition: margin 0.2s ease-in;
+    color: #333;
+}
+
+#service_tabs .service_tabs_btn:hover {
+    margin-left: -50px;
+}
+
+#service_tabs .service_tabs_btn.selected {
+    background-color: #fff !important;
+}
+
+#btn_service_twitter {
+    background: transparent url(../imgs/ic16_twitter.png) no-repeat 5px center;
+}
+
+#btn_service_identica {
+    background: transparent url(../imgs/ic16_identica.png) no-repeat 5px center;
+}
+
+#service_tabs .service_tabs_page {
+    position: absolute;
+    min-height: 150px;
+    background: #fff;
+    left:0;
+    right:0;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#sign_in_block p, #sign_in_block label, #sign_in_block h3 {
+    color: #333;
+    margin: 3px 0;
+}
+
+#sign_in_block h3 {
+    text-align: center;
+}
+
+#sign_in_block h2 {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px; 
+    color: #333;
+    display: block;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px #f2f2f2 solid; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#sign_in_block_body {
+    margin: 10px;
 }
 
 #btn_oauth_sign_in, #btn_regain_token {
@@ -1495,13 +1622,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background-size: contain;
     -webkit-border-radius: 7px;
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
-}
-
-.profile_img_wrapper > img {
-    width: 48px;
-    height: 48px;
-    border: 0;
-    border-radius: 5px 5px;
 }
 
 .avator_hlight {

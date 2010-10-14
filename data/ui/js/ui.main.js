@@ -201,6 +201,7 @@ function hide () {
 show:
 function show () {
     daemon.Updater.start();
+    $('.tweet').remove();
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
