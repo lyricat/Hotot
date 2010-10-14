@@ -5,7 +5,7 @@
 @license: LGPLv3+
 '''
 
-__version__ = '0.9.5'
+__version__ = '0.9.5' # Please update setup.py :)
 __codename__ = 'Ada'
 
 import gtk
