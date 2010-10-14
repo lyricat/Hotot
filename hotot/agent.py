@@ -194,8 +194,8 @@ def push_option(set, name, value):
 
 def select_config(protocol):
     if protocol == 'identica':
-        config.set(app.active_profile, 'api_base', 'https://identi.ca/api')
-        print app.active_profile, get_prefs('api_base')
+        config.set(app.active_profile, 'api_base', 'https://identi.ca/api/')
+        execute_script("lib.twitterapi.api_base='https://identi.ca/api/'")
     pass
 
 def update_status(text):
@@ -346,7 +346,6 @@ def push_prefs():
 
     # networks settings
     api_base = get_prefs('api_base')
-    print app.active_profile, api_base
     sign_api_base = get_prefs('sign_api_base')
     search_api_base = get_prefs('search_api_base')
     oauth_base = get_prefs('oauth_base')

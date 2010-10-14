@@ -137,16 +137,20 @@ def create_profile(profile_name):
     path = os.path.join(PROFILES_DIR, profile_name)
     conf = os.path.join(path, 'profile.conf')
     token = os.path.join(path, 'profile.token')
-    config['profiles'][profile_name] = {
+
+    config['profiles'][profile_name] = {}
+    config['profiles'][profile_name].update(config['profiles']['default'])
+    config['profiles'][profile_name].update({
           'name': profile_name
         , 'path': conf
-        , 'token': token
-    }
+        , 'tokenfile': token
+    })
     if not os.path.exists(path): 
         os.makedirs(path)
     dumps(profile_name)
-    shutil.move(os.path.join(CONF_DIR, 'tmp.token')
-        , os.path.join(token))
+    if os.path.exists(os.path.join(CONF_DIR, 'tmp.token')):
+        shutil.move(os.path.join(CONF_DIR, 'tmp.token')
+            , os.path.join(token))
     loads(profile_name)
     pass
 
