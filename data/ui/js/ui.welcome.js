@@ -187,7 +187,10 @@ function load_profiles_info(profiles_info) {
 authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
-    $('#btn_my_profile').css('background-image', 'url('+globals.myself.profile_image_url+')');
+    setTimeout(function () {
+        $('#btn_my_profile').css('background-image', 'url('+globals.myself.profile_image_url+')');
+    }, 500);
+
     ui.Notification.set('Authentication OK!').show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
@@ -197,7 +200,7 @@ function authenticate_pass(result) {
 
     ui.Welcome.selected_profile = result.screen_name + '@' + ui.Welcome.selected_service;
     hotot_action('system/sign_in/'
-        + encodeURIComponent(ui.Welcome.selected_profile))
+        + encodeURIComponent(ui.Welcome.selected_profile));    
 },
 
 hide:
