@@ -22,6 +22,7 @@ except ImportError:
     HAS_INDICATOR = False
 else:
     HAS_INDICATOR = True
+HAS_INDICATOR = False
 
 try: import i18n
 except: from gettext import gettext as _
@@ -53,6 +54,7 @@ class Hotot:
 
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
+        self.window.set_default_size(500, 550)
 
         vbox = gtk.VBox()
         scrollw = gtk.ScrolledWindow()
@@ -259,7 +261,7 @@ class Hotot:
             config.create_profile(self.active_profile)
          
         self.window.set_title('Hotot | %s' % self.active_profile)
-        self.window.set_default_size(
+        self.window.resize(
               config.get(self.active_profile, 'size_w')
             , config.get(self.active_profile, 'size_h'))
         self.init_hotkey()

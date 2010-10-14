@@ -60,7 +60,7 @@ def webkit_set_proxy_uri(uri):
 
 def apply_proxy_setting():
     if get_prefs('use_http_proxy'):
-        proxy_uri = "http://%s:%s" % (
+        proxy_uri = "https://%s:%s" % (
               get_prefs('http_proxy_host')
             , get_prefs('http_proxy_port'))
         webkit_set_proxy_uri(proxy_uri)

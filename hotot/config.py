@@ -78,7 +78,7 @@ default_config = {
 
 #others:
     'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"],
-    'size_w': 750,
+    'size_w': 500,
     'size_h': 550,
 }
 
