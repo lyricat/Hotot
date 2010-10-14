@@ -193,7 +193,7 @@ authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
     $('#btn_my_profile').css('background-image', 'url('+globals.myself.profile_image_url+')');
-    utility.Console.out($('#btn_my_profile').css('background-image'));
+    $('#btn_my_profile').css('border', '1px #f00 solid');
     ui.Notification.set('Authentication OK!').show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
