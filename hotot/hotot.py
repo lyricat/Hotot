@@ -264,7 +264,7 @@ class Hotot:
             , config.get(self.active_profile, 'size_h'))
         self.init_hotkey()
         agent.apply_config()
-        agent.load_exts()
+        agent.init_exts()
         pass
 
     def on_sign_out(self):

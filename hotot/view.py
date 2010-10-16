@@ -78,6 +78,7 @@ class MainView(WebView):
         agent.set_style_scheme()
         agent.push_profiles()
         agent.apply_config()
+        agent.load_exts()
         pass
 
 

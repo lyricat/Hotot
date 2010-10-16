@@ -235,7 +235,6 @@ def load_search(query):
     pass
 
 def load_exts():
-    scripts = []
     exts = utils.get_exts()
     webv.execute_script('''
         var exts = %s;
@@ -243,6 +242,10 @@ def load_exts():
         '''
         # @TODO
         % json.dumps(exts))
+    pass
+
+def init_exts():
+    webv.execute_script('''ext.init_exts();''')
     pass
 
 def apply_prefs(): 

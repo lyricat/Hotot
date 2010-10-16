@@ -131,7 +131,7 @@ function init_exts() {
 
             // @TODO Issue 31
             if (ext.exts_enabled.indexOf(extension.id) != -1) {
-                utility.Console.out('[i]Load Extension: ' + extension.name);
+                utility.Console.out('[i]Init Extension: ' + extension.name);
                 extension.load();
                 ext.exts_info[extension.id]['enable'] = true;
             } else {
@@ -161,7 +161,6 @@ function load_exts(exts) {
     for (var i = 0; i < exts.length; i += 1) {
         _load(i)
     }
-    procs.push(function () { ext.init_exts(); });
     $(window).queue('_load_exts', procs);
     setTimeout(function () {
     $(window).dequeue('_load_exts');
