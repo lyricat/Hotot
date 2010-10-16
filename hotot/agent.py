@@ -318,7 +318,7 @@ def apply_config():
     version = 'ver %s (%s)'% (hotot.__version__, hotot.__codename__)
     exts_enabled = json.dumps(get_prefs('exts_enabled'))
     webv.execute_script('''
-        $('#version').text('%s');
+        $('.version').text('%s');
         ext.exts_enabled = %s;
         ''' % (version
             , exts_enabled))
