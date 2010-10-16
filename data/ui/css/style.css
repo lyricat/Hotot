@@ -983,7 +983,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background-image: url(../imgs/ic32_profile_identica.png);
 }
 
-#empty_profile_item {
+#btn_new_profile_item {
     background-image: url(../imgs/ic32_profile_add.png);
 }
 

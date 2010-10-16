@@ -137,7 +137,11 @@ def create_profile(profile_name):
     path = os.path.join(PROFILES_DIR, profile_name)
     conf = os.path.join(path, 'profile.conf')
     token = os.path.join(path, 'profile.token')
-
+    if os.path.exists(path):
+        return
+    if not os.path.exists(path): 
+        os.makedirs(path)
+    
     config['profiles'][profile_name] = {}
     config['profiles'][profile_name].update(config['profiles']['default'])
     config['profiles'][profile_name].update({
@@ -145,8 +149,6 @@ def create_profile(profile_name):
         , 'path': conf
         , 'tokenfile': token
     })
-    if not os.path.exists(path): 
-        os.makedirs(path)
     dumps(profile_name)
     if os.path.exists(os.path.join(CONF_DIR, 'tmp.token')):
         shutil.move(os.path.join(CONF_DIR, 'tmp.token')

@@ -270,7 +270,7 @@ jQuery(function($) {
 <section id="welcome_page" class="page">
     <h1>_("Hotot ")</h1>
     <ul id="profile_avator_list">
-        <li><a id="empty_profile_item" title="Create a new profile" href="default"></a></li>
+        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
     </ul>
     <div id="sign_in_block">
         <h2 id="profile_title">Greeting!</h2>
@@ -306,6 +306,19 @@ jQuery(function($) {
             <a id="btn_basic_auth_sign_in" class="button" href="javascript:void(0);">_("Sign In")
                 <span class="placeholder"></span>
             </a>
+            </div>
+        </p>
+        </div>
+
+        <div id="service_page_new" class="service_tabs_page">
+        <p>
+            <label>_("Profile Name:")</label><br/>
+            <input id="tbox_new_profile_name" style="width: 100px;" type="text" value=""/>
+            <label>@<span class="service_name"></span></label>
+            <div style="text-align:center;margin: 10px auto;">
+                <a id="btn_welcome_create_profile" class="button" href="javascript:void(0);" title="Create a new Profile">_("Create Profile")
+                <span class="placeholder"></span>
+                </a>
             </div>
         </p>
         </div>

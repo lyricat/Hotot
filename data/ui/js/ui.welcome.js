@@ -18,22 +18,30 @@ function init () {
     ui.Welcome.id = '#welcome_page';
     ui.Welcome.me = $('#welcome_page');
 
+    // bind events
     $('.service_tabs_btn').click(
     function (event) {
-        var page_name = $(this).attr('href');
+        if (ui.Welcome.selected_profile == 'default') {
+            $('.service_tabs_page').not('#service_page_new').hide();
+            $('#service_page_new').show();
+        } else {
+            var page_name = $(this).attr('href');
+            $('.service_tabs_page').not(page_name).hide();
+            $(page_name).show();
+        }
         $('.service_tabs_btn')
             .not(this).removeClass('selected');
         $(this).addClass('selected');
-        $('.service_tabs_page').not(page_name).hide();
-        $(page_name).show();
+
         ui.Welcome.selected_service = $(this).attr('service');
-        
+        $('#service_page_new .service_name')
+            .text(ui.Welcome.selected_service);
+
         hotot_action('system/select_protocol/'
             + encodeURIComponent(ui.Welcome.selected_service));
     });
     $('.service_tabs_btn:first').click();
 
-    // bind events
     $('#btn_basic_auth_sign_in').click(
     function (event) {  
         lib.twitterapi.username 
@@ -111,6 +119,25 @@ function init () {
             });
         }
     });
+
+    $('#btn_welcome_create_profile').click(
+    function (event) {
+        var cb = "ui.Notification.set('New profile has been created!').show();";
+        var prefix = $.trim($('#tbox_new_profile_name').val());
+        var profile_name = prefix + '@' + ui.Welcome.selected_service;
+        if (prefix.length == 0 ) {
+            ui.Notification.set('Please entry a profile name!').show();
+            return;
+        }
+        if (prefix.indexOf('@') != -1) {
+            ui.Notification.set('Charactor `@` is not allow in profile name!').show();
+            return;
+        }
+        hotot_action('system/create_profile/'
+            + encodeURIComponent(profile_name)
+            + '/'
+            + cb);
+    })
     
     $('#btn_welcome_prefs').click(
     function (event) {
@@ -141,6 +168,9 @@ function init () {
 
 load_profiles_info:
 function load_profiles_info(profiles_info) {
+    $('#profile_avator_list a').unbind('click');
+    $('#profile_avator_list li').not('.new_profile_item').remove();
+
     ui.Welcome.profiles_info = profiles_info;
     for (var name in profiles_info ) {
         var profile = profiles_info[name];
@@ -159,10 +189,13 @@ function load_profiles_info(profiles_info) {
         access_token = '';
         if (profile_name == 'default') {
             // @TODO clear 
-            $('.service_tabs_page, .service_tabs_btn').show();
-            $('#profile_title').text('New Profile');
+            $('.service_tabs_btn').show();
             $('.service_tabs_btn:first').click();
+            $('.service_tabs_page').not('#service_page_new').hide();
+            $('#service_page_new').show();
 
+            $('#profile_title').text('New Profile');
+            $('#btn_welcome_prefs, #btn_welcome_delete_profile').hide();
         } else {
             var type = profile_name.split('@')[1];
             $('#btn_service_'+ type).click();
@@ -174,6 +207,8 @@ function load_profiles_info(profiles_info) {
             $('.service_tabs_page').not('#service_page_' + type).hide();
 
             $('#profile_title').text(profile_name)
+            
+            $('#btn_welcome_prefs, #btn_welcome_delete_profile').show();
 
             default_username
                 = ui.Welcome.profiles_info[profile_name].username;

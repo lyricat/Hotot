@@ -257,8 +257,6 @@ class Hotot:
     def on_sign_in(self, profile):
         self.is_sign_in = True
         self.active_profile = profile
-        if not config.profiles.has_key(self.active_profile):
-            config.create_profile(self.active_profile)
          
         self.window.set_title('Hotot | %s' % self.active_profile)
         self.window.resize(
