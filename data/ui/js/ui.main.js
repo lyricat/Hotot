@@ -611,7 +611,7 @@ function on_rt_click(btn, event) {
         ui.StatusBox.open(
         function() {
             ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
-            $('#btn_clear_status_info').click();
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         });
     });
 },

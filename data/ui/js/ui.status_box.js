@@ -290,6 +290,7 @@ function change_mode(mode) {
         if ($('#tbox_status').attr('value') == globals.dm_hint)
             $('#tbox_status').attr('value', globals.tweet_hint)
         $('#dm_target').hide();
+        $('#status_info').hide();
         globals.status_hint = globals.tweet_hint;
     }
     ui.StatusBox.current_mode = mode;
