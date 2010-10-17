@@ -25,20 +25,15 @@ function init () {
     // bind events
     $('.service_tabs_btn').click(
     function (event) {
-        if (ui.Welcome.selected_profile == 'default') {
-            $('.service_tabs_page').not('#service_page_new').hide();
-            $('#service_page_new').show();
+        $('.service_tabs_page').not('#service_page_new').hide();
+        $('#service_page_new').show();
+        
+        ui.Welcome.selected_service = $(this).attr('service');
+        $('#service_page_new .service_name')
+            .text(ui.Welcome.selected_service);
+        hotot_action('system/select_protocol/'
+            + encodeURIComponent(ui.Welcome.selected_service));
 
-            ui.Welcome.selected_service = $(this).attr('service');
-            $('#service_page_new .service_name')
-                .text(ui.Welcome.selected_service);
-            hotot_action('system/select_protocol/'
-                + encodeURIComponent(ui.Welcome.selected_service));
-        } else {
-            var page_name = $(this).attr('href');
-            $('.service_tabs_page').not(page_name).hide();
-            $(page_name).show();
-        }
         $('.service_tabs_btn')
             .not(this).removeClass('selected');
         $(this).addClass('selected');
@@ -187,18 +182,17 @@ function load_profiles_info(profiles_info) {
     $('#profile_avator_list a').click(
     function (event) {
         var profile_name = $(this).attr('href');                    
+        ui.Welcome.selected_profile = profile_name;
         default_username = '';
         default_password = '';
         access_token = '';
         if (profile_name == 'default') {
-            // @TODO clear 
             $('.service_tabs_btn').show();
-            $('.service_tabs_btn:first').click();
             $('.service_tabs_page').not('#service_page_new').hide();
-            $('#service_page_new').show();
-
-            $('#profile_title').text('New Profile');
             $('#btn_welcome_prefs, #btn_welcome_delete_profile').hide();
+            $('#profile_title').text('New Profile');
+            $('.service_tabs_btn:first').click();
+            $('#service_page_new').show();
         } else {
             var type = profile_name.split('@')[1];
             
@@ -230,7 +224,6 @@ function load_profiles_info(profiles_info) {
 
         hotot_action('system/select_profile/'
             + encodeURIComponent(profile_name));
-        ui.Welcome.selected_profile = profile_name;
         return false;
     });
      
