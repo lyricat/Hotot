@@ -13,6 +13,10 @@ sign_opts: {
 
 profiles_info: [],
 
+selected_service: 'twitter',
+
+selected_profile: 'default',
+
 init:
 function init () {
     ui.Welcome.id = '#welcome_page';
@@ -24,6 +28,12 @@ function init () {
         if (ui.Welcome.selected_profile == 'default') {
             $('.service_tabs_page').not('#service_page_new').hide();
             $('#service_page_new').show();
+
+            ui.Welcome.selected_service = $(this).attr('service');
+            $('#service_page_new .service_name')
+                .text(ui.Welcome.selected_service);
+            hotot_action('system/select_protocol/'
+                + encodeURIComponent(ui.Welcome.selected_service));
         } else {
             var page_name = $(this).attr('href');
             $('.service_tabs_page').not(page_name).hide();
@@ -32,13 +42,6 @@ function init () {
         $('.service_tabs_btn')
             .not(this).removeClass('selected');
         $(this).addClass('selected');
-
-        ui.Welcome.selected_service = $(this).attr('service');
-        $('#service_page_new .service_name')
-            .text(ui.Welcome.selected_service);
-
-        hotot_action('system/select_protocol/'
-            + encodeURIComponent(ui.Welcome.selected_service));
     });
     $('.service_tabs_btn:first').click();
 
@@ -198,9 +201,9 @@ function load_profiles_info(profiles_info) {
             $('#btn_welcome_prefs, #btn_welcome_delete_profile').hide();
         } else {
             var type = profile_name.split('@')[1];
-            $('#btn_service_'+ type).click();
             
             $('#btn_service_' + type).show();
+            $('#btn_service_' + type).click();
             $('.service_tabs_btn').not('#btn_service_' + type).hide();
 
             $('#service_page_' + type).show();
@@ -248,9 +251,7 @@ function authenticate_pass(result) {
     globals.layout.open('north');
     globals.layout.open('south');
 
-    ui.Welcome.selected_profile = result.screen_name + '@' + ui.Welcome.selected_service;
-    hotot_action('system/sign_in/'
-        + encodeURIComponent(ui.Welcome.selected_profile));    
+    hotot_action('system/sign_in');    
 },
 
 hide:

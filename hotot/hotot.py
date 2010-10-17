@@ -254,9 +254,8 @@ class Hotot:
             config.set(self.active_profile, 'size_w', req.width)
         pass
 
-    def on_sign_in(self, profile):
+    def on_sign_in(self):
         self.is_sign_in = True
-        self.active_profile = profile
          
         self.window.set_title('Hotot | %s' % self.active_profile)
         self.window.resize(

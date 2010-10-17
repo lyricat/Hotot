@@ -132,6 +132,7 @@ def crack_token(params):
     elif params[1] == 'dump':
         config.dump_token(app.active_profile
             , json.loads(urllib.unquote(params[2])))
+        push_profiles()
     pass
 
 def crack_action(params):
@@ -170,14 +171,15 @@ def crack_system(params):
     elif params[1] == 'select_profile':
         app.active_profile = urllib.unquote(params[2])
         app.window.set_title('Hotot | %s' % app.active_profile)
+        config.loads(app.active_profile)
         apply_config()
     elif params[1] == 'select_protocol':
         app.protocol = urllib.unquote(params[2])
         select_config(app.protocol)
     elif params[1] == 'sign_in':
-        profile = urllib.unquote(params[2])
-        app.on_sign_in(profile)
+        app.on_sign_in()
     elif params[1] == 'sign_out':
+        push_profiles()
         app.on_sign_out()
     elif params[1] == 'quit':
         app.quit()
