@@ -25,18 +25,20 @@ function init () {
     // bind events
     $('.service_tabs_btn').click(
     function (event) {
-        $('.service_tabs_page').not('#service_page_new').hide();
-        $('#service_page_new').show();
-        
-        ui.Welcome.selected_service = $(this).attr('service');
-        $('#service_page_new .service_name')
-            .text(ui.Welcome.selected_service);
-        hotot_action('system/select_protocol/'
-            + encodeURIComponent(ui.Welcome.selected_service));
+        if (ui.Welcome.selected_profile == 'default') {
+            $('.service_tabs_page').not('#service_page_new').hide();
+            $('#service_page_new').show();
+            
+            ui.Welcome.selected_service = $(this).attr('service');
+            $('#service_page_new .service_name')
+                .text(ui.Welcome.selected_service);
+            hotot_action('system/select_protocol/'
+                + encodeURIComponent(ui.Welcome.selected_service));
 
-        $('.service_tabs_btn')
-            .not(this).removeClass('selected');
-        $(this).addClass('selected');
+            $('.service_tabs_btn')
+                .not(this).removeClass('selected');
+            $(this).addClass('selected');
+        }
     });
     $('.service_tabs_btn:first').click();
 
@@ -196,9 +198,8 @@ function load_profiles_info(profiles_info) {
         } else {
             var type = profile_name.split('@')[1];
             
-            $('#btn_service_' + type).show();
-            $('#btn_service_' + type).click();
             $('.service_tabs_btn').not('#btn_service_' + type).hide();
+            $('#btn_service_' + type).show().addClass('selected');
 
             $('#service_page_' + type).show();
             $('.service_tabs_page').not('#service_page_' + type).hide();
