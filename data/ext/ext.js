@@ -118,28 +118,28 @@ function init_exts() {
                 icon = '../ext/' + extension.id + '/' + extension.icon;
             }
 
-            ext.exts_info[extension.id] = {
-                  name: extension.name
-                , description: extension.description
-                , version: extension.version
-                , author: extension.author
-                , url: extension.url
-                , icon: icon
-                , has_options: typeof extension.options != 'undefined'
-                , extension: extension
-            };
+            if (!ext.exts_info.hasOwnProperty(extension.id)) {
+                ext.exts_info[extension.id] = {}
+            }
+            ext.exts_info[extension.id].name= extension.name;
+            ext.exts_info[extension.id].description= extension.description;
+            ext.exts_info[extension.id].version= extension.version;
+            ext.exts_info[extension.id].author= extension.author;
+            ext.exts_info[extension.id].url= extension.url;
+            ext.exts_info[extension.id].icon= icon;
+            ext.exts_info[extension.id].has_options= typeof extension.options != 'undefined';
+            ext.exts_info[extension.id].extension=extension;
 
-            // @TODO Issue 31
             if (ext.exts_enabled.indexOf(extension.id) != -1) {
                 utility.Console.out('[i]Init Extension: ' + extension.name);
+                if (ext.exts_info[extension.id].hasOwnProperty('enable')){
+                    extension.unload();
+                }
                 extension.load();
                 ext.exts_info[extension.id]['enable'] = true;
             } else {
                 ext.exts_info[extension.id]['enable'] = false;
             }
-            /*
-            extension.load();
-            */
         }
     }
 },
