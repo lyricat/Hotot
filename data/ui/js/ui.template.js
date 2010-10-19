@@ -282,8 +282,8 @@ function fill_vcard(user_obj, vcard_container) {
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     
-    vcard_container.find('.profile_img')
-        .attr('src', user_obj.profile_image_url);
+    vcard_container.find('.profile_img_wrapper')
+        .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
     vcard_container.find('.screen_name')
         .html(user_obj.screen_name)
         .attr('href', 'http://twitter.com/'+user_obj.screen_name);

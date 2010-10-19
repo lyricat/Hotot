@@ -105,9 +105,9 @@ function update_profile() {
 
 request_profile:
 function request_profile() {
-    $('#profile_avator').attr('src'
-        , lib.twitterapi.get_user_profile_image(
-            globals.myself.screen_name, 'bigger'));
+    $('#profile_avator').attr('style'
+        , 'background-image:url('+lib.twitterapi.get_user_profile_image(
+            globals.myself.screen_name, 'bigger')+');');
     var timestamp = Date.parse(globals.myself.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);

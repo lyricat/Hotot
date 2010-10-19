@@ -446,7 +446,6 @@ jQuery(function($) {
 
                 </ul>
                 <div class="profile_img_wrapper">
-                    <img class="profile_img" src="" onerror="void(0);"/>
                 </div>
                 <ol class="vcard_info">
                     <li>_("Name: ")
@@ -1070,13 +1069,14 @@ jQuery(function($) {
         <div style="float:left; width: 150px;">
             <h3>- Picture -</h3>
             <div class="dlg_group">
-            <p style="text-align: center;">
-                <img id="profile_avator" src="#"/><br/>
+            <p style="text-align:center; min-height:70px;">
+                <span id="profile_avator" class="profile_img_wrapper"></span>
                 <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">_("Change avator")
                     <span class="placeholder"></span>            
-                </a><br/>
+                </a>
             </p>
             </div>
+
             <h3>- Stat -</h3>
             <div class="dlg_group">
             <p id="profile_stat">

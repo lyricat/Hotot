@@ -235,9 +235,8 @@ authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
     setTimeout(function () {
-        $('#btn_my_profile').css('background-image', 'url('+globals.myself.profile_image_url+')');
-    }, 500);
-
+    $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
+    }, 100);
     ui.Notification.set('Authentication OK!').show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();

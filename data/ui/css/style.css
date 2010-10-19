@@ -1354,9 +1354,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 
 #profile_avator {
+    width: 64px !important;
+    height: 64px !important;
     margin: 0 auto;
-    border: 1px #ccc solid;
     padding: 1px;
+    display: block !important;
 }
 
 #profile_stat * {
