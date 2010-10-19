@@ -2,7 +2,7 @@ if (typeof lib == 'undefined') var lib = {};
 
 lib.network = {
 
-py_request: true,
+py_request: false,
 
 success_task_table: {},
 
