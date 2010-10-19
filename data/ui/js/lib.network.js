@@ -19,7 +19,6 @@ function generate_uuid() {
 normalize_result:
 function normalize_result(result) {
     if (result.constructor == String) {
-        utility.Console.out(result);
         try {
             return JSON.parse(result);
         } catch (e) {
