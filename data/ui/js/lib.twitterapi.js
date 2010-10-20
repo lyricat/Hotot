@@ -69,7 +69,8 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             params = signed_params
         }
         lib.network.do_request(
-            method
+              false
+            , method
             , url
             , params
             , headers
@@ -90,7 +91,8 @@ function do_ajax(method, url, params, headers, on_success, on_error){
         }
         headers['Authorization']= lib.twitterapi.basic_auth();
         lib.network.do_request(
-            method
+              false
+            , method
             , url
             , params
             , headers
@@ -378,7 +380,7 @@ function verify(on_success) {
 search:
 function search(query, page, on_success) {
     var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
-    lib.network.do_request('GET', url, {}, {}, [], on_success,
+    lib.network.do_request(false, 'GET', url, {}, {}, [], on_success,
     function(result) {
     });
 },
