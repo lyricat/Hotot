@@ -9,4 +9,4 @@
 
 python setup.py build_i18n -m
 python setup.py build
-python setup.py install $INSTALL_LAYOUT --record record.log
+sudo python setup.py install $INSTALL_LAYOUT --record record.log
