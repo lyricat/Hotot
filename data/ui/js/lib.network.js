@@ -31,7 +31,7 @@ function normalize_result(result) {
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
     if (!req_headers) req_headers = {};
-    if (lib.network.py_request) {
+    if (lib.network.py_request && req_files != []) {
         var task_uuid = lib.network.generate_uuid();
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
