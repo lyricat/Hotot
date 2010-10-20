@@ -129,8 +129,7 @@ function get_request_token(on_success) {
         :jsOAuth.sign_oauth_base;
 
     lib.network.do_request(
-          false
-        , 'GET'
+        'GET'
         , jsOAuth.oauth_base 
             + jsOAuth.request_token_url + '?'
             + jsOAuth.form_signed_params(
@@ -171,8 +170,7 @@ function get_access_token(pin, on_success, on_error) {
         sign_base + jsOAuth.access_token_url, 
         jsOAuth.request_token, 'GET', addition_params);
     lib.network.do_request(
-          false
-        , 'GET'
+        'GET'
         , jsOAuth.oauth_base + jsOAuth.access_token_url + '?' + params
         , {}
         , {}

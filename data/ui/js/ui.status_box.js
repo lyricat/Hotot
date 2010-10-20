@@ -66,14 +66,12 @@ function init () {
         var _requset = function (i) {
             var req_url = ui.StatusBox.short_url_base + urls[i];
             procs.push(function () {
-                lib.network.do_request(
-                  false
-                , 'GET'
-                , req_url
-                , {}
-                , {}
-                , []
-                , function (results) {
+                lib.network.do_request('GET',
+                req_url, 
+                {},
+                {},
+                [],
+                function (results) {
                     var text = $('#tbox_status').val();
                     text = text.replace(urls[i], results.data.url);
                     $('#tbox_status').val(text);

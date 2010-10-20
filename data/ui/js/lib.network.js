@@ -2,6 +2,8 @@ if (typeof lib == 'undefined') var lib = {};
 
 lib.network = {
 
+py_request: false,
+
 success_task_table: {},
 
 error_task_table: {},
@@ -27,9 +29,9 @@ function normalize_result(result) {
 },
 
 do_request:
-function do_request(py_req, req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
+function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
     if (!req_headers) req_headers = {};
-    if (py_req) {
+    if (lib.network.py_request) {
         var task_uuid = lib.network.generate_uuid();
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;

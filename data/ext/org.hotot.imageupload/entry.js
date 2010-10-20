@@ -107,8 +107,7 @@ function on_btn_upload_clicked(event) {
 
     ui.Notification.set('Uploading ... ').show();
     lib.network.do_request(
-          true
-        , 'POST'
+        'POST'
         , ext.HototImageUpload.services[service_name].url
         , params 
         , headers
