@@ -44,10 +44,14 @@ function on_btn_upload_clicked(event) {
             <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
             <span class="placeholder"></span>\
             </a></p><p>\
-            <span id="ext_hotot_upload_image_path"></span><br/>\
-            <label>Add a message<label><br/>\
-            <textarea id="ext_hotot_upload_image_message"></textarea>\
-            </p>';
+            <div style="float:left;height:100px;width:100px;">\
+            <label >Preview:<label><br/>\
+            <img id="ext_hotot_upload_image_prev" style="max-height:100px;max-width:100px;"/>\
+            </div>\
+            <div style="margin-left:110px;">\
+            <label >Add a message<label><br/>\
+            <textarea id="ext_hotot_upload_image_message"class="dark"></textarea>\
+            </div></p>';
 
         ui.CommonDlg.reset(); 
         ui.CommonDlg.set_title('Upload Image');
@@ -124,7 +128,7 @@ function on_btn_brow_clicked(event) {
 
 select_finish:
 function select_finish(filename) {
-    $('#ext_hotot_upload_image_path').text(filename);
+    $('#ext_hotot_upload_image_prev').attr('src', 'file://'+filename);
     ext.HototImageUpload.select_filename = filename;
 },
 
