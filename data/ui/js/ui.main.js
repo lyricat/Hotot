@@ -622,11 +622,23 @@ function on_retweet_click(btn, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
-    ui.Notification.set('Retweeting ...').show(-1);
-    lib.twitterapi.retweet_status(id, 
-    function (result) {
-        ui.Notification.set('Retweet Successfully!').show();
-    });
+    if ($(btn).hasClass('retweeted')) {
+        var rt_id = li.attr('my_retweet_id')
+        ui.Notification.set('Undo Retweeting ...').show(-1);
+        lib.twitterapi.destroy_status(rt_id, 
+        function (result) {
+            ui.Notification.set('Undo Successfully!').show();
+            $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
+        });
+    } else {
+        ui.Notification.set('Retweeting ...').show(-1);
+        lib.twitterapi.retweet_status(id, 
+        function (result) {
+            ui.Notification.set('Retweet Successfully!').show();
+            li.attr('my_retweet_id', result.id);
+            $(btn).addClass('retweeted').attr('title', 'Undo retweet.');
+        });
+    }
 },
 
 on_reply_all_click:
