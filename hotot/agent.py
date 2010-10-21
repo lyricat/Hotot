@@ -69,6 +69,7 @@ def apply_proxy_setting():
     else:
         webkit_set_proxy_uri("")
         pass
+    gobject.idle_add(webv.execute_script, "new Image().src='http://mobile.twitter.com/';")
     pass
 
 def init_notify():
