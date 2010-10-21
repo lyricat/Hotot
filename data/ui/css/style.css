@@ -1732,6 +1732,9 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 .tweet_retweet {
     background-image: url(../imgs/ic16_retweet.png);
 }
+.tweet_retweet.retweeted {
+    background-image: url(../imgs/ic16_retweeted.png);
+}
 .tweet_more {
     background-image: url(../imgs/ic16_more.png);
 }
