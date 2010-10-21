@@ -657,7 +657,19 @@ jQuery(function($) {
                     </li>
                 </ul>
                 <div id='prefs_account' class="dlg_tabs_page">
-                    <h3>- Basic Auth Settings -</h3>
+                    <h3>- Twitter -</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <label>_("Regain Access Token")</label><br/>
+                        <a id="btn_regain_token"
+                            class="button" 
+                            href="javascript:void(0)" title="Sign in with Twitter">_("Sign in with Twitter")
+                            <span class="placeholder"></span>            
+                            </a>
+                    </p>
+                    </div>
+
+                    <h3>- Identi.ca -</h3>
                     <div class="dlg_group">
                     <p>
                         <input id="chk_prefs_remember_password"
@@ -666,27 +678,6 @@ jQuery(function($) {
                         <label for="chk_prefs_remember_password">
                             _("Remember Password")
                         </label><br/>
-                    </p>
-                    </div>
-
-                    <h3>- OAuth Settings -</h3>
-                    <div class="dlg_group">
-                    <p>* You MUST Regain Access Token if you change Consumer Key/Secret below.</p>
-                    <p>
-                        <label>_("Consumer Key")</label><br/>
-                        <input id="tbox_prefs_consumer_key" class="dark"
-                            title="Consumer Key" type="text"/><br/>
-                        <label>_("Consumer Secret")</label><br/>
-                        <input id="tbox_prefs_consumer_secret" class="dark"
-                            title="Consumer Secret" type="text"/><br/>
-                    </p>
-                    <p>
-                        <label>_("Regain Access Token")</label><br/>
-                        <a id="btn_regain_token"
-                            class="button" 
-                            href="javascript:void(0)" title="Sign in with Twitter">_("Sign in with Twitter")
-                            <span class="placeholder"></span>            
-                            </a>
                     </p>
                     </div>
                 </div>

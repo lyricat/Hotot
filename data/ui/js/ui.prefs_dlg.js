@@ -124,10 +124,6 @@ function request_prefs_cb(prefs_obj) {
     // Account
     $('#chk_prefs_remember_password').attr('checked'
         , prefs_obj['remember_password']);
-    $('#tbox_prefs_consumer_key').attr('value'
-        , prefs_obj['consumer_key']);
-    $('#tbox_prefs_consumer_secret').attr('value'
-        , prefs_obj['consumer_secret']);    
     
     // System
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
@@ -219,10 +215,6 @@ function save_prefs() {
     var prefs_obj = {};
     prefs_obj['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
-    prefs_obj['consumer_key']
-        = $('#tbox_prefs_consumer_key').attr('value'); 
-    prefs_obj['consumer_secret']
-        = $('#tbox_prefs_consumer_secret').attr('value');
     
     prefs_obj['shortcut_summon_hotot']
         = $('#tbox_prefs_shortcut_summon_hotot').attr('value');

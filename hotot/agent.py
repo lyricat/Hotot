@@ -333,8 +333,6 @@ def push_prefs():
     apply_proxy_setting()
     # account settings
     remember_password = str(get_prefs('remember_password')).lower()
-    consumer_key = get_prefs('consumer_key')
-    consumer_secret = get_prefs('consumer_secret')
     
     # system settings
     shortcut_summon_hotot = get_prefs('shortcut_summon_hotot')
@@ -398,8 +396,6 @@ def push_prefs():
     webv.execute_script('''
         var prefs_obj = {
           "remember_password": %s
-        , "consumer_key": "%s"
-        , "consumer_secret": "%s"
         , "shortcut_summon_hotot": "%s"
         , "font_family_list":  %s
         , "font_family_used": "%s"
@@ -425,7 +421,6 @@ def push_prefs():
         };
         ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
         ''' % (remember_password
-            , consumer_key, consumer_secret
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
