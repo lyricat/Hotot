@@ -12,6 +12,7 @@ import gobject
 import utils
 import hotot
 import os
+import subprocess
 import ctypes
 
 pynotify.init('Hotot Notification')
@@ -158,7 +159,7 @@ def crack_system(params):
         notify.update(summary, body)
         notify.show()
         if params[1] == 'notify_with_sound':
-            gobject.idle_add(os.system, 'aplay -q "%s"' % utils.get_sound('notify'))
+            subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
     elif params[1] == 'create_profile':
         profile = urllib.unquote(params[2])
         callback = urllib.unquote(params[3]).replace('\n','')
