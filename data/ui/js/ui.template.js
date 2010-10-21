@@ -135,9 +135,6 @@ function form_dm(dm_obj, pagename) {
     var ret = '';
     var user_id = dm_obj.sender.id;
     var scheme = 'message';
-    if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = 'mention';
-    }
 
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));

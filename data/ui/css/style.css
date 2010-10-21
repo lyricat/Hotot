@@ -1527,6 +1527,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 .tweet.normal a {
     color: #585858;
+    text-decoration: underline;
 }
 .tweet.normal .who_href {
     color: #2c2e36;
