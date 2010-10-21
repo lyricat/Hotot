@@ -69,7 +69,8 @@ def apply_proxy_setting():
     else:
         webkit_set_proxy_uri("")
         pass
-    gobject.idle_add(webv.execute_script, "new Image().src='http://mobile.twitter.com/';")
+    # workaround for a BUG of webkitgtk/soupsession proxy authentication
+    gobject.idle_add(webv.execute_script, "new Image().src='http://google.com/';")
     pass
 
 def init_notify():

@@ -11,6 +11,8 @@ reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
 
 reg_hash_tag: new RegExp('(^|\\s)[#＃]([^\\s]+)', 'g'),
 
+reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
+
 tweet_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" retweet_id="{%RETWEET_ID%}" >\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -313,6 +315,9 @@ function form_text(text) {
     text = text.replace(ui.Template.reg_hash_tag
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/\n/g, '<br/>');
+    if (ui.Template.reg_is_rtl.test(text)) {
+        text = '<div align="right" dir="rtl">' + text + '</div>';
+    }
     return text;
 },
 
