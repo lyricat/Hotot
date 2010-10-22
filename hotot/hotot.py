@@ -208,7 +208,7 @@ class Hotot:
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip('Hotot: Click to Active.')
         self.trayicon.set_from_file(
-            utils.get_ui_object('imgs/ic24_hotot_mono_dark.svg'))
+            utils.get_ui_object('imgs/ic24_hotot_mono_light.svg'))
         self.trayicon.set_visible(True)
         pass
 
