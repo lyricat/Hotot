@@ -1,0 +1,757 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2010 Gerald Schmidhuber
+# This file is distributed under the same license as the PACKAGE package.
+# Federico Magnani <magnus@gmx.it>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotot 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-22 21:17+0000\n"
+"PO-Revision-Date: 2010-10-22 22:17+0100\n"
+"Last-Translator: \n"
+"Language-Team: Italiano/Italia\n"
+"Language: Italiano/Italia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/ui/index.html:5
+msgid "Home | Hotot"
+msgstr "Home | Hotot"
+
+#: ../data/ui/index.html:88
+#: ../data/ui/index.html:89
+msgid "'What is happening?'"
+msgstr "'Che c'è di nuovo?'"
+
+#: ../data/ui/index.html:90
+msgid "'Click here to Compose a Meassage ...'"
+msgstr "'Clicca qui per comporre un Messaggio ...'"
+
+#: ../data/ui/index.html:235
+msgid "'Reload timeline.'"
+msgstr "'Caricamento timeline.'"
+
+#: ../data/ui/index.html:238
+msgid "'Extensions ... '"
+msgstr "'Estensioni ...'"
+
+#: ../data/ui/index.html:241
+msgid "No Extension Icon"
+msgstr "Nessuna icona per l'estensione"
+
+#: ../data/ui/index.html:246
+msgid "'More ...'"
+msgstr "'Ancora ...'"
+
+#: ../data/ui/index.html:249
+#: ../data/ui/index.html:315
+#: ../data/ui/index.html:620
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: ../data/ui/index.html:252
+msgid "Extensions"
+msgstr "Estensioni"
+
+#: ../data/ui/index.html:255
+msgid "Help &amp; About"
+msgstr "Aiuto &amp; Info"
+
+#: ../data/ui/index.html:258
+msgid "Sign out"
+msgstr "Disconnetti"
+
+#: ../data/ui/index.html:271
+msgid "Hotot "
+msgstr "Hotot "
+
+#: ../data/ui/index.html:291
+msgid "'Sign in with Twitter'"
+msgstr "'Registrati con Twitter'"
+
+#: ../data/ui/index.html:291
+#: ../data/ui/index.html:675
+msgid "Sign in with Twitter"
+msgstr "Registrati con Twitter"
+
+#: ../data/ui/index.html:300
+msgid "Username:"
+msgstr "Nome utente:"
+
+#: ../data/ui/index.html:302
+msgid "Password:"
+msgstr "Password:"
+
+#: ../data/ui/index.html:304
+#: ../data/ui/index.html:655
+msgid "Remember Password"
+msgstr "Ricorda Password"
+
+#: ../data/ui/index.html:306
+msgid "Sign In"
+msgstr "Accedi"
+
+#: ../data/ui/index.html:314
+msgid "Delete"
+msgstr "Elimina
+
+#: ../data/ui/index.html:320
+#: ../data/ui/index.html:960
+msgid "Help"
+msgstr "Aiuto"
+
+#: ../data/ui/index.html:330
+#: ../data/ui/index.html:339
+#: ../data/ui/index.html:354
+#: ../data/ui/index.html:362
+#: ../data/ui/index.html:371
+#: ../data/ui/index.html:387
+#: ../data/ui/index.html:395
+#: ../data/ui/index.html:403
+#: ../data/ui/index.html:474
+#: ../data/ui/index.html:503
+msgid "Load more"
+msgstr "Visualizza altri"
+
+#: ../data/ui/index.html:347
+msgid "Inbox"
+msgstr "In arrivo"
+
+#: ../data/ui/index.html:348
+msgid "Outbox"
+msgstr "In uscita"
+
+#: ../data/ui/index.html:379
+msgid "Retweeted By Others"
+msgstr "Retweet da altri"
+
+#: ../data/ui/index.html:380
+msgid "Retweeted By Me"
+msgstr "Retweet da me"
+
+#: ../data/ui/index.html:381
+msgid "My Tweets, Retweeted"
+msgstr "Miei Tweets, Retweeted"
+
+#: ../data/ui/index.html:412
+msgid "Look up: "
+msgstr "Mostra:"
+
+#: ../data/ui/index.html:415
+#: ../data/ui/index.html:485
+msgid "GO"
+msgstr "VAI"
+
+#: ../data/ui/index.html:423
+msgid "Follow"
+msgstr "Segui"
+
+#: ../data/ui/index.html:427
+msgid "Block"
+msgstr "Blocca"
+
+#: ../data/ui/index.html:431
+msgid "Unblock"
+msgstr "Sblocca"
+
+#: ../data/ui/index.html:439
+msgid "Name: "
+msgstr "Nome: "
+
+#: ../data/ui/index.html:443
+#: ../data/ui/index.html:1072
+msgid "Tweets: "
+msgstr "Tweets: "
+
+#: ../data/ui/index.html:444
+#: ../data/ui/index.html:1074
+msgid "Tweets per Day: "
+msgstr "Tweets al Giorno: "
+
+#: ../data/ui/index.html:448
+msgid "Web: "
+msgstr "Web: "
+
+#: ../data/ui/index.html:451
+msgid "Location: "
+msgstr "Posizione: "
+
+#: ../data/ui/index.html:452
+#: ../data/ui/index.html:1070
+msgid "Join: "
+msgstr "Join: "
+
+#: ../data/ui/index.html:453
+#: ../data/ui/index.html:1078
+msgid "Followers: "
+msgstr "Followers: "
+
+#: ../data/ui/index.html:454
+#: ../data/ui/index.html:1076
+msgid "Friends: "
+msgstr "Amici: "
+
+#: ../data/ui/index.html:462
+msgid " has protected his/her tweets."
+msgstr " ha protetto i suoi Tweets. "
+
+#: ../data/ui/index.html:465
+msgid "You need to go to twitter.com to send a request before you can start following this person..."
+msgstr "Devi collegarti a twitter.com per mandare una richiesta, prima di iniziare a seguire questa persona..."
+
+#: ../data/ui/index.html:468
+msgid "Send Request"
+msgstr "Invia richiesta"
+
+#: ../data/ui/index.html:482
+msgid "Search for: "
+msgstr "Cerca: "
+
+#: ../data/ui/index.html:493
+msgid "Your search - "
+msgstr "La tua ricerca - "
+
+#: ../data/ui/index.html:493
+msgid " - did not match any result."
+msgstr " - non ha prodotto nessun risultato."
+
+#: ../data/ui/index.html:496
+msgid "Suggestions:"
+msgstr "Consigli:"
+
+#: ../data/ui/index.html:497
+msgid "- Make sure all words are spelled correctly."
+msgstr "- Assicurati di aver scritto correttamente tutte le parole."
+
+#: ../data/ui/index.html:498
+msgid "- Try different keywords."
+msgstr "- Prova altre parole chiave."
+
+#: ../data/ui/index.html:499
+msgid "- Try more general keywords."
+msgstr "- Prova ad usare parole chiave più generiche."
+
+#: ../data/ui/index.html:571
+msgid "Clear"
+msgstr "Cancella"
+
+#: ../data/ui/index.html:574
+#: ../data/ui/index.html:1105
+#: ../hotot/hotot.py:136
+msgid "Update"
+msgstr "Aggiorna"
+
+#: ../data/ui/index.html:579
+msgid "Press Ctrl+Enter to Update"
+msgstr "Premi Ctrl+Enter per aggiornare"
+
+#: ../data/ui/index.html:592
+msgid "Home"
+msgstr "Home"
+
+#: ../data/ui/index.html:598
+msgid "DM"
+msgstr "DM"
+
+#: ../data/ui/index.html:609
+msgid "Console"
+msgstr "Terminale"
+
+#: ../data/ui/index.html:629
+msgid "Account"
+msgstr "Account"
+
+#: ../data/ui/index.html:634
+msgid "System"
+msgstr "Sistema"
+
+#: ../data/ui/index.html:639
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: ../data/ui/index.html:644
+msgid "Networks"
+msgstr "Rete"
+
+#: ../data/ui/index.html:664
+msgid "Consumer Key"
+msgstr "Chiave utilizzatore"
+
+#: ../data/ui/index.html:667
+msgid "Consumer Secret"
+msgstr "Parola chiave utilizzatore"
+
+#: ../data/ui/index.html:672
+msgid "Regain Access Token"
+msgstr "Richiedi Buono di Accesso"
+
+#: ../data/ui/index.html:684
+#: ../data/ui/index.html:827
+msgid "* You MUST restart Hotot for the changes below to take effect."
+msgstr "* Devi RIAVVIARE Hotot affinche le modifiche abbiano effetto."
+
+#: ../data/ui/index.html:686
+msgid "Summon Hotot (like: &lt;ALT&gt;C)"
+msgstr "Chiama Hotot (Es.: &lt;ALT&gt;C)"
+
+#: ../data/ui/index.html:688
+msgid "'Summon Hot Key'"
+msgstr "'Combinazione Tasti Chiamata'"
+
+#: ../data/ui/index.html:694
+msgid "- Font Settings -"
+msgstr "- Impostazione Caratteri -"
+
+#: ../data/ui/index.html:697
+msgid "Font Family"
+msgstr "Famiglia"
+
+#: ../data/ui/index.html:699
+msgid "'Font Family'"
+msgstr "'Famiglia'"
+
+#: ../data/ui/index.html:705
+msgid "Font Size"
+msgstr "Dimensione"
+
+#: ../data/ui/index.html:708
+msgid "px"
+msgstr "px"
+
+#: ../data/ui/index.html:709
+msgid "Preview"
+msgstr "Anteprima"
+
+#: ../data/ui/index.html:710
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr "abcdefghijk ABCDEFGHIJK"
+
+#: ../data/ui/index.html:713
+msgid "- Notification -"
+msgstr "- Notifiche -"
+
+#: ../data/ui/index.html:723
+msgid "'Notify when home page has new tweets'"
+msgstr "'Notifica quando ci sono nuovi tweets'"
+
+#: ../data/ui/index.html:729
+msgid "'Play sound when home page has new tweets'"
+msgstr "'Avvisa con un suono quando ci sono nuovi tweets'"
+
+#: ../data/ui/index.html:737
+msgid "'Notify when some new tweets mention me.'"
+msgstr "'Notifica quando vieni mensionato in nuovi tweets.'"
+
+#: ../data/ui/index.html:743
+msgid "'Play swhen some new tweets mention me.'"
+msgstr "'Avvisa con un suono quando vieni mensionato in nuovi tweets.'"
+
+#: ../data/ui/index.html:751
+msgid "'Notify when some new direct messages coming.'"
+msgstr "'Notifica l'arrivo di nuovi messaggi diretti a te.'"
+
+#: ../data/ui/index.html:757
+msgid "'Play when some new direct messages coming.'"
+msgstr "'Avvisa con un suono l'arrivo di nuovi messaggi diretti a te.'"
+
+#: ../data/ui/index.html:765
+msgid "- Display and Behavior -"
+msgstr "- Visualizzazione e Comportamento -"
+
+#: ../data/ui/index.html:769
+msgid "'Use Native Input'"
+msgstr "'Usa input nativo'"
+
+#: ../data/ui/index.html:770
+msgid "Use Native Input Dialog"
+msgstr "Usa dialogo input nativo"
+
+#: ../data/ui/index.html:772
+msgid "'Use Native Notify'"
+msgstr "'Usa notifiche standard'"
+
+#: ../data/ui/index.html:774
+msgid "Use Native Notify System"
+msgstr "Usa sistema di notifiche standard"
+
+#: ../data/ui/index.html:776
+msgid "'Use Ubuntu Indicator'"
+msgstr "'Usa Ubuntu Indicator'"
+
+#: ../data/ui/index.html:778
+msgid "Use Ubuntu Indicator"
+msgstr "Usa Ubuntu Indicator"
+
+#: ../data/ui/index.html:780
+msgid "'Hover to open tweet box.'"
+msgstr "'Passa sopra per aprire la tweet box.'"
+
+#: ../data/ui/index.html:782
+msgid "Hover to open tweet box"
+msgstr "Passa sopra per aprire la tweet box"
+
+#: ../data/ui/index.html:784
+msgid "'Preload latest tweet in a conversation if it is cached.'"
+msgstr "'Carica gli ultimi tweet in una conversazione se presenti nella cache.'"
+
+#: ../data/ui/index.html:786
+msgid "Preload latest tweet in a conversation if possible."
+msgstr "Carica gli ultimi tweet in una conversazione se possibile."
+
+#: ../data/ui/index.html:791
+msgid "- API Settings -"
+msgstr "- Impostazioni API -"
+
+#: ../data/ui/index.html:794
+msgid "API Base"
+msgstr "API Base"
+
+#: ../data/ui/index.html:796
+msgid "'API Base'"
+msgstr "'API Base'"
+
+#: ../data/ui/index.html:798
+msgid "'Use same Signing Api'"
+msgstr "'Usa le stesse Api di accesso'"
+
+#: ../data/ui/index.html:801
+msgid "Same signing API base: "
+msgstr "Stessa API base di accesso:"
+
+#: ../data/ui/index.html:803
+msgid "Signing API Base"
+msgstr "Accesso API Base"
+
+#: ../data/ui/index.html:805
+msgid "'Signing API Base'"
+msgstr "'Accesso API Base'"
+
+#: ../data/ui/index.html:807
+msgid "OAuth Base"
+msgstr "OAuth Base"
+
+#: ../data/ui/index.html:809
+msgid "'OAuth Base'"
+msgstr "'OAuth Base'"
+
+#: ../data/ui/index.html:811
+msgid "'Use same Signing OAuth Base'"
+msgstr "'Usa la stessa OAuth Base di accesso'"
+
+#: ../data/ui/index.html:814
+msgid "Same signing OAuth base: "
+msgstr "stessa OAuth Base di accesso:"
+
+#: ../data/ui/index.html:816
+msgid "Signing OAuth Base"
+msgstr "Signing OAuth Base"
+
+#: ../data/ui/index.html:818
+msgid "'Signing OAuth Base'"
+msgstr "'Signing OAuth Base'"
+
+#: ../data/ui/index.html:820
+msgid "Search API Base"
+msgstr "Search API Base"
+
+#: ../data/ui/index.html:822
+msgid "'Search API Base'"
+msgstr "'Search API Base'"
+
+#: ../data/ui/index.html:825
+msgid "- Proxy Settings -"
+msgstr "- Proxy Einstellungen -"
+
+#: ../data/ui/index.html:830
+msgid "'Use HTTP Proxy'"
+msgstr "'HTTP Proxy nutzen'"
+
+#: ../data/ui/index.html:832
+msgid "Use HTTP Proxy"
+msgstr "HTTP Proxy nutzen"
+
+#: ../data/ui/index.html:834
+#: ../data/ui/index.html:846
+msgid "Host"
+msgstr "Host"
+
+#: ../data/ui/index.html:836
+msgid "'HTTP Proxy Host'"
+msgstr "'HTTP Proxy Host'"
+
+#: ../data/ui/index.html:837
+#: ../data/ui/index.html:850
+msgid "Port"
+msgstr "Port"
+
+#: ../data/ui/index.html:839
+msgid "'HTTP Proxy Port'"
+msgstr "'HTTP Proxy Port'"
+
+#: ../data/ui/index.html:842
+msgid "'Use Socks Proxy'"
+msgstr "'Socks Proxy nutzen'"
+
+#: ../data/ui/index.html:844
+msgid "Use Socks Proxy"
+msgstr "Socks Proxy nutzen"
+
+#: ../data/ui/index.html:852
+msgid "'Socks Proxy Port'"
+msgstr "'Socks Proxy Port'"
+
+#: ../data/ui/index.html:860
+msgid "Restore Defaults"
+msgstr "Ripristina impostazioni"
+
+#: ../data/ui/index.html:863
+#: ../data/ui/index.html:898
+#: ../data/ui/index.html:1102
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ../data/ui/index.html:866
+#: ../data/ui/index.html:901
+#: ../data/ui/index.html:1044
+#: ../data/ui/index.html:1153
+msgid "OK"
+msgstr "OK"
+
+#: ../data/ui/index.html:875
+msgid "First time to Sign in with Twitter"
+msgstr "Primo accesso Twitter"
+
+#: ../data/ui/index.html:884
+msgid "Click me to continue"
+msgstr "Clicca per continuare"
+
+#: ../data/ui/index.html:910
+msgid "About &amp; Help"
+msgstr "Info &amp; Aiuto"
+
+#: ../data/ui/index.html:919
+msgid "About"
+msgstr "Informazioni"
+
+#: ../data/ui/index.html:924
+msgid "Keyboard"
+msgstr "Tastiera"
+
+#: ../data/ui/index.html:929
+msgid "Credits"
+msgstr "Ringraziamenti"
+
+#: ../data/ui/index.html:934
+msgid "License"
+msgstr "Licenza"
+
+#: ../data/ui/index.html:941
+#: ../hotot/hotot.py:32
+#: ../hotot/hotot.py:55
+#: ../hotot.desktop.in.h:1
+msgid "Hotot"
+msgstr "Hotot"
+
+#: ../data/ui/index.html:942
+msgid "twitter"
+msgstr "twitter"
+
+#: ../data/ui/index.html:957
+msgid "Action"
+msgstr "Azione"
+
+#: ../data/ui/index.html:957
+msgid "Shortcut"
+msgstr "Collegamento"
+
+#: ../data/ui/index.html:958
+msgid "Global"
+msgstr "Globale"
+
+#: ../data/ui/index.html:959
+msgid "Quit Hotot"
+msgstr "Esci da Hotot"
+
+#: ../data/ui/index.html:962
+msgid "Tweet List"
+msgstr "Lista Tweet"
+
+#: ../data/ui/index.html:963
+msgid "Reload"
+msgstr "Ricarica"
+
+#: ../data/ui/index.html:964
+msgid "Slide to prev page"
+msgstr "Scorri pagina precedente"
+
+#: ../data/ui/index.html:965
+msgid "Slide to next page"
+msgstr "Scorri pagina successiva"
+
+#: ../data/ui/index.html:966
+msgid "Move to prev tweet"
+msgstr "Vai al Tweet precedente"
+
+#: ../data/ui/index.html:967
+msgid "Move to next tweet"
+msgstr "Vai al tweet successivo"
+
+#: ../data/ui/index.html:968
+msgid "Move to top"
+msgstr "Vai in cima"
+
+#: ../data/ui/index.html:969
+msgid "Move to bottom"
+msgstr "Vai in fondo"
+
+#: ../data/ui/index.html:970
+msgid "Toggle toolbar"
+msgstr "Mostra toolbar"
+
+#: ../data/ui/index.html:971
+msgid "Toggle nav tabs"
+msgstr "Mostra nav tabs"
+
+#: ../data/ui/index.html:972
+msgid "Enter compose mode"
+msgstr "Inserisci modo di scrittura"
+
+#: ../data/ui/index.html:973
+msgid "Enter action mode"
+msgstr "Inserisci modo di azione"
+
+#: ../data/ui/index.html:974
+msgid "Enter filter mode"
+msgstr "Inserisci modo di filtraggio"
+
+#: ../data/ui/index.html:975
+msgid "Compose Mode"
+msgstr "Modo di Scrittura"
+
+#: ../data/ui/index.html:976
+msgid "Exit compose mode"
+msgstr "Esci da Modo di Scrittura"
+
+#: ../data/ui/index.html:977
+msgid "Action Mode"
+msgstr "Modo di Azione"
+
+#: ../data/ui/index.html:978
+msgid "Prev action"
+msgstr "Azione precedente"
+
+#: ../data/ui/index.html:979
+msgid "Next action"
+msgstr "Azione successiva"
+
+#: ../data/ui/index.html:980
+msgid "Trigger action"
+msgstr "Evento dell'azione"
+
+#: ../data/ui/index.html:981
+msgid "Exit action mode"
+msgstr "Esci dal modo di Azione"
+
+#: ../data/ui/index.html:982
+msgid "Filter Mode"
+msgstr "Modo filtraggio"
+
+#: ../data/ui/index.html:983
+msgid "Apply keywords"
+msgstr "Applica parole chiave"
+
+#: ../data/ui/index.html:984
+msgid "Exit filter mode"
+msgstr "Esci modo filtraggio"
+
+#: ../data/ui/index.html:995
+msgid "Written by"
+msgstr "Scritto da"
+
+#: ../data/ui/index.html:1007
+msgid "Artwork by"
+msgstr "Grafica di"
+
+#: ../data/ui/index.html:1013
+msgid "Document by"
+msgstr "Documentazione da"
+
+#: ../data/ui/index.html:1053
+msgid "Profile"
+msgstr "Profilo"
+
+#: ../data/ui/index.html:1062
+msgid "Change avator"
+msgstr "Cambia Avatar"
+
+#: ../data/ui/index.html:1080
+msgid "Favourites: "
+msgstr "Preferiti:"
+
+#: ../data/ui/index.html:1089
+msgid "Name"
+msgstr "Nome"
+
+#: ../data/ui/index.html:1091
+msgid "Location"
+msgstr "Luogo"
+
+#: ../data/ui/index.html:1093
+msgid "Website"
+msgstr "Website"
+
+#: ../data/ui/index.html:1095
+msgid "Bio"
+msgstr "Bio"
+
+#: ../data/ui/index.html:1114
+msgid "Extenstions"
+msgstr "Estensioni"
+
+#: ../data/ui/index.html:1124
+msgid "Close"
+msgstr "Chiudi"
+
+#: ../data/ui/index.html:1145
+msgid "Message"
+msgstr "Messaggi"
+
+#: ../data/ui/index.html:1169
+msgid "Search in Google"
+msgstr "Cerca con Google"
+
+#: ../data/ui/index.html:1170
+msgid "Search in Twitter"
+msgstr "Cerca con Twitter"
+
+#: ../data/ui/index.html:706
+msgid "'Font Size"
+msgstr "'Dimensione"
+
+#: ../hotot/hotot.py:71
+#: ../hotot/hotot.py:91
+msgid "_Resume/Hide"
+msgstr "_Mostra/Nascondi"
+
+#: ../hotot/hotot.py:88
+msgid "_File"
+msgstr "_File"
+
+#: ../hotot/hotot.py:104
+msgid "_Help"
+msgstr "_Aiuto"
+
+#: ../hotot/hotot.py:127
+msgid "What's happening?"
+msgstr "Che c'è di nuovo?"
+
+#: ../hotot.desktop.in.h:2
+msgid "Hotot Twitter Client"
+msgstr "Hotot Twitter Client"
+
+#: ../hotot.desktop.in.h:3
+msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgstr "Twitter Client leggero basato su Gtk2 e Webkit"
+
