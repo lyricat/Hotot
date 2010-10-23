@@ -865,6 +865,7 @@ function move_to_tweet(pos) {
     if (pos == 'top') {
         target = container.find('.tweet:first');
     } else if (pos == 'bottom') {
+        container.find('.tweet').show();
         target = container.find('.tweet:last');
     } else if (pos == 'next') {
         target = current.next('.tweet');
