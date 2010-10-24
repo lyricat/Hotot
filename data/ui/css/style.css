@@ -918,7 +918,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     line-height: 35px;
     font-size: 24px;
     color: #fff;
-    background: #214365 url(../imgs/ic32_hotot.png) no-repeat 20px;
+    background: #214365 url(../imgs/ic32_hotot_classics.png) no-repeat 20px;
     text-shadow: 0 -1px 0px #000;
 }
 
