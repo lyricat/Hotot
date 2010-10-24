@@ -33,8 +33,8 @@ class MainView(WebView):
         webkit.set_web_database_directory_path(config.DB_DIR)
         webkit.set_default_web_database_quota(1024**3L)
         ## bind events
-        self.connect('navigation-requested',
-            self.on_navigation_requested);
+        self.connect('navigation-requested', self.on_navigation_requested);
+        self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
@@ -57,14 +57,26 @@ class MainView(WebView):
         # get uri from request object
         uri=request.get_uri()
         if uri.startswith('file://'):
-            return 0
+            return False
         elif uri.startswith('hotot:'):
-            agent.crack_hotot(uri[6:])
+            self.on_hotot_action(uri)
+            return True
         elif uri.startswith('about:'):
-            return 1
+            return True
         else:
             utils.open_webbrowser(uri)
-        return 1
+        return True
+
+    def on_script_alert(self, view, webframe, message):
+        if message.startswith('hotot:'):
+            self.on_hotot_action(message)
+            return True
+        return False
+
+    def on_hotot_action(self, uri):
+        if uri.startswith('hotot:'):
+            agent.crack_hotot(uri[6:])
+        return True
 
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;

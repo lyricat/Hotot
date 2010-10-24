@@ -303,13 +303,14 @@ function load_tweets_cb(result, pagename) {
                 ui.Main.block_info[pagename].max_id = last_id - 1;
         }
         if (ui.Main.block_info[pagename].use_notify) {
-            var action = ui.Main.block_info[pagename].use_notify_sound
-                ? 'notify_with_sound':'notify';
-            hotot_action('system/' + action + '/'
+            hotot_action('system/notify/'
                 + encodeURIComponent('Update page '+pagename)
                 + '/'
                 + encodeURIComponent(tweet_count + ' new items.'))
-        }
+            if (ui.Main.block_info[pagename].use_notify_sound) {
+                hotot_action('system/notify_with_sound');
+            }
+        } 
     }
 },
 

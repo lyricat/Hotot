@@ -151,15 +151,15 @@ def crack_action(params):
     pass
 
 def crack_system(params):
-    if params[1] == 'notify' or params[1] == 'notify_with_sound':
+    if params[1] == 'notify':
         if not get_prefs('use_native_notify'):
             return
         summary = urllib.unquote(params[2])
         body = urllib.unquote(params[3])
         notify.update(summary, body)
         notify.show()
-        if params[1] == 'notify_with_sound':
-            subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
+    elif params[1] == 'notify_with_sound':
+        subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
     elif params[1] == 'create_profile':
         profile = urllib.unquote(params[2])
         callback = urllib.unquote(params[3]).replace('\n','')
@@ -619,4 +619,7 @@ def urlencode(query):
             pass
         pass
     return urllib.urlencode(query)
+
+def idle_it(fn): 
+    return lambda *args: gobject.idle_add(fn, *args)
 
