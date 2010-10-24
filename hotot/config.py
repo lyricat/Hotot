@@ -47,10 +47,13 @@ default_config = {
     'use_preload_conversation': True,
     # Appearance > Notification:
     'use_home_timeline_notify': True,
+    'use_home_timeline_notify_type': 'count',
     'use_home_timeline_notify_sound': True,
     'use_mentions_notify': True,
+    'use_mentions_notify_type': 'content',
     'use_mentions_notify_sound': True,
     'use_direct_messages_inbox_notify': True,
+    'use_direct_messages_inbox_notify_type': 'content',
     'use_direct_messages_inbox_notify_sound': True,
 #System:
     'shortcut_summon_hotot': '<Alt>C',

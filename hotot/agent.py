@@ -291,17 +291,23 @@ def apply_prefs():
 
     notification_settings = '''
         ui.Main.block_info['#home_timeline'].use_notify=%s;
+        ui.Main.block_info['#home_timeline'].use_notify_type="%s";
         ui.Main.block_info['#home_timeline'].use_notify_sound=%s;
         ui.Main.block_info['#mentions'].use_notify=%s;
+        ui.Main.block_info['#mentions'].use_notify_type="%s";
         ui.Main.block_info['#mentions'].use_notify_sound=%s;
         ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
+        ui.Main.block_info['#direct_messages_inbox'].use_notify_type="%s";
         ui.Main.block_info['#direct_messages_inbox'].use_notify_sound=%s;
     ''' % (
         str(get_prefs('use_home_timeline_notify')).lower(), 
+        str(get_prefs('use_home_timeline_notify_type')).lower(), 
         str(get_prefs('use_home_timeline_notify_sound')).lower(), 
         str(get_prefs('use_mentions_notify')).lower(), 
+        str(get_prefs('use_mentions_notify_type')).lower(), 
         str(get_prefs('use_mentions_notify_sound')).lower(), 
         str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify_type')).lower(), 
         str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
     )
 
@@ -377,7 +383,6 @@ def push_prefs():
     use_hover_box = str(get_prefs('use_hover_box')).lower()
     use_preload_conversation = str(get_prefs('use_preload_conversation')).lower()
     
-
     # networks settings
     api_base = get_prefs('api_base')
     sign_api_base = get_prefs('sign_api_base')
@@ -397,17 +402,23 @@ def push_prefs():
 
     notification_settings = '''
         , "use_home_timeline_notify": %s
+        , "use_home_timeline_notify_type": "%s"
         , "use_home_timeline_notify_sound": %s
         , "use_mentions_notify": %s
+        , "use_mentions_notify_type": "%s"
         , "use_mentions_notify_sound": %s
         , "use_direct_messages_inbox_notify": %s
+        , "use_direct_messages_inbox_notify_type": "%s"
         , "use_direct_messages_inbox_notify_sound": %s
     ''' % (
         str(get_prefs('use_home_timeline_notify')).lower(), 
+        str(get_prefs('use_home_timeline_notify_type')).lower(), 
         str(get_prefs('use_home_timeline_notify_sound')).lower(), 
         str(get_prefs('use_mentions_notify')).lower(), 
+        str(get_prefs('use_mentions_notify_type')).lower(), 
         str(get_prefs('use_mentions_notify_sound')).lower(), 
         str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
+        str(get_prefs('use_direct_messages_inbox_notify_type')).lower(), 
         str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
     )
     webv.execute_script('''
