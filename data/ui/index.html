@@ -285,7 +285,7 @@ jQuery(function($) {
             </li>
         </ul>
         <div id="service_page_twitter" class="service_tabs_page">
-        <h3>Sign in with Twitter</h3>
+        <h3>_("Sign in with Twitter")</h3>
         <p><br/></p>
         <p>
         <center>
@@ -574,7 +574,7 @@ jQuery(function($) {
     </div>
     <textarea id="tbox_status" class="closed"></textarea>
     <div id="status_ctrl">
-        <a id="toggle_mode" title="Click to compose message" class="button" href="javascript:void(0);">
+        <a id="toggle_mode" title=_("'Click to compose message'") class="button" href="javascript:void(0);">
             <span class="placeholder"></span>            
         </a>
         <label id="status_len"></label>
@@ -683,7 +683,7 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div id='prefs_system' class="dlg_tabs_page">
-                    <h3>- Global Keybinding -</h3>
+                    <h3>_("- Global Keybinding -")</h3>
                     <div class="dlg_group">
                     <p>_("* You MUST restart Hotot for the changes below to take effect.")</p>
                     <p>
@@ -707,7 +707,7 @@ jQuery(function($) {
                             <option value="4">4</option>
                         </select> 
                         <label>_("Font Size")</label>
-                        <input id="tbox_prefs_font_size" title=_("'Font Size"') 
+                        <input id="tbox_prefs_font_size" title=_("'Font Size'") 
                              class="dark" style="width:50px" type="text"/>
                         <label>_("px")</label><br/>
                         <label>_("Preview")</label>
@@ -719,8 +719,8 @@ jQuery(function($) {
                     <p>
                         <table>
                         <tbody>
-                        <tr><th>Page</th><th>Notify</th><th>Sound</th></tr>
-                        <tr><td>Home</td>
+                        <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Sound")</th></tr>
+                        <tr><td>_("Home")</td>
                             <td>
                             <input id="chk_prefs_use_home_timeline_notify"
                                 class="dark"
@@ -882,7 +882,7 @@ jQuery(function($) {
 
         <div id="oauth_dlg_body" class="dialog_body">
             <p>
-                Step 1: click the button below or copy the address and open it in your browser.<br/>
+                _("Step 1: click the button below or copy the address and open it in your browser.")<br/>
             </p>
             <p style="text-align: center;">
                 <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">_("Click me to continue")
@@ -891,10 +891,10 @@ jQuery(function($) {
                 <input id="tbox_oauth_auth_url" type="text" class="dark" value=""/>
             </p>
             <p>
-                Step 2: copy the PIN Code and paste it into the box below;
+                _("Step 2: copy the PIN Code and paste it into the box below;")
             </p>
             <p style="text-align: center;">
-                <label>PIN Code:</label>
+                <label>_("PIN Code:")</label>
                 <input id="tbox_oauth_pin" type="text" class="dark"/><br/>
             </p>
         </div>
@@ -942,8 +942,7 @@ jQuery(function($) {
                     <h3>- Hotot <span class="version"></span>-</h3>
                     <div class="dlg_group">
                     <p>
-                    <strong>_("Hotot")</strong> is a lightweight client for the <a
-                    href="http://twitter.com">_("twitter")</a> microblogging service.
+                    <strong>_("Hotot")</strong> _("is a lightweight client for the ")<a href="http://twitter.com">twitter</a>_(" microblogging service").
                     </p>
                     <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
                     <p>
@@ -953,7 +952,7 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div id="about_keyboard" class="dlg_tabs_page">
-                    <h3>- Keyboard shortcuts -</h3>
+                    <h3>_("- Keyboard shortcuts -")</h3>
                     <div class="dlg_group">
                     <p>
                         <table>
@@ -993,7 +992,7 @@ jQuery(function($) {
 
                 </div>
                 <div id="about_credits" class="dlg_tabs_page" style="overflow:auto;">
-                    <h3>- Credits -</h3>
+                    <h3>_("- Credits -")</h3>
                     <div class="dlg_group">
                     <p>
                         <label>_("Written by")</label>:<br/>
@@ -1022,7 +1021,7 @@ jQuery(function($) {
                     </div>
                 </div>
                 <div id="about_license" class="dlg_tabs_page">
-                    <h3>- License -</h3>
+                    <h3>_("- License -")</h3>
                     <div class="dlg_group">
                     <p>
     Hotot package is free software; you can redistribute it and/or
@@ -1059,7 +1058,7 @@ jQuery(function($) {
         </div>
         <div id="profile_dlg_body" class="dialog_body">
         <div style="float:left; width: 150px;">
-            <h3>- Picture -</h3>
+            <h3>_("- Picture -")</h3>
             <div class="dlg_group">
             <p style="text-align:center; min-height:70px;">
                 <span id="profile_avator" class="profile_img_wrapper"></span>
@@ -1069,7 +1068,7 @@ jQuery(function($) {
             </p>
             </div>
 
-            <h3>- Stat -</h3>
+            <h3>_("- Stat -")</h3>
             <div class="dlg_group">
             <p id="profile_stat">
                 <label>_("Join: ")</label>
@@ -1088,7 +1087,7 @@ jQuery(function($) {
             </div>
         </div>
         <div>
-            <h3>- Information -</h3>
+            <h3>_("- Information -")</h3>
             <div class="dlg_group">
             <p>
                 <label>_("Name")</label><br/>
