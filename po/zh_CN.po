@@ -4,7 +4,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Shellex Wei <5h3ll3x@gmail.com>
 # Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
-#
+# Jeonkwan Chan <jeonkwan@gmail.com>
 #, fuzzy
 msgid ""
 msgstr ""
@@ -217,7 +217,7 @@ msgstr "您的搜索 - "
 
 #: ../data/ui/index.html:506
 msgid " - did not match any result."
-msgstr " - 没有结果"
+msgstr " - 没有任何结果"
 
 #: ../data/ui/index.html:509
 msgid "Suggestions:"
@@ -229,7 +229,7 @@ msgstr "- 您可否有拼错单词。"
 
 #: ../data/ui/index.html:511
 msgid "- Try different keywords."
-msgstr "- 试试别的搜索关键词。"
+msgstr "- 试试另一搜索关键词。"
 
 #: ../data/ui/index.html:512
 msgid "- Try more general keywords."
@@ -325,19 +325,19 @@ msgstr ""
 
 #: ../data/ui/index.html:688 ../data/ui/index.html:831
 msgid "* You MUST restart Hotot for the changes below to take effect."
-msgstr ""
+msgstr "* 更改以下设置后，必须重启 Hotot 才能生效"
 
 #: ../data/ui/index.html:690
 msgid "Summon Hotot (like: &lt;ALT&gt;C)"
-msgstr ""
+msgstr "唤出 傲兔 (like: &lt;ALT&gt;C)"
 
 #: ../data/ui/index.html:692
 msgid "'Summon Hot Key'"
-msgstr ""
+msgstr "'唤出快捷键'"
 
 #: ../data/ui/index.html:698
 msgid "- Font Settings -"
-msgstr ""
+msgstr "- 字体设置 -"
 
 #: ../data/ui/index.html:701
 msgid "Font Family"
@@ -368,8 +368,9 @@ msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "ABCD 测试字体"
 
 #: ../data/ui/index.html:717
+#, fuzzy
 msgid "- Notification -"
-msgstr ""
+msgstr "- 通知及提示 -"
 
 #: ../data/ui/index.html:722
 msgid "Page"
@@ -385,31 +386,31 @@ msgstr ""
 
 #: ../data/ui/index.html:727
 msgid "'Notify when home page has new tweets'"
-msgstr ""
+msgstr "'主线有新消息时显示通知'"
 
 #: ../data/ui/index.html:733
 msgid "'Play sound when home page has new tweets'"
-msgstr ""
+msgstr "主线有新消息时播放提示音"
 
 #: ../data/ui/index.html:741
 msgid "'Notify when some new tweets mention me.'"
-msgstr ""
+msgstr "'有新回复时显示通知'"
 
 #: ../data/ui/index.html:747
 msgid "'Play swhen some new tweets mention me.'"
-msgstr ""
+msgstr "'有新回复时播放提示音'"
 
 #: ../data/ui/index.html:755
 msgid "'Notify when some new direct messages coming.'"
-msgstr ""
+msgstr "'有新私信时显示通知'"
 
 #: ../data/ui/index.html:761
 msgid "'Play when some new direct messages coming.'"
-msgstr ""
+msgstr "'有新私信时播放提示音'"
 
 #: ../data/ui/index.html:769
 msgid "- Display and Behavior -"
-msgstr ""
+msgstr "- 行为 与 样式 -"
 
 #: ../data/ui/index.html:773
 msgid "'Use Native Input'"
@@ -429,31 +430,33 @@ msgstr "使用原生通知机制"
 
 #: ../data/ui/index.html:780
 msgid "'Use Ubuntu Indicator'"
-msgstr ""
+msgstr "'使用 Ubuntu 指示器'"
 
 #: ../data/ui/index.html:782
 msgid "Use Ubuntu Indicator"
-msgstr ""
+msgstr "使用 Ubuntu 指示器"
 
 #: ../data/ui/index.html:784
 msgid "'Hover to open tweet box.'"
-msgstr ""
+msgstr "'鼠标悬停打开消息框'"
 
 #: ../data/ui/index.html:786
 msgid "Hover to open tweet box"
-msgstr ""
+msgstr "鼠标悬停打开消息框"
 
 #: ../data/ui/index.html:788
+#, fuzzy
 msgid "'Preload latest tweet in a conversation if it is cached.'"
-msgstr ""
+msgstr "'如果已有缓存，在对话中预先加载最新的消息'"
 
 #: ../data/ui/index.html:790
+#, fuzzy
 msgid "Preload latest tweet in a conversation if possible."
-msgstr ""
+msgstr "如果可能在对话中预先加载最新的消息"
 
 #: ../data/ui/index.html:795
 msgid "- API Settings -"
-msgstr ""
+msgstr "- API 设置 -"
 
 #: ../data/ui/index.html:798
 msgid "API Base"
@@ -464,12 +467,14 @@ msgid "'API Base'"
 msgstr ""
 
 #: ../data/ui/index.html:802
+#, fuzzy
 msgid "'Use same Signing Api'"
-msgstr ""
+msgstr "'使用相同的 Signing Api'"
 
 #: ../data/ui/index.html:805
+#, fuzzy
 msgid "Same signing API base: "
-msgstr ""
+msgstr "相同的 signing API base: "
 
 #: ../data/ui/index.html:807
 msgid "Signing API Base"
@@ -488,12 +493,14 @@ msgid "'OAuth Base'"
 msgstr ""
 
 #: ../data/ui/index.html:815
+#, fuzzy
 msgid "'Use same Signing OAuth Base'"
-msgstr ""
+msgstr "'使用相同的 Signing OAuth Base'"
 
 #: ../data/ui/index.html:818
+#, fuzzy
 msgid "Same signing OAuth base: "
-msgstr ""
+msgstr "相同的 signing OAuth base: "
 
 #: ../data/ui/index.html:820
 msgid "Signing OAuth Base"
@@ -513,15 +520,15 @@ msgstr ""
 
 #: ../data/ui/index.html:829
 msgid "- Proxy Settings -"
-msgstr ""
+msgstr "- 代理设置 -"
 
 #: ../data/ui/index.html:834
 msgid "'Use HTTP Proxy'"
-msgstr ""
+msgstr "'使用 HTTP 代理'"
 
 #: ../data/ui/index.html:836
 msgid "Use HTTP Proxy"
-msgstr ""
+msgstr "使用 HTTP 代理"
 
 #: ../data/ui/index.html:838 ../data/ui/index.html:850
 msgid "Host"
@@ -529,27 +536,27 @@ msgstr ""
 
 #: ../data/ui/index.html:840
 msgid "'HTTP Proxy Host'"
-msgstr ""
+msgstr "'HTTP 代理 Host'"
 
 #: ../data/ui/index.html:841 ../data/ui/index.html:854
 msgid "Port"
-msgstr ""
+msgstr "端口"
 
 #: ../data/ui/index.html:843
 msgid "'HTTP Proxy Port'"
-msgstr ""
+msgstr "'HTTP 代理端口'"
 
 #: ../data/ui/index.html:846
 msgid "'Use Socks Proxy'"
-msgstr ""
+msgstr "'使用 Socks 代理'"
 
 #: ../data/ui/index.html:848
 msgid "Use Socks Proxy"
-msgstr ""
+msgstr "使用 Socks 代理"
 
 #: ../data/ui/index.html:856
 msgid "'Socks Proxy Port'"
-msgstr ""
+msgstr "Socks 代理端口"
 
 #: ../data/ui/index.html:864
 msgid "Restore Defaults"
@@ -567,7 +574,7 @@ msgstr "确定"
 
 #: ../data/ui/index.html:879
 msgid "First time to Sign in with Twitter"
-msgstr ""
+msgstr "首次登入 推特"
 
 #: ../data/ui/index.html:885
 msgid ""
@@ -577,7 +584,7 @@ msgstr ""
 
 #: ../data/ui/index.html:888
 msgid "Click me to continue"
-msgstr ""
+msgstr "点我继续"
 
 #: ../data/ui/index.html:894
 msgid "Step 2: copy the PIN Code and paste it into the box below;"
@@ -589,11 +596,11 @@ msgstr ""
 
 #: ../data/ui/index.html:914
 msgid "About &amp; Help"
-msgstr ""
+msgstr "关于 与 帮助"
 
 #: ../data/ui/index.html:923
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 #: ../data/ui/index.html:928
 msgid "Keyboard"
@@ -601,11 +608,11 @@ msgstr ""
 
 #: ../data/ui/index.html:933
 msgid "Credits"
-msgstr ""
+msgstr "工作人员"
 
 #: ../data/ui/index.html:938
 msgid "License"
-msgstr ""
+msgstr "许可协议"
 
 #: ../data/ui/index.html:945 ../hotot/hotot.py:32 ../hotot/hotot.py:55
 #: ../hotot.desktop.in.h:1
@@ -630,107 +637,107 @@ msgstr "动作"
 
 #: ../data/ui/index.html:960
 msgid "Shortcut"
-msgstr ""
+msgstr "快捷键"
 
 #: ../data/ui/index.html:961
 msgid "Global"
-msgstr ""
+msgstr "全局"
 
 #: ../data/ui/index.html:962
 msgid "Quit Hotot"
-msgstr ""
+msgstr "退出 傲兔"
 
 #: ../data/ui/index.html:965
 msgid "Tweet List"
-msgstr ""
+msgstr "列表"
 
 #: ../data/ui/index.html:966
 msgid "Reload"
-msgstr ""
+msgstr "刷新"
 
 #: ../data/ui/index.html:967
 msgid "Slide to prev page"
-msgstr ""
+msgstr "滑动到前一页"
 
 #: ../data/ui/index.html:968
 msgid "Slide to next page"
-msgstr ""
+msgstr "滑动到下一页"
 
 #: ../data/ui/index.html:969
 msgid "Move to prev tweet"
-msgstr ""
+msgstr "移至前一消息"
 
 #: ../data/ui/index.html:970
 msgid "Move to next tweet"
-msgstr ""
+msgstr "移至下一消息"
 
 #: ../data/ui/index.html:971
 msgid "Move to top"
-msgstr ""
+msgstr "移至顶部"
 
 #: ../data/ui/index.html:972
 msgid "Move to bottom"
-msgstr ""
+msgstr "移至底部"
 
 #: ../data/ui/index.html:973
 msgid "Toggle toolbar"
-msgstr ""
+msgstr "启用工具栏"
 
 #: ../data/ui/index.html:974
 msgid "Toggle nav tabs"
-msgstr ""
+msgstr "启用导航标签"
 
 #: ../data/ui/index.html:975
 msgid "Enter compose mode"
-msgstr ""
+msgstr "进入 撰写模式"
 
 #: ../data/ui/index.html:976
 msgid "Enter action mode"
-msgstr ""
+msgstr "进入 操作模式"
 
 #: ../data/ui/index.html:977
 msgid "Enter filter mode"
-msgstr ""
+msgstr "进入 过滤模式"
 
 #: ../data/ui/index.html:978
 msgid "Compose Mode"
-msgstr ""
+msgstr "撰写模式"
 
 #: ../data/ui/index.html:979
 msgid "Exit compose mode"
-msgstr ""
+msgstr "退出 撰写模式"
 
 #: ../data/ui/index.html:980
 msgid "Action Mode"
-msgstr ""
+msgstr "操作模式"
 
 #: ../data/ui/index.html:981
 msgid "Prev action"
-msgstr ""
+msgstr "前一操作"
 
 #: ../data/ui/index.html:982
 msgid "Next action"
-msgstr ""
+msgstr "下一操作"
 
 #: ../data/ui/index.html:983
 msgid "Trigger action"
-msgstr ""
+msgstr "启用 操作"
 
 #: ../data/ui/index.html:984
 msgid "Exit action mode"
-msgstr ""
+msgstr "退出 操作模式"
 
 #: ../data/ui/index.html:985
 msgid "Filter Mode"
-msgstr ""
+msgstr "过滤模式"
 
 #: ../data/ui/index.html:986
 msgid "Apply keywords"
-msgstr ""
+msgstr "应用关键字"
 
 #: ../data/ui/index.html:987
 msgid "Exit filter mode"
-msgstr ""
+msgstr "退出 过滤模式"
 
 #: ../data/ui/index.html:995
 msgid "- Credits -"
@@ -738,15 +745,15 @@ msgstr ""
 
 #: ../data/ui/index.html:998
 msgid "Written by"
-msgstr ""
+msgstr "程序编写"
 
 #: ../data/ui/index.html:1010
 msgid "Artwork by"
-msgstr ""
+msgstr "美工制作"
 
 #: ../data/ui/index.html:1016
 msgid "Document by"
-msgstr ""
+msgstr "文档编写"
 
 #: ../data/ui/index.html:1024
 msgid "- License -"
@@ -754,7 +761,7 @@ msgstr ""
 
 #: ../data/ui/index.html:1056
 msgid "Profile"
-msgstr ""
+msgstr "个人档案"
 
 #: ../data/ui/index.html:1061
 msgid "- Picture -"
@@ -762,7 +769,7 @@ msgstr ""
 
 #: ../data/ui/index.html:1065
 msgid "Change avator"
-msgstr ""
+msgstr "更换头像"
 
 #: ../data/ui/index.html:1071
 msgid "- Stat -"
@@ -794,7 +801,7 @@ msgstr ""
 
 #: ../data/ui/index.html:1097
 msgid "Website"
-msgstr ""
+msgstr "主页"
 
 #: ../data/ui/index.html:1098
 msgid "'Website'"
@@ -802,7 +809,7 @@ msgstr ""
 
 #: ../data/ui/index.html:1099
 msgid "Bio"
-msgstr ""
+msgstr "简介"
 
 #: ../data/ui/index.html:1100
 msgid "'Bio'"
@@ -814,7 +821,7 @@ msgstr "扩展"
 
 #: ../data/ui/index.html:1128
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: ../data/ui/index.html:1149
 msgid "Message"
@@ -822,7 +829,7 @@ msgstr ""
 
 #: ../data/ui/index.html:1173
 msgid "Search in Google"
-msgstr ""
+msgstr "在谷歌搜索"
 
 #: ../data/ui/index.html:1174
 msgid "Search in Twitter"
@@ -877,3 +884,9 @@ msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
 
 #~ msgid "Tweets per Day"
 #~ msgstr "每天发推"
+
+#~ msgid "Keyborad"
+#~ msgstr "键盘"
+
+#~ msgid "'Font Size"
+#~ msgstr "'字号'"
