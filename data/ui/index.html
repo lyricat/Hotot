@@ -718,13 +718,21 @@ jQuery(function($) {
                     <p>
                         <table>
                         <tbody>
-                        <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Sound")</th></tr>
+                        <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Type")</th><th>_("Sound")</th></tr>
                         <tr><td>_("Home")</td>
                             <td>
                             <input id="chk_prefs_use_home_timeline_notify"
                                 class="dark"
                                 title=_("'Notify when home page has new tweets'")
                                 type="checkbox"/>
+                            </td>
+                            <td>
+                            <select class="dark"
+                            id="sel_prefs_use_home_timeline_notify_sound"
+                            title=_("'Type'") style="width: 85px">
+                                <option value="count">count</option>
+                                <option value="content">content</option>
+                            </select> 
                             </td>
                             <td>
                             <input id="chk_prefs_use_home_timeline_notify_sound"
@@ -741,6 +749,14 @@ jQuery(function($) {
                                 type="checkbox"/>
                             </td>
                             <td>
+                            <select class="dark"
+                            id="sel_prefs_use_mentions_notify_sound"
+                            title=_("'Type'") style="width: 85px">
+                                <option value="count">count</option>
+                                <option value="content">content</option>
+                            </select> 
+                            </td>
+                            <td>
                             <input id="chk_prefs_use_mentions_notify_sound"
                                 class="dark"
                                 title=_("'Play swhen some new tweets mention me.'")
@@ -753,6 +769,14 @@ jQuery(function($) {
                                 class="dark"
                                 title=_("'Notify when some new direct messages coming.'")
                                 type="checkbox"/>
+                            </td>
+                            <td>
+                    <select class="dark"
+                    id="sel_prefs_use_direct_messages_inbox_notify_sound"
+                    title=_("'Type'") style="width: 85px">
+                        <option value="count">count</option>
+                        <option value="content">content</option>
+                    </select> 
                             </td>
                             <td>
                             <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
