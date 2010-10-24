@@ -229,6 +229,8 @@ function save_prefs() {
     for (var i = 0; i < pages.length; i += 1) {
         prefs_obj['use_'+pages[i]+'_notify']
             = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
+        prefs_obj['use_'+pages[i]+'_notify_type']
+            = $('#sel_prefs_use_'+pages[i]+'_notify_type').val();
         prefs_obj['use_'+pages[i]+'_notify_sound']
             = $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked');
     }
