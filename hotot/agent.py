@@ -81,6 +81,15 @@ def init_notify():
     notify.set_timeout(5000)
     pass
 
+def do_notify(summary, body):
+    n = pynotify.Notification(summary, body)
+    n.set_icon_from_pixbuf(
+        gtk.gdk.pixbuf_new_from_file(
+            utils.get_ui_object('imgs/ic64_hotot.png')))
+    n.set_timeout(5000)
+    n.show()
+    pass
+
 def crack_hotot(uri):
     params = uri.split('/')
     if params[0] == 'token':
@@ -154,12 +163,19 @@ def crack_system(params):
     if params[1] == 'notify':
         if not get_prefs('use_native_notify'):
             return
-        summary = urllib.unquote(params[2])
-        body = urllib.unquote(params[3])
-        notify.update(summary, body)
-        notify.show()
+        type = urllib.unquote(params[2])
+        summary = urllib.unquote(params[3])
+        body = urllib.unquote(params[4])
+        if type == 'content':
+            do_notify(summary, body)
+        elif type == 'count':
+            notify.update(summary, body)
+            notify.show()
     elif params[1] == 'notify_with_sound':
-        subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
+        try:
+            subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
+        except :
+            pass
     elif params[1] == 'create_profile':
         profile = urllib.unquote(params[2])
         callback = urllib.unquote(params[3]).replace('\n','')
