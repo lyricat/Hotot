@@ -22,6 +22,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
+        , use_notify_type: 'count'
     },
     '#mentions': {
           since_id: 1, max_id: null
@@ -30,6 +31,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
+        , use_notify_type: 'content'
     },
     '#direct_messages_inbox': {
           since_id: 1, max_id: null 
@@ -38,6 +40,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
+        , use_notify_type: 'count'
     },
     '#direct_messages_outbox': {
           since_id: 1, max_id: null 
@@ -46,12 +49,14 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#favorites': { page: 1
         , api_proc: lib.twitterapi.get_favorites
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#retweeted_to_me': {
           since_id: 1, max_id: null
@@ -60,6 +65,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#retweeted_by_me': {
           since_id: 1, max_id: null
@@ -68,6 +74,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#retweets_of_me': {
           since_id: 1, max_id: null
@@ -76,6 +83,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#people': {
           id: null, screen_name: '' 
@@ -85,6 +93,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
     '#search': { 
           query: '', page: 1
@@ -92,6 +101,7 @@ block_info: {
         , actived_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
+        , use_notify_type: 'count'
     },
 },
 
@@ -303,10 +313,28 @@ function load_tweets_cb(result, pagename) {
                 ui.Main.block_info[pagename].max_id = last_id - 1;
         }
         if (ui.Main.block_info[pagename].use_notify) {
-            hotot_action('system/notify/'
-                + encodeURIComponent('Update page '+pagename)
-                + '/'
-                + encodeURIComponent(tweet_count + ' new items.'))
+            switch (ui.Main.block_info[pagename].use_notify_type) {
+            case 'count':
+                hotot_action('system/notify/count/'
+                    + encodeURIComponent('Update page '+pagename)
+                    + '/'+encodeURIComponent(tweet_count + ' new items.'));
+            break;
+            case 'content':
+                if (json_obj.length < 5) {
+                    for (var i = 0; i < json_obj.length; i += 1) {
+                        var user = typeof json_obj[i].sender != 'undefined'
+                            ? json_obj[i].sender : json_obj[i].user;
+                        hotot_action('system/notify/content/'
+                            + encodeURIComponent(user.screen_name) + '/'
+                            + encodeURIComponent(json_obj[i].text));
+                    }
+                } else {
+                    hotot_action('system/notify/count/'
+                        + encodeURIComponent('Update page '+pagename)
+                        + '/'+encodeURIComponent(tweet_count+' new items.'));
+                }
+            break;
+            } 
             if (ui.Main.block_info[pagename].use_notify_sound) {
                 hotot_action('system/notify_with_sound');
             }
