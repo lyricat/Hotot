@@ -14,9 +14,9 @@ function init () {
     function (event) {
         if (event.ctrlKey && event.keyCode == 192) { //Ctrl+`
             if (_this.is_show) 
-                $('#console').fadeOut();
+                $('#console').hide();
             else 
-                $('#console').fadeIn();
+                $('#console').show();
             _this.is_show = !_this.is_show;
             $('#console_in').focus();
         }
