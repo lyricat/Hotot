@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Carlos Fernando Dias Martins(ogalho) <ogalho@gmail.com>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-24 17:47+0800\n"
+"POT-Creation-Date: 2010-10-24 17:49+0800\n"
 "Last-Translator: Carlos Fernando Dias Martins(ogalho) <ogalho@gmail.com>\n"
 "Language: Português/Portugal \n"
 "MIME-Version: 1.0\n"
@@ -98,9 +97,8 @@ msgid "Sign In"
 msgstr "Ligar"
 
 #: ../data/ui/index.html:316
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Perfil"
+msgstr ""
 
 #: ../data/ui/index.html:328
 msgid "Delete"
@@ -235,14 +233,12 @@ msgid "- Try more general keywords."
 msgstr " - Tente palavras chave comuns."
 
 #: ../data/ui/index.html:531
-#, fuzzy
 msgid "'Home Timeline'"
-msgstr "'Actualizar'"
+msgstr ""
 
 #: ../data/ui/index.html:535
-#, fuzzy
 msgid "'Mentions'"
-msgstr "Extensões"
+msgstr ""
 
 #: ../data/ui/index.html:539
 msgid "'Direct Messages'"
@@ -253,23 +249,20 @@ msgid "'My favorites tweets'"
 msgstr ""
 
 #: ../data/ui/index.html:547
-#, fuzzy
 msgid "'Retweets and Retweeted'"
-msgstr "Meus Tweets, Retweettados"
+msgstr ""
 
 #: ../data/ui/index.html:551
 msgid "'Find someone you love.'"
 msgstr ""
 
 #: ../data/ui/index.html:555
-#, fuzzy
 msgid "'Search for ... '"
-msgstr "Pesquisar: "
+msgstr ""
 
 #: ../data/ui/index.html:577
-#, fuzzy
 msgid "'Click to compose message'"
-msgstr "'Clica aqui para escrever uma mensagem ...'"
+msgstr ""
 
 #: ../data/ui/index.html:581
 msgid "'URL shortener'"
@@ -320,9 +313,8 @@ msgid "Regain Access Token"
 msgstr "Obter Token de Acesso"
 
 #: ../data/ui/index.html:678
-#, fuzzy
 msgid "'Remember Password'"
-msgstr "Memorizar senha"
+msgstr ""
 
 #: ../data/ui/index.html:686
 msgid "- Global Keybinding -"
@@ -357,9 +349,8 @@ msgid "Font Size"
 msgstr "Tamanho de Fonte"
 
 #: ../data/ui/index.html:710
-#, fuzzy
 msgid "'Font Size'"
-msgstr "'Tamanho de Fonte'"
+msgstr ""
 
 #: ../data/ui/index.html:712
 msgid "px"
@@ -374,7 +365,6 @@ msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "abcdefghijk ABCDEFGHIJK"
 
 #: ../data/ui/index.html:717
-#, fuzzy
 msgid "- Notification -"
 msgstr "Localização:"
 
@@ -415,7 +405,6 @@ msgid "'Play when some new direct messages coming.'"
 msgstr ""
 
 #: ../data/ui/index.html:769
-#, fuzzy
 msgid "- Display and Behavior -"
 msgstr " - Configuração de Janela -"
 
@@ -444,12 +433,10 @@ msgid "Use Ubuntu Indicator"
 msgstr ""
 
 #: ../data/ui/index.html:784
-#, fuzzy
 msgid "'Hover to open tweet box.'"
 msgstr "Ir para tweet anterior"
 
 #: ../data/ui/index.html:786
-#, fuzzy
 msgid "Hover to open tweet box"
 msgstr "Ir para tweet anterior"
 
@@ -478,7 +465,6 @@ msgid "'Use same Signing Api'"
 msgstr "'Usar a mesma API de Autenticação'"
 
 #: ../data/ui/index.html:805
-#, fuzzy
 msgid "Same signing API base: "
 msgstr "Mesma Autenticação OAuth base:"
 
@@ -607,9 +593,8 @@ msgid "About"
 msgstr "Acerca de ..."
 
 #: ../data/ui/index.html:928
-#, fuzzy
 msgid "Keyboard"
-msgstr "Teclado"
+msgstr ""
 
 #: ../data/ui/index.html:933
 msgid "Credits"
@@ -745,9 +730,8 @@ msgid "Exit filter mode"
 msgstr "Sair de modo filtro"
 
 #: ../data/ui/index.html:995
-#, fuzzy
 msgid "- Credits -"
-msgstr "Creditos"
+msgstr ""
 
 #: ../data/ui/index.html:998
 msgid "Written by"
@@ -762,9 +746,8 @@ msgid "Document by"
 msgstr "Documentado por"
 
 #: ../data/ui/index.html:1024
-#, fuzzy
 msgid "- License -"
-msgstr "Licença"
+msgstr ""
 
 #: ../data/ui/index.html:1056
 msgid "Profile"
@@ -783,41 +766,36 @@ msgid "- Stat -"
 msgstr ""
 
 #: ../data/ui/index.html:1084
-#, fuzzy
 msgid "Favourites: "
 msgstr "Favoritos"
 
 #: ../data/ui/index.html:1090
-#, fuzzy
 msgid "- Information -"
-msgstr "Localização:"
+msgstr ""
 
 #: ../data/ui/index.html:1093
 msgid "Name"
 msgstr "Nome"
 
 #: ../data/ui/index.html:1094
-#, fuzzy
 msgid "'Name'"
-msgstr "Nome"
+msgstr ""
 
 #: ../data/ui/index.html:1095
 msgid "Location"
 msgstr "Localização"
 
 #: ../data/ui/index.html:1096
-#, fuzzy
 msgid "'Location'"
-msgstr "Localização"
+msgstr ""
 
 #: ../data/ui/index.html:1097
 msgid "Website"
 msgstr "Sitio Web"
 
 #: ../data/ui/index.html:1098
-#, fuzzy
 msgid "'Website'"
-msgstr "Sitio Web"
+msgstr ""
 
 #: ../data/ui/index.html:1099
 msgid "Bio"
@@ -871,11 +849,9 @@ msgstr "Hotot Cliente Twitter"
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Cliente Twitter baseado em Gtk2 e Webkit"
 
-#, fuzzy
 #~ msgid "Login to Hotot"
 #~ msgstr "Ligar a Hotot"
 
-#, fuzzy
 #~ msgid "or use Basic Auth"
 #~ msgstr "Ou usar Twitter OAuth"
 

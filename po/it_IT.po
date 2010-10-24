@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-24 17:47+0800\n"
+"POT-Creation-Date: 2010-10-24 17:49+0800\n"
 "PO-Revision-Date: 2010-10-23 10:15+0200\n"
 "Last-Translator: Federico Magnani <magnus@gmx.it>\n"
 "Language-Team: Italiano/Italia\n"
@@ -42,7 +42,7 @@ msgstr "Nessuna icona per l'estensione"
 
 #: ../data/ui/index.html:247
 msgid "'More ...'"
-msgstr "'Ancora ...'"
+msgstr "'Impostazioni ...'"
 
 #: ../data/ui/index.html:250 ../data/ui/index.html:329
 #: ../data/ui/index.html:633
@@ -66,13 +66,12 @@ msgid "Hotot "
 msgstr "Hotot "
 
 #: ../data/ui/index.html:274
-#, fuzzy
 msgid "'Create a new profile'"
-msgstr "Crea Profilo"
+msgstr "'Crea un nuovo profilo'"
 
 #: ../data/ui/index.html:277
 msgid "Greeting!"
-msgstr ""
+msgstr "Benvenuti!"
 
 #: ../data/ui/index.html:288 ../data/ui/index.html:292
 #: ../data/ui/index.html:667
@@ -100,9 +99,8 @@ msgid "Sign In"
 msgstr "Accedi"
 
 #: ../data/ui/index.html:316
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Nome del Profilo: "
+msgstr "Nome del Profilo:"
 
 #: ../data/ui/index.html:328
 msgid "Delete"
@@ -237,45 +235,40 @@ msgid "- Try more general keywords."
 msgstr "- Prova ad utilizzare parole chiave più generiche."
 
 #: ../data/ui/index.html:531
-#, fuzzy
 msgid "'Home Timeline'"
-msgstr "'Ricarica timeline.'"
+msgstr "'Home Timeline.'"
 
 #: ../data/ui/index.html:535
-#, fuzzy
 msgid "'Mentions'"
-msgstr "Estensioni"
+msgstr "'Chi ti ha mensionato'"
 
 #: ../data/ui/index.html:539
 msgid "'Direct Messages'"
-msgstr ""
+msgstr "'Messaggi diretti'"
 
 #: ../data/ui/index.html:543
 msgid "'My favorites tweets'"
-msgstr ""
+msgstr "'I miei tweets preferiti'"
 
 #: ../data/ui/index.html:547
-#, fuzzy
 msgid "'Retweets and Retweeted'"
-msgstr "Miei Tweets, Retweeted"
+msgstr "'Retweets and Retweeted'"
 
 #: ../data/ui/index.html:551
 msgid "'Find someone you love.'"
-msgstr ""
+msgstr "'Cerca qualcuno che ti piace'"
 
 #: ../data/ui/index.html:555
-#, fuzzy
 msgid "'Search for ... '"
-msgstr "Cerca: "
+msgstr "'Cerca ... '"
 
 #: ../data/ui/index.html:577
-#, fuzzy
 msgid "'Click to compose message'"
-msgstr "'Clicca qui per comporre un Messaggio ...'"
+msgstr "'Clicca qui per comporre il messaggio ...'"
 
 #: ../data/ui/index.html:581
 msgid "'URL shortener'"
-msgstr ""
+msgstr "'Abbrevia URL'"
 
 #: ../data/ui/index.html:584
 msgid "Clear"
@@ -319,12 +312,11 @@ msgstr "Rete"
 
 #: ../data/ui/index.html:664
 msgid "Regain Access Token"
-msgstr "Richiedi Buono di Accesso"
+msgstr "Richiedi PIN di Accesso"
 
 #: ../data/ui/index.html:678
-#, fuzzy
 msgid "'Remember Password'"
-msgstr "Ricorda Password"
+msgstr "'Ricorda Password'"
 
 #: ../data/ui/index.html:686
 msgid "- Global Keybinding -"
@@ -359,7 +351,6 @@ msgid "Font Size"
 msgstr "Dimensione"
 
 #: ../data/ui/index.html:710
-#, fuzzy
 msgid "'Font Size'"
 msgstr "'Dimensione'"
 
@@ -743,9 +734,8 @@ msgid "Exit filter mode"
 msgstr "Elimina filtro"
 
 #: ../data/ui/index.html:995
-#, fuzzy
 msgid "- Credits -"
-msgstr "Ringraziamenti"
+msgstr "- Ringraziamenti -"
 
 #: ../data/ui/index.html:998
 msgid "Written by"
@@ -760,9 +750,8 @@ msgid "Document by"
 msgstr "Documentazione di"
 
 #: ../data/ui/index.html:1024
-#, fuzzy
 msgid "- License -"
-msgstr "Licenza"
+msgstr "- Licenza -"
 
 #: ../data/ui/index.html:1056
 msgid "Profile"
@@ -785,36 +774,32 @@ msgid "Favourites: "
 msgstr "Preferiti:"
 
 #: ../data/ui/index.html:1090
-#, fuzzy
 msgid "- Information -"
-msgstr "- Notifiche -"
+msgstr "- Informazioni -"
 
 #: ../data/ui/index.html:1093
 msgid "Name"
 msgstr "Nome"
 
 #: ../data/ui/index.html:1094
-#, fuzzy
 msgid "'Name'"
-msgstr "Nome"
+msgstr "'Nome'"
 
 #: ../data/ui/index.html:1095
 msgid "Location"
 msgstr "Luogo"
 
 #: ../data/ui/index.html:1096
-#, fuzzy
 msgid "'Location'"
-msgstr "Luogo"
+msgstr "'Luogo'"
 
 #: ../data/ui/index.html:1097
 msgid "Website"
 msgstr "Website"
 
 #: ../data/ui/index.html:1098
-#, fuzzy
 msgid "'Website'"
-msgstr "Website"
+msgstr "'Website'"
 
 #: ../data/ui/index.html:1099
 msgid "Bio"
@@ -822,7 +807,7 @@ msgstr "Bio"
 
 #: ../data/ui/index.html:1100
 msgid "'Bio'"
-msgstr ""
+msgstr "'Bio'"
 
 #: ../data/ui/index.html:1118
 msgid "Extenstions"
@@ -867,20 +852,3 @@ msgstr "Hotot Twitter Client"
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Twitter Client leggero basato su Gtk2 e Webkit"
-
-#, fuzzy
-#~ msgid ""
-#~ "'is a lightweight client for the '&lt;a href=&quot;http://twitter."
-#~ "com&quot;&gt;twitter</a>' microblogging service'"
-#~ msgstr ""
-#~ "è un client leggero per &lt;a href=&quot;http://twitter.com&quot;&gt;"
-#~ "twitter</a>"
-
-#~ msgid "twitter"
-#~ msgstr "twitter"
-
-#~ msgid "Consumer Key"
-#~ msgstr "Chiave utilizzatore"
-
-#~ msgid "Consumer Secret"
-#~ msgstr "Parola chiave utilizzatore"

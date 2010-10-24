@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-24 17:47+0800\n"
+"POT-Creation-Date: 2010-10-24 17:49+0800\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -236,14 +236,12 @@ msgid "- Try more general keywords."
 msgstr "- 试试更通用的关键词。"
 
 #: ../data/ui/index.html:531
-#, fuzzy
 msgid "'Home Timeline'"
-msgstr "'刷新时间线'"
+msgstr ""
 
 #: ../data/ui/index.html:535
-#, fuzzy
 msgid "'Mentions'"
-msgstr "扩展"
+msgstr ""
 
 #: ../data/ui/index.html:539
 msgid "'Direct Messages'"
@@ -254,23 +252,20 @@ msgid "'My favorites tweets'"
 msgstr ""
 
 #: ../data/ui/index.html:547
-#, fuzzy
 msgid "'Retweets and Retweeted'"
-msgstr "我被转推的消息"
+msgstr ""
 
 #: ../data/ui/index.html:551
 msgid "'Find someone you love.'"
 msgstr ""
 
 #: ../data/ui/index.html:555
-#, fuzzy
 msgid "'Search for ... '"
-msgstr "搜索："
+msgstr ""
 
 #: ../data/ui/index.html:577
-#, fuzzy
 msgid "'Click to compose message'"
-msgstr "'点击撰写新消息…'"
+msgstr ""
 
 #: ../data/ui/index.html:581
 msgid "'URL shortener'"
@@ -321,9 +316,8 @@ msgid "Regain Access Token"
 msgstr "Regain Access Token"
 
 #: ../data/ui/index.html:678
-#, fuzzy
 msgid "'Remember Password'"
-msgstr "记住密码"
+msgstr ""
 
 #: ../data/ui/index.html:686
 msgid "- Global Keybinding -"
@@ -358,9 +352,8 @@ msgid "Font Size"
 msgstr "字号"
 
 #: ../data/ui/index.html:710
-#, fuzzy
 msgid "'Font Size'"
-msgstr "'字号'"
+msgstr ""
 
 #: ../data/ui/index.html:712
 msgid "px"
@@ -375,9 +368,8 @@ msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "ABCD 测试字体"
 
 #: ../data/ui/index.html:717
-#, fuzzy
 msgid "- Notification -"
-msgstr "位置："
+msgstr ""
 
 #: ../data/ui/index.html:722
 msgid "Page"
@@ -781,27 +773,24 @@ msgid "Favourites: "
 msgstr "收藏："
 
 #: ../data/ui/index.html:1090
-#, fuzzy
 msgid "- Information -"
-msgstr "位置："
+msgstr ""
 
 #: ../data/ui/index.html:1093
 msgid "Name"
 msgstr "名字"
 
 #: ../data/ui/index.html:1094
-#, fuzzy
 msgid "'Name'"
-msgstr "名字"
+msgstr ""
 
 #: ../data/ui/index.html:1095
 msgid "Location"
 msgstr "位置"
 
 #: ../data/ui/index.html:1096
-#, fuzzy
 msgid "'Location'"
-msgstr "位置"
+msgstr ""
 
 #: ../data/ui/index.html:1097
 msgid "Website"

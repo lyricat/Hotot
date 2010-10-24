@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-24 17:47+0800\n"
+"POT-Creation-Date: 2010-10-24 17:49+0800\n"
 "PO-Revision-Date: 2010-10-17 18:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch/Deutschland\n"
@@ -99,9 +99,8 @@ msgid "Sign In"
 msgstr "Anmelden"
 
 #: ../data/ui/index.html:316
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Profil"
+msgstr ""
 
 #: ../data/ui/index.html:328
 msgid "Delete"
@@ -236,14 +235,12 @@ msgid "- Try more general keywords."
 msgstr "- Versuchen Sie allgemeinere Suchwörter."
 
 #: ../data/ui/index.html:531
-#, fuzzy
 msgid "'Home Timeline'"
-msgstr "'Zeitleiste aktualisieren.'"
+msgstr ""
 
 #: ../data/ui/index.html:535
-#, fuzzy
 msgid "'Mentions'"
-msgstr "Erweiterungen"
+msgstr ""
 
 #: ../data/ui/index.html:539
 msgid "'Direct Messages'"
@@ -254,23 +251,20 @@ msgid "'My favorites tweets'"
 msgstr ""
 
 #: ../data/ui/index.html:547
-#, fuzzy
 msgid "'Retweets and Retweeted'"
-msgstr "Meine Tweets mit Retweet"
+msgstr ""
 
 #: ../data/ui/index.html:551
 msgid "'Find someone you love.'"
 msgstr ""
 
 #: ../data/ui/index.html:555
-#, fuzzy
 msgid "'Search for ... '"
-msgstr "Suchen:"
+msgstr ""
 
 #: ../data/ui/index.html:577
-#, fuzzy
 msgid "'Click to compose message'"
-msgstr "'Hier klicken, um eine Nachricht zu schreiben ...'"
+msgstr ""
 
 #: ../data/ui/index.html:581
 msgid "'URL shortener'"
@@ -321,9 +315,8 @@ msgid "Regain Access Token"
 msgstr "Zugriffstoken wiederherstellen"
 
 #: ../data/ui/index.html:678
-#, fuzzy
 msgid "'Remember Password'"
-msgstr "Passwort merken"
+msgstr ""
 
 #: ../data/ui/index.html:686
 msgid "- Global Keybinding -"
@@ -358,9 +351,8 @@ msgid "Font Size"
 msgstr "Font Größe"
 
 #: ../data/ui/index.html:710
-#, fuzzy
 msgid "'Font Size'"
-msgstr "'Fontgröße"
+msgstr ""
 
 #: ../data/ui/index.html:712
 msgid "px"
@@ -740,9 +732,8 @@ msgid "Exit filter mode"
 msgstr "Filtermodus verlassen"
 
 #: ../data/ui/index.html:995
-#, fuzzy
 msgid "- Credits -"
-msgstr "Danksagung"
+msgstr ""
 
 #: ../data/ui/index.html:998
 msgid "Written by"
@@ -757,9 +748,8 @@ msgid "Document by"
 msgstr "Dokument von"
 
 #: ../data/ui/index.html:1024
-#, fuzzy
 msgid "- License -"
-msgstr "Lizenz"
+msgstr ""
 
 #: ../data/ui/index.html:1056
 msgid "Profile"
@@ -782,36 +772,32 @@ msgid "Favourites: "
 msgstr "Favoriten:"
 
 #: ../data/ui/index.html:1090
-#, fuzzy
 msgid "- Information -"
-msgstr "- Benachrichtigung -"
+msgstr ""
 
 #: ../data/ui/index.html:1093
 msgid "Name"
 msgstr "Name"
 
 #: ../data/ui/index.html:1094
-#, fuzzy
 msgid "'Name'"
-msgstr "Name"
+msgstr ""
 
 #: ../data/ui/index.html:1095
 msgid "Location"
 msgstr "Ort"
 
 #: ../data/ui/index.html:1096
-#, fuzzy
 msgid "'Location'"
-msgstr "Ort"
+msgstr ""
 
 #: ../data/ui/index.html:1097
 msgid "Website"
 msgstr "Webseite"
 
 #: ../data/ui/index.html:1098
-#, fuzzy
 msgid "'Website'"
-msgstr "Webseite"
+msgstr ""
 
 #: ../data/ui/index.html:1099
 msgid "Bio"
