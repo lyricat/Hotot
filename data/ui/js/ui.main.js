@@ -480,8 +480,8 @@ function add_tweets(json_obj, container) {
             += new_tweets_height + json_obj.length;
     }
 
-    ui.Main.trim_page(container);
     if (container.parent().get(0).scrollTop < 100) {
+        ui.Main.trim_page(container);
         ui.Main.compress_page(container);
     }
 
