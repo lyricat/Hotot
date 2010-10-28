@@ -1,0 +1,882 @@
+# Copyright (C) 2010 Gerald Schmidhuber
+# This file is distributed under the same license as the PACKAGE package.
+# Gerald Schmidhuber &lt;gerald.schmidhuber@googlemail.com&gt;, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotot 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-24 17:49+0800\n"
+"PO-Revision-Date: 2010-10-25 01:05+0200\n"
+"Last-Translator: Yusuf BARAN <info@barancolor.net>\n"
+"Language-Team: Deutsch/Deutschland\n"
+"Language: Deutsch/Deutschland\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/ui/index.html:5
+msgid "Home | Hotot"
+msgstr "Giriş | Hotot"
+
+#: ../data/ui/index.html:89
+#: ../data/ui/index.html:90
+msgid "'What is happening?'"
+msgstr "'Ne Yapıyorsunuz?'"
+
+#: ../data/ui/index.html:91
+msgid "'Click here to Compose a Meassage ...'"
+msgstr "'Buraya Tıklayıp Mesajınızı Yazın ...'"
+
+#: ../data/ui/index.html:236
+msgid "'Reload timeline.'"
+msgstr "'Zaman Çizgisini Tekrar Yükle.'"
+
+#: ../data/ui/index.html:239
+msgid "'Extensions ... '"
+msgstr "'Uzantılar ...'"
+
+#: ../data/ui/index.html:242
+msgid "No Extension Icon"
+msgstr "Uzantı Simgesi Yok"
+
+#: ../data/ui/index.html:247
+msgid "'More ...'"
+msgstr "'Ayarlar ...'"
+
+#: ../data/ui/index.html:250
+#: ../data/ui/index.html:329
+#: ../data/ui/index.html:633
+msgid "Preferences"
+msgstr "Özellikler"
+
+#: ../data/ui/index.html:253
+msgid "Extensions"
+msgstr "Uzantılar"
+
+#: ../data/ui/index.html:256
+msgid "Help &amp;amp; About"
+msgstr "Yardım &amp;amp; Hakkında"
+
+#: ../data/ui/index.html:259
+msgid "Sign out"
+msgstr "Çıkış Yap"
+
+#: ../data/ui/index.html:272
+msgid "Hotot "
+msgstr "Hotot"
+
+#: ../data/ui/index.html:274
+msgid "'Create a new profile'"
+msgstr "'Yeni Hesap Oluştur'"
+
+#: ../data/ui/index.html:277
+msgid "Greeting!"
+msgstr "Selamlar!"
+
+#: ../data/ui/index.html:288
+#: ../data/ui/index.html:292
+#: ../data/ui/index.html:667
+msgid "Sign in with Twitter"
+msgstr "Twitter ile giriş yap"
+
+#: ../data/ui/index.html:292
+#: ../data/ui/index.html:667
+msgid "'Sign in with Twitter'"
+msgstr "'Twitter ile giriş yap'"
+
+#: ../data/ui/index.html:301
+msgid "Username:"
+msgstr "Kullanıcı Adı:"
+
+#: ../data/ui/index.html:303
+msgid "Password:"
+msgstr "Şifre:"
+
+#: ../data/ui/index.html:305
+#: ../data/ui/index.html:680
+msgid "Remember Password"
+msgstr "Şifreyi Hatırla"
+
+#: ../data/ui/index.html:307
+msgid "Sign In"
+msgstr "Giriş Yap"
+
+#: ../data/ui/index.html:316
+msgid "Profile Name:"
+msgstr "Hesap İsmi:"
+
+#: ../data/ui/index.html:328
+msgid "Delete"
+msgstr "Sil"
+
+#: ../data/ui/index.html:334
+#: ../data/ui/index.html:963
+msgid "Help"
+msgstr "Yardım"
+
+#: ../data/ui/index.html:344
+#: ../data/ui/index.html:353
+#: ../data/ui/index.html:368
+#: ../data/ui/index.html:376
+#: ../data/ui/index.html:385
+#: ../data/ui/index.html:401
+#: ../data/ui/index.html:409
+#: ../data/ui/index.html:417
+#: ../data/ui/index.html:487
+#: ../data/ui/index.html:516
+msgid "Load more"
+msgstr "Daha çok göster"
+
+#: ../data/ui/index.html:361
+msgid "Inbox"
+msgstr "Gelen Kutusu"
+
+#: ../data/ui/index.html:362
+msgid "Outbox"
+msgstr "Giden Kutusu"
+
+#: ../data/ui/index.html:393
+msgid "Retweeted By Others"
+msgstr "Diğerlerinden İletilenler"
+
+#: ../data/ui/index.html:394
+msgid "Retweeted By Me"
+msgstr "Benden İletilenler"
+
+#: ../data/ui/index.html:395
+msgid "My Tweets, Retweeted"
+msgstr "Twitlerim, İletilenler"
+
+#: ../data/ui/index.html:426
+msgid "Look up: "
+msgstr "Ara:"
+
+#: ../data/ui/index.html:429
+#: ../data/ui/index.html:498
+msgid "GO"
+msgstr "Git"
+
+#: ../data/ui/index.html:437
+msgid "Follow"
+msgstr "Takip Et"
+
+#: ../data/ui/index.html:441
+msgid "Block"
+msgstr "Engelle"
+
+#: ../data/ui/index.html:445
+msgid "Unblock"
+msgstr "Engeli Kaldır"
+
+#: ../data/ui/index.html:452
+msgid "Name: "
+msgstr "İsim:"
+
+#: ../data/ui/index.html:456
+#: ../data/ui/index.html:1076
+msgid "Tweets: "
+msgstr "Twitler:"
+
+#: ../data/ui/index.html:457
+#: ../data/ui/index.html:1078
+msgid "Tweets per Day: "
+msgstr "Gün Başına Twit:"
+
+#: ../data/ui/index.html:461
+msgid "Web: "
+msgstr "Ağ:"
+
+#: ../data/ui/index.html:464
+msgid "Location: "
+msgstr "Konum:"
+
+#: ../data/ui/index.html:465
+#: ../data/ui/index.html:1074
+msgid "Join: "
+msgstr "Gir:"
+
+#: ../data/ui/index.html:466
+#: ../data/ui/index.html:1082
+msgid "Followers: "
+msgstr "Takipçiler:"
+
+#: ../data/ui/index.html:467
+#: ../data/ui/index.html:1080
+msgid "Friends: "
+msgstr "Arkadaşlar:"
+
+#: ../data/ui/index.html:475
+msgid " has protected his/her tweets."
+msgstr "Kişinin twitleri korunuyor."
+
+#: ../data/ui/index.html:478
+msgid "You need to go to twitter.com to send a request before you can start following this person..."
+msgstr "Bu kişiyi takibe başlamadan önce twitter.com adresinden kişiye istek göndermelisiniz..."
+
+#: ../data/ui/index.html:481
+msgid "Send Request"
+msgstr "İstek Gönder"
+
+#: ../data/ui/index.html:495
+msgid "Search for: "
+msgstr "Bunun için ara:"
+
+#: ../data/ui/index.html:506
+msgid "Your search - "
+msgstr "Aramanız - "
+
+#: ../data/ui/index.html:506
+msgid " - did not match any result."
+msgstr " - herhangi bir sonuç bulunamadı."
+
+#: ../data/ui/index.html:509
+msgid "Suggestions:"
+msgstr "Öneriler:"
+
+#: ../data/ui/index.html:510
+msgid "- Make sure all words are spelled correctly."
+msgstr "- Tüm kelimelerin doğru yazıldığından emin olun."
+
+#: ../data/ui/index.html:511
+msgid "- Try different keywords."
+msgstr "- Farklı bir anahtar kelime deneyin."
+
+#: ../data/ui/index.html:512
+msgid "- Try more general keywords."
+msgstr "- Daha fazla genel anahtar kelime deneyin."
+
+#: ../data/ui/index.html:531
+msgid "'Home Timeline'"
+msgstr "'Giriş Zaman Çizgisi'"
+
+#: ../data/ui/index.html:535
+msgid "'Mentions'"
+msgstr "'Söz et'"
+
+#: ../data/ui/index.html:539
+msgid "'Direct Messages'"
+msgstr "'Doğrudan Mesaj'"
+
+#: ../data/ui/index.html:543
+msgid "'My favorites tweets'"
+msgstr "'En sevdiğim twitler'"
+
+#: ../data/ui/index.html:547
+msgid "'Retweets and Retweeted'"
+msgstr "'İletilenler ve iletilmişler'"
+
+#: ../data/ui/index.html:551
+msgid "'Find someone you love.'"
+msgstr "'Sizi seven birilerini bulun'"
+
+#: ../data/ui/index.html:555
+msgid "'Search for ... '"
+msgstr "'Ara ...'"
+
+#: ../data/ui/index.html:577
+msgid "'Click to compose message'"
+msgstr "'Tıplayıp mesajınızı gönderin'"
+
+#: ../data/ui/index.html:581
+msgid "'URL shortener'"
+msgstr "'Adres Kısaltıcı'"
+
+#: ../data/ui/index.html:584
+msgid "Clear"
+msgstr "Temizle"
+
+#: ../data/ui/index.html:587
+#: ../data/ui/index.html:1109
+#: ../hotot/hotot.py:136
+msgid "Update"
+msgstr "Güncelle"
+
+#: ../data/ui/index.html:592
+msgid "Press Ctrl+Enter to Update"
+msgstr "Ctrl+Giriş Tuşuna Basıp Güncelleyin"
+
+#: ../data/ui/index.html:605
+#: ../data/ui/index.html:723
+msgid "Home"
+msgstr "Giriş"
+
+#: ../data/ui/index.html:611
+msgid "DM"
+msgstr "DM"
+
+#: ../data/ui/index.html:622
+msgid "Console"
+msgstr "Panel"
+
+#: ../data/ui/index.html:642
+msgid "Account"
+msgstr "Hesap"
+
+#: ../data/ui/index.html:647
+msgid "System"
+msgstr "Sistem"
+
+#: ../data/ui/index.html:652
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: ../data/ui/index.html:657
+msgid "Networks"
+msgstr "Ağlar"
+
+#: ../data/ui/index.html:664
+msgid "Regain Access Token"
+msgstr "Erişim Kimliğini Tekrar Doğrula"
+
+#: ../data/ui/index.html:678
+msgid "'Remember Password'"
+msgstr "'Şifreyi Hatırla'"
+
+#: ../data/ui/index.html:686
+msgid "- Global Keybinding -"
+msgstr "- Genel Tuş Kombinasyonları -"
+
+#: ../data/ui/index.html:688
+#: ../data/ui/index.html:831
+msgid "* You MUST restart Hotot for the changes below to take effect."
+msgstr "* Değişikliklerin etkin olabilmesi için Hotot'u tekrar başlatmalısınız."
+
+#: ../data/ui/index.html:690
+msgid "Summon Hotot (like: &amp;lt;ALT&amp;gt;C)"
+msgstr "Hotot'u Çağır (Örn: &amp;lt;ALT&amp;gt;C)"
+
+#: ../data/ui/index.html:692
+msgid "'Summon Hot Key'"
+msgstr "'Çağırma Kısayolu'"
+
+#: ../data/ui/index.html:698
+msgid "- Font Settings -"
+msgstr "- Yazıtipi Ayarları -"
+
+#: ../data/ui/index.html:701
+msgid "Font Family"
+msgstr "Yazıtipi Ailesi"
+
+#: ../data/ui/index.html:703
+msgid "'Font Family'"
+msgstr "'Yazıtipi Ailesi'"
+
+#: ../data/ui/index.html:709
+msgid "Font Size"
+msgstr "Yazıtipi Boyutu"
+
+#: ../data/ui/index.html:710
+msgid "'Font Size'"
+msgstr "'Yazıtipi Boyutu'"
+
+#: ../data/ui/index.html:712
+msgid "px"
+msgstr "px"
+
+#: ../data/ui/index.html:713
+msgid "Preview"
+msgstr "Öngörünüm"
+
+#: ../data/ui/index.html:714
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr "abcdefghijk ABCDEFGHIJK"
+
+#: ../data/ui/index.html:717
+msgid "- Notification -"
+msgstr "- Hatırlatma -"
+
+#: ../data/ui/index.html:722
+msgid "Page"
+msgstr "Sayfa"
+
+#: ../data/ui/index.html:722
+msgid "Notify"
+msgstr "Hatırlatma"
+
+#: ../data/ui/index.html:722
+msgid "Sound"
+msgstr "Ses"
+
+#: ../data/ui/index.html:727
+msgid "'Notify when home page has new tweets'"
+msgstr "'Ana sayfaya düşen yeni twit hatırlatması'"
+
+#: ../data/ui/index.html:733
+msgid "'Play sound when home page has new tweets'"
+msgstr "'Ana sayfaya twit düşünce sesli olarak uyar'"
+
+#: ../data/ui/index.html:741
+msgid "'Notify when some new tweets mention me.'"
+msgstr "'Yeni twitlerde bana haber ver .'"
+
+#: ../data/ui/index.html:747
+msgid "'Play swhen some new tweets mention me.'"
+msgstr "'Yeni twitlerde bana sesli uyarı ver.'"
+
+#: ../data/ui/index.html:755
+msgid "'Notify when some new direct messages coming.'"
+msgstr "'Yeni doğrudan mesajlarda bana hatırlat.'"
+
+#: ../data/ui/index.html:761
+msgid "'Play when some new direct messages coming.'"
+msgstr "'Yeni doğrudan mesajlarda sesli olarak uyar.'"
+
+#: ../data/ui/index.html:769
+msgid "- Display and Behavior -"
+msgstr "- Ekran ve Davranış -"
+
+#: ../data/ui/index.html:773
+msgid "'Use Native Input'"
+msgstr "'Yerel Girişleri Kullan'"
+
+#: ../data/ui/index.html:774
+msgid "Use Native Input Dialog"
+msgstr "Yerel Girişli Diyalog Kullan"
+
+#: ../data/ui/index.html:776
+msgid "'Use Native Notify'"
+msgstr "'Yerel Hatırlatmaları Kullan'"
+
+#: ../data/ui/index.html:778
+msgid "Use Native Notify System"
+msgstr "Yerel Hatırlatma Sistemini Kullan"
+
+#: ../data/ui/index.html:780
+msgid "'Use Ubuntu Indicator'"
+msgstr "'Ubuntu Göstergelerini Kullan'"
+
+#: ../data/ui/index.html:782
+msgid "Use Ubuntu Indicator"
+msgstr "Ubuntu Göstergelerini Kullan"
+
+#: ../data/ui/index.html:784
+msgid "'Hover to open tweet box.'"
+msgstr "'Twit kutusunu açmak için üzerinde bekle.'"
+
+#: ../data/ui/index.html:786
+msgid "Hover to open tweet box"
+msgstr "Twit kutusunu açmak için üzerinde bekle"
+
+#: ../data/ui/index.html:788
+msgid "'Preload latest tweet in a conversation if it is cached.'"
+msgstr "'Eğer önbellekte ise son twiti tekrar yükle.'"
+
+#: ../data/ui/index.html:790
+msgid "Preload latest tweet in a conversation if possible."
+msgstr "Eğer önbellekte ise son twiti tekrar yükle"
+
+#: ../data/ui/index.html:795
+msgid "- API Settings -"
+msgstr "- API Ayarları -"
+
+#: ../data/ui/index.html:798
+msgid "API Base"
+msgstr "API Tabanı"
+
+#: ../data/ui/index.html:800
+msgid "'API Base'"
+msgstr "'API Tabanı'"
+
+#: ../data/ui/index.html:802
+msgid "'Use same Signing Api'"
+msgstr "'Aynı giriş API'sini kullan'"
+
+#: ../data/ui/index.html:805
+msgid "Same signing API base: "
+msgstr "Aynı giriş API'sini kullan:"
+
+#: ../data/ui/index.html:807
+msgid "Signing API Base"
+msgstr "Giriş API tabanı"
+
+#: ../data/ui/index.html:809
+msgid "'Signing API Base'"
+msgstr "'Giriş API tabanı'"
+
+#: ../data/ui/index.html:811
+msgid "OAuth Base"
+msgstr "OAuth Tabanı"
+
+#: ../data/ui/index.html:813
+msgid "'OAuth Base'"
+msgstr "'OAuth Tabanı'"
+
+#: ../data/ui/index.html:815
+msgid "'Use same Signing OAuth Base'"
+msgstr "'Girişte Aynı OAuth Tabanını Kullan'"
+
+#: ../data/ui/index.html:818
+msgid "Same signing OAuth base: "
+msgstr "Girişte Aynı OAuth Tabanını Kullan:"
+
+#: ../data/ui/index.html:820
+msgid "Signing OAuth Base"
+msgstr " OAuth Tabanı İle Giriliyor"
+
+#: ../data/ui/index.html:822
+msgid "'Signing OAuth Base'"
+msgstr "'OAuth Tabanı İle Giriliyor'"
+
+#: ../data/ui/index.html:824
+msgid "Search API Base"
+msgstr "API Tabanı Ara"
+
+#: ../data/ui/index.html:826
+msgid "'Search API Base'"
+msgstr "'API Tabanı Ara'"
+
+#: ../data/ui/index.html:829
+msgid "- Proxy Settings -"
+msgstr "- Vekil Ayarları -"
+
+#: ../data/ui/index.html:834
+msgid "'Use HTTP Proxy'"
+msgstr "'Ağ Vekili Kullan'"
+
+#: ../data/ui/index.html:836
+msgid "Use HTTP Proxy"
+msgstr "Ağ Vekili Kullan"
+
+#: ../data/ui/index.html:838
+#: ../data/ui/index.html:850
+msgid "Host"
+msgstr "Sunucu"
+
+#: ../data/ui/index.html:840
+msgid "'HTTP Proxy Host'"
+msgstr "'Ağ Vekili Sunucusu'"
+
+#: ../data/ui/index.html:841
+#: ../data/ui/index.html:854
+msgid "Port"
+msgstr "Veriyolu (Port)"
+
+#: ../data/ui/index.html:843
+msgid "'HTTP Proxy Port'"
+msgstr "'Ağ Vekili Veriyolu'"
+
+#: ../data/ui/index.html:846
+msgid "'Use Socks Proxy'"
+msgstr "'Soket Vekil Kullan'"
+
+#: ../data/ui/index.html:848
+msgid "Use Socks Proxy"
+msgstr "Soket Vekil Kullan"
+
+#: ../data/ui/index.html:856
+msgid "'Socks Proxy Port'"
+msgstr "'Soket Vekil Veriyolu'"
+
+#: ../data/ui/index.html:864
+msgid "Restore Defaults"
+msgstr "Varsayılana Döndür"
+
+#: ../data/ui/index.html:867
+#: ../data/ui/index.html:902
+#: ../data/ui/index.html:1106
+msgid "Cancel"
+msgstr "İptal"
+
+#: ../data/ui/index.html:870
+#: ../data/ui/index.html:905
+#: ../data/ui/index.html:1047
+#: ../data/ui/index.html:1157
+msgid "OK"
+msgstr "Tamam"
+
+#: ../data/ui/index.html:879
+msgid "First time to Sign in with Twitter"
+msgstr "Twitter ile ilk girişim"
+
+#: ../data/ui/index.html:885
+msgid "Step 1: click the button below or copy the address and open it in your browser."
+msgstr "Adım 1: Tuşa tıklayın veya adresi kopyalayıp tarayıcıda açın."
+
+#: ../data/ui/index.html:888
+msgid "Click me to continue"
+msgstr "Bana tıkla ve devam et"
+
+#: ../data/ui/index.html:894
+msgid "Step 2: copy the PIN Code and paste it into the box below;"
+msgstr "Adım 2: Güvenlik kodunu kopyalayıp boş kutucuğa yapıştırın;"
+
+#: ../data/ui/index.html:897
+msgid "PIN Code:"
+msgstr "Güvenlik Kodu:"
+
+#: ../data/ui/index.html:914
+msgid "About &amp;amp; Help"
+msgstr "Hakkında &amp;amp; Yardım"
+
+#: ../data/ui/index.html:923
+msgid "About"
+msgstr "Hakkında"
+
+#: ../data/ui/index.html:928
+msgid "Keyboard"
+msgstr "Klavye"
+
+#: ../data/ui/index.html:933
+msgid "Credits"
+msgstr "Yapımcılar"
+
+#: ../data/ui/index.html:938
+msgid "License"
+msgstr "Lisans"
+
+#: ../data/ui/index.html:945
+#: ../hotot/hotot.py:32
+#: ../hotot/hotot.py:55
+#: ../hotot.desktop.in.h:1
+msgid "Hotot"
+msgstr "Hotot"
+
+#: ../data/ui/index.html:945
+msgid "is a lightweight client for the "
+msgstr "Günlükleme işlemleri için"
+
+#: ../data/ui/index.html:945
+msgid " microblogging service"
+msgstr "hafif istemci uygulaması"
+
+#: ../data/ui/index.html:955
+msgid "- Keyboard shortcuts -"
+msgstr "- Klavye kısayolları -"
+
+#: ../data/ui/index.html:960
+msgid "Action"
+msgstr "Eylem"
+
+#: ../data/ui/index.html:960
+msgid "Shortcut"
+msgstr "Kısayol"
+
+#: ../data/ui/index.html:961
+msgid "Global"
+msgstr "Genel"
+
+#: ../data/ui/index.html:962
+msgid "Quit Hotot"
+msgstr "Hotot'tan Çık"
+
+#: ../data/ui/index.html:965
+msgid "Tweet List"
+msgstr "Twit Listesi"
+
+#: ../data/ui/index.html:966
+msgid "Reload"
+msgstr "Tekrar Yükle"
+
+#: ../data/ui/index.html:967
+msgid "Slide to prev page"
+msgstr "Önceki ekrana kaydır"
+
+#: ../data/ui/index.html:968
+msgid "Slide to next page"
+msgstr "Sonraki ekrana kaydır"
+
+#: ../data/ui/index.html:969
+msgid "Move to prev tweet"
+msgstr "Önceki twite git"
+
+#: ../data/ui/index.html:970
+msgid "Move to next tweet"
+msgstr "Sonraki twite git"
+
+#: ../data/ui/index.html:971
+msgid "Move to top"
+msgstr "En üste taşı"
+
+#: ../data/ui/index.html:972
+msgid "Move to bottom"
+msgstr "En alta taşı"
+
+#: ../data/ui/index.html:973
+msgid "Toggle toolbar"
+msgstr "Araç çubuğunu değiştir"
+
+#: ../data/ui/index.html:974
+msgid "Toggle nav tabs"
+msgstr "Gezinti sekmesini değiştir"
+
+#: ../data/ui/index.html:975
+msgid "Enter compose mode"
+msgstr "Gönderi biçimine gir"
+
+#: ../data/ui/index.html:976
+msgid "Enter action mode"
+msgstr "Hareket biçimine gir"
+
+#: ../data/ui/index.html:977
+msgid "Enter filter mode"
+msgstr "Süzme biçimine gir"
+
+#: ../data/ui/index.html:978
+msgid "Compose Mode"
+msgstr "Gönderi Biçimi"
+
+#: ../data/ui/index.html:979
+msgid "Exit compose mode"
+msgstr "Gönderi biçiminden çık"
+
+#: ../data/ui/index.html:980
+msgid "Action Mode"
+msgstr "Hareket Biçimi"
+
+#: ../data/ui/index.html:981
+msgid "Prev action"
+msgstr "Geri hareket"
+
+#: ../data/ui/index.html:982
+msgid "Next action"
+msgstr "İleri hareket"
+
+#: ../data/ui/index.html:983
+msgid "Trigger action"
+msgstr "Başlatma hareketi"
+
+#: ../data/ui/index.html:984
+msgid "Exit action mode"
+msgstr "Hareket biçiminden çık"
+
+#: ../data/ui/index.html:985
+msgid "Filter Mode"
+msgstr "Süzme Biçimi"
+
+#: ../data/ui/index.html:986
+msgid "Apply keywords"
+msgstr "Anahtar kelimeleri uygula"
+
+#: ../data/ui/index.html:987
+msgid "Exit filter mode"
+msgstr "Süzme biçiminden çık"
+
+#: ../data/ui/index.html:995
+msgid "- Credits -"
+msgstr "- Yapımcılar -"
+
+#: ../data/ui/index.html:998
+msgid "Written by"
+msgstr "Yazar "
+
+#: ../data/ui/index.html:1010
+msgid "Artwork by"
+msgstr "Görsel içerik "
+
+#: ../data/ui/index.html:1016
+msgid "Document by"
+msgstr "Belge "
+
+#: ../data/ui/index.html:1024
+msgid "- License -"
+msgstr "- Lisans -"
+
+#: ../data/ui/index.html:1056
+msgid "Profile"
+msgstr "Bilgi"
+
+#: ../data/ui/index.html:1061
+msgid "- Picture -"
+msgstr "- Resim -"
+
+#: ../data/ui/index.html:1065
+msgid "Change avator"
+msgstr "Resim değiştir"
+
+#: ../data/ui/index.html:1071
+msgid "- Stat -"
+msgstr "- istatistik -"
+
+#: ../data/ui/index.html:1084
+msgid "Favourites: "
+msgstr "En sevilenler:"
+
+#: ../data/ui/index.html:1090
+msgid "- Information -"
+msgstr "- Bilgi -"
+
+#: ../data/ui/index.html:1093
+msgid "Name"
+msgstr "İsim"
+
+#: ../data/ui/index.html:1094
+msgid "'Name'"
+msgstr "'İsim'"
+
+#: ../data/ui/index.html:1095
+msgid "Location"
+msgstr "Konum"
+
+#: ../data/ui/index.html:1096
+msgid "'Location'"
+msgstr "'Konum'"
+
+#: ../data/ui/index.html:1097
+msgid "Website"
+msgstr "Ağ sayfası"
+
+#: ../data/ui/index.html:1098
+msgid "'Website'"
+msgstr "'As sayfası'"
+
+#: ../data/ui/index.html:1099
+msgid "Bio"
+msgstr "Özgeçmiş"
+
+#: ../data/ui/index.html:1100
+msgid "'Bio'"
+msgstr "'Özgeçmiş'"
+
+#: ../data/ui/index.html:1118
+msgid "Extenstions"
+msgstr "Uzantılar"
+
+#: ../data/ui/index.html:1128
+msgid "Close"
+msgstr "Kapat"
+
+#: ../data/ui/index.html:1149
+msgid "Message"
+msgstr "Mesaj"
+
+#: ../data/ui/index.html:1173
+msgid "Search in Google"
+msgstr "Google'da ara"
+
+#: ../data/ui/index.html:1174
+msgid "Search in Twitter"
+msgstr "Twitter'da Ara"
+
+#: ../hotot/hotot.py:71
+#: ../hotot/hotot.py:91
+msgid "_Resume/Hide"
+msgstr "_Devam Et/Gizle"
+
+#: ../hotot/hotot.py:88
+msgid "_File"
+msgstr "_Dosya"
+
+#: ../hotot/hotot.py:104
+msgid "_Help"
+msgstr "_Yardım"
+
+#: ../hotot/hotot.py:127
+msgid "What's happening?"
+msgstr "Ne Yapıyorsun?"
+
+#: ../hotot.desktop.in.h:2
+msgid "Hotot Twitter Client"
+msgstr "Hotot Twitter İstemcisi"
+
+#: ../hotot.desktop.in.h:3
+msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgstr "Gtk2 ve Webkit Tabanlı Hafif Twitter İstemcisi"
+
+#~ msgid "Consumer Key"
+#~ msgstr "Benutzerschlüssel"
+#~ msgid "Consumer Secret"
+#~ msgstr "Benutzer Geheimnis"
+#~ msgid "twitter"
+#~ msgstr "twitter"
+
