@@ -88,10 +88,10 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
+            ui.Notification.set(_("There are ")+err.count+_(" errors in your change. Abort...")).show();
             ui.MessageDlg.set_text(
                 ui.MessageDlg.TITLE_STR_ERROR,
-                '<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - '
+                _("<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - ")
                 + err.error_values.join('<br/> - ') + '</p>');
             ui.DialogHelper.open(ui.MessageDlg);
         } else {
@@ -107,7 +107,7 @@ function init () {
 
     $('#btn_prefs_restore_defaults').click(
     function (event) {
-        if (confirm('Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n'))
+        if (confirm(_("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n")))
             ui.PrefsDlg.restore_defaults();
     });
 

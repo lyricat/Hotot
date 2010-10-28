@@ -15,11 +15,11 @@ import os
 import subprocess
 import ctypes
 
-pynotify.init('Hotot Notification')
-notify = pynotify.Notification('Init', '')
-
 try: import i18n
 except: from gettext import gettext as _
+
+pynotify.init(_("Hotot Notification"))
+notify = pynotify.Notification('Init', '')
 
 webv = None 
 app = None
@@ -241,7 +241,7 @@ def load_user(screen_name):
     webv.execute_script('''
         ui.Main.reset_people_page(null, '%s');
         $('#people_tweet_block > ul').html('');
-        ui.Notification.set("Loading @%s\'s timeline...").show();
+        ui.Notification.set(_("Loading @%s\'s timeline...")).show();
         daemon.Updater.update_people();
         ''' % (screen_name, screen_name));
     pass
@@ -250,7 +250,7 @@ def load_search(query):
     webv.execute_script('''
         ui.Main.reset_search_page('%s');
         $('#search_tweet_block > ul').html('');
-        ui.Notification.set("Loading Search result %s ...").show();
+        ui.Notification.set(_("Loading Search result %s ...")).show();
         daemon.Updater.update_search();
         ''' % (query, query));
     pass

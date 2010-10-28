@@ -15,7 +15,7 @@ function init() {
             $(this).addClass('selected');
             $('#retweets_tweet_block .tweet_tabs_page').not(pagename).hide();
             $(pagename).show();
-            ui.Notification.set('Loading Tweets...').show(-1);
+            ui.Notification.set(_("Loading Tweets...")).show(-1);
             daemon.Updater.update_retweets();
         }
         return false;

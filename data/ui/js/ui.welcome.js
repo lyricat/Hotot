@@ -53,7 +53,7 @@ function init () {
         ui.Welcome.sign_opts.remember_password
             = $('#chk_remember_password').attr('checked'); 
 
-        ui.Notification.set('Sign in ...').show();
+        ui.Notification.set(_("Sign in ...")).show();
         if (ui.Welcome.sign_opts.remember_password) {
             ui.Welcome.sign_opts.default_password 
                 = lib.twitterapi.password;
@@ -78,7 +78,7 @@ function init () {
                 ui.Welcome.authenticate_pass(result);
             } else {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                    , '<p>Cannot Authenticate You! Please check your username/password and API base</p>');
+                    , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>"));
                 ui.DialogHelper.open(ui.MessageDlg);
             }
         });
@@ -92,7 +92,7 @@ function init () {
     $('#btn_oauth_sign_in').click(
     function(event) {
         lib.twitterapi.use_oauth = true;
-        ui.Notification.set('Begin to OAuth ...').show();
+        ui.Notification.set(_("Begin to OAuth ...")).show();
         if (jsOAuth.access_token == null
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -113,7 +113,7 @@ function init () {
                     ui.Welcome.authenticate_pass(result);
                 } else {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , '<p>Cannot Authenticate You! Please check your username/password and API base</p>');
+                        , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>"));
                     ui.DialogHelper.open(ui.MessageDlg);
                 }
             });
@@ -126,11 +126,11 @@ function init () {
         var prefix = $.trim($('#tbox_new_profile_name').val());
         var profile_name = prefix + '@' + ui.Welcome.selected_service;
         if (prefix.length == 0 ) {
-            ui.Notification.set('Please entry a profile name!').show();
+            ui.Notification.set(_("Please entry a profile name!")).show();
             return;
         }
         if (prefix.indexOf('@') != -1) {
-            ui.Notification.set('Charactor `@` is not allow in profile name!').show();
+            ui.Notification.set(_("Charactor `@` is not allow in profile name!")).show();
             return;
         }
         hotot_action('system/create_profile/'
@@ -237,7 +237,7 @@ function authenticate_pass(result) {
     setTimeout(function () {
     $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
     }, 100);
-    ui.Notification.set('Authentication OK!').show();
+    ui.Notification.set(_("Authentication OK!")).show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
     ui.Main.show();

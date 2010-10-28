@@ -27,7 +27,7 @@ function init () {
             return
         jsOAuth.get_access_token(pin_code,
         function (result) {
-            ui.Notification.set('Authentication OK!')
+            ui.Notification.set(_("Authentication OK!"))
             // get a new access_token, dump it to disk.
             hotot_action(
                 'token/dump/'

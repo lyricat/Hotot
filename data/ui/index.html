@@ -129,7 +129,7 @@ jQuery(function($) {
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
-                    ui.Notification.set("Loading Tweets...").show(-1);
+                    ui.Notification.set(_("'Loading Tweets...'")).show(-1);
                     ui.Main.load_tweets();    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
@@ -316,7 +316,7 @@ jQuery(function($) {
             <input id="tbox_new_profile_name" style="width: 100px;" type="text" value=""/>
             <label>@<span class="service_name"></span></label>
             <div style="text-align:center;margin: 10px auto;">
-                <a id="btn_welcome_create_profile" class="button" href="javascript:void(0);" title="_("'Create a new Profile'")>_("Create Profile")
+                <a id="btn_welcome_create_profile" class="button" href="javascript:void(0);" title=_("'Create a new Profile'")>_("Create Profile")
                 <span class="placeholder"></span>
                 </a>
             </div>
@@ -804,7 +804,7 @@ jQuery(function($) {
                             type="checkbox"/>
                         <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu Indicator")</label><br/>
                         <input id="chk_prefs_use_hover_box" class="dark"
-                            title=_("'Hover to open tweet box.'") 
+                            title=_("'Hover to open tweet box'")
                             type="checkbox"/>
                         <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
                         <input id="chk_prefs_use_preload_conversation" class="dark"
