@@ -1915,6 +1915,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     z-index: 100011;
     display: none;
 }
+
+#context_menu ul:after {
+    border: none !important;
+}
+
 #context_menu ul {
     display: block;
     min-width: 150px;
