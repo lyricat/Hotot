@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-28 17:22+0800\n"
+"POT-Creation-Date: 2010-10-27 21:57+0200\n"
 "Last-Translator: Eduardo Guapindia Maroja(Dudu Maroja) <dudumaroja@gmail."
 "com>\n"
 "Language: Português/Brasil \n"
@@ -61,9 +61,8 @@ msgid "reply to "
 msgstr ""
 
 #: ../data/ui/js/ui.template.js:206
-#, fuzzy
 msgid "retweeted by "
-msgstr "Retuitados por Mim"
+msgstr ""
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Unfav it."
@@ -102,9 +101,8 @@ msgid "RT this tweet."
 msgstr ""
 
 #: ../data/ui/js/ui.template.js:244
-#, fuzzy
 msgid "Send message"
-msgstr "Mensagem"
+msgstr ""
 
 #: ../data/ui/js/ui.template.js:245
 msgid "Send message to them"
@@ -139,9 +137,8 @@ msgid ""
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:139
-#, fuzzy
 msgid "Unfollow @"
-msgstr "Seguir"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:143
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:169
@@ -154,9 +151,8 @@ msgid " Successfully!"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:143 ../data/ui/js/ui.main.js:147
-#, fuzzy
 msgid "Follow @"
-msgstr "Seguir"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:156
 msgid "Are you sure you want to block @"
@@ -167,23 +163,20 @@ msgid "?!\n"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:162
-#, fuzzy
 msgid "Block @"
-msgstr "Bloquear"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:169 ../data/ui/js/ui.main.js:173
-#, fuzzy
 msgid "Unblock @"
-msgstr "Desbloquear"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:173
 msgid " Successfully"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:319 ../data/ui/js/ui.main.js:333
-#, fuzzy
 msgid "Update page "
-msgstr "Atualizar"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:320 ../data/ui/js/ui.main.js:334
 msgid " new items."
@@ -226,9 +219,8 @@ msgid "Authentication OK!"
 msgstr ""
 
 #: ../data/ui/js/ui.welcome.js:56
-#, fuzzy
 msgid "Sign in ..."
-msgstr "Conectar"
+msgstr ""
 
 #: ../data/ui/js/ui.welcome.js:81 ../data/ui/js/ui.welcome.js:116
 msgid ""
@@ -346,15 +338,6 @@ msgstr "Conectar"
 #: ../data/ui/index.html:315
 msgid "Profile Name:"
 msgstr ""
-
-#: ../data/ui/index.html:319
-msgid "'Create a new Profile'"
-msgstr ""
-
-#: ../data/ui/index.html:319
-#, fuzzy
-msgid "Create Profile"
-msgstr "Perfil"
 
 #: ../data/ui/index.html:333 ../data/ui/index.html:986
 msgid "Help"
@@ -694,9 +677,8 @@ msgid "Use Ubuntu Indicator"
 msgstr ""
 
 #: ../data/ui/index.html:807
-#, fuzzy
 msgid "'Hover to open tweet box'"
-msgstr "Ir para tweet anterior"
+msgstr "'Ir para tweet anterior'"
 
 #: ../data/ui/index.html:809
 msgid "Hover to open tweet box"
@@ -1087,10 +1069,9 @@ msgstr "Pesquisar no Google"
 msgid "Search in Twitter"
 msgstr "Pesquisar no Twitter"
 
-#: ../hotot/agent.py:21
-#, fuzzy
+#: ../hotot/agent.py:18
 msgid "Hotot Notification"
-msgstr "Localização:"
+msgstr ""
 
 #: ../hotot/hotot.py:71 ../hotot/hotot.py:91
 msgid "_Resume/Hide"
@@ -1109,9 +1090,8 @@ msgid "What's happening?"
 msgstr "O que está acontecendo?"
 
 #: ../hotot/hotot.py:209
-#, fuzzy
 msgid "Hotot: Click to Active."
-msgstr "Clique para continuar"
+msgstr ""
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"

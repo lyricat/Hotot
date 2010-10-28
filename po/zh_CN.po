@@ -5,12 +5,11 @@
 # Shellex Wei <5h3ll3x@gmail.com>
 # Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
 # Jeonkwan Chan <jeonkwan@gmail.com>
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-28 17:22+0800\n"
+"POT-Creation-Date: 2010-10-27 21:57+0200\n"
 "PO-Revision-Date: 2010-09-23 21:43+0800\n"
 "Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
 "Language-Team: Chinese/Simplified\n"
@@ -65,9 +64,8 @@ msgid "reply to "
 msgstr ""
 
 #: ../data/ui/js/ui.template.js:206
-#, fuzzy
 msgid "retweeted by "
-msgstr "我的转推"
+msgstr ""
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Unfav it."
@@ -142,9 +140,8 @@ msgid ""
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:139
-#, fuzzy
 msgid "Unfollow @"
-msgstr "跟随"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:143
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:169
@@ -157,9 +154,8 @@ msgid " Successfully!"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:143 ../data/ui/js/ui.main.js:147
-#, fuzzy
 msgid "Follow @"
-msgstr "跟随"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:156
 msgid "Are you sure you want to block @"
@@ -170,23 +166,20 @@ msgid "?!\n"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:162
-#, fuzzy
 msgid "Block @"
-msgstr "屏蔽"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:169 ../data/ui/js/ui.main.js:173
-#, fuzzy
 msgid "Unblock @"
-msgstr "解除屏蔽"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:173
 msgid " Successfully"
 msgstr ""
 
 #: ../data/ui/js/ui.main.js:319 ../data/ui/js/ui.main.js:333
-#, fuzzy
 msgid "Update page "
-msgstr "发布"
+msgstr ""
 
 #: ../data/ui/js/ui.main.js:320 ../data/ui/js/ui.main.js:334
 msgid " new items."
@@ -229,9 +222,8 @@ msgid "Authentication OK!"
 msgstr ""
 
 #: ../data/ui/js/ui.welcome.js:56
-#, fuzzy
 msgid "Sign in ..."
-msgstr "登录"
+msgstr ""
 
 #: ../data/ui/js/ui.welcome.js:81 ../data/ui/js/ui.welcome.js:116
 msgid ""
@@ -349,15 +341,6 @@ msgstr "登录"
 #: ../data/ui/index.html:315
 msgid "Profile Name:"
 msgstr ""
-
-#: ../data/ui/index.html:319
-msgid "'Create a new Profile'"
-msgstr ""
-
-#: ../data/ui/index.html:319
-#, fuzzy
-msgid "Create Profile"
-msgstr "个人档案"
 
 #: ../data/ui/index.html:333 ../data/ui/index.html:986
 msgid "Help"
@@ -618,7 +601,6 @@ msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "ABCD 测试字体"
 
 #: ../data/ui/index.html:716
-#, fuzzy
 msgid "- Notification -"
 msgstr "- 通知及提示 -"
 
@@ -696,7 +678,6 @@ msgid "Use Ubuntu Indicator"
 msgstr "使用 Ubuntu 指示器"
 
 #: ../data/ui/index.html:807
-#, fuzzy
 msgid "'Hover to open tweet box'"
 msgstr "'鼠标悬停打开消息框'"
 
@@ -705,12 +686,10 @@ msgid "Hover to open tweet box"
 msgstr "鼠标悬停打开消息框"
 
 #: ../data/ui/index.html:811
-#, fuzzy
 msgid "'Preload latest tweet in a conversation if it is cached.'"
 msgstr "'如果已有缓存，在对话中预先加载最新的消息'"
 
 #: ../data/ui/index.html:813
-#, fuzzy
 msgid "Preload latest tweet in a conversation if possible."
 msgstr "如果可能在对话中预先加载最新的消息"
 
@@ -727,12 +706,10 @@ msgid "'API Base'"
 msgstr ""
 
 #: ../data/ui/index.html:825
-#, fuzzy
 msgid "'Use same Signing Api'"
 msgstr "'使用相同的 Signing Api'"
 
 #: ../data/ui/index.html:828
-#, fuzzy
 msgid "Same signing API base: "
 msgstr "相同的 signing API base: "
 
@@ -753,12 +730,10 @@ msgid "'OAuth Base'"
 msgstr ""
 
 #: ../data/ui/index.html:838
-#, fuzzy
 msgid "'Use same Signing OAuth Base'"
 msgstr "'使用相同的 Signing OAuth Base'"
 
 #: ../data/ui/index.html:841
-#, fuzzy
 msgid "Same signing OAuth base: "
 msgstr "相同的 signing OAuth base: "
 
@@ -1095,10 +1070,9 @@ msgstr "在谷歌搜索"
 msgid "Search in Twitter"
 msgstr "从推特搜索"
 
-#: ../hotot/agent.py:21
-#, fuzzy
+#: ../hotot/agent.py:18
 msgid "Hotot Notification"
-msgstr "- 通知及提示 -"
+msgstr ""
 
 #: ../hotot/hotot.py:71 ../hotot/hotot.py:91
 msgid "_Resume/Hide"
@@ -1117,9 +1091,8 @@ msgid "What's happening?"
 msgstr "有什么消息么？"
 
 #: ../hotot/hotot.py:209
-#, fuzzy
 msgid "Hotot: Click to Active."
-msgstr "点我继续"
+msgstr ""
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
@@ -1129,11 +1102,9 @@ msgstr "傲兔推特客户端"
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
 
-#, fuzzy
 #~ msgid "Login to Hotot"
 #~ msgstr "用傲兔登录"
 
-#, fuzzy
 #~ msgid "or use Basic Auth"
 #~ msgstr "或使用推特 OAuth 验证登录"
 

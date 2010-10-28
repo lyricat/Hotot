@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-28 17:22+0800\n"
+"POT-Creation-Date: 2010-10-27 21:57+0200\n"
 "PO-Revision-Date: 2010-10-23 10:15+0200\n"
 "Last-Translator: Federico Magnani <magnus@gmx.it>\n"
 "Language-Team: Italiano/Italia\n"
@@ -18,61 +18,60 @@ msgstr ""
 
 #: ../data/ui/js/ui.status_box.js:48
 msgid "Status is over 140 characters"
-msgstr ""
+msgstr "Il messaggio supera i 140 caratteri"
 
 #: ../data/ui/js/ui.status_box.js:302
 msgid "Updating..."
-msgstr ""
+msgstr "Aggiornamento..."
 
 #: ../data/ui/js/ui.status_box.js:314
 msgid "Update Successfully!"
-msgstr ""
+msgstr "Aggiornamento eseguito!"
 
 #: ../data/ui/js/ui.status_box.js:343
 msgid "Please enter the recipient."
-msgstr ""
+msgstr "Inserisci il destinatario."
 
 #: ../data/ui/js/ui.status_box.js:346
 msgid "Posting..."
-msgstr ""
+msgstr "Pubblicazione..."
 
 #: ../data/ui/js/ui.status_box.js:361
 msgid "Post Successfully!"
-msgstr ""
+msgstr "Pubblicato!"
 
 #: ../data/ui/js/ui.dm_tabs.js:18 ../data/ui/js/ui.retweet_tabs.js:18
 #: ../data/ui/js/ui.header.js:38 ../data/ui/js/ui.main.js:126
 msgid "Loading Tweets..."
-msgstr ""
+msgstr "Caricamento Tweets..."
 
 #: ../data/ui/js/ui.exts_dlg.js:67
 msgid "Disable"
-msgstr ""
+msgstr "Disabilita"
 
 #: ../data/ui/js/ui.exts_dlg.js:70
 msgid "Enable"
-msgstr ""
+msgstr "Abilita"
 
 #: ../data/ui/js/ui.template.js:158
 msgid "Reply Them."
-msgstr ""
+msgstr "Rispondi"
 
 #: ../data/ui/js/ui.template.js:191
 msgid "reply to "
-msgstr ""
+msgstr "risposta a "
 
 #: ../data/ui/js/ui.template.js:206
-#, fuzzy
 msgid "retweeted by "
-msgstr "Retweet da me"
+msgstr "retweettato da "
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Unfav it."
-msgstr ""
+msgstr "Elimina dai preferiti"
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Fav it!"
-msgstr ""
+msgstr "Aggiungi a preferiti!"
 
 #: ../data/ui/js/ui.template.js:237 ../data/ui/index.html:327
 msgid "Delete"
@@ -80,182 +79,181 @@ msgstr "Elimina"
 
 #: ../data/ui/js/ui.template.js:238
 msgid "Delete this tweet"
-msgstr ""
+msgstr "Elimina questo tweet"
 
 #: ../data/ui/js/ui.template.js:239
 msgid "Loading..."
-msgstr ""
+msgstr "Caricamento ..."
 
 #: ../data/ui/js/ui.template.js:240
 msgid "Official retweet this tweet."
-msgstr ""
+msgstr "Retweet Ufficiale"
 
 #: ../data/ui/js/ui.template.js:241
 msgid "Replay All"
-msgstr ""
+msgstr "Rispondi"
 
 #: ../data/ui/js/ui.template.js:242
 msgid "Reply this tweet."
-msgstr ""
+msgstr "Rispondi a questo tweet"
 
 #: ../data/ui/js/ui.template.js:243
 msgid "RT this tweet."
-msgstr ""
+msgstr "RT questo tweet"
 
 #: ../data/ui/js/ui.template.js:244
-#, fuzzy
 msgid "Send message"
-msgstr "Messaggi"
+msgstr "Invia messaggio"
 
 #: ../data/ui/js/ui.template.js:245
 msgid "Send message to them"
-msgstr ""
+msgstr "Invia un messaggio"
 
 #: ../data/ui/js/ui.template.js:246 ../data/ui/js/ui.template.js:288
 msgid "via"
-msgstr ""
+msgstr "tramite"
 
 #: ../data/ui/js/ui.template.js:247
 msgid "view more conversation"
-msgstr ""
+msgstr "Continua..."
 
 #: ../data/ui/js/ui.prefs_dlg.js:91 ../data/ui/js/ui.profile_dlg.js:40
 msgid "There are "
-msgstr ""
+msgstr "Ci sono "
 
 #: ../data/ui/js/ui.prefs_dlg.js:91 ../data/ui/js/ui.profile_dlg.js:40
 msgid " errors in your change. Abort..."
-msgstr ""
+msgstr " errori nei tuoi cambiamenti. Annullato..."
 
 #: ../data/ui/js/ui.prefs_dlg.js:94 ../data/ui/js/ui.profile_dlg.js:43
 msgid ""
 "<p>There are something wrong in what your changes.<br/>Please check errors "
 "in the options below:<br/> - "
 msgstr ""
+"<p>Qaulcosa di sbagliato nei tuoi cambiamenti.<br/>Controlla gli errori tra "
+"le opzione qua sotto:<br/> - "
 
 #: ../data/ui/js/ui.prefs_dlg.js:110
 msgid ""
 "Restore defaults will erases all changes you make.\n"
 " Are you sure you want to continue?!\n"
 msgstr ""
+"Ripristinare le impostazioni comporta la perdita di tutti i cambiamenti.\n"
+" Sicuro di voler continuare?!\n"
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:139
-#, fuzzy
 msgid "Unfollow @"
-msgstr "Segui"
+msgstr "Smetti di seguire @"
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:143
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:169
 msgid " ..."
-msgstr ""
+msgstr " ..."
 
 #: ../data/ui/js/ui.main.js:139 ../data/ui/js/ui.main.js:147
 #: ../data/ui/js/ui.main.js:162
 msgid " Successfully!"
-msgstr ""
+msgstr " Eseguito!"
 
 #: ../data/ui/js/ui.main.js:143 ../data/ui/js/ui.main.js:147
-#, fuzzy
 msgid "Follow @"
-msgstr "Segui"
+msgstr "Segui @"
 
 #: ../data/ui/js/ui.main.js:156
 msgid "Are you sure you want to block @"
-msgstr ""
+msgstr "Sicuro di voler bloccare "
 
 #: ../data/ui/js/ui.main.js:156
 msgid "?!\n"
-msgstr ""
+msgstr "?!\n"
 
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:162
-#, fuzzy
 msgid "Block @"
-msgstr "Blocca"
+msgstr "Blocca @"
 
 #: ../data/ui/js/ui.main.js:169 ../data/ui/js/ui.main.js:173
-#, fuzzy
 msgid "Unblock @"
-msgstr "Sblocca"
+msgstr "Sblocco di @"
 
 #: ../data/ui/js/ui.main.js:173
 msgid " Successfully"
-msgstr ""
+msgstr " eseguito"
 
 #: ../data/ui/js/ui.main.js:319 ../data/ui/js/ui.main.js:333
-#, fuzzy
 msgid "Update page "
-msgstr "Aggiorna"
+msgstr "Aggiornata pagina "
 
 #: ../data/ui/js/ui.main.js:320 ../data/ui/js/ui.main.js:334
 msgid " new items."
-msgstr ""
+msgstr " nuovi messaggi."
 
 #: ../data/ui/js/ui.main.js:492
 msgid "Reducing ... "
-msgstr ""
+msgstr "Abbreviazione ... "
 
 #: ../data/ui/js/ui.main.js:496
 msgid "Reduce Successfully!"
-msgstr ""
+msgstr "Abbreviazione eseguita!"
 
 #: ../data/ui/js/ui.main.js:638
 msgid "RT @"
-msgstr ""
+msgstr "RT @"
 
 #: ../data/ui/js/ui.main.js:656
 msgid "Undo Retweeting ..."
-msgstr ""
+msgstr "Annullamento Retweet ..."
 
 #: ../data/ui/js/ui.main.js:659
 msgid "Undo Successfully!"
-msgstr ""
+msgstr "Annullato!"
 
 #: ../data/ui/js/ui.main.js:663
 msgid "Retweeting ..."
-msgstr ""
+msgstr "Retweet ..."
 
 #: ../data/ui/js/ui.main.js:666
 msgid "Retweet Successfully!"
-msgstr ""
+msgstr "Retweet eseguito!"
 
 #: ../data/ui/js/ui.main.js:668
 msgid "Undo retweet."
-msgstr ""
+msgstr "Retweet annullato."
 
 #: ../data/ui/js/ui.pin_dlg.js:30 ../data/ui/js/ui.welcome.js:240
 msgid "Authentication OK!"
-msgstr ""
+msgstr "Autorizzazione Confermata!"
 
 #: ../data/ui/js/ui.welcome.js:56
-#, fuzzy
 msgid "Sign in ..."
-msgstr "Accedi"
+msgstr "Accedi ..."
 
 #: ../data/ui/js/ui.welcome.js:81 ../data/ui/js/ui.welcome.js:116
 msgid ""
 "<p>Cannot Authenticate You! Please check your username/password and API "
 "base</p>"
 msgstr ""
+"<p>Impossibile autenticarsi! Prego, controlla  username, password e API "
+"base</p>"
 
 #: ../data/ui/js/ui.welcome.js:95
 msgid "Begin to OAuth ..."
-msgstr ""
+msgstr "Autenticazione ..."
 
 #: ../data/ui/js/ui.welcome.js:129
 msgid "Please entry a profile name!"
-msgstr ""
+msgstr "Prego inserisci un nome profilo!"
 
 #: ../data/ui/js/ui.welcome.js:133
 msgid "Charactor `@` is not allow in profile name!"
-msgstr ""
+msgstr "Il carattere `@` non è ammesso nel nome profilo!"
 
 #: ../data/ui/js/ui.profile_dlg.js:97
 msgid "Update profile ..."
-msgstr ""
+msgstr "Aggiornamento profilo ..."
 
 #: ../data/ui/js/ui.profile_dlg.js:101
 msgid "Update profile successfully!"
-msgstr ""
+msgstr "Aggiornamento profilo eseguito!"
 
 #: ../data/ui/index.html:5
 msgid "Home | Hotot"
@@ -272,7 +270,7 @@ msgstr "'Clicca qui per comporre un Messaggio ...'"
 #. <F5> or 'r' to reload timeline
 #: ../data/ui/index.html:132
 msgid "'Loading Tweets...'"
-msgstr ""
+msgstr "'Caricamento Tweets...'"
 
 #: ../data/ui/index.html:235
 msgid "'Reload timeline.'"
@@ -348,16 +346,6 @@ msgstr "Accedi"
 msgid "Profile Name:"
 msgstr "Nome del Profilo:"
 
-#: ../data/ui/index.html:319
-#, fuzzy
-msgid "'Create a new Profile'"
-msgstr "'Crea un nuovo profilo'"
-
-#: ../data/ui/index.html:319
-#, fuzzy
-msgid "Create Profile"
-msgstr "'Crea un nuovo profilo'"
-
 #: ../data/ui/index.html:333 ../data/ui/index.html:986
 msgid "Help"
 msgstr "Aiuto"
@@ -380,15 +368,15 @@ msgstr "In uscita"
 
 #: ../data/ui/index.html:392
 msgid "Retweeted By Others"
-msgstr "Retweet da altri"
+msgstr "Retweet di altri"
 
 #: ../data/ui/index.html:393
 msgid "Retweeted By Me"
-msgstr "Retweet da me"
+msgstr "I miei Retweet"
 
 #: ../data/ui/index.html:394
 msgid "My Tweets, Retweeted"
-msgstr "Miei Tweets, Retweeted"
+msgstr "I miei Tweet, Retweettati"
 
 #: ../data/ui/index.html:425
 msgid "Look up: "
@@ -396,7 +384,7 @@ msgstr "Cerca:"
 
 #: ../data/ui/index.html:428 ../data/ui/index.html:497
 msgid "GO"
-msgstr "VAI"
+msgstr "Cerca"
 
 #: ../data/ui/index.html:436
 msgid "Follow"
@@ -632,7 +620,7 @@ msgstr "Notifica"
 
 #: ../data/ui/index.html:721
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../data/ui/index.html:721
 msgid "Sound"
@@ -645,7 +633,7 @@ msgstr "'Notifica quando ci sono nuovi tweets'"
 #: ../data/ui/index.html:732 ../data/ui/index.html:754
 #: ../data/ui/index.html:776
 msgid "'Type'"
-msgstr ""
+msgstr "'Tipo'"
 
 #: ../data/ui/index.html:740
 msgid "'Play sound when home page has new tweets'"
@@ -653,19 +641,19 @@ msgstr "'Avvisa con un suono quando ci sono nuovi tweets'"
 
 #: ../data/ui/index.html:748
 msgid "'Notify when some new tweets mention me.'"
-msgstr "'Notifica quando vieni mensionato in nuovi tweets.'"
+msgstr "'Notifica quando vieni menzionato in nuovi tweets.'"
 
 #: ../data/ui/index.html:762
 msgid "'Play swhen some new tweets mention me.'"
-msgstr "'Avvisa con un suono quando vieni mensionato in nuovi tweets.'"
+msgstr "'Avvisa con un suono quando vieni menzionato in nuovi tweets.'"
 
 #: ../data/ui/index.html:770
 msgid "'Notify when some new direct messages coming.'"
-msgstr "'Notifica l'arrivo di nuovi messaggi diretti a te.'"
+msgstr "'Notifica l'arrivo di nuovi messaggi diretti.'"
 
 #: ../data/ui/index.html:784
 msgid "'Play when some new direct messages coming.'"
-msgstr "'Avvisa con un suono l'arrivo di nuovi messaggi diretti a te.'"
+msgstr "'Avvisa con un suono l'arrivo di nuovi messaggi diretti.'"
 
 #: ../data/ui/index.html:792
 msgid "- Display and Behavior -"
@@ -696,13 +684,12 @@ msgid "Use Ubuntu Indicator"
 msgstr "Usa Ubuntu Indicator"
 
 #: ../data/ui/index.html:807
-#, fuzzy
 msgid "'Hover to open tweet box'"
-msgstr "'Passa sopra per aprire la tweet box.'"
+msgstr "'Passa sopra per aprire la tweet box'"
 
 #: ../data/ui/index.html:809
 msgid "Hover to open tweet box"
-msgstr "Passa sopra per aprire la tweet box"
+msgstr "'Passa sopra per aprire la tweet box'"
 
 #: ../data/ui/index.html:811
 msgid "'Preload latest tweet in a conversation if it is cached.'"
@@ -1069,7 +1056,7 @@ msgstr "Bio"
 
 #: ../data/ui/index.html:1123
 msgid "'Bio'"
-msgstr "'Bio'"
+msgstr ""
 
 #: ../data/ui/index.html:1141
 msgid "Extenstions"
@@ -1091,10 +1078,9 @@ msgstr "Cerca con Google"
 msgid "Search in Twitter"
 msgstr "Cerca con Twitter"
 
-#: ../hotot/agent.py:21
-#, fuzzy
+#: ../hotot/agent.py:18
 msgid "Hotot Notification"
-msgstr "- Notifiche -"
+msgstr "Hotot | Notifica"
 
 #: ../hotot/hotot.py:71 ../hotot/hotot.py:91
 msgid "_Resume/Hide"
@@ -1113,9 +1099,8 @@ msgid "What's happening?"
 msgstr "Che c'è di nuovo?"
 
 #: ../hotot/hotot.py:209
-#, fuzzy
 msgid "Hotot: Click to Active."
-msgstr "Clicca per continuare"
+msgstr "Mostra Hotot"
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
@@ -1124,3 +1109,9 @@ msgstr "Hotot Twitter Client"
 #: ../hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Twitter Client leggero basato su Gtk2 e Webkit"
+
+#~ msgid "Open ... "
+#~ msgstr "Apri ... "
+
+#~ msgid "Reply this tweet"
+#~ msgstr "Rispondi a questo tweet"
