@@ -59,40 +59,7 @@ function init () {
         }
     });
 
-    $('#btn_shorturl').click(
-    function (event) {
-        var procs = [];
-        var urls = [];
-        var _requset = function (i) {
-            var req_url = ui.StatusBox.short_url_base + urls[i];
-            procs.push(function () {
-                lib.network.do_request('GET',
-                req_url, 
-                {},
-                {},
-                [],
-                function (results) {
-                    var text = $('#tbox_status').val();
-                    text = text.replace(urls[i], results.data.url);
-                    $('#tbox_status').val(text);
-                    $(window).dequeue('_short_url');
-                },
-                function () {}
-                );
-            });
-        };
-        var match = ui.Template.reg_link_g.exec($('#tbox_status').val());
-        while (match != null) {
-            urls.push(match[1]);
-            match = ui.Template.reg_link_g.exec($('#tbox_status').val());
-        }
-        utility.Console.out(JSON.stringify(urls))
-        for (var i = 0; i < urls.length; i += 1) {
-            _requset(i);
-        }
-        $(window).queue('_short_url', procs);
-        $(window).dequeue('_short_url');
-    });
+    $('#btn_shorturl').click(ui.StatusBox.on_btn_short_url_clicked);
 
     $('#btn_clear').click(
     function (event) {
@@ -249,6 +216,41 @@ function init () {
     $('#status_len').html('0/' + globals.max_status_len);      
 
     ui.StatusBox.close(); 
+},
+
+on_btn_short_url_clicked:
+function on_btn_short_url_clicked(event) {
+    var procs = [];
+    var urls = [];
+    var _requset = function (i) {
+        var req_url = ui.StatusBox.short_url_base + urls[i];
+        procs.push(function () {
+            lib.network.do_request('GET',
+            req_url, 
+            {},
+            {},
+            [],
+            function (results) {
+                var text = $('#tbox_status').val();
+                text = text.replace(urls[i], results.data.url);
+                $('#tbox_status').val(text);
+                $(window).dequeue('_short_url');
+            },
+            function () {}
+            );
+        });
+    };
+    var match = ui.Template.reg_link_g.exec($('#tbox_status').val());
+    while (match != null) {
+        urls.push(match[1]);
+        match = ui.Template.reg_link_g.exec($('#tbox_status').val());
+    }
+    utility.Console.out(JSON.stringify(urls))
+    for (var i = 0; i < urls.length; i += 1) {
+        _requset(i);
+    }
+    $(window).queue('_short_url', procs);
+    $(window).dequeue('_short_url');
 },
 
 lazy_close:
