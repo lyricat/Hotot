@@ -91,6 +91,7 @@ function init () {
     }).click(
     function (event) {
         ui.StatusBox.open();
+        ui.ContextMenu.hide();
         return false;
     });
 
