@@ -31,28 +31,32 @@ tweet_t:
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
             </div>\
-            <div class="tweet_source"> {%RETWEET_TEXT%} via: {%SOURCE%}</div>\
+            <div class="tweet_source"> {%RETWEET_TEXT%} {%TRANS_via%}: {%SOURCE%}</div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
         </div>\
     </div>\
     <ul class="tweet_ctrl">\
-        <li><a class="tweet_reply tweet_ctrl_btn" title="Reply this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_rt tweet_ctrl_btn" title="RT this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title="Official retweet this tweet." href="javascript:void(0);"></a></li><li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li><li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
+        <li><a class="tweet_reply tweet_ctrl_btn" title={%TRANS_Reply_this_tweet%} href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_rt tweet_ctrl_btn" title={%TRANS_RT_this_tweet%} href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title={%TRANS_Official_retweet_this_tweet%} href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li>\
+        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
             <ul class="tweet_more_menu hotot_menu">\
             <li>\
                 <a class="tweet_reply_all tweet_ctrl_menu_btn"\
                     href="javascript:void(0);" \
-                    title="Reply all">Reply All</a>\
+                    title={%TRANS_Reply_All%}>{%TRANS_Reply_All%}</a>\
             </li>\
             <li>\
                 <a class="tweet_dm tweet_ctrl_menu_btn"\
                     href="javascript:void(0);" \
-                    title="Send Message to them">Send Message</a>\
+                    title={%TRANS_Send_Message_to_them%}>{%TRANS_Send_Message%}</a>\
             </li>\
             <li>\
                 <a class="tweet_del tweet_ctrl_menu_btn"\
                     style="{%CAN_DELETE%}"\
                     href="javascript:void(0);"\
-                    title="Delete this tweet">Delete</a>\
+                    title={%TRANS_Delete_this_tweet%}>{%TRANS_Delete%}</a>\
             </li>\
             </ul>\
         </li>\
@@ -60,9 +64,9 @@ tweet_t:
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
     <div class="tweet_thread_wrapper">\
-        <div class="tweet_thread_hint">Loading...</div>\
+        <div class="tweet_thread_hint">{%TRANS_Loading%}</div>\
         <ul class="tweet_thread"></ul>\
-        <a class="btn_tweet_thread_more">view more conversation</a>\
+        <a class="btn_tweet_thread_more">{%TRANS_View_more_conversation%}</a>\
     </div>\
     <div class="tweet_indicator"></div>\
 </li>',
@@ -81,7 +85,7 @@ dm_t:
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
     </div>\
     <ul class="tweet_ctrl">\
-        <li><a class="tweet_dm_reply tweet_ctrl_btn" title="Reply Them." href="javascript:void(0);"></a></li>\
+        <li><a class="tweet_dm_reply tweet_ctrl_btn" title={%TRANS_Reply_Them%} href="javascript:void(0);"></a></li>\
     </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -102,7 +106,7 @@ search_t:
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
-            <div class="tweet_source">via: {%SOURCE%}</div>\
+            <div class="tweet_source">{%TRANS_via%}: {%SOURCE%}</div>\
         </div>\
     </div>\
     <span class="shape"></span>\
@@ -150,7 +154,8 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size)
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
+    ret = ret.replace(/{%TRANS_Reply_Them%}/g, _("Reply Them."));
     return ret;
 },
 
@@ -183,7 +188,7 @@ function form_tweet (tweet_obj, pagename) {
     var scheme = 'normal';
 
     var reply_str = (reply_id != null) ?
-        'reply to <a href="hotot:action/user/'
+        _("reply to ") + '<a href="hotot:action/user/'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
@@ -198,7 +203,7 @@ function form_tweet (tweet_obj, pagename) {
         scheme = 'me';
     }
     if (retweet_name != '') {
-        retweet_str = 'retweeted by <a href="hotot:action/user/'
+        retweet_str = _("retweeted by ") +  '<a href="hotot:action/user/'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
     }
@@ -222,13 +227,24 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
     ret = ret.replace(/{%RETWEET_MARK%}/g,
-        retweet_name != ''? 'retweet_mark': '')
+        retweet_name != ''? 'retweet_mark': '');
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%FAV_TITLE%}/g, favorited? 'Unfav it.': 'Fav it!');
+    ret = ret.replace(/{%FAV_TITLE%}/g, favorited? _("Unfav it."): _("Fav it!"));
     ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
     ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj))
+    ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj));
+    ret = ret.replace(/{%TRANS_Delete%}/g, _("Delete"));
+    ret = ret.replace(/{%TRANS_Delete_this_tweet%}/g, _("Delete this tweet"));
+    ret = ret.replace(/{%TRANS_Loading%}/g, _("Loading..."));
+    ret = ret.replace(/{%TRANS_Official_retweet_this_tweet%}/g, _("Official retweet this tweet."));
+    ret = ret.replace(/{%TRANS_Reply_All%}/g, _("Replay All"));
+    ret = ret.replace(/{%TRANS_Reply_this_tweet%}/g, _("Reply this tweet."));
+    ret = ret.replace(/{%TRANS_RT_this_tweet%}/g,_("RT this tweet."));
+    ret = ret.replace(/{%TRANS_Send_Message%}/g, _("Send message"));
+    ret = ret.replace(/{%TRANS_Send_Message_to_them%}/g, _("Send message to them"));
+    ret = ret.replace(/{%TRANS_via%}/g, _("via"));
+    ret = ret.replace(/{%TRANS_View_more_conversation%}/g, _("view more conversation"));
     return ret;
 },
 
@@ -269,6 +285,7 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%SCHEME%}/g, scheme);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
+    ret = ret.replace(/{%TRANS_via%}/g, _("via"));
     return ret;
 },
 

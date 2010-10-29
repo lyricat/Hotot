@@ -206,7 +206,7 @@ class Hotot:
         self.trayicon = gtk.StatusIcon()
         self.trayicon.connect('activate', self.on_trayicon_activate)
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
-        self.trayicon.set_tooltip('Hotot: Click to Active.')
+        self.trayicon.set_tooltip(_("Hotot: Click to Active."))
         self.trayicon.set_from_file(
             utils.get_ui_object('imgs/ic64_hotot_classics.png'))
         self.trayicon.set_visible(True)

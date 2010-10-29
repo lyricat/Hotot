@@ -64,10 +64,10 @@ enable_ext_item:
 function enable_ext_item(item, enable) {
     if (enable) {
         $(item).removeClass('disabled');
-        $(item).find('.enable_btn').text('Disable').addClass('disable');
+        $(item).find('.enable_btn').text(_("Disable")).addClass('disable');
     } else {
         $(item).addClass('disabled');
-        $(item).find('.enable_btn').text('Enable').removeClass('disable');
+        $(item).find('.enable_btn').text(_("Enable")).removeClass('disable');
     }
 },
 

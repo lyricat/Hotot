@@ -37,10 +37,10 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.ProfileDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set('There are '+err.count+' errors in your change. Abort...').show();
+            ui.Notification.set(_("There are ")+err.count+_(" errors in your change. Abort...")).show();
             ui.MessageDlg.set_text(
                 ui.MessageDlg.TITLE_STR_ERROR,
-                '<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - '
+                _("<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - ")
                 + err.error_values.join('<br/> - ') + '</p>');
             ui.DialogHelper.open(ui.MessageDlg);
         } else {
@@ -94,11 +94,11 @@ function update_profile() {
     var location = $('#tbox_profile_location').val();
     var bio = $('#tbox_profile_bio').val();
 
-    ui.Notification.set('Update profile ...').show();
+    ui.Notification.set(_("Update profile ...")).show();
     lib.twitterapi.update_profile(name, website, location, bio,
     function (result) {
         globals.myself = result;
-        ui.Notification.set('Update profile successfully!').show();
+        ui.Notification.set(_("Update profile successfully!")).show();
         ui.DialogHelper.close(ui.ProfileDlg);
     });
 },

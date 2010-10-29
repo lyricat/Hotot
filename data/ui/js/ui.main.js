@@ -123,7 +123,7 @@ function init () {
 
     $('.btn_load_more').click(
     function(event) {
-        ui.Notification.set('Loading Tweets...').show(-1);
+        ui.Notification.set(_("Loading Tweets...")).show(-1);
         ui.Main.load_more_tweets();
     });
 
@@ -132,19 +132,19 @@ function init () {
         var screen_name = ui.Main.block_info['#people'].screen_name;
         var _this = this;
         if ($(this).hasClass('unfo')) {
-            ui.Notification.set('Unfollow @' + screen_name + ' ...').show();
+            ui.Notification.set(_("Unfollow @") + screen_name + _(" ...")).show();
             lib.twitterapi.destroy_friendships(screen_name,
             function () {
                 ui.Notification.set(
-                    'Unfollow @'+ screen_name+' Successfully!').show();
+                    _("Unfollow @")+ screen_name+_(" Successfully!")).show();
                 $(_this).text('Follow').removeClass('unfo');
             });
         } else {
-            ui.Notification.set('Follow @' + screen_name + ' ...').show();
+            ui.Notification.set(_("Follow @") + screen_name + _(" ...")).show();
             lib.twitterapi.create_friendships(screen_name,
             function () {
                 ui.Notification.set(
-                    'Follow @'+ screen_name+' Successfully!').show();
+                    _("Follow @")+ screen_name+_(" Successfully!")).show();
                 $(_this).text('Unfollow').addClass('unfo');
             });
         }
@@ -153,24 +153,24 @@ function init () {
     $('#people_vcard .vcard_block').click(
     function (event) {
         var screen_name = ui.Main.block_info['#people'].screen_name;
-        if (!confirm('Are you sure you want to block @'+screen_name+'?!\n'))
+        if (!confirm(_("Are you sure you want to block @")+screen_name+_("?!\n")))
             return;
-        ui.Notification.set('Block @' + screen_name + ' ...').show();
+        ui.Notification.set(_("Block @") + screen_name + _(" ...")).show();
         lib.twitterapi.create_blocks(screen_name,
         function () {
             ui.Notification.set(
-                'Block @'+ screen_name+' Successfully!').show();
+                _("Block @")+ screen_name+_(" Successfully!")).show();
         });
     });
 
     $('#people_vcard .vcard_unblock').click(
     function (event) {
         var screen_name = ui.Main.block_info['#people'].screen_name;
-        ui.Notification.set('unblock @' + screen_name + ' ...').show();
+        ui.Notification.set(_("Unblock @") + screen_name + _(" ...")).show();
         lib.twitterapi.create_blocks(screen_name,
         function () {
             ui.Notification.set(
-                'UnBlock @'+ screen_name+' Successfully!').show();
+                _("Unblock @")+ screen_name+_(" Successfully")).show();
         });
     });
 
@@ -316,8 +316,8 @@ function load_tweets_cb(result, pagename) {
             switch (ui.Main.block_info[pagename].use_notify_type) {
             case 'count':
                 hotot_action('system/notify/count/'
-                    + encodeURIComponent('Update page '+pagename)
-                    + '/'+encodeURIComponent(tweet_count + ' new items.'));
+                    + encodeURIComponent(_("Update page ")+pagename)
+                    + '/'+encodeURIComponent(tweet_count + _(" new items.")));
             break;
             case 'content':
                 if (json_obj.length < 5) {
@@ -330,8 +330,8 @@ function load_tweets_cb(result, pagename) {
                     }
                 } else {
                     hotot_action('system/notify/count/'
-                        + encodeURIComponent('Update page '+pagename)
-                        + '/'+encodeURIComponent(tweet_count+' new items.'));
+                        + encodeURIComponent(_("Update page ")+pagename)
+                        + '/'+encodeURIComponent(tweet_count+_(" new items.")));
                 }
             break;
             } 
@@ -489,11 +489,11 @@ function add_tweets(json_obj, container) {
     if (container.pagename != 'search') {
         utility.DB.get_tweet_cache_size(function (size) {
             if (utility.DB.MAX_TWEET_CACHE_SIZE < size) {
-                ui.Notification.set('Reducing ... ').show(-1);
+                ui.Notification.set(_("Reducing ... ")).show(-1);
                 utility.DB.reduce_tweet_cache(
                     parseInt(utility.DB.MAX_TWEET_CACHE_SIZE*2/3)
                 , function () {
-                    ui.Notification.set('Reduce Successfully!').show();
+                    ui.Notification.set(_("Reduce Successfully!")).show();
                     utility.DB.dump_tweets(json_obj);
                 })
             } else {
@@ -635,7 +635,7 @@ function on_rt_click(btn, event) {
         var id = row.id;
         var tweet_obj = JSON.parse(row.json);
 
-        ui.StatusBox.set_status_text('RT @' + tweet_obj.user.screen_name
+        ui.StatusBox.set_status_text(_("RT @") + tweet_obj.user.screen_name
             + ': ' + tweet_obj.text + ' ');
         ui.StatusBox.open(
         function() {
@@ -653,19 +653,19 @@ function on_retweet_click(btn, event) {
 
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
-        ui.Notification.set('Undo Retweeting ...').show(-1);
+        ui.Notification.set(_("Undo Retweeting ...")).show(-1);
         lib.twitterapi.destroy_status(rt_id, 
         function (result) {
-            ui.Notification.set('Undo Successfully!').show();
+            ui.Notification.set(_("Undo Successfully!")).show();
             $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
         });
     } else {
-        ui.Notification.set('Retweeting ...').show(-1);
+        ui.Notification.set(_("Retweeting ...")).show(-1);
         lib.twitterapi.retweet_status(id, 
         function (result) {
-            ui.Notification.set('Retweet Successfully!').show();
+            ui.Notification.set(_("Retweet Successfully!")).show();
             li.attr('my_retweet_id', result.id);
-            $(btn).addClass('retweeted').attr('title', 'Undo retweet.');
+            $(btn).addClass('retweeted').attr('title', _("Undo retweet."));
         });
     }
 },
