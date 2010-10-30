@@ -46,7 +46,7 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
-    $('#tbox_prefs_font_size, #tbox_prefs_http_proxy_port, #tbox_prefs_socks_proxy_port').blur(
+    $('#tbox_prefs_font_size, #tbox_prefs_http_proxy_port').blur(
     function (event) {
         ui.FormChecker.test_int_value(this);
     });
@@ -75,13 +75,6 @@ function init () {
         $('#tbox_prefs_http_proxy_host').attr('disabled', !$(this).attr('checked'));
         $('#tbox_prefs_http_proxy_port').attr('disabled', !$(this).attr('checked'));
     });
-
-    $('#chk_prefs_use_socks_proxy').click(
-    function (event) {
-        $('#tbox_prefs_socks_proxy_host').attr('disabled', !$(this).attr('checked'));
-        $('#tbox_prefs_socks_proxy_port').attr('disabled', !$(this).attr('checked'));
-    });
-
 
     $('#btn_prefs_ok').click(
     function (event) {
@@ -198,18 +191,6 @@ function request_prefs_cb(prefs_obj) {
         $('#tbox_prefs_http_proxy_host').attr('disabled', true);
         $('#tbox_prefs_http_proxy_port').attr('disabled', true);
     }
-
-    $('#chk_prefs_use_socks_proxy').attr('checked'
-        , prefs_obj['use_socks_proxy']);
-    $('#tbox_prefs_socks_proxy_host').attr('value'
-        , prefs_obj['socks_proxy_host']);
-    $('#tbox_prefs_socks_proxy_port').attr('value'
-        , prefs_obj['socks_proxy_port']);
-    if (! prefs_obj['use_socks_proxy']) {
-        $('#tbox_prefs_socks_proxy_host').attr('disabled', true);
-        $('#tbox_prefs_socks_proxy_port').attr('disabled', true);
-    }
-
 },
 
 save_prefs:
@@ -268,14 +249,6 @@ function save_prefs() {
     prefs_obj['http_proxy_port'] 
         = $('#tbox_prefs_http_proxy_port').attr('value');
     if (prefs_obj['http_proxy_port']=='') prefs_obj['http_proxy_port']=0;
-
-    prefs_obj['use_socks_proxy']
-        = $('#chk_prefs_use_socks_proxy').attr('checked');
-    prefs_obj['socks_proxy_host']
-        = $('#tbox_prefs_socks_proxy_host').attr('value');
-    prefs_obj['socks_proxy_port']
-        = $('#tbox_prefs_socks_proxy_port').attr('value');
-    if (prefs_obj['socks_proxy_port']=='') prefs_obj['socks_proxy_port']=0;
 
     hotot_action('config/save_prefs/'
         + encodeURIComponent(JSON.stringify(prefs_obj)));

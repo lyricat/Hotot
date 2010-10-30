@@ -70,9 +70,6 @@ default_config = {
     'use_http_proxy': False,
     'http_proxy_host': '',
     'http_proxy_port': 0,
-    'use_socks_proxy': False,
-    'socks_proxy_host': '',
-    'socks_proxy_port': 0,
     
 #update interval:
     'update_interval': 120,

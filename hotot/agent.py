@@ -396,10 +396,6 @@ def push_prefs():
     http_proxy_host = get_prefs('http_proxy_host')
     http_proxy_port = get_prefs('http_proxy_port')
 
-    use_socks_proxy = str(get_prefs('use_socks_proxy')).lower()
-    socks_proxy_host = get_prefs('socks_proxy_host')
-    socks_proxy_port = get_prefs('socks_proxy_port')
-
     notification_settings = '''
         , "use_home_timeline_notify": %s
         , "use_home_timeline_notify_type": "%s"
@@ -442,9 +438,6 @@ def push_prefs():
         , "use_http_proxy" : %s
         , "http_proxy_host": "%s"
         , "http_proxy_port": "%s"
-        , "use_socks_proxy": %s
-        , "socks_proxy_host": "%s"
-        , "socks_proxy_port": "%s"
         %s
         };
         ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
@@ -458,7 +451,6 @@ def push_prefs():
             , oauth_base, sign_oauth_base
             , use_same_sign_oauth_base
             , use_http_proxy, http_proxy_host, http_proxy_port
-            , use_socks_proxy, socks_proxy_host, socks_proxy_port
             , notification_settings
             ));
     pass
@@ -581,11 +573,6 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
 
     curl = pycurl.Curl()
 
-    if get_prefs('use_socks_proxy'):
-        SOCKS5_PROXY = '%s:%s' % (get_prefs('socks_proxy_host'), get_prefs('socks_proxy_port'))
-        curl.setopt(pycurl.PROXYTYPE, pycurl.PROXYTYPE_SOCKS5)
-        curl.setopt(pycurl.PROXY, SOCKS5_PROXY)
-        pass
     if get_prefs('use_http_proxy'):
         HTTP_PROXY = '%s:%s' % (get_prefs('http_proxy_host'), get_prefs('http_proxy_port'))
         curl.setopt(pycurl.PROXY, HTTP_PROXY)
