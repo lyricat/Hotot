@@ -745,19 +745,21 @@ function on_fav_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    if ($(btn).hasClass('unfav')) {
+    if ($(li).hasClass('fav')) {
         ui.Notification.set('un-favorite this tweet ...').show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).removeClass('unfav').text('Fav');
+            $(btn).text('Fav');
+            $(li).removeClass('fav');
         });
     } else {
         ui.Notification.set('favorite this tweet ...').show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).addClass('unfav').text('Un-Fav');
+            $(btn).text('Un-Fav');
+            $(li).addClass('fav');
         });
     }
 },

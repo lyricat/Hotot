@@ -14,7 +14,9 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃]([^\\s]+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" retweet_id="{%RETWEET_ID%}" >\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%} {%FAV_CLASS%}" retweet_id="{%RETWEET_ID%}" >\
+    <div class="tweet_selected_indicator"></div>\
+    <div class="tweet_fav_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -43,9 +45,9 @@ tweet_t:
             <li><a class="tweet_rt tweet_ctrl_menu_btn" \
                 title={%TRANS_RT_this_tweet%} \
                 href="javascript:void(0);">RT</a></li>\
-            <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_menu_btn" \
+            <li><a class="tweet_fav tweet_ctrl_menu_btn" \
                 title="{%FAV_TITLE%}" \
-                href="javascript:void(0);">Fav</a></li>\
+                href="javascript:void(0);">{%FAV_LABEL%}</a></li>\
             <li><a class="tweet_reply_all tweet_ctrl_menu_btn"\
                 href="javascript:void(0);" \
                 title={%TRANS_Reply_All%}>{%TRANS_Reply_All%}</a></li>\
@@ -68,11 +70,11 @@ tweet_t:
         <ul class="tweet_thread"></ul>\
         <a class="btn_tweet_thread_more">{%TRANS_View_more_conversation%}</a>\
     </div>\
-    <div class="tweet_indicator"></div>\
 </li>',
 
 dm_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+    <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -89,11 +91,12 @@ dm_t:
     </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
-    <div class="tweet_indicator"></div>\
+    <div class="tweet_fav_indicator"></div>\
 </li>',
 
 search_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+    <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -111,7 +114,7 @@ search_t:
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
-    <div class="tweet_indicator"></div>\
+    <div class="tweet_fav_indicator"></div>\
 </li>',
 
 init:
@@ -230,7 +233,8 @@ function form_tweet (tweet_obj, pagename) {
         retweet_name != ''? 'retweet_mark': '');
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? _("Unfav it."): _("Fav it!"));
-    ret = ret.replace(/{%UNFAV_CLASS%}/g, favorited? 'unfav': '');
+    ret = ret.replace(/{%FAV_LABEL%}/g, favorited? _("Un-Fav"): _("Fav"));
+    ret = ret.replace(/{%FAV_CLASS%}/g, favorited? 'fav': '');
     ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj));
