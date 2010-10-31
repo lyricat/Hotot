@@ -55,7 +55,7 @@ function on_form_tweet_text(text) {
         while (match != null) {
             switch (pvd_name) {
                 case 'youtube.com':
-                    if (ext.HototVideoPreview.ytb_thmb_s == 'sm'){
+                    if (ext.HototVideoPreview.ytb_thmb_s != 'lg'){
                         vid_html_arr.push(
                             ext.HototVideoPreview.form_image(
                             match[1], vid_link_reg[pvd_name].base + match[3] + vid_link_reg[pvd_name].tail_sm));
