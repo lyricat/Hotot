@@ -750,14 +750,14 @@ function on_fav_click(btn, event) {
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).removeClass('unfav');
+            $(btn).removeClass('unfav').text('Fav');
         });
     } else {
         ui.Notification.set('favorite this tweet ...').show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).addClass('unfav');
+            $(btn).addClass('unfav').text('Un-Fav');
         });
     }
 },

@@ -37,21 +37,21 @@ tweet_t:
     </div>\
     <ul class="tweet_ctrl">\
         <li><a class="tweet_reply tweet_ctrl_btn" title={%TRANS_Reply_this_tweet%} href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_rt tweet_ctrl_btn" title={%TRANS_RT_this_tweet%} href="javascript:void(0);"></a></li>\
         <li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title={%TRANS_Official_retweet_this_tweet%} href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_btn" title="{%FAV_TITLE%}" href="javascript:void(0);"></a></li>\
         <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
             <ul class="tweet_more_menu hotot_menu">\
-            <li>\
-                <a class="tweet_reply_all tweet_ctrl_menu_btn"\
+            <li><a class="tweet_rt tweet_ctrl_menu_btn" \
+                title={%TRANS_RT_this_tweet%} \
+                href="javascript:void(0);">RT</a></li>\
+            <li><a class="tweet_fav {%UNFAV_CLASS%} tweet_ctrl_menu_btn" \
+                title="{%FAV_TITLE%}" \
+                href="javascript:void(0);">Fav</a></li>\
+            <li><a class="tweet_reply_all tweet_ctrl_menu_btn"\
+                href="javascript:void(0);" \
+                title={%TRANS_Reply_All%}>{%TRANS_Reply_All%}</a></li>\
+            <li><a class="tweet_dm tweet_ctrl_menu_btn"\
                     href="javascript:void(0);" \
-                    title={%TRANS_Reply_All%}>{%TRANS_Reply_All%}</a>\
-            </li>\
-            <li>\
-                <a class="tweet_dm tweet_ctrl_menu_btn"\
-                    href="javascript:void(0);" \
-                    title={%TRANS_Send_Message_to_them%}>{%TRANS_Send_Message%}</a>\
-            </li>\
+                    title={%TRANS_Send_Message_to_them%}>{%TRANS_Send_Message%}</a></li>\
             <li>\
                 <a class="tweet_del tweet_ctrl_menu_btn"\
                     style="{%CAN_DELETE%}"\

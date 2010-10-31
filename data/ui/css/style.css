@@ -1729,9 +1729,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 .tweet_reply {
     background-image: url(../imgs/ic16_reply.png) ;
 }
-.tweet_rt {
-    background-image: url(../imgs/ic16_rt.png);
-}
 .tweet_retweet {
     background-image: url(../imgs/ic16_retweet.png);
 }
@@ -1744,13 +1741,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 .tweet_dm_reply {
     background-image: url(../imgs/ic16_dm.png);
 }
-.tweet_fav {
-    background-image: url(../imgs/ic16_fav.png); 
-}
-.tweet_fav.unfav {
-    background-image: url(../imgs/ic16_unfav.png) !important;
-}
-
 .tweet_more_menu_trigger {
     position: relative;
 }
