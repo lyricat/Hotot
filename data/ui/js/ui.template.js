@@ -24,8 +24,6 @@ tweet_t:
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
-        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
-        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
@@ -33,7 +31,12 @@ tweet_t:
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
             </div>\
-            <div class="tweet_source"> {%RETWEET_TEXT%} {%TRANS_via%}: {%SOURCE%}</div>\
+            <div class="tweet_source"> \
+                {%RETWEET_TEXT%} \
+                <span class="tweet_timestamp">\
+                <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                </span>\
+                {%TRANS_via%}: {%SOURCE%}</div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
         </div>\
     </div>\
@@ -82,9 +85,15 @@ dm_t:
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
-        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="tweet_meta">\
+            <div class="tweet_source"> \
+                <span class="tweet_timestamp">\
+                <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                </span>\
+            </div>\
+        </div>\
     </div>\
     <ul class="tweet_ctrl">\
         <li><a class="tweet_dm_reply tweet_ctrl_btn" title={%TRANS_Reply_Them%} href="javascript:void(0);"></a></li>\
@@ -104,12 +113,14 @@ search_t:
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
-        <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
-        <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}"> &para;</a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
-            <div class="tweet_source">{%TRANS_via%}: {%SOURCE%}</div>\
+            <div class="tweet_source"> \
+                <span class="tweet_timestamp">\
+                <a class="tweet_link" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                </span>\
+                {%TRANS_via%}: {%SOURCE%}</div>\
         </div>\
     </div>\
     <span class="shape"></span>\
@@ -147,6 +158,7 @@ function form_dm(dm_obj, pagename) {
 
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
+    var create_at_short_str = create_at.toTimeString().split(' ')[0];
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
     ret = ret.replace(/{%USER_ID%}/g
@@ -156,6 +168,7 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
+    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%TRANS_Reply_Them%}/g, _("Reply Them."));
@@ -197,6 +210,7 @@ function form_tweet (tweet_obj, pagename) {
         : '';
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
+    var create_at_short_str = create_at.toTimeString().split(' ')[0];
 
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
@@ -231,6 +245,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
     ret = ret.replace(/{%RETWEET_MARK%}/g,
         retweet_name != ''? 'retweet_mark': '');
+    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%FAV_TITLE%}/g, favorited? _("Unfav it."): _("Fav it!"));
     ret = ret.replace(/{%FAV_LABEL%}/g, favorited? _("Un-Fav"): _("Fav"));
@@ -270,6 +285,7 @@ function form_search(tweet_obj, pagename) {
 
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
+    var create_at_short_str = create_at.toTimeString().split(' ')[0];
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = 'mention';
@@ -287,6 +303,7 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%TEXT%}/g, text);
     ret = ret.replace(/{%SOURCE%}/g, source);
     ret = ret.replace(/{%SCHEME%}/g, scheme);
+    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%TRANS_via%}/g, _("via"));

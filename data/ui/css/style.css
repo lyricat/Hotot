@@ -1809,7 +1809,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .tweet_timestamp, .tweet_link {
     font-size: 10px;
-    margin-left: 5px;
 }
 
 .tweet_body .status_bar {
