@@ -583,6 +583,7 @@ function bind_tweets_action(tweets_obj, pagename) {
 
         $(id).find('.tweet_dm_reply').click(
         function (event) {
+            alert(1)
             ui.Main.on_dm_click(this, event);
             return false;
         });

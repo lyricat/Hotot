@@ -78,6 +78,7 @@ tweet_t:
 dm_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
     <div class="tweet_selected_indicator"></div>\
+    <div class="tweet_fav_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -100,7 +101,6 @@ dm_t:
     </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
-    <div class="tweet_fav_indicator"></div>\
 </li>',
 
 search_t:
