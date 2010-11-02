@@ -1512,7 +1512,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 66%;
+    width: 30%;
     height: 100%;
 }
 
