@@ -257,7 +257,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%TRANS_Delete_this_tweet%}/g, _("Delete this tweet"));
     ret = ret.replace(/{%TRANS_Loading%}/g, _("Loading..."));
     ret = ret.replace(/{%TRANS_Official_retweet_this_tweet%}/g, _("Official retweet this tweet."));
-    ret = ret.replace(/{%TRANS_Reply_All%}/g, _("Replay All"));
+    ret = ret.replace(/{%TRANS_Reply_All%}/g, _("Reply All"));
     ret = ret.replace(/{%TRANS_Reply_this_tweet%}/g, _("Reply this tweet."));
     ret = ret.replace(/{%TRANS_RT_this_tweet%}/g,_("RT this tweet."));
     ret = ret.replace(/{%TRANS_Send_Message%}/g, _("Send message"));
