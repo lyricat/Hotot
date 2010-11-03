@@ -9,7 +9,7 @@ since_id: 1,
 
 max_id: null,
 
-actived_tweet_id: null,
+selected_tweet_id: null,
 
 use_preload_conversation: true,
 
@@ -19,7 +19,7 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_home_timeline
         , is_sub: false
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
         , use_notify_type: 'count'
@@ -28,7 +28,7 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_mentions
         , is_sub: false
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
         , use_notify_type: 'content'
@@ -37,7 +37,7 @@ block_info: {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_direct_messages
         , is_sub: false
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: true
         , use_notify_sound: true
         , use_notify_type: 'count'
@@ -46,14 +46,14 @@ block_info: {
           since_id: 1, max_id: null 
         , api_proc: lib.twitterapi.get_sent_direct_messages
         , is_sub: false
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
     '#favorites': { page: 1
         , api_proc: lib.twitterapi.get_favorites
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -62,7 +62,7 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_to_me
         , is_sub: true
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -71,7 +71,7 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_by_me
         , is_sub: true
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -80,7 +80,7 @@ block_info: {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweets_of_me
         , is_sub: true
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -90,7 +90,7 @@ block_info: {
         , since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -98,7 +98,7 @@ block_info: {
     '#search': { 
           query: '', page: 1
         , api_proc: lib.twitterapi.search 
-        , actived_tweet_id: null
+        , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
@@ -523,15 +523,17 @@ function bind_tweets_action(tweets_obj, pagename) {
         var id = '#' + pagename + '-' + tweet_obj.id;
         $(id).click(
         function (event) {
-            $(ui.Main.actived_tweet_id).removeClass('active');
-            ui.Main.set_actived_tweet_id(id);
-            $(ui.Main.actived_tweet_id).addClass('active');
+            $(ui.Main.selected_tweet_id).removeClass('selected');
+            ui.Main.set_selected_tweet_id(id);
+            $(ui.Main.selected_tweet_id).addClass('selected');
         });
         $(id).hover(
         function (event) {
+            $(id).addClass('active');
             $(id + '> .tweet_ctrl').show();
         },
         function (event) {
+            $(id).removeClass('active');
             $(id + '> .tweet_ctrl').hide();
         });
         $(id).find('.tweet_reply').click(
@@ -882,11 +884,11 @@ function preload_thread(tweet_obj, thread_container) {
 move_to_tweet:
 function move_to_tweet(pos) {
     var target = null;
-    if (ui.Main.actived_tweet_id == null) {
-        ui.Main.actived_tweet_id = '#' + $(ui.Slider.current
+    if (ui.Main.selected_tweet_id == null) {
+        ui.Main.selected_tweet_id = '#' + $(ui.Slider.current
             +'_tweet_block .tweet:first').attr('id');
     }
-    var current = $(ui.Main.actived_tweet_id);
+    var current = $(ui.Main.selected_tweet_id);
 
     if (current.length == 0) {
         return;
@@ -914,22 +916,22 @@ function move_to_tweet(pos) {
     container.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}
         , 300);
-    current.removeClass('active');
-    target.addClass('active');
-    ui.Main.set_actived_tweet_id('#'+ target.attr('id'));
+    current.removeClass('selected');
+    target.addClass('selected');
+    ui.Main.set_selected_tweet_id('#'+ target.attr('id'));
     target.focus();
 },
 
-set_actived_tweet_id:
-function set_actived_tweet_id(id) {
+set_selected_tweet_id:
+function set_selected_tweet_id(id) {
     var block_name = ui.Slider.current;
     if (ui.Slider.current == '#retweets') {
         block_name = ui.RetweetTabs.current;
     } else if (ui.Slider.current == '#direct_messages') {
         block_name = ui.DMTabs.current;
     }
-    ui.Main.actived_tweet_id = id;
-    ui.Main.block_info[block_name].actived_tweet_id = id;
+    ui.Main.selected_tweet_id = id;
+    ui.Main.block_info[block_name].selected_tweet_id = id;
 },
 
 filter:

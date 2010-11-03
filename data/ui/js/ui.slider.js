@@ -63,7 +63,7 @@ function slide_to(id) {
     $('#idx_btn_' + id.substring(1)).addClass('selected');
     $('#idx_btn_' + id.substring(1)).next('.shape').show();
 
-    $(ui.Main.actived_tweet_id).removeClass('active');
+    $(ui.Main.selected_tweet_id).removeClass('active');
 
     var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
     if (first_one.length != 0) {
@@ -73,9 +73,9 @@ function slide_to(id) {
         } else if (ui.Slider.current == '#direct_messages') {
             block_name = ui.DMTabs.current;
         }
-        ui.Main.actived_tweet_id = ui.Main.block_info[block_name].actived_tweet_id;
+        ui.Main.selected_tweet_id = ui.Main.block_info[block_name].selected_tweet_id;
     } else {
-        ui.Main.actived_tweet_id = null;
+        ui.Main.selected_tweet_id = null;
     }
 },
 

@@ -1512,11 +1512,23 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     position: absolute;
     top: 0px;
     left: 0px;
+    width: 5px;
+    bottom: 0px;
+}
+
+.tweet.selected > .tweet_selected_indicator{
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+}
+
+.tweet > .tweet_active_indicator {
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 30%;
     height: 100%;
 }
 
-.tweet.active > .tweet_selected_indicator{
+.tweet.active > .tweet_active_indicator{
     background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
 }
 

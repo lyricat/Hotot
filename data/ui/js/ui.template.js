@@ -15,6 +15,7 @@ reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-
 
 tweet_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%} {%FAV_CLASS%}" retweet_id="{%RETWEET_ID%}" >\
+    <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -77,8 +78,8 @@ tweet_t:
 
 dm_t: 
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+    <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
-    <div class="tweet_fav_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -105,6 +106,7 @@ dm_t:
 
 search_t:
 '<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+    <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\

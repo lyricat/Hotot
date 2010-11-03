@@ -57,7 +57,7 @@ function bind_action() {
 
 generate:
 function generate() {
-    utility.DB.get_tweet(parseInt(ui.Main.normalize_id(ui.Main.actived_tweet_id)), 
+    utility.DB.get_tweet(parseInt(ui.Main.normalize_id(ui.Main.selected_tweet_id)), 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -69,7 +69,7 @@ function generate() {
     });
 
     ui.ActionMenu.btns = [];
-    var tweet_dom_id = ui.Main.actived_tweet_id;
+    var tweet_dom_id = ui.Main.selected_tweet_id;
     var btns = $(tweet_dom_id +' .tweet_ctrl:first').find('.tweet_ctrl_btn');
     var menu_btns = $(tweet_dom_id +' .tweet_more_menu:first').find('.tweet_ctrl_menu_btn');
     var arr = [];
@@ -108,7 +108,7 @@ function generate() {
 
 show:
 function show() {
-    if (ui.Main.actived_tweet_id == null)
+    if (ui.Main.selected_tweet_id == null)
         return;
     ui.ActionMenu.generate();
     $('#action_menu').show().focus();

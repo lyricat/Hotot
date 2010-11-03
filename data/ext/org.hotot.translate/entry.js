@@ -181,7 +181,7 @@ function do_translate(dst_lang, text, callback) {
 
 do_translate_current_tweet:
 function do_translate_current_tweet(dst_lang) {
-    var tweet_id = ui.Main.actived_tweet_id;
+    var tweet_id = ui.Main.selected_tweet_id;
     var text = $(tweet_id + ' .tweet_body').children('.text');
     var style = 'background:transparent url('
                 + '../ext/'+ext.HototTranslate.id+'/ic16_translate.png'
