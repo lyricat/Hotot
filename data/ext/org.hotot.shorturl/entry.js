@@ -191,12 +191,14 @@ function load() {
         ext.HototShortUrl.set_service_url(val);
     });
     $('#btn_shorturl').unbind('click').bind(
-        'click', ext.HototShortUrl.on_btn_short_url_clicked).show();
+        'click', ext.HototShortUrl.on_btn_short_url_clicked);
 },
 
 unload:
 function unload() {
-    $('#btn_shorturl').unbind('click').hide();
+    $('#btn_shorturl').unbind('click').bind(
+        'click', ui.StatusBox.on_btn_short_url_clicked);
+
 },
 
 options:
