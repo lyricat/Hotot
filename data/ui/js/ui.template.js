@@ -136,11 +136,11 @@ function init() {
     + '('
         + ui.Template.reg_url_proto_chars 
         + ui.Template.reg_url_path_chars
-    + '+)',
+    + '+)';
 
-    ui.Template.reg_link = new RegExp(ui.Template.reg_url),
+    ui.Template.reg_link = new RegExp(ui.Template.reg_url);
 
-    ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g'),
+    ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
 },
 
 form_dm:
