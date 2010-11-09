@@ -162,7 +162,7 @@ function form_dm(dm_obj, pagename) {
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
     if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + create_at.getMonth()+1 + '-' +  create_at.getDate() + ' ' + create_at_short_str;
+        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
     }
 
     ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
@@ -217,7 +217,7 @@ function form_tweet (tweet_obj, pagename) {
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
     if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + create_at.getMonth()+1 + '-' +  create_at.getDate() + ' ' + create_at_short_str;
+        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
     }
 
     // choose color scheme
@@ -295,7 +295,7 @@ function form_search(tweet_obj, pagename) {
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
     if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + create_at.getMonth()+1 + '-' +  create_at.getDate() + ' ' + create_at_short_str;
+        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
     }
     // choose color scheme
     if (text.indexOf(globals.myself.screen_name) != -1) {
