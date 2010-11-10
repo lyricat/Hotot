@@ -12,6 +12,7 @@ import gobject
 import utils
 import hotot
 import os
+import sys
 import subprocess
 import ctypes
 
@@ -44,7 +45,12 @@ def webkit_set_proxy_uri(uri):
         else:
             libgobject = ctypes.CDLL('libgobject-2.0.so.0')
             libsoup = ctypes.CDLL('libsoup-2.4.so.1')
-            libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
+            try:
+                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
+                pass
+            except:
+                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0.2.0')
+                pass
             pass
         proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
         session = libwebkit.webkit_get_default_session()
@@ -56,7 +62,8 @@ def webkit_set_proxy_uri(uri):
         libgobject.g_object_set(session, "max-conns-per-host", 5, None)
         return 0
     except:
-        print 'error: webkit_set_proxy_uri'
+        exctype, value = sys.exc_info()[:2]
+        print 'error: webkit_set_proxy_uri: (%s, %s)' % (exctype,value)
         return 1
     pass
 
