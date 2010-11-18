@@ -62,14 +62,10 @@ function init () {
         }
         ui.Welcome.sign_opts.default_username 
             = lib.twitterapi.username;
-        setTimeout(function () {
-            hotot_action('config/set_opts/'
-                + encodeURIComponent(
-                    JSON.stringify(ui.Welcome.sign_opts)));
-        }, 500);
-        setTimeout(function () {
-            hotot_action('config/dumps');
-        }, 1000);
+        hotot_action('config/set_opts/'
+            + encodeURIComponent(
+                JSON.stringify(ui.Welcome.sign_opts)));
+        hotot_action('config/dumps');
 
         // verify ...
         lib.twitterapi.verify(
@@ -223,6 +219,8 @@ function load_profiles_info(profiles_info) {
         $('#profile_avator_list a').not(this).removeClass('selected');
         $(this).addClass('selected');
 
+        hotot_action('system/select_protocol/'
+            + encodeURIComponent(profile_name.split('@')[1]))
         hotot_action('system/select_profile/'
             + encodeURIComponent(profile_name));
         return false;

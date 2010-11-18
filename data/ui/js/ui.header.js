@@ -58,6 +58,8 @@ function init () {
     function (event) {
         globals.layout.close('north');
         globals.layout.close('south');
+        hotot_action('config/dumps');
+        ui.Main.reset_block_info();
         ui.Main.hide();
         ui.Welcome.show();
     });
