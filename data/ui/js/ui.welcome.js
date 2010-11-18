@@ -62,14 +62,10 @@ function init () {
         }
         ui.Welcome.sign_opts.default_username 
             = lib.twitterapi.username;
-        setTimeout(function () {
-            hotot_action('config/set_opts/'
-                + encodeURIComponent(
-                    JSON.stringify(ui.Welcome.sign_opts)));
-        }, 500);
-        setTimeout(function () {
-            hotot_action('config/dumps');
-        }, 1000);
+        hotot_action('config/set_opts/'
+            + encodeURIComponent(
+                JSON.stringify(ui.Welcome.sign_opts)));
+        hotot_action('config/dumps');
 
         // verify ...
         lib.twitterapi.verify(
