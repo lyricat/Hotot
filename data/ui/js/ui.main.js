@@ -15,100 +15,13 @@ use_preload_conversation: true,
 
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
-    '#home_timeline': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_home_timeline
-        , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: true
-        , use_notify_sound: true
-        , use_notify_type: 'count'
-    },
-    '#mentions': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_mentions
-        , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: true
-        , use_notify_sound: true
-        , use_notify_type: 'content'
-    },
-    '#direct_messages_inbox': {
-          since_id: 1, max_id: null 
-        , api_proc: lib.twitterapi.get_direct_messages
-        , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: true
-        , use_notify_sound: true
-        , use_notify_type: 'count'
-    },
-    '#direct_messages_outbox': {
-          since_id: 1, max_id: null 
-        , api_proc: lib.twitterapi.get_sent_direct_messages
-        , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#favorites': { page: 1
-        , api_proc: lib.twitterapi.get_favorites
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#retweeted_to_me': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_retweeted_to_me
-        , is_sub: true
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#retweeted_by_me': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_retweeted_by_me
-        , is_sub: true
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#retweets_of_me': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_retweets_of_me
-        , is_sub: true
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#people': {
-          id: null, screen_name: '' 
-        , since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
-        , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
-    '#search': { 
-          query: '', page: 1
-        , api_proc: lib.twitterapi.search 
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
 },
 
 init:
 function init () {
     this.id = '#main_page';
     this.me = $('#main_page');
+    this.reset_block_info();
 
     $('.tweet_block').scroll(
     function (event) {
@@ -198,6 +111,100 @@ function init () {
         daemon.Updater.update_search();
     });
 
+},
+
+reset_block_info:
+function reset_block_info() {
+    ui.Main.block_info = {
+    '#home_timeline': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_home_timeline
+        , is_sub: false
+        , selected_tweet_id: null
+        , use_notify: true
+        , use_notify_sound: true
+        , use_notify_type: 'count'
+    },
+    '#mentions': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_mentions
+        , is_sub: false
+        , selected_tweet_id: null
+        , use_notify: true
+        , use_notify_sound: true
+        , use_notify_type: 'content'
+    },
+    '#direct_messages_inbox': {
+          since_id: 1, max_id: null 
+        , api_proc: lib.twitterapi.get_direct_messages
+        , is_sub: false
+        , selected_tweet_id: null
+        , use_notify: true
+        , use_notify_sound: true
+        , use_notify_type: 'count'
+    },
+    '#direct_messages_outbox': {
+          since_id: 1, max_id: null 
+        , api_proc: lib.twitterapi.get_sent_direct_messages
+        , is_sub: false
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#favorites': { page: 1
+        , api_proc: lib.twitterapi.get_favorites
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#retweeted_to_me': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_retweeted_to_me
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#retweeted_by_me': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_retweeted_by_me
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#retweets_of_me': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_retweets_of_me
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#people': {
+          id: null, screen_name: '' 
+        , since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_user_timeline
+        , is_sub: false
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#search': { 
+          query: '', page: 1
+        , api_proc: lib.twitterapi.search 
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    };
 },
 
 hide:

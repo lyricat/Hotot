@@ -58,6 +58,7 @@ function init () {
     function (event) {
         globals.layout.close('north');
         globals.layout.close('south');
+        ui.Main.reset_block_info();
         ui.Main.hide();
         ui.Welcome.show();
     });

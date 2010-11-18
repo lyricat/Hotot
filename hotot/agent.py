@@ -234,7 +234,7 @@ def push_option(set, name, value):
 
 def select_config(protocol):
     if protocol == 'identica':
-        config.set(app.active_profile, 'api_base', 'https://identi.ca/api/')
+        set_prefs('api_base', 'https://identi.ca/api/')
         execute_script("lib.twitterapi.api_base='https://identi.ca/api/'")
     pass
 
