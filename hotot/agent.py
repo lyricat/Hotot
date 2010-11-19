@@ -49,7 +49,7 @@ def webkit_set_proxy_uri(uri):
                 libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
                 pass
             except:
-                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0.2.0')
+                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
                 pass
             pass
         proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
