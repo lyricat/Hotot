@@ -33,7 +33,7 @@ DATA_DIRS.append(os.path.abspath('./data'))
 
 TEMPLATE = 'index.html'
 
-default_config = {
+default_profile = {
     'remember_password': False,
     'default_username':'',
     'default_password':'',
@@ -85,7 +85,7 @@ default_config = {
 active_profile = ''
 
 profiles = {'default': {}}
-profiles['default'].update(default_config)
+profiles['default'].update(default_profile)
 profiles['default']['tokenfile'] = CONF_DIR + '/tmp.token'
 profiles['default']['name'] = 'default'
 
@@ -179,7 +179,7 @@ def loads(profile_name=None):
         if name == 'default':
             continue
         # load default 
-        for k, v in default_config.iteritems():
+        for k, v in default_profile.iteritems():
             prof[k] = v
         # load from file
         try: 
@@ -214,7 +214,7 @@ def write_to_disk(prof):
         return None
     conf_file = open(prof['path'], 'w')
     conf_file.write('{ "version": 0 \n')
-    for key, val in default_config.iteritems():
+    for key, val in default_profile.iteritems():
         r_val =  prof[key] if prof.has_key(key) else val
         if isinstance(val, str):
             conf_file.write(',    "%s": "%s"\n' % (key, r_val))
@@ -248,7 +248,7 @@ def save_prefs(prof_name, prefs_obj):
     pass
 
 def restore_defaults(prof_name):
-    globals()['profiles'][prof_name].update(default_config)
+    globals()['profiles'][prof_name].update(default_profile)
     pass
 
 def set(prof_name, name, value):
