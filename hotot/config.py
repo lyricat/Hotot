@@ -18,7 +18,7 @@ DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 PROFILES_DIR = os.path.join(CONF_DIR, 'profiles')
-SYS_CONF = os.path.join(CONF_DIR, 'sys.conf')
+SYSTEM_CONF = os.path.join(CONF_DIR, 'sys.conf')
 
 DATA_DIRS = []
 
@@ -106,6 +106,10 @@ for path in profile_paths:
         profiles[name]['tokenfile'] = path + '/profile.token'
     if not os.path.exists(profiles[name]['path']): 
         write_profile_to_disk(profiles[name])
+
+sys_conf = {}
+sys_conf.update(default_sys_config)
+
 
 def getconf():
     '''获取 config
@@ -234,25 +238,27 @@ def write_profile_to_disk(prof):
     pass
 
 def write_sys_conf_to_disk():
-    write_to_disk(globals['sys_conf'], default_sys_config, SYS_CONF)
+    write_to_disk(globals()['sys_conf'], default_sys_config, SYSTEM_CONF)
     pass
 
 def load_sys_conf():
     '''读取 system config
     '''
+    if not os.path.exists(SYSTEM_CONF):
+        write_sys_conf_to_disk()
     conf = getconf()
     for k, v in default_sys_config.iteritems():
         conf['sys_conf'][k] = v
     # load from file
     try: 
-        config_raw = json.loads(file(SYS_CONF).read().encode('utf-8'))
+        config_raw = json.loads(file(SYSTEM_CONF).read().encode('utf-8'))
         for k, v in config_raw.iteritems():
             conf['sys_conf'][k.encode('utf-8')] \
                 = v.encode('utf-8') if isinstance(v, unicode) else v
     except Exception, e: 
         print 'error:%s'% str(e)
     globals()['sys_conf'].update(conf['sys_conf'])
-    return config
+    return conf
 
 def dump_sys_conf():
     '''保存 system config
@@ -292,6 +298,13 @@ def set(prof_name, name, value):
 
 def get(prof_name, name):
     return globals()['profiles'][prof_name][name];
+
+def sys_set(name, value):
+    globals()['sys_conf'][name] = value;
+    pass
+
+def sys_get(name):
+    return globals()['sys_conf'][name];
 
 
 

@@ -183,6 +183,7 @@ class Hotot:
     def quit(self, *args):
         if self.active_profile != 'default':
             config.dumps(self.active_profile)
+            config.dump_sys_conf()
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit() 
@@ -274,8 +275,9 @@ def main():
     global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
-#    if not config.get('use_ubuntu_indicator'):
-#        HAS_INDICATOR = False
+    config.load_sys_conf()
+    if not config.sys_get('use_ubuntu_indicator'):
+        HAS_INDICATOR = False
     try:
         import dl
         libc = dl.open('/lib/libc.so.6')
