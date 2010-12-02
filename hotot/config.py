@@ -18,7 +18,7 @@ DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 PROFILES_DIR = os.path.join(CONF_DIR, 'profiles')
-
+SYS_CONF = os.path.join(CONF_DIR, 'sys.conf')
 
 DATA_DIRS = []
 
@@ -42,7 +42,6 @@ default_profile = {
     'font_size': 12,
     'use_native_input': False,
     'use_native_notify': True,
-    'use_ubuntu_indicator': False,
     'use_hover_box': True,
     'use_preload_conversation': True,
     # Appearance > Notification:
@@ -82,6 +81,10 @@ default_profile = {
     'size_h': 550,
 }
 
+default_sys_config = {
+    'use_ubuntu_indicator': False,
+}
+
 active_profile = ''
 
 profiles = {'default': {}}
@@ -109,14 +112,13 @@ def getconf():
     '''
     config = {}
     config['profiles'] = {}
+    config['sys_conf'] = {}
     ##
-    abspath = os.path.abspath('./')
 
     if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)    
     if not os.path.isdir(PROFILES_DIR): os.makedirs(PROFILES_DIR)
     if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR) 
 
-    ##    
     for k, v in globals().items():
         if not k.startswith('__') and (
               isinstance(v, str) 
@@ -129,7 +131,6 @@ def getconf():
            ):
             config[k] = v
             pass
-    config['abspath'] = abspath
     return config
 
 def create_profile(profile_name):
@@ -209,13 +210,11 @@ def dumps(profile_name=None):
     globals()['profiles'].update(config['profiles'])
     pass
 
-def write_to_disk(prof):
-    if prof['name'] == 'default':
-        return None
-    conf_file = open(prof['path'], 'w')
+def write_to_disk(new, default, path):
+    conf_file = open(path, 'w')
     conf_file.write('{ "version": 0 \n')
-    for key, val in default_profile.iteritems():
-        r_val =  prof[key] if prof.has_key(key) else val
+    for key, val in default.iteritems():
+        r_val =  new[key] if new.has_key(key) else val
         if isinstance(val, str):
             conf_file.write(',    "%s": "%s"\n' % (key, r_val))
         elif isinstance(val, bool):
@@ -227,6 +226,42 @@ def write_to_disk(prof):
     conf_file.write('}\n')
     conf_file.close()
     pass
+
+def write_profile_to_disk(prof):
+    if prof['name'] == 'default':
+        return None
+    write_to_disk(prof, default_profile, prof['path'])
+    pass
+
+def write_sys_conf_to_disk():
+    write_to_disk(globals['sys_conf'], default_sys_config, SYS_CONF)
+    pass
+
+def load_sys_conf():
+    '''读取 system config
+    '''
+    conf = getconf()
+    for k, v in default_sys_config.iteritems():
+        conf['sys_conf'][k] = v
+    # load from file
+    try: 
+        config_raw = json.loads(file(SYS_CONF).read().encode('utf-8'))
+        for k, v in config_raw.iteritems():
+            conf['sys_conf'][k.encode('utf-8')] \
+                = v.encode('utf-8') if isinstance(v, unicode) else v
+    except Exception, e: 
+        print 'error:%s'% str(e)
+    globals()['sys_conf'].update(conf['sys_conf'])
+    return config
+
+def dump_sys_conf():
+    '''保存 system config
+    '''
+    config = getconf()
+    write_to_disk(prof)
+    globals()['sys_conf'].update(config['sys_conf'])
+    pass
+
 
 def load_token(prof_name):
     config = getconf()
@@ -257,7 +292,6 @@ def set(prof_name, name, value):
 
 def get(prof_name, name):
     return globals()['profiles'][prof_name][name];
-
 
 
 
