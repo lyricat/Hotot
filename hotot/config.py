@@ -105,7 +105,7 @@ for path in profile_paths:
         profiles[name]['path'] = path + '/profile.conf'
         profiles[name]['tokenfile'] = path + '/profile.token'
     if not os.path.exists(profiles[name]['path']): 
-        write_to_disk(profiles[name])
+        write_profile_to_disk(profiles[name])
 
 def getconf():
     '''获取 config
@@ -206,7 +206,7 @@ def dumps(profile_name=None):
             profile_name: config['profiles'][profile_name]}
     pass
     for name, prof in dumped_profiles.iteritems():
-        write_to_disk(prof)
+        write_profile_to_disk(prof)
     globals()['profiles'].update(config['profiles'])
     pass
 
@@ -258,7 +258,7 @@ def dump_sys_conf():
     '''保存 system config
     '''
     config = getconf()
-    write_to_disk(prof)
+    write_sys_conf_to_disk()
     globals()['sys_conf'].update(config['sys_conf'])
     pass
 
