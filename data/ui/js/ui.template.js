@@ -3,13 +3,15 @@ ui.Template = {
 
 reg_vaild_preceding_chars: '(?:[^-\\/"\':!=a-zA-Z0-9_]|^)',
 
+reg_cn_chars: '[\u4E00-\u9FA5]|[\uEF30-\uFFA0]',
+
 reg_url_path_chars: '[a-zA-Z0-9!\\*\';:=\\+\\$/%#\\[\\]\\?\\-_,~\\(\\)&\\.`@]',
 
 reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 
-reg_user: new RegExp('(^|\\s)[@＠](\\w+)', 'g'),
+reg_user_name_chars: '[@＠](\\w+)',
 
-reg_hash_tag: new RegExp('(^|\\s)[#＃]([^\\s]+)', 'g'),
+reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
@@ -137,6 +139,10 @@ function init() {
         + ui.Template.reg_url_proto_chars 
         + ui.Template.reg_url_path_chars
     + '+)';
+
+    ui.Template.reg_user = new RegExp('(^|\\s|'
+            + ui.Template.reg_cn_chars + ')'
+        + ui.Template.reg_user_name_chars, 'g'),
 
     ui.Template.reg_link = new RegExp(ui.Template.reg_url);
 
