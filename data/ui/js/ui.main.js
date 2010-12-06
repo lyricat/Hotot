@@ -790,7 +790,7 @@ function on_thread_more_click(btn, event) {
 
         li.find('.tweet_thread_hint').show();
         ui.Main.load_thread_proc(
-        orig_tweet_obj.in_reply_to_status_id
+        parseInt(orig_tweet_obj.in_reply_to_status_id_str)
         , thread_container
         , function () {
             li.find('.tweet_thread_hint').fadeOut();
@@ -823,7 +823,7 @@ function on_expander_click(btn, event) {
                 li.find('.tweet_thread_hint').show();
                 li.find('.btn_tweet_thread_more').hide();
                 ui.Main.load_thread_proc(
-                  orig_tweet_obj.in_reply_to_status_id
+                  parseInt(orig_tweet_obj.in_reply_to_status_id_str)
                 , thread_container
                 , function () {
                     li.find('.tweet_thread_hint').fadeOut();
@@ -839,7 +839,7 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
         thread_container.resume_pos = true;
         var count=ui.Main.add_tweets([prev_tweet_obj], thread_container);
         // load the prev tweet in the thread.
-        var reply_id = prev_tweet_obj.in_reply_to_status_id;
+        var reply_id = parseInt(prev_tweet_obj.in_reply_to_status_id_str);
         if (reply_id == null) { // end of thread.
             on_finish();
             return ;
@@ -864,7 +864,7 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
 preload_thread:
 function preload_thread(tweet_obj, thread_container) {
 
-    var id = tweet_obj.in_reply_to_status_id;
+    var id = parseInt(tweet_obj.in_reply_to_status_id_str);
     if (id == null) {
         return;
     }

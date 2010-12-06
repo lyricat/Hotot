@@ -34,7 +34,7 @@ function dump_tweets(json_obj) {
         });
     };
     var dump_single_tweet = function (tx, tweet_obj) {
-        tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id, tweet_obj.text, JSON.stringify(tweet_obj)],
+        tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [parseInt(tweet_obj.id_str), tweet_obj.text, JSON.stringify(tweet_obj)],
         function (tx, rs) {},
         function (tx, error) {
             utility.Console.out('INSERT ERROR: '+ error.code + ','+ error.message);
