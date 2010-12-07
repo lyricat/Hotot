@@ -33,7 +33,7 @@ DATA_DIRS.append(os.path.abspath('./data'))
 
 TEMPLATE = 'index.html'
 
-default_profile = {
+twitter_profile = {
     'remember_password': False,
     'default_username':'',
     'default_password':'',
@@ -81,6 +81,10 @@ default_profile = {
     'size_h': 550,
 }
 
+identica_profile = {}
+identica_profile.update(twitter_profile)
+identica_profile.update({'api_base': 'https://identi.ca/api/'})
+
 default_sys_config = {
     'use_ubuntu_indicator': False,
 }
@@ -88,7 +92,7 @@ default_sys_config = {
 active_profile = ''
 
 profiles = {'default': {}}
-profiles['default'].update(default_profile)
+profiles['default'].update(twitter_profile)
 profiles['default']['tokenfile'] = CONF_DIR + '/tmp.token'
 profiles['default']['name'] = 'default'
 
@@ -146,14 +150,17 @@ def create_profile(profile_name):
         return
     if not os.path.exists(path): 
         os.makedirs(path)
-    
+   
+
     config['profiles'][profile_name] = {}
-    config['profiles'][profile_name].update(config['profiles']['default'])
+    config['profiles'][profile_name].update(
+        select_default_profile(profile_name))
     config['profiles'][profile_name].update({
           'name': profile_name
         , 'path': conf
         , 'tokenfile': token
     })
+    
     dumps(profile_name)
     if os.path.exists(os.path.join(CONF_DIR, 'tmp.token')):
         shutil.move(os.path.join(CONF_DIR, 'tmp.token')
@@ -184,7 +191,7 @@ def loads(profile_name=None):
         if name == 'default':
             continue
         # load default 
-        for k, v in default_profile.iteritems():
+        for k, v in select_default_profile(profile_name).iteritems():
             prof[k] = v
         # load from file
         try: 
@@ -234,7 +241,7 @@ def write_to_disk(new, default, path):
 def write_profile_to_disk(prof):
     if prof['name'] == 'default':
         return None
-    write_to_disk(prof, default_profile, prof['path'])
+    write_to_disk(prof, select_default_profile(prof['name']), prof['path'])
     pass
 
 def write_sys_conf_to_disk():
@@ -289,8 +296,20 @@ def save_prefs(prof_name, prefs_obj):
     pass
 
 def restore_defaults(prof_name):
-    globals()['profiles'][prof_name].update(default_profile)
+    globals()['profiles'][prof_name].update(
+        select_default_profile(prof_name))
     pass
+
+def select_default_profile(prof_name):
+    if prof_name == None or prof_name == 'default':
+        return twitter_profile
+    protocol = prof_name.split('@')[1];
+    if protocol == 'twitter':
+        return twitter_profile
+    elif protocol == 'identica':
+        return identica_profile
+    else:
+        return twitter_profile
 
 def set(prof_name, name, value):
     globals()['profiles'][prof_name][name] = value;

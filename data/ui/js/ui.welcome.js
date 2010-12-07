@@ -32,8 +32,6 @@ function init () {
             ui.Welcome.selected_service = $(this).attr('service');
             $('#service_page_new .service_name')
                 .text(ui.Welcome.selected_service);
-            hotot_action('system/select_protocol/'
-                + encodeURIComponent(ui.Welcome.selected_service));
 
             $('.service_tabs_btn')
                 .not(this).removeClass('selected');
@@ -219,8 +217,6 @@ function load_profiles_info(profiles_info) {
         $('#profile_avator_list a').not(this).removeClass('selected');
         $(this).addClass('selected');
 
-        hotot_action('system/select_protocol/'
-            + encodeURIComponent(profile_name.split('@')[1]))
         hotot_action('system/select_profile/'
             + encodeURIComponent(profile_name));
         return false;

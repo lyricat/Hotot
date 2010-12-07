@@ -135,7 +135,6 @@ def crack_config(params):
         apply_prefs()
     elif params[1] == 'restore_defaults':
         config.restore_defaults(app.active_profile)
-        select_config(app.protocol)
         apply_config()
         push_prefs()
     elif params[1] == 'set_opts':
@@ -181,7 +180,7 @@ def crack_system(params):
     elif params[1] == 'notify_with_sound':
         try:
             subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
-        except :
+        except:
             pass
     elif params[1] == 'create_profile':
         profile = urllib.unquote(params[2])
@@ -199,9 +198,6 @@ def crack_system(params):
         app.window.set_title('Hotot | %s' % app.active_profile)
         config.loads(app.active_profile)
         apply_config()
-    elif params[1] == 'select_protocol':
-        app.protocol = urllib.unquote(params[2])
-        select_config(app.protocol)
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':
@@ -230,12 +226,6 @@ def execute_script(scripts):
 
 def push_option(set, name, value):
     webv.execute_script('%s[%s]=%s' % (set, name, value));
-    pass
-
-def select_config(protocol):
-    if protocol == 'identica':
-        set_prefs('api_base', 'https://identi.ca/api/')
-        execute_script("lib.twitterapi.api_base='https://identi.ca/api/'")
     pass
 
 def update_status(text):
