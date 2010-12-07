@@ -214,7 +214,7 @@ function form_tweet (tweet_obj, pagename) {
     var ret = '';
     var scheme = 'normal';
 
-    var reply_str = (reply_id != '') ?
+    var reply_str = (reply_id != null) ?
         _("reply to ") + '<a href="hotot:action/user/'
             + reply_name + '">'
             + reply_name + '</a>'
@@ -251,7 +251,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%SCHEME%}/g, scheme);
 
     ret = ret.replace(/{%IN_REPLY%}/g, 
-        (reply_id == '' && pagename.split('-').length < 2) ? 'block' : 'none');
+        (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
     ret = ret.replace(/{%CAN_RETWEET%}/g, 
         (protected_user || is_self )? 'display:none':'');
 

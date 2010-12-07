@@ -840,7 +840,7 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
         var count=ui.Main.add_tweets([prev_tweet_obj], thread_container);
         // load the prev tweet in the thread.
         var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
-        if (reply_id == '') { // end of thread.
+        if (reply_id == null) { // end of thread.
             on_finish();
             return ;
         } else { 
@@ -865,7 +865,7 @@ preload_thread:
 function preload_thread(tweet_obj, thread_container) {
 
     var id = tweet_obj.in_reply_to_status_id_str;
-    if (id == '') {
+    if (id == null) {
         return;
     }
     if (2 < thread_container.pagename.split('-').length) {
