@@ -57,7 +57,7 @@ function bind_action() {
 
 generate:
 function generate() {
-    utility.DB.get_tweet(parseInt(ui.Main.normalize_id(ui.Main.selected_tweet_id)), 
+    utility.DB.get_tweet(ui.Main.normalize_id(ui.Main.selected_tweet_id), 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
