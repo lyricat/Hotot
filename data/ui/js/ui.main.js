@@ -314,8 +314,8 @@ function load_tweets_cb(result, pagename) {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].since_id 
-                = json_obj[0].id;  
-            var last_id = json_obj[tweet_count - 1].id;
+                = json_obj[0].id_str;  
+            var last_id = json_obj[tweet_count - 1].id_str;
             if (ui.Main.block_info[pagename].max_id == null)
                 ui.Main.block_info[pagename].max_id = last_id - 1;
         }
@@ -373,8 +373,8 @@ function load_more_tweets_cb(result, pagename) {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].max_id 
-                = json_obj[tweet_count - 1].id - 1;  
-            var first_id = json_obj[0].id;
+                = json_obj[tweet_count - 1].id_str - 1;  
+            var first_id = json_obj[0].id_str;
             if (ui.Main.block_info[pagename].since_id == 1)
                 ui.Main.block_info[pagename].since_id = first_id;
         }
@@ -406,7 +406,7 @@ function add_tweets(json_obj, container) {
         /* sort tweets in order of id. smaller first.
          * */
         tweets.sort(function (a, b) {
-            return a.id > b.id; 
+            return a.id_str > b.id_str; 
         });
         return tweets;
     };
@@ -442,10 +442,10 @@ function add_tweets(json_obj, container) {
             } else {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
-                if (next_one_id < this_one.id) {
+                if (next_one_id < this_one.id_str) {
                     $(next_one).before(this_one_html);
                     return true;
-                } else if (next_one_id == this_one.id) {
+                } else if (next_one_id == this_one.id_str) {
                     // simply drop the duplicate tweet.
                     return false;
                 } else {
@@ -465,7 +465,7 @@ function add_tweets(json_obj, container) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
         } else {
-            var dom_id = container.pagename+'-'+json_obj[i].id;
+            var dom_id = container.pagename+'-'+json_obj[i].id_str;
             if (ui.Main.use_preload_conversation) {
                 var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
@@ -527,7 +527,7 @@ function compress_page(container) {
 bind_tweets_action:
 function bind_tweets_action(tweets_obj, pagename) {
     var bind_sigle_action = function (tweet_obj) {
-        var id = '#' + pagename + '-' + tweet_obj.id;
+        var id = '#' + pagename + '-' + tweet_obj.id_str;
         $(id).click(
         function (event) {
             $(ui.Main.selected_tweet_id).removeClass('selected');
@@ -616,7 +616,7 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -638,7 +638,7 @@ function on_rt_click(btn, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -673,7 +673,7 @@ function on_retweet_click(btn, event) {
         lib.twitterapi.retweet_status(id, 
         function (result) {
             ui.Notification.set(_("Retweet Successfully!")).show();
-            li.attr('my_retweet_id', result.id);
+            li.attr('my_retweet_id', result.id_str);
             $(btn).addClass('retweeted').attr('title', _("Undo retweet."));
         });
     }
@@ -684,7 +684,7 @@ function on_reply_all_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -718,7 +718,7 @@ on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -782,7 +782,7 @@ function on_thread_more_click(btn, event) {
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -790,7 +790,7 @@ function on_thread_more_click(btn, event) {
 
         li.find('.tweet_thread_hint').show();
         ui.Main.load_thread_proc(
-        parseInt(orig_tweet_obj.in_reply_to_status_id_str)
+        orig_tweet_obj.in_reply_to_status_id_str
         , thread_container
         , function () {
             li.find('.tweet_thread_hint').fadeOut();
@@ -808,7 +808,7 @@ function on_expander_click(btn, event) {
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    utility.DB.get_tweet(parseInt(id), 
+    utility.DB.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -823,7 +823,7 @@ function on_expander_click(btn, event) {
                 li.find('.tweet_thread_hint').show();
                 li.find('.btn_tweet_thread_more').hide();
                 ui.Main.load_thread_proc(
-                  parseInt(orig_tweet_obj.in_reply_to_status_id_str)
+                  orig_tweet_obj.in_reply_to_status_id_str
                 , thread_container
                 , function () {
                     li.find('.tweet_thread_hint').fadeOut();
@@ -839,8 +839,8 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
         thread_container.resume_pos = true;
         var count=ui.Main.add_tweets([prev_tweet_obj], thread_container);
         // load the prev tweet in the thread.
-        var reply_id = parseInt(prev_tweet_obj.in_reply_to_status_id_str);
-        if (isNaN(reply_id)) { // end of thread.
+        var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
+        if (reply_id == '') { // end of thread.
             on_finish();
             return ;
         } else { 
@@ -864,8 +864,8 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
 preload_thread:
 function preload_thread(tweet_obj, thread_container) {
 
-    var id = parseInt(tweet_obj.in_reply_to_status_id_str);
-    if (isNaN(id)) {
+    var id = tweet_obj.in_reply_to_status_id_str;
+    if (id == '') {
         return;
     }
     if (2 < thread_container.pagename.split('-').length) {

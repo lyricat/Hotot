@@ -151,7 +151,7 @@ function init() {
 
 form_dm:
 function form_dm(dm_obj, pagename) {
-    var id = parseInt(dm_obj.id_str);
+    var id = dm_obj.id_str;
     var timestamp = Date.parse(dm_obj.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
@@ -191,11 +191,11 @@ function form_tweet (tweet_obj, pagename) {
     var retweet_name = '';
     var retweet_str = '';
     var retweet_id = '';
-    var id = parseInt(tweet_obj.id_str);
+    var id = tweet_obj.id_str;
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         retweet_name = tweet_obj['user']['screen_name'];
         tweet_obj = tweet_obj['retweeted_status'];
-        retweet_id = parseInt(tweet_obj.id_str);
+        retweet_id = tweet_obj.id_str;
     }
     var timestamp = Date.parse(tweet_obj.created_at);
     var create_at = new Date();
@@ -204,7 +204,7 @@ function form_tweet (tweet_obj, pagename) {
     var screen_name = tweet_obj.user.screen_name;
     var user_name = tweet_obj.user.name;
     var reply_name = tweet_obj.in_reply_to_screen_name;
-    var reply_id = parseInt(tweet_obj.in_reply_to_status_id_str);    
+    var reply_id = tweet_obj.in_reply_to_status_id_str;    
     var profile_img = tweet_obj.user.profile_image_url;
     var text = ui.Template.form_text(tweet_obj.text);
     var favorited = tweet_obj.favorited;
@@ -214,7 +214,7 @@ function form_tweet (tweet_obj, pagename) {
     var ret = '';
     var scheme = 'normal';
 
-    var reply_str = (!isNaN(reply_id)) ?
+    var reply_str = (reply_id != '') ?
         _("reply to ") + '<a href="hotot:action/user/'
             + reply_name + '">'
             + reply_name + '</a>'
@@ -251,7 +251,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%SCHEME%}/g, scheme);
 
     ret = ret.replace(/{%IN_REPLY%}/g, 
-        (!isNaN(reply_id) && pagename.split('-').length < 2) ? 'block' : 'none');
+        (reply_id == '' && pagename.split('-').length < 2) ? 'block' : 'none');
     ret = ret.replace(/{%CAN_RETWEET%}/g, 
         (protected_user || is_self )? 'display:none':'');
 
@@ -283,7 +283,7 @@ function form_tweet (tweet_obj, pagename) {
 
 form_search:
 function form_search(tweet_obj, pagename) {
-    var id = parseInt(tweet_obj.id_str);
+    var id = tweet_obj.id_str;
     var timestamp = Date.parse(tweet_obj.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
