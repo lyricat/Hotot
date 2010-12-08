@@ -36,9 +36,9 @@ Features include:
       url="http://code.google.com/p/hotot",
       download_url="http://code.google.com/p/hotot/downloads/list",
       platforms = ['Linux'],
-      requires = ['webit', 'gtk', 'gobject', 'keybinder', 'pynotify'],
+      requires = ['webkit', 'gtk', 'gobject', 'keybinder', 'pynotify'],
       scripts=['scripts/hotot'],
-      packages = ['hotot'], 
+      packages = ['hotot'],
       data_files = [
           ('share/pixmaps', ['hotot.png']),
       ] + get_data_files('share/hotot', 'data'),
