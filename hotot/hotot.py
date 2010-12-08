@@ -10,28 +10,30 @@ __codename__ = 'Ada'
 
 import gtk
 import gobject
+
 import view
 import config
 import agent
 import keybinder
 import utils
 
+HAS_INDICATOR = False
 try:
     import appindicator
 except ImportError:
-    HAS_INDICATOR = False
+    pass
 else:
     HAS_INDICATOR = True
-HAS_INDICATOR = False
 
-try: import i18n
-except: from gettext import gettext as _
+try:
+    import i18n
+except ImportError:
+    from gettext import gettext as _
 
 try:
     import glib
     glib.set_application_name(_("Hotot"))
-    pass
-except:
+except ImportError:
     pass
 
 class Hotot:
@@ -68,16 +70,16 @@ class Hotot:
 
         self.menu_tray = gtk.Menu()
         mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
-        mitem_resume.connect('activate', self.on_trayicon_activate);
+        mitem_resume.connect('activate', self.on_trayicon_activate)
         self.menu_tray.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
-        mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
+        mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         self.menu_tray.append(mitem_prefs)
         mitem_about = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
-        mitem_about.connect('activate', self.on_mitem_about_activate);
+        mitem_about.connect('activate', self.on_mitem_about_activate)
         self.menu_tray.append(mitem_about)
         mitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
-        mitem_quit.connect('activate', self.on_mitem_quit_activate);
+        mitem_quit.connect('activate', self.on_mitem_quit_activate)
         self.menu_tray.append(mitem_quit)
 
         self.menu_tray.show_all()
@@ -88,10 +90,10 @@ class Hotot:
         menuitem_file_menu = gtk.Menu()
 
         mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
-        mitem_resume.connect('activate', self.on_mitem_resume_activate);
+        mitem_resume.connect('activate', self.on_mitem_resume_activate)
         menuitem_file_menu.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
-        mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
+        mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
 
         menuitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
@@ -132,7 +134,7 @@ class Hotot:
         hbox.pack_start(self.tbox_status)
 
         self.btn_update = gtk.Button(_("Update"))
-        self.btn_update.connect('clicked', self.on_btn_update_clicked) 
+        self.btn_update.connect('clicked', self.on_btn_update_clicked)
         hbox.pack_start(self.btn_update, expand=0, fill=0, padding=0)
 
         hbox.show_all() 
@@ -221,13 +223,11 @@ class Hotot:
         if config.get(self.active_profile, 'use_native_input'):
             if not self.tbox_status.is_focus():
                 self.inputw.hide()
-                pass
             self.inputw.present()
             self.tbox_status.grab_focus()
         else:
             if not self.webv.is_focus():
                 self.window.hide()
-                pass
             self.window.present()
             self.webv.grab_focus()
 
@@ -253,7 +253,7 @@ class Hotot:
 def main():
     global HAS_INDICATOR
     gtk.gdk.threads_init()
-    config.loads();
+    config.loads()
     config.load_sys_conf()
     if not config.sys_get('use_ubuntu_indicator'):
         HAS_INDICATOR = False
