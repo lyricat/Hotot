@@ -13,11 +13,11 @@ import json
 import re
 
 if os.path.isdir(os.path.dirname(sys.argv[0]) + '/../build/mo'):
-    gettext.install(app, os.path.dirname(sys.argv[0]) + '/../build/mo', unicode=True)
+    gettext.install(app, os.path.dirname(sys.argv[0]) + '/../build/mo', unicode=False)
 elif os.path.isdir(os.path.dirname(sys.argv[0]) + '/build/mo'):
-    gettext.install(app, os.path.dirname(sys.argv[0]) + '/build/mo', unicode=True)
+    gettext.install(app, os.path.dirname(sys.argv[0]) + '/build/mo', unicode=False)
 else:
-    gettext.install(app, unicode=True)
+    gettext.install(app, unicode=False)
 
 def get_i18n_json(domain=app, localedir=None, languages=None):
     try:
