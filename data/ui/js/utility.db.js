@@ -164,15 +164,15 @@ function get_users_starts_with(starts, callback) {
     });
 },
 
-reduce_cache:
-function reduce_cache(limit, callback) {
+reduce_user_cache:
+function reduce_user_cache(limit, callback) {
     utility.DB.cache.transaction(function (tx) {
         tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM TweetCache limit ?)', [limit], callback);
     });
 },
 
-reduce_cache:
-function reduce_cache(limit, callback) {
+reduce_tweet_cache:
+function reduce_tweet_cache(limit, callback) {
     utility.DB.cache.transaction(function (tx) {
         tx.executeSql('DELETE FROM TweetCache WHERE id in (SELECT id FROM TweetCache limit ?)', [limit], callback);
     });
