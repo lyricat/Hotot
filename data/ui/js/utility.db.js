@@ -198,54 +198,5 @@ function get_user_cache_size(callback) {
     });
 },
 
-unserialize_dict:
-function unserialize_dict(str) {
-    /* str = urlencode(key1)
-     *  + '=' + urlencode(value1)
-     *  + '&'
-     *  + urlencode(key2) 
-     *  + '=' + urlencode(value2)
-     *  --> 
-     *      {key1: value1, key2: value2 ...} 
-     * */
-    dict = {}; // return {} if dict is invalid.
-    var pairs = str.split('&');
-    if (1 < pairs.length) { 
-        for (var i = 0; i < pairs.length; i += 1) {
-            var pair = pairs[i].split('=');
-            dict[decodeURIComponent(pair[0])]
-                = decodeURIComponent(pair[1]);
-        }
-    }
-    return dict;
-},
-
-serialize_dict:
-function serialize_dict(obj) {
-    /* {key1: value1, key2: value2 ...}  --> 
-     *      str = urlencode(key1)
-     *      + '=' + urlencode(value1)
-     *      + '&'
-     *      + urlencode(key2) 
-     *      + '=' + urlencode(value2)
-     * */
-    var arr = [];
-    for (var key in obj) {
-        arr.push(encodeURIComponent(key)
-            + '='
-            + encodeURIComponent(obj[key]));
-    }
-    return arr.join('&'); 
-},
-
-serialize_array:
-function serialize_array(arr) {
-    var ret = arr.map(
-        function (elem) {
-            return encodeURIComponent(elem);
-        });
-    return ret.join('&');
-},
-
 };
 

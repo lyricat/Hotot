@@ -140,7 +140,7 @@ function get_request_token(on_success) {
         , []
         , function (result) {
             var token_info = result;
-            jsOAuth.request_token = utility.DB.unserialize_dict(token_info)
+            jsOAuth.request_token = util.unserialize_dict(token_info)
             // utility.Console.out('[i]req_token: ' + token_info);
             // utility.Console.out('[i]auth_url: ');
             // utility.Console.href_out(jsOAuth.get_auth_url());
@@ -177,7 +177,7 @@ function get_access_token(pin, on_success, on_error) {
         , []
         , function (result) {
             var token_info = result;
-            jsOAuth.access_token = utility.DB.unserialize_dict(token_info)
+            jsOAuth.access_token = util.unserialize_dict(token_info)
             // utility.Console.out('[i]acc_token: ' + token_info);
             if (on_success != null)
                 on_success(result);

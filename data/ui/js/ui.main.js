@@ -444,7 +444,7 @@ function add_tweets(json_obj, container) {
             } else {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
-                var cmp_ret = util.idcmp(next_one_id, this_one.id_str);
+                var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
                 if (cmp_ret == 1) {         //next_one_id < this.id_str
                     $(next_one).before(this_one_html);
                     return true;
