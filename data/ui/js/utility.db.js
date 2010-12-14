@@ -3,7 +3,7 @@ utility.DB = {
 
 cache: null,
 
-MAX_TWEET_CACHE_SIZE: 1024,
+MAX_TWEET_CACHE_SIZE: 10240,
 
 MAX_USER_CACHE_SIZE: 512,
 
