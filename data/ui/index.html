@@ -15,7 +15,7 @@
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/utility.console.js"></script>
-    <script type="text/javascript" src="js/utility.db.js"></script>
+    <script type="text/javascript" src="js/db.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
@@ -203,7 +203,7 @@ jQuery(function($) {
         $("#count > ul").hide();
     });
     utility.Console.init();
-    utility.DB.init();
+    db.init();
     daemon.Updater.init();
     ui.Template.init();
     ui.Header.init();

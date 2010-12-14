@@ -497,17 +497,17 @@ function add_tweets(json_obj, container) {
 
     // dumps to cache
     if (container.pagename != 'search') {
-        utility.DB.get_tweet_cache_size(function (size) {
-            if (utility.DB.MAX_TWEET_CACHE_SIZE < size) {
+        db.get_tweet_cache_size(function (size) {
+            if (db.MAX_TWEET_CACHE_SIZE < size) {
                 ui.Notification.set(_("Reducing ... ")).show(-1);
-                utility.DB.reduce_tweet_cache(
-                    parseInt(utility.DB.MAX_TWEET_CACHE_SIZE*2/3)
+                db.reduce_tweet_cache(
+                    parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
                 , function () {
                     ui.Notification.set(_("Reduce Successfully!")).show();
-                    utility.DB.dump_tweets(json_obj);
+                    db.dump_tweets(json_obj);
                 })
             } else {
-                utility.DB.dump_tweets(json_obj);
+                db.dump_tweets(json_obj);
             }
         });
     }
@@ -623,7 +623,7 @@ function on_reply_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -645,7 +645,7 @@ function on_rt_click(btn, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -691,7 +691,7 @@ function on_reply_all_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -725,7 +725,7 @@ on_dm_click:
 function on_dm_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
     var id = ui.Main.normalize_id(li.attr('id'));
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -789,7 +789,7 @@ function on_thread_more_click(btn, event) {
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -815,7 +815,7 @@ function on_expander_click(btn, event) {
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         var row = rs.rows.item(0);
         var id = row.id;
@@ -855,7 +855,7 @@ function load_thread_proc(tweet_id, thread_container, on_finish) {
         }
     }
 
-    utility.DB.get_tweet(tweet_id,
+    db.get_tweet(tweet_id,
     function (tx, rs) {
         if (rs.rows.length == 0) {
             lib.twitterapi.show_status(tweet_id,
@@ -878,7 +878,7 @@ function preload_thread(tweet_obj, thread_container) {
     if (2 < thread_container.pagename.split('-').length) {
         return;
     }
-    utility.DB.get_tweet(id, 
+    db.get_tweet(id, 
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);

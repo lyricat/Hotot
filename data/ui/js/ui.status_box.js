@@ -421,7 +421,7 @@ function auto_complete(event) {
         if (name == '') {
             $('#screen_name_auto_complete').html('').hide();
         } else {
-            utility.DB.get_screen_names_starts_with(name,
+            db.get_screen_names_starts_with(name,
             function (tx, rs) {
                 var result_list = []
                 for (var i = 0; i < rs.rows.length; i += 1) { 
