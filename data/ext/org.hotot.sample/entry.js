@@ -16,7 +16,7 @@ url: 'http://hotot.org',
 on_add_tweets:
 function on_add_tweets(tweets, container) {
     // just for debug.
-    utility.Console.out(
+    console.out(
         'Update ['+container.pagename+'], '+ tweets.length +' items');
 },
 

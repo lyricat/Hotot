@@ -99,7 +99,7 @@ function init () {
         } else {
         // access_token is existed
         // then test it
-        // utility.Console.out('[i]access_token: ' + jsOAuth.access_token);
+        // console.out('[i]access_token: ' + jsOAuth.access_token);
             lib.twitterapi.verify(
             function (result) { 
             // access_token is valid

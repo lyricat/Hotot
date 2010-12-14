@@ -246,7 +246,7 @@ function on_btn_short_url_clicked(event) {
         urls.push(match[1]);
         match = ui.Template.reg_link_g.exec($('#tbox_status').val());
     }
-    utility.Console.out(JSON.stringify(urls))
+    console.out(JSON.stringify(urls))
     for (var i = 0; i < urls.length; i += 1) {
         _requset(i);
     }

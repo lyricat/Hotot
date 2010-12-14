@@ -40,11 +40,11 @@ jQuery.ajaxQueue = function(o){
 	o.complete = function(){
 		if ( _old ) 
             _old.apply( this, arguments );
-        // utility.Console.out('Pop a request');
+        // console.out('Pop a request');
 		jQuery.dequeue( jQuery.ajaxQueue, "ajax" );
 	};
 	jQuery([ jQuery.ajaxQueue ]).queue("ajax", function(){
-        // utility.Console.out('Push a request');
+        // console.out('Push a request');
 		jQuery.ajax( o );
 	});
 	jQuery.dequeue( jQuery.ajaxQueue, "ajax" );

@@ -131,7 +131,7 @@ function init_exts() {
             ext.exts_info[extension.id].extension=extension;
 
             if (ext.exts_enabled.indexOf(extension.id) != -1) {
-                utility.Console.out('[i]Init Extension: ' + extension.name);
+                console.out('[i]Init Extension: ' + extension.name);
                 if (ext.exts_info[extension.id].hasOwnProperty('enable')){
                     extension.unload();
                 }
@@ -152,7 +152,7 @@ function load_exts(exts) {
         procs.push(function () {
             $.getScript(path,
             function () {
-                utility.Console.out('[i]Load Extension: ' + path);
+                console.out('[i]Load Extension: ' + path);
                 $(window).dequeue('_load_exts');
             });
         });    
@@ -243,7 +243,7 @@ ext.Preferences = function (prefs_name) {
                 }
             },
             function (tx, error) {
-                utility.Console.out('sql:'+ error.message);
+                console.out('sql:'+ error.message);
             });
         });
     }
@@ -259,7 +259,7 @@ ext.Preferences = function (prefs_name) {
                 }
             },
             function (tx, error) {
-                utility.Console.out('sql:'+ error.message);
+                console.out('sql:'+ error.message);
             });
         });
     }

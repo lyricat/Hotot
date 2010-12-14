@@ -76,7 +76,7 @@ function normalize_params(params) {
 form_signed_url:
 function form_signed_url(url, token, method, params) {
     url = url+'?'+ jsOAuth.form_signed_params(url, token, method, params)
-    // utility.Console.out('URL:' + url);
+    // console.out('URL:' + url);
     return url;
 },
     
@@ -106,8 +106,8 @@ function form_signed_params(url, token, method, addition_params, use_dict) {
     var message = jsOAuth.quote(method) 
         + '&' + jsOAuth.quote(url)
         + '&' + jsOAuth.quote(params);
-    // utility.Console.out('Service_key: '+service_key);
-    // utility.Console.out('Message: '+message);
+    // console.out('Service_key: '+service_key);
+    // console.out('Message: '+message);
 
     // sign
     var b64pad = '=';
@@ -141,9 +141,9 @@ function get_request_token(on_success) {
         , function (result) {
             var token_info = result;
             jsOAuth.request_token = util.unserialize_dict(token_info)
-            // utility.Console.out('[i]req_token: ' + token_info);
-            // utility.Console.out('[i]auth_url: ');
-            // utility.Console.href_out(jsOAuth.get_auth_url());
+            // console.out('[i]req_token: ' + token_info);
+            // console.out('[i]auth_url: ');
+            // console.href_out(jsOAuth.get_auth_url());
             if (on_success != null) {
                 on_success(result);
             }
@@ -178,7 +178,7 @@ function get_access_token(pin, on_success, on_error) {
         , function (result) {
             var token_info = result;
             jsOAuth.access_token = util.unserialize_dict(token_info)
-            // utility.Console.out('[i]acc_token: ' + token_info);
+            // console.out('[i]acc_token: ' + token_info);
             if (on_success != null)
                 on_success(result);
         }
