@@ -573,7 +573,6 @@ function bind_tweets_action(tweets_obj, pagename) {
 
         $(id).find('.tweet_more_menu_trigger').hover(
         function (event) {
-            utility.Console.out($(this).get(0).top)
             $('#tweet_menu').css('top', $(this).position().top+'px');
             $(this).find('.tweet_more_menu').show();
         },
