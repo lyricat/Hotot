@@ -802,11 +802,19 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 #main_page {
     display: none;
     background: transparent url(../imgs/body_bg.png);
+    position: relative;
 }
 
 #main_page_slider {
     height: 100%;
     width: 1000%;
+}
+
+#tweet_menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 #people_tweet_block .tweet_block_bottom, #search_tweet_block .tweet_block_bottom {

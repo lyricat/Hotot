@@ -11,6 +11,8 @@ max_id: null,
 
 selected_tweet_id: null,
 
+active_tweet_id: null,
+
 use_preload_conversation: true,
 
 // info of blocks. all pages use as containers to display tweets.
@@ -442,13 +444,14 @@ function add_tweets(json_obj, container) {
             } else {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
-                if (next_one_id < this_one.id_str) {
+                var cmp_ret = util.idcmp(next_one_id, this_one.id_str);
+                if (cmp_ret == 1) {         //next_one_id < this.id_str
                     $(next_one).before(this_one_html);
                     return true;
-                } else if (next_one_id == this_one.id_str) {
+                } else if (cmp_ret == 0) { //next_one_id == this.id_str
                     // simply drop the duplicate tweet.
                     return false;
-                } else {
+                } else {                //next_one_id > this.id_str
                     next_one = get_next_tweet_dom(next_one);
                 }
             }
@@ -534,6 +537,9 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.set_selected_tweet_id(id);
             $(ui.Main.selected_tweet_id).addClass('selected');
         });
+        $(id).mouseover(function(event) {
+            ui.Main.set_active_tweet_id(id);
+        });
         $(id).hover(
         function (event) {
             $(id).addClass('active');
@@ -567,6 +573,8 @@ function bind_tweets_action(tweets_obj, pagename) {
 
         $(id).find('.tweet_more_menu_trigger').hover(
         function (event) {
+            utility.Console.out($(this).get(0).top)
+            $('#tweet_menu').css('top', $(this).position().top+'px');
             $(this).find('.tweet_more_menu').show();
         },
         function (event) {
@@ -939,6 +947,12 @@ function set_selected_tweet_id(id) {
     }
     ui.Main.selected_tweet_id = id;
     ui.Main.block_info[block_name].selected_tweet_id = id;
+},
+
+
+set_active_tweet_id:
+function set_active_tweet_id(id) {
+    ui.Main.active_tweet_id = id;
 },
 
 filter:
