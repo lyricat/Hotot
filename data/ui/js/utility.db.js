@@ -3,7 +3,7 @@ utility.DB = {
 
 cache: null,
 
-MAX_TWEET_CACHE_SIZE: 10240,
+MAX_TWEET_CACHE_SIZE: 1024,
 
 MAX_USER_CACHE_SIZE: 512,
 
@@ -167,14 +167,14 @@ function get_users_starts_with(starts, callback) {
 reduce_user_cache:
 function reduce_user_cache(limit, callback) {
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM TweetCache ORDER BY id DESC limit ?)', [limit], callback);
+        tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM TweetCache ORDER BY id limit ?)', [limit], callback);
     });
 },
 
 reduce_tweet_cache:
 function reduce_tweet_cache(limit, callback) {
     utility.DB.cache.transaction(function (tx) {
-        tx.executeSql('DELETE FROM TweetCache WHERE id in (SELECT id FROM TweetCache ORDER BY id DESC limit ?)', [limit], callback);
+        tx.executeSql('DELETE FROM TweetCache WHERE id in (SELECT id FROM TweetCache ORDER BY id limit ?)', [limit], callback);
     });
 },
 
