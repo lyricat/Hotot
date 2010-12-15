@@ -1,7 +1,7 @@
 data/ui/js/ui.status_box.js
 data/ui/js/ui.dm_tabs.js
 data/ui/js/jquery.layout.js
-data/ui/js/utility.db.js
+data/ui/js/db.js
 data/ui/js/sha1.js
 data/ui/js/ui.retweet_tabs.js
 data/ui/js/ui.exts_dlg.js
@@ -19,7 +19,7 @@ data/ui/js/ui.notification.js
 data/ui/js/ui.action_menu.js
 data/ui/js/ui.context_menu.js
 data/ui/js/ui.header.js
-data/ui/js/utility.console.js
+data/ui/js/console.js
 data/ui/js/ui.filter.js
 data/ui/js/ui.main.js
 data/ui/js/ui.pin_dlg.js
