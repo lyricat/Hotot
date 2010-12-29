@@ -370,6 +370,7 @@ function form_text(text) {
         , '$1@<a href="hotot:action/user/$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
+    text = text.replace(/\n\n\n+/g, '\n\n\n');
     text = text.replace(/\n/g, '<br/>');
     if (ui.Template.reg_is_rtl.test(text)) {
         text = '<div align="right" dir="rtl">' + text + '</div>';
