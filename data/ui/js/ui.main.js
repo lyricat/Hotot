@@ -683,6 +683,7 @@ function on_retweet_click(btn, li_id, event) {
         function (result) {
             ui.Notification.set(_("Undo Successfully!")).show();
             $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
+            $(li).removeClass('retweet');
         });
     } else {
         ui.Notification.set(_("Retweeting ...")).show(-1);
@@ -691,6 +692,7 @@ function on_retweet_click(btn, li_id, event) {
             ui.Notification.set(_("Retweet Successfully!")).show();
             li.attr('my_retweet_id', result.id_str);
             $(btn).addClass('retweeted').attr('title', _("Undo retweet."));
+            $(li).addClass('retweet');
         });
     }
 },
@@ -970,7 +972,7 @@ function set_tweet_bar(li_id) {
         offset_top = $($(li_id).parents('.tweet')[0]).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
             + $(li_id).attr('offsetTop');
-        offset_right = 30;
+        offset_right = 25;
     } else {
         offset_top = $(li_id).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
@@ -1004,6 +1006,11 @@ function set_tweet_bar(li_id) {
         $('#tweet_bar .tweet_retweet').parent().show();
     } else {
         $('#tweet_bar .tweet_retweet').parent().hide();
+    }
+    if ($(li_id).hasClass('retweet')) {
+        $('#tweet_bar .tweet_retweet').addClass('retweeted');
+    } else {
+        $('#tweet_bar .tweet_retweet').removeClass('retweeted');
     }
 
 },

@@ -20,6 +20,7 @@ tweet_t:
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
+    <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="tweet_body">\
@@ -100,7 +101,6 @@ search_t:
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
-    <div class="tweet_fav_indicator"></div>\
 </li>',
 
 init:
