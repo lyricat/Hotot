@@ -16,7 +16,7 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%} {%FAV_CLASS%}" retweet_id="{%RETWEET_ID%}" >\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -43,32 +43,6 @@ tweet_t:
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
         </div>\
     </div>\
-    <ul class="tweet_ctrl">\
-        <li><a class="tweet_reply tweet_ctrl_btn" title={%TRANS_Reply_this_tweet%} href="javascript:void(0);"></a></li>\
-        <li><a class="tweet_retweet tweet_ctrl_btn"  style="{%CAN_RETWEET%}" title={%TRANS_Official_retweet_this_tweet%} href="javascript:void(0);"></a></li>\
-        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_ctrl_btn" href="javascript:void(0);"></a>\
-            <ul class="tweet_more_menu hotot_menu">\
-            <li><a class="tweet_rt tweet_ctrl_menu_btn" \
-                title={%TRANS_RT_this_tweet%} \
-                href="javascript:void(0);">RT</a></li>\
-            <li><a class="tweet_fav tweet_ctrl_menu_btn" \
-                title="{%FAV_TITLE%}" \
-                href="javascript:void(0);">{%FAV_LABEL%}</a></li>\
-            <li><a class="tweet_reply_all tweet_ctrl_menu_btn"\
-                href="javascript:void(0);" \
-                title={%TRANS_Reply_All%}>{%TRANS_Reply_All%}</a></li>\
-            <li><a class="tweet_dm tweet_ctrl_menu_btn"\
-                    href="javascript:void(0);" \
-                    title={%TRANS_Send_Message_to_them%}>{%TRANS_Send_Message%}</a></li>\
-            <li>\
-                <a class="tweet_del tweet_ctrl_menu_btn"\
-                    style="{%CAN_DELETE%}"\
-                    href="javascript:void(0);"\
-                    title={%TRANS_Delete_this_tweet%}>{%TRANS_Delete%}</a>\
-            </li>\
-            </ul>\
-        </li>\
-    </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
     <div class="tweet_thread_wrapper">\
@@ -79,7 +53,7 @@ tweet_t:
 </li>',
 
 dm_t: 
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" type="message">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -99,15 +73,12 @@ dm_t:
             </div>\
         </div>\
     </div>\
-    <ul class="tweet_ctrl">\
-        <li><a class="tweet_dm_reply tweet_ctrl_btn" title={%TRANS_Reply_Them%} href="javascript:void(0);"></a></li>\
-    </ul>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
 </li>',
 
 search_t:
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}">\
+'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" type="search">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -252,8 +223,8 @@ function form_tweet (tweet_obj, pagename) {
 
     ret = ret.replace(/{%IN_REPLY%}/g, 
         (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
-    ret = ret.replace(/{%CAN_RETWEET%}/g, 
-        (protected_user || is_self )? 'display:none':'');
+    ret = ret.replace(/{%RETWEETABLE%}/g, 
+        (protected_user || is_self )? 'false':'true');
 
     ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
     ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
@@ -261,10 +232,8 @@ function form_tweet (tweet_obj, pagename) {
         retweet_name != ''? 'retweet_mark': '');
     ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%FAV_TITLE%}/g, favorited? _("Unfav it."): _("Fav it!"));
-    ret = ret.replace(/{%FAV_LABEL%}/g, favorited? _("Un-Fav"): _("Fav"));
     ret = ret.replace(/{%FAV_CLASS%}/g, favorited? 'fav': '');
-    ret = ret.replace(/{%CAN_DELETE%}/g, is_self? '': 'display:none');
+    ret = ret.replace(/{%DELETABLE%}/g, is_self? 'true': 'false');
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj));
     ret = ret.replace(/{%TRANS_Delete%}/g, _("Delete"));

@@ -77,6 +77,8 @@ function slide_to(id) {
     } else {
         ui.Main.selected_tweet_id = null;
     }
+
+    $('#tweet_bar').hide();
 },
 
 slide_to_prev:

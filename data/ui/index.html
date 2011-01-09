@@ -526,9 +526,33 @@ jQuery(function($) {
             </a>
         </div>
     </div>
-
     </div>
-    <div id="tweet_menu">Menu</div>
+    <ul id="tweet_bar">
+        <li><a class="tweet_reply tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);"></a></li>
+        <li><a class="tweet_retweet tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);"></a></li>
+        <li><a class="tweet_dm_reply tweet_bar_btn" title="Reply Them" href="javascript:void(0);"></a></li>
+        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
+            <ul id="tweet_more_menu" class="hotot_menu">
+            <li><a class="tweet_rt tweet_more_menu_btn" 
+                title="RT this tweet"
+                href="javascript:void(0);">RT</a></li>
+            <li><a class="tweet_fav tweet_more_menu_btn" 
+                title="Fav it!" 
+                href="javascript:void(0);">Fav</a></li>
+            <li><a class="tweet_reply_all tweet_more_menu_btn"
+                href="javascript:void(0);" 
+                title="Reply All">Reply All</a></li>
+            <li><a class="tweet_dm tweet_more_menu_btn"
+                    href="javascript:void(0);" 
+                    title="Send Message to them">Send Message</a></li>
+            <li>
+                <a class="tweet_del tweet_more_menu_btn"
+                    href="javascript:void(0);"
+                    title="Delete this tweet">Delete</a>
+            </li>
+            </ul>
+        </li>
+    </ul>
 </section>
 
 </section><!-- center -->
