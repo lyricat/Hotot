@@ -817,8 +817,8 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     text-align: right;
     position: absolute;
     top: 0px;
-    right: 20px;
-    border-color: rgba(0,0,0,0.5);
+    right: 30px;
+    border-color: rgba(0,0,0,0.3);
     border-width: 1px;
     border-style: solid;
     border-bottom-left-radius: 5px;

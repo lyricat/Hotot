@@ -594,12 +594,19 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.set_selected_tweet_id(id);
             $(ui.Main.selected_tweet_id).addClass('selected');
             ui.Main.set_tweet_bar(id);
+            
+            if (event.button == 0) {
+                ui.StatusBox.close();
+                ui.ContextMenu.hide();
+            }
+            event.stopPropagation();
         });
         $(id).hover(
         function (event) {
             ui.Main.set_active_tweet_id(id);
             $(id).addClass('active');
             ui.Main.set_tweet_bar(id);
+            event.stopPropagation();
         },
         function (event) {
             $(id).removeClass('active');
@@ -958,9 +965,19 @@ function set_active_tweet_id(id) {
 
 set_tweet_bar: 
 function set_tweet_bar(li_id) {
-    var offset_y = $(li_id).attr('offsetTop')
-        - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
-    $('#tweet_bar').css('top', offset_y + 'px');
+    var offset_top = 0; var offset_right = 0; 
+    if (2 < li_id.split('-').length) { // in a thread
+        offset_top = $($(li_id).parents('.tweet')[0]).attr('offsetTop')
+            - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
+            + $(li_id).attr('offsetTop');
+        offset_right = 30;
+    } else {
+        offset_top = $(li_id).attr('offsetTop')
+            - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
+        offset_right = 20;
+    }
+    $('#tweet_bar').css('top', offset_top + 'px');
+    $('#tweet_bar').css('right', offset_right + 'px');
     $('#tweet_bar').css('display','block');
 
     switch ($(li_id).attr('type')) {
