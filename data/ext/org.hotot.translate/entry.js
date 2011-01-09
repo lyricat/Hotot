@@ -135,7 +135,7 @@ function on_ext_btn_clicked() {
         } else {
             dst_lang = val;
         }
-        ext.HototTranslate.do_translate_current_tweet(dst_lang);
+        ext.HototTranslate.do_translate_tweet(ui.Main.selected_tweet_id,dst_lang);
     });
 },
 
@@ -149,6 +149,19 @@ function on_centext_mitem_clicked() {
             dst_lang = val;
         }
         ext.HototTranslate.do_translate_selection(dst_lang);
+    });
+},
+
+on_tweet_more_mitem_clicked:
+function on_tweet_more_mitem_clicked(li_id) {
+    var dst_lang = 'en';
+    ext.HototTranslate.prefs.get('dst_lang', function (key, val) {
+        if (val == null) {
+            ext.HototTranslate.prefs.set('dst_lang', dst_lang);
+        } else {
+            dst_lang = val;
+        }
+        ext.HototTranslate.do_translate_tweet(li_id, dst_lang);
     });
 },
 
@@ -179,9 +192,9 @@ function do_translate(dst_lang, text, callback) {
     $.getJSON(url, callback);
 },
 
-do_translate_current_tweet:
-function do_translate_current_tweet(dst_lang) {
-    var tweet_id = ui.Main.selected_tweet_id;
+do_translate_tweet:
+function do_translate_tweet(li_id, dst_lang) {
+    var tweet_id = li_id;
     var text = $(tweet_id + ' .tweet_body').children('.text');
     var style = 'background:transparent url('
                 + '../ext/'+ext.HototTranslate.id+'/ic16_translate.png'
@@ -221,6 +234,11 @@ function load () {
         , true
         , ext.HototTranslate.on_centext_mitem_clicked);
 
+    ext.add_tweet_more_menuitem('ext_btn_hotot_translate'
+        , 'Translate'
+        , true
+        , ext.HototTranslate.on_tweet_more_mitem_clicked);
+
     ext.HototTranslate.prefs = new ext.Preferences(ext.HototTranslate.id);
 },
 
@@ -228,6 +246,7 @@ unload:
 function unload() {
     ext.remove_exts_menuitem('ext_btn_hotot_translate');
     ext.remove_context_menuitem('ext_btn_hotot_translate');
+    ext.remove_tweet_more_menuitem('ext_btn_hotot_translate');
 },
 
 options:

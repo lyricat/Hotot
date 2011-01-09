@@ -220,6 +220,22 @@ function remove_context_menuitem(id) {
     li.remove();
 },
 
+add_tweet_more_menuitem:
+function add_tweet_more_menuitem(id, label, type , callback) {
+    $('#tweet_more_menu').append('<li><a class="'+id+'" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
+    $('#tweet_more_menu .'+id).click(function() {
+        return callback(ui.Main.active_tweet_id); 
+    });
+},
+
+remove_tweet_more_menuitem:
+function add_tweet_more_menuitem(id) {
+    var a = $('#tweet_more_menu .' + id);
+    a.unbind('click');
+    var li = a.parent();
+    li.remove();
+},
+
 };
 
 ext.Preferences = function (prefs_name) {

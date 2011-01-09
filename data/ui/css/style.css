@@ -867,7 +867,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     text-align: left;
     top: 25px;
     right: -5px;
-    width: 100px;
+    min-width: 100px;
     z-index: 10004;
 }
 
