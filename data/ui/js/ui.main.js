@@ -1012,7 +1012,12 @@ function set_tweet_bar(li_id) {
     } else {
         $('#tweet_bar .tweet_retweet').removeClass('retweeted');
     }
-
+    
+    if ($('#tweet_bar li:last').hasClass('separator')) {
+        $('#tweet_bar li:last').hide();
+    } else {
+        $('#tweet_bar li.separator').show();
+    }
 },
 
 filter:

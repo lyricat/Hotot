@@ -202,28 +202,12 @@ pre {
     right: -10px;
 }
 
-.hotot_menu:after {
-	content:"\00a0";
-	display:block; /* reduce the damage in FF3.0 */
-	position:absolute;
-	z-index: 100000;
-	width:0;
-	height:0;
-	border-width: 7px 7px; /* vary these values to change the angle of the vertex */
-	border-style:solid;
-    top:-14px; /* value = - border-top-width - border-bottom-width */
-	right:10px; /* controls horizontal position */
-	bottom:auto;
-	left:auto;
-	border-color:transparent transparent rgba(0,0,0,0.85) ;
-}
-
 .hotot_menu {
     padding: 5px 0;
     right: 0;
     list-style-type: none;
     display: none;
-    background: rgba(0,0,0,0.85);
+    background: #f2f2f2;
     -webkit-box-shadow: 1px 1px 5px #333;
     border-radius: 5px 5px;
     position:relative;
@@ -234,6 +218,14 @@ pre {
     font-size: 10px;
 }
 
+.hotot_menu > li.separator {
+    margin: 1px auto;
+    width: 90%;
+    height: 1px;
+    min-width:50px;
+    background: #ccc;
+}
+
 .hotot_menu > li > a {
     padding: 2px 10px 2px 20px;
     min-height: 20px;
@@ -242,7 +234,7 @@ pre {
     text-decoration:none;
     background-position: 0 center !important;
     background-repeat: no-repeat !important;
-    color: #fff !important;
+    color: #000;
     white-space:nowrap;
 }
 
@@ -865,7 +857,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     display: none;
     list-style-type:none;
     text-align: left;
-    top: 25px;
+    top: 23px;
     right: -5px;
     min-width: 100px;
     z-index: 10004;
