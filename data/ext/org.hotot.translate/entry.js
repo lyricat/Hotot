@@ -126,19 +126,6 @@ languages: {
  '':  'Unknown' 
 },
 
-on_ext_btn_clicked:
-function on_ext_btn_clicked() {
-    var dst_lang = 'en';
-    ext.HototTranslate.prefs.get('dst_lang', function (key, val) {
-        if (val == null) {
-            ext.HototTranslate.prefs.set('dst_lang', dst_lang);
-        } else {
-            dst_lang = val;
-        }
-        ext.HototTranslate.do_translate_tweet(ui.Main.selected_tweet_id,dst_lang);
-    });
-},
-
 on_centext_mitem_clicked:
 function on_centext_mitem_clicked() {
     var dst_lang = 'en';
@@ -224,11 +211,6 @@ function on_btn_save_prefs_clicked(event) {
 
 load:
 function load () {
-    ext.add_exts_menuitem('ext_btn_hotot_translate'
-        , '../ext/'+ext.HototTranslate.id+'/ic16_translate.png'
-        , 'Click and Translate.'
-        , ext.HototTranslate.on_ext_btn_clicked);
-
     ext.add_context_menuitem('ext_btn_hotot_translate'
         , 'Translate Selection.'
         , true
@@ -244,7 +226,6 @@ function load () {
 
 unload:
 function unload() {
-    ext.remove_exts_menuitem('ext_btn_hotot_translate');
     ext.remove_context_menuitem('ext_btn_hotot_translate');
     ext.remove_tweet_more_menuitem('ext_btn_hotot_translate');
 },

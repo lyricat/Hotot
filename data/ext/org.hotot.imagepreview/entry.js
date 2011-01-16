@@ -46,7 +46,7 @@ img_link_reg: {
 
 BORDER_STYLE: 'margin:2px 5px; padding:0; display:inline-block;',
 
-IMG_STYLE: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0;',
+IMG_STYLE: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0; height: 150px',
 
 form_image:
 function form_image(href, src) {
