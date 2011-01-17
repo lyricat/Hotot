@@ -236,8 +236,7 @@ def update_status(text):
 
 def load_user(screen_name):
     webv.execute_script('''
-        ui.Main.reset_people_page(null, '%s');
-        $('#people_tweet_block > ul').html('');
+        ui.PeopleTabs.set_people('%s');
         ui.Notification.set(_("Loading @%s\'s timeline...")).show();
         daemon.Updater.update_people();
         ''' % (screen_name, screen_name));

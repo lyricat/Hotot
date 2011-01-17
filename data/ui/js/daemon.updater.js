@@ -114,22 +114,21 @@ function update_favorites() {
 
 update_people:
 function update_people() {
-    $('#people_request_hint').hide();
-    var load_people_tl = function () {
-        lib.twitterapi.get_user_timeline(
-            ui.Main.block_info['#people'].id,
-            ui.Main.block_info['#people'].screen_name,
-            ui.Main.block_info['#people'].since_id, null, 20,
-        function (result) {
-            $('#people_tweet_block .tweet_block_bottom').show();
-            ui.Slider.slide_to('#people');
-            ui.Main.load_tweets_cb(result, '#people');
-        });
+    var proc_map = {
+        '#people_tweet': ui.PeopleTabs.load_people_timeline,
+        '#people_fav': ui.PeopleTabs.load_people_fav,
+        '#people_follower': ui.PeopleTabs.load_people_follower,
+        '#people_friend': ui.PeopleTabs.load_people_friend
     };
-    
 
+    $('#people_request_hint').hide();
+    
     if (ui.Main.block_info['#people'].screen_name == '') 
         return;
+    
+    var pagename = ui.PeopleTabs.current;
+    
+
     lib.twitterapi.show_user(
         ui.Main.block_info['#people'].screen_name, 
     function (user_obj) {
@@ -141,7 +140,8 @@ function update_people() {
         if (user_obj.following) {
             btn_follow.html('Unfollow');
             btn_follow.addClass('unfo');
-            load_people_tl();
+            proc_map[pagename]();
+            $('#people_tweet_block .tweet_block_bottom').show();
         } else {
             if (user_obj.protected) {
                 // not friend and user protect his tweets,
@@ -156,7 +156,8 @@ function update_people() {
             } else {
                 btn_follow.html('Follow');
                 btn_follow.removeClass('unfo');
-                load_people_tl();
+                proc_map[pagename]();
+                $('#people_tweet_block .tweet_block_bottom').show();
             }
         }
         $('#people_vcard').show();

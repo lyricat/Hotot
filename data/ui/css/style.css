@@ -889,11 +889,32 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     color: #fff;
     border: 0;
     padding: 3px 5px;
+    position: relative;
 }
 
-#people_vcard .vcard_ctrl_btn:hover {
-    background: #aaa;
+#people_vcard_ctrl {
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
+
+#people_vcard_menu_trigger {
+    position: relative;
+}
+
+#people_vcard_menu_btn {
+    padding: 3px 10px; 
+    -webkit-border-radius: 5px 5px; 
+}
+
+#people_vcard_menu_btn:hover {
+    
+}
+
+#people_vcard_menu {
+    position: absolute;
+}
+
 #people_entry, #search_entry {
     text-align: center;
 }
@@ -958,11 +979,15 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     padding: 3px 10px;
     text-decoration: none;
     font-size: 10px;
-    -webkit-border-radius: 5px 5px; 
+    -webkit-border-radius: 5px 5px;
 }
 
 .tweet_tabs_btn.selected {
-    background: #222;
+    background: #222
+}
+
+.tweet_tabs_btn.selected:hover {
+    color: white;
 }
 
 .tweet_sub_block {
@@ -1519,34 +1544,6 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .vcard_info > li {
     margin: 3px 0;
-}
-
-.vcard_ctrl {
-    list-style-type: none;
-    width: 300px;
-    text-align: right;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
-
-.vcard_ctrl > li {
-    display: inline-block;
-    height: 20px;
-}
-
-.vcard_ctrl_btn {
-    text-align: center;
-    display: inline-block;
-    width: 60px;
-    height: 20px;
-    line-height: 20px;
-    text-decoration: none;
-}
-
-.vcard_ctrl_btn:hover {
-    background: #f2f2f2;
-    border-radius: 5px 5px;
 }
 
 .tweet_block_top {

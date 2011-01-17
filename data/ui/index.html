@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/ui.main.js"></script>
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.people_tabs.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
@@ -212,6 +213,7 @@ jQuery(function($) {
     ui.Main.init();
     ui.RetweetTabs.init();
     ui.DMTabs.init();
+    ui.PeopleTabs.init();
     ui.Notification.init();
     ui.Slider.init();
     ui.PinDlg.init();
@@ -439,21 +441,25 @@ jQuery(function($) {
                 </a>
             </div>
             <div id="people_vcard" class="vcard">
-                <ul class="vcard_ctrl">
-                    <li>
-                        <a class="vcard_follow vcard_ctrl_btn"
-                            href="javascript:void(0);">_("Follow")</a>
-                    </li>
-                    <li>
-                        <a class="vcard_block vcard_ctrl_btn"
-                            href="javascript:void(0);">_("Block")</a>
-                    </li>
-                    <li>
-                        <a class="vcard_unblock vcard_ctrl_btn"
-                            href="javascript:void(0);">_("Unblock")</a>
-                    </li>
-
-                </ul>
+                <div id="people_vcard_ctrl">
+                    <div id="people_vcard_menu_trigger">
+                        <a id="people_vcard_menu_btn">Action</a>
+                        <ul id="people_vcard_menu" class="hotot_menu">
+                        <li>
+                            <a class="vcard_follow"
+                                href="javascript:void(0);">_("Follow")</a>
+                        </li>
+                        <li>
+                            <a class="vcard_block"
+                                href="javascript:void(0);">_("Block")</a>
+                        </li>
+                        <li>
+                            <a class="vcard_unblock"
+                                href="javascript:void(0);">_("Unblock")</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="profile_img_wrapper">
                 </div>
                 <ol class="vcard_info">
@@ -475,9 +481,49 @@ jQuery(function($) {
                         &bull; _("Friends: ")<span class="friend_cnt"></span>
                     </li>
                 </ol>
+                <div class="tweet_tabs">
+                    <ol>
+                        <li><a id="btn_people_tweet" class="tweet_tabs_btn" href="#people_tweet">_("Tweets")</a></li>
+                        <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">_("Fav")</a></li>
+                        <li><a id="btn_people_follower" class="tweet_tabs_btn" href="#people_follower">_("Followers")</a></li>
+                        <li><a id="btn_people_friend" class="tweet_tabs_btn" href="#people_friend">_("Friends")</a></li>
+                    </ol>
+                </div>
             </div>
         </div>
-        <ul></ul>
+        <div id="people_tweet_sub_block" class="tweet_tabs_page tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
+            </div>
+        </div>
+        <div id="people_fav_sub_block" class="tweet_tabs_page tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
+            </div>
+        </div>        
+        <div id="people_follower_sub_block" class="tweet_tabs_page tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
+            </div>
+        </div>
+        <div id="people_friend_sub_block" class="tweet_tabs_page tweet_sub_block">
+            <ul></ul>
+            <div class="tweet_block_bottom">
+                <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
+                    <span class="placeholder"></span>            
+                </a>
+            </div>
+        </div>
+
         <div id="people_request_hint">
             <h1>
             @<label id="request_screen_name"></label>_(" has protected his/her tweets.")
@@ -490,11 +536,6 @@ jQuery(function($) {
             <span class="placeholder"></span>            
             </a>
             </div>
-        </div>
-        <div class="tweet_block_bottom">
-            <a class="btn_load_more button" href="javascript:void(0);">_("Load more")
-            <span class="placeholder"></span>            
-            </a>
         </div>
     </div>
     <div id="search_tweet_block" class="tweet_block">

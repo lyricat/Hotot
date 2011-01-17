@@ -44,65 +44,6 @@ function init () {
         ui.Main.load_more_tweets();
     });
 
-    $('#people_vcard .vcard_follow').click(
-    function (event) {
-        var screen_name = ui.Main.block_info['#people'].screen_name;
-        var _this = this;
-        if ($(this).hasClass('unfo')) {
-            ui.Notification.set(_("Unfollow @") + screen_name + _(" ...")).show();
-            lib.twitterapi.destroy_friendships(screen_name,
-            function () {
-                ui.Notification.set(
-                    _("Unfollow @")+ screen_name+_(" Successfully!")).show();
-                $(_this).text('Follow').removeClass('unfo');
-            });
-        } else {
-            ui.Notification.set(_("Follow @") + screen_name + _(" ...")).show();
-            lib.twitterapi.create_friendships(screen_name,
-            function () {
-                ui.Notification.set(
-                    _("Follow @")+ screen_name+_(" Successfully!")).show();
-                $(_this).text('Unfollow').addClass('unfo');
-            });
-        }
-    });
-
-    $('#people_vcard .vcard_block').click(
-    function (event) {
-        var screen_name = ui.Main.block_info['#people'].screen_name;
-        if (!confirm(_("Are you sure you want to block @")+screen_name+_("?!\n")))
-            return;
-        ui.Notification.set(_("Block @") + screen_name + _(" ...")).show();
-        lib.twitterapi.create_blocks(screen_name,
-        function () {
-            ui.Notification.set(
-                _("Block @")+ screen_name+_(" Successfully!")).show();
-        });
-    });
-
-    $('#people_vcard .vcard_unblock').click(
-    function (event) {
-        var screen_name = ui.Main.block_info['#people'].screen_name;
-        ui.Notification.set(_("Unblock @") + screen_name + _(" ...")).show();
-        lib.twitterapi.create_blocks(screen_name,
-        function () {
-            ui.Notification.set(
-                _("Unblock @")+ screen_name+_(" Successfully")).show();
-        });
-    });
-
-    $('#tbox_people_entry').keypress(
-    function (event) {
-        if (event.keyCode == 13)
-            $('#btn_people_entry').click();
-    });
-    $('#btn_people_entry').click(
-    function (event) {
-        ui.Main.reset_people_page(null
-            , $.trim($('#tbox_people_entry').attr('value')));
-        daemon.Updater.update_people();
-    });
-
     $('#tbox_search_entry').keypress(
     function (event) {
         if (event.keyCode == 13)
@@ -255,6 +196,42 @@ function reset_block_info() {
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
+    '#people_tweet': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_user_timeline
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#people_fav': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_user_timeline
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#people_follower': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_user_timeline
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
+    '#people_friend': {
+          since_id: 1, max_id: null
+        , api_proc: lib.twitterapi.get_user_timeline
+        , is_sub: true
+        , selected_tweet_id: null
+        , use_notify: false 
+        , use_notify_sound: false
+        , use_notify_type: 'count'
+    },
     '#search': { 
           query: '', page: 1
         , api_proc: lib.twitterapi.search 
@@ -283,15 +260,6 @@ function show () {
     this.me.show();
 },
 
-reset_people_page:
-function reset_people_page(id, screen_name) {
-    ui.Main.block_info['#people'].id = id;
-    ui.Main.block_info['#people'].screen_name = screen_name;
-    ui.Main.block_info['#people'].since_id = 1;
-    ui.Main.block_info['#people'].max_id = null;
-    $('#people_tweet_block > ul').html('');
-},
-
 reset_search_page:
 function reset_search_page(query) {
     ui.Main.block_info['#search'].query = query;
@@ -312,6 +280,8 @@ function load_more_tweets () {
         pagename = ui.RetweetTabs.current;
     if (pagename == '#direct_messages')
         pagename = ui.DMTabs.current;
+    if (pagename == '#people')
+        pagename = ui.PeopleTabs.current;
 
     var proc = ui.Main.block_info[pagename].api_proc;
 
@@ -330,7 +300,7 @@ function load_more_tweets () {
                 ui.Main.load_more_tweets_cb(result, pagename);
             })
         break;
-    case '#people':
+    case '#people_tweet':
         proc(ui.Main.block_info[pagename].id
             , ui.Main.block_info[pagename].screen_name
             , 1, ui.Main.block_info[pagename].max_id
@@ -356,7 +326,8 @@ function load_tweets_cb(result, pagename) {
     // and use the name of subpage as pagename.
     // others display in normal blocks.
     if (pagename.indexOf('#retweet') == 0
-        || pagename.indexOf('#direct_messages') == 0) {
+        || pagename.indexOf('#direct_messages') == 0
+        || pagename.indexOf('#people') == 0) {
         container = $(pagename + '_sub_block > ul');
     } else {
         container = $(pagename + '_tweet_block > ul');
@@ -416,7 +387,8 @@ function load_more_tweets_cb(result, pagename) {
     // and use the name of subpage as pagename.
     // others display in normal blocks.
     if (pagename.indexOf('#retweet') == 0
-        || pagename.indexOf('#direct_messages') == 0) { 
+        || pagename.indexOf('#direct_messages') == 0 
+        || pagename.indexOf('#people') == 0 ) {
         container = $(pagename + '_sub_block > ul');
     } else {
         container = $(pagename + '_tweet_block > ul');
