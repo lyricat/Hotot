@@ -152,13 +152,6 @@ function reset_block_info() {
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
-    '#favorites': { page: 1
-        , api_proc: lib.twitterapi.get_favorites
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
-    },
     '#retweeted_to_me': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_retweeted_to_me
@@ -188,20 +181,14 @@ function reset_block_info() {
     },
     '#people': {
           id: null, screen_name: '' 
-        , since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: false
-        , selected_tweet_id: null
-        , use_notify: false 
-        , use_notify_sound: false
-        , use_notify_type: 'count'
     },
     '#people_tweet': {
           since_id: 1, max_id: null
         , api_proc: lib.twitterapi.get_user_timeline
         , is_sub: true
         , selected_tweet_id: null
-        , use_notify: false 
+        , use_notify: true 
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
@@ -210,7 +197,7 @@ function reset_block_info() {
         , api_proc: lib.twitterapi.get_favorites
         , is_sub: true
         , selected_tweet_id: null
-        , use_notify: false 
+        , use_notify: true 
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
@@ -286,24 +273,25 @@ function load_more_tweets () {
     var proc = ui.Main.block_info[pagename].api_proc;
 
     switch (pagename){
-    case '#favorites':
-        proc(globals.myself.id, ui.Main.block_info[pagename].page, 
+    case '#search':
+        proc(ui.Main.block_info[pagename].query
+            , ui.Main.block_info[pagename].page, 
+        function (result) {
+            result = result.results;
+            ui.Main.load_more_tweets_cb(result, pagename);
+        })
+    break;
+    case '#people_fav':
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_fav'].page,
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
         });
     break;
-    case '#search':
-        proc(ui.Main.block_info[pagename].query
-            , ui.Main.block_info[pagename].page, 
-            function (result) {
-                result = result.results;
-                ui.Main.load_more_tweets_cb(result, pagename);
-            })
-        break;
     case '#people_tweet':
-        proc(ui.Main.block_info[pagename].id
-            , ui.Main.block_info[pagename].screen_name
-            , 1, ui.Main.block_info[pagename].max_id
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_tweet'].screen_name
+            , 1, ui.Main.block_info['#people_tweet'].max_id
             , 20, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
@@ -339,8 +327,8 @@ function load_tweets_cb(result, pagename) {
     var tweet_count = ui.Main.add_tweets(result, container);
  
     if (tweet_count != 0 ) {
-        // favorites page have differet mechanism to display more tweets.
-        if (pagename == '#favorites' || pagename == '#search') {
+        // favorites page and search page have differet mechanism to display tweets.
+        if (pagename == '#people_fav' || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].since_id 
@@ -399,8 +387,7 @@ function load_more_tweets_cb(result, pagename) {
     var tweet_count = ui.Main.add_tweets(json_obj, container);
 
     if (tweet_count != 0) {
-        if (pagename == '#favorites'
-            || pagename == '#search') {
+        if (pagename == '#people_fav'|| pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
         } else {
             ui.Main.block_info[pagename].max_id 
@@ -927,6 +914,8 @@ function set_selected_tweet_id(id) {
         block_name = ui.RetweetTabs.current;
     } else if (ui.Slider.current == '#direct_messages') {
         block_name = ui.DMTabs.current;
+    } else if (ui.Slider.current == '#people') {
+        block_name = ui.PeopleTabs.current;
     }
     ui.Main.selected_tweet_id = id;
     ui.Main.block_info[block_name].selected_tweet_id = id;
