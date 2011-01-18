@@ -457,6 +457,10 @@ jQuery(function($) {
                             <a class="vcard_unblock"
                                 href="javascript:void(0);">_("Unblock")</a>
                         </li>
+                        <li>
+                            <a class="vcard_edit"
+                                href="javascript:void(0);">_("Edit")</a>
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -483,10 +487,12 @@ jQuery(function($) {
                 </ol>
                 <div class="tweet_tabs">
                     <ol>
-                        <li><a id="btn_people_tweet" class="tweet_tabs_btn" href="#people_tweet">_("Tweets")</a></li>
+                        <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">_("Tweets")</a></li>
                         <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">_("Fav")</a></li>
+                        <!--
                         <li><a id="btn_people_follower" class="tweet_tabs_btn" href="#people_follower">_("Followers")</a></li>
                         <li><a id="btn_people_friend" class="tweet_tabs_btn" href="#people_friend">_("Friends")</a></li>
+                        -->
                     </ol>
                 </div>
             </div>
@@ -579,7 +585,7 @@ jQuery(function($) {
                 href="javascript:void(0);">Retweet (old style)</a></li>
             <li><a class="tweet_fav tweet_more_menu_btn" 
                 title="Fav it!" 
-                href="javascript:void(0);">Fav</a></li>
+                href="javascript:void(0);">Fav/Un-fav</a></li>
             <li><a class="tweet_reply_all tweet_more_menu_btn"
                 href="javascript:void(0);" 
                 title="Reply All">Reply All</a></li>

@@ -72,6 +72,11 @@ function init() {
         });
     });
 
+    $('#people_vcard .vcard_edit').click(
+    function (event) { 
+        ui.DialogHelper.open(ui.ProfileDlg);
+    });
+
     $('#tbox_people_entry').keypress(
     function (event) {
         if (event.keyCode == 13)
@@ -99,6 +104,11 @@ function init() {
 
 set_people:
 function set_people(screen_name) {
+    if (screen_name == globals.myself.screen_name) {
+        $('#people_vcard_menu .vcard_edit').parent().show();
+    } else {
+        $('#people_vcard_menu .vcard_edit').parent().hide();
+    }
     ui.Main.block_info['#people'].screen_name = screen_name;
     ui.Main.block_info['#people_tweet'].since_id = 1;
     ui.Main.block_info['#people_tweet'].max_id = null;
@@ -121,10 +131,8 @@ function load_people_timeline() {
 
 load_people_fav:
 function load_people_fav() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        'shellex',
-        ui.Main.block_info['#people_fav'].since_id, null, 20,
+    lib.twitterapi.get_favorites(
+        ui.Main.block_info['#people'].screen_name, 1,
     function (result) {
         ui.Slider.slide_to('#people');
         ui.Main.load_tweets_cb(result, '#people_fav');

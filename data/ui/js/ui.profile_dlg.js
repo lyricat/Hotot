@@ -22,11 +22,6 @@ function init () {
         ui.DialogHelper.close(ui.ProfileDlg)
     });
 
-    $('#btn_my_profile').click(
-    function (event) {
-        ui.DialogHelper.open(ui.ProfileDlg);
-    });
-
     $('#btn_change_profile_avator').click(
     function (event) {
         hotot_action('action/choose_file/ui.profile_dlg.select_finish');

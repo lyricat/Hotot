@@ -206,8 +206,8 @@ function reset_block_info() {
         , use_notify_type: 'count'
     },
     '#people_fav': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
+          page: 1
+        , api_proc: lib.twitterapi.get_favorites
         , is_sub: true
         , selected_tweet_id: null
         , use_notify: false 
@@ -581,6 +581,7 @@ function bind_tweets_action(tweets_obj, pagename) {
             event.stopPropagation();
         },
         function (event) {
+            $('#tweet_bar').hide();
             $(id).removeClass('active');
         });
 

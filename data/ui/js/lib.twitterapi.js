@@ -178,9 +178,8 @@ function get_mentions(since_id, max_id, count, on_success) {
 
 get_favorites:
 function get_favorites(id, page, on_success) {
-    var url = lib.twitterapi.api_base + 'favorites.json';
+    var url = lib.twitterapi.api_base + 'favorites/'+id+'.json';
     var params={
-        'id': id,
         'page': page,
     };
     lib.twitterapi.get(url, params, on_success);
