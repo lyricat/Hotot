@@ -207,7 +207,7 @@ pre {
     right: 0;
     list-style-type: none;
     display: none;
-    background: #f2f2f2;
+    background: rgba(239, 235, 231, 0.85);
     -webkit-box-shadow: 1px 1px 5px #333;
     border-radius: 5px 5px;
     position:relative;
