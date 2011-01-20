@@ -86,17 +86,25 @@ function navigate_action(uri) {
     window.location.href = uri;
 }
 
+function hotot_log(label, content) {
+    if (globals.debug) {
+        hotot_action('action/log/' + encodeURIComponent(label) 
+            + '/' + encodeURIComponent(content));
+    }
+}
+
 var globals = {
-    status_hint: _("'What is happening?'"),
-    tweet_hint: _("'What is happening?'"),
-    dm_hint: _("'Click here to Compose a Meassage ...'"),
-    tweet_block_width: 600,
-    max_status_len: 140,
-    trim_bound: 100,
-    tweet_font_size: 12,
-    myself: {},
-    focus_input: false,
-    in_main_view: false,
+      status_hint: _("'What is happening?'")
+    , tweet_hint: _("'What is happening?'")
+    , dm_hint: _("'Click here to Compose a Meassage ...'")
+    , tweet_block_width: 600
+    , max_status_len: 140
+    , trim_bound: 100
+    , tweet_font_size: 12
+    , myself: {}
+    , focus_input: false
+    , in_main_view: false
+    , debug: true
 };
 
 jQuery(function($) {

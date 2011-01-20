@@ -47,6 +47,9 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
         var task_uuid = lib.network.generate_uuid();
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
+        
+        hotot_log('Req', JSON.stringify({'type':req_method, 'url': req_url, 'data': req_params}));
+
         jQuery.ajax({    
             type: req_method,
             url: req_url,

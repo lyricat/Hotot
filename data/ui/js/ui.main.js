@@ -384,6 +384,7 @@ function load_more_tweets_cb(result, pagename) {
     container.pagename = pagename.substring(1);
     // never resume position after loading more tweet
     container.resume_pos = false;
+    hotot_log(pagename, 'begin with '+result[0].id_str + '.');
     var tweet_count = ui.Main.add_tweets(json_obj, container);
 
     if (tweet_count != 0) {
@@ -455,7 +456,7 @@ function add_tweets(json_obj, container) {
         while (true) {
             if (next_one == null) {
                 // insert to end of container 
-                container.append(this_one_html);
+                container.append(this_one_html);            
                 return true;
             } else {
                 var next_one_id 
@@ -489,6 +490,7 @@ function add_tweets(json_obj, container) {
         if (! insert_tweet(json_obj[i])) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
+            hotot_log('DDD','Duplicate!');
         } else {
             var dom_id = container.pagename+'-'+json_obj[i].id_str;
             if (ui.Main.use_preload_conversation) {
@@ -508,11 +510,11 @@ function add_tweets(json_obj, container) {
     // resume to the postion before new tweets were added
     // offset = N* (clientHeight + border-width)
     if (container.resume_pos) {
-        container.parent().get(0).scrollTop 
+        container.parents('.tweet_block').get(0).scrollTop 
             += new_tweets_height + json_obj.length;
     }
 
-    if (container.parent().get(0).scrollTop < 100) {
+    if (container.parents('.tweet_block').get(0).scrollTop < 100) {
         ui.Main.trim_page(container);
         ui.Main.compress_page(container);
     }
