@@ -11,10 +11,9 @@ tweet_blocks: {
     '#home_timeline': 0, 
     '#mentions': 1,
     '#direct_messages':2,
-    '#favorites': 3,
-    '#retweets': 4,
-    '#people': 5,
-    '#search': 6,
+    '#retweets': 3,
+    '#people': 4,
+    '#search': 5,
 },
 
 init:

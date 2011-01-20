@@ -3,6 +3,14 @@ ui.Header = {
 
 init:
 function init () {
+
+    $('#btn_my_profile').click(
+    function (event) {
+        ui.Notification.set("Loading ... ").show();
+        ui.PeopleTabs.set_people(globals.myself.screen_name);
+        daemon.Updater.update_people();
+    });
+
     $('#btn_hotot_wrap').hover(
     function (event) {
     },

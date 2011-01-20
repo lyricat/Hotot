@@ -127,7 +127,6 @@ function update_people() {
         return;
     
     var pagename = ui.PeopleTabs.current;
-    
 
     lib.twitterapi.show_user(
         ui.Main.block_info['#people'].screen_name, 

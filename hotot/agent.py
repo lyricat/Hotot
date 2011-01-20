@@ -163,6 +163,8 @@ def crack_action(params):
         callback = params[2]
         file_path = utils.open_file_chooser_dialog()
         webv.execute_script('%s("%s")' % (callback, file_path))
+    elif params[1] == 'log':
+        print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
     pass
 
 def crack_system(params):
