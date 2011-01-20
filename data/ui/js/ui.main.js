@@ -475,6 +475,12 @@ function add_tweets(json_obj, container) {
     };
 
     var new_tweets_height = 0;
+
+    for (var i = 0; i < json_obj.length; i+= 1) {
+        if (!json_obj[i].hasOwnProperty('id_str')) {
+            json_obj[i].id_str = json_obj[i].id.toString();
+        }
+    }
     // insert tweets.
     if (1 < json_obj.length) {
         json_obj = sort_tweets(json_obj);
@@ -568,7 +574,6 @@ function bind_tweets_action(tweets_obj, pagename) {
             event.stopPropagation();
         },
         function (event) {
-            $('#tweet_bar').hide();
             $(id).removeClass('active');
         });
 
@@ -737,7 +742,6 @@ function on_fav_click(btn, li_id, event) {
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).text('Fav');
             $(li).removeClass('fav');
         });
     } else {
@@ -745,7 +749,6 @@ function on_fav_click(btn, li_id, event) {
         lib.twitterapi.create_favorite(id, 
         function (result) {
             ui.Notification.set('Successfully!').show();
-            $(btn).text('Un-Fav');
             $(li).addClass('fav');
         });
     }
