@@ -29,6 +29,7 @@ class MainView(WebView):
             settings.set_property('tab-key-cycles-through-elements', True)
             settings.set_property('enable-file-access-from-file-uris', True)
         except:
+            print 'Error: settings property was not set.'
             pass
         webkit.set_web_database_directory_path(config.DB_DIR)
         webkit.set_default_web_database_quota(1024**3L)
@@ -41,17 +42,6 @@ class MainView(WebView):
         template = i18n.trans_html(template)
         self.load_html_string(template, 'file://' + templatefile)
         pass
-
-    def ctx(self, *args):
-        try:
-            import jswebkit
-        except:
-            print 'Error: module `python-jswebkit` is not available.'
-            pass
-        else:
-            ctx = jswebkit.JSContext(
-                self.get_main_frame().get_global_context())
-        return ctx
 
     def on_navigation_requested(self, view, webframe, request):
         # get uri from request object
