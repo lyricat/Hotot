@@ -27,12 +27,12 @@ function init () {
 
     $('.tweet_block').scroll(
     function (event) {
+        var container = ui.Main.get_current_container(ui.Slider.current);
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
-            $(ui.Slider.current + '_tweet_block >ul')
-                .children('.tweet:hidden:lt(20)').show();
+            container.children('.tweet:hidden:lt(20)').show();
         }
         if (this.scrollTop == 0) {
-            ui.Main.compress_page($(ui.Slider.current + '_tweet_block >ul'))
+            ui.Main.compress_page(container);
         }
         // hide tweet menu
         $('#tweet_bar').hide();
@@ -262,14 +262,7 @@ function load_tweets () {
 
 load_more_tweets:
 function load_more_tweets () {
-    var pagename = ui.Slider.current;
-    if (pagename == '#retweets')
-        pagename = ui.RetweetTabs.current;
-    if (pagename == '#direct_messages')
-        pagename = ui.DMTabs.current;
-    if (pagename == '#people')
-        pagename = ui.PeopleTabs.current;
-
+    var pagename = ui.Main.get_sub_pagename(ui.Slider.current);
     var proc = ui.Main.block_info[pagename].api_proc;
 
     switch (pagename){
@@ -279,7 +272,7 @@ function load_more_tweets () {
         function (result) {
             result = result.results;
             ui.Main.load_more_tweets_cb(result, pagename);
-        })
+        });
     break;
     case '#people_fav':
         proc(ui.Main.block_info['#people'].screen_name
@@ -289,8 +282,8 @@ function load_more_tweets () {
         });
     break;
     case '#people_tweet':
-        proc(ui.Main.block_info['#people'].screen_name
-            , ui.Main.block_info['#people_tweet'].screen_name
+        proc(null
+            , ui.Main.block_info['#people'].screen_name
             , 1, ui.Main.block_info['#people_tweet'].max_id
             , 20, 
         function (result) {
@@ -309,17 +302,11 @@ function load_more_tweets () {
 load_tweets_cb:
 function load_tweets_cb(result, pagename) {
     var json_obj = result;
-    var container = null;
+
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
     // others display in normal blocks.
-    if (pagename.indexOf('#retweet') == 0
-        || pagename.indexOf('#direct_messages') == 0
-        || pagename.indexOf('#people') == 0) {
-        container = $(pagename + '_sub_block > ul');
-    } else {
-        container = $(pagename + '_tweet_block > ul');
-    }
+    var container = ui.Main.get_container(pagename);
     container.pagename = pagename.substring(1);
 
     // resume position if timeline is not on the top
@@ -370,18 +357,12 @@ function load_tweets_cb(result, pagename) {
 load_more_tweets_cb:
 function load_more_tweets_cb(result, pagename) {
     var json_obj = result;
-    var container = null;
     // tweets in retweets page shoul be display in sub blocks
     // and use the name of subpage as pagename.
     // others display in normal blocks.
-    if (pagename.indexOf('#retweet') == 0
-        || pagename.indexOf('#direct_messages') == 0 
-        || pagename.indexOf('#people') == 0 ) {
-        container = $(pagename + '_sub_block > ul');
-    } else {
-        container = $(pagename + '_tweet_block > ul');
-    }
+    var container = ui.Main.get_container(pagename);
     container.pagename = pagename.substring(1);
+
     // never resume position after loading more tweet
     container.resume_pos = false;
     hotot_log(pagename, 'begin with '+result[0].id_str + '.');
@@ -914,14 +895,7 @@ function move_to_tweet(pos) {
 
 set_selected_tweet_id:
 function set_selected_tweet_id(id) {
-    var block_name = ui.Slider.current;
-    if (ui.Slider.current == '#retweets') {
-        block_name = ui.RetweetTabs.current;
-    } else if (ui.Slider.current == '#direct_messages') {
-        block_name = ui.DMTabs.current;
-    } else if (ui.Slider.current == '#people') {
-        block_name = ui.PeopleTabs.current;
-    }
+    var block_name = ui.Main.get_sub_pagename(ui.Slider.current);
     ui.Main.selected_tweet_id = id;
     ui.Main.block_info[block_name].selected_tweet_id = id;
 },
@@ -1001,6 +975,56 @@ function filter(query){
         }
     });
 }, 
+
+get_sub_pagename:
+function get_sub_pagename(pagename) {
+    if (pagename == '#retweets') {
+        pagename = ui.RetweetTabs.current;
+    } else if (pagename == '#direct_messages') {
+        pagename = ui.DMTabs.current;
+    } else if (pagename == '#people') {
+        pagename = ui.PeopleTabs.current;
+    }
+    return pagename;
+},
+
+get_container:
+function get_container(pagename) {
+    var container = null;
+    if (pagename.indexOf('#retweet') == 0
+        || pagename.indexOf('#direct_messages') == 0 
+        || pagename.indexOf('#people') == 0 ) 
+    {
+        container = $(pagename + '_sub_block > ul');
+    } else {
+        container = $(pagename + '_tweet_block > ul');
+    }
+    container.pagename = pagename;
+    return container;
+},
+
+get_current_container:
+function get_current_container(pagename) {
+    var is_sub_page = false;
+    var container = null;
+    if (pagename == '#retweets') {
+        pagename = ui.RetweetTabs.current;
+        is_sub_page = true;
+    } else if (pagename == '#direct_messages') {
+        pagename = ui.DMTabs.current;
+        is_sub_page = true;
+    } else if (pagename == '#people') {
+        pagename = ui.PeopleTabs.current;
+        is_sub_page = true;
+    }
+    if (is_sub_page) {
+        container = $(pagename + '_sub_block > ul');
+    } else {
+        container = $(pagename + '_tweet_block > ul');
+    }
+    container.pagename = pagename;
+    return container;
+},
 
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
