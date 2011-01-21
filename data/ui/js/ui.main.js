@@ -255,9 +255,9 @@ function reset_search_page(query) {
 },
 
 load_tweets:
-function load_tweets () {
+function load_tweets (force) {
     var pagename = ui.Slider.current;
-    daemon.Updater.watch_pages[pagename].proc();
+    daemon.Updater.watch_pages[pagename].proc(force);
 },
 
 load_more_tweets:
@@ -350,7 +350,8 @@ function load_tweets_cb(result, pagename) {
             if (ui.Main.block_info[pagename].use_notify_sound) {
                 hotot_action('system/notify_with_sound');
             }
-        } 
+        }
+        ui.Slider.set_unread(pagename);
     }
 },
 

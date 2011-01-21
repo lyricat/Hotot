@@ -113,7 +113,7 @@ function update_favorites() {
 },
 
 update_people:
-function update_people() {
+function update_people(force) {
     var proc_map = {
         '#people_tweet': ui.PeopleTabs.load_people_timeline,
         '#people_fav': ui.PeopleTabs.load_people_fav,
@@ -134,7 +134,8 @@ function update_people() {
         btn_follow.show();
         ui.Template.fill_vcard(user_obj, container);
         ui.Slider.slide_to('#people');
-
+        
+        db.dump_users([user_obj]);
         if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
             btn_follow.html('Unfollow');
             btn_follow.addClass('unfo');
@@ -161,18 +162,26 @@ function update_people() {
         $('#people_vcard').show();
         $('#people_entry').css('border-bottom', '0')
     }
-
-    db.get_user(ui.Main.block_info['#people'].screen_name
-        , function (tx, rs) {
-            if (rs.rows.length == 0) {
-                lib.twitterapi.show_user(
-                    ui.Main.block_info['#people'].screen_name, render_proc
-                );
-            } else {
-                render_proc(JSON.parse(rs.rows.item(0).json));
+    
+    if (force) {
+        lib.twitterapi.show_user(
+              ui.Main.block_info['#people'].screen_name
+            , render_proc
+        );
+    } else {
+        db.get_user(ui.Main.block_info['#people'].screen_name
+            , function (tx, rs) {
+                if (rs.rows.length == 0) {
+                    lib.twitterapi.show_user(
+                          ui.Main.block_info['#people'].screen_name
+                        , render_proc
+                    );
+                } else {
+                    render_proc(JSON.parse(rs.rows.item(0).json));
+                }
             }
-        }
-    )
+        );
+    }
 },
 
 update_retweets:
