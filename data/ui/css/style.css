@@ -917,6 +917,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 #people_entry, #search_entry {
     text-align: center;
+    padding: 2px 0;
 }
 
 #tbox_people_entry, #tbox_search_entry {
@@ -1534,16 +1535,18 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 
 .vcard_info {
-    padding: 5px;
-    margin: 0 100px 0 70px;
+    width: 80%;
+    border: none;
+    margin: 5px 0 0 60px;
+    border-collapse:collapse;
 }
 
-.vcard ol {
-    list-style-type: none;
-}
-
-.vcard_info > li {
-    margin: 3px 0;
+.vcard_info td {
+    border: none;
+    height: 16px;
+    text-align: left;
+    vertical-align: top;
+    height: 10px;
 }
 
 .tweet_block_top {
@@ -2012,7 +2015,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     display: block;
 }
 
-table {
+#notification_table, #shortcuts_table {
     width: 100%;
     border-collapse: collapse;
 }

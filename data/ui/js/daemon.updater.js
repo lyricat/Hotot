@@ -128,13 +128,12 @@ function update_people() {
     
     var pagename = ui.PeopleTabs.current;
 
-    lib.twitterapi.show_user(
-        ui.Main.block_info['#people'].screen_name, 
-    function (user_obj) {
+    var render_proc = function (user_obj) {
         var container = $('#people_vcard'); 
         var btn_follow = container.find('.vcard_follow');
         btn_follow.show();
         ui.Template.fill_vcard(user_obj, container);
+        ui.Slider.slide_to('#people');
 
         if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
             btn_follow.html('Unfollow');
@@ -161,7 +160,19 @@ function update_people() {
         }
         $('#people_vcard').show();
         $('#people_entry').css('border-bottom', '0')
-    });
+    }
+
+    db.get_user(ui.Main.block_info['#people'].screen_name
+        , function (tx, rs) {
+            if (rs.rows.length == 0) {
+                lib.twitterapi.show_user(
+                    ui.Main.block_info['#people'].screen_name, render_proc
+                );
+            } else {
+                render_proc(JSON.parse(rs.rows.item(0).json));
+            }
+        }
+    )
 },
 
 update_retweets:

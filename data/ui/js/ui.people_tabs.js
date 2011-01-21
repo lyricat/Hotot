@@ -124,7 +124,6 @@ function load_people_timeline() {
         ui.Main.block_info['#people'].screen_name,
         ui.Main.block_info['#people_tweet'].since_id, null, 20,
     function (result) {
-        ui.Slider.slide_to('#people');
         ui.Main.load_tweets_cb(result, '#people_tweet');
     });
 },
@@ -134,7 +133,6 @@ function load_people_fav() {
     lib.twitterapi.get_favorites(
         ui.Main.block_info['#people'].screen_name, 1,
     function (result) {
-        ui.Slider.slide_to('#people');
         ui.Main.load_tweets_cb(result, '#people_fav');
     });
 },
@@ -146,7 +144,6 @@ function load_people_fav() {
         'shellexy',
         ui.Main.block_info['#people_follower'].since_id, null, 20,
     function (result) {
-        ui.Slider.slide_to('#people');
         ui.Main.load_tweets_cb(result, '#people_follower');
     });
 },
@@ -158,7 +155,6 @@ function load_people_fav() {
         'shellexz',
         ui.Main.block_info['#people_friend'].since_id, null, 20,
     function (result) {
-        ui.Slider.slide_to('#people');
         ui.Main.load_tweets_cb(result, '#people_friend');
     });
 },

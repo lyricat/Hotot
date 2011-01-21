@@ -74,7 +74,8 @@ var layout_opts = {
 };
 
 function update_tweet_block_width() {
-    globals.tweet_block_width = $(window).width() - $('#aside').width();
+    globals.tweet_block_width = 
+        $(window).width() - $('#aside').width() + 1;
     $(".tweet_block").width(globals.tweet_block_width);
 }
 
@@ -466,25 +467,37 @@ jQuery(function($) {
                 </div>
                 <div class="profile_img_wrapper">
                 </div>
-                <ol class="vcard_info">
-                    <li>_("Name: ")
+                <table class="vcard_info" border="0" cellpadding="0" cellspacing="0">
+                    <tr><td>_("Name: ")</td><td>
                         <a class="screen_name" href="#"></a> 
-                        (<span class="name"></span>) 
-                    </li>
-                    <li>_("Tweets: ")<span class="tweet_cnt"></span>
-                    &bull; _("Tweets per Day: ")
-                    <span class="tweet_per_day_cnt"></span>
-                    </li>
-                    <li>Bio: <span class="bio"></span></li>
-                    <li>_("Web: ")
-                        <a class="web" href="#" class="link"></a>
-                    </li>
-                    <li>_("Location: ")<span class="location"></span></li>
-                    <li>_("Join: ")<span class="join"></span></li>
-                    <li>_("Followers: ")<span class="follower_cnt"></span>
-                        &bull; _("Friends: ")<span class="friend_cnt"></span>
-                    </li>
-                </ol>
+                        (<span class="name"></span>) </td>
+                    </tr>
+                    <tr><td>_("Tweets: ")</td>
+                        <td><span class="tweet_cnt"></span>
+                        (<span class="tweet_per_day_cnt"></span> per day)</td>
+                    </tr>
+                    <tr><td>Bio: </td>
+                        <td><span class="bio"></span></td>
+                    </tr>
+                    <tr><td>_("Web: ")</td>
+                        <td><a class="web" href="#" class="link"></a></td>
+                    </tr>
+                    <tr><td>_("Location: ")</td>
+                        <td><span class="location"></span></td>
+                    </tr>
+                    <tr><td>_("Join: ")</td>
+                        <td><span class="join"></span></td>
+                    </tr>
+                    <tr><td>_("Followers: ")</td>
+                        <td><span class="follower_cnt"></span></td>
+                    </tr>
+                    <tr><td>_("Friends: ")</td>
+                        <td><span class="friend_cnt"></span></td>
+                    </tr>
+                    <tr><td>_("Relation: ")</td>
+                        <td><span class="relation"></span></td>
+                    </tr>
+                </table>
                 <div class="tweet_tabs">
                     <ol>
                         <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">_("Tweets")</a></li>
@@ -794,7 +807,7 @@ jQuery(function($) {
                     <h3>_("- Notification -")</h3>
                     <div class="dlg_group">
                     <p>
-                        <table>
+                        <table id="notification_table">
                         <tbody>
                         <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Type")</th><th>_("Sound")</th></tr>
                         <tr><td>_("Home")</td>
@@ -1042,7 +1055,7 @@ jQuery(function($) {
                     <h3>_("- Keyboard shortcuts -")</h3>
                     <div class="dlg_group">
                     <p>
-                        <table>
+                        <table id="shortcuts_table">
                         <tbody>
                         <tr><th>_("Action")</th><th>_("Shortcut")</th></tr>
                         <tr><th class="sub" colspan="2">_("Global")</th></tr>
