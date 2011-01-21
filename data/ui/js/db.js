@@ -73,6 +73,24 @@ function create_cache() {
     });
 },
 
+dump_users:
+function dump_users(json_obj) {
+    var dump_single_user = function (tx, user) {
+        tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id_str, user.screen_name, JSON.stringify(user)],
+        function (tx, rs) {},
+        function (tx, error) {
+            console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+        });
+    };
+    // dump users
+    db.cache.transaction(function (tx) {
+        for (var i = 0; i < json_obj.length; i += 1) {
+            var user = json_obj[i];
+            dump_single_user(tx, user);
+        }
+    });
+},
+
 dump_tweets:
 function dump_tweets(json_obj) {
     var dump_single_user = function (tx, user) {
