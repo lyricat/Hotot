@@ -310,7 +310,7 @@ function load_tweets_cb(result, pagename) {
     container.pagename = pagename.substring(1);
 
     // resume position if timeline is not on the top
-    container.resume_pos = (container.parent().get(0).scrollTop != 0);
+    container.resume_pos = (container.parents('.tweet_block').get(0).scrollTop != 0);
     var tweet_count = ui.Main.add_tweets(result, container);
  
     if (tweet_count != 0 ) {
@@ -801,7 +801,7 @@ function on_expander_click(btn, event) {
 load_thread_proc:
 function load_thread_proc(tweet_id, thread_container, on_finish) {
     var load_thread_proc_cb = function (prev_tweet_obj) {
-        thread_container.resume_pos = true;
+        thread_container.resume_pos = false;
         var count=ui.Main.add_tweets([prev_tweet_obj], thread_container);
         // load the prev tweet in the thread.
         var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
