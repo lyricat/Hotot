@@ -16,6 +16,9 @@ import sys
 import subprocess
 import ctypes
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 try: import i18n
 except: from gettext import gettext as _
 
