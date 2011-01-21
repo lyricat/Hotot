@@ -350,7 +350,8 @@ function load_tweets_cb(result, pagename) {
             if (ui.Main.block_info[pagename].use_notify_sound) {
                 hotot_action('system/notify_with_sound');
             }
-        } 
+        }
+        ui.Slider.set_unread(pagename);
     }
 },
 

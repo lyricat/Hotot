@@ -447,46 +447,76 @@ pre {
 
 /* ===== Buttom =================================== */
 #indication {
-    height: 42px;
     text-align: center;
-    background: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#2c2c2c));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,#3C3C3C), color-stop(46%,#2D2D2D)); /* webkit */
     border-top: #2c2c2c 1px solid;
     border-bottom: #2c2c2c 1px solid;
 }
 
 #indication > ul {
-    height: 40px;
+    height: 38px;
     margin: 0 auto;
-    display: inline-block;
+    list-style-type: none;
 }
 
 #indication li {
-    display: block;
-    float: left;
+    display: inline-block;
     height: 40px;
-    width: 45px;
-    padding:0;
-    border-right: #2c2c2c 1px solid;
+    width: 40px;
+    padding: 0;
     text-align: center;
+}
+
+#indication li {
     position: relative;
+    margin: 0 3px; 
 }
 
 #indication li.stick_right {
     position: absolute !important;
     right: 0 !important;
-    border-left: #2c2c2c 1px solid;
 }
 
 #indication li:first-child {
-    border-left: #2c2c2c 1px solid;
 }
 
-#indication li > a {
-    display: block;
-    padding: 0 5px;
-    margin: 1px;
+#indication .idx_btn {
+    margin: 2px 0 0 2px;
+    height: 36px;
+    width: 36px;
+    display: inline-block;
     font-size: 12px;
-    height: 38px;
+    position: absolute;
+    border-radius: 5px;
+}
+    
+#indication li > .idx_btn:hover {
+    -webkit-box-shadow: inset 0px 0px 8px #555;
+    background: #aaa none no-repeat;
+}
+
+#indication li > .idx_btn > span {
+    display: block;
+    height: 36px;
+    background-position: center -43px;
+}
+
+#indication li > .idx_btn:hover > span {
+    background-position: center 5px;
+}
+
+#indication li > .idx_btn.unread {
+    -webkit-box-shadow: inset 0px 0px 8px #555;
+    background: orange none no-repeat;
+}
+
+#indication li > .idx_btn.selected {
+    -webkit-box-shadow: inset 0px 0px 8px #555;
+    background: #CDE6FF none no-repeat;
+}
+
+#indication li > .idx_btn.selected > span, #indication li > .idx_btn.unread > span {
+    background-position: center 5px;
 }
 
 #indication li > span.shape {
@@ -495,26 +525,39 @@ pre {
     position: absolute;
     width:0;
     height:0;
-    left: 15px; /* value = - border-left-width - border-right-width */
+    left: 12px; /* value = - border-left-width - border-right-width */
     top: 0px;
     border-style: solid;
-    border-width: 7px 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: #2c2c2c transparent transparent transparent; 
+    border-width: 8px 8px 8px 8px; /* vary these values to change the angle of the vertex */
+    border-color: #3C3C3C transparent transparent transparent; 
 }
 
-#indication li > a:hover {
-    font-size: 12px;
-    -webkit-box-shadow: inset 0px 1px 50px #aaaaff !important;
+#indication_slot {
+    height: 12px;
+    position: relative;
 }
 
-#indication li > a.selected {
-    -webkit-box-shadow: inset 0px 1px 50px #aaa;
+#indication_slot_border {
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    height: 2px;
+    position: absolute;
+    border-radius: 1px;
+    -webkit-box-shadow: inset 0 0 2px #111;
+    box-shadow: inset 0 0 2px #111;
 }
 
-#indication li > a > span {
-    display: block;
-    height: 38px;
-    background-position: 5px ;
+#indication_light {
+    width: 39px;
+    height: 2px;
+    top: 4px;
+    background: #ADE6FF;
+    position: absolute;
+    -webkit-box-shadow: -1px 0 6px #fff;
+    box-shadow: 0 0 4px #fff;
+    border-radius: 1px;
 }
 
 #console {
