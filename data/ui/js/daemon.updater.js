@@ -136,7 +136,7 @@ function update_people() {
         btn_follow.show();
         ui.Template.fill_vcard(user_obj, container);
 
-        if (user_obj.following) {
+        if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
             btn_follow.html('Unfollow');
             btn_follow.addClass('unfo');
             proc_map[pagename]();
