@@ -3,6 +3,13 @@ ui.PeopleTabs = {
 
 current: null,
 
+relation_map: { 
+      0: '&infin; You are friends.'
+    , 1: '&ni; You are followed by them.'
+    , 2: '&isin; You are following.'
+    , 3: '&empty; You are not following each other.'
+},
+
 init:
 function init() {
     $('#people_tweet_block .tweet_tabs_btn').click(
@@ -115,6 +122,28 @@ function set_people(screen_name) {
     ui.Main.block_info['#people_fav'].since_id = 1;
     ui.Main.block_info['#people_fav'].max_id = null;
     $('#people_tweet_block .tweet_sub_block').find('ul').html(''); 
+},
+
+get_relationship:
+function get_relationship(screen_name, callback) {
+    lib.twitterapi.show_friendships(
+          screen_name
+        , globals.myself.screen_name
+        , function (result) {
+            var source = result.relationship.source;
+            var relation = 0;
+            if (source.following && source.followed_by) {
+                relation = 0;
+            } else if (source.following && !source.followed_by) {
+                relation = 1;
+            } else if (!source.following && source.followed_by) {
+                relation = 2;
+            } else {
+                relation = 3;
+            }
+            callback(relation);
+        }
+    );
 },
 
 load_people_timeline:

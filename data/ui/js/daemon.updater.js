@@ -128,6 +128,7 @@ function update_people(force) {
     
     var pagename = ui.PeopleTabs.current;
 
+
     var render_proc = function (user_obj) {
         var container = $('#people_vcard'); 
         var btn_follow = container.find('.vcard_follow');
@@ -137,8 +138,6 @@ function update_people(force) {
         
         db.dump_users([user_obj]);
         if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
-            btn_follow.html('Unfollow');
-            btn_follow.addClass('unfo');
             proc_map[pagename]();
             $('#people_tweet_block .tweet_block_bottom').show();
         } else {
@@ -159,6 +158,16 @@ function update_people(force) {
                 $('#people_tweet_block .tweet_block_bottom').show();
             }
         }
+        ui.PeopleTabs.get_relationship(user_obj.screen_name
+            , function (rel) {
+                $('#people_vcard .relation').html(
+                    ui.PeopleTabs.relation_map[rel]
+                );
+                if (rel == 0 || rel == 2) {
+                    btn_follow.html('Unfollow');
+                    btn_follow.addClass('unfo');
+                }
+            });
         $('#people_vcard').show();
         $('#people_entry').css('border-bottom', '0')
     }

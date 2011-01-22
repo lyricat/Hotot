@@ -326,8 +326,6 @@ function fill_vcard(user_obj, vcard_container) {
         vcard_container.find('.web').text('')
         vcard_container.find('.web').attr('href', '#');
     }
-    vcard_container.find('.relation').html(
-        user_obj.following? '&radic; Following': '&empty; Not follow' );
 },
 
 form_text:

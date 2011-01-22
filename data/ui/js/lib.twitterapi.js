@@ -321,11 +321,21 @@ function update_profile(name, website, location, description, on_success) {
 },
 
 exists_friendships:
-function show_friendships(source, target, on_success) {
+function exists_friendships(source, target, on_success) {
     var url = lib.twitterapi.api_base + 'friendships/exists.json';
     var params={
         'user_a': source,
         'user_b': target,
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+show_friendships:
+function show_friendships(source, target, on_success) {
+    var url = lib.twitterapi.api_base + 'friendships/show.json';
+    var params={
+        'source_screen_name': source,
+        'target_screen_name': target,
     };
     lib.twitterapi.get(url, params, on_success);
 },
