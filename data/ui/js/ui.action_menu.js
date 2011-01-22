@@ -34,6 +34,16 @@ function init() {
     // generate expander trigger btn
     container.append('<li><a id="act_menu_expander" href="javascript:void(0);" class="action_menu_item">Expand/Collapse</a></li>');
     ui.ActionMenu.btns['act_menu_expander'] = null;
+    //bind mouse click event
+    ui.ActionMenu.me.find('.action_menu_item').click(
+        function (event) {
+            var btn = ui.ActionMenu.btns[$(this).attr('id')];
+            if (btn != null) {
+                btn.click();
+                ui.ActionMenu.hide();
+            }
+        }
+    );
 },
 
 handle_keyup:
