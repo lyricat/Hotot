@@ -1586,10 +1586,14 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .vcard_info td {
     border: none;
-    height: 16px;
     text-align: left;
     vertical-align: top;
     height: 10px;
+}
+
+.vcard_info td:first-child {
+    width: 50px;
+    text-align: right;
 }
 
 .tweet_block_top {
