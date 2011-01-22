@@ -15,6 +15,8 @@ active_tweet_id: null,
 
 use_preload_conversation: true,
 
+use_auto_loadmore: false,
+
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
 },
@@ -30,6 +32,12 @@ function init () {
         var container = ui.Main.get_current_container(ui.Slider.current);
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
             container.children('.tweet:hidden:lt(20)').show();
+            if (this.scrollTop + this.clientHeight == this.scrollHeight) {
+                if (ui.Main.use_auto_loadmore) {
+                    container.next('.tweet_block_bottom')
+                        .children('.btn_load_more').click();
+                }
+            }
         }
         if (this.scrollTop == 0) {
             ui.Main.compress_page(container);
@@ -40,8 +48,14 @@ function init () {
 
     $('.btn_load_more').click(
     function(event) {
+        var btn = $(this);
+        btn.children('.label').text('Loading ...');
         ui.Notification.set(_("Loading Tweets...")).show(-1);
-        ui.Main.load_more_tweets();
+        ui.Main.load_more_tweets(
+            function () {
+                btn.children('.label').text('Load More');
+            }
+        );
     });
 
     $('#tbox_search_entry').keypress(
@@ -261,7 +275,7 @@ function load_tweets (force) {
 },
 
 load_more_tweets:
-function load_more_tweets () {
+function load_more_tweets (callback) {
     var pagename = ui.Main.get_sub_pagename(ui.Slider.current);
     var proc = ui.Main.block_info[pagename].api_proc;
 
@@ -272,6 +286,9 @@ function load_more_tweets () {
         function (result) {
             result = result.results;
             ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
         });
     break;
     case '#people_fav':
@@ -279,6 +296,9 @@ function load_more_tweets () {
             , ui.Main.block_info['#people_fav'].page,
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
         });
     break;
     case '#people_tweet':
@@ -288,12 +308,18 @@ function load_more_tweets () {
             , 20, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
         });
     break;
     default:
         proc(1, ui.Main.block_info[pagename].max_id, 20,
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
         });
     break;
     } 

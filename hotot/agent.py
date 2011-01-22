@@ -327,6 +327,7 @@ def apply_prefs():
         globals.verbose = %s;
         ui.StatusBox.use_hover_box = %s;
         ui.Main.use_preload_conversation = %s;
+        ui.Main.use_auto_loadmore = %s;
         lib.twitterapi.api_base = '%s';
         lib.twitterapi.sign_api_base = '%s';
         lib.twitterapi.search_api_base = '%s';
@@ -342,7 +343,8 @@ def apply_prefs():
             , font_family_used, font_size
             , use_verbose_mode
             , 'true' if get_prefs('use_hover_box') else 'false'
-            , 'true' if get_prefs('use_preload_conversation') else 'false'
+            , str(get_prefs('use_preload_conversation')).lower()
+            , str(get_prefs('use_auto_loadmore')).lower()
             , api_base, sign_api_base, search_api_base
             , 'true' if get_prefs('use_same_sign_api_base') else 'false'
             , oauth_base, sign_oauth_base
@@ -397,6 +399,7 @@ def push_prefs():
     use_native_notify = str(get_prefs('use_native_notify')).lower()
     use_hover_box = str(get_prefs('use_hover_box')).lower()
     use_preload_conversation = str(get_prefs('use_preload_conversation')).lower()
+    use_auto_loadmore = str(get_prefs('use_auto_loadmore')).lower()
     
     # networks settings
     api_base = get_prefs('api_base')
@@ -445,6 +448,7 @@ def push_prefs():
         , "use_native_notify": %s
         , "use_hover_box": %s
         , "use_preload_conversation": %s
+        , "use_auto_loadmore": %s
         , "api_base": "%s"
         , "sign_api_base": "%s"
         , "search_api_base": "%s"
@@ -464,6 +468,7 @@ def push_prefs():
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify
             , use_hover_box, use_preload_conversation
+            , use_auto_loadmore
             , api_base, sign_api_base, search_api_base
             , use_same_sign_api_base
             , oauth_base, sign_oauth_base

@@ -44,6 +44,7 @@ twitter_profile = {
     'use_native_notify': True,
     'use_hover_box': True,
     'use_preload_conversation': True,
+    'use_auto_loadmore': False,
     # Appearance > Notification:
     'use_home_timeline_notify': True,
     'use_home_timeline_notify_type': 'count',
