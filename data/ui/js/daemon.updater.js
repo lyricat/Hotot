@@ -126,52 +126,12 @@ function update_people(force) {
     if (ui.Main.block_info['#people'].screen_name == '') 
         return;
     
-    var pagename = ui.PeopleTabs.current;
-
-
     var render_proc = function (user_obj) {
-        var container = $('#people_vcard'); 
-        var btn_follow = container.find('.vcard_follow');
-        btn_follow.show();
-        ui.Template.fill_vcard(user_obj, container);
-        ui.Slider.slide_to('#people');
-        
-        db.dump_users([user_obj]);
-        if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
-            proc_map[pagename]();
-            $('#people_tweet_block .tweet_block_bottom').show();
-        } else {
-            if (user_obj.protected) {
-                // not friend and user protect his tweets,
-                // then hide follow btn.
-                btn_follow.hide();
-                // and display request box.
-                $('#people_request_hint').show();
-                $('#people_tweet_block .tweet_block_bottom').hide();
-                $('#btn_people_request').attr('href'
-                    , 'http://twitter.com/' + user_obj.screen_name)
-                $('#request_screen_name').text(user_obj.screen_name)
-            } else {
-                btn_follow.html('Follow');
-                btn_follow.removeClass('unfo');
-                proc_map[pagename]();
-                $('#people_tweet_block .tweet_block_bottom').show();
-            }
-        }
-        ui.PeopleTabs.get_relationship(user_obj.screen_name
-            , function (rel) {
-                $('#people_vcard .relation').html(
-                    ui.PeopleTabs.relation_map[rel]
-                );
-                if (rel == 0 || rel == 2) {
-                    btn_follow.html('Unfollow');
-                    btn_follow.addClass('unfo');
-                }
-            });
-        $('#people_vcard').show();
-        $('#people_entry').css('border-bottom', '0')
+        ui.PeopleTabs.render_people_page(user_obj
+            , ui.PeopleTabs.current
+            , proc_map[ui.PeopleTabs.current]);
     }
-    
+
     if (force) {
         lib.twitterapi.show_user(
               ui.Main.block_info['#people'].screen_name
