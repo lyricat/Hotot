@@ -130,8 +130,12 @@ def crack_config(params):
     elif params[1] == 'loads': # useless
         config.loads(app.active_profile)
     elif params[1] == 'push_prefs':
+        config.load_sys_conf()
         config.loads(app.active_profile)
         push_prefs()
+    elif params[1] == 'save_sys_prefs':
+        prefs = json.loads(urllib2.unquote(params[2]))
+        config.save_sys_prefs(prefs) 
     elif params[1] == 'save_prefs':
         prefs = json.loads(urllib2.unquote(params[2]))
         config.save_prefs(app.active_profile, prefs)
@@ -272,6 +276,10 @@ def init_exts():
 
 def apply_prefs(): 
     apply_proxy_setting()
+    
+    # global preferences
+    use_verbose_mode = str(config.sys_get('use_verbose_mode')).lower()
+
     remember_password = get_prefs('remember_password')
     font_family_used = get_prefs('font_family_used')
     font_size = get_prefs('font_size')
@@ -316,6 +324,7 @@ def apply_prefs():
         $('#chk_remember_password').attr('checked', eval('%s'));
         $('body').css('font-family', '%s');
         globals.tweet_font_size = %s;
+        globals.verbose = %s;
         ui.StatusBox.use_hover_box = %s;
         ui.Main.use_preload_conversation = %s;
         lib.twitterapi.api_base = '%s';
@@ -331,6 +340,7 @@ def apply_prefs():
         ''' % (
               'true' if remember_password else 'false'
             , font_family_used, font_size
+            , use_verbose_mode
             , 'true' if get_prefs('use_hover_box') else 'false'
             , 'true' if get_prefs('use_preload_conversation') else 'false'
             , api_base, sign_api_base, search_api_base
@@ -355,6 +365,10 @@ def apply_config():
 
 def push_prefs():
     apply_proxy_setting()
+    # global preferences
+    use_verbose_mode = str(config.sys_get('use_verbose_mode')).lower()
+    use_ubuntu_indicator = str(config.sys_get('use_ubuntu_indicator')).lower()
+
     # account settings
     remember_password = str(get_prefs('remember_password')).lower()
     
@@ -420,7 +434,9 @@ def push_prefs():
     )
     webv.execute_script('''
         var prefs_obj = {
-          "remember_password": %s
+          "use_verbose_mode": %s
+        , "use_ubuntu_indicator": %s
+        , "remember_password": %s
         , "shortcut_summon_hotot": "%s"
         , "font_family_list":  %s
         , "font_family_used": "%s"
@@ -442,7 +458,8 @@ def push_prefs():
         %s
         };
         ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
-        ''' % (remember_password
+        ''' % ( use_verbose_mode, use_ubuntu_indicator
+            , remember_password
             , shortcut_summon_hotot
             , json.dumps(font_family_list), font_family_used, font_size
             , use_native_input, use_native_notify

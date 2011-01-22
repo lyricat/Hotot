@@ -86,6 +86,7 @@ identica_profile.update(twitter_profile)
 identica_profile.update({'api_base': 'https://identi.ca/api/'})
 
 default_sys_config = {
+    'use_verbose_mode': False,
     'use_ubuntu_indicator': False,
 }
 
@@ -293,6 +294,13 @@ def save_prefs(prof_name, prefs_obj):
     config['profiles'][prof_name].update(prefs_obj);
     globals()['profiles'][prof_name].update(config['profiles'][prof_name])
     dumps(prof_name)
+    pass
+
+def save_sys_prefs(prefs_obj):
+    config = getconf()
+    config['sys_conf'].update(prefs_obj);
+    globals()['sys_conf'].update(config['sys_conf'])
+    dump_sys_conf()
     pass
 
 def restore_defaults(prof_name):

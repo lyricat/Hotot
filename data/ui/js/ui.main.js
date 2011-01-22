@@ -24,7 +24,7 @@ function init () {
     this.id = '#main_page';
     this.me = $('#main_page');
     this.reset_block_info();
-
+    var tweet_bar = $('#tweet_bar');
     $('.tweet_block').scroll(
     function (event) {
         var container = ui.Main.get_current_container(ui.Slider.current);
@@ -34,8 +34,8 @@ function init () {
         if (this.scrollTop == 0) {
             ui.Main.compress_page(container);
         }
-        // hide tweet menu
-        $('#tweet_bar').hide();
+        // hide tweet bar
+        tweet_bar.hide();
     });
 
     $('.btn_load_more').click(
@@ -472,7 +472,6 @@ function add_tweets(json_obj, container) {
         if (! insert_tweet(json_obj[i])) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
-            hotot_log('DDD','Duplicate!');
         } else {
             var dom_id = container.pagename+'-'+json_obj[i].id_str;
             if (ui.Main.use_preload_conversation) {

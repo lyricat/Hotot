@@ -24,7 +24,7 @@ function init () {
         $(page_name).show();
         $(this).addClass('selected');
     });
-    $('#btn_prefs_account').click()
+    $('#btn_prefs_global').click()
 
     $(ui.PrefsDlg.id).find('.dialog_close_btn').click(
     function (event) {
@@ -114,6 +114,12 @@ function request_prefs() {
 
 request_prefs_cb:
 function request_prefs_cb(prefs_obj) {
+    // Globals
+    $('#chk_prefs_use_verbose_mode').attr('checked'
+        , prefs_obj['use_verbose_mode']);
+    $('#chk_prefs_use_ubuntu_indicator').attr('checked'
+        , prefs_obj['use_ubuntu_indicator']);
+
     // Account
     $('#chk_prefs_remember_password').attr('checked'
         , prefs_obj['remember_password']);
@@ -151,8 +157,6 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['use_native_notify']);
     $('#chk_prefs_use_native_input').attr('checked'
         , prefs_obj['use_native_input']);
-    $('#chk_prefs_use_ubuntu_indicator').attr('checked'
-        , prefs_obj['use_ubuntu_indicator']);
     $('#chk_prefs_use_hover_box').attr('checked'
         , prefs_obj['use_hover_box']);
     $('#chk_prefs_use_preload_conversation').attr('checked'
@@ -195,6 +199,12 @@ function request_prefs_cb(prefs_obj) {
 
 save_prefs:
 function save_prefs() {
+    var sys_prefs_obj = {};
+    sys_prefs_obj['use_verbose_mode'] 
+        = $('#chk_prefs_use_verbose_mode').attr('checked');
+    sys_prefs_obj['use_ubuntu_indicator'] 
+        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
+
     var prefs_obj = {};
     prefs_obj['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
@@ -220,8 +230,6 @@ function save_prefs() {
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs_obj['use_native_input']
         = $('#chk_prefs_use_native_input').attr('checked');
-    prefs_obj['use_ubuntu_indicator']
-        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
     prefs_obj['use_hover_box']
         = $('#chk_prefs_use_hover_box').attr('checked');   
     prefs_obj['use_preload_conversation']
@@ -250,6 +258,8 @@ function save_prefs() {
         = $('#tbox_prefs_http_proxy_port').attr('value');
     if (prefs_obj['http_proxy_port']=='') prefs_obj['http_proxy_port']=0;
 
+    hotot_action('config/save_sys_prefs/'
+        + encodeURIComponent(JSON.stringify(sys_prefs_obj)));
     hotot_action('config/save_prefs/'
         + encodeURIComponent(JSON.stringify(prefs_obj)));
 },
