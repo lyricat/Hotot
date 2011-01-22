@@ -906,7 +906,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     z-index: 10004;
 }
 
-#tweet_more_menu_btn {
+.tweet_more_menu_btn {
     display: block;
     height: 20px;
     font-size: 10px;
@@ -917,7 +917,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     padding-left: 20px;
 }
 
-#tweet_more_menu_btn:hover {
+.tweet_more_menu_btn:hover {
     background-color: #a8b1fe;
     color: #000; 
 }
@@ -1863,22 +1863,23 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     background-color: rgba(0,0,0, 0.1);
 }
 
-.tweet_reply {
+#tweet_reply_btn {
     background-image: url(../imgs/ic16_reply.png) ;
 }
-.tweet_retweet {
+#tweet_retweet_btn {
     background-image: url(../imgs/ic16_retweet.png);
 }
-.tweet_retweet.retweeted {
+#tweet_retweet_btn.retweeted {
     background-image: url(../imgs/ic16_retweeted.png);
 }
-.tweet_more {
+#tweet_more_menu_btn {
     background-image: url(../imgs/ic16_more.png);
 }
-.tweet_dm_reply {
+#tweet_dm_reply_btn {
     background-image: url(../imgs/ic16_dm.png);
 }
-.tweet_more_menu_trigger {
+
+#tweet_more_menu_trigger {
     position: relative;
 }
 
@@ -1887,7 +1888,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     display: none;
     list-style-type:none;
     text-align: left;
-    top: 25px;
+    top: 22px;
     right: -5px;
     width: 100px;
     z-index: 10004;
@@ -2035,8 +2036,9 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     padding: 5px 20px;
 }
 
-#action_menu li > a.selected, #action_menu li > a:active {
+#action_menu li > a.selected {
     background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+    color: white;
 }
 
 #context_menu {

@@ -58,7 +58,7 @@ function init () {
 
     //tweet bar
     // -- more menu --
-    $('#tweet_bar .tweet_more_menu_trigger').hover(
+    $('#tweet_more_menu_trigger').hover(
     function (event) {
         $('#tweet_more_menu').show();
     },
@@ -66,46 +66,46 @@ function init () {
         $('#tweet_more_menu').hide();
     });
 
-    $('#tweet_bar .tweet_reply').click(
+    $('#tweet_reply_btn').click(
     function (event) {
         ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
         return false;
     });
 
-    $('#tweet_bar .tweet_rt').click(
+    $('#tweet_rt_btn').click(
     function (event) {
         ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
         return false;
     });
 
-    $('#tweet_bar .tweet_retweet').click(
+    $('#tweet_retweet_btn').click(
     function (event) {
         ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
     });
 
-    $('#tweet_bar .tweet_fav').click(
+    $('#tweet_fav_btn').click(
     function (event) {
         ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
     });
 
-    $('#tweet_bar .tweet_reply_all').click(
+    $('#tweet_reply_all_btn').click(
     function (event) {
         ui.Main.on_reply_all_click(this, ui.Main.active_tweet_id, event);
         return false;
     });
 
-    $('#tweet_bar .tweet_dm').click(
+    $('#tweet_dm_btn').click(
     function (event) {
         ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
         return false;
     });
 
-    $('#tweet_bar .tweet_del').click(
+    $('#tweet_del_btn').click(
     function (event) {
         ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
     });
 
-    $('#tweet_bar .tweet_dm_reply').click(
+    $('#tweet_dm_reply_btn').click(
     function (event) {
         ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
         return false;
@@ -922,16 +922,18 @@ function set_tweet_bar(li_id) {
     }
     $('#tweet_bar').css('top', offset_top + 'px');
     $('#tweet_bar').css('right', offset_right + 'px');
-    $('#tweet_bar').css('display','block');
+    $('#tweet_bar').show();
 
     switch ($(li_id).attr('type')) {
     case 'tweet':
-        $('#tweet_bar .tweet_dm_reply').parent().hide();
-        $('#tweet_bar .tweet_bar_btn:not(.tweet_dm_reply)').parent().show();
+        $('#tweet_reply_btn').parent().css('display', 'inline-block');
+        $('#tweet_retweet_btn').parent().css('display', 'inline-block');
+        $('#tweet_dm_reply_btn').parent().css('display', 'none');
     break;
     case 'message':
-        $('#tweet_bar .tweet_dm_reply').parent().show();
-        $('#tweet_bar .tweet_bar_btn:not(.tweet_dm_reply)').parent().hide();
+        $('#tweet_reply_btn').parent().css('display', 'none');
+        $('#tweet_retweet_btn').parent().css('display', 'none');
+        $('#tweet_dm_reply_btn').parent().css('display', 'inline-block');
     break;
     case 'search':
         $('#tweet_bar').hide();
@@ -940,19 +942,19 @@ function set_tweet_bar(li_id) {
     }
 
     if ($(li_id).attr('deletable') == 'true') {
-        $('#tweet_bar .tweet_del').parent().show();
+        $('#tweet_del_btn').parent().css('display', 'inline-block');
     } else {
-        $('#tweet_bar .tweet_del').parent().hide();
+        $('#tweet_del_btn').parent().css('display', 'none');
     }
     if ($(li_id).attr('retweetable') == 'true') {
-        $('#tweet_bar .tweet_retweet').parent().show();
+        $('#tweet_retweet_btn').parent().css('display', 'inline-block');
     } else {
-        $('#tweet_bar .tweet_retweet').parent().hide();
+        $('#tweet_retweet_btn').parent().css('display', 'none');
     }
     if ($(li_id).hasClass('retweet')) {
-        $('#tweet_bar .tweet_retweet').addClass('retweeted');
+        $('#tweet_retweet').addClass('retweeted');
     } else {
-        $('#tweet_bar .tweet_retweet').removeClass('retweeted');
+        $('#tweet_retweet').removeClass('retweeted');
     }
     
     if ($('#tweet_bar li:last').hasClass('separator')) {

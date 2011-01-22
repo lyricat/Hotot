@@ -105,7 +105,7 @@ var globals = {
     , myself: {}
     , focus_input: false
     , in_main_view: false
-    , debug: false 
+    , debug: true 
 };
 
 jQuery(function($) {
@@ -588,25 +588,25 @@ jQuery(function($) {
     </div>
     </div>
     <ul id="tweet_bar">
-        <li><a class="tweet_reply tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);"></a></li>
-        <li><a class="tweet_retweet tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);"></a></li>
-        <li><a class="tweet_dm_reply tweet_bar_btn" title="Reply Them" href="javascript:void(0);"></a></li>
-        <li class="tweet_more_menu_trigger"><a class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
+        <li><a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);"></a></li>
+        <li><a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);"></a></li>
+        <li><a id="tweet_dm_reply_btn" class="tweet_bar_btn" title="Reply Them" href="javascript:void(0);"></a></li>
+        <li id="tweet_more_menu_trigger"><a id="tweet_more_menu_btn"  class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
             <ul id="tweet_more_menu" class="hotot_menu">
-            <li><a class="tweet_rt tweet_more_menu_btn" 
+            <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn" 
                 title="RT this tweet"
                 href="javascript:void(0);">Retweet (old style)</a></li>
-            <li><a class="tweet_fav tweet_more_menu_btn" 
+            <li><a id="tweet_fav_btn" class="tweet_fav tweet_more_menu_btn" 
                 title="Fav it!" 
                 href="javascript:void(0);">Fav/Un-fav</a></li>
-            <li><a class="tweet_reply_all tweet_more_menu_btn"
+            <li><a id="tweet_reply_all_btn" class="tweet_reply_all tweet_more_menu_btn"
                 href="javascript:void(0);" 
                 title="Reply All">Reply All</a></li>
-            <li><a class="tweet_dm tweet_more_menu_btn"
+            <li><a id="tweet_dm_btn" class="tweet_dm tweet_more_menu_btn"
                     href="javascript:void(0);" 
                     title="Send Message to them">Send Message</a></li>
             <li>
-                <a class="tweet_del tweet_more_menu_btn"
+                <a id="tweet_del_btn" class="tweet_del tweet_more_menu_btn"
                     href="javascript:void(0);"
                     title="Delete this tweet">Delete</a>
             </li>
