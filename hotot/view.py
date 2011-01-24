@@ -30,7 +30,6 @@ class MainView(WebView):
             settings.set_property('enable-file-access-from-file-uris', True)
         except:
             print 'Error: settings property was not set.'
-            pass
         webkit.set_web_database_directory_path(config.DB_DIR)
         webkit.set_default_web_database_quota(1024**3L)
         ## bind events
@@ -41,7 +40,6 @@ class MainView(WebView):
         template = open(templatefile, 'rb').read()
         template = i18n.trans_html(template)
         self.load_html_string(template, 'file://' + templatefile)
-        pass
 
     def on_navigation_requested(self, view, webframe, request):
         # get uri from request object
@@ -81,7 +79,3 @@ class MainView(WebView):
         agent.push_profiles()
         agent.apply_config()
         agent.load_exts()
-        pass
-
-
-

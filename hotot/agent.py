@@ -38,29 +38,24 @@ http_code_msg_table = {
 def webkit_set_proxy_uri(uri):
     if uri and '://' not in uri:
         uri = 'https://' + uri
-        pass
     try:
         if os.name == 'nt':
             libgobject = ctypes.CDLL('libgobject-2.0-0.dll')
             libsoup = ctypes.CDLL('libsoup-2.4-1.dll')
             libwebkit = ctypes.CDLL('libwebkit-1.0-2.dll')
-            pass
         else:
             libgobject = ctypes.CDLL('libgobject-2.0.so.0')
             libsoup = ctypes.CDLL('libsoup-2.4.so.1')
             try:
                 libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
-                pass
             except:
                 libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
-                pass
             pass
         proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
         session = libwebkit.webkit_get_default_session()
         libgobject.g_object_set(session, "proxy-uri", proxy_uri, None)
         if proxy_uri:
             libsoup.soup_uri_free(proxy_uri)
-            pass
         libgobject.g_object_set(session, "max-conns", 20, None)
         libgobject.g_object_set(session, "max-conns-per-host", 5, None)
         return 0
@@ -68,7 +63,6 @@ def webkit_set_proxy_uri(uri):
         exctype, value = sys.exc_info()[:2]
         print 'error: webkit_set_proxy_uri: (%s, %s)' % (exctype,value)
         return 1
-    pass
 
 def apply_proxy_setting():
     if get_prefs('use_http_proxy'):
@@ -76,20 +70,16 @@ def apply_proxy_setting():
               get_prefs('http_proxy_host')
             , get_prefs('http_proxy_port'))
         webkit_set_proxy_uri(proxy_uri)
-        pass
     else:
         webkit_set_proxy_uri("")
-        pass
     # workaround for a BUG of webkitgtk/soupsession proxy authentication
     gobject.idle_add(webv.execute_script, "new Image().src='http://google.com/';")
-    pass
 
 def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
             utils.get_ui_object('imgs/ic64_hotot.png')))
     notify.set_timeout(5000)
-    pass
 
 def do_notify(summary, body):
     n = pynotify.Notification(summary, body)
@@ -98,7 +88,6 @@ def do_notify(summary, body):
             utils.get_ui_object('imgs/ic64_hotot.png')))
     n.set_timeout(5000)
     n.show()
-    pass
 
 def crack_hotot(uri):
     params = uri.split('/')
@@ -122,7 +111,6 @@ def crack_exts(params):
         exts_enabled = json.loads(urllib2.unquote(params[2]))
         set_prefs('exts_enabled', exts_enabled)
         config.dumps(app.active_profile)
-    pass
 
 def crack_config(params):
     if params[1] == 'dumps':
@@ -148,8 +136,7 @@ def crack_config(params):
         opts = json.loads(urllib2.unquote(params[2]))
         for key, value in opts.items():
             set_prefs(key, value)
-    pass
-    
+
 def crack_token(params):
     if params[1] == 'load':
         token = config.load_token(app.active_profile)
@@ -158,7 +145,6 @@ def crack_token(params):
         config.dump_token(app.active_profile
             , json.loads(urllib.unquote(params[2])))
         push_profiles()
-    pass
 
 def crack_action(params):
     if params[1] == 'user':
@@ -172,7 +158,6 @@ def crack_action(params):
         webv.execute_script('%s("%s")' % (callback, file_path))
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
-    pass
 
 def crack_system(params):
     if params[1] == 'notify':
@@ -214,7 +199,6 @@ def crack_system(params):
         app.on_sign_out()
     elif params[1] == 'quit':
         app.quit()
-    pass
 
 def crack_request(params):
     raw_json = urllib.unquote(params[1])
@@ -227,21 +211,18 @@ def crack_request(params):
         , request_info['headers']
         , request_info['files'])
     th = threading.Thread(target = request, args=args)
-    th.start() 
-    pass
+    th.start()
 
 def execute_script(scripts):
     return webv.execute_script(scripts)
 
 def push_option(set, name, value):
     webv.execute_script('%s[%s]=%s' % (set, name, value));
-    pass
 
 def update_status(text):
     webv.execute_script('''
         ui.StatusBox.update_status('%s');
         ''' % text);
-    pass
 
 def load_user(screen_name):
     webv.execute_script('''
@@ -249,7 +230,6 @@ def load_user(screen_name):
         ui.Notification.set(_("Loading @%s\'s timeline...")).show();
         daemon.Updater.update_people();
         ''' % (screen_name, screen_name));
-    pass
 
 def load_search(query):
     webv.execute_script('''
@@ -258,7 +238,6 @@ def load_search(query):
         ui.Notification.set(_("Loading Search result %s ...")).show();
         daemon.Updater.update_search();
         ''' % (query, query));
-    pass
 
 def load_exts():
     exts = utils.get_exts()
@@ -268,15 +247,14 @@ def load_exts():
         '''
         # @TODO
         % json.dumps(exts))
-    pass
 
 def init_exts():
     webv.execute_script('''ext.init_exts();''')
     pass
 
-def apply_prefs(): 
+def apply_prefs():
     apply_proxy_setting()
-    
+
     # global preferences
     use_verbose_mode = str(config.sys_get('use_verbose_mode')).lower()
 
@@ -352,7 +330,6 @@ def apply_prefs():
             , consumer_key, consumer_secret
             , notification_settings
             ))
-    pass
 
 def apply_config():
     version = 'ver %s (%s)'% (hotot.__version__, hotot.__codename__)
@@ -363,7 +340,6 @@ def apply_config():
         ''' % (version
             , exts_enabled))
     apply_prefs()
-    pass
 
 def push_prefs():
     apply_proxy_setting()
@@ -373,7 +349,7 @@ def push_prefs():
 
     # account settings
     remember_password = str(get_prefs('remember_password')).lower()
-    
+
     # system settings
     shortcut_summon_hotot = get_prefs('shortcut_summon_hotot')
 
@@ -385,12 +361,9 @@ def push_prefs():
     for font_family in font_family_list:
         try:
             font_family.decode('ascii')
-            pass
         except:
             font_family_list.remove(font_family)
             font_family_list.insert(0, font_family)
-            pass
-        pass
     font_family_used = get_prefs('font_family_used')
     if font_family_used not in font_family_list:
         font_family_list.insert(0, font_family_used)
@@ -476,7 +449,6 @@ def push_prefs():
             , use_http_proxy, http_proxy_host, http_proxy_port
             , notification_settings
             ));
-    pass
 
 def push_profiles():
     profiles_info = {}
@@ -499,7 +471,6 @@ def set_style_scheme():
     webv.execute_script('''
         $('#header').css('background', '%s');    
     ''' % str(bg[gtk.STATE_NORMAL]));
-    pass
 
 def get_prefs(name):
     return config.get(app.active_profile, name)
@@ -514,12 +485,10 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             result = _post(url, params, headers, files, additions)
         else:
             result = _get(url, params, headers)
-        pass
     except urllib2.HTTPError, e:
         msg = 'Unknown Errors ... '
         if http_code_msg_table.has_key(e.getcode()):
             msg = http_code_msg_table[e.getcode()]
-        pass
         tech_info = 'HTTP Code: %s\\nURL: %s\\nDetails: %s' % (e.getcode(), e.geturl(), str(e))
         content = '<p>%s</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>%s</pre></div>' % (msg, tech_info)
         scripts = '''
@@ -527,7 +496,6 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             ui.DialogHelper.open(ui.MessageDlg);
             lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
-        pass 
     except urllib2.URLError, e:
         content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
         scripts = '''
@@ -535,7 +503,6 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             ui.DialogHelper.open(ui.MessageDlg);
             lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
-        pass
     else:
         if uuid != None:
             if result[0] != '{' and result[0] != '[':
@@ -544,12 +511,10 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
             else:
                 scripts = '''lib.network.success_task_table['%s'](%s);
                 ''' % (uuid, result)
-            pass
     scripts += '''delete lib.network.success_task_table['%s'];
     delete lib.network.error_task_table['%s'];
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
-    pass
 
 def _get(url, params={}, req_headers={}):
     urlopen = urllib2.urlopen
@@ -557,7 +522,6 @@ def _get(url, params={}, req_headers={}):
         proxy_support = urllib2.ProxyHandler(
             {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
         urlopen = urllib2.build_opener(proxy_support).open
-        pass
     request =  urllib2.Request(url, headers=req_headers)
     ret = urlopen(request).read()
     return ret
@@ -568,14 +532,12 @@ def _post(url, params={}, req_headers={}, files=[], additions=''):
         params ={}
         req_headers.update(files_headers)
         additions += files_data
-        pass
 
     urlopen = urllib2.urlopen
     if get_prefs('use_http_proxy'):
         proxy_support = urllib2.ProxyHandler(
             {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
         urlopen = urllib2.build_opener(proxy_support).open
-        pass
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])
@@ -599,28 +561,23 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     if get_prefs('use_http_proxy'):
         HTTP_PROXY = '%s:%s' % (get_prefs('http_proxy_host'), get_prefs('http_proxy_port'))
         curl.setopt(pycurl.PROXY, HTTP_PROXY)
-        pass
 
     if header:
         curl.setopt(pycurl.HTTPHEADER, [str(k) + ':' + str(v) for k, v in header.items()])
-        pass
 
     if post:
         curl.setopt(pycurl.POST, 1)
-        pass
 
     if params:
         if post:
             curl.setopt(pycurl.POSTFIELDS, urllib.urlencode(params))
         else:
             url = "?".join((url, urllib.urlencode(params)))
-        pass
-    
+
     curl.setopt(pycurl.URL, str(url))
-    
+
     if username and password:
         curl.setopt(pycurl.USERPWD, "%s:%s" % (str(username), str(password)))
-        pass
 
     curl.setopt(pycurl.FOLLOWLOCATION, 1)
     curl.setopt(pycurl.MAXREDIRS, 5)
@@ -653,8 +610,6 @@ def urlencode(query):
     for k,v in query.items():
         if not v:
             del query[k]
-            pass
-        pass
     return urllib.urlencode(query)
 
 def idle_it(fn): 

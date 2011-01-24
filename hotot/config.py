@@ -140,7 +140,6 @@ def getconf():
            or isinstance(v, bool)
            ):
             config[k] = v
-            pass
     return config
 
 def create_profile(profile_name):
@@ -168,7 +167,6 @@ def create_profile(profile_name):
         shutil.move(os.path.join(CONF_DIR, 'tmp.token')
             , os.path.join(token))
     loads(profile_name)
-    pass
 
 def delete_profile(profile_name):
     config = getconf()    
@@ -187,7 +185,6 @@ def loads(profile_name=None):
         loaded_profiles = config['profiles']
     else:
         loaded_profiles = {profile_name: config['profiles'][profile_name]}
-    pass
     
     for name, prof in loaded_profiles.iteritems():
         if name == 'default':
@@ -204,7 +201,6 @@ def loads(profile_name=None):
         except Exception, e: 
             print 'error:%s'% str(e)
         globals()['profiles'][name].update(prof)
-        pass
     return config
 
 def dumps(profile_name=None):
@@ -217,11 +213,9 @@ def dumps(profile_name=None):
     else:
         dumped_profiles = {
             profile_name: config['profiles'][profile_name]}
-    pass
     for name, prof in dumped_profiles.iteritems():
         write_profile_to_disk(prof)
     globals()['profiles'].update(config['profiles'])
-    pass
 
 def write_to_disk(new, default, path):
     conf_file = open(path, 'w')
@@ -238,17 +232,14 @@ def write_to_disk(new, default, path):
             conf_file.write(',    "%s": %s\n' % (key, r_val))
     conf_file.write('}\n')
     conf_file.close()
-    pass
 
 def write_profile_to_disk(prof):
     if prof['name'] == 'default':
         return None
     write_to_disk(prof, select_default_profile(prof['name']), prof['path'])
-    pass
 
 def write_sys_conf_to_disk():
     write_to_disk(globals()['sys_conf'], default_sys_config, SYSTEM_CONF)
-    pass
 
 def load_sys_conf():
     '''读取 system config
@@ -275,7 +266,6 @@ def dump_sys_conf():
     config = getconf()
     write_sys_conf_to_disk()
     globals()['sys_conf'].update(config['sys_conf'])
-    pass
 
 
 def load_token(prof_name):
@@ -295,19 +285,16 @@ def save_prefs(prof_name, prefs_obj):
     config['profiles'][prof_name].update(prefs_obj);
     globals()['profiles'][prof_name].update(config['profiles'][prof_name])
     dumps(prof_name)
-    pass
 
 def save_sys_prefs(prefs_obj):
     config = getconf()
     config['sys_conf'].update(prefs_obj);
     globals()['sys_conf'].update(config['sys_conf'])
     dump_sys_conf()
-    pass
 
 def restore_defaults(prof_name):
     globals()['profiles'][prof_name].update(
         select_default_profile(prof_name))
-    pass
 
 def select_default_profile(prof_name):
     if prof_name == None or prof_name == 'default':
@@ -322,14 +309,12 @@ def select_default_profile(prof_name):
 
 def set(prof_name, name, value):
     globals()['profiles'][prof_name][name] = value;
-    pass
 
 def get(prof_name, name):
     return globals()['profiles'][prof_name][name];
 
 def sys_set(name, value):
     globals()['sys_conf'][name] = value;
-    pass
 
 def sys_get(name):
     return globals()['sys_conf'][name];

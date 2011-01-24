@@ -65,8 +65,7 @@ def get_system_default_browser():
         if is_command(trycmd):
             _browser = trycmd
             return _browser
-        pass
-    pass
+
 def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
@@ -78,7 +77,6 @@ def open_webbrowser(uri):
     if sys.platform[:3] == "win":
         browser = 'start'
     subprocess.Popen([browser, uri])
-    pass
 
 def open_file_chooser_dialog():
     sel_file = None
@@ -106,7 +104,6 @@ def encode_multipart_formdata(fields, files):
         L.append('Content-Disposition: form-data; name="%s"' % key)
         L.append('')
         L.append(value)
-        pass
 
     for pair in files:
         key, filename = pair[0].encode('utf8'), pair[1].encode('utf8')
@@ -117,7 +114,7 @@ def encode_multipart_formdata(fields, files):
         L.append('')
         L.append(file(filename).read())
         total_size += os.path.getsize(filename)
-        pass
+
     L.append('--' + BOUNDARY + '--')
     L.append('')
     body = CRLF.join(L)
@@ -150,8 +147,4 @@ def get_exts():
             ext_js = os.path.join(dir, 'entry.js')
             if os.path.exists(ext_js):
                 exts.append('file://%s' % ext_js)
-            pass
-        pass
     return exts
-
-
