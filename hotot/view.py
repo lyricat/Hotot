@@ -28,6 +28,7 @@ class MainView(WebView):
             settings.set_property('enable-page-cache', True)
             settings.set_property('tab-key-cycles-through-elements', True)
             settings.set_property('enable-file-access-from-file-uris', True)
+            settings.set_property('enable-spell-checking', True)
         except:
             print 'Error: settings property was not set.'
             pass

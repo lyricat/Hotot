@@ -585,6 +585,11 @@ function bind_tweets_action(tweets_obj, pagename) {
         function (event) {
             $(id).removeClass('active');
         });
+        $(id).mouseover(function () {
+            ui.Main.set_active_tweet_id(id);
+            ui.Main.set_tweet_bar(id);
+            event.stopPropagation();
+        });
 
         $(id).find('.btn_tweet_thread').click(
         function (event) {
