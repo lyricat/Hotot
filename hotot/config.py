@@ -7,15 +7,16 @@ import gtk
 import sys
 import glob
 import shutil
+import glib
 
 PROGRAM_NAME = 'hotot'
 UI_DIR_NAME = 'ui'
 EXT_DIR_NAME = 'ext'
 SOUND_DIR_NAME = 'sound'
 LAUNCH_DIR = os.path.abspath(sys.path[0])
-CONF_DIR = os.path.join(os.path.expanduser('~'), '.config', PROGRAM_NAME)
+CONF_DIR = os.path.join(glib.get_user_config_dir(), PROGRAM_NAME)
 DB_DIR = os.path.join(CONF_DIR, 'db')
-CACHE_DIR = os.path.join(os.path.expanduser('~'), '.cache', PROGRAM_NAME)
+CACHE_DIR = os.path.join(glib.get_user_cache_dir(), PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 PROFILES_DIR = os.path.join(CONF_DIR, 'profiles')
 SYSTEM_CONF = os.path.join(CONF_DIR, 'sys.conf')
@@ -25,7 +26,7 @@ DATA_DIRS = []
 DATA_BASE_DIRS = [
       '/usr/local/share'
     , '/usr/share'
-    , os.path.join(os.path.expanduser('~'), '.local', 'share')
+    , glib.get_user_data_dir()
     ]
 
 DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
@@ -57,7 +58,7 @@ twitter_profile = {
     'use_direct_messages_inbox_notify_sound': True,
 #System:
     'shortcut_summon_hotot': '<Alt>C',
-    
+
 #api url:
     'api_base': 'https://api.twitter.com/1/',
     'sign_api_base': 'https://api.twitter.com/',
@@ -70,7 +71,7 @@ twitter_profile = {
     'use_http_proxy': False,
     'http_proxy_host': '',
     'http_proxy_port': 0,
-    
+
 #update interval:
     'update_interval': 120,
     'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ',
@@ -107,10 +108,10 @@ for path in profile_paths:
             , 'path': path + '/profile.conf'
             , 'tokenfile': path + '/profile.token'}
     else:
-        profiles[name]['name'] = name 
+        profiles[name]['name'] = name
         profiles[name]['path'] = path + '/profile.conf'
         profiles[name]['tokenfile'] = path + '/profile.token'
-    if not os.path.exists(profiles[name]['path']): 
+    if not os.path.exists(profiles[name]['path']):
         write_profile_to_disk(profiles[name])
 
 sys_conf = {}
@@ -125,13 +126,13 @@ def getconf():
     config['sys_conf'] = {}
     ##
 
-    if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)    
+    if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)
     if not os.path.isdir(PROFILES_DIR): os.makedirs(PROFILES_DIR)
-    if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR) 
+    if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR)
 
     for k, v in globals().items():
         if not k.startswith('__') and (
-              isinstance(v, str) 
+              isinstance(v, str)
            or isinstance(v, int)
            or isinstance(v, long)
            or isinstance(v, float)
@@ -149,9 +150,9 @@ def create_profile(profile_name):
     token = os.path.join(path, 'profile.token')
     if os.path.exists(path):
         return
-    if not os.path.exists(path): 
+    if not os.path.exists(path):
         os.makedirs(path)
-   
+
 
     config['profiles'][profile_name] = {}
     config['profiles'][profile_name].update(
@@ -161,7 +162,7 @@ def create_profile(profile_name):
         , 'path': conf
         , 'tokenfile': token
     })
-    
+
     dumps(profile_name)
     if os.path.exists(os.path.join(CONF_DIR, 'tmp.token')):
         shutil.move(os.path.join(CONF_DIR, 'tmp.token')
@@ -169,7 +170,7 @@ def create_profile(profile_name):
     loads(profile_name)
 
 def delete_profile(profile_name):
-    config = getconf()    
+    config = getconf()
     if config['profiles'].has_key(profile_name):
         prof_path = os.path.join(PROFILES_DIR, profile_name)
         if os.path.exists(prof_path):
@@ -185,20 +186,20 @@ def loads(profile_name=None):
         loaded_profiles = config['profiles']
     else:
         loaded_profiles = {profile_name: config['profiles'][profile_name]}
-    
+
     for name, prof in loaded_profiles.iteritems():
         if name == 'default':
             continue
-        # load default 
+        # load default
         for k, v in select_default_profile(profile_name).iteritems():
             prof[k] = v
         # load from file
-        try: 
+        try:
             config_raw = json.loads(file(prof['path']).read().encode('utf-8'))
             for k, v in config_raw.iteritems():
                 prof[k.encode('utf-8')] \
                     = v.encode('utf-8') if isinstance(v, unicode) else v
-        except Exception, e: 
+        except Exception, e:
             print 'error:%s'% str(e)
         globals()['profiles'][name].update(prof)
     return config
@@ -250,12 +251,12 @@ def load_sys_conf():
     for k, v in default_sys_config.iteritems():
         conf['sys_conf'][k] = v
     # load from file
-    try: 
+    try:
         config_raw = json.loads(file(SYSTEM_CONF).read().encode('utf-8'))
         for k, v in config_raw.iteritems():
             conf['sys_conf'][k.encode('utf-8')] \
                 = v.encode('utf-8') if isinstance(v, unicode) else v
-    except Exception, e: 
+    except Exception, e:
         print 'error:%s'% str(e)
     globals()['sys_conf'].update(conf['sys_conf'])
     return conf
