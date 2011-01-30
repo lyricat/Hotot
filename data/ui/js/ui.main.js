@@ -17,6 +17,7 @@ use_preload_conversation: true,
 
 use_auto_loadmore: false,
 
+
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
 },
@@ -628,7 +629,9 @@ function trim_page(container) {
 
 compress_page:
 function compress_page(container) {
-    container.children('.card:gt(20)').hide();
+    if (!ui.Filter.finding) {
+        container.children('.card:gt(20)').hide();
+    }
 },
 
 bind_tweets_action:
@@ -982,7 +985,7 @@ function move_to_tweet(pos) {
     } else if (pos == 'orig') {
         target = current;
     } else {
-    
+        target = $(pos); 
     }
 
     if (target.length == 0) {
@@ -1066,21 +1069,6 @@ function set_tweet_bar(li_id) {
         $('#tweet_bar li.separator').show();
     }
 },
-
-filter:
-function filter(query){
-    var current = ui.Slider.current;
-    var tweets = $(current + '_tweet_block .card');
-    tweets.each(
-    function(idx, tweet) {
-        if ($(tweet).find('.text').text().indexOf(query) != -1
-            || $(tweet).find('.who').text().indexOf(query) != -1) {
-            $(tweet).show()
-        } else {
-            $(tweet).hide();
-        }
-    });
-}, 
 
 get_sub_pagename:
 function get_sub_pagename(pagename) {

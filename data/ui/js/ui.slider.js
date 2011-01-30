@@ -73,7 +73,7 @@ function slide_to(id) {
 
     $(ui.Main.selected_tweet_id).removeClass('active');
 
-    var first_one = $(ui.Slider.current + '_tweet_block .tweet:first');
+    var first_one = $(ui.Slider.current + '_tweet_block .card:first');
     if (first_one.length != 0) {
         var block_name = ui.Slider.current;
         if (ui.Slider.current == '#retweets') {

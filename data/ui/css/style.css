@@ -682,8 +682,7 @@ pre {
     position: fixed;
     right: 20px;
     font-size:12px;
-    height: 20px;
-    padding: 0px 5px 2px 5px;
+    padding: 0px 5px 3px 5px;
     display: none;
     background: #ececec;
     border-color: transparent #ccc #ccc #ccc;
@@ -691,16 +690,18 @@ pre {
     border-style: solid; 
     border-bottom-left-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
+    vertical-align: top;
 }
 
 #tbox_filter {
-    width: 100px;
-    padding: 0 5px;
+    width: 150px;
+    height: 16px;
+    padding: 2px;
+    display: inline-block;
 }
 
 #btn_filter_close {
-    background: transparent url(../imgs/ic16_close.png) no-repeat center center;
-    float: right;
+    background: #faa url(../imgs/ic16_close.png) no-repeat center center;
     width: 20px;
     height: 20px;
     display: inline-block;
