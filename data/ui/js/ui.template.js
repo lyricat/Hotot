@@ -16,14 +16,14 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
     <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
-    <div class="tweet_body">\
+    <div class="card_body">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
@@ -54,12 +54,12 @@ tweet_t:
 </li>',
 
 dm_t: 
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" type="message">\
+'<li id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
-    <div class="tweet_body">\
+    <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
@@ -79,12 +79,12 @@ dm_t:
 </li>',
 
 search_t:
-'<li id="{%TWEET_ID%}" class="tweet {%SCHEME%}" type="search">\
+'<li id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
-    <div class="tweet_body">\
+    <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
@@ -102,6 +102,25 @@ search_t:
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
 </li>',
+
+people_t:
+'<li id="{%USER_ID%}" class="people_card card normal" type="people">\
+    <div class="tweet_active_indicator"></div>\
+    <div class="tweet_selected_indicator"></div>\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
+    </div>\
+    <div class="card_body">\
+        <div id="{%USER_ID%}" class="who">\
+        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+            {%SCREEN_NAME%}\
+        </a>\
+        </div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask"></span>\
+</li>',
+
 
 init:
 function init() {
@@ -293,6 +312,17 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%TRANS_via%}/g, _("via"));
+    return ret;
+},
+
+form_people:
+function form_people(user_obj, pagename) {
+    ret = ui.Template.people_t.replace(/{%USER_ID%}/g, pagename+'-'+user_obj.id_str);
+    ret = ret.replace(/{%SCREEN_NAME%}/g, user_obj.screen_name);
+    ret = ret.replace(/{%USER_NAME%}/g, user_obj.name);
+    ret = ret.replace(/{%DESCRIPTION%}/g, user_obj.description);
+    ret = ret.replace(/{%PROFILE_IMG%}/g, user_obj.profile_image_url);
+    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     return ret;
 },
 

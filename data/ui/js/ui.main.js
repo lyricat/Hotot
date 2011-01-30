@@ -215,18 +215,18 @@ function reset_block_info() {
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
-    '#people_follower': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
+    '#people_followers': {
+          cursor: -1
+        , api_proc: lib.twitterapi.get_user_followers
         , is_sub: true
         , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
-    '#people_friend': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
+    '#people_friends': {
+          cursor: -1
+        , api_proc: lib.twitterapi.get_user_friends
         , is_sub: true
         , selected_tweet_id: null
         , use_notify: false 
@@ -337,12 +337,19 @@ function load_tweets_cb(result, pagename) {
 
     // resume position if timeline is not on the top
     container.resume_pos = (container.parents('.tweet_block').get(0).scrollTop != 0);
-    var tweet_count = ui.Main.add_tweets(result, container);
- 
+    var tweet_count = 0;
+    if (pagename == '#people_followers' || pagename == '#people_friends') {
+        tweet_count = ui.Main.add_people(result, container);
+    } else {
+        tweet_count = ui.Main.add_tweets(result, container);
+    }
+
     if (tweet_count != 0 ) {
         // favorites page and search page have differet mechanism to display tweets.
         if (pagename == '#people_fav' || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
+        } else if (pagename == '#people_friends' || pagename == '#people_followers') {
+            ui.Main.block_info[pagename].cursor_str = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].since_id 
                 = json_obj[0].id_str;  
@@ -406,6 +413,44 @@ function load_more_tweets_cb(result, pagename) {
                 ui.Main.block_info[pagename].since_id = first_id;
         }
     }
+},
+
+add_people:
+function add_people(json_obj, container) {
+    var form_proc = ui.Template.form_people;
+    var new_tweets_height = 0;
+
+    for (var i = 0; i < json_obj.users.length; i+= 1) {
+        if (!json_obj.users[i].hasOwnProperty('id_str')) {
+            json_obj.users[i].id_str = json_obj.users[i].id.toString();
+        }
+    }
+
+    var html_arr = [];
+    for (var i = 0; i < json_obj.users.length; i += 1) {
+        html_arr.push(form_proc(json_obj.users[i], container.pagename));
+    }
+    container.append(html_arr.join('\n'));
+    // if timeline is not on the top
+    // resume to the postion before new tweets were added
+    // offset = N* (clientHeight + border-width)
+    if (container.resume_pos) {
+        container.parents('.tweet_block').get(0).scrollTop 
+            += new_tweets_height + json_obj.length;
+    }
+
+    if (container.parents('.tweet_block').get(0).scrollTop < 100) {
+        ui.Main.trim_page(container);
+        ui.Main.compress_page(container);
+    }
+
+    // @TODO dumps to cache
+    // @TODO bind events
+    //
+    //ui.Main.bind_tweets_action(json_obj, container.pagename);
+    ui.Notification.hide();
+    return json_obj.users.length;
+
 },
 
 add_tweets:

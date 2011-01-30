@@ -211,26 +211,26 @@ function load_people_fav() {
     });
 },
 
-load_people_follower:
-function load_people_fav() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        'shellexy',
-        ui.Main.block_info['#people_follower'].since_id, null, 20,
-    function (result) {
-        ui.Main.load_tweets_cb(result, '#people_follower');
-    });
+load_people_followers:
+function load_people_followers() {
+    lib.twitterapi.get_user_followers(
+          'shellexy'
+        , ui.Main.block_info['#people_followers'].cursor
+        , function (result) {
+            //hotot_log(JSON.stringify(result));
+            ui.Main.load_tweets_cb(result, '#people_followers');
+        });
 },
 
-load_people_friend:
-function load_people_fav() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        'shellexz',
-        ui.Main.block_info['#people_friend'].since_id, null, 20,
-    function (result) {
-        ui.Main.load_tweets_cb(result, '#people_friend');
-    });
+load_people_friends:
+function load_people_friends() {
+    lib.twitterapi.get_user_friends(
+        'shellexz'
+        , ui.Main.block_info['#people_friends'].cursor
+        , function (result) {
+            //hotot_log(JSON.stringify(result));
+            ui.Main.load_tweets_cb(result, '#people_friends');
+        });
 },
 
 };
