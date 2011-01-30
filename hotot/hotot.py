@@ -22,7 +22,6 @@ except ImportError:
     HAS_INDICATOR = False
 else:
     HAS_INDICATOR = True
-HAS_INDICATOR = False
 
 try: import i18n
 except: from gettext import gettext as _
@@ -196,7 +195,7 @@ class Hotot:
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip(_("Hotot: Click to Active."))
         self.trayicon.set_from_file(
-            utils.get_ui_object('imgs/ic64_hotot_classics.png'))
+            utils.get_ui_object('imgs/ic24_hotot_mono_light.svg'))
         self.trayicon.set_visible(True)
 
     def on_trayicon_activate(self, icon):

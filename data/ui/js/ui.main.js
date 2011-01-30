@@ -17,6 +17,7 @@ use_preload_conversation: true,
 
 use_auto_loadmore: false,
 
+
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
 },
@@ -31,7 +32,7 @@ function init () {
     function (event) {
         var container = ui.Main.get_current_container(ui.Slider.current);
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
-            container.children('.tweet:hidden:lt(20)').show();
+            container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight == this.scrollHeight) {
                 if (ui.Main.use_auto_loadmore) {
                     container.next('.tweet_block_bottom')
@@ -215,18 +216,18 @@ function reset_block_info() {
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
-    '#people_follower': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
+    '#people_followers': {
+          cursor: '-1'
+        , api_proc: lib.twitterapi.get_user_followers
         , is_sub: true
         , selected_tweet_id: null
         , use_notify: false 
         , use_notify_sound: false
         , use_notify_type: 'count'
     },
-    '#people_friend': {
-          since_id: 1, max_id: null
-        , api_proc: lib.twitterapi.get_user_timeline
+    '#people_friends': {
+          cursor: '-1'
+        , api_proc: lib.twitterapi.get_user_friends
         , is_sub: true
         , selected_tweet_id: null
         , use_notify: false 
@@ -255,7 +256,7 @@ function hide () {
 show:
 function show () {
     daemon.Updater.start();
-    $('.tweet').remove();
+    $('.card').remove();
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
@@ -313,6 +314,26 @@ function load_more_tweets (callback) {
             }
         });
     break;
+    case '#people_friends':
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_friends'].cursor,
+        function (result) {
+            ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
+        });
+    break;
+    case '#people_followers':
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_followers'].cursor,
+        function (result) {
+            ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
+        });
+    break;
     default:
         proc(1, ui.Main.block_info[pagename].max_id, 20,
         function (result) {
@@ -337,12 +358,19 @@ function load_tweets_cb(result, pagename) {
 
     // resume position if timeline is not on the top
     container.resume_pos = (container.parents('.tweet_block').get(0).scrollTop != 0);
-    var tweet_count = ui.Main.add_tweets(result, container);
- 
+    var tweet_count = 0;
+    if (pagename == '#people_followers' || pagename == '#people_friends') {
+        tweet_count = ui.Main.add_people(result, container);
+    } else {
+        tweet_count = ui.Main.add_tweets(result, container);
+    }
+
     if (tweet_count != 0 ) {
         // favorites page and search page have differet mechanism to display tweets.
         if (pagename == '#people_fav' || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
+        } else if (pagename == '#people_friends' || pagename == '#people_followers') {
+            ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].since_id 
                 = json_obj[0].id_str;  
@@ -392,12 +420,20 @@ function load_more_tweets_cb(result, pagename) {
 
     // never resume position after loading more tweet
     container.resume_pos = false;
-    hotot_log(pagename, 'begin with '+result[0].id_str + '.');
-    var tweet_count = ui.Main.add_tweets(json_obj, container);
+    //hotot_log(pagename, 'begin with '+result[0].id_str + '.');
+
+    var tweet_count = 0;
+    if (pagename == '#people_followers' || pagename == '#people_friends') {
+        tweet_count = ui.Main.add_people(result, container);
+    } else {
+        tweet_count = ui.Main.add_tweets(result, container);
+    }
 
     if (tweet_count != 0) {
         if (pagename == '#people_fav'|| pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
+        } else if (pagename == '#people_friends' || pagename == '#people_followers') {
+            ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].max_id 
                 = json_obj[tweet_count - 1].id_str - 1;  
@@ -406,6 +442,44 @@ function load_more_tweets_cb(result, pagename) {
                 ui.Main.block_info[pagename].since_id = first_id;
         }
     }
+},
+
+add_people:
+function add_people(json_obj, container) {
+    var form_proc = ui.Template.form_people;
+    var new_tweets_height = 0;
+
+    for (var i = 0; i < json_obj.users.length; i+= 1) {
+        if (!json_obj.users[i].hasOwnProperty('id_str')) {
+            json_obj.users[i].id_str = json_obj.users[i].id.toString();
+        }
+    }
+
+    var html_arr = [];
+    for (var i = 0; i < json_obj.users.length; i += 1) {
+        html_arr.push(form_proc(json_obj.users[i], container.pagename));
+    }
+    container.append(html_arr.join('\n'));
+    // if timeline is not on the top
+    // resume to the postion before new tweets were added
+    // offset = N* (clientHeight + border-width)
+    if (container.resume_pos) {
+        container.parents('.tweet_block').get(0).scrollTop 
+            += new_tweets_height + json_obj.length;
+    }
+
+    if (container.parents('.tweet_block').get(0).scrollTop < 100) {
+        ui.Main.trim_page(container);
+        ui.Main.compress_page(container);
+    }
+
+    // @TODO dumps to cache
+    // @TODO bind events
+    //
+    //ui.Main.bind_tweets_action(json_obj, container.pagename);
+    ui.Notification.hide();
+    return json_obj.users.length;
+
 },
 
 add_tweets:
@@ -445,9 +519,9 @@ function add_tweets(json_obj, container) {
          * */
         var next_one = null;
         if (current == null) {
-            next_one = container.find('.tweet:first');
+            next_one = container.find('.card:first');
         } else {
-            next_one = $(current).next('.tweet');
+            next_one = $(current).next('.card');
         }
         if (next_one.length == 0) next_one = null;
         return next_one;
@@ -550,12 +624,14 @@ function add_tweets(json_obj, container) {
 
 trim_page:
 function trim_page(container) {
-    container.children('.tweet:gt('+globals.trim_bound+')').remove();
+    container.children('.card:gt('+globals.trim_bound+')').remove();
 },
 
 compress_page:
 function compress_page(container) {
-    container.children('.tweet:gt(20)').hide();
+    if (!ui.Finder.finding) {
+        container.children('.card:gt(20)').hide();
+    }
 },
 
 bind_tweets_action:
@@ -814,7 +890,7 @@ function on_expander_click(btn, event) {
             $(btn).removeClass('expand');
         } else {
             $(btn).addClass('expand');
-            if (thread_container.children('.tweet').length == 0) {
+            if (thread_container.children('.card').length == 0) {
                 li.find('.tweet_thread_hint').show();
                 li.find('.btn_tweet_thread_more').hide();
                 ui.Main.load_thread_proc(
@@ -870,7 +946,7 @@ function preload_thread(tweet_obj, thread_container) {
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
-            var li = $(thread_container.parents('.tweet')[0]);
+            var li = $(thread_container.parents('.card')[0]);
             ui.Main.add_tweets([prev_tweet_obj], thread_container);
             
             li.find('.btn_tweet_thread').addClass('expand');
@@ -888,7 +964,7 @@ function move_to_tweet(pos) {
     var target = null;
     if (ui.Main.selected_tweet_id == null) {
         ui.Main.selected_tweet_id = '#' + $(ui.Slider.current
-            +'_tweet_block .tweet:first').attr('id');
+            +'_tweet_block .card:first').attr('id');
     }
     var current = $(ui.Main.selected_tweet_id);
 
@@ -898,18 +974,18 @@ function move_to_tweet(pos) {
 
     var container = $(current.parents('.tweet_block').get(0));
     if (pos == 'top') {
-        target = container.find('.tweet:first');
+        target = container.find('.card:first');
     } else if (pos == 'bottom') {
-        container.find('.tweet').show();
-        target = container.find('.tweet:last');
+        container.find('.card').show();
+        target = container.find('.card:last');
     } else if (pos == 'next') {
-        target = current.next('.tweet');
+        target = current.next('.card');
     } else if (pos == 'prev') {
-        target = current.prev('.tweet');
+        target = current.prev('.card');
     } else if (pos == 'orig') {
         target = current;
     } else {
-    
+        target = $(pos); 
     }
 
     if (target.length == 0) {
@@ -941,7 +1017,7 @@ set_tweet_bar:
 function set_tweet_bar(li_id) {
     var offset_top = 0; var offset_right = 0; 
     if (2 < li_id.split('-').length) { // in a thread
-        offset_top = $($(li_id).parents('.tweet')[0]).attr('offsetTop')
+        offset_top = $($(li_id).parents('.card')[0]).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
             + $(li_id).attr('offsetTop');
         offset_right = 25;
@@ -993,21 +1069,6 @@ function set_tweet_bar(li_id) {
         $('#tweet_bar li.separator').show();
     }
 },
-
-filter:
-function filter(query){
-    var current = ui.Slider.current;
-    var tweets = $(current + '_tweet_block .tweet');
-    tweets.each(
-    function(idx, tweet) {
-        if ($(tweet).find('.text').text().indexOf(query) != -1
-            || $(tweet).find('.who').text().indexOf(query) != -1) {
-            $(tweet).show()
-        } else {
-            $(tweet).hide();
-        }
-    });
-}, 
 
 get_sub_pagename:
 function get_sub_pagename(pagename) {
@@ -1061,7 +1122,7 @@ function get_current_container(pagename) {
 
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
-    return $($(btn).parents('.tweet')[0]);
+    return $($(btn).parents('.card')[0]);
 },
 
 normalize_id:

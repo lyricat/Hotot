@@ -47,7 +47,6 @@ pre {
 
 .dialog ::-webkit-scrollbar-track-piece,  #status_box ::-webkit-scrollbar-track-piece {
     background: #2b2b2b;
-    border-radius: 6px;
     float: right;
 }
 .dialog ::-webkit-scrollbar-thumb:vertical, #status_box ::-webkit-scrollbar-thumb:vertical  {
@@ -60,20 +59,16 @@ pre {
 
 ::-webkit-scrollbar-track-piece {
     background-color: transparent;
-    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
     height: 50px;
     background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
-    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
     width: 50px;
     background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
-
-    border-radius: 6px;
 }
 
 #container {
@@ -680,15 +675,14 @@ pre {
     background: black;
 }
 
-/* ===== Filter =================================== */
-#filter_bar {
+/* ===== Finder =================================== */
+#finder_bar {
     top: 0px;    
     z-index: 10000;
     position: fixed;
     right: 20px;
     font-size:12px;
-    height: 20px;
-    padding: 0px 5px 2px 5px;
+    padding: 0px 5px 3px 5px;
     display: none;
     background: #ececec;
     border-color: transparent #ccc #ccc #ccc;
@@ -696,16 +690,18 @@ pre {
     border-style: solid; 
     border-bottom-left-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
+    vertical-align: top;
 }
 
-#tbox_filter {
-    width: 100px;
-    padding: 0 5px;
+#tbox_finder {
+    width: 150px;
+    height: 16px;
+    padding: 2px;
+    display: inline-block;
 }
 
-#btn_filter_close {
-    background: transparent url(../imgs/ic16_close.png) no-repeat center center;
-    float: right;
+#btn_finder_close {
+    background: #faa url(../imgs/ic16_close.png) no-repeat center center;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -1619,13 +1615,13 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     display: inline-block;
 }
 
-.tweet {
+.card {
     padding: 5px;
     min-height: 50px;
     position: relative;
 }
 
-.tweet > .tweet_selected_indicator {
+.card > .tweet_selected_indicator {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -1633,11 +1629,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     bottom: 0px;
 }
 
-.tweet.selected > .tweet_selected_indicator{
+.card.selected > .tweet_selected_indicator{
     background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
-.tweet > .tweet_active_indicator {
+.card > .tweet_active_indicator {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -1645,11 +1641,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     height: 100%;
 }
 
-.tweet.active > .tweet_active_indicator{
+.card.active > .tweet_active_indicator{
     background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
 }
 
-.tweet > .tweet_fav_indicator {
+.card > .tweet_fav_indicator {
     position: absolute;
     top: -1px;
     right: 0px;
@@ -1657,91 +1653,90 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     height: 32px;
 }
 
-.tweet.fav > .tweet_fav_indicator{
+.card.fav > .tweet_fav_indicator{
     background: transparent url(../imgs/tweet_fav_indicator.png) no-repeat 0 center;
 }
 
-.tweet.normal {
+.card.normal {
     background:-webkit-gradient(linear, left top, left bottom, from(#eceef3), to(#dfe2e5));
     border-bottom: 1px #c4c7cb solid;
     color: #2c2e36;
 }
-.tweet.normal a {
+.card.normal a {
     color: #585858;
 }
-.tweet.normal .text a {
+.card.normal .text a {
     color: #D67514;
 }
-.tweet.normal .who_href {
+.card.normal .who_href {
     color: #2c2e36;
 }
-.tweet.normal .tweet_thread {
+.card.normal .tweet_thread {
     border: 1px #c4c7cb solid;
     border-bottom: 0;
 }
-.tweet.normal .tweet_ctrl {
+.card.normal .tweet_ctrl {
     border-color: #c4c7cb;
 }
 
-.tweet.mention {
+.card.mention {
     background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
     border-bottom: 1px #c4987d solid;
     color: #502805;
 }
-.tweet.mention a {
+.card.mention a {
     color: #D67514;
 }
-.tweet.mention .who_href {
+.card.mention .who_href {
     color: #502805;
 }
-.tweet.mention .tweet_thread {
+.card.mention .tweet_thread {
     border: 1px #c4987d solid;
     border-bottom: 0;
 }
-.tweet.mention .tweet_ctrl {
+.card.mention .tweet_ctrl {
     border-color: #c4987d;
 }
 
-.tweet.message {
+.card.message {
     background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
     border-bottom: 1px #90abc4 solid;
     color: #14465f;
 }
-.tweet.message a {
+.card.message a {
     color: #376AE4;
 }
-.tweet.message .who_href {
+.card.message .who_href {
     color: #14465f;
 }
-.tweet.message .tweet_thread {
+.card.message .tweet_thread {
     border: 1px #90abc4 solid;
     border-bottom: 0;
 }
-.tweet.message .tweet_ctrl {
+.card.message .tweet_ctrl {
     border-color: #90abc4;
 }
 
-.tweet.me {
+.card.me {
     background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
     border-bottom: 1px #75A565 solid;
     color: #264408;
 }
-.tweet.me a {
+.card.me a {
     color: #238000;
 }
-.tweet.me .who_href {
+.card.me .who_href {
     color: #264408;
 }
-.tweet.me .tweet_thread {
+.card.me .tweet_thread {
     border: 1px #75A565 solid;
     border-bottom: 0;
 }
-.tweet.me .tweet_ctrl {
+.card.me .tweet_ctrl {
     border-color: #75A565;
 }
 
-
-.tweet > span.shape {
+.card > span.shape {
     content: "\00a0";
     display: block; /* reduce the damage in FF3.0 */
     position: absolute;
@@ -1754,7 +1749,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     border-color: transparent transparent transparent transparent; 
 }
 
-.tweet > span.shape_mask {
+.card > span.shape_mask {
     content: "\00a0";
     display: block; /* reduce the damage in FF3.0 */
     position: absolute;
@@ -1791,7 +1786,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     width: 48px;
     z-index: 000;
 }
-.tweet_body {
+.card_body {
     margin: 0 0 0 65px;
     padding: 5px 10px 20px 10px;
     min-height: 50px;
@@ -1799,7 +1794,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     border-radius: 5px 5px;
 }
 
-.tweet_body > .who {
+.card_body > .who {
     position: absolute;
     height: 20px;
     line-height: 20px;
@@ -1807,20 +1802,20 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     top: 0;
 }
 
-.tweet_body .who_href {
+.card_body .who_href {
     font-weight: bold;
 }
 
-.tweet_body > .retweet_mark {
+.card_body > .retweet_mark {
     padding-left: 20px;
     background: transparent url(../imgs/ic16_retweet_light.png) no-repeat;
 }
 
-.tweet_body a {
+.card_body a {
     text-decoration: none;
 }
 
-.tweet_body > .text {
+.card_body > .text {
     font-size: 12px;
     line-height: 1.5em;
     margin-top: 20px;
@@ -1941,7 +1936,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     font-size: 10px;
 }
 
-.tweet_body .status_bar {
+.card_body .status_bar {
     position: absolute;
     height: 16px;
     display: inline-block;
@@ -1950,7 +1945,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     right: 2px;
 }
 
-.tweet_body .status_bar * {
+.card_body .status_bar * {
     display: inline-block;
     background-position: left center;
 }

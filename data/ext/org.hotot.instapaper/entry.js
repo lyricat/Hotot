@@ -39,7 +39,7 @@ function do_add(username, password, url, text, callback) {
 do_prepare:
 function do_prepare(li_id) {
     var tweet_id = li_id;
-    var text = $(tweet_id + ' .tweet_body').children('.text').text();
+    var text = $(tweet_id + ' .card_body').children('.text').text();
     var m = text.match(ext.HototInstapaper.reg_url);
     if (m == null) return;
     var url = m[1];

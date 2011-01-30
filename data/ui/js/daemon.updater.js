@@ -117,8 +117,8 @@ function update_people(force) {
     var proc_map = {
         '#people_tweet': ui.PeopleTabs.load_people_timeline,
         '#people_fav': ui.PeopleTabs.load_people_fav,
-        '#people_follower': ui.PeopleTabs.load_people_follower,
-        '#people_friend': ui.PeopleTabs.load_people_friend
+        '#people_followers': ui.PeopleTabs.load_people_followers,
+        '#people_friends': ui.PeopleTabs.load_people_friends
     };
 
     $('#people_request_hint').hide();

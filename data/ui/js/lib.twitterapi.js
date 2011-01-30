@@ -290,6 +290,26 @@ function show_user(screen_name, on_success) {
     lib.twitterapi.get(url, params, on_success);
 },
 
+get_user_friends: 
+function get_user_friends(screen_name, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'statuses/friends.json';
+    var params = {
+        'screen_name' : screen_name,
+        'cursor': cursor
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+get_user_followers: 
+function get_user_followers(screen_name, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'statuses/followers.json';
+    var params = {
+        'screen_name' : screen_name,
+        'cursor': cursor
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
 get_user_profile_image:
 function get_user_profile_image(screen_name, size) {
     var url = lib.twitterapi.api_base + 'users/profile_image/twitter.json'

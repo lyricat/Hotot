@@ -193,10 +193,9 @@ function render_people_page(user_obj, pagename, proc) {
 
 load_people_timeline:
 function load_people_timeline() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        ui.Main.block_info['#people'].screen_name,
-        ui.Main.block_info['#people_tweet'].since_id, null, 20,
+    lib.twitterapi.get_user_timeline(ui.Main.block_info['#people'].id
+        , ui.Main.block_info['#people'].screen_name
+        , ui.Main.block_info['#people_tweet'].since_id, null, 20,
     function (result) {
         ui.Main.load_tweets_cb(result, '#people_tweet');
     });
@@ -211,25 +210,23 @@ function load_people_fav() {
     });
 },
 
-load_people_follower:
-function load_people_fav() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        'shellexy',
-        ui.Main.block_info['#people_follower'].since_id, null, 20,
+load_people_followers:
+function load_people_followers() {
+    lib.twitterapi.get_user_followers(
+          ui.Main.block_info['#people'].screen_name
+        , ui.Main.block_info['#people_followers'].cursor, 
     function (result) {
-        ui.Main.load_tweets_cb(result, '#people_follower');
+        ui.Main.load_tweets_cb(result, '#people_followers');
     });
 },
 
-load_people_friend:
-function load_people_fav() {
-    lib.twitterapi.get_user_timeline(
-        ui.Main.block_info['#people'].id,
-        'shellexz',
-        ui.Main.block_info['#people_friend'].since_id, null, 20,
+load_people_friends:
+function load_people_friends() {
+    lib.twitterapi.get_user_friends(
+          ui.Main.block_info['#people'].screen_name
+        , ui.Main.block_info['#people_friends'].cursor,
     function (result) {
-        ui.Main.load_tweets_cb(result, '#people_friend');
+        ui.Main.load_tweets_cb(result, '#people_friends');
     });
 },
 
