@@ -31,7 +31,7 @@ function init () {
     function (event) {
         var container = ui.Main.get_current_container(ui.Slider.current);
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
-            container.children('.tweet:hidden:lt(20)').show();
+            container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight == this.scrollHeight) {
                 if (ui.Main.use_auto_loadmore) {
                     container.next('.tweet_block_bottom')
@@ -255,7 +255,7 @@ function hide () {
 show:
 function show () {
     daemon.Updater.start();
-    $('.tweet').remove();
+    $('.card').remove();
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
@@ -492,7 +492,7 @@ function add_tweets(json_obj, container) {
         if (current == null) {
             next_one = container.find('.tweet:first');
         } else {
-            next_one = $(current).next('.tweet');
+            next_one = $(current).next('.card');
         }
         if (next_one.length == 0) next_one = null;
         return next_one;
@@ -595,12 +595,12 @@ function add_tweets(json_obj, container) {
 
 trim_page:
 function trim_page(container) {
-    container.children('.tweet:gt('+globals.trim_bound+')').remove();
+    container.children('.card:gt('+globals.trim_bound+')').remove();
 },
 
 compress_page:
 function compress_page(container) {
-    container.children('.tweet:gt(20)').hide();
+    container.children('.card:gt(20)').hide();
 },
 
 bind_tweets_action:
@@ -859,7 +859,7 @@ function on_expander_click(btn, event) {
             $(btn).removeClass('expand');
         } else {
             $(btn).addClass('expand');
-            if (thread_container.children('.tweet').length == 0) {
+            if (thread_container.children('.card').length == 0) {
                 li.find('.tweet_thread_hint').show();
                 li.find('.btn_tweet_thread_more').hide();
                 ui.Main.load_thread_proc(
@@ -915,7 +915,7 @@ function preload_thread(tweet_obj, thread_container) {
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
-            var li = $(thread_container.parents('.tweet')[0]);
+            var li = $(thread_container.parents('.card')[0]);
             ui.Main.add_tweets([prev_tweet_obj], thread_container);
             
             li.find('.btn_tweet_thread').addClass('expand');
@@ -933,7 +933,7 @@ function move_to_tweet(pos) {
     var target = null;
     if (ui.Main.selected_tweet_id == null) {
         ui.Main.selected_tweet_id = '#' + $(ui.Slider.current
-            +'_tweet_block .tweet:first').attr('id');
+            +'_tweet_block .card:first').attr('id');
     }
     var current = $(ui.Main.selected_tweet_id);
 
@@ -943,14 +943,14 @@ function move_to_tweet(pos) {
 
     var container = $(current.parents('.tweet_block').get(0));
     if (pos == 'top') {
-        target = container.find('.tweet:first');
+        target = container.find('.card:first');
     } else if (pos == 'bottom') {
-        container.find('.tweet').show();
-        target = container.find('.tweet:last');
+        container.find('.card').show();
+        target = container.find('.card:last');
     } else if (pos == 'next') {
-        target = current.next('.tweet');
+        target = current.next('.card');
     } else if (pos == 'prev') {
-        target = current.prev('.tweet');
+        target = current.prev('.card');
     } else if (pos == 'orig') {
         target = current;
     } else {
@@ -986,7 +986,7 @@ set_tweet_bar:
 function set_tweet_bar(li_id) {
     var offset_top = 0; var offset_right = 0; 
     if (2 < li_id.split('-').length) { // in a thread
-        offset_top = $($(li_id).parents('.tweet')[0]).attr('offsetTop')
+        offset_top = $($(li_id).parents('.card')[0]).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
             + $(li_id).attr('offsetTop');
         offset_right = 25;
@@ -1042,7 +1042,7 @@ function set_tweet_bar(li_id) {
 filter:
 function filter(query){
     var current = ui.Slider.current;
-    var tweets = $(current + '_tweet_block .tweet');
+    var tweets = $(current + '_tweet_block .card');
     tweets.each(
     function(idx, tweet) {
         if ($(tweet).find('.text').text().indexOf(query) != -1
@@ -1106,7 +1106,7 @@ function get_current_container(pagename) {
 
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
-    return $($(btn).parents('.tweet')[0]);
+    return $($(btn).parents('.card')[0]);
 },
 
 normalize_id:
