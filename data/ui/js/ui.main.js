@@ -216,7 +216,7 @@ function reset_block_info() {
         , use_notify_type: 'count'
     },
     '#people_followers': {
-          cursor: -1
+          cursor: '-1'
         , api_proc: lib.twitterapi.get_user_followers
         , is_sub: true
         , selected_tweet_id: null
@@ -225,7 +225,7 @@ function reset_block_info() {
         , use_notify_type: 'count'
     },
     '#people_friends': {
-          cursor: -1
+          cursor: '-1'
         , api_proc: lib.twitterapi.get_user_friends
         , is_sub: true
         , selected_tweet_id: null
@@ -313,6 +313,26 @@ function load_more_tweets (callback) {
             }
         });
     break;
+    case '#people_friends':
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_friends'].cursor,
+        function (result) {
+            ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
+        });
+    break;
+    case '#people_followers':
+        proc(ui.Main.block_info['#people'].screen_name
+            , ui.Main.block_info['#people_followers'].cursor,
+        function (result) {
+            ui.Main.load_more_tweets_cb(result, pagename);
+            if (typeof (callback) != 'undefined') {
+                callback(result);
+            }
+        });
+    break;
     default:
         proc(1, ui.Main.block_info[pagename].max_id, 20,
         function (result) {
@@ -349,7 +369,7 @@ function load_tweets_cb(result, pagename) {
         if (pagename == '#people_fav' || pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
         } else if (pagename == '#people_friends' || pagename == '#people_followers') {
-            ui.Main.block_info[pagename].cursor_str = json_obj.next_cursor_str;
+            ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].since_id 
                 = json_obj[0].id_str;  
@@ -399,12 +419,20 @@ function load_more_tweets_cb(result, pagename) {
 
     // never resume position after loading more tweet
     container.resume_pos = false;
-    hotot_log(pagename, 'begin with '+result[0].id_str + '.');
-    var tweet_count = ui.Main.add_tweets(json_obj, container);
+    //hotot_log(pagename, 'begin with '+result[0].id_str + '.');
+
+    var tweet_count = 0;
+    if (pagename == '#people_followers' || pagename == '#people_friends') {
+        tweet_count = ui.Main.add_people(result, container);
+    } else {
+        tweet_count = ui.Main.add_tweets(result, container);
+    }
 
     if (tweet_count != 0) {
         if (pagename == '#people_fav'|| pagename == '#search') {
             ui.Main.block_info[pagename].page += 1; 
+        } else if (pagename == '#people_friends' || pagename == '#people_followers') {
+            ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].max_id 
                 = json_obj[tweet_count - 1].id_str - 1;  
@@ -490,7 +518,7 @@ function add_tweets(json_obj, container) {
          * */
         var next_one = null;
         if (current == null) {
-            next_one = container.find('.tweet:first');
+            next_one = container.find('.card:first');
         } else {
             next_one = $(current).next('.card');
         }
