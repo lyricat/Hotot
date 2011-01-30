@@ -675,8 +675,8 @@ pre {
     background: black;
 }
 
-/* ===== Filter =================================== */
-#filter_bar {
+/* ===== Finder =================================== */
+#finder_bar {
     top: 0px;    
     z-index: 10000;
     position: fixed;
@@ -693,14 +693,14 @@ pre {
     vertical-align: top;
 }
 
-#tbox_filter {
+#tbox_finder {
     width: 150px;
     height: 16px;
     padding: 2px;
     display: inline-block;
 }
 
-#btn_filter_close {
+#btn_finder_close {
     background: #faa url(../imgs/ic16_close.png) no-repeat center center;
     width: 20px;
     height: 20px;

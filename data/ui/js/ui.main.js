@@ -629,7 +629,7 @@ function trim_page(container) {
 
 compress_page:
 function compress_page(container) {
-    if (!ui.Filter.finding) {
+    if (!ui.Finder.finding) {
         container.children('.card:gt(20)').hide();
     }
 },

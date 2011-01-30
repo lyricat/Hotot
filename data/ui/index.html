@@ -37,7 +37,7 @@
     <script type="text/javascript" src="js/ui.common_dlg.js"></script>
     <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
-    <script type="text/javascript" src="js/ui.filter.js"></script>
+    <script type="text/javascript" src="js/ui.finder.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
     <script type="text/javascript" src="js/ui.context_menu.js"></script>
     
@@ -134,8 +134,8 @@ jQuery(function($) {
             }
 
             if (event.keyCode == 70 && event.ctrlKey) {
-                // '<Ctrl> + f' to open filter
-                ui.Filter.show();
+                // '<Ctrl> + f' to open finder 
+                ui.Finder.show();
             }
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
@@ -167,8 +167,8 @@ jQuery(function($) {
                     // 'a' to open action menu
                     ui.ActionMenu.show();
                 } else if (event.keyCode == 191) {
-                    // '/' to open filter
-                    ui.Filter.show();
+                    // '/' to open finder
+                    ui.Finder.show();
                 } else if (event.keyCode == 120) {
                     // <F9> to toggle sidebar
                     ui.Sidebar.toggle();
@@ -232,7 +232,7 @@ jQuery(function($) {
     ui.MessageDlg.init();
     ui.AboutDlg.init();
     ui.CommonDlg.init();
-    ui.Filter.init();
+    ui.Finder.init();
     ui.DialogHelper.init();
     ui.ActionMenu.init();
     ui.ContextMenu.init();
@@ -702,11 +702,11 @@ jQuery(function($) {
     </ul>
 </section>
 
-<section id="filter_bar">
-    <input type="text" id="tbox_filter"/>
-    <a id="btn_filter_prev" href="javascript:void(0);"></a>
-    <a id="btn_filter_next" href="javascript:void(0);"></a>
-    <a id="btn_filter_close" href="javascript:void(0);"></a>
+<section id="finder_bar">
+    <input type="text" id="tbox_finder"/>
+    <a id="btn_finder_prev" href="javascript:void(0);"></a>
+    <a id="btn_finder_next" href="javascript:void(0);"></a>
+    <a id="btn_finder_close" href="javascript:void(0);"></a>
 </section>
 
 <section id="console">
@@ -1097,7 +1097,7 @@ jQuery(function($) {
                         <tr><td>_("Toggle nav tabs")</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
                         <tr><td>_("Enter compose mode")</td><td>c</td></tr>
                         <tr><td>_("Enter action mode")</td><td>a</td></tr>
-                        <tr><td>_("Enter filter mode")</td><td>/ or &lt;Ctrl&gt;f</td></tr>
+                        <tr><td>_("Enter finder mode")</td><td>/ or &lt;Ctrl&gt;f</td></tr>
                         <tr><th class="sub" colspan="2">_("Compose Mode")</th></tr>
                         <tr><td>_("Exit compose mode")</td><td>&lt;ESC&gt;</td></tr>
                         <tr><th class="sub" colspan="2">_("Action Mode")</th></tr>
@@ -1105,9 +1105,9 @@ jQuery(function($) {
                         <tr><td>_("Next action")</td><td>j</td></tr>
                         <tr><td>_("Trigger action")</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
                         <tr><td>_("Exit action mode")</td><td>&lt;ESC&gt; or a</td></tr>
-                        <tr><th class="sub" colspan="2">_("Filter Mode")</th></tr>
+                        <tr><th class="sub" colspan="2">_("Finder Mode")</th></tr>
                         <tr><td>_("Apply keywords")</td><td>&lt;Enter&gt;</td></tr>
-                        <tr><td>_("Exit filter mode")</td><td>&lt;ESC&gt;</td></tr>
+                        <tr><td>_("Exit finder mode")</td><td>&lt;ESC&gt;</td></tr>
                         </tbody>
                         </table>
                     </p>
