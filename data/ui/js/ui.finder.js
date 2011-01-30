@@ -16,7 +16,11 @@ function init() {
         if (event.keyCode == 13) { // Enter to search 
             if (ui.Finder.matched_ids.length == 0) {
                 var query = $(ui.Finder.tbox).val();
+                if (query.length == 0) 
+                    return;
                 ui.Finder.search(query);
+                ui.Main.get_current_container(ui.Slider.current)
+                    .children('.card').show(); 
             } else {
                 ui.Finder.next_result();
             }
@@ -24,9 +28,19 @@ function init() {
             $('#btn_finder_close').click();
             return false;
         } else {
-            ui.Finder.matched_ids = [];
-            ui.Finder.current_pos = -1;
+            var query = $(ui.Finder.tbox).val();
+            if (query.length == 0) 
+                return;
+            ui.Finder.search(query);
         }
+    });
+    $('#btn_finder_next').click(
+    function (event) {
+        ui.Finder.next_result();
+    });
+    $('#btn_finder_prev').click(
+    function (event) {
+        ui.Finder.prev_result();
     });
     $('#btn_finder_close').click(
     function (event) {
@@ -42,7 +56,6 @@ function search(query) {
     var tweets = $(current + '_tweet_block .card');
     ui.Finder.finding = true;
     ui.Finder.matched_ids = [];
-    ui.Finder.current_pos = -1;
     tweets.each(
     function(idx, obj) {
         var tweet_li = $(obj);
@@ -52,12 +65,15 @@ function search(query) {
         }
     });
     if (ui.Finder.matched_ids.length == 0) {
-        ui.Notification.set(query +' not found.').show(2);
+        ui.Finder.current_pos = -1;
+        $('#finder_matched_info').addClass('notfound');
     } else {
-        container = ui.Main.get_current_container(ui.Slider.current);
-        container.children('.card').show(); 
-        ui.Main.move_to_tweet(ui.Finder.matched_ids[0]);
+        ui.Finder.current_pos = 0;
+        $('#finder_matched_info').removeClass('notfound')
     }
+    $('#finder_matched_info').text((ui.Finder.current_pos+1)
+        + ' of '
+        + ui.Finder.matched_ids.length);
     return this;
 },
 
@@ -70,6 +86,9 @@ function next_result() {
     if (ui.Finder.matched_ids.length != 0) {
         ui.Main.move_to_tweet(ui.Finder.matched_ids[ui.Finder.current_pos]);
     }
+    $('#finder_matched_info').text((ui.Finder.current_pos+1)
+        + ' of '
+        + ui.Finder.matched_ids.length);
 },
 
 prev_result:
@@ -81,6 +100,9 @@ function prev_result() {
     if (ui.Finder.matched_ids.length != 0) {
         ui.Main.move_to_tweet(ui.Finder.matched_ids[ui.Finder.current_pos]);
     }
+    $('#finder_matched_info').text((ui.Finder.current_pos+1)
+        + ' of '
+        + ui.Finder.matched_ids.length);
 },
 
 clear:

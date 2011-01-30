@@ -286,7 +286,7 @@ pre {
     position: absolute;
     left: 50px;
     top: 5px;
-    z-index: 9999;
+    z-index: 10001;
     display: none;
 }
 
@@ -690,22 +690,66 @@ pre {
     border-style: solid; 
     border-bottom-left-radius: 3px 3px;
     border-bottom-right-radius: 3px 3px;
-    vertical-align: top;
+}
+
+#finder_wrapper {
+    padding: 2px;
+    border: 1px #ccc solid;
+    background: #f2f2f2;
 }
 
 #tbox_finder {
     width: 150px;
-    height: 16px;
-    padding: 2px;
+    height: 14px;
     display: inline-block;
+    background: none;
+    border: none;
+    margin: 0;
+    vertical-align:middle;
 }
 
-#btn_finder_close {
-    background: #faa url(../imgs/ic16_close.png) no-repeat center center;
+#btn_finder_prev, #btn_finder_next, #btn_finder_close {
     width: 20px;
     height: 20px;
     display: inline-block;
+    vertical-align:middle;
+    border: 1px transparent solid;
+    border-radius: 3px;
 }
+
+#finder_matched_info {
+    height: 20px;
+    display: inline-block;
+    vertical-align:middle;
+    border-radius: 3px;
+    min-width: 40px;
+    text-align: center;
+    line-height: 20px;
+    color: #333;
+    background: transparent;
+}
+
+#finder_matched_info.notfound {
+    color: white;
+    background: #c00;
+}
+
+#btn_finder_prev:hover, #btn_finder_next:hover, #btn_finder_close:hover {
+    border: 1px #ccc solid;
+}
+
+#btn_finder_close {
+    background: transparent url(../imgs/ic16_close.png) no-repeat center center;
+}
+
+#btn_finder_prev {
+    background: transparent url(../imgs/arrow_up.png) no-repeat center center;
+}
+
+#btn_finder_next {
+    background: transparent url(../imgs/arrow_down.png) no-repeat center center;
+}
+
 
 /* ===== Widgets =================================== */
 label {
