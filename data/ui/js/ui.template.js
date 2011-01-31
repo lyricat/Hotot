@@ -104,7 +104,7 @@ search_t:
 </li>',
 
 people_t:
-'<li id="{%USER_ID%}" class="people_card card normal" type="people">\
+'<li id="{%USER_ID%}" class="people_card card normal" type="people" following={%FOLLOWING%} screen_name={%SCREEN_NAME%}>\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -322,6 +322,7 @@ function form_people(user_obj, pagename) {
     ret = ret.replace(/{%USER_NAME%}/g, user_obj.name);
     ret = ret.replace(/{%DESCRIPTION%}/g, user_obj.description);
     ret = ret.replace(/{%PROFILE_IMG%}/g, user_obj.profile_image_url);
+    ret = ret.replace(/{%FOLLOWING%}/g, user_obj.following);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     return ret;
 },

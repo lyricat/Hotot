@@ -126,6 +126,14 @@ function init () {
         return false;
     });
     
+    $('#people_follow_btn').click(
+    function (event) {
+        ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
+    });
+    $('#people_unfollow_btn').click(
+    function (event) {
+        ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
+    });
 },
 
 reset_block_info:
@@ -844,6 +852,32 @@ function on_fav_click(btn, li_id, event) {
     }
 },
 
+on_follow_btn_click:
+function on_follow_btn_click(btn, li_id, event) {
+    var li = $(li_id);
+    var screen_name = li.attr('screen_name');
+    ui.Notification.set(_("Follow @") + screen_name + _(" ...")).show();
+    lib.twitterapi.create_friendships(screen_name,
+    function () {
+        ui.Notification.set(
+            _("Follow @")+ screen_name+_(" Successfully!")).show();
+        li.attr('following', 'true');
+    });
+},
+
+on_unfollow_btn_click:
+function on_unfollow_btn_click(btn, li_id, event) {
+    var li = $(li_id);
+    var screen_name = li.attr('screen_name');
+    ui.Notification.set(_("Unfollow @") + screen_name + _(" ...")).show();
+    lib.twitterapi.destroy_friendships(screen_name,
+    function () {
+        ui.Notification.set(
+            _("Unfollow @")+ screen_name+_(" Successfully!")).show();
+        li.attr('following', 'false');
+    });
+},
+
 on_thread_more_click:
 function on_thread_more_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
@@ -1056,17 +1090,26 @@ function set_tweet_bar(li_id) {
     $('.ext_tweet_more_menu_btn').parent().show();
 
     // others
-    if ($(li_id).attr('deletable') == 'true') {
+    if (li.attr('deletable') == 'true') {
         $('#tweet_del_btn').parent().css('display', 'block');
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');
     }
-    if ($(li_id).attr('retweetable') == 'true') {
+    if (li.attr('retweetable') == 'true') {
         $('#tweet_retweet_btn').parent().css('display', 'inline-block');
     } else {
         $('#tweet_retweet_btn').parent().css('display', 'none');
     }
-    if ($(li_id).hasClass('retweeted')) {
+    if (li.attr('type') == 'people') {
+        if (li.attr('following') == 'true') {
+            $('#people_follow_btn').parent().hide();
+            $('#people_unfollow_btn').parent().show();
+        } else {
+            $('#people_follow_btn').parent().show();
+            $('#people_unfollow_btn').parent().hide();
+        }
+    }
+    if (li.hasClass('retweeted')) {
         $('#tweet_retweet_btn').addClass('retweeted');
     } else {
         $('#tweet_retweet_btn').removeClass('retweeted');
