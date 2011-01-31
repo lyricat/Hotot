@@ -476,7 +476,7 @@ function add_people(json_obj, container) {
     // @TODO dumps to cache
     // @TODO bind events
     //
-    //ui.Main.bind_tweets_action(json_obj, container.pagename);
+    ui.Main.bind_tweets_action(json_obj.users, container.pagename);
     ui.Notification.hide();
     return json_obj.users.length;
 
@@ -1015,14 +1015,16 @@ function set_active_tweet_id(id) {
 
 set_tweet_bar: 
 function set_tweet_bar(li_id) {
+    var li = $(li_id);
+    // place tweet bar to a correct position
     var offset_top = 0; var offset_right = 0; 
     if (2 < li_id.split('-').length) { // in a thread
-        offset_top = $($(li_id).parents('.card')[0]).attr('offsetTop')
+        offset_top = $(li.parents('.card')[0]).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
-            + $(li_id).attr('offsetTop');
+            + li.attr('offsetTop');
         offset_right = 25;
     } else {
-        offset_top = $(li_id).attr('offsetTop')
+        offset_top = li.attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
         offset_right = 20;
     }
@@ -1030,25 +1032,32 @@ function set_tweet_bar(li_id) {
     $('#tweet_bar').css('right', offset_right + 'px');
     $('#tweet_bar').show();
 
-    switch ($(li_id).attr('type')) {
-    case 'tweet':
-        $('#tweet_reply_btn').parent().css('display', 'inline-block');
-        $('#tweet_retweet_btn').parent().css('display', 'inline-block');
-        $('#tweet_dm_reply_btn').parent().css('display', 'none');
-    break;
-    case 'message':
-        $('#tweet_reply_btn').parent().css('display', 'none');
-        $('#tweet_retweet_btn').parent().css('display', 'none');
-        $('#tweet_dm_reply_btn').parent().css('display', 'inline-block');
-    break;
-    case 'search':
-        $('#tweet_bar').hide();
-    break;
-    default: break;
-    }
+    // show different items according type of card
+    var group_map = {
+          'tweet': [$('#tweet_reply_btn'), $('#tweet_retweet_btn')
+            , $('#tweet_more_menu_btn')
+            , $('#tweet_rt_btn'), $('#tweet_fav_btn')
+            , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
+        , 'message': [$('#tweet_dm_reply_btn'), $('#tweet_more_menu_btn')]
+        , 'search': [$('#tweet_more_menu_btn')]
+        , 'people': [$('#people_follow_btn'), $('people_unfollow_btn'), $('#tweet_more_menu_btn')]
+    };
 
+    if (group_map.hasOwnProperty(li.attr('type'))) {
+        $('.tweet_bar_btn').parent().hide();
+        $('.tweet_more_menu_btn').parent().hide();
+        for (var i = 0; i < group_map[li.attr('type')].length; i += 1) {
+            group_map[li.attr('type')][i].parent().show();
+        }
+    } else {
+        $('#tweet_bar').hide();
+    } 
+    // enable exts
+    $('.ext_tweet_more_menu_btn').parent().show();
+
+    // others
     if ($(li_id).attr('deletable') == 'true') {
-        $('#tweet_del_btn').parent().css('display', 'inline-block');
+        $('#tweet_del_btn').parent().css('display', 'block');
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');
     }

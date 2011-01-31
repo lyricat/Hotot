@@ -222,15 +222,15 @@ function remove_context_menuitem(id) {
 
 add_tweet_more_menuitem:
 function add_tweet_more_menuitem(id, label, type , callback) {
-    $('#tweet_more_menu').append('<li><a id="tweet_ext_'+id+'" class="tweet_more_menu_btn" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
-    $('#tweet_ext_'+id).click(function() {
+    $('#tweet_more_menu').append('<li><a id="ext_tweet_'+id+'" class="tweet_more_menu_btn ext_tweet_more_menu_btn" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
+    $('#ext_tweet_'+id).click(function() {
         return callback(ui.Main.active_tweet_id); 
     });
 },
 
 remove_tweet_more_menuitem:
 function add_tweet_more_menuitem(id) {
-    var a = $('#tweet_ext_' + id);
+    var a = $('#ext_tweet_' + id);
     a.unbind('click');
     var li = a.parent();
     li.remove();

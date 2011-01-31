@@ -743,11 +743,11 @@ pre {
 }
 
 #btn_finder_prev {
-    background: transparent url(../imgs/arrow_up.png) no-repeat center center;
+    background: transparent url(../imgs/ic16_arrow_up_gray.png) no-repeat center center;
 }
 
 #btn_finder_next {
-    background: transparent url(../imgs/arrow_down.png) no-repeat center center;
+    background: transparent url(../imgs/ic16_arrow_down_gray.png) no-repeat center center;
 }
 
 
@@ -1921,7 +1921,12 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 #tweet_dm_reply_btn {
     background-image: url(../imgs/ic16_dm.png);
 }
-
+#people_follow_btn {
+    background-image: url(../imgs/ic16_add_green.png) ;
+}
+#people_unfollow_btn {
+    background-image: url(../imgs/ic16_remove_red.png) ;
+}
 #tweet_more_menu_trigger {
     position: relative;
 }

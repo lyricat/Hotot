@@ -182,7 +182,7 @@ function do_translate(dst_lang, text, callback) {
 do_translate_tweet:
 function do_translate_tweet(li_id, dst_lang) {
     var tweet_id = li_id;
-    var text = $(tweet_id + ' .tweet_body').children('.text');
+    var text = $(tweet_id + ' .card_body').children('.text');
     var style = 'background:transparent url('
                 + '../ext/'+ext.HototTranslate.id+'/ic16_translate.png'
                 +') no-repeat;padding-left:20px;';
