@@ -18,8 +18,31 @@ use_same_sign_api_base: true,
 
 source: 'Hotot',
 
+http_code_msg_table : {
+    , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
+      404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
+    , 500: 'Server is broken. Please try again later.'
+    , 502: 'Server is down or being upgraded. Please try again later.'
+    , 503: 'Server is overcapacity. Please try again later.'
+},
+
 error_handle:
 function error_handle(xhr, textStatus, errorThrown) {
+    var content = '';
+    if (xhr.status in lib.twitterapi.http_code_msg_table) {
+        var msg = lib.twitterapi.http_code_msg_table[xhr.status];
+        var tech_info = 'HTTP Code: ' 
+            + xhr.status 
+            + '\nDetails: '
+            + xhr.statusText; 
+        content = '<p>' + msg + '</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>'+tech_info+'</pre></div>';
+    } else {
+        content = '<p><label>HTTP Code:</label>' 
+            + xhr.status + '<br/><label>Reason:</label> '
+            + xhr.statusText+ '<br/></p>';
+    }
+    ui.MessageDlg.set_text('Ooops, An Error Occurred!', content);
+    ui.DialogHelper.open(ui.MessageDlg);
     return;
 },
 

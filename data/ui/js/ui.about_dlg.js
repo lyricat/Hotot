@@ -32,10 +32,11 @@ function init () {
         ui.DialogHelper.close(ui.AboutDlg);
     });
 
-    $('#btn_about_ok').click(
-    function (event) {
+    var btn_about_ok = new widget.Button('#btn_about_ok');
+    btn_about_ok.on_clicked = function (event) {
         ui.DialogHelper.close(ui.AboutDlg);
-    });
+    };
+    btn_about_ok.create();
 
     return this;
 },

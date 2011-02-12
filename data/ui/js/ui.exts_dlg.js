@@ -22,11 +22,11 @@ function init () {
         ui.DialogHelper.close(ui.ExtsDlg);
     });
 
-    $('#btn_exts_close').click(
-    function (event) {
+    var btn_exts_close = new widget.Button('#btn_exts_close');
+    btn_exts_close.on_clicked = function (event) {
         ui.DialogHelper.close(ui.ExtsDlg);
-    });
-
+    };
+    btn_exts_close.create();
 },
 
 load_ext_list:

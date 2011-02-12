@@ -22,10 +22,11 @@ function init () {
         ui.DialogHelper.close(ui.MessageDlg);
     });
 
-    $('#btn_message_ok').click(
-    function (event) {
+    var btn_message_ok = new widget.Button('#btn_message_ok');
+    btn_message_ok.on_clicked = function (event) {
         ui.DialogHelper.close(ui.MessageDlg);
-    });
+    };
+    btn_message_ok.create();
 
     return this;
 },

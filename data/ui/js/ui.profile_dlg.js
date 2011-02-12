@@ -27,8 +27,8 @@ function init () {
         hotot_action('action/choose_file/ui.profile_dlg.select_finish');
     });
 
-    $('#btn_profile_update').click(
-    function (event) {
+    var btn_profile_update = new widget.Button('#btn_profile_update');
+    btn_profile_update.on_clicked = function (event) {
         var err = ui.FormChecker.check_config_error(
             ui.ProfileDlg.id + ' input');
         if ( err.count != 0 ) {
@@ -45,14 +45,15 @@ function init () {
                 ui.DialogHelper.close(ui.ProfileDlg);
             }
         }
+    };
+    btn_profile_update.create();
 
-    });
-
-    $('#btn_profile_cancel').click(
-    function (event) {
+    var btn_profile_cancel = new widget.Button('#btn_profile_cancel');
+    btn_profile_cancel.on_clicked = function (event) {
         ui.DialogHelper.close(ui.ProfileDlg);
-    });
-    
+    };
+    btn_profile_cancel.create();
+
     $('#tbox_profile_name').keyup(
     function(event){
         ui.ProfileDlg.limit_test(this, 20);

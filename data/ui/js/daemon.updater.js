@@ -24,7 +24,7 @@ watch_pages: {
     }
     , '#people': {
           watch: false
-        , proc : function () {daemon.Updater.update_people();}
+        , proc : function (force) {daemon.Updater.update_people(force);}
     }
     , '#retweets': {
           watch: false
@@ -131,8 +131,8 @@ function update_people(force) {
             , ui.PeopleTabs.current
             , proc_map[ui.PeopleTabs.current]);
     }
-
-    if (force) {
+    
+    if (true) {
         lib.twitterapi.show_user(
               ui.Main.block_info['#people'].screen_name
             , render_proc

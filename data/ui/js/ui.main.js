@@ -46,7 +46,8 @@ function init () {
         // hide tweet bar
         tweet_bar.hide();
     });
-
+    
+     
     $('.btn_load_more').click(
     function(event) {
         var btn = $(this);
@@ -61,15 +62,22 @@ function init () {
 
     $('#tbox_search_entry').keypress(
     function (event) {
-        if (event.keyCode == 13)
-            $('#btn_search_entry').click();
+        if (event.keyCode == 13) {
+            ui.Main.btn_search_entry.click();
+        }
     });
-    $('#btn_search_entry').click(
-    function (event) {
+    ui.Main.btn_search_entry 
+        = new widget.Button('#btn_search_entry');
+    ui.Main.btn_search_entry.on_clicked = function (event) {
         ui.Main.reset_search_page(
             $.trim($('#tbox_search_entry').attr('value')));
         daemon.Updater.update_search();
+    };
+    ui.Main.btn_search_entry.set_attrs({
+          'bg_color': '#333'
+        , 'fg_color': 'white'
     });
+    ui.Main.btn_search_entry.create();
 
     //tweet bar
     // -- more menu --
@@ -280,6 +288,7 @@ function reset_search_page(query) {
 load_tweets:
 function load_tweets (force) {
     var pagename = ui.Slider.current;
+    hotot_log('reload', force);
     daemon.Updater.watch_pages[pagename].proc(force);
 },
 

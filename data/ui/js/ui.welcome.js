@@ -17,6 +17,8 @@ selected_service: 'twitter',
 
 selected_profile: 'default',
 
+btn_basic_auth_sign_in: null,
+
 init:
 function init () {
     ui.Welcome.id = '#welcome_page';
@@ -40,8 +42,9 @@ function init () {
     });
     $('.service_tabs_btn:first').click();
 
-    $('#btn_basic_auth_sign_in').click(
-    function (event) {  
+    ui.Welcome.btn_basic_auth_sign_in 
+        = new widget.Button('#btn_basic_auth_sign_in');
+    ui.Welcome.btn_basic_auth_sign_in.on_clicked = function (event) {
         lib.twitterapi.username 
             = $('#tbox_basic_auth_username').attr('value');
         lib.twitterapi.password 
@@ -76,15 +79,17 @@ function init () {
                 ui.DialogHelper.open(ui.MessageDlg);
             }
         });
-    });
+    };
+    ui.Welcome.btn_basic_auth_sign_in.create();
 
     $('#chk_remember_password').click(
     function (event) {
         ui.Welcome.sign_opts.remember_password = $(this).attr('checked');
     });
     
-    $('#btn_oauth_sign_in').click(
-    function(event) {
+    ui.Welcome.btn_oauth_sign_in 
+        = new widget.Button('#btn_oauth_sign_in')
+    ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
         ui.Notification.set(_("Begin to OAuth ...")).show();
         if (jsOAuth.access_token == null
@@ -112,10 +117,17 @@ function init () {
                 }
             });
         }
-    });
+    };
+    ui.Welcome.btn_oauth_sign_in.set_attrs({
+          'icon': 'imgs/ic16_twitter.png'
+        , 'bg_color': '#c0fbfd'
+        , 'fg_color': '#1b7aa3'
+    })
+    ui.Welcome.btn_oauth_sign_in.create();
 
-    $('#btn_welcome_create_profile').click(
-    function (event) {
+    var btn_welcome_create_profile 
+        = new widget.Button('#btn_welcome_create_profile');
+    btn_welcome_create_profile.on_clicked = function (event) {
         var cb = "ui.Notification.set('New profile has been created!').show();";
         var prefix = $.trim($('#tbox_new_profile_name').val());
         var profile_name = prefix + '@' + ui.Welcome.selected_service;
@@ -131,7 +143,8 @@ function init () {
             + encodeURIComponent(profile_name)
             + '/'
             + cb);
-    })
+    };
+    btn_welcome_create_profile.create();
     
     $('#btn_welcome_prefs').click(
     function (event) {

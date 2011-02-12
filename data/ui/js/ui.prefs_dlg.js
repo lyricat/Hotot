@@ -31,15 +31,16 @@ function init () {
         ui.DialogHelper.close(ui.PrefsDlg);
     });
 
-    $('#btn_regain_token').click(
-    function (event) {
+    var btn_regain_token = new widget.Button('#btn_regain_token');
+    btn_regain_token.on_clicked = function (event) {
         jsOAuth.access_token = null;
         jsOAuth.get_request_token(
             function (result) {
                 ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
                 ui.DialogHelper.open(ui.PinDlg);
             }); 
-    });
+    };
+    btn_regain_token.create();
 
     $('#sel_prefs_font_family').change(
     function (event) {
@@ -76,8 +77,8 @@ function init () {
         $('#tbox_prefs_http_proxy_port').attr('disabled', !$(this).attr('checked'));
     });
 
-    $('#btn_prefs_ok').click(
-    function (event) {
+    var btn_prefs_ok = new widget.Button('#btn_prefs_ok');
+    btn_prefs_ok.on_clicked = function (event) {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
@@ -91,18 +92,22 @@ function init () {
             ui.PrefsDlg.save_prefs();
             ui.DialogHelper.close(ui.PrefsDlg);
         }
-    });
+    };
+    btn_prefs_ok.create();
 
-    $('#btn_prefs_cancel').click(
-    function (event) {
+    var btn_prefs_cancel = new widget.Button('#btn_prefs_cancel');
+    btn_prefs_cancel.on_clicked = function (event) {
         ui.DialogHelper.close(ui.PrefsDlg);
-    });
+    };
+    btn_prefs_cancel.create();
 
-    $('#btn_prefs_restore_defaults').click(
-    function (event) {
+    var btn_prefs_restore_defaults 
+        = new widget.Button('#btn_prefs_restore_defaults');
+    btn_prefs_restore_defaults.on_clicked = function (event) {
         if (confirm(_("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n")))
             ui.PrefsDlg.restore_defaults();
-    });
+    };
+    btn_prefs_restore_defaults.create();
 
     return this;
 },

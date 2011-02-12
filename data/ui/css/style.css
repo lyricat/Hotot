@@ -46,15 +46,15 @@ pre {
 }
 
 .dialog ::-webkit-scrollbar-track-piece,  #status_box ::-webkit-scrollbar-track-piece {
-    background: #2b2b2b;
+    background: #666;
     float: right;
 }
 .dialog ::-webkit-scrollbar-thumb:vertical, #status_box ::-webkit-scrollbar-thumb:vertical  {
-    background: #666;
+    background: #ccc;
 }
 
 .dialog ::-webkit-scrollbar-thumb:horizontal, #status_box ::-webkit-scrollbar-thumb:horizontal  {
-    background: #666;
+    background: #ccc;
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -325,17 +325,12 @@ pre {
     margin: 0 5px 5px 5px;
     text-align: right;
     display: none;
+    vertical-align: middle;
 }
-
+#status_ctrl *{
+    vertical-align:top;
+}
 #toggle_mode {
-    background-image: url(../imgs/ic16_dm.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 5px;
-    width: 20px;
-    min-width: 0;
-    padding: 0;
-    text-decoration: none;
     float: left;
 }
 
@@ -351,6 +346,7 @@ pre {
     background: transparent;
 }
 
+/*
 #btn_shorturl {
     background-image: url(../imgs/ic16_link.png);
     background-repeat: no-repeat;
@@ -361,6 +357,7 @@ pre {
     padding: 0;
     text-decoration: none;
 }
+*/
 
 #status_len {
     margin-left: 5px;
@@ -765,8 +762,8 @@ select {
 
 input[type="text"], input[type="password"], textarea{
     background:none repeat scroll 0 0 #eee;
-    border:1px solid #aaa;
-    padding:3px;
+    border: 1px solid #aaa;
+    padding: 2px 3px;
     width:200px;
     outline: none;
 }
@@ -834,35 +831,6 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     right: 1px;
     top: 1px;
     position: absolute;
-}
-
-.button.dark, select.dark, input[type="checkbox"].dark {
-    background-color: #111 !important;
-    color: #fff;
-    text-shadow: none;
-    -webkit-box-shadow:none;
-}
-
-select.dark {
-    border: 1px #333 solid;
-}
-
-.button.default {
-    background-color: #ff9900;
-}
-
-input[type="text"].dark, input[type="password"].dark, textarea.dark{
-    background: rgba(27,27,27,0.9) !important;
-    border: 1px #666 solid;
-    color: #fff !important;
-}
-
-input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:focus {
-    background: rgba(67,67,67,0.9) !important;
-}
-
-.button.dark:hover {
-    -webkit-box-shadow: inset 0px -1px 5px #666 !important;
 }
 
 .button:hover {
@@ -1282,7 +1250,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 #sign_in_block_body {
     margin: 10px;
 }
-
+/*
 #btn_oauth_sign_in, #btn_regain_token {
     background-color: #C0FBFD;
     background-image: url(../imgs/ic16_twitter.png);
@@ -1292,6 +1260,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     color: #1B7AA3;
     padding-left: 25px;
 }
+*/
 #btn_regain_token {
     -webkit-box-shadow: none;
 } 
@@ -1314,9 +1283,9 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 }
 
 .dialog {
-    background: rgba(0,0,0,0.8);
+    background: #f2f2f2;
     border-radius: 5px 5px;
-    color: #fff;
+    color: #333;
     -webkit-box-shadow: 1px 1px 5px #000;
     display: none;
 }
@@ -1355,11 +1324,11 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     line-height: 20px;
     font-size: 12px; 
     font-weight: normal;
-    color: #f2f2f2;
+    color: #000;
     text-align: center;
-    text-shadow: 0 1px 0px #000;
-    background: #333;
-    border-bottom: 1px #333 solid; 
+    text-shadow: 0 1px 0px #fff;
+    background: #ccc;
+    border-bottom: 1px #ccc solid; 
     border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
 }
@@ -1374,7 +1343,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 .dialog_bottom {
     text-align: right; 
-    border-top: 1px #333 solid; 
+    border-top: 1px #ccc solid; 
     clear:both; 
     padding: 10px;
     margin-top: 5px;
@@ -1418,19 +1387,19 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
     display: block;
     text-decoration: none;
     text-align: left;
-    color: #ababab;
+    color: #666;
     line-height: 22px;
-    border-bottom: 1px #333 solid;
+    border-bottom: 1px #ccc solid;
 }
 
 
 .dlg_tabs_btn.selected {
-    color: #fff;
+    color: #000;
 }
 
 .dlg_tabs_page {
-    border-left: 1px #333 solid;
-    border-bottom: 1px #333 solid;
+    border-left: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
     padding: 10px 10px;
     display: none;
     min-height: 200px;
@@ -1450,7 +1419,7 @@ input[type="text"].dark:focus, input[type="password"].dark:focus, textarea.dark:
 
 #prefs_font_preview {
     text-align: center;
-    border: 1px #333 solid;
+    border: 1px #ccc solid;
     padding: 10px 0;
     height: 30px;
     margin: 0 10px;
@@ -2119,7 +2088,7 @@ th {
 }
 
 th.sub {
-    background-color: #222 !important;
+    background-color: #f2f2f2 !important;
 }
 
 td {

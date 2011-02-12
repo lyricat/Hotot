@@ -87,15 +87,27 @@ function init() {
     $('#tbox_people_entry').keypress(
     function (event) {
         if (event.keyCode == 13)
-            $('#btn_people_entry').click();
+            ui.PeopleTabs.btn_people_entry.click();
     });
 
-    $('#btn_people_entry').click(
-    function (event) {
+    ui.PeopleTabs.btn_people_entry 
+        = new widget.Button('#btn_people_entry');
+    ui.PeopleTabs.btn_people_entry.on_clicked = function (event) {
         ui.PeopleTabs.set_people(
             $.trim($('#tbox_people_entry').attr('value')));
         daemon.Updater.update_people();
+    };
+    ui.PeopleTabs.btn_people_entry.set_attrs({
+          'bg_color': '#333'
+        , 'fg_color': 'white'
     });
+    ui.PeopleTabs.btn_people_entry.create();
+    
+    var btn_people_request = new widget.Button('#btn_people_request');
+    btn_people_request.on_clicked = function(event) {
+        window.location.href = 'http://twitter.com/' + ui.Main.block_info['#people'].screen_name;
+    };
+    btn_people_request.create();
 
     $('#people_vcard_menu_btn').click(function(event) {
         $('#people_vcard_menu').show();
@@ -166,8 +178,6 @@ function render_people_page(user_obj, pagename, proc) {
             // and display request box.
             $('#people_request_hint').show();
             $('#people_tweet_block .tweet_block_bottom').hide();
-            $('#btn_people_request').attr('href'
-                , 'http://twitter.com/' + user_obj.screen_name)
             $('#request_screen_name').text(user_obj.screen_name)
         } else {
             btn_follow.html('Follow');
