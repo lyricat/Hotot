@@ -19,8 +19,8 @@ use_same_sign_api_base: true,
 source: 'Hotot',
 
 http_code_msg_table : {
-    , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
-      404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
+      401: 'Server cannot authenticate you. Please check your username/password and API base.'
+    , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
     , 502: 'Server is down or being upgraded. Please try again later.'
     , 503: 'Server is overcapacity. Please try again later.'
