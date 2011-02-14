@@ -1626,7 +1626,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     text-align: center;
 }
 
-.btn_load_more {
+.load_more_info {
     margin: 10px auto;
     width: 80%;
     display: inline-block;

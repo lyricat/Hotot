@@ -34,10 +34,15 @@ function init () {
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight == this.scrollHeight) {
-                if (ui.Main.use_auto_loadmore) {
-                    container.nextAll('.tweet_block_bottom')
-                        .children('.btn_load_more').click();
-                }
+                var info = container.nextAll('.tweet_block_bottom')
+                    .children('.load_more_info');
+                info.text('Loading ...');
+                ui.Notification.set(_("Loading Tweets...")).show(-1);
+                ui.Main.load_more_tweets(
+                    function () {
+                        info.text('Load More');
+                    }
+                );
             }
         }
         if (this.scrollTop == 0) {
@@ -46,19 +51,7 @@ function init () {
         // hide tweet bar
         tweet_bar.hide();
     });
-    
-     
-    $('.btn_load_more').click(
-    function(event) {
-        var btn = $(this);
-        btn.children('.label').text('Loading ...');
-        ui.Notification.set(_("Loading Tweets...")).show(-1);
-        ui.Main.load_more_tweets(
-            function () {
-                btn.children('.label').text('Load More');
-            }
-        );
-    });
+
 
     $('#tbox_search_entry').keypress(
     function (event) {
@@ -288,7 +281,11 @@ function reset_search_page(query) {
 load_tweets:
 function load_tweets (force) {
     var pagename = ui.Slider.current;
-    hotot_log('reload', force);
+    var container = ui.Main.get_current_container(pagename);
+    var info = container.nextAll('.tweet_block_bottom')
+        .children('.load_more_info');
+    info.text('Loading ...');
+    ui.Notification.set(_("Loading Tweets...")).show(-1);
     daemon.Updater.watch_pages[pagename].proc(force);
 },
 
