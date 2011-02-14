@@ -1617,6 +1617,10 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     color: #fff;
 }
 
+.tweet_block_top * {
+    vertical-align: middle;
+}
+
 .tweet_block_bottom{
     padding: 0 20px;
     text-align: center;
