@@ -42,6 +42,10 @@ img_link_reg: {
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
 },
 
+'raw': {
+    reg: new RegExp('href="([a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif))"', 'gi')
+},
+
 },
 
 BORDER_STYLE: 'margin:2px 5px; padding:0; display:inline-block;',
@@ -84,6 +88,10 @@ function on_form_tweet_text(text) {
                     ext.HototImagePreview.form_image(
                         match[1], img_link_reg[pvd_name].base +match[1]));
             break;
+            case 'raw':
+                img_html_arr.push(
+                    ext.HototImagePreview.form_image(
+                        match[1], match[1]));
             }
             match = img_link_reg[pvd_name].reg.exec(text);
         }
