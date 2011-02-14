@@ -35,7 +35,7 @@ function init () {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight == this.scrollHeight) {
                 if (ui.Main.use_auto_loadmore) {
-                    container.next('.tweet_block_bottom')
+                    container.nextAll('.tweet_block_bottom')
                         .children('.btn_load_more').click();
                 }
             }

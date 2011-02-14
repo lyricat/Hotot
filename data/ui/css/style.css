@@ -40,7 +40,7 @@ pre {
 
 .dialog ::-webkit-scrollbar-button:start:decrement,
 .dialog ::-webkit-scrollbar-button:end:increment {
-    height: 30px;
+    height: 0px;
     display: block;
     background-color: transparent;
 }
