@@ -930,10 +930,6 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     color: #000; 
 }
 
-#people_tweet_block .tweet_block_bottom, #search_tweet_block .tweet_block_bottom {
-    display: none;
-}
-
 #people_vcard {
     font-size: 10px;
     background: #474c4e;
@@ -1622,6 +1618,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .tweet_block_bottom{
+    display: none;
     padding: 0 20px;
     text-align: center;
 }

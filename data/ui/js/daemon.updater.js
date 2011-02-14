@@ -1,7 +1,7 @@
 if (typeof daemon == 'undefined') var daemon = {};
 daemon.Updater = {
 
-interval: 120,
+time: 0,
 
 running: false,
 
@@ -9,14 +9,17 @@ watch_pages: {
       '#home_timeline': {
           watch: true 
         , proc : function () {daemon.Updater.update_home_timeline();}
+        , interval: 60
     }
     , '#mentions':  {
           watch: true
         , proc : function () {daemon.Updater.update_mentions();}
+        , interval: 60
     }
     , '#direct_messages': {
-          watch: false
+          watch: true
         , proc : function () {daemon.Updater.update_direct_messages();}
+        , interval: 300
     }
     , '#favorites': {
           watch: false
@@ -56,16 +59,24 @@ function work() {
     if (daemon.Updater.running) {
         var step = 0;
         for (var pagename in daemon.Updater.watch_pages) {
-            if (daemon.Updater.watch_pages[pagename].watch) {
+            if (daemon.Updater.watch_pages[pagename].watch 
+                && daemon.Updater.time 
+                    % daemon.Updater.watch_pages[pagename].interval == 0) {
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
                     , (step + 1) * 5000);
                 step += 1;
             }
         }
-        ui.Notification.set('Update '+ step +' page(s) on schedule.').show();
+        if (step != 0) {
+            ui.Notification
+                .set('Update '+ step +' page(s) on schedule.').show();
+        }
     }
-    setTimeout(daemon.Updater.work
-        , daemon.Updater.interval * 1000);
+    daemon.Updater.time += 1;
+    if (daemon.Updater.time == 3600) {
+        daemon.Updater.time = 0;
+    }
+    setTimeout(daemon.Updater.work, 1000);
 },
 
 update_home_timeline:
@@ -184,11 +195,11 @@ function update_search() {
             tweets = result.results;
         }
         if (tweets.length == 0) {
+            $('#search_tweet_block .tweet_block_bottom').hide();
             $('#search_no_result_hint').show();
             $('#search_query_keywords').text(query);
         } else {
             $('#search_no_result_hint').hide();
-            $('#search_tweet_block .tweet_block_bottom').show();
             ui.Main.load_tweets_cb(tweets, '#search');
         }
     });

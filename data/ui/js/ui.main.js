@@ -284,6 +284,7 @@ function load_tweets (force) {
     var container = ui.Main.get_current_container(pagename);
     var info = container.nextAll('.tweet_block_bottom')
         .children('.load_more_info');
+    container.nextAll('.tweet_block_bottom').show();
     info.text('Loading ...');
     ui.Notification.set(_("Loading Tweets...")).show(-1);
     daemon.Updater.watch_pages[pagename].proc(force);

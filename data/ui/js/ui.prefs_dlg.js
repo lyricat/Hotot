@@ -166,8 +166,6 @@ function request_prefs_cb(prefs_obj) {
         , prefs_obj['use_hover_box']);
     $('#chk_prefs_use_preload_conversation').attr('checked'
         , prefs_obj['use_preload_conversation']);
-    $('#chk_prefs_use_auto_loadmore').attr('checked'
-        , prefs_obj['use_auto_loadmore']);
 
     // Networks
     $('#tbox_prefs_api_base').attr('value'
@@ -241,8 +239,6 @@ function save_prefs() {
         = $('#chk_prefs_use_hover_box').attr('checked');   
     prefs_obj['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').attr('checked');  
-    prefs_obj['use_auto_loadmore']
-        = $('#chk_prefs_use_auto_loadmore').attr('checked');  
     
     prefs_obj['api_base']
         = $('#tbox_prefs_api_base').attr('value');

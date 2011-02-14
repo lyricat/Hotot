@@ -86,7 +86,6 @@ function WidgetButton(obj) {
             if (self._icon != 'none') {
                 w -= 25; 
             }
-            console.out(w);
             var cls = {'width': w + 'px', 'min-width': 0};
             self._inner.css(cls);
             self._me.css(cls);
