@@ -9,12 +9,12 @@ watch_pages: {
       '#home_timeline': {
           watch: true 
         , proc : function () {daemon.Updater.update_home_timeline();}
-        , interval: 60
+        , interval: 120
     }
     , '#mentions':  {
           watch: true
         , proc : function () {daemon.Updater.update_mentions();}
-        , interval: 60
+        , interval: 120
     }
     , '#direct_messages': {
           watch: true
@@ -46,6 +46,7 @@ function init() {
 start: 
 function start() {
     daemon.Updater.running = true;
+    daemon.Updater.time = 0;
     daemon.Updater.work();
 },
 

@@ -34,6 +34,7 @@ function init () {
         if (this.scrollTop + this.clientHeight == this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight == this.scrollHeight) {
+                container.nextAll('.tweet_block_bottom').show();
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
                 info.text('Loading ...');
