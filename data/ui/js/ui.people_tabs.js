@@ -22,8 +22,10 @@ function init() {
             $(this).addClass('selected');
             $('#people_tweet_block .tweet_tabs_page').not(pagename).hide();
             $(pagename).show();
-            ui.Notification.set(_("Loading ...")).show(-1);
-            daemon.Updater.update_people();
+            if (ui.Main.block_info['#people'].screen_name != '') {
+                ui.Notification.set(_("Loading ...")).show(-1);
+                daemon.Updater.update_people();
+            }
         }
         return false;
     });
