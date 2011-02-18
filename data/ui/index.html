@@ -29,6 +29,7 @@
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.people_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.search_tabs.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
@@ -224,6 +225,7 @@ jQuery(function($) {
     ui.RetweetTabs.init();
     ui.DMTabs.init();
     ui.PeopleTabs.init();
+    ui.SearchTabs.init();
     ui.Notification.init();
     ui.Slider.init();
     ui.PinDlg.init();
@@ -530,7 +532,7 @@ jQuery(function($) {
             <div id="search_entry">
                 <label>_("Search for: ")</label>
                 <input id="tbox_search_entry" type="text" value=""/>
-                <a id="btn_search_entry">_("GO")</a>
+                <a id="btn_search_entry" bg_color="#333" fg_color="white">_("GO")</a>
             </div>
         </div>
         <ul></ul>

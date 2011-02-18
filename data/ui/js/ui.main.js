@@ -53,26 +53,6 @@ function init () {
         tweet_bar.hide();
     });
 
-
-    $('#tbox_search_entry').keypress(
-    function (event) {
-        if (event.keyCode == 13) {
-            ui.Main.btn_search_entry.click();
-        }
-    });
-    ui.Main.btn_search_entry 
-        = new widget.Button('#btn_search_entry');
-    ui.Main.btn_search_entry.on_clicked = function (event) {
-        ui.Main.reset_search_page(
-            $.trim($('#tbox_search_entry').attr('value')));
-        daemon.Updater.update_search();
-    };
-    ui.Main.btn_search_entry.set_attrs({
-          'bg_color': '#333'
-        , 'fg_color': 'white'
-    });
-    ui.Main.btn_search_entry.create();
-
     //tweet bar
     // -- more menu --
     $('#tweet_more_menu_trigger').hover(
@@ -270,13 +250,6 @@ function show () {
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
-},
-
-reset_search_page:
-function reset_search_page(query) {
-    ui.Main.block_info['#search'].query = query;
-    ui.Main.block_info['#search'].page = 1;
-    $('#search_tweet_block > ul').html('');
 },
 
 load_tweets:

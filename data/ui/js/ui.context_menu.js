@@ -12,9 +12,8 @@ function init() {
 
     $('#context_menuitem_twitter_search').click(
     function (event) {
-        ui.Main.reset_search_page(
+        ui.SearchTabs.do_search(
             $.trim(ui.ContextMenu.selected_string));
-        daemon.Updater.update_search();
     });
     
     $('body').get(0).oncontextmenu = function (event) {
