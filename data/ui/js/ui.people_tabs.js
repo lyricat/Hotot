@@ -133,6 +133,7 @@ function set_people(screen_name) {
     ui.Main.block_info['#people_tweet'].max_id = null;
     ui.Main.block_info['#people_fav'].since_id = 1;
     ui.Main.block_info['#people_fav'].max_id = null;
+    $('#tbox_people_entry').val(screen_name);
     $('#people_tweet_block .tweet_sub_block').find('ul').html(''); 
 },
 

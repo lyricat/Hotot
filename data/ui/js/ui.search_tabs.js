@@ -20,7 +20,7 @@ function init() {
         = new widget.Button('#btn_search_entry');
     search_btn.on_clicked = function (event) {
         ui.SearchTabs.do_search(
-            $.trim(ui.SearchTabs.search_entry.attr('value')));
+            $.trim(ui.SearchTabs.search_entry.val()));
     };
     search_btn.create();
 },
@@ -29,6 +29,7 @@ do_search:
 function do_search(query) {
     ui.Main.block_info['#search'].query = query;
     ui.Main.block_info['#search'].page = 1;
+    ui.SearchTabs.search_entry.val(query);
     $('#search_tweet_block > ul').html('');
     daemon.Updater.update_search();
 },
