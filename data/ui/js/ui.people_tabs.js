@@ -29,6 +29,22 @@ function init() {
     });
     ui.PeopleTabs.current = '#people_tweet';
 
+    $('#people_vcard_tabs_btns .vcard_tabs_btn').click(
+    function (event) {
+        if (! $(this).hasClass('selected')) {
+            // activate another sub page.
+            var pagename = $(this).attr('href');
+            $('#people_vcard_tabs_btns .vcard_tabs_btn')
+                .not(this).removeClass('selected');
+            $(this).addClass('selected');
+            $('#people_vcard_tabs_pages .vcard_tabs_page')
+                .not(pagename).hide();
+            $(pagename).show();
+        }
+        return false;
+    });
+    $('#people_vcard_tabs_btns .vcard_tabs_btn:first').click();
+
     $(ui.PeopleTabs.current + '_sub_block').show();
 
     // vcard
@@ -108,25 +124,19 @@ function init() {
         window.location.href = 'http://twitter.com/' + ui.Main.block_info['#people'].screen_name;
     };
     btn_people_request.create();
-
-    $('#people_vcard_menu_btn').click(function(event) {
-        $('#people_vcard_menu').show();
-    });
-
-    $('#people_vcard_menu_trigger').hover(
-    function(event) {
-        $('#people_vcard_menu').show();
-    }, function (event) {
-        $('#people_vcard_menu').hide();
-    });
 },
 
 set_people:
 function set_people(screen_name) {
     if (screen_name == globals.myself.screen_name) {
-        $('#people_vcard_menu .vcard_edit').parent().show();
+        $('#people_vcard_action_btns .vcard_edit').parent().show();
+        $('#people_vcard_action_btns .vcard_action_btn')
+            .not('.vcard_edit').parent().hide();
     } else {
-        $('#people_vcard_menu .vcard_edit').parent().hide();
+        $('#people_vcard_action_btns .vcard_edit').parent().hide();
+        $('#people_vcard_action_btns .vcard_action_btn')
+            .not('.vcard_edit').parent().show();
+
     }
     ui.Main.block_info['#people'].screen_name = screen_name;
     ui.Main.block_info['#people_tweet'].since_id = 1;

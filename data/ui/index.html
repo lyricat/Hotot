@@ -422,72 +422,78 @@ jQuery(function($) {
                 <a id="btn_people_entry">_("GO")</a>
             </div>
             <div id="people_vcard" class="vcard">
-                <div id="people_vcard_ctrl">
-                    <div id="people_vcard_menu_trigger">
-                        <a id="people_vcard_menu_btn">Action</a>
-                        <ul id="people_vcard_menu" class="hotot_menu">
+                <div class="profile_img_wrapper"></div>
+                <div class="vcard_body">
+                    <div id="people_vcard_ctrl">
+                        <ul id="people_vcard_action_btns">
                         <li>
-                            <a class="vcard_follow"
+                            <a class="vcard_follow vcard_action_btn"
                                 href="javascript:void(0);">_("Follow")</a>
                         </li>
                         <li>
-                            <a class="vcard_block"
+                            <a class="vcard_block vcard_action_btn"
                                 href="javascript:void(0);">_("Block")</a>
                         </li>
                         <li>
-                            <a class="vcard_unblock"
+                            <a class="vcard_unblock vcard_action_btn"
                                 href="javascript:void(0);">_("Unblock")</a>
                         </li>
                         <li>
-                            <a class="vcard_edit"
+                            <a class="vcard_edit vcard_action_btn"
                                 href="javascript:void(0);">_("Edit")</a>
                         </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="profile_img_wrapper">
-                </div>
-                <table class="vcard_info" border="0" cellpadding="0" cellspacing="0">
-                    <tr><td>_("Name: ")</td><td>
-                        <a class="screen_name" href="#"></a> 
-                        (<span class="name"></span>) </td>
-                    </tr>
-                    <tr><td>_("Tweets: ")</td>
-                        <td><span class="tweet_cnt"></span>
-                        (<span class="tweet_per_day_cnt"></span> per day)</td>
-                    </tr>
-                    <tr><td>Bio: </td>
-                        <td><span class="bio"></span></td>
-                    </tr>
-                    <tr><td>_("Web: ")</td>
-                        <td><a class="web" href="#" class="link"></a></td>
-                    </tr>
-                    <tr><td>_("Location: ")</td>
-                        <td><span class="location"></span></td>
-                    </tr>
-                    <tr><td>_("Join: ")</td>
-                        <td><span class="join"></span></td>
-                    </tr>
-                    <tr><td>_("Followers: ")</td>
-                        <td><span class="follower_cnt"></span></td>
-                    </tr>
-                    <tr><td>_("Friends: ")</td>
-                        <td><span class="friend_cnt"></span></td>
-                    </tr>
-                    <tr><td>_("Relation: ")</td>
-                        <td><span class="relation"></span></td>
-                    </tr>
-                </table>
-                <div class="tweet_tabs">
-                    <ol>
-                        <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">_("Tweets")</a></li>
-                        <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">_("Fav")</a></li>
-                        
-                        <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers">_("Followers")</a></li>
-                        <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends">_("Friends")</a></li>
-                        
-                    </ol>
-                </div>
+                    </div><!-- #people_vcard_ctrl -->
+                    <ul id="people_vcard_tabs_btns" class="vcard_tabs_btns">
+                        <li><a class="vcard_tabs_btn" href="#people_vcard_info_page">INFO</a></li>
+                        <li><a class="vcard_tabs_btn" href="#people_vcard_stat_page">STAT</a></li>
+                    </ul>
+                    <div id="people_vcard_tabs_pages">
+                    <table id="people_vcard_info_page" class="vcard_tabs_page" border="0" cellpadding="0" cellspacing="0">
+                        <tr><td>_("Name: ")</td><td>
+                            <a class="screen_name" href="#"></a> 
+                            (<span class="name"></span>) </td>
+                        </tr>
+                        <tr><td>Bio: </td>
+                            <td><span class="bio"></span></td>
+                        </tr>
+                        <tr><td>_("Web: ")</td>
+                            <td><a class="web" href="#" class="link"></a></td>
+                        </tr>
+                        <tr><td>_("Location: ")</td>
+                            <td><span class="location"></span></td>
+                        </tr>
+                    </table>
+                    <table id="people_vcard_stat_page" class="vcard_tabs_page">
+                        <tr><td>_("Join: ")</td>
+                            <td><span class="join"></span></td>
+                        </tr>
+                        <tr><td>_("Tweets: ")</td>
+                            <td><span class="tweet_cnt"></span>
+                            (<span class="tweet_per_day_cnt"></span> per day)</td>
+                        </tr>
+                        <tr><td>_("Followers: ")</td>
+                            <td><span class="follower_cnt"></span></td>
+                        </tr>
+                        <tr><td>_("Friends: ")</td>
+                            <td><span class="friend_cnt"></span></td>
+                        </tr>
+                        <tr><td>_("Relation: ")</td>
+                            <td><span class="relation"></span></td>
+                        </tr>
+                    </table>
+                    </div><!-- vcard tabs pages -->
+                </div> <!-- vcard body -->
+            </div> <!-- vcard -->
+            <div class="tweet_tabs">
+                <ol>
+                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">_("Tweets")</a></li>
+                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">_("Fav")</a></li>
+                    
+                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers">_("Followers")</a></li>
+                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends">_("Friends")</a></li>
+                    
+                </ol>
             </div>
         </div>
         <div id="people_tweet_sub_block" class="tweet_tabs_page tweet_sub_block">

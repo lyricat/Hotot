@@ -940,26 +940,27 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #people_vcard_ctrl {
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    float: right;
 }
 
-#people_vcard_menu_trigger {
-    position: relative;
+#people_vcard_tabs_pages {
+    margin-left: 60px;
 }
 
-#people_vcard_menu_btn {
-    padding: 3px 10px; 
-    -webkit-border-radius: 5px 5px; 
+#people_vcard_action_btns {
+    margin: 0 0 0 60px;
+    padding: 0;
 }
 
-#people_vcard_menu_btn:hover {
-    
+#people_vcard_action_btns li {
+    list-style-type: none;
+    display: inline-block;
 }
 
-#people_vcard_menu {
-    position: absolute;
+#people_vcard_action_btns a {
+    list-style-type: none;
+    display: inline-block;
+    padding: 2px 10px;
 }
 
 #people_entry, #search_entry {
@@ -1582,23 +1583,48 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     position: relative;
 }
 
-.vcard_info {
-    width: 80%;
-    border: none;
-    margin: 5px 0 0 60px;
-    border-collapse:collapse;
+.vcard_tabs_btns {
+    padding: 0;
+    margin: 0;
 }
 
-.vcard_info td {
+.vcard_tabs_btns > li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.vcard_tabs_btn {
+    padding: 2px 10px;
+    margin: 0;
+    font-size: 10px;
+    display: inline-block;
+    list-style-type: none;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.vcard_tabs_btn.selected {
+    background-color: #222;
+}
+
+.vcard_tabs_page {
+    width: 80%;
+    border: none;
+    border-collapse:collapse;
+    display: none;
+}
+
+.vcard_tabs_page td {
     border: none;
     text-align: left;
     vertical-align: top;
     height: 10px;
+    font-family: Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun;
 }
 
-.vcard_info td:first-child {
+.vcard_tabs_page td:first-child {
     width: 50px;
-    text-align: right;
+    text-align: left;
 }
 
 .tweet_block_top {
