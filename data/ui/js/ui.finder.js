@@ -14,7 +14,7 @@ function init() {
     $(ui.Finder.tbox).keyup(
     function (event) {
         if (event.keyCode == 13) { // Enter to search 
-            if (ui.Finder.matched_ids.length == 0) {
+            if (ui.Finder.current_pos == -1) {
                 var query = $(ui.Finder.tbox).val();
                 if (query.length == 0) 
                     return;
@@ -59,8 +59,8 @@ function search(query) {
     tweets.each(
     function(idx, obj) {
         var tweet_li = $(obj);
-        if (tweet_li.find('.text').text().indexOf(query) != -1
-            || tweet_li.find('.who').text().indexOf(query) != -1) {
+        if (tweet_li.find('.text').text().toLowerCase().indexOf(query.toLowerCase()) != -1
+            || tweet_li.find('.who').text().toLowerCase().indexOf(query.toLowerCase()) != -1) {
             ui.Finder.matched_ids.push('#'+tweet_li.attr('id'));
         }
     });
