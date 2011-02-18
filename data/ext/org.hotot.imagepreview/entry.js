@@ -37,6 +37,10 @@ img_link_reg: {
     reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"','g'),
     tail: ':thumbnail'
 },
+'instagr.am': {
+    reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9]+)\\/*)"','g'),
+    tail: '/media?t=m'
+},
 'plixi.com': {
     reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"','g'),
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
@@ -79,6 +83,11 @@ function on_form_tweet_text(text) {
             break;
             case 'yfrog.com':
             case 'moby.to':
+                img_html_arr.push(
+                    ext.HototImagePreview.form_image(
+                        match[1], match[1] + img_link_reg[pvd_name].tail));
+            break;
+            case 'instagr.am':
                 img_html_arr.push(
                     ext.HototImagePreview.form_image(
                         match[1], match[1] + img_link_reg[pvd_name].tail));
