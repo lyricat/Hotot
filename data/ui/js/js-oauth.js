@@ -127,7 +127,6 @@ function get_request_token(on_success) {
     */  
     sign_base = jsOAuth.use_same_sign_oauth_base? jsOAuth.oauth_base 
         :jsOAuth.sign_oauth_base;
-
     lib.network.do_request(
         'GET'
         , jsOAuth.oauth_base 
@@ -141,7 +140,6 @@ function get_request_token(on_success) {
         , function (result) {
             var token_info = result;
             jsOAuth.request_token = util.unserialize_dict(token_info)
-            // console.out('[i]req_token: ' + token_info);
             // console.out('[i]auth_url: ');
             // console.href_out(jsOAuth.get_auth_url());
             if (on_success != null) {

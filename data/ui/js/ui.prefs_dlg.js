@@ -112,93 +112,84 @@ function init () {
     return this;
 },
 
-request_prefs:
-function request_prefs() {
-    hotot_action('config/push_prefs');
-},
-
-request_prefs_cb:
-function request_prefs_cb(prefs_obj) {
+load_settings:
+function load_settings() {
     // Globals
     $('#chk_prefs_use_verbose_mode').attr('checked'
-        , prefs_obj['use_verbose_mode']);
+        , conf.settings.use_verbose_mode);
     $('#chk_prefs_use_ubuntu_indicator').attr('checked'
-        , prefs_obj['use_ubuntu_indicator']);
+        , conf.settings.use_ubuntu_indicator);
+    $('#tbox_prefs_shortcut_summon_hotot').attr('value'
+        , conf.settings.shortcut_summon_hotot);
+    // proxy
+    $('#chk_prefs_use_http_proxy').attr('checked'
+        , conf.settings.use_http_proxy);
+    $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
+    $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
+    if (! conf.settings.use_http_proxy) {
+        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+    }
 
+},
+
+load_prefs:
+function load_prefs(prefs) {
     // Account
     $('#chk_prefs_remember_password').attr('checked'
-        , prefs_obj['remember_password']);
+        , prefs.remember_password);
     
-    // System
-    $('#tbox_prefs_shortcut_summon_hotot').attr('value'
-        , prefs_obj['shortcut_summon_hotot']);
-
     // Appearance
     var options_arr = []; var selected_idx = 0;
-    for (var i = 0; i < prefs_obj['font_family_list'].length; i += 1) {
-        var ff_name = prefs_obj['font_family_list'][i];
+    for (var i = 0; i < prefs.font_family_list.length; i += 1) {
+        var ff_name = prefs.font_family_list[i];
         options_arr.push('<option value="'
             + ff_name + '">' + ff_name + '</option>');
-        if (ff_name == prefs_obj['font_family_used']) {
+        if (ff_name == prefs.font_family_used) {
             selected_idx = i;
         }
     }
     $('#sel_prefs_font_family').html(options_arr.join(''))
     $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
-    $('#tbox_prefs_font_size').attr('value', prefs_obj['font_size']);    
-    ui.PrefsDlg.update_font_preview()
+    $('#tbox_prefs_font_size').attr('value', prefs.font_size);    
+    ui.PrefsDlg.update_font_preview();
 
+    // Update
     var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
     for (var i = 0; i < pages.length; i += 1) {
         $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked'
-            , prefs_obj['use_'+pages[i]+'_notify']);
+            , prefs['use_'+pages[i]+'_notify']);
         $('#sel_prefs_use_'+pages[i]+'_notify_type').val(
-            prefs_obj['use_'+pages[i]+'_notify_type']);
+            prefs['use_'+pages[i]+'_notify_type']);
         $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked'
-            , prefs_obj['use_'+pages[i]+'_notify_sound']);
+            , prefs['use_'+pages[i]+'_notify_sound']);
     }
 
     $('#chk_prefs_use_native_notify').attr('checked'
-        , prefs_obj['use_native_notify']);
+        , prefs.use_native_notify);
     $('#chk_prefs_use_native_input').attr('checked'
-        , prefs_obj['use_native_input']);
+        , prefs.use_native_input);
     $('#chk_prefs_use_hover_box').attr('checked'
-        , prefs_obj['use_hover_box']);
+        , prefs.use_hover_box);
     $('#chk_prefs_use_preload_conversation').attr('checked'
-        , prefs_obj['use_preload_conversation']);
+        , prefs.use_preload_conversation);
 
-    // Networks
-    $('#tbox_prefs_api_base').attr('value'
-        , prefs_obj['api_base']);
-    $('#tbox_prefs_sign_api_base').attr('value'
-        , prefs_obj['sign_api_base']);
-    $('#tbox_prefs_search_api_base').attr('value'
-        , prefs_obj['search_api_base']);
-    $('#tbox_prefs_oauth_base').attr('value'
-        , prefs_obj['oauth_base']);
-    $('#tbox_prefs_sign_oauth_base').attr('value'
-        , prefs_obj['sign_oauth_base']);
+    // Advanced
+    $('#tbox_prefs_api_base').val(prefs.api_base);
+    $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
+    $('#tbox_prefs_search_api_base').val(prefs.search_api_base);
+    $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
+    $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
 
     $('#chk_prefs_use_same_sign_api_base').attr('checked'
-        , prefs_obj['use_same_sign_api_base']);
+        , prefs.use_same_sign_api_base);
     $('#chk_prefs_use_same_sign_oauth_base').attr('checked'
-        , prefs_obj['use_same_sign_oauth_base']);
-    if (prefs_obj['use_same_sign_api_base']) {
+        , prefs.use_same_sign_oauth_base);
+    if (prefs.use_same_sign_api_base) {
         $('#tbox_prefs_sign_api_base').attr('disabled', true);
     }
-    if (prefs_obj['use_same_sign_oauth_base']) {
+    if (prefs.use_same_sign_oauth_base) {
         $('#tbox_prefs_sign_oauth_base').attr('disabled', true);
-    }
-
-    $('#chk_prefs_use_http_proxy').attr('checked'
-        , prefs_obj['use_http_proxy']);
-    $('#tbox_prefs_http_proxy_host').attr('value'
-        , prefs_obj['http_proxy_host']);
-    $('#tbox_prefs_http_proxy_port').attr('value'
-        , prefs_obj['http_proxy_port']);
-    if (! prefs_obj['use_http_proxy']) {
-        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
-        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
     }
 },
 
@@ -292,7 +283,8 @@ function hide () {
 
 show:
 function show () {
-    ui.PrefsDlg.request_prefs();
+    ui.PrefsDlg.load_prefs(conf.profiles[conf.current_name].preferences);
+    ui.PrefsDlg.load_settings(conf.settings);
     ui.PrefsDlg.me.show();
     ui.PrefsDlg.is_show = true;
     return ui.PrefsDlg;

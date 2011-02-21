@@ -2126,6 +2126,12 @@ td {
 }
 
 /*=====*/
+p.hint {
+    background: #fef6a8 none no-repeat 20px center;
+    border: 1px solid #fcfc19;
+    color: #990000;
+    padding: 2px 4px;
+}
 .float_right {
     float: right;
 }

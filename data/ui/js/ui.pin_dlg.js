@@ -29,9 +29,7 @@ function init () {
         function (result) {
             ui.Notification.set(_("Authentication OK!"))
             // get a new access_token, dump it to disk.
-            hotot_action(
-                'token/dump/'
-                +encodeURIComponent(JSON.stringify(jsOAuth.access_token)));
+            conf.save_token(conf.current_name, jsOAuth.access_token);
             // change to main view
             ui.DialogHelper.close(ui.PinDlg);
         },

@@ -708,21 +708,63 @@ jQuery(function($) {
                             class="dlg_tabs_btn">_("Account")</a>
                     </li>
                     <li>
-                        <a id="btn_prefs_keyboard"
-                            href="#prefs_keyboard" 
-                            class="dlg_tabs_btn">_("Keyboard")</a>
-                    </li>
-                    <li>
                         <a id="btn_prefs_appearance"
                             href="#prefs_appearance" 
-                            class="dlg_tabs_btn">_("Appearance")</a>
+                            class="dlg_tabs_btn">_("Looks &amp; Feels")</a>
                     </li>
                     <li>
-                        <a id="btn_prefs_networks"
-                            href="#prefs_networks" 
-                            class="dlg_tabs_btn">_("Networks")</a>
+                        <a id="btn_prefs_update"
+                            href="#prefs_update" 
+                            class="dlg_tabs_btn">_("Update")</a>
+                    </li>
+                    <li>
+                        <a id="btn_prefs_advanced"
+                            href="#prefs_advanced" 
+                            class="dlg_tabs_btn">_("Advanced")</a>
                     </li>
                 </ul>
+                <div id='prefs_global' class="dlg_tabs_page">
+                    <p class="hint">_("You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts")</p>
+                    <h3>_("- HTTP Proxy -")</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <input id="chk_prefs_use_http_proxy"
+                            title=_("'Use HTTP Proxy'") type="checkbox"/>
+                        <label for="chk_prefs_use_http_proxy">
+                            _("Use HTTP Proxy")
+                        </label><br/>
+                        <label>_("Host")</label>
+                        <input id="tbox_prefs_http_proxy_host"
+                            title=_("'HTTP Proxy Host'") style="width: 120px;" type="text"/>
+                        <label>_("Port")</label>
+                        <input id="tbox_prefs_http_proxy_port"
+                            title=_("'HTTP Proxy Port'") style="width: 30px;" type="text"/><br/>
+                    </p>
+                    </div>
+                    <h3>_("- Keybinding -")</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label><br/>
+                        <input id="tbox_prefs_shortcut_summon_hotot" 
+                             title=_("'Summon Hot Key'")
+                             type="text"/><br/>
+                    </p>
+                    </div>
+                    <h3>_("- Misc -")</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <input id="chk_prefs_use_verbose_mode"
+                            title=_("'Enable verbose mode or not'") 
+                            type="checkbox"/>
+                        <label for="chk_prefs_use_verbose_mode">_("Enable verbose mode")</label><br/>
+                        <input id="chk_prefs_use_ubuntu_indicator"
+                            title=_("'Use Ubuntu Indicator'") 
+                            type="checkbox"/>
+                        <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu indicator")</label><br/>
+                    </p>
+                    </div>
+
+                </div><!-- END of #prefs_global -->
                 <div id='prefs_account' class="dlg_tabs_page">
                     <h3>- Twitter -</h3>
                     <div class="dlg_group">
@@ -743,21 +785,9 @@ jQuery(function($) {
                         </label><br/>
                     </p>
                     </div>
-                </div>
-                <div id='prefs_keyboard' class="dlg_tabs_page">
-                    <h3>_("- Global Keybinding -")</h3>
-                    <div class="dlg_group">
-                    <p>_("* You MUST restart Hotot for the changes below to take effect.")</p>
-                    <p>
-                        <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label><br/>
-                        <input id="tbox_prefs_shortcut_summon_hotot" 
-                             title=_("'Summon Hot Key'")
-                             type="text"/><br/>
-                    </p>
-                    </div>
-                </div>
+                </div> <!-- END of #prefs_account -->
                 <div id='prefs_appearance' class="dlg_tabs_page">
-                    <h3>_("- Font Settings -")</h3>
+                    <h3>_("- Font -")</h3>
                     <div class="dlg_group">
                     <p>
                         <label>_("Font Family")</label>
@@ -772,10 +802,28 @@ jQuery(function($) {
                         <input id="tbox_prefs_font_size" title=_("'Font Size'") 
                              style="width:30px" type="text"/>
                         <label>_("px")</label><br/>
-                        <label>_("Preview")</label>
-                        <div id="prefs_font_preview">_("abcdefghijk ABCDEFGHIJK")</div>
+                        <div id="prefs_font_preview">_("The quick brown fox jumps over the lazy dog.")</div>
                     </p>
                     </div>
+                    <h3>_("- Display and Behavior -")</h3>
+                    <div class="dlg_group">
+                    <p>
+                        <input id="chk_prefs_use_native_notify" 
+                            title=_("'Use Native Notify'")
+                            type="checkbox"/>
+                        <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
+                        <input id="chk_prefs_use_hover_box"
+                            title=_("'Hover to open tweet box'")
+                            type="checkbox"/>
+                        <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
+                        <input id="chk_prefs_use_preload_conversation" 
+                            title=_("'Preload latest tweet in a conversation if it is cached.'") 
+                            type="checkbox"/>
+                        <label for="chk_prefs_use_preload_conversation">_("Preload latest tweet in a conversation if possible.")</label><br/>
+                    </p>
+                    </div>
+                </div><!-- END of prefs_appearance -->
+                <div id='prefs_update' class="dlg_tabs_page">
                     <h3>_("- Notification -")</h3>
                     <div class="dlg_group">
                     <p>
@@ -846,28 +894,8 @@ jQuery(function($) {
                         </table>
                     </p>
                     </div>
-                    <h3>_("- Display and Behavior -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <input id="chk_prefs_use_native_input" 
-                            title=_("'Use Native Input'") type="checkbox"/>
-                        <label for="chk_prefs_use_native_input">_("Use Native Input Dialog")</label><br/>
-                        <input id="chk_prefs_use_native_notify" 
-                            title=_("'Use Native Notify'")
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
-                        <input id="chk_prefs_use_hover_box"
-                            title=_("'Hover to open tweet box'")
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
-                        <input id="chk_prefs_use_preload_conversation" 
-                            title=_("'Preload latest tweet in a conversation if it is cached.'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_preload_conversation">_("Preload latest tweet in a conversation if possible.")</label><br/>
-                    </p>
-                    </div>
-                </div><!-- END of prefs_appearance -->
-                <div id='prefs_networks' class="dlg_tabs_page"> 
+                </div> <!-- END of #prefs_update -->
+                <div id='prefs_advanced' class="dlg_tabs_page"> 
                     <h3>_("- API Settings -")</h3>
                     <div class="dlg_group">
                     <p>
@@ -900,40 +928,7 @@ jQuery(function($) {
                             title=_("'Search API Base'") type="text"/><br/>
                     </p>
                     </div>
-                    <h3>_("- Proxy Settings -")</h3>
-                    <div class="dlg_group">
-                    <p>_("* You MUST restart Hotot for the changes below to take effect.")</p>
-                    <p>
-                        <input id="chk_prefs_use_http_proxy"
-                            title=_("'Use HTTP Proxy'") type="checkbox"/>
-                        <label for="chk_prefs_use_http_proxy">
-                            _("Use HTTP Proxy")
-                        </label><br/>
-                        <label>_("Host")</label>
-                        <input id="tbox_prefs_http_proxy_host"
-                            title=_("'HTTP Proxy Host'") style="width: 120px;" type="text"/>
-                        <label>_("Port")</label>
-                        <input id="tbox_prefs_http_proxy_port"
-                            title=_("'HTTP Proxy Port'") style="width: 30px;" type="text"/><br/>
-                    </p>
-                    </div>
-                </div><!-- END of prefs_networks -->
-                <div id='prefs_global' class="dlg_tabs_page">
-                    <h3>_("- Global Preferences -")</h3>
-                    <div class="dlg_group">
-                    <p>_("* You MUST restart Hotot for the changes below to take effect.")<br/>_("** These options will affect all accounts")</p>
-                    <p>
-                        <input id="chk_prefs_use_verbose_mode"
-                            title=_("'Enable verbose mode or not'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_verbose_mode">_("Enable verbose mode")</label><br/>
-                        <input id="chk_prefs_use_ubuntu_indicator"
-                            title=_("'Use Ubuntu Indicator'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu indicator")</label><br/>
-                    </p>
-                    </div>
-                </div><!-- END of prefs_global -->
+                </div><!-- END of prefs_advanced -->
             </div>
         </div>
         <div class="dialog_bottom">

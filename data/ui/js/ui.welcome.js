@@ -92,14 +92,19 @@ function init () {
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
         ui.Notification.set(_("Begin to OAuth ...")).show();
-        if (jsOAuth.access_token == '' 
+        if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
         // then get a new one.
             jsOAuth.get_request_token(
             function (result) {
-                ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                ui.DialogHelper.open(ui.PinDlg);
+                if (result == '') {
+                    ui.Notification
+                        .set('Connection Error, Try later!').show();
+                } else {
+                    ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
+                    ui.DialogHelper.open(ui.PinDlg);
+                }
             }); 
         } else {
         // access_token is existed
@@ -169,26 +174,21 @@ function init () {
     function (event) {
         ui.DialogHelper.open(ui.AboutDlg);
     });
-    
-    // get all profiles
-    db.get_all_profiles(ui.Welcome.load_profiles_info); 
 
+    ui.Welcome.show();
     return this;
 },
 
 load_profiles_info:
-function load_profiles_info(profiles) {
+function load_profiles_info() {
     $('#profile_avator_list a').unbind('click');
     $('#profile_avator_list li').not('.new_profile_item').remove();
 
-    hotot_log('profiles', ''+profiles.length);
-    for (var i = 0; i < profiles.length; i += 1) {
-        var name = profiles[i].name;
-        var proto = profiles[i].protocol;
-        var prefs = profiles[i].preferences;
-        conf.profiles[name] = profiles[i];
+    for (var name in conf.profiles) {
+        var protocol = conf.profiles[name].protocol;
+        var prefs = conf.profiles[name].preferences;
         $('#profile_avator_list').prepend(
-            '<li><a title="'+name+'" href="'+name+'" class="'+proto+'"></a></li>');
+            '<li><a title="'+name+'" href="'+name+'" class="'+protocol+'"></a></li>');
     }
     $('#profile_avator_list a').click(
     function (event) {
@@ -211,17 +211,13 @@ function load_profiles_info(profiles) {
             $('#btn_welcome_prefs, #btn_welcome_delete_profile').show();
         }
         $('#tbox_basic_auth_username').val(
-            conf.profiles[profile_name].preferences.username);
+            conf.profiles[profile_name].preferences.default_username);
         $('#tbox_basic_auth_password').val(
-            conf.profiles[profile_name].preferences.password);
+            conf.profiles[profile_name].preferences.default_password);
         $('#profile_avator_list a').not(this).removeClass('selected');
         $(this).addClass('selected');
 
         conf.apply_prefs(profile_name);
-        /*
-        hotot_action('system/select_profile/'
-            + encodeURIComponent(profile_name));
-            */
         return false;
     });
      
@@ -252,6 +248,7 @@ function hide () {
 
 show:
 function show () {
+    setTimeout(ui.Welcome.load_profiles_info, 2000);
     this.me.show();
     return this;
 },
