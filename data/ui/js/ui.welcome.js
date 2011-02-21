@@ -11,7 +11,7 @@ sign_opts: {
     , 'default_password': ''
 },
 
-profiles_info: [],
+profiles: [],
 
 selected_service: 'twitter',
 
@@ -92,7 +92,7 @@ function init () {
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
         ui.Notification.set(_("Begin to OAuth ...")).show();
-        if (jsOAuth.access_token == null
+        if (jsOAuth.access_token == '' 
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
         // then get a new one.
@@ -130,19 +130,18 @@ function init () {
     btn_welcome_create_profile.on_clicked = function (event) {
         var cb = "ui.Notification.set('New profile has been created!').show();";
         var prefix = $.trim($('#tbox_new_profile_name').val());
-        var profile_name = prefix + '@' + ui.Welcome.selected_service;
         if (prefix.length == 0 ) {
-            ui.Notification.set(_("Please entry a profile name!")).show();
+            ui.Notification.set(_("Please entry a profile prefix!")).show();
             return;
         }
         if (prefix.indexOf('@') != -1) {
-            ui.Notification.set(_("Charactor `@` is not allow in profile name!")).show();
+            ui.Notification.set(_("Charactor `@` is not allow in profile prefix!")).show();
             return;
         }
-        hotot_action('system/create_profile/'
-            + encodeURIComponent(profile_name)
-            + '/'
-            + cb);
+        db.add_profile(prefix, ui.Welcome.selected_service,
+        function () {
+            ui.Notification.set('New profile has been created!').show();
+        });
     };
     btn_welcome_create_profile.create();
     
@@ -170,31 +169,31 @@ function init () {
     function (event) {
         ui.DialogHelper.open(ui.AboutDlg);
     });
+    
+    // get all profiles
+    db.get_all_profiles(ui.Welcome.load_profiles_info); 
+
     return this;
 },
 
 load_profiles_info:
-function load_profiles_info(profiles_info) {
+function load_profiles_info(profiles) {
     $('#profile_avator_list a').unbind('click');
     $('#profile_avator_list li').not('.new_profile_item').remove();
 
-    ui.Welcome.profiles_info = profiles_info;
-    for (var name in profiles_info ) {
-        var profile = profiles_info[name];
-        if (name == 'default') {
-            continue;
-        }
-        var type = name.split('@')[1];
+    hotot_log('profiles', ''+profiles.length);
+    for (var i = 0; i < profiles.length; i += 1) {
+        var name = profiles[i].name;
+        var proto = profiles[i].protocol;
+        var prefs = profiles[i].preferences;
+        conf.profiles[name] = profiles[i];
         $('#profile_avator_list').prepend(
-            '<li><a title="'+name+'" href="'+name+'" class="'+type+'"></a></li>');
+            '<li><a title="'+name+'" href="'+name+'" class="'+proto+'"></a></li>');
     }
     $('#profile_avator_list a').click(
     function (event) {
-        var profile_name = $(this).attr('href');                    
+        var profile_name = $(this).attr('href');
         ui.Welcome.selected_profile = profile_name;
-        default_username = '';
-        default_password = '';
-        access_token = '';
         if (profile_name == 'default') {
             $('.service_tabs_btn').show();
             $('.service_tabs_page').not('#service_page_new').hide();
@@ -204,34 +203,25 @@ function load_profiles_info(profiles_info) {
             $('#service_page_new').show();
         } else {
             var type = profile_name.split('@')[1];
-            
             $('.service_tabs_btn').not('#btn_service_' + type).hide();
             $('#btn_service_' + type).show().addClass('selected');
-
             $('#service_page_' + type).show();
             $('.service_tabs_page').not('#service_page_' + type).hide();
-
             $('#profile_title').text(profile_name)
-            
             $('#btn_welcome_prefs, #btn_welcome_delete_profile').show();
-
-            default_username
-                = ui.Welcome.profiles_info[profile_name].username;
-            default_password
-                = ui.Welcome.profiles_info[profile_name].password;
-            access_token 
-                = ui.Welcome.profiles_info[profile_name].access_token;
         }
-
-        $('#tbox_basic_auth_username').attr('value', default_username);
-        $('#tbox_basic_auth_password').attr('value', default_password);
-        jsOAuth.access_token = access_token;
-
+        $('#tbox_basic_auth_username').val(
+            conf.profiles[profile_name].preferences.username);
+        $('#tbox_basic_auth_password').val(
+            conf.profiles[profile_name].preferences.password);
         $('#profile_avator_list a').not(this).removeClass('selected');
         $(this).addClass('selected');
 
+        conf.apply_prefs(profile_name);
+        /*
         hotot_action('system/select_profile/'
             + encodeURIComponent(profile_name));
+            */
         return false;
     });
      

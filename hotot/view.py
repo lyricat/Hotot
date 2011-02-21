@@ -77,6 +77,5 @@ class MainView(WebView):
         """ % i18n.get_i18n_json())
         agent.webv = self
         agent.set_style_scheme()
-        #agent.push_profiles()
         agent.apply_config()
         agent.load_exts()

@@ -9,58 +9,6 @@ MAX_USER_CACHE_SIZE: 512,
 
 version: 2,
 
-default_settings: {
-      // update interval:
-      'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
-    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
-      // proxy:
-    , 'use_http_proxy': false
-    , 'http_proxy_host': ''
-    , 'http_proxy_port': 0
-      // System:
-    , 'shortcut_summon_hotot': '<Alt>C'
-    , 'size_w': 500
-    , 'size_h': 550
-
-},
-
-default_prefs: {
-    'twitter': {
-          'remember_password': false
-        , 'default_username':''
-        , 'default_password':''
-          // Appearance:
-        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
-        , 'font_size': 12
-        , 'use_native_notify': true
-        , 'use_hover_box': true
-        , 'use_preload_conversation': true
-          // Appearance > Notification:
-        , 'use_home_timeline_notify': true
-        , 'use_home_timeline_notify_type': 'count'
-        , 'use_home_timeline_notify_sound': true
-        , 'use_mentions_notify': true
-        , 'use_mentions_notify_type': 'content'
-        , 'use_mentions_notify_sound': true
-        , 'use_direct_messages_inbox_notify': true
-        , 'use_direct_messages_inbox_notify_type': 'content'
-        , 'use_direct_messages_inbox_notify_sound': true
-          // api url:
-        , 'api_base': 'https://api.twitter.com/1/'
-        , 'sign_api_base': 'https://api.twitter.com/'
-        , 'use_same_sign_api_base': true
-        , 'oauth_base': 'https://api.twitter.com/oauth/'
-        , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
-        , 'use_same_sign_oauth_base': true
-        , 'search_api_base': 'http://search.twitter.com/'
-          // others:
-        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"]
-      }
-    , 'identi.ca': {
-    
-      }
-},
-
 init:
 function init () {
     db.database = window.openDatabase('hotot.cache', '', 'Cache of Hotot', 10);
@@ -119,7 +67,7 @@ function create_database() {
             });    
     },
     function () {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS "Profile" ("name" CHAR(256) PRIMARY KEY  NOT NULL  UNIQUE , "protocol" CHAR(64) NOT NULL , "preferences" TEXT NOT NULL )', [],
+            tx.executeSql('CREATE TABLE IF NOT EXISTS "Profile" ("name" CHAR(256) PRIMARY KEY  NOT NULL UNIQUE , "protocol" CHAR(64) NOT NULL , "preferences" TEXT NOT NULL, "order" INTEGER DEFAULT 0)', [],
             function () {
                 $(window).dequeue('_database');
             });    
@@ -308,9 +256,9 @@ function load_profile_prefs(name, callback) {
 },
 
 add_profile:
-function add_profile(name, protocol, callback) {
+function add_profile(prefix, protocol, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('INSERT or REPLACE INTO Profile VALUES(?, ?, ?)', [name, protocol, db.get_default_prefs(protocol)], 
+        tx.executeSql('INSERT or REPLACE INTO Profile VALUES(?, ?, ?, ?)', [prefix+'@'+protocol, protocol, JSON.stringify(conf.get_default_prefs(protocol)), 0], 
         function (tx, rs) {
             callback(true);
         }, 
@@ -334,9 +282,9 @@ function remove_profile(name, callback) {
 },
 
 modify_profile:
-function remove_profile(name, profile, callback) {
+function modify_profile(name, profile, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('UPDATE Profile SET name=?, protocol=?, preferences=?', [profile.name, profile.protocol, profile.preferences], 
+        tx.executeSql('UPDATE Profile SET name=?, protocol=?, preferences=?, order=?, WHERE name=?', [profile.name, profile.protocol, profile.preferences, profile.order, name], 
         function (tx, rs) {
             callback(true);
         },
@@ -346,34 +294,43 @@ function remove_profile(name, profile, callback) {
     });
 },
 
-get_default_prefs:
-function get_default_prefs(name) {
-    if (name == 'twitter') {
-        return db.default_prefs['twitter'];
-    } else if (name == 'identi.ca') {
-        //@TODO identi.ca's default_prefs
-        return db.default_prefs['twitter'];
-    } else {
-        return '';
-    }
-},
-
 get_profile:
 function get_profile(name, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM Profile WHERE name=? ', [name], 
+        tx.executeSql('SELECT * FROM Profile WHERE name=?', [name], 
         function (tx, rs) {
             if (rs.rows.length == 0) {
-                callback('', '', '');
+                callback({});
             } else {
-                callback(rs.rows.item(0).name
-                    , rs.rows.item(0).protocol
-                    , rs.rows.item(0).preferences);
+                callback({'name': rs.rows.item(0).name
+                        , 'protocol': rs.rows.item(0).protocol
+                        , 'preferences': rs.rows.item(0).preferences
+                        , 'order': rs.rows.item(0).order});
             }
         }); 
     });
 },
 
+get_all_profiles:
+function get_all_profiles(callback) {
+    db.database.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM "Profile" ORDER BY "Profile"."order"', [], 
+        function (tx, rs) {
+            if (rs.rows.length == 0) {
+                callback('[]');
+            } else {
+                var profs = [];
+                for (var i = 0; i < rs.rows.length; i += 1) {
+                    profs.push({'name': rs.rows.item(0).name
+                        , 'protocol': rs.rows.item(0).protocol
+                        , 'preferences': rs.rows.item(0).preferences
+                        , 'order': rs.rows.item(0).order});
+                }
+                callback(profs);
+            }
+        }); 
+    });
+},
 
 };
 
