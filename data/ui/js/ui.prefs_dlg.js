@@ -89,6 +89,7 @@ function init () {
                 + err.error_values.join('<br/> - ') + '</p>');
             ui.DialogHelper.open(ui.MessageDlg);
         } else {
+            ui.PrefsDlg.save_settings();
             ui.PrefsDlg.save_prefs();
             ui.DialogHelper.close(ui.PrefsDlg);
         }
@@ -130,7 +131,40 @@ function load_settings() {
         $('#tbox_prefs_http_proxy_host').attr('disabled', true);
         $('#tbox_prefs_http_proxy_port').attr('disabled', true);
     }
+},
 
+save_settings:
+function save_settings() {
+    // Globals
+    conf.settings.use_verbose_mode 
+        = $('#chk_prefs_use_verbose_mode').attr('checked');
+    conf.settings.use_ubuntu_indicator 
+        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
+    conf.settings.shortcut_summon_hotot 
+        = $('#tbox_prefs_shortcut_summon_hotot').val();
+    // proxy
+    conf.settings.use_http_proxy
+        = $('#chk_prefs_use_http_proxy').attr('checked');
+    conf.settings.http_proxy_host 
+        = $('#tbox_prefs_http_proxy_host').val();
+    conf.settings.http_proxy_port 
+        = $('#tbox_prefs_http_proxy_port').val();
+    
+    conf.settings.use_http_proxy
+        = $('#chk_prefs_use_http_proxy').attr('checked');
+    conf.settings.http_proxy_host
+        = $('#tbox_prefs_http_proxy_host').attr('value');
+    conf.settings.http_proxy_port
+        = $('#tbox_prefs_http_proxy_port').attr('value');
+    if (conf.settings.http_proxy_port == '') {
+        conf.settings.http_proxy_port = 0;
+    }
+    if (! conf.settings.use_http_proxy) {
+        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+    }
+
+    conf.save_settings();
 },
 
 load_prefs:

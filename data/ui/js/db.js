@@ -228,6 +228,32 @@ function get_user_cache_size(callback) {
     });
 },
 
+save_option:
+function save_option(key, value, callback) {
+    db.database.transaction(function (tx) {
+        tx.executeSql('INSERT or REPLACE INTO Info VALUES(?, ?)', [key, value], 
+        function (tx, rs) {
+            callback(true);
+        },
+        function (tx, error) {
+            callback(false);
+        }); 
+    });
+},
+
+load_option:
+function load_option(key, callback) {
+    db.database.transaction(function (tx) {
+        tx.executeSql('SELECT key, value FROM Info WHERE key=?', [key], 
+        function (tx, rs) {
+            callback(rs.rows.item(0).value);
+        },
+        function (tx, error) {
+            callback(null);
+        }); 
+    });
+},
+
 save_profile_prefs:
 function save_profile_prefs(name, json, callback) {
     db.database.transaction(function (tx) {
