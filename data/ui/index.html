@@ -90,6 +90,17 @@ function navigate_action(uri) {
     window.location.href = uri;
 }
 
+function hotot_notify(title, summary, type) {
+    if (conf.get_current_profile().preferences.use_native_notify) {
+        hotot_action('system/notify/'
+            + type
+            + '/' + encodeURIComponent(title)
+            + '/' + encodeURIComponent(summary));
+    } else {
+        // @TODO other notify way
+    }
+}
+
 function hotot_log(label, content) {
     if (globals.verbose) {
         hotot_action('action/log/' + encodeURIComponent(label) 
@@ -1252,5 +1263,6 @@ jQuery(function($) {
 
 <span id="user_cache"></span>
 <span id="tweet_cache"></span>
+<audio id="audio_notify" src="../sound/notify.wav"></audio>
 </body>
 </html>

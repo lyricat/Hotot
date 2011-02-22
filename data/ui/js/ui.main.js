@@ -370,28 +370,28 @@ function load_tweets_cb(result, pagename) {
         if (ui.Main.block_info[pagename].use_notify) {
             switch (ui.Main.block_info[pagename].use_notify_type) {
             case 'count':
-                hotot_action('system/notify/count/'
-                    + encodeURIComponent(_("Update page ")+pagename)
-                    + '/'+encodeURIComponent(tweet_count + _(" new items.")));
+                hotot_notify(_("Update page ") + pagename
+                    , tweet_count + _(" new items.")
+                    , 'count');
             break;
             case 'content':
                 if (json_obj.length < 5) {
                     for (var i = 0; i < json_obj.length; i += 1) {
                         var user = typeof json_obj[i].sender != 'undefined'
                             ? json_obj[i].sender : json_obj[i].user;
-                        hotot_action('system/notify/content/'
-                            + encodeURIComponent(user.screen_name) + '/'
-                            + encodeURIComponent(json_obj[i].text));
+                        hotot_action(user.screen_name
+                            , json_obj[i].text
+                            , 'content');
                     }
                 } else {
-                    hotot_action('system/notify/count/'
-                        + encodeURIComponent(_("Update page ")+pagename)
-                        + '/'+encodeURIComponent(tweet_count+_(" new items.")));
+                    hotot_notify(_("Update page ") + pagename
+                        , tweet_count + _(" new items.")
+                        , 'count');
                 }
             break;
             } 
             if (ui.Main.block_info[pagename].use_notify_sound) {
-                hotot_action('system/notify_with_sound');
+                $('#audio_notify').get(0).play();
             }
         }
         ui.Slider.set_unread(pagename);
