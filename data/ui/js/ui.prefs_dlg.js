@@ -149,7 +149,6 @@ function save_settings() {
         = $('#tbox_prefs_http_proxy_host').val();
     conf.settings.http_proxy_port 
         = $('#tbox_prefs_http_proxy_port').val();
-    
     conf.settings.use_http_proxy
         = $('#chk_prefs_use_http_proxy').attr('checked');
     conf.settings.http_proxy_host
@@ -163,16 +162,16 @@ function save_settings() {
         $('#tbox_prefs_http_proxy_host').attr('disabled', true);
         $('#tbox_prefs_http_proxy_port').attr('disabled', true);
     }
-
+    // save
     conf.save_settings();
 },
 
 load_prefs:
-function load_prefs(prefs) {
+function load_prefs() {
+    var prefs = conf.profiles[conf.current_name].preferences;
     // Account
     $('#chk_prefs_remember_password').attr('checked'
         , prefs.remember_password);
-    
     // Appearance
     var options_arr = []; var selected_idx = 0;
     for (var i = 0; i < prefs.font_family_list.length; i += 1) {
@@ -187,7 +186,12 @@ function load_prefs(prefs) {
     $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
     $('#tbox_prefs_font_size').attr('value', prefs.font_size);    
     ui.PrefsDlg.update_font_preview();
-
+    $('#chk_prefs_use_native_notify').attr('checked'
+        , prefs.use_native_notify);
+    $('#chk_prefs_use_hover_box').attr('checked'
+        , prefs.use_hover_box);
+    $('#chk_prefs_use_preload_conversation').attr('checked'
+        , prefs.use_preload_conversation);
     // Update
     var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
     for (var i = 0; i < pages.length; i += 1) {
@@ -198,23 +202,12 @@ function load_prefs(prefs) {
         $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked'
             , prefs['use_'+pages[i]+'_notify_sound']);
     }
-
-    $('#chk_prefs_use_native_notify').attr('checked'
-        , prefs.use_native_notify);
-    $('#chk_prefs_use_native_input').attr('checked'
-        , prefs.use_native_input);
-    $('#chk_prefs_use_hover_box').attr('checked'
-        , prefs.use_hover_box);
-    $('#chk_prefs_use_preload_conversation').attr('checked'
-        , prefs.use_preload_conversation);
-
     // Advanced
     $('#tbox_prefs_api_base').val(prefs.api_base);
     $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
     $('#tbox_prefs_search_api_base').val(prefs.search_api_base);
     $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
     $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
-
     $('#chk_prefs_use_same_sign_api_base').attr('checked'
         , prefs.use_same_sign_api_base);
     $('#chk_prefs_use_same_sign_oauth_base').attr('checked'
@@ -229,69 +222,49 @@ function load_prefs(prefs) {
 
 save_prefs:
 function save_prefs() {
-    var sys_prefs_obj = {};
-    sys_prefs_obj['use_verbose_mode'] 
-        = $('#chk_prefs_use_verbose_mode').attr('checked');
-    sys_prefs_obj['use_ubuntu_indicator'] 
-        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
-
-    var prefs_obj = {};
-    prefs_obj['remember_password']
+    var prefs = conf.profiles[conf.current_name].preferences;
+    // Account
+    prefs['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
-    
-    prefs_obj['shortcut_summon_hotot']
-        = $('#tbox_prefs_shortcut_summon_hotot').attr('value');
-
-    prefs_obj['font_family_used'] = $('#sel_prefs_font_family').attr('value');
-    prefs_obj['font_size'] = $('#tbox_prefs_font_size').attr('value');
-    if (prefs_obj['font_size'] == '') prefs_obj['font_size'] = 12;
-
+    // Looks & Feels
+    prefs['font_family_used'] = $('#sel_prefs_font_family').attr('value');
+    prefs['font_size'] = $('#tbox_prefs_font_size').attr('value');
+    if (prefs['font_size'] == '') {
+        prefs['font_size'] = 12;
+    }
+    prefs['use_native_notify']
+        = $('#chk_prefs_use_native_notify').attr('checked');
+    prefs['use_hover_box']
+        = $('#chk_prefs_use_hover_box').attr('checked');   
+    prefs['use_preload_conversation']
+        = $('#chk_prefs_use_preload_conversation').attr('checked'); 
+    // Update
     var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
     for (var i = 0; i < pages.length; i += 1) {
-        prefs_obj['use_'+pages[i]+'_notify']
+        prefs['use_'+pages[i]+'_notify']
             = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
-        prefs_obj['use_'+pages[i]+'_notify_type']
+        prefs['use_'+pages[i]+'_notify_type']
             = $('#sel_prefs_use_'+pages[i]+'_notify_type').val();
-        prefs_obj['use_'+pages[i]+'_notify_sound']
+        prefs['use_'+pages[i]+'_notify_sound']
             = $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked');
     }
-
-    prefs_obj['use_native_notify']
-        = $('#chk_prefs_use_native_notify').attr('checked');
-    prefs_obj['use_native_input']
-        = $('#chk_prefs_use_native_input').attr('checked');
-    prefs_obj['use_hover_box']
-        = $('#chk_prefs_use_hover_box').attr('checked');   
-    prefs_obj['use_preload_conversation']
-        = $('#chk_prefs_use_preload_conversation').attr('checked');  
-    
-    prefs_obj['api_base']
+    // Advanced
+    prefs['api_base']
         = $('#tbox_prefs_api_base').attr('value');
-    prefs_obj['sign_api_base'] 
+    prefs['sign_api_base'] 
         = $('#tbox_prefs_sign_api_base').attr('value');
-    prefs_obj['search_api_base'] 
+    prefs['search_api_base'] 
         = $('#tbox_prefs_search_api_base').attr('value');
-    prefs_obj['oauth_base'] 
+    prefs['oauth_base'] 
         = $('#tbox_prefs_oauth_base').attr('value');    
-    prefs_obj['sign_oauth_base'] 
+    prefs['sign_oauth_base'] 
         = $('#tbox_prefs_sign_oauth_base').attr('value');
-    prefs_obj['use_same_sign_api_base']
+    prefs['use_same_sign_api_base']
         = $('#chk_prefs_use_same_sign_api_base').attr('checked');
-    prefs_obj['use_same_sign_oauth_base']
+    prefs['use_same_sign_oauth_base']
         = $('#chk_prefs_use_same_sign_oauth_base').attr('checked');
-
-    prefs_obj['use_http_proxy']
-        = $('#chk_prefs_use_http_proxy').attr('checked');
-    prefs_obj['http_proxy_host']
-        = $('#tbox_prefs_http_proxy_host').attr('value');
-    prefs_obj['http_proxy_port'] 
-        = $('#tbox_prefs_http_proxy_port').attr('value');
-    if (prefs_obj['http_proxy_port']=='') prefs_obj['http_proxy_port']=0;
-
-    hotot_action('config/save_sys_prefs/'
-        + encodeURIComponent(JSON.stringify(sys_prefs_obj)));
-    hotot_action('config/save_prefs/'
-        + encodeURIComponent(JSON.stringify(prefs_obj)));
+    // save
+    conf.save_prefs(conf.current_name);
 },
 
 restore_defaults:
@@ -317,8 +290,8 @@ function hide () {
 
 show:
 function show () {
-    ui.PrefsDlg.load_prefs(conf.profiles[conf.current_name].preferences);
     ui.PrefsDlg.load_settings(conf.settings);
+    ui.PrefsDlg.load_prefs();
     ui.PrefsDlg.me.show();
     ui.PrefsDlg.is_show = true;
     return ui.PrefsDlg;

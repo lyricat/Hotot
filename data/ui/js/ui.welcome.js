@@ -248,7 +248,7 @@ function hide () {
 
 show:
 function show () {
-    setTimeout(ui.Welcome.load_profiles_info, 2000);
+    ui.Welcome.load_profiles_info();
     this.me.show();
     return this;
 },

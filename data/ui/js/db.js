@@ -10,18 +10,22 @@ MAX_USER_CACHE_SIZE: 512,
 version: 2,
 
 init:
-function init () {
+function init (callback) {
     db.database = window.openDatabase('hotot.cache', '', 'Cache of Hotot', 10);
     db.get_version(function (version) {
         var db_version = parseInt(version);
         if (db_version != db.version) {
-            db.create_database();
+            db.create_database(callback);
+        } else {
+            if (typeof (callback) != 'undefined') {
+                callback();
+            }
         }
     });
 },
 
 create_database:
-function create_database() {
+function create_database(callback) {
     db.database.transaction(function (tx) {
     var procs = [
     function() {
@@ -77,6 +81,11 @@ function create_database() {
         function () {
             $(window).dequeue('_database');
         });
+    },
+    function () {
+        if (typeof (callback) != 'undefined') {
+            callback();
+        }    
     }
     ];
 
@@ -310,12 +319,12 @@ function remove_profile(name, callback) {
 modify_profile:
 function modify_profile(name, profile, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('UPDATE Profile SET name=?, protocol=?, preferences=?, order=?, WHERE name=?', [profile.name, profile.protocol, profile.preferences, profile.order, name], 
+        tx.executeSql('UPDATE Profile SET "name"=?, "protocol"=?, "preferences"=?, "order"=? WHERE "name"=?', [profile.name, profile.protocol, profile.preferences, profile.order, name], 
         function (tx, rs) {
             callback(true);
         },
         function (tx, error) {
-            callback(false);
+            callback(error);
         }); 
     });
 },

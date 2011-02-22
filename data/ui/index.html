@@ -97,6 +97,42 @@ function hotot_log(label, content) {
     }
 }
 
+function init(callback) {
+    db.init(function () {
+        daemon.Updater.init();
+        conf.init(function () {
+            init_ui();    
+        });
+    });
+}
+
+function init_ui() {
+    console.init();
+    ui.Template.init();
+    ui.Header.init();
+    ui.StatusBox.init();
+    ui.Main.init();
+    ui.Welcome.init();
+    ui.RetweetTabs.init();
+    ui.DMTabs.init();
+    ui.PeopleTabs.init();
+    ui.SearchTabs.init();
+    ui.Notification.init();
+    ui.Slider.init();
+    ui.PinDlg.init();
+    ui.PrefsDlg.init();
+    ui.ProfileDlg.init();
+    ui.ExtsDlg.init();
+    ui.MessageDlg.init();
+    ui.AboutDlg.init();
+    ui.CommonDlg.init();
+    ui.Finder.init();
+    ui.DialogHelper.init();
+    ui.ActionMenu.init();
+    ui.ContextMenu.init();
+    ext.init();
+}
+
 var globals = {
       status_hint: _("'What is happening?'")
     , tweet_hint: _("'What is happening?'")
@@ -215,33 +251,8 @@ jQuery(function($) {
     function () {
         $("#count > ul").hide();
     });
-    console.init();
-    db.init();
-    conf.init();
-    daemon.Updater.init();
-    ui.Template.init();
-    ui.Header.init();
-    ui.StatusBox.init();
-    ui.Welcome.init();
-    ui.Main.init();
-    ui.RetweetTabs.init();
-    ui.DMTabs.init();
-    ui.PeopleTabs.init();
-    ui.SearchTabs.init();
-    ui.Notification.init();
-    ui.Slider.init();
-    ui.PinDlg.init();
-    ui.PrefsDlg.init();
-    ui.ProfileDlg.init();
-    ui.ExtsDlg.init();
-    ui.MessageDlg.init();
-    ui.AboutDlg.init();
-    ui.CommonDlg.init();
-    ui.Finder.init();
-    ui.DialogHelper.init();
-    ui.ActionMenu.init();
-    ui.ContextMenu.init();
-    ext.init();
+
+    init();
 
     update_tweet_block_width();
 });
