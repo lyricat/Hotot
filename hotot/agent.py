@@ -182,7 +182,6 @@ def load_exts():
         var exts = %s;
         ext.load_exts(exts);
         '''
-        # @TODO
         % json.dumps(exts))
 
 def set_style_scheme():

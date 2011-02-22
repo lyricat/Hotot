@@ -293,12 +293,12 @@ function load_profile_prefs(name, callback) {
 add_profile:
 function add_profile(prefix, protocol, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('INSERT or REPLACE INTO Profile VALUES(?, ?, ?, ?)', [prefix+'@'+protocol, protocol, JSON.stringify(conf.get_default_prefs(protocol)), 0], 
+        tx.executeSql('INSERT INTO Profile VALUES(?, ?, ?, ?)', [prefix+'@'+protocol, protocol, JSON.stringify(conf.get_default_prefs(protocol)), 0], 
         function (tx, rs) {
             callback(true);
         }, 
         function (tx, error) {
-            callback(false);
+            callback(error);
         }); 
     });
 },

@@ -354,8 +354,9 @@ jQuery(function($) {
         </div>
         </div><!--tabs-->
         <div class="bottom">
-            <a id="btn_welcome_delete_profile" href="javascript:void(0)">_("Delete")</a>     
+            <a id="btn_welcome_delete_profile" href="javascript:void(0)">_("Delete")</a>
             <a id="btn_welcome_prefs" href="javascript:void(0)">_("Preferences")</a>     
+            <a id="btn_welcome_exts" href="javascript:void(0)">_("Extensions")</a>
         </div>
     </div>
     <div id="welcome_bottom">
@@ -801,6 +802,10 @@ jQuery(function($) {
                     <h3>_("- Font -")</h3>
                     <div class="dlg_group">
                     <p>
+                        <label>_("Custom Font")</label>
+                        <input id="tbox_prefs_custom_font"
+                            title=_("'Custom Font'") 
+                            style="width:80px" type="text"/><br/>
                         <label>_("Font Family")</label>
                         <select id="sel_prefs_font_family" 
                             title=_("'Font Family'") style="width: 85px">
@@ -810,8 +815,9 @@ jQuery(function($) {
                             <option value="4">4</option>
                         </select> 
                         <label>_("Font Size")</label>
-                        <input id="tbox_prefs_font_size" title=_("'Font Size'") 
-                             style="width:30px" type="text"/>
+                        <input id="tbox_prefs_font_size" 
+                            title=_("'Font Size'") 
+                            style="width:30px" type="text"/>
                         <label>_("px")</label><br/>
                         <div id="prefs_font_preview">_("The quick brown fox jumps over the lazy dog.")</div>
                     </p>

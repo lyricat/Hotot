@@ -97,7 +97,6 @@ function init() {
         }
         return text;
     };
-
 },
 
 init_exts:
@@ -152,7 +151,7 @@ function load_exts(exts) {
         procs.push(function () {
             $.getScript(path,
             function () {
-                console.out('[i]Load Extension: ' + path);
+                hotot_log('Load Extension', path);
                 $(window).dequeue('_load_exts');
             });
         });    

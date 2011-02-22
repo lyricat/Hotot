@@ -69,9 +69,14 @@ function init () {
         function (result) {
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
+            } else if (result == '') {
+                ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                    , _("<p>Network Error, Please try later! &lt;_&gt; </p>"));
+                ui.DialogHelper.open(ui.MessageDlg);
             } else {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                    , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>"));
+                    , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>") 
+                    + 'Tech Info:<br/><pre>'+result+'</pre>');
                 ui.DialogHelper.open(ui.MessageDlg);
             }
         });
@@ -87,7 +92,7 @@ function init () {
         = new widget.Button('#btn_oauth_sign_in')
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
-        ui.Notification.set(_("Begin to OAuth ...")).show();
+        ui.Notification.set(_("Sign in ...")).show();
         if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -95,8 +100,9 @@ function init () {
             jsOAuth.get_request_token(
             function (result) {
                 if (result == '') {
-                    ui.Notification
-                        .set('Connection Error, Try later!').show();
+                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                        , _("<p>Network Error, Please try later! &lt;_&gt; </p>"));
+                    ui.DialogHelper.open(ui.MessageDlg);
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
                     ui.DialogHelper.open(ui.PinDlg);
@@ -111,9 +117,14 @@ function init () {
             // access_token is valid
                 if (result.screen_name) {
                     ui.Welcome.authenticate_pass(result);
+                } else if (result == '') {
+                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                        , _("<p>Network Error, Please try later! &lt;_&gt; </p>"));
+                    ui.DialogHelper.open(ui.MessageDlg);
                 } else {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>"));
+                        , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>")
+                    + 'Tech Info:<br/><pre>'+result+'</pre>');
                     ui.DialogHelper.open(ui.MessageDlg);
                 }
             });
@@ -140,11 +151,16 @@ function init () {
             return;
         }
         db.add_profile(prefix, ui.Welcome.selected_service,
-        function () {
-            ui.Notification.set('New profile has been created!').show();
-            conf.reload(function () {
-                ui.Welcome.load_profiles_info();
-            });
+        function (result) {
+            if (result != true) {
+                ui.Notification
+                    .set(_("This profile may has already exists!")).show();
+            } else {
+                ui.Notification.set('New profile has been created!').show();
+                conf.reload(function () {
+                    ui.Welcome.load_profiles_info();
+                });
+            }
         });
     };
     btn_welcome_create_profile.create();
@@ -153,7 +169,12 @@ function init () {
     function (event) {
         ui.DialogHelper.open(ui.PrefsDlg);
     });
-    
+        
+    $('#btn_welcome_exts').click(
+    function (event) {
+        ui.DialogHelper.open(ui.ExtsDlg);
+    });
+
     $('#btn_welcome_delete_profile').click(
     function (event) {
         if (confirm('Delete profile "'+ui.Welcome.selected_profile+'" will erases all data of this profile.\n Are you sure you want to continue?!\n')) 
@@ -174,6 +195,7 @@ function init () {
     });
 
     ui.Welcome.load_profiles_info();
+    $('#profile_avator_list a:first').click();
     return this;
 },
 
@@ -195,7 +217,7 @@ function load_profiles_info() {
         if (profile_name == 'default') {
             $('.service_tabs_btn').show();
             $('.service_tabs_page').not('#service_page_new').hide();
-            $('#btn_welcome_prefs, #btn_welcome_delete_profile').hide();
+            $('#btn_welcome_prefs, #btn_welcome_delete_profile, #btn_welcome_exts').hide();
             $('#profile_title').text('New Profile');
             $('.service_tabs_btn:first').click();
             $('#service_page_new').show();
@@ -206,20 +228,20 @@ function load_profiles_info() {
             $('#service_page_' + type).show();
             $('.service_tabs_page').not('#service_page_' + type).hide();
             $('#profile_title').text(profile_name)
-            $('#btn_welcome_prefs, #btn_welcome_delete_profile').show();
+            $('#btn_welcome_prefs, #btn_welcome_delete_profile, #btn_welcome_exts').show();
             $('#tbox_basic_auth_username').val(
                 conf.profiles[profile_name].preferences.default_username);
             $('#tbox_basic_auth_password').val(
                 conf.profiles[profile_name].preferences.default_password);
             $('#profile_avator_list a').not(this).removeClass('selected');
             $(this).addClass('selected');
-
+            // apply preferences
             conf.apply_prefs(profile_name);
+            // init enabled extensions
+            ext.init_exts();
         }
         return false;
     });
-     
-    $('#profile_avator_list a:first').click();
 },
 
 authenticate_pass:
@@ -234,8 +256,6 @@ function authenticate_pass(result) {
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
-    // init enabled extensions
-    ext.init_exts();
     hotot_action('system/sign_in');    
 },
 

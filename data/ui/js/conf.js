@@ -27,6 +27,8 @@ default_prefs: {
         , 'default_password':''
         , 'access_token': ''
           // Look & Feels:
+        , 'use_custom_font': false
+        , 'custom_font': ''
         , 'font_family_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
@@ -59,7 +61,7 @@ default_prefs: {
       }
 },
 
-profiles: [],
+profiles: {},
 
 settings: {},
 
@@ -179,7 +181,7 @@ function apply_prefs(name) {
         = prefs.use_direct_messages_inbox_notify_sound;
     
     $('#chk_remember_password').attr('checked', prefs.remember_password);
-    $('body').css('font-family', prefs.font_family_used);
+    $('body').css('font-family', prefs.custom_font + ' ' + prefs.font_family_used);
     globals.tweet_font_size = prefs.font_size;
     ui.StatusBox.use_hover_box = prefs.use_hover_box;
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;

@@ -42,7 +42,7 @@ function init () {
     };
     btn_regain_token.create();
 
-    $('#sel_prefs_font_family').change(
+    $('#sel_prefs_font_family #tbox_prefs_font_size #tbox_prefs_custom_font').bind('change keypress blur',
     function (event) {
         ui.PrefsDlg.update_font_preview();
     });
@@ -56,9 +56,6 @@ function init () {
         if (event.keyCode == 13){
             ui.PrefsDlg.update_font_preview();
         }
-    }).blur(
-    function (event) {
-        ui.PrefsDlg.update_font_preview();
     });
 
     $('#chk_prefs_use_same_sign_api_base').click(
@@ -182,9 +179,10 @@ function load_prefs() {
             selected_idx = i;
         }
     }
+    $('#tbox_prefs_custom_font').val(prefs.custom_font);    
     $('#sel_prefs_font_family').html(options_arr.join(''))
     $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
-    $('#tbox_prefs_font_size').attr('value', prefs.font_size);    
+    $('#tbox_prefs_font_size').val(prefs.font_size);    
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_native_notify').attr('checked'
         , prefs.use_native_notify);
@@ -227,8 +225,9 @@ function save_prefs() {
     prefs['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
     // Looks & Feels
-    prefs['font_family_used'] = $('#sel_prefs_font_family').attr('value');
-    prefs['font_size'] = $('#tbox_prefs_font_size').attr('value');
+    prefs['custom_font'] = $('#tbox_prefs_custom_font').val();
+    prefs['font_family_used'] = $('#sel_prefs_font_family').val();
+    prefs['font_size'] = $('#tbox_prefs_font_size').val();
     if (prefs['font_size'] == '') {
         prefs['font_size'] = 12;
     }
