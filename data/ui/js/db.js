@@ -356,10 +356,10 @@ function get_all_profiles(callback) {
             } else {
                 var profs = [];
                 for (var i = 0; i < rs.rows.length; i += 1) {
-                    profs.push({'name': rs.rows.item(0).name
-                        , 'protocol': rs.rows.item(0).protocol
-                        , 'preferences': rs.rows.item(0).preferences
-                        , 'order': rs.rows.item(0).order});
+                    profs.push({'name': rs.rows.item(i).name
+                        , 'protocol': rs.rows.item(i).protocol
+                        , 'preferences': rs.rows.item(i).preferences
+                        , 'order': rs.rows.item(i).order});
                 }
                 callback(profs);
             }

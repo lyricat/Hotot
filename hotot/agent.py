@@ -91,13 +91,7 @@ def do_notify(summary, body):
 
 def crack_hotot(uri):
     params = uri.split('/')
-    if params[0] == 'token':
-        crack_token(params)
-    elif params[0] == 'exts':
-        crack_exts(params)
-    elif params[0] == 'config':
-        crack_config(params)
-    elif params[0] == 'system':
+    if params[0] == 'system':
         crack_system(params)
     elif params[0] == 'action':
         crack_action(params)
@@ -105,46 +99,6 @@ def crack_hotot(uri):
         crack_request(params)
     else:
         pass
-
-def crack_exts(params):
-    if params[1] == 'save_enabled':
-        exts_enabled = json.loads(urllib2.unquote(params[2]))
-        set_prefs('exts_enabled', exts_enabled)
-        config.dumps(app.active_profile)
-
-def crack_config(params):
-    if params[1] == 'dumps':
-        config.dumps(app.active_profile)
-    elif params[1] == 'loads': # useless
-        config.loads(app.active_profile)
-    elif params[1] == 'push_prefs':
-        config.load_sys_conf()
-        config.loads(app.active_profile)
-        push_prefs()
-    elif params[1] == 'save_sys_prefs':
-        prefs = json.loads(urllib2.unquote(params[2]))
-        config.save_sys_prefs(prefs) 
-    elif params[1] == 'save_prefs':
-        prefs = json.loads(urllib2.unquote(params[2]))
-        config.save_prefs(app.active_profile, prefs)
-        apply_prefs()
-    elif params[1] == 'restore_defaults':
-        config.restore_defaults(app.active_profile)
-        apply_config()
-        push_prefs()
-    elif params[1] == 'set_opts':
-        opts = json.loads(urllib2.unquote(params[2]))
-        for key, value in opts.items():
-            set_prefs(key, value)
-
-def crack_token(params):
-    if params[1] == 'load':
-        token = config.load_token(app.active_profile)
-        push_option('lib.twitterapi', 'access_token', json.dumps(token))
-    elif params[1] == 'dump':
-        config.dump_token(app.active_profile
-            , json.loads(urllib.unquote(params[2])))
-        push_profiles()
 
 def crack_action(params):
     if params[1] == 'user':
@@ -161,8 +115,6 @@ def crack_action(params):
 
 def crack_system(params):
     if params[1] == 'notify':
-        if not get_prefs('use_native_notify'):
-            return
         type = urllib.unquote(params[2])
         summary = urllib.unquote(params[3])
         body = urllib.unquote(params[4])
@@ -176,22 +128,10 @@ def crack_system(params):
             subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
         except:
             pass
-    elif params[1] == 'create_profile':
-        profile = urllib.unquote(params[2])
-        callback = urllib.unquote(params[3]).replace('\n','')
-        config.create_profile(profile)
-        push_profiles()
-        webv.execute_script(callback)
-    elif params[1] == 'delete_profile':
-        profile = urllib.unquote(params[2])
-        callback = urllib.unquote(params[3]).replace('\n','')
-        config.delete_profile(profile)
-        webv.execute_script(callback)
-    elif params[1] == 'select_profile':
-        app.active_profile = urllib.unquote(params[2])
-        app.window.set_title('Hotot | %s' % app.active_profile)
-        config.loads(app.active_profile)
-        apply_config()
+    elif params[1] == 'load_settings':
+        settings = json.loads(urllib.unquote(params[2]))
+        config.load_settings(settings)
+        app.init_hotkey()
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':
@@ -215,9 +155,6 @@ def crack_request(params):
 
 def execute_script(scripts):
     return webv.execute_script(scripts)
-
-def push_option(set, name, value):
-    webv.execute_script('%s[%s]=%s' % (set, name, value));
 
 def update_status(text):
     webv.execute_script('''
@@ -248,218 +185,6 @@ def load_exts():
         # @TODO
         % json.dumps(exts))
 
-def init_exts():
-    webv.execute_script('''ext.init_exts();''')
-    pass
-
-def apply_prefs():
-    apply_proxy_setting()
-
-    # global preferences
-    use_verbose_mode = str(config.sys_get('use_verbose_mode')).lower()
-
-    remember_password = get_prefs('remember_password')
-    font_family_used = get_prefs('font_family_used')
-    font_size = get_prefs('font_size')
-
-    consumer_key = get_prefs('consumer_key')
-    consumer_secret = get_prefs('consumer_secret')
-
-    api_base = get_prefs('api_base')
-    if api_base[-1] != '/': api_base += '/'
-    sign_api_base = get_prefs('sign_api_base')
-    if sign_api_base[-1] != '/': sign_api_base += '/'
-    search_api_base = get_prefs('search_api_base')
-    if search_api_base[-1] != '/': search_api_base += '/'
-    oauth_base = get_prefs('oauth_base')
-    if oauth_base[-1] != '/': oauth_base += '/'
-    sign_oauth_base = get_prefs('sign_oauth_base')
-    if sign_oauth_base[-1] != '/': sign_oauth_base += '/'
-
-    notification_settings = '''
-        ui.Main.block_info['#home_timeline'].use_notify=%s;
-        ui.Main.block_info['#home_timeline'].use_notify_type="%s";
-        ui.Main.block_info['#home_timeline'].use_notify_sound=%s;
-        ui.Main.block_info['#mentions'].use_notify=%s;
-        ui.Main.block_info['#mentions'].use_notify_type="%s";
-        ui.Main.block_info['#mentions'].use_notify_sound=%s;
-        ui.Main.block_info['#direct_messages_inbox'].use_notify=%s;
-        ui.Main.block_info['#direct_messages_inbox'].use_notify_type="%s";
-        ui.Main.block_info['#direct_messages_inbox'].use_notify_sound=%s;
-    ''' % (
-        str(get_prefs('use_home_timeline_notify')).lower(), 
-        str(get_prefs('use_home_timeline_notify_type')).lower(), 
-        str(get_prefs('use_home_timeline_notify_sound')).lower(), 
-        str(get_prefs('use_mentions_notify')).lower(), 
-        str(get_prefs('use_mentions_notify_type')).lower(), 
-        str(get_prefs('use_mentions_notify_sound')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify_type')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
-    )
-
-    webv.execute_script('''
-        $('#chk_remember_password').attr('checked', eval('%s'));
-        $('body').css('font-family', '%s');
-        globals.tweet_font_size = %s;
-        globals.verbose = %s;
-        ui.StatusBox.use_hover_box = %s;
-        ui.Main.use_preload_conversation = %s;
-        lib.twitterapi.api_base = '%s';
-        lib.twitterapi.sign_api_base = '%s';
-        lib.twitterapi.search_api_base = '%s';
-        lib.twitterapi.use_same_sign_api_base = %s;
-        jsOAuth.oauth_base = '%s';
-        jsOAuth.sign_oauth_base = '%s';
-        jsOAuth.use_same_sign_oauth_base = %s;
-        jsOAuth.key = '%s';
-        jsOAuth.secret = '%s';
-        %s
-        ''' % (
-              'true' if remember_password else 'false'
-            , font_family_used, font_size
-            , use_verbose_mode
-            , 'true' if get_prefs('use_hover_box') else 'false'
-            , str(get_prefs('use_preload_conversation')).lower()
-            , api_base, sign_api_base, search_api_base
-            , 'true' if get_prefs('use_same_sign_api_base') else 'false'
-            , oauth_base, sign_oauth_base
-            , 'true' if get_prefs('use_same_sign_oauth_base') else 'false'
-            , consumer_key, consumer_secret
-            , notification_settings
-            ))
-
-def apply_config():
-    version = 'ver %s (%s)'% (hotot.__version__, hotot.__codename__)
-    exts_enabled = json.dumps(get_prefs('exts_enabled'))
-    webv.execute_script('''
-        $('.version').text('%s');
-        ext.exts_enabled = %s;
-        ''' % (version
-            , exts_enabled))
-    apply_prefs()
-
-def push_prefs():
-    apply_proxy_setting()
-    # global preferences
-    use_verbose_mode = str(config.sys_get('use_verbose_mode')).lower()
-    use_ubuntu_indicator = str(config.sys_get('use_ubuntu_indicator')).lower()
-
-    # account settings
-    remember_password = str(get_prefs('remember_password')).lower()
-
-    # system settings
-    shortcut_summon_hotot = get_prefs('shortcut_summon_hotot')
-
-    # display settings 
-    font_family_list = [ff.get_name()
-        for ff in gtk.gdk.pango_context_get().list_families()]
-    font_family_list.sort()
-    # raise CJK fontnames
-    for font_family in font_family_list:
-        try:
-            font_family.decode('ascii')
-        except:
-            font_family_list.remove(font_family)
-            font_family_list.insert(0, font_family)
-    font_family_used = get_prefs('font_family_used')
-    if font_family_used not in font_family_list:
-        font_family_list.insert(0, font_family_used)
-    font_size = get_prefs('font_size')
-    use_native_input = str(get_prefs('use_native_input')).lower()
-    use_native_notify = str(get_prefs('use_native_notify')).lower()
-    use_hover_box = str(get_prefs('use_hover_box')).lower()
-    use_preload_conversation = str(get_prefs('use_preload_conversation')).lower()
-    
-    # networks settings
-    api_base = get_prefs('api_base')
-    sign_api_base = get_prefs('sign_api_base')
-    search_api_base = get_prefs('search_api_base')
-    oauth_base = get_prefs('oauth_base')
-    sign_oauth_base = get_prefs('sign_oauth_base')
-    use_same_sign_api_base = str(get_prefs('use_same_sign_api_base')).lower()
-    use_same_sign_oauth_base = str(get_prefs('use_same_sign_oauth_base')).lower()
-
-    use_http_proxy = str(get_prefs('use_http_proxy')).lower()
-    http_proxy_host = get_prefs('http_proxy_host')
-    http_proxy_port = get_prefs('http_proxy_port')
-
-    notification_settings = '''
-        , "use_home_timeline_notify": %s
-        , "use_home_timeline_notify_type": "%s"
-        , "use_home_timeline_notify_sound": %s
-        , "use_mentions_notify": %s
-        , "use_mentions_notify_type": "%s"
-        , "use_mentions_notify_sound": %s
-        , "use_direct_messages_inbox_notify": %s
-        , "use_direct_messages_inbox_notify_type": "%s"
-        , "use_direct_messages_inbox_notify_sound": %s
-    ''' % (
-        str(get_prefs('use_home_timeline_notify')).lower(), 
-        str(get_prefs('use_home_timeline_notify_type')).lower(), 
-        str(get_prefs('use_home_timeline_notify_sound')).lower(), 
-        str(get_prefs('use_mentions_notify')).lower(), 
-        str(get_prefs('use_mentions_notify_type')).lower(), 
-        str(get_prefs('use_mentions_notify_sound')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify_type')).lower(), 
-        str(get_prefs('use_direct_messages_inbox_notify_sound')).lower(), 
-    )
-    webv.execute_script('''
-        var prefs_obj = {
-          "use_verbose_mode": %s
-        , "use_ubuntu_indicator": %s
-        , "remember_password": %s
-        , "shortcut_summon_hotot": "%s"
-        , "font_family_list":  %s
-        , "font_family_used": "%s"
-        , "font_size": "%s"
-        , "use_native_input": %s
-        , "use_native_notify": %s
-        , "use_hover_box": %s
-        , "use_preload_conversation": %s
-        , "api_base": "%s"
-        , "sign_api_base": "%s"
-        , "search_api_base": "%s"
-        , "use_same_sign_api_base": %s
-        , "oauth_base": "%s"
-        , "sign_oauth_base": "%s"
-        , "use_same_sign_oauth_base": %s
-        , "use_http_proxy" : %s
-        , "http_proxy_host": "%s"
-        , "http_proxy_port": "%s"
-        %s
-        };
-        ui.PrefsDlg.request_prefs_cb(eval(prefs_obj));
-        ''' % ( use_verbose_mode, use_ubuntu_indicator
-            , remember_password
-            , shortcut_summon_hotot
-            , json.dumps(font_family_list), font_family_used, font_size
-            , use_native_input, use_native_notify
-            , use_hover_box, use_preload_conversation
-            , api_base, sign_api_base, search_api_base
-            , use_same_sign_api_base
-            , oauth_base, sign_oauth_base
-            , use_same_sign_oauth_base
-            , use_http_proxy, http_proxy_host, http_proxy_port
-            , notification_settings
-            ));
-
-def push_profiles():
-    profiles_info = {}
-    for name, prof in config.profiles.iteritems():
-        token = config.load_token(name)
-        profiles_info[name] = {
-              'name': name
-            , 'username': prof['default_username']
-            , 'password': prof['default_password']
-            , 'access_token': token
-        };
-    webv.execute_script('''
-        var profiles_info = %s
-        ui.Welcome.load_profiles_info(profiles_info)
-        ''' % json.dumps(profiles_info))
-
 def set_style_scheme():
     style = app.window.get_style()
     base, fg, bg, text = style.base, style.fg, style.bg, style.text
@@ -468,10 +193,10 @@ def set_style_scheme():
     ''' % str(bg[gtk.STATE_NORMAL]));
 
 def get_prefs(name):
-    return config.get(app.active_profile, name)
+    return config.settings[name]
 
 def set_prefs(name, value):
-    return config.set(app.active_profile, name, value)
+    config.settings[name] = value
 
 def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     scripts = ''

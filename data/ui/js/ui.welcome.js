@@ -51,23 +51,19 @@ function init () {
             = $('#tbox_basic_auth_password').attr('value');
         lib.twitterapi.use_oauth 
             = false;
-        ui.Welcome.sign_opts.remember_password
+        var cur_profile = conf.get_current_profile();
+        cur_profile.preferences.remember_password
             = $('#chk_remember_password').attr('checked'); 
-
+        cur_profile.preferences.default_username
+            = lib.twitterapi.username; 
         ui.Notification.set(_("Sign in ...")).show();
         if (ui.Welcome.sign_opts.remember_password) {
-            ui.Welcome.sign_opts.default_password 
+            cur_profile.preferences.default_password
                 = lib.twitterapi.password;
         } else {
-            ui.Welcome.sign_opts.default_password = '';
+            cur_profile.preferences.default_password = '';
         }
-        ui.Welcome.sign_opts.default_username 
-            = lib.twitterapi.username;
-        hotot_action('config/set_opts/'
-            + encodeURIComponent(
-                JSON.stringify(ui.Welcome.sign_opts)));
-        hotot_action('config/dumps');
-
+        conf.save_prefs(conf.current_name);
         // verify ...
         lib.twitterapi.verify(
         function (result) {
@@ -146,6 +142,9 @@ function init () {
         db.add_profile(prefix, ui.Welcome.selected_service,
         function () {
             ui.Notification.set('New profile has been created!').show();
+            conf.reload(function () {
+                ui.Welcome.load_profiles_info();
+            });
         });
     };
     btn_welcome_create_profile.create();
@@ -159,14 +158,13 @@ function init () {
     function (event) {
         if (confirm('Delete profile "'+ui.Welcome.selected_profile+'" will erases all data of this profile.\n Are you sure you want to continue?!\n')) 
         {
-            var cb = "\
-                $('#profile_avator_list a.selected').parent().remove();\
-                $('#profile_avator_list a:first').click();\
-            ";
-            hotot_action('system/delete_profile/'
-                + encodeURIComponent(ui.Welcome.selected_profile)
-                + '/' + encodeURIComponent(cb)
-            );
+            db.remove_profile(ui.Welcome.selected_profile, 
+            function (result) {
+                if (result) {
+                    $('#profile_avator_list a.selected').parent().remove();
+                    $('#profile_avator_list a:first').click();
+                }        
+            });
         }
     });
 
@@ -175,7 +173,7 @@ function init () {
         ui.DialogHelper.open(ui.AboutDlg);
     });
 
-    ui.Welcome.show();
+    ui.Welcome.load_profiles_info();
     return this;
 },
 
@@ -209,15 +207,15 @@ function load_profiles_info() {
             $('.service_tabs_page').not('#service_page_' + type).hide();
             $('#profile_title').text(profile_name)
             $('#btn_welcome_prefs, #btn_welcome_delete_profile').show();
-        }
-        $('#tbox_basic_auth_username').val(
-            conf.profiles[profile_name].preferences.default_username);
-        $('#tbox_basic_auth_password').val(
-            conf.profiles[profile_name].preferences.default_password);
-        $('#profile_avator_list a').not(this).removeClass('selected');
-        $(this).addClass('selected');
+            $('#tbox_basic_auth_username').val(
+                conf.profiles[profile_name].preferences.default_username);
+            $('#tbox_basic_auth_password').val(
+                conf.profiles[profile_name].preferences.default_password);
+            $('#profile_avator_list a').not(this).removeClass('selected');
+            $(this).addClass('selected');
 
-        conf.apply_prefs(profile_name);
+            conf.apply_prefs(profile_name);
+        }
         return false;
     });
      
@@ -236,7 +234,8 @@ function authenticate_pass(result) {
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
-
+    // init enabled extensions
+    ext.init_exts();
     hotot_action('system/sign_in');    
 },
 
@@ -248,7 +247,6 @@ function hide () {
 
 show:
 function show () {
-    ui.Welcome.load_profiles_info();
     this.me.show();
     return this;
 },

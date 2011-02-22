@@ -4,10 +4,6 @@
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
-
-__version__ = '0.9.5' # Please update setup.py :)
-__codename__ = 'Ada'
-
 import gtk
 import gobject
 import view
@@ -169,9 +165,6 @@ class Hotot:
         self.quit()
 
     def quit(self, *args):
-        if self.active_profile != 'default':
-            config.dumps(self.active_profile)
-            config.dump_sys_conf()
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit()
@@ -181,7 +174,7 @@ class Hotot:
     def init_hotkey(self):
         try:
             keybinder.bind(
-                  config.get(self.active_profile, 'shortcut_summon_hotot')
+                  config.settings['shortcut_summon_hotot']
                 , self.on_hotkey_compose)
         except:
             pass
@@ -216,32 +209,22 @@ class Hotot:
         gobject.idle_add(self._on_hotkey_compose)
 
     def _on_hotkey_compose(self):
-        if config.get(self.active_profile, 'use_native_input'):
-            if not self.tbox_status.is_focus():
-                self.inputw.hide()
-            self.inputw.present()
-            self.tbox_status.grab_focus()
-        else:
-            if not self.webv.is_focus():
-                self.window.hide()
-            self.window.present()
-            self.webv.grab_focus()
+        if not self.webv.is_focus():
+            self.window.hide()
+        self.window.present()
+        self.webv.grab_focus()
 
     def on_size_allocate(self, win, req):
         if self.is_sign_in:
-            config.set(self.active_profile, 'size_h', req.height)
-            config.set(self.active_profile, 'size_w', req.width)
+            config.settings['size_h'] = req.height
+            config.settings['size_w'] = req.width
 
     def on_sign_in(self):
         self.is_sign_in = True
-
-        self.window.set_title('Hotot | %s' % self.active_profile)
+        self.window.set_title('Hotot | %s' % '$')
         self.window.resize(
-              config.get(self.active_profile, 'size_w')
-            , config.get(self.active_profile, 'size_h'))
-        self.init_hotkey()
-        agent.apply_config()
-        agent.init_exts()
+              config.settings['size_w']
+            , config.settings['size_h'])
 
     def on_sign_out(self):
         self.is_sign_in = False
@@ -250,9 +233,6 @@ def main():
     global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
-    config.load_sys_conf()
-    if not config.sys_get('use_ubuntu_indicator'):
-        HAS_INDICATOR = False
     try:
         import dl
         libc = dl.open('/lib/libc.so.6')
@@ -268,7 +248,7 @@ def main():
                                            'hotot',
                                            appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_attention_icon(utils.get_ui_object('imgs/ic64_hotot.png'))
+        indicator.set_attention_icon(utils.get_ui_object('imgs/ic24_hotot_mono_light.svg'))
         indicator.set_menu(app.menu_tray)
     gtk.gdk.threads_enter()
     gtk.main()

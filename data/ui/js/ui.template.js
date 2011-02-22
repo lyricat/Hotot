@@ -339,8 +339,8 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
     vcard_container.find('.screen_name')
-        .html(user_obj.screen_name)
-        .attr('href', 'http://twitter.com/'+user_obj.screen_name);
+        .attr('href', 'http://twitter.com/'+user_obj.screen_name)
+        .text(user_obj.screen_name);
     vcard_container.find('.name').text(user_obj.name);
     vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);
     vcard_container.find('.tweet_per_day_cnt').text(

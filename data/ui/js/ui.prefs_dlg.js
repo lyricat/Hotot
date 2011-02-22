@@ -168,7 +168,7 @@ function save_settings() {
 
 load_prefs:
 function load_prefs() {
-    var prefs = conf.profiles[conf.current_name].preferences;
+    var prefs = conf.get_current_profile().preferences;
     // Account
     $('#chk_prefs_remember_password').attr('checked'
         , prefs.remember_password);
@@ -222,7 +222,7 @@ function load_prefs() {
 
 save_prefs:
 function save_prefs() {
-    var prefs = conf.profiles[conf.current_name].preferences;
+    var prefs = conf.get_current_profile().preferences;
     // Account
     prefs['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
@@ -269,7 +269,8 @@ function save_prefs() {
 
 restore_defaults:
 function restore_defaults() {
-    hotot_action('config/restore_defaults');
+    conf.get_current_profile().preferences 
+        = conf.get_default_prefs(conf.get_current_profile().protocol);
 },
 
 update_font_preview:

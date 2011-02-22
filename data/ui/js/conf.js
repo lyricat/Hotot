@@ -14,6 +14,9 @@ default_settings: {
     , 'size_w': 500
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
+    , 'platform': 'Linux'
+    , 'version': '0.9.6'
+    , 'codename': 'Ada'
 },
 
 default_prefs: {
@@ -64,6 +67,11 @@ current_name: '',
 
 init:
 function init(callback) {
+    conf.reload(callback);
+},
+
+reload:
+function reload(callback) {
     conf.settings = conf.default_settings;
     conf.load_settings()
     db.get_all_profiles(function (profiles) {
@@ -82,15 +90,20 @@ function init(callback) {
 },
 
 get_default_prefs:
-function get_default_prefs(proto) {
-    if (proto == 'twitter') {
+function get_default_prefs(protocol) {
+    if (protocol == 'twitter') {
         return conf.default_prefs['twitter'];
-    } else if (proto == 'identi.ca') {
+    } else if (protocol == 'identica') {
         //@TODO identi.ca's default_prefs
         return conf.default_prefs['twitter'];
     } else {
         return '';
     }
+},
+
+get_current_profile:
+function get_current_profile() {
+    return conf.profiles[conf.current_name];
 },
 
 save_settings:
@@ -102,7 +115,7 @@ load_settings:
 function load_settings() {
     db.load_option('settings', 
     function(settings) {
-        conf.settings = JSON.parse(settings);
+        conf.settings = conf.normalize_settings(JSON.parse(settings));
         conf.apply_settings();
     });
 },
@@ -127,10 +140,16 @@ function load_prefs(name) {
 
 apply_settings:
 function apply_settings() {
-    $('.version').text('SID');
+    $('.version').text(conf.settings.version 
+        + ' (' + conf.settings.codename + ')');
     jsOAuth.key = conf.settings.consumer_key;
     jsOAuth.secret = conf.settings.consumer_secret;
     // @TODO other settings should applied by python
+    var native_platform = ['Linux', 'Windows', 'Mac']
+    if (native_platform.indexOf(conf.settings.platform) != -1) {
+        hotot_action('system/load_settings/'
+            + encodeURIComponent(JSON.stringify(conf.settings)));
+    }
 },
 
 apply_prefs:
@@ -201,6 +220,22 @@ function normalize_prefs(protocol, prefs) {
         } 
     }
     return prefs;
+},
+
+normalize_settings:
+function normalize_settings() {
+    for (var k in conf.default_settings) {
+        if (!(k in conf.settings)) {
+            conf.settings[k] = conf.default_settings[k];
+        }
+    }
+    for (var k in conf.settings) {
+        if (!(k in conf.default_settings)) {
+            delete conf.settings['k'];
+        } 
+    }
+    return conf.settings;
+    
 },
 
 }
