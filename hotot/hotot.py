@@ -221,7 +221,7 @@ class Hotot:
 
     def on_sign_in(self):
         self.is_sign_in = True
-        self.window.set_title('Hotot | %s' % '$')
+        #self.window.set_title('Hotot | %s' % '$')
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])

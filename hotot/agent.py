@@ -123,11 +123,6 @@ def crack_system(params):
         elif type == 'count':
             notify.update(summary, body)
             notify.show()
-    elif params[1] == 'notify_with_sound':
-        try:
-            subprocess.Popen(['aplay', '-q', '-N', utils.get_sound('notify')])
-        except:
-            pass
     elif params[1] == 'load_settings':
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
@@ -135,7 +130,6 @@ def crack_system(params):
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':
-        push_profiles()
         app.on_sign_out()
     elif params[1] == 'quit':
         app.quit()

@@ -119,7 +119,7 @@ function init () {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , _("<p>Network Error, Please try later! &lt;_&gt; </p>"));
+                        , _("<p>Network Error, Please try later! &gt;_&lt; </p>"));
                     ui.DialogHelper.open(ui.MessageDlg);
                 } else {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
@@ -256,6 +256,7 @@ function authenticate_pass(result) {
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
+    document.title = 'Hotot | ' + conf.current_name;
     hotot_action('system/sign_in');    
 },
 
