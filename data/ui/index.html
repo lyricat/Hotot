@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/js-oauth.js"></script>
     
     <script type="text/javascript" src="js/widget.button.js"></script>
+    <script type="text/javascript" src="js/widget.button_group.js"></script>
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -1209,6 +1210,12 @@ jQuery(function($) {
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="exts_dlg_body" class="dialog_body">
+            <div id="exts_filter_bar">
+                <input id="exts_filter_box" type="text"/>
+                <ul id="exts_filter_btns" class="button_group">
+                    <li><a id="exts_filter_all_btn" href="#all" class="group_btn selected first">ALL</a></li><li><a id="exts_filter_enabled_btn" href="#enabled" class="group_btn">Enabled</a></li><li><a id="exts_filter_disabled_btn" href="#disabled" class="group_btn last">Disabled</a></li>
+                </ul>
+            </div>
             <div id="exts_container">
             <ul>
             </ul>

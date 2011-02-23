@@ -762,10 +762,11 @@ select {
 
 input[type="text"], input[type="password"], textarea{
     background:none repeat scroll 0 0 #eee;
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     padding: 2px 3px;
     width:200px;
     outline: none;
+    border-radius: 3px;
 }
 
 input[type="text"]:hover, input[type="password"]:hover, textarea:hover, input[type="checkbox"]:hover {
@@ -773,8 +774,7 @@ input[type="text"]:hover, input[type="password"]:hover, textarea:hover, input[ty
 }
 
 input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
-    border:1px solid #a8b1fe;
-    background: #b9d4e2;
+    background: #cceeff;
 }
 
 .button {
@@ -1436,9 +1436,73 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     height: 300px;
 }
 
-#exts_container {
+#exts_filter_bar {
     position: absolute;
     top: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 3px 0px;
+    height: 24px;
+}
+
+#exts_filter_btns {
+    padding: 0;
+    margin: 0;
+    height: 18px;
+    line-height: 18px;
+}
+
+.button_group > li {
+    padding: 0;
+    margin: 0 1px 0 0;
+    list-style-type: none;
+    display: inline-block;
+    width: 80px;
+    min-height: 18px;
+}
+
+.button_group > li > .group_btn {
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    display: inline-block;
+    text-align: center;
+    height: 18px;
+    min-width: 80px;
+    color: #333;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    border-top: 1px #ccc solid;
+    border-left: none;
+    margin-left: 1px;
+    text-decoration: none;
+}
+
+.button_group > li > .group_btn.first {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-left: 1px #ccc solid;
+}
+
+.button_group > li > .group_btn.last {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.button_group > li > .group_btn.selected {
+    color: white;
+    border-color: #777;
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#888));
+}
+
+#exts_filter_box {
+    float: right;
+    vertical-align: middle;
+    height: 14px !important; 
+    width: 100px;
+}
+
+#exts_container {
+    position: absolute;
+    top: 36px;
     left: 10px;
     right: 10px;
     bottom: 10px;
@@ -1452,17 +1516,18 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .ext_item {
-    margin: 5px;
-    background: #fff;
-    border-width: 1px;
-    border-color: transparent #ccc #ccc transparent;
-    border-style: solid;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
     color: #000;
     min-height: 80px;
+    border-bottom: 1px #ccc solid; 
+}
+
+.ext_item:first {
+    border-top: 1px #ccc solid; 
 }
 
 .ext_item.disabled {
-    background: #eee;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e3e3e3));
     color: #777;
 }
 

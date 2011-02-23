@@ -27,6 +27,25 @@ function init () {
         ui.DialogHelper.close(ui.ExtsDlg);
     };
     btn_exts_close.create();
+
+    var filter_btns = new widget.ButtonGroup('#exts_filter_btns');
+    filter_btns.on_clicked = function (btn, event) {
+        var href = btn.attr('href');
+        switch (href) {
+        case '#all':
+            $('#exts_container .ext_item').show();
+        break;
+        case '#enabled':
+            $('#exts_container .ext_item').show();
+            $('#exts_container .ext_item.disabled').hide();
+        break;
+        case '#disabled':
+            $('#exts_container .ext_item').hide();
+            $('#exts_container .ext_item.disabled').show();
+        break;
+        }
+    };
+    filter_btns.create();
 },
 
 load_ext_list:

@@ -172,6 +172,7 @@ function init () {
         
     $('#btn_welcome_exts').click(
     function (event) {
+        $('#profile_avator_list a.selected').click();
         ui.DialogHelper.open(ui.ExtsDlg);
     });
 

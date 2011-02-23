@@ -127,6 +127,8 @@ def crack_system(params):
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
         app.init_hotkey()
+    elif params[1] == 'load_exts':
+        load_exts()
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':
