@@ -1294,7 +1294,6 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .dialog p {
     font-size: 12px;
     line-height: 1.6em;
-    margin: 10px 0;
     word-wrap: break-all; 
     white-space:normal;
 }
@@ -1336,6 +1335,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 
 .dialog_body h3{
     font-size: 12px;
+    margin: 5px 0;
 }
 
 .dialog_body {
@@ -1379,12 +1379,12 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 
 .dlg_tabs > ul > li {
     display: block;
-    width: 100px;
+    min-width: 100px;
 }
 
 .dlg_tabs_btn {
     height: 22px;
-    padding-left: 20px;
+    padding-left: 10px;
     display: block;
     text-decoration: none;
     text-align: left;
@@ -1392,7 +1392,6 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     line-height: 22px;
     border-bottom: 1px #ccc solid;
 }
-
 
 .dlg_tabs_btn.selected {
     color: #000;
@@ -2130,7 +2129,7 @@ td {
 }
 
 /*=====*/
-p.hint {
+.hint {
     background: #fef6a8 none no-repeat 20px center;
     border: 1px solid #fcfc19;
     color: #990000;
