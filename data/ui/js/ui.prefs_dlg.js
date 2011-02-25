@@ -77,7 +77,7 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set(_("There are ")+err.count+_(" errors in your change. Abort...")).show();
+            ui.Notification.set(_("There are ")+err.count+_(" errors in your changes. Abort...")).show();
             ui.MessageDlg.set_text(
                 ui.MessageDlg.TITLE_STR_ERROR,
                 _("<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - ")
@@ -260,7 +260,8 @@ function save_prefs() {
         = $('#chk_prefs_use_same_sign_api_base').attr('checked');
     prefs['use_same_sign_oauth_base']
         = $('#chk_prefs_use_same_sign_oauth_base').attr('checked');
-    // save
+    // apply & save
+    conf.apply_prefs(conf.current_name);
     conf.save_prefs(conf.current_name);
 },
 
