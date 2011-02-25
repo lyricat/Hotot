@@ -147,8 +147,7 @@ function apply_settings() {
     jsOAuth.key = conf.settings.consumer_key;
     jsOAuth.secret = conf.settings.consumer_secret;
     // @TODO other settings should applied by python
-    var native_platform = ['Linux', 'Windows', 'Mac']
-    if (native_platform.indexOf(conf.settings.platform) != -1) {
+    if (util.is_native_platform()) {
         hotot_action('system/load_settings/'
             + encodeURIComponent(JSON.stringify(conf.settings)));
     }

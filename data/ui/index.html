@@ -143,6 +143,16 @@ function init_ui() {
     ui.ActionMenu.init();
     ui.ContextMenu.init();
     ext.init();
+    setTimeout(function() {
+        hotot_action('system/load_exts');
+        on_load_finish();
+    }, 2000);
+}
+
+function on_load_finish() {
+    $('#welcome_page_loading').fadeOut(function () {
+          $('#welcome_page_main').fadeIn();  
+    });
 }
 
 var globals = {
@@ -317,6 +327,7 @@ jQuery(function($) {
 <section id="center">
 <section id="welcome_page" class="page">
     <h1>_("Hotot ")</h1>
+    <div id="welcome_page_main">
     <ul id="profile_avator_list">
         <li class="new_profile_item"><a id="btn_new_profile_item" title=_("'Create a new profile'") href="default"></a></li>
     </ul>
@@ -370,6 +381,11 @@ jQuery(function($) {
             <a id="btn_welcome_prefs" href="javascript:void(0)">_("Preferences")</a>     
             <a id="btn_welcome_exts" href="javascript:void(0)">_("Extensions")</a>
         </div>
+    </div><!-- END of #sign_in_block -->
+    </div><!-- END of #welcome_page_main -->
+    <div id="welcome_page_loading">
+        <p><img src="imgs/ani_loading_bar.gif"/></p>
+        <p>Loading Ressources ...</p>
     </div>
     <div id="welcome_bottom">
         <p>
@@ -716,254 +732,238 @@ jQuery(function($) {
     <div id="prefs_dlg" class="dialog">
         <div class="dialog_bar">
             <h2>_("Preferences")</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+            <a class="dialog_close_btn ic_close" 
+                href="javascript:void(0);"></a>
         </div>
         <div id="prefs_dlg_body" class="dialog_body">
-            <div id="prefs_tabs" class="dlg_tabs">
-                <ul>
-                    <li>
-                        <a id="btn_prefs_global"
-                            href="#prefs_global" 
-                            class="dlg_tabs_btn">_("Globals")</a>
-                    </li>
-                    <li>
-                        <a id="btn_prefs_account"
-                            href="#prefs_account" 
-                            class="dlg_tabs_btn">_("Account")</a>
-                    </li>
-                    <li>
-                        <a id="btn_prefs_appearance"
-                            href="#prefs_appearance" 
-                            class="dlg_tabs_btn">_("Looks &amp; Feels")</a>
-                    </li>
-                    <li>
-                        <a id="btn_prefs_update"
-                            href="#prefs_update" 
-                            class="dlg_tabs_btn">_("Update")</a>
-                    </li>
-                    <li>
-                        <a id="btn_prefs_advanced"
-                            href="#prefs_advanced" 
-                            class="dlg_tabs_btn">_("Advanced")</a>
-                    </li>
-                </ul>
-                <div id='prefs_global' class="dlg_tabs_page">
-                    <div class="hint">_("You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts")</div>
-                    <h3>_("- HTTP Proxy -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <input id="chk_prefs_use_http_proxy"
-                            title=_("'Use HTTP Proxy'") type="checkbox"/>
-                        <label for="chk_prefs_use_http_proxy">
-                            _("Use HTTP Proxy")
-                        </label><br/>
-                        <label>_("Host")</label>
-                        <input id="tbox_prefs_http_proxy_host"
-                            title=_("'HTTP Proxy Host'") style="width: 120px;" type="text"/>
-                        <label>_("Port")</label>
-                        <input id="tbox_prefs_http_proxy_port"
-                            title=_("'HTTP Proxy Port'") style="width: 30px;" type="text"/><br/>
-                    </p>
-                    </div>
-                    <h3>_("- Keybinding -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label><br/>
-                        <input id="tbox_prefs_shortcut_summon_hotot" 
-                             title=_("'Summon Hot Key'")
-                             type="text"/><br/>
-                    </p>
-                    </div>
-                    <h3>_("- Misc -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <input id="chk_prefs_use_verbose_mode"
-                            title=_("'Enable verbose mode or not'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_verbose_mode">_("Enable verbose mode")</label><br/>
-                        <input id="chk_prefs_use_ubuntu_indicator"
-                            title=_("'Use Ubuntu Indicator'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu indicator")</label><br/>
-                    </p>
-                    </div>
+            <ul id="prefs_dlg_btns" class="button_group">
+                <li><a id="btn_prefs_global"
+                        href="#prefs_global" 
+                        class="group_btn first selected">_("Globals")</a>
+                </li><li><a id="btn_prefs_account"
+                        href="#prefs_account" 
+                        class="group_btn">_("Account")</a>
+                </li><li><a id="btn_prefs_appearance"
+                        href="#prefs_appearance" 
+                        class="group_btn">_("Looks &amp; Feels")</a>
+                </li><li><a id="btn_prefs_advanced"
+                        href="#prefs_advanced" 
+                        class="group_btn last">_("Advanced")</a>
+                </li>
+            </ul>
+            <div id='prefs_global' class="prefs_dlg_page">
+                <div class="hint">_("You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts")</div>
+                <h3>_("- HTTP Proxy -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <input id="chk_prefs_use_http_proxy"
+                        title=_("'Use HTTP Proxy'") type="checkbox"/>
+                    <label for="chk_prefs_use_http_proxy">
+                        _("Enable Proxy")
+                    </label><br/> 
+                    <label>_("Host")</label>
+                    <input id="tbox_prefs_http_proxy_host"
+                        title=_("'HTTP Proxy Host'") style="width: 120px;" type="text"/>
+                    <label>_("Port")</label>
+                    <input id="tbox_prefs_http_proxy_port"
+                        title=_("'HTTP Proxy Port'") style="width: 30px;" type="text"/><br/>
+                </p>
+                </div>
+                <h3>_("- Keybinding -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label><br/>
+                    <input id="tbox_prefs_shortcut_summon_hotot" 
+                         title=_("'Summon Hot Key'")
+                         type="text"/><br/>
+                </p>
+                </div>
+                <h3>_("- Misc -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <input id="chk_prefs_use_verbose_mode"
+                        title=_("'Enable verbose mode or not'") 
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_verbose_mode">_("Enable verbose mode")</label><br/>
+                    <input id="chk_prefs_use_ubuntu_indicator"
+                        title=_("'Use Ubuntu Indicator'") 
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu indicator")</label><br/>
+                </p>
+                </div>
+            </div><!-- END of #prefs_global -->
+            <div id='prefs_account' class="prefs_dlg_page">
+                <h3>- Twitter -</h3>
+                <div class="dlg_group">
+                <p>
+                    <label>_("Regain Access Token")</label><br/>
+                    <a id="btn_regain_token" icon="imgs/ic16_twitter.png" bg_color="#c0fbfd" fg_color="#1b7aa3" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")</a>
+                </p>
+                </div>
 
-                </div><!-- END of #prefs_global -->
-                <div id='prefs_account' class="dlg_tabs_page">
-                    <h3>- Twitter -</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <label>_("Regain Access Token")</label><br/>
-                        <a id="btn_regain_token" icon="imgs/ic16_twitter.png" bg_color="#c0fbfd" fg_color="#1b7aa3" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")</a>
-                    </p>
-                    </div>
-
-                    <h3>- Identi.ca -</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <input id="chk_prefs_remember_password"
-                            type="checkbox" 
-                            title=_("'Remember Password'") checked="1"/>
-                        <label for="chk_prefs_remember_password">
-                            _("Remember Password")
-                        </label><br/>
-                    </p>
-                    </div>
-                </div> <!-- END of #prefs_account -->
-                <div id='prefs_appearance' class="dlg_tabs_page">
-                    <h3>_("- Font -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <label>_("Custom Font")</label>
-                        <input id="tbox_prefs_custom_font"
-                            title=_("'Custom Font'") 
-                            style="width:80px" type="text"/><br/>
-                        <label>_("Font Family")</label>
-                        <select id="sel_prefs_font_family" 
-                            title=_("'Font Family'") style="width: 85px">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select> 
-                        <label>_("Font Size")</label>
-                        <input id="tbox_prefs_font_size" 
-                            title=_("'Font Size'") 
-                            style="width:30px" type="text"/>
-                        <label>_("px")</label><br/>
-                        <div id="prefs_font_preview">_("The quick brown fox jumps over the lazy dog.")</div>
-                    </p>
-                    </div>
-                    <h3>_("- Behavior -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <input id="chk_prefs_use_native_notify" 
-                            title=_("'Use Native Notify'")
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
-                        <input id="chk_prefs_use_hover_box"
-                            title=_("'Hover to open tweet box'")
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
-                        <input id="chk_prefs_use_preload_conversation" 
-                            title=_("'Preload latest tweet in a conversation if it is cached.'") 
-                            type="checkbox"/>
-                        <label for="chk_prefs_use_preload_conversation">_("Preload latest tweet in a conversation if possible.")</label><br/>
-                    </p>
-                    </div>
-                </div><!-- END of prefs_appearance -->
-                <div id='prefs_update' class="dlg_tabs_page">
-                    <h3>_("- Notification -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <table id="notification_table">
-                        <tbody>
-                        <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Type")</th><th>_("Sound")</th></tr>
-                        <tr><td>_("Home")</td>
-                            <td>
-                            <input id="chk_prefs_use_home_timeline_notify"
-                                title=_("'Notify when home page has new tweets'")
-                                type="checkbox"/>
-                            </td>
-                            <td>
-                            <select 
-                            id="sel_prefs_use_home_timeline_notify_type"
-                            title=_("'Type'") style="width: 85px">
-                                <option value="count">count</option>
-                                <option value="content">content</option>
-                            </select> 
-                            </td>
-                            <td>
-                            <input id="chk_prefs_use_home_timeline_notify_sound"
-                                title=_("'Play sound when home page has new tweets'")
-                                type="checkbox"/>             
-                            </td>
-                        </tr>
-                        <tr><td>Mentions</td>
-                            <td>
-                            <input id="chk_prefs_use_mentions_notify"
-                                title=_("'Notify when some new tweets mention me.'")
-                                type="checkbox"/>
-                            </td>
-                            <td>
-                            <select 
-                            id="sel_prefs_use_mentions_notify_type"
-                            title=_("'Type'") style="width: 85px">
-                                <option value="count">count</option>
-                                <option value="content">content</option>
-                            </select> 
-                            </td>
-                            <td>
-                            <input id="chk_prefs_use_mentions_notify_sound"
-                                title=_("'Play swhen some new tweets mention me.'")
-                                type="checkbox"/>             
-                            </td>
-                        </tr>
-                        <tr><td>Message</td>
-                            <td>
-                            <input id="chk_prefs_use_direct_messages_inbox_notify"
-                                title=_("'Notify when some new direct messages coming.'")
-                                type="checkbox"/>
-                            </td>
-                            <td>
-                    <select 
-                    id="sel_prefs_use_direct_messages_inbox_notify_type"
-                    title=_("'Type'") style="width: 85px">
-                        <option value="count">count</option>
-                        <option value="content">content</option>
+                <h3>- Identi.ca -</h3>
+                <div class="dlg_group">
+                <p>
+                    <input id="chk_prefs_remember_password"
+                        type="checkbox" 
+                        title=_("'Remember Password'") checked="1"/>
+                    <label for="chk_prefs_remember_password">
+                        _("Remember Password")
+                    </label><br/>
+                </p>
+                </div>
+            </div> <!-- END of #prefs_account -->
+            <div id='prefs_appearance' class="prefs_dlg_page">
+                <h3>_("- Font -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <label>_("Custom Font")</label>
+                    <input id="tbox_prefs_custom_font"
+                        title=_("'Custom Font'") 
+                        style="width:80px" type="text"/><br/>
+                    <label>_("Font Family")</label>
+                    <select id="sel_prefs_font_family" 
+                        title=_("'Font Family'") style="width: 85px">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                     </select> 
-                            </td>
-                            <td>
-                            <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
-                                title=_("'Play when some new direct messages coming.'")
-                                type="checkbox"/>             
-                            </td>
-                        </tr>
-                        </tbody>
-                        </table>
-                    </p>
-                    </div>
-                </div> <!-- END of #prefs_update -->
-                <div id='prefs_advanced' class="dlg_tabs_page"> 
-                    <h3>_("- API Settings -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <label>_("API Base")</label><br/>
-                        <input id="tbox_prefs_api_base"
-                            title=_("'API Base'") type="text"/><br/>
-                        <input id="chk_prefs_use_same_sign_api_base"
-                            title=_("'Use same Signing Api'") 
+                    <label>_("Font Size")</label>
+                    <input id="tbox_prefs_font_size" 
+                        title=_("'Font Size'") 
+                        style="width:30px" type="text"/>
+                    <label>_("px")</label><br/>
+                    <div id="prefs_font_preview">_("The quick brown fox jumps over the lazy dog.")</div>
+                </p>
+                </div>
+                <h3>_("- Behavior -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <input id="chk_prefs_use_native_notify" 
+                        title=_("'Use Native Notify'")
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
+                    <input id="chk_prefs_use_hover_box"
+                        title=_("'Hover to open tweet box'")
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
+                    <input id="chk_prefs_use_preload_conversation" 
+                        title=_("'Preload latest tweet in a conversation if it is cached.'") 
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_preload_conversation">_("Preload latest tweet in a conversation if possible.")</label><br/>
+                </p>
+                </div>
+                <h3>_("- Notification -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <table id="notification_table">
+                    <tbody>
+                    <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Type")</th><th>_("Sound")</th></tr>
+                    <tr><td>_("Home")</td>
+                        <td>
+                        <input id="chk_prefs_use_home_timeline_notify"
+                            title=_("'Notify when home page has new tweets'")
                             type="checkbox"/>
-                        <label for="chk_prefs_use_same_sign_api_base">
-                            _("Same signing API base: ")
-                        </label><br/>
-                        <input id="tbox_prefs_sign_api_base"  
-                            title=_("'Signing API Base'") type="text"/><br/>
-
-                        <label>_("OAuth Base")</label><br/>
-                        <input id="tbox_prefs_oauth_base" 
-                            title=_("'OAuth Base'") type="text"/><br/>
-                        <input id="chk_prefs_use_same_sign_oauth_base"
-                            title=_("'Use same Signing OAuth Base'") 
+                        </td>
+                        <td>
+                        <select 
+                        id="sel_prefs_use_home_timeline_notify_type"
+                        title=_("'Type'") style="width: 85px">
+                            <option value="count">count</option>
+                            <option value="content">content</option>
+                        </select> 
+                        </td>
+                        <td>
+                        <input id="chk_prefs_use_home_timeline_notify_sound"
+                            title=_("'Play sound when home page has new tweets'")
+                            type="checkbox"/>             
+                        </td>
+                    </tr>
+                    <tr><td>Mentions</td>
+                        <td>
+                        <input id="chk_prefs_use_mentions_notify"
+                            title=_("'Notify when some new tweets mention me.'")
                             type="checkbox"/>
-                        <label for="chk_prefs_use_same_sign_oauth_base">
-                            _("Same signing OAuth base: ")
-                        </label><br/>
-                        <input id="tbox_prefs_sign_oauth_base"
-                            title=_("'Signing OAuth Base'") type="text"/><br/>
+                        </td>
+                        <td>
+                        <select 
+                        id="sel_prefs_use_mentions_notify_type"
+                        title=_("'Type'") style="width: 85px">
+                            <option value="count">count</option>
+                            <option value="content">content</option>
+                        </select> 
+                        </td>
+                        <td>
+                        <input id="chk_prefs_use_mentions_notify_sound"
+                            title=_("'Play swhen some new tweets mention me.'")
+                            type="checkbox"/>             
+                        </td>
+                    </tr>
+                    <tr><td>Message</td>
+                        <td>
+                        <input id="chk_prefs_use_direct_messages_inbox_notify"
+                            title=_("'Notify when some new direct messages coming.'")
+                            type="checkbox"/>
+                        </td>
+                        <td>
+                <select 
+                id="sel_prefs_use_direct_messages_inbox_notify_type"
+                title=_("'Type'") style="width: 85px">
+                    <option value="count">count</option>
+                    <option value="content">content</option>
+                </select> 
+                        </td>
+                        <td>
+                        <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
+                            title=_("'Play when some new direct messages coming.'")
+                            type="checkbox"/>             
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                </p>
+                </div>
+            </div><!-- END of prefs_appearance -->
+            <div id='prefs_advanced' class="prefs_dlg_page"> 
+                <h3>_("- API Settings -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <label>_("API Base")</label><br/>
+                    <input id="tbox_prefs_api_base"
+                        title=_("'API Base'") type="text"/><br/>
+                    <input id="chk_prefs_use_same_sign_api_base"
+                        title=_("'Use same Signing Api'") 
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_same_sign_api_base">
+                        _("Same signing API base: ")
+                    </label><br/>
+                    <input id="tbox_prefs_sign_api_base"  
+                        title=_("'Signing API Base'") type="text"/><br/>
 
-                        <label>_("Search API Base")</label><br/>
-                        <input id="tbox_prefs_search_api_base"
-                            title=_("'Search API Base'") type="text"/><br/>
-                    </p>
-                    </div>
-                </div><!-- END of prefs_advanced -->
-            </div>
+                    <label>_("OAuth Base")</label><br/>
+                    <input id="tbox_prefs_oauth_base" 
+                        title=_("'OAuth Base'") type="text"/><br/>
+                    <input id="chk_prefs_use_same_sign_oauth_base"
+                        title=_("'Use same Signing OAuth Base'") 
+                        type="checkbox"/>
+                    <label for="chk_prefs_use_same_sign_oauth_base">
+                        _("Same signing OAuth base: ")
+                    </label><br/>
+                    <input id="tbox_prefs_sign_oauth_base"
+                        title=_("'Signing OAuth Base'") type="text"/><br/>
+
+                    <label>_("Search API Base")</label><br/>
+                    <input id="tbox_prefs_search_api_base"
+                        title=_("'Search API Base'") type="text"/><br/>
+                </p>
+                </div>
+            </div><!-- END of prefs_advanced -->
         </div>
         <div class="dialog_bottom">
-        <a id="btn_prefs_restore_defaults" >_("Restore Defaults")</a>
-        <a id="btn_prefs_cancel">_("Cancel")</a>
-        <a id="btn_prefs_ok" bg_color="#ff9900">_("OK")</a>
+            <a id="btn_prefs_restore_defaults" >_("Restore Defaults")</a>
+            <a id="btn_prefs_cancel">_("Cancel")</a>
+            <a id="btn_prefs_ok" bg_color="#ff9900">_("OK")</a>
         </div>
     </div>
 
@@ -1009,134 +1009,125 @@ jQuery(function($) {
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="about_dlg_body" class="dialog_body">
-            <div id="about_tabs" class="dlg_tabs">
-                <ul>
-                    <li>
-                        <a id="btn_about_about"
-                            href="#about_about" 
-                            class="dlg_tabs_btn">_("About")</a>
-                    </li>
-                    <li>
-                        <a id="btn_about_keyboard"
-                            href="#about_keyboard" 
-                            class="dlg_tabs_btn">_("Keyboard")</a>
-                    </li>
-                    <li>
-                        <a id="btn_about_credits"
-                            href="#about_credits" 
-                            class="dlg_tabs_btn">_("Credits")</a>
-                    </li>
-                    <li>
-                        <a id="btn_about_license"
-                            href="#about_license" 
-                            class="dlg_tabs_btn">_("License")</a>
-                    </li>
-                </ul>
-                <div id="about_about" class="dlg_tabs_page">
-                    <h3>- Hotot <span class="version"></span>-</h3>
-                    <div class="dlg_group">
-                    <p>
-                    <strong>_("Hotot")</strong> _("is a lightweight client for the ")<a href="http://twitter.com">twitter</a>_(" microblogging service").
-                    </p>
-                    <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
-                    <p>
-                    Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
-                    </p>
-                    <p>Project Site: <a href="http://hotot.org">http://hotot.org</a></p>
-                    </div>
+            <ul id="about_dlg_btns" class="button_group">
+                <li><a id="btn_about_about"
+                        href="#about_about" 
+                        class="group_btn first selected">_("About")</a>
+                </li><li><a id="btn_about_keyboard"
+                        href="#about_keyboard" 
+                        class="group_btn">_("Keyboard")</a>
+                </li><li><a id="btn_about_credits"
+                        href="#about_credits" 
+                        class="group_btn">_("Credits")</a>
+                </li><li><a id="btn_about_license"
+                        href="#about_license" 
+                        class="group_btn last">_("License")</a>
+                </li>
+            </ul>
+            <div id="about_about" class="about_dlg_page">
+                <h3>- Hotot <span class="version"></span>-</h3>
+                <div class="dlg_group">
+                <p>
+                <strong>_("Hotot")</strong> _("is a lightweight client for the ")<a href="http://twitter.com">twitter</a>_(" microblogging service").
+                </p>
+                <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
+                <p>
+                Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
+                </p>
+                <p>Project Site: <a href="http://hotot.org">http://hotot.org</a></p>
                 </div>
-                <div id="about_keyboard" class="dlg_tabs_page">
-                    <h3>_("- Keyboard shortcuts -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <table id="shortcuts_table">
-                        <tbody>
-                        <tr><th>_("Action")</th><th>_("Shortcut")</th></tr>
-                        <tr><th class="sub" colspan="2">_("Global")</th></tr>
-                        <tr><td>_("Quit Hotot")</td><td>&lt;Ctrl&gt;q</td></tr>
-                        <tr><td>_("Help")</td><td>?</td></tr>
+            </div>
+            <div id="about_keyboard" class="about_dlg_page">
+                <h3>_("- Keyboard shortcuts -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <table id="shortcuts_table">
+                    <tbody>
+                    <tr><th>_("Action")</th><th>_("Shortcut")</th></tr>
+                    <tr><th class="sub" colspan="2">_("Global")</th></tr>
+                    <tr><td>_("Quit Hotot")</td><td>&lt;Ctrl&gt;q</td></tr>
+                    <tr><td>_("Help")</td><td>?</td></tr>
 
-                        <tr><th class="sub" colspan="2">_("Tweet List")</th></tr>
-                        <tr><td>_("Reload")</td><td>r</td></tr>
-                        <tr><td>_("Slide to prev page")</td><td>h</td></tr>
-                        <tr><td>_("Slide to next page")</td><td>l</td></tr>
-                        <tr><td>_("Move to prev tweet")</td><td>k</td></tr>
-                        <tr><td>_("Move to next tweet")</td><td>j</td></tr>
-                        <tr><td>_("Move to top")</td><td>t</td></tr>
-                        <tr><td>_("Move to bottom")</td><td>b</td></tr>
-                        <tr><td>_("Toggle toolbar")</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
-                        <tr><td>_("Toggle nav tabs")</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
-                        <tr><td>_("Enter compose mode")</td><td>c</td></tr>
-                        <tr><td>_("Enter action mode")</td><td>a</td></tr>
-                        <tr><td>_("Enter finder mode")</td><td>/ or &lt;Ctrl&gt;f</td></tr>
-                        <tr><th class="sub" colspan="2">_("Compose Mode")</th></tr>
-                        <tr><td>_("Exit compose mode")</td><td>&lt;ESC&gt;</td></tr>
-                        <tr><th class="sub" colspan="2">_("Action Mode")</th></tr>
-                        <tr><td>_("Prev action")</td><td>k</td></tr>
-                        <tr><td>_("Next action")</td><td>j</td></tr>
-                        <tr><td>_("Trigger action")</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
-                        <tr><td>_("Exit action mode")</td><td>&lt;ESC&gt; or a</td></tr>
-                        <tr><th class="sub" colspan="2">_("Finder Mode")</th></tr>
-                        <tr><td>_("Apply keywords")</td><td>&lt;Enter&gt;</td></tr>
-                        <tr><td>_("Exit finder mode")</td><td>&lt;ESC&gt;</td></tr>
-                        </tbody>
-                        </table>
-                    </p>
-                    </div>
-
+                    <tr><th class="sub" colspan="2">_("Tweet List")</th></tr>
+                    <tr><td>_("Reload")</td><td>r</td></tr>
+                    <tr><td>_("Slide to prev page")</td><td>h</td></tr>
+                    <tr><td>_("Slide to next page")</td><td>l</td></tr>
+                    <tr><td>_("Move to prev tweet")</td><td>k</td></tr>
+                    <tr><td>_("Move to next tweet")</td><td>j</td></tr>
+                    <tr><td>_("Move to top")</td><td>t</td></tr>
+                    <tr><td>_("Move to bottom")</td><td>b</td></tr>
+                    <tr><td>_("Toggle toolbar")</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
+                    <tr><td>_("Toggle nav tabs")</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
+                    <tr><td>_("Enter compose mode")</td><td>c</td></tr>
+                    <tr><td>_("Enter action mode")</td><td>a</td></tr>
+                    <tr><td>_("Enter finder mode")</td><td>/ or &lt;Ctrl&gt;f</td></tr>
+                    <tr><th class="sub" colspan="2">_("Compose Mode")</th></tr>
+                    <tr><td>_("Exit compose mode")</td><td>&lt;ESC&gt;</td></tr>
+                    <tr><th class="sub" colspan="2">_("Action Mode")</th></tr>
+                    <tr><td>_("Prev action")</td><td>k</td></tr>
+                    <tr><td>_("Next action")</td><td>j</td></tr>
+                    <tr><td>_("Trigger action")</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
+                    <tr><td>_("Exit action mode")</td><td>&lt;ESC&gt; or a</td></tr>
+                    <tr><th class="sub" colspan="2">_("Finder Mode")</th></tr>
+                    <tr><td>_("Apply keywords")</td><td>&lt;Enter&gt;</td></tr>
+                    <tr><td>_("Exit finder mode")</td><td>&lt;ESC&gt;</td></tr>
+                    </tbody>
+                    </table>
+                </p>
                 </div>
-                <div id="about_credits" class="dlg_tabs_page" style="overflow:auto;">
-                    <h3>_("- Credits -")</h3>
-                    <div class="dlg_group">
-                    <p>
-                        <label>_("Written by")</label>:<br/>
-                        - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
-                        (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
 
-                        - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
-                        (<a href="http://twitter.com/shellexy">@shellexy</a>)<br/>
-                        - Jimmy Xu &lt;<a href="mailto:xu.jimmy.wrk@gmail.com">xu.jimmy.wrk@gmail.com</a>&gt;
-                        (<a href="http://twitter.com/jimmy_xu_wrk
+            </div>
+            <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
+                <h3>_("- Credits -")</h3>
+                <div class="dlg_group">
+                <p>
+                    <label>_("Written by")</label>:<br/>
+                    - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
+                    (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
+
+                    - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
+                    (<a href="http://twitter.com/shellexy">@shellexy</a>)<br/>
+                    - Jimmy Xu &lt;<a href="mailto:xu.jimmy.wrk@gmail.com">xu.jimmy.wrk@gmail.com</a>&gt;
+                    (<a href="http://twitter.com/jimmy_xu_wrk
 ">@jimmy_xu_wrk</a>)<br/>
 
-                        - Tualatrix Chou &lt;<a href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
-                        (<a href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
+                    - Tualatrix Chou &lt;<a href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
+                    (<a href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
 
-                    </p>
-                    <p>
-                        <label>_("Artwork by")</label>: <br/>
-                        - Evan &lt;<a href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
-                        (<a href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
-                        - Shellex Wai <br/>
-                    </p>
-                    <p>
-                        <label>_("Document by")</label>: <br/>
-                        - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
-                        (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
+                </p>
+                <p>
+                    <label>_("Artwork by")</label>: <br/>
+                    - Evan &lt;<a href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
+                    (<a href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
+                    - Shellex Wai <br/>
+                </p>
+                <p>
+                    <label>_("Document by")</label>: <br/>
+                    - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
+                    (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
 
-                    </p>
-                    </div>
+                </p>
                 </div>
-                <div id="about_license" class="dlg_tabs_page">
-                    <h3>_("- License -")</h3>
-                    <div class="dlg_group">
-                    <p>
+            </div>
+            <div id="about_license" class="about_dlg_page">
+                <h3>_("- License -")</h3>
+                <div class="dlg_group">
+                <p>
     Hotot package is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 3 of the License, or (at your option) any later version.
-                    </p>
-                    <p>
+    Licenseas published by the Free Software Foundation; either
+    version3 of the License, or (at your option) any later version.
+                </p>
+                <p>
     This package is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Lesser General Public License for more details.
-                    </p>
-                    <p>
+                </p>
+                <p>
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>http://www.gnu.org/licenses/</a>.
-                    </p>
-                    </div>
+                </p>
                 </div>
             </div>
         </div>

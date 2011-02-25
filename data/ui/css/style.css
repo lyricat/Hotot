@@ -1086,9 +1086,35 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     color: #fff;
 }
 
+#welcome_page_main {
+    display: none;
+}
+
+#welcome_page_main {
+    margin: 20px auto 0px auto;
+}
+
+#welcome_page_loading, #sign_in_block {
+    margin: 100px auto 0px auto;
+    width: 300px;
+    background: #eee  no-repeat 180px 100px;
+    padding: 50px 10px;
+    display: block;
+    font-size: 12px;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    -webkit-border-radius: 5px 5px;
+}
+
+#welcome_page_loading > p {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    margin: 10px 0;
+}
+
 #profile_avator_list {
     list-style-type: none;
-    margin: 20px auto 0px auto;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -1135,14 +1161,9 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     clear: both;
     width: 200px;
     margin: 20px auto 0 auto;
-    background: #eee  no-repeat 180px 100px;
-    padding: 10px;
-    -webkit-box-shadow: 0px 0px 5px #ccc;
-    -webkit-border-radius: 5px 5px;
-    display: block;
-    font-size: 12px;
     min-height: 220px;
     position: relative;
+    padding: 10px;
 }
 
 #sign_in_block .bottom {
@@ -1298,6 +1319,10 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     white-space:normal;
 }
 
+.dlg_group {
+    padding-left: 10px;
+}
+
 .dialog p * {
     word-wrap: break-all; 
     white-space:normal;
@@ -1347,7 +1372,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     border-top: 1px #ccc solid; 
     clear:both; 
     padding: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #oauth_dlg {
@@ -1361,60 +1386,17 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 /*===== Preferences Dialog ================================*/
 
 #prefs_dlg {
-    width: 90%;
 }
 
 #prefs_dlg_body {
-    padding: 0;
+    height: 300px;
+    padding: 5px 10px;
 }
 
-.dlg_tabs {
-    font-size: 12px;
-}
-
-.dlg_tabs > ul {
-    list-style-type: none;
-    float: left;
-}
-
-.dlg_tabs > ul > li {
-    display: block;
-    min-width: 100px;
-}
-
-.dlg_tabs_btn {
-    height: 22px;
-    padding-left: 10px;
-    display: block;
-    text-decoration: none;
-    text-align: left;
-    color: #666;
-    line-height: 22px;
-    border-bottom: 1px #ccc solid;
-}
-
-.dlg_tabs_btn.selected {
-    color: #000;
-}
-
-.dlg_tabs_page {
-    border-left: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-    padding: 10px 10px;
-    display: none;
-    min-height: 200px;
-    overflow: auto;
-}
-
-#prefs_networks {
-    max-height: 260px;
-}
-
-#prefs_appearance {
-    max-height: 260px;
-}
-.dlg_group {
-    padding-left: 10px;
+#prefs_dlg_body .prefs_dlg_page {
+    height: 280px;
+    padding: 0px 10px;
+    overflow: auto !important;
 }
 
 #prefs_font_preview {
@@ -1431,34 +1413,32 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #exts_dlg_body {
-    padding: 20px;
-    position: relative;
+    padding: 5px 10px;
     height: 300px;
 }
 
 #exts_filter_bar {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    padding: 3px 0px;
     height: 24px;
 }
 
-#exts_filter_btns {
+#exts_filter_btns, #about_dlg_btns {
     padding: 0;
-    margin: 0;
     height: 18px;
     line-height: 18px;
 }
 
+.button_group {
+    margin: 5px 0;
+    vertical-align: middle;
+}
+
 .button_group > li {
     padding: 0;
-    margin: 0 1px 0 0;
+    margin: 0;
     list-style-type: none;
     display: inline-block;
-    width: 80px;
-    min-height: 18px;
+    min-width: 80px;
+    height: 18px;
 }
 
 .button_group > li > .group_btn {
@@ -1466,7 +1446,8 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     display: inline-block;
     text-align: center;
     height: 18px;
-    min-width: 80px;
+    min-width: 70px;
+    padding: 0 5px;
     color: #333;
     border-right: 1px #ccc solid;
     border-bottom: 1px #ccc solid;
@@ -1495,17 +1476,12 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 
 #exts_filter_box {
     float: right;
-    vertical-align: middle;
     height: 14px !important; 
     width: 100px;
 }
 
 #exts_container {
-    position: absolute;
-    top: 36px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    height: 280px;
     overflow: auto;
     border: 1px #ccc solid;
     background: #f2f2f2;
@@ -1584,17 +1560,15 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 /*===== About Dialog ================================*/
-#about_dlg {
-}
 
 #about_dlg_body {
-    padding: 0;
-    max-height: 300px;
+    padding: 5px 10px;
+    height: 300px;
 }
 
-#about_dlg_body .dlg_tabs_page {
+#about_dlg_body .about_dlg_page {
     overflow: auto !important;
-    max-height: 260px;
+    height: 280px;
 }
 
 #about_keyboard {
@@ -2173,8 +2147,9 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #notification_table, #shortcuts_table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 th {

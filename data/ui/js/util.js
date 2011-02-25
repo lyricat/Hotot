@@ -1,6 +1,7 @@
 if (typeof util == 'undefined') var util = {};
 util = {
 
+native_platform: ['Linux', 'Windows', 'Mac'],
 
 compare_id:
 function compare_id(id1, id2) {
@@ -64,5 +65,14 @@ function serialize_array(arr) {
         });
     return ret.join('&');
 },
+
+is_native_platform:
+function is_native_platform() {
+    if (util.native_platform.indexOf(conf.settings.platform) != -1) {
+        return true;
+    }
+    return false;
+},
+
 };
 

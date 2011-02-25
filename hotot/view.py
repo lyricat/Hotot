@@ -69,12 +69,12 @@ class MainView(WebView):
 
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;
+        agent.webv = self
+        agent.set_style_scheme()
         view.execute_script("""
         i18n_dict = %s;
         function _(msg){
             return msg && i18n_dict[msg] || msg;
         };
+        //on_load_finish();
         """ % i18n.get_i18n_json())
-        agent.webv = self
-        agent.set_style_scheme()
-        agent.load_exts()

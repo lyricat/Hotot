@@ -20,7 +20,6 @@ function WidgetButtonGroup(obj) {
     self.render = function render () {
         self.buttons.click(function (event) {
             var btn = $(this);
-            hotot_log('btn', btn.attr('id'))
             if (self.on_clicked != null) {
                 self.on_clicked(btn, event);
             }

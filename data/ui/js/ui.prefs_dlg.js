@@ -15,16 +15,14 @@ function init () {
     ui.PrefsDlg.me = $('#prefs_dlg');
     ui.PrefsDlg.mask = $('#dialog_mask');
 
-    $(ui.PrefsDlg.id +' .dlg_tabs_btn').click(
-    function (event) {
-        var page_name = $(this).attr('href');
-        $(ui.PrefsDlg.id +' .dlg_tabs_btn')
-            .not(this).removeClass('selected');
-        $(ui.PrefsDlg.id +' .dlg_tabs_page').not(page_name).hide();
+    var btns = new widget.ButtonGroup('#prefs_dlg_btns');
+    btns.on_clicked = function (btn, event) {
+        var page_name = btn.attr('href');
+        $(ui.PrefsDlg.id +' .prefs_dlg_page').not(page_name).hide();
         $(page_name).show();
-        $(this).addClass('selected');
-    });
-    $('#btn_prefs_global').click()
+    };
+    btns.create();
+    $('#btn_prefs_global').click();
 
     $(ui.PrefsDlg.id).find('.dialog_close_btn').click(
     function (event) {
