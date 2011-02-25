@@ -183,8 +183,8 @@ function init () {
             db.remove_profile(ui.Welcome.selected_profile, 
             function (result) {
                 if (result) {
-                    $('#profile_avator_list a.selected').parent().remove();
-                    $('#profile_avator_list a:first').click();
+                    delete conf.profiles[conf.current_name];
+                    ui.Welcome.load_profiles_info();
                 }        
             });
         }
@@ -238,8 +238,6 @@ function load_profiles_info() {
             $(this).addClass('selected');
             // apply preferences
             conf.apply_prefs(profile_name);
-            // init enabled extensions
-            ext.init_exts();
         }
         return false;
     });

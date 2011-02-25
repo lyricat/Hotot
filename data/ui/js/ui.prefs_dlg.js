@@ -268,6 +268,7 @@ restore_defaults:
 function restore_defaults() {
     conf.get_current_profile().preferences 
         = conf.get_default_prefs(conf.get_current_profile().protocol);
+    conf.settings = conf.default_settings;
 },
 
 update_font_preview:

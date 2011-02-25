@@ -145,11 +145,15 @@ function init_ui() {
     ext.init();
     setTimeout(function() {
         hotot_action('system/load_exts');
+    }, 1000);
+    setTimeout(function() {
         on_load_finish();
     }, 2000);
 }
 
 function on_load_finish() {
+    // init enabled extensions
+    ext.init_exts();
     $('#welcome_page_loading').fadeOut(function () {
           $('#welcome_page_main').fadeIn();  
     });
