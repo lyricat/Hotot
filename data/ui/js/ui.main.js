@@ -31,17 +31,18 @@ function init () {
     $('.tweet_block').scroll(
     function (event) {
         var container = ui.Main.get_current_container(ui.Slider.current);
-        if (this.scrollTop + this.clientHeight == this.scrollHeight) {
+        if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
-            if (this.scrollTop + this.clientHeight == this.scrollHeight) {
+            if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
+                hotot_log('height',this.scrollTop+', '+this.scrollHeight)
                 container.nextAll('.tweet_block_bottom').show();
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
-                info.text('Loading ...');
+                info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
                 ui.Notification.set(_("Loading Tweets...")).show(-1);
                 ui.Main.load_more_tweets(
                     function () {
-                        info.text('Load More');
+                        info.html('Scroll Down to Load More');
                     }
                 );
             }
@@ -259,7 +260,7 @@ function load_tweets (force) {
     var info = container.nextAll('.tweet_block_bottom')
         .children('.load_more_info');
     container.nextAll('.tweet_block_bottom').show();
-    info.text('Loading ...');
+    info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
     ui.Notification.set(_("Loading Tweets...")).show(-1);
     daemon.Updater.watch_pages[pagename].proc(force);
 },

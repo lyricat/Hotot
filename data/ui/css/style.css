@@ -202,7 +202,7 @@ pre {
     right: 0;
     list-style-type: none;
     display: none;
-    background: rgba(239, 235, 231, 0.85);
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#ececec));
     -webkit-box-shadow: 1px 1px 5px #333;
     border-radius: 5px 5px;
     position:relative;
@@ -848,7 +848,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 /*===== Main Page ================================*/
 #main_page {
     display: none;
-    background: transparent url(../imgs/body_bg.png);
+    background: #ccc;
     position: relative;
 }
 
@@ -1431,7 +1431,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     height: 24px;
 }
 
-#exts_filter_btns, #about_dlg_btns {
+#exts_filter_btns, #about_dlg_btns, #prefs_dlg_btns {
     padding: 0;
     height: 18px;
     line-height: 18px;
@@ -1696,7 +1696,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .load_more_info {
-    margin: 10px auto;
+    padding: 10px auto;
     width: 80%;
     display: inline-block;
 }

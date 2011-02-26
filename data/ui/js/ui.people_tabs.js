@@ -113,6 +113,8 @@ function init() {
     ui.PeopleTabs.btn_people_entry.on_clicked = function (event) {
         ui.PeopleTabs.set_people(
             $.trim($('#tbox_people_entry').attr('value')));
+        var infos = $('#people_tweet_block .load_more_info');
+        infos.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
         daemon.Updater.update_people();
     };
     ui.PeopleTabs.btn_people_entry.set_attrs({

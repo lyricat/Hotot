@@ -31,6 +31,8 @@ function do_search(query) {
     ui.Main.block_info['#search'].page = 1;
     ui.SearchTabs.search_entry.val(query);
     $('#search_tweet_block > ul').html('');
+    var info = $('#search_tweet_block .load_more_info');
+    info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
     daemon.Updater.update_search();
 },
 
