@@ -257,6 +257,9 @@ function authenticate_pass(result) {
     globals.layout.open('south');
     document.title = 'Hotot | ' + conf.current_name;
     hotot_action('system/sign_in');    
+    setTimeout(function () {
+        ui.Slider.slide_to('#home_timeline');
+    }, 1000);
 },
 
 hide:
