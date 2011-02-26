@@ -56,8 +56,41 @@ default_prefs: {
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"]
       }
-    , 'identi.ca': {
-    
+    , 'identica': {
+          // Account:
+          'remember_password': false
+        , 'default_username':''
+        , 'default_password':''
+        , 'access_token': ''
+          // Look & Feels:
+        , 'use_custom_font': false
+        , 'custom_font': ''
+        , 'font_family_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
+        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
+        , 'font_size': 12
+        , 'use_native_notify': true
+        , 'use_hover_box': true
+        , 'use_preload_conversation': true
+          // Update:
+        , 'use_home_timeline_notify': true
+        , 'use_home_timeline_notify_type': 'count'
+        , 'use_home_timeline_notify_sound': true
+        , 'use_mentions_notify': true
+        , 'use_mentions_notify_type': 'content'
+        , 'use_mentions_notify_sound': true
+        , 'use_direct_messages_inbox_notify': true
+        , 'use_direct_messages_inbox_notify_type': 'content'
+        , 'use_direct_messages_inbox_notify_sound': true
+          // Advanced:
+        , 'api_base': 'https://identi.ca/api/'
+        , 'sign_api_base': 'https://identi.ca/api/'
+        , 'use_same_sign_api_base': true
+        , 'oauth_base': 'https://identi.ca/api/oauth/'
+        , 'sign_oauth_base': 'https://identi.ca/api/oauth/'
+        , 'use_same_sign_oauth_base': true
+        , 'search_api_base': 'https://api.twitter.com/api/'
+          // extensions:
+        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"]
       }
 },
 
@@ -96,7 +129,7 @@ function get_default_prefs(protocol) {
         return conf.default_prefs['twitter'];
     } else if (protocol == 'identica') {
         //@TODO identi.ca's default_prefs
-        return conf.default_prefs['twitter'];
+        return conf.default_prefs['identica'];
     } else {
         return '';
     }
