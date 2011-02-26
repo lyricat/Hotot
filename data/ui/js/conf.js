@@ -74,8 +74,7 @@ function init(callback) {
 
 reload:
 function reload(callback) {
-    conf.settings = conf.default_settings;
-    conf.load_settings()
+    conf.load_settings();
     db.get_all_profiles(function (profiles) {
         for (var i = 0; i < profiles.length; i += 1) {
         var name = profiles[i].name;
@@ -110,7 +109,8 @@ function get_current_profile() {
 
 save_settings:
 function save_settings() {
-    db.save_option('settings', JSON.stringify(conf.settings), function(){});
+    db.save_option('settings', JSON.stringify(conf.settings), function(result){
+    });
 },
 
 load_settings:
@@ -224,19 +224,18 @@ function normalize_prefs(protocol, prefs) {
 },
 
 normalize_settings:
-function normalize_settings() {
+function normalize_settings(settings) {
     for (var k in conf.default_settings) {
-        if (!(k in conf.settings)) {
-            conf.settings[k] = conf.default_settings[k];
+        if (!(k in settings)) {
+            settings[k] = conf.default_settings[k];
         }
     }
-    for (var k in conf.settings) {
+    for (var k in settings) {
         if (!(k in conf.default_settings)) {
-            delete conf.settings['k'];
+            delete settings['k'];
         } 
     }
-    return conf.settings;
-    
+    return settings;
 },
 
 }

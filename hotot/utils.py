@@ -131,12 +131,6 @@ def get_ui_object(name):
         if os.path.exists(fullpath):
             return fullpath
 
-def get_sound(name):
-    for base in config.DATA_DIRS:
-        fullpath = os.path.join(base, config.SOUND_DIR_NAME, name + '.wav')
-        if os.path.exists(fullpath):
-            return fullpath
-
 def get_exts():
     import glob
     exts = []

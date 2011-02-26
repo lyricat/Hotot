@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/js-oauth.js"></script>
     
     <script type="text/javascript" src="js/widget.button.js"></script>
-    <script type="text/javascript" src="js/widget.button_group.js"></script>
+    <script type="text/javascript" src="js/widget.radio_group.js"></script>
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -143,15 +143,10 @@ function init_ui() {
     ui.ActionMenu.init();
     ui.ContextMenu.init();
     ext.init();
-    setTimeout(function() {
-        hotot_action('system/load_exts');
-    }, 1000);
-    setTimeout(function() {
-        on_load_finish();
-    }, 2000);
 }
 
 function on_load_finish() {
+    hotot_action('system/apply_proxy_setting');
     // init enabled extensions
     ext.init_exts();
     $('#welcome_page_loading').fadeOut(function () {
@@ -388,8 +383,10 @@ jQuery(function($) {
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
     <div id="welcome_page_loading">
-        <p><img src="imgs/ani_loading_bar.gif"/></p>
-        <p>Loading Ressources ...</p>
+        <div class="inner">
+            <p><img src="imgs/ani_loading_bar.gif"/></p>
+            <p>Loading Ressources ...</p>
+        </div>
     </div>
     <div id="welcome_bottom">
         <p>
@@ -740,7 +737,7 @@ jQuery(function($) {
                 href="javascript:void(0);"></a>
         </div>
         <div id="prefs_dlg_body" class="dialog_body">
-            <ul id="prefs_dlg_btns" class="button_group">
+            <ul id="prefs_dlg_btns" class="radio_group">
                 <li><a id="btn_prefs_global"
                         href="#prefs_global" 
                         class="group_btn first selected">_("Globals")</a>
@@ -1013,7 +1010,7 @@ jQuery(function($) {
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="about_dlg_body" class="dialog_body">
-            <ul id="about_dlg_btns" class="button_group">
+            <ul id="about_dlg_btns" class="radio_group">
                 <li><a id="btn_about_about"
                         href="#about_about" 
                         class="group_btn first selected">_("About")</a>
@@ -1206,8 +1203,7 @@ jQuery(function($) {
         </div>
         <div id="exts_dlg_body" class="dialog_body">
             <div id="exts_filter_bar">
-                <input id="exts_filter_box" type="text"/>
-                <ul id="exts_filter_btns" class="button_group">
+                <ul id="exts_filter_btns" class="radio_group">
                     <li><a id="exts_filter_all_btn" href="#all" class="group_btn selected first">ALL</a></li><li><a id="exts_filter_enabled_btn" href="#enabled" class="group_btn">Enabled</a></li><li><a id="exts_filter_disabled_btn" href="#disabled" class="group_btn last">Disabled</a></li>
                 </ul>
             </div>

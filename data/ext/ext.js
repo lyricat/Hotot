@@ -144,7 +144,7 @@ function init_exts() {
 },
 
 load_exts:
-function load_exts(exts) {
+function load_exts(exts, callback) {
     procs = [];
     var _load = function (idx) {
         var path = exts[i];
@@ -154,16 +154,14 @@ function load_exts(exts) {
                 hotot_log('Load Extension', path);
                 $(window).dequeue('_load_exts');
             });
-        });    
+        });
     };
-
     for (var i = 0; i < exts.length; i += 1) {
         _load(i)
     }
+    procs.push(callback);
     $(window).queue('_load_exts', procs);
-    setTimeout(function () {
     $(window).dequeue('_load_exts');
-    }, 1000);
 },
 
 notify:

@@ -1,5 +1,5 @@
 if (typeof(widget) == 'undefined') widget = {}
-function WidgetButtonGroup(obj) {
+function WidgetRadioGroup(obj) {
     var self = this;
     
     self._me = null;
@@ -39,4 +39,4 @@ function WidgetButtonGroup(obj) {
     self.init(obj);
 }
 
-widget.ButtonGroup = WidgetButtonGroup;
+widget.RadioGroup = WidgetRadioGroup;

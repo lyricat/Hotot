@@ -232,6 +232,9 @@ function unload() {
 
 options:
 function options() {
+    if (ext.HototTranslate.prefs == null) {
+        ext.HototTranslate.prefs = new ext.Preferences(ext.HototTranslate.id);
+    }
     var title = 'Options of Hotot Translate';
     var options_arr = [];
     for (var code in ext.HototTranslate.languages) {

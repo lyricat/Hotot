@@ -28,7 +28,7 @@ function init () {
     };
     btn_exts_close.create();
 
-    var filter_btns = new widget.ButtonGroup('#exts_filter_btns');
+    var filter_btns = new widget.RadioGroup('#exts_filter_btns');
     filter_btns.on_clicked = function (btn, event) {
         var href = btn.attr('href');
         switch (href) {

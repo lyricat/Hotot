@@ -100,6 +100,9 @@ function on_btn_save_prefs_clicked(event) {
 
 options:
 function options() {
+    if (ext.HototVideoPreview.prefs == null) {
+        ext.HototVideoPreview.prefs = new ext.Preferences(ext.HototVideoPreview.id);
+    }
     var title = 'Options of Hotot Video Preview';
     var options_arr = [];
     for (var code in ext.HototVideoPreview.ytb_thmb) {

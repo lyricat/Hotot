@@ -60,6 +60,7 @@ def loads():
     config = getconf();
 
 def load_settings(pushed_settings):
+    pushed_settings = dict([(k.encode('utf8'), v) for k, v in pushed_settings.items()])
     globals()['settings'] = pushed_settings
     return settings
 

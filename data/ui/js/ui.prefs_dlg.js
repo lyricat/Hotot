@@ -15,7 +15,7 @@ function init () {
     ui.PrefsDlg.me = $('#prefs_dlg');
     ui.PrefsDlg.mask = $('#dialog_mask');
 
-    var btns = new widget.ButtonGroup('#prefs_dlg_btns');
+    var btns = new widget.RadioGroup('#prefs_dlg_btns');
     btns.on_clicked = function (btn, event) {
         var page_name = btn.attr('href');
         $(ui.PrefsDlg.id +' .prefs_dlg_page').not(page_name).hide();

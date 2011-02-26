@@ -72,8 +72,10 @@ def apply_proxy_setting():
         webkit_set_proxy_uri(proxy_uri)
     else:
         webkit_set_proxy_uri("")
-    # workaround for a BUG of webkitgtk/soupsession proxy authentication
-    gobject.idle_add(webv.execute_script, "new Image().src='http://google.com/';")
+    # workaround for a BUG of webkitgtk/soupsession
+    # proxy authentication
+    webv.execute_script('''
+        new Image().src='http://google.com/';''');
 
 def init_notify():
     notify.set_icon_from_pixbuf(
@@ -127,8 +129,8 @@ def crack_system(params):
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
         app.init_hotkey()
-    elif params[1] == 'load_exts':
-        load_exts()
+    elif params[1] == 'apply_proxy_setting':
+        apply_proxy_setting()
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':
@@ -171,14 +173,6 @@ def load_search(query):
         ui.Notification.set(_("Loading Search result %s ...")).show();
         daemon.Updater.update_search();
         ''' % (query, query));
-
-def load_exts():
-    exts = utils.get_exts()
-    webv.execute_script('''
-        var exts = %s;
-        ext.load_exts(exts);
-        '''
-        % json.dumps(exts))
 
 def set_style_scheme():
     style = app.window.get_style()

@@ -202,6 +202,9 @@ function unload() {
 
 options:
 function options() {
+    if (ext.HototShortUrl.prefs == null) {
+        ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
+    }
     content = '<p>\
         <label>Short URL Service:</label> \
         <select id="ext_hotot_short_url_service" class="dark">\
