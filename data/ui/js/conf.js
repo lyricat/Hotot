@@ -77,12 +77,12 @@ function reload(callback) {
     conf.load_settings();
     db.get_all_profiles(function (profiles) {
         for (var i = 0; i < profiles.length; i += 1) {
-        var name = profiles[i].name;
-        var protocol = profiles[i].protocol;
-        var prefs = JSON.parse(profiles[i].preferences);
-        conf.profiles[name] = profiles[i];
-        conf.profiles[name].preferences 
-            = conf.normalize_prefs(protocol, prefs);
+            var name = profiles[i].name;
+            var protocol = profiles[i].protocol;
+            var prefs = JSON.parse(profiles[i].preferences);
+            conf.profiles[name] = profiles[i];
+            conf.profiles[name].preferences 
+                = conf.normalize_prefs(protocol, prefs);
         }
         if (typeof (callback) != 'undefined') {
             callback();

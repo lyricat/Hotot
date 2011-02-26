@@ -34,7 +34,6 @@ function init () {
         if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
-                hotot_log('height',this.scrollTop+', '+this.scrollHeight)
                 container.nextAll('.tweet_block_bottom').show();
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
@@ -410,7 +409,6 @@ function load_more_tweets_cb(result, pagename) {
 
     // never resume position after loading more tweet
     container.resume_pos = false;
-    //hotot_log(pagename, 'begin with '+result[0].id_str + '.');
 
     var tweet_count = 0;
     if (pagename == '#people_followers' || pagename == '#people_friends') {

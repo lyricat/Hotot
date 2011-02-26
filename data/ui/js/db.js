@@ -83,6 +83,12 @@ function create_database(callback) {
         });
     },
     function () {
+        tx.executeSql('INSERT or REPLACE INTO Info VALUES("settings", ?)', [JSON.stringify(conf.default_settings)], 
+        function () {
+            $(window).dequeue('_database');
+        });
+    },
+    function () {
         if (typeof (callback) != 'undefined') {
             callback();
         }    
@@ -352,7 +358,7 @@ function get_all_profiles(callback) {
         tx.executeSql('SELECT * FROM "Profile" ORDER BY "Profile"."order"', [], 
         function (tx, rs) {
             if (rs.rows.length == 0) {
-                callback('[]');
+                callback([]);
             } else {
                 var profs = [];
                 for (var i = 0; i < rs.rows.length; i += 1) {
