@@ -53,7 +53,7 @@ function init() {
 search:
 function search(query) {
     var current = ui.Slider.current;
-    var tweets = $(current + '_tweet_block .card');
+    var tweets = $(current + '_tweet_block > ul > .card');
     ui.Finder.finding = true;
     ui.Finder.matched_ids = [];
     tweets.each(

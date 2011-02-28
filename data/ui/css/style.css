@@ -675,7 +675,7 @@ pre {
 /* ===== Finder =================================== */
 #finder_bar {
     top: 0px;    
-    z-index: 10000;
+    z-index: 9999;
     position: fixed;
     right: 20px;
     font-size:12px;
