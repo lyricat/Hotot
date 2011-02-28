@@ -70,7 +70,6 @@ class MainView(WebView):
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;
         agent.webv = self
-        # agent.set_style_scheme()
         view.execute_script("""
         i18n_dict = %s;
         function _(msg){

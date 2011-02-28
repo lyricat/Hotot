@@ -120,6 +120,7 @@ function init(callback) {
 
 function init_ui() {
     console.init();
+    ui.Slider.init();
     ui.Template.init();
     ui.Header.init();
     ui.StatusBox.init();
@@ -130,7 +131,6 @@ function init_ui() {
     ui.PeopleTabs.init();
     ui.SearchTabs.init();
     ui.Notification.init();
-    ui.Slider.init();
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
@@ -143,15 +143,20 @@ function init_ui() {
     ui.ActionMenu.init();
     ui.ContextMenu.init();
     ext.init();
+    globals.load_flags = 1;
 }
 
 function on_load_finish() {
-    hotot_action('system/apply_proxy_setting');
-    // init enabled extensions
-    ext.init_exts();
-    $('#welcome_page_loading').fadeOut(function () {
-          $('#welcome_page_main').fadeIn();  
-    });
+    if (globals.load_flags == 0) {
+        setTimeout(on_load_finish, 300);
+    } else {
+        hotot_action('system/apply_proxy_setting');
+        // init enabled extensions
+        ext.init_exts();
+        $('#welcome_page_loading').fadeOut(function () {
+            $('#welcome_page_main').fadeIn();  
+        });
+    }
 }
 
 var globals = {
@@ -166,6 +171,7 @@ var globals = {
     , focus_input: false
     , in_main_view: false
     , verbose: true
+    , load_flags: 0
 };
 
 jQuery(function($) {
@@ -262,7 +268,9 @@ jQuery(function($) {
     $(window).resize(
     function () {
         update_tweet_block_width();
-        ui.Slider.slide_to(ui.Slider.current);
+        if (globals.load_flags){
+            ui.Slider.slide_to(ui.Slider.current);
+        }
     });
 
     $("#count").hover(

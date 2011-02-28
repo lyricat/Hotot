@@ -73,6 +73,21 @@ function is_native_platform() {
     }
     return false;
 },
+trace:
+function trace() {
+    var callstack = [];
+    var i = 0;
+    var currentFunction = arguments.callee.caller;
+    while (currentFunction) {
+        var fn = currentFunction.toString();
+        var fname = fn.substring(0, fn.indexOf('\n')) || 'anonymous';
+        callstack.push(fname);
+        currentFunction = currentFunction.caller;
+        if (i == 10) break;
+        i+=1;
+    }
+    hotot_log('TraceBack', '\n-------------\n  ' + callstack.join('\n-------------\n  '));
+}
 
 };
 

@@ -93,14 +93,17 @@ def do_notify(summary, body):
 
 def crack_hotot(uri):
     params = uri.split('/')
-    if params[0] == 'system':
-        crack_system(params)
-    elif params[0] == 'action':
-        crack_action(params)
-    elif params[0] == 'request':
-        crack_request(params)
-    else:
-        pass
+    try:
+        if params[0] == 'system':
+            crack_system(params)
+        elif params[0] == 'action':
+            crack_action(params)
+        elif params[0] == 'request':
+            crack_request(params)
+    except Exception, e:
+        import traceback
+        print "Exception:"
+        traceback.print_exc(file=sys.stdout)
 
 def crack_action(params):
     if params[1] == 'user':

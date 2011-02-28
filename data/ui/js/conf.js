@@ -107,20 +107,32 @@ function init(callback) {
 
 reload:
 function reload(callback) {
-    conf.load_settings();
-    db.get_all_profiles(function (profiles) {
-        for (var i = 0; i < profiles.length; i += 1) {
-            var name = profiles[i].name;
-            var protocol = profiles[i].protocol;
-            var prefs = JSON.parse(profiles[i].preferences);
-            conf.profiles[name] = profiles[i];
-            conf.profiles[name].preferences 
-                = conf.normalize_prefs(protocol, prefs);
-        }
-        if (typeof (callback) != 'undefined') {
+    procs = [];
+    procs.push(function () {
+        conf.load_settings();
+        $(window).dequeue('_conf_init');
+    });
+    procs.push(function () {
+        db.get_all_profiles(function (profiles) {
+            for (var i = 0; i < profiles.length; i += 1) {
+                var name = profiles[i].name;
+                var protocol = profiles[i].protocol;
+                var prefs = JSON.parse(profiles[i].preferences);
+                conf.profiles[name] = profiles[i];
+                conf.profiles[name].preferences 
+                    = conf.normalize_prefs(protocol, prefs);
+            }
+            $(window).dequeue('_conf_init');
+        });
+    })
+    if (typeof (callback) != 'undefined') {
+        procs.push(function() {
             callback();
-        }    
-    }); 
+            $(window).dequeue('_conf_init');
+        });
+    }  
+    $(window).queue('_conf_init', procs);
+    $(window).dequeue('_conf_init');
 },
 
 get_default_prefs:

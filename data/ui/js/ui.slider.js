@@ -49,11 +49,10 @@ function init () {
 
 slide_to:
 function slide_to(id) {
-
     var idx = ui.Slider.tweet_blocks[id];
     var width = globals.tweet_block_width;
-    this.me.stop().animate({marginLeft:'-'+ idx * width +'px'}, 500);
-    this.current = id;
+    ui.Slider.me.stop().animate({marginLeft:'-'+ idx * width +'px'}, 500);
+    ui.Slider.current = id;
 
     var prev_sel = $('#indication').find('.selected');
     var cur_sel = $('#idx_btn_' + id.substring(1));
