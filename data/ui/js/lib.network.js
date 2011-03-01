@@ -1,4 +1,4 @@
-if (typeof lib == 'undefined') var lib = {};
+if (typeof (lib) == 'undefined') var lib = {};
 
 lib.network = {
 

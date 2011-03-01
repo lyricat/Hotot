@@ -1,4 +1,4 @@
-if (!lib) var lib = {}
+if (typeof (lib) == 'undefined') var lib = {}
 
 lib.twitterapi = {
 
@@ -41,8 +41,12 @@ function error_handle(xhr, textStatus, errorThrown) {
             + xhr.status + '<br/><label>Reason:</label> '
             + xhr.statusText+ '<br/></p>';
     }
-    ui.MessageDlg.set_text('Ooops, An Error Occurred!', content);
-    ui.DialogHelper.open(ui.MessageDlg);
+    try {
+        ui.MessageDlg.set_text('Ooops, An Error Occurred!', content);
+        ui.DialogHelper.open(ui.MessageDlg);
+    } catch (e) {
+        hotot_log('Error:'+xhr.status, xhr.statusText);
+    }
     return;
 },
 
