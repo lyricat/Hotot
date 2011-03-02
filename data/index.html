@@ -95,8 +95,10 @@ function hotot_notify(title, summary, type) {
                 + type
                 + '/' + encodeURIComponent(title)
                 + '/' + encodeURIComponent(summary));
-        } else {
-            // @TODO chrome notify api
+        } else if (conf.vars.platform == 'Chrome') {
+            var notification = webkitNotifications.createNotification(
+              'image/ic48_hotot.png', title, summary);
+            notification.show();
         }
     } else {
         // @TODO other notify way
