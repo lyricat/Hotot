@@ -147,6 +147,11 @@ function get_default_prefs(protocol) {
     }
 },
 
+load_native_options:
+function load_native_options(options) {
+    hotot_action('system/load_native_options'); 
+},
+
 get_current_profile:
 function get_current_profile() {
     return conf.profiles[conf.current_name];

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>_("Home | Hotot")</title>
+	<title>Home | Hotot</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/console.js"></script>
     <script type="text/javascript" src="js/db.js"></script>
     <script type="text/javascript" src="js/conf.js"></script>
+    <script type="text/javascript" src="js/i18n.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
@@ -99,19 +100,51 @@ function hotot_notify(title, summary, type) {
 }
 
 function hotot_log(label, content) {
-    if (globals.verbose) {
-        hotot_action('action/log/' + encodeURIComponent(label) 
-            + '/' + encodeURIComponent(content));
+    if (conf.settings.use_verbose_mode) {
+        if (util.is_native_platform()) {
+            hotot_action('action/log/' + encodeURIComponent(label) 
+                + '/' + encodeURIComponent(content));
+        } else if (conf.platform == 'Chrome') {
+            console.log('[' + label + '] ' + content);
+        } else {
+            console.out('[' + label + '] ' + content);
+        }
     }
 }
 
+/* 
+    = startup process =
+    - document.ready -> init() -> db.init() -> daemon.Updater.init()
+        -> conf.init() -> init_ui() -> set loading flags
+    - native web container init -> on_load_finish() -> wait for loading flags being setted -> ext.init_exts() -> finish
+*/
+
 function init(callback) {
-    db.init(function () {
-        daemon.Updater.init();
-        conf.init(function () {
-            init_ui();
-        });
+    var procs = [];
+    procs.push(function() {
+        db.init(function () {
+            $(window).dequeue('_page_init');
+        });    
     });
+    procs.push(function() {
+        daemon.Updater.init();
+        $(window).dequeue('_page_init');
+    });
+    procs.push(function() {
+        conf.init(function () {
+            $(window).dequeue('_page_init');
+        });    
+    });
+    procs.push(function() {
+        init_ui();
+        $(window).dequeue('_page_init');
+    });
+    procs.push(function() {
+        i18n.init(function () {});
+        $(window).dequeue('_page_init');
+    });
+    $(window).queue('_page_init', procs);
+    $(window).dequeue('_page_init');
 }
 
 function init_ui() {
@@ -156,9 +189,9 @@ function on_load_finish() {
 }
 
 var globals = {
-      status_hint: _("'What is happening?'")
-    , tweet_hint: _("'What is happening?'")
-    , dm_hint: _("'Click here to Compose a Meassage ...'")
+      status_hint: 'What is happening?'
+    , tweet_hint: 'What is happening?'
+    , dm_hint: 'Click here to Compose a Meassage ...'
     , tweet_block_width: 600
     , max_status_len: 140
     , trim_bound: 100
@@ -166,7 +199,6 @@ var globals = {
     , myself: {}
     , focus_input: false
     , in_main_view: false
-    , verbose: true
     , load_flags: 0
 };
 
@@ -202,7 +234,7 @@ jQuery(function($) {
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
-                    ui.Notification.set(_("'Loading Tweets...'")).show(-1);
+                    ui.Notification.set('Loading Tweets...').show(-1);
                     ui.Main.load_tweets();    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
@@ -293,30 +325,30 @@ jQuery(function($) {
     <div id="version" class="version"></div>
     <ul id="ctrl_panel">
         <li>
-            <a id="btn_reload" class="panel_btn" href="javascript:void(0);" title=_("'Reload timeline.'")></a>
+            <a id="btn_reload" class="panel_btn" href="javascript:void(0);" title="Reload timeline"></a>
         </li>
         <li id="btn_exts_menu_wrap">
-            <a id="btn_exts_menu" class="panel_btn" href="javascript:void(0);" title=_("'Extensions ... '")></a>
+            <a id="btn_exts_menu" class="panel_btn" href="javascript:void(0);" title="Extensions ..."></a>
             <ul id="exts_menu" class="hotot_menu">
                 <li id="exts_menu_empty_hint">
-                    <a href="javascript:void(0);">_("No Extension Icon")</a>
+                    <a href="javascript:void(0);">No Extension Icon</a>
                 </li>
             </ul>
         </li>
         <li id="btn_hotot_wrap">
-            <a id="btn_hotot" class="panel_btn" href="javascript:void(0);" title=_("'More ...'")></a>
+            <a id="btn_hotot" class="panel_btn" href="javascript:void(0);" title="More ..."></a>
             <ul id="hotot_menu" class="hotot_menu">
             	<li>
-            		<a id="btn_prefs" href="javascript:void(0);">_("Preferences")</a>
+            		<a id="btn_prefs" href="javascript:void(0);">Preferences</a>
             	</li>
                 <li>
-            		<a id="btn_exts" href="javascript:void(0);">_("Extensions")</a>
+            		<a id="btn_exts" href="javascript:void(0);">Extensions</a>
             	</li>
             	<li>
-            		<a id="btn_about" href="javascript:void(0);">_("Help &amp; About")</a>
+            		<a id="btn_about" href="javascript:void(0);">Help &amp; About</a>
             	</li>
                 <li>
-            		<a id="btn_sign_out" href="javascript:void(0);">_("Sign out")</a>
+            		<a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
             	</li>
 
             </ul>
@@ -329,13 +361,13 @@ jQuery(function($) {
 
 <section id="center">
 <section id="welcome_page" class="page">
-    <h1>_("Hotot ")</h1>
+    <h1 data-i18n-text>Hotot</h1>
     <div id="welcome_page_main">
     <ul id="profile_avator_list">
-        <li class="new_profile_item"><a id="btn_new_profile_item" title=_("'Create a new profile'") href="default"></a></li>
+        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
     </ul>
     <div id="sign_in_block">
-        <h2 id="profile_title">_("Greeting!")</h2>
+        <h2 id="profile_title" data-i18n-text>Greeting!</h2>
         <div id="service_tabs">
         <ul class="service_tabs_btns">
             <li>
@@ -346,43 +378,43 @@ jQuery(function($) {
             </li>
         </ul>
         <div id="service_page_twitter" class="service_tabs_page">
-        <h3>_("Sign in with Twitter")</h3>
+        <h3 data-i18n-text>Sign in with Twitter</h3>
         <p><br/></p>
         <p>
         <center>
-            <a id="btn_oauth_sign_in" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")</a>
+            <a id="btn_oauth_sign_in" title="Sign in with Twitter" data-i18n-title >Sign in with Twitter</a>
         </center>
         </p>
         </div>
 
         <div id="service_page_identica" class="service_tabs_page">
         <p>
-            <label>_("Username:")</label><br/>
+            <label>Username:</label><br/>
             <input id="tbox_basic_auth_username" style="width: 170px;" type="text" value=""/><br/>
-            <label>_("Password:")</label><br/>
+            <label>Password:</label><br/>
             <input id="tbox_basic_auth_password" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" checked="1"/><label for="chk_remember_password">_("Remember Password")</label><br/>
+            <input id="chk_remember_password" type="checkbox" checked="1"/><label for="chk_remember_password">Remember Password</label><br/>
             <div style="text-align:right;margin-right:20px;">
-            <a id="btn_basic_auth_sign_in">_("Sign In")</a>
+            <a id="btn_basic_auth_sign_in">Sign In</a>
             </div>
         </p>
         </div>
 
         <div id="service_page_new" class="service_tabs_page">
         <p>
-            <label>_("Profile Name:")</label><br/>
+            <label>Profile Name:</label><br/>
             <input id="tbox_new_profile_name" style="width: 100px;" type="text" value=""/>
             <label>@<span class="service_name"></span></label>
             <div style="text-align:center;margin: 10px auto;">
-                <a id="btn_welcome_create_profile" title=_("'Create a new Profile'")>_("Create Profile")</a>
+                <a id="btn_welcome_create_profile" title="Create a new Profile">Create Profile</a>
             </div>
         </p>
         </div>
         </div><!--tabs-->
         <div class="bottom">
-            <a id="btn_welcome_delete_profile" href="javascript:void(0)">_("Delete")</a>
-            <a id="btn_welcome_prefs" href="javascript:void(0)">_("Preferences")</a>     
-            <a id="btn_welcome_exts" href="javascript:void(0)">_("Extensions")</a>
+            <a id="btn_welcome_delete_profile" href="javascript:void(0)">Delete</a>
+            <a id="btn_welcome_prefs" href="javascript:void(0)">Preferences</a>     
+            <a id="btn_welcome_exts" href="javascript:void(0)">Extensions</a>
         </div>
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
@@ -394,7 +426,7 @@ jQuery(function($) {
     </div>
     <div id="welcome_bottom">
         <p>
-        <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">_("Help")</a>
+        <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">Help</a>
         </p>
     </div>
 </section>
@@ -404,69 +436,69 @@ jQuery(function($) {
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info">_("Load more")</div>
+            <div class="load_more_info">Load more</div>
         </div>
     </div>
     <div id="mentions_tweet_block" class="tweet_block">
         <ul>
         </ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info">_("Load more")</div>
+            <div class="load_more_info">Load more</div>
         </div>
     </div>
     <div id="direct_messages_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">_("Inbox")</a></li>
-                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">_("Outbox")</a></li>
+                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">Inbox</a></li>
+                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">Outbox</a></li>
             </ol>
         </div>
         <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Press `R` to Load Direct Meassages")</div>                
+                <div class="load_more_info">Press `R` to Load Direct Meassages</div>
             </div>
         </div>
         <div id="direct_messages_outbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Press `R` to Load Direct Meassages")</div>                
+                <div class="load_more_info">Press `R` to Load Direct Meassages</div>
             </div>
         </div>
     </div>
     <div id="retweets_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">_("Retweeted By Others")</a></li>
-                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">_("Retweeted By Me")</a></li>
-                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">_("My Tweets, Retweeted")</a></li>
+                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">Retweeted By Others</a></li>
+                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">Retweeted By Me</a></li>
+                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">My Tweets, Retweeted</a></li>
             </ol>
         </div>
         <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Press `R` to Load Tweets")</div>                
+                <div class="load_more_info">Press `R` to Load Tweets</div>                
             </div>
         </div>
         <div id="retweeted_to_me_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Press `R` to Load Tweets")</div>                
+                <div class="load_more_info">Press `R` to Load Tweets</div>                
             </div>
         </div>
         <div id="retweets_of_me_sub_block" class="tweet_tabs_page  tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Press `R` to Load Tweets")</div>                
+                <div class="load_more_info">Press `R` to Load Tweets</div>                
             </div>
         </div>
     </div>
     <div id="people_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="people_entry">
-                <label>_("Look up: ")</label>
+                <label>Look up:</label>
                 <input id="tbox_people_entry" type="text" value=""/>
-                <a id="btn_people_entry">_("GO")</a>
+                <a id="btn_people_entry">GO</a>
             </div>
             <div id="people_vcard" class="vcard">
                 <div class="profile_img_wrapper"></div>
@@ -475,19 +507,19 @@ jQuery(function($) {
                         <ul id="people_vcard_action_btns">
                         <li>
                             <a class="vcard_follow vcard_action_btn"
-                                href="javascript:void(0);">_("Follow")</a>
+                                href="javascript:void(0);">Follow</a>
                         </li>
                         <li>
                             <a class="vcard_block vcard_action_btn"
-                                href="javascript:void(0);">_("Block")</a>
+                                href="javascript:void(0);">Block</a>
                         </li>
                         <li>
                             <a class="vcard_unblock vcard_action_btn"
-                                href="javascript:void(0);">_("Unblock")</a>
+                                href="javascript:void(0);">Unblock</a>
                         </li>
                         <li>
                             <a class="vcard_edit vcard_action_btn"
-                                href="javascript:void(0);">_("Edit")</a>
+                                href="javascript:void(0);">Edit</a>
                         </li>
                         </ul>
                     </div><!-- #people_vcard_ctrl -->
@@ -497,35 +529,35 @@ jQuery(function($) {
                     </ul>
                     <div id="people_vcard_tabs_pages">
                     <table id="people_vcard_info_page" class="vcard_tabs_page" border="0" cellpadding="0" cellspacing="0">
-                        <tr><td>_("Name: ")</td><td>
+                        <tr><td>Name: </td><td>
                             <a class="screen_name" href="#"></a> 
                             (<span class="name"></span>) </td>
                         </tr>
                         <tr><td>Bio: </td>
                             <td><span class="bio"></span></td>
                         </tr>
-                        <tr><td>_("Web: ")</td>
+                        <tr><td>Web: </td>
                             <td><a class="web" href="#" class="link"></a></td>
                         </tr>
-                        <tr><td>_("Location: ")</td>
+                        <tr><td>Location: </td>
                             <td><span class="location"></span></td>
                         </tr>
                     </table>
                     <table id="people_vcard_stat_page" class="vcard_tabs_page">
-                        <tr><td>_("Join: ")</td>
+                        <tr><td>Join: </td>
                             <td><span class="join"></span></td>
                         </tr>
-                        <tr><td>_("Tweets: ")</td>
+                        <tr><td>Tweets: </td>
                             <td><span class="tweet_cnt"></span>
                             (<span class="tweet_per_day_cnt"></span> per day)</td>
                         </tr>
-                        <tr><td>_("Followers: ")</td>
+                        <tr><td>Followers: </td>
                             <td><span class="follower_cnt"></span></td>
                         </tr>
-                        <tr><td>_("Friends: ")</td>
+                        <tr><td>Friends: </td>
                             <td><span class="friend_cnt"></span></td>
                         </tr>
-                        <tr><td>_("Relation: ")</td>
+                        <tr><td>Relation: </td>
                             <td><span class="relation"></span></td>
                         </tr>
                     </table>
@@ -534,11 +566,11 @@ jQuery(function($) {
             </div> <!-- vcard -->
             <div class="tweet_tabs">
                 <ol>
-                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">_("Tweets")</a></li>
-                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">_("Fav")</a></li>
+                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">Tweets</a></li>
+                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">Fav</a></li>
                     
-                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers">_("Followers")</a></li>
-                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends">_("Friends")</a></li>
+                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers">Followers</a></li>
+                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends">Friends</a></li>
                     
                 </ol>
             </div>
@@ -552,56 +584,56 @@ jQuery(function($) {
         <div id="people_fav_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Specify A Name to Load People")</div>
+                <div class="load_more_info">Specify A Name to Load People</div>
             </div>
         </div>        
         <div id="people_followers_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Specify A Name to Load People")</div>
+                <div class="load_more_info">Specify A Name to Load People</div>
             </div>
         </div>
         <div id="people_friends_sub_block" class="tweet_tabs_page tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
-                <div class="load_more_info">_("Specify A Name to Load People")</div>
+                <div class="load_more_info">Specify A Name to Load People</div>
             </div>
         </div>
 
         <div id="people_request_hint">
             <h1>
-            @<label id="request_screen_name"></label>_(" has protected his/her tweets.")
+            @<label id="request_screen_name"></label> has protected his/her tweets.
             </h1>
             <p>
-            _("You need to go to twitter.com to send a request before you can start following this person...")
+            You need to go to twitter.com to send a request before you can start following this person...
             </p>
             <div style="text-align:center;">
-            <a id="btn_people_request">_("Send Request")</a>
+            <a id="btn_people_request">Send Request</a>
             </div>
         </div>
     </div>
     <div id="search_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="search_entry">
-                <label>_("Search for: ")</label>
+                <label>Search for: </label>
                 <input id="tbox_search_entry" type="text" value=""/>
-                <a id="btn_search_entry" bg_color="#333" fg_color="white">_("GO")</a>
+                <a id="btn_search_entry" bg_color="#333" fg_color="white">GO</a>
             </div>
         </div>
         <ul></ul>
         <div id="search_no_result_hint">
             <p>
-            _("Your search - ")<label id="search_query_keywords"></label>_(" - did not match any result.")
+            Your search - <label id="search_query_keywords"></label> - did not match any result.
             </p>
             <p>
-            _("Suggestions:")<br/>
-             _("- Make sure all words are spelled correctly.")<br/>
-             _("- Try different keywords.")<br/>
-             _("- Try more general keywords.")<br/>
+            Suggestions: <br/>
+             - Make sure all words are spelled correctly.<br/>
+             - Try different keywords.<br/>
+             - Try more general keywords.<br/>
             </p>
         </div>
         <div class="tweet_block_bottom">
-            <div class="load_more_info">_("Specify Keywords to Search Tweets")</div>
+            <div class="load_more_info">Specify Keywords to Search Tweets</div>
         </div>
     </div>
     </div>
@@ -642,22 +674,22 @@ jQuery(function($) {
     <div id="indication">
         <ul>
         	<li>
-        		<a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline" title=_("'Home Timeline'")><span class="ic_home"></span></a>
+        		<a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline" title="Home Timeline"><span class="ic_home"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_mentions" class="idx_btn" href="#mentions" title=_("'Mentions'")><span class="ic_mention"></span></a>
+        		<a id="idx_btn_mentions" class="idx_btn" href="#mentions" title="Mentions"><span class="ic_mention"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages" title=_("'Direct Messages'")><span class="ic_dm"></span></a>
+        		<a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages" title="Direct Messages"><span class="ic_dm"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_retweets" class="idx_btn" href="#retweets" title=_("'Retweets and Retweeted'")><span class="ic_retweet"></span></a>
+        		<a id="idx_btn_retweets" class="idx_btn" href="#retweets" title="Retweets and Retweeted"><span class="ic_retweet"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_people" class="idx_btn" href="#people" title=_("'Find someone you love.'")><span class="ic_people"></span></a>
+        		<a id="idx_btn_people" class="idx_btn" href="#people" title="Find someone you love."><span class="ic_people"></span></a>
                 <span class="shape"></span>
         	</li><li class="stick_right">
-        		<a id="idx_btn_search" class="idx_btn" href="#search" title=_("'Search for ... '")><span class="ic_search"></span></a>
+        		<a id="idx_btn_search" class="idx_btn" href="#search" title="Search for ... "><span class="ic_search"></span></a>
                 <span class="shape"></span>
         	</li>
         </ul>
@@ -683,14 +715,14 @@ jQuery(function($) {
     </div>
     <textarea id="tbox_status" class="closed"></textarea>
     <div id="status_ctrl">
-        <a id="toggle_mode" width="20" icon="imgs/ic16_dm.png" title=_("'Click to compose message'")></a>
+        <a id="toggle_mode" width="20" icon="imgs/ic16_dm.png" title="Click to compose message"></a>
         <label id="status_len"></label>
-        <a id="btn_shorturl" width="20" icon="imgs/ic16_link.png" title=_("'URL shortener'")></a>
-        <a id="btn_clear">_("Clear")</a>
-        <a id="btn_update" bg_color="#ff9900">_("Update")</a>
+        <a id="btn_shorturl" width="20" icon="imgs/ic16_link.png" title="URL shortener"></a>
+        <a id="btn_clear">Clear</a>
+        <a id="btn_update" bg_color="#ff9900">Update</a>
         <span class="clear"></span>
         <div>
-        <label id="status_tips">_("Press Ctrl+Enter to Update")</label></div>
+        <label id="status_tips">Press Ctrl+Enter to Update</label></div>
     </div>
     <ul id="screen_name_auto_complete"></ul>
 </section> <!-- status_box -->
@@ -703,13 +735,13 @@ jQuery(function($) {
     <div id="count_trigger">&#9827;(0)</div>
     <ul>
     	<li>
-    		<a href="javascript:void(0)">_("Home")</a>
+    		<a href="javascript:void(0)">Home"</a>
     	</li>
         <li>
     		<a href="javascript:void(0)">@</a>
     	</li>
     	<li>
-    		<a href="javascript:void(0)">_("DM")</a>
+    		<a href="javascript:void(0)">DM</a>
     	</li>
     </ul>
 </section>
@@ -725,7 +757,7 @@ jQuery(function($) {
 </section>
 
 <section id="console">
-    <h1>_("Console")</h1>
+    <h1>Console</h1>
     <div id="console_out">
     </div>
     <input id="console_in" type="text" value=""/>
@@ -736,7 +768,7 @@ jQuery(function($) {
     <!-- preferences dialog -->
     <div id="prefs_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2>_("Preferences")</h2>
+            <h2>Preferences</h2>
             <a class="dialog_close_btn ic_close" 
                 href="javascript:void(0);"></a>
         </div>
@@ -744,56 +776,56 @@ jQuery(function($) {
             <ul id="prefs_dlg_btns" class="radio_group">
                 <li><a id="btn_prefs_global"
                         href="#prefs_global" 
-                        class="group_btn first selected">_("Globals")</a>
+                        class="group_btn first selected">Globals</a>
                 </li><li><a id="btn_prefs_account"
                         href="#prefs_account" 
-                        class="group_btn">_("Account")</a>
+                        class="group_btn">Account</a>
                 </li><li><a id="btn_prefs_appearance"
                         href="#prefs_appearance" 
-                        class="group_btn">_("Looks &amp; Feels")</a>
+                        class="group_btn">Looks &amp; Feels</a>
                 </li><li><a id="btn_prefs_advanced"
                         href="#prefs_advanced" 
-                        class="group_btn last">_("Advanced")</a>
+                        class="group_btn last">Advanced</a>
                 </li>
             </ul>
             <div id='prefs_global' class="prefs_dlg_page">
-                <div class="hint">_("You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts")</div>
-                <h3>_("- HTTP Proxy -")</h3>
+                <div class="hint">You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts</div>
+                <h3>- HTTP Proxy -</h3>
                 <div class="dlg_group">
                 <p>
                     <input id="chk_prefs_use_http_proxy"
-                        title=_("'Use HTTP Proxy'") type="checkbox"/>
+                        title="Use HTTP Proxy" type="checkbox"/>
                     <label for="chk_prefs_use_http_proxy">
-                        _("Enable Proxy")
+                        Enable Proxy
                     </label><br/> 
-                    <label>_("Host")</label>
+                    <label>Host</label>
                     <input id="tbox_prefs_http_proxy_host"
-                        title=_("'HTTP Proxy Host'") style="width: 120px;" type="text"/>
-                    <label>_("Port")</label>
+                        title="HTTP Proxy Host" style="width: 120px;" type="text"/>
+                    <label>Port</label>
                     <input id="tbox_prefs_http_proxy_port"
-                        title=_("'HTTP Proxy Port'") style="width: 30px;" type="text"/><br/>
+                        title="HTTP Proxy Port" style="width: 30px;" type="text"/><br/>
                 </p>
                 </div>
-                <h3>_("- Keybinding -")</h3>
+                <h3>- Keybinding -</h3>
                 <div class="dlg_group">
                 <p>
-                    <label>_("Summon Hotot (like: &lt;ALT&gt;C)")</label><br/>
+                    <label>Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
                     <input id="tbox_prefs_shortcut_summon_hotot" 
-                         title=_("'Summon Hot Key'")
+                         title="Summon Hot Key"
                          type="text"/><br/>
                 </p>
                 </div>
-                <h3>_("- Misc -")</h3>
+                <h3>- Misc -</h3>
                 <div class="dlg_group">
                 <p>
                     <input id="chk_prefs_use_verbose_mode"
-                        title=_("'Enable verbose mode or not'") 
+                        title="Enable verbose mode or not" 
                         type="checkbox"/>
-                    <label for="chk_prefs_use_verbose_mode">_("Enable verbose mode")</label><br/>
+                    <label for="chk_prefs_use_verbose_mode">Enable verbose mode</label><br/>
                     <input id="chk_prefs_use_ubuntu_indicator"
-                        title=_("'Use Ubuntu Indicator'") 
+                        title="Use Ubuntu Indicator" 
                         type="checkbox"/>
-                    <label for="chk_prefs_use_ubuntu_indicator">_("Use Ubuntu indicator")</label><br/>
+                    <label for="chk_prefs_use_ubuntu_indicator">Use Ubuntu indicator</label><br/>
                 </p>
                 </div>
             </div><!-- END of #prefs_global -->
@@ -801,8 +833,8 @@ jQuery(function($) {
                 <h3>- Twitter -</h3>
                 <div class="dlg_group">
                 <p>
-                    <label>_("Regain Access Token")</label><br/>
-                    <a id="btn_regain_token" icon="imgs/ic16_twitter.png" bg_color="#c0fbfd" fg_color="#1b7aa3" title=_("'Sign in with Twitter'")>_("Sign in with Twitter")</a>
+                    <label>Regain Access Token</label><br/>
+                    <a id="btn_regain_token" icon="imgs/ic16_twitter.png" bg_color="#c0fbfd" fg_color="#1b7aa3" title="Sign in with Twitter">Sign in with Twitter</a>
                 </p>
                 </div>
 
@@ -811,117 +843,117 @@ jQuery(function($) {
                 <p>
                     <input id="chk_prefs_remember_password"
                         type="checkbox" 
-                        title=_("'Remember Password'") checked="1"/>
+                        title="Remember Password" checked="1"/>
                     <label for="chk_prefs_remember_password">
-                        _("Remember Password")
+                        Remember Password"
                     </label><br/>
                 </p>
                 </div>
             </div> <!-- END of #prefs_account -->
             <div id='prefs_appearance' class="prefs_dlg_page">
-                <h3>_("- Font -")</h3>
+                <h3>- Font -</h3>
                 <div class="dlg_group">
                 <p>
-                    <label>_("Custom Font")</label>
+                    <label>Custom Font</label>
                     <input id="tbox_prefs_custom_font"
-                        title=_("'Custom Font'") 
+                        title="Custom Font" 
                         style="width:80px" type="text"/><br/>
-                    <label>_("Font Family")</label>
+                    <label>Font Family</label>
                     <select id="sel_prefs_font_family" 
-                        title=_("'Font Family'") style="width: 85px">
+                        title="Font Family" style="width: 85px">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select> 
-                    <label>_("Font Size")</label>
+                    <label>Font Size</label>
                     <input id="tbox_prefs_font_size" 
-                        title=_("'Font Size'") 
+                        title="Font Size" 
                         style="width:30px" type="text"/>
-                    <label>_("px")</label><br/>
-                    <div id="prefs_font_preview">_("The quick brown fox jumps over the lazy dog.")</div>
+                    <label>px</label><br/>
+                    <div id="prefs_font_preview">The quick brown fox jumps over the lazy dog.</div>
                 </p>
                 </div>
-                <h3>_("- Behavior -")</h3>
+                <h3>- Behavior -</h3>
                 <div class="dlg_group">
                 <p>
                     <input id="chk_prefs_use_native_notify" 
-                        title=_("'Use Native Notify'")
+                        title="Use Native Notify"
                         type="checkbox"/>
-                    <label for="chk_prefs_use_native_notify">_("Use Native Notify System")</label><br/>
+                    <label for="chk_prefs_use_native_notify">Use Native Notify System</label><br/>
                     <input id="chk_prefs_use_hover_box"
-                        title=_("'Hover to open tweet box'")
+                        title="Hover to open tweet box"
                         type="checkbox"/>
-                    <label for="chk_prefs_use_hover_box">_("Hover to open tweet box")</label><br/>
+                    <label for="chk_prefs_use_hover_box">Hover to open tweet box</label><br/>
                     <input id="chk_prefs_use_preload_conversation" 
-                        title=_("'Preload latest tweet in a conversation if it is cached.'") 
+                        title="Preload latest tweet in a conversation if it is cached." 
                         type="checkbox"/>
-                    <label for="chk_prefs_use_preload_conversation">_("Preload latest tweet in a conversation if possible.")</label><br/>
+                    <label for="chk_prefs_use_preload_conversation">Preload latest tweet in a conversation if possible.</label><br/>
                 </p>
                 </div>
-                <h3>_("- Notification -")</h3>
+                <h3>- Notification -</h3>
                 <div class="dlg_group">
                 <p>
                     <table id="notification_table">
                     <tbody>
-                    <tr><th>_("Page")</th><th>_("Notify")</th><th>_("Type")</th><th>_("Sound")</th></tr>
-                    <tr><td>_("Home")</td>
+                    <tr><th>Page</th><th>Notify</th><th>Type</th><th>Sound</th></tr>
+                    <tr><td>Home</td>
                         <td>
                         <input id="chk_prefs_use_home_timeline_notify"
-                            title=_("'Notify when home page has new tweets'")
+                            title="Notify when home page has new tweets"
                             type="checkbox"/>
                         </td>
                         <td>
                         <select 
                         id="sel_prefs_use_home_timeline_notify_type"
-                        title=_("'Type'") style="width: 85px">
+                        title="Type" style="width: 85px">
                             <option value="count">count</option>
                             <option value="content">content</option>
                         </select> 
                         </td>
                         <td>
                         <input id="chk_prefs_use_home_timeline_notify_sound"
-                            title=_("'Play sound when home page has new tweets'")
+                            title="Play sound when home page has new tweets"
                             type="checkbox"/>             
                         </td>
                     </tr>
                     <tr><td>Mentions</td>
                         <td>
                         <input id="chk_prefs_use_mentions_notify"
-                            title=_("'Notify when some new tweets mention me.'")
+                            title="Notify when some new tweets mention me."
                             type="checkbox"/>
                         </td>
                         <td>
                         <select 
                         id="sel_prefs_use_mentions_notify_type"
-                        title=_("'Type'") style="width: 85px">
+                        title="Type" style="width: 85px">
                             <option value="count">count</option>
                             <option value="content">content</option>
                         </select> 
                         </td>
                         <td>
                         <input id="chk_prefs_use_mentions_notify_sound"
-                            title=_("'Play swhen some new tweets mention me.'")
+                            title="Play swhen some new tweets mention me."
                             type="checkbox"/>             
                         </td>
                     </tr>
                     <tr><td>Message</td>
                         <td>
                         <input id="chk_prefs_use_direct_messages_inbox_notify"
-                            title=_("'Notify when some new direct messages coming.'")
+                            title="Notify when some new direct messages coming."
                             type="checkbox"/>
                         </td>
                         <td>
                 <select 
                 id="sel_prefs_use_direct_messages_inbox_notify_type"
-                title=_("'Type'") style="width: 85px">
+                title="Type" style="width: 85px">
                     <option value="count">count</option>
                     <option value="content">content</option>
                 </select> 
                         </td>
                         <td>
                         <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
-                            title=_("'Play when some new direct messages coming.'")
+                            title="Play when some new direct messages coming."
                             type="checkbox"/>             
                         </td>
                     </tr>
@@ -931,77 +963,77 @@ jQuery(function($) {
                 </div>
             </div><!-- END of prefs_appearance -->
             <div id='prefs_advanced' class="prefs_dlg_page"> 
-                <h3>_("- API Settings -")</h3>
+                <h3>- API Settings -</h3>
                 <div class="dlg_group">
                 <p>
-                    <label>_("API Base")</label><br/>
+                    <label>API Base</label><br/>
                     <input id="tbox_prefs_api_base"
-                        title=_("'API Base'") type="text"/><br/>
+                        title="API Base" type="text"/><br/>
                     <input id="chk_prefs_use_same_sign_api_base"
-                        title=_("'Use same Signing Api'") 
+                        title="Use same Signing Api" 
                         type="checkbox"/>
                     <label for="chk_prefs_use_same_sign_api_base">
-                        _("Same signing API base: ")
+                        Same signing API base:
                     </label><br/>
                     <input id="tbox_prefs_sign_api_base"  
-                        title=_("'Signing API Base'") type="text"/><br/>
+                        title="Signing API Base" type="text"/><br/>
 
-                    <label>_("OAuth Base")</label><br/>
+                    <label>OAuth Base</label><br/>
                     <input id="tbox_prefs_oauth_base" 
-                        title=_("'OAuth Base'") type="text"/><br/>
+                        title="OAuth Base" type="text"/><br/>
                     <input id="chk_prefs_use_same_sign_oauth_base"
-                        title=_("'Use same Signing OAuth Base'") 
+                        title="Use same Signing OAuth Base" 
                         type="checkbox"/>
                     <label for="chk_prefs_use_same_sign_oauth_base">
-                        _("Same signing OAuth base: ")
+                        Same signing OAuth base:
                     </label><br/>
                     <input id="tbox_prefs_sign_oauth_base"
-                        title=_("'Signing OAuth Base'") type="text"/><br/>
+                        title="Signing OAuth Base" type="text"/><br/>
 
-                    <label>_("Search API Base")</label><br/>
+                    <label>Search API Base</label><br/>
                     <input id="tbox_prefs_search_api_base"
-                        title=_("'Search API Base'") type="text"/><br/>
+                        title="Search API Base" type="text"/><br/>
                 </p>
                 </div>
             </div><!-- END of prefs_advanced -->
         </div>
         <div class="dialog_bottom">
-            <a id="btn_prefs_restore_defaults" >_("Restore Defaults")</a>
-            <a id="btn_prefs_cancel">_("Cancel")</a>
-            <a id="btn_prefs_ok" bg_color="#ff9900">_("OK")</a>
+            <a id="btn_prefs_restore_defaults" >Restore Defaults</a>
+            <a id="btn_prefs_cancel">Cancel</a>
+            <a id="btn_prefs_ok" bg_color="#ff9900">OK</a>
         </div>
     </div>
 
     <!-- oauth dialog -->
     <div id="oauth_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2>_("First time to Sign in with Twitter")</h2>
+            <h2>First time to Sign in with Twitter</h2>
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
 
         <div id="oauth_dlg_body" class="dialog_body">
             <p>
-                _("Step 1: click the button below or copy the address and open it in your browser.")<br/>
+                Step 1: click the button below or copy the address and open it in your browser.<br/>
             </p>
             <p style="text-align: center;">
-                <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">_("Click me to continue")
+                <a id="btn_oauth_user_auth" class="button dark" href="javascript:void(0);">Click me to continue
                     <span class="placeholder"></span>            
                 </a><br/>
                 <input id="tbox_oauth_auth_url" type="text" class="dark" value=""/>
             </p>
             <p>
-                _("Step 2: copy the PIN Code and paste it into the box below;")
+                Step 2: copy the PIN Code and paste it into the box below;
             </p>
             <p style="text-align: center;">
-                <label>_("PIN Code:")</label>
+                <label>PIN Code:</label>
                 <input id="tbox_oauth_pin" type="text" class="dark"/><br/>
             </p>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_oauth_pin_cancel" class="button dark" href="javascript:void(0);">_("Cancel")
+        <a id="btn_oauth_pin_cancel" class="button dark" href="javascript:void(0);">Cancel
             <span class="placeholder"></span>            
         </a>
-        <a id="btn_oauth_pin_ok" class="button dark" href="javascript:void(0);">_("OK")
+        <a id="btn_oauth_pin_ok" class="button dark" href="javascript:void(0);">OK
             <span class="placeholder"></span>            
         </a>
         </div>
@@ -1010,30 +1042,30 @@ jQuery(function($) {
     <!-- help & about dialog -->
     <div id="about_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2>_("About &amp; Help")</h2>
+            <h2>About &amp; Help</h2>
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="about_dlg_body" class="dialog_body">
             <ul id="about_dlg_btns" class="radio_group">
                 <li><a id="btn_about_about"
                         href="#about_about" 
-                        class="group_btn first selected">_("About")</a>
+                        class="group_btn first selected">About</a>
                 </li><li><a id="btn_about_keyboard"
                         href="#about_keyboard" 
-                        class="group_btn">_("Keyboard")</a>
+                        class="group_btn">Keyboard</a>
                 </li><li><a id="btn_about_credits"
                         href="#about_credits" 
-                        class="group_btn">_("Credits")</a>
+                        class="group_btn">Credits</a>
                 </li><li><a id="btn_about_license"
                         href="#about_license" 
-                        class="group_btn last">_("License")</a>
+                        class="group_btn last">License</a>
                 </li>
             </ul>
             <div id="about_about" class="about_dlg_page">
                 <h3>- Hotot <span class="version"></span>-</h3>
                 <div class="dlg_group">
                 <p>
-                <strong>_("Hotot")</strong> _("is a lightweight client for the ")<a href="http://twitter.com">twitter</a>_(" microblogging service").
+                <strong>Hotot</strong> is a lightweight client for the <a href="http://twitter.com">twitter</a> microblogging service.
                 </p>
                 <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
                 <p>
@@ -1043,39 +1075,39 @@ jQuery(function($) {
                 </div>
             </div>
             <div id="about_keyboard" class="about_dlg_page">
-                <h3>_("- Keyboard shortcuts -")</h3>
+                <h3>- Keyboard shortcuts -</h3>
                 <div class="dlg_group">
                 <p>
                     <table id="shortcuts_table">
                     <tbody>
-                    <tr><th>_("Action")</th><th>_("Shortcut")</th></tr>
-                    <tr><th class="sub" colspan="2">_("Global")</th></tr>
-                    <tr><td>_("Quit Hotot")</td><td>&lt;Ctrl&gt;q</td></tr>
-                    <tr><td>_("Help")</td><td>?</td></tr>
+                    <tr><th>Action</th><th>Shortcut</th></tr>
+                    <tr><th class="sub" colspan="2">Global</th></tr>
+                    <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
+                    <tr><td>Help</td><td>?</td></tr>
 
-                    <tr><th class="sub" colspan="2">_("Tweet List")</th></tr>
-                    <tr><td>_("Reload")</td><td>r</td></tr>
-                    <tr><td>_("Slide to prev page")</td><td>h</td></tr>
-                    <tr><td>_("Slide to next page")</td><td>l</td></tr>
-                    <tr><td>_("Move to prev tweet")</td><td>k</td></tr>
-                    <tr><td>_("Move to next tweet")</td><td>j</td></tr>
-                    <tr><td>_("Move to top")</td><td>t</td></tr>
-                    <tr><td>_("Move to bottom")</td><td>b</td></tr>
-                    <tr><td>_("Toggle toolbar")</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
-                    <tr><td>_("Toggle nav tabs")</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
-                    <tr><td>_("Enter compose mode")</td><td>c</td></tr>
-                    <tr><td>_("Enter action mode")</td><td>a</td></tr>
-                    <tr><td>_("Enter finder mode")</td><td>/ or &lt;Ctrl&gt;f</td></tr>
-                    <tr><th class="sub" colspan="2">_("Compose Mode")</th></tr>
-                    <tr><td>_("Exit compose mode")</td><td>&lt;ESC&gt;</td></tr>
-                    <tr><th class="sub" colspan="2">_("Action Mode")</th></tr>
-                    <tr><td>_("Prev action")</td><td>k</td></tr>
-                    <tr><td>_("Next action")</td><td>j</td></tr>
-                    <tr><td>_("Trigger action")</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
-                    <tr><td>_("Exit action mode")</td><td>&lt;ESC&gt; or a</td></tr>
-                    <tr><th class="sub" colspan="2">_("Finder Mode")</th></tr>
-                    <tr><td>_("Apply keywords")</td><td>&lt;Enter&gt;</td></tr>
-                    <tr><td>_("Exit finder mode")</td><td>&lt;ESC&gt;</td></tr>
+                    <tr><th class="sub" colspan="2">Tweet List</th></tr>
+                    <tr><td>Reload</td><td>r</td></tr>
+                    <tr><td>Slide to prev page</td><td>h</td></tr>
+                    <tr><td>Slide to next page</td><td>l</td></tr>
+                    <tr><td>Move to prev tweet</td><td>k</td></tr>
+                    <tr><td>Move to next tweet</td><td>j</td></tr>
+                    <tr><td>Move to top</td><td>t</td></tr>
+                    <tr><td>Move to bottom</td><td>b</td></tr>
+                    <tr><td>Toggle toolbar</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
+                    <tr><td>Toggle nav tabs</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
+                    <tr><td>Enter compose mode</td><td>c</td></tr>
+                    <tr><td>Enter action mode</td><td>a</td></tr>
+                    <tr><td>Enter finder mode</td><td>/ or &lt;Ctrl&gt;f</td></tr>
+                    <tr><th class="sub" colspan="2">Compose Mode</th></tr>
+                    <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
+                    <tr><th class="sub" colspan="2">Action Mode</th></tr>
+                    <tr><td>Prev action</td><td>k</td></tr>
+                    <tr><td>Next action</td><td>j</td></tr>
+                    <tr><td>Trigger action</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
+                    <tr><td>Exit action mode</td><td>&lt;ESC&gt; or a</td></tr>
+                    <tr><th class="sub" colspan="2">Finder Mode</th></tr>
+                    <tr><td>Apply keywords</td><td>&lt;Enter&gt;</td></tr>
+                    <tr><td>Exit finder mode</td><td>&lt;ESC&gt;</td></tr>
                     </tbody>
                     </table>
                 </p>
@@ -1083,10 +1115,10 @@ jQuery(function($) {
 
             </div>
             <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
-                <h3>_("- Credits -")</h3>
+                <h3>- Credits -</h3>
                 <div class="dlg_group">
                 <p>
-                    <label>_("Written by")</label>:<br/>
+                    <label>Written by</label>:<br/>
                     - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
                     (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
 
@@ -1101,13 +1133,13 @@ jQuery(function($) {
 
                 </p>
                 <p>
-                    <label>_("Artwork by")</label>: <br/>
+                    <label>Artwork by</label>: <br/>
                     - Evan &lt;<a href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
                     (<a href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
                     - Shellex Wai <br/>
                 </p>
                 <p>
-                    <label>_("Document by")</label>: <br/>
+                    <label>Document by</label>: <br/>
                     - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
                     (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
 
@@ -1115,7 +1147,7 @@ jQuery(function($) {
                 </div>
             </div>
             <div id="about_license" class="about_dlg_page">
-                <h3>_("- License -")</h3>
+                <h3>- License -</h3>
                 <div class="dlg_group">
                 <p>
     Hotot package is free software; you can redistribute it and/or
@@ -1137,72 +1169,72 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_about_ok">_("OK")</a>
+        <a id="btn_about_ok">OK</a>
         </div>
     </div>
 
     <!-- Profile dialog -->
     <div id="profile_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2 id="profile_dlg_title">_("Profile")</h2>
+            <h2 id="profile_dlg_title">Profile</h2>
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="profile_dlg_body" class="dialog_body">
         <div style="float:left; width: 150px;">
-            <h3>_("- Picture -")</h3>
+            <h3>- Picture -</h3>
             <div class="dlg_group">
             <p style="text-align:center; min-height:70px;">
                 <span id="profile_avator" class="profile_img_wrapper"></span>
-                <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">_("Change avator")
+                <a id="btn_change_profile_avator" class="button dark" style="font-size: 10px; display:none">Change avator
                     <span class="placeholder"></span>            
                 </a>
             </p>
             </div>
 
-            <h3>_("- Stat -")</h3>
+            <h3>- Stat -</h3>
             <div class="dlg_group">
             <p id="profile_stat">
-                <label>_("Join: ")</label>
+                <label>Join: </label>
                 <span id="profile_join"></span><br/>
-                <label>_("Tweets: ")</label>
+                <label>Tweets: </label>
                 <span id="profile_tweet_cnt"></span><br/>
-                <label>_("Tweets per Day: ")</label>
+                <label>Tweets per Day: </label>
                 <span id="profile_tweet_per_day_cnt"></span><br/>
-                <label>_("Friends: ")</label>
+                <label>Friends: </label>
                 <span id="profile_friend_cnt"></span><br/>
-                <label>_("Followers: ")</label> 
+                <label>Followers: </label> 
                 <span id="profile_follower_cnt"></span><br/>
-                <label>_("Favourites: ")</label>
+                <label>Favourites: </label>
                 <span id="profile_favourite_cnt"></span><br/>
             </p>
             </div>
         </div>
         <div>
-            <h3>_("- Information -")</h3>
+            <h3>- Information -</h3>
             <div class="dlg_group">
             <p>
-                <label>_("Name")</label><br/>
-                <input id="tbox_profile_name" title=_("'Name'") type="text" class="dark"/><br/>
-                <label>_("Location")</label><br/>
-                <input id="tbox_profile_location" title=_("'Location'") type="text" class="dark"/><br/>
-                <label>_("Website")</label><br/>
-                <input id="tbox_profile_website" title=_("'Website'") type="text" class="dark"/><br/>
-                <label>_("Bio")</label><br/>
-                <textarea id="tbox_profile_bio" title=_("'Bio'") class="dark" style="height: 70px;"></textarea>
+                <label>Name</label><br/>
+                <input id="tbox_profile_name" title="Name" type="text" class="dark"/><br/>
+                <label>Location</label><br/>
+                <input id="tbox_profile_location" title="Location" type="text" class="dark"/><br/>
+                <label>Website</label><br/>
+                <input id="tbox_profile_website" title="Website" type="text" class="dark"/><br/>
+                <label>Bio</label><br/>
+                <textarea id="tbox_profile_bio" title="Bio" class="dark" style="height: 70px;"></textarea>
             </p>
             </div>
         </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_profile_cancel">_("Cancel")</a>
-        <a id="btn_profile_update" bg_color="#ff9900">_("Update")</a>
+        <a id="btn_profile_cancel">Cancel</a>
+        <a id="btn_profile_update" bg_color="#ff9900">Update</a>
         </div>
     </div>
 
     <!-- Extensions dialog -->
     <div id="exts_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2 id="exts_dlg_title">_("Extenstions")</h2>
+            <h2 id="exts_dlg_title">Extenstions</h2>
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="exts_dlg_body" class="dialog_body">
@@ -1217,7 +1249,7 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_exts_close" >_("Close")</a>
+        <a id="btn_exts_close" >Close</a>
         </div>
     </div>
 
@@ -1236,7 +1268,7 @@ jQuery(function($) {
     <!-- Message dialog -->
     <div id="message_dlg" class="dialog">
         <div class="dialog_bar">
-            <h2 id="message_dlg_title">_("Message")</h2>
+            <h2 id="message_dlg_title">Message</h2>
             <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
         </div>
         <div id="message_dlg_body" class="dialog_body">
@@ -1244,7 +1276,7 @@ jQuery(function($) {
             </div>
         </div>
         <div class="dialog_bottom">
-        <a id="btn_message_ok">_("OK")</a>
+        <a id="btn_message_ok">OK</a>
         </div>
     </div>
 
@@ -1258,8 +1290,8 @@ jQuery(function($) {
 
 <section id="context_menu">
     <ul class="hotot_menu">
-        <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);">_("Search in Google")</a></li>
-        <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);">_("Search in Twitter")</a></li>
+        <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);">Search in Google</a></li>
+        <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);">Search in Twitter</a></li>
     </ul>
 </section>
 

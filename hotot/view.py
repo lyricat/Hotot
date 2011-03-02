@@ -71,13 +71,8 @@ class MainView(WebView):
         self.load_finish_flag = True;
         agent.webv = self
         view.execute_script("""
-        i18n_dict = %s;
-        function _(msg){
-            return msg && i18n_dict[msg] || msg;
-        };
         var exts = %s;
         ext.load_exts(exts, function() {
             on_load_finish();
         });
-        """ % (i18n.get_i18n_json()
-        , utils.get_exts()))
+        """ % utils.get_exts())

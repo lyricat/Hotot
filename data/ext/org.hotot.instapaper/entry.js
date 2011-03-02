@@ -3,9 +3,9 @@ ext.HototInstapaper = {
 
 id: 'org.hotot.instapaper',
 
-name: _('Hotot Instapaper'),
+name: 'Hotot Instapaper',
 
-description: _('Save tweets to Instapaper.com for reading later.'),
+description: 'Save tweets to Instapaper.com for reading later.',
 
 version: '1.0',
 

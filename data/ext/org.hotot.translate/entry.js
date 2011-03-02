@@ -3,9 +3,9 @@ ext.HototTranslate = {
 
 id: 'org.hotot.translate',
 
-name: _('Hotot Translate'),
+name: 'Hotot Translate',
 
-description: _('Translate tweets.'),
+description: 'Translate tweets.',
 
 version: '1.0',
 
