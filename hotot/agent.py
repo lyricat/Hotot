@@ -19,9 +19,6 @@ import ctypes
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-try: import i18n
-except: from gettext import gettext as _
-
 pynotify.init(_("Hotot Notification"))
 notify = pynotify.Notification('Init', '')
 

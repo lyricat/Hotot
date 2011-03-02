@@ -19,9 +19,6 @@ except ImportError:
 else:
     HAS_INDICATOR = True
 
-try: import i18n
-except: from gettext import gettext as _
-
 try:
     import glib
     glib.set_application_name(_("Hotot"))

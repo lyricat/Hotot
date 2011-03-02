@@ -8,9 +8,6 @@ import config
 from webkit import WebView
 import utils
 
-try: import i18n
-except: from gettext import gettext as _
-
 class MainView(WebView):
     def __init__(self):
         WebView.__init__(self)
@@ -39,7 +36,6 @@ class MainView(WebView):
         self.connect('load-finished', self.on_load_finish);
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
-        template = i18n.trans_html(template)
         self.load_html_string(template, 'file://' + templatefile)
 
     def on_navigation_requested(self, view, webframe, request):
