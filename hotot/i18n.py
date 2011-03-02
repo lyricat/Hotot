@@ -19,18 +19,6 @@ elif os.path.isdir(os.path.dirname(sys.argv[0]) + '/build/mo'):
 else:
     gettext.install(app, unicode=True)
 
-def get_i18n_json(domain=app, localedir=None, languages=None):
-    try:
-        mofile = gettext.find(domain, localedir, languages)
-        translations = gettext.GNUTranslations(open(mofile, 'rb'))
-        return json.dumps(translations._catalog, ensure_ascii=0)
-    except:
-        return '{}'
-
-def trans_html(html):
-    html = re.sub('(_\("(.*?)"\))', lambda m: _(m.group(2)), html)
-    return html
-
 if __name__=="__main__":
 	print _('')
 
