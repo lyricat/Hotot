@@ -80,14 +80,14 @@ def apply_proxy_setting():
 def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
-            utils.get_ui_object('imgs/ic64_hotot.png')))
+            utils.get_ui_object('image/ic64_hotot.png')))
     notify.set_timeout(5000)
 
 def do_notify(summary, body):
     n = pynotify.Notification(summary, body)
     n.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
-            utils.get_ui_object('imgs/ic64_hotot.png')))
+            utils.get_ui_object('image/ic64_hotot.png')))
     n.set_timeout(5000)
     n.show()
 

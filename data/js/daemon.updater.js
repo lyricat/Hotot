@@ -67,7 +67,7 @@ function work() {
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
                 container.nextAll('.tweet_block_bottom').show();
-                info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
+                info.html('<img src="image/ani_loading_bar_gray.gif"/>');
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
                     , (step + 1) * 5000);
                 step += 1;

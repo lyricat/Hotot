@@ -112,7 +112,7 @@ function init_exts() {
             var extension = ext[key];
 
             if (typeof extension.icon == 'undefined') {
-                icon = 'imgs/ic64_exts.png';
+                icon = 'image/ic64_exts.png';
             } else {
                 icon = '../ext/' + extension.id + '/' + extension.icon;
             }

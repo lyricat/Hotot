@@ -41,9 +41,9 @@ class Hotot:
     def build_gui(self):
         self.window = gtk.Window()
         gtk.window_set_default_icon_from_file(
-            utils.get_ui_object('imgs/ic64_hotot_classics.png'))
+            utils.get_ui_object('image/ic64_hotot_classics.png'))
         self.window.set_icon_from_file(
-            utils.get_ui_object('imgs/ic64_hotot_classics.png'))
+            utils.get_ui_object('image/ic64_hotot_classics.png'))
 
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
@@ -188,7 +188,7 @@ class Hotot:
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip(_("Hotot: Click to Active."))
         self.trayicon.set_from_file(
-            utils.get_ui_object('imgs/ic24_hotot_mono_light.svg'))
+            utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
         self.trayicon.set_visible(True)
 
     def on_trayicon_activate(self, icon):
@@ -248,7 +248,7 @@ def main():
                                            'hotot',
                                            appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_attention_icon(utils.get_ui_object('imgs/ic24_hotot_mono_light.svg'))
+        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
         indicator.set_menu(app.menu_tray)
     gtk.gdk.threads_enter()
     gtk.main()

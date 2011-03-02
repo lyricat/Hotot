@@ -127,7 +127,7 @@ def get_content_type(filename):
 
 def get_ui_object(name):
     for base in config.DATA_DIRS:
-        fullpath = os.path.join(base, config.UI_DIR_NAME, name)
+        fullpath = os.path.join(base, name)
         if os.path.exists(fullpath):
             return fullpath
 

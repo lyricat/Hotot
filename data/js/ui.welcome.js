@@ -131,7 +131,7 @@ function init () {
         }
     };
     ui.Welcome.btn_oauth_sign_in.set_attrs({
-          'icon': 'imgs/ic16_twitter.png'
+          'icon': 'image/ic16_twitter.png'
         , 'bg_color': '#c0fbfd'
         , 'fg_color': '#1b7aa3'
     })

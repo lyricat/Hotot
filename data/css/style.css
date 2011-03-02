@@ -92,7 +92,7 @@ pre {
     width: 28px;
     height: 28px;
     display: block;
-    background-image: url(../imgs/ic48_profile_image.png);
+    background-image: url(../image/ic48_profile_image.png);
 }
 
 #version {
@@ -141,11 +141,11 @@ pre {
 }
 
 #btn_reload {
-    background-image: url(../imgs/refresh_b.png) ;
+    background-image: url(../image/refresh_b.png) ;
 }
 
 #btn_reload:hover {
-    background-image: url(../imgs/refresh_h.png) ;
+    background-image: url(../image/refresh_h.png) ;
 }
 
 #btn_exts_menu_wrap {
@@ -153,11 +153,11 @@ pre {
 }
 
 #btn_exts_menu {
-    background-image: url(../imgs/plus-in_b.png) ;
+    background-image: url(../image/plus-in_b.png) ;
 }
 
 #btn_exts_menu:hover {
-    background-image: url(../imgs/plus-in_h.png) ;
+    background-image: url(../image/plus-in_h.png) ;
 }
 
 #exts_menu {
@@ -184,11 +184,11 @@ pre {
 }
 
 #btn_hotot {
-    background-image: url(../imgs/menu_b.png);
+    background-image: url(../image/menu_b.png);
 }
 
 #btn_hotot:hover {
-    background-image: url(../imgs/menu_h.png);
+    background-image: url(../image/menu_h.png);
 }
 
 #hotot_menu {
@@ -348,7 +348,7 @@ pre {
 
 /*
 #btn_shorturl {
-    background-image: url(../imgs/ic16_link.png);
+    background-image: url(../image/ic16_link.png);
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 5px;
@@ -403,7 +403,7 @@ pre {
     top: 10px;
     position: absolute;
     display: block;
-    background: transparent url(../imgs/ic16_close.png) no-repeat;
+    background: transparent url(../image/ic16_close.png) no-repeat;
     background-position: 2px 2px;
 }
 
@@ -736,15 +736,15 @@ pre {
 }
 
 #btn_finder_close {
-    background: transparent url(../imgs/ic16_close.png) no-repeat center center;
+    background: transparent url(../image/ic16_close.png) no-repeat center center;
 }
 
 #btn_finder_prev {
-    background: transparent url(../imgs/ic16_arrow_up_gray.png) no-repeat center center;
+    background: transparent url(../image/ic16_arrow_up_gray.png) no-repeat center center;
 }
 
 #btn_finder_next {
-    background: transparent url(../imgs/ic16_arrow_down_gray.png) no-repeat center center;
+    background: transparent url(../image/ic16_arrow_down_gray.png) no-repeat center center;
 }
 
 
@@ -990,7 +990,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #people_request_hint {
-    background-image: url(../imgs/ic48_lock.png) !important;
+    background-image: url(../image/ic48_lock.png) !important;
 }
 
 
@@ -1053,7 +1053,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 /*===== Welcome Page ================================*/
 #welcome_page {
-    background: #5599bb url(../imgs/welcome_bg.png) no-repeat 50% 0;
+    background: #5599bb url(../image/welcome_bg.png) no-repeat 50% 0;
     width: 100%;
     border-left: 1px #eee solid;
     border-right: 1px #aaa solid;
@@ -1066,7 +1066,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     line-height: 35px;
     font-size: 24px;
     color: #fff;
-    background: #214365 url(../imgs/ic32_hotot_classics.png) no-repeat 20px;
+    background: #214365 url(../image/ic32_hotot_classics.png) no-repeat 20px;
     text-shadow: 0 -1px 0px #000;
 }
 
@@ -1156,15 +1156,15 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #profile_avator_list > li > a.twitter {
-    background-image: url(../imgs/ic32_profile_twitter.png);
+    background-image: url(../image/ic32_profile_twitter.png);
 }
 
 #profile_avator_list > li > a.identica {
-    background-image: url(../imgs/ic32_profile_identica.png);
+    background-image: url(../image/ic32_profile_identica.png);
 }
 
 #btn_new_profile_item {
-    background-image: url(../imgs/ic32_profile_add.png);
+    background-image: url(../image/ic32_profile_add.png);
 }
 
 #sign_in_block {
@@ -1239,11 +1239,11 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #btn_service_twitter {
-    background: transparent url(../imgs/ic16_twitter.png) no-repeat 5px center;
+    background: transparent url(../image/ic16_twitter.png) no-repeat 5px center;
 }
 
 #btn_service_identica {
-    background: transparent url(../imgs/ic16_identica.png) no-repeat 5px center;
+    background: transparent url(../image/ic16_identica.png) no-repeat 5px center;
 }
 
 #service_tabs .service_tabs_page {
@@ -1285,7 +1285,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 /*
 #btn_oauth_sign_in, #btn_regain_token {
     background-color: #C0FBFD;
-    background-image: url(../imgs/ic16_twitter.png);
+    background-image: url(../image/ic16_twitter.png);
     background-repeat:no-repeat;
     background-position: 5px center;
     border: 0 !important;
@@ -1740,7 +1740,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .card.fav > .tweet_fav_indicator{
-    background: transparent url(../imgs/tweet_fav_indicator.png) no-repeat 0 center;
+    background: transparent url(../image/tweet_fav_indicator.png) no-repeat 0 center;
 }
 
 .card.normal {
@@ -1863,7 +1863,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 .avator_hlight {
-    background: url(../imgs/avator_hlight.png) no-repeat;
+    background: url(../image/avator_hlight.png) no-repeat;
     display: block;
     height: 48px;
     position: absolute;
@@ -1894,7 +1894,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 
 .card_body > .retweet_mark {
     padding-left: 20px;
-    background: transparent url(../imgs/ic16_retweet_light.png) no-repeat;
+    background: transparent url(../image/ic16_retweet_light.png) no-repeat;
 }
 
 .card_body a {
@@ -1949,25 +1949,25 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 }
 
 #tweet_reply_btn {
-    background-image: url(../imgs/ic16_reply.png) ;
+    background-image: url(../image/ic16_reply.png) ;
 }
 #tweet_retweet_btn {
-    background-image: url(../imgs/ic16_retweet.png);
+    background-image: url(../image/ic16_retweet.png);
 }
 #tweet_retweet_btn.retweeted {
-    background-image: url(../imgs/ic16_retweeted.png);
+    background-image: url(../image/ic16_retweeted.png);
 }
 #tweet_more_menu_btn {
-    background-image: url(../imgs/ic16_more.png);
+    background-image: url(../image/ic16_more.png);
 }
 #tweet_dm_reply_btn {
-    background-image: url(../imgs/ic16_dm.png);
+    background-image: url(../image/ic16_dm.png);
 }
 #people_follow_btn {
-    background-image: url(../imgs/ic16_add_green.png) ;
+    background-image: url(../image/ic16_add_green.png) ;
 }
 #people_unfollow_btn {
-    background-image: url(../imgs/ic16_remove_red.png) ;
+    background-image: url(../image/ic16_remove_red.png) ;
 }
 #tweet_more_menu_trigger {
     position: relative;
@@ -2051,11 +2051,11 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     display: block;
     height: 15px;
     width: 15px;
-    background: transparent url(../imgs/fold.png) no-repeat;
+    background: transparent url(../image/fold.png) no-repeat;
 }
 
 .btn_tweet_thread.expand {
-    background-image: url(../imgs/expand.png) !important;
+    background-image: url(../image/expand.png) !important;
 }
 
 .tweet_thread_wrapper {
@@ -2187,43 +2187,43 @@ td {
 }
 
 .ic_home {
-    background: transparent url(../imgs/ic_home.png) no-repeat;
+    background: transparent url(../image/ic_home.png) no-repeat;
 }
 
 .ic_mention {
-    background: transparent url(../imgs/ic_mention.png) no-repeat;
+    background: transparent url(../image/ic_mention.png) no-repeat;
 }
 .ic_dm {
-    background: transparent url(../imgs/ic_dm.png) no-repeat;
+    background: transparent url(../image/ic_dm.png) no-repeat;
 }
 .ic_fav {
-    background: transparent url(../imgs/ic_fav.png) no-repeat;
+    background: transparent url(../image/ic_fav.png) no-repeat;
 }
 .ic_retweet {
-    background: transparent url(../imgs/ic_retweet.png) no-repeat;
+    background: transparent url(../image/ic_retweet.png) no-repeat;
 }
 .ic_people {
-    background: transparent url(../imgs/ic_people.png) no-repeat;
+    background: transparent url(../image/ic_people.png) no-repeat;
 }
 .ic_search {
-    background: transparent url(../imgs/ic_search.png) no-repeat;
+    background: transparent url(../image/ic_search.png) no-repeat;
 }
 .ic_about {
-    background: transparent url(../imgs/ic16_help.png) no-repeat;
+    background: transparent url(../image/ic16_help.png) no-repeat;
 }
 .ic_prefs {
-    background: transparent url(../imgs/ic16_prefs.png) no-repeat;
+    background: transparent url(../image/ic16_prefs.png) no-repeat;
 }
 .ic_exts {
-    background: transparent url(../imgs/ic16_exts.png) no-repeat;
+    background: transparent url(../image/ic16_exts.png) no-repeat;
 }
 .ic_reload {
-    background: transparent url(../imgs/ic16_reload.png) no-repeat;
+    background: transparent url(../image/ic16_reload.png) no-repeat;
 }
 .ic_sign_out {
-    background: transparent url(../imgs/ic16_sign_out.png) no-repeat;
+    background: transparent url(../image/ic16_sign_out.png) no-repeat;
 }
 .ic_close {
-    background: transparent url(../imgs/ic16_close.png) no-repeat;
+    background: transparent url(../image/ic16_close.png) no-repeat;
 }
 

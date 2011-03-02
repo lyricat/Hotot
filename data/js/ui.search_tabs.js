@@ -32,7 +32,7 @@ function do_search(query) {
     ui.SearchTabs.search_entry.val(query);
     $('#search_tweet_block > ul').html('');
     var info = $('#search_tweet_block .load_more_info');
-    info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
+    info.html('<img src="image/ani_loading_bar_gray.gif"/>');
     daemon.Updater.update_search();
 },
 

@@ -37,7 +37,7 @@ function init () {
                 container.nextAll('.tweet_block_bottom').show();
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
-                info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
+                info.html('<img src="image/ani_loading_bar_gray.gif"/>');
                 ui.Notification.set(_("Loading Tweets...")).show(-1);
                 ui.Main.load_more_tweets(
                     function () {
@@ -259,7 +259,7 @@ function load_tweets (force) {
     var info = container.nextAll('.tweet_block_bottom')
         .children('.load_more_info');
     container.nextAll('.tweet_block_bottom').show();
-    info.html('<img src="imgs/ani_loading_bar_gray.gif"/>');
+    info.html('<img src="image/ani_loading_bar_gray.gif"/>');
     ui.Notification.set(_("Loading Tweets...")).show(-1);
     daemon.Updater.watch_pages[pagename].proc(force);
 },
