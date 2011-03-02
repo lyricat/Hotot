@@ -10,10 +10,7 @@ import shutil
 import glib
 
 PROGRAM_NAME = 'hotot'
-UI_DIR_NAME = 'ui'
 EXT_DIR_NAME = 'ext'
-SOUND_DIR_NAME = 'sound'
-LAUNCH_DIR = os.path.abspath(sys.path[0])
 CONF_DIR = os.path.join(glib.get_user_config_dir(), PROGRAM_NAME)
 DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(glib.get_user_cache_dir(), PROGRAM_NAME)

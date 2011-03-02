@@ -7,6 +7,7 @@ import agent
 import config
 from webkit import WebView
 import utils
+import json
 
 try: import i18n
 except: from gettext import gettext as _
@@ -69,9 +70,18 @@ class MainView(WebView):
     def on_load_finish(self, view, webframe):
         self.load_finish_flag = True;
         agent.webv = self
-        view.execute_script("""
-        var exts = %s;
-        ext.load_exts(exts, function() {
-            on_load_finish();
-        });
-        """ % utils.get_exts())
+        # overlay extra variables of web part
+        variables = {
+              'platform': 'Linux'
+            , 'conf_dir': config.CONF_DIR
+            , 'cache_dir': config.CACHE_DIR
+            , 'avatar_cache_dir': config.AVATAR_CACHE_DIR
+            , 'extra_fonts': utils.get_extra_fonts()
+            , 'extra_exts': utils.get_extra_exts()
+            , 'locale': 'zh_cn' 
+        };
+        # and then, notify web part i am ready to work :)
+        view.execute_script('''
+            overlay_variables(%s);
+            globals.load_flags = 1;
+            ''' % json.dumps(variables))

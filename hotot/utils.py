@@ -131,14 +131,25 @@ def get_ui_object(name):
         if os.path.exists(fullpath):
             return fullpath
 
-def get_exts():
+def get_extra_exts():
     import glob
     exts = []
-    for base in config.DATA_DIRS:
-        files = glob.glob(os.path.join(base, config.EXT_DIR_NAME) + '/*')
-        ext_dirs = filter(lambda x: os.path.isdir(x), files)
-        for dir in ext_dirs:
-            ext_js = os.path.join(dir, 'entry.js')
-            if os.path.exists(ext_js):
-                exts.append('file://%s' % ext_js)
+    files = glob.glob(os.path.join(config.CONF_DIR, config.EXT_DIR_NAME) + '/*')
+    ext_dirs = filter(lambda x: os.path.isdir(x), files)
+    for dir in ext_dirs:
+        ext_js = os.path.join(dir, 'entry.js')
+        if os.path.exists(ext_js):
+            exts.append('file://%s' % ext_js)
     return exts
+
+def get_extra_fonts():
+    font_list = [ff.get_name() for ff in
+    gtk.gdk.pango_context_get().list_families()]
+    font_list.sort()
+    for font in font_list:
+        try:
+            font.decode('ascii')
+        except:
+            font_list.remove(font)
+            font_list.insert(0, font)
+    return font_list

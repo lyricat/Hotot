@@ -172,7 +172,7 @@ function form_dm(dm_obj, pagename) {
     ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%TRANS_Reply_Them%}/g, _("Reply Them."));
+    ret = ret.replace(/{%TRANS_Reply_Them%}/g, "Reply Them.");
     return ret;
 },
 
@@ -205,7 +205,7 @@ function form_tweet (tweet_obj, pagename) {
     var scheme = 'normal';
 
     var reply_str = (reply_id != null) ?
-        _("reply to ") + '<a href="hotot:action/user/'
+        "reply to " + '<a href="hotot:action/user/'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
@@ -224,7 +224,7 @@ function form_tweet (tweet_obj, pagename) {
         scheme = 'me';
     }
     if (retweet_name != '') {
-        retweet_str = _("retweeted by ") +  '<a href="hotot:action/user/'
+        retweet_str = "retweeted by " +  '<a href="hotot:action/user/'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
     }
@@ -255,17 +255,17 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%DELETABLE%}/g, is_self? 'true': 'false');
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
     ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj));
-    ret = ret.replace(/{%TRANS_Delete%}/g, _("Delete"));
-    ret = ret.replace(/{%TRANS_Delete_this_tweet%}/g, _("Delete this tweet"));
-    ret = ret.replace(/{%TRANS_Loading%}/g, _("Loading..."));
-    ret = ret.replace(/{%TRANS_Official_retweet_this_tweet%}/g, _("Official retweet this tweet."));
-    ret = ret.replace(/{%TRANS_Reply_All%}/g, _("Reply All"));
-    ret = ret.replace(/{%TRANS_Reply_this_tweet%}/g, _("Reply this tweet."));
-    ret = ret.replace(/{%TRANS_RT_this_tweet%}/g,_("RT this tweet."));
-    ret = ret.replace(/{%TRANS_Send_Message%}/g, _("Send message"));
-    ret = ret.replace(/{%TRANS_Send_Message_to_them%}/g, _("Send message to them"));
-    ret = ret.replace(/{%TRANS_via%}/g, _("via"));
-    ret = ret.replace(/{%TRANS_View_more_conversation%}/g, _("view more conversation"));
+    ret = ret.replace(/{%TRANS_Delete%}/g, "Delete");
+    ret = ret.replace(/{%TRANS_Delete_this_tweet%}/g, "Delete this tweet");
+    ret = ret.replace(/{%TRANS_Loading%}/g, "Loading...");
+    ret = ret.replace(/{%TRANS_Official_retweet_this_tweet%}/g, "Official retweet this tweet.");
+    ret = ret.replace(/{%TRANS_Reply_All%}/g, "Reply All");
+    ret = ret.replace(/{%TRANS_Reply_this_tweet%}/g, "Reply this tweet.");
+    ret = ret.replace(/{%TRANS_RT_this_tweet%}/g, "RT this tweet.");
+    ret = ret.replace(/{%TRANS_Send_Message%}/g, "Send message");
+    ret = ret.replace(/{%TRANS_Send_Message_to_them%}/g, "Send message to them");
+    ret = ret.replace(/{%TRANS_via%}/g, "via");
+    ret = ret.replace(/{%TRANS_View_more_conversation%}/g, "view more conversation");
     return ret;
 },
 
@@ -311,7 +311,7 @@ function form_search(tweet_obj, pagename) {
     ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
     ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
     ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%TRANS_via%}/g, _("via"));
+    ret = ret.replace(/{%TRANS_via%}/g, "via");
     return ret;
 },
 

@@ -56,7 +56,7 @@ function init () {
             = $('#chk_remember_password').attr('checked'); 
         cur_profile.preferences.default_username
             = lib.twitterapi.username; 
-        ui.Notification.set(_("Sign in ...")).show();
+        ui.Notification.set("Sign in ...").show();
         if (ui.Welcome.sign_opts.remember_password) {
             cur_profile.preferences.default_password
                 = lib.twitterapi.password;
@@ -71,11 +71,11 @@ function init () {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                    , _("<p>Network Error, Please try later! &gt;_&lt; </p>"));
+                    , "<p>Network Error, Please try later! &gt;_&lt; </p>");
                 ui.DialogHelper.open(ui.MessageDlg);
             } else {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                    , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>") 
+                    , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
                 ui.DialogHelper.open(ui.MessageDlg);
             }
@@ -92,7 +92,7 @@ function init () {
         = new widget.Button('#btn_oauth_sign_in')
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
-        ui.Notification.set(_("Sign in ...")).show();
+        ui.Notification.set("Sign in ...").show();
         if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -101,7 +101,7 @@ function init () {
             function (result) {
                 if (result == '') {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , _("<p>Network Error, Please try later! &gt;_&lt; </p>"));
+                        , "<p>Network Error, Please try later! &gt;_&lt; </p>");
                     ui.DialogHelper.open(ui.MessageDlg);
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
@@ -119,11 +119,11 @@ function init () {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , _("<p>Network Error, Please try later! &gt;_&lt; </p>"));
+                        , "<p>Network Error, Please try later! &gt;_&lt; </p>");
                     ui.DialogHelper.open(ui.MessageDlg);
                 } else {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
-                        , _("<p>Cannot Authenticate You! Please check your username/password and API base</p>")
+                        , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
                     ui.DialogHelper.open(ui.MessageDlg);
                 }
@@ -143,18 +143,18 @@ function init () {
         var cb = "ui.Notification.set('New profile has been created!').show();";
         var prefix = $.trim($('#tbox_new_profile_name').val());
         if (prefix.length == 0 ) {
-            ui.Notification.set(_("Please entry a profile prefix!")).show();
+            ui.Notification.set("Please entry a profile prefix!").show();
             return;
         }
         if (prefix.indexOf('@') != -1) {
-            ui.Notification.set(_("Charactor `@` is not allow in profile prefix!")).show();
+            ui.Notification.set("Charactor `@` is not allow in profile prefix!").show();
             return;
         }
         db.add_profile(prefix, ui.Welcome.selected_service,
         function (result) {
             if (result != true) {
                 ui.Notification
-                    .set(_("This profile may has already exists!")).show();
+                    .set("This profile may has already exists!").show();
             } else {
                 ui.Notification.set('New profile has been created!').show();
                 conf.reload(function () {
@@ -249,7 +249,7 @@ function authenticate_pass(result) {
     setTimeout(function () {
     $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
     }, 100);
-    ui.Notification.set(_("Authentication OK!")).show();
+    ui.Notification.set("Authentication OK!").show();
     ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
     ui.Main.show();

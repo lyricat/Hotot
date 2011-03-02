@@ -1,6 +1,19 @@
 if (typeof ext == 'undefined') var ext = {};
 ext = {
 
+builtins: [
+    , 'org.hotot.gmap'
+    , 'org.hotot.imagepreview'
+    , 'org.hotot.imageupload'
+    , 'org.hotot.instapaper'
+    , 'org.hotot.sample'
+    , 'org.hotot.shorturl'
+    , 'org.hotot.translate'
+    , 'org.hotot.videopreview'
+],
+
+extras: [],
+
 ADD_TWEETS_LISTENER: 0x01,
 // callback(tweets, pagename);
 
@@ -114,7 +127,7 @@ function init_exts() {
             if (typeof extension.icon == 'undefined') {
                 icon = 'image/ic64_exts.png';
             } else {
-                icon = '../ext/' + extension.id + '/' + extension.icon;
+                icon = 'ext/' + extension.id + '/' + extension.icon;
             }
 
             if (!ext.exts_info.hasOwnProperty(extension.id)) {
@@ -141,6 +154,16 @@ function init_exts() {
             }
         }
     }
+},
+
+
+load_builtin_exts:
+function load_builtin_exts(callback) {
+    var path_arr = [];
+    for (var i in ext.builtins) {
+        path_arr.push('./ext/' + ext.builtins[i] + '/entry.js');
+    }
+    ext.load_exts(path_arr, callback);    
 },
 
 load_exts:

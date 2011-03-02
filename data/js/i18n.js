@@ -49,6 +49,8 @@ function trans_html() {
 },
 };
 
-    
+function _(msg) {
+    return i18n.get_msg(msg);
+}    
 
 

@@ -68,11 +68,9 @@ function serialize_array(arr) {
 
 is_native_platform:
 function is_native_platform() {
-    if (util.native_platform.indexOf(conf.settings.platform) != -1) {
-        return true;
-    }
-    return false;
+    return util.native_platform.indexOf(conf.vars.platform) != -1;
 },
+
 trace:
 function trace() {
     var callstack = [];

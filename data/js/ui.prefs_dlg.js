@@ -169,8 +169,8 @@ function load_prefs() {
         , prefs.remember_password);
     // Appearance
     var options_arr = []; var selected_idx = 0;
-    for (var i = 0; i < prefs.font_family_list.length; i += 1) {
-        var ff_name = prefs.font_family_list[i];
+    for (var i = 0; i < conf.settings.font_list.length; i += 1) {
+        var ff_name = conf.settings.font_list[i];
         options_arr.push('<option value="'
             + ff_name + '">' + ff_name + '</option>');
         if (ff_name == prefs.font_family_used) {

@@ -1,6 +1,12 @@
 if (typeof conf == 'undefined') var conf = {};
 conf = {
 
+vars: {
+      'platform': 'Chrome'
+    , 'version': '0.9.6'
+    , 'codename': 'Ada'
+},
+
 default_settings: {
       // Globals:
       'use_verbose_mode': true
@@ -14,9 +20,7 @@ default_settings: {
     , 'size_w': 500
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
-    , 'platform': 'Linux'
-    , 'version': '0.9.6'
-    , 'codename': 'Ada'
+    , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
 },
 
 default_prefs: {
@@ -29,7 +33,6 @@ default_prefs: {
           // Look & Feels:
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
         , 'use_native_notify': true
@@ -65,7 +68,6 @@ default_prefs: {
           // Look & Feels:
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
         , 'use_native_notify': true
@@ -192,8 +194,8 @@ function load_prefs(name) {
 
 apply_settings:
 function apply_settings() {
-    $('.version').text(conf.settings.version 
-        + ' (' + conf.settings.codename + ')');
+    $('.version').text(conf.vars.version 
+        + ' (' + conf.vars.codename + ')');
     jsOAuth.key = conf.settings.consumer_key;
     jsOAuth.secret = conf.settings.consumer_secret;
     // @TODO other settings should applied by python

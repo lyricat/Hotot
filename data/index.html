@@ -90,10 +90,14 @@ function navigate_action(uri) {
 
 function hotot_notify(title, summary, type) {
     if (conf.get_current_profile().preferences.use_native_notify) {
-        hotot_action('system/notify/'
-            + type
-            + '/' + encodeURIComponent(title)
-            + '/' + encodeURIComponent(summary));
+        if (util.is_native_platform()) {
+            hotot_action('system/notify/'
+                + type
+                + '/' + encodeURIComponent(title)
+                + '/' + encodeURIComponent(summary));
+        } else {
+            // @TODO chrome notify api
+        }
     } else {
         // @TODO other notify way
     }
@@ -143,6 +147,14 @@ function init(callback) {
         i18n.init(function () {});
         $(window).dequeue('_page_init');
     });
+    procs.push(function() {
+        ext.init();
+        $(window).dequeue('_page_init');
+    });
+    procs.push(function() {
+        on_load_finish();
+        $(window).dequeue('_page_init');
+    });
     $(window).queue('_page_init', procs);
     $(window).dequeue('_page_init');
 }
@@ -171,20 +183,58 @@ function init_ui() {
     ui.DialogHelper.init();
     ui.ActionMenu.init();
     ui.ContextMenu.init();
-    ext.init();
-    globals.load_flags = 1;
+}
+
+function overlay_variables(vars) {
+    if (util.is_native_platform()) {
+        // native variables 
+        conf.vars.platform = vars.platform;
+        conf.vars.conf_dir = vars.conf_dir;
+        conf.vars.cache_dir = vars.cache_dir;
+        conf.vars.avatar_cache_dir = vars.avatar_cache_dir;
+        conf.settings.font_list = vars.extra_fonts;
+        ext.extras = vars.extra_exts;
+    }
 }
 
 function on_load_finish() {
-    if (globals.load_flags == 0) {
+    // if native_platform
+    //      wait until the webview is ready.
+    if (util.is_native_platform() && globals.load_flags == 0) {
         setTimeout(on_load_finish, 300);
     } else {
-        hotot_action('system/apply_proxy_setting');
-        // init enabled extensions
-        ext.init_exts();
-        $('#welcome_page_loading').fadeOut(function () {
-            $('#welcome_page_main').fadeIn();  
+        // load builtins & extra extensions
+        var procs = [];
+        procs.push(function () {
+            ext.load_builtin_exts(function () {
+                $(window).dequeue('_on_load_finish');
+            });
         });
+        procs.push(function() {
+            ext.load_exts(ext.extras, function () {
+                $(window).dequeue('_on_load_finish');
+            });
+        });
+        // init enabled extensions
+        procs.push(function () {
+            ext.init_exts();
+            $(window).dequeue('_on_load_finish');
+        });
+        
+        // 2. @TODO push settings to native platform
+        if (util.is_native_platform()) {
+        
+        }
+
+        // 3. finish, hide loading prompt
+        procs.push(function () {
+            $('#welcome_page_loading').fadeOut(function () {
+                $('#welcome_page_main').fadeIn();  
+                $(window).dequeue('_on_load_finish');
+            });
+        });
+        $(window).queue('_on_load_finish', procs);
+        $(window).dequeue('_on_load_finish');
     }
 }
 
