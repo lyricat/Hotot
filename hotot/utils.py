@@ -11,6 +11,9 @@ import mimetypes, mimetools
 
 import config
 
+try: import i18n
+except: from gettext import gettext as _
+
 _browser = ''
 
 def get_desktop_environment_name():

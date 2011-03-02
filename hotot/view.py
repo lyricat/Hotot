@@ -8,6 +8,9 @@ import config
 from webkit import WebView
 import utils
 
+try: import i18n
+except: from gettext import gettext as _
+
 class MainView(WebView):
     def __init__(self):
         WebView.__init__(self)
