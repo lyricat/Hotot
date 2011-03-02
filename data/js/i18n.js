@@ -7,7 +7,7 @@ dict: {},
 
 init:
 function init(callback) {
-    $.getJSON('../_locales/' + i18n.locale + '/message.json',
+    $.getJSON('../_locales/' + i18n.locale + '/messages.json',
     function (result) {
         i18n.load_dict(result);
         i18n.trans_html();
