@@ -81,7 +81,9 @@ function update_tweet_block_width() {
 }
 
 function hotot_action(uri) {
-    alert('hotot:' + uri);
+    if (util.is_native_platform()) {
+        alert('hotot:' + uri);
+    }
 }
 
 function navigate_action(uri) {

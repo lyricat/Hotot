@@ -10,6 +10,7 @@ import gtk
 import mimetypes, mimetools
 
 import config
+import locale
 
 try: import i18n
 except: from gettext import gettext as _
@@ -153,3 +154,8 @@ def get_extra_fonts():
             font_list.remove(font)
             font_list.insert(0, font)
     return font_list
+
+def get_locale():
+    lang, encode = locale.getdefaultlocale()
+    return lang
+    

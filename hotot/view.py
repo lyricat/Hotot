@@ -78,7 +78,7 @@ class MainView(WebView):
             , 'avatar_cache_dir': config.AVATAR_CACHE_DIR
             , 'extra_fonts': utils.get_extra_fonts()
             , 'extra_exts': utils.get_extra_exts()
-            , 'locale': 'zh_cn' 
+            , 'locale': utils.get_locale()
         };
         # and then, notify web part i am ready to work :)
         view.execute_script('''
