@@ -2,7 +2,7 @@ if (typeof conf == 'undefined') var conf = {};
 conf = {
 
 vars: {
-      'platform': 'Linux' //'Chrome'
+      'platform': 'Chrome'
     , 'version': '0.9.6'
     , 'codename': 'Ada'
 },
@@ -198,11 +198,6 @@ function apply_settings() {
         + ' (' + conf.vars.codename + ')');
     jsOAuth.key = conf.settings.consumer_key;
     jsOAuth.secret = conf.settings.consumer_secret;
-    // @TODO other settings should applied by python
-    if (util.is_native_platform()) {
-        hotot_action('system/load_settings/'
-            + encodeURIComponent(JSON.stringify(conf.settings)));
-    }
 },
 
 apply_prefs:

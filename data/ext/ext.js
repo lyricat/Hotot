@@ -143,7 +143,7 @@ function init_exts() {
             ext.exts_info[extension.id].extension=extension;
 
             if (ext.exts_enabled.indexOf(extension.id) != -1) {
-                console.out('[i]Init Extension: ' + extension.name);
+                hotot_log('[Init Extension]', extension.name);
                 if (ext.exts_info[extension.id].hasOwnProperty('enable')){
                     extension.unload();
                 }

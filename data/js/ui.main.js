@@ -375,11 +375,11 @@ function load_tweets_cb(result, pagename) {
                     , 'count');
             break;
             case 'content':
-                if (json_obj.length < 5) {
+                if (json_obj.length < 6) {
                     for (var i = 0; i < json_obj.length; i += 1) {
                         var user = typeof json_obj[i].sender != 'undefined'
                             ? json_obj[i].sender : json_obj[i].user;
-                        hotot_action(user.screen_name
+                        hotot_notify(user.screen_name
                             , json_obj[i].text
                             , 'content');
                     }
@@ -492,7 +492,7 @@ function add_tweets(json_obj, container) {
         form_proc = ui.Template.form_search
 
     var sort_tweets = function (tweets) {
-        /* sort tweets in order of id. smaller first.
+        /* sort tweets in order of id. SMALLER first.
          * */
         tweets.sort(function (a, b) {
             return a.id_str > b.id_str; 
@@ -537,6 +537,7 @@ function add_tweets(json_obj, container) {
                     return true;
                 } else if (cmp_ret == 0) { //next_one_id == this.id_str
                     // simply drop the duplicate tweet.
+                    hotot_log('drop', this_one.id_str)
                     return false;
                 } else {                //next_one_id > this.id_str
                     next_one = get_next_tweet_dom(next_one);

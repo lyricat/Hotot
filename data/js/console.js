@@ -1,5 +1,5 @@
-if (typeof console == 'undefined') var console = {};
-console = {
+if (typeof util == 'undefined') var util = {};
+util.console = {
 
 cmd_count: 0,
 ps_in:  'In {%COUNT%}: ',
@@ -44,12 +44,12 @@ function interpret (cmd) {
     if (result == -1) {
         try {
             result = eval(cmd);
-            result = console.form_result('out', result);
+            result = util.console.form_result('out', result);
         } catch (e) {
-            result = console.form_result('err', e.toString());
+            result = util.console.form_result('err', e.toString());
         }
     } else {
-        result = console.form_result('out', result);
+        result = util.console.form_result('out', result);
     }
     return result;
 },
@@ -87,14 +87,14 @@ function interpret_predefined(cmd) {
 
 form_result:
 function form_result (type, raw_result) {
-    var ps = type == 'in'? console.ps_in:
-        (type == 'out'? console.ps_out: console.ps_err);
+    var ps = type == 'in'? util.console.ps_in:
+        (type == 'out'? util.console.ps_out: util.console.ps_err);
     var result = '<span class="console_ps_' + type + '">'
         + ps
         + '</span>'
         + raw_result + '<br/>';
     result = result.replace(/{%COUNT%}/g, 
-        '[<strong>' + console.cmd_count + '</strong>]');
+        '[<strong>' + util.console.cmd_count + '</strong>]');
     return result;
 },
 

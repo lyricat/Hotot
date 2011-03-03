@@ -99,7 +99,7 @@ function hotot_notify(title, summary, type) {
                 + '/' + encodeURIComponent(summary));
         } else if (conf.vars.platform == 'Chrome') {
             var notification = webkitNotifications.createNotification(
-              'image/ic48_hotot.png', title, summary);
+              'image/ic64_hotot.png', title, summary);
             notification.show();
         }
     } else {
@@ -112,10 +112,10 @@ function hotot_log(label, content) {
         if (util.is_native_platform()) {
             hotot_action('action/log/' + encodeURIComponent(label) 
                 + '/' + encodeURIComponent(content));
-        } else if (conf.platform == 'Chrome') {
+        } else if (conf.vars.platform == 'Chrome') {
             console.log('[' + label + '] ' + content);
         } else {
-            console.out('[' + label + '] ' + content);
+            util.console.out('[' + label + '] ' + content);
         }
     }
 }
@@ -161,7 +161,7 @@ function init(callback) {
 }
 
 function init_ui() {
-    console.init();
+    util.console.init();
     ui.Slider.init();
     ui.Template.init();
     ui.Header.init();

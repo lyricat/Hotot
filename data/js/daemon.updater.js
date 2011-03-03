@@ -71,6 +71,7 @@ function work() {
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
                     , (step + 1) * 5000);
                 step += 1;
+                hotot_log('Updater', 'Update page ' + pagename);
             }
         }
         if (step != 0) {
