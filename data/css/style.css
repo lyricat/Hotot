@@ -291,7 +291,6 @@ pre {
 }
 
 #status_box.closed {
-    -webkit-box-shadow: none;
     -webkit-box-shadow: #888 0px 1px 3px;
     border: 1px #999 solid;
 }
@@ -345,19 +344,6 @@ pre {
     border: 0px transparent none;
     background: transparent;
 }
-
-/*
-#btn_shorturl {
-    background-image: url(../image/ic16_link.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 5px;
-    width: 20px;
-    min-width: 0;
-    padding: 0;
-    text-decoration: none;
-}
-*/
 
 #status_len {
     margin-left: 5px;
@@ -1282,17 +1268,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 #sign_in_block_body {
     margin: 10px;
 }
-/*
-#btn_oauth_sign_in, #btn_regain_token {
-    background-color: #C0FBFD;
-    background-image: url(../image/ic16_twitter.png);
-    background-repeat:no-repeat;
-    background-position: 5px center;
-    border: 0 !important;
-    color: #1B7AA3;
-    padding-left: 25px;
-}
-*/
+
 #btn_regain_token {
     -webkit-box-shadow: none;
 } 
@@ -1855,7 +1831,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     height: 48px;
     float: left; 
     position: relative;
-    background-image: url('');
+    background-image: none;
     background-repeat: no-repeat;
     background-size: contain;
     -webkit-border-radius: 7px;

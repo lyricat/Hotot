@@ -30,10 +30,10 @@ function get_message(msg) {
     if (conf.vars.platform == 'Chrome') {
         return chrome.i18n.getMessage(msg);
     } else {
-        if (i18n.dict !=nill && msg in i18n.dict) {
+        if (i18n.dict != null && (msg in i18n.dict)) {
             return i18n.dict[msg].message;
         } else {
-            return msg;
+            return '';
         }
     }
 },

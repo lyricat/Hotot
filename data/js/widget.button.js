@@ -10,7 +10,7 @@ function WidgetButton(obj) {
     self._label_text = '';
     self._bg_color = '#fff';
     self._fg_color = '#000';
-    self._icon = 'none';
+    self._icon = '';
 
     self.init = function init(obj) {
         if (typeof (obj) == 'string') {
@@ -75,7 +75,7 @@ function WidgetButton(obj) {
 
         });
 
-        if (self._icon != 'none' && self._label_text != '') {
+        if (self._icon && self._label_text != '') {
             self._inner.css({
                   'padding-left': '25px'
                 , 'background-position': '5px center'
@@ -83,7 +83,7 @@ function WidgetButton(obj) {
         }
         if (self._width != -1) {
             var w = self._width 
-            if (self._icon != 'none') {
+            if (self._icon) {
                 w -= 25; 
             }
             var cls = {'width': w + 'px', 'min-width': 0};

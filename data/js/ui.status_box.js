@@ -45,7 +45,7 @@ function init () {
     ui.StatusBox.btn_update.on_clicked = function(event){
         var status_text = $.trim($('#tbox_status').attr('value'));
         if (status_text.length > 140) {
-            ui.Notification.set(_("Status is over 140 characters")).show();
+            ui.Notification.set("Status is over 140 characters").show();
             return;
         }
         if (status_text != globals.status_hint
@@ -307,7 +307,7 @@ function change_mode(mode) {
 update_status:
 function update_status(status_text) {
     if (status_text.length != 0) {
-        ui.Notification.set(_("Updating...")).show(-1);
+        ui.Notification.set("Updating...").show(-1);
         lib.twitterapi.update_status(status_text
             , ui.StatusBox.reply_to_id
             , ui.StatusBox.update_status_cb);
@@ -319,7 +319,7 @@ update_status_cb:
 function update_status_cb(result) {
     $('#tbox_status').addClass('hint_style')
         .attr('value', globals.status_hint);
-    ui.Notification.set(_("Update Successfully!")).show();
+    ui.Notification.set("Update Successfully!").show();
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
@@ -348,10 +348,10 @@ function post_message(message_text) {
     if (message_text.length != 0) {
         var name = $.trim($('#tbox_dm_target').val());
         if (name == '') {
-            ui.Notification.set(_("Please enter the recipient.")).show(-1);
+            ui.Notification.set("Please enter the recipient.").show(-1);
         } else {
             if (name[0] == '@') name = name.substring(1);
-            ui.Notification.set(_("Posting...")).show(-1);
+            ui.Notification.set("Posting...").show(-1);
             lib.twitterapi.new_direct_messages(
                   message_text
                 , null
@@ -366,7 +366,7 @@ function post_message_cb(result) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     $('#tbox_status').addClass('hint_style')
         .attr('value', globals.status_hint);
-    ui.Notification.set(_("Post Successfully!")).show();
+    ui.Notification.set("Post Successfully!").show();
     $('#status_info').hide();
     ui.StatusBox.close();
     return this;

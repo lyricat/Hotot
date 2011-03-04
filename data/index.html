@@ -100,7 +100,7 @@ function navigate_action(uri) {
     }
 }
 
-function hotot_notify(title, summary, type) {
+function hotot_notify(type, image, title, summary) {
     if (conf.get_current_profile().preferences.use_native_notify) {
         if (util.is_native_platform()) {
             hotot_action('system/notify/'
@@ -235,7 +235,8 @@ function on_load_finish() {
         
         // 2. @TODO push settings to native platform
         if (util.is_native_platform()) {
-        
+             hotot_action('system/load_settings/' 
+                 + encodeURIComponent(JSON.stringify(conf.settings)))
         }
         procs.push(function() {
             i18n.init(function () {});

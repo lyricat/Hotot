@@ -106,10 +106,7 @@ def crack_hotot(uri):
         traceback.print_exc(file=sys.stdout)
 
 def crack_action(params):
-    if params[1] == 'user':
-        screen_name = params[2]
-        load_user(screen_name)
-    elif params[1] == 'search':
+    if params[1] == 'search':
         load_search(params[2])
     elif params[1] == 'choose_file':
         callback = params[2]
@@ -161,13 +158,6 @@ def update_status(text):
     webv.execute_script('''
         ui.StatusBox.update_status('%s');
         ''' % text);
-
-def load_user(screen_name):
-    webv.execute_script('''
-        ui.PeopleTabs.set_people('%s');
-        ui.Notification.set(_("Loading @%s\'s timeline...")).show();
-        daemon.Updater.update_people();
-        ''' % (screen_name, screen_name));
 
 def load_search(query):
     webv.execute_script('''

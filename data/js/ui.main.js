@@ -38,7 +38,7 @@ function init () {
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-                ui.Notification.set(_("Loading Tweets...")).show(-1);
+                ui.Notification.set("Loading Tweets...").show(-1);
                 ui.Main.load_more_tweets(
                     function () {
                         info.html('Scroll Down to Load More');
@@ -261,7 +261,7 @@ function load_tweets (force) {
         .children('.load_more_info');
     container.nextAll('.tweet_block_bottom').show();
     info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-    ui.Notification.set(_("Loading Tweets...")).show(-1);
+    ui.Notification.set("Loading Tweets...").show(-1);
     daemon.Updater.watch_pages[pagename].proc(force);
 },
 
@@ -371,9 +371,10 @@ function load_tweets_cb(result, pagename) {
         if (ui.Main.block_info[pagename].use_notify) {
             switch (ui.Main.block_info[pagename].use_notify_type) {
             case 'count':
-                hotot_notify(_("Update page ") + pagename
-                    , tweet_count + _(" new items.")
-                    , 'count');
+                hotot_notify('count', null
+                    , "Update page " + pagename
+                    , tweet_count + " new items."
+                    );
             break;
             case 'content':
                 var cnt = 0; 
@@ -381,14 +382,16 @@ function load_tweets_cb(result, pagename) {
                 for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
                     var user = typeof json_obj[i].sender != 'undefined'
                         ? json_obj[i].sender : json_obj[i].user;
-                    hotot_notify(user.screen_name
-                        , json_obj[i].text
-                        , 'content');
+                    hotot_notify('content'
+                            , user.profile_image_url, user.screen_name
+                            , json_obj[i].text
+                        );
                 }
                 if (3 < json_obj.length) {
-                    hotot_notify(_("Update page ") + pagename
+                    hotot_notify('count', null
+                        , "Update page " + pagename
                         , "and " 
-                            + (tweet_count - 3) 
+                            + (tweet_count - 3)
                             + " new items remained."
                         , 'count');
                 }
@@ -598,11 +601,11 @@ function add_tweets(json_obj, container) {
     if (container.pagename != 'search') {
         db.get_tweet_cache_size(function (size) {
             if (db.MAX_TWEET_CACHE_SIZE < size) {
-                ui.Notification.set(_("Reducing ... ")).show(-1);
+                ui.Notification.set("Reducing ... ").show(-1);
                 db.reduce_tweet_cache(
                     parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
                 , function () {
-                    ui.Notification.set(_("Reduce Successfully!")).show();
+                    ui.Notification.set("Reduce Successfully!").show();
                     db.dump_tweets(json_obj);
                 })
             } else {
@@ -718,7 +721,7 @@ function on_rt_click(btn, li_id, event) {
         var id = row.id;
         var tweet_obj = JSON.parse(row.json);
 
-        ui.StatusBox.set_status_text(_("RT @") + tweet_obj.user.screen_name
+        ui.StatusBox.set_status_text("RT @" + tweet_obj.user.screen_name
             + ': ' + tweet_obj.text + ' ');
         ui.StatusBox.open(
         function() {
@@ -736,20 +739,20 @@ function on_retweet_click(btn, li_id, event) {
 
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
-        ui.Notification.set(_("Undo Retweeting ...")).show(-1);
+        ui.Notification.set("Undo Retweeting ...").show(-1);
         lib.twitterapi.destroy_status(rt_id, 
         function (result) {
-            ui.Notification.set(_("Undo Successfully!")).show();
+            ui.Notification.set("Undo Successfully!").show();
             $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
             li.removeClass('retweeted');
         });
     } else {
-        ui.Notification.set(_("Retweeting ...")).show(-1);
+        ui.Notification.set("Retweeting ...").show(-1);
         lib.twitterapi.retweet_status(id, 
         function (result) {
-            ui.Notification.set(_("Retweet Successfully!")).show();
+            ui.Notification.set("Retweet Successfully!").show();
             li.attr('my_retweet_id', result.id_str);
-            $(btn).addClass('retweeted').attr('title', _("Undo retweet."));
+            $(btn).addClass('retweeted').attr('title', "Undo retweet.");
             li.addClass('retweeted');
         });
     }
@@ -851,11 +854,11 @@ on_follow_btn_click:
 function on_follow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    ui.Notification.set(_("Follow @") + screen_name + _(" ...")).show();
+    ui.Notification.set("Follow @" + screen_name + " ...").show();
     lib.twitterapi.create_friendships(screen_name,
     function () {
         ui.Notification.set(
-            _("Follow @")+ screen_name+_(" Successfully!")).show();
+            "Follow @" + screen_name+" Successfully!").show();
         li.attr('following', 'true');
     });
 },
@@ -864,11 +867,11 @@ on_unfollow_btn_click:
 function on_unfollow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    ui.Notification.set(_("Unfollow @") + screen_name + _(" ...")).show();
+    ui.Notification.set("Unfollow @" + screen_name + " ...").show();
     lib.twitterapi.destroy_friendships(screen_name,
     function () {
         ui.Notification.set(
-            _("Unfollow @")+ screen_name+_(" Successfully!")).show();
+            "Unfollow @" + screen_name+ " Successfully!").show();
         li.attr('following', 'false');
     });
 },

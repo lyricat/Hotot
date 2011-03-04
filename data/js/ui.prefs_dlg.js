@@ -77,10 +77,10 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set(_("There are ")+err.count+_(" errors in your changes. Abort...")).show();
+            ui.Notification.set("There are "+err.count+" errors in your changes. Abort...").show();
             ui.MessageDlg.set_text(
                 ui.MessageDlg.TITLE_STR_ERROR,
-                _("<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - ")
+                "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
             ui.DialogHelper.open(ui.MessageDlg);
         } else {
@@ -100,7 +100,7 @@ function init () {
     var btn_prefs_restore_defaults 
         = new widget.Button('#btn_prefs_restore_defaults');
     btn_prefs_restore_defaults.on_clicked = function (event) {
-        if (confirm(_("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n")))
+        if (confirm("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n"))
             ui.PrefsDlg.restore_defaults();
     };
     btn_prefs_restore_defaults.create();

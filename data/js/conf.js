@@ -2,16 +2,16 @@ if (typeof conf == 'undefined') var conf = {};
 conf = {
 
 vars: {
-      'platform': 'Chrome'
+      'platform': 'Linux'
     , 'version': '0.9.6'
     , 'codename': 'Ada'
+    , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
+    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
 },
 
 default_settings: {
       // Globals:
       'use_verbose_mode': true
-    , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
-    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
       // Globals -> proxy:
     , 'use_http_proxy': false
     , 'http_proxy_host': ''
@@ -196,8 +196,8 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
-    jsOAuth.key = conf.settings.consumer_key;
-    jsOAuth.secret = conf.settings.consumer_secret;
+    jsOAuth.key = conf.vars.consumer_key;
+    jsOAuth.secret = conf.vars.consumer_secret;
 },
 
 apply_prefs:
