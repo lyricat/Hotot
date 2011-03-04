@@ -83,11 +83,21 @@ function update_tweet_block_width() {
 function hotot_action(uri) {
     if (util.is_native_platform()) {
         alert('hotot:' + uri);
-    }
+    } 
+}
+
+function open_people(screen_name) {
+    ui.Notification.set('Lookup @'+screen_name+'... ').show();
+    ui.PeopleTabs.set_people(screen_name);
+    daemon.Updater.update_people();
 }
 
 function navigate_action(uri) {
-    window.location.href = uri;
+    if (util.is_native_platform()) {
+        window.location.href = uri;
+    } else {
+        window.open(uri); 
+    }
 }
 
 function hotot_notify(title, summary, type) {
@@ -416,13 +426,13 @@ jQuery(function($) {
 
 <section id="center">
 <section id="welcome_page" class="page">
-    <h1 data-i18n-text>Hotot</h1>
+    <h1 data-i18n-text="app_name">Hotot</h1>
     <div id="welcome_page_main">
     <ul id="profile_avator_list">
         <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
     </ul>
     <div id="sign_in_block">
-        <h2 id="profile_title" data-i18n-text>Greeting!</h2>
+        <h2 id="profile_title" data-i18n-text="welcome_hint">Greeting!</h2>
         <div id="service_tabs">
         <ul class="service_tabs_btns">
             <li>
@@ -433,22 +443,23 @@ jQuery(function($) {
             </li>
         </ul>
         <div id="service_page_twitter" class="service_tabs_page">
-        <h3 data-i18n-text>Sign in with Twitter</h3>
+        <h3 data-i18n-text="sign_in_with_twitter_label">Sign in with Twitter</h3>
         <p><br/></p>
         <p>
         <center>
-            <a id="btn_oauth_sign_in" title="Sign in with Twitter" data-i18n-title >Sign in with Twitter</a>
+            <a id="btn_oauth_sign_in" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter_label">Sign in with Twitter</a>
         </center>
         </p>
         </div>
 
         <div id="service_page_identica" class="service_tabs_page">
         <p>
-            <label>Username:</label><br/>
+            <label data-i18n-text="username_label">Username:</label><br/>
             <input id="tbox_basic_auth_username" style="width: 170px;" type="text" value=""/><br/>
-            <label>Password:</label><br/>
+            <label data-i18n-text="password_label">Password:</label><br/>
             <input id="tbox_basic_auth_password" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" checked="1"/><label for="chk_remember_password">Remember Password</label><br/>
+            <input id="chk_remember_password" type="checkbox" checked="1"/>
+            <label for="chk_remember_password" data-i18n-text="remember_password_label">Remember Password</label><br/>
             <div style="text-align:right;margin-right:20px;">
             <a id="btn_basic_auth_sign_in">Sign In</a>
             </div>
@@ -457,7 +468,7 @@ jQuery(function($) {
 
         <div id="service_page_new" class="service_tabs_page">
         <p>
-            <label>Profile Name:</label><br/>
+            <label data-i18n-text="profile_name_label">Profile Name:</label><br/>
             <input id="tbox_new_profile_name" style="width: 100px;" type="text" value=""/>
             <label>@<span class="service_name"></span></label>
             <div style="text-align:center;margin: 10px auto;">
@@ -467,21 +478,21 @@ jQuery(function($) {
         </div>
         </div><!--tabs-->
         <div class="bottom">
-            <a id="btn_welcome_delete_profile" href="javascript:void(0)">Delete</a>
-            <a id="btn_welcome_prefs" href="javascript:void(0)">Preferences</a>     
-            <a id="btn_welcome_exts" href="javascript:void(0)">Extensions</a>
+            <a id="btn_welcome_delete_profile" href="javascript:void(0)" data-i18n-text="profile_delete_link">Delete</a>
+            <a id="btn_welcome_prefs" href="javascript:void(0)" data-i18n-text="profile_preferences_link">Preferences</a>     
+            <a id="btn_welcome_exts" href="javascript:void(0)" data-i18n-text="profile_extensions_link">Extensions</a>
         </div>
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
     <div id="welcome_page_loading">
         <div class="inner">
             <p><img src="image/ani_loading_bar.gif"/></p>
-            <p>Loading Ressources ...</p>
+            <p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
         </div>
     </div>
     <div id="welcome_bottom">
         <p>
-        <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)">Help</a>
+        <a id="btn_welcome_about" class="ic_about" href="javascript:void(0)" data-i18n-text="help">Help</a>
         </p>
     </div>
 </section>
@@ -491,21 +502,21 @@ jQuery(function($) {
     <div id="home_timeline_tweet_block" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info">Load more</div>
+            <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
         </div>
     </div>
     <div id="mentions_tweet_block" class="tweet_block">
         <ul>
         </ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info">Load more</div>
+            <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
         </div>
     </div>
     <div id="direct_messages_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox">Inbox</a></li>
-                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox">Outbox</a></li>
+                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox" data-i18n-text="dm_inbox_radio">Inbox</a></li>
+                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox" data-i18n-text="dm_outbox_radio">Outbox</a></li>
             </ol>
         </div>
         <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
@@ -524,9 +535,9 @@ jQuery(function($) {
     <div id="retweets_tweet_block" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
-                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me">Retweeted By Others</a></li>
-                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me">Retweeted By Me</a></li>
-                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me">My Tweets, Retweeted</a></li>
+                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me" data-i18n-text="retweeted_by_others_radio">Retweeted By Others</a></li>
+                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me" data-i18n-text="retweeted_by_me_radio">Retweeted By Me</a></li>
+                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me" data-i18n-text="my_tweets_be_retweeted_radio">My Tweets, Retweeted</a></li>
             </ol>
         </div>
         <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
@@ -551,7 +562,7 @@ jQuery(function($) {
     <div id="people_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="people_entry">
-                <label>Look up:</label>
+                <label data-i18n-text="people_look_up_label">Look up:</label>
                 <input id="tbox_people_entry" type="text" value=""/>
                 <a id="btn_people_entry">GO</a>
             </div>
@@ -562,57 +573,71 @@ jQuery(function($) {
                         <ul id="people_vcard_action_btns">
                         <li>
                             <a class="vcard_follow vcard_action_btn"
-                                href="javascript:void(0);">Follow</a>
+                                href="javascript:void(0);" 
+                                data-i18n-text="people_follow_link"
+                                >Follow</a>
                         </li>
                         <li>
                             <a class="vcard_block vcard_action_btn"
-                                href="javascript:void(0);">Block</a>
+                                href="javascript:void(0);"
+                                data-i18n-text="people_block_link"
+                                >Block</a>
                         </li>
                         <li>
                             <a class="vcard_unblock vcard_action_btn"
-                                href="javascript:void(0);">Unblock</a>
+                                href="javascript:void(0);"
+                                data-i18n-text="people_unblock_link"
+                                >Unblock</a>
                         </li>
                         <li>
                             <a class="vcard_edit vcard_action_btn"
-                                href="javascript:void(0);">Edit</a>
+                                href="javascript:void(0);"
+                                data-i18n-text="people_edit_link"
+                                >Edit</a>
                         </li>
                         </ul>
                     </div><!-- #people_vcard_ctrl -->
                     <ul id="people_vcard_tabs_btns" class="vcard_tabs_btns">
-                        <li><a class="vcard_tabs_btn" href="#people_vcard_info_page">INFO</a></li>
-                        <li><a class="vcard_tabs_btn" href="#people_vcard_stat_page">STAT</a></li>
+                        <li><a class="vcard_tabs_btn"
+                            href="#people_vcard_info_page"
+                            data-i18n-text="vcard_info_link"
+                            >INFO</a></li>
+                        <li><a class="vcard_tabs_btn" 
+                            href="#people_vcard_stat_page"
+                            data-i18n-text="vcard_stat_link"
+                            >STAT</a></li>
                     </ul>
                     <div id="people_vcard_tabs_pages">
                     <table id="people_vcard_info_page" class="vcard_tabs_page" border="0" cellpadding="0" cellspacing="0">
-                        <tr><td>Name: </td><td>
+                        <tr><td data-i18n-text="vcard_name_label">Name: </td><td>
                             <a class="screen_name" href="#"></a> 
                             (<span class="name"></span>) </td>
                         </tr>
-                        <tr><td>Bio: </td>
+                        <tr><td data-i18n-text="vcard_bio_label">Bio: </td>
                             <td><span class="bio"></span></td>
                         </tr>
-                        <tr><td>Web: </td>
+                        <tr><td data-i18n-text="vcard_web_label">Web: </td>
                             <td><a class="web" href="#" class="link"></a></td>
                         </tr>
-                        <tr><td>Location: </td>
+                        <tr><td data-i18n-text="vcard_location_label">Location: </td>
                             <td><span class="location"></span></td>
                         </tr>
                     </table>
                     <table id="people_vcard_stat_page" class="vcard_tabs_page">
-                        <tr><td>Join: </td>
+                        <tr><td data-i18n-text="vcard_join_time_label">Join: </td>
                             <td><span class="join"></span></td>
                         </tr>
-                        <tr><td>Tweets: </td>
+                        <tr><td data-i18n-text="vcard_tweet_stat_label">Tweets: </td>
                             <td><span class="tweet_cnt"></span>
                             (<span class="tweet_per_day_cnt"></span> per day)</td>
                         </tr>
-                        <tr><td>Followers: </td>
+                        <tr><td data-i18n-text="vcard_follower_stat_label">Followers: </td>
                             <td><span class="follower_cnt"></span></td>
                         </tr>
-                        <tr><td>Friends: </td>
+                        <tr><td data-i18n-text="vcard_friend_stat_label">Friends: </td>
                             <td><span class="friend_cnt"></span></td>
                         </tr>
-                        <tr><td>Relation: </td>
+                        <tr><td data-i18n-text="vcard_relation_label">Relation: </td>
                             <td><span class="relation"></span></td>
                         </tr>
                     </table>
@@ -621,12 +646,11 @@ jQuery(function($) {
             </div> <!-- vcard -->
             <div class="tweet_tabs">
                 <ol>
-                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet">Tweets</a></li>
-                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav">Fav</a></li>
+                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet" data-i18n-text="people_tweets">Tweets</a></li>
+                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav" data-i18n-text="people_favs">Favs</a></li>
                     
-                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers">Followers</a></li>
-                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends">Friends</a></li>
-                    
+                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers" data-i18n-text="people_followers">Followers</a></li>
+                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends" data-i18n-text="people_friends">Friends</a></li>
                 </ol>
             </div>
         </div>
@@ -670,7 +694,7 @@ jQuery(function($) {
     <div id="search_tweet_block" class="tweet_block">
         <div class="tweet_block_top">
             <div id="search_entry">
-                <label>Search for: </label>
+                <label data-i18n-text="search_for_label">Search for: </label>
                 <input id="tbox_search_entry" type="text" value=""/>
                 <a id="btn_search_entry" bg_color="#333" fg_color="white">GO</a>
             </div>

@@ -163,7 +163,7 @@ function fail(result) {
 load:
 function load() {
     ext.add_exts_menuitem('ext_btn_hotot_upload_image'
-        , '../ext/'+ext.HototImageUpload.id+'/ic16_upload.png'
+        , ext.HototImageUpload.id+'/ic16_upload.png'
         , 'Upload Images ...'
         , ext.HototImageUpload.on_ext_btn_clicked);
 },

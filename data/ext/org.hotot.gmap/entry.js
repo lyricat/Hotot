@@ -24,7 +24,7 @@ function on_form_indicator(tweet, html) {
     if (tweet.geo && tweet.geo.type == 'Point') {
         var x = tweet.geo.coordinates[0];
         var y = tweet.geo.coordinates[1];
-        var indicator = '<a class="geo_indicator" href="javascript:void(0);" x="'+x+'" y="'+y+'" onclick="ext.HototGMap.on_map_indicator_clicked('+ x + ',' + y + ')" style="background: transparent url(../ext/'+ext.HototGMap.id+'/ic16_marker.png) no-repeat; width: 16px; height: 16px; display:inline-block;"></a>';
+        var indicator = '<a class="geo_indicator" href="javascript:void(0);" x="'+x+'" y="'+y+'" onclick="ext.HototGMap.on_map_indicator_clicked('+ x + ',' + y + ')" style="background: transparent url(ext/'+ext.HototGMap.id+'/ic16_marker.png) no-repeat; width: 16px; height: 16px; display:inline-block;"></a>';
         html += indicator;
     }
     return html;

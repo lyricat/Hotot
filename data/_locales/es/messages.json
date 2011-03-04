@@ -1,0 +1,118 @@
+{
+    "loading_resources_hint": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_name_label": {
+    "message": "",
+    "description": ""
+  }
+, "people_edit_link": {
+    "message": "",
+    "description": ""
+  }
+, "people_follow_link": {
+    "message": "",
+    "description": ""
+  }
+, "retweeted_by_me_radio": {
+    "message": "",
+    "description": ""
+  }
+, "people_look_up_label": {
+    "message": "",
+    "description": ""
+  }
+, "username_label": {
+    "message": "",
+    "description": ""
+  }
+, "retweeted_by_others_radio": {
+    "message": "",
+    "description": ""
+  }
+, "app_name": {
+    "message": "",
+    "description": ""
+  }
+, "welcome_hint": {
+    "message": "",
+    "description": ""
+  }
+, "people_block_link": {
+    "message": "",
+    "description": ""
+  }
+, "help": {
+    "message": "",
+    "description": ""
+  }
+, "dm_inbox_radio": {
+    "message": "",
+    "description": ""
+  }
+, "profile_preferences_link": {
+    "message": "",
+    "description": ""
+  }
+, "profile_delete_link": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_bio_label": {
+    "message": "",
+    "description": ""
+  }
+, "password_label": {
+    "message": "",
+    "description": ""
+  }
+, "profile_extensions_link": {
+    "message": "",
+    "description": ""
+  }
+, "dm_outbox_radio": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_location_label": {
+    "message": "",
+    "description": ""
+  }
+, "load_more_hint": {
+    "message": "",
+    "description": ""
+  }
+, "people_unblock_link": {
+    "message": "",
+    "description": ""
+  }
+, "remember_password_label": {
+    "message": "",
+    "description": ""
+  }
+, "sign_in_with_twitter_label": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_info_link": {
+    "message": "",
+    "description": ""
+  }
+, "profile_name_label": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_stat_link": {
+    "message": "",
+    "description": ""
+  }
+, "my_tweets_be_retweeted_radio": {
+    "message": "",
+    "description": ""
+  }
+, "vcard_web_label": {
+    "message": "",
+    "description": ""
+  }
+}

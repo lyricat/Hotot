@@ -25,7 +25,7 @@ tweet_t:
     </div>\
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -61,7 +61,7 @@ dm_t:
     </div>\
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -86,7 +86,7 @@ search_t:
     </div>\
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -111,7 +111,7 @@ people_t:
     </div>\
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
-        <a class="who_href" href="hotot:action/user/{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -205,7 +205,7 @@ function form_tweet (tweet_obj, pagename) {
     var scheme = 'normal';
 
     var reply_str = (reply_id != null) ?
-        "reply to " + '<a href="hotot:action/user/'
+        "reply to " + '<a class="who_href" href="#'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
@@ -224,7 +224,7 @@ function form_tweet (tweet_obj, pagename) {
         scheme = 'me';
     }
     if (retweet_name != '') {
-        retweet_str = "retweeted by " +  '<a href="hotot:action/user/'
+        retweet_str = "retweeted by " +  '<a class="who_href" href="#'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
     }
@@ -364,10 +364,10 @@ function form_text(text) {
     text = text.replace(/"/g, '&#34;');
     text = text.replace(/'/g, '&#39;');
     text = text.replace(/\$/g, '$$$');
-    text = text.replace(ui.Template.reg_link_g, ' <a href="$1">$1</a>');
+    text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_user
-        , '$1@<a href="hotot:action/user/$2">$2</a>');
+        , '$1@<a class="who_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
         , '$1<a href="hotot:action/search/#$2">#$2</a>');
     text = text.replace(/[\r\n]\s+[\r\n]/g, '\n\n');

@@ -17,7 +17,7 @@ watch_pages: {
         , interval: 120
     }
     , '#direct_messages': {
-          watch: true
+          watch: true 
         , proc : function () {daemon.Updater.update_direct_messages();}
         , interval: 300
     }
@@ -71,7 +71,6 @@ function work() {
                 setTimeout(daemon.Updater.watch_pages[pagename].proc
                     , (step + 1) * 5000);
                 step += 1;
-                hotot_log('Updater', 'Update page ' + pagename);
             }
         }
         if (step != 0) {

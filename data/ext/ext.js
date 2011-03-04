@@ -143,7 +143,7 @@ function init_exts() {
             ext.exts_info[extension.id].extension=extension;
 
             if (ext.exts_enabled.indexOf(extension.id) != -1) {
-                hotot_log('[Init Extension]', extension.name);
+                hotot_log('Init Extension', extension.name);
                 if (ext.exts_info[extension.id].hasOwnProperty('enable')){
                     extension.unload();
                 }
@@ -213,7 +213,7 @@ function unregister_listener(type, callback) {
 
 add_exts_menuitem:
 function add_exts_menuitem(id, icon, label, callback) {
-    $('#exts_menu').append('<li><a class="'+id+'" style="background-image:url('+icon+');" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
+    $('#exts_menu').append('<li><a class="'+id+'" style="background-image:url(ext/'+icon+');" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
     $('#exts_menu .'+id).click(callback);
 },
 

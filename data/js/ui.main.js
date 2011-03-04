@@ -112,6 +112,7 @@ function init () {
     function (event) {
         ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
     });
+
     $('#people_unfollow_btn').click(
     function (event) {
         ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
@@ -362,8 +363,8 @@ function load_tweets_cb(result, pagename) {
             ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].since_id 
-                = json_obj[0].id_str;  
-            var last_id = json_obj[tweet_count - 1].id_str;
+                = json_obj[tweet_count - 1].id_str;  
+            var last_id = json_obj[0].id_str;
             if (ui.Main.block_info[pagename].max_id == null)
                 ui.Main.block_info[pagename].max_id = last_id - 1;
         }
@@ -375,17 +376,20 @@ function load_tweets_cb(result, pagename) {
                     , 'count');
             break;
             case 'content':
-                if (json_obj.length < 6) {
-                    for (var i = 0; i < json_obj.length; i += 1) {
-                        var user = typeof json_obj[i].sender != 'undefined'
-                            ? json_obj[i].sender : json_obj[i].user;
-                        hotot_notify(user.screen_name
-                            , json_obj[i].text
-                            , 'content');
-                    }
-                } else {
+                var cnt = 0; 
+                var i = json_obj.length - 1;
+                for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
+                    var user = typeof json_obj[i].sender != 'undefined'
+                        ? json_obj[i].sender : json_obj[i].user;
+                    hotot_notify(user.screen_name
+                        , json_obj[i].text
+                        , 'content');
+                }
+                if (3 < json_obj.length) {
                     hotot_notify(_("Update page ") + pagename
-                        , tweet_count + _(" new items.")
+                        , "and " 
+                            + (tweet_count - 3) 
+                            + " new items remained."
                         , 'count');
                 }
             break;
@@ -424,10 +428,10 @@ function load_more_tweets_cb(result, pagename) {
             ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].max_id 
-                = json_obj[tweet_count - 1].id_str - 1;  
-            var first_id = json_obj[0].id_str;
+                = json_obj[0].id_str - 1;  
             if (ui.Main.block_info[pagename].since_id == 1)
-                ui.Main.block_info[pagename].since_id = first_id;
+                ui.Main.block_info[pagename].since_id 
+                    = json_obj[tweet_count - 1].id_str;
         }
     }
 },
@@ -532,12 +536,11 @@ function add_tweets(json_obj, container) {
                 var next_one_id 
                     = ui.Main.normalize_id($(next_one).attr('id'));
                 var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
-                if (cmp_ret == 1) {         //next_one_id < this.id_str
+                if (cmp_ret == -1) {         //next_one_id < this.id_str
                     $(next_one).before(this_one_html);
                     return true;
                 } else if (cmp_ret == 0) { //next_one_id == this.id_str
                     // simply drop the duplicate tweet.
-                    hotot_log('drop', this_one.id_str)
                     return false;
                 } else {                //next_one_id > this.id_str
                     next_one = get_next_tweet_dom(next_one);
@@ -555,7 +558,9 @@ function add_tweets(json_obj, container) {
     }
     // insert tweets.
     if (1 < json_obj.length) {
-        json_obj = sort_tweets(json_obj);
+        json_obj.sort(function (a, b) {
+            return util.compare_id(a.id_str, b.id_str); 
+        });
     }
     for (var i = 0; i < json_obj.length; i += 1) {
         if (! insert_tweet(json_obj[i])) {
@@ -613,7 +618,9 @@ function add_tweets(json_obj, container) {
 
 trim_page:
 function trim_page(container) {
-    container.children('.card:gt('+globals.trim_bound+')').remove();
+    // @TODO unbind events
+    var cards = container.children('.card:gt('+globals.trim_bound+')');
+    cards.remove();
 },
 
 compress_page:
@@ -656,14 +663,21 @@ function bind_tweets_action(tweets_obj, pagename) {
             event.stopPropagation();
         });
 
-        $(id).find('.btn_tweet_thread').click(
+        $(id).find('.btn_tweet_thread:first').click(
         function (event) {
             ui.Main.on_expander_click(this, event);
         });
 
-        $(id).find('.btn_tweet_thread_more').click(
+        $(id).find('.btn_tweet_thread_more:first').click(
         function (event) {
             ui.Main.on_thread_more_click(this, event);
+        });
+
+        $(id).find('.who_href').click(
+        function (event) {
+            hotot_log('Who', id);
+            open_people($(this).attr('href').substring(1));
+            return false;
         });
     };
     for (var i = 0; i < tweets_obj.length; i += 1) {

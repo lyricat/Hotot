@@ -1751,10 +1751,10 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .card.normal a {
     color: #585858;
 }
-.card.normal .text a {
-    color: #D67514;
+.card.normal > .text a {
+    color: #D67514 !important;
 }
-.card.normal .who_href {
+.card.normal > .who > .who_href {
     color: #2c2e36;
 }
 .card.normal .tweet_thread {
@@ -1773,7 +1773,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .card.mention a {
     color: #D67514;
 }
-.card.mention .who_href {
+.card.mention > .who > .who_href {
     color: #502805;
 }
 .card.mention .tweet_thread {
@@ -1792,7 +1792,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .card.message a {
     color: #376AE4;
 }
-.card.message .who_href {
+.card.message > .who > .who_href {
     color: #14465f;
 }
 .card.message .tweet_thread {
@@ -1811,7 +1811,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 .card.me a {
     color: #238000;
 }
-.card.me .who_href {
+.card.me > .who > .who_href {
     color: #264408;
 }
 .card.me .tweet_thread {
@@ -1888,7 +1888,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     top: 0;
 }
 
-.card_body .who_href {
+.card_body > .who > .who_href {
     font-weight: bold;
 }
 
