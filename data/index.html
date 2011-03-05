@@ -118,8 +118,9 @@ function hotot_notify(type, image, title, summary) {
                 + '/' + encodeURIComponent(title)
                 + '/' + encodeURIComponent(summary));
         } else if (conf.vars.platform == 'Chrome') {
+            var img_url = image? image: 'image/ic64_hotot.png';
             var notification = webkitNotifications.createNotification(
-              'image/ic64_hotot.png', title, summary);
+              img_url, title, summary);
             notification.show();
         }
     } else {
