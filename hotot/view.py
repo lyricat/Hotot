@@ -36,6 +36,7 @@ class MainView(WebView):
         webkit.set_default_web_database_quota(1024**3L)
         ## bind events
         self.connect('navigation-requested', self.on_navigation_requested);
+        self.connect('new-window-policy-decision-requested', self.on_new_window_requested);
         self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
         templatefile = utils.get_ui_object(config.TEMPLATE)
@@ -43,8 +44,12 @@ class MainView(WebView):
         self.load_html_string(template, 'file://' + templatefile)
 
     def on_navigation_requested(self, view, webframe, request):
-        # get uri from request object
-        uri=request.get_uri()
+        return self.handle_uri(request.get_uri())
+
+    def on_new_window_requested(self, view, frame, request, decision, u_data):
+        return self.handle_uri(request.get_uri())
+
+    def handle_uri(self, uri):
         if uri.startswith('file://'):
             return False
         elif uri.startswith('hotot:'):
