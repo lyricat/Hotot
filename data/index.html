@@ -86,6 +86,16 @@ function hotot_action(uri) {
     } 
 }
 
+function quit() {
+    if (conf.vars.platform == 'Chrome') {
+        chrome.tabs.getCurrent(function (tab) {
+            chrome.tabs.remove(tab.id);    
+        });
+    } else {
+        hotot_action('system/quit');
+    }
+}
+
 function open_people(screen_name) {
     ui.Notification.set('Lookup @'+screen_name+'... ').show();
     ui.PeopleTabs.set_people(screen_name);
@@ -284,8 +294,7 @@ jQuery(function($) {
         }
         if (event.ctrlKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
-            hotot_action("system/quit");
-
+            quit();
         } else {
             if (globals.focus_input || !globals.in_main_view)
                 return

@@ -50,7 +50,7 @@ default_prefs: {
         , 'use_direct_messages_inbox_notify_sound': true
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
-        , 'sign_api_base': 'https://api.twitter.com/'
+        , 'sign_api_base': 'https://api.twitter.com/1/'
         , 'use_same_sign_api_base': true
         , 'oauth_base': 'https://api.twitter.com/oauth/'
         , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
