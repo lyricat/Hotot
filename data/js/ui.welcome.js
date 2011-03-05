@@ -159,6 +159,7 @@ function init () {
                 ui.Notification.set('New profile has been created!').show();
                 conf.reload(function () {
                     ui.Welcome.load_profiles_info();
+                    $('#profile_avator_list a[href="'+prefix+'@'+ui.Welcome.selected_service+'"]').click();
                 });
             }
         });

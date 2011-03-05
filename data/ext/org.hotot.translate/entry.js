@@ -184,7 +184,7 @@ function do_translate_tweet(li_id, dst_lang) {
     var tweet_id = li_id;
     var text = $(tweet_id + ' .card_body').children('.text');
     var style = 'background:transparent url('
-                + '../ext/'+ext.HototTranslate.id+'/ic16_translate.png'
+                + 'ext/'+ext.HototTranslate.id+'/ic16_translate.png'
                 +') no-repeat;padding-left:20px;';
     ext.HototTranslate.do_translate(dst_lang, text.text(),
     function (result) {

@@ -60,7 +60,7 @@ form_image:
 function form_image(href, src) {
     var html = '<a style="' 
         + ext.HototImagePreview.BORDER_STYLE
-        + '" href="'+href+'"><img style="'
+        + '" href="'+href+'" target="_blank"><img style="'
         + ext.HototImagePreview.IMG_STYLE
         + '" src="'+ src +'" /></a>'
     return html;
