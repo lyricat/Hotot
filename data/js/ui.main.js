@@ -1054,11 +1054,16 @@ function set_tweet_bar(li_id) {
         offset_top = $(li.parents('.card')[0]).attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
             + li.attr('offsetTop');
-        offset_right = 25;
+        offset_right = ($(window).width() - $('#aside').width())
+            - ($(li.parents('.card')[0]).attr('offsetLeft') 
+                + (li.parents('.card')[0].width))
+            + li.attr('offsetLeft') + 25;
     } else {
         offset_top = li.attr('offsetTop')
             - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
-        offset_right = 20;
+        offset_right = ($(window).width() - $('#aside').width())
+            - (li.attr('offsetLeft') + li.width())
+            + 10;
     }
     $('#tweet_bar').css('top', offset_top + 'px');
     $('#tweet_bar').css('right', offset_right + 'px');
