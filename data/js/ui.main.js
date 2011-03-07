@@ -652,18 +652,19 @@ function bind_tweets_action(tweets_obj, pagename) {
         });
         $(id).hover(
         function (event) {
-            ui.Main.set_active_tweet_id(id);
             $(id).addClass('active');
+            ui.Main.set_active_tweet_id(id);
             ui.Main.set_tweet_bar(id);
+            if (2 < id.split('-').length) { // in a thread
+                hotot_log('Hello', $($($(id).parents('.card')[0]))
+                    .parent().parent().attr('id'));
+            } else {
+                hotot_log('Hello', $(id).parent().parent().attr('id'));
+            }
             event.stopPropagation();
         },
         function (event) {
             $(id).removeClass('active');
-        });
-        $(id).mouseover(function () {
-            ui.Main.set_active_tweet_id(id);
-            ui.Main.set_tweet_bar(id);
-            event.stopPropagation();
         });
 
         $(id).find('.btn_tweet_thread:first').click(
@@ -1048,19 +1049,19 @@ function set_active_tweet_id(id) {
 set_tweet_bar: 
 function set_tweet_bar(li_id) {
     var li = $(li_id);
+    var tweet_block = li.parent().parent();
     // place tweet bar to a correct position
     var offset_top = 0; var offset_right = 0; 
     if (2 < li_id.split('-').length) { // in a thread
         offset_top = $(li.parents('.card')[0]).attr('offsetTop')
-            - $(ui.Slider.current + '_tweet_block').attr('scrollTop')
+            - tweet_block.attr('scrollTop')
             + li.attr('offsetTop');
         offset_right = ($(window).width() - $('#aside').width())
             - ($(li.parents('.card')[0]).attr('offsetLeft') 
                 + (li.parents('.card')[0].width))
             + li.attr('offsetLeft') + 25;
     } else {
-        offset_top = li.attr('offsetTop')
-            - $(ui.Slider.current + '_tweet_block').attr('scrollTop');
+        offset_top = li.attr('offsetTop') - tweet_block.attr('scrollTop');
         offset_right = ($(window).width() - $('#aside').width())
             - (li.attr('offsetLeft') + li.width())
             + 10;
