@@ -68,7 +68,11 @@ def apply_proxy_setting():
     if get_prefs('use_http_proxy'):
         proxy_uri = "https://%s:%s" % (
               get_prefs('http_proxy_host')
-            , get_prefs('http_proxy_port'))
+            , get_prefs('http_proxy_port'))            
+        if get_prefs('http_proxy_host').startswith('http://'):
+            proxy_uri = "%s:%s" % (
+                  get_prefs('http_proxy_host')
+                , get_prefs('http_proxy_port'))  
         webkit_set_proxy_uri(proxy_uri)
     else:
         webkit_set_proxy_uri("")
@@ -128,9 +132,8 @@ def crack_system(params):
     elif params[1] == 'load_settings':
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
-        app.init_hotkey()
-    elif params[1] == 'apply_proxy_setting':
         apply_proxy_setting()
+        app.init_hotkey()
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':

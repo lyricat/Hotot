@@ -144,7 +144,7 @@ function hotot_log(label, content) {
 /* 
     = startup process =
     - document.ready -> init() -> db.init() -> daemon.Updater.init()
-        -> conf.init() -> init_ui() -> set loading flags
+        -> conf.init() -> init_ui() -> ext.init() -> set loading flags
     - native web container init -> on_load_finish() -> wait for loading flags being setted -> ext.init_exts() -> finish
 */
 
@@ -226,7 +226,7 @@ function on_load_finish() {
     if (util.is_native_platform() && globals.load_flags == 0) {
         setTimeout(on_load_finish, 300);
     } else {
-        // load builtins & extra extensions
+        // 1. load builtins & extra extensions
         var procs = [];
         procs.push(function () {
             ext.load_builtin_exts(function () {
@@ -246,14 +246,16 @@ function on_load_finish() {
         
         // 2. @TODO push settings to native platform
         if (util.is_native_platform()) {
-             hotot_action('system/load_settings/' 
-                 + encodeURIComponent(JSON.stringify(conf.settings)))
+            hotot_action('system/load_settings/' 
+                + encodeURIComponent(JSON.stringify(conf.settings)))
+            $(window).dequeue('_on_load_finish');
         }
+        // 3. i18n
         procs.push(function() {
             i18n.init(function () {});
             $(window).dequeue('_on_load_finish');
         });
-        // 3. finish, hide loading prompt
+        // 4. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 $('#welcome_page_main').fadeIn();  
