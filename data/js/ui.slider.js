@@ -16,6 +16,15 @@ tweet_blocks: {
     '#search': 5,
 },
 
+tweet_blocks_seq: [
+    '#home_timeline', 
+    '#mentions',
+    '#direct_messages',
+    '#retweets',
+    '#people',
+    '#search',
+],
+
 init:
 function init () {
     this.id = '#main_page_slider';
@@ -51,22 +60,49 @@ slide_to:
 function slide_to(id) {
     var idx = ui.Slider.tweet_blocks[id];
     var width = globals.tweet_block_width;
-    ui.Slider.me.stop().animate({marginLeft:'-'+ idx * width +'px'}, 500);
     ui.Slider.current = id;
 
+    // get focused pages
+    ui.Slider.focused = [];
+    for (var i = idx; 
+        i < globals.column_num + idx && i < 6;
+        i += 1)
+    {
+        ui.Slider.focused.push(ui.Slider.tweet_blocks_seq[i]);
+    }
+    // slide page
+    var page_offset = (idx + globals.column_num) < 6 
+        ? idx: 6 - globals.column_num ;
+    ui.Slider.me.stop().animate(
+        {marginLeft:'-'+ page_offset * width +'px'}, 500);
+
+    hotot_log('focused', JSON.stringify(ui.Slider.focused));
+    // change indicators style
     var prev_sel = $('#indication').find('.selected');
-    var cur_sel = $('#idx_btn_' + id.substring(1));
+    var cur_sel = $.map(ui.Slider.focused, function (item) {
+        return $('#idx_btn_' + item.substring(1));
+    });
     $('#indication_light').stop().animate(
-          {'left': (cur_sel.parent().attr('offsetLeft') + 1) + 'px'}
+          { 'left': (cur_sel[0].parent().attr('offsetLeft') + 1) + 'px',
+            'width': (
+                  cur_sel[cur_sel.length - 1].parent().attr('offsetLeft') 
+                + cur_sel[cur_sel.length - 1].parent().width()
+                - cur_sel[0].parent().attr('offsetLeft')  
+                ) + 'px'
+          }
         , 200 
         , function () {
+            // remove selected style from the pre ones
             if (prev_sel) {
                 prev_sel.removeClass('selected');
                 prev_sel.next('.shape').hide();
             }
-            cur_sel.next('.shape').show();
-            cur_sel.addClass('selected');
-            cur_sel.removeClass('unread');
+            // add selected style to focused pages' indicator
+            $.each(cur_sel, function (i, obj) {
+                obj.next('.shape').show();
+                obj.addClass('selected');
+                obj.removeClass('unread');
+            });
         }
     );
 

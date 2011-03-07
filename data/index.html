@@ -75,15 +75,10 @@ var layout_opts = {
 };
 
 function update_tweet_block_width() {
-    if (globals.column_num == 1) {
-        globals.tweet_block_width = 
-            $(window).width() - $('#aside').width() + 1;
-        $(".tweet_block").width(globals.tweet_block_width);
-    } else {
-        globals.tweet_block_width = 
-            ($(window).width() - $('#aside').width()) / globals.column_num + 1;
-        $(".tweet_block").width(globals.tweet_block_width);
-    }
+    var view_width = $(window).width() - $('#aside').width();
+    globals.column_num = parseInt(view_width / 400) || 1;
+    globals.tweet_block_width = view_width / globals.column_num;
+    $(".tweet_block").width(globals.tweet_block_width);
 }
 
 function hotot_action(uri) {
@@ -301,7 +296,7 @@ var globals = {
     , focus_input: false
     , in_main_view: false
     , load_flags: 0
-    , column_num: 2
+    , column_num: 3
 };
 
 jQuery(function($) {
