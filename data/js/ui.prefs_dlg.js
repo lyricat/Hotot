@@ -118,13 +118,18 @@ function load_settings() {
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
-    $('#chk_prefs_use_http_proxy').attr('checked'
-        , conf.settings.use_http_proxy);
-    $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
-    $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
-    if (! conf.settings.use_http_proxy) {
-        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
-        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+    if (util.is_native_platform()) {
+        $('#chk_prefs_use_http_proxy').attr('checked'
+            , conf.settings.use_http_proxy);
+        $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
+        $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
+        if (! conf.settings.use_http_proxy) {
+            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+        }
+    } else {
+        $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
+        $('#chk_prefs_use_http_proxy, #chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_port').attr('disabled', true);
     }
 },
 
@@ -138,24 +143,26 @@ function save_settings() {
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // proxy
-    conf.settings.use_http_proxy
-        = $('#chk_prefs_use_http_proxy').attr('checked');
-    conf.settings.http_proxy_host 
-        = $('#tbox_prefs_http_proxy_host').val();
-    conf.settings.http_proxy_port 
-        = $('#tbox_prefs_http_proxy_port').val();
-    conf.settings.use_http_proxy
-        = $('#chk_prefs_use_http_proxy').attr('checked');
-    conf.settings.http_proxy_host
-        = $('#tbox_prefs_http_proxy_host').attr('value');
-    conf.settings.http_proxy_port
-        = $('#tbox_prefs_http_proxy_port').attr('value');
-    if (conf.settings.http_proxy_port == '') {
-        conf.settings.http_proxy_port = 0;
-    }
-    if (! conf.settings.use_http_proxy) {
-        $('#tbox_prefs_http_proxy_host').attr('disabled', true);
-        $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+    if (util.is_native_platform()) {
+        conf.settings.use_http_proxy
+            = $('#chk_prefs_use_http_proxy').attr('checked');
+        conf.settings.http_proxy_host 
+            = $('#tbox_prefs_http_proxy_host').val();
+        conf.settings.http_proxy_port 
+            = $('#tbox_prefs_http_proxy_port').val();
+        conf.settings.use_http_proxy
+            = $('#chk_prefs_use_http_proxy').attr('checked');
+        conf.settings.http_proxy_host
+            = $('#tbox_prefs_http_proxy_host').attr('value');
+        conf.settings.http_proxy_port
+            = $('#tbox_prefs_http_proxy_port').attr('value');
+        if (conf.settings.http_proxy_port == '') {
+            conf.settings.http_proxy_port = 0;
+        }
+        if (! conf.settings.use_http_proxy) {
+            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+        }
     }
     // save
     conf.save_settings();
