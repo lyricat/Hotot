@@ -662,7 +662,7 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.Main.set_tweet_bar(id);
             if (2 < id.split('-').length) { // in a thread
                 // hotot_log('Hello', $($($(id).parents('.card')[0]))
-                    .parent().parent().attr('id'));
+                //    .parent().parent().attr('id'));
             } else {
                 // hotot_log('Hello', $(id).parent().parent().attr('id'));
             }
