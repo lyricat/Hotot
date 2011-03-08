@@ -76,7 +76,6 @@ function slide_to(id) {
     ui.Slider.me.stop().animate(
         {marginLeft:'-'+ page_offset * width +'px'}, 500);
 
-    hotot_log('displayed', JSON.stringify(ui.Slider.displayed));
     // change indicators style
     var prev_sel = $('#indication').find('.selected');
     var cur_sel = $.map(ui.Slider.displayed, function (item) {

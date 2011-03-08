@@ -196,8 +196,8 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
-    jsOAuth.key = conf.vars.consumer_key;
-    jsOAuth.secret = conf.vars.consumer_secret;
+    jsOAuth.key = localStorage.consumer_key || conf.vars.consumer_key;
+    jsOAuth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
 },
 
 apply_prefs:
