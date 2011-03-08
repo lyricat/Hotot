@@ -30,7 +30,9 @@ function init () {
     var tweet_bar = $('#tweet_bar');
     $('.tweet_block').scroll(
     function (event) {
-        var container = ui.Main.get_current_container(ui.Slider.current);
+        var pagename = $(this).attr('name');
+        var container  = ui.Main.get_current_container(pagename);
+        hotot_log('page', pagename);
         if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
@@ -39,7 +41,7 @@ function init () {
                     .children('.load_more_info');
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
                 ui.Notification.set("Loading Tweets...").show(-1);
-                ui.Main.load_more_tweets(
+                ui.Main.load_more_tweets(pagename,
                     function () {
                         info.html('Scroll Down to Load More');
                     }
@@ -254,20 +256,23 @@ function show () {
 },
 
 load_tweets:
-function load_tweets (force) {
-    var pagename = ui.Slider.current;
-    var container = ui.Main.get_current_container(pagename);
-    var info = container.nextAll('.tweet_block_bottom')
-        .children('.load_more_info');
-    container.nextAll('.tweet_block_bottom').show();
-    info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-    ui.Notification.set("Loading Tweets...").show(-1);
-    daemon.Updater.watch_pages[pagename].proc(force);
+function load_tweets (pagenames, force) {
+    var container = null;
+    var info = null;
+    for (var i = 0; i < pagenames.length; i += 1) {
+        container = ui.Main.get_current_container(pagenames[i]);
+        info = container.nextAll('.tweet_block_bottom')
+            .children('.load_more_info');
+        container.nextAll('.tweet_block_bottom').show();
+        info.html('<img src="image/ani_loading_bar_gray.gif"/>');
+        ui.Notification.set('Loading ' + pagenames.length + ' page(s)...')
+            .show(-1);
+        daemon.Updater.watch_pages[pagenames[i]].proc(force);
+    }
 },
 
 load_more_tweets:
-function load_more_tweets (callback) {
-    var pagename = ui.Main.get_sub_pagename(ui.Slider.current);
+function load_more_tweets (pagename, callback) {
     var proc = ui.Main.block_info[pagename].api_proc;
 
     switch (pagename){

@@ -43,8 +43,7 @@ function init () {
 
     $('#btn_reload').click(
     function(event) {
-        ui.Notification.set("Loading Tweets...").show(-1);
-        ui.Main.load_tweets(true);    
+        ui.Main.load_tweets(ui.Slider.displayed, true);
     });
     
     $('#btn_prefs').click(

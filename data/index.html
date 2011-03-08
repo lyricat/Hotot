@@ -530,20 +530,23 @@ jQuery(function($) {
 
 <section id="main_page" class="page">
     <div id="main_page_slider">
-    <div id="home_timeline_tweet_block" class="tweet_block">
+    <div id="home_timeline_tweet_block" 
+        name="#home_timeline" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
             <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
         </div>
     </div>
-    <div id="mentions_tweet_block" class="tweet_block">
+    <div id="mentions_tweet_block"
+        name="#mentions" class="tweet_block">
         <ul>
         </ul>
         <div class="tweet_block_bottom">
             <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
         </div>
     </div>
-    <div id="direct_messages_tweet_block" class="tweet_block">
+    <div id="direct_messages_tweet_block" 
+        name="#direct_messages" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
                 <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox" data-i18n-text="dm_inbox_radio">Inbox</a></li>
@@ -563,7 +566,8 @@ jQuery(function($) {
             </div>
         </div>
     </div>
-    <div id="retweets_tweet_block" class="tweet_block">
+    <div id="retweets_tweet_block" 
+        name="#retweets" class="tweet_block">
         <div class="tweet_block_top tweet_tabs">
             <ol>
                 <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me" data-i18n-text="retweeted_by_others_radio">Retweeted By Others</a></li>
@@ -590,7 +594,8 @@ jQuery(function($) {
             </div>
         </div>
     </div>
-    <div id="people_tweet_block" class="tweet_block">
+    <div id="people_tweet_block" 
+        name="#people" class="tweet_block">
         <div class="tweet_block_top">
             <div id="people_entry">
                 <label data-i18n-text="people_look_up_label">Look up:</label>
@@ -722,7 +727,8 @@ jQuery(function($) {
             </div>
         </div>
     </div>
-    <div id="search_tweet_block" class="tweet_block">
+    <div id="search_tweet_block" 
+        name="#search" class="tweet_block">
         <div class="tweet_block_top">
             <div id="search_entry">
                 <label data-i18n-text="search_for_label">Search for: </label>
