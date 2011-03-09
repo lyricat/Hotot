@@ -665,6 +665,11 @@ function bind_tweets_action(tweets_obj, pagename) {
             $(id).removeClass('active');
             $(pagename).css('-webkit-transform','scale(0.9)')
         });
+        $(id).mouseover(function () {
+            ui.Main.set_active_tweet_id(id);
+            ui.Main.set_tweet_bar(id);
+            event.stopPropagation();
+        });
 
         $(id).find('.btn_tweet_thread:first').click(
         function (event) {
