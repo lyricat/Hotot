@@ -1879,7 +1879,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
 
 .card_body > .text {
     font-size: 12px;
-    line-height: 1.5em;
+    line-height: 180%;
     margin-top: 20px;
     word-wrap: break-word;
 }

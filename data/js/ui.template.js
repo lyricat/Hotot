@@ -237,7 +237,7 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%USER_NAME%}/g, user_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);
-    ret = ret.replace(/{%SOURCE%}/g, source);
+    ret = ret.replace(/{%SOURCE%}/g, source.replace('href', 'target="_blank" href'));
     ret = ret.replace(/{%SCHEME%}/g, scheme);
 
     ret = ret.replace(/{%IN_REPLY%}/g, 

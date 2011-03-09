@@ -681,6 +681,12 @@ function bind_tweets_action(tweets_obj, pagename) {
             open_people($(this).attr('href').substring(1));
             return false;
         });
+
+        $(id).find('.hash_href').click(
+        function (event) {
+            ui.SearchTabs.do_search($(this).attr('href').substring(1));
+            return false;
+        });
     };
     for (var i = 0; i < tweets_obj.length; i += 1) {
         bind_sigle_action(tweets_obj[i]);
