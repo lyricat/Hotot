@@ -1047,7 +1047,7 @@ function set_active_tweet_id(id) {
 set_tweet_bar: 
 function set_tweet_bar(li_id) {
     var li = $(li_id);
-    var tweet_block = li.parent().parent();
+    var tweet_block = $(li.parents('.tweet_block')[0]);
     // place tweet bar to a correct position
     var offset_top = 0; var offset_right = 0; 
     if (2 < li_id.split('-').length) { // in a thread
