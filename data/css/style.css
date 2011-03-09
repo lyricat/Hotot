@@ -2184,21 +2184,6 @@ td {
 .ic_search {
     background: transparent url(../image/ic_search.png) no-repeat;
 }
-.ic_about {
-    background: transparent url(../image/ic16_help.png) no-repeat;
-}
-.ic_prefs {
-    background: transparent url(../image/ic16_prefs.png) no-repeat;
-}
-.ic_exts {
-    background: transparent url(../image/ic16_exts.png) no-repeat;
-}
-.ic_reload {
-    background: transparent url(../image/ic16_reload.png) no-repeat;
-}
-.ic_sign_out {
-    background: transparent url(../image/ic16_sign_out.png) no-repeat;
-}
 .ic_close {
     background: transparent url(../image/ic16_close.png) no-repeat;
 }
