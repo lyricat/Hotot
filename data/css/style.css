@@ -51,7 +51,11 @@ pre {
     border-right: 5px #ccc solid;
 }
 
-#status_box ::-webkit-scrollbar-track-piece, .dialog ::-webkit-scrollbar-track-piece {
+#status_box ::-webkit-scrollbar-track-piece {
+    border-color: #fff;
+}
+
+.dialog ::-webkit-scrollbar-track-piece {
     border-color: #f2f2f2;
 }
 
