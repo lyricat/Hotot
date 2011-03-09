@@ -279,7 +279,7 @@ ext.Preferences = function (prefs_name) {
                 }
             },
             function (tx, error) {
-                console.out('sql:'+ error.message);
+                hotot_log('EXT', 'sql:'+ error.message);
             });
         });
     }
@@ -295,7 +295,7 @@ ext.Preferences = function (prefs_name) {
                 }
             },
             function (tx, error) {
-                console.out('sql:'+ error.message);
+                hotot_log('EXT', 'sql:'+ error.message);
             });
         });
     }

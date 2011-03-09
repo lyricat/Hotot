@@ -106,7 +106,7 @@ function dump_users(json_obj) {
         tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id_str, user.screen_name, JSON.stringify(user)],
         function (tx, rs) {},
         function (tx, error) {
-            console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+            hotot_log('DB', 'INSERT ERROR: '+ error.code + ','+ error.message);
         });
     };
     // dump users
@@ -124,14 +124,14 @@ function dump_tweets(json_obj) {
         tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id_str, user.screen_name, JSON.stringify(user)],
         function (tx, rs) {},
         function (tx, error) {
-            console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+            hotot_log('DB', 'INSERT ERROR: '+ error.code + ','+ error.message);
         });
     };
     var dump_single_tweet = function (tx, tweet_obj) {
         tx.executeSql('INSERT or REPLACE INTO TweetCache VALUES (?, ?, ?)', [tweet_obj.id_str, tweet_obj.text, JSON.stringify(tweet_obj)],
         function (tx, rs) {},
         function (tx, error) {
-            console.out('INSERT ERROR: '+ error.code + ','+ error.message);
+            hotot_log('DB', 'INSERT ERROR: '+ error.code + ','+ error.message);
         });
     };
 

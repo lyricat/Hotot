@@ -108,7 +108,6 @@ function set_service_url(service_index) {
                 var service_url = val;
             });
         }
-        console.out('Short URL: ' + service_url);
         ext.HototShortUrl.service_url = service_url;
     }); //
 },
@@ -140,7 +139,6 @@ function on_btn_short_url_clicked(event) {
         urls.push(match[1]);
         match = ui.Template.reg_link_g.exec($('#tbox_status').val());
     }
-    console.out(JSON.stringify(urls))
     for (var i = 0; i < urls.length; i += 1) {
         _requset(i);
     }

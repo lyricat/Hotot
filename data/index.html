@@ -87,12 +87,6 @@ function hotot_action(uri) {
     } 
 }
 
-function hotot_action(uri) {
-    if (util.is_native_platform()) {
-        alert('hotot:' + uri);
-    } 
-}
-
 function quit() {
     conf.save_settings(function () {
         if (conf.vars.platform == 'Chrome') {
@@ -131,6 +125,7 @@ function hotot_notify(type, image, title, summary) {
             var notification = webkitNotifications.createNotification(
               img_url, title, summary);
             notification.show();
+            setTimeout(function() {notification.cancel()}, 3000);
         }
     } else {
         // @TODO other notify way

@@ -111,7 +111,6 @@ function init () {
         } else {
         // access_token is existed
         // then test it
-        // console.out('[i]access_token: ' + jsOAuth.access_token);
             lib.twitterapi.verify(
             function (result) { 
             // access_token is valid
