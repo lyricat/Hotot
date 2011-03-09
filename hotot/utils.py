@@ -11,6 +11,7 @@ import mimetypes, mimetools
 
 import config
 import locale
+import ctypes
 
 try: import i18n
 except: from gettext import gettext as _
@@ -78,6 +79,35 @@ def open_webbrowser(uri):
     if sys.platform[:3] == "win":
         browser = 'start'
     subprocess.Popen([browser, uri])
+
+def webkit_set_proxy_uri(uri):
+    if uri and '://' not in uri:
+        uri = 'https://' + uri
+    try:
+        if os.name == 'nt':
+            libgobject = ctypes.CDLL('libgobject-2.0-0.dll')
+            libsoup = ctypes.CDLL('libsoup-2.4-1.dll')
+            libwebkit = ctypes.CDLL('libwebkit-1.0-2.dll')
+        else:
+            libgobject = ctypes.CDLL('libgobject-2.0.so.0')
+            libsoup = ctypes.CDLL('libsoup-2.4.so.1')
+            try:
+                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
+            except:
+                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
+            pass
+        proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
+        session = libwebkit.webkit_get_default_session()
+        libgobject.g_object_set(session, "proxy-uri", proxy_uri, None)
+        if proxy_uri:
+            libsoup.soup_uri_free(proxy_uri)
+        libgobject.g_object_set(session, "max-conns", 20, None)
+        libgobject.g_object_set(session, "max-conns-per-host", 5, None)
+        return 0
+    except:
+        exctype, value = sys.exc_info()[:2]
+        print 'error: webkit_set_proxy_uri: (%s, %s)' % (exctype,value)
+        return 1
 
 def open_file_chooser_dialog():
     sel_file = None

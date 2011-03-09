@@ -34,7 +34,6 @@ class Hotot:
         self.active_profile = 'default'
         self.protocol = ''
         self.build_gui()
-        self.build_inputw()
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -47,7 +46,7 @@ class Hotot:
 
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
-        self.window.set_default_size(500, 550)
+        #self.window.set_default_size(500, 550)
 
         vbox = gtk.VBox()
         scrollw = gtk.ScrolledWindow()
@@ -109,29 +108,6 @@ class Hotot:
         self.window.set_geometry_hints(min_height=380, min_width=460)
         self.window.show()
         self.window.connect('delete-event', gtk.Widget.hide_on_delete)
-        self.window.connect('size-allocate', self.on_size_allocate)
-
-    def build_inputw(self):
-        # input window
-        self.inputw = gtk.Window()
-        self.inputw.set_default_size(300, 10)
-        self.inputw.set_position(gtk.WIN_POS_CENTER)
-        self.inputw.set_title(_("What's happening?"))
-        hbox = gtk.HBox()
-
-        self.tbox_status = gtk.Entry()
-        self.tbox_status.connect('changed', self.on_tbox_status_changed)
-        self.tbox_status.connect('key-release-event'
-            , self.on_tbox_status_key_released)
-        hbox.pack_start(self.tbox_status)
-
-        self.btn_update = gtk.Button(_("Update"))
-        self.btn_update.connect('clicked', self.on_btn_update_clicked) 
-        hbox.pack_start(self.btn_update, expand=0, fill=0, padding=0)
-
-        hbox.show_all()
-        self.inputw.add(hbox)
-        self.inputw.connect('delete-event', gtk.Widget.hide_on_delete)
 
     def on_btn_update_clicked(self, btn):
         if (self.tbox_status.get_text_length() <= 140):
@@ -171,6 +147,34 @@ class Hotot:
         import sys
         sys.exit(0)
 
+    def apply_settings(self):
+        # init hotkey
+        self.init_hotkey()
+        # resize window
+        self.window.set_gravity(gtk.gdk.GRAVITY_CENTER)
+        self.window.resize(
+              config.settings['size_w']
+            , config.settings['size_h'])
+        # @TODO apply proxy
+        self.apply_proxy_setting()
+
+    def apply_proxy_setting(self):
+        if config.settings['use_http_proxy']:
+            proxy_uri = "https://%s:%s" % (
+                  config.settings['http_proxy_host']
+                , config.settings['http_proxy_port'])            
+            if config.settings['http_proxy_host'].startswith('http://'):
+                proxy_uri = "%s:%s" % (
+                      config.settings['http_proxy_host']
+                    , config.settings['http_proxy_port'])  
+            utils.webkit_set_proxy_uri(proxy_uri)
+        else:
+            utils.webkit_set_proxy_uri("")
+        # workaround for a BUG of webkitgtk/soupsession
+        # proxy authentication
+        agent.execute_script('''
+            new Image().src='http://google.com/';''');
+        
     def init_hotkey(self):
         try:
             keybinder.bind(
@@ -214,17 +218,9 @@ class Hotot:
         self.window.present()
         self.webv.grab_focus()
 
-    def on_size_allocate(self, win, req):
-        if self.is_sign_in:
-            config.settings['size_h'] = req.height
-            config.settings['size_w'] = req.width
-
     def on_sign_in(self):
         self.is_sign_in = True
         #self.window.set_title('Hotot | %s' % '$')
-        self.window.resize(
-              config.settings['size_w']
-            , config.settings['size_h'])
 
     def on_sign_out(self):
         self.is_sign_in = False

@@ -112,8 +112,9 @@ reload:
 function reload(callback) {
     procs = [];
     procs.push(function () {
-        conf.load_settings();
-        $(window).dequeue('_conf_init');
+        conf.load_settings(function () {
+            $(window).dequeue('_conf_init');
+        });
     });
     procs.push(function () {
         db.get_all_profiles(function (profiles) {
@@ -161,17 +162,23 @@ function get_current_profile() {
 },
 
 save_settings:
-function save_settings() {
+function save_settings(callback) {
     db.save_option('settings', JSON.stringify(conf.settings), function(result){
+        if (typeof (callback) != 'undefined') {
+            callback();
+        }
     });
 },
 
 load_settings:
-function load_settings() {
+function load_settings(callback) {
     db.load_option('settings', 
     function(settings) {
         conf.settings = conf.normalize_settings(JSON.parse(settings));
         conf.apply_settings();
+        if (typeof (callback) != 'undefined') {
+            callback();
+        }
     });
 },
 

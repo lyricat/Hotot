@@ -14,7 +14,6 @@ import hotot
 import os
 import sys
 import subprocess
-import ctypes
 
 try: import i18n
 except: from gettext import gettext as _
@@ -34,52 +33,6 @@ http_code_msg_table = {
     , 502: 'Server is down or being upgraded. Please try again later.'
     , 503: 'Server is overcapacity. Please try again later.'
 }
-
-def webkit_set_proxy_uri(uri):
-    if uri and '://' not in uri:
-        uri = 'https://' + uri
-    try:
-        if os.name == 'nt':
-            libgobject = ctypes.CDLL('libgobject-2.0-0.dll')
-            libsoup = ctypes.CDLL('libsoup-2.4-1.dll')
-            libwebkit = ctypes.CDLL('libwebkit-1.0-2.dll')
-        else:
-            libgobject = ctypes.CDLL('libgobject-2.0.so.0')
-            libsoup = ctypes.CDLL('libsoup-2.4.so.1')
-            try:
-                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
-            except:
-                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
-            pass
-        proxy_uri = libsoup.soup_uri_new(uri) if uri else 0
-        session = libwebkit.webkit_get_default_session()
-        libgobject.g_object_set(session, "proxy-uri", proxy_uri, None)
-        if proxy_uri:
-            libsoup.soup_uri_free(proxy_uri)
-        libgobject.g_object_set(session, "max-conns", 20, None)
-        libgobject.g_object_set(session, "max-conns-per-host", 5, None)
-        return 0
-    except:
-        exctype, value = sys.exc_info()[:2]
-        print 'error: webkit_set_proxy_uri: (%s, %s)' % (exctype,value)
-        return 1
-
-def apply_proxy_setting():
-    if get_prefs('use_http_proxy'):
-        proxy_uri = "https://%s:%s" % (
-              get_prefs('http_proxy_host')
-            , get_prefs('http_proxy_port'))            
-        if get_prefs('http_proxy_host').startswith('http://'):
-            proxy_uri = "%s:%s" % (
-                  get_prefs('http_proxy_host')
-                , get_prefs('http_proxy_port'))  
-        webkit_set_proxy_uri(proxy_uri)
-    else:
-        webkit_set_proxy_uri("")
-    # workaround for a BUG of webkitgtk/soupsession
-    # proxy authentication
-    webv.execute_script('''
-        new Image().src='http://google.com/';''');
 
 def init_notify():
     notify.set_icon_from_pixbuf(
@@ -132,8 +85,7 @@ def crack_system(params):
     elif params[1] == 'load_settings':
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
-        apply_proxy_setting()
-        app.init_hotkey()
+        app.apply_settings()
     elif params[1] == 'sign_in':
         app.on_sign_in()
     elif params[1] == 'sign_out':

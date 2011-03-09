@@ -87,16 +87,6 @@ function hotot_action(uri) {
     } 
 }
 
-function quit() {
-    if (conf.vars.platform == 'Chrome') {
-        chrome.tabs.getCurrent(function (tab) {
-            chrome.tabs.remove(tab.id);    
-        });
-    } else {
-        hotot_action('system/quit');
-    }
-}
-
 function hotot_action(uri) {
     if (util.is_native_platform()) {
         alert('hotot:' + uri);
@@ -104,13 +94,15 @@ function hotot_action(uri) {
 }
 
 function quit() {
-    if (conf.vars.platform == 'Chrome') {
-        chrome.tabs.getCurrent(function (tab) {
-            chrome.tabs.remove(tab.id);    
-        });
-    } else {
-        hotot_action('system/quit');
-    }
+    conf.save_settings(function () {
+        if (conf.vars.platform == 'Chrome') {
+            chrome.tabs.getCurrent(function (tab) {
+                chrome.tabs.remove(tab.id);    
+            });
+        } else {
+            hotot_action('system/quit');
+        }
+    });
 }
 
 function open_people(screen_name) {
@@ -266,6 +258,7 @@ function on_load_finish() {
             hotot_action('system/load_settings/' 
                 + encodeURIComponent(JSON.stringify(conf.settings)))
             $(window).dequeue('_on_load_finish');
+            globals.load_flags = 2;
         }
         // 3. i18n
         procs.push(function() {
@@ -390,9 +383,14 @@ jQuery(function($) {
 
     $(window).resize(
     function () {
-        update_tweet_block_width();
-        if (globals.load_flags){
-            ui.Slider.slide_to(ui.Slider.current);
+        if (globals.load_flags) {
+            update_tweet_block_width();
+            if (globals.load_flags == 2) {
+                conf.settings.size_w = $(window).width();
+                conf.settings.size_h = $(window).height();
+                conf.save_settings()
+                ui.Slider.slide_to(ui.Slider.current);
+            }
         }
     });
 
