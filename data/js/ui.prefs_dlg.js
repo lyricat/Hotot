@@ -129,7 +129,7 @@ function load_settings() {
         }
     } else {
         $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
-        $('#chk_prefs_use_http_proxy, #chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_port').attr('disabled', true);
+        $('#chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port').attr('disabled', true);
     }
 },
 
