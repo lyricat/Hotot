@@ -965,7 +965,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     font-size: 10px;
 }
 
-#people_request_hint, #search_no_result_hint {
+#people_request_hint, #search_no_result_hint, #people_no_result_hint {
     background: #fef6a8 none no-repeat 20px center;
     border: 1px solid #fcfc19;
     color: #990000;
@@ -983,7 +983,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     font-size: 18px;
 }
 
-#search_query_keywords {
+#search_no_result_hint .keywords, #people_no_result_hint .tkeywords {
     font-weight: bold;
 }
 

@@ -140,8 +140,11 @@ function update_people(force) {
 
     $('#people_request_hint').hide();
     
-    if (ui.Main.block_info['#people'].screen_name == '') 
+    if (ui.Main.block_info['#people'].screen_name == '') {
+        $('#people_no_result_hint .keywords').text('');
+        $('#search_no_result_hint').show();
         return;
+    } 
     
     var render_proc = function (user_obj) {
         ui.PeopleTabs.render_people_page(user_obj
@@ -191,8 +194,11 @@ function update_search() {
     $('#search_tweet_block > ul').html('');
     var query = ui.Main.block_info['#search'].query;
     var page = ui.Main.block_info['#search'].page;
-    if (query == '') 
+    if (query == '') {
+        $('#search_no_result_hint .keywords').text('');
+        $('#search_no_result_hint').show();
         return;
+    }
     lib.twitterapi.search(query, 1,
     function (result) {
         var tweets = [];
@@ -202,8 +208,8 @@ function update_search() {
         }
         if (tweets.length == 0) {
             $('#search_tweet_block .tweet_block_bottom').hide();
+            $('#search_no_result_hint .keywords').text(query);
             $('#search_no_result_hint').show();
-            $('#search_query_keywords').text(query);
         } else {
             $('#search_no_result_hint').hide();
             ui.Main.load_tweets_cb(tweets, '#search');

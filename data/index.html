@@ -330,7 +330,7 @@ jQuery(function($) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
                     ui.Notification.set('Loading Tweets...').show(-1);
-                    ui.Main.load_tweets();    
+                    ui.Main.load_tweets([ui.Slider.current]);    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
                     ui.Slider.slide_to_prev();
@@ -725,6 +725,18 @@ jQuery(function($) {
             <a id="btn_people_request">Send Request</a>
             </div>
         </div>
+        <div id="people_no_result_hint">
+            <p>
+            Your search - @<label class="keyword"></label> - did not match any people.
+            </p>
+            <p>
+            Suggestions: <br/>
+             - Make sure all words are spelled correctly.<br/>
+             - Try different people's name.<br/>
+             - Try search this token in search pane.<br/>
+            </p>
+        </div>
+
     </div>
     <div id="search_tweet_block" 
         name="#search" class="tweet_block">
