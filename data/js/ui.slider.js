@@ -7,6 +7,8 @@ id: '',
 
 current: '',
 
+column_num: 1,
+
 tweet_blocks: {
     '#home_timeline': 0, 
     '#mentions': 1,
@@ -45,39 +47,43 @@ function init () {
 
     $('#idx_btn_home_timeline').click();
     $('#idx_btn_home_timeline').parent().children('.shape').show();
-
-    $('#indication > ul >li').hover(
-    function () {
-        $(this).children('.shape').show();
-    },
-    function () {
-        if (!$(this).children('.idx_btn').hasClass('selected'))
-            $(this).children('.shape').hide();
-    });
 },
 
 slide_to:
 function slide_to(id) {
+/* = 3 columns as example = 
+ * idx:         0   1   2   3   4   5
+ * fixed_idx:   0   1   2   3   3   3
+ * page_ofst:   0   0   1   2   3   3
+ * displayed:  012 012 123 234 345 335
+ */
     var idx = ui.Slider.tweet_blocks[id];
     var width = globals.tweet_block_width;
     ui.Slider.current = id;
 
+    var fixed_idx = idx + ui.Slider.column_num < 6 
+        ? idx: 6 - ui.Slider.column_num; 
+    var page_offset = (fixed_idx == idx 
+            && 0 <= fixed_idx - parseInt(ui.Slider.column_num/2))
+        ? fixed_idx - parseInt(ui.Slider.column_num/2) : fixed_idx;
+
+    // slide page
+    ui.Slider.me.stop().animate(
+        {marginLeft:'-'+ page_offset* width +'px'}, 500);
+
+    // change current page style
+    $('.tweet_block').removeClass('current');
+    $(ui.Slider.current + '_tweet_block').addClass('current');
+
     // get displayed pages
     ui.Slider.displayed = [];
-    for (var i = idx; 
-        i < globals.column_num + idx && i < 6;
-        i += 1)
+    for (var i = 0; i < ui.Slider.column_num; i += 1)
     {
-        ui.Slider.displayed.push(ui.Slider.tweet_blocks_seq[i]);
+        ui.Slider.displayed.push(ui.Slider.tweet_blocks_seq[i + page_offset]);
     }
-    // slide page
-    var page_offset = (idx + globals.column_num) < 6 
-        ? idx: 6 - globals.column_num ;
-    ui.Slider.me.stop().animate(
-        {marginLeft:'-'+ page_offset * width +'px'}, 500);
 
     // change indicators style
-    var prev_sel = $('#indication').find('.selected');
+    var all_btns = $('#indication').find('.idx_btn');
     var cur_sel = $.map(ui.Slider.displayed, function (item) {
         return $('#idx_btn_' + item.substring(1));
     });
@@ -92,21 +98,24 @@ function slide_to(id) {
         , 200 
         , function () {
             // remove selected style from the pre ones
-            if (prev_sel) {
-                prev_sel.removeClass('selected');
-                prev_sel.next('.shape').hide();
+            if (all_btns) {
+                all_btns.removeClass('selected');
+                all_btns.removeClass('current');
+                all_btns.next('.shape').hide();
             }
             // add selected style to displayed pages' indicator
             $.each(cur_sel, function (i, obj) {
-                obj.next('.shape').show();
+                if (obj.attr('href') == ui.Slider.current) {
+                    obj.next('.shape').show();
+                    obj.addClass('current');
+                }
                 obj.addClass('selected');
                 obj.removeClass('unread');
             });
         }
     );
-
+    
     $(ui.Main.selected_tweet_id).removeClass('active');
-
     var first_one = $(ui.Slider.current + '_tweet_block .card:first');
     if (first_one.length != 0) {
         var block_name = ui.Slider.current;
@@ -119,7 +128,7 @@ function slide_to(id) {
     } else {
         ui.Main.selected_tweet_id = null;
     }
-
+    
     $('#tweet_bar').hide();
 },
 
@@ -128,7 +137,7 @@ function slide_to_prev() {
     var prev_id = '';
     var idx = ui.Slider.tweet_blocks[ui.Slider.current];
     if (idx == 0) {
-        prev_id = '#people';
+        prev_id = '#search';
     } else {
         for (var k in ui.Slider.tweet_blocks) {
             if (ui.Slider.tweet_blocks[k] == idx - 1) {

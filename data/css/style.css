@@ -34,41 +34,37 @@ pre {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
 }
 
-.dialog ::-webkit-scrollbar-button:start:decrement,
-.dialog ::-webkit-scrollbar-button:end:increment {
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
     height: 0px;
     display: block;
     background-color: transparent;
 }
 
-.dialog ::-webkit-scrollbar-track-piece,  #status_box ::-webkit-scrollbar-track-piece {
-    background: #666;
-    float: right;
-}
-.dialog ::-webkit-scrollbar-thumb:vertical, #status_box ::-webkit-scrollbar-thumb:vertical  {
-    background: #ccc;
-}
-
-.dialog ::-webkit-scrollbar-thumb:horizontal, #status_box ::-webkit-scrollbar-thumb:horizontal  {
-    background: #ccc;
-}
-
 ::-webkit-scrollbar-track-piece {
-    background-color: transparent;
+    background-color: #666;
+    border-left: 5px #ccc solid;
+    border-right: 5px #ccc solid;
+}
+
+#status_box ::-webkit-scrollbar-track-piece, .dialog ::-webkit-scrollbar-track-piece {
+    border-color: #f2f2f2;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
     height: 50px;
-    background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
+    background: #666;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
     width: 50px;
-    background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), to(#2c2c2c));
+    background: #666;
+    border-radius: 5px;
 }
 
 #container {
@@ -1588,6 +1584,7 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     height: 100%;
     overflow: auto;
     font-size: 12px;
+    -webkit-transition: all .2s ease-in-out;
 }
 
 .tweet_block > ul {

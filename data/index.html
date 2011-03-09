@@ -76,8 +76,8 @@ var layout_opts = {
 
 function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();
-    globals.column_num = parseInt(view_width / 400) || 1;
-    globals.tweet_block_width = view_width / globals.column_num;
+    ui.Slider.column_num = parseInt(view_width / 400) || 1;
+    globals.tweet_block_width = view_width / ui.Slider.column_num;
     $(".tweet_block").width(globals.tweet_block_width);
 }
 
@@ -296,7 +296,6 @@ var globals = {
     , focus_input: false
     , in_main_view: false
     , load_flags: 0
-    , column_num: 3
 };
 
 jQuery(function($) {

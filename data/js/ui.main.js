@@ -32,7 +32,6 @@ function init () {
     function (event) {
         var pagename = $(this).attr('name');
         var container  = ui.Main.get_current_container(pagename);
-        hotot_log('page', pagename);
         if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
@@ -660,16 +659,11 @@ function bind_tweets_action(tweets_obj, pagename) {
             $(id).addClass('active');
             ui.Main.set_active_tweet_id(id);
             ui.Main.set_tweet_bar(id);
-            if (2 < id.split('-').length) { // in a thread
-                // hotot_log('Hello', $($($(id).parents('.card')[0]))
-                //    .parent().parent().attr('id'));
-            } else {
-                // hotot_log('Hello', $(id).parent().parent().attr('id'));
-            }
             event.stopPropagation();
         },
         function (event) {
             $(id).removeClass('active');
+            $(pagename).css('-webkit-transform','scale(0.9)')
         });
 
         $(id).find('.btn_tweet_thread:first').click(
@@ -684,7 +678,6 @@ function bind_tweets_action(tweets_obj, pagename) {
 
         $(id).find('.who_href').click(
         function (event) {
-            hotot_log('Who', id);
             open_people($(this).attr('href').substring(1));
             return false;
         });

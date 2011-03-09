@@ -7,6 +7,7 @@ vars: {
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
+    , 'column_max_width': 400
 },
 
 default_settings: {
