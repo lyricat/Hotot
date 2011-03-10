@@ -1803,7 +1803,7 @@ input[type="checkbox"] {
 
 .tweet_source {
     float: left;
-    max-width: 200px;
+    max-width: 230px;
     height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
