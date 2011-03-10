@@ -1,0 +1,190 @@
+/*  = predefine = */
+/*
+    == default theme ==
+normal:
+    fg-color: #333;
+    bg-color: from #fff to #f3f3f3;
+    border-color: #ccc;
+    text-bg-color: #fff;
+hover:
+    fg-color: #000;
+    light-color: #ADE6FF
+active:
+    inset shadow:  #ccc 0 0 5px;
+disabled:
+    fg-color: #999;
+    text-bg-color: #eee;
+    
+    == dark theme ==
+normal:
+    fg-color: #eee
+    bg-color: from #666 to #333;
+    border-color: #ccc;
+hover:
+    fg-color: #fff;
+    light-color: #ADE6FF
+active:
+    inset shadow:  #333 0 0 5px;
+disabled:
+    fg-color: #aaa;
+    text-bg-color: #eee;
+
+*/
+/* = widget.button = */
+.button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    display: inline-block;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    min-width: 70px;
+    padding: 0 10px;
+    color: #333;
+    border: 1px #ccc solid;
+    margin-left: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.button.dark {
+    color: #eee;
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
+    border: 1px #444 solid;
+}
+
+.button:hover {
+    color: #000;
+}
+
+.button.dark:hover {
+    color: #fff;
+}
+
+.button:active {
+    -webkit-box-shadow: inset #ccc 0 0 5px;
+}
+
+.button.dark:active {
+    -webkit-box-shadow: inset #333 0 0 5px;
+}
+
+.button.disabled {
+    color: #999 !important;
+    -webkit-box-shadow: none !important;
+}
+.button.dark.disabled {
+    color: #aaa !important;
+}
+
+/* = widget.entry & widget.textarea = */
+/* == entry & textarea == */
+.entry, .textarea {
+    border: 1px #ccc solid;
+    padding: 2px 5px;
+    background-color: #fff;
+    outline: none;
+}
+
+.entry:focus, .textarea:focus {
+    -webkit-box-shadow: inset #ADE6FF 0 0 5px;
+}
+
+.entry.dark:focus, .textarea.dark:focus {
+    -webkit-box-shadow: inset #ADE6FF 0 0 5px;
+}
+
+.entry.dark, .textarea.dark {
+    border-color: #444;
+}
+
+.entry.disabled, .entry[disabled], .textarea.disabled, .textarea[disabled] {
+    color: #aaa;
+    background-color: #eee;
+}
+
+/* = entry = */
+.entry {
+    height: 20px;
+    line-height: 20px;
+}
+
+/* = radio group = */
+.radio_group {
+    margin: 5px 0;
+    vertical-align: middle;
+}
+
+.radio_group > li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: inline-block;
+    min-width: 80px;
+    height: 20px;
+    margin-left: -1px;
+}
+
+.radio_group > li > .radio_group_btn {
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    display: inline-block;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    min-width: 70px;
+    padding: 0 5px;
+    color: #333;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    border-top: 1px #ccc solid;
+    border-left: none;
+    margin-left: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.radio_group > li > .radio_group_btn:hover {
+    color: #000;
+}
+
+.radio_group.dark > li > .radio_group_btn {
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
+    color: #eee;
+    border-right: 1px #444 solid;
+    border-bottom: 1px #444 solid;
+    border-top: 1px #444 solid;
+}
+
+.radio_group.dark > li > .radio_group_btn:hover {
+    color: #fff;
+}
+
+.radio_group > li > .radio_group_btn.first {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-left: 1px #ccc solid;
+}
+
+.radio_group.dark > li > .radio_group_btn.first {
+    border-color: #444;
+}
+
+.radio_group > li > .radio_group_btn.last {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.radio_group > li > .radio_group_btn.selected {
+    color: #000;
+    border-color: #ccc;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#f2f2f2));
+}
+
+.radio_group.dark > li > .radio_group_btn.selected {
+    color: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#555));
+    border-color: #444;
+}
+

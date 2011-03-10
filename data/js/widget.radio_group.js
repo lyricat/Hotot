@@ -14,7 +14,7 @@ function WidgetRadioGroup(obj) {
         } else {
             self._me = obj;
         }
-        self.buttons = self._me.find('.group_btn');
+        self.buttons = self._me.find('.radio_group_btn');
     };
     
     self.render = function render () {

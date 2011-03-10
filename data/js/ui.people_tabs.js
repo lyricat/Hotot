@@ -117,10 +117,6 @@ function init() {
         infos.html('<img src="image/ani_loading_bar_gray.gif"/>');
         daemon.Updater.update_people();
     };
-    ui.PeopleTabs.btn_people_entry.set_attrs({
-          'bg_color': '#333'
-        , 'fg_color': 'white'
-    });
     ui.PeopleTabs.btn_people_entry.create();
     
     var btn_people_request = new widget.Button('#btn_people_request');

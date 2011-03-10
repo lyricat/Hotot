@@ -129,11 +129,6 @@ function init () {
             });
         }
     };
-    ui.Welcome.btn_oauth_sign_in.set_attrs({
-          'icon': 'image/ic16_twitter.png'
-        , 'bg_color': '#c0fbfd'
-        , 'fg_color': '#1b7aa3'
-    })
     ui.Welcome.btn_oauth_sign_in.create();
 
     var btn_welcome_create_profile 
