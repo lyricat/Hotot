@@ -155,7 +155,7 @@ function on_tweet_more_mitem_clicked(li_id) {
 do_translate_selection:
 function do_translate_selection(dst_lang) {
     var text = ui.ContextMenu.selected_string;
-    var style = 'background: #333; overflow: auto; padding: 2px 5px;';
+    var style = 'overflow: auto; padding: 2px 5px;';
     ext.HototTranslate.do_translate(dst_lang, text,
     function (result) {
         var content = '';
