@@ -1659,16 +1659,6 @@ input[type="checkbox"] {
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
 
-.avator_hlight {
-    background: url(../image/avator_hlight.png) no-repeat;
-    display: block;
-    height: 48px;
-    position: absolute;
-    left: 1px;
-    top: 1px;
-    width: 48px;
-    z-index: 000;
-}
 .card_body {
     margin: 0 0 0 65px;
     padding: 5px 10px 20px 10px;
