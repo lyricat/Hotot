@@ -46,7 +46,7 @@ pre {
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #666;
+    background-color: #333;
     border-left: 5px #ccc solid;
     border-right: 5px #ccc solid;
 }
@@ -61,13 +61,13 @@ pre {
 
 ::-webkit-scrollbar-thumb:vertical {
     height: 50px;
-    background: #666;
+    background: #333;
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
     width: 50px;
-    background: #666;
+    background: #333;
     border-radius: 5px;
 }
 
@@ -329,7 +329,18 @@ pre {
 #status_ctrl *{
     vertical-align:top;
 }
+
+#btn_shorturl {
+    background: #f9f9f9 url(../image/ic16_link.png) no-repeat center center !important;
+}
+
 #toggle_mode {
+    background: #f9f9f9 url(../image/ic16_dm.png) no-repeat center center !important;
+}
+
+#toggle_mode, #btn_shorturl {
+    width: 4px !important;
+    min-width: 0 !important;
     float: left;
 }
 
@@ -346,14 +357,7 @@ pre {
 }
 
 #status_len {
-    margin-left: 5px;
-    padding: 1px 5px;
-    background: #aaa;
     float: left;
-    color: #fff;
-    display: block;
-    text-align: left;
-    border-radius: 5px;
     font-size: 10px;
 }
 
@@ -839,36 +843,35 @@ input[type="checkbox"] {
 }
 
 #people_vcard {
+    display: none;
     font-size: 10px;
-    background: #474c4e;
-    color: #fff;
+    background: #f2f2f2;
+    color: #333;
     border: 0;
-    padding: 3px 5px;
+    margin: 5px;
+    padding: 5px;
     position: relative;
+    border-radius: 5px;
 }
 
 #people_vcard_ctrl {
-    float: right;
+    text-align: center;
 }
 
 #people_vcard_tabs_pages {
     margin-left: 60px;
+    font-size: 12px;
 }
 
 #people_vcard_action_btns {
-    margin: 0 0 0 60px;
-    padding: 0;
+    margin: 5px 10px;
+    border-top: 1px #ccc solid;
+    padding: 5px;
 }
 
 #people_vcard_action_btns li {
     list-style-type: none;
     display: inline-block;
-}
-
-#people_vcard_action_btns a {
-    list-style-type: none;
-    display: inline-block;
-    padding: 2px 10px;
 }
 
 #people_entry, #search_entry {
@@ -881,7 +884,11 @@ input[type="checkbox"] {
 }
 
 #people_entry *, #search_entry *{
-    font-size: 10px;
+    font-size: 12px;
+}
+
+#people_radio_group_wrapper {
+    display: none;
 }
 
 #people_request_hint, #search_no_result_hint, #people_no_result_hint {
@@ -914,42 +921,8 @@ input[type="checkbox"] {
     margin: 0 auto;
 }
 
-.tweet_tabs ol {
-    list-style-type: none;
-    margin: 3px 0;
-    text-align: center;
-}
-
-.tweet_tabs ol li:first-child {
-    border-left: #2c2c2c;
-}
-
-.tweet_tabs ol li {
-    display: inline-block;
-    border-right: #2c2c2c;
-}
-
-.tweet_tabs_btn {
-    min-width: 80px;
-    text-align: center;
-    display: inline-block;
-    padding: 3px 10px;
-    text-decoration: none;
-    font-size: 10px;
-    -webkit-border-radius: 5px 5px;
-}
-
-.tweet_tabs_btn.selected {
-    background: #222
-}
-
-.tweet_tabs_btn.selected:hover {
-    color: white;
-}
-
 .tweet_sub_block {
     display: none;
-    max-height: 100%;
 }
 
 .tweet_sub_block > ul {
@@ -1477,32 +1450,12 @@ input[type="checkbox"] {
     position: relative;
 }
 
-.vcard_tabs_btns {
-    padding: 0;
-    margin: 0;
-}
-
-.vcard_tabs_btns > li {
-    list-style-type: none;
-    display: inline-block;
-}
-
-.vcard_tabs_btn {
-    padding: 2px 10px;
-    margin: 0;
-    font-size: 10px;
-    display: inline-block;
-    list-style-type: none;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.vcard_tabs_btn.selected {
-    background-color: #222;
+.vcard * {
+    color: #333;
 }
 
 .vcard_tabs_page {
-    width: 80%;
+    width: 100%;
     border: none;
     border-collapse:collapse;
     display: none;
@@ -1522,15 +1475,11 @@ input[type="checkbox"] {
 }
 
 .tweet_block_top {
-    font-size: 10px;
-    background: #474c4e;
+    font-size: 12px;
+    background: #777777 url(../image/mask.png);
     color: #fff;
     border: 0;
     padding: 3px 5px;
-}
-
-.tweet_block_top a {
-    color: #fff;
 }
 
 .tweet_block_top * {

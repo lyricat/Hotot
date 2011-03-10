@@ -40,7 +40,8 @@ function init () {
                     .children('.load_more_info');
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
                 ui.Notification.set("Loading Tweets...").show(-1);
-                ui.Main.load_more_tweets(pagename,
+                ui.Main.load_more_tweets(
+                    ui.Main.get_sub_pagename(pagename),
                     function () {
                         info.html('Scroll Down to Load More');
                     }

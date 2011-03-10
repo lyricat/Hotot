@@ -97,6 +97,7 @@ disabled:
 
 .entry.dark, .textarea.dark {
     border-color: #444;
+    background-image:  url(../image/mask.png);
 }
 
 .entry.disabled, .entry[disabled], .textarea.disabled, .textarea[disabled] {
@@ -161,17 +162,17 @@ disabled:
     color: #fff;
 }
 
-.radio_group > li > .radio_group_btn.first {
+.radio_group > li:first-child > .radio_group_btn {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-left: 1px #ccc solid;
 }
 
-.radio_group.dark > li > .radio_group_btn.first {
+.radio_group.dark > li:first-child > .radio_group_btn {
     border-color: #444;
 }
 
-.radio_group > li > .radio_group_btn.last {
+.radio_group > li:last-child > .radio_group_btn {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }

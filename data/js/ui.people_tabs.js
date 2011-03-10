@@ -4,52 +4,43 @@ ui.PeopleTabs = {
 current: null,
 
 relation_map: { 
-      0: '&infin; You are friends.'
-    , 1: '&ni; You are followed by them.'
-    , 2: '&isin; You are following.'
-    , 3: '&empty; You are not following each other.'
+      0: 'Hey, it\'s YOU!'
+    , 1: '&infin; You are friends.'
+    , 2: '&ni; You are followed by them.'
+    , 3: '&isin; You are following.'
+    , 4: '&empty; You are not following each other.'
 },
 
 init:
 function init() {
-    $('#people_tweet_block .tweet_tabs_btn').click(
-    function (event) {
-        if (! $(this).hasClass('selected')) {
-            // activate another sub page.
-            ui.PeopleTabs.current = $(this).attr('href');
-            var pagename = ui.PeopleTabs.current + '_sub_block';
-            $('#people_tweet_block .tweet_tabs_btn').not(this).removeClass('selected');
-            $(this).addClass('selected');
-            $('#people_tweet_block .tweet_tabs_page').not(pagename).hide();
-            $(pagename).show();
-            if (ui.Main.block_info['#people'].screen_name != '') {
-                ui.Notification.set("Loading ...").show(-1);
-                daemon.Updater.update_people();
-            }
+    var btns = new widget.RadioGroup('#people_radio_group');
+    btns.on_clicked = function (btn, event) {
+        // activate another sub page.
+        ui.PeopleTabs.current = $(btn).attr('href');
+        var pagename = ui.PeopleTabs.current + '_sub_block';
+        $('#people_tweet_block .tweet_sub_block').not(pagename).hide();
+        $(pagename).show();
+        if (ui.Main.block_info['#people'].screen_name != '') {
+            ui.Notification.set("Loading ...").show(-1);
+            daemon.Updater.update_people();
         }
-        return false;
-    });
+    };
+    btns.create();
     ui.PeopleTabs.current = '#people_tweet';
-
-    $('#people_vcard_tabs_btns .vcard_tabs_btn').click(
-    function (event) {
-        if (! $(this).hasClass('selected')) {
-            // activate another sub page.
-            var pagename = $(this).attr('href');
-            $('#people_vcard_tabs_btns .vcard_tabs_btn')
-                .not(this).removeClass('selected');
-            $(this).addClass('selected');
-            $('#people_vcard_tabs_pages .vcard_tabs_page')
-                .not(pagename).hide();
-            $(pagename).show();
-        }
-        return false;
-    });
-    $('#people_vcard_tabs_btns .vcard_tabs_btn:first').click();
-
     $(ui.PeopleTabs.current + '_sub_block').show();
 
     // vcard
+    var vcard_btns = new widget.RadioGroup('#people_vcard_radio_group');
+    vcard_btns.on_clicked = function (btn, event) {
+        // activate another sub page.
+        var pagename = $(btn).attr('href');
+        $('#people_vcard_tabs_pages .vcard_tabs_page')
+            .not(pagename).hide();
+        $(pagename).show();
+    };
+    vcard_btns.create();
+    $('#people_vcard_info_page').show();
+
     $('#people_vcard .vcard_follow').click(
     function (event) {
         var screen_name = ui.Main.block_info['#people'].screen_name;
@@ -130,13 +121,12 @@ set_people:
 function set_people(screen_name) {
     if (screen_name == globals.myself.screen_name) {
         $('#people_vcard_action_btns .vcard_edit').parent().show();
-        $('#people_vcard_action_btns .vcard_action_btn')
+        $('#people_vcard_action_btns .button')
             .not('.vcard_edit').parent().hide();
     } else {
         $('#people_vcard_action_btns .vcard_edit').parent().hide();
-        $('#people_vcard_action_btns .vcard_action_btn')
+        $('#people_vcard_action_btns .button')
             .not('.vcard_edit').parent().show();
-
     }
     ui.Main.block_info['#people'].screen_name = screen_name;
     ui.Main.block_info['#people_tweet'].since_id = 1;
@@ -149,24 +139,28 @@ function set_people(screen_name) {
 
 get_relationship:
 function get_relationship(screen_name, callback) {
-    lib.twitterapi.show_friendships(
-          screen_name
-        , globals.myself.screen_name
-        , function (result) {
-            var source = result.relationship.source;
-            var relation = 0;
-            if (source.following && source.followed_by) {
-                relation = 0;
-            } else if (source.following && !source.followed_by) {
-                relation = 1;
-            } else if (!source.following && source.followed_by) {
-                relation = 2;
-            } else {
-                relation = 3;
+    if (screen_name == globals.myself.screen_name) {
+        callback(0);
+    } else {
+        lib.twitterapi.show_friendships(
+              screen_name
+            , globals.myself.screen_name
+            , function (result) {
+                var relation = 0;
+                var source = result.relationship.source;
+                if (source.following && source.followed_by) {
+                    relation = 1;
+                } else if (source.following && !source.followed_by) {
+                    relation = 2;
+                } else if (!source.following && source.followed_by) {
+                    relation = 3;
+                } else {
+                    relation = 4;
+                }
+                callback(relation);
             }
-            callback(relation);
-        }
-    );
+        );
+    }
 },
 
 render_people_page:
@@ -202,13 +196,14 @@ function render_people_page(user_obj, pagename, proc) {
             $('#people_vcard .relation').html(
                 ui.PeopleTabs.relation_map[rel]
             );
-            if (rel == 0 || rel == 2) {
+            if (rel == 1 || rel == 3) {
                 btn_follow.html('Unfollow');
                 btn_follow.addClass('unfo');
             }
         });
     $('#people_vcard').show();
     $('#people_entry').css('border-bottom', '0');
+    $('#people_radio_group_wrapper').show();
 },
 
 

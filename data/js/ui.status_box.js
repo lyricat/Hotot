@@ -335,9 +335,9 @@ update_status_len:
 function update_status_len() {
     var status_len = $('#tbox_status').attr('value').length;
     if (status_len > globals.max_status_len)
-        $('#status_len').css('background-color', '#cc0000');
+        $('#status_len').css('color', '#cc0000');
     else
-        $('#status_len').css('background-color', '#aaa');
+        $('#status_len').css('color', '#aaa');
     $('#status_len').html(status_len + '/' + globals.max_status_len);
     return this;
 },

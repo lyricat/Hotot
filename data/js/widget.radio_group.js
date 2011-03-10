@@ -24,6 +24,7 @@ function WidgetRadioGroup(obj) {
                 self.on_clicked(btn, event);
             }
             self._on_clicked(btn, event);
+            return false;
         });
     };
     

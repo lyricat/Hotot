@@ -552,19 +552,28 @@ jQuery(function($) {
     </div>
     <div id="direct_messages_tweet_block" 
         name="#direct_messages" class="tweet_block">
-        <div class="tweet_block_top tweet_tabs">
-            <ol>
-                <li><a id="btn_dm_inbox" class="tweet_tabs_btn selected" href="#direct_messages_inbox" data-i18n-text="dm_inbox_radio">Inbox</a></li>
-                <li><a id="btn_dm_outbox" class="tweet_tabs_btn" href="#direct_messages_outbox" data-i18n-text="dm_outbox_radio">Outbox</a></li>
+        <div class="tweet_block_top">
+            <center>
+            <ol id="dm_radio_group" class="radio_group dark">
+                <li>
+                    <a id="btn_dm_inbox" class="radio_group_btn selected"
+                        href="#direct_messages_inbox"
+                        data-i18n-text="dm_inbox_radio">Inbox</a>
+                </li><li>
+                    <a id="btn_dm_outbox" class="radio_group_btn"
+                        href="#direct_messages_outbox"
+                        data-i18n-text="dm_outbox_radio">Outbox</a>
+                </li>
             </ol>
+            </center>
         </div>
-        <div id="direct_messages_inbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
+        <div id="direct_messages_inbox_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Press `R` to Load Direct Meassages</div>
             </div>
         </div>
-        <div id="direct_messages_outbox_sub_block" class="tweet_tabs_page  tweet_sub_block">
+        <div id="direct_messages_outbox_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Press `R` to Load Direct Meassages</div>
@@ -573,26 +582,42 @@ jQuery(function($) {
     </div>
     <div id="retweets_tweet_block" 
         name="#retweets" class="tweet_block">
-        <div class="tweet_block_top tweet_tabs">
-            <ol>
-                <li><a id="btn_retweeted_to_me" class="tweet_tabs_btn selected" href="#retweeted_to_me" data-i18n-text="retweeted_by_others_radio">Retweeted By Others</a></li>
-                <li><a id="btn_retweeted_by_me" class="tweet_tabs_btn" href="#retweeted_by_me" data-i18n-text="retweeted_by_me_radio">Retweeted By Me</a></li>
-                <li><a id="btn_retweets_of_me" class="tweet_tabs_btn" href="#retweets_of_me" data-i18n-text="my_tweets_be_retweeted_radio">My Tweets, Retweeted</a></li>
+        <div class="tweet_block_top">
+            <center>
+            <ol id="retweets_radio_group" class="radio_group dark">
+                <li>
+                    <a id="btn_retweeted_to_me" 
+                    class="radio_group_btn selected" 
+                    href="#retweeted_to_me"
+                    data-i18n-text="retweeted_by_others_radio"
+                    >By Others</a>
+                </li><li>
+                    <a id="btn_retweeted_by_me" class="radio_group_btn"
+                    href="#retweeted_by_me"
+                    data-i18n-text="retweeted_by_me_radio"
+                    >By Me</a>
+                </li><li>
+                    <a id="btn_retweets_of_me" class="radio_group_btn"
+                    href="#retweets_of_me"
+                    data-i18n-text="my_tweets_be_retweeted_radio"
+                    >My Tweets, Retweeted</a>
+                </li>
             </ol>
+            </center>
         </div>
-        <div id="retweeted_by_me_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="retweeted_by_me_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Press `R` to Load Tweets</div>                
             </div>
         </div>
-        <div id="retweeted_to_me_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="retweeted_to_me_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Press `R` to Load Tweets</div>                
             </div>
         </div>
-        <div id="retweets_of_me_sub_block" class="tweet_tabs_page  tweet_sub_block">
+        <div id="retweets_of_me_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Press `R` to Load Tweets</div>                
@@ -610,44 +635,20 @@ jQuery(function($) {
             <div id="people_vcard" class="vcard">
                 <div class="profile_img_wrapper"></div>
                 <div class="vcard_body">
-                    <div id="people_vcard_ctrl">
-                        <ul id="people_vcard_action_btns">
-                        <li>
-                            <a class="vcard_follow vcard_action_btn"
-                                href="javascript:void(0);" 
-                                data-i18n-text="people_follow_link"
-                                >Follow</a>
-                        </li>
-                        <li>
-                            <a class="vcard_block vcard_action_btn"
-                                href="javascript:void(0);"
-                                data-i18n-text="people_block_link"
-                                >Block</a>
-                        </li>
-                        <li>
-                            <a class="vcard_unblock vcard_action_btn"
-                                href="javascript:void(0);"
-                                data-i18n-text="people_unblock_link"
-                                >Unblock</a>
-                        </li>
-                        <li>
-                            <a class="vcard_edit vcard_action_btn"
-                                href="javascript:void(0);"
-                                data-i18n-text="people_edit_link"
-                                >Edit</a>
-                        </li>
-                        </ul>
-                    </div><!-- #people_vcard_ctrl -->
-                    <ul id="people_vcard_tabs_btns" class="vcard_tabs_btns">
-                        <li><a class="vcard_tabs_btn"
+                    <center>
+                    <ul id="people_vcard_radio_group" class="radio_group">
+                        <li><a class="radio_group_btn selected"
                             href="#people_vcard_info_page"
                             data-i18n-text="vcard_info_link"
-                            >INFO</a></li>
-                        <li><a class="vcard_tabs_btn" 
+                            >INFO</a>
+                        </li><li>
+                            <a class="radio_group_btn" 
                             href="#people_vcard_stat_page"
                             data-i18n-text="vcard_stat_link"
-                            >STAT</a></li>
+                            >STAT</a>
+                        </li>
                     </ul>
+                    </center>
                     <div id="people_vcard_tabs_pages">
                     <table id="people_vcard_info_page" class="vcard_tabs_page" border="0" cellpadding="0" cellspacing="0">
                         <tr><td data-i18n-text="vcard_name_label">Name: </td><td>
@@ -684,36 +685,66 @@ jQuery(function($) {
                     </table>
                     </div><!-- vcard tabs pages -->
                 </div> <!-- vcard body -->
+                <div id="people_vcard_ctrl">
+                    <ul id="people_vcard_action_btns">
+                    <li><a class="vcard_follow button"
+                            href="javascript:void(0);" 
+                            data-i18n-text="people_follow_link"
+                            >Follow</a>
+                    </li><li>
+                        <a class="vcard_block button"
+                            href="javascript:void(0);"
+                            data-i18n-text="people_block_link"
+                            >Block</a>
+                    </li><li>
+                        <a class="vcard_unblock button"
+                            href="javascript:void(0);"
+                            data-i18n-text="people_unblock_link"
+                            >Unblock</a>
+                    </li><li>
+                        <a class="vcard_edit button"
+                            href="javascript:void(0);"
+                            data-i18n-text="people_edit_link"
+                            >Edit</a>
+                    </li>
+                    </ul>
+                </div><!-- #people_vcard_ctrl -->
             </div> <!-- vcard -->
-            <div class="tweet_tabs">
-                <ol>
-                    <li><a id="btn_people_tweet" class="tweet_tabs_btn selected" href="#people_tweet" data-i18n-text="people_tweets">Tweets</a></li>
-                    <li><a id="btn_people_fav" class="tweet_tabs_btn" href="#people_fav" data-i18n-text="people_favs">Favs</a></li>
-                    
-                    <li><a id="btn_people_followers" class="tweet_tabs_btn" href="#people_followers" data-i18n-text="people_followers">Followers</a></li>
-                    <li><a id="btn_people_friends" class="tweet_tabs_btn" href="#people_friends" data-i18n-text="people_friends">Friends</a></li>
+            <div id="people_radio_group_wrapper">
+                <center>
+                <ol id="people_radio_group" class="radio_group dark">
+                    <li>
+                    <a id="btn_people_tweet" class="radio_group_btn selected" href="#people_tweet" data-i18n-text="people_tweets">Tweets</a>
+                    </li><li>
+                    <a id="btn_people_fav" class="radio_group_btn" href="#people_fav" data-i18n-text="people_favs">Favs</a>
+                    </li><li>
+                    <a id="btn_people_followers" class="radio_group_btn" href="#people_followers" data-i18n-text="people_followers">Followers</a>
+                    </li><li>
+                    <a id="btn_people_friends" class="radio_group_btn" href="#people_friends" data-i18n-text="people_friends">Friends</a>
+                    </li>
                 </ol>
+                </center>
             </div>
         </div>
-        <div id="people_tweet_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="people_tweet_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info"></div>                
             </div>
         </div>
-        <div id="people_fav_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="people_fav_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Specify A Name to Load People</div>
             </div>
         </div>        
-        <div id="people_followers_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="people_followers_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Specify A Name to Load People</div>
             </div>
         </div>
-        <div id="people_friends_sub_block" class="tweet_tabs_page tweet_sub_block">
+        <div id="people_friends_sub_block" class="tweet_sub_block">
             <ul></ul>
             <div class="tweet_block_bottom">
                 <div class="load_more_info">Specify A Name to Load People</div>
@@ -846,16 +877,17 @@ jQuery(function($) {
         </div>
         <a id="btn_clear_status_info" href="javascript:void(0);"></a>
     </div>
-    <textarea id="tbox_status" class="closed"></textarea>
+    <textarea id="tbox_status" class="textarea closed"></textarea>
     <div id="status_ctrl">
         <a id="toggle_mode" width="20" class="button" icon="image/ic16_dm.png" title="Click to compose message"></a>
-        <label id="status_len"></label>
-        <a id="btn_shorturl" width="20" class="button" icon="image/ic16_link.png" title="URL shortener"></a>
+        <a id="btn_shorturl" class="button" icon="image/ic16_link.png" title="URL shortener"></a>
         <a id="btn_clear" class="button">Clear</a>
         <a id="btn_update" class="button">Update</a>
         <span class="clear"></span>
-        <div>
-        <label id="status_tips">Press Ctrl+Enter to Update</label></div>
+        <div style="vertical-align:middle; padding-top: 5px;">
+            <label id="status_len"></label>
+            <label id="status_tips">Press Ctrl+Enter to Update</label>
+        </div>
     </div>
     <ul id="screen_name_auto_complete"></ul>
 </section> <!-- status_box -->
@@ -909,7 +941,7 @@ jQuery(function($) {
             <ul id="prefs_dlg_btns" class="radio_group">
                 <li><a id="btn_prefs_global"
                         href="#prefs_global" 
-                        class="radio_group_btn first selected">Globals</a>
+                        class="radio_group_btn selected">Globals</a>
                 </li><li><a id="btn_prefs_account"
                         href="#prefs_account" 
                         class="radio_group_btn">Account</a>
@@ -918,7 +950,7 @@ jQuery(function($) {
                         class="radio_group_btn">Looks &amp; Feels</a>
                 </li><li><a id="btn_prefs_advanced"
                         href="#prefs_advanced" 
-                        class="radio_group_btn last">Advanced</a>
+                        class="radio_group_btn">Advanced</a>
                 </li>
             </ul>
             <div id='prefs_global' class="prefs_dlg_page">
@@ -1188,7 +1220,7 @@ jQuery(function($) {
             <ul id="about_dlg_btns" class="radio_group">
                 <li><a id="btn_about_about"
                         href="#about_about" 
-                        class="radio_group_btn first selected">About</a>
+                        class="radio_group_btn selected">About</a>
                 </li><li><a id="btn_about_keyboard"
                         href="#about_keyboard" 
                         class="radio_group_btn">Keyboard</a>
@@ -1197,7 +1229,7 @@ jQuery(function($) {
                         class="radio_group_btn">Credits</a>
                 </li><li><a id="btn_about_license"
                         href="#about_license" 
-                        class="radio_group_btn last">License</a>
+                        class="radio_group_btn">License</a>
                 </li>
             </ul>
             <div id="about_about" class="about_dlg_page">
@@ -1379,11 +1411,11 @@ jQuery(function($) {
         <div id="exts_dlg_body" class="dialog_body">
             <div id="exts_filter_bar">
                 <ul id="exts_filter_btns" class="radio_group">
-                    <li><a id="exts_filter_all_btn" href="#all" class="radio_group_btn selected first">ALL</a>
+                    <li><a id="exts_filter_all_btn" href="#all" class="radio_group_btn selected">ALL</a>
                     </li><li>
                         <a id="exts_filter_enabled_btn" href="#enabled" class="radio_group_btn">Enabled</a>
                     </li><li>
-                        <a id="exts_filter_disabled_btn" href="#disabled" class="radio_group_btn last">Disabled</a>
+                        <a id="exts_filter_disabled_btn" href="#disabled" class="radio_group_btn">Disabled</a>
                     </li>
                 </ul>
             </div>
