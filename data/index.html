@@ -230,6 +230,7 @@ function on_load_finish() {
     if (util.is_native_platform() && globals.load_flags == 0) {
         setTimeout(on_load_finish, 300);
     } else {
+        globals.load_flags = 1;
         // 1. load builtins & extra extensions
         var procs = [];
         procs.push(function () {
@@ -250,11 +251,22 @@ function on_load_finish() {
         
         // 2. @TODO push settings to native platform
         if (util.is_native_platform()) {
-            hotot_action('system/load_settings/' 
-                + encodeURIComponent(JSON.stringify(conf.settings)))
-            $(window).dequeue('_on_load_finish');
-            globals.load_flags = 2;
+            procs.push(function () {    
+                hotot_action('system/load_settings/' 
+                    + encodeURIComponent(JSON.stringify(conf.settings)))
+                globals.load_flags = 2;
+                $(window).dequeue('_on_load_finish');
+            });
+        } else {
+            procs.push(function () {    
+                $(window).width(conf.settings.size_w);
+                $(window).height(conf.settings.size_h);
+                globals.load_flags = 2;    
+                $(window).dequeue('_on_load_finish');
+            }); 
         }
+        
+        
         // 3. i18n
         procs.push(function() {
             i18n.init(function () {});
@@ -378,8 +390,8 @@ jQuery(function($) {
 
     $(window).resize(
     function () {
+        update_tweet_block_width();
         if (globals.load_flags) {
-            update_tweet_block_width();
             if (globals.load_flags == 2) {
                 conf.settings.size_w = $(window).width();
                 conf.settings.size_h = $(window).height();
