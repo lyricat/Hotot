@@ -514,9 +514,9 @@ jQuery(function($) {
         </div>
         </div><!--tabs-->
         <div class="bottom">
-            <a id="btn_welcome_delete_profile" href="javascript:void(0)" data-i18n-text="profile_delete_link">Delete</a>
-            <a id="btn_welcome_prefs" href="javascript:void(0)" data-i18n-text="profile_preferences_link">Preferences</a>     
-            <a id="btn_welcome_exts" href="javascript:void(0)" data-i18n-text="profile_extensions_link">Extensions</a>
+            <a id="btn_welcome_delete_profile" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
+            <a id="btn_welcome_prefs" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>     
+            <a id="btn_welcome_exts" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
         </div>
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
@@ -539,7 +539,7 @@ jQuery(function($) {
         name="#home_timeline" class="tweet_block">
         <ul></ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
+            <div class="load_more_info" data-i18n-text="load_more">Load more</div>
         </div>
     </div>
     <div id="mentions_tweet_block"
@@ -547,7 +547,7 @@ jQuery(function($) {
         <ul>
         </ul>
         <div class="tweet_block_bottom">
-            <div class="load_more_info" data-i18n-text="load_more_hint">Load more</div>
+            <div class="load_more_info" data-i18n-text="load_more">Load more</div>
         </div>
     </div>
     <div id="direct_messages_tweet_block" 
@@ -558,11 +558,11 @@ jQuery(function($) {
                 <li>
                     <a id="btn_dm_inbox" class="radio_group_btn selected"
                         href="#direct_messages_inbox"
-                        data-i18n-text="dm_inbox_radio">Inbox</a>
+                        data-i18n-text="inbox">Inbox</a>
                 </li><li>
                     <a id="btn_dm_outbox" class="radio_group_btn"
                         href="#direct_messages_outbox"
-                        data-i18n-text="dm_outbox_radio">Outbox</a>
+                        data-i18n-text="outbox">Outbox</a>
                 </li>
             </ol>
             </center>
@@ -589,17 +589,17 @@ jQuery(function($) {
                     <a id="btn_retweeted_to_me" 
                     class="radio_group_btn selected" 
                     href="#retweeted_to_me"
-                    data-i18n-text="retweeted_by_others_radio"
+                    data-i18n-text="retweeted_by_others"
                     >By Others</a>
                 </li><li>
                     <a id="btn_retweeted_by_me" class="radio_group_btn"
                     href="#retweeted_by_me"
-                    data-i18n-text="retweeted_by_me_radio"
+                    data-i18n-text="retweeted_by_me"
                     >By Me</a>
                 </li><li>
                     <a id="btn_retweets_of_me" class="radio_group_btn"
                     href="#retweets_of_me"
-                    data-i18n-text="my_tweets_be_retweeted_radio"
+                    data-i18n-text="my_tweets_be_retweeted"
                     >My Tweets, Retweeted</a>
                 </li>
             </ol>
@@ -639,12 +639,12 @@ jQuery(function($) {
                     <ul id="people_vcard_radio_group" class="radio_group">
                         <li><a class="radio_group_btn selected"
                             href="#people_vcard_info_page"
-                            data-i18n-text="vcard_info_link"
+                            data-i18n-text="info"
                             >INFO</a>
                         </li><li>
                             <a class="radio_group_btn" 
                             href="#people_vcard_stat_page"
-                            data-i18n-text="vcard_stat_link"
+                            data-i18n-text="stat"
                             >STAT</a>
                         </li>
                     </ul>
@@ -689,22 +689,22 @@ jQuery(function($) {
                     <ul id="people_vcard_action_btns">
                     <li><a class="vcard_follow button"
                             href="javascript:void(0);" 
-                            data-i18n-text="people_follow_link"
+                            data-i18n-text="follow"
                             >Follow</a>
                     </li><li>
                         <a class="vcard_block button"
                             href="javascript:void(0);"
-                            data-i18n-text="people_block_link"
+                            data-i18n-text="block"
                             >Block</a>
                     </li><li>
                         <a class="vcard_unblock button"
                             href="javascript:void(0);"
-                            data-i18n-text="people_unblock_link"
+                            data-i18n-text="unblock"
                             >Unblock</a>
                     </li><li>
                         <a class="vcard_edit button"
                             href="javascript:void(0);"
-                            data-i18n-text="people_edit_link"
+                            data-i18n-text="edit"
                             >Edit</a>
                     </li>
                     </ul>
@@ -714,13 +714,13 @@ jQuery(function($) {
                 <center>
                 <ol id="people_radio_group" class="radio_group dark">
                     <li>
-                    <a id="btn_people_tweet" class="radio_group_btn selected" href="#people_tweet" data-i18n-text="people_tweets">Tweets</a>
+                    <a id="btn_people_tweet" class="radio_group_btn selected" href="#people_tweet" data-i18n-text="tweets">Tweets</a>
                     </li><li>
-                    <a id="btn_people_fav" class="radio_group_btn" href="#people_fav" data-i18n-text="people_favs">Favs</a>
+                    <a id="btn_people_fav" class="radio_group_btn" href="#people_fav" data-i18n-text="favs">Favs</a>
                     </li><li>
-                    <a id="btn_people_followers" class="radio_group_btn" href="#people_followers" data-i18n-text="people_followers">Followers</a>
+                    <a id="btn_people_followers" class="radio_group_btn" href="#people_followers" data-i18n-text="followers">Followers</a>
                     </li><li>
-                    <a id="btn_people_friends" class="radio_group_btn" href="#people_friends" data-i18n-text="people_friends">Friends</a>
+                    <a id="btn_people_friends" class="radio_group_btn" href="#people_friends" data-i18n-text="friends">Friends</a>
                     </li>
                 </ol>
                 </center>

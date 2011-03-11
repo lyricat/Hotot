@@ -1,202 +1,202 @@
 {
 	"help": {
-		"message": "",
+		"message": "帮助",
+		"description": ""
+	},
+	"load_more": {
+		"message": "加载更多",
 		"description": ""
 	},
 	"tweet_stat": {
-		"message": "",
+		"message": "状态统计",
+		"description": ""
+	},
+	"unblock": {
+		"message": "解除屏蔽",
 		"description": ""
 	},
 	"relation": {
-		"message": "",
+		"message": "关系",
 		"description": ""
 	},
-	"dm_inbox_radio": {
-		"message": "",
+	"inbox": {
+		"message": "收件箱",
 		"description": ""
 	},
 	"cancel": {
-		"message": "",
+		"message": "取消",
 		"description": ""
 	},
-	"profile_preferences_link": {
-		"message": "",
+	"follow": {
+		"message": "关注",
 		"description": ""
 	},
 	"web": {
-		"message": "",
+		"message": "网址",
 		"description": ""
 	},
 	"remember_password": {
-		"message": "",
-		"description": ""
-	},
-	"people_block_link": {
-		"message": "",
-		"description": ""
-	},
-	"restore_defaults": {
-		"message": "",
-		"description": ""
-	},
-	"retweeted_by_others_radio": {
-		"message": "",
+		"message": "记住密码",
 		"description": ""
 	},
 	"location": {
-		"message": "",
+		"message": "位置",
 		"description": ""
 	},
 	"friend_stat": {
-		"message": "",
+		"message": "朋友统计",
+		"description": ""
+	},
+	"tweets": {
+		"message": "状态",
 		"description": ""
 	},
 	"click_me_to_continue": {
-		"message": "",
+		"message": "点击继续",
 		"description": ""
 	},
 	"username": {
-		"message": "",
-		"description": ""
-	},
-	"people_favs": {
-		"message": "",
-		"description": ""
-	},
-	"profile_extensions_link": {
-		"message": "",
-		"description": ""
-	},
-	"follower_stat": {
-		"message": "",
-		"description": ""
-	},
-	"load_more_hint": {
-		"message": "",
-		"description": ""
-	},
-	"password": {
-		"message": "",
-		"description": ""
-	},
-	"name": {
-		"message": "",
-		"description": ""
-	},
-	"greeting": {
-		"message": "",
-		"description": ""
-	},
-	"profile_delete_link": {
-		"message": "",
-		"description": ""
-	},
-	"change_avator": {
-		"message": "",
-		"description": ""
-	},
-	"vcard_stat_link": {
-		"message": "",
-		"description": ""
-	},
-	"loading_resources_hint": {
-		"message": "",
-		"description": ""
-	},
-	"people_follow_link": {
-		"message": "",
-		"description": ""
-	},
-	"retweeted_by_me_radio": {
-		"message": "",
+		"message": "用户名",
 		"description": ""
 	},
 	"bio": {
-		"message": "",
+		"message": "自述",
+		"description": ""
+	},
+	"follower_stat": {
+		"message": "粉丝统计",
+		"description": ""
+	},
+	"password": {
+		"message": "密码",
+		"description": ""
+	},
+	"info": {
+		"message": "信息",
+		"description": ""
+	},
+	"name": {
+		"message": "名字",
+		"description": ""
+	},
+	"edit": {
+		"message": "编辑",
+		"description": ""
+	},
+	"greeting": {
+		"message": "殿下您好！",
+		"description": ""
+	},
+	"restore_defaults": {
+		"message": "恢复默认值",
+		"description": ""
+	},
+	"delete": {
+		"message": "删除",
+		"description": ""
+	},
+	"loading_resources_hint": {
+		"message": "加载资源中...",
+		"description": ""
+	},
+	"my_tweets_be_retweeted": {
+		"message": "我的状态，被转发",
 		"description": ""
 	},
 	"send_request": {
-		"message": "",
-		"description": ""
-	},
-	"people_followers": {
-		"message": "",
+		"message": "发送请求",
 		"description": ""
 	},
 	"search_for": {
-		"message": "",
-		"description": ""
-	},
-	"people_unblock_link": {
-		"message": "",
+		"message": "搜索",
 		"description": ""
 	},
 	"create_profile": {
-		"message": "",
+		"message": "创建账户",
 		"description": ""
 	},
 	"profile_name": {
-		"message": "",
+		"message": "账户名",
+		"description": ""
+	},
+	"retweeted_by_others": {
+		"message": "别人转发的",
 		"description": ""
 	},
 	"close": {
-		"message": "",
+		"message": "关闭",
 		"description": ""
 	},
 	"join_time": {
-		"message": "",
+		"message": "加入时间",
 		"description": ""
 	},
-	"vcard_info_link": {
-		"message": "",
+	"preferences": {
+		"message": "首选项",
 		"description": ""
 	},
-	"people_friends": {
-		"message": "",
+	"change_avator": {
+		"message": "换头像",
+		"description": ""
+	},
+	"followers": {
+		"message": "粉丝",
+		"description": ""
+	},
+	"extensions": {
+		"message": "扩展",
+		"description": ""
+	},
+	"stat": {
+		"message": "统计",
 		"description": ""
 	},
 	"hotot": {
-		"message": "",
-		"description": ""
-	},
-	"dm_outbox_radio": {
-		"message": "",
+		"message": "傲兔",
 		"description": ""
 	},
 	"update": {
-		"message": "",
-		"description": ""
-	},
-	"people_tweets": {
-		"message": "",
+		"message": "更新",
 		"description": ""
 	},
 	"sign_in": {
-		"message": "",
+		"message": "登入",
+		"description": ""
+	},
+	"outbox": {
+		"message": "发件箱",
+		"description": ""
+	},
+	"favs": {
+		"message": "收藏",
+		"description": ""
+	},
+	"friends": {
+		"message": "朋友",
 		"description": ""
 	},
 	"ok": {
-		"message": "",
+		"message": "确定",
 		"description": ""
 	},
 	"clear": {
-		"message": "",
-		"description": ""
-	},
-	"people_edit_link": {
-		"message": "",
+		"message": "清除",
 		"description": ""
 	},
 	"look_up": {
-		"message": "",
-		"description": ""
-	},
-	"my_tweets_be_retweeted_radio": {
-		"message": "",
+		"message": "查找",
 		"description": ""
 	},
 	"sign_in_with_twitter": {
-		"message": "",
+		"message": "登录到Twitter",
+		"description": ""
+	},
+	"retweeted_by_me": {
+		"message": "我转发的",
+		"description": ""
+	},
+	"block": {
+		"message": "屏蔽",
 		"description": ""
 	}
 }

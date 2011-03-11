@@ -3,7 +3,15 @@
 		"message": "",
 		"description": ""
 	},
+	"load_more": {
+		"message": "",
+		"description": ""
+	},
 	"tweet_stat": {
+		"message": "",
+		"description": ""
+	},
+	"unblock": {
 		"message": "",
 		"description": ""
 	},
@@ -11,7 +19,7 @@
 		"message": "",
 		"description": ""
 	},
-	"dm_inbox_radio": {
+	"inbox": {
 		"message": "",
 		"description": ""
 	},
@@ -19,7 +27,7 @@
 		"message": "",
 		"description": ""
 	},
-	"profile_preferences_link": {
+	"follow": {
 		"message": "",
 		"description": ""
 	},
@@ -31,23 +39,15 @@
 		"message": "",
 		"description": ""
 	},
-	"people_block_link": {
-		"message": "",
-		"description": ""
-	},
-	"restore_defaults": {
-		"message": "",
-		"description": ""
-	},
-	"retweeted_by_others_radio": {
-		"message": "",
-		"description": ""
-	},
 	"location": {
 		"message": "",
 		"description": ""
 	},
 	"friend_stat": {
+		"message": "",
+		"description": ""
+	},
+	"tweets": {
 		"message": "",
 		"description": ""
 	},
@@ -59,11 +59,7 @@
 		"message": "",
 		"description": ""
 	},
-	"people_favs": {
-		"message": "",
-		"description": ""
-	},
-	"profile_extensions_link": {
+	"bio": {
 		"message": "",
 		"description": ""
 	},
@@ -71,11 +67,11 @@
 		"message": "",
 		"description": ""
 	},
-	"load_more_hint": {
+	"password": {
 		"message": "",
 		"description": ""
 	},
-	"password": {
+	"info": {
 		"message": "",
 		"description": ""
 	},
@@ -83,19 +79,19 @@
 		"message": "",
 		"description": ""
 	},
+	"edit": {
+		"message": "",
+		"description": ""
+	},
 	"greeting": {
 		"message": "",
 		"description": ""
 	},
-	"profile_delete_link": {
+	"restore_defaults": {
 		"message": "",
 		"description": ""
 	},
-	"change_avator": {
-		"message": "",
-		"description": ""
-	},
-	"vcard_stat_link": {
+	"delete": {
 		"message": "",
 		"description": ""
 	},
@@ -103,15 +99,7 @@
 		"message": "",
 		"description": ""
 	},
-	"people_follow_link": {
-		"message": "",
-		"description": ""
-	},
-	"retweeted_by_me_radio": {
-		"message": "",
-		"description": ""
-	},
-	"bio": {
+	"my_tweets_be_retweeted": {
 		"message": "",
 		"description": ""
 	},
@@ -119,15 +107,7 @@
 		"message": "",
 		"description": ""
 	},
-	"people_followers": {
-		"message": "",
-		"description": ""
-	},
 	"search_for": {
-		"message": "",
-		"description": ""
-	},
-	"people_unblock_link": {
 		"message": "",
 		"description": ""
 	},
@@ -139,6 +119,10 @@
 		"message": "",
 		"description": ""
 	},
+	"retweeted_by_others": {
+		"message": "",
+		"description": ""
+	},
 	"close": {
 		"message": "",
 		"description": ""
@@ -147,11 +131,23 @@
 		"message": "",
 		"description": ""
 	},
-	"vcard_info_link": {
+	"preferences": {
 		"message": "",
 		"description": ""
 	},
-	"people_friends": {
+	"change_avator": {
+		"message": "",
+		"description": ""
+	},
+	"followers": {
+		"message": "",
+		"description": ""
+	},
+	"extensions": {
+		"message": "",
+		"description": ""
+	},
+	"stat": {
 		"message": "",
 		"description": ""
 	},
@@ -159,19 +155,23 @@
 		"message": "",
 		"description": ""
 	},
-	"dm_outbox_radio": {
-		"message": "",
-		"description": ""
-	},
 	"update": {
 		"message": "",
 		"description": ""
 	},
-	"people_tweets": {
+	"sign_in": {
 		"message": "",
 		"description": ""
 	},
-	"sign_in": {
+	"outbox": {
+		"message": "",
+		"description": ""
+	},
+	"favs": {
+		"message": "",
+		"description": ""
+	},
+	"friends": {
 		"message": "",
 		"description": ""
 	},
@@ -183,19 +183,19 @@
 		"message": "",
 		"description": ""
 	},
-	"people_edit_link": {
-		"message": "",
-		"description": ""
-	},
 	"look_up": {
 		"message": "",
 		"description": ""
 	},
-	"my_tweets_be_retweeted_radio": {
+	"sign_in_with_twitter": {
 		"message": "",
 		"description": ""
 	},
-	"sign_in_with_twitter": {
+	"retweeted_by_me": {
+		"message": "",
+		"description": ""
+	},
+	"block": {
 		"message": "",
 		"description": ""
 	}
