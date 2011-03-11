@@ -46,7 +46,7 @@ pre {
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #333;
+    background-color: #666;
     border-left: 5px #ccc solid;
     border-right: 5px #ccc solid;
 }
@@ -1432,7 +1432,8 @@ input[type="checkbox"] {
     float: left;
     width: 600px;
     height: 100%;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
     font-size: 12px;
     -webkit-transition: all .2s ease-in-out;
 }
@@ -1456,7 +1457,6 @@ input[type="checkbox"] {
 }
 
 .vcard_tabs_page {
-    width: 100%;
     border: none;
     border-collapse:collapse;
     display: none;
@@ -1503,6 +1503,9 @@ input[type="checkbox"] {
     padding: 5px;
     min-height: 50px;
     position: relative;
+    border-left: 1px #c4c7cb solid;
+    border-right: 1px #c4c7cb solid;
+    border-bottom: 1px #c4c7cb solid;
 }
 
 .card > .tweet_selected_indicator {
@@ -1543,7 +1546,7 @@ input[type="checkbox"] {
 
 .card.normal {
     background:-webkit-gradient(linear, left top, left bottom, from(#eceef3), to(#dfe2e5));
-    border-bottom: 1px #c4c7cb solid;
+    border-color: #bbb;
     color: #2c2e36;
 }
 .card.normal a {
@@ -1565,7 +1568,7 @@ input[type="checkbox"] {
 
 .card.mention {
     background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
-    border-bottom: 1px #c4987d solid;
+    border-color: #c4987d;
     color: #502805;
 }
 .card.mention a {
@@ -1584,7 +1587,7 @@ input[type="checkbox"] {
 
 .card.message {
     background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
-    border-bottom: 1px #90abc4 solid;
+    border-color:#90abc4;
     color: #14465f;
 }
 .card.message a {
@@ -1603,7 +1606,7 @@ input[type="checkbox"] {
 
 .card.me {
     background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
-    border-bottom: 1px #75A565 solid;
+    border-color:#75A565;
     color: #264408;
 }
 .card.me a {
