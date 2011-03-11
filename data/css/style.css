@@ -843,6 +843,7 @@ input[type="checkbox"] {
 }
 
 #people_vcard {
+    border: 1px #CCC solid;
     display: none;
     font-size: 10px;
     background: #f2f2f2;

@@ -1,118 +1,202 @@
 {
-    "loading_resources_hint": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_name_label": {
-    "message": "",
-    "description": ""
-  }
-, "people_edit_link": {
-    "message": "",
-    "description": ""
-  }
-, "people_follow_link": {
-    "message": "",
-    "description": ""
-  }
-, "retweeted_by_me_radio": {
-    "message": "",
-    "description": ""
-  }
-, "people_look_up_label": {
-    "message": "",
-    "description": ""
-  }
-, "username_label": {
-    "message": "",
-    "description": ""
-  }
-, "retweeted_by_others_radio": {
-    "message": "",
-    "description": ""
-  }
-, "app_name": {
-    "message": "",
-    "description": ""
-  }
-, "welcome_hint": {
-    "message": "",
-    "description": ""
-  }
-, "people_block_link": {
-    "message": "",
-    "description": ""
-  }
-, "help": {
-    "message": "",
-    "description": ""
-  }
-, "dm_inbox_radio": {
-    "message": "",
-    "description": ""
-  }
-, "profile_preferences_link": {
-    "message": "",
-    "description": ""
-  }
-, "profile_delete_link": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_bio_label": {
-    "message": "",
-    "description": ""
-  }
-, "password_label": {
-    "message": "",
-    "description": ""
-  }
-, "profile_extensions_link": {
-    "message": "",
-    "description": ""
-  }
-, "dm_outbox_radio": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_location_label": {
-    "message": "",
-    "description": ""
-  }
-, "load_more_hint": {
-    "message": "",
-    "description": ""
-  }
-, "people_unblock_link": {
-    "message": "",
-    "description": ""
-  }
-, "remember_password_label": {
-    "message": "",
-    "description": ""
-  }
-, "sign_in_with_twitter_label": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_info_link": {
-    "message": "",
-    "description": ""
-  }
-, "profile_name_label": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_stat_link": {
-    "message": "",
-    "description": ""
-  }
-, "my_tweets_be_retweeted_radio": {
-    "message": "",
-    "description": ""
-  }
-, "vcard_web_label": {
-    "message": "",
-    "description": ""
-  }
+	"help": {
+		"message": "",
+		"description": ""
+	},
+	"tweet_stat": {
+		"message": "",
+		"description": ""
+	},
+	"relation": {
+		"message": "",
+		"description": ""
+	},
+	"dm_inbox_radio": {
+		"message": "",
+		"description": ""
+	},
+	"cancel": {
+		"message": "",
+		"description": ""
+	},
+	"profile_preferences_link": {
+		"message": "",
+		"description": ""
+	},
+	"web": {
+		"message": "",
+		"description": ""
+	},
+	"remember_password": {
+		"message": "",
+		"description": ""
+	},
+	"people_block_link": {
+		"message": "",
+		"description": ""
+	},
+	"restore_defaults": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_others_radio": {
+		"message": "",
+		"description": ""
+	},
+	"location": {
+		"message": "",
+		"description": ""
+	},
+	"friend_stat": {
+		"message": "",
+		"description": ""
+	},
+	"click_me_to_continue": {
+		"message": "",
+		"description": ""
+	},
+	"username": {
+		"message": "",
+		"description": ""
+	},
+	"people_favs": {
+		"message": "",
+		"description": ""
+	},
+	"profile_extensions_link": {
+		"message": "",
+		"description": ""
+	},
+	"follower_stat": {
+		"message": "",
+		"description": ""
+	},
+	"load_more_hint": {
+		"message": "",
+		"description": ""
+	},
+	"password": {
+		"message": "",
+		"description": ""
+	},
+	"name": {
+		"message": "",
+		"description": ""
+	},
+	"greeting": {
+		"message": "",
+		"description": ""
+	},
+	"profile_delete_link": {
+		"message": "",
+		"description": ""
+	},
+	"change_avator": {
+		"message": "",
+		"description": ""
+	},
+	"vcard_stat_link": {
+		"message": "",
+		"description": ""
+	},
+	"loading_resources_hint": {
+		"message": "",
+		"description": ""
+	},
+	"people_follow_link": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_me_radio": {
+		"message": "",
+		"description": ""
+	},
+	"bio": {
+		"message": "",
+		"description": ""
+	},
+	"send_request": {
+		"message": "",
+		"description": ""
+	},
+	"people_followers": {
+		"message": "",
+		"description": ""
+	},
+	"search_for": {
+		"message": "",
+		"description": ""
+	},
+	"people_unblock_link": {
+		"message": "",
+		"description": ""
+	},
+	"create_profile": {
+		"message": "",
+		"description": ""
+	},
+	"profile_name": {
+		"message": "",
+		"description": ""
+	},
+	"close": {
+		"message": "",
+		"description": ""
+	},
+	"join_time": {
+		"message": "",
+		"description": ""
+	},
+	"vcard_info_link": {
+		"message": "",
+		"description": ""
+	},
+	"people_friends": {
+		"message": "",
+		"description": ""
+	},
+	"hotot": {
+		"message": "",
+		"description": ""
+	},
+	"dm_outbox_radio": {
+		"message": "",
+		"description": ""
+	},
+	"update": {
+		"message": "",
+		"description": ""
+	},
+	"people_tweets": {
+		"message": "",
+		"description": ""
+	},
+	"sign_in": {
+		"message": "",
+		"description": ""
+	},
+	"ok": {
+		"message": "",
+		"description": ""
+	},
+	"clear": {
+		"message": "",
+		"description": ""
+	},
+	"people_edit_link": {
+		"message": "",
+		"description": ""
+	},
+	"look_up": {
+		"message": "",
+		"description": ""
+	},
+	"my_tweets_be_retweeted_radio": {
+		"message": "",
+		"description": ""
+	},
+	"sign_in_with_twitter": {
+		"message": "",
+		"description": ""
+	}
 }

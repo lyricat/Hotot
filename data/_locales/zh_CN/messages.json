@@ -1,118 +1,202 @@
 {
-  "loading_resources_hint": {
-    "message": "正在加载",
-    "description": ""
-  }
-, "vcard_name_label": {
-    "message": "用户名",
-    "description": ""
-  }
-, "people_edit_link": {
-    "message": "编辑",
-    "description": ""
-  }
-, "people_follow_link": {
-    "message": "跟随",
-    "description": ""
-  }
-, "retweeted_by_me_radio": {
-    "message": "我转发的",
-    "description": ""
-  }
-, "people_look_up_label": {
-    "message": "查找某人",
-    "description": ""
-  }
-, "username_label": {
-    "message": "用户名",
-    "description": ""
-  }
-, "retweeted_by_others_radio": {
-    "message": "别人转发的",
-    "description": ""
-  }
-, "app_name": {
-    "message": "傲兔",
-    "description": ""
-  }
-, "welcome_hint": {
-    "message": "殿下您好！",
-    "description": ""
-  }
-, "people_block_link": {
-    "message": "屏蔽",
-    "description": ""
-  }
-, "help": {
-    "message": "帮助",
-    "description": ""
-  }
-, "dm_inbox_radio": {
-    "message": "收件箱",
-    "description": ""
-  }
-, "profile_preferences_link": {
-    "message": "首选项",
-    "description": ""
-  }
-, "profile_delete_link": {
-    "message": "删除账户",
-    "description": ""
-  }
-, "vcard_bio_label": {
-    "message": "Bio",
-    "description": ""
-  }
-, "password_label": {
-    "message": "密码",
-    "description": ""
-  }
-, "profile_extensions_link": {
-    "message": "扩展",
-    "description": ""
-  }
-, "dm_outbox_radio": {
-    "message": "发件箱",
-    "description": ""
-  }
-, "vcard_location_label": {
-    "message": "位置",
-    "description": ""
-  }
-, "load_more_hint": {
-    "message": "",
-    "description": ""
-  }
-, "people_unblock_link": {
-    "message": "解除屏蔽",
-    "description": ""
-  }
-, "remember_password_label": {
-    "message": "记住密码",
-    "description": ""
-  }
-, "sign_in_with_twitter_label": {
-    "message": "登录到Twitter",
-    "description": ""
-  }
-, "vcard_info_link": {
-    "message": "信息",
-    "description": ""
-  }
-, "profile_name_label": {
-    "message": "Profile名字",
-    "description": ""
-  }
-, "vcard_stat_link": {
-    "message": "统计",
-    "description": ""
-  }
-, "my_tweets_be_retweeted_radio": {
-    "message": "我的推，被转发的",
-    "description": ""
-  }
-, "vcard_web_label": {
-    "message": "网址",
-    "description": ""
-  }
+	"help": {
+		"message": "",
+		"description": ""
+	},
+	"tweet_stat": {
+		"message": "",
+		"description": ""
+	},
+	"relation": {
+		"message": "",
+		"description": ""
+	},
+	"dm_inbox_radio": {
+		"message": "",
+		"description": ""
+	},
+	"cancel": {
+		"message": "",
+		"description": ""
+	},
+	"profile_preferences_link": {
+		"message": "",
+		"description": ""
+	},
+	"web": {
+		"message": "",
+		"description": ""
+	},
+	"remember_password": {
+		"message": "",
+		"description": ""
+	},
+	"people_block_link": {
+		"message": "",
+		"description": ""
+	},
+	"restore_defaults": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_others_radio": {
+		"message": "",
+		"description": ""
+	},
+	"location": {
+		"message": "",
+		"description": ""
+	},
+	"friend_stat": {
+		"message": "",
+		"description": ""
+	},
+	"click_me_to_continue": {
+		"message": "",
+		"description": ""
+	},
+	"username": {
+		"message": "",
+		"description": ""
+	},
+	"people_favs": {
+		"message": "",
+		"description": ""
+	},
+	"profile_extensions_link": {
+		"message": "",
+		"description": ""
+	},
+	"follower_stat": {
+		"message": "",
+		"description": ""
+	},
+	"load_more_hint": {
+		"message": "",
+		"description": ""
+	},
+	"password": {
+		"message": "",
+		"description": ""
+	},
+	"name": {
+		"message": "",
+		"description": ""
+	},
+	"greeting": {
+		"message": "",
+		"description": ""
+	},
+	"profile_delete_link": {
+		"message": "",
+		"description": ""
+	},
+	"change_avator": {
+		"message": "",
+		"description": ""
+	},
+	"vcard_stat_link": {
+		"message": "",
+		"description": ""
+	},
+	"loading_resources_hint": {
+		"message": "",
+		"description": ""
+	},
+	"people_follow_link": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_me_radio": {
+		"message": "",
+		"description": ""
+	},
+	"bio": {
+		"message": "",
+		"description": ""
+	},
+	"send_request": {
+		"message": "",
+		"description": ""
+	},
+	"people_followers": {
+		"message": "",
+		"description": ""
+	},
+	"search_for": {
+		"message": "",
+		"description": ""
+	},
+	"people_unblock_link": {
+		"message": "",
+		"description": ""
+	},
+	"create_profile": {
+		"message": "",
+		"description": ""
+	},
+	"profile_name": {
+		"message": "",
+		"description": ""
+	},
+	"close": {
+		"message": "",
+		"description": ""
+	},
+	"join_time": {
+		"message": "",
+		"description": ""
+	},
+	"vcard_info_link": {
+		"message": "",
+		"description": ""
+	},
+	"people_friends": {
+		"message": "",
+		"description": ""
+	},
+	"hotot": {
+		"message": "",
+		"description": ""
+	},
+	"dm_outbox_radio": {
+		"message": "",
+		"description": ""
+	},
+	"update": {
+		"message": "",
+		"description": ""
+	},
+	"people_tweets": {
+		"message": "",
+		"description": ""
+	},
+	"sign_in": {
+		"message": "",
+		"description": ""
+	},
+	"ok": {
+		"message": "",
+		"description": ""
+	},
+	"clear": {
+		"message": "",
+		"description": ""
+	},
+	"people_edit_link": {
+		"message": "",
+		"description": ""
+	},
+	"look_up": {
+		"message": "",
+		"description": ""
+	},
+	"my_tweets_be_retweeted_radio": {
+		"message": "",
+		"description": ""
+	},
+	"sign_in_with_twitter": {
+		"message": "",
+		"description": ""
+	}
 }
