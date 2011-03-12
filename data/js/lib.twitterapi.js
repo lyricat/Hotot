@@ -178,6 +178,7 @@ get_home_timeline:
 function get_home_timeline(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/home_timeline.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -193,6 +194,7 @@ get_mentions:
 function get_mentions(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/mentions.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -207,6 +209,7 @@ get_favorites:
 function get_favorites(id, page, on_success) {
     var url = lib.twitterapi.api_base + 'favorites/'+id+'.json';
     var params={
+        'include_entities': '1',
         'page': page,
     };
     lib.twitterapi.get(url, params, on_success);
@@ -217,6 +220,7 @@ get_direct_messages:
 function get_direct_messages(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'direct_messages.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -231,6 +235,7 @@ get_sent_direct_messages:
 function get_sent_direct_messages(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'direct_messages/sent.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -245,6 +250,7 @@ get_retweeted_by_me:
 function get_retweeted_by_me(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweeted_by_me.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -259,6 +265,7 @@ get_retweeted_to_me:
 function get_retweeted_to_me(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweeted_to_me.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -273,6 +280,7 @@ get_retweets_of_me:
 function get_retweets_of_me(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweets_of_me.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -288,6 +296,7 @@ function get_user_timeline(user_id, screen_name, since_id,
     max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/user_timeline.json';
     var params={
+        'include_entities': '1',
         'page': '0',
         'since_id': since_id,
         'count': count,
@@ -312,6 +321,7 @@ show_user:
 function show_user(screen_name, on_success) {
     var url = lib.twitterapi.api_base + 'users/show.json';
     var params={
+        'include_entities': '1',
         'screen_name': screen_name,
     };
     lib.twitterapi.get(url, params, on_success);
@@ -321,6 +331,7 @@ get_user_friends:
 function get_user_friends(screen_name, cursor, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/friends.json';
     var params = {
+        'include_entities': '1',
         'screen_name' : screen_name,
         'cursor': cursor
     };
@@ -331,6 +342,7 @@ get_user_followers:
 function get_user_followers(screen_name, cursor, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/followers.json';
     var params = {
+        'include_entities': '1',
         'screen_name' : screen_name,
         'cursor': cursor
     };

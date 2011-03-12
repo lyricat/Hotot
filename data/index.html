@@ -21,6 +21,7 @@
     <script type="text/javascript" src="js/db.js"></script>
     <script type="text/javascript" src="js/conf.js"></script>
     <script type="text/javascript" src="js/i18n.js"></script>
+    <script type="text/javascript" src="js/kismet.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
@@ -31,6 +32,7 @@
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.people_tabs.js"></script>
     <script type="text/javascript" src="js/ui.search_tabs.js"></script>
@@ -188,12 +190,14 @@ function init(callback) {
 
 function init_ui() {
     util.console.init();
+    kismet.init();
     ui.Slider.init();
     ui.Template.init();
     ui.Header.init();
     ui.StatusBox.init();
     ui.Main.init();
     ui.Welcome.init();
+    ui.MentionTabs.init();
     ui.RetweetTabs.init();
     ui.DMTabs.init();
     ui.PeopleTabs.init();
@@ -544,6 +548,20 @@ jQuery(function($) {
     </div>
     <div id="mentions_tweet_block"
         name="#mentions" class="tweet_block">
+        <div class="tweet_block_top">
+            <center>
+            <ol id="mention_radio_group" class="radio_group dark">
+                <li>
+                    <a id="mention_all_btn"
+                        class="radio_group_btn selected"
+                        href="#all" data-i18n-text="inbox">Show All</a>
+                </li><li>
+                    <a id="mention_reply_btn" class="radio_group_btn"
+                        href="#reply" data-i18n-text="outbox">Reply Only</a>
+                </li>
+            </ol>
+            </center>
+        </div>
         <ul>
         </ul>
         <div class="tweet_block_bottom">

@@ -16,7 +16,7 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -209,7 +209,7 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
+    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()));
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
     if (create_at.toDateString() != new Date().toDateString()){
@@ -217,8 +217,15 @@ function form_tweet (tweet_obj, pagename) {
     }
 
     // choose color scheme
-    if (text.indexOf(globals.myself.screen_name) != -1) {
-        scheme = 'mention';
+    if (tweet_obj.entities) {
+        for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1)
+        {
+            if (tweet_obj.entities.user_mentions[i].screen_name
+                == globals.myself.screen_name)
+            {
+                scheme = 'mention';
+            }
+        }
     }
     if (is_self) {
         scheme = 'me';
@@ -233,7 +240,9 @@ function form_tweet (tweet_obj, pagename) {
     ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
     ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
     ret = ret.replace(/{%RETWEET_ID%}/g, retweet_id);
+    ret = ret.replace(/{%REPLY_ID%}/g, reply_id != null? reply_id:'');
     ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
+    ret = ret.replace(/{%REPLY_NAME%}/g, reply_id != null? reply_name: '');
     ret = ret.replace(/{%USER_NAME%}/g, user_name);
     ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
     ret = ret.replace(/{%TEXT%}/g, text);

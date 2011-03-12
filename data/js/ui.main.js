@@ -33,7 +33,18 @@ function init () {
         var pagename = $(this).attr('name');
         var container  = ui.Main.get_current_container(pagename);
         if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
-            container.children('.card:hidden:lt(20)').show();
+            if (pagename == '#mentions') {
+                if (ui.MentionTabs.is_reply_only) {
+                    ui.MentionTabs.get_reply_tweets(
+                          container.children('.card:hidden:lt(20)'))
+                    .show();
+                } else {
+                    container.children('.card:hidden:lt(20)').show();
+                }
+            } else {
+                container.children('.card:hidden:lt(20)').show();
+            }
+            // load more automaticly
             if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
                 container.nextAll('.tweet_block_bottom').show();
                 var info = container.nextAll('.tweet_block_bottom')
@@ -601,6 +612,13 @@ function add_tweets(json_obj, container) {
         ui.Main.trim_page(container);
         ui.Main.compress_page(container);
     }
+    
+    if (container.pagename == 'mentions') {
+        if (ui.MentionTabs.is_reply_only) {
+            ui.MentionTabs.get_non_reply_tweets(
+                container.children('.card:visible')).hide();
+        }
+    } 
 
     // dumps to cache
     if (container.pagename != 'search') {
