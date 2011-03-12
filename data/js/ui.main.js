@@ -33,12 +33,12 @@ function init () {
         var pagename = $(this).attr('name');
         var container  = ui.Main.get_current_container(pagename);
 
-        if (this.scrollTop == 0) {
+        if (this.scrollTop < 30) {
             ui.Main.compress_page(container);
         } else if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
             container.children('.card:hidden:lt(20)').show();
             if (pagename == '#mentions') {
-                ui.MentionTabs.apply_filter()
+                ui.MentionTabs.apply_filter();
             } else if (pagename == '#home_timeline') {
                 ui.HomeTabs.apply_filter();
             }
@@ -603,16 +603,16 @@ function add_tweets(json_obj, container) {
             += new_tweets_height + json_obj.length;
     }
 
-    if (container.parents('.tweet_block').get(0).scrollTop < 100) {
-        ui.Main.trim_page(container);
-        ui.Main.compress_page(container);
-    }
-    
     // apply timeline filter
     if (container.pagename == 'mentions') {
         ui.MentionTabs.apply_filter();
     } else if (container.pagename == 'home_timeline') {
         ui.HomeTabs.apply_filter();    
+    }
+
+    if (container.parents('.tweet_block').get(0).scrollTop < 100) {
+        ui.Main.trim_page(container);
+        ui.Main.compress_page(container);
     }
 
     // dumps to cache
