@@ -30,7 +30,7 @@ function get_reply_tweets(tweets) {
 
 apply_filter:
 function apply_filter() {
-    switch (ui.HomeTabs.current_filter_name) {
+    switch (ui.MentionTabs.current_filter_name) {
     case '#all':
         $('#mentions_tweet_block .card:hidden:lt(20)').show();
     break;
@@ -39,7 +39,7 @@ function apply_filter() {
             $('#mentions_tweet_block .card:visible')
         ).hide();
         ui.MentionTabs.get_reply_tweets(
-            $('#mentions_tweet_block .card:hidden:lt(20)')
+            $('#mentions_tweet_block .card:hidden')
         ).show();
     break;
     default:
