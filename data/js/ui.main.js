@@ -32,17 +32,15 @@ function init () {
     function (event) {
         var pagename = $(this).attr('name');
         var container  = ui.Main.get_current_container(pagename);
-        if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
+
+        if (this.scrollTop == 0) {
+            ui.Main.compress_page(container);
+        } else if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
+            container.children('.card:hidden:lt(20)').show();
             if (pagename == '#mentions') {
-                if (ui.MentionTabs.is_reply_only) {
-                    ui.MentionTabs.get_reply_tweets(
-                          container.children('.card:hidden:lt(20)'))
-                    .show();
-                } else {
-                    container.children('.card:hidden:lt(20)').show();
-                }
-            } else {
-                container.children('.card:hidden:lt(20)').show();
+                ui.MentionTabs.apply_filter()
+            } else if (pagename == '#home_timeline') {
+                ui.HomeTabs.apply_filter();
             }
             // load more automaticly
             if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
@@ -58,9 +56,6 @@ function init () {
                     }
                 );
             }
-        }
-        if (this.scrollTop == 0) {
-            ui.Main.compress_page(container);
         }
         // hide tweet bar
         tweet_bar.hide();
@@ -613,12 +608,12 @@ function add_tweets(json_obj, container) {
         ui.Main.compress_page(container);
     }
     
+    // apply timeline filter
     if (container.pagename == 'mentions') {
-        if (ui.MentionTabs.is_reply_only) {
-            ui.MentionTabs.get_non_reply_tweets(
-                container.children('.card:visible')).hide();
-        }
-    } 
+        ui.MentionTabs.apply_filter();
+    } else if (container.pagename == 'home_timeline') {
+        ui.HomeTabs.apply_filter();    
+    }
 
     // dumps to cache
     if (container.pagename != 'search') {

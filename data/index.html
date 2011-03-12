@@ -31,6 +31,7 @@
     <script type="text/javascript" src="js/ui.welcome.js"></script>
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
+    <script type="text/javascript" src="js/ui.home_tabs.js"></script>
     <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
     <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
@@ -197,6 +198,7 @@ function init_ui() {
     ui.StatusBox.init();
     ui.Main.init();
     ui.Welcome.init();
+    ui.HomeTabs.init();
     ui.MentionTabs.init();
     ui.RetweetTabs.init();
     ui.DMTabs.init();
@@ -541,6 +543,22 @@ jQuery(function($) {
     <div id="main_page_slider">
     <div id="home_timeline_tweet_block" 
         name="#home_timeline" class="tweet_block">
+        <div class="tweet_block_top">
+            <center>
+            <ol id="home_radio_group" class="radio_group dark">
+                <li>
+                    <a class="radio_group_btn selected"
+                        href="#all" data-i18n-text="show_all">Show All</a>
+                </li><li>
+                    <a class="radio_group_btn"
+                        href="#public" data-i18n-text="public_only">Public Only</a>
+                </li><li>
+                    <a class="radio_group_btn"
+                        href="#conversation" data-i18n-text="conversation">Conversation</a>
+                </li>
+            </ol>
+            </center>
+        </div>
         <ul></ul>
         <div class="tweet_block_bottom">
             <div class="load_more_info" data-i18n-text="load_more">Load more</div>
@@ -554,10 +572,10 @@ jQuery(function($) {
                 <li>
                     <a id="mention_all_btn"
                         class="radio_group_btn selected"
-                        href="#all" data-i18n-text="inbox">Show All</a>
+                        href="#all" data-i18n-text="show_all">Show All</a>
                 </li><li>
                     <a id="mention_reply_btn" class="radio_group_btn"
-                        href="#reply" data-i18n-text="outbox">Reply Only</a>
+                        href="#reply" data-i18n-text="reply_only">Reply Only</a>
                 </li>
             </ol>
             </center>
