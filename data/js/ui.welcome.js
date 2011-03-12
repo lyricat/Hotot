@@ -5,12 +5,6 @@ me: {},
 
 id: '',
 
-sign_opts: {
-      'remember_password': false
-    , 'default_username': ''
-    , 'default_password': ''
-},
-
 profiles: [],
 
 selected_service: 'twitter',
@@ -57,7 +51,7 @@ function init () {
         cur_profile.preferences.default_username
             = lib.twitterapi.username; 
         ui.Notification.set("Sign in ...").show();
-        if (ui.Welcome.sign_opts.remember_password) {
+        if (cur_profile.preferences.remember_password) {
             cur_profile.preferences.default_password
                 = lib.twitterapi.password;
         } else {
@@ -85,7 +79,8 @@ function init () {
 
     $('#chk_remember_password').click(
     function (event) {
-        ui.Welcome.sign_opts.remember_password = $(this).attr('checked');
+        var cur_profile = conf.get_current_profile();
+        cur_profile.preferences.remember_password = $(this).attr('checked');
     });
     
     ui.Welcome.btn_oauth_sign_in 
@@ -230,6 +225,8 @@ function load_profiles_info() {
                 conf.profiles[profile_name].preferences.default_username);
             $('#tbox_basic_auth_password').val(
                 conf.profiles[profile_name].preferences.default_password);
+            $('#chk_remember_password').val(
+                conf.profiles[profile_name].preferences.remember_password);
             $('#profile_avator_list a').not(this).removeClass('selected');
             $(this).addClass('selected');
             // apply preferences
