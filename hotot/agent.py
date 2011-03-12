@@ -37,14 +37,14 @@ http_code_msg_table = {
 def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
-            utils.get_ui_object('image/ic64_hotot.png')))
+            utils.get_ui_object(os.path.join('image','ic64_hotot.png'))))
     notify.set_timeout(5000)
 
-def do_notify(summary, body):
+def do_notify(summary, body, icon_file = None):
     n = pynotify.Notification(summary, body)
-    n.set_icon_from_pixbuf(
-        gtk.gdk.pixbuf_new_from_file(
-            utils.get_ui_object('image/ic64_hotot.png')))
+    if (icon_file == None or not os.path.isfile(icon_file)):
+        icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
+    n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))    
     n.set_timeout(5000)
     n.show()
 
@@ -69,6 +69,21 @@ def crack_action(params):
         callback = params[2]
         file_path = utils.open_file_chooser_dialog()
         webv.execute_script('%s("%s")' % (callback, file_path))
+    elif params[1] == 'save_avatar':
+        img_uri = urllib.unquote(params[2])
+        img_file = urllib.unquote(params[3])
+        avatar_file = os.path.join(config.AVATAR_CACHE_DIR, img_file)
+        print avatar_file
+        if (not os.path.isfile(avatar_file)):
+            try:
+                avatar = open(avatar_file, "wb")
+                avatar.write(_get(img_uri, req_timeout=5))
+                avatar.close()
+            except:
+                import traceback
+                print "Exception:"
+                traceback.print_exc(file=sys.stdout)
+                os.unlink(avatar_file)
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
 
@@ -78,7 +93,11 @@ def crack_system(params):
         summary = urllib.unquote(params[3])
         body = urllib.unquote(params[4])
         if type == 'content':
-            do_notify(summary, body)
+            try:
+                avatar_file = os.path.join(config.AVATAR_CACHE_DIR, urllib.unquote(params[5]))
+            except:
+                avatar_file = None
+            do_notify(summary, body, avatar_file)
         elif type == 'count':
             notify.update(summary, body)
             notify.show()
@@ -173,17 +192,17 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
 
-def _get(url, params={}, req_headers={}):
+def _get(url, params={}, req_headers={}, req_timeout=None):
     urlopen = urllib2.urlopen
     if get_prefs('use_http_proxy'):
         proxy_support = urllib2.ProxyHandler(
             {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
         urlopen = urllib2.build_opener(proxy_support).open
     request =  urllib2.Request(url, headers=req_headers)
-    ret = urlopen(request).read()
+    ret = urlopen(request, timeout=req_timeout).read()
     return ret
 
-def _post(url, params={}, req_headers={}, files=[], additions=''):
+def _post(url, params={}, req_headers={}, files=[], additions='', req_timeout=None):
     if files != []:
         files_headers, files_data = utils.encode_multipart_formdata(params, files)
         params ={}
@@ -201,7 +220,7 @@ def _post(url, params={}, req_headers={}, files=[], additions=''):
 
     request = urllib2.Request(url, 
         urlencode(params) + additions, headers=req_headers);
-    ret = urlopen(request).read()
+    ret = urlopen(request, timeout=req_timeout).read()
     return ret
 
 pycurl = None

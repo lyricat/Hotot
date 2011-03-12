@@ -393,8 +393,15 @@ function load_tweets_cb(result, pagename) {
                 for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
                     var user = typeof json_obj[i].sender != 'undefined'
                         ? json_obj[i].sender : json_obj[i].user;
+                    var imgurl = user.profile_image_url;
+                    var imgname = imgurl.substring(imgurl.lastIndexOf('/')+1);
+                    var avatar_file = user.screen_name + '_' + imgname;
+                    hotot_action('action/save_avatar/'
+                        + encodeURIComponent(imgurl) + '/'
+                        + encodeURIComponent(avatar_file));
                     hotot_notify('content'
-                            , user.profile_image_url, user.screen_name
+                            , avatar_file
+                            , user.screen_name
                             , json_obj[i].text
                         );
                 }

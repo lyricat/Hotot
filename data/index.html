@@ -123,7 +123,8 @@ function hotot_notify(type, image, title, summary) {
             hotot_action('system/notify/'
                 + type
                 + '/' + encodeURIComponent(title)
-                + '/' + encodeURIComponent(summary));
+                + '/' + encodeURIComponent(summary)
+                + '/' + encodeURIComponent(image));
         } else if (conf.vars.platform == 'Chrome') {
             var img_url = image? image: 'image/ic64_hotot.png';
             var notification = webkitNotifications.createNotification(
