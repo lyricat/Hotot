@@ -56,7 +56,10 @@ def crack_hotot(uri):
         elif params[0] == 'action':
             crack_action(params)
         elif params[0] == 'request':
-            crack_request(params)
+            raw_json = urllib.unquote(params[1])
+            req_params = dict([(k.encode('utf8'), v)
+                for k, v in json.loads(raw_json).items()])
+            crack_request(req_params)
     except Exception, e:
         import traceback
         print "Exception:"
@@ -73,17 +76,8 @@ def crack_action(params):
         img_uri = urllib.unquote(params[2])
         img_file = urllib.unquote(params[3])
         avatar_file = os.path.join(config.AVATAR_CACHE_DIR, img_file)
-        print avatar_file
-        if (not os.path.isfile(avatar_file)):
-            try:
-                avatar = open(avatar_file, "wb")
-                avatar.write(_get(img_uri, req_timeout=5))
-                avatar.close()
-            except:
-                import traceback
-                print "Exception:"
-                traceback.print_exc(file=sys.stdout)
-                os.unlink(avatar_file)
+        th = threading.Thread(target = save_file_proc, args=(img_uri, avatar_file))
+        th.start()
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
 
@@ -112,18 +106,29 @@ def crack_system(params):
     elif params[1] == 'quit':
         app.quit()
 
-def crack_request(params):
-    raw_json = urllib.unquote(params[1])
-    request_info = dict([(k.encode('utf8'), v)
-        for k, v in json.loads(raw_json).items()])
-    args = ( request_info['uuid']
-        , request_info['method']
-        , request_info['url']
-        , request_info['params']
-        , request_info['headers']
-        , request_info['files'])
+def crack_request(req_params):
+    args = ( req_params['uuid']
+        , req_params['method']
+        , req_params['url']
+        , req_params['params']
+        , req_params['headers']
+        , req_params['files'])
     th = threading.Thread(target = request, args=args)
     th.start()
+
+def save_file_proc(params):
+    uri, save_path = params
+    if (not os.path.isfile(save_path)):
+        try:
+            avatar = open(save_path, "wb")
+            avatar.write(_get(uri, req_timeout=5))
+            avatar.close()
+        except:
+            import traceback
+            print "Exception:"
+            traceback.print_exc(file=sys.stdout)
+            os.unlink(save_path)
+
 
 def execute_script(scripts):
     return webv.execute_script(scripts)

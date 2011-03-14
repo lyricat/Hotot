@@ -393,12 +393,6 @@ function load_tweets_cb(result, pagename) {
                 for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
                     var user = typeof json_obj[i].sender != 'undefined'
                         ? json_obj[i].sender : json_obj[i].user;
-                    var imgurl = user.profile_image_url;
-                    var imgname = imgurl.substring(imgurl.lastIndexOf('/')+1);
-                    var avatar_file = user.screen_name + '_' + imgname;
-                    hotot_action('action/save_avatar/'
-                        + encodeURIComponent(imgurl) + '/'
-                        + encodeURIComponent(avatar_file));
                     hotot_notify('content'
                             , avatar_file
                             , user.screen_name
@@ -621,7 +615,12 @@ function add_tweets(json_obj, container) {
         ui.Main.trim_page(container);
         ui.Main.compress_page(container);
     }
-
+    // cache users' avatars in mentions
+    if (container.pagename == 'mentions') {
+        for (var i = 0; i < json_obj.length; i += 1) {
+            util.cache_avatar(json_obj[i].users);
+        }
+    }
     // dumps to cache
     if (container.pagename != 'search') {
         db.get_tweet_cache_size(function (size) {

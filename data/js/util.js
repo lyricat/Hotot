@@ -85,7 +85,34 @@ function trace() {
         i+=1;
     }
     hotot_log('TraceBack', '\n-------------\n  ' + callstack.join('\n-------------\n  '));
-}
+},
+
+cache_avatar:
+function cache_avatar(user_obj) {
+    db.get_user(user.screen_name, function (exists_user) {
+        if (exists_user == null || exists_user.profile_image_url != user_obj.profile_image_url) 
+        {
+            var imgurl = user_obj.profile_image_url;
+            var imgname = imgurl.substring(imgurl.lastIndexOf('/')+1);
+            var avatar_file = user_obj.screen_name + '_' + imgname;
+            hotot_action('action/save_avatar/'
+                + encodeURIComponent(imgurl) + '/'
+                + encodeURIComponent(avatar_file));     
+        }
+    });
+},
+
+get_avator:
+function get_avator(screen_name, callback) {
+    if (util.is_native_platform()) {
+        var img_ext = imgurl.substring(imgurl.lastIndexOf('.'));
+        callback(conf.vars.avatar_cache_dir + '/' + screen_name + img_ext);
+    } else {
+        db.get_user(screen_name, function (user) {
+            callback(user.profile_image_url);
+        }); 
+    }
+},
 
 };
 

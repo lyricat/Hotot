@@ -103,6 +103,7 @@ function create_database(callback) {
 dump_users:
 function dump_users(json_obj) {
     var dump_single_user = function (tx, user) {
+        // update user obj
         tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id_str, user.screen_name, JSON.stringify(user)],
         function (tx, rs) {},
         function (tx, error) {
@@ -189,7 +190,12 @@ get_user:
 function get_user(screen_name, callback) {
     db.database.transaction(function (tx) {
         tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name=?', [screen_name], 
-            function(tx, rs) {callback(tx,rs);});
+    function (tx, rs) {
+        if (rs.rows.length != 0) {
+            callback(JSON.parse(rs.rows.item(0).json));
+        } else {
+            callback(null);
+        }
     });
 },
 

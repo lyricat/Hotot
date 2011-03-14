@@ -159,14 +159,14 @@ function update_people(force) {
         );
     } else {
         db.get_user(ui.Main.block_info['#people'].screen_name
-            , function (tx, rs) {
-                if (rs.rows.length == 0) {
+            , function (user) {
+                if (!user) {
                     lib.twitterapi.show_user(
                           ui.Main.block_info['#people'].screen_name
                         , render_proc
                     );
                 } else {
-                    render_proc(JSON.parse(rs.rows.item(0).json));
+                    render_proc(user);
                 }
             }
         );
