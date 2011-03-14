@@ -74,10 +74,14 @@ def crack_action(params):
         webv.execute_script('%s("%s")' % (callback, file_path))
     elif params[1] == 'save_avatar':
         img_uri = urllib.unquote(params[2])
-        img_file = urllib.unquote(params[3])
-        avatar_file = os.path.join(config.AVATAR_CACHE_DIR, img_file)
-        th = threading.Thread(target = save_file_proc, args=(img_uri, avatar_file))
-        th.start()
+        avatar_file = urllib.unquote(params[3])
+        avatar_path = os.path.join(config.AVATAR_CACHE_DIR, avatar_file)
+        if not (os.path.exists(avatar_path) and avatar_file.endswith(img_uri[img_uri.rfind('/')+1:])):
+            print 'Download:', img_uri , 'To' , avatar_path
+            th = threading.Thread(
+                target = save_file_proc, 
+                args=(img_uri, avatar_path))
+            th.start()
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
 
@@ -116,8 +120,7 @@ def crack_request(req_params):
     th = threading.Thread(target = request, args=args)
     th.start()
 
-def save_file_proc(params):
-    uri, save_path = params
+def save_file_proc(uri, save_path):
     if (not os.path.isfile(save_path)):
         try:
             avatar = open(save_path, "wb")

@@ -1,19 +1,11 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.PrefsDlg = {
 
-me: {},
-
 id: '',
-
-mask: {},
-
-is_show: false,
 
 init:
 function init () {
     ui.PrefsDlg.id = '#prefs_dlg';
-    ui.PrefsDlg.me = $('#prefs_dlg');
-    ui.PrefsDlg.mask = $('#dialog_mask');
 
     var btns = new widget.RadioGroup('#prefs_dlg_btns');
     btns.on_clicked = function (btn, event) {
@@ -24,18 +16,13 @@ function init () {
     btns.create();
     $('#btn_prefs_global').click();
 
-    $(ui.PrefsDlg.id).find('.dialog_close_btn').click(
-    function (event) {
-        ui.DialogHelper.close(ui.PrefsDlg);
-    });
-
     var btn_regain_token = new widget.Button('#btn_regain_token');
     btn_regain_token.on_clicked = function (event) {
         jsOAuth.access_token = null;
         jsOAuth.get_request_token(
             function (result) {
                 ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                ui.DialogHelper.open(ui.PinDlg);
+                globals.oauth_dialog.open();
             }); 
     };
     btn_regain_token.create();
@@ -82,18 +69,18 @@ function init () {
                 ui.MessageDlg.TITLE_STR_ERROR,
                 "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
-            ui.DialogHelper.open(ui.MessageDlg);
+            globals.msg_dialog.open();
         } else {
             ui.PrefsDlg.save_settings();
             ui.PrefsDlg.save_prefs();
-            ui.DialogHelper.close(ui.PrefsDlg);
+            globals.prefs_dialog.close();
         }
     };
     btn_prefs_ok.create();
 
     var btn_prefs_cancel = new widget.Button('#btn_prefs_cancel');
     btn_prefs_cancel.on_clicked = function (event) {
-        ui.DialogHelper.close(ui.PrefsDlg);
+        globals.prefs_dialog.close();
     };
     btn_prefs_cancel.create();
 
@@ -288,22 +275,6 @@ function update_font_preview() {
         , $('#sel_prefs_font_family').attr('value'))
     .css('font-size'
         , $('#tbox_prefs_font_size').attr('value') + 'px');
-},
-
-hide:
-function hide () {
-    ui.PrefsDlg.me.hide();
-    ui.PrefsDlg.is_show = false;
-    return ui.PrefsDlg;
-},
-
-show:
-function show () {
-    ui.PrefsDlg.load_settings(conf.settings);
-    ui.PrefsDlg.load_prefs();
-    ui.PrefsDlg.me.show();
-    ui.PrefsDlg.is_show = true;
-    return ui.PrefsDlg;
 },
 
 }

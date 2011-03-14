@@ -3,8 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Home | Hotot</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
     <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
     <script type="text/javascript" src="js/base64.js"></script>
@@ -15,6 +15,7 @@
     
     <script type="text/javascript" src="js/widget.button.js"></script>
     <script type="text/javascript" src="js/widget.radio_group.js"></script>
+    <script type="text/javascript" src="js/widget.dialog.js"></script>
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -190,6 +191,43 @@ function init(callback) {
     $(window).dequeue('_page_init');
 }
 
+function init_dialogs() {
+    globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
+    globals.oauth_dialog.resize(350, 320);
+    globals.oauth_dialog.place(widget.DialogManager.CENTER);
+    globals.oauth_dialog.create();
+
+    globals.profile_dialog = new widget.Dialog('#profile_dlg');
+    globals.profile_dialog.resize(500, 400);
+    globals.profile_dialog.place(widget.DialogManager.CENTER);
+    globals.profile_dialog.create();
+
+    globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
+    globals.prefs_dialog.resize(500, 400);
+    globals.prefs_dialog.place(widget.DialogManager.CENTER);
+    globals.prefs_dialog.create();
+
+    globals.exts_dialog = new widget.Dialog('#exts_dlg');
+    globals.exts_dialog.resize(500, 400);
+    globals.exts_dialog.place(widget.DialogManager.CENTER);
+    globals.exts_dialog.create();
+
+    globals.about_dialog = new widget.Dialog('#about_dlg');
+    globals.about_dialog.resize(500, 400);
+    globals.about_dialog.place(widget.DialogManager.CENTER);
+    globals.about_dialog.create();
+
+    globals.common_dialog = new widget.Dialog('#common_dlg');
+    globals.common_dialog.resize(500, 400);
+    globals.common_dialog.place(widget.DialogManager.CENTER);
+    globals.common_dialog.create();
+
+    globals.msg_dialog = new widget.Dialog('#message_dlg');
+    globals.msg_dialog.resize(400, 200);
+    globals.msg_dialog.place(widget.DialogManager.CENTER);
+    globals.msg_dialog.create();
+}
+
 function init_ui() {
     util.console.init();
     kismet.init();
@@ -214,9 +252,9 @@ function init_ui() {
     ui.AboutDlg.init();
     ui.CommonDlg.init();
     ui.Finder.init();
-    ui.DialogHelper.init();
     ui.ActionMenu.init();
     ui.ContextMenu.init();
+    init_dialogs();
 }
 
 function overlay_variables(vars) {
@@ -334,7 +372,7 @@ jQuery(function($) {
                 // '<Ctrl> + f' to open finder 
                 ui.Finder.show();
             }
-            if (!event.shiftKey && !event.ctrlKey && !event.metaKey && !ui.DialogHelper.exists_dialog()) {
+            if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
                     ui.Notification.set('Loading Tweets...').show(-1);
@@ -673,7 +711,7 @@ jQuery(function($) {
                 <div class="profile_img_wrapper"></div>
                 <div class="vcard_body">
                     <center>
-                    <ul id="people_vcard_radio_group" class="radio_group">
+                    <ul id="people_vcard_radio_group" class="radio_group dark">
                         <li><a class="radio_group_btn selected"
                             href="#people_vcard_info_page"
                             data-i18n-text="info"
@@ -966,534 +1004,557 @@ jQuery(function($) {
 </section>
 
 <section id="dialog_mask">
+</section>
 <!--dialogs-->
-    <!-- preferences dialog -->
-    <div id="prefs_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2>Preferences</h2>
-            <a class="dialog_close_btn ic_close" 
-                href="javascript:void(0);"></a>
-        </div>
-        <div id="prefs_dlg_body" class="dialog_body">
-            <ul id="prefs_dlg_btns" class="radio_group">
-                <li><a id="btn_prefs_global"
-                        href="#prefs_global" 
-                        class="radio_group_btn selected">Globals</a>
-                </li><li><a id="btn_prefs_account"
-                        href="#prefs_account" 
-                        class="radio_group_btn">Account</a>
-                </li><li><a id="btn_prefs_appearance"
-                        href="#prefs_appearance" 
-                        class="radio_group_btn">Looks &amp; Feels</a>
-                </li><li><a id="btn_prefs_advanced"
-                        href="#prefs_advanced" 
-                        class="radio_group_btn">Advanced</a>
-                </li>
-            </ul>
-            <div id='prefs_global' class="prefs_dlg_page">
-                <div class="hint">You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts</div>
-                <h3>- HTTP Proxy -</h3>
-                <div class="dlg_group">
-                <p>
-                    <input id="chk_prefs_use_http_proxy"
-                        title="Use HTTP Proxy" type="checkbox"/>
-                    <label id="label_prefs_use_http_proxy" 
-                        for="chk_prefs_use_http_proxy">
-                        Enable Proxy
-                    </label><br/> 
-                    <label>Host</label>
-                    <input id="tbox_prefs_http_proxy_host"
-                        title="HTTP Proxy Host" 
-                        style="width: 120px;" 
-                        type="text" class="entry"/>
-                    <label>Port</label>
-                    <input id="tbox_prefs_http_proxy_port"
-                        title="HTTP Proxy Port" 
-                        style="width: 30px;"
-                        type="text" class="entry"/><br/>
-                </p>
-                </div>
-                <h3>- Keybinding -</h3>
-                <div class="dlg_group">
-                <p>
-                    <label>Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
-                    <input id="tbox_prefs_shortcut_summon_hotot" 
-                         title="Summon Hot Key"
-                         type="text" class="entry"/><br/>
-                </p>
-                </div>
-                <h3>- Misc -</h3>
-                <div class="dlg_group">
-                <p>
-                    <input id="chk_prefs_use_verbose_mode"
-                        title="Enable verbose mode or not" 
-                        type="checkbox"/>
-                    <label for="chk_prefs_use_verbose_mode">Enable verbose mode</label><br/>
-                    <input id="chk_prefs_use_ubuntu_indicator"
-                        title="Use Ubuntu Indicator" 
-                        type="checkbox"/>
-                    <label for="chk_prefs_use_ubuntu_indicator">Use Ubuntu indicator</label><br/>
-                </p>
-                </div>
-            </div><!-- END of #prefs_global -->
-            <div id='prefs_account' class="prefs_dlg_page">
-                <h3>- Twitter -</h3>
-                <div class="dlg_group">
-                <p>
-                    <label>Regain Access Token</label><br/>
-                    <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
-                </p>
-                </div>
+<!-- preferences dialog -->
+<div id="prefs_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">Preferences</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header">
+        <ul id="prefs_dlg_btns" class="radio_group dark">
+            <li><a id="btn_prefs_global"
+                    href="#prefs_global" 
+                    class="radio_group_btn selected">Globals</a>
+            </li><li><a id="btn_prefs_account"
+                    href="#prefs_account" 
+                    class="radio_group_btn">Account</a>
+            </li><li><a id="btn_prefs_appearance"
+                    href="#prefs_appearance" 
+                    class="radio_group_btn">Looks &amp; Feels</a>
+            </li><li><a id="btn_prefs_advanced"
+                    href="#prefs_advanced" 
+                    class="radio_group_btn">Advanced</a>
+            </li>
+        </ul>
+    </div>
+    <div id="prefs_dlg_body" class="dialog_body">
+        <div id='prefs_global' class="prefs_dlg_page">
+            <div class="dialog_block hint">You MUST restart Hotot for some changes below to take effect.
+            And these options will affect ALL accounts
+            </div>
+            <div class="dialog_block">
+            <h3>- HTTP Proxy -</h3>
+            <p>
+                <input id="chk_prefs_use_http_proxy"
+                    title="Use HTTP Proxy" type="checkbox"/>
+                <label id="label_prefs_use_http_proxy" 
+                    for="chk_prefs_use_http_proxy">
+                    Enable Proxy
+                </label><br/> 
+                <label>Host</label>
+                <input id="tbox_prefs_http_proxy_host"
+                    title="HTTP Proxy Host" 
+                    style="width: 120px;" 
+                    type="text" class="entry"/>
+                <label>Port</label>
+                <input id="tbox_prefs_http_proxy_port"
+                    title="HTTP Proxy Port" 
+                    style="width: 30px;"
+                    type="text" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- Keybinding -</h3>
+            <p>
+                <label>Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
+                <input id="tbox_prefs_shortcut_summon_hotot" 
+                     title="Summon Hot Key"
+                     type="text" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- Misc -</h3>
+            <p>
+                <input id="chk_prefs_use_verbose_mode"
+                    title="Enable verbose mode or not" 
+                    type="checkbox"/>
+                <label for="chk_prefs_use_verbose_mode">Enable verbose mode</label><br/>
+                <input id="chk_prefs_use_ubuntu_indicator"
+                    title="Use Ubuntu Indicator" 
+                    type="checkbox"/>
+                <label for="chk_prefs_use_ubuntu_indicator">Use Ubuntu indicator</label><br/>
+            </p>
+            </div>
+        </div><!-- END of #prefs_global -->
+        <div id='prefs_account' class="prefs_dlg_page">
+            <div class="dialog_block">
+            <h3>- Twitter -</h3>
+            <p>
+                <label>Regain Access Token</label><br/>
+                <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
+            </p>
+            </div>
 
-                <h3>- Identi.ca -</h3>
-                <div class="dlg_group">
-                <p>
-                    <input id="chk_prefs_remember_password"
-                        type="checkbox" 
-                        title="Remember Password" checked="1"/>
-                    <label for="chk_prefs_remember_password">
-                        Remember Password"
-                    </label><br/>
-                </p>
-                </div>
-            </div> <!-- END of #prefs_account -->
-            <div id='prefs_appearance' class="prefs_dlg_page">
-                <h3>- Font -</h3>
-                <div class="dlg_group">
-                <p>
-                    <label>Custom Font</label>
-                    <input id="tbox_prefs_custom_font"
-                        title="Custom Font" 
-                        style="width:80px"
-                        type="text" class="entry"/><br/>
-                    <label>Font Family</label>
-                    <select id="sel_prefs_font_family" 
-                        title="Font Family" style="width: 85px">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select> 
-                    <label>Font Size</label>
-                    <input id="tbox_prefs_font_size" 
-                        title="Font Size" 
-                        style="width:30px" type="text" class="entry"/>
-                    <label>px</label><br/>
-                    <div id="prefs_font_preview">The quick brown fox jumps over the lazy dog.</div>
-                </p>
-                </div>
-                <h3>- Behavior -</h3>
-                <div class="dlg_group">
-                <p>
-                    <input id="chk_prefs_use_native_notify" 
-                        title="Use Native Notify"
-                        type="checkbox"/>
-                    <label for="chk_prefs_use_native_notify">Use Native Notify System</label><br/>
-                    <input id="chk_prefs_use_hover_box"
-                        title="Hover to open tweet box"
-                        type="checkbox"/>
-                    <label for="chk_prefs_use_hover_box">Hover to open tweet box</label><br/>
-                    <input id="chk_prefs_use_preload_conversation" 
-                        title="Preload latest tweet in a conversation if it is cached." 
-                        type="checkbox"/>
-                    <label for="chk_prefs_use_preload_conversation">Preload latest tweet in a conversation if possible.</label><br/>
-                </p>
-                </div>
-                <h3>- Notification -</h3>
-                <div class="dlg_group">
-                <p>
-                    <table id="notification_table">
-                    <tbody>
-                    <tr><th>Page</th><th>Notify</th><th>Type</th><th>Sound</th></tr>
-                    <tr><td>Home</td>
-                        <td>
-                        <input id="chk_prefs_use_home_timeline_notify"
-                            title="Notify when home page has new tweets"
-                            type="checkbox"/>
-                        </td>
-                        <td>
-                        <select 
-                        id="sel_prefs_use_home_timeline_notify_type"
-                        title="Type" style="width: 85px">
-                            <option value="count">count</option>
-                            <option value="content">content</option>
-                        </select> 
-                        </td>
-                        <td>
-                        <input id="chk_prefs_use_home_timeline_notify_sound"
-                            title="Play sound when home page has new tweets"
-                            type="checkbox"/>             
-                        </td>
-                    </tr>
-                    <tr><td>Mentions</td>
-                        <td>
-                        <input id="chk_prefs_use_mentions_notify"
-                            title="Notify when some new tweets mention me."
-                            type="checkbox"/>
-                        </td>
-                        <td>
-                        <select 
-                        id="sel_prefs_use_mentions_notify_type"
-                        title="Type" style="width: 85px">
-                            <option value="count">count</option>
-                            <option value="content">content</option>
-                        </select> 
-                        </td>
-                        <td>
-                        <input id="chk_prefs_use_mentions_notify_sound"
-                            title="Play swhen some new tweets mention me."
-                            type="checkbox"/>             
-                        </td>
-                    </tr>
-                    <tr><td>Message</td>
-                        <td>
-                        <input id="chk_prefs_use_direct_messages_inbox_notify"
-                            title="Notify when some new direct messages coming."
-                            type="checkbox"/>
-                        </td>
-                        <td>
-                <select 
-                id="sel_prefs_use_direct_messages_inbox_notify_type"
-                title="Type" style="width: 85px">
-                    <option value="count">count</option>
-                    <option value="content">content</option>
+            <div class="dialog_block">
+            <h3>- Identi.ca -</h3>
+            <p>
+                <input id="chk_prefs_remember_password"
+                    type="checkbox" 
+                    title="Remember Password" checked="1"/>
+                <label for="chk_prefs_remember_password">
+                    Remember Password"
+                </label><br/>
+            </p>
+            </div>
+        </div> <!-- END of #prefs_account -->
+        <div id='prefs_appearance' class="prefs_dlg_page">
+            <div class="dialog_block">
+            <h3>- Font -</h3>
+            <p>
+                <label>Custom Font</label>
+                <input id="tbox_prefs_custom_font"
+                    title="Custom Font" 
+                    style="width:80px"
+                    type="text" class="entry"/><br/>
+                <label>Font Family</label>
+                <select id="sel_prefs_font_family" 
+                    title="Font Family" style="width: 85px">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select> 
-                        </td>
-                        <td>
-                        <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
-                            title="Play when some new direct messages coming."
-                            type="checkbox"/>             
-                        </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                </p>
-                </div>
-            </div><!-- END of prefs_appearance -->
-            <div id='prefs_advanced' class="prefs_dlg_page"> 
-                <h3>- API Settings -</h3>
-                <div class="dlg_group">
-                <p>
-                    <label>API Base</label><br/>
-                    <input id="tbox_prefs_api_base"
-                        title="API Base" type="text" class="entry"/><br/>
-                    <input id="chk_prefs_use_same_sign_api_base"
-                        title="Use same Signing Api" 
+                <label>Font Size</label>
+                <input id="tbox_prefs_font_size" 
+                    title="Font Size" 
+                    style="width:30px" type="text" class="entry"/>
+                <label>px</label><br/>
+                <div id="prefs_font_preview">The quick brown fox jumps over the lazy dog.</div>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- Behavior -</h3>
+            <p>
+                <input id="chk_prefs_use_native_notify" 
+                    title="Use Native Notify"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_native_notify">Use Native Notify System</label><br/>
+                <input id="chk_prefs_use_hover_box"
+                    title="Hover to open tweet box"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_hover_box">Hover to open tweet box</label><br/>
+                <input id="chk_prefs_use_preload_conversation" 
+                    title="Preload latest tweet in a conversation if it is cached." 
+                    type="checkbox"/>
+                <label for="chk_prefs_use_preload_conversation">Preload latest tweet in a conversation if possible.</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- Notification -</h3>
+            <p>
+                <table id="notification_table">
+                <tbody>
+                <tr><th>Page</th><th>Notify</th><th>Type</th><th>Sound</th></tr>
+                <tr><td>Home</td>
+                    <td>
+                    <input id="chk_prefs_use_home_timeline_notify"
+                        title="Notify when home page has new tweets"
                         type="checkbox"/>
-                    <label for="chk_prefs_use_same_sign_api_base">
-                        Same signing API base:
-                    </label><br/>
-                    <input id="tbox_prefs_sign_api_base"  
-                        title="Signing API Base"
-                        type="text" class="entry"/><br/>
-                    <label>OAuth Base</label><br/>
-                    <input id="tbox_prefs_oauth_base" 
-                        title="OAuth Base" type="text" class="entry"/><br/>
-                    <input id="chk_prefs_use_same_sign_oauth_base"
-                        title="Use same Signing OAuth Base" 
+                    </td>
+                    <td>
+                    <select 
+                    id="sel_prefs_use_home_timeline_notify_type"
+                    title="Type" style="width: 85px">
+                        <option value="count">count</option>
+                        <option value="content">content</option>
+                    </select> 
+                    </td>
+                    <td>
+                    <input id="chk_prefs_use_home_timeline_notify_sound"
+                        title="Play sound when home page has new tweets"
+                        type="checkbox"/>             
+                    </td>
+                </tr>
+                <tr><td>Mentions</td>
+                    <td>
+                    <input id="chk_prefs_use_mentions_notify"
+                        title="Notify when some new tweets mention me."
                         type="checkbox"/>
-                    <label for="chk_prefs_use_same_sign_oauth_base">
-                        Same signing OAuth base:
-                    </label><br/>
-                    <input id="tbox_prefs_sign_oauth_base"
-                        title="Signing OAuth Base"
-                        type="text" class="entry"/><br/>
-                    <label>Search API Base</label><br/>
-                    <input id="tbox_prefs_search_api_base"
-                        title="Search API Base" 
-                        type="text" class="entry"/><br/>
-                </p>
-                </div>
-            </div><!-- END of prefs_advanced -->
+                    </td>
+                    <td>
+                    <select 
+                    id="sel_prefs_use_mentions_notify_type"
+                    title="Type" style="width: 85px">
+                        <option value="count">count</option>
+                        <option value="content">content</option>
+                    </select> 
+                    </td>
+                    <td>
+                    <input id="chk_prefs_use_mentions_notify_sound"
+                        title="Play swhen some new tweets mention me."
+                        type="checkbox"/>             
+                    </td>
+                </tr>
+                <tr><td>Message</td>
+                    <td>
+                    <input id="chk_prefs_use_direct_messages_inbox_notify"
+                        title="Notify when some new direct messages coming."
+                        type="checkbox"/>
+                    </td>
+                    <td>
+            <select 
+            id="sel_prefs_use_direct_messages_inbox_notify_type"
+            title="Type" style="width: 85px">
+                <option value="count">count</option>
+                <option value="content">content</option>
+            </select> 
+                    </td>
+                    <td>
+                    <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
+                        title="Play when some new direct messages coming."
+                        type="checkbox"/>             
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+            </p>
+            </div>
+        </div><!-- END of prefs_appearance -->
+        <div id='prefs_advanced' class="prefs_dlg_page"> 
+            <div class="dialog_block">
+            <h3>- API Settings -</h3>
+            <p>
+                <label>API Base</label><br/>
+                <input id="tbox_prefs_api_base"
+                    title="API Base" type="text" class="entry"/><br/>
+                <input id="chk_prefs_use_same_sign_api_base"
+                    title="Use same Signing Api" 
+                    type="checkbox"/>
+                <label for="chk_prefs_use_same_sign_api_base">
+                    Same signing API base:
+                </label><br/>
+                <input id="tbox_prefs_sign_api_base"  
+                    title="Signing API Base"
+                    type="text" class="entry"/><br/>
+                <label>OAuth Base</label><br/>
+                <input id="tbox_prefs_oauth_base" 
+                    title="OAuth Base" type="text" class="entry"/><br/>
+                <input id="chk_prefs_use_same_sign_oauth_base"
+                    title="Use same Signing OAuth Base" 
+                    type="checkbox"/>
+                <label for="chk_prefs_use_same_sign_oauth_base">
+                    Same signing OAuth base:
+                </label><br/>
+                <input id="tbox_prefs_sign_oauth_base"
+                    title="Signing OAuth Base"
+                    type="text" class="entry"/><br/>
+                <label>Search API Base</label><br/>
+                <input id="tbox_prefs_search_api_base"
+                    title="Search API Base" 
+                    type="text" class="entry"/><br/>
+            </p>
+            </div>
+        </div><!-- END of prefs_advanced -->
+    </div>
+    <div class="dialog_footer">
+        <a id="btn_prefs_restore_defaults" class="button" data-i18n-text="restore_defaults">Restore Defaults</a>
+        <a id="btn_prefs_cancel" class="button" data-i18n-text="cancel">Cancel</a>
+        <a id="btn_prefs_ok" class="button" data-i18n-text="ok">OK</a>
+    </div>
+    </div> <!-- END of .dialog_container -->
+</div>
+
+<!-- oauth dialog -->
+<div id="oauth_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">First time to Sign in with Twitter</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div id="oauth_dlg_body" class="dialog_body">
+        <div class="dialog_block">
+        <h3>- Step 1 -</h3>
+        <p>Click the button below </p>
+        <p style="text-align: center">
+        <a id="btn_oauth_user_auth" class="button" data-i18n-text="click_me_to_continue">
+            Click me to continue
+        </a>
+        </p>
+        <p>Or copy the address and open it in your browser.</p>
+        <p style="text-align: center">
+        <input id="tbox_oauth_auth_url" type="text" class="entry" value=""/>
+        </p>
         </div>
-        <div class="dialog_bottom">
-            <a id="btn_prefs_restore_defaults" class="button" data-i18n-text="restore_defaults">Restore Defaults</a>
-            <a id="btn_prefs_cancel" class="button" data-i18n-text="cancel">Cancel</a>
-            <a id="btn_prefs_ok" class="button" data-i18n-text="ok">OK</a>
+        <div class="dialog_block">
+        <h3>- Step 2 -</h3>
+        <p>Copy the PIN Code and paste it into the box below;</p>
+        <p style="text-align: center;">
+            <label>PIN Code:</label>
+            <br/>
+            <input id="tbox_oauth_pin" type="text" class="entry"/><br/>
+        </p>
         </div>
     </div>
-
-    <!-- oauth dialog -->
-    <div id="oauth_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2>First time to Sign in with Twitter</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
-        </div>
-
-        <div id="oauth_dlg_body" class="dialog_body">
-            <p>
-                Step 1: click the button below or copy the address and open it in your browser.<br/>
-            </p>
-            <p style="text-align: center;">
-                <a id="btn_oauth_user_auth" class="button" data-i18n-text="click_me_to_continue">
-                    Click me to continue
-                </a><br/>
-                <input id="tbox_oauth_auth_url" 
-                    type="text" class="entry" value=""/>
-            </p>
-            <p>
-                Step 2: copy the PIN Code and paste it into the box below;
-            </p>
-            <p style="text-align: center;">
-                <label>PIN Code:</label>
-                <input id="tbox_oauth_pin" type="text" class="entry"/><br/>
-            </p>
-        </div>
-        <div class="dialog_bottom">
-        <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);" data-i18n-text="cancel">Cancel
-        </a>
-        <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);" data-i18n-text="ok">OK
-        </a>
-        </div>
+    <div class="dialog_footer">
+    <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);" data-i18n-text="cancel">Cancel
+    </a>
+    <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);" data-i18n-text="ok">OK
+    </a>
     </div>
+    </div><!-- END of .dialog_container -->
+</div>
 
-    <!-- help & about dialog -->
-    <div id="about_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2>About &amp; Help</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
+<!-- help & about dialog -->
+<div id="about_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">About &amp; Help</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header">
+        <ul id="about_dlg_btns" class="radio_group dark">
+            <li><a id="btn_about_about"
+                    href="#about_about" 
+                    class="radio_group_btn selected">About</a>
+            </li><li><a id="btn_about_keyboard"
+                    href="#about_keyboard" 
+                    class="radio_group_btn">Keyboard</a>
+            </li><li><a id="btn_about_credits"
+                    href="#about_credits" 
+                    class="radio_group_btn">Credits</a>
+            </li><li><a id="btn_about_license"
+                    href="#about_license" 
+                    class="radio_group_btn">License</a>
+            </li>
+        </ul>
+    </div>
+    <div id="about_dlg_body" class="dialog_body">
+        <div id="about_about" class="about_dlg_page">
+            <div class="dialog_block">
+            <h3>- Hotot <span class="version"></span>-</h3>
+            <p>
+            <strong>Hotot</strong> is a lightweight client for the <a href="http://twitter.com">twitter</a> microblogging service.
+            </p>
+            <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
+            <p>
+            Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
+            </p>
+            <p>Project Site: <a href="http://hotot.org">http://hotot.org</a></p>
+            </div>
         </div>
-        <div id="about_dlg_body" class="dialog_body">
-            <ul id="about_dlg_btns" class="radio_group">
-                <li><a id="btn_about_about"
-                        href="#about_about" 
-                        class="radio_group_btn selected">About</a>
-                </li><li><a id="btn_about_keyboard"
-                        href="#about_keyboard" 
-                        class="radio_group_btn">Keyboard</a>
-                </li><li><a id="btn_about_credits"
-                        href="#about_credits" 
-                        class="radio_group_btn">Credits</a>
-                </li><li><a id="btn_about_license"
-                        href="#about_license" 
-                        class="radio_group_btn">License</a>
-                </li>
-            </ul>
-            <div id="about_about" class="about_dlg_page">
-                <h3>- Hotot <span class="version"></span>-</h3>
-                <div class="dlg_group">
-                <p>
-                <strong>Hotot</strong> is a lightweight client for the <a href="http://twitter.com">twitter</a> microblogging service.
-                </p>
-                <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
-                <p>
-                Project Host: <a href="http://code.google.com/p/hotot">http://code.google.com/p/hotot/</a>
-                </p>
-                <p>Project Site: <a href="http://hotot.org">http://hotot.org</a></p>
-                </div>
+        <div id="about_keyboard" class="about_dlg_page">
+            <div class="dialog_block">
+            <h3>- Keyboard shortcuts -</h3>
+            <p>
+                <table id="shortcuts_table">
+                <tbody>
+                <tr><th>Action</th><th>Shortcut</th></tr>
+                <tr><th class="sub" colspan="2">Global</th></tr>
+                <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
+                <tr><td>Help</td><td>?</td></tr>
+
+                <tr><th class="sub" colspan="2">Tweet List</th></tr>
+                <tr><td>Reload</td><td>r</td></tr>
+                <tr><td>Slide to prev page</td><td>h</td></tr>
+                <tr><td>Slide to next page</td><td>l</td></tr>
+                <tr><td>Move to prev tweet</td><td>k</td></tr>
+                <tr><td>Move to next tweet</td><td>j</td></tr>
+                <tr><td>Move to top</td><td>t</td></tr>
+                <tr><td>Move to bottom</td><td>b</td></tr>
+                <tr><td>Toggle toolbar</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
+                <tr><td>Toggle nav tabs</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
+                <tr><td>Enter compose mode</td><td>c</td></tr>
+                <tr><td>Enter action mode</td><td>a</td></tr>
+                <tr><td>Enter finder mode</td><td>/ or &lt;Ctrl&gt;f</td></tr>
+                <tr><th class="sub" colspan="2">Compose Mode</th></tr>
+                <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
+                <tr><th class="sub" colspan="2">Action Mode</th></tr>
+                <tr><td>Prev action</td><td>k</td></tr>
+                <tr><td>Next action</td><td>j</td></tr>
+                <tr><td>Trigger action</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
+                <tr><td>Exit action mode</td><td>&lt;ESC&gt; or a</td></tr>
+                <tr><th class="sub" colspan="2">Finder Mode</th></tr>
+                <tr><td>Apply keywords</td><td>&lt;Enter&gt;</td></tr>
+                <tr><td>Exit finder mode</td><td>&lt;ESC&gt;</td></tr>
+                </tbody>
+                </table>
+            </p>
             </div>
-            <div id="about_keyboard" class="about_dlg_page">
-                <h3>- Keyboard shortcuts -</h3>
-                <div class="dlg_group">
-                <p>
-                    <table id="shortcuts_table">
-                    <tbody>
-                    <tr><th>Action</th><th>Shortcut</th></tr>
-                    <tr><th class="sub" colspan="2">Global</th></tr>
-                    <tr><td>Quit Hotot</td><td>&lt;Ctrl&gt;q</td></tr>
-                    <tr><td>Help</td><td>?</td></tr>
+        </div>
+        <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
+            <div class="dialog_block">
+            <h3>- Credits -</h3>
+            <p>
+                <label>Written by</label>:<br/>
+                - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
+                (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
 
-                    <tr><th class="sub" colspan="2">Tweet List</th></tr>
-                    <tr><td>Reload</td><td>r</td></tr>
-                    <tr><td>Slide to prev page</td><td>h</td></tr>
-                    <tr><td>Slide to next page</td><td>l</td></tr>
-                    <tr><td>Move to prev tweet</td><td>k</td></tr>
-                    <tr><td>Move to next tweet</td><td>j</td></tr>
-                    <tr><td>Move to top</td><td>t</td></tr>
-                    <tr><td>Move to bottom</td><td>b</td></tr>
-                    <tr><td>Toggle toolbar</td><td>&lt;Ctrl&gt; &lt;Up&gt;</td></tr>
-                    <tr><td>Toggle nav tabs</td><td>&lt;Ctrl&gt; &lt;Down&gt;</td></tr>
-                    <tr><td>Enter compose mode</td><td>c</td></tr>
-                    <tr><td>Enter action mode</td><td>a</td></tr>
-                    <tr><td>Enter finder mode</td><td>/ or &lt;Ctrl&gt;f</td></tr>
-                    <tr><th class="sub" colspan="2">Compose Mode</th></tr>
-                    <tr><td>Exit compose mode</td><td>&lt;ESC&gt;</td></tr>
-                    <tr><th class="sub" colspan="2">Action Mode</th></tr>
-                    <tr><td>Prev action</td><td>k</td></tr>
-                    <tr><td>Next action</td><td>j</td></tr>
-                    <tr><td>Trigger action</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
-                    <tr><td>Exit action mode</td><td>&lt;ESC&gt; or a</td></tr>
-                    <tr><th class="sub" colspan="2">Finder Mode</th></tr>
-                    <tr><td>Apply keywords</td><td>&lt;Enter&gt;</td></tr>
-                    <tr><td>Exit finder mode</td><td>&lt;ESC&gt;</td></tr>
-                    </tbody>
-                    </table>
-                </p>
-                </div>
-
-            </div>
-            <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
-                <h3>- Credits -</h3>
-                <div class="dlg_group">
-                <p>
-                    <label>Written by</label>:<br/>
-                    - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
-                    (<a href="http://twitter.com/shellex">@shellex</a>)<br/>
-
-                    - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
-                    (<a href="http://twitter.com/shellexy">@shellexy</a>)<br/>
-                    - Jimmy Xu &lt;<a href="mailto:xu.jimmy.wrk@gmail.com">xu.jimmy.wrk@gmail.com</a>&gt;
-                    (<a href="http://twitter.com/jimmy_xu_wrk
+                - Jiahua Huang &lt;<a href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
+                (<a href="http://twitter.com/shellexy">@shellexy</a>)<br/>
+                - Jimmy Xu &lt;<a href="mailto:xu.jimmy.wrk@gmail.com">xu.jimmy.wrk@gmail.com</a>&gt;
+                (<a href="http://twitter.com/jimmy_xu_wrk
 ">@jimmy_xu_wrk</a>)<br/>
 
-                    - Tualatrix Chou &lt;<a href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
-                    (<a href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
+                - Tualatrix Chou &lt;<a href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
+                (<a href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
 
-                </p>
-                <p>
-                    <label>Artwork by</label>: <br/>
-                    - Evan &lt;<a href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
-                    (<a href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
-                    - Shellex Wai <br/>
-                </p>
-                <p>
-                    <label>Document by</label>: <br/>
-                    - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
-                    (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
-
-                </p>
-                </div>
-            </div>
-            <div id="about_license" class="about_dlg_page">
-                <h3>- License -</h3>
-                <div class="dlg_group">
-                <p>
-    Hotot package is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    Licenseas published by the Free Software Foundation; either
-    version3 of the License, or (at your option) any later version.
-                </p>
-                <p>
-    This package is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-                </p>
-                <p>
-    You should have received a copy of the GNU General Public License
-    along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>http://www.gnu.org/licenses/</a>.
-                </p>
-                </div>
-            </div>
-        </div>
-        <div class="dialog_bottom">
-        <a id="btn_about_ok" class="button" data-i18n-text="ok">OK</a>
-        </div>
-    </div>
-
-    <!-- Profile dialog -->
-    <div id="profile_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2 id="profile_dlg_title">Profile</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
-        </div>
-        <div id="profile_dlg_body" class="dialog_body">
-        <div style="float:left; width: 150px;">
-            <h3>- Picture -</h3>
-            <div class="dlg_group">
-            <p style="text-align:center; min-height:70px;">
-                <span id="profile_avator" class="profile_img_wrapper"></span>
-                <a id="btn_change_profile_avator" class="button" style="display:none" data-i18n-text="change_avator">Change avator
-                    <span class="placeholder"></span>            
-                </a>
             </p>
-            </div>
-
-            <h3>- Stat -</h3>
-            <div class="dlg_group">
-            <p id="profile_stat">
-                <label>Join: </label>
-                <span id="profile_join"></span><br/>
-                <label>Tweets: </label>
-                <span id="profile_tweet_cnt"></span><br/>
-                <label>Tweets per Day: </label>
-                <span id="profile_tweet_per_day_cnt"></span><br/>
-                <label>Friends: </label>
-                <span id="profile_friend_cnt"></span><br/>
-                <label>Followers: </label> 
-                <span id="profile_follower_cnt"></span><br/>
-                <label>Favourites: </label>
-                <span id="profile_favourite_cnt"></span><br/>
-            </p>
-            </div>
-        </div>
-        <div>
-            <h3>- Information -</h3>
-            <div class="dlg_group">
             <p>
-                <label>Name</label><br/>
-                <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
-                <label>Location</label><br/>
-                <input id="tbox_profile_location" title="Location" type="text" class="entry"/><br/>
-                <label>Website</label><br/>
-                <input id="tbox_profile_website" title="Website" type="text" class="entry"/><br/>
-                <label>Bio</label><br/>
-                <textarea id="tbox_profile_bio" title="Bio" class="entry" style="height: 70px;"></textarea>
+                <label>Artwork by</label>: <br/>
+                - Evan &lt;<a href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
+                (<a href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
+                - Shellex Wai <br/>
+            </p>
+            <p>
+                <label>Document by</label>: <br/>
+                - Marguerite Su &lt;<a href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
+                (<a href="http://twitter.com/doublechou">@doublechou</a>)<br/>
+
             </p>
             </div>
         </div>
-        </div>
-        <div class="dialog_bottom">
-        <a id="btn_profile_cancel" class="button" data-i18n-text="cancel">Cancel</a>
-        <a id="btn_profile_update" class="button" data-i18n-text="update">Update</a>
-        </div>
-    </div>
-
-    <!-- Extensions dialog -->
-    <div id="exts_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2 id="exts_dlg_title">Extenstions</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
-        </div>
-        <div id="exts_dlg_body" class="dialog_body">
-            <div id="exts_filter_bar">
-                <ul id="exts_filter_btns" class="radio_group">
-                    <li><a id="exts_filter_all_btn" href="#all" class="radio_group_btn selected">ALL</a>
-                    </li><li>
-                        <a id="exts_filter_enabled_btn" href="#enabled" class="radio_group_btn">Enabled</a>
-                    </li><li>
-                        <a id="exts_filter_disabled_btn" href="#disabled" class="radio_group_btn">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="exts_container">
-            <ul>
-            </ul>
+        <div id="about_license" class="about_dlg_page">
+            <div class="dialog_block">
+            <h3>- License -</h3>
+            <p>
+Hotot package is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+Licenseas published by the Free Software Foundation; either
+version3 of the License, or (at your option) any later version.
+            </p>
+            <p>
+This package is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+            </p>
+            <p>
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>http://www.gnu.org/licenses/</a>.
+            </p>
             </div>
         </div>
-        <div class="dialog_bottom">
-        <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_about_ok" class="button" data-i18n-text="ok">OK</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- Profile dialog -->
+<div id="profile_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">Profile</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div id="profile_dlg_body" class="dialog_body">
+    <div style="float:left; width: 150px;">
+        <div class="dialog_block">
+        <h3>- Picture -</h3>
+        <p style="text-align:center; min-height:70px;">
+            <span id="profile_avator" class="profile_img_wrapper"></span>
+            <a id="btn_change_profile_avator" class="button" style="display:none" data-i18n-text="change_avator">Change avator
+                <span class="placeholder"></span>            
+            </a>
+        </p>
+        </div>
+
+        <div class="dialog_block">
+        <h3>- Stat -</h3>
+        <p id="profile_stat">
+            <label>Join: </label>
+            <span id="profile_join"></span><br/>
+            <label>Tweets: </label>
+            <span id="profile_tweet_cnt"></span><br/>
+            <label>Tweets per Day: </label>
+            <span id="profile_tweet_per_day_cnt"></span><br/>
+            <label>Friends: </label>
+            <span id="profile_friend_cnt"></span><br/>
+            <label>Followers: </label> 
+            <span id="profile_follower_cnt"></span><br/>
+            <label>Favourites: </label>
+            <span id="profile_favourite_cnt"></span><br/>
+        </p>
         </div>
     </div>
-
-    <!-- Common dialog -->
-    <div id="common_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2 id="common_dlg_title"></h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
-        </div>
-        <div id="common_dlg_body" class="dialog_body">
-        </div>
-        <div class="dialog_bottom">
-        </div>
-    </div>
-
-    <!-- Message dialog -->
-    <div id="message_dlg" class="dialog">
-        <div class="dialog_bar">
-            <h2 id="message_dlg_title">Message</h2>
-            <a class="dialog_close_btn ic_close" href="javascript:void(0);"></a>
-        </div>
-        <div id="message_dlg_body" class="dialog_body">
-            <div id="message_dlg_text" class="dlg_group">
-            </div>
-        </div>
-        <div class="dialog_bottom">
-        <a id="btn_message_ok" class="button" data-i18n-text="ok">OK</a>
+    <div>
+        <div class="dialog_block">
+        <h3>- Information -</h3>
+        <p>
+            <label>Name</label><br/>
+            <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
+            <label>Location</label><br/>
+            <input id="tbox_profile_location" title="Location" type="text" class="entry"/><br/>
+            <label>Website</label><br/>
+            <input id="tbox_profile_website" title="Website" type="text" class="entry"/><br/>
+            <label>Bio</label><br/>
+            <textarea id="tbox_profile_bio" title="Bio" class="entry" style="height: 70px;"></textarea>
+        </p>
         </div>
     </div>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_profile_cancel" class="button" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_profile_update" class="button" data-i18n-text="update">Update</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
 
-</section> <!-- END de dialog_mask -->
+<!-- Extensions dialog -->
+<div id="exts_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">Extenstions</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header">
+        <ul id="exts_filter_btns" class="radio_group dark">
+            <li><a id="exts_filter_all_btn" href="#all" class="radio_group_btn selected">ALL</a>
+            </li><li>
+                <a id="exts_filter_enabled_btn" href="#enabled" class="radio_group_btn">Enabled</a>
+            </li><li>
+                <a id="exts_filter_disabled_btn" href="#disabled" class="radio_group_btn">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div id="exts_container" class="dialog_body">
+        <ul>
+        </ul>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- Common dialog -->
+<div id="common_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title"></h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div id="common_dlg_body" class="dialog_body">
+    </div>
+    <div class="dialog_footer">
+    </div>
+    </div> <!-- END of .dialog_container -->
+</div>
+
+<!-- Message dialog -->
+<div id="message_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title">Message</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div id="message_dlg_body" class="dialog_body">
+        <div id="message_dlg_text" class="dlg_group">
+        </div>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_message_ok" class="button" data-i18n-text="ok">OK</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
 
 <section id="action_menu">
     <div id="action_menu_info"></div>

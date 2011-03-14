@@ -1,26 +1,13 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.ProfileDlg = {
 
-me: {},
-
 id: '',
-
-mask: {},
-
-is_show: false,
 
 is_change: false,
 
 init:
 function init () {
     ui.ProfileDlg.id = '#profile_dlg';
-    ui.ProfileDlg.me = $('#profile_dlg');
-    ui.ProfileDlg.mask = $('#dialog_mask');
-
-    $(ui.ProfileDlg.id).find('.dialog_close_btn').click(
-    function (event) {
-        ui.DialogHelper.close(ui.ProfileDlg)
-    });
 
     $('#btn_change_profile_avator').click(
     function (event) {
@@ -37,12 +24,12 @@ function init () {
                 ui.MessageDlg.TITLE_STR_ERROR,
                 "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
-            ui.DialogHelper.open(ui.MessageDlg);
+            globals.msg_dialog.open();
         } else {
             if (ui.ProfileDlg.is_change) {
                 ui.ProfileDlg.update_profile();
             } else {
-                ui.DialogHelper.close(ui.ProfileDlg);
+                globals.profile_dialog.close();
             }
         }
     };
@@ -50,7 +37,7 @@ function init () {
 
     var btn_profile_cancel = new widget.Button('#btn_profile_cancel');
     btn_profile_cancel.on_clicked = function (event) {
-        ui.DialogHelper.close(ui.ProfileDlg);
+        globals.profile_dialog.close();
     };
     btn_profile_cancel.create();
 
@@ -93,9 +80,9 @@ function update_profile() {
     ui.Notification.set("Update profile ...").show();
     lib.twitterapi.update_profile(name, website, location, bio,
     function (result) {
-        globals.myself = result;
         ui.Notification.set("Update profile successfully!").show();
-        ui.DialogHelper.close(ui.ProfileDlg);
+        globals.myself = result;
+        globals.profile_dialog.close();
     });
 },
 
@@ -134,16 +121,14 @@ function update_avator() {
 
 hide:
 function hide () {
-    ui.ProfileDlg.me.hide();
-    ui.ProfileDlg.is_show = false;
+    globals.profile_dialog.close();
     return this;
 },
 
 show:
 function show () {
     ui.ProfileDlg.request_profile();
-    ui.ProfileDlg.me.show();
-    ui.ProfileDlg.is_show = true;
+    globals.profile_dialog.open();
     return this;
 },
 }

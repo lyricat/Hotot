@@ -113,7 +113,7 @@ disabled:
 
 /* = radio group = */
 .radio_group {
-    margin: 5px 0;
+    margin: 0;
     vertical-align: middle;
 }
 
@@ -187,5 +187,94 @@ disabled:
     color: #fff;
     background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#555));
     border-color: #444;
+}
+
+/* = widget.dialog = */
+.dialog {
+    background: #f2f2f2;
+    border-radius: 5px 5px;
+    position: fixed;
+    color: #333;
+    display: none;
+    width: 500px;
+    height: 400px;
+    -webkit-box-shadow: 1px 1px 5px #000;
+}
+
+.dialog_bar {
+    height: 20px;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    position:relative;
+}
+
+.dialog_bar > .dialog_close_btn {
+    height: 16px;
+    width: 16px;
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../image/ic16_close.png);
+}
+
+.dialog_bar > .dialog_title {
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px; 
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    text-shadow: 0 1px 0px #fff;
+    background: #ccc;
+    border-bottom: 1px #ccc solid; 
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    margin: 0;
+}
+
+.dialog_container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 14px;
+}
+
+.dialog_header {
+    height: 59px;
+    border-bottom: 1px #ccc solid;
+}
+
+.dialog_body {
+    padding: 10px 10px;
+    overflow-y: auto;
+}
+
+.dialog_footer {
+    height: 59px;
+    text-align: right; 
+    border-top: 1px #ccc solid; 
+    clear:both; 
+}
+
+.dialog_block {
+    font-size: 12px;
+    line-height: 1.6em;
+    word-wrap: break-all; 
+    white-space:normal;
+}
+
+.dialog_block h3 {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.dialog_block p {
+    padding-left: 10px;
+}
+
+.dialog_block p * {
+    word-wrap: break-all; 
+    white-space:normal;
 }
 

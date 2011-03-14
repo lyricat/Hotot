@@ -66,12 +66,12 @@ function init () {
             } else if (result == '') {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
                     , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                ui.DialogHelper.open(ui.MessageDlg);
+                globals.msg_dialog.open();
             } else {
                 ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
                     , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
-                ui.DialogHelper.open(ui.MessageDlg);
+                globals.msg_dialog.open();
             }
         });
     };
@@ -97,10 +97,10 @@ function init () {
                 if (result == '') {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
                         , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                    ui.DialogHelper.open(ui.MessageDlg);
+                    globals.msg_dialog.open();
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
-                    ui.DialogHelper.open(ui.PinDlg);
+                    globals.oauth_dialog.open();
                 }
             }); 
         } else {
@@ -114,12 +114,12 @@ function init () {
                 } else if (result == '') {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
                         , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                    ui.DialogHelper.open(ui.MessageDlg);
+                    globals.msg_dialog.open();
                 } else {
                     ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
                         , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
-                    ui.DialogHelper.open(ui.MessageDlg);
+                    globals.msg_dialog.open();
                 }
             });
         }
@@ -157,13 +157,16 @@ function init () {
     
     $('#btn_welcome_prefs').click(
     function (event) {
-        ui.DialogHelper.open(ui.PrefsDlg);
+        ui.PrefsDlg.load_settings(conf.settings);
+        ui.PrefsDlg.load_prefs();
+        globals.prefs_dialog.open();
     });
         
     $('#btn_welcome_exts').click(
     function (event) {
         $('#profile_avator_list a.selected').click();
-        ui.DialogHelper.open(ui.ExtsDlg);
+        ui.ExtsDlg.load_ext_list();
+        globals.exts_dialog.open();
     });
 
     $('#btn_welcome_delete_profile').click(
@@ -183,7 +186,7 @@ function init () {
 
     $('#btn_welcome_about').click(
     function (event) {
-        ui.DialogHelper.open(ui.AboutDlg);
+        globals.about_dialog.open();
     });
 
     ui.Welcome.load_profiles_info();
@@ -243,7 +246,6 @@ function authenticate_pass(result) {
     $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
     }, 100);
     ui.Notification.set("Authentication OK!").show();
-    ui.DialogHelper.close(ui.PinDlg);
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');

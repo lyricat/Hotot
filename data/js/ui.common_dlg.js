@@ -1,27 +1,13 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.CommonDlg = {
 
-me: {},
-
 id: '',
-
-mask: {},
-
-is_show: false,
 
 TITLE_STR_ERROR: 'Ooops, an Error occurred!',
 
 init:
 function init () {
     ui.CommonDlg.id = '#common_dlg';
-    ui.CommonDlg.me = $('#common_dlg');
-    ui.CommonDlg.mask = $('#dialog_mask');
-    // bind events
-    $(ui.CommonDlg.id).find('.dialog_close_btn').click(
-    function (event) {
-        ui.DialogHelper.close(ui.CommonDlg);
-    });
-
     return this;
 },
 
@@ -48,20 +34,6 @@ function set_title(title) {
 set_content:
 function set_content(content) {
     $('#common_dlg_body').html(content);
-},
-
-hide:
-function hide () {
-    this.me.hide();
-    this.is_show = false;
-    return this;
-},
-
-show:
-function show () {
-    this.me.show();
-    this.is_show = true;
-    return this;
 },
 
 }

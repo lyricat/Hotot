@@ -1,24 +1,11 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.PinDlg = {
 
-me: {},
-
 id: '',
-
-mask: {},
-
-is_show: false,
 
 init:
 function init () {
     ui.PinDlg.id = '#oauth_dlg';
-    ui.PinDlg.me = $('#oauth_dlg');
-    ui.PinDlg.mask = $('#dialog_mask');
-    // bind events
-    $(ui.PinDlg.id).find('.dialog_close_btn').click(
-    function (event) {
-        ui.DialogHelper.close(ui.PinDlg);
-    });
 
     $('#btn_oauth_pin_ok').click(
     function (event) {
@@ -31,17 +18,17 @@ function init () {
             // get a new access_token, dump it to disk.
             conf.save_token(conf.current_name, jsOAuth.access_token);
             // change to main view
-            ui.DialogHelper.close(ui.PinDlg);
+            globals.oauth_dialog.close();
         },
         function (xhr, textStatus, errorThrown) {
-            ui.DialogHelper.close(ui.PinDlg);
+            globals.oauth_dialog.close();
             on_twitterapi_error(xhr, textStatus, errorThrown);
         });
     });
 
     $('#btn_oauth_pin_cancel').click(
     function (event) {
-        ui.DialogHelper.close(ui.PinDlg);
+        globals.oauth_dialog.close();
     });
 
     $('#btn_oauth_user_auth').click(
@@ -55,15 +42,13 @@ function init () {
 
 hide:
 function hide () {
-    this.me.hide();
-    this.is_show = false;
+    globals.oauth_dialog.close();
     return this;
 },
 
 show:
 function show () {
-    this.me.show();
-    this.is_show = true;
+    globals.oauth_dialog.open();
     return this;
 },
 

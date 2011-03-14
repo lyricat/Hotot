@@ -38,7 +38,8 @@ function init () {
 
     $('#exts_menu_empty_hint').click(
     function (event) {
-        ui.DialogHelper.open(ui.ExtsDlg);
+        ui.ExtsDlg.load_ext_list();
+        globals.exts_dialog.open();
     });
 
     $('#btn_reload').click(
@@ -48,17 +49,20 @@ function init () {
     
     $('#btn_prefs').click(
     function (event) {
-        ui.DialogHelper.open(ui.PrefsDlg);
+        ui.PrefsDlg.load_settings(conf.settings);
+        ui.PrefsDlg.load_prefs();
+        globals.prefs_dialog.open();
     });
     
     $('#btn_exts').click(
     function (event) {
-        ui.DialogHelper.open(ui.ExtsDlg);
+        ui.ExtsDlg.load_ext_list();
+        globals.exts_dialog.open();
     });
 
     $('#btn_about').click(
     function (event) {
-        ui.DialogHelper.open(ui.AboutDlg);
+        globals.about_dialog.open();
     });
 
     $('#btn_sign_out').click(

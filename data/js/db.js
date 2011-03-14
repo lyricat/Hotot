@@ -190,12 +190,13 @@ get_user:
 function get_user(screen_name, callback) {
     db.database.transaction(function (tx) {
         tx.executeSql('SELECT id, screen_name, json FROM UserCache WHERE screen_name=?', [screen_name], 
-    function (tx, rs) {
-        if (rs.rows.length != 0) {
-            callback(JSON.parse(rs.rows.item(0).json));
-        } else {
-            callback(null);
-        }
+        function (tx, rs) {
+            if (rs.rows.length != 0) {
+                callback(JSON.parse(rs.rows.item(0).json));
+            } else {
+                callback(null);
+            }
+        });
     });
 },
 

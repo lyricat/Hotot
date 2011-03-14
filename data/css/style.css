@@ -1165,7 +1165,7 @@ input[type="checkbox"] {
     -webkit-box-shadow: none;
 } 
 
-/*===== OAuth Dialog ================================*/
+/*===== Dialog ================================*/
 
 #dialog_mask {
     display: block;
@@ -1182,100 +1182,29 @@ input[type="checkbox"] {
     overflow: hidden;
 }
 
-.dialog {
-    background: #f2f2f2;
-    border-radius: 5px 5px;
-    color: #333;
-    -webkit-box-shadow: 1px 1px 5px #000;
+#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header {
+    padding: 10px;
+    height: 20px;
+    background: #777777 url(../image/mask.png);
+}
+
+#oauth_dlg .dialog_header, #message_dlg .dialog_header, #common_dlg .dialog_header {
+    height: 0;
+    padding: 0;
     display: none;
 }
 
-.dialog p {
-    font-size: 12px;
-    line-height: 1.6em;
-    word-wrap: break-all; 
-    white-space:normal;
-}
-
-.dlg_group {
-    padding-left: 10px;
-}
-
-.dialog p * {
-    word-wrap: break-all; 
-    white-space:normal;
-}
-
-.dialog_bar {
-    height: 20px;
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-    position:relative;
-}
-
-.dialog_bar > .dialog_close_btn {
-    height: 16px;
-    width: 16px;
-    display: block;
-    position: absolute;
-    top: 2px;
-    right: 2px;
-}
-
-.dialog_bar > h2 {
-    height: 20px;
-    line-height: 20px;
-    font-size: 12px; 
-    font-weight: normal;
-    color: #000;
-    text-align: center;
-    text-shadow: 0 1px 0px #fff;
-    background: #ccc;
-    border-bottom: 1px #ccc solid; 
-    border-top-left-radius: 5px 5px;
-    border-top-right-radius: 5px 5px;
-}
-
-.dialog_body h3{
-    font-size: 12px;
-    margin: 5px 0;
-}
-
-.dialog_body {
-    font-size: 12px;
-}
-
-.dialog_bottom {
-    text-align: right; 
-    border-top: 1px #ccc solid; 
-    clear:both; 
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #message_dlg .dialog_footer, #common_dlg .dialog_footer {
     padding: 10px;
-    margin-top: 10px;
+    height: 30px; 
 }
 
-#oauth_dlg {
-    width: 400px;
+#exts_dlg .dialog_body {
+    padding: 0;
 }
 
-#oauth_dlg_body {
-    padding: 10px 20px;
-}
 
 /*===== Preferences Dialog ================================*/
-
-#prefs_dlg {
-}
-
-#prefs_dlg_body {
-    height: 300px;
-    padding: 5px 10px;
-}
-
-#prefs_dlg_body .prefs_dlg_page {
-    height: 280px;
-    padding: 0px 10px;
-    overflow: auto !important;
-}
 
 #prefs_font_preview {
     text-align: center;
@@ -1287,40 +1216,14 @@ input[type="checkbox"] {
 }
 
 /*===== Extensions Dialog ================================*/
-#exts_dlg {
-}
-
-#exts_dlg_body {
-    padding: 5px 10px;
-    height: 300px;
-}
-
-#exts_filter_bar {
-    height: 24px;
-}
-
-#exts_filter_btns, #about_dlg_btns, #prefs_dlg_btns {
-    padding: 0;
-    height: 18px;
-    line-height: 18px;
-}
-
-#exts_container {
-    height: 280px;
-    overflow: auto;
-    border: 1px #ccc solid;
-    background: #f2f2f2;
-}
-
-#exts_container ul {
-    list-style-type:none;
-}
 
 .ext_item {
     background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
     color: #000;
     min-height: 80px;
     border-bottom: 1px #ccc solid; 
+    display: block;
+    font-size:12px;
 }
 
 .ext_item:first {
@@ -1359,14 +1262,6 @@ input[type="checkbox"] {
     padding: 0 15px;
 }
 /*===== Profile Dialog ================================*/
-#profile_dlg {
-}
-
-#profile_dlg_body {
-    padding: 20px;
-    height: 300px;
-}
-
 #profile_avator {
     width: 64px !important;
     height: 64px !important;
@@ -1382,43 +1277,6 @@ input[type="checkbox"] {
 .test_fail {
     background-color: #e2c4b9 !important;
     border-color: #febaa8 !important;
-}
-
-/*===== About Dialog ================================*/
-
-#about_dlg_body {
-    padding: 5px 10px;
-    height: 300px;
-}
-
-#about_dlg_body .about_dlg_page {
-    overflow: auto !important;
-    height: 280px;
-}
-
-#about_keyboard {
-}
-/*===== Message Dialog ================================*/
-#message_dlg {
-}
-
-#message_dlg_body {
-    padding: 10px 20px;
-    max-height: 300px;
-    overflow: auto;
-}
-#message_dlg_text p, #message_dlg_text p * {
-    font-size: 12px;
-}
-
-/*===== Common Dialog ================================*/
-#common_dlg {
-}
-
-#common_dlg_body {
-    padding: 10px 20px;
-    max-height: 300px;
-    overflow: auto;
 }
 
 /*===== Class styles ================================*/
@@ -1480,7 +1338,11 @@ input[type="checkbox"] {
     background: #777777 url(../image/mask.png);
     color: #fff;
     border: 0;
-    padding: 3px 5px;
+    padding: 5px 0;
+}
+
+.tweet_block_top .radio_group {
+    margin: 5px 0;
 }
 
 .tweet_block_top * {

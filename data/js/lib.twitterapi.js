@@ -43,7 +43,7 @@ function error_handle(xhr, textStatus, errorThrown) {
     }
     try {
         ui.MessageDlg.set_text('Ooops, An Error Occurred!', content);
-        ui.DialogHelper.open(ui.MessageDlg);
+        globals.msg_dialog.open();
     } catch (e) {
         hotot_log('Error:'+xhr.status, xhr.statusText);
     }

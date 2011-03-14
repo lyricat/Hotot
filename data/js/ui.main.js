@@ -390,15 +390,28 @@ function load_tweets_cb(result, pagename) {
             case 'content':
                 var cnt = 0; 
                 var i = json_obj.length - 1;
-                for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
+                proc = [];
+                var load = function(idx) {
                     var user = typeof json_obj[i].sender != 'undefined'
                         ? json_obj[i].sender : json_obj[i].user;
-                    hotot_notify('content'
-                            , avatar_file
-                            , user.screen_name
-                            , json_obj[i].text
-                        );
+                    var text = json_obj[i].text;
+                    proc.push(function () {
+                        util.get_avator(user.screen_name,
+                        function (avatar_file) {
+                            hotot_notify('content'
+                                    , avatar_file
+                                    , user.screen_name
+                                    , text
+                                );
+                            $(window).dequeue('_notify');
+                        });
+                    });
                 }
+                for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
+                    load(i)
+                }
+                $(window).queue('_notify', proc);
+                $(window).dequeue('_notify');
                 if (3 < json_obj.length) {
                     hotot_notify('count', null
                         , "Update page " + pagename
@@ -617,8 +630,10 @@ function add_tweets(json_obj, container) {
     }
     // cache users' avatars in mentions
     if (container.pagename == 'mentions') {
-        for (var i = 0; i < json_obj.length; i += 1) {
-            util.cache_avatar(json_obj[i].users);
+        for (var i = 0; i < json_obj.length; i += 1){                      
+            var user = typeof json_obj[i].sender != 'undefined'
+                ? json_obj[i].sender : json_obj[i].user;
+            util.cache_avatar(user);
         }
     }
     // dumps to cache

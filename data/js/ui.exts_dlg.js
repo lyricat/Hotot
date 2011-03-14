@@ -1,30 +1,15 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.ExtsDlg = {
 
-me: {},
-
 id: '',
-
-mask: {},
-
-is_show: false,
-
-is_change: false,
 
 init:
 function init () {
     ui.ExtsDlg.id = '#exts_dlg';
-    ui.ExtsDlg.me = $('#exts_dlg');
-    ui.ExtsDlg.mask = $('#dialog_mask');
-
-    $(ui.ExtsDlg.id).find('.dialog_close_btn').click(
-    function (event) {
-        ui.DialogHelper.close(ui.ExtsDlg);
-    });
 
     var btn_exts_close = new widget.Button('#btn_exts_close');
     btn_exts_close.on_clicked = function (event) {
-        ui.DialogHelper.close(ui.ExtsDlg);
+        globals.exts_dialog.close();
     };
     btn_exts_close.create();
 
@@ -116,21 +101,5 @@ function bind_exts_btns() {
 
 },
 
-hide:
-function hide () {
-    hotot_action('exts/save_enabled/'
-        + encodeURIComponent(JSON.stringify(ext.exts_enabled)));
-    ui.ExtsDlg.me.hide();
-    ui.ExtsDlg.is_show = false;
-    return this;
-},
-
-show:
-function show () {
-    ui.ExtsDlg.load_ext_list();
-    ui.ExtsDlg.me.show();
-    ui.ExtsDlg.is_show = true;
-    return this;
-},
 }
     
