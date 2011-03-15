@@ -11,17 +11,24 @@ function WidgetDialog(obj) {
     var self = this;
     self._me = null;
 
+    self._default_dialog_html = '<div id="{%ID%}" class="dialog"><div class="dialog_bar"><h1 class="dialog_title">Title</h1><a href="javascript: void(0);" class="dialog_close_btn"></a></div><div class="dialog_container"><div class="dialog_header"></div><div class="dialog_body"></div><div class="dialog_footer"></div></div></div>'
+
     self._mouse_x = 0;
     self._mouse_y = 0;
 
     self._header_h = 60;
     self._footer_h = 60;
 
+    self.destory_on_close = false;
+
     self.init = function init(obj) {
         if (typeof (obj) == 'string') {
+            if ($(obj).length == 0) {
+                self.build_default_dialog(obj);
+            }
             self._me = $(obj);
         } else {
-            self._me = obj;
+            return null;
         }
         self._bar = self._me.find('.dialog_bar');
         self._header = self._me.find('.dialog_header');
@@ -37,9 +44,17 @@ function WidgetDialog(obj) {
             + parseInt(self._footer.css('padding-bottom'))+1;
     };
 
+    self.build_default_dialog = function build_default_dialog(id) {
+        $('body').append($(
+            self._default_dialog_html.replace('{%ID%}', id.substring(1))));
+    };
+
     self.create = function create() {
         self._close_btn.click(function () {
             self.close();    
+        });
+        self._me.click(function (event) {    
+            widget.DialogManager.set_above(self);
         });
         self._bar
             .attr('draggable', 'true')
@@ -79,8 +94,9 @@ function WidgetDialog(obj) {
     };
 
     self.resize = function resize(w, h) {
-        self._me_w = w; self._me_h = h;
-        self._me.css({'width': w, 'height': h}); 
+        self._me_w = (w == -1? self._me_w: w);
+        self._me_h = (h == -1? self._me_h: h);
+        self._me.css({'width': self._me_w, 'height': self._me_h}); 
         var body_h = self._me_h - self._header_h - self._footer_h;
         self._body.css({'height': (body_h - 40) + 'px'});
         // 42px = dialog_body.padding + border_num
@@ -116,18 +132,32 @@ function WidgetDialog(obj) {
         if (with_mask) {
             $('#dialog_mask').show();
         }
+        if ($(window).width() < self._me_w + 20) {
+            self.resize($(window).width() - 20, -1);
+        }
+        if ($(window).height() < self._me_h + 20) {
+            self.resize(-1, $(window).height() - 20);
+        }
         self.place(widget.DialogManager.CENTER);
-        self._me.show();
         widget.DialogManager.push(self);
+        self._me.show();
     };
     
     self.close = function close() {
-        self._me.hide();
         widget.DialogManager.pop(self);
+        if (self.destory_on_close) {
+            self.destory();
+        } else {
+            self._me.hide();
+        }
     };
 
     self.destory = function destory() {
+        self._me.unbind();
+        self._bar.unbind();
+        self._close_btn.unbind();
         self._me.remove();
+        delete self;
     };
 
     self.set_order = function set_order(index) {

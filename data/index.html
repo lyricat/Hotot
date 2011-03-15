@@ -539,8 +539,8 @@ jQuery(function($) {
             <input id="tbox_basic_auth_username" class="entry" style="width: 170px;" type="text" value=""/><br/>
             <label data-i18n-text="password">Password:</label><br/>
             <input id="tbox_basic_auth_password" class="entry" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" checked="1"/>
-            <label for="chk_remember_password" data-i18n-text="remember_password">Remember Password</label><br/>
+            <input id="chk_remember_password" type="checkbox" class="checkbox" checked="1"/>
+            <label for="chk_remember_password" class="label" data-i18n-text="remember_password">Remember Password</label><br/>
             <div style="text-align:right;margin-right:20px;">
             <a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
             </div>
@@ -1009,7 +1009,7 @@ jQuery(function($) {
 <!-- preferences dialog -->
 <div id="prefs_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title">Preferences</h2>
+        <h2 class="dialog_title" data-i18n-text="preferences">Preferences</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1017,10 +1017,12 @@ jQuery(function($) {
         <ul id="prefs_dlg_btns" class="radio_group dark">
             <li><a id="btn_prefs_global"
                     href="#prefs_global" 
-                    class="radio_group_btn selected">Globals</a>
+                    class="radio_group_btn selected"
+                    data-i18n-text="globals">Globals</a>
             </li><li><a id="btn_prefs_account"
                     href="#prefs_account" 
-                    class="radio_group_btn">Account</a>
+                    class="radio_group_btn"
+                    data-i18n-text="account">Account</a>
             </li><li><a id="btn_prefs_appearance"
                     href="#prefs_appearance" 
                     class="radio_group_btn">Looks &amp; Feels</a>
@@ -1038,7 +1040,7 @@ jQuery(function($) {
             <div class="dialog_block">
             <h3>- HTTP Proxy -</h3>
             <p>
-                <input id="chk_prefs_use_http_proxy"
+                <input id="chk_prefs_use_http_proxy" class="checkbox"
                     title="Use HTTP Proxy" type="checkbox"/>
                 <label id="label_prefs_use_http_proxy" 
                     for="chk_prefs_use_http_proxy">
@@ -1070,11 +1072,11 @@ jQuery(function($) {
             <p>
                 <input id="chk_prefs_use_verbose_mode"
                     title="Enable verbose mode or not" 
-                    type="checkbox"/>
+                    type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_verbose_mode">Enable verbose mode</label><br/>
                 <input id="chk_prefs_use_ubuntu_indicator"
                     title="Use Ubuntu Indicator" 
-                    type="checkbox"/>
+                    type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_ubuntu_indicator">Use Ubuntu indicator</label><br/>
             </p>
             </div>
@@ -1092,7 +1094,7 @@ jQuery(function($) {
             <h3>- Identi.ca -</h3>
             <p>
                 <input id="chk_prefs_remember_password"
-                    type="checkbox" 
+                    type="checkbox" class="checkbox" 
                     title="Remember Password" checked="1"/>
                 <label for="chk_prefs_remember_password">
                     Remember Password"
@@ -1104,24 +1106,31 @@ jQuery(function($) {
             <div class="dialog_block">
             <h3>- Font -</h3>
             <p>
-                <label>Custom Font</label>
-                <input id="tbox_prefs_custom_font"
-                    title="Custom Font" 
-                    style="width:80px"
-                    type="text" class="entry"/><br/>
-                <label>Font Family</label>
-                <select id="sel_prefs_font_family" 
-                    title="Font Family" style="width: 85px">
+                <label class="label">Font Size</label>
+                <input id="tbox_prefs_font_size" 
+                    title="Font Size" 
+                    style="width:100px" type="text" class="entry"/>
+                <label class="label">px</label><br/>
+
+                <input id="rdo_use_system_font" type="radio"
+                    class="radio" name="font" checked/>
+                <label class="label">System Font</label>
+                <select id="sel_prefs_font_family" class="combo"
+                    title="Font Family" style="width: 200px">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                </select> 
-                <label>Font Size</label>
-                <input id="tbox_prefs_font_size" 
-                    title="Font Size" 
-                    style="width:30px" type="text" class="entry"/>
-                <label>px</label><br/>
+                </select><br/>
+                <input id="rdo_use_custom_font" type="radio" 
+                    class="radio" name="font" />
+                <label class="label">Custom Font</label>
+                <input id="tbox_prefs_custom_font"
+                    title="Custom Font" 
+                    style="width:180px"
+                    type="text" class="entry"/><br/>
+            </p>
+            <p>
                 <div id="prefs_font_preview">The quick brown fox jumps over the lazy dog.</div>
             </p>
             </div>
@@ -1129,15 +1138,16 @@ jQuery(function($) {
             <h3>- Behavior -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify" 
-                    title="Use Native Notify"
+                    title="Use Native Notify" class="checkbox"
                     type="checkbox"/>
                 <label for="chk_prefs_use_native_notify">Use Native Notify System</label><br/>
                 <input id="chk_prefs_use_hover_box"
-                    title="Hover to open tweet box"
+                    title="Hover to open tweet box" class="checkbox"
                     type="checkbox"/>
                 <label for="chk_prefs_use_hover_box">Hover to open tweet box</label><br/>
                 <input id="chk_prefs_use_preload_conversation" 
                     title="Preload latest tweet in a conversation if it is cached." 
+                    class="checkbox"
                     type="checkbox"/>
                 <label for="chk_prefs_use_preload_conversation">Preload latest tweet in a conversation if possible.</label><br/>
             </p>
@@ -1152,6 +1162,7 @@ jQuery(function($) {
                     <td>
                     <input id="chk_prefs_use_home_timeline_notify"
                         title="Notify when home page has new tweets"
+                        class="checkbox"
                         type="checkbox"/>
                     </td>
                     <td>
@@ -1165,6 +1176,7 @@ jQuery(function($) {
                     <td>
                     <input id="chk_prefs_use_home_timeline_notify_sound"
                         title="Play sound when home page has new tweets"
+                        class="checkbox"
                         type="checkbox"/>             
                     </td>
                 </tr>
@@ -1172,6 +1184,7 @@ jQuery(function($) {
                     <td>
                     <input id="chk_prefs_use_mentions_notify"
                         title="Notify when some new tweets mention me."
+                        class="checkbox"
                         type="checkbox"/>
                     </td>
                     <td>
@@ -1185,13 +1198,15 @@ jQuery(function($) {
                     <td>
                     <input id="chk_prefs_use_mentions_notify_sound"
                         title="Play swhen some new tweets mention me."
+                        class="checkbox"
                         type="checkbox"/>             
                     </td>
                 </tr>
                 <tr><td>Message</td>
                     <td>
                     <input id="chk_prefs_use_direct_messages_inbox_notify"
-                        title="Notify when some new direct messages coming."
+                        title="Notify when some new direct messages coming." 
+                        class="checkbox"
                         type="checkbox"/>
                     </td>
                     <td>
@@ -1204,7 +1219,8 @@ jQuery(function($) {
                     </td>
                     <td>
                     <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
-                        title="Play when some new direct messages coming."
+                        title="Play when some new direct messages coming." 
+                        class="checkbox"
                         type="checkbox"/>             
                     </td>
                 </tr>
@@ -1221,7 +1237,7 @@ jQuery(function($) {
                 <input id="tbox_prefs_api_base"
                     title="API Base" type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_same_sign_api_base"
-                    title="Use same Signing Api" 
+                    title="Use same Signing Api" class="checkbox"
                     type="checkbox"/>
                 <label for="chk_prefs_use_same_sign_api_base">
                     Same signing API base:
@@ -1234,7 +1250,7 @@ jQuery(function($) {
                     title="OAuth Base" type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_same_sign_oauth_base"
                     title="Use same Signing OAuth Base" 
-                    type="checkbox"/>
+                    type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_same_sign_oauth_base">
                     Same signing OAuth base:
                 </label><br/>

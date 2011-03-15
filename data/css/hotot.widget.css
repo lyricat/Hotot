@@ -78,6 +78,74 @@ disabled:
     color: #aaa !important;
 }
 
+/* = Combo = */
+.combo {
+    outline: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    display: inline-block;
+    text-align: center;
+    height: 24px;
+    min-width: 70px;
+    padding: 0 10px;
+    color: #333;
+    border: 1px #ccc solid;
+    margin-left: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.combo.dark {
+    color: #eee;
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
+    border: 1px #444 solid;
+}
+
+/* = widget.checkbox = */
+
+.checkbox, .radio {
+    border: 1px #CCC solid;
+    -webkit-appearance: none;
+    min-height: 16px;
+    min-width: 16px;
+    vertical-align: middle;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(#F3F3F3));
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox:checked, .radio:checked {
+    border: 3px #fff solid;
+    background: -webkit-gradient(linear, left top, left bottom, from(#bbeaff), to(#4ac3ff));
+    box-shadow:  0 0 1px #333;
+}
+
+.checkbox.dark, .radio.dark {
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
+    border: 1px #444 solid;
+}
+
+.checkbox.dark:checked, .radio.dark:checked {
+    border: 3px #444 solid;
+    background: -webkit-gradient(linear, left top, left bottom, from(#bbeaff), to(#4ac3ff));
+}
+
+.radio {
+    border-radius: 8px;
+}
+
+/* = widget.label = */
+.label {
+    color: #333;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.label.dark {
+    color:#eee;
+}
 /* = widget.entry & widget.textarea = */
 /* == entry & textarea == */
 .entry, .textarea {
@@ -88,16 +156,16 @@ disabled:
 }
 
 .entry:focus, .textarea:focus {
-    -webkit-box-shadow: inset #ADE6FF 0 0 5px;
+    -webkit-box-shadow: inset #bbeaff 0 0 5px;
 }
 
 .entry.dark:focus, .textarea.dark:focus {
-    -webkit-box-shadow: inset #ADE6FF 0 0 5px;
+    -webkit-box-shadow: inset #4ac3ff 0 0 5px;
 }
 
 .entry.dark, .textarea.dark {
     border-color: #444;
-    background-image:  url(../image/mask.png);
+    background-color: #ccc;
 }
 
 .entry.disabled, .entry[disabled], .textarea.disabled, .textarea[disabled] {
@@ -107,8 +175,8 @@ disabled:
 
 /* = entry = */
 .entry {
-    height: 20px;
-    line-height: 20px;
+    height: 18px;
+    line-height: 18px;
 }
 
 /* = radio group = */
@@ -179,12 +247,14 @@ disabled:
 
 .radio_group > li > .radio_group_btn.selected {
     color: #000;
+    text-shadow: #fff 0 1px 1px; 
     border-color: #ccc;
     background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#f2f2f2));
 }
 
 .radio_group.dark > li > .radio_group_btn.selected {
-    color: #fff;
+    color: #4ac3ff;
+    text-shadow: #4ac3ff 0 0 5px; 
     background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#555));
     border-color: #444;
 }
@@ -192,12 +262,14 @@ disabled:
 /* = widget.dialog = */
 .dialog {
     background: #f2f2f2;
-    border-radius: 5px 5px;
+    border-radius: 5px;
     position: fixed;
     color: #333;
     display: none;
     width: 500px;
     height: 400px;
+    top: 0;
+    left: 0;
     -webkit-box-shadow: 1px 1px 5px #000;
 }
 
@@ -271,6 +343,7 @@ disabled:
 
 .dialog_block p {
     padding-left: 10px;
+    margin: 5px 0;
 }
 
 .dialog_block p * {

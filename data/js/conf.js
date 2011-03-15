@@ -235,7 +235,8 @@ function apply_prefs(name) {
         = prefs.use_direct_messages_inbox_notify_sound;
     
     $('#chk_remember_password').attr('checked', prefs.remember_password);
-    $('body').css('font-family', prefs.custom_font + ', ' + prefs.font_family_used);
+    $('body').css('font-family', prefs.use_custom_font
+        ? prefs.custom_font: prefs.font_family_used);
     globals.tweet_font_size = prefs.font_size;
     ui.StatusBox.use_hover_box = prefs.use_hover_box;
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;

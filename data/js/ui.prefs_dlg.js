@@ -27,7 +27,7 @@ function init () {
     };
     btn_regain_token.create();
 
-    $('#sel_prefs_font_family #tbox_prefs_font_size #tbox_prefs_custom_font').bind('change keypress blur',
+    $('#sel_prefs_font_family, #tbox_prefs_font_size, #tbox_prefs_custom_font, #rdo_use_custom_font, #rdo_use_system_font').bind('click change keypress blur',
     function (event) {
         ui.PrefsDlg.update_font_preview();
     });
@@ -175,6 +175,9 @@ function load_prefs() {
     $('#sel_prefs_font_family').html(options_arr.join(''))
     $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
     $('#tbox_prefs_font_size').val(prefs.font_size);    
+    if (prefs.use_custom_font) {
+        $('#rdo_use_custom_font').attr('checked', prefs.use_custom_font);
+    }
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_native_notify').attr('checked'
         , prefs.use_native_notify);
@@ -223,6 +226,7 @@ function save_prefs() {
     if (prefs['font_size'] == '') {
         prefs['font_size'] = 12;
     }
+    prefs['use_custom_font'] = $('#rdo_use_custom_font').attr('checked');
     prefs['use_native_notify']
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs['use_hover_box']
@@ -271,12 +275,12 @@ function restore_defaults() {
 update_font_preview:
 function update_font_preview() {
     $('#prefs_font_preview')
-    .css('font-family'
-        , $('#sel_prefs_font_family').attr('value'))
-    .css('font-size'
-        , $('#tbox_prefs_font_size').attr('value') + 'px');
-},
-
+        .css('font-family'
+            , $('#rdo_use_custom_font').attr('checked')
+                ? $('#tbox_prefs_custom_font').val() 
+                    :$('#sel_prefs_font_family').attr('value'))
+        .css('font-size'
+            , $('#tbox_prefs_font_size').attr('value') + 'px');
 }
 
-
+}

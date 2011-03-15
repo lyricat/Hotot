@@ -744,16 +744,6 @@ label {
     line-height: 18px;
 }
 
-select {
-    padding: 2px 5px;
-    height: 20px;
-    display: inline-block;
-}
-
-input[type="checkbox"] {
-    -webkit-appearance: checkbox;
-}
-
 /*===== Main Page ================================*/
 #main_page {
     display: none;
