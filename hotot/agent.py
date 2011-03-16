@@ -176,15 +176,13 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
         tech_info = 'HTTP Code: %s\\nURL: %s\\nDetails: %s' % (e.getcode(), e.geturl(), str(e))
         content = '<p>%s</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>%s</pre></div>' % (msg, tech_info)
         scripts = '''
-            ui.MessageDlg.set_text('%s', '%s');
-            ui.DialogHelper.open(ui.MessageDlg);
+            widget.DialogManager.alert('%s', '%s');
             lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
     except urllib2.URLError, e:
         content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
         scripts = '''
-            ui.MessageDlg.set_text('%s', '%s');
-            ui.DialogHelper.open(ui.MessageDlg);
+            widget.DialogManager.alert('%s', '%s');
             lib.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
     else:

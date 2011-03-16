@@ -44,8 +44,6 @@
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
     <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
-    <script type="text/javascript" src="js/ui.common_dlg.js"></script>
-    <script type="text/javascript" src="js/ui.dialog_helper.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.finder.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
@@ -217,11 +215,6 @@ function init_dialogs() {
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
 
-    globals.common_dialog = new widget.Dialog('#common_dlg');
-    globals.common_dialog.resize(500, 400);
-    globals.common_dialog.place(widget.DialogManager.CENTER);
-    globals.common_dialog.create();
-
     globals.msg_dialog = new widget.Dialog('#message_dlg');
     globals.msg_dialog.resize(400, 200);
     globals.msg_dialog.place(widget.DialogManager.CENTER);
@@ -250,7 +243,6 @@ function init_ui() {
     ui.ExtsDlg.init();
     ui.MessageDlg.init();
     ui.AboutDlg.init();
-    ui.CommonDlg.init();
     ui.Finder.init();
     ui.ActionMenu.init();
     ui.ContextMenu.init();
@@ -1537,21 +1529,6 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
     <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
     </div>
     </div><!-- END of .dialog_container -->
-</div>
-
-<!-- Common dialog -->
-<div id="common_dlg" class="dialog">
-    <div class="dialog_bar">
-        <h2 class="dialog_title"></h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
-    </div>
-    <div class="dialog_container">
-    <div class="dialog_header"></div>
-    <div id="common_dlg_body" class="dialog_body">
-    </div>
-    <div class="dialog_footer">
-    </div>
-    </div> <!-- END of .dialog_container -->
 </div>
 
 <!-- Message dialog -->

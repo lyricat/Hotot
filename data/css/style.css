@@ -1178,13 +1178,13 @@ label {
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #message_dlg .dialog_header, #common_dlg .dialog_header {
+#oauth_dlg .dialog_header, #message_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #message_dlg .dialog_footer, #common_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #message_dlg .dialog_footer {
     padding: 10px;
     height: 30px; 
 }
