@@ -20,11 +20,10 @@ function init () {
             ui.ProfileDlg.id + ' input');
         if ( err.count != 0 ) {
             ui.Notification.set("There are "+err.count+" errors in your change. Abort...").show();
-            ui.MessageDlg.set_text(
-                ui.MessageDlg.TITLE_STR_ERROR,
-                "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
+            widget.DialogManager.alert(
+                  'Oops, some mistakes in your information.'
+                , "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
-            globals.msg_dialog.open();
         } else {
             if (ui.ProfileDlg.is_change) {
                 ui.ProfileDlg.update_profile();

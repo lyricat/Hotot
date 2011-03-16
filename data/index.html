@@ -42,7 +42,6 @@
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
-    <script type="text/javascript" src="js/ui.message_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.finder.js"></script>
@@ -214,11 +213,6 @@ function init_dialogs() {
     globals.about_dialog.resize(500, 400);
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
-
-    globals.msg_dialog = new widget.Dialog('#message_dlg');
-    globals.msg_dialog.resize(400, 200);
-    globals.msg_dialog.place(widget.DialogManager.CENTER);
-    globals.msg_dialog.create();
 }
 
 function init_ui() {
@@ -241,7 +235,6 @@ function init_ui() {
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
     ui.ExtsDlg.init();
-    ui.MessageDlg.init();
     ui.AboutDlg.init();
     ui.Finder.init();
     ui.ActionMenu.init();
@@ -1527,24 +1520,6 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
     </div>
     <div class="dialog_footer">
     <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
-    </div>
-    </div><!-- END of .dialog_container -->
-</div>
-
-<!-- Message dialog -->
-<div id="message_dlg" class="dialog">
-    <div class="dialog_bar">
-        <h2 class="dialog_title">Message</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
-    </div>
-    <div class="dialog_container">
-    <div class="dialog_header"></div>
-    <div id="message_dlg_body" class="dialog_body">
-        <div id="message_dlg_text" class="dlg_group">
-        </div>
-    </div>
-    <div class="dialog_footer">
-    <a id="btn_message_ok" class="button" data-i18n-text="ok">OK</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>

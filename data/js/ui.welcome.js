@@ -64,14 +64,12 @@ function init () {
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
-                ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                widget.DialogManager.alert('Oops, A Network Error Occurs!'
                     , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                globals.msg_dialog.open();
             } else {
-                ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                widget.DialogManager.alert('Oops, A API Error Occurs!'
                     , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
-                globals.msg_dialog.open();
             }
         });
     };
@@ -95,9 +93,9 @@ function init () {
             jsOAuth.get_request_token(
             function (result) {
                 if (result == '') {
-                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                    widget.DialogManager.alert(
+                          'Oops, A Network Error Occurs'
                         , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                    globals.msg_dialog.open();
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
                     globals.oauth_dialog.open();
@@ -112,14 +110,14 @@ function init () {
                 if (result.screen_name) {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
-                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                    widget.DialogManager.alert(
+                          'Oops, A Network Error Occurs!'
                         , "<p>Network Error, Please try later! &gt;_&lt; </p>");
-                    globals.msg_dialog.open();
                 } else {
-                    ui.MessageDlg.set_text(ui.MessageDlg.TITLE_STR_ERROR
+                    widget.DialogManager.alert(
+                          'Oops, An API Error Occurs!'
                         , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
-                    globals.msg_dialog.open();
                 }
             });
         }

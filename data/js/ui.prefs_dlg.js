@@ -65,11 +65,10 @@ function init () {
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
             ui.Notification.set("There are "+err.count+" errors in your changes. Abort...").show();
-            ui.MessageDlg.set_text(
-                ui.MessageDlg.TITLE_STR_ERROR,
-                "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
+            widget.DialogManager.alert(
+                  'Oops, some mistakes in your information.'
+                , "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
-            globals.msg_dialog.open();
         } else {
             ui.PrefsDlg.save_settings();
             ui.PrefsDlg.save_prefs();
