@@ -848,7 +848,7 @@ jQuery(function($) {
         <div id="search_no_result_hint">
             <p>
             <span data-i18n-text="search_no_result_hint_title1">Your search</span>
-            - <label id="search_query_keywords"></label> - 
+            - <label class="keywords"></label> - 
             <span data-i18n-text="search_no_result_hint_title2">did not match any result.</span>
             </p>
             <p>
@@ -1014,10 +1014,12 @@ jQuery(function($) {
                     data-i18n-text="account">Account</a>
             </li><li><a id="btn_prefs_appearance"
                     href="#prefs_appearance" 
-                    class="radio_group_btn">Looks &amp; Feels</a>
+                    class="radio_group_btn"
+                    data-i18n-text="look_and_feels">Looks &amp; Feels</a>
             </li><li><a id="btn_prefs_advanced"
                     href="#prefs_advanced" 
-                    class="radio_group_btn">Advanced</a>
+                    class="radio_group_btn"
+                    data-i18n-text="advanced">Advanced</a>
             </li>
         </ul>
     </div>
@@ -1122,7 +1124,7 @@ jQuery(function($) {
                 <input id="rdo_use_custom_font" type="radio" 
                     class="radio" name="font" />
                 <label class="label"
-                    data-i18n-data="custom_font">Custom Font</label>
+                    data-i18n-text="custom_font">Custom Font</label>
                 <input id="tbox_prefs_custom_font"
                     title="Custom Font" 
                     style="width:180px"

@@ -99,6 +99,10 @@
 		"message": "",
 		"description": ""
 	},
+	"advanced": {
+		"message": "",
+		"description": ""
+	},
 	"disabled": {
 		"message": "",
 		"description": ""
@@ -492,6 +496,10 @@
 		"description": ""
 	},
 	"sign_in": {
+		"message": "",
+		"description": ""
+	},
+	"look_and_feels": {
 		"message": "",
 		"description": ""
 	},

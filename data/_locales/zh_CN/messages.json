@@ -99,6 +99,10 @@
 		"message": "密码",
 		"description": ""
 	},
+	"advanced": {
+		"message": "高级",
+		"description": ""
+	},
 	"disabled": {
 		"message": "禁用的",
 		"description": ""
@@ -160,7 +164,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "",
+		"message": "我能吞下玻璃而不伤身体噢。",
 		"description": ""
 	},
 	"retweet": {
@@ -493,6 +497,10 @@
 	},
 	"sign_in": {
 		"message": "登入",
+		"description": ""
+	},
+	"look_and_feels": {
+		"message": "感官",
 		"description": ""
 	},
 	"friends": {
