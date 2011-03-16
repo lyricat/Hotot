@@ -21,6 +21,8 @@ ytb_thmb: {
 'sm': 'small (120x90)'
 },
 
+option_dialog: null,
+
 ytb_thmb_s: undefined,
 
 vid_link_reg: {
@@ -75,6 +77,36 @@ function on_form_tweet_text(text) {
     return text;
 },
 
+create_option_dialog:
+function create_option_dialog() {
+    var title = 'Options of Hotot Video Preview';
+    var options_arr = [];
+    for (var code in ext.HototVideoPreview.ytb_thmb) {
+        var name = ext.HototVideoPreview.ytb_thmb[code];
+        options_arr.push('<option value="'+code+'">'+name+'</option>');
+    }
+
+    var body = '<p>\
+        <label>Youtube thumbnails size*:</label></p><p>\
+        <select id="ext_hotot_videopreview_ytb_thmb" title="Choose a thumbnail size for youtube videos." class="dark">'
+        + options_arr.join() +   
+        '</select></p>\
+        <span style="font-size:10px;">\
+            * Restart needed.\
+        </span>\
+';
+
+    ext.HototVideoPreview.option_dialog 
+        = widget.DialogManager.build_dialog(
+              '#ext_hotot_videopreview_opt_dialog'
+            , title, '', body
+            , [{id: '#ext_btn_hotot_videopreview_save', label: 'Save'
+                , click: ext.HototVideoPreview.on_btn_save_prefs_clicked}]);
+    ext.HototVideoPreview.option_dialog.set_styles('header', {'padding':'0', 'display':'none', 'height':'0'})
+    ext.HototVideoPreview.option_dialog.resize(400, 250);
+
+},
+
 load:
 function load () {
     ext.register_listener(ext.FORM_TWEET_TEXT_LISTENER_AFTER
@@ -95,7 +127,7 @@ on_btn_save_prefs_clicked:
 function on_btn_save_prefs_clicked(event) {
     var ytb_thmb_size = $('#ext_hotot_videopreview_ytb_thmb').attr('value');
     ext.HototVideoPreview.prefs.set('ytb_thmb_size', ytb_thmb_size);
-    ui.DialogHelper.close(ui.CommonDlg);
+    ext.HototVideoPreview.option_dialog.close();
 },
 
 options:
@@ -103,28 +135,10 @@ function options() {
     if (ext.HototVideoPreview.prefs == null) {
         ext.HototVideoPreview.prefs = new ext.Preferences(ext.HototVideoPreview.id);
     }
-    var title = 'Options of Hotot Video Preview';
-    var options_arr = [];
-    for (var code in ext.HototVideoPreview.ytb_thmb) {
-        var name = ext.HototVideoPreview.ytb_thmb[code];
-        options_arr.push('<option value="'+code+'">'+name+'</option>');
-    }
-    content = '<p>\
-        <label>Youtube thumbnails size*:</label></p><p>\
-        <select id="ext_hotot_videopreview_ytb_thmb" title="Choose a thumbnail size for youtube videos." class="dark">'
-        + options_arr.join() +   
-        '</select></p>\
-        <span style="font-size:10px;">\
-            * Restart needed.\
-        </span>\
-';
 
-    ui.CommonDlg.reset(); 
-    ui.CommonDlg.set_title(title);
-    ui.CommonDlg.set_content(content);
-    ui.CommonDlg.add_button('ext_btn_hotot_videopreview_save'
-        , 'Save', 'Save Your Changes'
-        , ext.HototVideoPreview.on_btn_save_prefs_clicked);
+    if (!ext.HototVideoPreview.option_dialog) {
+        ext.HototVideoPreview.create_option_dialog();
+    }
 
     var ytb_thmb_size = 'sm';
     ext.HototVideoPreview.prefs.get('ytb_thmb_size', function (key, val) {
@@ -145,7 +159,7 @@ function options() {
             .attr('selectedIndex', selected_idx);
     });
 
-    ui.DialogHelper.open(ui.CommonDlg); 
+    ext.HototVideoPreview.option_dialog.open();
 },
 
 }

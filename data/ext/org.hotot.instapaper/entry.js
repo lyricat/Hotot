@@ -21,6 +21,8 @@ add_url: 'https://www.instapaper.com/api/add?username={%USERNAME%}&password={%PA
 
 prefs: null,
 
+option_dialog: null,
+
 on_tweet_more_mitem_clicked:
 function on_tweet_more_mitem_clicked(li_id) {
     ext.HototInstapaper.do_prepare(li_id);
@@ -68,7 +70,28 @@ function on_btn_save_prefs_clicked(event) {
     var password = $('#ext_hotot_instapaper_password').attr('value');
     ext.HototInstapaper.prefs.set('username', username);
     ext.HototInstapaper.prefs.set('password', password);
-    ui.DialogHelper.close(ui.CommonDlg);
+    ext.HototInstapaper.option_dialog.close();
+},
+
+create_option_dialog:
+function create_option_dialog() {
+    var title = 'Options of Hotot Instapaper';
+
+    var body = '<p>\
+    <label>Sign in to Instapaper:</label></p><p>\
+    <table><tr><td>Username:</td><td><input id="ext_hotot_instapaper_username" type="text" class="entry"/></td></tr>\
+    <tr><td>Password:</td><td><input id="ext_hotot_instapaper_password" type="password" class="entry"/></td></tr>\
+    </table></p>';
+
+    ext.HototInstapaper.option_dialog 
+        = widget.DialogManager.build_dialog(
+              '#ext_instapaper_opt_dialog'
+            , title, '', body
+            , [{  id: '#ext_btn_hotot_instapaper_save', label: 'Save'
+                , click: ext.HototInstapaper.on_btn_save_prefs_clicked}] 
+            );
+    ext.HototInstapaper.option_dialog.set_styles('header', {'display': 'none', 'height':'0'});
+    ext.HototInstapaper.option_dialog.resize(400, 250);
 },
 
 load:
@@ -81,6 +104,7 @@ function load () {
     ext.HototInstapaper.reg_url = new RegExp( 
         '[a-zA-Z]+:\\/\\/(' + ui.Template.reg_url_path_chars+'+)');
     ext.HototInstapaper.prefs = new ext.Preferences(ext.HototInstapaper.id);
+
 },
 
 unload:
@@ -90,21 +114,6 @@ function unload() {
 
 options:
 function options() {
-    var title = 'Options of Hotot Instapaper';
-
-    content = '<p>\
-        <label>Sign in to Instapaper:</label></p><p>\
-        <table><tr><td>Username:</td><td><input id="ext_hotot_instapaper_username" type="text" class="dark"/></td></tr>\
-        <tr><td>Password:</td><td><input id="ext_hotot_instapaper_password" type="password" class="dark"/></td></tr>\
-        </table></p>';
-
-    ui.CommonDlg.reset(); 
-    ui.CommonDlg.set_title(title);
-    ui.CommonDlg.set_content(content);
-    ui.CommonDlg.add_button('ext_btn_hotot_instapaper_save'
-        , 'Save', 'Save Your Changes'
-        , ext.HototInstapaper.on_btn_save_prefs_clicked);
-
     if (ext.HototInstapaper.prefs == null) {
         ext.HototInstapaper.prefs = new ext.Preferences(ext.HototInstapaper.id);
     }
@@ -116,7 +125,10 @@ function options() {
         $('#ext_hotot_instapaper_password').val(val == null? '': val);
     });
 
-    ui.DialogHelper.open(ui.CommonDlg); 
+    if (!ext.HototInstapaper.option_dialog) {
+        ext.HototInstapaper.create_option_dialog();        
+    }
+    ext.HototInstapaper.option_dialog.open();
 },
 
 }

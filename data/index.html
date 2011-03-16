@@ -355,7 +355,7 @@ jQuery(function($) {
         if (event.shiftKey && !event.ctrlKey && !event.metaKey && !globals.focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
-                ui.DialogHelper.open(ui.AboutDlg);            
+                globals.about_dialog.open();            
             }
         }
         if (event.ctrlKey && event.keyCode == 81) {

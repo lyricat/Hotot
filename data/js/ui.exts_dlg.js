@@ -97,6 +97,7 @@ function bind_exts_btns() {
         var item = $(this).parents('.ext_item').get(0);
         var id = $(item).attr('id').substring(4);
         ext.exts_info[id].extension.options();
+        return false;
     });
 
 },

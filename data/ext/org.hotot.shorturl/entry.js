@@ -174,36 +174,13 @@ function on_btn_save_prefs_clicked(event) {
         ext.HototShortUrl.prefs.set('other', prefs.other);
     }
     ext.HototShortUrl.set_service_url(prefs.service);
-    ui.DialogHelper.close(ui.CommonDlg);
+    ext.HototShortUrl.option_dialog.close();
 },
 
-load:
-function load() {
-    ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
-    ext.HototShortUrl.prefs.get('service', function(key, val) {
-        if (val == null) {
-            for (val in ext.HototShortUrl.services) {
-                break;
-            }
-        }
-        ext.HototShortUrl.set_service_url(val);
-    });
-    $('#btn_shorturl').unbind('click').bind(
-        'click', ext.HototShortUrl.on_btn_short_url_clicked);
-},
-
-unload:
-function unload() {
-    $('#btn_shorturl').unbind('click').bind(
-        'click', ui.StatusBox.on_btn_short_url_clicked);
-},
-
-options:
-function options() {
-    if (ext.HototShortUrl.prefs == null) {
-        ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
-    }
-    content = '<p>\
+create_option_dialog:
+function create_option_dialog() {
+    var title = 'Options of ShortUrl'
+    var body = '<p>\
         <label>Short URL Service:</label> \
         <select id="ext_hotot_short_url_service" class="dark">\
         </select>\
@@ -222,11 +199,15 @@ function options() {
             only the short URL in plain text.\
         </span>\
         </p>';
-    ui.CommonDlg.reset();
-    ui.CommonDlg.set_title('Options for Hotot Short URL');
-    ui.CommonDlg.set_content(content);
-    ui.CommonDlg.add_button('ext_btn_hotot_short_url_save', 'Save',
-        'Save Your Changes', ext.HototShortUrl.on_btn_save_prefs_clicked);
+        
+    ext.HototShortUrl.option_dialog 
+        = widget.DialogManager.build_dialog(
+              '#ext_hotot_short_url_opt_dialog'
+            , title, '', body
+            , [{id:'#ext_btn_hotot_short_url_save', label: 'Save'
+                , click: ext.HototShortUrl.on_btn_save_prefs_clicked}]);
+    ext.HototShortUrl.option_dialog.set_styles('header', {'display': 'none', 'height': '0'});
+    ext.HototShortUrl.option_dialog.resize(400, 250);
     $.each(ext.HototShortUrl.services, function(index, service) {
         $('#ext_hotot_short_url_service').append(
             $('<option>').val(index).html(service.name)
@@ -263,6 +244,35 @@ function options() {
             }
         );
     }).attr('title', 'Choose a Service');
+},
+
+load:
+function load() {
+    ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
+    ext.HototShortUrl.prefs.get('service', function(key, val) {
+        if (val == null) {
+            for (val in ext.HototShortUrl.services) {
+                break;
+            }
+        }
+        ext.HototShortUrl.set_service_url(val);
+    });
+    $('#btn_shorturl').unbind('click').bind(
+        'click', ext.HototShortUrl.on_btn_short_url_clicked);
+},
+
+unload:
+function unload() {
+    $('#btn_shorturl').unbind('click').bind(
+        'click', ui.StatusBox.on_btn_short_url_clicked);
+},
+
+options:
+function options() {
+    if (ext.HototShortUrl.prefs == null) {
+        ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
+    }
+
     ext.HototShortUrl.prefs.get('service', function(key, val) {
         if (val == null) {
             for (val in ext.HototShortUrl.services) {
@@ -271,7 +281,10 @@ function options() {
         }
         $('#ext_hotot_short_url_service').val(val).change();
     });
-    ui.DialogHelper.open(ui.CommonDlg);
+    if (!ext.HototShortUrl.option_dialog) {
+        ext.HototShortUrl.create_option_dialog();
+    }
+    ext.HototShortUrl.option_dialog.open();
 },
 
 }

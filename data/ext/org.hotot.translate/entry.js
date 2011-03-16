@@ -15,6 +15,10 @@ url: 'http://hotot.org',
 
 icon: 'icon.png',
 
+option_dialog: null,
+
+trans_dialog: null,
+
 languages: {
  'af':  'Afrikaans'   ,
  'sq':  'Albanian'    ,
@@ -168,8 +172,7 @@ function do_translate_selection(dst_lang) {
         } else {
             content = '<strong>ERROR</strong>: ' + result.responseDetails;
         }
-        ui.MessageDlg.set_text('Translate Result', content);
-        ui.DialogHelper.open(ui.MessageDlg)
+        widget.DialogManager.alert('Translate Result', content);
     });
 },
 
@@ -206,7 +209,31 @@ on_btn_save_prefs_clicked:
 function on_btn_save_prefs_clicked(event) {
     var dst_lang = $('#ext_hotot_translate_dst_language').attr('value');
     ext.HototTranslate.prefs.set('dst_lang', dst_lang);
-    ui.DialogHelper.close(ui.CommonDlg);
+    ext.HototTranslate.option_dialog.close();
+},
+
+create_option_dialog:
+function create_option_dialog() {
+    var title = 'Options of Hotot Translate';
+    var options_arr = [];
+    for (var code in ext.HototTranslate.languages) {
+        var name = ext.HototTranslate.languages[code];
+        options_arr.push('<option value="'+code+'">'+name+'</option>');
+    }
+    var body = '<p>\
+        <label>Default destination language:</label></p><p>\
+        <center><select id="ext_hotot_translate_dst_language" title="Choose a destination language." class="dark"></center>'
+        + options_arr.join() +   
+        '</select></p>';
+
+    ext.HototTranslate.option_dialog 
+        = widget.DialogManager.build_dialog(
+              '#ext_hotot_translate_opt_dialog'
+            , title, '', body
+            , [{ id: '#ext_btn_hotot_translate_save', label: 'Save'
+                , click:ext.HototTranslate.on_btn_save_prefs_clicked}]);
+    ext.HototTranslate.option_dialog.set_styles('header', {'padding':'0','display':'none', 'height': '0'});
+    ext.HototTranslate.option_dialog.resize(400, 250);
 },
 
 load:
@@ -234,25 +261,11 @@ options:
 function options() {
     if (ext.HototTranslate.prefs == null) {
         ext.HototTranslate.prefs = new ext.Preferences(ext.HototTranslate.id);
+    }   
+    
+    if (!ext.HototTranslate.option_dialog) {
+        ext.HototTranslate.create_option_dialog();
     }
-    var title = 'Options of Hotot Translate';
-    var options_arr = [];
-    for (var code in ext.HototTranslate.languages) {
-        var name = ext.HototTranslate.languages[code];
-        options_arr.push('<option value="'+code+'">'+name+'</option>');
-    }
-    content = '<p>\
-        <label>Default destination language:</label></p><p>\
-        <center><select id="ext_hotot_translate_dst_language" title="Choose a destination language." class="dark"></center>'
-        + options_arr.join() +   
-        '</select></p>';
-
-    ui.CommonDlg.reset(); 
-    ui.CommonDlg.set_title(title);
-    ui.CommonDlg.set_content(content);
-    ui.CommonDlg.add_button('ext_btn_hotot_translate_save'
-        , 'Save', 'Save Your Changes'
-        , ext.HototTranslate.on_btn_save_prefs_clicked);
 
     var dst_lang = 'en';
     ext.HototTranslate.prefs.get('dst_lang', function (key, val) {
@@ -272,8 +285,7 @@ function options() {
         $('#ext_hotot_translate_dst_language')
             .attr('selectedIndex', selected_idx);
     });
-
-    ui.DialogHelper.open(ui.CommonDlg); 
+    ext.HototTranslate.option_dialog.open();
 },
 
 }

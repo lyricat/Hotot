@@ -16,6 +16,8 @@ icon: 'icon.png',
 
 select_filename: '',
 
+upload_dialog: null,
+
 services : {
     'img.ly': {
           url: 'http://img.ly/api/2/upload.json'
@@ -33,38 +35,11 @@ services : {
 on_ext_btn_clicked:
 function on_btn_upload_clicked(event) {
     if (lib.twitterapi.use_oauth) {
-        title = 'Upload image to ...'
-        content = '<p>\
-            <label>Upload to </label>\
-            <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="dark">\
-                <option value="img.ly" default="1">img.ly</option>\
-                <option value="twitpic.com">twitpic.com</option>\
-                <option value="plixi.com">plixi.com</option>\
-            </select>\
-            <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button dark" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
-            <span class="placeholder"></span>\
-            </a></p><p>\
-            <div style="float:left;height:100px;width:100px;">\
-            <label >Preview:<label><br/>\
-            <img id="ext_hotot_upload_image_prev" style="max-height:100px;max-width:100px;"/>\
-            </div>\
-            <div style="margin-left:110px;">\
-            <label >Add a message<label><br/>\
-            <textarea id="ext_hotot_upload_image_message"class="dark"></textarea>\
-            </div></p>';
-
-        ui.CommonDlg.reset(); 
-        ui.CommonDlg.set_title('Upload Image');
-        ui.CommonDlg.set_content(content);
-        ui.CommonDlg.add_button('ext_btn_hotot_upload_image_upload'
-            , 'Upload', 'Click to upload.'
-            , ext.HototImageUpload.on_btn_upload_clicked);
-        ui.DialogHelper.open(ui.CommonDlg);
+        ext.HototImageUpload.upload_dialog.open();
     } else {
         title = 'Error !'
         content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
-        ui.MessageDlg.set_text(title, content); 
-        ui.DialogHelper.open(ui.MessageDlg);
+        widget.DialogManager.alert(title, content); 
     }
 },
 
@@ -134,7 +109,7 @@ function select_finish(filename) {
 
 success:
 function success(result) {
-    ui.DialogHelper.close(ui.CommonDlg);
+    ext.HototImageUpload.upload_dialog.close();
     
     var service_name = $('#ext_hotot_upload_image_services').attr('value');
     ui.Notification.set('Uploading Successfully!').show();
@@ -155,8 +130,7 @@ function success(result) {
 
 fail:
 function fail(result) {
-    ui.MessageDlg.set_text('Upload Fail!', '<p>'+result+'</p>');
-    ui.DialogHelper.open(ui.MessageDlg);
+    widget.DialogManager.alert('Upload Fail!', '<p>'+result+'</p>');
     ext.HototImageUpload.select_filename = '';
 },
 
@@ -166,11 +140,42 @@ function load() {
         , ext.HototImageUpload.id+'/ic16_upload.png'
         , 'Upload Images ...'
         , ext.HototImageUpload.on_ext_btn_clicked);
+    // create upload dialog
+    var title = 'Upload image to ...'
+    var header_html = '<h3>Upload to ...</h3>'
+    var body_html = '<p>\
+        <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="combo">\
+            <option value="img.ly" default="1">img.ly</option>\
+            <option value="twitpic.com">twitpic.com</option>\
+            <option value="plixi.com">plixi.com</option>\
+        </select>\
+        <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
+        <span class="placeholder"></span>\
+        </a></p><p>\
+        <div style="float:left;height:100px;width:100px;">\
+        <label >Preview:<label><br/>\
+        <img id="ext_hotot_upload_image_prev" style="max-height:100px;max-width:100px;"/>\
+        </div>\
+        <div style="margin-left:110px;">\
+        <label >Add a message<label><br/>\
+        <textarea id="ext_hotot_upload_image_message"class="dark"></textarea>\
+        </div></p>';
+    var footer = '<a href="javascript:void(0)" class="button" id="">Upload</a>';
+
+    ext.HototImageUpload.upload_dialog 
+        = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
+            , title, header_html, body_html
+            , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
+                , click: ext.HototImageUpload.on_btn_upload_clicked}]
+            );
+    ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})
+    ext.HototImageUpload.upload_dialog.resize(400, 250);
 },
 
 unload:
 function unload() {
     ext.remove_exts_menuitem('ext_btn_hotot_upload_image');
+    ext.HototImageUpload.upload_dialog.destroy();
 },
 
 }
