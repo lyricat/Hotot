@@ -17,7 +17,6 @@ use_preload_conversation: true,
 
 use_auto_loadmore: false,
 
-
 // info of blocks. all pages use as containers to display tweets.
 block_info: {
 },
@@ -668,7 +667,7 @@ function trim_page(container) {
 compress_page:
 function compress_page(container) {
     if (!ui.Finder.finding) {
-        container.children('.card:gt(20)').hide();
+        container.children('.card:visible').filter(':gt(20)').hide();
     }
 },
 
