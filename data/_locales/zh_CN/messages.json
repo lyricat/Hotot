@@ -1,6 +1,18 @@
 {
+	"all": {
+		"message": "全部",
+		"description": ""
+	},
 	"help": {
 		"message": "帮助",
+		"description": ""
+	},
+	"unfollow": {
+		"message": "取消关注",
+		"description": ""
+	},
+	"http_proxy": {
+		"message": "HTTP代理",
 		"description": ""
 	},
 	"load_more": {
@@ -11,6 +23,18 @@
 		"message": "状态统计",
 		"description": ""
 	},
+	"summon_hotot": {
+		"message": "召唤Hotot",
+		"description": ""
+	},
+	"use_native_notify_system": {
+		"message": "使用原生通知机制",
+		"description": ""
+	},
+	"send_message": {
+		"message": "",
+		"description": "发送消息"
+	},
 	"unblock": {
 		"message": "解除屏蔽",
 		"description": ""
@@ -19,16 +43,20 @@
 		"message": "关系",
 		"description": ""
 	},
-	"inbox": {
-		"message": "收件箱",
-		"description": ""
-	},
-	"cancel": {
-		"message": "取消",
+	"keyboard": {
+		"message": "键盘",
 		"description": ""
 	},
 	"follow": {
 		"message": "关注",
+		"description": ""
+	},
+	"font": {
+		"message": "字体",
+		"description": ""
+	},
+	"count": {
+		"message": "计数",
 		"description": ""
 	},
 	"web": {
@@ -39,40 +67,40 @@
 		"message": "记住密码",
 		"description": ""
 	},
-	"location": {
-		"message": "位置",
+	"click_the_button_below": {
+		"message": "点击下面的按钮",
 		"description": ""
 	},
-	"friend_stat": {
-		"message": "朋友统计",
+	"regain_access_token_with_twitter": {
+		"message": "重新获取Twitter访问令牌",
+		"description": ""
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "使用Ctrl+Enter更新",
+		"description": ""
+	},
+	"location": {
+		"message": "位置",
 		"description": ""
 	},
 	"tweets": {
 		"message": "状态",
 		"description": ""
 	},
-	"click_me_to_continue": {
-		"message": "点击继续",
-		"description": ""
-	},
-	"username": {
-		"message": "用户名",
-		"description": ""
-	},
 	"bio": {
 		"message": "自述",
 		"description": ""
 	},
-	"follower_stat": {
-		"message": "粉丝统计",
+	"home_timeline": {
+		"message": "家",
 		"description": ""
 	},
 	"password": {
 		"message": "密码",
 		"description": ""
 	},
-	"info": {
-		"message": "信息",
+	"disabled": {
+		"message": "禁用的",
 		"description": ""
 	},
 	"name": {
@@ -83,84 +111,120 @@
 		"message": "编辑",
 		"description": ""
 	},
+	"show_all": {
+		"message": "显示所有",
+		"description": ""
+	},
 	"greeting": {
 		"message": "殿下您好！",
 		"description": ""
 	},
-	"restore_defaults": {
-		"message": "恢复默认值",
+	"direct_messages": {
+		"message": "消息箱",
 		"description": ""
 	},
-	"delete": {
-		"message": "删除",
+	"notify": {
+		"message": "通知",
 		"description": ""
 	},
 	"loading_resources_hint": {
 		"message": "加载资源中...",
 		"description": ""
 	},
+	"system_font": {
+		"message": "系统字体",
+		"description": ""
+	},
 	"my_tweets_be_retweeted": {
 		"message": "我的状态，被转发",
 		"description": ""
 	},
-	"send_request": {
-		"message": "发送请求",
+	"twitter": {
+		"message": "Twitter",
 		"description": ""
 	},
 	"search_for": {
 		"message": "搜索",
 		"description": ""
 	},
-	"create_profile": {
-		"message": "创建账户",
+	"people_request_hint_title": {
+		"message": "已经保护了他/她的状态时间线",
 		"description": ""
 	},
-	"profile_name": {
-		"message": "账户名",
-		"description": ""
-	},
-	"retweeted_by_others": {
-		"message": "别人转发的",
+	"cancel": {
+		"message": "取消",
 		"description": ""
 	},
 	"close": {
 		"message": "关闭",
 		"description": ""
 	},
-	"join_time": {
-		"message": "加入时间",
+	"font_preview_hint": {
+		"message": "",
+		"description": ""
+	},
+	"retweet": {
+		"message": "转发",
+		"description": ""
+	},
+	"enable_verbose_mode": {
+		"message": "启用啰嗦模式",
+		"description": ""
+	},
+	"search_in_google": {
+		"message": "在Google搜索",
 		"description": ""
 	},
 	"preferences": {
 		"message": "首选项",
 		"description": ""
 	},
+	"notification": {
+		"message": "通知",
+		"description": ""
+	},
+	"content": {
+		"message": "内容",
+		"description": ""
+	},
 	"change_avator": {
 		"message": "换头像",
 		"description": ""
 	},
-	"followers": {
-		"message": "粉丝",
+	"oauth_base": {
+		"message": "",
 		"description": ""
 	},
-	"extensions": {
-		"message": "扩展",
+	"reply": {
+		"message": "回复",
 		"description": ""
 	},
-	"stat": {
-		"message": "统计",
+	"api_setting": {
+		"message": "API设置",
+		"description": ""
+	},
+	"public_only": {
+		"message": "只显示呐喊",
 		"description": ""
 	},
 	"hotot": {
 		"message": "傲兔",
 		"description": ""
 	},
-	"update": {
-		"message": "更新",
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "复制PIN Code并且将它粘贴到下面的文本框",
 		"description": ""
 	},
-	"sign_in": {
-		"message": "登入",
+	"find_someone_you_love": {
+		"message": "找个妳爱的人",
+		"description": ""
+	},
+	"credits": {
+		"message": "致谢",
+		"description": ""
+	},
+	"host": {
+		"message": "主机",
 		"description": ""
 	},
 	"outbox": {
@@ -171,16 +235,280 @@
 		"message": "收藏",
 		"description": ""
 	},
-	"friends": {
-		"message": "朋友",
+	"search": {
+		"message": "搜索",
 		"description": ""
 	},
 	"ok": {
 		"message": "确定",
 		"description": ""
 	},
+	"license": {
+		"message": "许可",
+		"description": ""
+	},
+	"search_in_twitter": {
+		"message": "在Twitter中搜索",
+		"description": ""
+	},
+	"hover_to_open_tweet_box": {
+		"message": "鼠标悬浮打开输入框",
+		"description": ""
+	},
+	"use_ubuntu_indicator": {
+		"message": "使用Ubuntu Indicator",
+		"description": ""
+	},
+	"fav_and_unfav": {
+		"message": "收藏/取消收藏",
+		"description": ""
+	},
+	"reply_only": {
+		"message": "只显示回复",
+		"description": ""
+	},
+	"extensions": {
+		"message": "扩展",
+		"description": ""
+	},
+	"mentions": {
+		"message": "你的八卦",
+		"description": ""
+	},
+	"retweeted_by_me": {
+		"message": "我转发的",
+		"description": ""
+	},
+	"block": {
+		"message": "屏蔽",
+		"description": ""
+	},
+	"about_and_help": {
+		"message": "关于和帮助",
+		"description": ""
+	},
+	"api_base": {
+		"message": "",
+		"description": ""
+	},
+	"regain_access_token": {
+		"message": "重新获取访问令牌",
+		"description": ""
+	},
+	"enable_proxy": {
+		"message": "启用代理",
+		"description": ""
+	},
+	"follower_stat": {
+		"message": "粉丝统计",
+		"description": ""
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "或者在浏览器中打开以下地址",
+		"description": ""
+	},
+	"globals": {
+		"message": "全局",
+		"description": ""
+	},
+	"inbox": {
+		"message": "收件箱",
+		"description": ""
+	},
+	"create_profile": {
+		"message": "创建账户",
+		"description": ""
+	},
+	"search_no_result_hint_title2": {
+		"message": "没有任何搜索结果",
+		"description": ""
+	},
+	"search_no_result_hint_title1": {
+		"message": "搞神马，您的",
+		"description": ""
+	},
+	"delete": {
+		"message": "删除",
+		"description": ""
+	},
+	"px": {
+		"message": "像素",
+		"description": ""
+	},
+	"custom_font": {
+		"message": "自定义字体",
+		"description": ""
+	},
+	"friend_stat": {
+		"message": "朋友统计",
+		"description": ""
+	},
+	"type": {
+		"message": "类型",
+		"description": ""
+	},
+	"click_me_to_continue": {
+		"message": "点击继续",
+		"description": ""
+	},
+	"username": {
+		"message": "用户名",
+		"description": ""
+	},
+	"same_signing_oauth_base": {
+		"message": "",
+		"description": ""
+	},
+	"about": {
+		"message": "关于",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion2": {
+		"message": "搜点别的",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion3": {
+		"message": "用正常点的组词方式",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion1": {
+		"message": "有没有错别字啊，亲？",
+		"description": ""
+	},
+	"same_signing_api_base": {
+		"message": "",
+		"description": ""
+	},
+	"pin_code": {
+		"message": "",
+		"description": ""
+	},
+	"info": {
+		"message": "信息",
+		"description": ""
+	},
+	"account": {
+		"message": "账户",
+		"description": ""
+	},
+	"search_api_base": {
+		"message": "",
+		"description": ""
+	},
+	"enabled": {
+		"message": "已启用",
+		"description": ""
+	},
+	"keyboard_shortcuts": {
+		"message": "键盘快捷键",
+		"description": ""
+	},
+	"restore_defaults": {
+		"message": "恢复默认值",
+		"description": ""
+	},
+	"globals_restart_hint": {
+		"message": "亲，请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
+		"description": ""
+	},
+	"behavior": {
+		"message": "行为",
+		"description": ""
+	},
+	"people_request_hint_text": {
+		"message": "基本上你得去twitter.com给这个人发送一个关注请求。如果这个人从了，才能看到他的时间线。",
+		"description": ""
+	},
+	"identica": {
+		"message": "",
+		"description": ""
+	},
+	"reply_all": {
+		"message": "回复所有",
+		"description": ""
+	},
+	"send_request": {
+		"message": "发送请求",
+		"description": ""
+	},
+	"suggestions": {
+		"message": "建议",
+		"description": ""
+	},
+	"profile_name": {
+		"message": "账户名",
+		"description": ""
+	},
+	"retweeted_by_others": {
+		"message": "别人转发的",
+		"description": ""
+	},
+	"join_time": {
+		"message": "加入时间",
+		"description": ""
+	},
+	"information": {
+		"message": "信息",
+		"description": ""
+	},
+	"conversation": {
+		"message": "会话",
+		"description": ""
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "如果可能的话，预加载对话的上一条状态",
+		"description": ""
+	},
+	"port": {
+		"message": "端口",
+		"description": ""
+	},
+	"sound": {
+		"message": "提示音",
+		"description": ""
+	},
+	"followers": {
+		"message": "粉丝",
+		"description": ""
+	},
+	"step_one": {
+		"message": "第一步",
+		"description": ""
+	},
+	"stat": {
+		"message": "统计",
+		"description": ""
+	},
+	"quote": {
+		"message": "引用",
+		"description": ""
+	},
+	"keybinding": {
+		"message": "热键绑定",
+		"description": ""
+	},
+	"update": {
+		"message": "更新",
+		"description": ""
+	},
+	"sign_in": {
+		"message": "登入",
+		"description": ""
+	},
+	"friends": {
+		"message": "朋友",
+		"description": ""
+	},
+	"font_size": {
+		"message": "字体大小",
+		"description": ""
+	},
 	"clear": {
 		"message": "清除",
+		"description": ""
+	},
+	"page": {
+		"message": "页面",
 		"description": ""
 	},
 	"look_up": {
@@ -191,12 +519,8 @@
 		"message": "登录到Twitter",
 		"description": ""
 	},
-	"retweeted_by_me": {
-		"message": "我转发的",
-		"description": ""
-	},
-	"block": {
-		"message": "屏蔽",
+	"step_two": {
+		"message": "第二步",
 		"description": ""
 	}
 }

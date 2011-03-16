@@ -625,43 +625,6 @@ pre {
     border-radius: 3px 3px;
 }
 
-/* ===== count =================================== */
-#count {
-    position: fixed;
-    z-index: 100000;
-    background: rgba(0, 0, 0, 0.7);
-    top: 100px;
-    left: 0;
-    padding: 5px 0;
-    font-size: 10px;
-    color: white;
-    border-top-right-radius: 3px 3px;
-    border-bottom-right-radius: 3px 3px;
-    display: none;
-}
-
-#count_trigger {
-    margin: 0 5px 0 3px;
-    font-size: 12px;
-}
-
-#count > ul {
-    list-style-type: none;
-    display: none;
-}
-
-#count li > a {
-    padding: 3px;
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-#count li > a:hover {
-    color: orange;
-    background: black;
-}
-
 /* ===== Finder =================================== */
 #finder_bar {
     top: 0px;    

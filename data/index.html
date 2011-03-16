@@ -128,7 +128,7 @@ function hotot_notify(type, image, title, summary) {
             var notification = webkitNotifications.createNotification(
               img_url, title, summary);
             notification.show();
-            setTimeout(function() {notification.cancel()}, 3000);
+            setTimeout(function() {notification.cancel()}, 5000);
         }
     } else {
         // @TODO other notify way
@@ -813,13 +813,13 @@ jQuery(function($) {
 
         <div id="people_request_hint">
             <h1>
-            @<label id="request_screen_name"></label> has protected his/her tweets.
+            @<label id="request_screen_name"></label><span data-i18n-text="people_request_hint_title">has protected his/her tweets.</span>
             </h1>
-            <p>
+            <p data-i18n-text="people_request_hint_text">
             You need to go to twitter.com to send a request before you can start following this person...
             </p>
             <div style="text-align:center;">
-            <a id="btn_people_request" class="button" data-i18n-text="send_request">Send Request</a>
+            <a id="btn_people_request" class="button" data-i18n-text="send_request" target="_blank">Send Request</a>
             </div>
         </div>
         <div id="people_no_result_hint">
@@ -841,19 +841,24 @@ jQuery(function($) {
             <div id="search_entry">
                 <label data-i18n-text="search_for">Search for: </label>
                 <input id="tbox_search_entry" class="entry dark" type="text" value=""/>
-                <a id="btn_search_entry" class="button dark">GO</a>
+                <a id="btn_search_entry" class="button dark" data-i18n-text="search">Search</a>
             </div>
         </div>
         <ul></ul>
         <div id="search_no_result_hint">
             <p>
-            Your search - <label id="search_query_keywords"></label> - did not match any result.
+            <span data-i18n-text="search_no_result_hint_title1">Your search</span>
+            - <label id="search_query_keywords"></label> - 
+            <span data-i18n-text="search_no_result_hint_title2">did not match any result.</span>
             </p>
             <p>
-            Suggestions: <br/>
-             - Make sure all words are spelled correctly.<br/>
-             - Try different keywords.<br/>
-             - Try more general keywords.<br/>
+            <span data-i18n-text="suggestions">Suggestions</span>: <br/>
+             - <span data-i18n-text="search_no_result_hint_suggestion1">
+                Make sure all words are spelled correctly.</span><br/>
+             - <span data-i18n-text="search_no_result_hint_suggestion2">
+                Try different keywords.</span><br/>
+             - <span data-i18n-text="search_no_result_hint_suggestion3">
+                Try more general keywords.</span><br/>
             </p>
         </div>
         <div class="tweet_block_bottom">
@@ -862,29 +867,42 @@ jQuery(function($) {
     </div>
     </div>
     <ul id="tweet_bar">
-        <li><a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);"></a></li>
-        <li><a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);"></a></li>
-        <li><a id="tweet_dm_reply_btn" class="tweet_bar_btn" title="Reply Them" href="javascript:void(0);"></a></li>
-        <li><a id="people_follow_btn" class="tweet_bar_btn" title="Follow Them" href="javascript:void(0);"></a></li>
-        <li><a id="people_unfollow_btn" class="tweet_bar_btn" title="Unfollow Them" href="javascript:void(0);"></a></li>
+        <li><a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);" data-i18n-title="reply"></a></li>
+        <li><a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);" data-i18n-title="retweet"></a></li>
+        <li><a id="tweet_dm_reply_btn" class="tweet_bar_btn" title="Reply Them" href="javascript:void(0);" data-i18n-title="reply"></a></li>
+        <li><a id="people_follow_btn" class="tweet_bar_btn" title="Follow Them" href="javascript:void(0);" data-i18n-title="follow"></a></li>
+        <li><a id="people_unfollow_btn" class="tweet_bar_btn" title="Unfollow Them" href="javascript:void(0);" data-i18n-title="unfollow"></a></li>
         <li id="tweet_more_menu_trigger"><a id="tweet_more_menu_btn"  class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
             <ul id="tweet_more_menu" class="hotot_menu">
             <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn" 
                 title="RT this tweet"
-                href="javascript:void(0);">Retweet (old style)</a></li>
+                href="javascript:void(0);"
+                data-i18n-text="quote"
+                >Quote</a></li>
             <li><a id="tweet_fav_btn" class="tweet_fav tweet_more_menu_btn" 
                 title="Fav it!" 
-                href="javascript:void(0);">Fav/Un-fav</a></li>
-            <li><a id="tweet_reply_all_btn" class="tweet_reply_all tweet_more_menu_btn"
+                href="javascript:void(0);"
+                data-i18n-text="fav_and_unfav"
+                >Fav/Un-fav</a></li>
+            <li><a id="tweet_reply_all_btn"
+                class="tweet_reply_all tweet_more_menu_btn"
                 href="javascript:void(0);" 
-                title="Reply All">Reply All</a></li>
-            <li><a id="tweet_dm_btn" class="tweet_dm tweet_more_menu_btn"
-                    href="javascript:void(0);" 
-                    title="Send Message to them">Send Message</a></li>
+                title="Reply All"
+                data-i18n-text="reply_all"
+                >Reply All</a></li>
+            <li><a id="tweet_dm_btn" 
+                class="tweet_dm tweet_more_menu_btn"
+                href="javascript:void(0);" 
+                title="Send Message to them"
+                data-i18n-text="send_message"
+                >Send Message</a></li>
             <li>
-                <a id="tweet_del_btn" class="tweet_del tweet_more_menu_btn"
-                    href="javascript:void(0);"
-                    title="Delete this tweet">Delete</a>
+                <a id="tweet_del_btn"
+                class="tweet_del tweet_more_menu_btn"
+                href="javascript:void(0);"
+                title="Delete this tweet"
+                data-i18n-text="delete"
+                >Delete</a>
             </li>
             <li class="separator"><span></span></li>
             </ul>
@@ -898,22 +916,22 @@ jQuery(function($) {
     <div id="indication">
         <ul>
         	<li>
-        		<a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline" title="Home Timeline"><span class="ic_home"></span></a>
+        		<a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline" title="Home Timeline" data-i18n-title="home_timeline"><span class="ic_home"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_mentions" class="idx_btn" href="#mentions" title="Mentions"><span class="ic_mention"></span></a>
+        		<a id="idx_btn_mentions" class="idx_btn" href="#mentions" title="Mentions"><span class="ic_mention" data-i18n-title="mentions"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages" title="Direct Messages"><span class="ic_dm"></span></a>
+        		<a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages" title="Direct Messages" data-i18n-title="direct_messages"><span class="ic_dm"></span></a>
                 <span class="shape"></span>
         	</li><li>
         		<a id="idx_btn_retweets" class="idx_btn" href="#retweets" title="Retweets and Retweeted"><span class="ic_retweet"></span></a>
                 <span class="shape"></span>
         	</li><li>
-        		<a id="idx_btn_people" class="idx_btn" href="#people" title="Find someone you love."><span class="ic_people"></span></a>
+        		<a id="idx_btn_people" class="idx_btn" href="#people" title="Find someone you love." data-i18n-title="find_someone_you_love"><span class="ic_people"></span></a>
                 <span class="shape"></span>
         	</li><li class="stick_right">
-        		<a id="idx_btn_search" class="idx_btn" href="#search" title="Search for ... "><span class="ic_search"></span></a>
+        		<a id="idx_btn_search" class="idx_btn" href="#search" title="Search for ... " data-i18n-title="search_for"><span class="ic_search"></span></a>
                 <span class="shape"></span>
         	</li>
         </ul>
@@ -946,7 +964,7 @@ jQuery(function($) {
         <span class="clear"></span>
         <div style="vertical-align:middle; padding-top: 5px;">
             <label id="status_len"></label>
-            <label id="status_tips">Press Ctrl+Enter to Update</label>
+            <label id="status_tips" data-i18n-text="press_ctrl_and_enter_to_update">Press Ctrl+Enter to Update</label>
         </div>
     </div>
     <ul id="screen_name_auto_complete"></ul>
@@ -956,25 +974,11 @@ jQuery(function($) {
 <span id="notification"></span>
 </section>
 
-<section id="count">
-    <div id="count_trigger">&#9827;(0)</div>
-    <ul>
-    	<li>
-    		<a href="javascript:void(0)">Home"</a>
-    	</li>
-        <li>
-    		<a href="javascript:void(0)">@</a>
-    	</li>
-    	<li>
-    		<a href="javascript:void(0)">DM</a>
-    	</li>
-    </ul>
-</section>
-
 <section id="finder_bar">
     <div id="finder_wrapper">
-    <input type="text" id="tbox_finder"/>
-    <label for="tbox_finder" id="finder_matched_info"></label>
+    <input type="text" class="entry" id="tbox_finder"/>
+    <label for="tbox_finder" class="label"
+        id="finder_matched_info"></label>
     <a id="btn_finder_prev" href="javascript:void(0);"></a>
     <a id="btn_finder_next" href="javascript:void(0);"></a>
     <a id="btn_finder_close" href="javascript:void(0);"></a>
@@ -1019,24 +1023,26 @@ jQuery(function($) {
     </div>
     <div id="prefs_dlg_body" class="dialog_body">
         <div id='prefs_global' class="prefs_dlg_page">
-            <div class="dialog_block hint">You MUST restart Hotot for some changes below to take effect.
-            And these options will affect ALL accounts
+            <div class="dialog_block hint"
+                data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
+                And these options will affect ALL accounts
             </div>
             <div class="dialog_block">
-            <h3>- HTTP Proxy -</h3>
+            <h3>- <span data-i18n-text="http_proxy">HTTP Proxy</span> -</h3>
             <p>
                 <input id="chk_prefs_use_http_proxy" class="checkbox"
                     title="Use HTTP Proxy" type="checkbox"/>
                 <label id="label_prefs_use_http_proxy" 
-                    for="chk_prefs_use_http_proxy">
+                    for="chk_prefs_use_http_proxy"
+                    class="label" data-i18n-text="enable_proxy">
                     Enable Proxy
                 </label><br/> 
-                <label>Host</label>
+                <label class="label" data-i18n-text="host">Host</label>
                 <input id="tbox_prefs_http_proxy_host"
                     title="HTTP Proxy Host" 
                     style="width: 120px;" 
                     type="text" class="entry"/>
-                <label>Port</label>
+                <label class="label" data-i18n-text="port">Port</label>
                 <input id="tbox_prefs_http_proxy_port"
                     title="HTTP Proxy Port" 
                     style="width: 30px;"
@@ -1044,62 +1050,68 @@ jQuery(function($) {
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- Keybinding -</h3>
+            <h3>- <span data-i18n-text="keybinding">Keybinding</span> -</h3>
             <p>
-                <label>Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
+                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
                 <input id="tbox_prefs_shortcut_summon_hotot" 
                      title="Summon Hot Key"
                      type="text" class="entry"/><br/>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- Misc -</h3>
+            <h3>- <span data-i18n-text>Misc</span> -</h3>
             <p>
                 <input id="chk_prefs_use_verbose_mode"
                     title="Enable verbose mode or not" 
                     type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_verbose_mode">Enable verbose mode</label><br/>
+                <label for="chk_prefs_use_verbose_mode"
+                    class="label"
+                    data-i18n-text="enable_verbose_mode"
+                    >Enable verbose mode</label><br/>
                 <input id="chk_prefs_use_ubuntu_indicator"
                     title="Use Ubuntu Indicator" 
                     type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_ubuntu_indicator">Use Ubuntu indicator</label><br/>
+                <label for="chk_prefs_use_ubuntu_indicator" class="label"
+                    data-i18n-text="use_ubuntu_indicator"
+                    >Use Ubuntu indicator</label><br/>
             </p>
             </div>
         </div><!-- END of #prefs_global -->
         <div id='prefs_account' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- Twitter -</h3>
+            <h3>- <span data-i18n-text="twitter">Twitter</span> -</h3>
             <p>
-                <label>Regain Access Token</label><br/>
-                <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
+                <label class="label" data-i18n-text="regain_access_token">Regain Access Token</label><br/>
+                <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="regain_access_token_with_twitter">Regain Access Token with Twitter</a>
             </p>
             </div>
 
             <div class="dialog_block">
-            <h3>- Identi.ca -</h3>
+            <h3>- <span data-i18n-text="identica">Identi.ca</span> -</h3>
             <p>
                 <input id="chk_prefs_remember_password"
                     type="checkbox" class="checkbox" 
                     title="Remember Password" checked="1"/>
-                <label for="chk_prefs_remember_password">
-                    Remember Password"
+                <label for="chk_prefs_remember_password" class="label"
+                    data-i18n-text="remember_password">Remember Password
                 </label><br/>
             </p>
             </div>
         </div> <!-- END of #prefs_account -->
         <div id='prefs_appearance' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- Font -</h3>
+            <h3>- <span data-i18n-text="font">Font</span> -</h3>
             <p>
-                <label class="label">Font Size</label>
+                <label class="label"
+                    data-i18n-text="font_size">Font Size</label>
                 <input id="tbox_prefs_font_size" 
                     title="Font Size" 
                     style="width:100px" type="text" class="entry"/>
-                <label class="label">px</label><br/>
-
+                <label class="label" data-i18n-text="px">px</label><br/>
                 <input id="rdo_use_system_font" type="radio"
                     class="radio" name="font" checked/>
-                <label class="label">System Font</label>
+                <label class="label"
+                    data-i18n-text="system_font">System Font</label>
                 <select id="sel_prefs_font_family" class="combo"
                     title="Font Family" style="width: 200px">
                     <option value="1">1</option>
@@ -1109,41 +1121,50 @@ jQuery(function($) {
                 </select><br/>
                 <input id="rdo_use_custom_font" type="radio" 
                     class="radio" name="font" />
-                <label class="label">Custom Font</label>
+                <label class="label"
+                    data-i18n-data="custom_font">Custom Font</label>
                 <input id="tbox_prefs_custom_font"
                     title="Custom Font" 
                     style="width:180px"
                     type="text" class="entry"/><br/>
             </p>
             <p>
-                <div id="prefs_font_preview">The quick brown fox jumps over the lazy dog.</div>
+                <div id="prefs_font_preview"
+                    data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.</div>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- Behavior -</h3>
+            <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify" 
                     title="Use Native Notify" class="checkbox"
                     type="checkbox"/>
-                <label for="chk_prefs_use_native_notify">Use Native Notify System</label><br/>
+                <label for="chk_prefs_use_native_notify" class="label"
+                    data-i18n-text="use_native_notify_system"
+                    >Use Native Notify System</label><br/>
                 <input id="chk_prefs_use_hover_box"
                     title="Hover to open tweet box" class="checkbox"
                     type="checkbox"/>
-                <label for="chk_prefs_use_hover_box">Hover to open tweet box</label><br/>
+                <label for="chk_prefs_use_hover_box" class="label"
+                    data-i18n-text="hover_to_open_tweet_box"
+                    >Hover to open tweet box</label><br/>
                 <input id="chk_prefs_use_preload_conversation" 
                     title="Preload latest tweet in a conversation if it is cached." 
                     class="checkbox"
                     type="checkbox"/>
-                <label for="chk_prefs_use_preload_conversation">Preload latest tweet in a conversation if possible.</label><br/>
+                <label for="chk_prefs_use_preload_conversation"  
+                    class="label"
+                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
+                    >Preload latest tweets in conversations if possible.</label><br/>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- Notification -</h3>
+            <h3>- <span data-i18n-text="notification">Notification -</h3>
             <p>
                 <table id="notification_table">
                 <tbody>
-                <tr><th>Page</th><th>Notify</th><th>Type</th><th>Sound</th></tr>
-                <tr><td>Home</td>
+                <tr><th data-i18n-text="page">Page</th><th data-i18n-text="notify">Notify</th><th data-i18n-text="type">Type</th><th data-i18n-text="sound">Sound</th></tr>
+                <tr><td data-i18n-text="home_timeline">Home</td>
                     <td>
                     <input id="chk_prefs_use_home_timeline_notify"
                         title="Notify when home page has new tweets"
@@ -1153,9 +1174,11 @@ jQuery(function($) {
                     <td>
                     <select 
                     id="sel_prefs_use_home_timeline_notify_type"
-                    title="Type" style="width: 85px">
-                        <option value="count">count</option>
-                        <option value="content">content</option>
+                    title="Type" style="width: 85px" class="combo">
+                        <option value="count" 
+                            data-i18n-text="count">count</option>
+                        <option value="content"
+                            data-i18n-text="content">content</option>
                     </select> 
                     </td>
                     <td>
@@ -1165,7 +1188,7 @@ jQuery(function($) {
                         type="checkbox"/>             
                     </td>
                 </tr>
-                <tr><td>Mentions</td>
+                <tr><td data-i18n-text="mentions">Mentions</td>
                     <td>
                     <input id="chk_prefs_use_mentions_notify"
                         title="Notify when some new tweets mention me."
@@ -1175,9 +1198,11 @@ jQuery(function($) {
                     <td>
                     <select 
                     id="sel_prefs_use_mentions_notify_type"
-                    title="Type" style="width: 85px">
-                        <option value="count">count</option>
-                        <option value="content">content</option>
+                    title="Type" style="width: 85px" class="combo">
+                        <option value="count" 
+                            data-i18n-text="count">count</option>
+                        <option value="content"
+                            data-i18n-text="content">content</option>
                     </select> 
                     </td>
                     <td>
@@ -1187,7 +1212,7 @@ jQuery(function($) {
                         type="checkbox"/>             
                     </td>
                 </tr>
-                <tr><td>Message</td>
+                <tr><td data-i18n-text="direct_messages">Message</td>
                     <td>
                     <input id="chk_prefs_use_direct_messages_inbox_notify"
                         title="Notify when some new direct messages coming." 
@@ -1197,9 +1222,11 @@ jQuery(function($) {
                     <td>
             <select 
             id="sel_prefs_use_direct_messages_inbox_notify_type"
-            title="Type" style="width: 85px">
-                <option value="count">count</option>
-                <option value="content">content</option>
+            title="Type" style="width: 85px" class="combo">
+                    <option value="count" 
+                        data-i18n-text="count">count</option>
+                    <option value="content"
+                        data-i18n-text="content">content</option>
             </select> 
                     </td>
                     <td>
@@ -1216,33 +1243,40 @@ jQuery(function($) {
         </div><!-- END of prefs_appearance -->
         <div id='prefs_advanced' class="prefs_dlg_page"> 
             <div class="dialog_block">
-            <h3>- API Settings -</h3>
+            <h3>- <span data-i18n-text="api_setting">API Settings</span> -</h3>
             <p>
-                <label>API Base</label><br/>
+                <label class="label" 
+                    data-i18n-text="api_base">API Base</label><br/>
                 <input id="tbox_prefs_api_base"
                     title="API Base" type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_same_sign_api_base"
                     title="Use same Signing Api" class="checkbox"
                     type="checkbox"/>
-                <label for="chk_prefs_use_same_sign_api_base">
-                    Same signing API base:
+                <label for="chk_prefs_use_same_sign_api_base"
+                    data-i18n-text="same_signing_api_base" class="label"
+                    >Same signing API base:
                 </label><br/>
                 <input id="tbox_prefs_sign_api_base"  
                     title="Signing API Base"
                     type="text" class="entry"/><br/>
-                <label>OAuth Base</label><br/>
+                <label class="label" data-i18n-text="oauth_base"
+                    >OAuth Base</label><br/>
                 <input id="tbox_prefs_oauth_base" 
                     title="OAuth Base" type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_same_sign_oauth_base"
                     title="Use same Signing OAuth Base" 
                     type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_same_sign_oauth_base">
-                    Same signing OAuth base:
+                <label for="chk_prefs_use_same_sign_oauth_base"
+                    class="label"
+                    data-i18n-text="same_signing_oauth_base"
+                    >Same signing OAuth base:
                 </label><br/>
                 <input id="tbox_prefs_sign_oauth_base"
                     title="Signing OAuth Base"
                     type="text" class="entry"/><br/>
-                <label>Search API Base</label><br/>
+                <label class="label" 
+                    data-i18n-text="search_api_base"
+                    >Search API Base</label><br/>
                 <input id="tbox_prefs_search_api_base"
                     title="Search API Base" 
                     type="text" class="entry"/><br/>
@@ -1268,33 +1302,34 @@ jQuery(function($) {
     <div class="dialog_header"></div>
     <div id="oauth_dlg_body" class="dialog_body">
         <div class="dialog_block">
-        <h3>- Step 1 -</h3>
-        <p>Click the button below </p>
+        <h3>- <span data-i18n-text="step_one">Step 1</span> -</h3>
+        <p data-i18n-text="click_the_button_below">Click the button below </p>
         <p style="text-align: center">
         <a id="btn_oauth_user_auth" class="button" data-i18n-text="click_me_to_continue">
             Click me to continue
         </a>
         </p>
-        <p>Or copy the address and open it in your browser.</p>
+        <p data-i18n-text="or_copy_the_address_and_open_it_in_your_browser"
+            >Or copy the address and open it in your browser.</p>
         <p style="text-align: center">
         <input id="tbox_oauth_auth_url" type="text" class="entry" value=""/>
         </p>
         </div>
         <div class="dialog_block">
-        <h3>- Step 2 -</h3>
-        <p>Copy the PIN Code and paste it into the box below;</p>
+        <h3>- <span data-i18n-text="step_two">Step 2</span> -</h3>
+        <p data-i18n-text="copy_the_pin_code_and_paste_it_into_the_box_below"
+        >Copy the PIN Code and paste it into the box below;</p>
         <p style="text-align: center;">
-            <label>PIN Code:</label>
+            <label class="label" 
+                data-i18n-text="pin_code">PIN Code:</label>
             <br/>
             <input id="tbox_oauth_pin" type="text" class="entry"/><br/>
         </p>
         </div>
     </div>
     <div class="dialog_footer">
-    <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);" data-i18n-text="cancel">Cancel
-    </a>
-    <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);" data-i18n-text="ok">OK
-    </a>
+    <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);" data-i18n-text="ok">OK</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>
@@ -1302,7 +1337,7 @@ jQuery(function($) {
 <!-- help & about dialog -->
 <div id="about_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title">About &amp; Help</h2>
+        <h2 class="dialog_title" data-i18n-text="about_and_help">About &amp; Help</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1310,25 +1345,31 @@ jQuery(function($) {
         <ul id="about_dlg_btns" class="radio_group dark">
             <li><a id="btn_about_about"
                     href="#about_about" 
-                    class="radio_group_btn selected">About</a>
+                    class="radio_group_btn selected"
+                    data-i18n-text="about">About</a>
             </li><li><a id="btn_about_keyboard"
                     href="#about_keyboard" 
-                    class="radio_group_btn">Keyboard</a>
+                    class="radio_group_btn"
+                    data-i18n-text="keyboard">Keyboard</a>
             </li><li><a id="btn_about_credits"
                     href="#about_credits" 
-                    class="radio_group_btn">Credits</a>
+                    class="radio_group_btn"
+                    data-i18n-text="credits">Credits</a>
             </li><li><a id="btn_about_license"
                     href="#about_license" 
-                    class="radio_group_btn">License</a>
+                    class="radio_group_btn"
+                    data-i18n-text="license">License</a>
             </li>
         </ul>
     </div>
     <div id="about_dlg_body" class="dialog_body">
         <div id="about_about" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- Hotot <span class="version"></span>-</h3>
+            <h3>- <span data-i18n-text="hotot">Hotot</span>
+                <span class="version"></span>-
+            </h3>
             <p>
-            <strong>Hotot</strong> is a lightweight client for the <a href="http://twitter.com">twitter</a> microblogging service.
+            <strong data-i18n-text="hotot">Hotot</strong> is a lightweight client for the <a href="http://twitter.com">twitter</a> microblogging service.
             </p>
             <p style="text-align:center;">Copyright © 2009-2010 Shellex Wai</p>
             <p>
@@ -1339,7 +1380,7 @@ jQuery(function($) {
         </div>
         <div id="about_keyboard" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- Keyboard shortcuts -</h3>
+            <h3>- <span data-i18n-text="keyboard_shortcuts">Keyboard shortcuts</span> -</h3>
             <p>
                 <table id="shortcuts_table">
                 <tbody>
@@ -1378,7 +1419,7 @@ jQuery(function($) {
         </div>
         <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
             <div class="dialog_block">
-            <h3>- Credits -</h3>
+            <h3>- <span data-i18n-text="credits">Credits</span> -</h3>
             <p>
                 <label>Written by</label>:<br/>
                 - Shellex Wai &lt;<a href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
@@ -1410,7 +1451,7 @@ jQuery(function($) {
         </div>
         <div id="about_license" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- License -</h3>
+            <h3>- <span data-i18n-text="license">License</span> -</h3>
             <p>
 Hotot package is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -1459,32 +1500,32 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
         <div class="dialog_block">
         <h3>- Stat -</h3>
         <p id="profile_stat">
-            <label>Join: </label>
+            <label class="label">Join: </label>
             <span id="profile_join"></span><br/>
-            <label>Tweets: </label>
+            <label class="label">Tweets: </label>
             <span id="profile_tweet_cnt"></span><br/>
-            <label>Tweets per Day: </label>
+            <label class="label">Tweets per Day: </label>
             <span id="profile_tweet_per_day_cnt"></span><br/>
-            <label>Friends: </label>
+            <label class="label">Friends: </label>
             <span id="profile_friend_cnt"></span><br/>
-            <label>Followers: </label> 
+            <label class="label">Followers: </label> 
             <span id="profile_follower_cnt"></span><br/>
-            <label>Favourites: </label>
+            <label class="label">Favourites: </label>
             <span id="profile_favourite_cnt"></span><br/>
         </p>
         </div>
     </div>
     <div>
         <div class="dialog_block">
-        <h3>- Information -</h3>
+        <h3>- <span data-i18n-text="information">Information</span> -</h3>
         <p>
-            <label>Name</label><br/>
+            <label class="label">Name</label><br/>
             <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
-            <label>Location</label><br/>
+            <label class="label">Location</label><br/>
             <input id="tbox_profile_location" title="Location" type="text" class="entry"/><br/>
-            <label>Website</label><br/>
+            <label class="label">Website</label><br/>
             <input id="tbox_profile_website" title="Website" type="text" class="entry"/><br/>
-            <label>Bio</label><br/>
+            <label class="label">Bio</label><br/>
             <textarea id="tbox_profile_bio" title="Bio" class="entry" style="height: 70px;"></textarea>
         </p>
         </div>
@@ -1500,17 +1541,23 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
 <!-- Extensions dialog -->
 <div id="exts_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title">Extenstions</h2>
+        <h2 class="dialog_title" data-i18n-text="extensions">Extenstions</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
         <ul id="exts_filter_btns" class="radio_group dark">
-            <li><a id="exts_filter_all_btn" href="#all" class="radio_group_btn selected">ALL</a>
+            <li><a id="exts_filter_all_btn" href="#all"
+                class="radio_group_btn selected"
+                data-i18n-text="all">ALL</a>
             </li><li>
-                <a id="exts_filter_enabled_btn" href="#enabled" class="radio_group_btn">Enabled</a>
+                <a id="exts_filter_enabled_btn" href="#enabled"
+                class="radio_group_btn"
+                data-i18n-text="enabled">Enabled</a>
             </li><li>
-                <a id="exts_filter_disabled_btn" href="#disabled" class="radio_group_btn">Disabled</a>
+                <a id="exts_filter_disabled_btn" href="#disabled"
+                class="radio_group_btn"
+                data-i18n-text="disabled">Disabled</a>
             </li>
         </ul>
     </div>
@@ -1532,8 +1579,8 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
 
 <section id="context_menu">
     <ul class="hotot_menu">
-        <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);">Search in Google</a></li>
-        <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);">Search in Twitter</a></li>
+        <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_google">Search in Google</a></li>
+        <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
     </ul>
 </section>
 

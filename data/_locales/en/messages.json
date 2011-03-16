@@ -1,5 +1,17 @@
 {
+	"all": {
+		"message": "",
+		"description": ""
+	},
 	"help": {
+		"message": "",
+		"description": ""
+	},
+	"unfollow": {
+		"message": "",
+		"description": ""
+	},
+	"http_proxy": {
 		"message": "",
 		"description": ""
 	},
@@ -11,6 +23,18 @@
 		"message": "",
 		"description": ""
 	},
+	"summon_hotot": {
+		"message": "",
+		"description": ""
+	},
+	"use_native_notify_system": {
+		"message": "",
+		"description": ""
+	},
+	"send_message": {
+		"message": "",
+		"description": ""
+	},
 	"unblock": {
 		"message": "",
 		"description": ""
@@ -19,15 +43,19 @@
 		"message": "",
 		"description": ""
 	},
-	"inbox": {
-		"message": "",
-		"description": ""
-	},
-	"cancel": {
+	"keyboard": {
 		"message": "",
 		"description": ""
 	},
 	"follow": {
+		"message": "",
+		"description": ""
+	},
+	"font": {
+		"message": "",
+		"description": ""
+	},
+	"count": {
 		"message": "",
 		"description": ""
 	},
@@ -39,11 +67,19 @@
 		"message": "",
 		"description": ""
 	},
-	"location": {
+	"click_the_button_below": {
 		"message": "",
 		"description": ""
 	},
-	"friend_stat": {
+	"regain_access_token_with_twitter": {
+		"message": "",
+		"description": ""
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "",
+		"description": ""
+	},
+	"location": {
 		"message": "",
 		"description": ""
 	},
@@ -51,19 +87,11 @@
 		"message": "",
 		"description": ""
 	},
-	"click_me_to_continue": {
-		"message": "",
-		"description": ""
-	},
-	"username": {
-		"message": "",
-		"description": ""
-	},
 	"bio": {
 		"message": "",
 		"description": ""
 	},
-	"follower_stat": {
+	"home_timeline": {
 		"message": "",
 		"description": ""
 	},
@@ -71,7 +99,7 @@
 		"message": "",
 		"description": ""
 	},
-	"info": {
+	"disabled": {
 		"message": "",
 		"description": ""
 	},
@@ -83,15 +111,19 @@
 		"message": "",
 		"description": ""
 	},
+	"show_all": {
+		"message": "",
+		"description": ""
+	},
 	"greeting": {
 		"message": "",
 		"description": ""
 	},
-	"restore_defaults": {
+	"direct_messages": {
 		"message": "",
 		"description": ""
 	},
-	"delete": {
+	"notify": {
 		"message": "",
 		"description": ""
 	},
@@ -99,11 +131,15 @@
 		"message": "",
 		"description": ""
 	},
+	"system_font": {
+		"message": "",
+		"description": ""
+	},
 	"my_tweets_be_retweeted": {
 		"message": "",
 		"description": ""
 	},
-	"send_request": {
+	"twitter": {
 		"message": "",
 		"description": ""
 	},
@@ -111,15 +147,11 @@
 		"message": "",
 		"description": ""
 	},
-	"create_profile": {
+	"people_request_hint_title": {
 		"message": "",
 		"description": ""
 	},
-	"profile_name": {
-		"message": "",
-		"description": ""
-	},
-	"retweeted_by_others": {
+	"cancel": {
 		"message": "",
 		"description": ""
 	},
@@ -127,7 +159,19 @@
 		"message": "",
 		"description": ""
 	},
-	"join_time": {
+	"font_preview_hint": {
+		"message": "",
+		"description": ""
+	},
+	"retweet": {
+		"message": "",
+		"description": ""
+	},
+	"enable_verbose_mode": {
+		"message": "",
+		"description": ""
+	},
+	"search_in_google": {
 		"message": "",
 		"description": ""
 	},
@@ -135,19 +179,31 @@
 		"message": "",
 		"description": ""
 	},
+	"notification": {
+		"message": "",
+		"description": ""
+	},
+	"content": {
+		"message": "",
+		"description": ""
+	},
 	"change_avator": {
 		"message": "",
 		"description": ""
 	},
-	"followers": {
+	"oauth_base": {
 		"message": "",
 		"description": ""
 	},
-	"extensions": {
+	"reply": {
 		"message": "",
 		"description": ""
 	},
-	"stat": {
+	"api_setting": {
+		"message": "",
+		"description": ""
+	},
+	"public_only": {
 		"message": "",
 		"description": ""
 	},
@@ -155,11 +211,19 @@
 		"message": "",
 		"description": ""
 	},
-	"update": {
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "",
 		"description": ""
 	},
-	"sign_in": {
+	"find_someone_you_love": {
+		"message": "",
+		"description": ""
+	},
+	"credits": {
+		"message": "",
+		"description": ""
+	},
+	"host": {
 		"message": "",
 		"description": ""
 	},
@@ -171,7 +235,7 @@
 		"message": "",
 		"description": ""
 	},
-	"friends": {
+	"search": {
 		"message": "",
 		"description": ""
 	},
@@ -179,7 +243,271 @@
 		"message": "",
 		"description": ""
 	},
+	"license": {
+		"message": "",
+		"description": ""
+	},
+	"search_in_twitter": {
+		"message": "",
+		"description": ""
+	},
+	"hover_to_open_tweet_box": {
+		"message": "",
+		"description": ""
+	},
+	"use_ubuntu_indicator": {
+		"message": "",
+		"description": ""
+	},
+	"fav_and_unfav": {
+		"message": "",
+		"description": ""
+	},
+	"reply_only": {
+		"message": "",
+		"description": ""
+	},
+	"extensions": {
+		"message": "",
+		"description": ""
+	},
+	"mentions": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_me": {
+		"message": "",
+		"description": ""
+	},
+	"block": {
+		"message": "",
+		"description": ""
+	},
+	"about_and_help": {
+		"message": "",
+		"description": ""
+	},
+	"api_base": {
+		"message": "",
+		"description": ""
+	},
+	"regain_access_token": {
+		"message": "",
+		"description": ""
+	},
+	"enable_proxy": {
+		"message": "",
+		"description": ""
+	},
+	"follower_stat": {
+		"message": "",
+		"description": ""
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "",
+		"description": ""
+	},
+	"globals": {
+		"message": "",
+		"description": ""
+	},
+	"inbox": {
+		"message": "",
+		"description": ""
+	},
+	"create_profile": {
+		"message": "",
+		"description": ""
+	},
+	"search_no_result_hint_title2": {
+		"message": "",
+		"description": ""
+	},
+	"search_no_result_hint_title1": {
+		"message": "",
+		"description": ""
+	},
+	"delete": {
+		"message": "",
+		"description": ""
+	},
+	"px": {
+		"message": "",
+		"description": ""
+	},
+	"custom_font": {
+		"message": "",
+		"description": ""
+	},
+	"friend_stat": {
+		"message": "",
+		"description": ""
+	},
+	"type": {
+		"message": "",
+		"description": ""
+	},
+	"click_me_to_continue": {
+		"message": "",
+		"description": ""
+	},
+	"username": {
+		"message": "",
+		"description": ""
+	},
+	"same_signing_oauth_base": {
+		"message": "",
+		"description": ""
+	},
+	"about": {
+		"message": "",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion2": {
+		"message": "",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion3": {
+		"message": "",
+		"description": ""
+	},
+	"search_no_result_hint_suggestion1": {
+		"message": "",
+		"description": ""
+	},
+	"same_signing_api_base": {
+		"message": "",
+		"description": ""
+	},
+	"pin_code": {
+		"message": "",
+		"description": ""
+	},
+	"info": {
+		"message": "",
+		"description": ""
+	},
+	"account": {
+		"message": "",
+		"description": ""
+	},
+	"search_api_base": {
+		"message": "",
+		"description": ""
+	},
+	"enabled": {
+		"message": "",
+		"description": ""
+	},
+	"keyboard_shortcuts": {
+		"message": "",
+		"description": ""
+	},
+	"restore_defaults": {
+		"message": "",
+		"description": ""
+	},
+	"globals_restart_hint": {
+		"message": "",
+		"description": ""
+	},
+	"behavior": {
+		"message": "",
+		"description": ""
+	},
+	"people_request_hint_text": {
+		"message": "",
+		"description": ""
+	},
+	"identica": {
+		"message": "",
+		"description": ""
+	},
+	"reply_all": {
+		"message": "",
+		"description": ""
+	},
+	"send_request": {
+		"message": "",
+		"description": ""
+	},
+	"suggestions": {
+		"message": "",
+		"description": ""
+	},
+	"profile_name": {
+		"message": "",
+		"description": ""
+	},
+	"retweeted_by_others": {
+		"message": "",
+		"description": ""
+	},
+	"join_time": {
+		"message": "",
+		"description": ""
+	},
+	"information": {
+		"message": "",
+		"description": ""
+	},
+	"conversation": {
+		"message": "",
+		"description": ""
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "",
+		"description": ""
+	},
+	"port": {
+		"message": "",
+		"description": ""
+	},
+	"sound": {
+		"message": "",
+		"description": ""
+	},
+	"followers": {
+		"message": "",
+		"description": ""
+	},
+	"step_one": {
+		"message": "",
+		"description": ""
+	},
+	"stat": {
+		"message": "",
+		"description": ""
+	},
+	"quote": {
+		"message": "",
+		"description": ""
+	},
+	"keybinding": {
+		"message": "",
+		"description": ""
+	},
+	"update": {
+		"message": "",
+		"description": ""
+	},
+	"sign_in": {
+		"message": "",
+		"description": ""
+	},
+	"friends": {
+		"message": "",
+		"description": ""
+	},
+	"font_size": {
+		"message": "",
+		"description": ""
+	},
 	"clear": {
+		"message": "",
+		"description": ""
+	},
+	"page": {
 		"message": "",
 		"description": ""
 	},
@@ -191,11 +519,7 @@
 		"message": "",
 		"description": ""
 	},
-	"retweeted_by_me": {
-		"message": "",
-		"description": ""
-	},
-	"block": {
+	"step_two": {
 		"message": "",
 		"description": ""
 	}
