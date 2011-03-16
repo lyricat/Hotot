@@ -125,7 +125,8 @@ function init () {
         // so i only ignore event associate with program's behaviors.
         if (event.ctrlKey && key_code == 13) {
             ui.StatusBox.keydown_twice_flag += 1;
-            if (ui.StatusBox.keydown_twice_flag % 2 == 0) 
+            if (ui.StatusBox.keydown_twice_flag % 2 == 0 
+                && util.is_native_platform()) 
                 return false;
             // shortcut binding Ctrl+Enter
             $('#btn_update').click();
