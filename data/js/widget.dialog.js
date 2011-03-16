@@ -94,8 +94,10 @@ function WidgetDialog(obj) {
         self._me_h = (h == -1? self._me_h: h);
         self._me.css({'width': self._me_w, 'height': self._me_h}); 
         var body_h = self._me_h - self._header_h - self._footer_h;
-        self._body.css({'height': (body_h - 40) + 'px'});
-        // 42px = dialog_body.padding + border_num
+        var body_padding = parseInt(self._body.css('padding-top'))
+            + parseInt(self._body.css('padding-bottom'));
+        self._body.css({'height': (body_h - body_padding - 20) + 'px'});
+        // 20px = dialog_body.padding + border_num
     };
 
     self.place = function place(where) {

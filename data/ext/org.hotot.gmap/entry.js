@@ -15,9 +15,9 @@ url: 'http://hotot.org',
 
 icon: 'icon.png',
 
-map_frame: null,
-
 map_doc: null,
+
+map_dialog: null,
 
 on_form_indicator:
 function on_form_indicator(tweet, html) {
@@ -32,19 +32,25 @@ function on_form_indicator(tweet, html) {
 
 on_map_indicator_clicked:
 function on_map_indicator_clicked(x, y) {
+    ext.HototGMap.map_dialog.open(); 
     $('#hotot_gmap_frame').get(0).contentWindow.load_map(x, y);
-    $('#hotot_gmap_canvas').css({'position':'absolute', 'z-index':'111111', 'left':'20%', 'top':'20%', 'height': '60%', 'width': '60%', 'display':'none'});
-    $('#hotot_gmap_frame').css({'height': ($('#hotot_gmap_canvas').height() - 20) + 'px', 'width': '100%'});
-    $('#hotot_gmap_canvas').show();   
+    $('#hotot_gmap_frame').css({
+          'height': ($('#ext_hotot_gmap_map_dialog').height() - 30) + 'px'
+        , 'width': ($('#ext_hotot_gmap_map_dialog').width() - 2)+'px'
+        , 'padding': '0'});
 },
 
-create:
-function create() {
-    $('body').append('<div id="hotot_gmap_canvas" class="dialog"></div>');
-    $('#hotot_gmap_canvas').append('<div class="dialog_bar"><h2>View Geo Info</h2><a class="dialog_close_btn ic_close" href="javascript:void(0);" onclick="$(\'#hotot_gmap_canvas\').hide();"></a></div>\
-    <iframe id="hotot_gmap_frame" class="dialog_body">\
-    </iframe>');
-    
+create_map_dialog:
+function create_map_dialog() {
+    var body ='<iframe id="hotot_gmap_frame" class="dialog_body"></iframe>';
+    ext.HototGMap.map_dialog 
+        = widget.DialogManager.build_dialog('#ext_hotot_gmap_map_dialog'
+            , 'Google Map', '', body
+            , []);
+    ext.HototGMap.map_dialog.set_styles('header', {'padding': '0', 'height': '0', 'display': 'none'});
+    ext.HototGMap.map_dialog.set_styles('footer', {'padding': '0', 'height': '0', 'display': 'none'});
+    ext.HototGMap.map_dialog.set_styles('body', {'padding': '0'});
+    ext.HototGMap.map_dialog.resize(500, 500);
     ext.HototGMap.map_doc = $('#hotot_gmap_frame').get(0).contentWindow.document;
     ext.HototGMap.map_doc.open();
     ext.HototGMap.map_doc.write("<html><head><script src=\"http://maps.google.com/maps/api/js?sensor=false\"></script><script>\
@@ -67,7 +73,7 @@ load:
 function load () {
     ext.register_listener(ext.FORM_TWEET_STATUS_INDICATOR_LISTENER
         , ext.HototGMap.on_form_indicator);
-    ext.HototGMap.create();
+    ext.HototGMap.create_map_dialog();
 },
 
 unload:

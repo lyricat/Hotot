@@ -67,7 +67,7 @@ function init () {
                 widget.DialogManager.alert('Oops, A Network Error Occurs!'
                     , "<p>Network Error, Please try later! &gt;_&lt; </p>");
             } else {
-                widget.DialogManager.alert('Oops, A API Error Occurs!'
+                widget.DialogManager.alert('Oops, An API Error Occurs!'
                     , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
                     + 'Tech Info:<br/><pre>'+result+'</pre>');
             }
