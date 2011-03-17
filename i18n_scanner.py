@@ -6,9 +6,13 @@ import json
 import os.path
 
 TEMPLATE = "data/index.html"
+JS_FILE_DIR = ['data/js/']
 LOCALE_FILE_DIR = 'data/_locales/'
 
 template_tag_re = re.compile('data-i18n-[a-z0-9]+="(.+?)"')
+js_tag_re = re.compile('''_\('([a-z0-9_]+)'\)''', re.MULTILINE)
+
+js_tag_map = {}
 
 def scan_template():
     template_file = open(TEMPLATE, 'r')
@@ -16,11 +20,27 @@ def scan_template():
     template_file.close()
     key_list = template_tag_re.findall(html_data)
     return key_list
-    
+
+def scan_js_dir():
+    for dir in JS_FILE_DIR:
+        os.path.walk(dir, scan_js_dir_cb, None)
+
+def scan_js_dir_cb(arg, dir_name, f_names):
+    ''' scan js files and generate a empty map'''
+    for name in f_names:
+        if not name.endswith('.js'):
+            continue
+        path = os.path.join(dir_name, name)
+        data = file(path, 'r').read()
+        tags = js_tag_re.findall(data) 
+        if tags:
+            for tag in tags:
+                js_tag_map[tag] = {'message': '', 'description': path}
+
 def generate_trans_template(key_list):
     template = {}
     for key in key_list:
-        template[key] = {'message':'', 'description': ''}
+        template[key] = {'message':'', 'description': TEMPLATE}
     return template
 
 def load_exist_trans(trans_file):
@@ -52,13 +72,16 @@ def walk_cb(empty_trans, dir_name, f_names):
 def merge_trans(empty_trans, exists_trans):
     keys_not_supported = []
     for key in exists_trans:
-        if not (key in empty_trans):
+        if key not in empty_trans:
             keys_not_supported.append(key)
     for key in keys_not_supported:
         print 'Cannot find Key', key, 'in template, delete it? (y/n):' ,
         if raw_input().strip() == 'y':
             del exists_trans[key]
     empty_trans.update(exists_trans)
+    for key in empty_trans:
+        if not empty_trans[key]['message']:
+            print '[!] Empty Key: [%s]' % key
     return empty_trans
 
 def format_out(trans):
@@ -72,7 +95,9 @@ def format_out(trans):
 
 if __name__ == '__main__':
     keys = scan_template()
+    scan_js_dir()
     print 'keys: ', keys
     empty_trans = generate_trans_template(keys)
+    empty_trans.update(js_tag_map)
     os.path.walk(LOCALE_FILE_DIR, walk_cb, empty_trans)
 

@@ -187,6 +187,10 @@
 		"message": "",
 		"description": ""
 	},
+	"sign_in_dots": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
 	"content": {
 		"message": "",
 		"description": ""
@@ -318,6 +322,10 @@
 	"inbox": {
 		"message": "",
 		"description": ""
+	},
+	"oops_an_network_error_occurs": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
 	},
 	"create_profile": {
 		"message": "",

@@ -187,6 +187,10 @@
 		"message": "通知",
 		"description": ""
 	},
+	"sign_in_dots": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
 	"content": {
 		"message": "内容",
 		"description": ""
@@ -318,6 +322,10 @@
 	"inbox": {
 		"message": "收件箱",
 		"description": ""
+	},
+	"oops_an_network_error_occurs": {
+		"message": "矮油... 网络错误!",
+		"description": "data/js/ui.welcome.js"
 	},
 	"create_profile": {
 		"message": "创建账户",

@@ -65,7 +65,12 @@ function trans_html() {
 };
 
 function _(msg) {
-    return i18n.get_message(msg);
+    var ret = i18n.get_message(msg);
+    if (ret) {
+        return ret;
+    } else {
+        return msg;
+    }
 }    
 
 

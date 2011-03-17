@@ -628,6 +628,7 @@ function add_tweets(json_obj, container) {
         ui.Main.compress_page(container);
     }
     // cache users' avatars in mentions
+    /*
     if (container.pagename == 'mentions') {
         for (var i = 0; i < json_obj.length; i += 1){                      
             var user = typeof json_obj[i].sender != 'undefined'
@@ -635,6 +636,7 @@ function add_tweets(json_obj, container) {
             util.cache_avatar(user);
         }
     }
+    */
     // dumps to cache
     if (container.pagename != 'search') {
         db.get_tweet_cache_size(function (size) {

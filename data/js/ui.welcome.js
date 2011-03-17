@@ -64,7 +64,8 @@ function init () {
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
-                widget.DialogManager.alert('Oops, A Network Error Occurs!'
+                widget.DialogManager.alert(
+                      _('oops_an_network_error_occurs')
                     , "<p>Network Error, Please try later! &gt;_&lt; </p>");
             } else {
                 widget.DialogManager.alert('Oops, An API Error Occurs!'
@@ -85,7 +86,7 @@ function init () {
         = new widget.Button('#btn_oauth_sign_in')
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
-        ui.Notification.set("Sign in ...").show();
+        ui.Notification.set(_('sign_in_dots')).show();
         if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -111,7 +112,7 @@ function init () {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
                     widget.DialogManager.alert(
-                          'Oops, A Network Error Occurs!'
+                        _('oops_an_network_error_occurs')
                         , "<p>Network Error, Please try later! &gt;_&lt; </p>");
                 } else {
                     widget.DialogManager.alert(
