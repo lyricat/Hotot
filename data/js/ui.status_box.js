@@ -38,18 +38,30 @@ short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa
 // @WORKAROUND use the flag to ignore the first one.
 keydown_twice_flag: 0,
 
+status_hint: 'what is happening?',
+
+tweet_hint: 'what is happening?',
+
+dm_hint: 'click here to compose a message ...',
+
 init:
 function init () {
-    
+    ui.StatusBox.status_hint = _('what_is_happening');
+
+    ui.StatusBox.tweet_hint = _('what_is_happening');
+
+    ui.StatusBox.dm_hint = _('click_here_to_compose_a_message_dots');
+
     ui.StatusBox.btn_update = new widget.Button('#btn_update');
     ui.StatusBox.btn_update.on_clicked = function(event){
         var status_text = $.trim($('#tbox_status').attr('value'));
         if (status_text.length > 140) {
-            ui.Notification.set("Status is over 140 characters").show();
+            ui.Notification.set(
+                _('status_is_over_140_characters')).show();
             return;
         }
-        if (status_text != globals.status_hint
-            && status_text != globals.dm_hint) {
+        if (status_text != ui.StatusBox.status_hint
+            && status_text != ui.StatusBox.dm_hint) {
             if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
                 ui.StatusBox.post_message(status_text);
             } else {
@@ -102,14 +114,14 @@ function init () {
 
     $('#tbox_status').blur(function(){
         if ($(this).attr('value') == '') {
-            $(this).attr('value', globals.status_hint)
+            $(this).attr('value', ui.StatusBox.status_hint)
                 .addClass('hint_style');
         }
     }).focus(function(){
-        if ($(this).attr('value') == globals.status_hint) {
+        if ($(this).attr('value') == ui.StatusBox.status_hint) {
             $(this).attr('value', '').removeClass('hint_style');
         }
-    }).attr('value',globals.status_hint).addClass('hint_style');
+    }).attr('value',ui.StatusBox.status_hint).addClass('hint_style');
 
     $('#tbox_status').keydown(
     function (event) {
@@ -280,26 +292,27 @@ change_mode:
 function change_mode(mode) {
     if (mode == ui.StatusBox.MODE_DM) {
         $('#status_box').removeClass('reply_mode').addClass('dm_mode');
-        if ($('#tbox_status').attr('value') == globals.tweet_hint)
-            $('#tbox_status').attr('value', globals.dm_hint)
+        if ($('#tbox_status').attr('value') == ui.StatusBox.tweet_hint)
+            $('#tbox_status').attr('value', ui.StatusBox.dm_hint)
         $('#dm_target').show();
         $('#status_info').show();
-        $('#status_info_text').html('<span class="info_hint">COMPOSE MESSAGES TO</span>');
-        globals.status_hint = globals.dm_hint;
+        $('#status_info_text').html('<span class="info_hint">'
+            + _('compose_messages_to') + '</span>');
+        ui.StatusBox.status_hint = ui.StatusBox.dm_hint;
     } else if (mode == ui.StatusBox.MODE_REPLY){
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
-        if ($('#tbox_status').attr('value') == globals.dm_hint)
-            $('#tbox_status').attr('value', globals.tweet_hint)
+        if ($('#tbox_status').attr('value') == ui.StatusBox.dm_hint)
+            $('#tbox_status').attr('value', ui.StatusBox.tweet_hint)
         $('#status_info').show();
         $('#dm_target').hide();
-        globals.status_hint = globals.tweet_hint;
+        ui.StatusBox.status_hint = ui.StatusBox.tweet_hint;
     } else {
         $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
-        if ($('#tbox_status').attr('value') == globals.dm_hint)
-            $('#tbox_status').attr('value', globals.tweet_hint)
+        if ($('#tbox_status').attr('value') == ui.StatusBox.dm_hint)
+            $('#tbox_status').attr('value', ui.StatusBox.tweet_hint)
         $('#dm_target').hide();
         $('#status_info').hide();
-        globals.status_hint = globals.tweet_hint;
+        ui.StatusBox.status_hint = ui.StatusBox.tweet_hint;
     }
     ui.StatusBox.current_mode = mode;
 },
@@ -307,7 +320,7 @@ function change_mode(mode) {
 update_status:
 function update_status(status_text) {
     if (status_text.length != 0) {
-        ui.Notification.set("Updating...").show(-1);
+        ui.Notification.set(_('updating_dots')).show(-1);
         lib.twitterapi.update_status(status_text
             , ui.StatusBox.reply_to_id
             , ui.StatusBox.update_status_cb);
@@ -318,8 +331,8 @@ function update_status(status_text) {
 update_status_cb:
 function update_status_cb(result) {
     $('#tbox_status').addClass('hint_style')
-        .attr('value', globals.status_hint);
-    ui.Notification.set("Update Successfully!").show();
+        .attr('value', ui.StatusBox.status_hint);
+    ui.Notification.set(_('update_successfully')).show();
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
@@ -348,10 +361,10 @@ function post_message(message_text) {
     if (message_text.length != 0) {
         var name = $.trim($('#tbox_dm_target').val());
         if (name == '') {
-            ui.Notification.set("Please enter the recipient.").show(-1);
+            ui.Notification.set(_('please_enter_the_recipient')).show(-1);
         } else {
             if (name[0] == '@') name = name.substring(1);
-            ui.Notification.set("Posting...").show(-1);
+            ui.Notification.set(_('posting_dots')).show(-1);
             lib.twitterapi.new_direct_messages(
                   message_text
                 , null
@@ -365,8 +378,8 @@ post_message_cb:
 function post_message_cb(result) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     $('#tbox_status').addClass('hint_style')
-        .attr('value', globals.status_hint);
-    ui.Notification.set("Post Successfully!").show();
+        .attr('value', ui.StatusBox.status_hint);
+    ui.Notification.set(_('post_successfully')).show();
     $('#status_info').hide();
     ui.StatusBox.close();
     return this;
@@ -376,8 +389,8 @@ function post_message_cb(result) {
 append_status_text:
 function append_status_text(text) {
     var orig = $('#tbox_status').attr('value');
-    if (orig == '' || orig == globals.status_hint 
-        || orig == globals.dm_hint) {
+    if (orig == '' || orig == ui.StatusBox.status_hint 
+        || orig == ui.StatusBox.dm_hint) {
         $('#tbox_status').attr('value', text);
     } else {
         $('#tbox_status').attr('value', orig + text);

@@ -65,12 +65,13 @@ function init () {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
                 widget.DialogManager.alert(
-                      _('oops_an_network_error_occurs')
-                    , "<p>Network Error, Please try later! &gt;_&lt; </p>");
+                      _('oops_a_network_error_occurs')
+                    , _('network_error_please_try_later'));
             } else {
-                widget.DialogManager.alert('Oops, An API Error Occurs!'
-                    , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
-                    + 'Tech Info:<br/><pre>'+result+'</pre>');
+                widget.DialogManager.alert(
+                      _('oops_an_api_error_occurs')
+                    , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
+                    + _('tech_info') + '<br/><pre>'+result+'</pre>');
             }
         });
     };
@@ -95,8 +96,8 @@ function init () {
             function (result) {
                 if (result == '') {
                     widget.DialogManager.alert(
-                          'Oops, A Network Error Occurs'
-                        , "<p>Network Error, Please try later! &gt;_&lt; </p>");
+                        _('oops_a_network_error_occurs')
+                      , _('network_error_please_try_later'));
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
                     globals.oauth_dialog.open();
@@ -112,13 +113,13 @@ function init () {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
                     widget.DialogManager.alert(
-                        _('oops_an_network_error_occurs')
-                        , "<p>Network Error, Please try later! &gt;_&lt; </p>");
+                          _('oops_a_network_error_occurs')
+                        , _('network_error_please_try_later'));
                 } else {
                     widget.DialogManager.alert(
-                          'Oops, An API Error Occurs!'
-                        , "<p>Cannot Authenticate You! Please check your username/password and API base</p>"
-                    + 'Tech Info:<br/><pre>'+result+'</pre>');
+                          _('oops_an_api_error_occurs')
+                        , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
+                    + _('tech_info') +'<br/><pre>'+result+'</pre>');
                 }
             });
         }
@@ -128,23 +129,24 @@ function init () {
     var btn_welcome_create_profile 
         = new widget.Button('#btn_welcome_create_profile');
     btn_welcome_create_profile.on_clicked = function (event) {
-        var cb = "ui.Notification.set('New profile has been created!').show();";
         var prefix = $.trim($('#tbox_new_profile_name').val());
         if (prefix.length == 0 ) {
-            ui.Notification.set("Please entry a profile prefix!").show();
+            ui.Notification.set(_('please_entry_a_profile_prefix')).show();
             return;
         }
         if (prefix.indexOf('@') != -1) {
-            ui.Notification.set("Charactor `@` is not allow in profile prefix!").show();
+            ui.Notification
+                .set(_('charactor_at_is_not_allow_in_profile_prefix'))
+                .show();
             return;
         }
         db.add_profile(prefix, ui.Welcome.selected_service,
         function (result) {
             if (result != true) {
                 ui.Notification
-                    .set("This profile may has already exists!").show();
+                    .set(_('this_profile_may_has_already_exists')).show();
             } else {
-                ui.Notification.set('New profile has been created!').show();
+                ui.Notification.set(_('new_profile_has_been_created')).show();
                 conf.reload(function () {
                     ui.Welcome.load_profiles_info();
                     $('#profile_avator_list a[href="'+prefix+'@'+ui.Welcome.selected_service+'"]').click();
@@ -244,12 +246,12 @@ function authenticate_pass(result) {
     setTimeout(function () {
     $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
     }, 100);
-    ui.Notification.set("Authentication OK!").show();
+    ui.Notification.set(_('authentication_ok')).show();
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
-    document.title = 'Hotot | ' + conf.current_name;
+    document.title = _('hotot') + ' | ' + conf.current_name;
     hotot_action('system/sign_in');    
     setTimeout(function () {
         ui.Slider.slide_to('#home_timeline');

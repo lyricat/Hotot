@@ -13,9 +13,18 @@ function init(callback) {
     } else {
         $.getJSON('_locales/' + i18n.locale + '/messages.json',
         function (result) {
+            hotot_log('i18n', 'use locale: '+i18n.locale);
             i18n.load_dict(result);
             i18n.trans_html();
             callback();
+        }).error(function(){
+            hotot_log('i18n', 'use default locale: '+i18n.default_locale);
+            $.getJSON('_locales/en/messages.json',
+            function (result) {
+                i18n.load_dict(result);
+                i18n.trans_html();
+                callback();
+            });
         });
     }
 },

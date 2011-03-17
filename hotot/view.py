@@ -8,6 +8,7 @@ import config
 from webkit import WebView
 import utils
 import json
+import gobject
 
 try: import i18n
 except: from gettext import gettext as _
@@ -86,7 +87,7 @@ class MainView(WebView):
             , 'locale': utils.get_locale()
         };
         # and then, notify web part i am ready to work :)
-        view.execute_script('''
+        gobject.idle_add(view.execute_script, '''
             overlay_variables(%s);
             globals.load_flags = 1;
             ''' % json.dumps(variables))

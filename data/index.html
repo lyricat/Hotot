@@ -158,6 +158,7 @@ function hotot_log(label, content) {
 */
 
 function init(callback) {
+    hotot_log('init', 'init()');
     var procs = [];
     procs.push(function() {
         db.init(function () {
@@ -191,6 +192,7 @@ function init(callback) {
 }
 
 function init_dialogs() {
+    hotot_log('init', 'init_dialogs()');
     globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
     globals.oauth_dialog.resize(350, 320);
     globals.oauth_dialog.place(widget.DialogManager.CENTER);
@@ -218,6 +220,7 @@ function init_dialogs() {
 }
 
 function init_ui() {
+    hotot_log('init', 'init_ui()');
     util.console.init();
     kismet.init();
     ui.Slider.init();
@@ -246,6 +249,7 @@ function init_ui() {
 
 function overlay_variables(vars) {
     conf.vars.platform = vars.platform;
+    hotot_log('init', 'overlay_variables()');
     if (util.is_native_platform()) {
         // native variables 
         conf.vars.conf_dir = vars.conf_dir;
@@ -261,23 +265,27 @@ function on_load_finish() {
     // if native_platform
     //      wait until the webview is ready.
     if (util.is_native_platform() && globals.load_flags == 0) {
-        setTimeout(on_load_finish, 300);
+        setTimeout(on_load_finish, 1000);
     } else {
+        hotot_log('init', 'on_load_finish()');
         globals.load_flags = 1;
         // 1. load builtins & extra extensions
         var procs = [];
         procs.push(function () {
+            hotot_log('init', 'on_load_finish() -> ext.load_builtin_exts();');
             ext.load_builtin_exts(function () {
                 $(window).dequeue('_on_load_finish');
             });
         });
         procs.push(function() {
+            hotot_log('init', 'on_load_finish() -> ext.load_exts();');
             ext.load_exts(ext.extras, function () {
                 $(window).dequeue('_on_load_finish');
             });
         });
         // init enabled extensions
         procs.push(function () {
+            hotot_log('init', 'on_load_finish() -> ext.init_exts();');
             ext.init_exts();
             $(window).dequeue('_on_load_finish');
         });
@@ -285,6 +293,7 @@ function on_load_finish() {
         // 2. @TODO push settings to native platform
         if (util.is_native_platform()) {
             procs.push(function () {    
+                hotot_log('init', 'on_load_finish() -> push settings');
                 hotot_action('system/load_settings/' 
                     + encodeURIComponent(JSON.stringify(conf.settings)))
                 globals.load_flags = 2;
@@ -292,6 +301,7 @@ function on_load_finish() {
             });
         } else {
             procs.push(function () {    
+                hotot_log('init', 'on_load_finish() -> push settings');
                 $(window).width(conf.settings.size_w);
                 $(window).height(conf.settings.size_h);
                 globals.load_flags = 2;    
@@ -299,15 +309,17 @@ function on_load_finish() {
             }); 
         }
         
-        
         // 3. i18n
         procs.push(function() {
+            hotot_log('init', 'on_load_finish() -> i18n.init()');
             i18n.init(function () {});
             $(window).dequeue('_on_load_finish');
         });
+        
         // 4. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
+                hotot_log('init', 'done!');
                 $('#welcome_page_main').fadeIn();  
                 $(window).dequeue('_on_load_finish');
             });
@@ -318,10 +330,7 @@ function on_load_finish() {
 }
 
 var globals = {
-      status_hint: 'What is happening?'
-    , tweet_hint: 'What is happening?'
-    , dm_hint: 'Click here to Compose a Meassage ...'
-    , tweet_block_width: 600
+      tweet_block_width: 600
     , max_status_len: 140
     , trim_bound: 100
     , tweet_font_size: 12
@@ -884,7 +893,7 @@ jQuery(function($) {
             <li><a id="tweet_fav_btn" class="tweet_fav tweet_more_menu_btn" 
                 title="Fav it!" 
                 href="javascript:void(0);"
-                data-i18n-text="fav_and_unfav"
+                data-i18n-text="fav_or_unfav"
                 >Fav/Un-fav</a></li>
             <li><a id="tweet_reply_all_btn"
                 class="tweet_reply_all tweet_more_menu_btn"
@@ -1322,7 +1331,7 @@ jQuery(function($) {
         <div class="dialog_block">
         <h3>- <span data-i18n-text="step_two">Step 2</span> -</h3>
         <p data-i18n-text="copy_the_pin_code_and_paste_it_into_the_box_below"
-        >Copy the PIN Code and paste it into the box below;</p>
+        >Copy the PIN Code and paste it into the box below</p>
         <p style="text-align: center;">
             <label class="label" 
                 data-i18n-text="pin_code">PIN Code:</label>
@@ -1495,7 +1504,7 @@ along with this program. If not, see <a href="http://www.gnu.org/licenses/"/>htt
         <h3>- Picture -</h3>
         <p style="text-align:center; min-height:70px;">
             <span id="profile_avator" class="profile_img_wrapper"></span>
-            <a id="btn_change_profile_avator" class="button" style="display:none" data-i18n-text="change_avator">Change avator
+            <a id="btn_change_profile_avatar" class="button" style="display:none" data-i18n-text="change_avatar">Change avatar
                 <span class="placeholder"></span>            
             </a>
         </p>

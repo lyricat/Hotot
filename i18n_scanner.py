@@ -6,8 +6,13 @@ import json
 import os.path
 
 TEMPLATE = "data/index.html"
+
+DEFAULT_LOCALE_FILE = 'data/_locales/en/messages.json'
+
 JS_FILE_DIR = ['data/js/']
+
 LOCALE_FILE_DIR = 'data/_locales/'
+
 
 template_tag_re = re.compile('data-i18n-[a-z0-9]+="(.+?)"')
 js_tag_re = re.compile('''_\('([a-z0-9_]+)'\)''', re.MULTILINE)
@@ -63,7 +68,8 @@ def walk_cb(empty_trans, dir_name, f_names):
         new_trans = format_out(merge_trans(empty_trans, exists_trans))
         print '[Update]', file_path
     else:
-        new_trans = format_out(empty_trans)
+        default_trans = json.loads(file(DEFAULT_LOCALE_FILE, 'r').read())
+        new_trans = format_out(merge_trans(empty_trans, default_trans))
         print '[Create]', file_path
     trans_file = open(file_path, 'w+')
     trans_file.write(new_trans.encode('utf-8'))
@@ -78,11 +84,12 @@ def merge_trans(empty_trans, exists_trans):
         print 'Cannot find Key', key, 'in template, delete it? (y/n):' ,
         if raw_input().strip() == 'y':
             del exists_trans[key]
-    empty_trans.update(exists_trans)
-    for key in empty_trans:
-        if not empty_trans[key]['message']:
+    new_trans = empty_trans.copy()
+    new_trans.update(exists_trans)
+    for key in new_trans:
+        if not new_trans[key]['message']:
             print '[!] Empty Key: [%s]' % key
-    return empty_trans
+    return new_trans 
 
 def format_out(trans):
     arr = []
