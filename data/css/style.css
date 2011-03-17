@@ -1135,19 +1135,27 @@ label {
     overflow: hidden;
 }
 
+.dialog .entry {
+    width: 80%;
+}
+
+#profile_dlg .entry {
+    width: 50%;
+}
+
 #prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header {
     padding: 10px;
     height: 20px;
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #message_dlg .dialog_header {
+#oauth_dlg .dialog_header, #profile_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #message_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer {
     padding: 10px;
     height: 30px; 
 }

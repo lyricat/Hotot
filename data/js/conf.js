@@ -183,13 +183,17 @@ function load_settings(callback) {
 },
 
 save_prefs:
-function save_prefs(name) {
+function save_prefs(name, callback) {
     var profile = {};
     profile.name = conf.profiles[name].name;
     profile.protocol = conf.profiles[name].protocol;
     profile.preferences = JSON.stringify(conf.profiles[name].preferences);
     profile.order = conf.profiles[name].order;
-    db.modify_profile(name, profile, function(result) {});
+    db.modify_profile(name, profile, function(result) {
+        if (typeof (callback) != 'undefined') {
+            callback();
+        }   
+    });
 },
 
 load_prefs:
@@ -213,7 +217,6 @@ function apply_prefs(name) {
     var active_profile = conf.profiles[name];
     var prefs = active_profile.preferences;
     conf.current_name = name;
-    ext.exts_enabled = prefs.exts_enabled; 
     // notification
     ui.Main.block_info['#home_timeline'].use_notify 
         = prefs.use_home_timeline_notify; 

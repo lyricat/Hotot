@@ -91,13 +91,15 @@ function hotot_action(uri) {
 
 function quit() {
     conf.save_settings(function () {
-        if (conf.vars.platform == 'Chrome') {
-            chrome.tabs.getCurrent(function (tab) {
-                chrome.tabs.remove(tab.id);    
-            });
-        } else {
-            hotot_action('system/quit');
-        }
+        conf.save_prefs(conf.current_name, function(){
+            if (conf.vars.platform == 'Chrome') {
+                chrome.tabs.getCurrent(function (tab) {
+                    chrome.tabs.remove(tab.id);    
+                });
+            } else {
+                hotot_action('system/quit');
+            }
+        });
     });
 }
 

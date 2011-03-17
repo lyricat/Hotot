@@ -142,7 +142,8 @@ function init_exts() {
             ext.exts_info[extension.id].has_options= typeof extension.options != 'undefined';
             ext.exts_info[extension.id].extension=extension;
 
-            if (ext.exts_enabled.indexOf(extension.id) != -1) {
+            var prefs = conf.get_current_profile().preferences;
+            if (prefs.exts_enabled.indexOf(extension.id) != -1) {
                 hotot_log('Init Extension', extension.name);
                 if (ext.exts_info[extension.id].hasOwnProperty('enable')){
                     extension.unload();

@@ -55,10 +55,11 @@ function load_ext_list() {
     // @TODO enable enabled ext items cause Issue 31
     /*
     */
+    var prefs = conf.get_current_profile().preferences;
     $('#exts_container .ext_item').each(
     function (idx, obj) {
         var id = $(obj).attr('id').substring(4);
-        var exists = (ext.exts_enabled.indexOf(id) != -1);
+        var exists = (prefs.exts_enabled.indexOf(id) != -1);
         ui.ExtsDlg.enable_ext_item(obj, exists);
     });
     ui.ExtsDlg.bind_exts_btns();
@@ -77,6 +78,7 @@ function enable_ext_item(item, enable) {
 
 bind_exts_btns:
 function bind_exts_btns() {
+    var prefs = conf.get_current_profile().preferences;
     $('#exts_container .enable_btn').click(
     function (event) {
         var item = $(this).parents('.ext_item').get(0);
@@ -84,13 +86,14 @@ function bind_exts_btns() {
         var enable = !$(this).hasClass('disable');
         ext.exts_info[id].enable = enable;
         if (enable) {
-            ext.exts_enabled.push(id)
+            prefs.exts_enabled.push(id)
             ext.exts_info[id].extension.load();
         } else {
-            ext.exts_enabled.splice(ext.exts_enabled.indexOf(id), 1);
+            prefs.exts_enabled.splice(prefs.exts_enabled.indexOf(id), 1);
             ext.exts_info[id].extension.unload();
         }
         ui.ExtsDlg.enable_ext_item(item, enable);
+        conf.save_prefs(conf.current_name);
     });
     $('#exts_container .options_btn').click(
     function (event) {
