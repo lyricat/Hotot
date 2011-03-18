@@ -5,8 +5,8 @@ vars: {
       'platform': 'Linux'
     , 'version': '0.9.6'
     , 'codename': 'Ada'
-    , 'consumer_key': 'nYvvlKCjRBdm71An5JoFTg'
-    , 'consumer_secret': 'vt8Dw8a4cnrubcm9E0Zny72YMoFwISbovDKdI77fvJ8'
+    , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
+    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
     , 'column_max_width': 400
 },
 
