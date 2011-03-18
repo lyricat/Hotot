@@ -2,7 +2,7 @@ if (typeof conf == 'undefined') var conf = {};
 conf = {
 
 vars: {
-      'platform': 'Chrome'
+      'platform': 'Linux'
     , 'version': '0.9.6'
     , 'codename': 'Ada'
     , 'consumer_key': 'nYvvlKCjRBdm71An5JoFTg'
