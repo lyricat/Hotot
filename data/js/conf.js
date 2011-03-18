@@ -2,11 +2,11 @@ if (typeof conf == 'undefined') var conf = {};
 conf = {
 
 vars: {
-      'platform': 'Linux'
+      'platform': 'Chrome'
     , 'version': '0.9.6'
     , 'codename': 'Ada'
-    , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
-    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
+    , 'consumer_key': 'nYvvlKCjRBdm71An5JoFTg'
+    , 'consumer_secret': 'vt8Dw8a4cnrubcm9E0Zny72YMoFwISbovDKdI77fvJ8'
     , 'column_max_width': 400
 },
 
@@ -253,6 +253,13 @@ function apply_prefs(name) {
     jsOAuth.use_same_sign_oauth_base = prefs.use_same_sign_oauth_base;
    
     jsOAuth.access_token = prefs.access_token;
+
+    for (var id in ext.exts_info) {
+        ext.disable_ext(id);
+        if (prefs.exts_enabled.indexOf(id) != -1) {
+            ext.enable_ext(id);
+        }
+    }
 },
 
 load_token:

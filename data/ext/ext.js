@@ -141,22 +141,31 @@ function init_exts() {
             ext.exts_info[extension.id].icon= icon;
             ext.exts_info[extension.id].has_options= typeof extension.options != 'undefined';
             ext.exts_info[extension.id].extension=extension;
-
-            var prefs = conf.get_current_profile().preferences;
-            if (prefs.exts_enabled.indexOf(extension.id) != -1) {
-                hotot_log('Init Extension', extension.name);
-                if (ext.exts_info[extension.id].hasOwnProperty('enable')){
-                    extension.unload();
-                }
-                extension.load();
-                ext.exts_info[extension.id]['enable'] = true;
-            } else {
-                ext.exts_info[extension.id]['enable'] = false;
-            }
+            ext.exts_info[extension.id].enable = false;
+            hotot_log('Init Extension', extension.name);
         }
     }
 },
 
+enable_ext:
+function enable_ext(id){
+    try{
+        ext.exts_info[id].extension.load();
+        ext.exts_info[id]['enable'] = true;
+    } catch (e) {
+        hotot_log('error:enable_ext()', e)
+    }
+},
+
+disable_ext:
+function disable_ext(id){
+    try{
+        ext.exts_info[id].extension.unload();
+        ext.exts_info[id]['enable'] = false;
+    } catch (e) {
+        hotot_log('error:enable_ext()', e)
+    }
+},
 
 load_builtin_exts:
 function load_builtin_exts(callback) {

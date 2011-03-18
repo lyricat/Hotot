@@ -175,7 +175,9 @@ function load() {
 unload:
 function unload() {
     ext.remove_exts_menuitem('ext_btn_hotot_upload_image');
-    ext.HototImageUpload.upload_dialog.destroy();
+    if (ext.HototImageUpload.upload_dialog) {
+        ext.HototImageUpload.upload_dialog.destroy();
+    }
 },
 
 }
