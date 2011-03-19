@@ -87,10 +87,10 @@ function bind_exts_btns() {
         ext.exts_info[id].enable = enable;
         if (enable) {
             prefs.exts_enabled.push(id)
-            ext.exts_info[id].extension.load();
+            ext.enable_ext(id);
         } else {
             prefs.exts_enabled.splice(prefs.exts_enabled.indexOf(id), 1);
-            ext.exts_info[id].extension.unload();
+            ext.disable_ext(id);
         }
         ui.ExtsDlg.enable_ext_item(item, enable);
         conf.save_prefs(conf.current_name);
@@ -99,7 +99,7 @@ function bind_exts_btns() {
     function (event) {
         var item = $(this).parents('.ext_item').get(0);
         var id = $(item).attr('id').substring(4);
-        ext.exts_info[id].extension.options();
+        ext.config_ext(id);
         return false;
     });
 

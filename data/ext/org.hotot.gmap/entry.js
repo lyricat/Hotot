@@ -69,15 +69,15 @@ function load_map(x, y) {\
     ext.HototGMap.map_doc.close();
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.register_listener(ext.FORM_TWEET_STATUS_INDICATOR_LISTENER
         , ext.HototGMap.on_form_indicator);
     ext.HototGMap.create_map_dialog();
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.unregister_listener(ext.FORM_TWEET_STATUS_INDICATOR_LISTENER
         , ext.HototGMap.on_form_indicator);
 },

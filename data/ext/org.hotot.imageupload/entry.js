@@ -134,7 +134,7 @@ function fail(result) {
     ext.HototImageUpload.select_filename = '';
 },
 
-load:
+enable:
 function load() {
     ext.add_exts_menuitem('ext_btn_hotot_upload_image'
         , ext.HototImageUpload.id+'/ic16_upload.png'
@@ -172,8 +172,8 @@ function load() {
     ext.HototImageUpload.upload_dialog.resize(400, 250);
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.remove_exts_menuitem('ext_btn_hotot_upload_image');
     if (ext.HototImageUpload.upload_dialog) {
         ext.HototImageUpload.upload_dialog.destroy();

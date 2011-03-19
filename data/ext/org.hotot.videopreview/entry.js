@@ -107,8 +107,8 @@ function create_option_dialog() {
 
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.register_listener(ext.FORM_TWEET_TEXT_LISTENER_AFTER
         , ext.HototVideoPreview.on_form_tweet_text);
     ext.HototVideoPreview.prefs = new ext.Preferences(ext.HototVideoPreview.id);
@@ -117,8 +117,8 @@ function load () {
     });
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.unregister_listener(ext.FORM_TWEET_TEXT_LISTENER_AFTER
         , ext.HototVideoPreview.on_form_tweet_text);
 },

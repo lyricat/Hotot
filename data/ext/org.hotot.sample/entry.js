@@ -20,14 +20,14 @@ function on_add_tweets(tweets, container) {
         'Update ['+container.pagename+'], '+ tweets.length +' items');
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.register_listener(ext.ADD_TWEETS_LISTENER_AFTER
         , ext.Sample.on_add_tweets);
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.unregister_listener(ext.ADD_TWEETS_LISTENER_AFTER
         , ext.Sample.on_add_tweets);
 },

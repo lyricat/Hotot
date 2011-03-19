@@ -116,11 +116,11 @@ init_exts:
 function init_exts() {
     for (var key in ext) {
         // Extension package MUST be Capital
-        // and MUST have two methods named 'load' and 'unload'
+        // and MUST have two methods named 'enable' and 'disable'
         if (65 <= key.charCodeAt(0) 
             && key.charCodeAt(0) <= 90
-            && typeof  ext[key].load != 'undefined' 
-            && typeof  ext[key].unload != 'undefined') {
+            && typeof  ext[key].enable != 'undefined' 
+            && typeof  ext[key].disable != 'undefined') {
 
             var extension = ext[key];
 
@@ -150,7 +150,7 @@ function init_exts() {
 enable_ext:
 function enable_ext(id){
     try{
-        ext.exts_info[id].extension.load();
+        ext.exts_info[id].extension.enable();
         ext.exts_info[id]['enable'] = true;
     } catch (e) {
         hotot_log('error:enable_ext()', e)
@@ -160,10 +160,19 @@ function enable_ext(id){
 disable_ext:
 function disable_ext(id){
     try{
-        ext.exts_info[id].extension.unload();
+        ext.exts_info[id].extension.disable();
         ext.exts_info[id]['enable'] = false;
     } catch (e) {
-        hotot_log('error:enable_ext()', e)
+        hotot_log('error:disable_ext()', e)
+    }
+},
+
+config_ext:
+function config_ext(id) {
+    try {
+        ext.exts_info[id].extension.options();
+    } catch (e) {
+        hotot_log('error:config_ext()', e)
     }
 },
 

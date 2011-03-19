@@ -236,8 +236,8 @@ function create_option_dialog() {
     ext.HototTranslate.option_dialog.resize(400, 250);
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.add_context_menuitem('ext_btn_hotot_translate'
         , 'Translate Selection.'
         , true
@@ -251,8 +251,8 @@ function load () {
     ext.HototTranslate.prefs = new ext.Preferences(ext.HototTranslate.id);
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.remove_context_menuitem('ext_btn_hotot_translate');
     ext.remove_tweet_more_menuitem('ext_btn_hotot_translate');
 },

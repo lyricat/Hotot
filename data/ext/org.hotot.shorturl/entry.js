@@ -246,8 +246,8 @@ function create_option_dialog() {
     }).attr('title', 'Choose a Service');
 },
 
-load:
-function load() {
+enable:
+function enable() {
     ext.HototShortUrl.prefs = new ext.Preferences(ext.HototShortUrl.id);
     ext.HototShortUrl.prefs.get('service', function(key, val) {
         if (val == null) {
@@ -261,8 +261,8 @@ function load() {
         'click', ext.HototShortUrl.on_btn_short_url_clicked);
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     $('#btn_shorturl').unbind('click').bind(
         'click', ui.StatusBox.on_btn_short_url_clicked);
 },

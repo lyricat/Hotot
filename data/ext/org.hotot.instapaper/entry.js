@@ -94,8 +94,8 @@ function create_option_dialog() {
     ext.HototInstapaper.option_dialog.resize(400, 250);
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.add_tweet_more_menuitem('ext_btn_hotot_instapaper'
         , 'Read Later'
         , true
@@ -107,8 +107,8 @@ function load () {
 
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.remove_tweet_more_menuitem('ext_btn_hotot_instapaper');
 },
 

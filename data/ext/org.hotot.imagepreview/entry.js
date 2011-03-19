@@ -111,14 +111,14 @@ function on_form_tweet_text(text) {
     return text;
 },
 
-load:
-function load () {
+enable:
+function enable() {
     ext.register_listener(ext.FORM_TWEET_TEXT_LISTENER_AFTER
         , ext.HototImagePreview.on_form_tweet_text);
 },
 
-unload:
-function unload() {
+disable:
+function disable() {
     ext.unregister_listener(ext.FORM_TWEET_TEXT_LISTENER_AFTER
         , ext.HototImagePreview.on_form_tweet_text);
 },
