@@ -103,9 +103,21 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
+	"enable_proxy": {
+		"message": "Enable Proxy",
+		"description": "data/index.html"
+	},
 	"please_entry_a_profile_prefix": {
 		"message": "Please enter a profile prefix",
 		"description": "data/js/ui.welcome.js"
+	},
+	"effects": {
+		"message": "Effects",
+		"description": "data/index.html"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "More effects like shadows and glow of widgets",
+		"description": "data/index.html"
 	},
 	"password": {
 		"message": "Password",
@@ -161,6 +173,10 @@
 	},
 	"twitter": {
 		"message": "Twitter",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "STAT",
 		"description": "data/index.html"
 	},
 	"search_for": {
@@ -243,10 +259,6 @@
 		"message": "Oops, An API Error Occurs!",
 		"description": "data/js/ui.welcome.js"
 	},
-	"identica": {
-		"message": "Identi.ca",
-		"description": "data/index.html"
-	},
 	"hotot": {
 		"message": "Hotot",
 		"description": "data/index.html"
@@ -273,6 +285,10 @@
 	},
 	"favs": {
 		"message": "Favs",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "Extra",
 		"description": "data/index.html"
 	},
 	"change_avatar": {
@@ -332,7 +348,7 @@
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "About &amp; Help",
+		"message": "About & Help",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -343,8 +359,12 @@
 		"message": "Regain Access Token",
 		"description": "data/index.html"
 	},
-	"enable_proxy": {
-		"message": "Enable Proxy",
+	"balance_between_attractiveness_and_preformance": {
+		"message": "Balance between attractiveness and preformance.",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "misc",
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
@@ -383,6 +403,10 @@
 		"message": "Update Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
+	"delete": {
+		"message": "Delete",
+		"description": "data/index.html"
+	},
 	"px": {
 		"message": "px",
 		"description": "data/index.html"
@@ -401,6 +425,10 @@
 	},
 	"type": {
 		"message": "Type",
+		"description": "data/index.html"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "Disable decoration of widgets and some animations.",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -479,12 +507,16 @@
 		"message": "Updating ...",
 		"description": "data/js/ui.status_box.js"
 	},
-	"delete": {
-		"message": "Delete",
+	"identica": {
+		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
 	"reply_all": {
 		"message": "Reply All",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "Low",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -547,8 +579,8 @@
 		"message": "Step 1",
 		"description": "data/index.html"
 	},
-	"stat": {
-		"message": "STAT",
+	"effects_normal": {
+		"message": "Normal",
 		"description": "data/index.html"
 	},
 	"information": {
@@ -576,7 +608,7 @@
 		"description": "data/index.html"
 	},
 	"look_and_feels": {
-		"message": "Look &amp; Feels",
+		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {

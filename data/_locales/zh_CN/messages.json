@@ -103,9 +103,21 @@
 		"message": "自述",
 		"description": ""
 	},
+	"enable_proxy": {
+		"message": "启用代理",
+		"description": ""
+	},
 	"please_entry_a_profile_prefix": {
 		"message": "请输入一个账户前缀",
 		"description": "data/js/ui.welcome.js"
+	},
+	"effects": {
+		"message": "效果",
+		"description": "data/index.html"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "开启更多特效，比如阴影和发光。",
+		"description": "data/index.html"
 	},
 	"password": {
 		"message": "密码",
@@ -161,6 +173,10 @@
 	},
 	"twitter": {
 		"message": "Twitter",
+		"description": ""
+	},
+	"stat": {
+		"message": "统计",
 		"description": ""
 	},
 	"search_for": {
@@ -243,10 +259,6 @@
 		"message": "唉哟……发生了一个API错误",
 		"description": "data/js/ui.welcome.js"
 	},
-	"identica": {
-		"message": "Identi.ca",
-		"description": ""
-	},
 	"hotot": {
 		"message": "傲兔",
 		"description": ""
@@ -274,6 +286,10 @@
 	"favs": {
 		"message": "收藏",
 		"description": ""
+	},
+	"effects_extra": {
+		"message": "高",
+		"description": "data/index.html"
 	},
 	"change_avatar": {
 		"message": "换头像",
@@ -343,9 +359,13 @@
 		"message": "重新获取访问令牌",
 		"description": ""
 	},
-	"enable_proxy": {
-		"message": "启用代理",
-		"description": ""
+	"balance_between_attractiveness_and_preformance": {
+		"message": "在性能和养眼度之间保持平衡。",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "杂项",
+		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
 		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和API地址。",
@@ -383,6 +403,10 @@
 		"message": "更新成功！",
 		"description": "data/js/ui.status_box.js"
 	},
+	"delete": {
+		"message": "删除",
+		"description": ""
+	},
 	"px": {
 		"message": "像素",
 		"description": ""
@@ -402,6 +426,10 @@
 	"type": {
 		"message": "类型",
 		"description": ""
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "禁用控件集装饰和部分动画。",
+		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
 		"message": "点击继续",
@@ -479,13 +507,17 @@
 		"message": "更新中……",
 		"description": "data/js/ui.status_box.js"
 	},
-	"delete": {
-		"message": "删除",
+	"identica": {
+		"message": "Identi.ca",
 		"description": ""
 	},
 	"reply_all": {
 		"message": "回复所有",
 		"description": ""
+	},
+	"effects_low": {
+		"message": "低",
+		"description": "data/index.html"
 	},
 	"custom_font": {
 		"message": "自定义字体",
@@ -547,9 +579,9 @@
 		"message": "第一步",
 		"description": ""
 	},
-	"stat": {
-		"message": "统计",
-		"description": ""
+	"effects_normal": {
+		"message": "中",
+		"description": "data/index.html"
 	},
 	"information": {
 		"message": "信息",
