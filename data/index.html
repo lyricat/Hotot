@@ -5,6 +5,7 @@
 	<title>Home | Hotot</title>
     <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" /> 
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
+    <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" /> 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
     <script type="text/javascript" src="js/base64.js"></script>
@@ -75,6 +76,11 @@ var layout_opts = {
     ,   center__paneSelector:   '#center'
     ,   south__paneSelector:    '#bottom'
 };
+
+function change_effects_level(level) {
+    globals.effects_level = level;
+    $('#effects_level').attr('href', 'css/effects_' + level + '.css');
+}
 
 function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();

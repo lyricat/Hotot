@@ -1,0 +1,9 @@
+/*disable some shadow effects*/
+.entry:focus, .textarea:focus {
+    -webkit-box-shadow: none;
+}
+
+.entry.dark:focus, .textarea.dark:focus {
+    -webkit-box-shadow: none;
+}
+

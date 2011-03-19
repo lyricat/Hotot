@@ -156,15 +156,11 @@ disabled:
 }
 
 .entry:focus, .textarea:focus {
-    /*
      -webkit-box-shadow: inset #bbeaff 0 0 5px;
-    */
 }
 
 .entry.dark:focus, .textarea.dark:focus {
-    /*
     -webkit-box-shadow: inset #4ac3ff 0 0 5px;
-    */
 }
 
 .entry.dark, .textarea.dark {
