@@ -78,7 +78,6 @@ var layout_opts = {
 };
 
 function change_effects_level(level) {
-    globals.effects_level = level;
     $('#effects_level').attr('href', 'css/effects_' + level + '.css');
 }
 
@@ -1078,7 +1077,7 @@ jQuery(function($) {
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text>Misc</span> -</h3>
+            <h3>- <span data-i18n-text="misc">Misc</span> -</h3>
             <p>
                 <input id="chk_prefs_use_verbose_mode"
                     title="Enable verbose mode or not" 
@@ -1178,7 +1177,27 @@ jQuery(function($) {
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="notification">Notification -</h3>
+            <h3>- <span data-i18n-text="effects">Effects</span> -</h3>
+            <p>
+                <input id="rdo_effects_level_low" type="radio"
+                    class="radio" name="effects" value="0" checked/>
+                <label class="label">Low: </label>
+                <span>Disable decoration of widget and some animations.</span>
+                <br/>
+                <input id="rdo_effects_level_normal" type="radio"
+                    class="radio" name="effects" value="1"/>
+                <label class="label">Normal: </label>
+                <span>Balance between attractiveness and performance.</span>
+                <br/>
+                <input id="rdo_effects_level_extra" type="radio"
+                    class="radio" name="effects" value="2"/>
+                <label class="label">Extra: </label>
+                <span>More effects like shadows and glow of widgets.</span>
+                <br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- <span data-i18n-text="notification">Notification</span> -</h3>
             <p>
                 <table id="notification_table">
                 <tbody>

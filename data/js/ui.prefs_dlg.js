@@ -177,6 +177,12 @@ function load_prefs() {
     if (prefs.use_custom_font) {
         $('#rdo_use_custom_font').attr('checked', prefs.use_custom_font);
     }
+    switch (prefs.effects_level) {
+    case 0: $('#rdo_effects_level_low').attr('checked', true); break;
+    case 1: $('#rdo_effects_level_normal').attr('checked', true); break;
+    case 2: $('#rdo_effects_level_extra').attr('checked', true); break;
+    default: $('#rdo_effects_level_normal').attr('checked', true); break;
+    }  
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_native_notify').attr('checked'
         , prefs.use_native_notify);
@@ -226,6 +232,8 @@ function save_prefs() {
         prefs['font_size'] = 12;
     }
     prefs['use_custom_font'] = $('#rdo_use_custom_font').attr('checked');
+    prefs['effects_level'] 
+        = parseInt($('input:radio[name="effects"]:checked').val());
     prefs['use_native_notify']
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs['use_hover_box']

@@ -36,6 +36,7 @@ default_prefs: {
         , 'custom_font': ''
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
+        , 'effects_level': 1
         , 'use_native_notify': true
         , 'use_hover_box': true
         , 'use_preload_conversation': true
@@ -71,6 +72,7 @@ default_prefs: {
         , 'custom_font': ''
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
+        , 'effects_level': 1
         , 'use_native_notify': true
         , 'use_hover_box': true
         , 'use_preload_conversation': true
@@ -241,6 +243,7 @@ function apply_prefs(name) {
     $('body').css('font-family', prefs.use_custom_font
         ? prefs.custom_font: prefs.font_family_used);
     globals.tweet_font_size = prefs.font_size;
+    change_effects_level(prefs.effects_level);
     ui.StatusBox.use_hover_box = prefs.use_hover_box;
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;
 
