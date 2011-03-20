@@ -51,13 +51,13 @@ function do_prepare(li_id) {
         username = val;
         ext.HototInstapaper.prefs.get('password', function (key, val) {
             password = val;
-            ui.Notification.set('Add to Instapaper ...').show();
+            toast.set('Add to Instapaper ...').show();
             ext.HototInstapaper.do_add(username, password, url, text
                 , function (result) {
                     if (result == '201') {
-                        ui.Notification.set('Saved!').show();
+                        toast.set('Saved!').show();
                     } else {
-                        ui.Notification.set('Error Code:'+ result).show();
+                        toast.set('Error Code:'+ result).show();
                     }
                 });
         });

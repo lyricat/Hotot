@@ -21,7 +21,7 @@ function init() {
         $('#people_tweet_block .tweet_sub_block').not(pagename).hide();
         $(pagename).show();
         if (ui.Main.block_info['#people'].screen_name != '') {
-            ui.Notification.set("Loading ...").show(-1);
+            toast.set("Loading ...").show(-1);
             daemon.Updater.update_people();
         }
     };
@@ -46,18 +46,18 @@ function init() {
         var screen_name = ui.Main.block_info['#people'].screen_name;
         var _this = this;
         if ($(this).hasClass('unfo')) {
-            ui.Notification.set("Unfollow @" + screen_name + " ...").show();
+            toast.set("Unfollow @" + screen_name + " ...").show();
             lib.twitterapi.destroy_friendships(screen_name,
             function () {
-                ui.Notification.set(
+                toast.set(
                     "Unfollow @"+ screen_name+" Successfully!").show();
                 $(_this).text('Follow').removeClass('unfo');
             });
         } else {
-            ui.Notification.set("Follow @" + screen_name + " ...").show();
+            toast.set("Follow @" + screen_name + " ...").show();
             lib.twitterapi.create_friendships(screen_name,
             function () {
-                ui.Notification.set(
+                toast.set(
                     "Follow @"+ screen_name+" Successfully!").show();
                 $(_this).text('Unfollow').addClass('unfo');
             });
@@ -69,10 +69,10 @@ function init() {
         var screen_name = ui.Main.block_info['#people'].screen_name;
         if (!confirm("Are you sure you want to block @"+screen_name+"?!\n"))
             return;
-        ui.Notification.set("Block @" + screen_name + " ...").show();
+        toast.set("Block @" + screen_name + " ...").show();
         lib.twitterapi.create_blocks(screen_name,
         function () {
-            ui.Notification.set(
+            toast.set(
                 "Block @"+ screen_name+" Successfully!").show();
         });
     });
@@ -80,10 +80,10 @@ function init() {
     $('#people_vcard .vcard_unblock').click(
     function (event) {
         var screen_name = ui.Main.block_info['#people'].screen_name;
-        ui.Notification.set("Unblock @" + screen_name + " ...").show();
+        toast.set("Unblock @" + screen_name + " ...").show();
         lib.twitterapi.create_blocks(screen_name,
         function () {
-            ui.Notification.set(
+            toast.set(
                 "Unblock @"+ screen_name+" Successfully").show();
         });
     });

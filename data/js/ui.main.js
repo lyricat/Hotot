@@ -47,7 +47,7 @@ function init () {
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-                ui.Notification.set("Loading Tweets...").show(-1);
+                toast.set("Loading Tweets...").show(-1);
                 ui.Main.load_more_tweets(
                     ui.Main.get_sub_pagename(pagename),
                     function () {
@@ -270,7 +270,7 @@ function load_tweets (pagenames, force) {
             .children('.load_more_info');
         container.nextAll('.tweet_block_bottom').show();
         info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-        ui.Notification.set('Loading ' + pagenames.length + ' page(s)...')
+        toast.set('Loading ' + pagenames.length + ' page(s)...')
             .show(-1);
         daemon.Updater.watch_pages[pagenames[i]].proc(force);
     }
@@ -496,7 +496,7 @@ function add_people(json_obj, container) {
     // @TODO bind events
     //
     ui.Main.bind_tweets_action(json_obj.users, container.pagename);
-    ui.Notification.hide();
+    toast.hide();
     return json_obj.users.length;
 
 },
@@ -641,11 +641,11 @@ function add_tweets(json_obj, container) {
     if (container.pagename != 'search') {
         db.get_tweet_cache_size(function (size) {
             if (db.MAX_TWEET_CACHE_SIZE < size) {
-                ui.Notification.set("Reducing ... ").show(-1);
+                toast.set("Reducing ... ").show(-1);
                 db.reduce_tweet_cache(
                     parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
                 , function () {
-                    ui.Notification.set("Reduce Successfully!").show();
+                    toast.set("Reduce Successfully!").show();
                     db.dump_tweets(json_obj);
                 })
             } else {
@@ -655,7 +655,7 @@ function add_tweets(json_obj, container) {
     }
     // bind events
     ui.Main.bind_tweets_action(json_obj, container.pagename);
-    ui.Notification.hide();
+    toast.hide();
     return json_obj.length;
 },
 
@@ -785,18 +785,18 @@ function on_retweet_click(btn, li_id, event) {
 
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
-        ui.Notification.set("Undo Retweeting ...").show(-1);
+        toast.set("Undo Retweeting ...").show(-1);
         lib.twitterapi.destroy_status(rt_id, 
         function (result) {
-            ui.Notification.set("Undo Successfully!").show();
+            toast.set("Undo Successfully!").show();
             $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
             li.removeClass('retweeted');
         });
     } else {
-        ui.Notification.set("Retweeting ...").show(-1);
+        toast.set("Retweeting ...").show(-1);
         lib.twitterapi.retweet_status(id, 
         function (result) {
-            ui.Notification.set("Retweet Successfully!").show();
+            toast.set("Retweet Successfully!").show();
             li.attr('my_retweet_id', result.id_str);
             $(btn).addClass('retweeted').attr('title', "Undo retweet.");
             li.addClass('retweeted');
@@ -866,11 +866,11 @@ function on_del_click(btn, li_id, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
 
-    ui.Notification.set('Destroy ...').show(-1);
+    toast.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
     function (result) {
         li.remove();
-        ui.Notification.set('Destroy Successfully!').show();
+        toast.set('Destroy Successfully!').show();
     });
 },
 
@@ -880,17 +880,17 @@ function on_fav_click(btn, li_id, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     if ($(li).hasClass('fav')) {
-        ui.Notification.set('un-favorite this tweet ...').show(-1);
+        toast.set('un-favorite this tweet ...').show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
-            ui.Notification.set('Successfully!').show();
+            toast.set('Successfully!').show();
             $(li).removeClass('fav');
         });
     } else {
-        ui.Notification.set('favorite this tweet ...').show(-1);
+        toast.set('favorite this tweet ...').show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
-            ui.Notification.set('Successfully!').show();
+            toast.set('Successfully!').show();
             $(li).addClass('fav');
         });
     }
@@ -900,10 +900,10 @@ on_follow_btn_click:
 function on_follow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    ui.Notification.set("Follow @" + screen_name + " ...").show();
+    toast.set("Follow @" + screen_name + " ...").show();
     lib.twitterapi.create_friendships(screen_name,
     function () {
-        ui.Notification.set(
+        toast.set(
             "Follow @" + screen_name+" Successfully!").show();
         li.attr('following', 'true');
     });
@@ -913,10 +913,10 @@ on_unfollow_btn_click:
 function on_unfollow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    ui.Notification.set("Unfollow @" + screen_name + " ...").show();
+    toast.set("Unfollow @" + screen_name + " ...").show();
     lib.twitterapi.destroy_friendships(screen_name,
     function () {
-        ui.Notification.set(
+        toast.set(
             "Unfollow @" + screen_name+ " Successfully!").show();
         li.attr('following', 'false');
     });

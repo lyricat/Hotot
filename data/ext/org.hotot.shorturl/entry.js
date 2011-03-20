@@ -159,7 +159,7 @@ function on_btn_save_prefs_clicked(event) {
         && (service.params.login && prefs.login == ''
             || service.params.api_key && prefs.api_key == ''))
         || (service.url == undefined && prefs.other == '')) {
-        ui.Notification.set(
+        toast.set(
             'Please fill form fields for ' + service.name + ' Service.').show();
         return;
     }

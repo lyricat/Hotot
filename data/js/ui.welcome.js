@@ -50,7 +50,7 @@ function init () {
             = $('#chk_remember_password').attr('checked'); 
         cur_profile.preferences.default_username
             = lib.twitterapi.username; 
-        ui.Notification.set("Sign in ...").show();
+        toast.set("Sign in ...").show();
         if (cur_profile.preferences.remember_password) {
             cur_profile.preferences.default_password
                 = lib.twitterapi.password;
@@ -87,7 +87,7 @@ function init () {
         = new widget.Button('#btn_oauth_sign_in')
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
-        ui.Notification.set(_('sign_in_dots')).show();
+        toast.set(_('sign_in_dots')).show();
         if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -131,22 +131,20 @@ function init () {
     btn_welcome_create_profile.on_clicked = function (event) {
         var prefix = $.trim($('#tbox_new_profile_name').val());
         if (prefix.length == 0 ) {
-            ui.Notification.set(_('please_entry_a_profile_prefix')).show();
+            toast.set(_('please_entry_a_profile_prefix')).show();
             return;
         }
         if (prefix.indexOf('@') != -1) {
-            ui.Notification
-                .set(_('charactor_at_is_not_allow_in_profile_prefix'))
+            toast.set(_('charactor_at_is_not_allow_in_profile_prefix'))
                 .show();
             return;
         }
         db.add_profile(prefix, ui.Welcome.selected_service,
         function (result) {
             if (result != true) {
-                ui.Notification
-                    .set(_('this_profile_may_has_already_exists')).show();
+                toast.set(_('this_profile_may_has_already_exists')).show();
             } else {
-                ui.Notification.set(_('new_profile_has_been_created')).show();
+                toast.set(_('new_profile_has_been_created')).show();
                 conf.reload(function () {
                     ui.Welcome.load_profiles_info();
                     $('#profile_avator_list a[href="'+prefix+'@'+ui.Welcome.selected_service+'"]').click();
@@ -246,7 +244,7 @@ function authenticate_pass(result) {
     setTimeout(function () {
     $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
     }, 100);
-    ui.Notification.set(_('authentication_ok')).show();
+    toast.set(_('authentication_ok')).show();
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');

@@ -11,7 +11,7 @@ function init() {
         var page_name = ui.DMTabs.current + '_sub_block';
         $('#direct_messages_tweet_block .tweet_sub_block').not(page_name).hide();
         $(page_name).show();
-        ui.Notification.set("Loading Tweets...").show(-1);
+        toast.set("Loading Tweets...").show(-1);
         daemon.Updater.update_direct_messages();
     };
     btns.create();

@@ -19,7 +19,7 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.ProfileDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set("There are "+err.count+" errors in your change. Abort...").show();
+            toast.set("There are "+err.count+" errors in your change. Abort...").show();
             widget.DialogManager.alert(
                   'Oops, some mistakes in your information.'
                 , "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
@@ -76,10 +76,10 @@ function update_profile() {
     var location = $('#tbox_profile_location').val();
     var bio = $('#tbox_profile_bio').val();
 
-    ui.Notification.set("Update profile ...").show();
+    toast.set("Update profile ...").show();
     lib.twitterapi.update_profile(name, website, location, bio,
     function (result) {
-        ui.Notification.set("Update profile successfully!").show();
+        toast.set("Update profile successfully!").show();
         globals.myself = result;
         globals.profile_dialog.close();
     });

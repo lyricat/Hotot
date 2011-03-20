@@ -64,7 +64,7 @@ function init () {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
-            ui.Notification.set("There are "+err.count+" errors in your changes. Abort...").show();
+            toast.set("There are "+err.count+" errors in your changes. Abort...").show();
             widget.DialogManager.alert(
                   'Oops, some mistakes in your information.'
                 , "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "

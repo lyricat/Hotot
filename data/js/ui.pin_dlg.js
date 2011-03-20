@@ -14,7 +14,7 @@ function init () {
             return
         jsOAuth.get_access_token(pin_code,
         function (result) {
-            ui.Notification.set("Authentication OK!")
+            toast.set("Authentication OK!")
             // get a new access_token, dump it to disk.
             conf.save_token(conf.current_name, jsOAuth.access_token);
             // change to main view

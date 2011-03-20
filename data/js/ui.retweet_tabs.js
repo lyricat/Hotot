@@ -12,7 +12,7 @@ function init() {
         var pagename = ui.RetweetTabs.current + '_sub_block';
         $('#retweets_tweet_block .tweet_sub_block').not(pagename).hide();
         $(pagename).show();
-        ui.Notification.set("Loading Tweets...").show(-1);
+        toast.set("Loading Tweets...").show(-1);
         daemon.Updater.update_retweets();
     };
     btns.create();

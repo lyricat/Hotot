@@ -74,7 +74,7 @@ function work() {
             }
         }
         if (step != 0) {
-            ui.Notification
+            toast
                 .set('Update '+ step +' page(s) on schedule.').show();
         }
     }

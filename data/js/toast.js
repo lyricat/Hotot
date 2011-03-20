@@ -1,5 +1,5 @@
 if (typeof ui == 'undefined') var ui = {};
-ui.Notification = {
+toast = {
 
 id: '',
 
@@ -36,7 +36,7 @@ function show(ttl) {
 
 hide:
 function hide() {
-    ui.Notification.me.fadeOut();
+    toast.me.fadeOut();
     return this;
 },
 

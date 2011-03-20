@@ -47,7 +47,7 @@ on_btn_upload_clicked:
 function on_btn_upload_clicked(event) {
     if (ext.HototImageUpload.select_filename == ''
         || ext.HototImageUpload.select_filename == 'None') {
-        ui.Notification.set('Please choose an image.').show();
+        toast.set('Please choose an image.').show();
         return;
     }
 
@@ -84,7 +84,7 @@ function on_btn_upload_clicked(event) {
     break;
     }
 
-    ui.Notification.set('Uploading ... ').show();
+    toast.set('Uploading ... ').show();
     lib.network.do_request(
         'POST'
         , ext.HototImageUpload.services[service_name].url
@@ -112,7 +112,7 @@ function success(result) {
     ext.HototImageUpload.upload_dialog.close();
     
     var service_name = $('#ext_hotot_upload_image_services').attr('value');
-    ui.Notification.set('Uploading Successfully!').show();
+    toast.set('Uploading Successfully!').show();
     ui.StatusBox.open();
     switch (ext.HototImageUpload.sel_service_name) {
     case 'plixi.com':

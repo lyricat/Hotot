@@ -24,10 +24,10 @@
     <script type="text/javascript" src="js/conf.js"></script>
     <script type="text/javascript" src="js/i18n.js"></script>
     <script type="text/javascript" src="js/kismet.js"></script>
+    <script type="text/javascript" src="js/toast.js"></script>
     <script type="text/javascript" src="js/daemon.updater.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
-    <script type="text/javascript" src="js/ui.notification.js"></script>
     <script type="text/javascript" src="js/ui.slider.js"></script>
     <script type="text/javascript" src="js/ui.sidebar.js"></script>
     <script type="text/javascript" src="js/ui.welcome.js"></script>
@@ -109,7 +109,7 @@ function quit() {
 }
 
 function open_people(screen_name) {
-    ui.Notification.set('Lookup @'+screen_name+'... ').show();
+    toast.set('Lookup @'+screen_name+'... ').show();
     ui.PeopleTabs.set_people(screen_name);
     daemon.Updater.update_people();
 }
@@ -228,6 +228,7 @@ function init_ui() {
     hotot_log('init', 'init_ui()');
     util.console.init();
     kismet.init();
+    toast.init();
     ui.Slider.init();
     ui.Template.init();
     ui.Header.init();
@@ -240,7 +241,6 @@ function init_ui() {
     ui.DMTabs.init();
     ui.PeopleTabs.init();
     ui.SearchTabs.init();
-    ui.Notification.init();
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
@@ -376,7 +376,7 @@ jQuery(function($) {
             if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
                 if (event.keyCode == 116 || event.keyCode == 82) {
                     // <F5> or 'r' to reload timeline
-                    ui.Notification.set('Loading Tweets...').show(-1);
+                    toast.set('Loading Tweets...').show(-1);
                     ui.Main.load_tweets([ui.Slider.current]);    
                 } else if (event.keyCode == 72) {
                     // 'h' to slide to prev tab
