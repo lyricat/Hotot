@@ -381,9 +381,10 @@ function load_tweets_cb(result, pagename) {
         if (ui.Main.block_info[pagename].use_notify) {
             switch (ui.Main.block_info[pagename].use_notify_type) {
             case 'count':
-                hotot_notify('count', null
-                    , "Update page " + pagename
+                hotot_notify(
+                      "Update page " + pagename
                     , tweet_count + " new items."
+                    , null, 'count'
                     );
             break;
             case 'content':
@@ -395,15 +396,13 @@ function load_tweets_cb(result, pagename) {
                         ? json_obj[i].sender : json_obj[i].user;
                     var text = json_obj[i].text;
                     proc.push(function () {
-                        util.get_avator(user.screen_name,
-                        function (avatar_file) {
-                            hotot_notify('content'
-                                    , avatar_file
-                                    , user.screen_name
-                                    , text
-                                );
-                            $(window).dequeue('_notify');
-                        });
+                        hotot_notify(
+                                  user.screen_name
+                                , text
+                                , user.profile_image_url 
+                                , 'content'
+                            );
+                        $(window).dequeue('_notify');
                     });
                 }
                 for ( ; 0 <= i && cnt < 4; i -= 1, cnt += 1) {
@@ -412,12 +411,13 @@ function load_tweets_cb(result, pagename) {
                 $(window).queue('_notify', proc);
                 $(window).dequeue('_notify');
                 if (3 < json_obj.length) {
-                    hotot_notify('count', null
-                        , "Update page " + pagename
+                    hotot_notify(
+                          "Update page " + pagename
                         , "and " 
                             + (tweet_count - 3)
                             + " new items remained."
-                        , 'count');
+                        , 'count'
+                        , null, 'count');
                 }
             break;
             } 
