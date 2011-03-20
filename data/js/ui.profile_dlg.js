@@ -118,17 +118,5 @@ function update_avator() {
     })
 },
 
-hide:
-function hide () {
-    globals.profile_dialog.close();
-    return this;
-},
-
-show:
-function show () {
-    ui.ProfileDlg.request_profile();
-    globals.profile_dialog.open();
-    return this;
-},
 }
     

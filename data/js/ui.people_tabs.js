@@ -90,6 +90,7 @@ function init() {
 
     $('#people_vcard .vcard_edit').click(
     function (event) { 
+        ui.ProfileDlg.request_profile();    
         globals.profile_dialog.open();
     });
 
