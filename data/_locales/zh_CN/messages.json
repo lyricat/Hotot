@@ -332,7 +332,7 @@
 		"description": ""
 	},
 	"mentions": {
-		"message": "你的八卦",
+		"message": "提到你",
 		"description": ""
 	},
 	"retweeted_by_me": {
@@ -423,6 +423,10 @@
 		"message": "朋友统计",
 		"description": ""
 	},
+	"preview": {
+		"message": "预览",
+		"description": "data/index.html"
+	},
 	"type": {
 		"message": "类型",
 		"description": ""
@@ -456,7 +460,7 @@
 		"description": ""
 	},
 	"search_no_result_hint_suggestion1": {
-		"message": "有没有错别字啊，亲？",
+		"message": "有没有错别字啊？",
 		"description": ""
 	},
 	"same_signing_api_base": {
@@ -612,7 +616,7 @@
 		"description": ""
 	},
 	"globals_restart_hint": {
-		"message": "亲，请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
+		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
 		"description": ""
 	},
 	"friends": {

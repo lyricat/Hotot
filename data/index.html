@@ -1106,33 +1106,37 @@ jQuery(function($) {
             <div class="dialog_block">
             <h3>- <span data-i18n-text="font">Font</span> -</h3>
             <p>
-                <label class="label"
-                    data-i18n-text="font_size">Font Size</label>
-                <input id="tbox_prefs_font_size" 
-                    title="Font Size" 
-                    style="width:100px" type="text" class="entry"/>
-                <label class="label" data-i18n-text="px">px</label><br/>
+                <table><tbody>
+                <tr><td>
                 <input id="rdo_use_system_font" type="radio"
                     class="radio" name="font" checked/>
                 <label class="label"
                     data-i18n-text="system_font">System Font</label>
-                <select id="sel_prefs_font_family" class="combo"
-                    title="Font Family" style="width: 200px">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select><br/>
+                </td><td>
                 <input id="rdo_use_custom_font" type="radio" 
                     class="radio" name="font" />
                 <label class="label"
                     data-i18n-text="custom_font">Custom Font</label>
+                </td><td>
+                <label class="label"
+                    data-i18n-text="font_size">Font Size</label>
+                </td></tr>
+                <tr><td>
+                <select id="sel_prefs_font_family" class="combo"
+                    title="Font Family" style="width:100px;">
+                    <option value="1">1</option>
+                </select></td><td>
                 <input id="tbox_prefs_custom_font"
                     title="Custom Font" 
-                    style="width:180px"
-                    type="text" class="entry"/><br/>
+                    type="text" class="entry"/></td><td>
+                <input id="tbox_prefs_font_size" 
+                    title="Font Size" 
+                    style="width:30px" type="text" class="entry"/>
+                <label class="label" data-i18n-text="px">px</label></td></tr>
+                </tbody></table>
             </p>
             <p>
+                <label class="label" data-i18n-text="preview">Preview:</label><br/>
                 <div id="prefs_font_preview"
                     data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.</div>
             </p>

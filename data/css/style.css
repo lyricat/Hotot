@@ -1174,6 +1174,8 @@ label {
     height: 30px;
     margin: 0 10px;
     overflow: auto;
+    width: 90%;
+    margin: 0 auto;
 }
 
 /*===== Extensions Dialog ================================*/
@@ -1764,7 +1766,7 @@ label {
     display: block;
 }
 
-#notification_table, #shortcuts_table {
+#prefs_dlg table {
     width: 90%;
     border-collapse: collapse;
     margin: 0 auto;

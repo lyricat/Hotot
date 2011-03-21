@@ -28,7 +28,7 @@
 		"description": "data/index.html"
 	},
 	"summon_hotot": {
-		"message": "Summon Hotot (like: &lt;ALT&gt;C)",
+		"message": "Summon Hotot (like: <ALT>C)",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
@@ -421,6 +421,10 @@
 	},
 	"friend_stat": {
 		"message": "Friend",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "Preview",
 		"description": "data/index.html"
 	},
 	"type": {
