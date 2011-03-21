@@ -55,7 +55,8 @@
 var layout_opts = {
         closable:				true	
     ,	resizable:				true	
-    ,	slidable:				true	
+    ,	slidable:				true
+    ,   enableCursorHotkey:      false
     ,   paneClass: 'ui-layout-pane'
     ,	north__slidable:		false
     ,   north__closable:    true
@@ -312,6 +313,7 @@ function on_load_finish() {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
                 $('#welcome_page_main').fadeIn();  
+                ui.Welcome.load_daily_hint();
                 $(window).dequeue('_on_load_finish');
             });
         });
@@ -499,8 +501,9 @@ jQuery(function($) {
     <ul id="profile_avator_list">
         <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
     </ul>
+    <h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
     <div id="sign_in_block">
-        <h2 id="profile_title" data-i18n-text="greeting">Greeting!</h2>
+        <h2 id="profile_title"></h2>
         <div id="service_tabs">
         <ul class="service_tabs_btns">
             <li>
@@ -511,12 +514,14 @@ jQuery(function($) {
             </li>
         </ul>
         <div id="service_page_twitter" class="service_tabs_page">
-        <h3 data-i18n-text="sign_in_with_twitter">Sign in with Twitter</h3>
-        <p><br/></p>
         <p>
-        <center>
+            <label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
+        </p>
+        <p style="text-align:center; margin:10px 0 50px 0;">
             <a id="btn_oauth_sign_in" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
-        </center>
+        </p>
+        <p style="text-align:right; font-size: 10px;">
+            <a id="clear_token_btn" style="color:red; text-decoration:none;" href="#">clear token</a>
         </p>
         </div>
 

@@ -8,6 +8,7 @@ vars: {
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
     , 'column_max_width': 400
+
 },
 
 default_settings: {
@@ -276,6 +277,12 @@ function save_token(name, token) {
     conf.save_prefs(name);
 },
 
+clear_token:
+function clear_token(name) {
+    conf.profiles[name].preferences.access_token = '';
+    conf.save_prefs(name);
+},
+
 normalize_prefs:
 function normalize_prefs(protocol, prefs) {
     var default_prefs = conf.get_default_prefs(protocol);
@@ -307,4 +314,21 @@ function normalize_settings(settings) {
     return settings;
 },
 
-}
+};
+
+var daily_hints = [
+      'Press "C" to compose quickly'
+    , 'Press "R" will reload current page'
+    , 'Wanna quit hotot? try &lt;Ctrl&gt;+Q'
+    , 'I can act like VIM!'
+    , 'I can act like VIM!'
+    , 'Need more columns? Try to extend my window'
+    , 'Need less columns? Try to resize my window to a small size'
+    , 'Go to "STAT" page, You\'ll see how addicted to twitter you are'
+    , 'This is a ALPHA version, full of bugs, and features'
+    , 'すっかり冷え込んだ日にはホットミルクとラブレターが恋しい'
+    , 'My only fear of death is comin\' back to this bitch reincarnated'
+    , 'FACT: features are bugs, but beautifully dressed'
+    , '小心我dir溢出你'
+    , 'Hotot is a kind of rabbit, but I really love Cats :)'
+];

@@ -998,10 +998,19 @@ label {
     background-image: url(../image/ic32_profile_add.png);
 }
 
+#daily_hint {
+    color: white;
+    text-align: center;
+    margin: 12px 0;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: 0 0 5px white;
+}
+
 #sign_in_block {
     clear: both;
     width: 200px;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
     min-height: 220px;
     position: relative;
     padding: 10px;
@@ -1766,7 +1775,7 @@ label {
     display: block;
 }
 
-#prefs_dlg table {
+.dialog table {
     width: 90%;
     border-collapse: collapse;
     margin: 0 auto;

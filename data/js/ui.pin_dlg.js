@@ -12,13 +12,15 @@ function init () {
         var pin_code = $.trim($('#tbox_oauth_pin').attr('value'));
         if (pin_code == '') 
             return
+        toast.set("Authorizing ... ").show();
         jsOAuth.get_access_token(pin_code,
         function (result) {
-            toast.set("Authentication OK!")
+            toast.set("Authentication OK!").show();
             // get a new access_token, dump it to disk.
             conf.save_token(conf.current_name, jsOAuth.access_token);
             // change to main view
             globals.oauth_dialog.close();
+            $('#profile_avator_list a.selected').click();
         },
         function (xhr, textStatus, errorThrown) {
             globals.oauth_dialog.close();

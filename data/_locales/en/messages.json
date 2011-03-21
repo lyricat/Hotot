@@ -139,6 +139,10 @@
 		"message": "Name",
 		"description": "data/index.html"
 	},
+	"access_token_doesnt_exist": {
+		"message": "Access token doesn't exists",
+		"description": "data/index.html"
+	},
 	"edit": {
 		"message": "Edit",
 		"description": "data/index.html"
@@ -526,6 +530,10 @@
 	"custom_font": {
 		"message": "Custom Font",
 		"description": "data/index.html"
+	},
+	"whisper": {
+		"message": "Whisper",
+		"description": "data/js/ui.welcome.js"
 	},
 	"suggestions": {
 		"message": "Suggestions",

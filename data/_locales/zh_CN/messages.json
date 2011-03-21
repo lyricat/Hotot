@@ -139,6 +139,10 @@
 		"message": "名字",
 		"description": ""
 	},
+	"access_token_doesnt_exist": {
+		"message": "访问令牌不存在",
+		"description": "data/index.html"
+	},
 	"edit": {
 		"message": "编辑",
 		"description": ""
@@ -526,6 +530,10 @@
 	"custom_font": {
 		"message": "自定义字体",
 		"description": ""
+	},
+	"whisper": {
+		"message": "低语",
+		"description": "data/js/ui.welcome.js"
 	},
 	"suggestions": {
 		"message": "建议",

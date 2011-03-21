@@ -167,6 +167,15 @@ function init () {
         ui.ExtsDlg.load_ext_list();
         globals.exts_dialog.open();
     });
+    
+    $('#clear_token_btn').click(
+    function (event) {
+        if (confirm('The operation will erases the access token of this profile.\n Are you sure you want to continue?!\n')) 
+        {
+            conf.clear_token(conf.current_name);
+            $('#profile_avator_list a.selected').click();
+        }
+    });
 
     $('#btn_welcome_delete_profile').click(
     function (event) {
@@ -231,8 +240,16 @@ function load_profiles_info() {
                 conf.profiles[profile_name].preferences.remember_password);
             $('#profile_avator_list a').not(this).removeClass('selected');
             $(this).addClass('selected');
-            // apply preferences
+                // apply preferences
             conf.apply_prefs(profile_name);
+            if (jsOAuth.access_token == ''
+                || jsOAuth.access_token.constructor != Object) {
+                $('#access_token_status_hint').css('visibility', 'visible');
+                $('#btn_oauth_sign_in').text('Gain access token');
+            } else {
+                $('#access_token_status_hint').css('visibility', 'hidden');
+                $('#btn_oauth_sign_in').text('Sign in with Twitter');
+            }
         }
         return false;
     });
@@ -254,6 +271,16 @@ function authenticate_pass(result) {
     setTimeout(function () {
         ui.Slider.slide_to('#home_timeline');
     }, 1000);
+},
+
+load_daily_hint:
+function load_daily_hint() {
+    if (Date.now() % 3 == 0) {
+        var r = parseInt(Math.random() * daily_hints.length);
+        hotot_log(r);
+        $('#daily_hint').html(
+            '<strong>'+_('whisper')+'</strong>: ' + daily_hints[r]);
+    }
 },
 
 hide:
