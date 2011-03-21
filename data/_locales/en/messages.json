@@ -7,6 +7,10 @@
 		"message": "All",
 		"description": "data/index.html"
 	},
+	"global": {
+		"message": "Global",
+		"description": "data/index.html"
+	},
 	"load_more": {
 		"message": "Load More",
 		"description": "data/index.html"
@@ -43,6 +47,10 @@
 		"message": "Remember Password",
 		"description": "data/index.html"
 	},
+	"finder_mode": {
+		"message": "Finder Mode",
+		"description": "data/index.html"
+	},
 	"click_the_button_below": {
 		"message": "Click the buttone below",
 		"description": "data/index.html"
@@ -51,8 +59,8 @@
 		"message": "Click Me to Continue",
 		"description": "data/index.html"
 	},
-	"count": {
-		"message": "Count",
+	"info": {
+		"message": "INFO",
 		"description": "data/index.html"
 	},
 	"destroy_successfully": {
@@ -69,6 +77,10 @@
 	},
 	"access_token_doesnt_exist": {
 		"message": "Access token doesn't exists",
+		"description": "data/index.html"
+	},
+	"reload": {
+		"message": "Reload",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
@@ -90,6 +102,14 @@
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
 		"message": "Cannot authenticate you! Please check your username/password and API Base",
 		"description": "data/js/ui.welcome.js"
+	},
+	"next_action": {
+		"message": "Next action",
+		"description": "data/index.html"
+	},
+	"exit_compose_mode": {
+		"message": "Exit compose mode",
+		"description": "data/index.html"
 	},
 	"my_tweets_be_retweeted": {
 		"message": "My Tweets, Be retweeted",
@@ -129,6 +149,10 @@
 	},
 	"compose_messages_to": {
 		"message": "COMPOSE MESSAGE To",
+		"description": "data/js/ui.status_box.js"
+	},
+	"what_is_happening": {
+		"message": "What's Happening?",
 		"description": "data/js/ui.status_box.js"
 	},
 	"version": {
@@ -171,6 +195,10 @@
 		"message": "Un-favorite this tweet ...",
 		"description": "data/js/ui.main.js"
 	},
+	"quit_hotot": {
+		"message": "Quit Hotot",
+		"description": "data/index.html"
+	},
 	"effects_extra": {
 		"message": "Extra",
 		"description": "data/index.html"
@@ -191,9 +219,17 @@
 		"message": "Hover to Open Tweet Box",
 		"description": "data/index.html"
 	},
+	"move_to_top": {
+		"message": "Move to top",
+		"description": "data/index.html"
+	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "Charactor `@` is not allowed in profile prefix",
 		"description": "data/js/ui.welcome.js"
+	},
+	"action": {
+		"message": "Action",
+		"description": "data/index.html"
 	},
 	"mentions": {
 		"message": "Mentions",
@@ -219,6 +255,10 @@
 		"message": "Globals",
 		"description": "data/index.html"
 	},
+	"slide_to_prev_page": {
+		"message": "Slide to prev page",
+		"description": "data/index.html"
+	},
 	"create_profile": {
 		"message": "Create Profile",
 		"description": "data/index.html"
@@ -230,6 +270,14 @@
 	"new_profile_has_been_created": {
 		"message": "New Profile has been created!",
 		"description": "data/js/ui.welcome.js"
+	},
+	"prev_action": {
+		"message": "Prev action",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "Shortcuts",
+		"description": "data/index.html"
 	},
 	"preview": {
 		"message": "Preview",
@@ -335,6 +383,14 @@
 		"message": "Clean token",
 		"description": "data/index.html"
 	},
+	"trigger_action": {
+		"message": "Trigger action",
+		"description": "data/index.html"
+	},
+	"compose_mode": {
+		"message": "Compose mode",
+		"description": "data/index.html"
+	},
 	"information": {
 		"message": "Information",
 		"description": "data/index.html"
@@ -350,6 +406,10 @@
 	"undo_retweeting_dots": {
 		"message": "Undo retweeting ...",
 		"description": "data/js/ui.main.js"
+	},
+	"action_mode": {
+		"message": "Action mode",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "Followers",
@@ -377,6 +437,10 @@
 	},
 	"favorites": {
 		"message": "Favorites",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "Move to next tweet",
 		"description": "data/index.html"
 	},
 	"font_size": {
@@ -471,9 +535,9 @@
 		"message": "Effects",
 		"description": "data/index.html"
 	},
-	"what_is_happening": {
-		"message": "What's Happening?",
-		"description": "data/js/ui.status_box.js"
+	"move_to_prev_tweet": {
+		"message": "Move to prev tweet",
+		"description": "data/index.html"
 	},
 	"password": {
 		"message": "Password",
@@ -489,6 +553,10 @@
 	},
 	"name": {
 		"message": "Name",
+		"description": "data/index.html"
+	},
+	"tweet_view": {
+		"message": "Tweet View",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -511,8 +579,16 @@
 		"message": "Inbox",
 		"description": "data/index.html"
 	},
+	"enter_finder_mode": {
+		"message": "Enter finder mode",
+		"description": "data/index.html"
+	},
 	"system_font": {
 		"message": "System Font",
+		"description": "data/index.html"
+	},
+	"exit_action_mode": {
+		"message": "Exit action mode",
 		"description": "data/index.html"
 	},
 	"twitter": {
@@ -529,6 +605,10 @@
 	},
 	"cancel": {
 		"message": "Cancel",
+		"description": "data/index.html"
+	},
+	"exit_finder_mode": {
+		"message": "Exit finder mode",
 		"description": "data/index.html"
 	},
 	"search_in_google": {
@@ -579,6 +659,10 @@
 		"message": "About",
 		"description": "data/index.html"
 	},
+	"move_to_bottom": {
+		"message": "Move to bottom",
+		"description": "data/index.html"
+	},
 	"ok": {
 		"message": "OK",
 		"description": "data/index.html"
@@ -623,6 +707,10 @@
 		"message": "Enable Proxy",
 		"description": "data/index.html"
 	},
+	"enter_action_mode": {
+		"message": "Enter action mode",
+		"description": "data/index.html"
+	},
 	"follower_stat": {
 		"message": "Follower",
 		"description": "data/index.html"
@@ -655,8 +743,8 @@
 		"message": "PIN Code",
 		"description": "data/index.html"
 	},
-	"info": {
-		"message": "INFO",
+	"count": {
+		"message": "Count",
 		"description": "data/index.html"
 	},
 	"enabled": {
@@ -711,6 +799,10 @@
 		"message": "More effects like shadows and glow of widgets",
 		"description": "data/index.html"
 	},
+	"slide_to_next_page": {
+		"message": "Slide to next page",
+		"description": "data/index.html"
+	},
 	"picture": {
 		"message": "Picture",
 		"description": "data/index.html"
@@ -743,12 +835,20 @@
 		"message": "Friends",
 		"description": "data/index.html"
 	},
+	"start_to_find": {
+		"message": "Start to find",
+		"description": "data/index.html"
+	},
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
 	},
 	"look_up": {
 		"message": "Look up",
+		"description": "data/index.html"
+	},
+	"enter_compose_mode": {
+		"message": "Enter compose mode",
 		"description": "data/index.html"
 	},
 	"sign_in_with_twitter": {
