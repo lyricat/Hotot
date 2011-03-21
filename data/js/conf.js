@@ -147,7 +147,6 @@ function get_default_prefs(protocol) {
     if (protocol == 'twitter') {
         return conf.default_prefs['twitter'];
     } else if (protocol == 'identica') {
-        //@TODO identi.ca's default_prefs
         return conf.default_prefs['identica'];
     } else {
         return '';

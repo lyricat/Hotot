@@ -493,8 +493,7 @@ function add_people(json_obj, container) {
     }
 
     // @TODO dumps to cache
-    // @TODO bind events
-    //
+    // bind events
     ui.Main.bind_tweets_action(json_obj.users, container.pagename);
     toast.hide();
     return json_obj.users.length;

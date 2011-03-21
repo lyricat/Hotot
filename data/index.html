@@ -282,7 +282,7 @@ function on_load_finish() {
             $(window).dequeue('_on_load_finish');
         });
         
-        // 2. @TODO push settings to native platform
+        // 2. push settings to native platform
         if (util.is_native_platform()) {
             procs.push(function () {    
                 hotot_log('init', 'on_load_finish() -> push settings');
