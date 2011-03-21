@@ -42,12 +42,13 @@ function load_ext_list() {
             + '<div class="ext_icon_wrap">'
                 + '<img class="ext_icon" src="'+info.icon+'"/></div>'
             + '<div class="ext_item_body">'
-                + '<span class="ext_name">'+info.name+'</span> - Version  <span>'+ info.version + '</span><br/>'
-                + '<span>Author:</span> <span>'+info.author+'</span><br/>'
-                + '<span>Website:</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
+                + '<span class="ext_name">'+info.name+'</span> - '
+                + _('version') +' <span>'+ info.version + '</span><br/>'
+                + '<span>'+_('author')+':</span> <span>'+info.author+'</span><br/>'
+                + '<span>'+_('website')+':</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
                 + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
-                + '<div class="ext_ctrl"><a href="javascript:void(0);" class="enable_btn">Enable</a> '
-                + (info.has_options?' <a href="javascript:void(0);" class="options_btn">Options</a>': '')
+                + '<div class="ext_ctrl" style="padding-top: 5px; border-top: 1px #ccc solid"><a href="javascript:void(0);" class="button enable_btn">'+_('enable')+'</a> '
+                + (info.has_options?' <a href="javascript:void(0);" class="button options_btn">'+_('options')+'</a>': '')
             + '</div></div></li>');
     }
     $('#exts_container > ul').html(ext_arr.join(''));
@@ -69,10 +70,12 @@ enable_ext_item:
 function enable_ext_item(item, enable) {
     if (enable) {
         $(item).removeClass('disabled');
-        $(item).find('.enable_btn').text("Disable").addClass('disable');
+        $(item).find('.enable_btn')
+            .text(_('disable')).addClass('disable');
     } else {
         $(item).addClass('disabled');
-        $(item).find('.enable_btn').text("Enable").removeClass('disable');
+        $(item).find('.enable_btn')
+            .text(_('enable')).removeClass('disable');
     }
 },
 

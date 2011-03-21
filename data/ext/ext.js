@@ -40,7 +40,7 @@ listeners: {},
 
 exts_info: {},
 
-exts_enabled: [], // @TODO
+exts_enabled: [], 
 
 prefs: null,
 
@@ -204,11 +204,6 @@ function load_exts(exts, callback) {
     procs.push(callback);
     $(window).queue('_load_exts', procs);
     $(window).dequeue('_load_exts');
-},
-
-notify:
-function notify(type){
-    // #TODO
 },
 
 register_listener:

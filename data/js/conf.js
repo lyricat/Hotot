@@ -277,8 +277,8 @@ function save_token(name, token) {
     conf.save_prefs(name);
 },
 
-clear_token:
-function clear_token(name) {
+clean_token:
+function clean_token(name) {
     conf.profiles[name].preferences.access_token = '';
     conf.save_prefs(name);
 },

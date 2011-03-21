@@ -940,6 +940,10 @@ label {
     -webkit-border-radius: 5px 5px;
 }
 
+#welcome_page_loading {
+    margin: 50px auto 0 auto;
+}
+
 #welcome_page_loading .inner {
     background-color: #fff;
     padding: 40px 10px;
@@ -1198,8 +1202,8 @@ label {
     font-size:12px;
 }
 
-.ext_item:first {
-    border-top: 1px #ccc solid; 
+.ext_item:last {
+    border-bottom: none; 
 }
 
 .ext_item.disabled {

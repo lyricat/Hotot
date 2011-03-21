@@ -185,7 +185,7 @@ function init(callback) {
 function init_dialogs() {
     hotot_log('init', 'init_dialogs()');
     globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
-    globals.oauth_dialog.resize(350, 320);
+    globals.oauth_dialog.resize(350, 350);
     globals.oauth_dialog.place(widget.DialogManager.CENTER);
     globals.oauth_dialog.create();
 
@@ -521,7 +521,7 @@ jQuery(function($) {
             <a id="btn_oauth_sign_in" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
         </p>
         <p style="text-align:right; font-size: 10px;">
-            <a id="clear_token_btn" style="color:red; text-decoration:none;" href="#">clear token</a>
+            <a id="clean_token_btn" style="color:red; text-decoration:none;" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
         </p>
         </div>
 
@@ -1519,7 +1519,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <!-- Profile dialog -->
 <div id="profile_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title">Profile</h2>
+        <h2 class="dialog_title" data-i18n-text="profile">Profile</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1527,7 +1527,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div id="profile_dlg_body" class="dialog_body">
     <div style="float:left; width: 150px;">
         <div class="dialog_block">
-        <h3>- Picture -</h3>
+        <h3>- <span data-i18n-text="picture">Picture</span> -</h3>
         <p style="text-align:center; min-height:70px;">
             <span id="profile_avator" class="profile_img_wrapper"></span>
             <a id="btn_change_profile_avatar" class="button" style="display:none" data-i18n-text="change_avatar">Change avatar
@@ -1537,19 +1537,19 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </div>
 
         <div class="dialog_block">
-        <h3>- Stat -</h3>
+        <h3>- <span data-i18n-text="stat">Stat</span> -</h3>
         <p id="profile_stat">
-            <label class="label">Join: </label>
+            <label class="label" data-i18n-text="join_time">Join</span>: </label>
             <span id="profile_join"></span><br/>
-            <label class="label">Tweets: </label>
+            <label class="label" data-i18n-text="tweets">Tweets</span>: </label>
             <span id="profile_tweet_cnt"></span><br/>
-            <label class="label">Tweets per Day: </label>
+            <label class="label" data-i18n-text="tweets_per_day">Tweets per Day</span>: </label>
             <span id="profile_tweet_per_day_cnt"></span><br/>
-            <label class="label">Friends: </label>
+            <label class="label" data-i18n-text="friend_stat">Friends</span>: </label>
             <span id="profile_friend_cnt"></span><br/>
-            <label class="label">Followers: </label> 
+            <label class="label" data-i18n-text="follower_stat">Followers</span>: </label> 
             <span id="profile_follower_cnt"></span><br/>
-            <label class="label">Favourites: </label>
+            <label class="label" data-i18n-text="favorites">Favourites</span>: </label>
             <span id="profile_favourite_cnt"></span><br/>
         </p>
         </div>
@@ -1558,13 +1558,13 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="dialog_block">
         <h3>- <span data-i18n-text="information">Information</span> -</h3>
         <p>
-            <label class="label">Name</label><br/>
+            <label class="label" data-i18n-text="name">Name</label><br/>
             <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
-            <label class="label">Location</label><br/>
+            <label class="label" data-i18n-text="location">Location</label><br/>
             <input id="tbox_profile_location" title="Location" type="text" class="entry"/><br/>
-            <label class="label">Website</label><br/>
+            <label class="label" data-i18n-text="website">Website</label><br/>
             <input id="tbox_profile_website" title="Website" type="text" class="entry"/><br/>
-            <label class="label">Bio</label><br/>
+            <label class="label" data-i18n-text="bio">Bio</label><br/>
             <textarea id="tbox_profile_bio" title="Bio" class="entry" style="height: 70px;"></textarea>
         </p>
         </div>

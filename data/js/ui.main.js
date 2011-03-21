@@ -47,7 +47,7 @@ function init () {
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-                toast.set("Loading Tweets...").show(-1);
+                toast.set(_('loading_tweets_dots')).show(-1);
                 ui.Main.load_more_tweets(
                     ui.Main.get_sub_pagename(pagename),
                     function () {
@@ -785,20 +785,20 @@ function on_retweet_click(btn, li_id, event) {
 
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
-        toast.set("Undo Retweeting ...").show(-1);
+        toast.set(_('undo_retweeting_dots')).show(-1);
         lib.twitterapi.destroy_status(rt_id, 
         function (result) {
-            toast.set("Undo Successfully!").show();
-            $(btn).removeClass('retweeted').attr('title', 'Official retweet this tweet.');
+            toast.set(_('undo_successfully')).show();
+            $(btn).removeClass('retweeted').attr('title', _('retweet this tweet'));
             li.removeClass('retweeted');
         });
     } else {
-        toast.set("Retweeting ...").show(-1);
+        toast.set(_('retweeting_dots')).show(-1);
         lib.twitterapi.retweet_status(id, 
         function (result) {
-            toast.set("Retweet Successfully!").show();
+            toast.set(_('retweet_successfully')).show();
             li.attr('my_retweet_id', result.id_str);
-            $(btn).addClass('retweeted').attr('title', "Undo retweet.");
+            $(btn).addClass('retweeted').attr('title', _('undo_retweet'));
             li.addClass('retweeted');
         });
     }
@@ -828,7 +828,7 @@ function on_reply_all_click(btn, li_id, event) {
             match = ui.Template.reg_user.exec(text);
         }
         ui.StatusBox.reply_to_id = id;
-        ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span>  ' + text);
+        ui.StatusBox.set_status_info('<span class="info_hint">'+_('reply to')+'</span>  ' + text);
         ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
         ui.StatusBox.open(
         function() {
@@ -870,7 +870,7 @@ function on_del_click(btn, li_id, event) {
     lib.twitterapi.destroy_status(id, 
     function (result) {
         li.remove();
-        toast.set('Destroy Successfully!').show();
+        toast.set(_('destroy_successfully')).show();
     });
 },
 
@@ -880,17 +880,17 @@ function on_fav_click(btn, li_id, event) {
     var id = li.attr('retweet_id') == ''? 
         ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
     if ($(li).hasClass('fav')) {
-        toast.set('un-favorite this tweet ...').show(-1);
+        toast.set(_('un_favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
-            toast.set('Successfully!').show();
+            toast.set(_('successfully')).show();
             $(li).removeClass('fav');
         });
     } else {
-        toast.set('favorite this tweet ...').show(-1);
+        toast.set(_('favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
-            toast.set('Successfully!').show();
+            toast.set(_('Successfully')).show();
             $(li).addClass('fav');
         });
     }
@@ -900,11 +900,11 @@ on_follow_btn_click:
 function on_follow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    toast.set("Follow @" + screen_name + " ...").show();
+    toast.set(_('follow_at') + screen_name + ' ' + _('dots')).show();
     lib.twitterapi.create_friendships(screen_name,
     function () {
         toast.set(
-            "Follow @" + screen_name+" Successfully!").show();
+            _('follow_at') + screen_name+' '+ _('successfully')).show();
         li.attr('following', 'true');
     });
 },
@@ -913,11 +913,11 @@ on_unfollow_btn_click:
 function on_unfollow_btn_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    toast.set("Unfollow @" + screen_name + " ...").show();
+    toast.set(_('unfollow_at') + screen_name + ' '+ _('dots')).show();
     lib.twitterapi.destroy_friendships(screen_name,
     function () {
         toast.set(
-            "Unfollow @" + screen_name+ " Successfully!").show();
+            _('unfollow_at') + screen_name+ ' '+ _('successfully')).show();
         li.attr('following', 'false');
     });
 },

@@ -1,42 +1,18 @@
 {
+	"unfollow_at": {
+		"message": "Unfollow @",
+		"description": "data/js/ui.main.js"
+	},
 	"all": {
 		"message": "All",
-		"description": "data/index.html"
-	},
-	"help": {
-		"message": "Help",
-		"description": "data/index.html"
-	},
-	"posting_dots": {
-		"message": "Posting ...",
-		"description": "data/js/ui.status_box.js"
-	},
-	"unfollow": {
-		"message": "Unfollow",
-		"description": "data/index.html"
-	},
-	"http_proxy": {
-		"message": "HTTP Proxy",
 		"description": "data/index.html"
 	},
 	"load_more": {
 		"message": "Load More",
 		"description": "data/index.html"
 	},
-	"tweet_stat": {
-		"message": "Tweet",
-		"description": "data/index.html"
-	},
-	"summon_hotot": {
-		"message": "Summon Hotot (like: <ALT>C)",
-		"description": "data/index.html"
-	},
 	"use_native_notify_system": {
 		"message": "Use native notify system",
-		"description": "data/index.html"
-	},
-	"send_message": {
-		"message": "Send Message",
 		"description": "data/index.html"
 	},
 	"unblock": {
@@ -45,14 +21,6 @@
 	},
 	"relation": {
 		"message": "Relation",
-		"description": "data/index.html"
-	},
-	"network_error_please_try_later": {
-		"message": "Network Error! Please try later.",
-		"description": "data/js/ui.welcome.js"
-	},
-	"keyboard": {
-		"message": "Keyboard",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -67,12 +35,8 @@
 		"message": "Click here to compose a message ...",
 		"description": "data/js/ui.status_box.js"
 	},
-	"web": {
-		"message": "Web",
-		"description": "data/index.html"
-	},
-	"tech_info": {
-		"message": "Tech Info",
+	"authentication_ok": {
+		"message": "Authentication OK!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"remember_password": {
@@ -83,77 +47,33 @@
 		"message": "Click the buttone below",
 		"description": "data/index.html"
 	},
-	"regain_access_token_with_twitter": {
-		"message": "Regain Access Token with Twitter",
+	"click_me_to_continue": {
+		"message": "Click Me to Continue",
 		"description": "data/index.html"
 	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Press Ctrl + Enter to Update",
+	"count": {
+		"message": "Count",
 		"description": "data/index.html"
 	},
-	"location": {
-		"message": "Location",
-		"description": "data/index.html"
-	},
-	"tweets": {
-		"message": "Tweets",
-		"description": "data/index.html"
-	},
-	"bio": {
-		"message": "Bio",
-		"description": "data/index.html"
-	},
-	"enable_proxy": {
-		"message": "Enable Proxy",
-		"description": "data/index.html"
+	"destroy_successfully": {
+		"message": "Destroy Successfully!",
+		"description": "data/js/ui.main.js"
 	},
 	"please_entry_a_profile_prefix": {
 		"message": "Please enter a profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
-	"effects": {
-		"message": "Effects",
-		"description": "data/index.html"
-	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "More effects like shadows and glow of widgets",
-		"description": "data/index.html"
-	},
-	"password": {
-		"message": "Password",
-		"description": "data/index.html"
-	},
-	"advanced": {
-		"message": "Advanced",
-		"description": "data/index.html"
-	},
 	"disabled": {
 		"message": "Disabled",
-		"description": "data/index.html"
-	},
-	"fav_or_unfav": {
-		"message": "Fav/Un-Fav",
-		"description": "data/index.html"
-	},
-	"name": {
-		"message": "Name",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
 		"message": "Access token doesn't exists",
 		"description": "data/index.html"
 	},
-	"edit": {
-		"message": "Edit",
-		"description": "data/index.html"
-	},
-	"show_all": {
-		"message": "Show All",
-		"description": "data/index.html"
-	},
-	"greeting": {
-		"message": "Greeting!",
-		"description": "data/index.html"
+	"retweet_successfully": {
+		"message": "Retweet Successfully!",
+		"description": "data/js/ui.main.js"
 	},
 	"direct_messages": {
 		"message": "Direct Messages",
@@ -167,32 +87,16 @@
 		"message": "Loading Resources ...",
 		"description": "data/index.html"
 	},
-	"system_font": {
-		"message": "System Font",
-		"description": "data/index.html"
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "Cannot authenticate you! Please check your username/password and API Base",
+		"description": "data/js/ui.welcome.js"
 	},
 	"my_tweets_be_retweeted": {
 		"message": "My Tweets, Be retweeted",
 		"description": "data/index.html"
 	},
-	"twitter": {
-		"message": "Twitter",
-		"description": "data/index.html"
-	},
-	"stat": {
-		"message": "STAT",
-		"description": "data/index.html"
-	},
 	"search_for": {
 		"message": "Search for",
-		"description": "data/index.html"
-	},
-	"people_request_hint_title": {
-		"message": "has protected his/her tweets.",
-		"description": "data/index.html"
-	},
-	"create_profile": {
-		"message": "Create Profile",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
@@ -215,20 +119,8 @@
 		"message": "Enable Verbose Mode",
 		"description": "data/index.html"
 	},
-	"search_in_google": {
-		"message": "Search in Google",
-		"description": "data/index.html"
-	},
-	"post_successfully": {
-		"message": "Post Successfully!",
-		"description": "data/js/ui.status_box.js"
-	},
 	"preferences": {
 		"message": "Preferences",
-		"description": "data/index.html"
-	},
-	"notification": {
-		"message": "Notification",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
@@ -239,9 +131,9 @@
 		"message": "COMPOSE MESSAGE To",
 		"description": "data/js/ui.status_box.js"
 	},
-	"content": {
-		"message": "Content",
-		"description": "data/index.html"
+	"version": {
+		"message": "Version",
+		"description": "data/js/ui.exts_dlg.js"
 	},
 	"oauth_base": {
 		"message": "OAuth Base",
@@ -251,12 +143,8 @@
 		"message": "Reply",
 		"description": "data/index.html"
 	},
-	"find_someone_you_love": {
-		"message": "Find Someone You Love :)",
-		"description": "data/index.html"
-	},
-	"public_only": {
-		"message": "Public Only",
+	"api_setting": {
+		"message": "API Setting",
 		"description": "data/index.html"
 	},
 	"oops_an_api_error_occurs": {
@@ -271,25 +159,17 @@
 		"message": "Copy the PIN Code and paste it into the box below",
 		"description": "data/index.html"
 	},
-	"api_setting": {
-		"message": "API Setting",
+	"find_someone_you_love": {
+		"message": "Find Someone You Love :)",
 		"description": "data/index.html"
 	},
-	"credits": {
-		"message": "Credits",
-		"description": "data/index.html"
+	"undo_successfully": {
+		"message": "Undo Successfully!",
+		"description": "data/js/ui.main.js"
 	},
-	"host": {
-		"message": "Host",
-		"description": "data/index.html"
-	},
-	"outbox": {
-		"message": "Outbox",
-		"description": "data/index.html"
-	},
-	"favs": {
-		"message": "Favs",
-		"description": "data/index.html"
+	"un_favorite_this_tweet_dots": {
+		"message": "Un-favorite this tweet ...",
+		"description": "data/js/ui.main.js"
 	},
 	"effects_extra": {
 		"message": "Extra",
@@ -303,10 +183,6 @@
 		"message": "Search",
 		"description": "data/index.html"
 	},
-	"ok": {
-		"message": "OK",
-		"description": "data/index.html"
-	},
 	"license": {
 		"message": "License",
 		"description": "data/index.html"
@@ -315,100 +191,36 @@
 		"message": "Hover to Open Tweet Box",
 		"description": "data/index.html"
 	},
-	"use_ubuntu_indicator": {
-		"message": "Use Ubuntu Indicator",
-		"description": "data/index.html"
-	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "Charactor `@` is not allowed in profile prefix",
 		"description": "data/js/ui.welcome.js"
-	},
-	"conversation": {
-		"message": "Conversation",
-		"description": "data/index.html"
-	},
-	"reply_only": {
-		"message": "Reply Only",
-		"description": "data/index.html"
-	},
-	"extensions": {
-		"message": "Extensions",
-		"description": "data/index.html"
 	},
 	"mentions": {
 		"message": "Mentions",
 		"description": "data/index.html"
 	},
-	"retweeted_by_me": {
-		"message": "Retweeted by Me",
+	"identica": {
+		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
-	"block": {
-		"message": "Block",
-		"description": "data/index.html"
-	},
-	"info": {
-		"message": "INFO",
-		"description": "data/index.html"
+	"options": {
+		"message": "Options",
+		"description": "data/js/ui.exts_dlg.js"
 	},
 	"about_and_help": {
 		"message": "About & Help",
-		"description": "data/index.html"
-	},
-	"api_base": {
-		"message": "API Base",
 		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Regain Access Token",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Balance between attractiveness and preformance.",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "misc",
-		"description": "data/index.html"
-	},
-	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "Cannot authenticate you! Please check your username/password and API Base",
-		"description": "data/js/ui.welcome.js"
-	},
-	"follower_stat": {
-		"message": "Follower",
-		"description": "data/index.html"
-	},
-	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Or copy the address and open it in your browser.",
-		"description": "data/index.html"
-	},
 	"globals": {
 		"message": "Globals",
 		"description": "data/index.html"
 	},
-	"notify": {
-		"message": "Notify",
-		"description": "data/index.html"
-	},
-	"cancel": {
-		"message": "Cancel",
-		"description": "data/index.html"
-	},
-	"search_no_result_hint_title2": {
-		"message": "did not match any result.",
-		"description": "data/index.html"
-	},
-	"search_no_result_hint_title1": {
-		"message": "Your search",
-		"description": "data/index.html"
-	},
-	"update_successfully": {
-		"message": "Update Successfully!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"delete": {
-		"message": "Delete",
+	"create_profile": {
+		"message": "Create Profile",
 		"description": "data/index.html"
 	},
 	"px": {
@@ -418,14 +230,6 @@
 	"new_profile_has_been_created": {
 		"message": "New Profile has been created!",
 		"description": "data/js/ui.welcome.js"
-	},
-	"send_request": {
-		"message": "Send Request",
-		"description": "data/index.html"
-	},
-	"friend_stat": {
-		"message": "Friend",
-		"description": "data/index.html"
 	},
 	"preview": {
 		"message": "Preview",
@@ -439,21 +243,21 @@
 		"message": "Disable decoration of widgets and some animations.",
 		"description": "data/index.html"
 	},
-	"click_me_to_continue": {
-		"message": "Click Me to Continue",
-		"description": "data/index.html"
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
 	},
-	"username": {
-		"message": "Username",
-		"description": "data/index.html"
+	"gain_access_token": {
+		"message": "Gain access token",
+		"description": "data/js/ui.welcome.js"
 	},
-	"same_signing_oauth_base": {
-		"message": "Same Signing OAuth Base",
-		"description": "data/index.html"
+	"enable": {
+		"message": "Enable",
+		"description": "data/js/ui.exts_dlg.js"
 	},
-	"about": {
-		"message": "About",
-		"description": "data/index.html"
+	"follow_at": {
+		"message": "Follow @",
+		"description": "data/js/ui.main.js"
 	},
 	"search_no_result_hint_suggestion2": {
 		"message": "Try different keywords.",
@@ -471,12 +275,8 @@
 		"message": "Same Signing API Base",
 		"description": "data/index.html"
 	},
-	"pin_code": {
-		"message": "PIN Code",
-		"description": "data/index.html"
-	},
-	"count": {
-		"message": "Count",
+	"sound": {
+		"message": "Sound",
 		"description": "data/index.html"
 	},
 	"account": {
@@ -487,16 +287,12 @@
 		"message": "Search API Base",
 		"description": "data/index.html"
 	},
-	"enabled": {
-		"message": "Enabled",
-		"description": "data/index.html"
-	},
 	"keyboard_shortcuts": {
 		"message": "Keyboard Shortcuts",
 		"description": "data/index.html"
 	},
-	"profile_name": {
-		"message": "Profile Name",
+	"restore_defaults": {
+		"message": "Restore Defaults",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -515,16 +311,372 @@
 		"message": "Updating ...",
 		"description": "data/js/ui.status_box.js"
 	},
-	"identica": {
-		"message": "Identi.ca",
+	"effects_low": {
+		"message": "Low",
+		"description": "data/index.html"
+	},
+	"send_request": {
+		"message": "Send Request",
+		"description": "data/index.html"
+	},
+	"suggestions": {
+		"message": "Suggestions",
+		"description": "data/index.html"
+	},
+	"profile_name": {
+		"message": "Profile Name",
+		"description": "data/index.html"
+	},
+	"retweeted_by_others": {
+		"message": "Retweeted by Others",
+		"description": "data/index.html"
+	},
+	"clean_token": {
+		"message": "Clean token",
+		"description": "data/index.html"
+	},
+	"information": {
+		"message": "Information",
+		"description": "data/index.html"
+	},
+	"author": {
+		"message": "Author",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Preload latest tweets in conversations if possible.",
+		"description": "data/index.html"
+	},
+	"undo_retweeting_dots": {
+		"message": "Undo retweeting ...",
+		"description": "data/js/ui.main.js"
+	},
+	"followers": {
+		"message": "Followers",
+		"description": "data/index.html"
+	},
+	"step_one": {
+		"message": "Step 1",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "Profile",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "Normal",
+		"description": "data/index.html"
+	},
+	"sign_in": {
+		"message": "Sign In",
+		"description": "data/index.html"
+	},
+	"disable": {
+		"message": "Disable",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"favorites": {
+		"message": "Favorites",
+		"description": "data/index.html"
+	},
+	"font_size": {
+		"message": "Font Size",
+		"description": "data/index.html"
+	},
+	"step_two": {
+		"message": "Step 2",
+		"description": "data/index.html"
+	},
+	"help": {
+		"message": "Help",
+		"description": "data/index.html"
+	},
+	"posting_dots": {
+		"message": "Posting ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"unfollow": {
+		"message": "Unfollow",
+		"description": "data/index.html"
+	},
+	"http_proxy": {
+		"message": "HTTP Proxy",
+		"description": "data/index.html"
+	},
+	"tweet_stat": {
+		"message": "Tweet",
+		"description": "data/index.html"
+	},
+	"summon_hotot": {
+		"message": "Summon Hotot (like: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "Send Message",
+		"description": "data/index.html"
+	},
+	"network_error_please_try_later": {
+		"message": "Network Error! Please try later.",
+		"description": "data/js/ui.welcome.js"
+	},
+	"keyboard": {
+		"message": "Keyboard",
+		"description": "data/index.html"
+	},
+	"undo_retweet": {
+		"message": "Undo retweet",
+		"description": "data/js/ui.main.js"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "Favorite this tweet ...",
+		"description": "data/js/ui.main.js"
+	},
+	"web": {
+		"message": "Web",
+		"description": "data/index.html"
+	},
+	"tech_info": {
+		"message": "Tech Info",
+		"description": "data/js/ui.welcome.js"
+	},
+	"loading_tweets_dots": {
+		"message": "Loading tweets ...",
+		"description": "data/js/ui.main.js"
+	},
+	"regain_access_token_with_twitter": {
+		"message": "Regain Access Token with Twitter",
+		"description": "data/index.html"
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "Press Ctrl + Enter to Update",
+		"description": "data/index.html"
+	},
+	"location": {
+		"message": "Location",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "Tweets",
+		"description": "data/index.html"
+	},
+	"bio": {
+		"message": "Bio",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "misc",
+		"description": "data/index.html"
+	},
+	"effects": {
+		"message": "Effects",
+		"description": "data/index.html"
+	},
+	"what_is_happening": {
+		"message": "What's Happening?",
+		"description": "data/js/ui.status_box.js"
+	},
+	"password": {
+		"message": "Password",
+		"description": "data/index.html"
+	},
+	"advanced": {
+		"message": "Advanced",
+		"description": "data/index.html"
+	},
+	"fav_or_unfav": {
+		"message": "Fav/Un-Fav",
+		"description": "data/index.html"
+	},
+	"name": {
+		"message": "Name",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "Edit",
+		"description": "data/index.html"
+	},
+	"show_all": {
+		"message": "Show All",
+		"description": "data/index.html"
+	},
+	"greeting": {
+		"message": "Greeting!",
+		"description": "data/index.html"
+	},
+	"page": {
+		"message": "Page",
+		"description": "data/index.html"
+	},
+	"inbox": {
+		"message": "Inbox",
+		"description": "data/index.html"
+	},
+	"system_font": {
+		"message": "System Font",
+		"description": "data/index.html"
+	},
+	"twitter": {
+		"message": "Twitter",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "Successfully",
+		"description": "data/js/ui.main.js"
+	},
+	"people_request_hint_title": {
+		"message": "has protected his/her tweets.",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "Cancel",
+		"description": "data/index.html"
+	},
+	"search_in_google": {
+		"message": "Search in Google",
+		"description": "data/index.html"
+	},
+	"post_successfully": {
+		"message": "Post Successfully!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"notification": {
+		"message": "Notification",
+		"description": "data/index.html"
+	},
+	"content": {
+		"message": "Content",
+		"description": "data/index.html"
+	},
+	"update_successfully": {
+		"message": "Update Successfully!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"public_only": {
+		"message": "Public Only",
+		"description": "data/index.html"
+	},
+	"credits": {
+		"message": "Credits",
+		"description": "data/index.html"
+	},
+	"host": {
+		"message": "Host",
+		"description": "data/index.html"
+	},
+	"outbox": {
+		"message": "Outbox",
+		"description": "data/index.html"
+	},
+	"favs": {
+		"message": "Favs",
+		"description": "data/index.html"
+	},
+	"tweets_per_day": {
+		"message": "Tweets Per Day",
+		"description": "data/index.html"
+	},
+	"about": {
+		"message": "About",
+		"description": "data/index.html"
+	},
+	"ok": {
+		"message": "OK",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "Use Ubuntu Indicator",
+		"description": "data/index.html"
+	},
+	"status_is_over_140_characters": {
+		"message": "Status is over 140 characters!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"conversation": {
+		"message": "Conversation",
+		"description": "data/index.html"
+	},
+	"reply_only": {
+		"message": "Reply Only",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "Extensions",
+		"description": "data/index.html"
+	},
+	"retweeted_by_me": {
+		"message": "Retweeted by Me",
+		"description": "data/index.html"
+	},
+	"block": {
+		"message": "Block",
+		"description": "data/index.html"
+	},
+	"api_base": {
+		"message": "API Base",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "Balance between attractiveness and preformance.",
+		"description": "data/index.html"
+	},
+	"enable_proxy": {
+		"message": "Enable Proxy",
+		"description": "data/index.html"
+	},
+	"follower_stat": {
+		"message": "Follower",
+		"description": "data/index.html"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "Or copy the address and open it in your browser.",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "Notify",
+		"description": "data/index.html"
+	},
+	"search_no_result_hint_title2": {
+		"message": "did not match any result.",
+		"description": "data/index.html"
+	},
+	"search_no_result_hint_title1": {
+		"message": "Your search",
+		"description": "data/index.html"
+	},
+	"friend_stat": {
+		"message": "Friend",
+		"description": "data/index.html"
+	},
+	"same_signing_oauth_base": {
+		"message": "Same Signing OAuth Base",
+		"description": "data/index.html"
+	},
+	"pin_code": {
+		"message": "PIN Code",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "INFO",
+		"description": "data/index.html"
+	},
+	"enabled": {
+		"message": "Enabled",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "Username",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "Delete",
 		"description": "data/index.html"
 	},
 	"reply_all": {
 		"message": "Reply All",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Low",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -535,37 +687,13 @@
 		"message": "Whisper",
 		"description": "data/js/ui.welcome.js"
 	},
-	"suggestions": {
-		"message": "Suggestions",
-		"description": "data/index.html"
-	},
-	"restore_defaults": {
-		"message": "Restore Defaults",
-		"description": "data/index.html"
-	},
-	"retweeted_by_others": {
-		"message": "Retweeted by Others",
-		"description": "data/index.html"
-	},
-	"inbox": {
-		"message": "Inbox",
-		"description": "data/index.html"
-	},
-	"authentication_ok": {
-		"message": "Authentication OK!",
-		"description": "data/js/ui.welcome.js"
-	},
 	"join_time": {
 		"message": "Join",
 		"description": "data/index.html"
 	},
-	"status_is_over_140_characters": {
-		"message": "Status is over 140 characters!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Preload latest tweets in conversations if possible.",
-		"description": "data/index.html"
+	"retweeting_dots": {
+		"message": "Retweeting ...",
+		"description": "data/js/ui.main.js"
 	},
 	"oops_a_network_error_occurs": {
 		"message": "Oops, A Network Error Occurs",
@@ -575,28 +703,20 @@
 		"message": "Port",
 		"description": "data/index.html"
 	},
-	"sound": {
-		"message": "Sound",
+	"website": {
+		"message": "Website",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "More effects like shadows and glow of widgets",
 		"description": "data/index.html"
 	},
-	"followers": {
-		"message": "Followers",
+	"picture": {
+		"message": "Picture",
 		"description": "data/index.html"
 	},
-	"what_is_happening": {
-		"message": "What's Happening?",
-		"description": "data/js/ui.status_box.js"
-	},
-	"step_one": {
-		"message": "Step 1",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Normal",
-		"description": "data/index.html"
-	},
-	"information": {
-		"message": "Information",
+	"stat": {
+		"message": "STAT",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
@@ -615,32 +735,16 @@
 		"message": "Update",
 		"description": "data/index.html"
 	},
-	"sign_in": {
-		"message": "Sign In",
-		"description": "data/index.html"
-	},
 	"look_and_feels": {
 		"message": "Look & Feels",
-		"description": "data/index.html"
-	},
-	"globals_restart_hint": {
-		"message": "You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts",
 		"description": "data/index.html"
 	},
 	"friends": {
 		"message": "Friends",
 		"description": "data/index.html"
 	},
-	"font_size": {
-		"message": "Font Size",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Clear",
-		"description": "data/index.html"
-	},
-	"page": {
-		"message": "Page",
 		"description": "data/index.html"
 	},
 	"look_up": {
@@ -649,10 +753,6 @@
 	},
 	"sign_in_with_twitter": {
 		"message": "Sign in with Twitter",
-		"description": "data/index.html"
-	},
-	"step_two": {
-		"message": "Step 2",
 		"description": "data/index.html"
 	}
 }
