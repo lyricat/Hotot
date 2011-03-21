@@ -135,39 +135,50 @@ function fail(result) {
 },
 
 enable:
-function load() {
+function enable() {
     ext.add_exts_menuitem('ext_btn_hotot_upload_image'
         , ext.HototImageUpload.id+'/ic16_upload.png'
         , 'Upload Images ...'
         , ext.HototImageUpload.on_ext_btn_clicked);
     // create upload dialog
     var title = 'Upload image to ...'
-    var header_html = '<h3>Upload to ...</h3>'
-    var body_html = '<p>\
+    var header_html = '<h3>Upload to ...</h3>';
+    var header_html_2 = '<h3>Current platform doesn\'t support to upload file. You can upload images follow those links:</h3>';
+    var body_html = 
+        '<div class="dialog_block"><h3>- Services -</h3><p>\
         <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="combo">\
             <option value="img.ly" default="1">img.ly</option>\
             <option value="twitpic.com">twitpic.com</option>\
             <option value="plixi.com">plixi.com</option>\
         </select>\
-        <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image\
-        <span class="placeholder"></span>\
-        </a></p><p>\
-        <div style="float:left;height:100px;width:100px;">\
-        <label >Preview:<label><br/>\
-        <img id="ext_hotot_upload_image_prev" style="max-height:100px;max-width:100px;"/>\
-        </div>\
-        <div style="margin-left:110px;">\
-        <label >Add a message<label><br/>\
-        <textarea id="ext_hotot_upload_image_message"class="dark"></textarea>\
-        </div></p>';
-    var footer = '<a href="javascript:void(0)" class="button" id="">Upload</a>';
-
+        <a id="ext_btn_hotot_upload_image_brow" href="javascript:void(0);" class="button" onclick="ext.HototImageUpload.on_btn_brow_clicked();">Choose an image</a></p></div>\
+        <div class="dialog_block"><h3>- Preview &amp; Comments -</h3><p>\
+        <img id="ext_hotot_upload_image_prev" style="max-height:100px;width:100px; border:1px #ccc solid;" style="float: left;"/>\
+        <textarea id="ext_hotot_upload_image_message" class="textarea" style="min-height: 100px;"></textarea></p></div>';
+    var body_html_2 = 
+    '<div class="dialog_block"><h3>- Services -</h3>\
+        <p>\
+        <a href="http://img.ly" target="_blank" class="button">img.ly</a>\
+        <a href="http://twipic.com" target="_blank" class="button">twipic.com</a>\
+        <a href="http://plixi.com" target="_blank" class="button">plixi.com</a>\
+        </p>\
+    </div>';
+    
+    if (util.is_native_platform()) {
     ext.HototImageUpload.upload_dialog 
         = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
             , title, header_html, body_html
             , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
                 , click: ext.HototImageUpload.on_btn_upload_clicked}]
             );
+    } else {
+    ext.HototImageUpload.upload_dialog 
+        = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
+            , title, header_html_2, body_html_2
+            , [{  id:'#ext_uploadimage_upload_btn', label: 'Close'
+                , click: function(){ext.HototImageUpload.upload_dialog.close()}}]
+            );
+    }
     ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})
     ext.HototImageUpload.upload_dialog.resize(400, 250);
 },
