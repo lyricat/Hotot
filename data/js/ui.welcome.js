@@ -197,8 +197,6 @@ function init () {
         globals.about_dialog.open();
     });
 
-    ui.Welcome.load_profiles_info();
-    $('#profile_avator_list a:first').click();
     return this;
 },
 

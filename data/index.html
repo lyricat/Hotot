@@ -314,6 +314,8 @@ function on_load_finish() {
                 hotot_log('init', 'done!');
                 $('#welcome_page_main').fadeIn();  
                 ui.Welcome.load_daily_hint();
+                ui.Welcome.load_profiles_info();
+                $('#profile_avator_list a:first').click();
                 $(window).dequeue('_on_load_finish');
             });
         });
