@@ -159,7 +159,7 @@ function enable() {
     '<div class="dialog_block"><h3>- Services -</h3>\
         <p>\
         <a href="http://img.ly" target="_blank" class="button">img.ly</a>\
-        <a href="http://twipic.com" target="_blank" class="button">twipic.com</a>\
+        <a href="http://twitpic.com" target="_blank" class="button">twitpic.com</a>\
         <a href="http://plixi.com" target="_blank" class="button">plixi.com</a>\
         </p>\
     </div>';

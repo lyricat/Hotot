@@ -716,7 +716,7 @@ label {
 
 #main_page_slider {
     height: 100%;
-    width: 1000%;
+    width: auto;
 }
 
 #tweet_bar {

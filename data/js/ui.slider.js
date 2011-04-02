@@ -67,9 +67,15 @@ function slide_to(id) {
             && 0 <= fixed_idx - parseInt(ui.Slider.column_num/2))
         ? fixed_idx - parseInt(ui.Slider.column_num/2) : fixed_idx;
 
+    $('#main_page_slider').css('width', '1000%');
     // slide page
     ui.Slider.me.stop().animate(
-        {marginLeft: (0 - page_offset * width + ui.Slider.column_num) +'px'}, 500);
+        {marginLeft: (0 - page_offset * width + ui.Slider.column_num) +'px'}
+        , 500
+        , function () {
+            $('#main_page_slider').css('width', 'auto');
+        }
+    );
     
     // change current page style
     $('.tweet_block').removeClass('current');
