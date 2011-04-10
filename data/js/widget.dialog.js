@@ -2,6 +2,7 @@ if (typeof(widget) == 'undefined') widget = {}
 function WidgetDialog(obj) {
     /* .dialog 
      * .dialog > .dialog_bar
+     * .dialog > .dialog_bar > .dialog_title
      * .dialog > .dialog_bar > .dialog_close_btn
      * .dialog > .dialog_header
      * .dialog > .dialog_body
