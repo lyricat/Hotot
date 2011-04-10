@@ -11,23 +11,29 @@ function init () {
         daemon.Updater.update_people();
     });
 
-    $('#btn_hotot_wrap').hover(
-    function (event) {
-    },
+    $('#header').mouseleave(
     function (event) {
         $('#hotot_menu').hide();
-    }).click(
+        $('#exts_menu').hide();
+    });
+
+    $('#hotot_menu').mouseleave(
     function (event) {
+        $('#hotot_menu').hide();
+    });
+    $('#btn_hotot').click(
+    function (event) {
+        $('#exts_menu').hide();
         $('#hotot_menu').toggle();
     });
 
-    $('#btn_exts_menu_wrap').hover(
-    function (event) {
-    },
+    $('#exts_menu').mouseleave(
     function (event) {
         $('#exts_menu').hide();
-    }).click(
+    });
+    $('#btn_exts_menu').click(
     function (event) {
+        $('#hotot_menu').hide();
         if ($('#exts_menu > li').length == 1) {
             $('#exts_menu_empty_hint').show();
         } else if (1 < $('#exts_menu > li').length) {
