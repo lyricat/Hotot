@@ -86,7 +86,7 @@ function change_effects_level(level) {
 function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();
     ui.Slider.column_num = parseInt(view_width / 400) || 1;
-    globals.tweet_block_width = view_width / ui.Slider.column_num;
+    globals.tweet_block_width = view_width / ui.Slider.column_num - 1;
     $(".tweet_block").width(globals.tweet_block_width);
 }
 
