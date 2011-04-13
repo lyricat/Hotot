@@ -64,14 +64,14 @@ function init () {
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
-                widget.DialogManager.alert(
+                ui.ErrorDlg.alert(
                       _('oops_a_network_error_occurs')
-                    , _('network_error_please_try_later'));
+                    , _('network_error_please_try_later'), 'None');
             } else {
-                widget.DialogManager.alert(
+                ui.ErrorDlg.alert(
                       _('oops_an_api_error_occurs')
                     , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
-                    + _('tech_info') + '<br/><pre>'+result+'</pre>');
+                    , result.toString());
             }
         });
     };
@@ -95,9 +95,9 @@ function init () {
             jsOAuth.get_request_token(
             function (result) {
                 if (result == '') {
-                    widget.DialogManager.alert(
+                    ui.ErrorDlg.alert(
                         _('oops_a_network_error_occurs')
-                      , _('network_error_please_try_later'));
+                      , _('network_error_please_try_later'), '');
                 } else {
                     ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
                     globals.oauth_dialog.open();
@@ -112,14 +112,14 @@ function init () {
                 if (result.screen_name) {
                     ui.Welcome.authenticate_pass(result);
                 } else if (result == '') {
-                    widget.DialogManager.alert(
+                    ui.ErrorDlg.alert(
                           _('oops_a_network_error_occurs')
-                        , _('network_error_please_try_later'));
+                        , _('network_error_please_try_later'), '');
                 } else {
-                    widget.DialogManager.alert(
+                    ui.ErrorDlg.alert(
                           _('oops_an_api_error_occurs')
                         , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
-                    + _('tech_info') +'<br/><pre>'+result+'</pre>');
+                        , result);
                 }
             });
         }

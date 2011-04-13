@@ -296,7 +296,7 @@ pre {
 }
 
 #tbox_status {
-    width: 290px;
+    width: 288px;
     height: 15px;
     border: 1px #ccc solid;
     color: #333;
@@ -331,17 +331,22 @@ pre {
 }
 
 #btn_shorturl {
-    background: #f9f9f9 url(../image/ic16_link.png) no-repeat center center !important;
+    background: transparent url(../image/ic16_link.png) no-repeat center center !important;
 }
 
 #toggle_mode {
-    background: #f9f9f9 url(../image/ic16_dm.png) no-repeat center center !important;
+    background: transparent url(../image/ic16_dm.png) no-repeat center center !important;
 }
 
 #toggle_mode, #btn_shorturl {
     width: 4px !important;
     min-width: 0 !important;
     float: left;
+    border: none;
+}
+
+#toggle_mode:hover, #btn_shorturl:hover {
+    background-color: #ccc !important;
 }
 
 #dm_target {
@@ -726,12 +731,8 @@ label {
     text-align: right;
     position: absolute;
     top: 0px;
-    border-color: rgba(0,0,0,0.3);
-    border-width: 1px;
-    border-style: solid;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top: none;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 5px;
     display: none;
 }
 
@@ -830,7 +831,6 @@ label {
 
 #people_entry, #search_entry {
     text-align: center;
-    padding: 2px 0;
 }
 
 #tbox_people_entry, #tbox_search_entry {
@@ -1051,6 +1051,7 @@ label {
 #service_tabs {
     position: relative;
     width: 200px;
+    height: 200px;
 }
 
 #service_tabs .service_tabs_btns {
@@ -1092,7 +1093,7 @@ label {
 
 #service_tabs .service_tabs_page {
     position: absolute;
-    min-height: 150px;
+    min-height: 160px;
     background: #fff;
     left:0;
     right:0;
@@ -1156,9 +1157,9 @@ label {
     width: 50%;
 }
 
-#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header {
+#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header {
     padding: 10px;
-    height: 20px;
+    height: 32px;
     background: #777777 url(../image/mask.png);
 }
 
@@ -1168,9 +1169,9 @@ label {
     display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer {
     padding: 10px;
-    height: 30px; 
+    height: 32px; 
 }
 
 #exts_dlg .dialog_body {
@@ -1237,6 +1238,34 @@ label {
 .ext_description {
     padding: 0 15px;
 }
+/*===== Errors Dialog ================================*/
+.error_item_header {
+    padding: 0 10px;
+    border: 1px #CCC solid;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+    height: 30px;
+    line-height: 30px;
+    text-shadow: 0 1px 1px white;
+    color: #555;
+}
+
+.error_item_time {
+    margin-right: 5px;
+}
+
+.error_item_body {
+    padding: 5px;
+}
+
+.error_item_techinfo {
+    margin-top: 5px;
+}
+
+.error_item_techinfo, .error_item_summary {
+    padding: 5px;
+    border: 1px #ccc solid;
+}
+
 /*===== Profile Dialog ================================*/
 #profile_avator {
     width: 64px !important;
@@ -1315,10 +1344,6 @@ label {
     color: #fff;
     border: 0;
     padding: 5px 0;
-}
-
-.tweet_block_top .radio_group {
-    margin: 5px 0;
 }
 
 .tweet_block_top * {
@@ -1578,16 +1603,16 @@ label {
 }
 
 #tweet_reply_btn {
-    background-image: url(../image/ic16_reply.png) ;
+    background-image: url(../image/reply_ic_16.png) ;
 }
 #tweet_retweet_btn {
-    background-image: url(../image/ic16_retweet.png);
+    background-image: url(../image/retweet_ic_16.png);
 }
 #tweet_retweet_btn.retweeted {
-    background-image: url(../image/ic16_retweeted.png);
+    background-image: url(../image/retweeted_ic_16.png);
 }
 #tweet_more_menu_btn {
-    background-image: url(../image/ic16_more.png);
+    background-image: url(../image/more_ic_16.png);
 }
 #tweet_dm_reply_btn {
     background-image: url(../image/ic16_dm.png);

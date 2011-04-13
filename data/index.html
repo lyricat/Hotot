@@ -44,6 +44,7 @@
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.error_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
     <script type="text/javascript" src="js/ui.form_checker.js"></script>
     <script type="text/javascript" src="js/ui.finder.js"></script>
@@ -204,6 +205,11 @@ function init_dialogs() {
     globals.exts_dialog.place(widget.DialogManager.CENTER);
     globals.exts_dialog.create();
 
+    globals.error_dialog= new widget.Dialog('#error_dlg');
+    globals.error_dialog.resize(500, 400);
+    globals.error_dialog.place(widget.DialogManager.CENTER);
+    globals.error_dialog.create();
+
     globals.about_dialog = new widget.Dialog('#about_dlg');
     globals.about_dialog.resize(500, 400);
     globals.about_dialog.place(widget.DialogManager.CENTER);
@@ -232,6 +238,7 @@ function init_ui() {
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
     ui.ExtsDlg.init();
+    ui.ErrorDlg.init();
     ui.AboutDlg.init();
     ui.Finder.init();
     ui.ActionMenu.init();
@@ -535,7 +542,7 @@ jQuery(function($) {
             <input id="tbox_basic_auth_password" class="entry" style="width: 170px;" type="password" value=""/><br/>
             <input id="chk_remember_password" type="checkbox" class="checkbox" checked="1"/>
             <label for="chk_remember_password" class="label" data-i18n-text="remember_password">Remember Password</label><br/>
-            <div style="text-align:right;margin-right:20px;">
+            <div style="text-align:center">
             <a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
             </div>
         </p>
@@ -552,11 +559,13 @@ jQuery(function($) {
         </p>
         </div>
         </div><!--tabs-->
+        <div style="clear:both"></div>
         <div class="bottom">
             <a id="btn_welcome_delete_profile" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
             <a id="btn_welcome_prefs" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>     
             <a id="btn_welcome_exts" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
         </div>
+        <div style="clear:both"></div>
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
     <div id="welcome_page_loading">
@@ -1607,6 +1616,26 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div>
     <div class="dialog_footer">
     <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- Error dialog -->
+<div id="error_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="errors">Errors</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header">
+        <h2 style="color:#fff;font-size:20px;" data-i18n-text="some_error_occur">Some Errors Occur</h2>
+    </div>
+    <div class="dialog_body">
+        <ul id="error_container" >
+        </ul>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_error_close" class="button dialog_close_btn" data-i18n-text="clear_and_close">Clear &amp; Close</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>

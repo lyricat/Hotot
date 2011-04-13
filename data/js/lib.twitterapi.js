@@ -28,21 +28,17 @@ http_code_msg_table : {
 
 error_handle:
 function error_handle(xhr, textStatus, errorThrown) {
-    var content = '';
+    var msg = '';
+    var tech_info = '';
     if (xhr.status in lib.twitterapi.http_code_msg_table) {
-        var msg = lib.twitterapi.http_code_msg_table[xhr.status];
-        var tech_info = 'HTTP Code: ' 
-            + xhr.status 
-            + '\nDetails: '
-            + xhr.statusText; 
-        content = '<p>' + msg + '</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>'+tech_info+'</pre></div>';
+        msg = lib.twitterapi.http_code_msg_table[xhr.status];
+        tech_info = 'HTTP Code:'+ xhr.status + '\nDetails:'+ xhr.statusText;
     } else {
-        content = '<p><label>HTTP Code:</label>' 
-            + xhr.status + '<br/><label>Reason:</label> '
-            + xhr.statusText+ '<br/></p>';
+        msg = 'Unknow Error';
+        tech_info = 'HTTP Code:' + xhr.status + '\nReason:'+ xhr.statusText;
     }
     try {
-        widget.DialogManager.alert('Ooops, An Error Occurred!', content);
+        ui.ErrorDlg.alert('Ooops, An API Error Occurred!', msg, tech_info);
     } catch (e) {
         hotot_log('Error:'+xhr.status, xhr.statusText);
     }
