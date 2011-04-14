@@ -841,21 +841,11 @@ function on_reply_all_click(btn, li_id, event) {
 on_dm_click:
 function on_dm_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = ui.Main.normalize_id(li.attr('id'));
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var tweet_obj = JSON.parse(row.json);
-
-        var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
-            : tweet_obj.user;
-
-        ui.StatusBox.set_dm_target(user.screen_name);
-        ui.StatusBox.open(function () {
-            ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
-            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
-        });
+    var screen_name = li.attr('sender_screen_name');
+    ui.StatusBox.set_dm_target(screen_name);
+    ui.StatusBox.open(function () {
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
     });
 },
 

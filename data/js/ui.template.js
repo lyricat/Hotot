@@ -54,13 +54,13 @@ tweet_t:
 </li>',
 
 dm_t: 
-'<li id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="card_body">\
-        <div id="{%USER_ID%}" class="who">\
+        <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
@@ -68,9 +68,7 @@ dm_t:
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
-                <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
-                </span>\
+                <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
             </div>\
         </div>\
     </div>\
@@ -137,43 +135,62 @@ function init() {
     ui.Template.reg_link = new RegExp(ui.Template.reg_url);
 
     ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
+        
+    ui.Template.tweet_m = {
+          TWEET_ID:'', ORIG_TWEET_ID:'', USER_ID:'', RETWEET_ID:''
+        , REPLY_ID:'',SCREEN_NAME:'',REPLY_NAME:'', USER_NAME:''
+        , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
+        , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
+        , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , TRANS_Delete_this_tweet:'', TRANS_Loading:''
+        , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
+        , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
+        , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
+        , TRANS_via:'', TRANS_View_more_conversation:''
+    };
+
+    ui.Template.dm_m = {
+          ID:'', TWEET_ID:'', SCREEN_NAME:''
+        , USER_NAME:'', PROFILE_IMG:'', TEXT:''
+        , SCHEME:'', TIMESTAMP:''
+        , TWEET_FONT_SIZE:'', TRANS_Reply_Them:''
+    };
+
+    ui.Template.search_m = {
+          TWEET_ID:'', ORIG_TWEET_ID:'', USER_ID:'', SCREEN_NAME:''
+        , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
+        , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
+        , TWEET_FONT_SIZE:'', TRANS_via:''
+    };
+
+    ui.Template.people_m = {
+          USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
+        , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+    };
 },
 
 form_dm:
 function form_dm(dm_obj, pagename) {
-    var id = dm_obj.id_str;
     var timestamp = Date.parse(dm_obj.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
-    var screen_name = dm_obj.sender.screen_name;
-    var recipient_screen_name = dm_obj.recipient.screen_name;
-    var user_name = dm_obj.sender.name;
-    var profile_img = dm_obj.sender.profile_image_url;
-    var text = ui.Template.form_text('@'+recipient_screen_name +' ' + dm_obj.text);
-    var ret = '';
-    var user_id = dm_obj.sender.id;
-    var scheme = 'message';
-
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
-    var create_at_short_str = create_at.toTimeString().split(' ')[0];
-    if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
-    }
+    var text = ui.Template.form_text('@'+dm_obj.recipient.screen_name +' ' + dm_obj.text);
 
-    ret = ui.Template.dm_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
-    ret = ret.replace(/{%USER_ID%}/g
-        , pagename+'-'+id+'-'+ user_id);
-    ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
-    ret = ret.replace(/{%USER_NAME%}/g, user_name);
-    ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
-    ret = ret.replace(/{%TEXT%}/g, text);
-    ret = ret.replace(/{%SCHEME%}/g, scheme);
-    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
-    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%TRANS_Reply_Them%}/g, "Reply Them.");
-    return ret;
+    var m = ui.Template.dm_m;
+    m.ID = pagename + '-' + dm_obj.id_str;
+    m.TWEET_ID = dm_obj.id_str;
+    m.SCREEN_NAME = dm_obj.sender.screen_name;
+    m.USER_NAME = dm_obj.sender.name;
+    m.PROFILE_IMG = dm_obj.sender.profile_image_url;
+    m.TEXT = text;
+    m.SCHEME = 'message';
+    m.TIMESTAMP = create_at_str;
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TRANS_Reply_Them = "Reply Them";
+    return ui.Template.render(ui.Template.dm_t, m);
 },
 
 form_tweet:
@@ -236,46 +253,44 @@ function form_tweet (tweet_obj, pagename) {
             + retweet_name + '</a>, ';
     }
 
-    ret = ui.Template.tweet_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
-    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
-    ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
-    ret = ret.replace(/{%RETWEET_ID%}/g, retweet_id);
-    ret = ret.replace(/{%REPLY_ID%}/g, reply_id != null? reply_id:'');
-    ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
-    ret = ret.replace(/{%REPLY_NAME%}/g, reply_id != null? reply_name: '');
-    ret = ret.replace(/{%USER_NAME%}/g, user_name);
-    ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
-    ret = ret.replace(/{%TEXT%}/g, text);
-    ret = ret.replace(/{%SOURCE%}/g, source.replace('href', 'target="_blank" href'));
-    ret = ret.replace(/{%SCHEME%}/g, scheme);
+    var m = ui.Template.tweet_m;
+    m.TWEET_ID = pagename+'-'+id;
+    m.ORIG_TWEET_ID = id;
+    m.USER_ID = pagename+'-'+id+'-'+ user_id;
+    m.RETWEET_ID = retweet_id;
+    m.REPLY_ID = reply_id != null? reply_id:'';
+    m.SCREEN_NAME = screen_name;
+    m.REPLY_NAME = reply_id != null? reply_name: '';
+    m.USER_NAME = user_name;
+    m.PROFILE_IMG = profile_img;
+    m.TEXT = text;
+    m.SOURCE = source.replace('href', 'target="_blank" href');
+    m.SCHEME = scheme;
 
-    ret = ret.replace(/{%IN_REPLY%}/g, 
-        (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none');
-    ret = ret.replace(/{%RETWEETABLE%}/g, 
-        (protected_user || is_self )? 'false':'true');
+    m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
+    m.RETWEETABLE = (protected_user || is_self )? 'false':'true';
 
-    ret = ret.replace(/{%REPLY_TEXT%}/g, reply_str);
-    ret = ret.replace(/{%RETWEET_TEXT%}/g, retweet_str);
-    ret = ret.replace(/{%RETWEET_MARK%}/g,
-        retweet_name != ''? 'retweet_mark': '');
-    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
-    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%FAV_CLASS%}/g, favorited? 'fav': '');
-    ret = ret.replace(/{%DELETABLE%}/g, is_self? 'true': 'false');
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%STATUS_INDICATOR%}/g, ui.Template.form_status_indicators(tweet_obj));
-    ret = ret.replace(/{%TRANS_Delete%}/g, "Delete");
-    ret = ret.replace(/{%TRANS_Delete_this_tweet%}/g, "Delete this tweet");
-    ret = ret.replace(/{%TRANS_Loading%}/g, "Loading...");
-    ret = ret.replace(/{%TRANS_Official_retweet_this_tweet%}/g, "Official retweet this tweet.");
-    ret = ret.replace(/{%TRANS_Reply_All%}/g, "Reply All");
-    ret = ret.replace(/{%TRANS_Reply_this_tweet%}/g, "Reply this tweet.");
-    ret = ret.replace(/{%TRANS_RT_this_tweet%}/g, "RT this tweet.");
-    ret = ret.replace(/{%TRANS_Send_Message%}/g, "Send message");
-    ret = ret.replace(/{%TRANS_Send_Message_to_them%}/g, "Send message to them");
-    ret = ret.replace(/{%TRANS_via%}/g, "via");
-    ret = ret.replace(/{%TRANS_View_more_conversation%}/g, "view more conversation");
-    return ret;
+    m.REPLY_TEXT = reply_str;
+    m.RETWEET_TEXT = retweet_str;
+    m.RETWEET_MARK = retweet_name != ''? 'retweet_mark': '';
+    m.SHORT_TIMESTAMP = create_at_short_str;
+    m.TIMESTAMP = create_at_str;
+    m.FAV_CLASS = favorited? 'fav': '';
+    m.DELETABLE = is_self? 'true': 'false';
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
+    m.TRANS_Delete = "Delete";
+    m.TRANS_Delete_this_tweet = "Delete this tweet";
+    m.TRANS_Loading = "Loading...";
+    m.TRANS_Official_retweet_this_tweet = "Official retweet this tweet.";
+    m.TRANS_Reply_All = "Reply All";
+    m.TRANS_Reply_this_tweet = "Reply this tweet.";
+    m.TRANS_RT_this_tweet = "RT this tweet.";
+    m.TRANS_Send_Message = "Send message";
+    m.TRANS_Send_Message_to_them = "Send message to them";
+    m.TRANS_via = "via";
+    m.TRANS_View_more_conversation = "view more conversation";
+    return ui.Template.render(ui.Template.tweet_t, m);
 },
 
 form_search:
@@ -308,32 +323,36 @@ function form_search(tweet_obj, pagename) {
         scheme = 'me';
     }
 
-    ret = ui.Template.search_t.replace(/{%TWEET_ID%}/g, pagename+'-'+id);
-    ret = ret.replace(/{%ORIG_TWEET_ID%}/g, id);
-    ret = ret.replace(/{%USER_ID%}/g, pagename+'-'+id+'-'+ user_id);
-    ret = ret.replace(/{%SCREEN_NAME%}/g, screen_name);
-    ret = ret.replace(/{%USER_NAME%}/g, user_name);
-    ret = ret.replace(/{%PROFILE_IMG%}/g, profile_img);
-    ret = ret.replace(/{%TEXT%}/g, text);
-    ret = ret.replace(/{%SOURCE%}/g, source.replace('href', 'target="_blank" href'));
-    ret = ret.replace(/{%SCHEME%}/g, scheme);
-    ret = ret.replace(/{%SHORT_TIMESTAMP%}/g, create_at_short_str);
-    ret = ret.replace(/{%TIMESTAMP%}/g, create_at_str);
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    ret = ret.replace(/{%TRANS_via%}/g, "via");
-    return ret;
+    var m = ui.Template.search_m;
+    m.TWEET_ID = pagename + '-' + id;
+    m.ORIG_TWEET_ID = id;
+    m.USER_ID = m.TWEET_ID + '-' + user_id;
+    m.SCREEN_NAME = screen_name;
+    m.USER_NAME = user_name;
+    m.PROFILE_IMG = profile_img;
+    m.TEXT = text;
+    // @TODO BUG
+    m.SOURCE = source.replace('href', 'target="_blank" href');
+    m.SCHEME = scheme;
+    m.SHORT_TIMESTAMP = create_at_short_str;
+    m.TIMESTAMP = create_at_str;
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TRANS_via = 'via';
+    return ui.Template.render(ui.Template.search_t, m);
 },
 
 form_people:
 function form_people(user_obj, pagename) {
-    ret = ui.Template.people_t.replace(/{%USER_ID%}/g, pagename+'-'+user_obj.id_str);
-    ret = ret.replace(/{%SCREEN_NAME%}/g, user_obj.screen_name);
-    ret = ret.replace(/{%USER_NAME%}/g, user_obj.name);
-    ret = ret.replace(/{%DESCRIPTION%}/g, user_obj.description);
-    ret = ret.replace(/{%PROFILE_IMG%}/g, user_obj.profile_image_url);
-    ret = ret.replace(/{%FOLLOWING%}/g, user_obj.following);
-    ret = ret.replace(/{%TWEET_FONT_SIZE%}/g, globals.tweet_font_size);
-    return ret;
+    var m = ui.Template.people_m;
+    m.USER_ID = pagename + '-' + user_obj.id_str;
+    m.SCREEN_NAME = user_obj.screen_name;
+    m.USER_NAME = user_obj.name;
+    m.DESCRIPTION = user_obj.description;
+    m.PROFILE_IMG = user_obj.profile_image_url;
+    m.FOLLOWING = user_obj.following;
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+
+    return ui.Template.render(ui.Template.people_t, m);
 },
 
 fill_vcard:
@@ -390,6 +409,16 @@ function form_text(text) {
 form_status_indicators:
 function form_status_indicators(tweet) {
      
+},
+
+render:
+function render(tpl, map) {
+    var text = tpl
+    // @TODO use jquery-tmpl?
+    for (var k in map) {
+        text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
+    }
+    return text;
 },
 
 }

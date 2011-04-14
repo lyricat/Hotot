@@ -1605,6 +1605,9 @@ label {
 #tweet_reply_btn {
     background-image: url(../image/reply_ic_16.png) ;
 }
+#tweet_fav_btn {
+    background-image: url(../image/fav_ic_16.png) ;
+}
 #tweet_retweet_btn {
     background-image: url(../image/retweet_ic_16.png);
 }

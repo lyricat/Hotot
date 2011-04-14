@@ -885,38 +885,46 @@ jQuery(function($) {
     </div>
     </div>
     <ul id="tweet_bar">
-        <li><a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);" data-i18n-title="reply"></a></li>
-        <li><a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);" data-i18n-title="retweet"></a></li>
-        <li><a id="tweet_dm_reply_btn" class="tweet_bar_btn" title="Reply Them" href="javascript:void(0);" data-i18n-title="reply"></a></li>
-        <li><a id="people_follow_btn" class="tweet_bar_btn" title="Follow Them" href="javascript:void(0);" data-i18n-title="follow"></a></li>
-        <li><a id="people_unfollow_btn" class="tweet_bar_btn" title="Unfollow Them" href="javascript:void(0);" data-i18n-title="unfollow"></a></li>
-        <li id="tweet_more_menu_trigger"><a id="tweet_more_menu_btn"  class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
+        <li>
+        <a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);" data-i18n-title="reply"></a>
+        </li><li>
+        <a id="tweet_fav_btn" class="tweet_bar_btn" title="Fav/Un-fav this tweet" href="javascript:void(0);" data-i18n-title="Fav/Unfav"></a>
+        </li><li>
+        <a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);" data-i18n-title="retweet"></a>
+        </li><li>
+        <a id="tweet_dm_reply_btn" class="tweet_bar_btn" title="Reply Them" href="javascript:void(0);" data-i18n-title="reply"></a>
+        </li><li>
+        <a id="people_follow_btn" class="tweet_bar_btn" title="Follow Them" href="javascript:void(0);" data-i18n-title="follow"></a>
+        </li><li>
+        <a id="people_unfollow_btn" class="tweet_bar_btn" title="Unfollow Them" href="javascript:void(0);" data-i18n-title="unfollow"></a>
+        </li><li id="tweet_more_menu_trigger">
+            <a id="tweet_more_menu_btn"  class="tweet_more tweet_bar_btn" href="javascript:void(0);"></a>
             <ul id="tweet_more_menu" class="hotot_menu">
             <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn" 
                 title="RT this tweet"
                 href="javascript:void(0);"
                 data-i18n-text="quote"
                 >Quote</a></li>
-            <li><a id="tweet_fav_btn" class="tweet_fav tweet_more_menu_btn" 
+            <li><a id="tweet_fav_btn" class="tweet_more_menu_btn" 
                 title="Fav it!" 
                 href="javascript:void(0);"
                 data-i18n-text="fav_or_unfav"
                 >Fav/Un-fav</a></li>
             <li><a id="tweet_reply_all_btn"
-                class="tweet_reply_all tweet_more_menu_btn"
+                class="tweet_more_menu_btn"
                 href="javascript:void(0);" 
                 title="Reply All"
                 data-i18n-text="reply_all"
                 >Reply All</a></li>
             <li><a id="tweet_dm_btn" 
-                class="tweet_dm tweet_more_menu_btn"
+                class="tweet_more_menu_btn"
                 href="javascript:void(0);" 
                 title="Send Message to them"
                 data-i18n-text="send_message"
                 >Send Message</a></li>
             <li>
                 <a id="tweet_del_btn"
-                class="tweet_del tweet_more_menu_btn"
+                class="tweet_more_menu_btn"
                 href="javascript:void(0);"
                 title="Delete this tweet"
                 data-i18n-text="delete"
