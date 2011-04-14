@@ -16,7 +16,7 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -24,7 +24,7 @@ tweet_t:
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="card_body">\
-        <div id="{%USER_ID%}" class="who {%RETWEET_MARK%}">\
+        <div class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
@@ -38,7 +38,7 @@ tweet_t:
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
@@ -137,7 +137,7 @@ function init() {
     ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
         
     ui.Template.tweet_m = {
-          TWEET_ID:'', ORIG_TWEET_ID:'', USER_ID:'', RETWEET_ID:''
+          ID:'', TWEET_ID:'', RETWEET_ID:''
         , REPLY_ID:'',SCREEN_NAME:'',REPLY_NAME:'', USER_NAME:''
         , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
@@ -204,28 +204,17 @@ function form_tweet (tweet_obj, pagename) {
         tweet_obj = tweet_obj['retweeted_status'];
         retweet_id = tweet_obj.id_str;
     }
-    var timestamp = Date.parse(tweet_obj.created_at);
-    var create_at = new Date();
-    create_at.setTime(timestamp);
-    var user_id = tweet_obj.user.id;
-    var screen_name = tweet_obj.user.screen_name;
-    var user_name = tweet_obj.user.name;
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.in_reply_to_status_id_str;    
-    var profile_img = tweet_obj.user.profile_image_url;
-    var text = ui.Template.form_text(tweet_obj.text);
-    var favorited = tweet_obj.favorited;
-    var source = tweet_obj.source;
-    var protected_user = tweet_obj.user.protected;
-    var is_self = (screen_name == globals.myself.screen_name);
-    var ret = '';
-    var scheme = 'normal';
-
     var reply_str = (reply_id != null) ?
         "reply to " + '<a class="who_href" href="#'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
+
+    var timestamp = Date.parse(tweet_obj.created_at);
+    var create_at = new Date();
+    create_at.setTime(timestamp);
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()));
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
@@ -234,6 +223,7 @@ function form_tweet (tweet_obj, pagename) {
     }
 
     // choose color scheme
+    var scheme = 'normal';
     if (tweet_obj.entities) {
         for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1)
         {
@@ -244,7 +234,7 @@ function form_tweet (tweet_obj, pagename) {
             }
         }
     }
-    if (is_self) {
+    if (tweet_obj.user.screen_name == globals.myself.screen_name) {
         scheme = 'me';
     }
     if (retweet_name != '') {
@@ -254,29 +244,28 @@ function form_tweet (tweet_obj, pagename) {
     }
 
     var m = ui.Template.tweet_m;
-    m.TWEET_ID = pagename+'-'+id;
-    m.ORIG_TWEET_ID = id;
-    m.USER_ID = pagename+'-'+id+'-'+ user_id;
+    m.ID = pagename+'-'+id;
+    m.TWEET_ID = id;
     m.RETWEET_ID = retweet_id;
     m.REPLY_ID = reply_id != null? reply_id:'';
-    m.SCREEN_NAME = screen_name;
+    m.SCREEN_NAME = tweet_obj.user.screen_name;
     m.REPLY_NAME = reply_id != null? reply_name: '';
-    m.USER_NAME = user_name;
-    m.PROFILE_IMG = profile_img;
-    m.TEXT = text;
-    m.SOURCE = source.replace('href', 'target="_blank" href');
+    m.USER_NAME = tweet_obj.user.name;
+    m.PROFILE_IMG = tweet_obj.user.profile_image_url;
+    m.TEXT = ui.Template.form_text(tweet_obj.text);
+    m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
 
     m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
-    m.RETWEETABLE = (protected_user || is_self )? 'false':'true';
+    m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
 
     m.REPLY_TEXT = reply_str;
     m.RETWEET_TEXT = retweet_str;
     m.RETWEET_MARK = retweet_name != ''? 'retweet_mark': '';
     m.SHORT_TIMESTAMP = create_at_short_str;
     m.TIMESTAMP = create_at_str;
-    m.FAV_CLASS = favorited? 'fav': '';
-    m.DELETABLE = is_self? 'true': 'false';
+    m.FAV_CLASS = tweet_obj.favorited? 'fav': '';
+    m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = "Delete";

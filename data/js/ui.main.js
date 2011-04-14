@@ -736,52 +736,45 @@ function bind_tweets_action(tweets_obj, pagename) {
 on_reply_click:
 function on_reply_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var tweet_obj = JSON.parse(row.json);
-        ui.StatusBox.reply_to_id = id;
-        ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ tweet_obj.user.screen_name + ':"' + tweet_obj.text + '"');
-        ui.StatusBox.append_status_text('@' + tweet_obj.user.screen_name + ' ');
-        ui.StatusBox.open(
-        function() {
-            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
-            ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
-        });
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var screen_name = li.attr('screen_name');
+    var text = $(li.find('.text')[0]).text();
+
+    ui.StatusBox.reply_to_id = id;
+    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ screen_name + ':"' + text + '"');
+    ui.StatusBox.append_status_text('@' + li.attr('screen_name') + ' ');
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     });
 },
 
 on_rt_click:
 function on_rt_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var screen_name = li.attr('screen_name');
+    var text = $(li.find('.text')[0]).text();
 
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var tweet_obj = JSON.parse(row.json);
-
-        ui.StatusBox.set_status_text("RT @" + tweet_obj.user.screen_name
-            + ': ' + tweet_obj.text + ' ');
-        ui.StatusBox.open(
-        function() {
-            ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
-            ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
-        });
+    ui.StatusBox.set_status_text("RT @" + screen_name
+        + ': ' + text + ' ');
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     });
 },
 
 on_retweet_click:
 function on_retweet_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
 
+    // @TODO reduce this process.
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
         toast.set(_('undo_retweeting_dots')).show(-1);
@@ -806,34 +799,29 @@ function on_retweet_click(btn, li_id, event) {
 on_reply_all_click:
 function on_reply_all_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var tweet_obj = JSON.parse(row.json);
-
-        var who_names = [ '@' + tweet_obj.user.screen_name];
-        var text = tweet_obj.text;
-
-        var match = ui.Template.reg_user.exec(text);
-        while (match != null ) {
-            if (match[2] != globals.myself.screen_name) {
-                var name = '@' + match[2];
-                if (who_names.indexOf(name) == -1)
-                    who_names.push(name);
-            }
-            match = ui.Template.reg_user.exec(text);
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var screen_name = li.attr('screen_name');
+    var text = $(li.find('.text')[0]).text();
+    // @TODO reduce this process by entities
+    var who_names = [ '@' + screen_name];
+    var match = ui.Template.reg_user.exec(text);
+    while (match != null ) {
+        if (match[2] != globals.myself.screen_name) {
+            var name = '@' + match[2];
+            if (who_names.indexOf(name) == -1)
+                who_names.push(name);
         }
-        ui.StatusBox.reply_to_id = id;
-        ui.StatusBox.set_status_info('<span class="info_hint">'+_('reply to')+'</span>  ' + text);
-        ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
-        ui.StatusBox.open(
-        function() {
-            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
-            ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
-        });
+        match = ui.Template.reg_user.exec(text);
+    }
+
+    ui.StatusBox.reply_to_id = id;
+    ui.StatusBox.set_status_info('<span class="info_hint">'+_('reply to')+'</span>  ' + text);
+    ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
+    ui.StatusBox.open(
+    function() {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_REPLY);
     });
 
 },
@@ -841,7 +829,8 @@ function on_reply_all_click(btn, li_id, event) {
 on_dm_click:
 function on_dm_click(btn, li_id, event) {
     var li = $(li_id);
-    var screen_name = li.attr('sender_screen_name');
+    var screen_name = li.attr('screen_name') != ''
+        ?li.attr('screen_name'):li.attr('sender_screen_name');
     ui.StatusBox.set_dm_target(screen_name);
     ui.StatusBox.open(function () {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
@@ -852,8 +841,8 @@ function on_dm_click(btn, li_id, event) {
 on_del_click:
 function on_del_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
 
     toast.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
@@ -866,8 +855,9 @@ function on_del_click(btn, li_id, event) {
 on_fav_click:
 function on_fav_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    // @TODO reduce this process
     if ($(li).hasClass('fav')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.destroy_favorite(id, 
@@ -914,61 +904,47 @@ function on_unfollow_btn_click(btn, li_id, event) {
 on_thread_more_click:
 function on_thread_more_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var reply_id = li.attr('reply_id');
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var orig_tweet_obj = JSON.parse(row.json);
-
-        li.find('.tweet_thread_hint').show();
-        ui.Main.load_thread_proc(
-        orig_tweet_obj.in_reply_to_status_id_str
-        , thread_container
-        , function () {
-            li.find('.tweet_thread_hint').fadeOut();
-            $(btn).hide();
-        });
+    li.find('.tweet_thread_hint').show();
+    ui.Main.load_thread_proc(reply_id
+    , thread_container
+    , function () {
+        li.find('.tweet_thread_hint').fadeOut();
+        $(btn).hide();
     });
 },
 
 on_expander_click:
 function on_expander_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
-    var id = li.attr('retweet_id') == ''? 
-        ui.Main.normalize_id(li.attr('id')): li.attr('retweet_id');
+    var id = li.attr('retweet_id') == ''
+        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var reply_id = li.attr('reply_id');
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     thread_container.pagename = li.attr('id');
 
-    db.get_tweet(id, 
-    function (tx, rs) {
-        var row = rs.rows.item(0);
-        var id = row.id;
-        var orig_tweet_obj = JSON.parse(row.json);
-
-        thread_container.parent().toggle();
-        if ($(btn).hasClass('expand')) {
-            $(btn).removeClass('expand');
-        } else {
-            $(btn).addClass('expand');
-            if (thread_container.children('.card').length == 0) {
-                li.find('.tweet_thread_hint').show();
-                li.find('.btn_tweet_thread_more').hide();
-                ui.Main.load_thread_proc(
-                  orig_tweet_obj.in_reply_to_status_id_str
-                , thread_container
-                , function () {
-                    li.find('.tweet_thread_hint').fadeOut();
-                });
-            }
+    thread_container.parent().toggle();
+    if ($(btn).hasClass('expand')) {
+        $(btn).removeClass('expand');
+    } else {
+        $(btn).addClass('expand');
+        if (thread_container.children('.card').length == 0) {
+            li.find('.tweet_thread_hint').show();
+            li.find('.btn_tweet_thread_more').hide();
+            ui.Main.load_thread_proc(reply_id
+            , thread_container
+            , function () {
+                li.find('.tweet_thread_hint').fadeOut();
+            });
         }
-    });
+    }
 },
 
 load_thread_proc:
