@@ -264,7 +264,7 @@ function form_tweet (tweet_obj, pagename) {
     m.RETWEET_MARK = retweet_name != ''? 'retweet_mark': '';
     m.SHORT_TIMESTAMP = create_at_short_str;
     m.TIMESTAMP = create_at_str;
-    m.FAV_CLASS = tweet_obj.favorited? 'fav': '';
+    m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);

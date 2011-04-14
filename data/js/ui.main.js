@@ -858,19 +858,19 @@ function on_fav_click(btn, li_id, event) {
     var id = li.attr('retweet_id') == ''
         ? li.attr('tweet_id'): li.attr('retweet_id');
     // @TODO reduce this process
-    if ($(li).hasClass('fav')) {
+    if ($(li).hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             toast.set(_('successfully')).show();
-            $(li).removeClass('fav');
+            $(li).removeClass('faved');
         });
     } else {
         toast.set(_('favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
             toast.set(_('Successfully')).show();
-            $(li).addClass('fav');
+            $(li).addClass('faved');
         });
     }
 },
@@ -1087,8 +1087,11 @@ function set_tweet_bar(li_id) {
             , $('#tweet_rt_btn'), $('#tweet_fav_btn')
             , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
         , 'message': [$('#tweet_dm_reply_btn'), $('#tweet_more_menu_btn')]
-        , 'search': [$('#tweet_more_menu_btn')]
-        , 'people': [$('#people_follow_btn'), $('people_unfollow_btn'), $('#tweet_more_menu_btn')]
+        , 'search': [$('#tweet_reply_btn'), $('#tweet_retweet_btn')
+            , $('#tweet_more_menu_btn')
+            , $('#tweet_rt_btn'), $('#tweet_fav_btn')
+            , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
+        , 'people': [$('#people_follow_btn'), $('people_unfollow_btn')]
     };
 
     if (group_map.hasOwnProperty(li.attr('type'))) {
@@ -1128,8 +1131,11 @@ function set_tweet_bar(li_id) {
     } else {
         $('#tweet_retweet_btn').removeClass('retweeted');
     }
-    
-    if ($('#tweet_bar li:last').hasClass('separator')) {
+    if (li.hasClass('faved')) {
+        $('#tweet_fav_btn').addClass('faved');
+    } else {
+        $('#tweet_fav_btn').removeClass('faved');
+    }    if ($('#tweet_bar li:last').hasClass('separator')) {
         $('#tweet_bar li:last').hide();
     } else {
         $('#tweet_bar li.separator').show();

@@ -1403,7 +1403,7 @@ label {
     height: 32px;
 }
 
-.card.fav > .tweet_fav_indicator{
+.card.faved > .tweet_fav_indicator{
     background: transparent url(../image/tweet_fav_indicator.png) no-repeat 0 center;
 }
 
@@ -1607,6 +1607,9 @@ label {
 }
 #tweet_fav_btn {
     background-image: url(../image/fav_ic_16.png) ;
+}
+#tweet_fav_btn.faved {
+    background-image: url(../image/faved_ic_16.png) ;
 }
 #tweet_retweet_btn {
     background-image: url(../image/retweet_ic_16.png);
