@@ -77,13 +77,13 @@ dm_t:
 </li>',
 
 search_t:
-'<li id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <div class="card_body">\
-        <div id="{%USER_ID%}" class="who">\
+        <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
             {%SCREEN_NAME%}\
         </a>\
@@ -92,7 +92,7 @@ search_t:
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%ORIG_TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
         </div>\
@@ -158,7 +158,7 @@ function init() {
     };
 
     ui.Template.search_m = {
-          TWEET_ID:'', ORIG_TWEET_ID:'', USER_ID:'', SCREEN_NAME:''
+          ID:'', TWEET_ID:'', SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
         , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
         , TWEET_FONT_SIZE:'', TRANS_via:''
@@ -296,40 +296,32 @@ function form_tweet (tweet_obj, pagename) {
 form_search:
 function form_search(tweet_obj, pagename) {
     var id = tweet_obj.id_str;
+    var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     var timestamp = Date.parse(tweet_obj.created_at);
     var create_at = new Date();
     create_at.setTime(timestamp);
-    var user_id = tweet_obj.from_user_id;
-    var screen_name = tweet_obj.from_user;
-    var user_name = tweet_obj.from_user_name;
-    var profile_img = tweet_obj.profile_image_url;
-    var text = ui.Template.form_text(tweet_obj.text);
-    var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
-    var is_self = (screen_name == globals.myself.screen_name);
-    var ret = '';
-    var scheme = 'normal';
-
     var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
 	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
     var create_at_short_str = create_at.toTimeString().split(' ')[0];
     if (create_at.toDateString() != new Date().toDateString()){
         create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
     }
+    var text = ui.Template.form_text(tweet_obj.text);
     // choose color scheme
+    var scheme = 'normal';
     if (text.indexOf(globals.myself.screen_name) != -1) {
         scheme = 'mention';
     }
-    if (is_self) {
+    if (tweet_obj.from_user == globals.myself.screen_name) {
         scheme = 'me';
     }
 
     var m = ui.Template.search_m;
-    m.TWEET_ID = pagename + '-' + id;
-    m.ORIG_TWEET_ID = id;
-    m.USER_ID = m.TWEET_ID + '-' + user_id;
-    m.SCREEN_NAME = screen_name;
-    m.USER_NAME = user_name;
-    m.PROFILE_IMG = profile_img;
+    m.ID = pagename + '-' + id;
+    m.TWEET_ID = id;
+    m.SCREEN_NAME = tweet_obj.from_user;
+    m.USER_NAME = tweet_obj.from_user_name;
+    m.PROFILE_IMG = tweet_obj.profile_image_url;
     m.TEXT = text;
     // @TODO BUG
     m.SOURCE = source.replace('href', 'target="_blank" href');
