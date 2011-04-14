@@ -736,8 +736,7 @@ function bind_tweets_action(tweets_obj, pagename) {
 on_reply_click:
 function on_reply_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     var screen_name = li.attr('screen_name');
     var text = $(li.find('.text')[0]).text();
 
@@ -754,8 +753,6 @@ function on_reply_click(btn, li_id, event) {
 on_rt_click:
 function on_rt_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
     var screen_name = li.attr('screen_name');
     var text = $(li.find('.text')[0]).text();
 
@@ -771,8 +768,7 @@ function on_rt_click(btn, li_id, event) {
 on_retweet_click:
 function on_retweet_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
     // @TODO reduce this process.
     if ($(btn).hasClass('retweeted')) {
@@ -799,8 +795,7 @@ function on_retweet_click(btn, li_id, event) {
 on_reply_all_click:
 function on_reply_all_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     var screen_name = li.attr('screen_name');
     var text = $(li.find('.text')[0]).text();
     // @TODO reduce this process by entities
@@ -841,8 +836,7 @@ function on_dm_click(btn, li_id, event) {
 on_del_click:
 function on_del_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
     toast.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
@@ -855,8 +849,7 @@ function on_del_click(btn, li_id, event) {
 on_fav_click:
 function on_fav_click(btn, li_id, event) {
     var li = $(li_id);
-    var id = li.attr('retweet_id') == ''
-        ? li.attr('tweet_id'): li.attr('retweet_id');
+    var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     // @TODO reduce this process
     if ($(li).hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);

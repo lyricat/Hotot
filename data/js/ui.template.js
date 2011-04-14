@@ -77,7 +77,7 @@ dm_t:
 </li>',
 
 search_t:
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
