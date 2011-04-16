@@ -6,7 +6,7 @@ id: 'org.hotot.imagepreview',
 name: 'Hotot Image Preview',
 
 description: 'To preview picture thumbs in timeline.\nSupport sites:\n\
-    - img.ly, twitpic.com, twitgoo.com, yfrog.com, moby.to, plixi.com\n',
+    - img.ly, twitpic.com, twitgoo.com, yfrog.com, moby.to, plixi.com, instagr.am \n',
 
 version: '1.0',
 
@@ -39,7 +39,7 @@ img_link_reg: {
 },
 'instagr.am': {
     reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9]+)\\/*)"','g'),
-    tail: '/media?t=m'
+    tail: 'media?size=m'
 },
 'plixi.com': {
     reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"','g'),
