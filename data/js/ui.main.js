@@ -824,8 +824,8 @@ function on_reply_all_click(btn, li_id, event) {
 on_dm_click:
 function on_dm_click(btn, li_id, event) {
     var li = $(li_id);
-    var screen_name = li.attr('screen_name') != ''
-        ?li.attr('screen_name'):li.attr('sender_screen_name');
+    var screen_name = (li.attr('screen_name') == '' || li.attr('screen_name') == undefined)
+        ?li.attr('sender_screen_name'):li.attr('screen_name');
     ui.StatusBox.set_dm_target(screen_name);
     ui.StatusBox.open(function () {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
