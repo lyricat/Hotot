@@ -71,6 +71,10 @@
 		"message": "Please enter a profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
+	"some_error_occur": {
+		"message": "Some Error Occur",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Disabled",
 		"description": "data/index.html"
@@ -137,6 +141,10 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Enable Verbose Mode",
+		"description": "data/index.html"
+	},
+	"errors": {
+		"message": "Errors",
 		"description": "data/index.html"
 	},
 	"preferences": {
@@ -499,10 +507,6 @@
 		"message": "Web",
 		"description": "data/index.html"
 	},
-	"tech_info": {
-		"message": "Tech Info",
-		"description": "data/js/ui.welcome.js"
-	},
 	"loading_tweets_dots": {
 		"message": "Loading tweets ...",
 		"description": "data/js/ui.main.js"
@@ -633,6 +637,10 @@
 	},
 	"public_only": {
 		"message": "Public Only",
+		"description": "data/index.html"
+	},
+	"clear_and_close": {
+		"message": "Clear & Close",
 		"description": "data/index.html"
 	},
 	"credits": {

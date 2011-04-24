@@ -71,6 +71,10 @@
 		"message": "请输入一个账户前缀",
 		"description": "data/js/ui.welcome.js"
 	},
+	"some_error_occur": {
+		"message": "哎唷，发生了点错误",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "禁用的",
 		"description": ""
@@ -138,6 +142,10 @@
 	"enable_verbose_mode": {
 		"message": "启用啰嗦模式",
 		"description": ""
+	},
+	"errors": {
+		"message": "错误",
+		"description": "data/index.html"
 	},
 	"preferences": {
 		"message": "首选项",
@@ -499,10 +507,6 @@
 		"message": "网址",
 		"description": ""
 	},
-	"tech_info": {
-		"message": "技术信息",
-		"description": "data/js/ui.welcome.js"
-	},
 	"loading_tweets_dots": {
 		"message": "加载中...",
 		"description": "data/js/ui.main.js"
@@ -634,6 +638,10 @@
 	"public_only": {
 		"message": "只显示呐喊",
 		"description": ""
+	},
+	"clear_and_close": {
+		"message": "清空并且关闭",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "致谢",

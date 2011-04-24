@@ -10,6 +10,7 @@ function init(callback) {
     if (conf.vars.platform == 'Chrome') {
         i18n.locale =  window.navigator.language.replace('-', '_');
         i18n.trans_html();
+        callback();
     } else {
         $.getJSON('_locales/' + i18n.locale + '/messages.json',
         function (result) {
@@ -39,7 +40,7 @@ function get_message(msg) {
     if (conf.vars.platform == 'Chrome') {
         return chrome.i18n.getMessage(msg);
     } else {
-        if (i18n.dict != null && (msg in i18n.dict)) {
+        if (i18n.dict != null && i18n.dict.hasOwnProperty(msg)) {
             return i18n.dict[msg].message;
         } else {
             return '';

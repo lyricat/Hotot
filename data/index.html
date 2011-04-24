@@ -145,7 +145,7 @@ function hotot_log(label, content) {
 /* 
     = startup process =
     - document.ready -> init() -> db.init() -> daemon.Updater.init()
-        -> conf.init() -> init_ui() -> ext.init() -> set loading flags
+        -> conf.init() -> ext.init() -> set loading flags
     - native web container init -> on_load_finish() -> wait for loading flags being setted -> ext.init_exts() -> finish
 */
 
@@ -165,10 +165,6 @@ function init(callback) {
         conf.init(function () {
             $(window).dequeue('_page_init');
         });    
-    });
-    procs.push(function() {
-        init_ui();
-        $(window).dequeue('_page_init');
     });
     procs.push(function() {
         ext.init();
@@ -217,7 +213,6 @@ function init_dialogs() {
 }
 
 function init_ui() {
-    hotot_log('init', 'init_ui()');
     util.console.init();
     kismet.init();
     notification.init();
@@ -307,15 +302,20 @@ function on_load_finish() {
                 $(window).dequeue('_on_load_finish');
             }); 
         }
-        
         // 3. i18n
         procs.push(function() {
             hotot_log('init', 'on_load_finish() -> i18n.init()');
-            i18n.init(function () {});
+            i18n.init(function () {
+                $(window).dequeue('_on_load_finish');
+            });
+        });
+        // 4. init_ui();
+        procs.push(function() {
+            hotot_log('init', 'on_load_finish() -> init_ui()');
+            init_ui();
             $(window).dequeue('_on_load_finish');
         });
-        
-        // 4. finish, hide loading prompt
+        // 5. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
@@ -489,7 +489,7 @@ jQuery(function($) {
             		<a id="btn_exts" href="javascript:void(0);">Extensions</a>
             	</li>
             	<li>
-            		<a id="btn_about" href="javascript:void(0);">Help &amp; About</a>
+            		<a id="btn_about" href="javascript:void(0);">About &amp; Help</a>
             	</li>
                 <li>
             		<a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
@@ -888,7 +888,7 @@ jQuery(function($) {
         <li>
         <a id="tweet_reply_btn" class="tweet_bar_btn" title="Reply this tweet" href="javascript:void(0);" data-i18n-title="reply"></a>
         </li><li>
-        <a id="tweet_fav_btn" class="tweet_bar_btn" title="Fav/Un-fav this tweet" href="javascript:void(0);" data-i18n-title="Fav/Unfav"></a>
+        <a id="tweet_fav_btn" class="tweet_bar_btn" title="Fav/Un-fav this tweet" href="javascript:void(0);" data-i18n-title="fav_or_unfav"></a>
         </li><li>
         <a id="tweet_retweet_btn" class="tweet_bar_btn" title="Official retweet this tweet" href="javascript:void(0);" data-i18n-title="retweet"></a>
         </li><li>

@@ -884,7 +884,7 @@ label {
 }
 /*===== Welcome Page ================================*/
 #welcome_page {
-    background: #5599bb url(../image/welcome_bg.png) no-repeat 50% 0;
+    background: #9DC5E7 url(../image/mask.png);
     width: 100%;
     border-left: 1px #eee solid;
     border-right: 1px #aaa solid;
@@ -897,18 +897,23 @@ label {
     line-height: 35px;
     font-size: 24px;
     color: #fff;
-    background: #214365 url(../image/ic32_hotot_classics.png) no-repeat 20px;
-    text-shadow: 0 -1px 0px #000;
+    background:url(../image/ic32_hotot_mono_light.png) 20px 0 no-repeat, transparent url(../image/mask.png);
+    background-color: #4E6C86;
+    text-shadow: 0 1px 0px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.2);
 }
 
 #welcome_bottom {
-    background-color: #214365;
+    background: #4E6C86 url(../image/mask.png);
     position: absolute;
+    line-height: 35px;
+    height: 35px;
     left: 0;
     right: 0;
     bottom: 0;
     padding: 0 10px 3px 10px;
     text-align: right;
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.2);
 }
 
 #welcome_bottom a {
@@ -1018,6 +1023,7 @@ label {
     min-height: 220px;
     position: relative;
     padding: 10px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 #sign_in_block .bottom {
@@ -1621,7 +1627,7 @@ label {
     background-image: url(../image/more_ic_16.png);
 }
 #tweet_dm_reply_btn {
-    background-image: url(../image/ic16_dm.png);
+    background-image: url(../image/reply_ic_16.png);
 }
 #people_follow_btn {
     background-image: url(../image/ic16_add_green.png) ;
