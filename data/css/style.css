@@ -1739,6 +1739,11 @@ label {
     padding: 0px;
 }
 
+.tweet_thread > .card {
+    border-left:0;
+    border-right: 0;
+}
+
 .tweet_thread_hint {
     margin: 0 auto;
     font-size: 12px;
