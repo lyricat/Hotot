@@ -1629,6 +1629,9 @@ label {
 #tweet_dm_reply_btn {
     background-image: url(../image/reply_ic_16.png);
 }
+#tweet_dm_delete_btn {
+    background-image: url(../image/delete_ic_16.png);
+}
 #people_follow_btn {
     background-image: url(../image/ic16_add_green.png) ;
 }

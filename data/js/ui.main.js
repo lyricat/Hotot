@@ -115,6 +115,12 @@ function init () {
         return false;
     });
     
+    $('#tweet_dm_delete_btn').click(
+    function (event) {
+        ui.Main.on_dm_delete_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
+    
     $('#people_follow_btn').click(
     function (event) {
         ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
@@ -846,6 +852,19 @@ function on_del_click(btn, li_id, event) {
     });
 },
 
+on_dm_delete_click:
+function on_dm_delete_click(btn, li_id, event) {
+    var li = $(li_id);
+    var id = li.attr('tweet_id');
+    toast.set('Destroy ...').show(-1);
+    lib.twitterapi.destroy_direct_messages(id, 
+    function (result) {
+        li.remove();
+        toast.set(_('destroy_successfully')).show();
+    });
+},
+
+
 on_fav_click:
 function on_fav_click(btn, li_id, event) {
     var li = $(li_id);
@@ -1079,7 +1098,7 @@ function set_tweet_bar(li_id) {
             , $('#tweet_more_menu_btn')
             , $('#tweet_rt_btn'), $('#tweet_fav_btn')
             , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
-        , 'message': [$('#tweet_dm_reply_btn'), $('#tweet_more_menu_btn')]
+        , 'message': [$('#tweet_dm_reply_btn'), $('#tweet_dm_delete_btn'),$('#tweet_more_menu_btn')]
         , 'search': [$('#tweet_reply_btn'), $('#tweet_retweet_btn')
             , $('#tweet_more_menu_btn')
             , $('#tweet_rt_btn'), $('#tweet_fav_btn')

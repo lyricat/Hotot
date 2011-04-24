@@ -157,6 +157,12 @@ function new_direct_messages(text, user_id, screen_name, on_success) {
     lib.twitterapi.post(url, params, on_success);
 },
 
+destroy_direct_messages:
+function destroy_direct_messages(id, on_success) {
+    var url = lib.twitterapi.api_base + 'direct_messages/destroy/'+id+'.json';
+    lib.twitterapi.post(url, {}, on_success);
+},
+
 create_favorite:
 function create_favorite(fav_id, on_success) {
     var url = lib.twitterapi.api_base + 'favorites/create/'+fav_id+'.json';
