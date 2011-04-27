@@ -143,7 +143,6 @@ function init() {
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
         , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
-        , TRANS_Delete_this_tweet:'', TRANS_Loading:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
@@ -173,10 +172,9 @@ function init() {
 form_dm:
 function form_dm(dm_obj, pagename) {
     var timestamp = Date.parse(dm_obj.created_at);
-    var create_at = new Date();
-    create_at.setTime(timestamp);
-    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
-	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
+    var created_at = new Date();
+    created_at.setTime(timestamp);
+    var created_at_str = ui.Template.format_time(created_at);
     var text = ui.Template.form_text('@'+dm_obj.recipient.screen_name +' ' + dm_obj.text);
 
     var m = ui.Template.dm_m;
@@ -187,7 +185,7 @@ function form_dm(dm_obj, pagename) {
     m.PROFILE_IMG = dm_obj.sender.profile_image_url;
     m.TEXT = text;
     m.SCHEME = 'message';
-    m.TIMESTAMP = create_at_str;
+    m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TRANS_Reply_Them = "Reply Them";
     return ui.Template.render(ui.Template.dm_t, m);
@@ -213,13 +211,12 @@ function form_tweet (tweet_obj, pagename) {
         : '';
 
     var timestamp = Date.parse(tweet_obj.created_at);
-    var create_at = new Date();
-    create_at.setTime(timestamp);
-    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()));
-	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
-    var create_at_short_str = create_at.toTimeString().split(' ')[0];
-    if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
+    var created_at = new Date();
+    created_at.setTime(timestamp);
+    var created_at_str = ui.Template.format_time(created_at);
+    var created_at_short_str = created_at.toTimeString().split(' ')[0];
+    if (created_at.toDateString() != new Date().toDateString()){
+        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
     }
 
     // choose color scheme
@@ -262,8 +259,8 @@ function form_tweet (tweet_obj, pagename) {
     m.REPLY_TEXT = reply_str;
     m.RETWEET_TEXT = retweet_str;
     m.RETWEET_MARK = retweet_name != ''? 'retweet_mark': '';
-    m.SHORT_TIMESTAMP = create_at_short_str;
-    m.TIMESTAMP = create_at_str;
+    m.SHORT_TIMESTAMP = created_at_short_str;
+    m.TIMESTAMP = created_at_str;
     m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
@@ -287,13 +284,12 @@ function form_search(tweet_obj, pagename) {
     var id = tweet_obj.id_str;
     var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     var timestamp = Date.parse(tweet_obj.created_at);
-    var create_at = new Date();
-    create_at.setTime(timestamp);
-    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
-	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
-    var create_at_short_str = create_at.toTimeString().split(' ')[0];
-    if (create_at.toDateString() != new Date().toDateString()){
-        create_at_short_str = create_at.getFullYear() + '-' + (create_at.getMonth()+1) + '-' +  create_at.getDate() + ' ' + create_at_short_str;
+    var created_at = new Date();
+    created_at.setTime(timestamp);
+    var created_at_str = ui.Template.format_time(created_at);
+    var created_at_short_str = created_at.toTimeString().split(' ')[0];
+    if (created_at.toDateString() != new Date().toDateString()){
+        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
     }
     var text = ui.Template.form_text(tweet_obj.text);
     // choose color scheme
@@ -315,8 +311,8 @@ function form_search(tweet_obj, pagename) {
     // @TODO BUG
     m.SOURCE = source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
-    m.SHORT_TIMESTAMP = create_at_short_str;
-    m.TIMESTAMP = create_at_str;
+    m.SHORT_TIMESTAMP = created_at_short_str;
+    m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TRANS_via = 'via';
     return ui.Template.render(ui.Template.search_t, m);
@@ -338,12 +334,11 @@ function form_people(user_obj, pagename) {
 
 fill_vcard:
 function fill_vcard(user_obj, vcard_container) {
-    var create_at = new Date(Date.parse(user_obj.created_at));
+    var created_at = new Date(Date.parse(user_obj.created_at));
     var now = new Date();
-    var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
+    var differ = Math.floor((now-created_at)/(1000 * 60 * 60 * 24));
 
-    var create_at_str = decodeURIComponent(escape(create_at.toLocaleTimeString()))
-	+ ' ' + decodeURIComponent(escape(create_at.toLocaleDateString()));
+    var created_at_str = ui.Template.format_time(created_at);
     
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
@@ -358,7 +353,7 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
     vcard_container.find('.bio').text('').text(user_obj.description);
     vcard_container.find('.location').text('').text(user_obj.location);
-    vcard_container.find('.join').text(create_at_str);
+    vcard_container.find('.join').text(created_at_str);
     if (user_obj.url) {
         vcard_container.find('.web').text(user_obj.url)
         vcard_container.find('.web').attr('href', user_obj.url);
@@ -390,6 +385,17 @@ function form_text(text) {
 form_status_indicators:
 function form_status_indicators(tweet) {
      
+},
+
+format_time:
+function format_time(datetime) {
+    var str = '';
+    try {
+        str = decodeURIComponent(escape(datetime.toLocaleTimeString())) + ' ' + decodeURIComponent(escape(datetime.toLocaleDateString()));
+    } catch (e) {
+        str = datetime.toLocaleTimeString() + ' ' + datetime.toLocaleDateString();
+    }
+    return str;
 },
 
 render:

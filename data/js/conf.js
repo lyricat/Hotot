@@ -60,7 +60,7 @@ default_prefs: {
         , 'use_same_sign_oauth_base': true
         , 'search_api_base': 'http://search.twitter.com/'
           // extensions:
-        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"]
+        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl"]
       }
     , 'identica': {
           // Account:
@@ -96,7 +96,7 @@ default_prefs: {
         , 'use_same_sign_oauth_base': true
         , 'search_api_base': 'https://api.twitter.com/api/'
           // extensions:
-        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload"]
+        , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl"]
       }
 },
 
