@@ -96,7 +96,7 @@
 		"description": "data/index.html"
 	},
 	"search_in_twitter": {
-		"message": "Search in Twitter",
+		"message": "Search @ in Twitter",
 		"description": "data/index.html"
 	},
 	"loading_resources_hint": {
@@ -616,7 +616,7 @@
 		"description": "data/index.html"
 	},
 	"search_in_google": {
-		"message": "Search in Google",
+		"message": "Search @ in Google",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -862,5 +862,13 @@
 	"sign_in_with_twitter": {
 		"message": "Sign in with Twitter",
 		"description": "data/index.html"
+	},
+	"copy_to_clipboard": {
+		"message": "Copy to clipboard",
+		"description": "date/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "Paste from clipboard",
+		"description": "date/index.html"
 	}
 }

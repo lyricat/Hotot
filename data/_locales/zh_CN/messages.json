@@ -96,7 +96,7 @@
 		"description": ""
 	},
 	"search_in_twitter": {
-		"message": "在Twitter中搜索",
+		"message": "在Twitter中搜索@",
 		"description": ""
 	},
 	"loading_resources_hint": {
@@ -616,7 +616,7 @@
 		"description": "data/index.html"
 	},
 	"search_in_google": {
-		"message": "在Google搜索",
+		"message": "在Google中搜索@",
 		"description": ""
 	},
 	"post_successfully": {
@@ -862,5 +862,13 @@
 	"sign_in_with_twitter": {
 		"message": "登录到Twitter",
 		"description": ""
+	},
+	"copy_to_clipboard": {
+		"message": "复制到剪贴板",
+		"description": "date/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "从剪贴板粘贴",
+		"description": "date/index.html"
 	}
 }

@@ -414,7 +414,9 @@ jQuery(function($) {
     $(document).click(
     function (event) {
         if (event.button == 0) {
-            ui.StatusBox.close();
+            if ($(event.target).parents('#context_menu').length == 0 && event.target.id != 'context_menu') {
+                ui.StatusBox.close();
+            }
             ui.ContextMenu.hide();
         }
     });
@@ -1658,6 +1660,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <section id="context_menu">
     <ul class="hotot_menu">
+        <li><a id="context_menuitem_copy" class="select_only native_only" href="javascript:void(0);" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
+        <li><a id="context_menuitem_paste" class="editable_only native_only" href="javascript:void(0);" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
         <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_google">Search in Google</a></li>
         <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
     </ul>
