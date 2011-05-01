@@ -13,7 +13,7 @@ def get_data_files(root, data_dir):
            ]
 
 setup(name='hotot',
-      version="0.9.5",
+      version="0.9.6",
       description='Lightweight Twitter Client',
       long_description =
 """
