@@ -92,9 +92,9 @@ def webkit_set_proxy_uri(uri):
             libgobject = ctypes.CDLL('libgobject-2.0.so.0')
             libsoup = ctypes.CDLL('libsoup-2.4.so.1')
             try:
-                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
-            except:
                 libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
+            except:
+                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
             pass
         proxy_uri = libsoup.soup_uri_new(str(uri)) if uri else 0
         session = libwebkit.webkit_get_default_session()

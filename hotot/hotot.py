@@ -19,6 +19,9 @@ except ImportError:
 else:
     HAS_INDICATOR = True
 
+if __import__('os').environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
+    HAS_INDICATOR = False
+
 try: import i18n
 except: from gettext import gettext as _
 
