@@ -337,7 +337,6 @@ var globals = {
     , trim_bound: 100
     , tweet_font_size: 12
     , myself: {}
-    , focus_input: false
     , in_main_view: false
     , load_flags: 0
 };
@@ -350,7 +349,8 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !globals.focus_input) {
+        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA');
+        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
                 globals.about_dialog.open();            
@@ -360,7 +360,7 @@ jQuery(function($) {
             // <Ctrl> + q to quit
             quit();
         } else {
-            if (globals.focus_input || !globals.in_main_view)
+            if (focus_input || !globals.in_main_view)
                 return
             if (! ui.ActionMenu.is_hide) {
                 return ui.ActionMenu.handle_keyup(event.keyCode);
@@ -428,11 +428,6 @@ jQuery(function($) {
             ui.Slider.slide_to_prev();
         }
     };
-
-    $("input").focus(function () {globals.focus_input = true;})
-        .blur(function () {globals.focus_input = false;});
-    $("textarea").focus(function () {globals.focus_input = true;})
-        .blur(function () {globals.focus_input = false;});
 
     $(window).resize(
     function () {

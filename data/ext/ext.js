@@ -8,7 +8,6 @@ builtins: [
     , 'org.hotot.instapaper'
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
-//    , 'org.hotot.stat'
     , 'org.hotot.translate'
     , 'org.hotot.videopreview'
 ],
