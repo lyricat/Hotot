@@ -480,7 +480,7 @@
 		"description": ""
 	},
 	"summon_hotot": {
-		"message": "召唤Hotot 『比如: &lt;ALT&gt;C』",
+		"message": "召唤Hotot 『比如: <ALT>C』",
 		"description": ""
 	},
 	"send_message": {

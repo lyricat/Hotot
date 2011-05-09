@@ -39,7 +39,7 @@ function init() {
 
     $('#context_menuitem_web_search').click(
     function (event) {
-        navigate_action('http://google.com/search?sourceid=chrome&ie=UTF-8&q='+ui.ContextMenu.selected_string);
+        navigate_action('http://www.google.com/search?sourceid=chrome&ie=UTF-8&q='+ui.ContextMenu.selected_string);
     });
 
     $('#context_menuitem_twitter_search').click(
