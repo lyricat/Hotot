@@ -386,7 +386,9 @@ function on_btn_save_prefs_clicked() {
 
 enable:
 function enable() {
-	ext.ContentFirewall.db = new ext.Preferences(ext.ContentFirewall.id);
+	if (!ext.ContentFirewall.db) {
+		ext.ContentFirewall.db = new ext.Preferences(ext.ContentFirewall.id);
+	}
 	ext.ContentFirewall.db.get('prefs', function(key, val) {
 		if (val) {
 			ext.ContentFirewall.prefs = JSON.parse(val);
