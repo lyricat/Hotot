@@ -2,6 +2,7 @@ if (typeof ext == 'undefined') var ext = {};
 ext = {
 
 builtins: [
+    , 'org.hotot.cfw'
     , 'org.hotot.gmap'
     , 'org.hotot.imagepreview'
     , 'org.hotot.imageupload'
