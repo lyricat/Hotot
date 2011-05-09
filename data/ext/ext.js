@@ -61,7 +61,7 @@ function init() {
             cbs[i](tweet_obj, container);
         }
         
-        ret = ui_main_add_tweets(tweet_obj, container);
+        var ret = ui_main_add_tweets(tweet_obj, container);
 
         for (var i = 0; i < cbs_after.length; i += 1) {
             cbs_after[i](tweet_obj, container);
@@ -77,7 +77,7 @@ function init() {
             cbs[i](tweet_obj, pagename);
         }
         
-        result_html = ui_template_form_tweet(tweet_obj, pagename);
+        var result_html = ui_template_form_tweet(tweet_obj, pagename);
 
         for (var i = 0; i < cbs_after.length; i += 1) {
             result_html = cbs_after[i](tweet_obj, pagename, result_html);
@@ -125,6 +125,7 @@ function init_exts() {
 
             var extension = ext[key];
 
+			var icon;
             if (typeof extension.icon == 'undefined') {
                 icon = 'image/ic64_exts.png';
             } else {
@@ -188,9 +189,9 @@ function load_builtin_exts(callback) {
 
 load_exts:
 function load_exts(exts, callback) {
-    procs = [];
+    var procs = [];
     var _load = function (idx) {
-        var path = exts[i];
+        var path = exts[idx];
         procs.push(function () {
             $.getScript(path,
             function () {
