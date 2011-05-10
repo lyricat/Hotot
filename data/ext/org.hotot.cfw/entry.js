@@ -146,128 +146,123 @@ function on_add_tweets(tweets, container) {
 
 open_option_dialog:
 function open_option_dialog() {
-	ext.ContentFirewall.db.get('prefs', function(key, val) {
-		if (val) {
-			ext.ContentFirewall.prefs = JSON.parse(val);
-		}
-		var title = 'Content Firewall';
-		var body = '<style>'+
-				'#ext_hotot_cfw_opt_dialog table{table-layout:fixed}'+
-				'#ext_hotot_cfw_opt_dialog table td{padding:2px;text-align:center}'+
-				'.ext_hotot_cfw_rule_pattern{width:116px}'+
-				'.ext_hotot_cfw_rule_type{width:76px}'+
-				'.ext_hotot_cfw_rule_target{width:76px}'+
-				'.ext_hotot_cfw_rule_delete{width:38px}'+
-				'.ext_hotot_cfw_new_rule{text-align:center}'+
-			'</style>'+
-			'<p>'+
-			'<label>Filter:</label>'+
-			'<input type="checkbox" id="ext_hotot_cfw_timeline" class="dark"/>Timeline</input>'+
-			'<input type="checkbox" id="ext_hotot_cfw_mentions" class="dark"/>Mentions</input>'+
-			'<input type="checkbox" id="ext_hotot_cfw_messages" class="dark"/>Messages</input>'+
-			'<input type="checkbox" id="ext_hotot_cfw_others" class="dark"/>Others</input>'+
-			'</p>'+
-			'<p>&nbsp;</p>'+
-			'<p>'+
-			'<label>Blacklist Rules:</label><br/>'+
-			'<table id="ext_hotot_cfw_blacklist">'+
-			'<thead>'+
-			'<tr>'+
-				'<td style="width:28px"></td>'+
-				'<td style="width:127px">Pattern</td>'+
-				'<td style="width:80px">Type</td>'+
-				'<td style="width:80px">Target</td>'+
-				'<td style="width:47px"></td>'+
-			'</tr>'+
-			'</thead>'+
-			'<tbody>'+
-			'</tbody>'+
-			'</table>'+
-			'<div class="ext_hotot_cfw_new_rule">'+
-			'<input type="button" id="ext_hotot_cfw_blacklist_new" value="New Rule"/>'+
-			'</div>'+
-			'</p>'+
-			'<p>&nbsp;</p>'+
-			'<p>'+
-			'<label>Whitelist Rules:</label><br/>'+
-			'<table id="ext_hotot_cfw_whitelist">'+
-			'<thead>'+
-			'<tr>'+
-				'<td style="width:28px"></td>'+
-				'<td style="width:127px">Pattern</td>'+
-				'<td style="width:80px">Type</td>'+
-				'<td style="width:80px">Target</td>'+
-				'<td style="width:47px"></td>'+
-			'</tr>'+
-			'</thead>'+
-			'<tbody>'+
-			'</tbody>'+
-			'</table>'+
-			'<div class="ext_hotot_cfw_new_rule">'+
-			'<input type="button" id="ext_hotot_cfw_whitelist_new" value="New Rule"/>'+
-			'</div>'+
-			'</p>';
-			
-		ext.ContentFirewall.option_dialog = widget.DialogManager.build_dialog(
-			'#ext_hotot_cfw_opt_dialog', title, '', body,
-			[{id:'#ext_btn_cfw_save', label: 'Save', click: ext.ContentFirewall.on_btn_save_prefs_clicked}]);
-		ext.ContentFirewall.option_dialog.set_styles('header', {'display': 'none', 'height': '0'});
-		ext.ContentFirewall.option_dialog.resize(400, 300);
-	
-		var prefs = ext.ContentFirewall.prefs;
-	
-		for (var key in prefs) {
-			if (key != "blacklist" && key != "whitelist") {
-				$('#ext_hotot_cfw_' + key).attr('checked', prefs[key]);
-			}
-		}
-	
-		var table = $("#ext_hotot_cfw_blacklist tbody");
-		for (var i = 0; i < prefs.blacklist.length; i++) {
-			var rule = prefs.blacklist[i];
-			var item = ext.ContentFirewall.add_new_rule(rule);
-			item.addClass("ext_hotot_cfw_blacklist_rule");
-			table.append(item);
-		}
-		$("#ext_hotot_cfw_blacklist_new").click(function() {
-			try {
-				$("#ext_hotot_cfw_blacklist .ext_hotot_cfw_rule_pattern").each(function () {
-					if (!$(this).val()) {
-						$(this).focus();
-						throw "";
-					}
-				});
-				var item = ext.ContentFirewall.add_new_rule();
-				item.addClass("ext_hotot_cfw_blacklist_rule");
-				$("#ext_hotot_cfw_blacklist tbody").append(item);
-			} catch (ex) {
-			}
-		})
-	
-		var table = $("#ext_hotot_cfw_whitelist tbody");
-		for (var i = 0; i < prefs.whitelist.length; i++) {
-			var rule = prefs.whitelist[i];
-			var item = ext.ContentFirewall.add_new_rule(rule);
-			item.addClass("ext_hotot_cfw_whitelist_rule");
-			table.append(item);
-		}
-		$("#ext_hotot_cfw_whitelist_new").click(function() {
-			try {
-				$("#ext_hotot_cfw_whitelist .ext_hotot_cfw_rule_pattern").each(function () {
-					if (!$(this).val()) {
-						$(this).focus();
-						throw "";
-					}
-				});
-				var item = ext.ContentFirewall.add_new_rule();
-				item.addClass("ext_hotot_cfw_whitelist_rule");
-				$("#ext_hotot_cfw_whitelist tbody").append(item);
-			} catch (ex) {
-			}
-		})
+	var title = 'Content Firewall';
+	var body = '<style>'+
+			'#ext_hotot_cfw_opt_dialog table{table-layout:fixed}'+
+			'#ext_hotot_cfw_opt_dialog table td{padding:2px;text-align:center}'+
+			'.ext_hotot_cfw_rule_pattern{width:116px}'+
+			'.ext_hotot_cfw_rule_type{width:76px}'+
+			'.ext_hotot_cfw_rule_target{width:76px}'+
+			'.ext_hotot_cfw_rule_delete{width:38px}'+
+			'.ext_hotot_cfw_new_rule{text-align:center}'+
+		'</style>'+
+		'<p>'+
+		'<label>Filter:</label>'+
+		'<input type="checkbox" id="ext_hotot_cfw_timeline" class="dark"/>Timeline</input>'+
+		'<input type="checkbox" id="ext_hotot_cfw_mentions" class="dark"/>Mentions</input>'+
+		'<input type="checkbox" id="ext_hotot_cfw_messages" class="dark"/>Messages</input>'+
+		'<input type="checkbox" id="ext_hotot_cfw_others" class="dark"/>Others</input>'+
+		'</p>'+
+		'<p>&nbsp;</p>'+
+		'<p>'+
+		'<label>Blacklist Rules:</label><br/>'+
+		'<table id="ext_hotot_cfw_blacklist">'+
+		'<thead>'+
+		'<tr>'+
+			'<td style="width:28px"></td>'+
+			'<td style="width:127px">Pattern</td>'+
+			'<td style="width:80px">Type</td>'+
+			'<td style="width:80px">Target</td>'+
+			'<td style="width:47px"></td>'+
+		'</tr>'+
+		'</thead>'+
+		'<tbody>'+
+		'</tbody>'+
+		'</table>'+
+		'<div class="ext_hotot_cfw_new_rule">'+
+		'<input type="button" id="ext_hotot_cfw_blacklist_new" value="New Rule"/>'+
+		'</div>'+
+		'</p>'+
+		'<p>&nbsp;</p>'+
+		'<p>'+
+		'<label>Whitelist Rules:</label><br/>'+
+		'<table id="ext_hotot_cfw_whitelist">'+
+		'<thead>'+
+		'<tr>'+
+			'<td style="width:28px"></td>'+
+			'<td style="width:127px">Pattern</td>'+
+			'<td style="width:80px">Type</td>'+
+			'<td style="width:80px">Target</td>'+
+			'<td style="width:47px"></td>'+
+		'</tr>'+
+		'</thead>'+
+		'<tbody>'+
+		'</tbody>'+
+		'</table>'+
+		'<div class="ext_hotot_cfw_new_rule">'+
+		'<input type="button" id="ext_hotot_cfw_whitelist_new" value="New Rule"/>'+
+		'</div>'+
+		'</p>';
+		
+	ext.ContentFirewall.option_dialog = widget.DialogManager.build_dialog(
+		'#ext_hotot_cfw_opt_dialog', title, '', body,
+		[{id:'#ext_btn_cfw_save', label: 'Save', click: ext.ContentFirewall.on_btn_save_prefs_clicked}]);
+	ext.ContentFirewall.option_dialog.set_styles('header', {'display': 'none', 'height': '0'});
+	ext.ContentFirewall.option_dialog.resize(400, 300);
 
-		ext.ContentFirewall.option_dialog.open();
-	});
+	var prefs = ext.ContentFirewall.prefs;
+
+	for (var key in prefs) {
+		if (key != "blacklist" && key != "whitelist") {
+			$('#ext_hotot_cfw_' + key).attr('checked', prefs[key]);
+		}
+	}
+
+	var table = $("#ext_hotot_cfw_blacklist tbody");
+	for (var i = 0; i < prefs.blacklist.length; i++) {
+		var rule = prefs.blacklist[i];
+		var item = ext.ContentFirewall.add_new_rule(rule);
+		item.addClass("ext_hotot_cfw_blacklist_rule");
+		table.append(item);
+	}
+	$("#ext_hotot_cfw_blacklist_new").click(function() {
+		try {
+			$("#ext_hotot_cfw_blacklist .ext_hotot_cfw_rule_pattern").each(function () {
+				if (!$(this).val()) {
+					$(this).focus();
+					throw "";
+				}
+			});
+			var item = ext.ContentFirewall.add_new_rule();
+			item.addClass("ext_hotot_cfw_blacklist_rule");
+			$("#ext_hotot_cfw_blacklist tbody").append(item);
+		} catch (ex) {
+		}
+	})
+
+	var table = $("#ext_hotot_cfw_whitelist tbody");
+	for (var i = 0; i < prefs.whitelist.length; i++) {
+		var rule = prefs.whitelist[i];
+		var item = ext.ContentFirewall.add_new_rule(rule);
+		item.addClass("ext_hotot_cfw_whitelist_rule");
+		table.append(item);
+	}
+	$("#ext_hotot_cfw_whitelist_new").click(function() {
+		try {
+			$("#ext_hotot_cfw_whitelist .ext_hotot_cfw_rule_pattern").each(function () {
+				if (!$(this).val()) {
+					$(this).focus();
+					throw "";
+				}
+			});
+			var item = ext.ContentFirewall.add_new_rule();
+			item.addClass("ext_hotot_cfw_whitelist_rule");
+			$("#ext_hotot_cfw_whitelist tbody").append(item);
+		} catch (ex) {
+		}
+	})
+
+	ext.ContentFirewall.option_dialog.open();
 },
 
 add_new_rule:
@@ -384,17 +379,25 @@ function on_btn_save_prefs_clicked() {
 	ext.ContentFirewall.option_dialog = null;
 },
 
+parse_saved_prefs:
+function parse_saved_prefs(str) {
+	if (!str) {
+		return;
+	}
+	try {
+		var saved = JSON.parse(str);
+		var prefs = ext.ContentFirewall.prefs;
+		for (var key in prefs) {
+			if (saved[key] != null) {
+				prefs[key] = saved[key];
+			}
+		}
+	} catch (ex) {
+	}
+},
+
 enable:
 function enable() {
-	if (!ext.ContentFirewall.db) {
-		ext.ContentFirewall.db = new ext.Preferences(ext.ContentFirewall.id);
-	}
-	ext.ContentFirewall.db.get('prefs', function(key, val) {
-		if (val) {
-			ext.ContentFirewall.prefs = JSON.parse(val);
-		}
-	});
-
 	ext.add_exts_menuitem('ext_btn_hotot_cfw'
 		, ext.ContentFirewall.id+'/ic16_cfw.png'
 		, 'Content Firewall Setting...'
@@ -414,11 +417,13 @@ function disable() {
 
 options:
 function options() {
-	if (!ext.ContentFirewall.db) {
-		ext.ContentFirewall.db = new ext.Preferences(ext.ContentFirewall.id);
-	}
 	ext.ContentFirewall.open_option_dialog();
 },
 
-}
+};
 
+// load preferences
+ext.ContentFirewall.db = ext.Preferences(ext.ContentFirewall.id);
+ext.ContentFirewall.db.get('prefs', function(key, val) {
+	ext.ContentFirewall.parse_saved_prefs(val);
+});
