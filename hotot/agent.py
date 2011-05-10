@@ -84,9 +84,8 @@ def crack_action(params):
             th.start()
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
-    elif params[1] == 'get_clipboard_text':
-        clipboard = gtk.clipboard_get()
-        webv.execute_script('ui.ContextMenu.clipboard_text=%s' % json.dumps(clipboard.wait_for_text()))
+    elif params[1] == 'paste_clipboard_text':
+        webv.paste_clipboard();
     elif params[1] == 'set_clipboard_text':
         clipboard = gtk.clipboard_get()
         text = list(params)

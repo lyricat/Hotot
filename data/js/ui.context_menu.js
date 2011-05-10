@@ -6,8 +6,6 @@ is_hide: true,
 editable_element: null,
 event_element: null,
 
-clipboard_text: null,
-
 init:
 function init() {
     $('#context_menuitem_copy').click(
@@ -22,18 +20,8 @@ function init() {
     function (event) {
         var element = ui.ContextMenu.editable_element;
         if (element) {
-            if (util.is_native_platform()) {
-                ui.ContextMenu.clipboard_text = '""';
-                hotot_action('action/get_clipboard_text');
-                var text = $(element).focus().val();
-                if (ui.ContextMenu.clipboard_text) {
-	                var start = element.selectionStart;
-    	            $(element).val(text.substr(0, start) + 
-        	            ui.ContextMenu.clipboard_text + 
-                        text.substring(element.selectionEnd));
-                	element.selectionEnd = element.selectionStart = start + ui.ContextMenu.clipboard_text.length;
-                }
-            }
+            element.focus();
+            hotot_action('action/paste_clipboard_text');
         }
     });
 
