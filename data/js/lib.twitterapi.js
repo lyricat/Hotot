@@ -452,4 +452,27 @@ function search(query, page, on_success) {
     });
 },
 
+add_streaming_filter:
+function add_streaming_filter(filter, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://stream.twitter.com/1/statuses/filter.json?track=', true);
+    xhr.setRequestHeader('Authorization', encodeBase64(
+            ':'));
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 3) {
+            var obj = null;
+            try {
+                obj = JSON.parse(xhr.responseText)
+            } catch (e) {}
+            if (obj) {
+                hotot_log('Streaming', obj.id_str+","+obj.user.screen_name+":"+obj.text)
+            }
+        }
+    }
+    params=[];
+    for (var k in filter) {
+        params.push(k+'='+encodeURIComponent(filter[k]));
+    }
+    xhr.send(params.join('&'));
+},
 };
