@@ -368,7 +368,7 @@ function load_tweets_cb(result, pagename) {
     if (pagename == '#people_followers' || pagename == '#people_friends') {
         tweet_count = ui.Main.add_people(result, container);
     } else {
-        tweet_count = ui.Main.add_tweets(result, container);
+        tweet_count = ui.Main.add_tweets(result, container, true);
     }
 
     if (tweet_count != 0 ) {
@@ -451,7 +451,7 @@ function load_more_tweets_cb(result, pagename) {
     if (pagename == '#people_followers' || pagename == '#people_friends') {
         tweet_count = ui.Main.add_people(result, container);
     } else {
-        tweet_count = ui.Main.add_tweets(result, container);
+        tweet_count = ui.Main.add_tweets(result, container, false);
     }
 
     if (tweet_count != 0) {
@@ -507,7 +507,7 @@ function add_people(json_obj, container) {
 },
 
 add_tweets:
-function add_tweets(json_obj, container) {
+function add_tweets(json_obj, container, reversion) {
 /* Add one or more tweets to a specifed container.
  * - Choose a template-filled function which correspond to the json_obj and
  *   Add it to the container in order of tweets' id (in order of post time).
@@ -540,7 +540,7 @@ function add_tweets(json_obj, container) {
 
     // insert tweets.
     for (var i = 0; i < json_obj.length; i += 1) {
-        if (! ui.Main.insert_tweet(container, json_obj[i], form_proc)) {
+        if (! ui.Main.insert_tweet(container, json_obj[i], form_proc, reversion)) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
         } else {
@@ -619,28 +619,14 @@ function sort(json_obj) {
 },
 
 insert_tweet:
-function insert_tweet(container, tweet, form_proc) {
+function insert_tweet(container, tweet, form_proc, reversion) {
     /* insert this tweet into a correct position.
      * in the order of id.
      * and drop duplicate tweets who has same id.
      * */
-    var get_next_tweet_dom = function (current) {
-        /* return the next tweet DOM of current. 
-         * if current is null, return the first tweet DOM
-         * if no tweet at the next position, return null
-         * */
-        var next_one = null;
-        if (current == null) {
-            next_one = container.find('.card:first');
-        } else {
-            next_one = $(current).next('.card');
-        }
-        if (next_one.length == 0) next_one = null;
-        return next_one;
-    };
     var this_one = tweet;
-    var next_one = get_next_tweet_dom(null);
     var this_one_html = form_proc(this_one, container.pagename);
+    var next_one = ui.Main.get_next_tweet_dom(container, null, reversion);
     while (true) {
         if (next_one == null) {
             // insert to end of container 
@@ -657,10 +643,28 @@ function insert_tweet(container, tweet, form_proc) {
                 // simply drop the duplicate tweet.
                 return false;
             } else {                //next_one_id > this.id_str
-                next_one = get_next_tweet_dom(next_one);
+                next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
             }
         }
     }
+},
+
+get_next_tweet_dom:
+function get_next_tweet_dom(container, current, reversion) {
+    /* return the next tweet DOM of current. 
+     * if current is null, return the first tweet DOM
+     * if no tweet at the next position, return null
+     * */
+    var next_one = null;
+    if (current == null) {
+        next_one = reversion || reversion != undefined
+            ? container.find('.card:first'): container.find('.card:last');
+    } else {
+        next_one = reversion || reversion != undefined
+            ? $(current).next('.card'): container.prev('.card');
+    }
+    if (next_one.length == 0) next_one = null;
+    return next_one;
 },
 
 trim_page:
@@ -962,7 +966,7 @@ load_thread_proc:
 function load_thread_proc(tweet_id, thread_container, on_finish) {
     var load_thread_proc_cb = function (prev_tweet_obj) {
         thread_container.resume_pos = false;
-        var count=ui.Main.add_tweets([prev_tweet_obj], thread_container);
+        var count=ui.Main.add_tweets([prev_tweet_obj], thread_container, true);
         // load the prev tweet in the thread.
         var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
         if (reply_id == null) { // end of thread.
@@ -1001,7 +1005,7 @@ function preload_thread(tweet_obj, thread_container) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
             var li = $(thread_container.parents('.card')[0]);
-            ui.Main.add_tweets([prev_tweet_obj], thread_container);
+            ui.Main.add_tweets([prev_tweet_obj], thread_container, true);
             
             li.find('.btn_tweet_thread').addClass('expand');
             li.find('.tweet_thread_hint').hide();

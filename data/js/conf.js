@@ -8,7 +8,6 @@ vars: {
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
     , 'column_max_width': 400
-
 },
 
 default_settings: {
@@ -23,6 +22,7 @@ default_settings: {
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
     , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
+    , 'items_per_request': 50
 },
 
 default_prefs: {

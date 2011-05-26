@@ -27,7 +27,7 @@ prefs: {
 db: null,
 
 on_add_tweets:
-function on_add_tweets(tweets, container) {
+function on_add_tweets(tweets, container, reversion) {
 	if (tweets.length == 0) {
 		return;
 	}
