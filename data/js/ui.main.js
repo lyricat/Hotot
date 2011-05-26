@@ -669,8 +669,11 @@ function get_next_tweet_dom(container, current, reversion) {
 
 trim_page:
 function trim_page(container) {
-    // @TODO unbind events
     var cards = container.children('.card:gt('+globals.trim_bound+')');
+    cards.find('.who_href').unbind();
+    cards.find('.btn_tweet_thread:first').unbind();
+    cards.find('.btn_tweet_thread_more:first').unbind();
+    cards.unbind();
     cards.remove();
 },
 
@@ -697,17 +700,6 @@ function bind_tweets_action(tweets_obj, pagename) {
                 ui.ContextMenu.hide();
             }
             event.stopPropagation();
-        });
-        $(id).hover(
-        function (event) {
-            $(id).addClass('active');
-            ui.Main.set_active_tweet_id(id);
-            ui.Main.set_tweet_bar(id);
-            event.stopPropagation();
-        },
-        function (event) {
-            $(id).removeClass('active');
-            $(pagename).css('-webkit-transform','scale(0.9)')
         });
         $(id).mouseover(function () {
             ui.Main.set_active_tweet_id(id);
