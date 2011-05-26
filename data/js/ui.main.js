@@ -527,60 +527,6 @@ function add_tweets(json_obj, container) {
     if (container.pagename == 'search')
         form_proc = ui.Template.form_search
 
-    var sort_tweets = function (tweets) {
-        /* sort tweets in order of id. SMALLER first.
-         * */
-        tweets.sort(function (a, b) {
-            return a.id_str > b.id_str; 
-        });
-        return tweets;
-    };
-
-    var get_next_tweet_dom = function (current) {
-        /* return the next tweet DOM of current. 
-         * if current is null, return the first tweet DOM
-         * if no tweet at the next position, return null
-         * */
-        var next_one = null;
-        if (current == null) {
-            next_one = container.find('.card:first');
-        } else {
-            next_one = $(current).next('.card');
-        }
-        if (next_one.length == 0) next_one = null;
-        return next_one;
-    };
-    
-    var insert_tweet = function (tweet) {
-        /* insert this tweet into a correct position.
-         * in the order of id.
-         * and drop duplicate tweets who has same id.
-         * */
-        var this_one = tweet;
-        var next_one = get_next_tweet_dom(null);
-        var this_one_html = form_proc(this_one, container.pagename);
-        while (true) {
-            if (next_one == null) {
-                // insert to end of container 
-                container.append(this_one_html);            
-                return true;
-            } else {
-                var next_one_id 
-                    = ui.Main.normalize_id($(next_one).attr('id'));
-                var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
-                if (cmp_ret == -1) {         //next_one_id < this.id_str
-                    $(next_one).before(this_one_html);
-                    return true;
-                } else if (cmp_ret == 0) { //next_one_id == this.id_str
-                    // simply drop the duplicate tweet.
-                    return false;
-                } else {                //next_one_id > this.id_str
-                    next_one = get_next_tweet_dom(next_one);
-                }
-            }
-        }
-    };
-
     var new_tweets_height = 0;
 
     for (var i = 0; i < json_obj.length; i+= 1) {
@@ -588,14 +534,13 @@ function add_tweets(json_obj, container) {
             json_obj[i].id_str = json_obj[i].id.toString();
         }
     }
+
+    // sort
+    ui.Main.sort(json_obj);
+
     // insert tweets.
-    if (1 < json_obj.length) {
-        json_obj.sort(function (a, b) {
-            return util.compare_id(a.id_str, b.id_str); 
-        });
-    }
     for (var i = 0; i < json_obj.length; i += 1) {
-        if (! insert_tweet(json_obj[i])) {
+        if (! ui.Main.insert_tweet(container, json_obj[i], form_proc)) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
         } else {
@@ -662,6 +607,60 @@ function add_tweets(json_obj, container) {
     ui.Main.bind_tweets_action(json_obj, container.pagename);
     toast.hide();
     return json_obj.length;
+},
+
+sort:
+function sort(json_obj) {
+    if (1 < json_obj.length) {
+        json_obj.sort(function (a, b) {
+            return util.compare_id(a.id_str, b.id_str); 
+        });
+    }
+},
+
+insert_tweet:
+function insert_tweet(container, tweet, form_proc) {
+    /* insert this tweet into a correct position.
+     * in the order of id.
+     * and drop duplicate tweets who has same id.
+     * */
+    var get_next_tweet_dom = function (current) {
+        /* return the next tweet DOM of current. 
+         * if current is null, return the first tweet DOM
+         * if no tweet at the next position, return null
+         * */
+        var next_one = null;
+        if (current == null) {
+            next_one = container.find('.card:first');
+        } else {
+            next_one = $(current).next('.card');
+        }
+        if (next_one.length == 0) next_one = null;
+        return next_one;
+    };
+    var this_one = tweet;
+    var next_one = get_next_tweet_dom(null);
+    var this_one_html = form_proc(this_one, container.pagename);
+    while (true) {
+        if (next_one == null) {
+            // insert to end of container 
+            container.append(this_one_html);            
+            return true;
+        } else {
+            var next_one_id 
+                = ui.Main.normalize_id($(next_one).attr('id'));
+            var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
+            if (cmp_ret == -1) {         //next_one_id < this.id_str
+                $(next_one).before(this_one_html);
+                return true;
+            } else if (cmp_ret == 0) { //next_one_id == this.id_str
+                // simply drop the duplicate tweet.
+                return false;
+            } else {                //next_one_id > this.id_str
+                next_one = get_next_tweet_dom(next_one);
+            }
+        }
+    }
 },
 
 trim_page:
