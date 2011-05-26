@@ -657,10 +657,10 @@ function get_next_tweet_dom(container, current, reversion) {
      * */
     var next_one = null;
     if (current == null) {
-        next_one = reversion || reversion != undefined
+        next_one = reversion != false
             ? container.find('.card:first'): container.find('.card:last');
     } else {
-        next_one = reversion || reversion != undefined
+        next_one = reversion != false
             ? $(current).next('.card'): container.prev('.card');
     }
     if (next_one.length == 0) next_one = null;
