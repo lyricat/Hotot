@@ -58,7 +58,7 @@ function success_handler(data, textStatus, xhr) {
     d.setTime(lib.twitterapi.ratelimit_reset * 1000);
     html = html.replace('{%RESET_TIME%}', d.toLocaleTimeString());
     var k = lib.twitterapi.ratelimit_remaning / lib.twitterapi.ratelimit_limit;
-    html = html.replace('{%STATUS%}', k < 0.25? _('nearly_dead')) 
+    html = html.replace('{%STATUS%}', k < 0.25? _('nearly_dead') 
         : k < 0.5? _('weakness'): k < 0.75? _('fine'): _('powerfull'));
     html = html.replace('{%STATUS_COLOR%}', k < 0.25? '#f33' 
         : k < 0.5? 'yellow': k < 0.75? 'lightgreen': '#0f3');
