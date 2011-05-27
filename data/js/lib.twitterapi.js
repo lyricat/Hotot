@@ -26,8 +26,8 @@ http_code_msg_table : {
     , 503: 'Server is overcapacity. Please try again later.'
 },
 
-error_handle:
-function error_handle(xhr, textStatus, errorThrown) {
+error_handler:
+function error_handler(xhr, textStatus, errorThrown) {
     var msg = '';
     var tech_info = '';
     if (xhr.status in lib.twitterapi.http_code_msg_table) {
@@ -45,6 +45,26 @@ function error_handle(xhr, textStatus, errorThrown) {
     return;
 },
 
+success_handler:
+function success_handler(data, textStatus, xhr) {
+    lib.twitterapi.ratelimit_limit = xhr.getResponseHeader('X-RateLimit-Limit');
+    lib.twitterapi.ratelimit_remaning = xhr.getResponseHeader('X-RateLimit-Remaining');
+    lib.twitterapi.ratelimit_reset = xhr.getResponseHeader('X-RateLimit-Reset');
+    if (lib.twitterapi.ratelimit_limit == null) { return; }
+    var html = '<span>'+_('my_power')+': {%REMANING%}/{%LIMIT%} - <span style="color:{%STATUS_COLOR%}">{%STATUS%}</span></span><br><span>'+_('reset_time') +': {%RESET_TIME%}</span>';
+    html = html.replace('{%REMANING%}', lib.twitterapi.ratelimit_remaning);
+    html = html.replace('{%LIMIT%}', lib.twitterapi.ratelimit_limit);
+    var d = new Date();
+    d.setTime(lib.twitterapi.ratelimit_reset * 1000);
+    html = html.replace('{%RESET_TIME%}', d.toLocaleTimeString());
+    var k = lib.twitterapi.ratelimit_remaning / lib.twitterapi.ratelimit_limit;
+    html = html.replace('{%STATUS%}', k < 0.25? _('nearly_dead')) 
+        : k < 0.5? _('weakness'): k < 0.75? _('fine'): _('powerfull'));
+    html = html.replace('{%STATUS_COLOR%}', k < 0.25? '#f33' 
+        : k < 0.5? 'yellow': k < 0.75? 'lightgreen': '#0f3');
+    globals.ratelimit_bubble.set_content(html);
+},
+
 basic_auth:
 function basic_auth() {
     return 'Basic ' + encodeBase64(
@@ -54,9 +74,12 @@ function basic_auth() {
 get:
 function get(ajax_url, ajax_params, on_success) {
     lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {},
-        on_success,
-        function(result) {
-            lib.twitterapi.error_handle(result);
+        function(result, textStatus, xhr) {
+            lib.twitterapi.success_handler(result, textStatus, xhr);
+            on_success(result, textStatus, xhr);
+        },
+        function(result, textStatus, xhr) {
+            lib.twitterapi.error_handler(result, textStatus, xhr);
         }
     );
 },
@@ -64,9 +87,12 @@ function get(ajax_url, ajax_params, on_success) {
 post:
 function post(ajax_url, ajax_params, on_success) {
     lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {},
-        on_success,
-        function(result) {
-            lib.twitterapi.error_handle(result);
+        function(result, textStatus, xhr) {
+            lib.twitterapi.success_handler(result, textStatus, xhr);
+            on_success(result, textStatus, xhr);
+        },
+        function(result, textStatus, xhr) {
+            lib.twitterapi.error_handler(result, textStatus, xhr);
         }
     );
 },

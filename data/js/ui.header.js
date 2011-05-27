@@ -9,12 +9,17 @@ function init () {
         toast.set("Loading ... ").show();
         ui.PeopleTabs.set_people(globals.myself.screen_name);
         daemon.Updater.update_people();
+    }).mouseenter(function(event) {
+        globals.ratelimit_bubble.place(widget.Bubble.BOTTOM
+            , widget.Bubble.ALIGN_LEFT);
+        globals.ratelimit_bubble.show();
     });
 
     $('#header').mouseleave(
     function (event) {
         $('#hotot_menu').hide();
         $('#exts_menu').hide();
+        globals.ratelimit_bubble.hide();
     });
 
     $('#hotot_menu').mouseleave(

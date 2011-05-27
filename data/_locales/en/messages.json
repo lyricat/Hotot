@@ -35,6 +35,10 @@
 		"message": "Font",
 		"description": "data/index.html"
 	},
+	"fine": {
+		"message": "Fine",
+		"description": "data/js/lib.twitterapi.js"
+	},
 	"click_here_to_compose_a_message_dots": {
 		"message": "Click here to compose a message ...",
 		"description": "data/js/ui.status_box.js"
@@ -74,6 +78,10 @@
 	"some_error_occur": {
 		"message": "Some Error Occur",
 		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "Nearly Dead",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"disabled": {
 		"message": "Disabled",
@@ -118,6 +126,10 @@
 	"my_tweets_be_retweeted": {
 		"message": "My Tweets, Be retweeted",
 		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "Paste from clipboard",
+		"description": "date/index.html"
 	},
 	"search_for": {
 		"message": "Search for",
@@ -299,6 +311,10 @@
 		"message": "Disable decoration of widgets and some animations.",
 		"description": "data/index.html"
 	},
+	"copy_to_clipboard": {
+		"message": "Copy to clipboard",
+		"description": "date/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -342,6 +358,10 @@
 	"search_api_base": {
 		"message": "Search API Base",
 		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "My Power",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"keyboard_shortcuts": {
 		"message": "Keyboard Shortcuts",
@@ -422,6 +442,10 @@
 	"followers": {
 		"message": "Followers",
 		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "Reset Time",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"step_one": {
 		"message": "Step 1",
@@ -531,9 +555,9 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"misc": {
-		"message": "Misc",
-		"description": "data/index.html"
+	"weakness": {
+		"message": "Weakness",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"effects": {
 		"message": "Effects",
@@ -566,6 +590,10 @@
 	"edit": {
 		"message": "Edit",
 		"description": "data/index.html"
+	},
+	"powerfull": {
+		"message": "Powerfull",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"show_all": {
 		"message": "Show All",
@@ -663,6 +691,10 @@
 		"message": "Tweets Per Day",
 		"description": "data/index.html"
 	},
+	"Delete": {
+		"message": "Delete",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "About",
 		"description": "data/index.html"
@@ -711,8 +743,8 @@
 		"message": "Balance between attractiveness and preformance.",
 		"description": "data/index.html"
 	},
-	"enable_proxy": {
-		"message": "Enable Proxy",
+	"misc": {
+		"message": "Misc",
 		"description": "data/index.html"
 	},
 	"enter_action_mode": {
@@ -847,6 +879,10 @@
 		"message": "Start to find",
 		"description": "data/index.html"
 	},
+	"enable_proxy": {
+		"message": "Enable Proxy",
+		"description": "data/index.html"
+	},
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
@@ -862,13 +898,5 @@
 	"sign_in_with_twitter": {
 		"message": "Sign in with Twitter",
 		"description": "data/index.html"
-	},
-	"copy_to_clipboard": {
-		"message": "Copy to clipboard",
-		"description": "date/index.html"
-	},
-	"paste_from_clipboard": {
-		"message": "Paste from clipboard",
-		"description": "date/index.html"
 	}
 }

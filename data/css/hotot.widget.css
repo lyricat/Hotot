@@ -370,3 +370,28 @@ disabled:
     white-space:normal;
 }
 
+/* = widget.bubble = */
+.bubble {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.bubble_container {
+}
+.bubble_body { 
+    border-radius: 5px;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px;
+}
+/* = widget.progress_bar = */
+.progress_bar {
+    height: 10px;
+    width: 100px;
+    border: 1 #ccc solid;
+}
+
+

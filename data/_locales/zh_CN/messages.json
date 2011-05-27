@@ -35,6 +35,10 @@
 		"message": "字体",
 		"description": ""
 	},
+	"fine": {
+		"message": "还好",
+		"description": "data/js/lib.twitterapi.js"
+	},
 	"click_here_to_compose_a_message_dots": {
 		"message": "点这里来写条私信...",
 		"description": "data/js/ui.status_box.js"
@@ -74,6 +78,10 @@
 	"some_error_occur": {
 		"message": "哎唷，发生了点错误",
 		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "都快挂了",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"disabled": {
 		"message": "禁用的",
@@ -118,6 +126,10 @@
 	"my_tweets_be_retweeted": {
 		"message": "我的状态，被转发",
 		"description": ""
+	},
+	"paste_from_clipboard": {
+		"message": "从剪贴板粘贴",
+		"description": "date/index.html"
 	},
 	"search_for": {
 		"message": "搜索",
@@ -299,6 +311,10 @@
 		"message": "禁用控件集装饰和部分动画。",
 		"description": "data/index.html"
 	},
+	"copy_to_clipboard": {
+		"message": "复制到剪贴板",
+		"description": "date/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -342,6 +358,10 @@
 	"search_api_base": {
 		"message": "Search API Base",
 		"description": ""
+	},
+	"my_power": {
+		"message": "魔法值",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"keyboard_shortcuts": {
 		"message": "键盘快捷键",
@@ -422,6 +442,10 @@
 	"followers": {
 		"message": "粉丝",
 		"description": ""
+	},
+	"reset_time": {
+		"message": "下次补魔时间",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"step_one": {
 		"message": "第一步",
@@ -531,9 +555,9 @@
 		"message": "自述",
 		"description": ""
 	},
-	"misc": {
-		"message": "杂项",
-		"description": "data/index.html"
+	"weakness": {
+		"message": "虚弱",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"effects": {
 		"message": "效果",
@@ -566,6 +590,10 @@
 	"edit": {
 		"message": "编辑",
 		"description": ""
+	},
+	"powerfull": {
+		"message": "精力充沛",
+		"description": "data/js/lib.twitterapi.js"
 	},
 	"show_all": {
 		"message": "显示所有",
@@ -663,6 +691,10 @@
 		"message": "每日发推量",
 		"description": "data/index.html"
 	},
+	"Delete": {
+		"message": "删除",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "关于",
 		"description": ""
@@ -711,9 +743,9 @@
 		"message": "在性能和养眼度之间保持平衡。",
 		"description": "data/index.html"
 	},
-	"enable_proxy": {
-		"message": "启用代理",
-		"description": ""
+	"misc": {
+		"message": "杂项",
+		"description": "data/index.html"
 	},
 	"enter_action_mode": {
 		"message": "进入动作模式",
@@ -847,6 +879,10 @@
 		"message": "开始查找",
 		"description": "data/index.html"
 	},
+	"enable_proxy": {
+		"message": "启用代理",
+		"description": ""
+	},
 	"clear": {
 		"message": "清除",
 		"description": ""
@@ -862,13 +898,5 @@
 	"sign_in_with_twitter": {
 		"message": "登录到Twitter",
 		"description": ""
-	},
-	"copy_to_clipboard": {
-		"message": "复制到剪贴板",
-		"description": "date/index.html"
-	},
-	"paste_from_clipboard": {
-		"message": "从剪贴板粘贴",
-		"description": "date/index.html"
 	}
 }

@@ -17,6 +17,7 @@
     <script type="text/javascript" src="js/widget.button.js"></script>
     <script type="text/javascript" src="js/widget.radio_group.js"></script>
     <script type="text/javascript" src="js/widget.dialog.js"></script>
+    <script type="text/javascript" src="js/widget.bubble.js"></script>
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -239,6 +240,10 @@ function init_ui() {
     ui.ActionMenu.init();
     ui.ContextMenu.init();
     init_dialogs();
+
+    globals.ratelimit_bubble = new widget.Bubble('#ratelimit_bubble', '#btn_my_profile');
+    globals.ratelimit_bubble.create();
+    globals.ratelimit_bubble.set_content("0");
 }
 
 function overlay_variables(vars) {
@@ -339,6 +344,7 @@ var globals = {
     , myself: {}
     , in_main_view: false
     , load_flags: 0
+    , ratelimit_bubble: null
 };
 
 jQuery(function($) {

@@ -95,6 +95,10 @@ pre {
     background-image: url(../image/ic48_profile_image.png);
 }
 
+#ratelimit_bubble .bubble_body{
+    font-size: 11px;
+}
+
 #version {
     position: absolute;
     top: 2px;

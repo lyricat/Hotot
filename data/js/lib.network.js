@@ -61,19 +61,19 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
                 }
             },
             success: 
-            function(result) {
+            function(result, textStatus, xhr) {
                 if ( on_success != null) {
                     result = lib.network.normalize_result(result);
-                    lib.network.success_task_table[task_uuid](result);
+                    lib.network.success_task_table[task_uuid](result, textStatus, xhr);
                     delete lib.network.success_task_table[task_uuid];
                     delete lib.network.error_task_table[task_uuid];
                 }
             },
             error: 
-            function (result) {
+            function (result, textStatus, xhr) {
                 if ( on_error != null) {
                     result = lib.network.normalize_result(result);
-                    lib.network.error_task_table[task_uuid](result);
+                    lib.network.error_task_table[task_uuid](result, textStatus, xhr);
                     delete lib.network.success_task_table[task_uuid];
                     delete lib.network.error_task_table[task_uuid];
                 }

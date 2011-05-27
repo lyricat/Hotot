@@ -9,17 +9,17 @@ watch_pages: {
       '#home_timeline': {
           watch: true 
         , proc : function () {daemon.Updater.update_home_timeline();}
-        , interval: 120
+        , interval: 60
     }
     , '#mentions':  {
           watch: true
         , proc : function () {daemon.Updater.update_mentions();}
-        , interval: 120
+        , interval: 60
     }
     , '#direct_messages': {
           watch: true 
         , proc : function () {daemon.Updater.update_direct_messages();}
-        , interval: 300
+        , interval: 120
     }
     , '#favorites': {
           watch: false
@@ -68,14 +68,12 @@ function work() {
                     .children('.load_more_info');
                 container.nextAll('.tweet_block_bottom').show();
                 info.html('<img src="image/ani_loading_bar_gray.gif"/>');
-                setTimeout(daemon.Updater.watch_pages[pagename].proc
-                    , (step + 1) * 5000);
+                daemon.Updater.watch_pages[pagename].proc();
                 step += 1;
             }
         }
         if (step != 0) {
-            toast
-                .set('Update '+ step +' page(s) on schedule.').show();
+            toast.set('Update '+ step +' page(s) on schedule.').show();
         }
     }
     daemon.Updater.time += 1;
