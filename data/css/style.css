@@ -1538,18 +1538,15 @@ label {
 
 .card_body {
     margin: 0 0 0 65px;
-    padding: 5px 10px 20px 10px;
+    padding: 5px 10px 0px 10px;
     min-height: 50px;
     position: relative;
     border-radius: 5px 5px;
 }
 
 .card_body > .who {
-    position: absolute;
     height: 20px;
     line-height: 20px;
-    display: inline-block;
-    top: 0;
 }
 
 .card_body > .who > .who_href {
@@ -1568,7 +1565,6 @@ label {
 .card_body > .text {
     font-size: 12px;
     line-height: 180%;
-    margin-top: 20px;
     word-wrap: break-word;
 }
 
@@ -1677,9 +1673,7 @@ label {
     left: 10px;
     right: 5px;
     font-size: 10px;
-    position: absolute;
-    bottom: 5px;
-    height: 10px;
+    padding-top: 10px;
     line-height: 10px;
 }
 
@@ -1688,7 +1682,6 @@ label {
 }
 
 .tweet_source {
-    float: left;
     max-width: 250px;
     height: 15px;
     overflow: hidden;
@@ -1698,6 +1691,19 @@ label {
 
 .tweet_timestamp, .tweet_link {
     font-size: 10px;
+}
+
+.tweet_retweeters {
+    max-width: 250px;
+}
+
+.tweet_retweeters ul {
+    list-style: none;
+}
+
+.tweet_retweeters li {
+    display: inline-block;
+    padding-right: 5px;
 }
 
 .card_body .status_bar {

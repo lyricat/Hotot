@@ -79,7 +79,9 @@ retweeted_by_t:
                 <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
-                {%TRANS_retweeted_by%}: <a class="tweet_link retweeted_by_whom" href="#" tweet_id="{%TWEET_ID%}">{%RETWEETERS%}</a></div>\
+                {%TRANS_Retweeted_by%}: <a class="tweet_link retweet_details" href="javascript:void(0)" tweet_id="{%TWEET_ID%}">{%TRANS_Retweeter_details%}</a>\
+            </div>\
+            <div class="tweet_retweeters" tweet_id="{%TWEET_ID%}"></div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
         </div>\
     </div>\
@@ -191,7 +193,7 @@ function init() {
     ui.Template.retweeted_by_m = {
           ID:'', TWEET_ID:'', RETWEET_ID:''
         , REPLY_ID:'',SCREEN_NAME:'',REPLY_NAME:'', USER_NAME:''
-        , PROFILE_IMG:'', TEXT:'', SOURCE:'', RETWEETERS:'', SCHEME:''
+        , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
         , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
@@ -199,7 +201,7 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
-        , TRANS_retweeted_by:''
+        , TRANS_retweeted_by:'', TRANS_Retweeter_details:''
     };
 
     ui.Template.dm_m = {
@@ -417,41 +419,10 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.TRANS_Send_Message_to_them = "Send message to them";
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
-    m.TRANS_retweeted_by = "by";
-    m.RETWEETERS = "loading...";
+    m.TRANS_Retweeted_by = "by";
+    m.TRANS_Retweeter_details = "click to show";
 
-    var tweet = ui.Template.render(ui.Template.retweeted_by_t, m);
-    lib.twitterapi.get_retweeted_by_whom(id, 100, function(result) {
-        (function() {
-            var a = $("a.retweeted_by_whom[tweet_id=" + id + "]");
-            if (a.length == 0) {
-                // not exist, wait 100ms and try again
-                setTimeout(arguments.callee, 100);
-                return;
-            }
-            a.text(result.length + (result.length==1?" person":" people"));
-            a.click(function(event) {
-                var body = "<ul class='retweeters_list' style='list-style:none'></ul>";
-                var dialog = widget.DialogManager.build_dialog('#retweeted_by_whom_dialog', 'Retweeded By', '', body, [{id:'#retweeted_by_whom_close', label: 'Close', click: function() {
-                    dialog.close();
-                }}]);
-                dialog.set_styles('header', {'display': 'none', 'height': '0'});
-                dialog.resize(400, 300);
-                var jbody = $('#retweeted_by_whom_dialog .retweeters_list');
-                for (var i = 0; i < result.length; i++) {
-                    var p = result[i];
-                    var li = $('<li style="padding:5px;border-bottom:1px solid lightgrey"><a href="#' + p.screen_name + '"><div class="profile_img_wrapper" title="' + p.screen_name + '" style="background-image: url(' + p.profile_image_url + ')"/></a><div style="padding-left:60px;min-height:75px"><a style="text-decoration:none;color:#333333;font-weight:bold;line-height:20px;height:20px" href="#' + p.screen_name + '">' + p.screen_name + ' (' + p.name + ')</a><div class="desc"></div></div></li>');
-                    li.delegate('a', 'click', function() {
-                        open_people($(this).attr('href').substring(1));
-                    });
-                    li.find(".desc").text(p.description);
-                    li.appendTo(jbody);
-                }
-                dialog.open();
-            });
-        })();
-    });
-    return tweet;
+    return ui.Template.render(ui.Template.retweeted_by_t, m);
 },
 
 form_search:

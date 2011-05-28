@@ -730,6 +730,31 @@ function bind_tweets_action(tweets_obj, pagename) {
             ui.SearchTabs.do_search($(this).attr('href').substring(1));
             return false;
         });
+
+        $(id).find('.retweet_details').click(
+        function (event) {
+            var _this = $(this);
+            var tweet_id = _this.attr("tweet_id");
+            var list = $(".tweet_retweeters[tweet_id='" + tweet_id + "']");
+            if (list.attr("done") != "1") {
+                _this.text("loading...");
+                lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
+                    _this.text(result.length + (result.length==1?" person":" people"));
+                    list.html("<ul></ul>");
+                    var ul = list.find("ul");
+                    for (var i = 0; i < result.length; i++) {
+                       var p = result[i];
+                       var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="' + p.name + '" src="' + p.profile_image_url + '"/></a></li>');
+                        li.delegate('a', 'click', function() {
+                            open_people($(this).attr('href').substring(1));
+                        });
+                        li.appendTo(ul);
+                    }
+                    list.attr("done", "1");
+                    list.show();
+                });
+            }
+        });
     };
     for (var i = 0; i < tweets_obj.length; i += 1) {
         bind_sigle_action(tweets_obj[i]);
