@@ -53,6 +53,45 @@ tweet_t:
     </div>\
 </li>',
 
+retweeted_by_t: 
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+    <div class="tweet_active_indicator"></div>\
+    <div class="tweet_selected_indicator"></div>\
+    <div class="tweet_fav_indicator"></div>\
+    <div class="tweet_retweet_indicator"></div>\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
+    </div>\
+    <div class="card_body">\
+        <div class="who {%RETWEET_MARK%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+            {%SCREEN_NAME%}\
+        </a>\
+        </div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="tweet_meta">\
+            <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
+                <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
+                {%REPLY_TEXT%}\
+            </div>\
+            <div class="tweet_source"> \
+                {%RETWEET_TEXT%} \
+                <span class="tweet_timestamp">\
+                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                </span>\
+                {%TRANS_via%}: {%SOURCE%}\
+                {%TRANS_retweeted_by%}: <a class="tweet_link retweeted_by_whom" href="#" tweet_id="{%TWEET_ID%}">{%RETWEETERS%}</a></div>\
+            <div class="status_bar">{%STATUS_INDICATOR%}</div>\
+        </div>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask"></span>\
+    <div class="tweet_thread_wrapper">\
+        <div class="tweet_thread_hint">{%TRANS_Loading%}</div>\
+        <ul class="tweet_thread"></ul>\
+        <a class="btn_tweet_thread_more">{%TRANS_View_more_conversation%}</a>\
+    </div>\
+</li>',
+
 dm_t: 
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
@@ -147,6 +186,20 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
+    };
+
+    ui.Template.retweeted_by_m = {
+          ID:'', TWEET_ID:'', RETWEET_ID:''
+        , REPLY_ID:'',SCREEN_NAME:'',REPLY_NAME:'', USER_NAME:''
+        , PROFILE_IMG:'', TEXT:'', SOURCE:'', RETWEETERS:'', SCHEME:''
+        , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
+        , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
+        , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
+        , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
+        , TRANS_via:'', TRANS_View_more_conversation:''
+        , TRANS_retweeted_by:''
     };
 
     ui.Template.dm_m = {
@@ -277,6 +330,128 @@ function form_tweet (tweet_obj, pagename) {
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
     return ui.Template.render(ui.Template.tweet_t, m);
+},
+
+form_retweeted_by:
+function form_retweeted_by(tweet_obj, pagename) {
+    var retweet_name = '';
+    var retweet_str = '';
+    var retweet_id = '';
+    var id = tweet_obj.id_str;
+    if (tweet_obj.hasOwnProperty('retweeted_status')) {
+        retweet_name = tweet_obj['user']['screen_name'];
+        tweet_obj = tweet_obj['retweeted_status'];
+        retweet_id = tweet_obj.id_str;
+    }
+    var reply_name = tweet_obj.in_reply_to_screen_name;
+    var reply_id = tweet_obj.in_reply_to_status_id_str;    
+    var reply_str = (reply_id != null) ?
+        "reply to " + '<a class="who_href" href="#'
+            + reply_name + '">'
+            + reply_name + '</a>'
+        : '';
+
+    var timestamp = Date.parse(tweet_obj.created_at);
+    var created_at = new Date();
+    created_at.setTime(timestamp);
+    var created_at_str = ui.Template.format_time(created_at);
+    var created_at_short_str = created_at.toTimeString().split(' ')[0];
+    if (created_at.toDateString() != new Date().toDateString()){
+        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
+    }
+
+    // choose color scheme
+    var scheme = 'normal';
+    if (tweet_obj.entities) {
+        for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1)
+        {
+            if (tweet_obj.entities.user_mentions[i].screen_name
+                == globals.myself.screen_name)
+            {
+                scheme = 'mention';
+            }
+        }
+    }
+    if (tweet_obj.user.screen_name == globals.myself.screen_name) {
+        scheme = 'me';
+    }
+    if (retweet_name != '') {
+        retweet_str = "retweeted by " +  '<a class="who_href" href="#'
+            + retweet_name + '">'
+            + retweet_name + '</a>, ';
+    }
+
+    var m = ui.Template.retweeted_by_m;
+    m.ID = pagename+'-'+id;
+    m.TWEET_ID = id;
+    m.RETWEET_ID = retweet_id;
+    m.REPLY_ID = reply_id != null? reply_id:'';
+    m.SCREEN_NAME = tweet_obj.user.screen_name;
+    m.REPLY_NAME = reply_id != null? reply_name: '';
+    m.USER_NAME = tweet_obj.user.name;
+    m.PROFILE_IMG = tweet_obj.user.profile_image_url;
+    m.TEXT = ui.Template.form_text(tweet_obj.text);
+    m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
+    m.SCHEME = scheme;
+
+    m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
+    m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
+
+    m.REPLY_TEXT = reply_str;
+    m.RETWEET_TEXT = retweet_str;
+    m.RETWEET_MARK = retweet_name != ''? 'retweet_mark': '';
+    m.SHORT_TIMESTAMP = created_at_short_str;
+    m.TIMESTAMP = created_at_str;
+    m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
+    m.DELETABLE = scheme == 'me'? 'true': 'false';
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
+    m.TRANS_Delete = "Delete";
+    m.TRANS_Delete_this_tweet = "Delete this tweet";
+    m.TRANS_Loading = "Loading...";
+    m.TRANS_Official_retweet_this_tweet = "Official retweet this tweet.";
+    m.TRANS_Reply_All = "Reply All";
+    m.TRANS_Reply_this_tweet = "Reply this tweet.";
+    m.TRANS_RT_this_tweet = "RT this tweet.";
+    m.TRANS_Send_Message = "Send message";
+    m.TRANS_Send_Message_to_them = "Send message to them";
+    m.TRANS_via = "via";
+    m.TRANS_View_more_conversation = "view more conversation";
+    m.TRANS_retweeted_by = "by";
+    m.RETWEETERS = "loading...";
+
+    var tweet = ui.Template.render(ui.Template.retweeted_by_t, m);
+    lib.twitterapi.get_retweeted_by_whom(id, 100, function(result) {
+        (function() {
+            var a = $("a.retweeted_by_whom[tweet_id=" + id + "]");
+            if (a.length == 0) {
+                // not exist, wait 100ms and try again
+                setTimeout(arguments.callee, 100);
+                return;
+            }
+            a.text(result.length + (result.length==1?" person":" people"));
+            a.click(function(event) {
+                var body = "<ul class='retweeters_list' style='list-style:none'></ul>";
+                var dialog = widget.DialogManager.build_dialog('#retweeted_by_whom_dialog', 'Retweeded By', '', body, [{id:'#retweeted_by_whom_close', label: 'Close', click: function() {
+                    dialog.close();
+                }}]);
+                dialog.set_styles('header', {'display': 'none', 'height': '0'});
+                dialog.resize(400, 300);
+                var jbody = $('#retweeted_by_whom_dialog .retweeters_list');
+                for (var i = 0; i < result.length; i++) {
+                    var p = result[i];
+                    var li = $('<li style="padding:5px;border-bottom:1px solid lightgrey"><a href="#' + p.screen_name + '"><div class="profile_img_wrapper" title="' + p.screen_name + '" style="background-image: url(' + p.profile_image_url + ')"/></a><div style="padding-left:60px;min-height:75px"><a style="text-decoration:none;color:#333333;font-weight:bold;line-height:20px;height:20px" href="#' + p.screen_name + '">' + p.screen_name + ' (' + p.name + ')</a><div class="desc"></div></div></li>');
+                    li.delegate('a', 'click', function() {
+                        open_people($(this).attr('href').substring(1));
+                    });
+                    li.find(".desc").text(p.description);
+                    li.appendTo(jbody);
+                }
+                dialog.open();
+            });
+        })();
+    });
+    return tweet;
 },
 
 form_search:

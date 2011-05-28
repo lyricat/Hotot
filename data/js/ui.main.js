@@ -526,6 +526,8 @@ function add_tweets(json_obj, container, reversion) {
         form_proc = ui.Template.form_dm
     if (container.pagename == 'search')
         form_proc = ui.Template.form_search
+    if (container.pagename == 'retweets_of_me')
+        form_proc = ui.Template.form_retweeted_by
 
     var new_tweets_height = 0;
 

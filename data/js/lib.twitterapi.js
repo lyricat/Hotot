@@ -318,6 +318,16 @@ function get_retweets_of_me(since_id, max_id, count, on_success) {
     return;
 },
 
+get_retweeted_by_whom:
+function get_retweeted_by_whom(tweet_id, count, on_success) {
+    var url = lib.twitterapi.api_base + 'statuses/' + tweet_id + '/retweeted_by.json';
+    var params={
+        'count': count,
+    };
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
 get_user_timeline:
 function get_user_timeline(user_id, screen_name, since_id, 
     max_id, count, on_success) {
