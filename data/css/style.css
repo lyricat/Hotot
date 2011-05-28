@@ -1682,7 +1682,6 @@ label {
 }
 
 .tweet_source {
-    max-width: 250px;
     height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;

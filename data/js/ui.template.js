@@ -79,7 +79,7 @@ retweeted_by_t:
                 <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
-                {%TRANS_Retweeted_by%}: <a class="tweet_link retweet_details" href="javascript:void(0)" tweet_id="{%TWEET_ID%}">{%TRANS_Retweeter_details%}</a>\
+                {%TRANS_Retweeted_by%}: <a class="show" href="javascript:void(0)" tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
             </div>\
             <div class="tweet_retweeters" tweet_id="{%TWEET_ID%}"></div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
@@ -201,7 +201,7 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
-        , TRANS_retweeted_by:'', TRANS_Retweeter_details:''
+        , TRANS_retweeted_by:'', TRANS_Show_retweeters:''
     };
 
     ui.Template.dm_m = {
@@ -420,7 +420,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
     m.TRANS_Retweeted_by = "by";
-    m.TRANS_Retweeter_details = "click to show";
+    m.TRANS_Show_retweeters = "click to show";
 
     return ui.Template.render(ui.Template.retweeted_by_t, m);
 },

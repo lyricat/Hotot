@@ -731,29 +731,30 @@ function bind_tweets_action(tweets_obj, pagename) {
             return false;
         });
 
-        $(id).find('.retweet_details').click(
+        $(id).find('.tweet_source a.show').click(
         function (event) {
             var _this = $(this);
             var tweet_id = _this.attr("tweet_id");
             var list = $(".tweet_retweeters[tweet_id='" + tweet_id + "']");
-            if (list.attr("done") != "1") {
-                _this.text("loading...");
-                lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
-                    _this.text(result.length + (result.length==1?" person":" people"));
-                    list.html("<ul></ul>");
-                    var ul = list.find("ul");
-                    for (var i = 0; i < result.length; i++) {
-                       var p = result[i];
-                       var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="' + p.name + '" src="' + p.profile_image_url + '"/></a></li>');
-                        li.delegate('a', 'click', function() {
-                            open_people($(this).attr('href').substring(1));
-                        });
-                        li.appendTo(ul);
-                    }
-                    list.attr("done", "1");
-                    list.show();
-                });
-            }
+            _this.text("loading...");
+            lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
+                if (_this == null) {
+                    return;
+                }
+                list.html("<ul></ul>");
+                var ul = list.find("ul");
+                for (var i = 0; i < result.length; i++) {
+                   var p = result[i];
+                   var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="@' + p.screen_name + ' (' + p.name + ')" src="' + p.profile_image_url + '"/></a></li>');
+                    li.find("a").click(function() {
+                        open_people($(this).attr('href').substring(1));
+                    });
+                    li.appendTo(ul);
+                }
+                $("<span/>").text(result.length + (result.length==1?" person":" people")).insertBefore(_this);
+                _this.remove();
+                _this = null;
+            });
         });
     };
     for (var i = 0; i < tweets_obj.length; i += 1) {
