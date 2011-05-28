@@ -1693,17 +1693,13 @@ label {
     font-size: 10px;
 }
 
-.tweet_retweeters {
-    max-width: 250px;
-}
-
 .tweet_retweeters ul {
     list-style: none;
 }
 
 .tweet_retweeters li {
     display: inline-block;
-    padding-right: 5px;
+    padding: 3px;
 }
 
 .card_body .status_bar {
