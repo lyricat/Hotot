@@ -31,7 +31,7 @@ class MainView(WebView):
             settings.set_property('tab-key-cycles-through-elements', True)
             settings.set_property('enable-file-access-from-file-uris', True)
             settings.set_property('enable-spell-checking', False)
-            settings.set_property('enable-caret-browsing', True)
+            settings.set_property('enable-caret-browsing', False)
         except:
             print 'Error: settings property was not set.'
         webkit.set_web_database_directory_path(config.DB_DIR)
