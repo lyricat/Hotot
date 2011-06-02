@@ -40,6 +40,7 @@ class MainView(WebView):
         self.connect('new-window-policy-decision-requested', self.on_new_window_requested);
         self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
+        self.connect("hovering-over-link", self.on_over_link);
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
         self.load_html_string(template, 'file://' + templatefile)
@@ -91,3 +92,8 @@ class MainView(WebView):
             overlay_variables(%s);
             globals.load_flags = 1;
             ''' % json.dumps(variables))
+
+    def on_over_link(self, view, alt, href):
+        href = href or ""
+        if not alt and not href.startswith('file:'):
+            self.parent.set_tooltip_text(href)
