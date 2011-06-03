@@ -5,7 +5,6 @@ import config
 import time
 import base64
 import urllib, urllib2
-import pynotify
 import gtk
 import threading 
 import gobject
@@ -21,8 +20,24 @@ except: from gettext import gettext as _
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-pynotify.init(_("Hotot Notification"))
-notify = pynotify.Notification('Init', '')
+USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
+if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
+    import gtknotification
+    class  Notification(object):
+        def do_notify(self, summary, body, icon_file = None):
+            if (icon_file == None or not os.path.isfile(icon_file)):
+                icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
+            icon_file = 'file://' + icon_file
+            title = _("Hotot Notification")
+            text = summary + '\n' + body
+            gobject.idle_add(gtknotification.gtknotification, title, text, icon_file)
+        update = do_notify
+        show = str
+    notify = Notification()
+else:
+    import pynotify
+    pynotify.init(_("Hotot Notification"))
+    notify = pynotify.Notification('Init', '')
 
 webv = None 
 app = None
@@ -35,12 +50,16 @@ http_code_msg_table = {
 }
 
 def init_notify():
+    if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
+        return
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
             utils.get_ui_object(os.path.join('image','ic64_hotot.png'))))
     notify.set_timeout(5000)
 
 def do_notify(summary, body, icon_file = None):
+    if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
+        return notify.do_notify(summary, body, icon_file)
     n = pynotify.Notification(summary, body)
     if (icon_file == None or not os.path.isfile(icon_file)):
         icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
