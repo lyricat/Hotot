@@ -545,11 +545,13 @@ function add_tweets(json_obj, container, reversion) {
 
     // insert tweets.
     var i = 0;
+    var batch_arr = [];
     while (i < json_obj.length) {
-        if (! ui.Main.insert_tweet(container, json_obj[i], form_proc, reversion)) {
+        var ret = ui.Main.insert_isolated_tweet(container, json_obj[i], form_proc, reversion) 
+        if (ret[0] == -1) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
-        } else {
+        } else if (ret[0] > 0){
             var dom_id = container.pagename+'-'+json_obj[i].id_str;
             if (ui.Main.use_preload_conversation) {
                 var thread_container = $($(
@@ -562,7 +564,20 @@ function add_tweets(json_obj, container, reversion) {
                 new_tweets_height += $('#'+dom_id).get(0).clientHeight;
             }
             i += 1;
+        } else {
+            batch_arr.push(json_obj[i])
+            i += 1;
         }
+    }
+    // insert in batch
+    ui.Main.sort(batch_arr, true);
+    var batch_html = $.map(batch_arr, function (n, i) {
+        return form_proc(n, container.pagename);
+    }).join('');
+    if (reversion) {
+        container.append(batch_html);
+    } else {
+        container.prepend(batch_html);
     }
 
     // if timeline is not on the top
@@ -629,8 +644,8 @@ function sort(json_obj, reversion) {
     }
 },
 
-insert_tweet:
-function insert_tweet(container, tweet, form_proc, reversion) {
+insert_isolated_tweet:
+function insert_isolated_tweet(container, tweet, form_proc, reversion) {
     /* insert this tweet into a correct position.
      * in the order of id.
      * and drop duplicate tweets who has same id.
@@ -644,37 +659,34 @@ function insert_tweet(container, tweet, form_proc, reversion) {
             // insert to end of container
             // or the top of the container, 
             // according to argument `reversion`
-            if (reversion) {
-                container.prepend(this_one_html);            
-            } else {
-                container.append(this_one_html);            
+            if (c != 0) {
+                if (reversion) {
+                    container.prepend(this_one_html);            
+                } else {
+                    container.append(this_one_html);            
+                }
             }
-
-            hotot_log('Count', c)
-            return true;
+            return [c, this_one_html];
         } else {
             var next_one_id = $(next_one).attr('tweet_id');
             var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
             if (cmp_ret == 0) {
                 //next_one_id == this.id_str
                 // simply drop the duplicate tweet.
-            hotot_log('! Count', c)
-                return false;
+                return [-1, null];
             } else if (cmp_ret == -1) {
                 //next_one_id < this.id_str
                 if (reversion) {
                     next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
                 } else {
-                    $(next_one).before(this_one_html);
-            hotot_log('Count', c)
-                    return true;
+                    if (c != 0) { $(next_one).before(this_one_html); }
+                    return [c, this_one_html];
                 }
             } else {                
                 //next_one_id > this.id_str
                 if (reversion) {
-                    $(next_one).after(this_one_html);
-            hotot_log('Count', c)
-                    return true;
+                    if (c != 0) { $(next_one).after(this_one_html); }
+                    return [c, this_one_html];
                 } else {
                     next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
                 }
