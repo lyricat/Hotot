@@ -312,7 +312,7 @@ function load_more_tweets (pagename, callback) {
         proc(null
             , ui.Main.block_info['#people'].screen_name
             , 1, ui.Main.block_info['#people_tweet'].max_id
-            , 20, 
+            , conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
             if (typeof (callback) != 'undefined') {
@@ -341,7 +341,8 @@ function load_more_tweets (pagename, callback) {
         });
     break;
     default:
-        proc(1, ui.Main.block_info[pagename].max_id, 20,
+        proc(1, ui.Main.block_info[pagename].max_id
+            , conf.vars.items_per_request,
         function (result) {
             ui.Main.load_more_tweets_cb(result, pagename);
             if (typeof (callback) != 'undefined') {
@@ -368,7 +369,7 @@ function load_tweets_cb(result, pagename) {
     if (pagename == '#people_followers' || pagename == '#people_friends') {
         tweet_count = ui.Main.add_people(result, container);
     } else {
-        tweet_count = ui.Main.add_tweets(result, container, true);
+        tweet_count = ui.Main.add_tweets(result, container, false);
     }
 
     if (tweet_count != 0 ) {
@@ -451,7 +452,7 @@ function load_more_tweets_cb(result, pagename) {
     if (pagename == '#people_followers' || pagename == '#people_friends') {
         tweet_count = ui.Main.add_people(result, container);
     } else {
-        tweet_count = ui.Main.add_tweets(result, container, false);
+        tweet_count = ui.Main.add_tweets(result, container, true);
     }
 
     if (tweet_count != 0) {
@@ -461,10 +462,10 @@ function load_more_tweets_cb(result, pagename) {
             ui.Main.block_info[pagename].cursor = json_obj.next_cursor_str;
         } else {
             ui.Main.block_info[pagename].max_id 
-                = json_obj[0].id_str - 1;  
+                = json_obj[tweet_count - 1].id_str - 1;  
             if (ui.Main.block_info[pagename].since_id == 1)
                 ui.Main.block_info[pagename].since_id 
-                    = json_obj[tweet_count - 1].id_str;
+                    = json_obj[0].id_str;
         }
     }
 },
@@ -538,10 +539,13 @@ function add_tweets(json_obj, container, reversion) {
     }
 
     // sort
-    ui.Main.sort(json_obj);
+    // if reversion: small ... large
+    // else:         large ... small
+    ui.Main.sort(json_obj, reversion);
 
     // insert tweets.
-    for (var i = 0; i < json_obj.length; i += 1) {
+    var i = 0;
+    while (i < json_obj.length) {
         if (! ui.Main.insert_tweet(container, json_obj[i], form_proc, reversion)) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
@@ -557,6 +561,7 @@ function add_tweets(json_obj, container, reversion) {
             } else {
                 new_tweets_height += $('#'+dom_id).get(0).clientHeight;
             }
+            i += 1;
         }
     }
 
@@ -612,10 +617,14 @@ function add_tweets(json_obj, container, reversion) {
 },
 
 sort:
-function sort(json_obj) {
+function sort(json_obj, reversion) {
     if (1 < json_obj.length) {
         json_obj.sort(function (a, b) {
-            return util.compare_id(a.id_str, b.id_str); 
+            if (reversion)  {
+                return util.compare_id(b.id_str, a.id_str); 
+            } else {
+                return util.compare_id(a.id_str, b.id_str); 
+            }
         });
     }
 },
@@ -629,41 +638,63 @@ function insert_tweet(container, tweet, form_proc, reversion) {
     var this_one = tweet;
     var this_one_html = form_proc(this_one, container.pagename);
     var next_one = ui.Main.get_next_tweet_dom(container, null, reversion);
+    var c = 0;
     while (true) {
         if (next_one == null) {
-            // insert to end of container 
-            container.append(this_one_html);            
+            // insert to end of container
+            // or the top of the container, 
+            // according to argument `reversion`
+            if (reversion) {
+                container.prepend(this_one_html);            
+            } else {
+                container.append(this_one_html);            
+            }
+
+            hotot_log('Count', c)
             return true;
         } else {
-            var next_one_id 
-                = ui.Main.normalize_id($(next_one).attr('id'));
+            var next_one_id = $(next_one).attr('tweet_id');
             var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
-            if (cmp_ret == -1) {         //next_one_id < this.id_str
-                $(next_one).before(this_one_html);
-                return true;
-            } else if (cmp_ret == 0) { //next_one_id == this.id_str
+            if (cmp_ret == 0) {
+                //next_one_id == this.id_str
                 // simply drop the duplicate tweet.
+            hotot_log('! Count', c)
                 return false;
-            } else {                //next_one_id > this.id_str
-                next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
+            } else if (cmp_ret == -1) {
+                //next_one_id < this.id_str
+                if (reversion) {
+                    next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
+                } else {
+                    $(next_one).before(this_one_html);
+            hotot_log('Count', c)
+                    return true;
+                }
+            } else {                
+                //next_one_id > this.id_str
+                if (reversion) {
+                    $(next_one).after(this_one_html);
+            hotot_log('Count', c)
+                    return true;
+                } else {
+                    next_one = ui.Main.get_next_tweet_dom(container, next_one, reversion);
+                }
             }
         }
+        c += 1;
     }
 },
 
 get_next_tweet_dom:
 function get_next_tweet_dom(container, current, reversion) {
-    /* return the next tweet DOM of current. 
-     * if current is null, return the first tweet DOM
+    /* return the next/prev brother DOM of current. 
+     * if current is null, return the first/last DOM of tweets
      * if no tweet at the next position, return null
      * */
     var next_one = null;
     if (current == null) {
-        next_one = reversion != false
-            ? container.find('.card:first'): container.find('.card:last');
+        next_one = reversion? container.find('.card:last'): container.find('.card:first');
     } else {
-        next_one = reversion != false
-            ? $(current).next('.card'): container.prev('.card');
+        next_one = reversion? $(current).prev('.card'): $(current).next('.card');
     }
     if (next_one.length == 0) next_one = null;
     return next_one;
@@ -986,7 +1017,7 @@ load_thread_proc:
 function load_thread_proc(tweet_id, thread_container, on_finish) {
     var load_thread_proc_cb = function (prev_tweet_obj) {
         thread_container.resume_pos = false;
-        var count=ui.Main.add_tweets([prev_tweet_obj], thread_container, true);
+        var count=ui.Main.add_tweets([prev_tweet_obj], thread_container, false);
         // load the prev tweet in the thread.
         var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
         if (reply_id == null) { // end of thread.
@@ -1025,7 +1056,7 @@ function preload_thread(tweet_obj, thread_container) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
             var li = $(thread_container.parents('.card')[0]);
-            ui.Main.add_tweets([prev_tweet_obj], thread_container, true);
+            ui.Main.add_tweets([prev_tweet_obj], thread_container, false);
             
             li.find('.btn_tweet_thread').addClass('expand');
             li.find('.tweet_thread_hint').hide();

@@ -87,7 +87,7 @@ update_home_timeline:
 function update_home_timeline() {
     lib.twitterapi.get_home_timeline(
         ui.Main.block_info['#home_timeline'].since_id
-        , null, conf.settings.items_per_request, 
+        , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#home_timeline');
         });
@@ -97,7 +97,7 @@ update_mentions:
 function update_mentions() {
     lib.twitterapi.get_mentions(
         ui.Main.block_info['#mentions'].since_id
-        , null, conf.settings.items_per_request, 
+        , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#mentions');
         });
@@ -112,7 +112,7 @@ function update_direct_messages() {
     var pagename = ui.DMTabs.current;
     proc_map[pagename](
          ui.Main.block_info[pagename].since_id
-        , null, conf.settings.items_per_request, 
+        , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, pagename);
         });
@@ -181,7 +181,7 @@ function update_retweets() {
     var pagename = ui.RetweetTabs.current;
     var since_id = ui.Main.block_info[pagename].since_id;
     proc_map[pagename](
-        since_id , null, conf.settings.items_per_request, 
+        since_id , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, pagename);
         });
