@@ -110,10 +110,10 @@ function init() {
         daemon.Updater.update_people();
     };
     ui.PeopleTabs.btn_people_entry.create();
-    
+   
     var btn_people_request = new widget.Button('#btn_people_request');
     btn_people_request.on_clicked = function(event) {
-        window.location.href = 'http://twitter.com/' + ui.Main.block_info['#people'].screen_name;
+        window.open('http://twitter.com/' + ui.Main.block_info['#people'].screen_name);
     };
     btn_people_request.create();
 },
@@ -173,7 +173,7 @@ function render_people_page(user_obj, pagename, proc) {
     ui.Slider.slide_to('#people');
     
     db.dump_users([user_obj]);
-    if (user_obj.following || user_obj.screen_name == globals.myself.screen_name) {
+    if (user_obj.screen_name == globals.myself.screen_name) {
         proc();
         $('#people_tweet_block .tweet_block_bottom').show();
     } else {
@@ -201,7 +201,7 @@ function render_people_page(user_obj, pagename, proc) {
                 btn_follow.html('Unfollow');
                 btn_follow.addClass('unfo');
             }
-        });
+    });
     $('#people_vcard').show();
     $('#people_entry').css('border-bottom', '0');
     $('#people_radio_group_wrapper').show();
