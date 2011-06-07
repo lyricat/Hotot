@@ -517,6 +517,7 @@ function watch_user_streams(callback) {
 	newText = xhr.responseText.substr(watch_user_streams.last_text_length);
 	hotot_log('Streams', 'xhr.readyState: ' + xhr.readyState
 	                 + ', xhr.status: ' + xhr.status
+			 + ', totalLength: ' + xhr.responseText.length
 	                 + ', newText:\n' + newText);
 	watch_user_streams.last_text_length = xhr.responseText.length;
 	// empty reply
