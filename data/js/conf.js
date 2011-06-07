@@ -121,7 +121,7 @@ function reload(callback) {
     });
     procs.push(function () {
         db.get_all_profiles(function (profiles) {
-            for (var i = 0; i < profiles.length; i += 1) {
+            for (var i = 0, l = profiles.length; i < l; i += 1) {
                 var name = profiles[i].name;
                 var protocol = profiles[i].protocol;
                 var prefs = JSON.parse(profiles[i].preferences);

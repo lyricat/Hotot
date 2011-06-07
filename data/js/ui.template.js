@@ -277,7 +277,7 @@ function form_tweet (tweet_obj, pagename) {
     // choose color scheme
     var scheme = 'normal';
     if (tweet_obj.entities) {
-        for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1)
+        for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
         {
             if (tweet_obj.entities.user_mentions[i].screen_name
                 == globals.myself.screen_name)
@@ -365,7 +365,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     // choose color scheme
     var scheme = 'normal';
     if (tweet_obj.entities) {
-        for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1)
+        for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
         {
             if (tweet_obj.entities.user_mentions[i].screen_name
                 == globals.myself.screen_name)

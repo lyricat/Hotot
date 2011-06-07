@@ -30,7 +30,7 @@ function unserialize_dict(str) {
     dict = {}; // return {} if dict is invalid.
     var pairs = str.split('&');
     if (1 < pairs.length) { 
-        for (var i = 0; i < pairs.length; i += 1) {
+        for (var i = 0, l = pairs.length; i < l; i += 1) {
             var pair = pairs[i].split('=');
             dict[decodeURIComponent(pair[0])]
                 = decodeURIComponent(pair[1]);

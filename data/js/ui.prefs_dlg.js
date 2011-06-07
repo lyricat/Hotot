@@ -162,7 +162,7 @@ function load_prefs() {
         , prefs.remember_password);
     // Appearance
     var options_arr = []; var selected_idx = 0;
-    for (var i = 0; i < conf.settings.font_list.length; i += 1) {
+    for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
         options_arr.push('<option value="'
             + ff_name + '">' + ff_name + '</option>');
@@ -192,7 +192,7 @@ function load_prefs() {
         , prefs.use_preload_conversation);
     // Update
     var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
-    for (var i = 0; i < pages.length; i += 1) {
+    for (var i = 0, l = pages.length; i < l; i += 1) {
         $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked'
             , prefs['use_'+pages[i]+'_notify']);
         $('#sel_prefs_use_'+pages[i]+'_notify_type').val(
@@ -242,7 +242,7 @@ function save_prefs() {
         = $('#chk_prefs_use_preload_conversation').attr('checked'); 
     // Update
     var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
-    for (var i = 0; i < pages.length; i += 1) {
+    for (var i = 0, l = pages.length; i < l; i += 1) {
         prefs['use_'+pages[i]+'_notify']
             = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
         prefs['use_'+pages[i]+'_notify_type']

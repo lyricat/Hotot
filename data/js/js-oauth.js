@@ -65,7 +65,7 @@ function normalize_params(params) {
                           return 0;
                       });
     //encode each key-value pair
-    for (var i = 0; i < params_list.length; i += 1) {
+    for (var i = 0, l = params_list.length; i < l; i += 1) {
         var pair = params_list[i];
         sortable.push(jsOAuth.quote(pair[0]) 
             + '=' + jsOAuth.quote(pair[1]));

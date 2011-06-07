@@ -261,7 +261,7 @@ function dialog(id, title, header_html, body_html, buttons){
     var ret = new widget.Dialog(id);
     // add buttons
     var footer_arr = [];
-    for (var i = 0; i < buttons.length; i += 1) {
+    for (var i = 0, l = buttons.length; i < l; i += 1) {
         footer_arr.push(widget.DialogManager.button_html
             .replace('{%ID%}', buttons[i].id.substring(1))
             .replace('{%LABEL%}', buttons[i].label));
@@ -273,7 +273,7 @@ function dialog(id, title, header_html, body_html, buttons){
     ret.set_styles('header', {'height': '30px', 'padding':'0px'});
     ret.set_styles('footer', {'height': '30px', 'padding':'10px'});
     // bind button click event
-    for (var i = 0; i < buttons.length; i += 1) {
+    for (var i = 0, l = buttons.length; i < l; i += 1) {
         var btn = new widget.Button(buttons[i].id);
         btn.on_clicked = buttons[i].click;
         btn.create();

@@ -15,7 +15,7 @@ function init() {
     var container = $('#action_menu > ul');
     // generate trigger btns
     var form_items = function (btn_arr) {
-        for (var i = 0; i < btn_arr.length; i += 1 ) {
+        for (var i = 0, l = btn_arr.length; i < l; i += 1 ) {
             var btn = $(btn_arr[i]);
             var new_id = 'act_menu_' + btn.attr('id');
             if (btn.attr('title') =='') 

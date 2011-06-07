@@ -50,7 +50,7 @@ function core_sha1(x, len)
   var d =  271733878;
   var e = -1009589776;
 
-  for(var i = 0; i < x.length; i += 16)
+  for(var i = 0, l = x.length; i < l; i += 16)
   {
     var olda = a;
     var oldb = b;

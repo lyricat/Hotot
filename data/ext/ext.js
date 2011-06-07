@@ -57,13 +57,13 @@ function init() {
     ui.Main.add_tweets = function _add_tweets(tweet_obj, container, reversion) {
         var cbs = ext.listeners[ext.ADD_TWEETS_LISTENER];
         var cbs_after = ext.listeners[ext.ADD_TWEETS_LISTENER_AFTER];
-        for (var i = 0; i < cbs.length; i += 1) {
+        for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](tweet_obj, container);
         }
         
         var ret = ui_main_add_tweets(tweet_obj, container, reversion);
 
-        for (var i = 0; i < cbs_after.length; i += 1) {
+        for (var i = 0, l = cbs_after.length; i < l; i += 1) {
             cbs_after[i](tweet_obj, container);
         }
         return ret;
@@ -73,13 +73,13 @@ function init() {
     ui.Template.form_tweet = function _form_tweet(tweet_obj, pagename) {
         var cbs = ext.listeners[ext.FORM_TWEET_LISTENER];
         var cbs_after = ext.listeners[ext.FORM_TWEET_LISTENER_AFTER];
-        for (var i = 0; i < cbs.length; i += 1) {
+        for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](tweet_obj, pagename);
         }
         
         var result_html = ui_template_form_tweet(tweet_obj, pagename);
 
-        for (var i = 0; i < cbs_after.length; i += 1) {
+        for (var i = 0, l = cbs_after.length; i < l; i += 1) {
             result_html = cbs_after[i](tweet_obj, pagename, result_html);
         }
         return result_html;
@@ -90,7 +90,7 @@ function init() {
     ui.Template.form_status_indicators = function _form_status_indicators(tweet, text) {
         var cbs = ext.listeners[ext.FORM_TWEET_STATUS_INDICATOR_LISTENER];
         text = '';
-        for (var i = 0; i < cbs.length; i += 1) {
+        for (var i = 0, l = cbs.length; i < l; i += 1) {
             text = cbs[i](tweet, text);
         }
         return text;
@@ -100,13 +100,13 @@ function init() {
     ui.Template.form_text = function _form_text(text) {
         var cbs = ext.listeners[ext.FORM_TWEET_TEXT_LISTENER];
         var cbs_after = ext.listeners[ext.FORM_TWEET_TEXT_LISTENER_AFTER];
-        for (var i = 0; i < cbs.length; i += 1) {
+        for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](text);
         }
         
         text = ui_template_form_text(text);
 
-        for (var i = 0; i < cbs_after.length; i += 1) {
+        for (var i = 0, l = cbs_after.length; i < l; i += 1) {
             text = cbs_after[i](text);
         }
         return text;
@@ -200,7 +200,7 @@ function load_exts(exts, callback) {
             });
         });
     };
-    for (var i = 0; i < exts.length; i += 1) {
+    for (var i = 0, l = exts.length; i < l; i += 1) {
         _load(i)
     }
     procs.push(callback);

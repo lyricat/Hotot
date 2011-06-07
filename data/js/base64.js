@@ -22,7 +22,7 @@ var base64Chars = new Array(
 );
  
 var reverseBase64Chars = new Array();
-for (var i=0; i < base64Chars.length; i++){
+for (var i=0, l = base64Chars.length; i < l; i++){
     reverseBase64Chars[base64Chars[i]] = i;
 }
  

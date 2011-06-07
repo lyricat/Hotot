@@ -139,7 +139,7 @@ function on_btn_short_url_clicked(event) {
         urls.push(match[1]);
         match = ui.Template.reg_link_g.exec($('#tbox_status').val());
     }
-    for (var i = 0; i < urls.length; i += 1) {
+    for (var i = 0, l = urls.length; i < l; i += 1) {
         _requset(i);
     }
     $(window).queue('_short_url', procs);

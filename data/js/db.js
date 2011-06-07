@@ -112,7 +112,7 @@ function dump_users(json_obj) {
     };
     // dump users
     db.database.transaction(function (tx) {
-        for (var i = 0; i < json_obj.length; i += 1) {
+        for (var i = 0, l = json_obj.length; i < l; i += 1) {
             var user = json_obj[i];
             dump_single_user(tx, user);
         }
@@ -138,7 +138,7 @@ function dump_tweets(json_obj) {
 
     // dump tweets
     db.database.transaction(function (tx) {
-        for (var i = 0; i < json_obj.length; i += 1) {
+        for (var i = 0, l = json_obj.length; i < l; i += 1) {
             var tweet_obj = json_obj[i];
             if (tweet_obj.hasOwnProperty('retweeted_status')) {
                 dump_single_tweet(tx, tweet_obj['retweeted_status']);
@@ -148,7 +148,7 @@ function dump_tweets(json_obj) {
     });
     // dump users
     db.database.transaction(function (tx) {
-        for (var i = 0; i < json_obj.length; i += 1) {
+        for (var i = 0, l = json_obj.length; i < l; i += 1) {
             var tweet_obj = json_obj[i];
             var user = typeof tweet_obj.user != 'undefined'
                 ? tweet_obj.user: tweet_obj.sender;
@@ -368,7 +368,7 @@ function get_all_profiles(callback) {
                 callback([]);
             } else {
                 var profs = [];
-                for (var i = 0; i < rs.rows.length; i += 1) {
+                for (var i = 0, l = rs.rows.length; i < l; i += 1) {
                     profs.push({'name': rs.rows.item(i).name
                         , 'protocol': rs.rows.item(i).protocol
                         , 'preferences': rs.rows.item(i).preferences

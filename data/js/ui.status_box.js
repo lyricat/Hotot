@@ -264,7 +264,7 @@ function on_btn_short_url_clicked(event) {
         urls.push(match[1]);
         match = ui.Template.reg_link_g.exec($('#tbox_status').val());
     }
-    for (var i = 0; i < urls.length; i += 1) {
+    for (var i = 0, l = urls.length; i < l; i += 1) {
         _requset(i);
     }
     $(window).queue('_short_url', procs);
@@ -442,7 +442,7 @@ function auto_complete(event) {
             db.get_screen_names_starts_with(name,
             function (tx, rs) {
                 var result_list = []
-                for (var i = 0; i < rs.rows.length; i += 1) { 
+                for (var i = 0, l = rs.rows.length; i < l; i += 1) { 
                     result_list.push(rs.rows.item(i).screen_name)
                 }
                 var str = '<li>'+result_list.join('</li><li>')+'</li>';

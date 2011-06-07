@@ -219,7 +219,7 @@ function open_option_dialog() {
 	}
 
 	var table = $("#ext_hotot_cfw_blacklist tbody");
-	for (var i = 0; i < prefs.blacklist.length; i++) {
+	for (var i = 0, l = prefs.blacklist.length; i < l; i++) {
 		var rule = prefs.blacklist[i];
 		var item = ext.ContentFirewall.add_new_rule(rule);
 		item.addClass("ext_hotot_cfw_blacklist_rule");
@@ -241,7 +241,7 @@ function open_option_dialog() {
 	})
 
 	var table = $("#ext_hotot_cfw_whitelist tbody");
-	for (var i = 0; i < prefs.whitelist.length; i++) {
+	for (var i = 0, l = prefs.whitelist.length; i < l; i++) {
 		var rule = prefs.whitelist[i];
 		var item = ext.ContentFirewall.add_new_rule(rule);
 		item.addClass("ext_hotot_cfw_whitelist_rule");

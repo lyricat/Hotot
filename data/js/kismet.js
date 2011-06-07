@@ -31,7 +31,7 @@ function filter(type, tweet_objs) {
     var rules = kismet.filters[type].rules;
     var proc = kismet.filters[type].proc;
     var f_name, f_text, f_source;
-    for (var i = 0; i < tweet_objs.length; i += 1) {
+    for (var i = 0, l = tweet_objs.length; i < l; i += 1) {
         for (var j = 0; j < rules.length; j += 1) {
             var m = tweet_objs[i].text.match(rules[j].regexp);
             if (m) {
@@ -44,7 +44,7 @@ function filter(type, tweet_objs) {
 add_filter:
 function add_filter(rule, action) {
     var _rules = kismet.filters[action].rules;
-    for (var i = 0; i < _rules.length; i += 1) {
+    for (var i = 0, l = _rules.length; i < l; i += 1) {
         if (_rules[i].name == rule.name) {
             return -1;
         }
