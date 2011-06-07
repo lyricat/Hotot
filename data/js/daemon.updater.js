@@ -59,10 +59,13 @@ work:
 function work() {
     if (daemon.Updater.running) {
         var step = 0;
+
+	daemon.Updater.watch_user_streams();
+
         for (var pagename in daemon.Updater.watch_pages) {
             if (daemon.Updater.watch_pages[pagename].watch 
                 && daemon.Updater.time 
-                    % daemon.Updater.watch_pages[pagename].interval == 0) {
+                    % (Math.ceil(daemon.Updater.watch_pages[pagename].interval / 60) * 60) == 0) {
                 var container = ui.Main.get_current_container(pagename);
                 var info = container.nextAll('.tweet_block_bottom')
                     .children('.load_more_info');
@@ -76,11 +79,43 @@ function work() {
             toast.set('Update '+ step +' page(s) on schedule.').show();
         }
     }
-    daemon.Updater.time += 1;
+    daemon.Updater.time += 60;
     if (daemon.Updater.time == 3600) {
         daemon.Updater.time = 0;
     }
-    setTimeout(daemon.Updater.work, 1000);
+    setTimeout(daemon.Updater.work, 60000);
+},
+
+watch_user_streams:
+function watch_user_streams() {
+    // @TODO 设法判断 Streams api 真的能用
+    if(lib.twitterapi.use_oauth && watch_user_streams.is_running) {
+	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
+	daemon.Updater.watch_pages['#mentions'].interval = 900;
+	daemon.Updater.watch_pages['#direct_messages'].interval = 1200;
+    }
+    function on_ret(ret) {
+	hotot_log('Streams ret', ret);
+        // direct_messages
+        if (ret.direct_message) {
+            //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
+	    hotot_log('Streams dm', ret);
+            ui.Main.load_tweets_cb([ret.direct_message], '#direct_messages_inbox');
+            return;
+        }
+        // timeline
+        if (ret.text && ret.user) {
+	    hotot_log('Streams text', ret);
+            ui.Main.load_tweets_cb([ret], '#home_timeline');
+	    // mentions
+	    if (ret.text.toLowerCase().indexOf(
+                    globals.myself.screen_name.toLowerCase() ) > -1){
+		ui.Main.load_tweets_cb([ret], '#mentions');
+	    }
+            return;
+        }
+    }
+    lib.twitterapi.watch_user_streams(on_ret);
 },
 
 update_home_timeline:
@@ -100,6 +135,7 @@ function update_mentions() {
         , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#mentions');
+            ui.Main.load_tweets_cb(result, '#home_timeline');
         });
 },
 

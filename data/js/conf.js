@@ -256,6 +256,8 @@ function apply_prefs(name) {
     jsOAuth.use_same_sign_oauth_base = prefs.use_same_sign_oauth_base;
    
     jsOAuth.access_token = prefs.access_token;
+    jsOAuth.key = prefs.consumer_key || jsOAuth.key;
+    jsOAuth.secret = prefs.consumer_secret || jsOAuth.secret;
 
     for (var id in ext.exts_info) {
         ext.disable_ext(id);
