@@ -177,7 +177,7 @@ function render_people_page(user_obj, pagename, proc) {
         proc();
         $('#people_tweet_block .tweet_block_bottom').show();
     } else {
-        if (user_obj.protected) {
+        if (user_obj.protected && !user_obj.following) {
             // not friend and user protect his tweets,
             // then hide follow btn.
             btn_follow.hide();
