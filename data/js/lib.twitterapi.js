@@ -498,7 +498,7 @@ function watch_user_streams(callback) {
 
     url = 'https://userstream.twitter.com/2/user.json';
     sign_url = url;
-    params = {'replies' : 'all', 'with' : 'followings'};
+    params = {'with' : 'followings'};
 
     var signed_params = jsOAuth.form_signed_params(
 	  sign_url, jsOAuth.access_token, 'GET', params, false);
