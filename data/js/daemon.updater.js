@@ -88,12 +88,6 @@ function work() {
 
 watch_user_streams:
 function watch_user_streams() {
-    // @TODO 设法判断 Streams api 真的能用
-    if(lib.twitterapi.use_oauth && watch_user_streams.is_running) {
-	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
-	daemon.Updater.watch_pages['#mentions'].interval = 900;
-	daemon.Updater.watch_pages['#direct_messages'].interval = 1200;
-    }
     function on_ret(ret) {
 	hotot_log('Streams ret', ret);
         // direct_messages
@@ -116,6 +110,16 @@ function watch_user_streams() {
         }
     }
     lib.twitterapi.watch_user_streams(on_ret);
+    // @TODO 设法判断 Streams api 真的能用
+    if(lib.twitterapi.use_oauth && lib.twitterapi.watch_user_streams.is_running) {
+	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
+	daemon.Updater.watch_pages['#mentions'].interval = 900;
+	daemon.Updater.watch_pages['#direct_messages'].interval = 900;
+    } else {
+	daemon.Updater.watch_pages['#home_timeline'].interval = 60;
+	daemon.Updater.watch_pages['#mentions'].interval = 60;
+	daemon.Updater.watch_pages['#direct_messages'].interval = 120;
+    }
 },
 
 update_home_timeline:
@@ -135,7 +139,6 @@ function update_mentions() {
         , null, conf.vars.items_per_request, 
         function (result) {
             ui.Main.load_tweets_cb(result, '#mentions');
-            ui.Main.load_tweets_cb(result, '#home_timeline');
         });
 },
 
