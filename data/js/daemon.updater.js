@@ -119,9 +119,15 @@ function watch_user_streams() {
 	    hotot_log('Streams text', ret);
             ui.Main.load_tweets_cb([ret], '#home_timeline');
 	    // mentions
-	    if (ret.text.toLowerCase().indexOf(
-                    globals.myself.screen_name.toLowerCase() ) > -1){
-		ui.Main.load_tweets_cb([ret], '#mentions');
+	    if (ret.entities) {
+		user_mentions = ret.entities.user_mentions;
+		myname = globals.myself.screen_name;
+		for (var i = 0, l = user_mentions.length; i < l; i +=1) {
+		    if (user_mentions[i].screen_name == myname) {
+			hotot_log('Streams mention', ret);
+			return ui.Main.load_tweets_cb([ret], '#mentions');
+		    }
+	       	}
 	    }
             return;
         }
