@@ -525,21 +525,28 @@ function watch_user_streams(callback) {
         hotot_log('Streams Exit', new Date().toLocaleString());
     }
     xhr.onreadystatechange = function () {
-    newText = xhr.responseText.substr(watch_user_streams.last_text_length);
-    hotot_log('Streams XHR', 'readyState: ' + xhr.readyState
-                         + ', status: ' + xhr.status
-                         + ', responseText.length: ' + xhr.responseText.length
-                         + ', times: ' + watch_user_streams.times
-                         + ', createAt: ' + xhr.createAt);
-    watch_user_streams.last_text_length = xhr.responseText.length;
-    // empty reply
-    if (newText.length < 5) {
-        hotot_log('Streams XHR', 'res nothing');
-        return;
-    }
-    if (callback) {
-        return callback(JSON.parse(newText));
-        }
+	newText = xhr.responseText.substr(watch_user_streams.last_text_length);
+	hotot_log('Streams XHR', 'readyState: ' + xhr.readyState
+			     + ', status: ' + xhr.status
+			     + ', responseText.length: ' + xhr.responseText.length
+			     + ', times: ' + watch_user_streams.times
+			     + ', createAt: ' + xhr.createAt);
+	watch_user_streams.last_text_length = xhr.responseText.length;
+	// limit xhr.responseText length
+	if (xhr.responseText.length > 2000000) {
+	    hotot_log('Streams Rec', xhr.responseText.length);
+	    watch_user_streams.is_running = false;
+	    setTimeout(watch_user_streams, 100, callback);
+	    setTimeout(xhr.abort, 100);
+	}
+	// empty reply
+	if (newText.length < 5) {
+	    hotot_log('Streams XHR', 'res nothing');
+	    return;
+	}
+	if (callback) {
+	    return callback(JSON.parse(newText));
+	    }
     }
     xhr.send(null);
     lib.twitterapi.abort_watch_user_streams = function() {
