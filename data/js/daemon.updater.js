@@ -53,6 +53,7 @@ function start() {
 stop:
 function stop() {
     daemon.Updater.running = false;
+    daemon.Updater.abort_watch_user_streams();
 },
 
 work:
@@ -86,9 +87,25 @@ function work() {
     setTimeout(daemon.Updater.work, 60000);
 },
 
+abort_watch_user_streams:
+function abort_watch_user_streams() {
+    lib.twitterapi.abort_watch_user_streams();
+},
+
 watch_user_streams:
 function watch_user_streams() {
+    if (!lib.twitterapi.use_oauth || lib.twitterapi.watch_user_streams.is_running) {
+	return;
+    } else {
+	daemon.Updater.watch_pages['#home_timeline'].interval = 60;
+	daemon.Updater.watch_pages['#mentions'].interval = 60;
+	daemon.Updater.watch_pages['#direct_messages'].interval = 120;
+    }
     function on_ret(ret) {
+	// incr REST interval when the Steams xhr works
+	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
+	daemon.Updater.watch_pages['#mentions'].interval = 900;
+	daemon.Updater.watch_pages['#direct_messages'].interval = 900;
 	hotot_log('Streams ret', ret);
         // direct_messages
         if (ret.direct_message) {
@@ -110,16 +127,6 @@ function watch_user_streams() {
         }
     }
     lib.twitterapi.watch_user_streams(on_ret);
-    // @TODO 设法判断 Streams api 真的能用
-    if(lib.twitterapi.use_oauth && lib.twitterapi.watch_user_streams.is_running) {
-	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
-	daemon.Updater.watch_pages['#mentions'].interval = 900;
-	daemon.Updater.watch_pages['#direct_messages'].interval = 900;
-    } else {
-	daemon.Updater.watch_pages['#home_timeline'].interval = 60;
-	daemon.Updater.watch_pages['#mentions'].interval = 60;
-	daemon.Updater.watch_pages['#direct_messages'].interval = 120;
-    }
 },
 
 update_home_timeline:

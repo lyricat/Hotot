@@ -83,6 +83,7 @@ function init () {
         ui.Main.reset_block_info();
         ui.Main.hide();
         ui.Welcome.show();
+        daemon.Updater.stop();
     });
 },
 

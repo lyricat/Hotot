@@ -488,11 +488,19 @@ function search(query, page, on_success) {
     });
 },
 
+abort_watch_user_streams:
+function abort_watch_user_streams() {
+},
+
 watch_user_streams:
 function watch_user_streams(callback) {
     if (!lib.twitterapi.use_oauth || watch_user_streams.is_running) {
         return;
     }
+    if (!watch_user_streams.times){
+        watch_user_streams.times = 0;
+    }
+    watch_user_streams.times += 1;
     watch_user_streams.is_running = true;
     watch_user_streams.last_text_length = 0;
 
@@ -501,35 +509,42 @@ function watch_user_streams(callback) {
     params = {'with' : 'followings'};
 
     var signed_params = jsOAuth.form_signed_params(
-	  sign_url, jsOAuth.access_token, 'GET', params, false);
+      sign_url, jsOAuth.access_token, 'GET', params, false);
     url = url + '?' + signed_params;
     params = {};
+
+    hotot_log('Streams Open', url);
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.setRequestHeader('X-User-Agent', 'Hotot 0.9.6');
     xhr.setRequestHeader('User-Agent', 'Hotot 0.9.6');
+    xhr.createAt = new Date().toLocaleString();
     xhr.onabort = xhr.onerror = xhr.onload = function() {
-	watch_user_streams.is_running = false;
-	hotot_log('Streams', 'lib.twitterapi.watch_user_streams exit ' + xhr.status);
+        watch_user_streams.is_running = false;
+        hotot_log('Streams Exit', new Date().toLocaleString());
     }
     xhr.onreadystatechange = function () {
-	newText = xhr.responseText.substr(watch_user_streams.last_text_length);
-	hotot_log('Streams', 'xhr.readyState: ' + xhr.readyState
-	                 + ', xhr.status: ' + xhr.status
-			 + ', totalLength: ' + xhr.responseText.length
-	                 + ', newText:\n' + newText);
-	watch_user_streams.last_text_length = xhr.responseText.length;
-	// empty reply
-	if (newText.length < 4) {
-	    hotot_log('Streams', 'nothing');
-	    return;
-	}
-	if (callback) {
-	    return callback(JSON.parse(newText));
+    newText = xhr.responseText.substr(watch_user_streams.last_text_length);
+    hotot_log('Streams XHR', 'readyState: ' + xhr.readyState
+                         + ', status: ' + xhr.status
+                         + ', responseText.length: ' + xhr.responseText.length
+                         + ', times: ' + watch_user_streams.times
+                         + ', createAt: ' + xhr.createAt);
+    watch_user_streams.last_text_length = xhr.responseText.length;
+    // empty reply
+    if (newText.length < 5) {
+        hotot_log('Streams XHR', 'res nothing');
+        return;
+    }
+    if (callback) {
+        return callback(JSON.parse(newText));
         }
     }
     xhr.send(null);
+    lib.twitterapi.abort_watch_user_streams = function() {
+	xhr.abort();
+    }
 },
 
 add_streaming_filter:
