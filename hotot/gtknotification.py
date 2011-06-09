@@ -69,13 +69,14 @@ class Notification(gtk.Window):
 
         image = gtk.Image()
         image.set_alignment(0, 0)
-        if icon_file.startswith('file://'):
-            icon_file = icon_file[7:]
-        try:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_file, icon_size, icon_size)
-            image.set_from_pixbuf(pixbuf)
-        except:
-            pass
+        if icon_file:
+            if icon_file.startswith('file://'):
+                icon_file = icon_file[7:]
+            try:
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_file, icon_size, icon_size)
+                image.set_from_pixbuf(pixbuf)
+            except:
+                pass
 
         self.message_vbox = gtk.VBox()
         self.message_vbox.pack_start(title_label, False, False)
@@ -105,7 +106,7 @@ class Notification(gtk.Window):
         self.realize()
         self.window.set_background(background_color)
 
-        self.set_opacity(0.8)
+        self.set_opacity(0.6)
 
         self.timer_id = None
         self.set_default_size(max_width, -1)
