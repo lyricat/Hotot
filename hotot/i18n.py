@@ -20,5 +20,5 @@ else:
     gettext.install(app, unicode=True)
 
 if __name__=="__main__":
-	print _('')
+    print _('')
 
