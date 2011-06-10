@@ -12,7 +12,7 @@ api_base: 'https://api.twitter.com/',
 
 sign_api_base: 'https://api.twitter.com/',
 
-search_api_base: 'http://search.twitter.com/',
+search_api_base: 'https://search.twitter.com/',
 
 use_same_sign_api_base: true,
 
@@ -482,10 +482,12 @@ function verify(on_success) {
 
 search:
 function search(query, page, on_success) {
-    var url = lib.twitterapi.search_api_base + 'search.json?q='+encodeURIComponent(query)+'&page='+page;
-    lib.network.do_request('GET', url, {}, {}, [], on_success,
-    function(result) {
-    });
+    var url = lib.twitterapi.search_api_base + 'search.json';
+    var params={
+	'q': query,
+	'page': page,
+    };
+    lib.twitterapi.get(url, params, on_success);
 },
 
 abort_watch_user_streams:

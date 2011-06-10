@@ -58,7 +58,7 @@ default_prefs: {
         , 'oauth_base': 'https://api.twitter.com/oauth/'
         , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
         , 'use_same_sign_oauth_base': true
-        , 'search_api_base': 'http://search.twitter.com/'
+        , 'search_api_base': 'https://search.twitter.com/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
       }
