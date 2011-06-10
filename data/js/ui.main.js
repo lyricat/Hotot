@@ -543,7 +543,7 @@ function add_tweets(json_obj, container, reversion) {
     // else:         large ... small
     ui.Main.sort(json_obj, reversion);
 
-    // insert tweets.
+    // insert the isoloated tweets.
     var i = 0;
     var batch_arr = [];
     while (i < json_obj.length) {
@@ -551,7 +551,8 @@ function add_tweets(json_obj, container, reversion) {
         if (ret[0] == -1) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
-        } else if (ret[0] > 0){
+        } else if (ret[0] > 0) {
+            // calculator the height of isoloated tweets
             var dom_id = container.pagename+'-'+json_obj[i].id_str;
             if (ui.Main.use_preload_conversation) {
                 var thread_container = $($(
@@ -564,7 +565,7 @@ function add_tweets(json_obj, container, reversion) {
                 new_tweets_height += $('#'+dom_id).get(0).clientHeight;
             }
             i += 1;
-        } else {
+        } else { // ret[0] == 0
             batch_arr.push(json_obj[i])
             i += 1;
         }
@@ -578,6 +579,11 @@ function add_tweets(json_obj, container, reversion) {
         container.append(batch_html);
     } else {
         container.prepend(batch_html);
+    }
+    // calculator the height of remaining tweets
+    for (var i = 0; i < batch_arr.length; i += 1) {
+        var dom_id = container.pagename+'-'+batch_arr[i].id_str;
+        new_tweets_height += $('#'+dom_id).get(0).clientHeight;
     }
 
     // if timeline is not on the top
@@ -646,9 +652,10 @@ function sort(json_obj, reversion) {
 
 insert_isolated_tweet:
 function insert_isolated_tweet(container, tweet, form_proc, reversion) {
-    /* insert this tweet into a correct position.
-     * in the order of id.
-     * and drop duplicate tweets who has same id.
+    /* insert this tweet into a correct position in the order of id.
+     * if the tweet is isoloated, then insert it & return [c, html]
+     * if the tweet isn't isoloated, then return [0, html]
+     * if the tweet is duplicate, return [-1, null]
      * */
     var this_one = tweet;
     var this_one_html = form_proc(this_one, container.pagename);
@@ -672,7 +679,6 @@ function insert_isolated_tweet(container, tweet, form_proc, reversion) {
             var cmp_ret = util.compare_id(next_one_id, this_one.id_str);
             if (cmp_ret == 0) {
                 //next_one_id == this.id_str
-                // simply drop the duplicate tweet.
                 return [-1, null];
             } else if (cmp_ret == -1) {
                 //next_one_id < this.id_str
