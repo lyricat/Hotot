@@ -111,7 +111,9 @@ function watch_user_streams() {
         if (ret.direct_message) {
             //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
 	    hotot_log('Streams dm', ret);
-            ui.Main.load_tweets_cb([ret.direct_message], '#direct_messages_inbox');
+	    if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
+                ui.Main.load_tweets_cb([ret.direct_message], '#direct_messages_inbox');
+	    }
             return;
         }
         // timeline
