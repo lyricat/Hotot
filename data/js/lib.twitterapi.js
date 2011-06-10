@@ -547,8 +547,14 @@ function watch_user_streams(callback) {
 	    return;
 	}
 	if (callback) {
-	    return callback(JSON.parse(newText));
+	    try {
+		ret = JSON.parse(newText);
+	    } catch(e) {
+		hotot_log('Streams callback', e.message + ', newText:\n' + newText);
+		return;
 	    }
+	    return callback(ret);
+	}
     }
     xhr.send(null);
     lib.twitterapi.abort_watch_user_streams = function() {
