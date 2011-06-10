@@ -61,7 +61,7 @@ function work() {
     if (daemon.Updater.running) {
         var step = 0;
 
-	daemon.Updater.watch_user_streams();
+        daemon.Updater.watch_user_streams();
 
         for (var pagename in daemon.Updater.watch_pages) {
             if (daemon.Updater.watch_pages[pagename].watch 
@@ -95,42 +95,42 @@ function abort_watch_user_streams() {
 watch_user_streams:
 function watch_user_streams() {
     if (!lib.twitterapi.use_oauth || lib.twitterapi.watch_user_streams.is_running) {
-	return;
+        return;
     } else {
-	daemon.Updater.watch_pages['#home_timeline'].interval = 60;
-	daemon.Updater.watch_pages['#mentions'].interval = 60;
-	daemon.Updater.watch_pages['#direct_messages'].interval = 120;
+        daemon.Updater.watch_pages['#home_timeline'].interval = 60;
+        daemon.Updater.watch_pages['#mentions'].interval = 60;
+        daemon.Updater.watch_pages['#direct_messages'].interval = 120;
     }
     function on_ret(ret) {
-	// incr REST interval when the Steams xhr works
-	daemon.Updater.watch_pages['#home_timeline'].interval = 900;
-	daemon.Updater.watch_pages['#mentions'].interval = 900;
-	daemon.Updater.watch_pages['#direct_messages'].interval = 900;
-	hotot_log('Streams ret', ret);
+        // incr REST interval when the Steams xhr works
+        daemon.Updater.watch_pages['#home_timeline'].interval = 900;
+        daemon.Updater.watch_pages['#mentions'].interval = 900;
+        daemon.Updater.watch_pages['#direct_messages'].interval = 900;
+        hotot_log('Streams ret', ret);
         // direct_messages
         if (ret.direct_message) {
             //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
-	    hotot_log('Streams dm', ret);
-	    if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
+            hotot_log('Streams dm', ret);
+            if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
                 ui.Main.load_tweets_cb([ret.direct_message], '#direct_messages_inbox');
-	    }
+            }
             return;
         }
         // timeline
         if (ret.text && ret.user) {
-	    hotot_log('Streams text', ret);
+            hotot_log('Streams text', ret);
             ui.Main.load_tweets_cb([ret], '#home_timeline');
-	    // mentions
-	    if (ret.entities) {
-		user_mentions = ret.entities.user_mentions;
-		myname = globals.myself.screen_name;
-		for (var i = 0, l = user_mentions.length; i < l; i +=1) {
-		    if (user_mentions[i].screen_name == myname) {
-			hotot_log('Streams mention', ret);
-			return ui.Main.load_tweets_cb([ret], '#mentions');
-		    }
-	       	}
-	    }
+            // mentions
+            if (ret.entities) {
+                user_mentions = ret.entities.user_mentions;
+                myname = globals.myself.screen_name;
+                for (var i = 0, l = user_mentions.length; i < l; i +=1) {
+                    if (user_mentions[i].screen_name == myname) {
+                        hotot_log('Streams mention', ret);
+                        return ui.Main.load_tweets_cb([ret], '#mentions');
+                    }
+                }
+            }
             return;
         }
     }

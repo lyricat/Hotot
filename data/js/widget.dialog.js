@@ -53,30 +53,30 @@ function WidgetDialog(obj) {
         self._bar
             .mousedown(function (event) {
                 widget.DialogManager.set_above(self);
-			
-				if (event.button != 0) {
-					return;
-				}
-				self._drag = true;
-				var pos = self._me.position();
-				self._offsetX = event.clientX - pos.left;
-				self._offsetY = event.clientY - pos.top;
-				event.target.style.cursor = "move";
-			
-				$('body').css('-khtml-user-select', 'none');
-			})
-			.mouseup(function (event) {
-				if (self._drag) {
-					self._drag = false;
-					event.target.style.cursor = null;
-					$('body').css('-khtml-user-select', '');
-				}
-			});
-		$(document).mousemove(function (event) {
-			if (self._drag) {
-               	self.move(event.clientX - self._offsetX, event.clientY - self._offsetY);
-			}
-		})
+
+                if (event.button != 0) {
+                        return;
+                }
+                self._drag = true;
+                var pos = self._me.position();
+                self._offsetX = event.clientX - pos.left;
+                self._offsetY = event.clientY - pos.top;
+                event.target.style.cursor = "move";
+
+                $('body').css('-khtml-user-select', 'none');
+            })
+            .mouseup(function (event) {
+                 if (self._drag) {
+                     self._drag = false;
+                     event.target.style.cursor = null;
+                     $('body').css('-khtml-user-select', '');
+                 }
+             });
+             $(document).mousemove(function (event) {
+                 if (self._drag) {
+                     self.move(event.clientX - self._offsetX, event.clientY - self._offsetY);
+                 }
+             })
     };
 
     self.move = function move(x, y) {
