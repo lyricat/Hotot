@@ -496,7 +496,9 @@ function abort_watch_user_streams() {
 
 watch_user_streams:
 function watch_user_streams(callback) {
-    if (!lib.twitterapi.use_oauth || watch_user_streams.is_running) {
+    if (!lib.twitterapi.use_oauth
+      || watch_user_streams.is_running
+      || lib.twitterapi.api_base.indexOf('https://api.twitter.com/') < 0 ) {
         return;
     }
     if (!watch_user_streams.times){
