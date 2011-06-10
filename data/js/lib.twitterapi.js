@@ -498,6 +498,7 @@ watch_user_streams:
 function watch_user_streams(callback) {
     if (!lib.twitterapi.use_oauth
       || watch_user_streams.is_running
+      || watch_user_streams.disable
       || lib.twitterapi.api_base.indexOf('https://api.twitter.com/') < 0 ) {
         return;
     }
@@ -525,8 +526,12 @@ function watch_user_streams(callback) {
     xhr.setRequestHeader('User-Agent', 'Hotot 0.9.6');
     xhr.createAt = new Date().toLocaleString();
     xhr.onabort = xhr.onerror = xhr.onload = function() {
+        if (xhr.status == 401 || xhr.status == 407) {
+            hotot_log('Streams XHR', 'OAuth error');
+            watch_user_streams.disable = true;
+        }
         watch_user_streams.is_running = false;
-        hotot_log('Streams Exit', new Date().toLocaleString());
+        hotot_log('Streams Exit', xhr.createAt + ' -> ' + new Date().toLocaleString());
     }
     xhr.onreadystatechange = function () {
         newText = xhr.responseText.substr(watch_user_streams.last_text_length);
