@@ -38,7 +38,7 @@ tweet_t:
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
@@ -76,7 +76,7 @@ retweeted_by_t:
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
                 {%TRANS_Retweeted_by%}: <a class="show" href="javascript:void(0)" tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
@@ -133,7 +133,7 @@ search_t:
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="http://twitter.com/{%SCREEN_NAME%}/status/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
         </div>\
@@ -188,6 +188,7 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
+        , TWEET_BASE_URL: ''
     };
 
     ui.Template.retweeted_by_m = {
@@ -202,6 +203,7 @@ function init() {
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
         , TRANS_retweeted_by:'', TRANS_Show_retweeters:''
+        , TWEET_BASE_URL: ''
     };
 
     ui.Template.dm_m = {
@@ -216,6 +218,7 @@ function init() {
         , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
         , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
         , TWEET_FONT_SIZE:'', TRANS_via:''
+        , TWEET_BASE_URL: ''
     };
 
     ui.Template.people_m = {
@@ -331,6 +334,8 @@ function form_tweet (tweet_obj, pagename) {
     m.TRANS_Send_Message_to_them = "Send message to them";
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
+    m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
+
     return ui.Template.render(ui.Template.tweet_t, m);
 },
 
@@ -421,6 +426,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.TRANS_View_more_conversation = "view more conversation";
     m.TRANS_Retweeted_by = "by";
     m.TRANS_Show_retweeters = "click to show";
+    m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
 
     return ui.Template.render(ui.Template.retweeted_by_t, m);
 },
@@ -461,6 +467,8 @@ function form_search(tweet_obj, pagename) {
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TRANS_via = 'via';
+    m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
+
     return ui.Template.render(ui.Template.search_t, m);
 },
 
@@ -489,7 +497,7 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
     vcard_container.find('.screen_name')
-        .attr('href', 'http://twitter.com/'+user_obj.screen_name)
+        .attr('href', globals.base_url+user_obj.screen_name)
         .text(user_obj.screen_name);
     vcard_container.find('.name').text(user_obj.name);
     vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);

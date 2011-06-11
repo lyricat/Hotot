@@ -238,6 +238,7 @@ function load_profiles_info() {
                 conf.profiles[profile_name].preferences.remember_password);
             $('#profile_avator_list a').not(this).removeClass('selected');
             $(this).addClass('selected');
+            globals.protocol = conf.profiles[profile_name].preferences.tweet_base_url;
             // apply preferences
             conf.apply_prefs(profile_name);
             if (jsOAuth.access_token == ''
