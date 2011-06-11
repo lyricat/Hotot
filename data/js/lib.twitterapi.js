@@ -16,7 +16,7 @@ search_api_base: 'https://search.twitter.com/',
 
 use_same_sign_api_base: true,
 
-source: '',
+source: 'Hotot',
 
 http_code_msg_table : {
       401: 'Server cannot authenticate you. Please check your username/password and API base.'
