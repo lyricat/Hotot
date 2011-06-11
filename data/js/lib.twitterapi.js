@@ -554,13 +554,17 @@ function watch_user_streams(callback) {
             return;
         }
         if (callback) {
-            try {
-                ret = JSON.parse(newText);
-            } catch(e) {
-                hotot_log('Streams callback', e.message + ', newText:\n' + newText);
-                return;
-            }
-            return callback(ret);
+            newText.split('\n').forEach(function(line) {
+                if (line && line.length > 2) {
+                    try {
+                        ret = JSON.parse(line);
+                    } catch(e) {
+                        hotot_log('Streams callback', e.message + ', line:\n' + line);
+                        return;
+                    }
+                    return callback(ret);
+                }
+            });
         }
     }
     xhr.send(null);
