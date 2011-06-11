@@ -94,7 +94,7 @@ default_prefs: {
         , 'oauth_base': 'https://identi.ca/api/oauth/'
         , 'sign_oauth_base': 'https://identi.ca/api/oauth/'
         , 'use_same_sign_oauth_base': true
-        , 'search_api_base': 'https://api.twitter.com/api/'
+        , 'search_api_base': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
       }
