@@ -26,7 +26,7 @@ USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 screen = gtk.gdk.screen_get_default()
 window_manager_name = screen.get_window_manager_name().lower() if screen else ''
 if 'mutter' in window_manager_name:
-    USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = false
+    USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
 
 if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
     import gtknotification
