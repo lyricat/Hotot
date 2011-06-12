@@ -21,6 +21,13 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
+
+## Disable GtkNotification on Gnome3
+screen = gtk.gdk.screen_get_default()
+window_manager_name = screen.get_window_manager_name().lower() if screen else ''
+if 'mutter' in window_manager_name:
+    USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = false
+
 if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
     import gtknotification
     class  Notification(object):

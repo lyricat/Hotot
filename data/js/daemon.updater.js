@@ -106,11 +106,11 @@ function watch_user_streams() {
         daemon.Updater.watch_pages['#home_timeline'].interval = 900;
         daemon.Updater.watch_pages['#mentions'].interval = 900;
         daemon.Updater.watch_pages['#direct_messages'].interval = 900;
-        hotot_log('Streams ret', ret);
+        //hotot_log('Streams ret', ret);
         // direct_messages
         if (ret.direct_message) {
             //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
-            hotot_log('Streams dm', ret);
+            //hotot_log('Streams dm', ret);
             if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
                 ui.Main.load_tweets_cb([ret.direct_message], '#direct_messages_inbox');
             }
@@ -118,7 +118,7 @@ function watch_user_streams() {
         }
         // timeline
         if (ret.text && ret.user) {
-            hotot_log('Streams text', ret);
+            //hotot_log('Streams text', ret);
             ui.Main.load_tweets_cb([ret], '#home_timeline');
             // mentions
             if (ret.entities) {
@@ -126,7 +126,7 @@ function watch_user_streams() {
                 myname = globals.myself.screen_name;
                 for (var i = 0, l = user_mentions.length; i < l; i +=1) {
                     if (user_mentions[i].screen_name == myname) {
-                        hotot_log('Streams mention', ret);
+                        //hotot_log('Streams mention', ret);
                         return ui.Main.load_tweets_cb([ret], '#mentions');
                     }
                 }
