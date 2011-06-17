@@ -233,7 +233,9 @@ function show () {
 
 load_tweet_success:
 function load_tweet_success(self, json) {
-    ui.Slider.set_unread(self.name);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
     ret = ui.Main.add_tweets(self, json, false);
     if (ui.Main.views[self.name].use_notify) {
         if (ui.Main.views[self.name].use_notify_type == 'count') {
@@ -262,7 +264,9 @@ function load_tweet_success(self, json) {
 
 load_people_success:
 function load_people_success(self, json) {
-    ui.Slider.set_unread(self.name);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
     return ui.Main.add_people(self, json)
 },
 

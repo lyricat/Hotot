@@ -13,9 +13,6 @@ push_views: [],
 
 init: 
 function init() {
-    if (lib.twitterapi.use_oauth && lib.twitterapi.api_base.indexOf('https://api.twitter.com/') < 0 ) {
-        daemon.use_streaming = true;
-    }
 },
 
 start: 
@@ -33,6 +30,10 @@ function stop() {
 
 work:
 function work() {
+    if (lib.twitterapi.use_oauth 
+        && lib.twitterapi.api_base.indexOf('https://api.twitter.com/') != -1 ) {
+        daemon.use_streaming = true;
+    }
     if (daemon.running) {
         daemon.poll();
         daemon.push();
@@ -58,7 +59,7 @@ function poll() {
     for (var i = 0; i < daemon.push_views.length; i += 1) {
         var view = daemon.push_views[i];
         var interval = view.interval;
-        if (lib.twitterapi.use_streaming) {
+        if (daemon.use_streaming) {
             // poll push_views per 15 minutes when the Steaming xhr works
             // poll them as normal if Streaming xhr doesn't work
             interval = 900;

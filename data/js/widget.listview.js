@@ -30,6 +30,7 @@ function WidgetListView(id, name, params) {
     self.title = 'New Page';
     self.interval = 0;
     self.resume_pos = false;
+    self.changed = false;
 
     self.since_id = 1;
     self.max_id = null;
@@ -158,8 +159,10 @@ function WidgetListView(id, name, params) {
         }
         // load callback
         var count = self._load_success(self, json);
-        if (count == 0) { return; }
-
+        if (count == 0) { 
+            self.changed = false;
+            return; 
+        }
         // thread container doesn't have a property '_me'
         if (self.hasOwnProperty('_me') && self._me.get(0).scrollTop < 100) {
             self.trim_page();
@@ -168,13 +171,15 @@ function WidgetListView(id, name, params) {
         // keep timeline status
         if (self.item_type == 'cursor') {        // friedns or followers
             self.cursor = json.next_cursor_str;
+            self.changed = (self.cursor != json.next_cursor_str);
         } else if (self.item_type == 'page') { //search, fav, 
-            self.page += 1; 
+            // self.page += 1; 
         } else {    // other
             self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
                 self.max_id = json[0].id_str;
             }
+            self.changed = (self.since_id != json[count - 1].id_str);
         }
     };
     
@@ -194,14 +199,14 @@ function WidgetListView(id, name, params) {
         }
         // load callback
         var count = self._loadmore_success(self, json);
-        if (count == 0) { return; }
+
         // keep timeline status
-        
         if (self.item_type == 'cursor') {        // friedns or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { //search, fav, 
             self.page += 1; 
         } else {    // other
+            if (count == 0) { return; }
             self.max_id = json[count - 1].id_str;
             if (self.since_id == 1) {
                 self.since_id = json[0].id_str;
