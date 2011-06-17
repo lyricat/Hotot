@@ -178,6 +178,7 @@ function slide_to(id) {
     var cur_sel = $.map(ui.Slider.displayed, function (item) {
         return $('#indication .indicator_btn[href="#'+item+'"]');
     });
+    if (cur_sel.length == 0) return;
     $('#indication_light').stop().animate(
           { 'left': (cur_sel[0].parent().attr('offsetLeft') + 1) + 'px',
             'width': (

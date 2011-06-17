@@ -75,6 +75,9 @@ function init () {
 
     $('#btn_sign_out').click(
     function (event) {
+        for (var k in ui.Main.views) {
+            ui.Slider.remove(ui.Main.views[k].name);
+        }
         globals.layout.close('north');
         globals.layout.close('south');
         ui.Main.reset_views();
