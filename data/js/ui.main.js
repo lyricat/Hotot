@@ -243,7 +243,7 @@ function load_tweet_success(self, json) {
                 , null, 'count');
         } else {
             var user = ''; var text = '';
-            for (var i = json.length - 1; json.length - 3 <= i; i -= 1) {
+            for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
                 user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
                 text = json[i].text;
                 hotot_notify(user.screen_name, text

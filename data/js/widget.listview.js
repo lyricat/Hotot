@@ -170,16 +170,18 @@ function WidgetListView(id, name, params) {
         }
         // keep timeline status
         if (self.item_type == 'cursor') {        // friedns or followers
-            self.cursor = json.next_cursor_str;
             self.changed = (self.cursor != json.next_cursor_str);
+            self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { //search, fav, 
-            // self.page += 1; 
+            self.changed = (self.since_id != json[count - 1].id_str);
+            self.since_id = json[count - 1].id_str;
+            self.page = json.page + 1; 
         } else {    // other
+            self.changed = (self.since_id != json[count - 1].id_str);
             self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
                 self.max_id = json[0].id_str;
             }
-            self.changed = (self.since_id != json[count - 1].id_str);
         }
     };
     
@@ -204,7 +206,7 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {        // friedns or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { //search, fav, 
-            self.page += 1; 
+            self.page = json.page + 1; 
         } else {    // other
             if (count == 0) { return; }
             self.max_id = json[count - 1].id_str;
@@ -232,6 +234,7 @@ function WidgetListView(id, name, params) {
         cards.find('.btn_tweet_thread_more:first').unbind();
         cards.unbind();
         cards.remove();
+        // @TODO reset self.max_id & page & next_cursor_str
     },
 
     self.compress_page = function compress_page() {
