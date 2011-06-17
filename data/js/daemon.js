@@ -153,7 +153,7 @@ function update_all() {
         daemon.poll_views[i].load();
     }
     for (var i = 0; i < daemon.push_views.length; i += 1) {
-        daemon.push_view[i].load();
+        daemon.push_views[i].load();
     }
 },
 
