@@ -41,7 +41,7 @@ function work() {
     if (daemon.time == 3600) { // reset timer per hour
         daemon.time = 0;
     }
-    setTimeout(daemon.poll, 60000);
+    setTimeout(daemon.work, 60000);
 },
 
 poll:
@@ -84,11 +84,9 @@ function push() {
         return;
     }
     function on_ret(ret) {
-        hotot_log('Streams ret', ret);
         // direct_messages
         if (ret.direct_message) {
             //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
-            hotot_log('Streams dm', ret);
             if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
                 ui.Main.views.messages.load_success([ret]);
             }
@@ -103,7 +101,6 @@ function push() {
                 myname = globals.myself.screen_name;
                 for (var i = 0, l = user_mentions.length; i < l; i +=1) {
                     if (user_mentions[i].screen_name == myname) {
-                        hotot_log('Streams mention', ret);
                         ui.Main.views.mentions.load_success([ret]);
                     }
                 }
