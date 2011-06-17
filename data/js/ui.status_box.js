@@ -67,7 +67,6 @@ function init () {
             } else {
                 ui.StatusBox.update_status(status_text);
             }
-            ui.StatusBox.current_mode = ui.StatusBox.MODE_TWEET;
         }
     };
     ui.StatusBox.btn_update.create();

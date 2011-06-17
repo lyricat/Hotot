@@ -58,7 +58,7 @@ function poll() {
     for (var i = 0; i < daemon.push_views.length; i += 1) {
         var view = daemon.push_views[i];
         var interval = view.interval;
-        if (!lib.twitterapi.use_streaming) {
+        if (lib.twitterapi.use_streaming) {
             // poll push_views per 15 minutes when the Steaming xhr works
             // poll them as normal if Streaming xhr doesn't work
             interval = 900;
