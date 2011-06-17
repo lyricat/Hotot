@@ -336,12 +336,7 @@ function update_status_cb(result) {
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
-    
-    var container = $('#home_timeline_tweet_block > ul');
-    container.pagename = 'home_timeline'
-    container.resume_pos = true
-    ui.Main.add_tweets([result], container, true);
-    
+    ui.Main.add_tweets(ui.Main.views['home'], result, false);
     return this;
 },
 

@@ -12,7 +12,7 @@ function init() {
         $('#direct_messages_tweet_block .tweet_sub_block').not(page_name).hide();
         $(page_name).show();
         toast.set("Loading Tweets...").show(-1);
-        daemon.Updater.update_direct_messages();
+        daemon.update_direct_messages();
     };
     btns.create();
     ui.DMTabs.current = '#direct_messages_inbox';

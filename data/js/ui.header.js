@@ -3,12 +3,9 @@ ui.Header = {
 
 init:
 function init () {
-
     $('#btn_my_profile').click(
     function (event) {
-        toast.set("Loading ... ").show();
-        ui.PeopleTabs.set_people(globals.myself.screen_name);
-        daemon.Updater.update_people();
+        open_people(globals.myself.screen_name); 
     }).mouseenter(function(event) {
         globals.ratelimit_bubble.place(widget.Bubble.BOTTOM
             , widget.Bubble.ALIGN_LEFT);
@@ -55,7 +52,7 @@ function init () {
 
     $('#btn_reload').click(
     function(event) {
-        ui.Main.load_tweets(ui.Slider.displayed, true);
+        daemon.update_all();
     });
     
     $('#btn_prefs').click(
@@ -80,10 +77,10 @@ function init () {
     function (event) {
         globals.layout.close('north');
         globals.layout.close('south');
-        ui.Main.reset_block_info();
+        ui.Main.reset_views();
         ui.Main.hide();
         ui.Welcome.show();
-        daemon.Updater.stop();
+        daemon.stop();
     });
 },
 

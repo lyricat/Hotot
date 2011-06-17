@@ -267,7 +267,7 @@ function authenticate_pass(result) {
     document.title = _('hotot') + ' | ' + conf.current_name;
     hotot_action('system/sign_in');    
     setTimeout(function () {
-        ui.Slider.slide_to('#home_timeline');
+        ui.Slider.slide_to('home');
     }, 1000);
 },
 

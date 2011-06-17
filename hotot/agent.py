@@ -179,7 +179,7 @@ def load_search(query):
         ui.Main.reset_search_page('%s');
         $('#search_tweet_block > ul').html('');
         ui.Notification.set(_("Loading Search result %s ...")).show();
-        daemon.Updater.update_search();
+        daemon.update_search();
         ''' % (query, query));
 
 def set_style_scheme():

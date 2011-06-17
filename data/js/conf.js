@@ -61,6 +61,7 @@ default_prefs: {
         , 'search_api_base': 'https://search.twitter.com/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
+        , 'base_url': 'https://twitter.com/'
       }
     , 'identica': {
           // Account:
@@ -97,6 +98,7 @@ default_prefs: {
         , 'search_api_base': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
+        , 'base_url': 'https://identi.ca/'
       }
 },
 
@@ -220,25 +222,25 @@ function apply_prefs(name) {
     var prefs = active_profile.preferences;
     conf.current_name = name;
     // notification
-    ui.Main.block_info['#home_timeline'].use_notify 
+    ui.Main.views['home'].use_notify 
         = prefs.use_home_timeline_notify; 
-    ui.Main.block_info['#home_timeline'].use_notify_type
+    ui.Main.views['home'].use_notify_type
         = prefs.use_home_timeline_notify_type;
-    ui.Main.block_info['#home_timeline'].use_notify_sound
+    ui.Main.views['home'].use_notify_sound
         = prefs.use_home_timeline_notify_sound;
-    ui.Main.block_info['#mentions'].use_notify
+    ui.Main.views['mentions'].use_notify
         = prefs.use_mentions_notify;
-    ui.Main.block_info['#mentions'].use_notify_type
+    ui.Main.views['mentions'].use_notify_type
         = prefs.use_mentions_notify_type;
-    ui.Main.block_info['#mentions'].use_notify_sound
+    ui.Main.views['mentions'].use_notify_sound
         = prefs.use_mentions_notify_sound;
-    ui.Main.block_info['#direct_messages_inbox'].use_notify
+    ui.Main.views['messages'].use_notify
         = prefs.use_direct_messages_inbox_notify;
-    ui.Main.block_info['#direct_messages_inbox'].use_notify_type
+    ui.Main.views['messages'].use_notify_type
         = prefs.use_direct_messages_inbox_notify_type;
-    ui.Main.block_info['#direct_messages_inbox'].use_notify_sound
+    ui.Main.views['messages'].use_notify_sound
         = prefs.use_direct_messages_inbox_notify_sound;
-    
+
     $('#chk_remember_password').attr('checked', prefs.remember_password);
     $('body').css('font-family', prefs.use_custom_font
         ? prefs.custom_font: prefs.font_family_used);

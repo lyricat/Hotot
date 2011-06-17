@@ -32,8 +32,7 @@ function init() {
 
     $('#context_menuitem_twitter_search').click(
     function (event) {
-        ui.SearchTabs.do_search(
-            $.trim(ui.ContextMenu.selected_string));
+        ui.SearchView.do_search(ui.Main.views.search, $.trim(ui.ContextMenu.selected_string));
     });
     
     $('body').get(0).oncontextmenu = function (event) {

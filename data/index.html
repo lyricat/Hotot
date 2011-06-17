@@ -18,6 +18,7 @@
     <script type="text/javascript" src="js/widget.radio_group.js"></script>
     <script type="text/javascript" src="js/widget.dialog.js"></script>
     <script type="text/javascript" src="js/widget.bubble.js"></script>
+    <script type="text/javascript" src="js/widget.listview.js"></script>
     
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -27,7 +28,7 @@
     <script type="text/javascript" src="js/kismet.js"></script>
     <script type="text/javascript" src="js/toast.js"></script>
     <script type="text/javascript" src="js/notification.js"></script>
-    <script type="text/javascript" src="js/daemon.updater.js"></script>
+    <script type="text/javascript" src="js/daemon.js"></script>
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
     <script type="text/javascript" src="js/ui.slider.js"></script>
@@ -36,11 +37,11 @@
     <script type="text/javascript" src="js/ui.template.js"></script>
     <script type="text/javascript" src="js/ui.main.js"></script>
     <script type="text/javascript" src="js/ui.home_tabs.js"></script>
-    <script type="text/javascript" src="js/ui.retweet_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.retweetview.js"></script>
     <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
-    <script type="text/javascript" src="js/ui.people_tabs.js"></script>
-    <script type="text/javascript" src="js/ui.search_tabs.js"></script>
+    <script type="text/javascript" src="js/ui.peopleview.js"></script>
+    <script type="text/javascript" src="js/ui.searchview.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
@@ -75,6 +76,7 @@ var layout_opts = {
     ,   south__spacing_open:        0
     ,   south__spacing_closed:      0
     ,   south__initClosed:          true
+    ,   south__showOverflowOnHover: true
     ,   north__paneSelector:        '#header'
     ,   east__paneSelector:         '#aside'
     ,   center__paneSelector:       '#center'
@@ -89,7 +91,7 @@ function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();
     ui.Slider.column_num = parseInt(view_width / 400) || 1;
     globals.tweet_block_width = view_width / ui.Slider.column_num - 1;
-    $(".tweet_block").width(globals.tweet_block_width);
+    $(".tweetview").width(globals.tweet_block_width);
 }
 
 function hotot_action(uri) {
@@ -114,8 +116,28 @@ function quit() {
 
 function open_people(screen_name) {
     toast.set('Lookup @'+screen_name+'... ').show();
-    ui.PeopleTabs.set_people(screen_name);
-    daemon.Updater.update_people();
+    var name = 'people_'+screen_name;
+    var title = '@' + screen_name + '\'s Profile';
+    ui.Slider.add(name
+        , {title: title, icon:'image/ic_people.png'}
+        , {   'type': 'tweet', 'title': title
+            , 'load': ui.PeopleView.load_timeline
+            , 'loadmore': ui.PeopleView.loadmore_timeline
+            , 'load_success': ui.Main.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.Main.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'former': ui.Template.form_tweet
+            , 'init': ui.PeopleView.init_people_view
+            , 'destroy': ui.PeopleView.destroy_people_view
+            , 'header_html': ui.Template.people_vcard_t
+            , 'method': 'poll'
+            , 'interval': 120
+            , 'item_type': 'id'
+            , 'screen_name': screen_name
+        });
+    ui.Main.views['people_' + screen_name].load();
+    ui.Slider.slide_to(name);
 }
 
 function navigate_action(uri) {
@@ -127,6 +149,7 @@ function navigate_action(uri) {
 }
 
 function hotot_notify(title, summary, image, type) {
+    hotot_log('!',title);
     notification.push(title, summary, image, type);
 }
 
@@ -145,7 +168,7 @@ function hotot_log(label, content) {
 
 /* 
     = startup process =
-    - document.ready -> init() -> db.init() -> daemon.Updater.init()
+    - document.ready -> init() -> db.init() -> daemon.init()
         -> conf.init() -> ext.init() -> set loading flags
     - native web container init -> on_load_finish() -> wait for loading flags being setted -> ext.init_exts() -> finish
 */
@@ -159,7 +182,7 @@ function init(callback) {
         });    
     });
     procs.push(function() {
-        daemon.Updater.init();
+        daemon.init();
         $(window).dequeue('_page_init');
     });
     procs.push(function() {
@@ -226,10 +249,10 @@ function init_ui() {
     ui.Welcome.init();
     ui.HomeTabs.init();
     ui.MentionTabs.init();
-    ui.RetweetTabs.init();
+    ui.RetweetView.init();
     ui.DMTabs.init();
-    ui.PeopleTabs.init();
-    ui.SearchTabs.init();
+    ui.PeopleView.init();
+    ui.SearchView.init();
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
@@ -585,306 +608,6 @@ jQuery(function($) {
 
 <section id="main_page" class="page">
     <div id="main_page_slider">
-    <div id="home_timeline_tweet_block" 
-        name="#home_timeline" class="tweet_block">
-        <div class="tweet_block_top">
-            <center>
-            <ol id="home_radio_group" class="radio_group dark">
-                <li>
-                    <a class="radio_group_btn selected"
-                        href="#all" data-i18n-text="show_all">Show All</a>
-                </li><li>
-                    <a class="radio_group_btn"
-                        href="#public" data-i18n-text="public_only">Public Only</a>
-                </li><li>
-                    <a class="radio_group_btn"
-                        href="#conversation" data-i18n-text="conversation">Conversation</a>
-                </li>
-            </ol>
-            </center>
-        </div>
-        <ul></ul>
-        <div class="tweet_block_bottom">
-            <div class="load_more_info" data-i18n-text="load_more">Load more</div>
-        </div>
-    </div>
-    <div id="mentions_tweet_block"
-        name="#mentions" class="tweet_block">
-        <div class="tweet_block_top">
-            <center>
-            <ol id="mention_radio_group" class="radio_group dark">
-                <li>
-                    <a id="mention_all_btn"
-                        class="radio_group_btn selected"
-                        href="#all" data-i18n-text="show_all">Show All</a>
-                </li><li>
-                    <a id="mention_reply_btn" class="radio_group_btn"
-                        href="#reply" data-i18n-text="reply_only">Reply Only</a>
-                </li>
-            </ol>
-            </center>
-        </div>
-        <ul>
-        </ul>
-        <div class="tweet_block_bottom">
-            <div class="load_more_info" data-i18n-text="load_more">Load more</div>
-        </div>
-    </div>
-    <div id="direct_messages_tweet_block" 
-        name="#direct_messages" class="tweet_block">
-        <div class="tweet_block_top">
-            <center>
-            <ol id="dm_radio_group" class="radio_group dark">
-                <li>
-                    <a id="btn_dm_inbox" class="radio_group_btn selected"
-                        href="#direct_messages_inbox"
-                        data-i18n-text="inbox">Inbox</a>
-                </li><li>
-                    <a id="btn_dm_outbox" class="radio_group_btn"
-                        href="#direct_messages_outbox"
-                        data-i18n-text="outbox">Outbox</a>
-                </li>
-            </ol>
-            </center>
-        </div>
-        <div id="direct_messages_inbox_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Press `R` to Load Direct Meassages</div>
-            </div>
-        </div>
-        <div id="direct_messages_outbox_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Press `R` to Load Direct Meassages</div>
-            </div>
-        </div>
-    </div>
-    <div id="retweets_tweet_block" 
-        name="#retweets" class="tweet_block">
-        <div class="tweet_block_top">
-            <center>
-            <ol id="retweets_radio_group" class="radio_group dark">
-                <li>
-                    <a id="btn_retweeted_to_me" 
-                    class="radio_group_btn selected" 
-                    href="#retweeted_to_me"
-                    data-i18n-text="retweeted_by_others"
-                    >By Others</a>
-                </li><li>
-                    <a id="btn_retweeted_by_me" class="radio_group_btn"
-                    href="#retweeted_by_me"
-                    data-i18n-text="retweeted_by_me"
-                    >By Me</a>
-                </li><li>
-                    <a id="btn_retweets_of_me" class="radio_group_btn"
-                    href="#retweets_of_me"
-                    data-i18n-text="my_tweets_be_retweeted"
-                    >My Tweets, Retweeted</a>
-                </li>
-            </ol>
-            </center>
-        </div>
-        <div id="retweeted_by_me_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Press `R` to Load Tweets</div>                
-            </div>
-        </div>
-        <div id="retweeted_to_me_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Press `R` to Load Tweets</div>                
-            </div>
-        </div>
-        <div id="retweets_of_me_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Press `R` to Load Tweets</div>                
-            </div>
-        </div>
-    </div>
-    <div id="people_tweet_block" 
-        name="#people" class="tweet_block">
-        <div class="tweet_block_top">
-            <div id="people_entry">
-                <label data-i18n-text="look_up">Look up:</label>
-                <input id="tbox_people_entry" type="text" class="entry dark" value=""/>
-                <a id="btn_people_entry" class="button dark">GO</a>
-            </div>
-            <div id="people_vcard" class="vcard">
-                <div class="profile_img_wrapper"></div>
-                <div class="vcard_body">
-                    <center>
-                    <ul id="people_vcard_radio_group" class="radio_group">
-                        <li><a class="radio_group_btn selected"
-                            href="#people_vcard_info_page"
-                            data-i18n-text="info"
-                            >INFO</a>
-                        </li><li>
-                            <a class="radio_group_btn" 
-                            href="#people_vcard_stat_page"
-                            data-i18n-text="stat"
-                            >STAT</a>
-                        </li>
-                    </ul>
-                    </center>
-                    <div id="people_vcard_tabs_pages">
-                    <table id="people_vcard_info_page" class="vcard_tabs_page" border="0" cellpadding="0" cellspacing="0">
-                        <tr><td data-i18n-text="name">Name: </td><td>
-                            <a class="screen_name" target="_blank" href="#"></a> 
-                            (<span class="name"></span>) </td>
-                        </tr>
-                        <tr><td data-i18n-text="bio">Bio: </td>
-                            <td><span class="bio"></span></td>
-                        </tr>
-                        <tr><td data-i18n-text="web">Web: </td>
-                            <td><a class="web" target="_blank" href="#" class="link"></a></td>
-                        </tr>
-                        <tr><td data-i18n-text="location">Location: </td>
-                            <td><span class="location"></span></td>
-                        </tr>
-                    </table>
-                    <table id="people_vcard_stat_page" class="vcard_tabs_page">
-                        <tr><td data-i18n-text="join_time">Join: </td>
-                            <td><span class="join"></span></td>
-                        </tr>
-                        <tr><td data-i18n-text="tweet_stat">Tweets: </td>
-                            <td><span class="tweet_cnt"></span>
-                            (<span class="tweet_per_day_cnt"></span> per day)</td>
-                        </tr>
-                        <tr><td data-i18n-text="follower_stat">Followers: </td>
-                            <td><span class="follower_cnt"></span></td>
-                        </tr>
-                        <tr><td data-i18n-text="friend_stat">Friends: </td>
-                            <td><span class="friend_cnt"></span></td>
-                        </tr>
-                        <tr><td data-i18n-text="relation">Relation: </td>
-                            <td><span class="relation"></span></td>
-                        </tr>
-                    </table>
-                    </div><!-- vcard tabs pages -->
-                </div> <!-- vcard body -->
-                <div id="people_vcard_ctrl">
-                    <ul id="people_vcard_action_btns">
-                    <li><a class="vcard_follow button"
-                            href="javascript:void(0);" 
-                            data-i18n-text="follow"
-                            >Follow</a>
-                    </li><li>
-                        <a class="vcard_block button"
-                            href="javascript:void(0);"
-                            data-i18n-text="block"
-                            >Block</a>
-                    </li><li>
-                        <a class="vcard_unblock button"
-                            href="javascript:void(0);"
-                            data-i18n-text="unblock"
-                            >Unblock</a>
-                    </li><li>
-                        <a class="vcard_edit button"
-                            href="javascript:void(0);"
-                            data-i18n-text="edit"
-                            >Edit</a>
-                    </li>
-                    </ul>
-                </div><!-- #people_vcard_ctrl -->
-            </div> <!-- vcard -->
-            <div id="people_radio_group_wrapper">
-                <center>
-                <ol id="people_radio_group" class="radio_group dark">
-                    <li>
-                    <a id="btn_people_tweet" class="radio_group_btn selected" href="#people_tweet" data-i18n-text="tweets">Tweets</a>
-                    </li><li>
-                    <a id="btn_people_fav" class="radio_group_btn" href="#people_fav" data-i18n-text="favs">Favs</a>
-                    </li><li>
-                    <a id="btn_people_followers" class="radio_group_btn" href="#people_followers" data-i18n-text="followers">Followers</a>
-                    </li><li>
-                    <a id="btn_people_friends" class="radio_group_btn" href="#people_friends" data-i18n-text="friends">Friends</a>
-                    </li>
-                </ol>
-                </center>
-            </div>
-        </div>
-        <div id="people_tweet_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info"></div>                
-            </div>
-        </div>
-        <div id="people_fav_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Specify A Name to Load People</div>
-            </div>
-        </div>        
-        <div id="people_followers_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Specify A Name to Load People</div>
-            </div>
-        </div>
-        <div id="people_friends_sub_block" class="tweet_sub_block">
-            <ul></ul>
-            <div class="tweet_block_bottom">
-                <div class="load_more_info">Specify A Name to Load People</div>
-            </div>
-        </div>
-
-        <div id="people_request_hint">
-            <h1>
-            @<label id="request_screen_name"></label><span data-i18n-text="people_request_hint_title"> has protected his/her tweets.</span>
-            </h1>
-            <p data-i18n-text="people_request_hint_text">
-            You need to go to twitter.com to send a request before you can start following this person...
-            </p>
-            <div style="text-align:center;">
-            <a id="btn_people_request" class="button" data-i18n-text="send_request" target="_blank">Send Request</a>
-            </div>
-        </div>
-        <div id="people_no_result_hint">
-            <p>
-            Your search - @<label class="keyword"></label> - did not match any people.
-            </p>
-            <p>
-            Suggestions: <br/>
-             - Make sure all words are spelled correctly.<br/>
-             - Try different people's name.<br/>
-             - Try search this token in search pane.<br/>
-            </p>
-        </div>
-
-    </div>
-    <div id="search_tweet_block" 
-        name="#search" class="tweet_block">
-        <div class="tweet_block_top">
-            <div id="search_entry">
-                <label data-i18n-text="search_for">Search for: </label>
-                <input id="tbox_search_entry" class="entry dark" type="text" value=""/>
-                <a id="btn_search_entry" class="button dark" data-i18n-text="search">Search</a>
-            </div>
-        </div>
-        <ul></ul>
-        <div id="search_no_result_hint">
-            <p>
-            <span data-i18n-text="search_no_result_hint_title1">Your search</span>
-            - <label class="keywords"></label> - 
-            <span data-i18n-text="search_no_result_hint_title2">did not match any result.</span>
-            </p>
-            <p>
-            <span data-i18n-text="suggestions">Suggestions</span>: <br/>
-             - <span data-i18n-text="search_no_result_hint_suggestion1">
-                Make sure all words are spelled correctly.</span><br/>
-             - <span data-i18n-text="search_no_result_hint_suggestion2">
-                Try different keywords.</span><br/>
-             - <span data-i18n-text="search_no_result_hint_suggestion3">
-                Try more general keywords.</span><br/>
-            </p>
-        </div>
-        <div class="tweet_block_bottom">
-            <div class="load_more_info">Specify Keywords to Search Tweets</div>
-        </div>
-    </div>
     </div>
     <ul id="tweet_bar">
         <li>
@@ -944,26 +667,11 @@ jQuery(function($) {
 
 <section id="bottom">
     <div id="indication">
-        <ul>
-            <li>
-                <a id="idx_btn_home_timeline" class="idx_btn" href="#home_timeline" title="Home Timeline" data-i18n-title="home_timeline"><span class="ic_home"></span></a>
+        <ul id="indicator_btns">
+            <li class="stick_left">
+                <a id="indicator_add_btn" class="indicator_btn" href="#add" title="Add A New Column"><span class="ic_home"></span></a>
                 <span class="shape"></span>
-            </li><li>
-                <a id="idx_btn_mentions" class="idx_btn" href="#mentions" title="Mentions"><span class="ic_mention" data-i18n-title="mentions"></span></a>
-                <span class="shape"></span>
-            </li><li>
-                <a id="idx_btn_direct_messages" class="idx_btn" href="#direct_messages" title="Direct Messages" data-i18n-title="direct_messages"><span class="ic_dm"></span></a>
-                <span class="shape"></span>
-            </li><li>
-                <a id="idx_btn_retweets" class="idx_btn" href="#retweets" title="Retweets and Retweeted"><span class="ic_retweet"></span></a>
-                <span class="shape"></span>
-            </li><li>
-                <a id="idx_btn_people" class="idx_btn" href="#people" title="Find someone you love." data-i18n-title="find_someone_you_love"><span class="ic_people"></span></a>
-                <span class="shape"></span>
-            </li><li class="stick_right">
-                <a id="idx_btn_search" class="idx_btn" href="#search" title="Search for ... " data-i18n-title="search_for"><span class="ic_search"></span></a>
-                <span class="shape"></span>
-            </li>
+            </li>        
         </ul>
         <div id="indication_slot">
             <div id="indication_slot_border"></div>
