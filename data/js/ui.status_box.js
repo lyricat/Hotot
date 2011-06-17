@@ -336,7 +336,7 @@ function update_status_cb(result) {
     $('#status_info').hide();
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
-    ui.Main.add_tweets(ui.Main.views['home'], result, false);
+    ui.Main.add_tweets(ui.Main.views['home'], [result], false);
     return this;
 },
 
