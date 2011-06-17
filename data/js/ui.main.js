@@ -208,7 +208,7 @@ function reset_views() {
             , 'header_html': ui.Template.retweets_header_t
             , 'former': ui.Template.form_tweet
             , 'method': 'poll'
-            , 'interval': 120
+            , 'interval': 180
             , 'item_type': 'id'
         });
     return;
