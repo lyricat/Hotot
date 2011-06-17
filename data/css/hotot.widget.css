@@ -278,6 +278,14 @@ disabled:
     border-color: #444;
 }
 
+.radio_group_page {
+    display: none;
+}
+
+.radio_group_page:first-child {
+    display: block;
+}
+
 /* = widget.dialog = */
 .dialog {
     background: #f2f2f2;

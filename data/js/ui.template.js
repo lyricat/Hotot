@@ -16,7 +16,7 @@ reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -94,7 +94,7 @@ retweeted_by_t:
     </div>\
 </li>',
 
-dm_t: 
+message_t: 
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
@@ -160,6 +160,132 @@ people_t:
     <span class="shape_mask"></span>\
 </li>',
 
+people_vcard_t:
+'<div class="people_vcard vcard">\
+    <div class="profile_img_wrapper"></div>\
+    <div class="vcard_body">\
+        <center>\
+        <ul class="people_vcard_radio_group radio_group"> \
+            <li><a class="radio_group_btn selected" href="#people_vcard_info_page">INFO</a> \
+            </li><li><a class="radio_group_btn" href="#people_vcard_stat_page">STAT</a> \
+            </li></ul>\
+        </center>\
+        <div class="people_vcard_tabs_pages">\
+        <table class="people_vcard_info_page vcard_tabs_page radio_group_page" border="0" cellpadding="0" cellspacing="0"> \
+            <tr><td>Name: </td><td> \
+                <a class="screen_name" target="_blank" href="#"></a> \
+                (<span class="name"></span>) </td> \
+            </tr> \
+            <tr><td>Bio: </td> \
+                <td><span class="bio"></span></td> \
+            </tr> \
+            <tr><td>Web: </td> \
+                <td><a class="web" target="_blank" href="#" class="link"></a></td> \
+            </tr> \
+            <tr><td>Location: </td> \
+                <td><span class="location"></span></td> \
+            </tr> \
+        </table> \
+        <table class="people_vcard_stat_page vcard_tabs_page radio_group_page"> \
+            <tr><td>Join: </td> \
+                <td><span class="join"></span></td> \
+            </tr> \
+            <tr><td>Tweets: </td> \
+                <td><span class="tweet_cnt"></span> \
+                (<span class="tweet_per_day_cnt"></span> per day)</td> \
+            </tr> \
+            <tr><td>Followers: </td> \
+                <td><span class="follower_cnt"></span></td> \
+            </tr> \
+            <tr><td>Friends: </td> \
+                <td><span class="friend_cnt"></span></td> \
+            </tr> \
+            <tr><td>Relation: </td> \
+                <td><span class="relation"></span></td> \
+            </tr> \
+        </table> \
+        </div><!-- vcard tabs pages --> \
+    </div> <!-- vcard body --> \
+    <div class="people_vcard_ctrl"> \
+        <ul class="people_vcard_action_btns"> \
+        <li><a class="vcard_follow button" \
+                href="javascript:void(0);" >Follow</a> \
+        </li><li> \
+            <a class="vcard_block button" \
+                href="javascript:void(0);" >Block</a> \
+        </li><li> \
+            <a class="vcard_unblock button" \
+                href="javascript:void(0);">Unblock</a> \
+        </li><li> \
+            <a class="vcard_edit button" \
+                href="javascript:void(0);" style="display:none;">Edit</a>\
+        </li> \
+        </ul> \
+    </div><!-- #people_vcard_ctrl --> \
+</div> <!-- vcard --> \
+<div class="people_view_toggle"> \
+    <ol class="people_view_toggle_btns radio_group dark"> \
+        <li><a class="people_view_tweet_btn radio_group_btn selected" href="#tweet">Tweets</a> \
+        </li><li> \
+        <a class="people_view_fav_btn radio_group_btn" href="#fav">Favs</a> \
+        </li><li> \
+        <a class="people_view_follower_btn radio_group_btn" href="#follower">Followers</a> \
+        </li><li> \
+        <a class="people_view_friend_btn radio_group_btn" href="#friend">Friends</a> \
+        </li> \
+    </ol> \
+</div> \
+<div class="people_request_hint"> \
+    <h1>Them has protected his/her tweets.</span></h1> \
+    <p>You need to go to twitter.com to send a request before you can start following this person...</p> \
+    <div style="text-align:center;"> \
+    <a class="people_request_btn button" href="#" target="_blank">Send Request</a> \
+    </div> \
+</div>',
+
+search_header_t: 
+'<div class="search_header_frame"> \
+    <div class="search_header_inner"> \
+        <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
+        <div class="search_no_result_hint"> \
+            <p><span>Your search</span> - <label class="keywords"></label> - <span>did not match any result.</span></p> \
+            <p><span>Suggestions</span>: <br/> \
+             - <span>Make sure all words are spelled correctly.</span><br/> \
+             - <span>Try different keywords.</span><br/> \
+             - <span>Try more general keywords.</span><br/></p> \
+        </div> \
+    </div> \
+</div>',
+
+retweets_header_t:
+'<div class="search_header_frame"> \
+    <div class="search_header_inner"> \
+        <ol class="retweets_view_toggle radio_group">\
+            <li><a class="btn_retweeted_to_me radio_group_btn selected" \
+                href="#retweeted_to_me">By Others</a>\
+            </li><li> \
+                <a class="btn_retweeted_by_me radio_group_btn"\
+                href="#retweeted_by_me">By Me</a>\
+            </li><li> \
+                <a class="btn_retweets_of_me radio_group_btn" \
+                href="#retweets_of_me">My Tweets, Retweeted</a> \
+            </li> \
+        </ol> \
+    </div> \
+</div>',
+
+view_t:
+'<div id="{%ID%}" \
+    name="{%NAME%}" class="listview {%CLASS%}"> \
+    <div class="listview_header"><div class="header_title">{%TITLE%}</div><a href="#" style="display:{%CAN_CLOSE%}" class="close_btn ic_close"></a><div class="header_inner">{%HEADER%}</div></div> \
+    <ul class="listview_body"></ul> \
+    <div class="listview_footer"> \
+        <div class="load_more_info"><img src="image/ani_loading_bar_gray.gif"/></div> \
+    </div> \
+</div>',
+
+indicator_t:
+    '<li class="{%STICK%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></li>',
 
 init:
 function init() {
@@ -188,7 +314,7 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
-        , TWEET_BASE_URL: ''
+        , TWEET_BASE_URL: '', IN_THREAD: '',
     };
 
     ui.Template.retweeted_by_m = {
@@ -206,7 +332,7 @@ function init() {
         , TWEET_BASE_URL: ''
     };
 
-    ui.Template.dm_m = {
+    ui.Template.message_m = {
           ID:'', TWEET_ID:'', SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:''
         , SCHEME:'', TIMESTAMP:''
@@ -225,6 +351,14 @@ function init() {
           USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
         , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
     };
+
+    ui.Template.view_m = {
+        ID:'', CLASS:'tweetview', NAME: '', TITLE: '', CAN_CLOSE: ''
+    };
+
+    ui.Template.indicator_m = {
+        TARGET: '', TITLE: '', ICON: ''
+    };
 },
 
 form_dm:
@@ -235,7 +369,7 @@ function form_dm(dm_obj, pagename) {
     var created_at_str = ui.Template.format_time(created_at);
     var text = ui.Template.form_text('@'+dm_obj.recipient.screen_name +' ' + dm_obj.text);
 
-    var m = ui.Template.dm_m;
+    var m = ui.Template.message_m;
     m.ID = pagename + '-' + dm_obj.id_str;
     m.TWEET_ID = dm_obj.id_str;
     m.SCREEN_NAME = dm_obj.sender.screen_name;
@@ -246,7 +380,7 @@ function form_dm(dm_obj, pagename) {
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TRANS_Reply_Them = "Reply Them";
-    return ui.Template.render(ui.Template.dm_t, m);
+    return ui.Template.render(ui.Template.message_t, m);
 },
 
 form_tweet:
@@ -267,7 +401,7 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-
+    var in_thread = pagename.split('-').length < 2 ? false:true;
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
@@ -303,6 +437,7 @@ function form_tweet (tweet_obj, pagename) {
     m.TWEET_ID = id;
     m.RETWEET_ID = retweet_id;
     m.REPLY_ID = reply_id != null? reply_id:'';
+    m.IN_THREAD = in_thread;
     m.SCREEN_NAME = tweet_obj.user.screen_name;
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
@@ -335,7 +470,6 @@ function form_tweet (tweet_obj, pagename) {
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
-
     return ui.Template.render(ui.Template.tweet_t, m);
 },
 
@@ -460,7 +594,6 @@ function form_search(tweet_obj, pagename) {
     m.USER_NAME = tweet_obj.from_user_name;
     m.PROFILE_IMG = tweet_obj.profile_image_url;
     m.TEXT = text;
-    // @TODO BUG
     m.SOURCE = source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
     m.SHORT_TIMESTAMP = created_at_short_str;
@@ -486,6 +619,31 @@ function form_people(user_obj, pagename) {
     return ui.Template.render(ui.Template.people_t, m);
 },
 
+form_view:
+function form_view(name, title, cls) {
+    var m = ui.Template.view_m;
+    m.ID = name + '_tweetview';
+    m.NAME = name;
+    m.TITLE = title
+    m.CLASS = cls;
+    if (name == 'home'||name=='mentions'
+        ||name=="messages"||name=="search"||name=='retweets') {
+        m.CAN_CLOSE = 'none';
+    } else {
+        m.CAN_CLOSE = 'block';
+    }
+    return ui.Template.render(ui.Template.view_t, m);
+},
+
+form_indicator:
+function form_indicator(target, title, icon) {
+    var m = ui.Template.indicator_m;
+    m.TARGET = target
+    m.TITLE = title;
+    m.ICON = icon;
+    return ui.Template.render(ui.Template.indicator_t, m);
+},
+
 fill_vcard:
 function fill_vcard(user_obj, vcard_container) {
     var created_at = new Date(Date.parse(user_obj.created_at));
@@ -497,7 +655,7 @@ function fill_vcard(user_obj, vcard_container) {
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
     vcard_container.find('.screen_name')
-        .attr('href', globals.base_url+user_obj.screen_name)
+        .attr('href', conf.get_current_profile().preferences.base_url + user_obj.screen_name)
         .text(user_obj.screen_name);
     vcard_container.find('.name').text(user_obj.name);
     vcard_container.find('.tweet_cnt').text(user_obj.statuses_count);

@@ -9,16 +9,13 @@ function WidgetRadioGroup(obj) {
     self.on_clicked = null;
     
     self.init = function init(obj) {
-        if (typeof (obj) == 'string') {
-            self._me = $(obj);
-        } else {
-            self._me = obj;
-        }
-        self.buttons = self._me.find('.radio_group_btn');
+        self._me = $(obj);
+        if (self._me.length == 0) return null;
     };
     
     self.render = function render () {
-        self.buttons.click(function (event) {
+        self.buttons = self._me.find('.radio_group_btn');
+        self.buttons.live('click', function (event) {
             var btn = $(this);
             if (self.on_clicked != null) {
                 self.on_clicked(btn, event);
