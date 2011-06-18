@@ -818,7 +818,6 @@ label {
 .people_vcard {
     display: block !important; 
     color: #333;
-    margin: 5px;
     padding: 5px;
     position: relative;
 }
@@ -875,26 +874,24 @@ label {
     margin: 0 auto;
 }
 
-.search_header_frame {
+.header_frame {
     margin: 5px;
 }
 
-.search_header_inner {
+.header_inner {
     display: block !important;
-    padding: 10px !important;
+    padding: 5px !important;
     text-align: center;
 }
 
-.search_header_inner > .search_entry {
+.header_inner > .search_entry {
     text-align: left;
     width: 220px;
     margin-right: 10px;
 }
-
-.search_entry {
-    text-align: left;
+.search_people_result {
+    display: none;
 }
-
 .search_no_result_hint {
     display: none;
 }
@@ -902,7 +899,14 @@ label {
 .search_no_result_hint .keywords {
     font-weight: bold;
 }
-
+.retweets_view_toggle, .search_view_toggle, .people_view_toggle {
+    text-align: center;
+    margin-top: 5px;
+}
+.search_view_toggle {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
 
 /*===== Welcome Page ================================*/
 #welcome_page {
@@ -1369,7 +1373,7 @@ label {
     list-style-type: none;
 }
 
-.vcard, .search_header_inner {
+.vcard, .header_inner {
     display: none;
     font-size: 10px;
     background-color: #f2f2f2;

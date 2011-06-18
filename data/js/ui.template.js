@@ -161,7 +161,7 @@ people_t:
 </li>',
 
 people_vcard_t:
-'<div class="people_vcard vcard">\
+'<div class="header_frame"><div class="people_vcard vcard">\
     <div class="profile_img_wrapper"></div>\
     <div class="vcard_body">\
         <center>\
@@ -241,12 +241,25 @@ people_vcard_t:
     <div style="text-align:center;"> \
     <a class="people_request_btn button" href="#" target="_blank">Send Request</a> \
     </div> \
-</div>',
+</div></div>',
 
 search_header_t: 
-'<div class="search_header_frame"> \
-    <div class="search_header_inner"> \
+'<div class="header_frame"> \
+    <div class="header_inner"> \
+        <div class="search_view_toggle">\
+            <ol class="search_view_toggle_btns radio_group ">\
+                <li><a class="search_tweet radio_group_btn selected" \
+                    href="#tweet">Tweet</a>\
+                </li><li> \
+                    <a class="search_people radio_group_btn"\
+                    href="#people">People</a>\
+                </li> \
+            </ol> \
+        </div> \
         <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
+        <div class="search_people_result"> \
+            <label class="label">One user matched: </label> <span class="search_people_inner"></span>\
+        </div>\
         <div class="search_no_result_hint"> \
             <p><span>Your search</span> - <label class="keywords"></label> - <span>did not match any result.</span></p> \
             <p><span>Suggestions</span>: <br/> \
@@ -258,26 +271,24 @@ search_header_t:
 </div>',
 
 retweets_header_t:
-'<div class="search_header_frame"> \
-    <div class="search_header_inner"> \
-        <ol class="retweets_view_toggle radio_group">\
-            <li><a class="btn_retweeted_to_me radio_group_btn selected" \
-                href="#retweeted_to_me">By Others</a>\
-            </li><li> \
-                <a class="btn_retweeted_by_me radio_group_btn"\
-                href="#retweeted_by_me">By Me</a>\
-            </li><li> \
-                <a class="btn_retweets_of_me radio_group_btn" \
-                href="#retweets_of_me">My Tweets, Retweeted</a> \
-            </li> \
-        </ol> \
-    </div> \
-</div>',
+'<div class="header_frame"><div class="retweets_view_toggle"> \
+    <ol class="retweets_view_toggle_btns radio_group dark">\
+        <li><a class="btn_retweeted_to_me radio_group_btn selected" \
+            href="#retweeted_to_me">By Others</a>\
+        </li><li> \
+            <a class="btn_retweeted_by_me radio_group_btn"\
+            href="#retweeted_by_me">By Me</a>\
+        </li><li> \
+            <a class="btn_retweets_of_me radio_group_btn" \
+            href="#retweets_of_me">My Tweets, Retweeted</a> \
+        </li> \
+    </ol> \
+</div></div>',
 
 view_t:
 '<div id="{%ID%}" \
     name="{%NAME%}" class="listview {%CLASS%}"> \
-    <div class="listview_header"><div class="header_title">{%TITLE%}</div><a href="#" style="display:{%CAN_CLOSE%}" class="close_btn ic_close"></a><div class="header_inner">{%HEADER%}</div></div> \
+    <div class="listview_header"><div class="header_title">{%TITLE%}</div><a href="#" style="display:{%CAN_CLOSE%}" class="close_btn ic_close"></a><div class="header_content">{%HEADER%}</div></div> \
     <ul class="listview_body"></ul> \
     <div class="listview_footer"> \
         <div class="load_more_info"><img src="image/ani_loading_bar_gray.gif"/></div> \

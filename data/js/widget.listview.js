@@ -122,7 +122,7 @@ function WidgetListView(id, name, params) {
         self._close_btn.click(function () {
             self.destroy();
         });
-        self._header.children('.header_inner').html(self.header_html);
+        self._header.children('.header_content').html(self.header_html);
     };
 
     self.destroy = function destroy() {
@@ -206,7 +206,7 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {        // friedns or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { //search, fav, 
-            self.page = json.page + 1; 
+            self.page = self.page + 1; 
         } else {    // other
             if (count == 0) { return; }
             self.max_id = json[count - 1].id_str;

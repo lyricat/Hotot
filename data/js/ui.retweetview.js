@@ -34,7 +34,6 @@ function init_view(view) {
 
 switch_sub_view:
 function switch_sub_view(view, name) {
-    hotot_log(name, name);
     switch (name) {
     case 'retweeted_to_me':
         view._load = ui.RetweetView.load_retweeted_to_me;

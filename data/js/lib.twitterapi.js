@@ -26,8 +26,8 @@ http_code_msg_table : {
     , 503: 'Server is overcapacity. Please try again later.'
 },
 
-error_handler:
-function error_handler(xhr, textStatus, errorThrown) {
+default_error_handler:
+function default_error_handler(xhr, textStatus, errorThrown) {
     var msg = '';
     var tech_info = '';
     if (xhr.status in lib.twitterapi.http_code_msg_table) {
@@ -72,27 +72,35 @@ function basic_auth() {
 },
 
 get:
-function get(ajax_url, ajax_params, on_success) {
+function get(ajax_url, ajax_params, on_success, on_error) {
     lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {},
         function(result, textStatus, xhr) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
         },
         function(result, textStatus, xhr) {
-            lib.twitterapi.error_handler(result, textStatus, xhr);
+            if (on_error == undefined || on_error == null) {
+                lib.twitterapi.default_error_handler(result, textStatus, xhr);
+            } else {
+                on_error(xhr, textStatus, errorThrown);
+            }
         }
     );
 },
 
 post:
-function post(ajax_url, ajax_params, on_success) {
+function post(ajax_url, ajax_params, on_success, on_error) {
     lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {},
         function(result, textStatus, xhr) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
         },
         function(result, textStatus, xhr) {
-            lib.twitterapi.error_handler(result, textStatus, xhr);
+            if (on_error ==  undefined || on_error == null) {
+                lib.twitterapi.default_error_handler(result, textStatus, xhr);
+            } else {
+                on_error(xhr, textStatus, errorThrown);
+            }
         }
     );
 },
@@ -355,13 +363,25 @@ function show_status(id, on_success) {
 },
 
 show_user:
-function show_user(screen_name, on_success) {
+function show_user(screen_name, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'users/show.json';
     var params={
         'include_entities': '1',
         'screen_name': screen_name,
     };
-    lib.twitterapi.get(url, params, on_success);
+    lib.twitterapi.get(url, params, on_success, on_error);
+},
+
+search_user:
+function search_user(query, page, on_success, on_error) {
+    var url = lib.twitterapi.api_base + 'users/search.json';
+    var params={
+        'q': query,
+        'page': page,
+        'per_page': 20,
+        'include_entities': '1',
+    };
+    lib.twitterapi.get(url, params, on_success, on_error);
 },
 
 get_user_friends: 

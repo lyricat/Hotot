@@ -100,17 +100,11 @@ function reset_views() {
     ui.Slider.add('search'
         , {title: 'Search', icon:'image/ic_search.png'}
         , { 'type':'tweet', 'title': 'Search'
-            , 'load': 
-                function load_search(self, success, fail) {
-                    lib.twitterapi.search(self.query, 1, success);
-                }
-            , 'loadmore': 
-                function loadmore_search(self, success, fail) {
-                    lib.twitterapi.search(self.query, self.page, success);
-                }
-            , 'load_success': ui.SearchView.load_search_success
+            , 'load': ui.SearchView.load_tweet
+            , 'loadmore': ui.SearchView.loadmore_tweet
+            , 'load_success': ui.SearchView.load_tweet_success
             , 'load_fail': null
-            , 'loadmore_success': ui.SearchView.loadmore_search_success
+            , 'loadmore_success': ui.SearchView.loadmore_tweet_success
             , 'loadmore_fail': null
             , 'former': ui.Template.form_search
             , 'init': ui.SearchView.init_search_view
@@ -267,7 +261,7 @@ function load_people_success(self, json) {
     if (self.changed) {
         ui.Slider.set_unread(self.name);
     }
-    return ui.Main.add_people(self, json)
+    return ui.Main.add_people(self, json.users);
 },
 
 loadmore_tweet_success:
@@ -279,38 +273,30 @@ function loadmore_tweet_success(self, json) {
 loadmore_people_success:
 function loadmore_people_success(self, json) {
     ui.Slider.set_unread(self.name);
-    return ui.Main.add_people(self, json);
+    return ui.Main.add_people(self, json.users);
 },
 
 add_people:
-function add_people(self, json_obj) {
-    var form_proc = ui.Template.form_people;
+function add_people(self, users) {
     var new_tweets_height = 0;
-
-    for (var i = 0, l = json_obj.users.length; i < l; i+= 1) {
-        if (!json_obj.users[i].hasOwnProperty('id_str')) {
-            json_obj.users[i].id_str = json_obj.users[i].id.toString();
-        }
-    }
-
     var html_arr = [];
-    for (var i = 0, l = json_obj.users.length; i < l; i += 1) {
-        html_arr.push(form_proc(json_obj.users[i], self.name));
+    for (var i = 0, l = users.length; i < l; i += 1) {
+        html_arr.push(self.former(users[i], self.name));
     }
     self._body.append(html_arr.join('\n'));
     // if timeline is not on the top
     // resume to the postion before new tweets were added
     // offset = N* (clientHeight + border-width)
+    // @TODO
     if (self.hasOwnProperty('_me') && self.resume_pos) {
-        self._me.get(0).scrollTop += new_tweets_height + json_obj.length;
+        self._me.get(0).scrollTop += new_tweets_height + users.length;
     }
 
     // @TODO dumps to cache
     // bind events
-    ui.Main.bind_tweets_action(json_obj.users, self.name);
+    ui.Main.bind_tweets_action(users, self.name);
     toast.hide();
-    return json_obj.users.length;
-
+    return users.length;
 },
 
 add_tweets:
