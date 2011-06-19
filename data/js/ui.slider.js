@@ -157,13 +157,18 @@ function slide_to(id) {
 
     $('#main_page_slider').css('width', '1000%');
     // slide page
-    ui.Slider.me.stop().animate(
-        {marginLeft: (0 - page_offset * width + ui.Slider.column_num) +'px'}
-        , 500
-        , function () {
-            $('#main_page_slider').css('width', 'auto');
-        }
-    );
+    if (conf.get_current_profile().preferences.effects_level != 0) {
+        ui.Slider.me.stop().animate(
+            {marginLeft: (0 - page_offset * width + ui.Slider.column_num) +'px'}
+            , 500
+            , function () {
+                $('#main_page_slider').css('width', 'auto');
+            }
+        );
+    } else {
+        ui.Slider.me.css('marginLeft', (0 - page_offset * width + ui.Slider.column_num) +'px');
+        $('#main_page_slider').css('width', 'auto');
+    }
 
     // get displayed pages
     ui.Slider.displayed = [];
