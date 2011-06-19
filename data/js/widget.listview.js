@@ -106,7 +106,7 @@ function WidgetListView(id, name, params) {
             }
 
             if (this.scrollTop < 30) {
-                self.compress_page();
+                widget.ListView.compress_page(self);
             } else if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
                 self._body.children('.card:hidden:lt(20)').show();
                 // load more automaticly
@@ -165,8 +165,8 @@ function WidgetListView(id, name, params) {
         }
         // thread container doesn't have a property '_me'
         if (self.hasOwnProperty('_me') && self._me.get(0).scrollTop < 100) {
-            self.trim_page();
-            self.compress_page();
+            widget.ListView.trim_page(self);
+            widget.ListView.compress_page(self);
         }
         // keep timeline status
         if (self.item_type == 'cursor') {        // friedns or followers
@@ -227,25 +227,24 @@ function WidgetListView(id, name, params) {
         self._body.empty();
     };
 
-    self.trim_page = function trim_page() {
-        var cards = self._body.children('.card:gt('+globals.trim_bound+')');
-        cards.find('.who_href').unbind();
-        cards.find('.btn_tweet_thread:first').unbind();
-        cards.find('.btn_tweet_thread_more:first').unbind();
-        cards.unbind();
-        cards.remove();
-        // @TODO reset self.max_id & page & next_cursor_str
-    },
-
-    self.compress_page = function compress_page() {
-        self._body.children('.card:visible').filter(':gt(20)').hide();
-    },
-
-
     self.init(id, name, params);
 }
 
 widget.ListView = WidgetListView;
+
+widget.ListView.trim_page = function trim_page(view) {
+    var cards = view._body.children('.card:gt('+globals.trim_bound+')');
+    cards.find('.who_href').unbind();
+    cards.find('.btn_tweet_thread:first').unbind();
+    cards.find('.btn_tweet_thread_more:first').unbind();
+    cards.unbind();
+    cards.remove();
+    // @TODO reset self.max_id & page & next_cursor_str
+};
+
+widget.ListView.compress_page = function compress_page(view) {
+    view._body.children('.card:visible').filter(':gt(20)').hide();
+};
 
 
 

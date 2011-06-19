@@ -117,20 +117,8 @@ function reset_views() {
     ui.Slider.add('home'
         , { title:'Home Timeline', icon:'image/ic_home.png'}
         , { 'type':'tweet', 'title': 'Home Timeline'
-            , 'load': 
-                function load_home(self, success, fail) {
-                    var since_id = self.since_id;
-                    lib.twitterapi.get_home_timeline(
-                        since_id, null, conf.vars.items_per_request, 
-                        success);
-                }
-            , 'loadmore': 
-                function loadmore_home(self, success, fail) {
-                    var max_id = self.max_id;
-                    lib.twitterapi.get_home_timeline(
-                        1, max_id, conf.vars.items_per_request, 
-                        success);
-                }
+            , 'load': ui.Main.load_home
+            , 'loadmore': ui.Main.loadmore_home
             , 'load_success': ui.Main.load_tweet_success
             , 'load_fail': null
             , 'loadmore_success': ui.Main.loadmore_tweet_success
@@ -142,20 +130,8 @@ function reset_views() {
         });
     ui.Slider.add('mentions', {title:'Mentions',icon:'image/ic_mention.png'}
         , { 'type':'tweet', 'title': 'Mentions'
-            , 'load': 
-                function load_mentions(self, success, fail) {
-                    var since_id = self.since_id;
-                    lib.twitterapi.get_mentions(
-                        since_id, null, conf.vars.items_per_request, 
-                        success);
-                }
-            , 'loadmore': 
-                function loadmore_mentions(self, success, fail) {
-                    var max_id = self.max_id;
-                    lib.twitterapi.get_mentions(
-                        1, max_id, conf.vars.items_per_request, 
-                        success);
-                }
+            , 'load': ui.Main.load_mentions
+            , 'loadmore': ui.Main.loadmore_mentions
             , 'load_success': ui.Main.load_tweet_success
             , 'load_fail': null
             , 'loadmore_success': ui.Main.loadmore_tweet_success
@@ -167,20 +143,8 @@ function reset_views() {
         });
     ui.Slider.add('messages', {title:'Messages', icon:'image/ic_dm.png'}
         , { 'type':'tweet', 'title': 'Messages'
-            , 'load': 
-                function load_home(self, success, fail) {
-                    var since_id = self.since_id;
-                    lib.twitterapi.get_direct_messages(
-                        since_id, null
-                        , conf.vars.items_per_request, success);
-                }
-            , 'loadmore': 
-                function loadmore_mentions(self, success, fail) {
-                    var max_id = self.max_id;
-                    lib.twitterapi.get_direct_messages(
-                        1, max_id, conf.vars.items_per_request, 
-                        success);
-                }
+            , 'load': ui.Main.load_messages
+            , 'loadmore': ui.Main.loadmore_messages
             , 'load_success': ui.Main.load_tweet_success
             , 'load_fail': null
             , 'loadmore_success': ui.Main.loadmore_tweet_success
@@ -223,6 +187,53 @@ function show () {
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
+},
+
+load_home:
+function load_home(self, success, fail) {
+    lib.twitterapi.get_home_timeline(
+        self.since_id, null, conf.vars.items_per_request, 
+        success);
+},
+
+loadmore_home:
+function loadmore_home(self, success, fail) {
+    var max_id = self.max_id;
+    lib.twitterapi.get_home_timeline(
+        1, max_id, conf.vars.items_per_request, 
+        success);
+},
+
+load_mentions: 
+function load_mentions(self, success, fail) {
+    var since_id = self.since_id;
+    lib.twitterapi.get_mentions(
+        since_id, null, conf.vars.items_per_request, 
+        success);
+},
+
+loadmore_mentions: 
+function loadmore_mentions(self, success, fail) {
+    var max_id = self.max_id;
+    lib.twitterapi.get_mentions(
+        1, max_id, conf.vars.items_per_request, 
+        success);
+},
+
+load_messages: 
+function load_messages(self, success, fail) {
+    var since_id = self.since_id;
+    lib.twitterapi.get_direct_messages(
+        since_id, null
+        , conf.vars.items_per_request, success);
+},
+
+loadmore_messages: 
+function loadmore_messages(self, success, fail) {
+    var max_id = self.max_id;
+    lib.twitterapi.get_direct_messages(
+        1, max_id, conf.vars.items_per_request, 
+        success);
 },
 
 load_tweet_success:
