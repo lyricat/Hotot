@@ -36,14 +36,17 @@ switch_sub_view:
 function switch_sub_view(view, name) {
     switch (name) {
     case 'retweeted_to_me':
+        view.former = ui.Template.form_tweet;
         view._load = ui.RetweetView.load_retweeted_to_me;
         view._loadmore = ui.RetweetView.loadmore_retweeted_to_me;
     break;
     case 'retweeted_by_me':
+        view.former = ui.Template.form_tweet;
         view._load = ui.RetweetView.load_retweeted_by_me;
         view._loadmore = ui.RetweetView.loadmore_retweeted_bt_me;
     break;
     case 'retweets_of_me':
+        view.former = ui.Template.form_retweeted_by;
         view._load = ui.RetweetView.load_retweets_of_me;
         view._loadmore = ui.RetweetView.loadmore_retweets_of_me;
     break;
