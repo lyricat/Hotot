@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/widget.bubble.js"></script>
     <script type="text/javascript" src="js/widget.listview.js"></script>
     
+    <script type="text/javascript" src="js/hotkey.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
     <script type="text/javascript" src="js/db.js"></script>
@@ -237,6 +238,7 @@ function init_dialogs() {
 
 function init_ui() {
     util.console.init();
+    init_hotkey();
     kismet.init();
     notification.init();
     toast.init();
@@ -266,6 +268,56 @@ function init_ui() {
     globals.ratelimit_bubble = new widget.Bubble('#ratelimit_bubble', '#btn_my_profile');
     globals.ratelimit_bubble.create();
     globals.ratelimit_bubble.set_content("0");
+}
+
+function init_hotkey() {
+    hotkey.init();
+    // '<Ctrl> + f' to open finder 
+    hotkey.register(hotkey.calculate(70, false, true)
+        , null, ui.Finder.show);
+    // 'r' to reload timeline
+    hotkey.register(hotkey.calculate(82, false, false), null,
+        function () {
+            toast.set('Loading Tweets...').show(-1);
+            ui.Main.load_tweets([ui.Slider.current]);    
+        });
+
+    // 'h' to slide to prev tab
+    hotkey.register(hotkey.calculate(72, false, false)
+        , null, ui.Slider.slide_to_prev);
+    // 'l' to slide to next tab
+    hotkey.register(hotkey.calculate(76, false, false)
+        , null, ui.Slider.slide_to_next);
+    // 'k' to move to prev tweet
+    hotkey.register(hotkey.calculate(75, false, false)
+        , null, function () {
+            ui.Main.move_to_tweet("prev");
+        });
+    // 'j' to move to next tweet
+    hotkey.register(hotkey.calculate(74, false, false)
+        , null, function () {
+            ui.Main.move_to_tweet("next");
+        });
+    // 'c' to compose
+    hotkey.register(hotkey.calculate(67, false, false)
+        , null, ui.StatusBox.open);
+    // double 'g' to move to top
+    hotkey.register(hotkey.calculate(71, false, false)
+        , hotkey.calculate(71, false, false)
+        , function () {
+            ui.Main.move_to_tweet("top");
+        });
+    // shift + 'g' to move to bottom
+    hotkey.register(hotkey.calculate(71, true, false)
+        , null, function () {
+            ui.Main.move_to_tweet("bottom");
+        });
+    // 'a' to open action menu
+    hotkey.register(hotkey.calculate(65, false, false)
+        , null, ui.ActionMenu.show);
+    // shift + '9' to toggl
+    hotkey.register(hotkey.calculate(65, false, false)
+        , null, ui.Sidebar.toggle);
 }
 
 function overlay_variables(vars) {
@@ -386,55 +438,13 @@ jQuery(function($) {
         if (event.ctrlKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
             quit();
-        } else {
-            if (focus_input || !globals.in_main_view)
-                return
-            if (! ui.ActionMenu.is_hide) {
-                return ui.ActionMenu.handle_keyup(event.keyCode);
-            }
-
-            if (event.keyCode == 70 && event.ctrlKey) {
-                // '<Ctrl> + f' to open finder 
-                ui.Finder.show();
-            }
-            if (!event.shiftKey && !event.ctrlKey && !event.metaKey) {
-                if (event.keyCode == 116 || event.keyCode == 82) {
-                    // <F5> or 'r' to reload timeline
-                    toast.set('Loading Tweets...').show(-1);
-                    ui.Main.load_tweets([ui.Slider.current]);    
-                } else if (event.keyCode == 72) {
-                    // 'h' to slide to prev tab
-                    ui.Slider.slide_to_prev();
-                } else if (event.keyCode == 76) {
-                    // 'l' to slide to next tab
-                    ui.Slider.slide_to_next();
-                } else if (event.keyCode == 75) {
-                    // 'k' to move to prev tweet
-                    ui.Main.move_to_tweet("prev");
-                } else if (event.keyCode == 74) {
-                    // 'j' to move to next tweet
-                    ui.Main.move_to_tweet("next");
-                } else if (event.keyCode == 67) {
-                    // 'c' to compose
-                    ui.StatusBox.open();
-                } else if (event.keyCode == 84) {
-                    // 't' to move to top
-                    ui.Main.move_to_tweet("top");
-                } else if (event.keyCode == 66) {
-                    // 'b' to move to bottom
-                    ui.Main.move_to_tweet("bottom");
-                } else if (event.keyCode == 65) {
-                    // 'a' to open action menu
-                    ui.ActionMenu.show();
-                } else if (event.keyCode == 191) {
-                    // '/' to open finder
-                    ui.Finder.show();
-                } else if (event.keyCode == 120) {
-                    // <F9> to toggle sidebar
-                    ui.Sidebar.toggle();
-                }
-            }
+        } 
+        if (focus_input || !globals.in_main_view)
+            return
+        if (! ui.ActionMenu.is_hide) {
+            return ui.ActionMenu.handle_keyup(event.keyCode);
         }
+        hotkey.crack(event);
         return true;
     });
 
