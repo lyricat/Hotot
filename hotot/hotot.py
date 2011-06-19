@@ -133,7 +133,10 @@ class Hotot:
         self.window.present()
 
     def on_mitem_prefs_activate(self, item):
-        agent.execute_script('globals.prefs_dialog.open();');
+        agent.execute_script('''
+        ui.PrefsDlg.load_settings(conf.settings);
+        ui.PrefsDlg.load_prefs();
+        globals.prefs_dialog.open();''');
         self.window.present()
 
     def on_mitem_about_activate(self, item):

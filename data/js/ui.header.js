@@ -61,7 +61,7 @@ function init () {
         ui.PrefsDlg.load_prefs();
         globals.prefs_dialog.open();
     });
-    
+     
     $('#btn_exts').click(
     function (event) {
         ui.ExtsDlg.load_ext_list();
