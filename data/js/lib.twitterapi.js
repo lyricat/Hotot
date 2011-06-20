@@ -562,7 +562,7 @@ function watch_user_streams(callback) {
                              + ', createAt: ' + xhr.createAt);
         watch_user_streams.last_text_length = xhr.responseText.length;
         // limit xhr.responseText length & restart
-        if (xhr.responseText.length > 2000000) {
+        if (xhr.responseText.length > 500000) {
             hotot_log('Streams Rec', xhr.responseText.length);
             watch_user_streams.is_running = false;
             setTimeout(watch_user_streams, 100, callback);

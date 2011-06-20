@@ -273,50 +273,55 @@ function init_ui() {
 function init_hotkey() {
     hotkey.init();
     // 'r' to reload timeline
-    hotkey.register(hotkey.calculate(82, false, false), null,
-        function () {
-            toast.set('Loading Tweets...').show(-1);
-            ui.Main.load_tweets([ui.Slider.current]);    
-        });
+    hotkey.register(hotkey.calculate(82, false, false),function () {
+        toast.set('Loading Tweets...').show(-1);
+        daemon.update_all();
+    });
     // 'h' to slide to prev tab
-    hotkey.register(hotkey.calculate(72, false, false)
-        , null, ui.Slider.slide_to_prev);
+    hotkey.register(hotkey.calculate(72, false, false), ui.Slider.slide_to_prev);
     // 'l' to slide to next tab
-    hotkey.register(hotkey.calculate(76, false, false)
-        , null, ui.Slider.slide_to_next);
+    hotkey.register(hotkey.calculate(76, false, false), ui.Slider.slide_to_next);
     // 'k' to move to prev tweet
-    hotkey.register(hotkey.calculate(75, false, false)
-        , null, function () {
-            ui.Main.move_to_tweet("prev");
-        });
+    hotkey.register(hotkey.calculate(75, false, false), function () {
+        ui.Main.move_to_tweet("prev");
+    });
     // 'j' to move to next tweet
-    hotkey.register(hotkey.calculate(74, false, false)
-        , null, function () {
-            ui.Main.move_to_tweet("next");
-        });
+    hotkey.register(hotkey.calculate(74, false, false), function () {
+        ui.Main.move_to_tweet("next");
+    });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67, false, false)
-        , null, ui.StatusBox.open);
+    hotkey.register(hotkey.calculate(67, false, false), ui.StatusBox.open);
     // double 'g' to move to top
-    hotkey.register(hotkey.calculate(71, false, false)
-        , hotkey.calculate(71, false, false)
-        , function () {
-            ui.Main.move_to_tweet("top");
-        });
+    var ig = hotkey.calculate(71, false, false);
+    hotkey.register([ig ,ig], function () {
+        ui.Main.move_to_tweet("top");
+    });
     // shift + 'g' to move to bottom
-    hotkey.register(hotkey.calculate(71, true, false)
-        , null, function () {
-            ui.Main.move_to_tweet("bottom");
-        });
+    hotkey.register(hotkey.calculate(71, true, false), function () {
+        ui.Main.move_to_tweet("bottom");
+    });
     // 'a' to open action menu
-    hotkey.register(hotkey.calculate(65, false, false)
-        , null, ui.ActionMenu.show);
+    hotkey.register(hotkey.calculate(65, false, false), ui.ActionMenu.show);
     // shift + '9' to toggl
-    hotkey.register(hotkey.calculate(57, false, false)
-        , null, ui.Sidebar.toggle);
+    hotkey.register(hotkey.calculate(57, true, false), ui.Sidebar.toggle);
+    // 
+    hotkey.register([hotkey.calculate(51, true, false)
+        , hotkey.calculate(50, true, false)
+        , hotkey.calculate(49, true, false)
+        , hotkey.calculate(54, true, false)
+        , hotkey.calculate(55, true, false)], function(){
+            $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
+        }); 
 }
 
-function overlay_variables(vars) {
+function overlay_variables(vars) {        hotkey.register([hotkey.calculate(70, false, false)
+            , hotkey.calculate(69, false, false)
+            , hotkey.calculate(78, false, false)
+            , hotkey.calculate(78, false, false)
+            , hotkey.calculate(71, false, false)], f); 
+        $(document).keyup(function (event) {
+            hotkey.crack(event);
+        })
     conf.vars.platform = vars.platform;
     hotot_log('init', 'overlay_variables()');
     if (util.is_native_platform()) {

@@ -1,9 +1,10 @@
 var hotkey = hotkey || {}
 hotkey = {
 // key shortcuts map:   index = f(keyCode, isShift, isCtrl)
-//                      value = [null, proc] or [next_key_val, proc]
+//                      value = [null, proc] or [next_key_val_seq, proc]
 map: [],
 waiting_key: -1,
+next_key_seq_idx : 0,
 init:
 function init() {
     for (var i = 0; i < 42 * 4; i += 1) {
@@ -18,7 +19,6 @@ function crack(event) {
         return;
     }
     var idx = hotkey.calculate(event.keyCode, event.shiftKey, event.ctrlKey); 
-    console.log(idx);
     if (hotkey.waiting_key == -1) {
         var value = hotkey.map[idx];
         if (value != null) {
@@ -30,20 +30,38 @@ function crack(event) {
         }
     } else {
         var value = hotkey.map[hotkey.waiting_key];
-        if (value != null && value[0] == idx) {
-            value[1](event);
+        if (value == null) {
+            hotkey.waiting_key = -1;
+        } else {
+            if (idx == value[0][hotkey.next_key_seq_idx]) {
+                if (hotkey.next_key_seq_idx == value[0].length - 1) {
+                    hotkey.waiting_key = -1;
+                    hotkey.next_key_seq_idx = 0;
+                    value[1](event);
+                } else {
+                    hotkey.next_key_seq_idx += 1;    
+                }
+            } else {
+                hotkey.waiting_key = -1;
+                hotkey.next_key_seq_idx = 0;
+            }
         }
-        hotkey.waiting_key = -1;
     }
 },
 
 register:
-function register(idx1, idx2, callback) {
-    console.log(idx1);
-    if (idx2 == null) {
-        hotkey.map[idx1] = [null, callback];
+function register(idxs, callback) {
+    if (typeof idxs == 'number') {
+        hotkey.map[idxs] = [null, callback];
+    } else if (typeof idxs == 'object' && idxs.constructor == Array){
+        if (idxs.length == 0) return -1;
+        if (idxs.length == 1) {
+            hotkey.map[idxs[0]] = [null, callback];
+        } else {
+            hotkey.map[idxs[0]] = [idxs.slice(1), callback];
+        }
     } else {
-        hotkey.map[idx1] = [idx2, callback];
+        return -1;
     }
 },
 
