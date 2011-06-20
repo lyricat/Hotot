@@ -298,7 +298,7 @@ function add_people(self, users) {
     // if timeline is not on the top
     // resume to the postion before new tweets were added
     // offset = N* (clientHeight + border-width)
-    // @TODO
+    // @TODO 
     if (self.hasOwnProperty('_me') && self.resume_pos) {
         self._me.get(0).scrollTop += new_tweets_height + users.length;
     }
@@ -609,7 +609,6 @@ on_retweet_click:
 function on_retweet_click(btn, li_id, event) {
     var li = $(li_id);
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
-    // @TODO reduce this process.
     if ($(btn).hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
         toast.set(_('undo_retweeting_dots')).show(-1);
@@ -702,7 +701,6 @@ on_fav_click:
 function on_fav_click(btn, li_id, event) {
     var li = $(li_id);
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
-    // @TODO reduce this process
     if ($(li).hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.destroy_favorite(id, 
@@ -959,7 +957,8 @@ function set_tweet_bar(li_id) {
         $('#tweet_fav_btn').addClass('faved');
     } else {
         $('#tweet_fav_btn').removeClass('faved');
-    }    if ($('#tweet_bar li:last').hasClass('separator')) {
+    }    
+    if ($('#tweet_bar li:last').hasClass('separator')) {
         $('#tweet_bar li:last').hide();
     } else {
         $('#tweet_bar li.separator').show();

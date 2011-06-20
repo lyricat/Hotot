@@ -141,6 +141,18 @@ function open_people(screen_name) {
     ui.Slider.slide_to(name);
 }
 
+function reply_tweet(tid, text) {
+     
+}
+
+function send_tweet(text) {
+    
+}
+
+function send_dm(screen_name) {
+    
+}
+
 function navigate_action(uri) {
     if (util.is_native_platform()) {
         window.location.href = uri;
@@ -272,11 +284,16 @@ function init_ui() {
 
 function init_hotkey() {
     hotkey.init();
+    // Application
     // 'r' to reload timeline
+    var ig = hotkey.calculate(71, false, false);
     hotkey.register(hotkey.calculate(82, false, false),function () {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
+    // 'c' to compose
+    hotkey.register(hotkey.calculate(67, false, false), ui.StatusBox.open);
+    // Navigation
     // 'h' to slide to prev tab
     hotkey.register(hotkey.calculate(72, false, false), ui.Slider.slide_to_prev);
     // 'l' to slide to next tab
@@ -289,10 +306,7 @@ function init_hotkey() {
     hotkey.register(hotkey.calculate(74, false, false), function () {
         ui.Main.move_to_tweet("next");
     });
-    // 'c' to compose
-    hotkey.register(hotkey.calculate(67, false, false), ui.StatusBox.open);
-    // double 'g' to move to top
-    var ig = hotkey.calculate(71, false, false);
+    // 'g' then 'g' to move to top
     hotkey.register([ig ,ig], function () {
         ui.Main.move_to_tweet("top");
     });
@@ -300,11 +314,40 @@ function init_hotkey() {
     hotkey.register(hotkey.calculate(71, true, false), function () {
         ui.Main.move_to_tweet("bottom");
     });
-    // 'a' to open action menu
+    // 'g' then 'h' to go home
+    hotkey.register([ig,hotkey.calculate(72,false,false)], function () {
+        ui.Slider.slide_to('home');
+    });
+    // 'g' then 'm' to go mentions
+    hotkey.register([ig,hotkey.calculate(77,false,false)], function () {
+        ui.Slider.slide_to('mentions');
+    });
+    // 'g' then 'd' to go messages
+    hotkey.register([ig,hotkey.calculate(68,false,false)], function () {
+        ui.Slider.slide_to('messages');
+    });
+    // 'g' then 'r' to go retweets
+    hotkey.register([ig,hotkey.calculate(82,false,false)], function () {
+        ui.Slider.slide_to('retweets');
+    });
+    // 'g' then 's' to go search
+    hotkey.register([ig,hotkey.calculate(83,false,false)], function () {
+        ui.Slider.slide_to('search');
+    });
+
+    // @TODO Actions, prefix 'a'
+    // 'a' to open action menu, deprecated
     hotkey.register(hotkey.calculate(65, false, false), ui.ActionMenu.show);
+    // 'a' then 'r' to reply
+    // 'a' then 'q' to quote
+    // 'a' then 's' to favorite/un-fav
+    // 'a' then 'a' to reply all
+    // 'a' then <Shift>+'r' to retweet/undo-retweet
+    // 'a' then 'd' to delete
+    
     // shift + '9' to toggl
     hotkey.register(hotkey.calculate(57, true, false), ui.Sidebar.toggle);
-    // 
+    // :)
     hotkey.register([hotkey.calculate(51, true, false)
         , hotkey.calculate(50, true, false)
         , hotkey.calculate(49, true, false)
@@ -314,14 +357,7 @@ function init_hotkey() {
         }); 
 }
 
-function overlay_variables(vars) {        hotkey.register([hotkey.calculate(70, false, false)
-            , hotkey.calculate(69, false, false)
-            , hotkey.calculate(78, false, false)
-            , hotkey.calculate(78, false, false)
-            , hotkey.calculate(71, false, false)], f); 
-        $(document).keyup(function (event) {
-            hotkey.crack(event);
-        })
+function overlay_variables(vars) {        
     conf.vars.platform = vars.platform;
     hotot_log('init', 'overlay_variables()');
     if (util.is_native_platform()) {

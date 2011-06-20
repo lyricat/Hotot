@@ -1,65 +1,53 @@
 var hotkey = hotkey || {}
 hotkey = {
-// key shortcuts map:   index = f(keyCode, isShift, isCtrl)
-//                      value = [null, proc] or [next_key_val_seq, proc]
+// key shortcuts map:
+//     value = [key_val_seq, proc]
 map: [],
-waiting_key: -1,
-next_key_seq_idx : 0,
+matched: [], // matched proc 
+iqueue: [],
+state: 0,
 init:
 function init() {
-    for (var i = 0; i < 42 * 4; i += 1) {
-        hotkey.map[i] = null;
-    }
 },
 
 crack:
 function crack(event) {
-    if (event.keyCode == 27) { //ESC
-        hotkey.waiting_key = -1;
+    if (event.keyCode == 27) { //ESC, clear input queue
+        hotkey.state = 0;
+        hotkey.iqueue.splice(0, hotkey.iqueue.length);
         return;
     }
     var idx = hotkey.calculate(event.keyCode, event.shiftKey, event.ctrlKey); 
-    if (hotkey.waiting_key == -1) {
-        var value = hotkey.map[idx];
-        if (value != null) {
-            if (value[0] == null) {
-                value[1](event);
-            } else {
-                hotkey.waiting_key = idx;
-            } 
-        }
+    hotkey.iqueue.push(idx);
+    if (hotkey.state == 0) { // new input
+        hotkey.state = 1;
+        hotkey.matched = hotkey.map.filter(function (x) {
+            return x[0][0] == idx;
+        });
     } else {
-        var value = hotkey.map[hotkey.waiting_key];
-        if (value == null) {
-            hotkey.waiting_key = -1;
-        } else {
-            if (idx == value[0][hotkey.next_key_seq_idx]) {
-                if (hotkey.next_key_seq_idx == value[0].length - 1) {
-                    hotkey.waiting_key = -1;
-                    hotkey.next_key_seq_idx = 0;
-                    value[1](event);
-                } else {
-                    hotkey.next_key_seq_idx += 1;    
-                }
-            } else {
-                hotkey.waiting_key = -1;
-                hotkey.next_key_seq_idx = 0;
-            }
-        }
+        var current_idx = hotkey.iqueue.length - 1;
+        hotkey.matched = hotkey.matched.filter(function (x) {
+            return x[0][current_idx] == idx; 
+        });
+    }
+    if (hotkey.matched.length == 0) {
+        hotkey.state = 0;
+        hotkey.iqueue.splice(0, hotkey.iqueue.length);
+    }
+    if (hotkey.matched.length == 1 
+        && hotkey.matched[0][0].length == hotkey.iqueue.length) {
+        hotkey.state = 0;
+        hotkey.iqueue.splice(0, hotkey.iqueue.length);
+        hotkey.matched[0][1](event);
     }
 },
 
 register:
 function register(idxs, callback) {
     if (typeof idxs == 'number') {
-        hotkey.map[idxs] = [null, callback];
+        hotkey.map.push([[idxs], callback]);
     } else if (typeof idxs == 'object' && idxs.constructor == Array){
-        if (idxs.length == 0) return -1;
-        if (idxs.length == 1) {
-            hotkey.map[idxs[0]] = [null, callback];
-        } else {
-            hotkey.map[idxs[0]] = [idxs.slice(1), callback];
-        }
+        hotkey.map.push([idxs, callback]);
     } else {
         return -1;
     }

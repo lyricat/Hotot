@@ -161,7 +161,7 @@ class Hotot:
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])
-        # @TODO apply proxy
+        # apply proxy
         self.apply_proxy_setting()
 
     def apply_proxy_setting(self):
