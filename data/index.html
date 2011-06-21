@@ -292,7 +292,8 @@ function init_hotkey() {
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67, false, false), ui.StatusBox.open);
+    hotkey.register(hotkey.calculate(67, false, false), 
+        function () {ui.StatusBox.open();});
     // Navigation
     // 'h' to slide to prev tab
     hotkey.register(hotkey.calculate(72, false, false), ui.Slider.slide_to_prev);
