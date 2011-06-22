@@ -257,13 +257,14 @@ authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
     setTimeout(function () {
-    $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
-    }, 100);
+        $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
+        }, 100);
     toast.set(_('authentication_ok')).show();
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');
     globals.layout.open('south');
+    kismet.load();
     document.title = _('hotot') + ' | ' + conf.current_name;
     hotot_action('system/sign_in');    
     setTimeout(function () {

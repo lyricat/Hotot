@@ -298,6 +298,11 @@ view_t:
 indicator_t:
     '<li class="{%STICK%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></li>',
 
+kismet_rule_t:
+'<li><a class="kismet_rule" name="{%NAME%}" type="{%TYPE%}" method="{%METHOD%}"\
+    disabled="{%DISABLED%}" field="{%FIELD%}" pattern="{%PATTERN%}"     \
+    actions="{%ACTIONS%}" {%ADDITION%} href="#">{%NAME%}</a></li>',
+
 init:
 function init() {
     ui.Template.reg_url = ui.Template.reg_vaild_preceding_chars
@@ -370,6 +375,12 @@ function init() {
     ui.Template.indicator_m = {
         TARGET: '', TITLE: '', ICON: ''
     };
+
+    ui.Template.kismet_rule_m = {
+          TYPE:'', DISABLED:'', FIELD:'', PATTERN:''
+        , METHOD:'', ACTIONS: '', ADDITION: '', NAME: ''
+    };
+
 },
 
 form_dm:
@@ -653,6 +664,20 @@ function form_indicator(target, title, icon) {
     m.TITLE = title;
     m.ICON = icon;
     return ui.Template.render(ui.Template.indicator_t, m);
+},
+
+form_kismet_rule:
+function form_kismet_rule(rule) {
+    var m = ui.Template.kismet_rule_m;
+    m.NAME = rule.name;
+    m.TYPE = rule.type;
+    m.METHOD = rule.method;
+    m.PATTERN = rule.pattern;
+    m.ACTIONS = rule.actions.join(':');
+    m.ADDITION = rule.actions.indexOf(3)!=-1?'archive_name="'+rule.archive_name+'"':'archive_name=""';
+    m.FIELD = rule.field;
+    m.DISABLED = rule.disabled;
+    return ui.Template.render(ui.Template.kismet_rule_t, m);
 },
 
 fill_vcard:

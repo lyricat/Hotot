@@ -61,6 +61,7 @@ default_prefs: {
         , 'search_api_base': 'https://search.twitter.com/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
+        , 'kismet_rules': []
         , 'base_url': 'https://twitter.com/'
       }
     , 'identica': {
@@ -98,6 +99,7 @@ default_prefs: {
         , 'search_api_base': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
+        , 'kismet_rules': []
         , 'base_url': 'https://identi.ca/'
       }
 },

@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/toast.js"></script>
     <script type="text/javascript" src="js/notification.js"></script>
     <script type="text/javascript" src="js/daemon.js"></script>
+
     <script type="text/javascript" src="js/ui.header.js"></script>
     <script type="text/javascript" src="js/ui.status_box.js"></script>
     <script type="text/javascript" src="js/ui.slider.js"></script>
@@ -46,6 +47,7 @@
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.kismet_dlg.js"></script>
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
     <script type="text/javascript" src="js/ui.error_dlg.js"></script>
     <script type="text/javascript" src="js/ui.about_dlg.js"></script>
@@ -246,6 +248,11 @@ function init_dialogs() {
     globals.about_dialog.resize(500, 400);
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
+
+    globals.kismet_dialog = new widget.Dialog('#kismet_dlg');
+    globals.kismet_dialog.resize(600, 500);
+    globals.kismet_dialog.place(widget.DialogManager.CENTER);
+    globals.kismet_dialog.create();
 }
 
 function init_ui() {
@@ -269,6 +276,7 @@ function init_ui() {
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
+    ui.KismetDlg.init();
     ui.ExtsDlg.init();
     ui.ErrorDlg.init();
     ui.AboutDlg.init();
@@ -559,6 +567,9 @@ jQuery(function($) {
                 </li>
                 <li>
                     <a id="btn_exts" href="javascript:void(0);">Extensions</a>
+                </li>
+                <li>
+                    <a id="btn_kismet" href="javascript:void(0);">Kismet Firewall</a>
                 </li>
                 <li>
                     <a id="btn_about" href="javascript:void(0);">About &amp; Help</a>
@@ -1381,6 +1392,94 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div>
     <div class="dialog_footer">
     <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- Kismet Dialog -->
+<div id="kismet_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="kismet_content_firewall">Kismet Content Firewall</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    
+    <div class="dialog_container">
+    
+    <div class="dialog_header"></div>
+    
+    <div id="kismet_dlg_body" class="dialog_body">
+        <ul id="kismet_rule_list">
+        </ul>
+        <hr/>
+        <ul id="kismet_rule_ctrl">
+            <li><a href="#" class="new button">+ Add</a></li>
+            <li><a href="#" class="remove button">&times; Remove</a></li>
+            <li><a href="#" class="enable button">&oplus; Enable</a></li>
+            <li><a href="#" class="disable button">&otimes; Disable</a></li>
+            <li><a href="#" class="up button">&uarr; Up</a></li>
+            <li><a href="#" class="down button">&darr; Down</a></li>
+        </ul>
+
+        <div id="kismet_rule_info" class="dialog_block">
+            <table>
+            <tr>
+                <td>
+                    <label class="label" 
+                        for="kismet_rule_name">Name:</label>
+                </td>
+                <td colspan="2">
+                    <input id="kismet_rule_name" 
+                        type="text" class="entry"/>
+                </td>
+                <td><label class="label">Type: </label>
+                    <select id="kismet_type" class="combo">
+                    <option value="0">Plain text</option>
+                    <option value="1">RegExp</option>
+                </select></td>
+            <tr>
+            <tr>
+                <td><label class="label">Field: </label>
+                </td><td>
+                    <select id="kismet_field" class="combo">
+                    <option value="0">User name</option>
+                    <option value="1">Text</option>
+                    <option value="2">Source</option>
+                </select></td>
+                <td><select id="kismet_method" class="combo">
+                    <option value="0">Equal</option>
+                    <option value="1">Contain</option>
+                    <option value="2">Starts with</option>
+                    <option value="3">Ends with</option>
+                </select></td>
+                <td><input type="text" id="kismet_pattern" class="entry"/></td>
+            </tr>
+            </table>
+        </div>
+        <div id="kismet_rule_action" class="dialog_block">
+            <h3><span>Action</span></h3>
+            <table>
+            <tr><td><input id="kismet_action_drop"
+                    type="checkbox" class="drop checkbox" value="0"/>
+                    <label for="kismet_action_drop">Drop</label></td>
+                <td><input id="kismet_action_notify"
+                    type="checkbox" class="notify checkbox" value="1"/>
+                    <label for="kismet_action_notify">Notify</label></td>
+                <td><input id="kismet_action_mask"
+                    type="checkbox" class="mask checkbox" value="2"/>
+                    <label for="kismet_action_mask">Mask</label></td>
+                <td><input id="kismet_action_archive" 
+                    type="checkbox" class="checkbox" value="3"/>
+                    <label for="kismet_action_archive">Archive</label>: 
+                    <select id="kismet_action_archive_name"class="combo">
+                    <option value="-1">select ... </option></select></td>
+            </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="dialog_footer">
+    <a id="kismet_cancel_btn" class="button" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_save_btn" class="button" data-i18n-text="save">Save</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>

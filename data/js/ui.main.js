@@ -311,7 +311,7 @@ function add_people(self, users) {
 },
 
 add_tweets:
-function add_tweets(self, json_obj, reversion) {
+function add_tweets(self, json_obj, reversion, ignore_kismet) {
 /* Add one or more tweets to a specifed container.
  * - Choose a template-filled function which correspond to the json_obj and
  *   Add it to the container in order of tweets' id (in order of post time).
@@ -325,6 +325,11 @@ function add_tweets(self, json_obj, reversion) {
  *   tweet in a thread, the container.pagename should be assigned with the
  *   id of the lastest tweet.
  */
+    json_obj = ui.Main.unique(json_obj);
+    if (ignore_kismet == undefined) {
+        kismet.filter(json_obj);
+    }
+     
     var new_tweets_height = 0;
     // sort
     // if reversion: small ... large
@@ -793,7 +798,7 @@ load_thread_proc:
 function load_thread_proc(listview, tweet_id, on_finish) {
     var load_thread_proc_cb = function (prev_tweet_obj) {
         //listview.resume_pos = false;
-        var count=ui.Main.add_tweets(listview, [prev_tweet_obj], true);
+        var count=ui.Main.add_tweets(listview, [prev_tweet_obj], true, true);
         // load the prev tweet in the thread.
         var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
         if (reply_id == null) { // end of thread.
@@ -824,7 +829,7 @@ function preload_thread(listview, tweet_obj) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
             var li = $(listview._body.parents('.card')[0]);
-            ui.Main.add_tweets(listview, [prev_tweet_obj], true);
+            ui.Main.add_tweets(listview, [prev_tweet_obj], true, true);
             li.find('.btn_tweet_thread').addClass('expand');
             li.find('.tweet_thread_hint').hide();
             if (prev_tweet_obj.in_reply_to_status_id == null) {
@@ -964,6 +969,16 @@ function set_tweet_bar(li_id) {
         $('#tweet_bar li.separator').show();
     }
 },
+
+unique:
+function unique (items) {
+    var o = {}, i, l = items.length, r = [];
+    for(i=0; i < l; i += 1)
+        o[items[i].id_str] = items[i];
+    for(i in o) r.push(o[i]);
+    return r;
+},
+
 
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {

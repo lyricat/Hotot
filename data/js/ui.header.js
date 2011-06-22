@@ -67,6 +67,12 @@ function init () {
         ui.ExtsDlg.load_ext_list();
         globals.exts_dialog.open();
     });
+    
+    $('#btn_kismet').click(
+    function (event) {
+        ui.KismetDlg.load();
+        globals.kismet_dialog.open();
+    });
 
     $('#btn_about').click(
     function (event) {

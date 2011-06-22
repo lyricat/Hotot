@@ -1316,6 +1316,73 @@ label {
     border-color: #febaa8 !important;
 }
 
+/*===== Kismet Dialog ================================*/
+#kismet_dlg .dialog_header {
+    height: 0px;
+    padding: 0;
+} 
+
+#kismet_dlg .dialog_body {
+    height: 300px;
+}
+
+#kismet_dlg .dialog_footer {
+    height: 30px;
+    padding: 10px;
+}
+
+#kismet_rule_list {
+    height: 50%;
+    border: 1px #ccc solid;
+    background-color: #fff;
+    overflow: auto;
+}
+
+#kismet_rule_action, #kismet_rule_info {
+    margin-top: 10px;
+}
+
+#kismet_dlg table {
+    width: 100%;
+}
+
+#kismet_rule_ctrl li {
+    display: inline-block;
+}
+
+#kismet_rule_ctrl a {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+}
+
+#kismet_rule_ctrl a:hover {
+    border-color: #ccc;
+}
+
+.kismet_rule {
+    display: block;
+    line-height: 20px;
+    height: 20px;
+    padding: 2px 5px;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px #ddd solid;
+}
+
+.kismet_rule:hover {
+    background: lightgray;
+}
+
+.kismet_rule[disabled="1"] {
+    color: gray !important;
+}
+
+.kismet_rule.selected {
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+    color: white;
+} 
 /*===== Class styles ================================*/
 .page {
     margin: 0 auto;

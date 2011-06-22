@@ -248,4 +248,3 @@ widget.ListView.compress_page = function compress_page(view) {
 
 
 
-
