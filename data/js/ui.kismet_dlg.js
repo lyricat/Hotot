@@ -146,9 +146,13 @@ function save() {
             , disabled: parseInt(obj.attr('disabled'))
             , actions: obj.attr('actions').split(':')
             , archive_name: obj.attr('archive_name')};
+        for (var i = 0; i < rule.actions.length; i += 1) {
+            rule.actions[i] = parseInt(rule.actions[i]);
+        }
         rules.push(rule);
     });
     kismet.rules = rules;
+    kismet.update_rules();
     kismet.save();
 },
 

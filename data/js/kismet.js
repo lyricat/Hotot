@@ -12,30 +12,33 @@ var kismet = {
  * */
 rules: [],
 
-procs: [],
+enforcer: {},
+
+procs: {},
 
 archive_names: [],
 
 init:
 function init() {
-    kismet.procs = [
-        kismet.drop, kismet.notify, kismet.mask, kismet.archive
-    ];
-    kismet.rules = [
-        /*
-        { name: 'Rule #1', disabled: 1, field: 0, type: 0, method: 0
-        , pattern: 'shellex', actions:[0,1], archive_name:'', order: 0},
-        { name: 'Rule #2', disabled: 1, field: 1, type: 1, method: 0
-        , pattern: '.*FuckGFW.*', actions:[0], archive_name:'', order: 0},
-        { name: 'Rule #3', disabled: 1, field: 2, type: 0, method: 0
-        , pattern: 'foursquare', actions:[0,3], archive_name:'Location', order: 0},
-        */
-    ];
+    kismet.procs = {
+        drop: kismet.drop, 
+        notify: kismet.notify, 
+        mask: kismet.mask, 
+        archive: kismet.archive
+    };
+    kismet.rules = [];
+    kismet.enforcer = {
+        drop: [],
+        notify: [],
+        mask: [],
+        archive: [],
+    };
 },
 
 load:
 function load() {
      kismet.rules = conf.get_current_profile().preferences.kismet_rules;  
+     kismet.update_rules();
 },
 
 save:
@@ -52,19 +55,19 @@ function get_field_value(field_code, tweet) {
     } else if (field_code == 1) {
         return tweet.text;
     } else {
-        return tweet.source;
+        return (tweet.source != undefined)?tweet.source:'';
     }
 },
 
 filter:
-function filter(tweets) {
+function filter(tweets, action) {
     for (var i = 0, l = tweets.length; i < l; i += 1) {
         var tweet = tweets[i];
-        var last_drop = false;
-        var already_drop = false;
-        for (var j = 0; j < kismet.rules.length; j += 1) {
-            if (kismet.rules[j].disabled == 1) {break;}
-            var rule = kismet.rules[j];
+        for (var j = 0; j < kismet.enforcer[action].length; j += 1) {
+            var rule = kismet.enforcer[action][j];
+            if (rule.disabled == 1) {
+                break;
+            }
             var field_value = kismet.get_field_value(rule.field, tweet);
             var ret = false;
             if (rule.type == 0) { // plain text
@@ -74,7 +77,6 @@ function filter(tweets) {
                     ret = rule.pattern == field_value;
                 break;
                 case 1: 
-                    hotot_log(kismet.rules[j].pattern, field_value);
                     ret = field_value.indexOf(rule.pattern) != -1;
                 break;
                 case 2: 
@@ -86,22 +88,44 @@ function filter(tweets) {
                 default : break;
                 }
             } else { // regexp
-                //@TODO 
+                ret = rule.pattern.test(field_value);
             }
             if (ret) {
-                for (var k = 0; k < rule.actions.length; k += 1) {
-                    var act = rule.actions[k];
-                    if (act == 0) {
-                        last_drop = true;
-                    } else {
-                        kismet.procs[act](tweets, i);
-                    }
-                }
-                if (last_drop && !already_drop) { 
-                    l -= 1;
-                    already_drop = true;
-                    kismet.drop(tweets, i);
-                }
+                kismet.procs[action](tweets, i);
+                if (action == 'drop') { l -= 1; }
+            }
+        }
+    }
+},
+
+update_rules: 
+function update_rules() {
+    kismet.enforcer = {
+        drop: [],
+        notify: [],
+        mask: [],
+        archive: [],
+    };
+    for (var i = 0; i < kismet.rules.length; i += 1) {
+        var rule = $.extend(true, {}, kismet.rules[i]);
+        if (rule.type == 1) {
+            rule.pattern = new RegExp(rule.pattern, 'i');   
+        }
+        for (var j = 0; j < rule.actions.length; j += 1) {
+            switch (rule.actions[j]) {
+            case 0:
+                kismet.enforcer.drop.push(rule);
+            break;
+            case 1:
+                kismet.enforcer.notify.push(rule);
+            break;
+            case 2:
+                kismet.enforcer.mask.push(rule);
+            break;
+            case 3:
+                kismet.enforcer.archive.push(rule);
+            break;
+            default: break;
             }
         }
     }

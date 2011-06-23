@@ -326,8 +326,9 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
  *   id of the lastest tweet.
  */
     json_obj = ui.Main.unique(json_obj);
+    // apply drop filter
     if (ignore_kismet == undefined) {
-        kismet.filter(json_obj);
+        kismet.filter(json_obj, 'drop');
     }
      
     var new_tweets_height = 0;
@@ -416,6 +417,10 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
                 db.dump_tweets(json_obj);
             }
         });
+    }
+    // apply notify filter
+    if (ignore_kismet == undefined) {
+        kismet.filter(json_obj, 'notify');
     }
     // bind events
     ui.Main.bind_tweets_action(json_obj, self.name);
