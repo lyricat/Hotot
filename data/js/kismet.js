@@ -18,6 +18,8 @@ procs: {},
 
 archive_names: [],
 
+mask_text: '******** Masked Text Field <a href="#" title="{%TEXT%}">&para;</a> *******',
+
 init:
 function init() {
     kismet.procs = {
@@ -145,7 +147,10 @@ function notify(tweets, i) {
 
 mask:
 function mask(tweets, i) {
-    hotot_log('Kismet', 'do mask');
+    var tweet = $.extend(true, {}, tweets[i]);
+    tweets[i].text = kismet.mask_text.replace('{%TEXT%}'
+        , tweets[i].text);
+    db.dump_tweets([tweet]);
 },
 
 archive:

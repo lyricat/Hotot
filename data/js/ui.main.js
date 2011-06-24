@@ -329,6 +329,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // apply drop filter
     if (ignore_kismet == undefined) {
         kismet.filter(json_obj, 'drop');
+        kismet.filter(json_obj, 'mask');
     }
      
     var new_tweets_height = 0;
