@@ -507,7 +507,9 @@ function search(query, page, on_success) {
         'q': query,
         'page': page,
     };
+    lib.twitterapi.source = '';
     lib.twitterapi.get(url, params, on_success);
+    lib.twitterapi.source = 'Hotot';
 },
 
 abort_watch_user_streams:
