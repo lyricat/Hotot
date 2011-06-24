@@ -24,6 +24,16 @@ services: {
             long_url: 'longurl'
         }
     },
+    'vgd': {
+        name: 'v.gd',
+        url: 'http://v.gd/create.php',
+        params: {
+            long_url: 'url',
+            extra: {
+                format: 'simple',
+            }
+        }
+    },
     'tinyurl': {
         name: 'TinyURL',
         url: 'http://tinyurl.com/api-create.php',
