@@ -22,6 +22,8 @@ function check_proc() {
 
 notify:
 function notify(title, summary, image, type) {
+    title = title.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
+    summary = summary.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     if (conf.get_current_profile().preferences.use_native_notify) {
         if (util.is_native_platform()) {
             hotot_action('system/notify/'
