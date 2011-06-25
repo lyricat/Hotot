@@ -398,7 +398,7 @@ function on_load_finish() {
         });
         procs.push(function() {
             hotot_log('init', 'on_load_finish() -> ext.load_exts();');
-            ext.load_exts(ext.extras, function () {
+            ext.load_exts('extra', ext.extras, function () {
                 $(window).dequeue('_on_load_finish');
             });
         });
