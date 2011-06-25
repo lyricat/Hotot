@@ -243,6 +243,26 @@ function load_tweet_success(self, json) {
         ui.Slider.set_unread(self.name);
     }
     ret = ui.Main.add_tweets(self, json, false);
+    // 
+    var current_profile = conf.get_current_profile();
+    var prefs = current_profile.preferences;
+    var latest_id = prefs[self.name + '_latest_id'] || "0";
+    var last_id = json[json.length - 1].id_str;
+    if (util.compare_id(last_id, latest_id) > 0) {
+        prefs[self.name + '_latest_id'] = last_id;
+        conf.save_prefs(conf.current_name);
+    }
+    var i = json.length - 1;
+    for ( ; i >= 0 ; i -= 1) {
+        if (util.compare_id(json[i].id_str, latest_id) <= 0) {
+            break;
+        }
+    }
+    ret = json.length - i - 1;
+    if (ret == 0) { 
+        return ret;
+    }
+    // notify
     if (ui.Main.views[self.name].use_notify) {
         if (ui.Main.views[self.name].use_notify_type == 'count') {
             hotot_notify('Update page ' + self.name, ret + " new items."
@@ -255,7 +275,7 @@ function load_tweet_success(self, json) {
                 hotot_notify(user.screen_name, text
                     , user.profile_image_url , 'content');
             }
-            if (3 < json.length) {
+            if (3 < ret) {
                 hotot_notify("Update page " + self.name 
                     , "and " + (ret - 2) + " new items remained."
                     , null, 'count');
