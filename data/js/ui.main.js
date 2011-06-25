@@ -901,14 +901,14 @@ function set_tweet_bar(li_id) {
     if (li.attr('in_thread') == 'true') {
         var vc = li.parents('.card')[0];
         offset_top = vc.offsetTop
-            - tweet_block.attr('scrollTop') + li.attr('offsetTop') + 5;
+            - tweet_block.get(0).scrollTop + li.get(0).offsetTop + 5;
         offset_right = ($(window).width() - $('#aside').width())
-            - vc.offsetLeft + vc.width + li.attr('offsetLeft') + 25;
+            - vc.offsetLeft + vc.width + li.get(0).offsetLeft + 25;
     } else {
-        offset_top = li.attr('offsetTop') 
-            - tweet_block.attr('scrollTop') + 5;
+        offset_top = li.get(0).offsetTop 
+            - tweet_block.get(0).scrollTop + 5;
         offset_right = ($(window).width() - $('#aside').width())
-            - (li.attr('offsetLeft') + li.width()) + 5;
+            - (li.get(0).offsetLeft + li.width()) + 5;
     }
     $('#tweet_bar').css('top', offset_top + 'px');
     $('#tweet_bar').css('right', offset_right + 'px');

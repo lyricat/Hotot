@@ -184,11 +184,11 @@ function load_builtin_exts(callback) {
     for (var i in ext.builtins) {
         path_arr.push('./ext/' + ext.builtins[i] + '/entry.js');
     }
-    ext.load_exts(path_arr, callback);    
+    ext.load_exts('builtin', path_arr, callback);    
 },
 
 load_exts:
-function load_exts(exts, callback) {
+function load_exts(type, exts, callback) {
     var procs = [];
     var _load = function (idx) {
         var path = exts[idx];
@@ -196,7 +196,7 @@ function load_exts(exts, callback) {
             $.getScript(path,
             function () {
                 hotot_log('Load Extension', path);
-                $(window).dequeue('_load_exts');
+                $(window).dequeue('_load_exts' + type);
             });
         });
     };
@@ -204,8 +204,8 @@ function load_exts(exts, callback) {
         _load(i)
     }
     procs.push(callback);
-    $(window).queue('_load_exts', procs);
-    $(window).dequeue('_load_exts');
+    $(window).queue('_load_exts' + type, procs);
+    $(window).dequeue('_load_exts' + type);
 },
 
 register_listener:
