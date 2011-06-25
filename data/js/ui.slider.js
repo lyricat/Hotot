@@ -185,11 +185,11 @@ function slide_to(id) {
     });
     if (cur_sel.length == 0) return;
     $('#indication_light').stop().animate(
-          { 'left': (cur_sel[0].parent().attr('offsetLeft') + 1) + 'px',
+          { 'left': (cur_sel[0].parent().get(0).offsetLeft + 1) + 'px',
             'width': (
-                  cur_sel[cur_sel.length - 1].parent().attr('offsetLeft') 
+                  cur_sel[cur_sel.length - 1].parent().get(0).offsetLeft 
                 + cur_sel[cur_sel.length - 1].parent().width()
-                - cur_sel[0].parent().attr('offsetLeft')  
+                - cur_sel[0].parent().get(0).offsetLeft  
                 ) + 'px'
           }
         , 200 
