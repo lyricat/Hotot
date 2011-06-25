@@ -250,7 +250,6 @@ function load_tweet_success(self, json) {
     var last_id = json[json.length - 1].id_str;
     if (util.compare_id(last_id, latest_id) > 0) {
         prefs[self.name + '_latest_id'] = last_id;
-        conf.save_prefs(conf.current_name);
     }
     var i = json.length - 1;
     for ( ; i >= 0 ; i -= 1) {
