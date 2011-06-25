@@ -120,8 +120,8 @@ remove_view:
 function remove_view(name) {
     var v = ui.Main.views[name];
     // remove from daemon
-    daemon.unregister_poll_view(v.name);
-    daemon.unregister_push_view(v.name);
+    daemon.unregister_poll_view(v);
+    daemon.unregister_push_view(v);
     // remove from DOM
     $('#'+v.name+'_tweetview').remove();
     // remove from ui.Main.views
