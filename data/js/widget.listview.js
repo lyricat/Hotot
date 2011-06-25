@@ -31,6 +31,7 @@ function WidgetListView(id, name, params) {
     self.interval = 0;
     self.resume_pos = false;
     self.changed = false;
+    self.is_trim = true;
 
     self.since_id = 1;
     self.max_id = null;
@@ -163,25 +164,30 @@ function WidgetListView(id, name, params) {
             self.changed = false;
             return; 
         }
-        // thread container doesn't have a property '_me'
-        if (self.hasOwnProperty('_me') && self._me.get(0).scrollTop < 100) {
-            widget.ListView.trim_page(self);
-            widget.ListView.compress_page(self);
-        }
+
         // keep timeline status
-        if (self.item_type == 'cursor') {        // friedns or followers
+        // @TODO move the code below to respective views
+        if (self.item_type == 'cursor') {       // friedns or followers
             self.changed = (self.cursor != json.next_cursor_str);
             self.cursor = json.next_cursor_str;
-        } else if (self.item_type == 'page') { //search, fav, 
-            self.changed = (self.since_id != json[count - 1].id_str);
-            self.since_id = json[count - 1].id_str;
+        } else if (self.item_type == 'page') {  //fav, 
             self.page = json.page + 1; 
+        } else if (self.item_type == 'search'){
+            self.max_id = json.max_id_str;
+            self.page = json.page;
         } else {    // other
             self.changed = (self.since_id != json[count - 1].id_str);
             self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
                 self.max_id = json[0].id_str;
             }
+        }
+        // thread container doesn't have a property '_me'
+        if (self.hasOwnProperty('_me') && self._me.get(0).scrollTop < 100) {
+            if (self.is_trim) {
+                widget.ListView.trim_page(self);
+            }
+            widget.ListView.compress_page(self);
         }
     };
     
@@ -203,10 +209,13 @@ function WidgetListView(id, name, params) {
         var count = self._loadmore_success(self, json);
 
         // keep timeline status
-        if (self.item_type == 'cursor') {        // friedns or followers
+        if (self.item_type == 'cursor') {        // friends or followers
             self.cursor = json.next_cursor_str;
-        } else if (self.item_type == 'page') { //search, fav, 
+        } else if (self.item_type == 'page') { // fav, 
             self.page = self.page + 1; 
+        } else if (self.item_type == 'search'){
+            self.max_id = json.max_id_str;
+            self.page = json.page;
         } else {    // other
             if (count == 0) { return; }
             self.max_id = json[count - 1].id_str;
@@ -233,13 +242,16 @@ function WidgetListView(id, name, params) {
 widget.ListView = WidgetListView;
 
 widget.ListView.trim_page = function trim_page(view) {
-    var cards = view._body.children('.card:gt('+globals.trim_bound+')');
+    var cards = view._body.children('.card:gt('+conf.vars.trim_bound+')');
     cards.find('.who_href').unbind();
     cards.find('.btn_tweet_thread:first').unbind();
     cards.find('.btn_tweet_thread_more:first').unbind();
     cards.unbind();
     cards.remove();
-    // @TODO reset self.max_id & page & next_cursor_str
+    // reset self.max_id 
+    if (view.item_type == 'id') {        
+        view.max_id = view._body.children('.card:last').attr('tweet_id');
+    }
 };
 
 widget.ListView.compress_page = function compress_page(view) {

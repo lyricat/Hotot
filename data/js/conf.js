@@ -9,6 +9,7 @@ vars: {
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
     , 'column_max_width': 400
     , 'items_per_request': 50
+    , 'trim_bound': 100
 },
 
 default_settings: {

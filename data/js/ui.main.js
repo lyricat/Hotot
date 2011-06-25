@@ -112,7 +112,8 @@ function reset_views() {
             , 'header_html': ui.Template.search_header_t
             , 'method': 'poll'
             , 'interval': -1
-            , 'item_type': 'page'
+            , 'item_type': 'search'
+            , 'is_trim': false
         });
     ui.Slider.add('home'
         , { title:'Home Timeline', icon:'image/ic_home.png'}
@@ -327,7 +328,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
  */
     json_obj = ui.Main.unique(json_obj);
     // apply drop filter
-    if (ignore_kismet == undefined) {
+    if (ignore_kismet == undefined || ignore_kismet == false) {
         kismet.filter(json_obj, 'drop');
         kismet.filter(json_obj, 'mask');
     }

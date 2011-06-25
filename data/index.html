@@ -137,6 +137,7 @@ function open_people(screen_name) {
             , 'method': 'poll'
             , 'interval': 120
             , 'item_type': 'id'
+            , 'is_trim': true
             , 'screen_name': screen_name
         });
     ui.Main.views['people_' + screen_name].load();
@@ -459,7 +460,6 @@ function on_load_finish() {
 var globals = {
       tweet_block_width: 600
     , max_status_len: 140
-    , trim_bound: 100
     , tweet_font_size: 12
     , myself: {}
     , in_main_view: false

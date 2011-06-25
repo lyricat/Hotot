@@ -58,7 +58,14 @@ function switch_sub_view(view, name) {
 
 load_tweet:
 function load_tweet(view, success, fail) {
-    lib.twitterapi.search(view.query, 1, success);   
+    /* sample response
+    "max_id": 84559462639222784,
+    "since_id": 0,
+    "previous_page": "?page=1&max_id=84559462639222784&q=hotot",
+    "refresh_url": "?since_id=84559462639222784&q=hotot",
+    "next_page": "?page=3&max_id=84559462639222784&q=hotot",
+    */
+    lib.twitterapi.search(view.query, 1, view.max_id, null, success);   
     lib.twitterapi.show_user(view.query,
     function (user) {
         view._header.find('.search_people_result').show();
@@ -72,7 +79,7 @@ function load_tweet(view, success, fail) {
 
 loadmore_tweet:
 function loadmore_tweet(view, success, fail) {
-    lib.twitterapi.search(view.query, view.page, success);   
+    lib.twitterapi.search(view.query, view.page + 1, null, view.max_id, success);   
 },
 
 load_people:
@@ -88,13 +95,14 @@ function loadmore_people(view, success, fail) {
 load_tweet_success:
 function load_tweet_success(view, json) {
     var tweets = [];
-    if (json.constructor == Object && typeof json.results != 'undefined') {
+    if (json.constructor == Object && json.results != undefined) {
         tweets = json.results;
     }
     ui.Slider.set_unread(view.name);
     if (tweets.length == 0) {
         view._header.find('.search_no_result_hint').show();
-        view._header.find('.keywords').text(decodeURIComponent(json.query));
+        view._header.find('.keywords').text(
+            decodeURIComponent(json.query));
         return 0;
     } else {
         view._header.find('.search_no_result_hint').hide();
@@ -128,6 +136,7 @@ do_search:
 function do_search(view, query) {
     view.query = $.trim(query);
     if (view.query.length == 0) return;
+    view.max_id = null;
     view.clear();
     view.load();
 },

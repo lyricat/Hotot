@@ -501,12 +501,14 @@ function verify(on_success) {
 },
 
 search:
-function search(query, page, on_success) {
+function search(query, page, since_id, max_id, on_success) {
     var url = lib.twitterapi.search_api_base + 'search.json';
     var params={
         'q': query,
-        'page': page,
     };
+    if (since_id != null) params['since_id'] = since_id;
+    if (max_id != null) params['max_id'] = max_id;
+    if (page != null) params['page'] = page;
     lib.twitterapi.source = '';
     lib.twitterapi.get(url, params, on_success);
     lib.twitterapi.source = 'Hotot';
