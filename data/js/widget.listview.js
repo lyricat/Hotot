@@ -54,10 +54,18 @@ function WidgetListView(id, name, params) {
             for (var k in params) {
                 switch (k) {
                 case 'class':
-                    self._class = self._class.concat(params.class);
+                    if (Array.prototype.hasOwnProperty('concat')) {
+                        self._class = self._class.concat(params.class);
+                    } else {
+                        util.concat(self._class, params.class);
+                    }
                 break;
                 case 'item_class':
-                    self._item_class = self._item_class.concat(params.item_class);
+                    if (Array.prototype.hasOwnProperty('concat')) {
+                        self._item_class = self._item_class.concat(params.item_class);
+                    } else {
+                        util.concat(self._item_class, params.item_class);
+                    }
                 break;
                 case 'load':
                     self._load = params.load;

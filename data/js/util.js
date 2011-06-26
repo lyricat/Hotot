@@ -114,5 +114,14 @@ function get_avator(screen_name, callback) {
     }
 },
 
+concat:
+function concat(arr, lst) {
+    for (var i = 0; i < lst.length; i += 1) {
+        arr.push(lst[i]);
+    }
+    return arr;
+},
+
 };
+
 
