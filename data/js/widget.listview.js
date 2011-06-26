@@ -166,17 +166,16 @@ function WidgetListView(id, name, params) {
                 json[i].id_str = json[i].id.toString();
             }
         }
+
         // load callback
         var count = self._load_success(self, json);
         if (count == 0) { 
-            self.changed = false;
             return; 
         }
 
         // keep timeline status
         // @TODO move the code below to respective views
         if (self.item_type == 'cursor') {       // friedns or followers
-            self.changed = (self.cursor != json.next_cursor_str);
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') {  //fav, 
             self.page = json.page + 1; 
@@ -184,7 +183,6 @@ function WidgetListView(id, name, params) {
             self.max_id = json.max_id_str;
             self.page = json.page;
         } else {    // other
-            self.changed = (self.since_id != json[count - 1].id_str);
             self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
                 self.max_id = json[0].id_str;

@@ -235,11 +235,14 @@ function loadmore_messages(self, success, fail) {
 
 load_tweet_success:
 function load_tweet_success(self, json) {
+    var ret = ui.Main.add_tweets(self, json, false);
     if (self.changed) {
         ui.Slider.set_unread(self.name);
     }
-    var ret = ui.Main.add_tweets(self, json, false);
-    // 
+    // in fact, ret equals to json.length
+    if (ret == 0) { 
+        return json.length;
+    }
     var current_profile = conf.get_current_profile();
     var prefs = current_profile.preferences;
     var latest_id = prefs[self.name + '_latest_id'] || "0";
@@ -285,22 +288,29 @@ function load_tweet_success(self, json) {
 
 load_people_success:
 function load_people_success(self, json) {
+    var ret = ui.Main.add_people(self, json.users);
     if (self.changed) {
         ui.Slider.set_unread(self.name);
     }
-    return ui.Main.add_people(self, json.users);
+    return ret;
 },
 
 loadmore_tweet_success:
 function loadmore_tweet_success(self, json) {
-    ui.Slider.set_unread(self.name);
-    return ui.Main.add_tweets(self, json, true);
+    var ret = ui.Main.add_tweets(self, json, true);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
+    return ret;
 },
 
 loadmore_people_success:
 function loadmore_people_success(self, json) {
-    ui.Slider.set_unread(self.name);
-    return ui.Main.add_people(self, json.users);
+    var ret = ui.Main.add_people(self, json.users);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
+    return ret;
 },
 
 add_people:
@@ -437,10 +447,22 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             }
         });
     }
+
+    if (!reversion && json_obj.length != 0) {
+        if (self.item_type == 'cursor') {       // friedns or followers
+            self.changed = (self.cursor != json_obj.next_cursor_str);
+        } else if (self.item_type == 'id'){     // other
+            self.changed = (self.since_id != json_obj[json_obj.length - 1].id_str);
+        }
+    } else {
+        self.changed = false;
+    }
+
     // apply notify filter
     if (ignore_kismet == undefined) {
         kismet.filter(json_obj, 'notify');
     }
+    
     // bind events
     for (var i = 0, l = json_obj.length; i < l; i += 1) {
         ui.Main.bind_tweet_action('#'+self.name +'-'+json_obj[i].id_str);
