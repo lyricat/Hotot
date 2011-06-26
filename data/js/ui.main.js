@@ -817,13 +817,15 @@ function on_expander_click(btn, event) {
                 , '_body': container};
             ui.Main.load_thread_proc(listview, reply_id, function () {
                 li.find('.tweet_thread_hint').fadeOut();
+            }, function (xhr, textStatus, errorThrown) {
+                li.find('.tweet_thread_hint').fadeOut();
             });
         }
     }
 },
 
 load_thread_proc:
-function load_thread_proc(listview, tweet_id, on_finish) {
+function load_thread_proc(listview, tweet_id, on_finish, on_error) {
     var load_thread_proc_cb = function (prev_tweet_obj) {
         //listview.resume_pos = false;
         var count=ui.Main.add_tweets(listview, [prev_tweet_obj], true, true);
@@ -833,7 +835,7 @@ function load_thread_proc(listview, tweet_id, on_finish) {
             on_finish();
             return ;
         } else { 
-            ui.Main.load_thread_proc(listview, reply_id, on_finish);
+            ui.Main.load_thread_proc(listview, reply_id, on_finish, on_error);
         }
     }
 
@@ -843,7 +845,7 @@ function load_thread_proc(listview, tweet_id, on_finish) {
             lib.twitterapi.show_status(tweet_id,
             function (result) {
                 load_thread_proc_cb(result);
-            });
+            }, on_error);
         } else {
             load_thread_proc_cb(JSON.parse(rs.rows.item(0).json));
         }

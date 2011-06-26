@@ -78,9 +78,9 @@ function get(ajax_url, ajax_params, on_success, on_error) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
         },
-        function(result, textStatus, xhr) {
+        function(xhr, textStatus, errorThrown) {
             if (on_error == undefined || on_error == null) {
-                lib.twitterapi.default_error_handler(result, textStatus, xhr);
+                lib.twitterapi.default_error_handler(xhr, textStatus, errorThrown);
             } else {
                 on_error(xhr, textStatus, errorThrown);
             }
@@ -95,9 +95,9 @@ function post(ajax_url, ajax_params, on_success, on_error) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
         },
-        function(result, textStatus, xhr) {
+        function(xhr, textStatus, errorThrown) {
             if (on_error ==  undefined || on_error == null) {
-                lib.twitterapi.default_error_handler(result, textStatus, xhr);
+                lib.twitterapi.default_error_handler(xhr, textStatus, errorThrown);
             } else {
                 on_error(xhr, textStatus, errorThrown);
             }
@@ -357,9 +357,9 @@ function get_user_timeline(user_id, screen_name, since_id,
 },
 
 show_status:
-function show_status(id, on_success) {
+function show_status(id, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'statuses/show/'+id+'.json';
-    lib.twitterapi.get(url, {}, on_success);
+    lib.twitterapi.get(url, {}, on_success, on_error);
 },
 
 show_user:
