@@ -125,8 +125,9 @@ function remove_view(name) {
     // remove from DOM
     $('#'+v.name+'_tweetview').remove();
     // remove from ui.Main.views
-    delete ui.Main.views[name]
+    delete ui.Main.views[name];
     v.clear();
+    v.destroy();
     update_tweet_block_width();            
 },
 
