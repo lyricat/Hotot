@@ -54,14 +54,14 @@ function init() {
     }
 
     var ui_main_add_tweets = ui.Main.add_tweets;
-    ui.Main.add_tweets = function _add_tweets(tweet_obj, container, reversion) {
+    ui.Main.add_tweets = function _add_tweets(view, tweet_obj, reversion, ignore_kismet) {
         var cbs = ext.listeners[ext.ADD_TWEETS_LISTENER];
         var cbs_after = ext.listeners[ext.ADD_TWEETS_LISTENER_AFTER];
         for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](tweet_obj, container);
         }
         
-        var ret = ui_main_add_tweets(tweet_obj, container, reversion);
+        var ret = ui_main_add_tweets(view, tweet_obj, reversion, ignore_kismet);
 
         for (var i = 0, l = cbs_after.length; i < l; i += 1) {
             cbs_after[i](tweet_obj, container);

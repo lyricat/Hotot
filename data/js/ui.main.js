@@ -184,7 +184,6 @@ function hide () {
 show:
 function show () {
     daemon.start();
-    $('.card').remove();
     ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
@@ -239,9 +238,7 @@ function load_tweet_success(self, json) {
     if (self.changed) {
         ui.Slider.set_unread(self.name);
     }
-    ret = ui.Main.add_tweets(self, json, false);
-    // @TODO potential bug, add_tweets cannot sort the json array
-    // hotot_log(self.name+'0.5', json[0].id_str + ',' + json[json.length -1].id_str);
+    var ret = ui.Main.add_tweets(self, json, false);
     // 
     var current_profile = conf.get_current_profile();
     var prefs = current_profile.preferences;
@@ -324,7 +321,9 @@ function add_people(self, users) {
 
     // @TODO dumps to cache
     // bind events
-    ui.Main.bind_tweets_action(users, self.name);
+    for (var i = 0, l = users.length; i < l; i += 1) {
+        ui.Main.bind_tweet_action('#'+self.name + '-' + users[i].id_str );
+    }
     toast.hide();
     return users.length;
 },
@@ -344,7 +343,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
  *   tweet in a thread, the container.pagename should be assigned with the
  *   id of the lastest tweet.
  */
-    json_obj = ui.Main.unique(json_obj);
+    ui.Main.unique(json_obj);
     // apply drop filter
     if (ignore_kismet == undefined || ignore_kismet == false) {
         kismet.filter(json_obj, 'drop');
@@ -443,7 +442,9 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         kismet.filter(json_obj, 'notify');
     }
     // bind events
-    ui.Main.bind_tweets_action(json_obj, self.name);
+    for (var i = 0, l = json_obj.length; i < l; i += 1) {
+        ui.Main.bind_tweet_action('#'+self.name +'-'+json_obj[i].id_str);
+    }
     toast.hide();
     return json_obj.length;
 },
@@ -531,76 +532,76 @@ function get_next_tweet_dom(view, current, reversion) {
     return next_one;
 },
 
-bind_tweets_action:
-function bind_tweets_action(tweets_obj, pagename) {
-    var bind_sigle_action = function (tweet_obj) {
-        var id = '#' + pagename + '-' + tweet_obj.id_str;
-        $(id).click(
-        function (event) {
-            ui.Main.set_tweet_bar(id);
-            if (event.button == 0) {
-                ui.StatusBox.close();
-                ui.ContextMenu.hide();
+bind_tweet_action:
+function bind_tweet_action(id) {
+    $(id).click(
+    function (event) {
+        ui.Main.set_tweet_bar(id);
+        if (event.button == 0) {
+            ui.StatusBox.close();
+            ui.ContextMenu.hide();
+        }
+        event.stopPropagation();
+    });
+    $(id).mouseover(function () {
+        ui.Main.set_active_tweet_id(id);
+        ui.Main.set_tweet_bar(id);
+        event.stopPropagation();
+    });
+
+    $(id).find('.btn_tweet_thread:first').click(
+    function (event) {
+        ui.Main.on_expander_click(this, event);
+    });
+
+    $(id).find('.btn_tweet_thread_more:first').click(
+    function (event) {
+        ui.Main.on_thread_more_click(this, event);
+    });
+
+    $(id).find('.who_href').click(
+    function (event) {
+        open_people($(this).attr('href').substring(1));
+        return false;
+    });
+
+    $(id).find('.hash_href').click(
+    function (event) {
+        ui.SearchView.do_search($(this).attr('href').substring(1));
+        return false;
+    });
+
+    $(id).find('.tweet_source a.show').click(
+    function (event) {
+        var _this = $(this);
+        var tweet_id = _this.attr("tweet_id");
+        var list = $(".tweet_retweeters[tweet_id='" + tweet_id + "']");
+        _this.text("loading...");
+        lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
+            if (_this == null) {
+                return;
             }
-            event.stopPropagation();
+            list.html("<ul></ul>");
+            var ul = list.find("ul");
+            for (var i = 0, l = result.length; i < l; i++) {
+               var p = result[i];
+               var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="@' + p.screen_name + ' (' + p.name + ')" src="' + p.profile_image_url + '"/></a></li>');
+                li.find("a").click(function() {
+                    open_people($(this).attr('href').substring(1));
+                });
+                li.appendTo(ul);
+            }
+            $("<span/>").text(result.length + (result.length==1?" person":" people")).insertBefore(_this);
+            _this.remove();
+            _this = null;
         });
-        $(id).mouseover(function () {
-            ui.Main.set_active_tweet_id(id);
-            ui.Main.set_tweet_bar(id);
-            event.stopPropagation();
-        });
+    });
+},
 
-        $(id).find('.btn_tweet_thread:first').click(
-        function (event) {
-            ui.Main.on_expander_click(this, event);
-        });
-
-        $(id).find('.btn_tweet_thread_more:first').click(
-        function (event) {
-            ui.Main.on_thread_more_click(this, event);
-        });
-
-        $(id).find('.who_href').click(
-        function (event) {
-            open_people($(this).attr('href').substring(1));
-            return false;
-        });
-
-        $(id).find('.hash_href').click(
-        function (event) {
-            ui.SearchView.do_search($(this).attr('href').substring(1));
-            return false;
-        });
-
-        $(id).find('.tweet_source a.show').click(
-        function (event) {
-            var _this = $(this);
-            var tweet_id = _this.attr("tweet_id");
-            var list = $(".tweet_retweeters[tweet_id='" + tweet_id + "']");
-            _this.text("loading...");
-            lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
-                if (_this == null) {
-                    return;
-                }
-                list.html("<ul></ul>");
-                var ul = list.find("ul");
-                for (var i = 0, l = result.length; i < l; i++) {
-                   var p = result[i];
-                   var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="@' + p.screen_name + ' (' + p.name + ')" src="' + p.profile_image_url + '"/></a></li>');
-                    li.find("a").click(function() {
-                        open_people($(this).attr('href').substring(1));
-                    });
-                    li.appendTo(ul);
-                }
-                $("<span/>").text(result.length + (result.length==1?" person":" people")).insertBefore(_this);
-                _this.remove();
-                _this = null;
-            });
-        });
-    };
-    for (var i = 0, l = tweets_obj.length; i < l; i += 1) {
-        bind_sigle_action(tweets_obj[i]);
-    }
+unbind_tweet_action:
+function unbind_tweet_action(li_id){
+    $(li_id + ' a').unbind();
+    $(li_id).unbind();
 },
 
 on_reply_click:
@@ -709,6 +710,7 @@ function on_del_click(btn, li_id, event) {
     toast.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_status(id, 
     function (result) {
+        ui.Main.unbind_tweet_action(li_id);
         li.remove();
         toast.set(_('destroy_successfully')).show();
     });
@@ -721,6 +723,7 @@ function on_dm_delete_click(btn, li_id, event) {
     toast.set('Destroy ...').show(-1);
     lib.twitterapi.destroy_direct_messages(id, 
     function (result) {
+        ui.Main.unbind_tweet_action(li_id);
         li.remove();
         toast.set(_('destroy_successfully')).show();
     });
@@ -997,11 +1000,12 @@ function set_tweet_bar(li_id) {
 
 unique:
 function unique (items) {
-    var o = {}, i, l = items.length, r = [];
+    var o = {}, i, l = items.length;;
     for(i=0; i < l; i += 1)
         o[items[i].id_str] = items[i];
-    for(i in o) r.push(o[i]);
-    return r;
+    items.splice(0, items.length);
+    for(i in o) items.push(o[i]);
+    return items;
 },
 
 

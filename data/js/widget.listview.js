@@ -176,10 +176,10 @@ function WidgetListView(id, name, params) {
             self.max_id = json.max_id_str;
             self.page = json.page;
         } else {    // other
-            self.changed = (self.since_id != json[0].id_str);
-            self.since_id = json[0].id_str;
+            self.changed = (self.since_id != json[count - 1].id_str);
+            self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
-                self.max_id = json[count - 1].id_str;
+                self.max_id = json[0].id_str;
             }
         }
         // thread container doesn't have a property '_me'
@@ -233,6 +233,8 @@ function WidgetListView(id, name, params) {
     };
 
     self.clear = function clear() {
+        self._body.find('.card').unbind();
+        self._body.find('.card a').unbind();
         self._body.empty();
     };
 
@@ -243,9 +245,7 @@ widget.ListView = WidgetListView;
 
 widget.ListView.trim_page = function trim_page(view) {
     var cards = view._body.children('.card:gt('+conf.vars.trim_bound+')');
-    cards.find('.who_href').unbind();
-    cards.find('.btn_tweet_thread:first').unbind();
-    cards.find('.btn_tweet_thread_more:first').unbind();
+    cards.find('.a').unbind();
     cards.unbind();
     cards.remove();
     // reset self.max_id 
