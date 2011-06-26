@@ -207,17 +207,15 @@ function loadmore_home(self, success, fail) {
 
 load_mentions: 
 function load_mentions(self, success, fail) {
-    var since_id = self.since_id;
     lib.twitterapi.get_mentions(
-        since_id, null, conf.vars.items_per_request, 
+        self.since_id, null, conf.vars.items_per_request, 
         success);
 },
 
 loadmore_mentions: 
 function loadmore_mentions(self, success, fail) {
-    var max_id = self.max_id;
     lib.twitterapi.get_mentions(
-        1, max_id, conf.vars.items_per_request, 
+        1, self.max_id, conf.vars.items_per_request, 
         success);
 },
 
@@ -259,7 +257,7 @@ function load_tweet_success(self, json) {
     }
     ret = json.length - i - 1;
     if (ret == 0) { 
-        return ret;
+        return json.length;
     }
     // notify
     if (ui.Main.views[self.name].use_notify) {
@@ -284,7 +282,7 @@ function load_tweet_success(self, json) {
             $('#audio_notify').get(0).play();
         }
     }
-    return ret;
+    return json.length;
 },
 
 load_people_success:

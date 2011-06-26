@@ -8,6 +8,8 @@ success_task_table: {},
 
 error_task_table: {},
 
+last_req_url: '',
+
 generate_uuid:
 function generate_uuid() {
     var S4 = function() {
@@ -30,6 +32,13 @@ function normalize_result(result) {
 
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
+    var now = Date.now();
+    if (lib.network.last_req_url.substring(0, lib.network.last_req_url.indexOf('?')) ==  req_url.substring(0, req_url.indexOf('?')) && now - lib.network.last_req_time < 1000) {
+        return;
+    }
+    lib.network.last_req_time = now;
+    lib.network.last_req_url = req_url;
+
     if (!req_headers) req_headers = {};
     if (lib.network.py_request || req_files.length != 0) {
         var task_uuid = lib.network.generate_uuid();
