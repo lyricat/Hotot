@@ -176,10 +176,10 @@ function WidgetListView(id, name, params) {
             self.max_id = json.max_id_str;
             self.page = json.page;
         } else {    // other
-            self.changed = (self.since_id != json[count - 1].id_str);
-            self.since_id = json[count - 1].id_str;
+            self.changed = (self.since_id != json[0].id_str);
+            self.since_id = json[0].id_str;
             if (self.max_id == null) {
-                self.max_id = json[0].id_str;
+                self.max_id = json[count - 1].id_str;
             }
         }
         // thread container doesn't have a property '_me'

@@ -229,9 +229,8 @@ function load_messages(self, success, fail) {
 
 loadmore_messages: 
 function loadmore_messages(self, success, fail) {
-    var max_id = self.max_id;
     lib.twitterapi.get_direct_messages(
-        1, max_id, conf.vars.items_per_request, 
+        1, self.max_id, conf.vars.items_per_request, 
         success);
 },
 
@@ -241,6 +240,8 @@ function load_tweet_success(self, json) {
         ui.Slider.set_unread(self.name);
     }
     ret = ui.Main.add_tweets(self, json, false);
+    // @TODO potential bug, add_tweets cannot sort the json array
+    // hotot_log(self.name+'0.5', json[0].id_str + ',' + json[json.length -1].id_str);
     // 
     var current_profile = conf.get_current_profile();
     var prefs = current_profile.preferences;
@@ -352,10 +353,10 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
      
     var new_tweets_height = 0;
     // sort
-    // if reversion: small ... large
-    // else:         large ... small
+    // if reversion: large ... small
+    // else:         small ... large
     ui.Main.sort(json_obj, reversion);
-    
+
     // insert the isoloated tweets.
     var i = 0;
     var batch_arr = [];
