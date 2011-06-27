@@ -53,6 +53,7 @@ function WidgetListView(id, name, params) {
         if (typeof(params) != 'undefined') {
             for (var k in params) {
                 switch (k) {
+                /*
                 case 'class':
                     if (Array.prototype.hasOwnProperty('concat')) {
                         self._class = self._class.concat(params.class);
@@ -60,6 +61,7 @@ function WidgetListView(id, name, params) {
                         util.concat(self._class, params.class);
                     }
                 break;
+                */
                 case 'item_class':
                     if (Array.prototype.hasOwnProperty('concat')) {
                         self._item_class = self._item_class.concat(params.item_class);
