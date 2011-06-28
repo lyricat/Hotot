@@ -313,6 +313,7 @@ function change_mode(mode) {
         $('#status_info').hide();
         ui.StatusBox.status_hint = ui.StatusBox.tweet_hint;
     }
+    hotot_log('cm', mode);
     ui.StatusBox.current_mode = mode;
 },
 
@@ -329,6 +330,7 @@ function update_status(status_text) {
 
 update_status_cb:
 function update_status_cb(result) {
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     $('#tbox_status').addClass('hint_style')
         .attr('value', ui.StatusBox.status_hint);
     toast.set(_('update_successfully')).show();
