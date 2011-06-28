@@ -7,6 +7,14 @@ running: false,
 
 use_streaming: false,
 
+timer: null,
+
+timer_interval: 20000,
+
+home_queue: [],
+
+home_last_time: 0,
+
 poll_views: [],
 
 push_views: [],
@@ -38,12 +46,12 @@ function work() {
         daemon.poll();
         daemon.push();
     }
-    daemon.time += 60;
+    daemon.time += 20;
     if (daemon.time == 3600) { // reset timer per hour
         daemon.time = 0;
     }
     conf.save_prefs(conf.current_name);
-    setTimeout(daemon.work, 60000);
+    daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
 },
 
 poll:
@@ -83,9 +91,52 @@ function abort_push() {
 push:
 function push() {
     if (lib.twitterapi.watch_user_streams.is_running) {
+        if (daemon.home_queue.length > 0) {
+            hotot_log('daemon push, timeout', daemon.home_queue.length);
+            ui.Main.views.home.load_success(daemon.home_queue);
+            daemon.home_queue.splice(0, daemon.home_queue.length);
+        }
         return;
     }
     function on_ret(ret) {
+        if (ret.direct_message) {
+            if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
+                ui.Main.views.messages.load_success([ret]);
+            }
+            return;
+        }
+        if (ret.text && ret.user) {
+            // ignore retweets of me
+            if (ret.hasOwnProperty('retweeted_status')) {
+                return;
+            }
+            var now = Date.now();
+            if (now - daemon.home_last_time > 1000) {
+                hotot_log('daemon push', 1);
+                ui.Main.views.home.load_success([ret]);
+            } else {
+                daemon.home_queue.push(ret);
+                if (16 < daemon.home_queue.length) {
+                    hotot_log('daemon push, batch', daemon.home_queue.length);
+                    ui.Main.views.home.load_success(daemon.home_queue);
+                    daemon.home_queue.splice(0, daemon.home_queue.length);
+                }
+            }
+            // mentions
+            if (ret.entities) {
+                user_mentions = ret.entities.user_mentions;
+                myname = globals.myself.screen_name;
+                for (var i = 0, l = user_mentions.length; i < l; i +=1) {
+                    if (user_mentions[i].screen_name == myname) {
+                        ui.Main.views.mentions.load_success([ret]);
+                    }
+                }
+            }
+            daemon.home_last_time = now;
+            return;
+        }
+
+        /*
         // direct_messages
         if (ret.direct_message) {
             //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
@@ -109,6 +160,7 @@ function push() {
             }
             return;
         }
+        */
     }
     lib.twitterapi.watch_user_streams(on_ret);
 },
