@@ -749,7 +749,6 @@ function format_time(datetime) {
 render:
 function render(tpl, map) {
     var text = tpl
-    // @TODO use jquery-tmpl?
     for (var k in map) {
         text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
     }

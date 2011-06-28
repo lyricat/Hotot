@@ -116,7 +116,7 @@ function push() {
                 ui.Main.views.home.load_success([ret]);
             } else {
                 daemon.home_queue.push(ret);
-                if (16 < daemon.home_queue.length) {
+                if (32 < daemon.home_queue.length) {
                     hotot_log('daemon push, batch', daemon.home_queue.length);
                     ui.Main.views.home.load_success(daemon.home_queue);
                     daemon.home_queue.splice(0, daemon.home_queue.length);
