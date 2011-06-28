@@ -313,7 +313,6 @@ function change_mode(mode) {
         $('#status_info').hide();
         ui.StatusBox.status_hint = ui.StatusBox.tweet_hint;
     }
-    hotot_log('cm', mode);
     ui.StatusBox.current_mode = mode;
 },
 
