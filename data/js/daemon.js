@@ -9,7 +9,7 @@ use_streaming: false,
 
 timer: null,
 
-timer_interval: 20000,
+timer_interval: 60000,
 
 home_queue: [],
 
@@ -46,7 +46,7 @@ function work() {
         daemon.poll();
         daemon.push();
     }
-    daemon.time += 20;
+    daemon.time += 60;
     if (daemon.time == 3600) { // reset timer per hour
         daemon.time = 0;
     }
@@ -116,7 +116,7 @@ function push() {
                 ui.Main.views.home.load_success([ret]);
             } else {
                 daemon.home_queue.push(ret);
-                if (32 < daemon.home_queue.length) {
+                if (128 < daemon.home_queue.length) {
                     hotot_log('daemon push, batch', daemon.home_queue.length);
                     ui.Main.views.home.load_success(daemon.home_queue);
                     daemon.home_queue.splice(0, daemon.home_queue.length);

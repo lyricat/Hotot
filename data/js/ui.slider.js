@@ -161,7 +161,7 @@ function slide_to(id) {
     // slide page
     if (conf.get_current_profile().preferences.effects_level != 0) {
         ui.Slider.me.stop().animate(
-            {marginLeft: (0 - page_offset * width + ui.Slider.column_num) +'px'}
+            {marginLeft: (0 - page_offset * width) +'px'}
             , 500
             , function () {
                 $('#main_page_slider').css('width', 'auto');

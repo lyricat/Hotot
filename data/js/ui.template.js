@@ -224,7 +224,7 @@ people_vcard_t:
     </div><!-- #people_vcard_ctrl --> \
 </div> <!-- vcard --> \
 <div class="people_view_toggle"> \
-    <ol class="people_view_toggle_btns radio_group dark"> \
+    <ol class="people_view_toggle_btns radio_group"> \
         <li><a class="people_view_tweet_btn radio_group_btn selected" href="#tweet">Tweets</a> \
         </li><li> \
         <a class="people_view_fav_btn radio_group_btn" href="#fav">Favs</a> \
@@ -245,34 +245,32 @@ people_vcard_t:
 
 search_header_t: 
 '<div class="header_frame"> \
-    <div class="header_inner"> \
-        <div class="search_view_toggle">\
-            <ol class="search_view_toggle_btns radio_group ">\
-                <li><a class="search_tweet radio_group_btn selected" \
-                    href="#tweet">Tweet</a>\
-                </li><li> \
-                    <a class="search_people radio_group_btn"\
-                    href="#people">People</a>\
-                </li> \
-            </ol> \
-        </div> \
-        <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
-        <div class="search_people_result"> \
-            <label class="label">One user matched: </label> <span class="search_people_inner"></span>\
-        </div>\
-        <div class="search_no_result_hint"> \
-            <p><span>Your search</span> - <label class="keywords"></label> - <span>did not match any result.</span></p> \
-            <p><span>Suggestions</span>: <br/> \
-             - <span>Make sure all words are spelled correctly.</span><br/> \
-             - <span>Try different keywords.</span><br/> \
-             - <span>Try more general keywords.</span><br/></p> \
-        </div> \
+    <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
+    <div class="search_people_result"> \
+        <label class="label">One user matched: </label> <span class="search_people_inner"></span>\
+    </div>\
+    <div class="search_view_toggle">\
+        <ol class="search_view_toggle_btns radio_group">\
+            <li><a class="search_tweet radio_group_btn selected" \
+                href="#tweet">Tweet</a>\
+            </li><li> \
+                <a class="search_people radio_group_btn"\
+                href="#people">People</a>\
+            </li> \
+        </ol> \
+    </div> \
+    <div class="search_no_result_hint"> \
+        <p><span>Your search</span> - <label class="keywords"></label> - <span>did not match any result.</span></p> \
+        <p><span>Suggestions</span>: <br/> \
+         - <span>Make sure all words are spelled correctly.</span><br/> \
+         - <span>Try different keywords.</span><br/> \
+         - <span>Try more general keywords.</span><br/></p> \
     </div> \
 </div>',
 
 retweets_header_t:
 '<div class="header_frame"><div class="retweets_view_toggle"> \
-    <ol class="retweets_view_toggle_btns radio_group dark">\
+    <ol class="retweets_view_toggle_btns radio_group">\
         <li><a class="btn_retweeted_to_me radio_group_btn selected" \
             href="#retweeted_to_me">By Others</a>\
         </li><li> \

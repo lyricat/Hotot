@@ -19,7 +19,7 @@ html, body {
 body {
     background: None repeat-x scroll left top #fff;
     color: #333;
-    font-family: Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun;
+    font-family: arial, sans-serif;
 }
 
 a {
@@ -34,8 +34,8 @@ pre {
 }
 
 ::-webkit-scrollbar {
-    width: 11px;
-    height: 11px;
+    width: 4px;
+    height: 4px;
 }
 
 ::-webkit-scrollbar-button:start:decrement,
@@ -46,9 +46,7 @@ pre {
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: #666;
-    border-left: 5px #ccc solid;
-    border-right: 5px #ccc solid;
+    background: #fafafa;
 }
 
 #status_box ::-webkit-scrollbar-track-piece {
@@ -56,19 +54,17 @@ pre {
 }
 
 .dialog ::-webkit-scrollbar-track-piece {
-    border-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
     height: 50px;
-    background: #333;
-    border-radius: 5px;
+    background: orange;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
     width: 50px;
-    background: #333;
-    border-radius: 5px;
+    background: orange;
 }
 
 #container {
@@ -79,13 +75,15 @@ pre {
 
 /* ===== header ==============================*/
 #header {
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#ececec));
-    background-repeat:no-repeat;
-    background-position: 70% 0;
-    padding: 3px 5px;
     font-size: 12px;
+}
+ 
+#header_inner {
     position:relative;
-    border-bottom: 1px #ccc solid;
+    padding: 0 5px;
+    background: #333 url(../image/mask.png);
+    border-bottom: 1px #2d2d2d solid;
+    height: 45px;
 }
 
 #btn_my_profile {
@@ -137,7 +135,6 @@ pre {
 }
 
 .panel_btn:hover {
-    background-color: #ccc;
 }
 
 .panel_btn:active {
@@ -145,7 +142,7 @@ pre {
 }
 
 #btn_reload {
-    background-image: url(../image/refresh_b.png) ;
+    background-image: url(../image/refresh_l.png) ;
 }
 
 #btn_reload:hover {
@@ -157,7 +154,7 @@ pre {
 }
 
 #btn_exts_menu {
-    background-image: url(../image/plus-in_b.png) ;
+    background-image: url(../image/plus-in_l.png) ;
 }
 
 #btn_exts_menu:hover {
@@ -188,7 +185,7 @@ pre {
 }
 
 #btn_hotot {
-    background-image: url(../image/menu_b.png);
+    background-image: url(../image/menu_l.png);
 }
 
 #btn_hotot:hover {
@@ -268,7 +265,7 @@ pre {
     border-style: solid;
     bottom: auto;
     border-width: 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent rgba(255,255,255,0.9) transparent transparent; 
+    border-color: transparent rgba(255,255,255,0.95) transparent transparent; 
 }
 
 #status_box.dm_mode #bubble_shape {
@@ -295,8 +292,6 @@ pre {
 }
 
 #status_box.closed {
-    -webkit-box-shadow: #888 0px 1px 3px;
-    border: 1px #999 solid;
 }
 
 #tbox_status {
@@ -439,21 +434,20 @@ pre {
 /* ===== Buttom =================================== */
 #indication {
     text-align: center;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,#3C3C3C), color-stop(46%,#2D2D2D)); /* webkit */
-    border-top: #2c2c2c 1px solid;
-    border-bottom: #2c2c2c 1px solid;
+    background: #111 url(../image/mask.png);
+    box-shadow: inset 0 0 5px black;
 }
 
 #indication > ul {
-    height: 38px;
+    height: 36px;
     margin: 0 auto;
     list-style-type: none;
 }
 
 #indication li {
     display: inline-block;
-    height: 40px;
-    width: 40px;
+    height: 36px;
+    width: 36px;
     padding: 0;
     text-align: center;
 }
@@ -477,18 +471,16 @@ pre {
 }
 
 #indication .indicator_btn {
-    margin: 2px 0 0 2px;
+    margin: 0px;
     height: 36px;
     width: 36px;
     display: inline-block;
     font-size: 12px;
     position: absolute;
-    border-radius: 5px;
 }
     
 #indication li > .indicator_btn:hover {
-    -webkit-box-shadow: inset 0px 0px 8px #555;
-    background: #aaa none no-repeat;
+    background: #151515 none no-repeat;
 }
 
 #indication li > .indicator_btn > .icon {
@@ -504,7 +496,8 @@ pre {
     height: 28px;
     margin-top: 4px;
     border-radius: 5px;
-    box-shadow: 0 1px 3px #666;
+    box-shadow: 0 1px 3px #000;
+    background-color: #333;
 }
 
 #indication li > .indicator_btn:hover > span.icon {
@@ -512,13 +505,14 @@ pre {
 }
 
 #indication li > .indicator_btn.unread {
-    -webkit-box-shadow: inset 0px 0px 8px #555;
-    background: orange none no-repeat;
+    /* @TODO need a image here*/
+    background-image: url(../image/emit.png);
+    background-position: center 17px;
+    background-repeat: no-repeat;
 }
 
 #indication li > .indicator_btn.selected {
-    -webkit-box-shadow: inset 0px 0px 8px #555;
-    background: #CDE6FF none no-repeat;
+    /* @TODO need a image here*/
 }
 
 #indication li > .indicator_btn.selected > span.icon, #indication li > .indicator_btn.unread > span.icon {
@@ -531,16 +525,19 @@ pre {
     position: absolute;
     width:0;
     height:0;
-    left: 12px; /* value = - border-left-width - border-right-width */
+    left: 10px; /* value = - border-left-width - border-right-width */
     top: 0px;
     border-style: solid;
     border-width: 8px 8px 8px 8px; /* vary these values to change the angle of the vertex */
     border-color: #3C3C3C transparent transparent transparent; 
+    border-top-color: #fafafa;
 }
 
 #indication_slot {
     height: 12px;
     position: relative;
+    border-top: 1px #151515 solid;
+    box-shadow: 0 -1px 3px #151515;
 }
 
 #indication_slot_border {
@@ -551,8 +548,7 @@ pre {
     height: 2px;
     position: absolute;
     border-radius: 1px;
-    -webkit-box-shadow: inset 0 0 2px #111;
-    box-shadow: inset 0 0 2px #111;
+    background-color: #111;
 }
 
 #indication_light {
@@ -734,7 +730,7 @@ label {
 /*===== Main Page ================================*/
 #main_page {
     display: none;
-    background: #ccc;
+    background: #fafafa; 
     position: relative;
 }
 
@@ -875,7 +871,8 @@ label {
 }
 
 .header_frame {
-    margin: 5px;
+    margin: 0 5px;
+    text-align: center;
 }
 
 .header_inner {
@@ -1403,13 +1400,9 @@ label {
 .tweetview > .listview_header {
     min-height: 16px;
     font-size: 12px;
-    background: #777777 url(../image/mask.png);
-    color: #fff;
     border: 0;
-    padding: 2px;
     position: relative;
 }
-
 
 .tweetview > .listview_header * {
     vertical-align: middle;
@@ -1422,10 +1415,32 @@ label {
 }
 
 .tweetview .header_title {
+    background: #f2f2f2;
+    color: #333;
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    border-bottom: 1px #ddd solid;
+}
+#home_tweetview .header_title {
+    background-color: #37c;
+    color: white;
+    border-bottom-color: #aaa;
 }
 
+#mentions_tweetview .header_title {
+    background-color: #6a3;
+    color: white;
+    border-bottom-color: #aaa;
+}
+
+#messages_tweetview .header_title {
+    background-color: #c73;
+    color: white;
+    border-bottom-color: #aaa;
+}
 .tweetview .close_btn {
     width: 16px;
     height: 16px;
@@ -1435,16 +1450,22 @@ label {
     right: 2px;
 }
 
+.tweetview > .header_content {
+    padding: 5px 0;
+    border-left: 1px #ddd solid;
+}
+
 .tweetview > .listview_body {
     padding: 0px 0px;
     list-style-type: none;
+    border-left: 1px #ddd solid;
 }
 
 .vcard, .header_inner {
     display: none;
     font-size: 10px;
     background-color: #f2f2f2;
-    border: #fff solid 1px;
+    border: #e5e5e5 solid 1px;
     border-radius: 5px;
     position: relative;
 }
@@ -1464,7 +1485,6 @@ label {
     text-align: left;
     vertical-align: top;
     height: 10px;
-    font-family: Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun;
 }
 
 .vcard_tabs_page td:first-child {
@@ -1483,9 +1503,16 @@ label {
     padding: 5px;
     min-height: 50px;
     position: relative;
-    border-left: 1px #c4c7cb solid;
-    border-right: 1px #c4c7cb solid;
-    border-bottom: 1px #c4c7cb solid;
+    border-top: 1px #ddd solid;
+    color: black;
+}
+
+.card:first-child {
+    border-top: 0; 
+}
+
+.card:last-child {
+    border-bottom: 1px #ddd solid;
 }
 
 .card > .tweet_selected_indicator {
@@ -1494,10 +1521,6 @@ label {
     left: 0px;
     width: 5px;
     bottom: 0px;
-}
-
-.card.selected > .tweet_selected_indicator{
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
 .card > .tweet_active_indicator {
@@ -1523,84 +1546,22 @@ label {
 .card.faved > .tweet_fav_indicator{
     background: transparent url(../image/tweet_fav_indicator.png) no-repeat 0 center;
 }
-
-.card.normal {
-    background:-webkit-gradient(linear, left top, left bottom, from(#eceef3), to(#dfe2e5));
-    border-color: #bbb;
-    color: #2c2e36;
+.card .tweet_thread {
+    border-bottom: 0;
 }
 .card.normal a {
-    color: #585858;
-}
-.card.normal > .text a {
-    color: #D67514 !important;
-}
-.card.normal > .who > .who_href {
-    color: #2c2e36;
-}
-.card.normal .tweet_thread {
-    border: 1px #c4c7cb solid;
-    border-bottom: 0;
-}
-.card.normal .tweet_ctrl {
-    border-color: #c4c7cb;
-}
-
-.card.mention {
-    background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
-    border-color: #c4987d;
-    color: #502805;
-}
-.card.mention a {
-    color: #D67514;
-}
-.card.mention > .who > .who_href {
-    color: #502805;
-}
-.card.mention .tweet_thread {
-    border: 1px #c4987d solid;
-    border-bottom: 0;
-}
-.card.mention .tweet_ctrl {
-    border-color: #c4987d;
-}
-
-.card.message {
-    background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
-    border-color:#90abc4;
-    color: #14465f;
-}
-.card.message a {
-    color: #376AE4;
-}
-.card.message > .who > .who_href {
-    color: #14465f;
-}
-.card.message .tweet_thread {
-    border: 1px #90abc4 solid;
-    border-bottom: 0;
-}
-.card.message .tweet_ctrl {
-    border-color: #90abc4;
-}
-
-.card.me {
-    background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
-    border-color:#75A565;
-    color: #264408;
+    color: #36c;
 }
 .card.me a {
-    color: #238000;
+    color: #63c;
 }
-.card.me > .who > .who_href {
-    color: #264408;
+
+.card.message a {
+    color: #c63;
 }
-.card.me .tweet_thread {
-    border: 1px #75A565 solid;
-    border-bottom: 0;
-}
-.card.me .tweet_ctrl {
-    border-color: #75A565;
+
+.card.mention a {
+    color: #492;
 }
 
 .card > span.shape {
@@ -1779,13 +1740,9 @@ label {
 .tweet_meta {
     left: 10px;
     right: 5px;
-    font-size: 10px;
+    font-size: 11px;
     padding-top: 10px;
     line-height: 10px;
-}
-
-.tweet_meta a {
-    text-decoration: underline !important;
 }
 
 .tweet_source {
@@ -1793,10 +1750,6 @@ label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.tweet_timestamp, .tweet_link {
-    font-size: 10px;
 }
 
 .tweet_retweeters ul {
@@ -1845,8 +1798,7 @@ label {
 }
 
 .tweet_thread {
-    border-width: 1px;
-    border-style: solid;
+    border-top: 1px #ddd dashed;
     list-style-type: none;
     padding: 0px;
 }
@@ -1854,6 +1806,7 @@ label {
 .tweet_thread > .card {
     border-left:0;
     border-right: 0;
+    border-style: dashed;
 }
 
 .tweet_thread_hint {
@@ -1955,6 +1908,12 @@ td {
     text-align: left;
     padding: 3px 10px 2px;
     border: 1px solid #ccc;
+}
+
+/* overwrite widgets styles*/
+
+.entry {
+    border-radius: 0;
 }
 
 /*=====*/

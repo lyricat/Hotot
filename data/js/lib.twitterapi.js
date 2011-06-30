@@ -554,6 +554,11 @@ function watch_user_streams(callback) {
             hotot_log('Streams XHR', 'OAuth error');
             watch_user_streams.disable = true;
         }
+        if (xhr.status == 420) {
+            hotot_log('Streams XHR', '420 error');
+            watch_user_streams.is_running = false;
+            setTimeout(xhr.abort, 100);
+        }
         watch_user_streams.is_running = false;
         hotot_log('Streams Exit', xhr.createAt + ' -> ' + new Date().toLocaleString());
     }
