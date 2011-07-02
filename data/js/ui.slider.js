@@ -43,6 +43,18 @@ function init () {
                   , 'item_type': 'tweet'
                 });
             ui.Slider.slide_to(ui.Slider.current);
+        } else if (view_name == 'compose') {
+            if (ui.StatusBox.is_closed) {
+                ui.StatusBox.open();
+            } else {
+                ui.StatusBox.close();
+            }
+        } else if (view_name == 'hotot') {
+            if (ui.Header.isHototMenuClosed) {
+                ui.Header.openHototMenu();
+            } else {
+                ui.Header.closeHototMenu();
+            }
         } else {
             ui.Slider.slide_to(view_name);
         }

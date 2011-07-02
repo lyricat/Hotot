@@ -80,10 +80,10 @@ pre {
  
 #header_inner {
     position:relative;
-    padding: 0 5px;
+    padding: 0px;
     background: #333 url(../image/mask.png);
     border-bottom: 1px #2d2d2d solid;
-    height: 20px;
+    height: 44px;
 }
 
 #btn_my_profile {
@@ -161,12 +161,6 @@ pre {
     background-image: url(../image/plus-in_h.png) ;
 }
 
-#exts_menu {
-    right: -10px;
-    text-align: left;
-    position:absolute;
-}
-
 #exts_menu >li >a {
     padding-left: 25px;
     background-position: 5px center !important;
@@ -194,8 +188,33 @@ pre {
 
 #hotot_menu {
     text-align: left;
-    position:absolute;
-    right: -10px;
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    width: 320px;
+    background: white;
+    box-shadow: 2px 2px 3px #888;
+    display: none;
+}
+
+#sys_menu_frame {
+    width: 150px;
+    float: left;
+    border-right: 1px #ddd solid;
+}
+
+#sys_menu {
+    display: block;
+    box-shadow: none;
+}
+
+#exts_menu {
+    display: block;
+    box-shadow: none;
+}
+#exts_menu_frame {
+    width: 160px;
+    margin-left: 160px;
 }
 
 .hotot_menu {
@@ -203,15 +222,15 @@ pre {
     right: 0;
     list-style-type: none;
     display: none;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#ececec));
-    -webkit-box-shadow: 1px 1px 5px #333;
-    border-radius: 5px 5px;
+    background: white;
+    box-shadow: 1px 1px 5px #333;
+    border-radius: 2px;
     position:relative;
 }
 
 .hotot_menu > li {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .hotot_menu > li.separator {
@@ -232,6 +251,8 @@ pre {
     background-repeat: no-repeat !important;
     color: #000;
     white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hotot_menu > li > a:hover {
@@ -239,90 +260,64 @@ pre {
     background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
 }
 
-
-#bubble_shape_shadow {
-    content: "\00a0";
-    display: block; /* reduce the damage in FF3.0 */
-    position: absolute;
-    width:0;
-    height:0;
-    top: 9px; 
-    left: -16px; /* value = - border-left-width - border-right-width */
-    border-style: solid;
-    bottom: auto;
-    border-width: 8px 8px 8px; /* vary these values to change the angle of the vertex */
-    border-color: transparent rgba(0,0,0,0.3) transparent transparent; 
-}
-
 #bubble_shape {
     content: "\00a0";
-    display: block; /* reduce the damage in FF3.0 */
+    display: block;
     position: absolute;
-    width:0;
-    height:0;
-    top: 10px; 
-    left: -14px; /* value = - border-left-width - border-right-width */
+    width: 0;
+    height: 0;
+    top: -14px;
+    left: 20px;
     border-style: solid;
     bottom: auto;
-    border-width: 7px 7px 7px; /* vary these values to change the angle of the vertex */
-    border-color: transparent rgba(255,255,255,0.95) transparent transparent; 
+    border-width: 7px 7px 7px;
+    border-color: transparent transparent white transparent;
+    display: none;
 }
 
 #status_box.dm_mode #bubble_shape {
-    border-color: transparent #c7dbfc transparent transparent; 
+    border-color: transparent transparent #c7dbfc transparent; 
 }
 
 #status_box.reply_mode #bubble_shape {
-    border-color: transparent #f4d3a1 transparent transparent; 
+    border-color: transparent transparent #f4d3a1 transparent; 
 }
 
 #status_box {
     background:-webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ededed));
     background-repeat: no-repeat;
     background-position: right top;
-    width: 310px;
+    min-width: 300px;
+    max-width: 550px;
     -webkit-box-shadow: 0px 1px 5px #333;
     border-radius: 5px 5px;
     padding: 0;
     position: absolute;
-    left: 50px;
-    top: 5px;
+    left: 0;
+    top: 37px;
     z-index: 10000;
     display: none;
 }
 
-#status_box.closed {
+#tbox_status_wrapper {
+    margin:5px;
 }
 
 #tbox_status {
-    width: 288px;
+    width: 100%;
     height: 15px;
     border: 1px #ccc solid;
     color: #333;
     background-color: #fff;
     font-size: 14px;
-    margin: 5px 5px 5px 5px;
-    border-radius: 0px;
     resize: none;
-}
-
-#tbox_status.closed {
-    -webkit-box-shadow: none;
-    color: #333;
-    background: transparent;
-    border: none;
-    overflow: hidden;
-}
-
-#tbox_status.hint_style {
-    font-style: italic;
-    color: rgba(0,0,0, 0.7) !important; 
+    border: 0;
+    outline: none;
 }
 
 #status_ctrl {
     margin: 0 5px 5px 5px;
     text-align: right;
-    display: none;
     vertical-align: middle;
 }
 #status_ctrl *{
@@ -480,7 +475,11 @@ pre {
 }
     
 #indication li > .indicator_btn:hover {
-    background: #151515 none no-repeat;
+    background: #444 none no-repeat;
+}
+
+#indication li > .indicator_btn.hlight {
+    background-color: white;
 }
 
 #indication li > .indicator_btn > .icon {
@@ -507,7 +506,7 @@ pre {
 #indication li > .indicator_btn.unread {
     /* @TODO need a image here*/
     background-image: url(../image/emit.png);
-    background-position: center 17px;
+    background-position: center -13px;
     background-repeat: no-repeat;
 }
 
@@ -526,18 +525,18 @@ pre {
     width:0;
     height:0;
     left: 10px; /* value = - border-left-width - border-right-width */
-    top: 0px;
+    bottom: 0px;
     border-style: solid;
     border-width: 8px 8px 8px 8px; /* vary these values to change the angle of the vertex */
-    border-color: #3C3C3C transparent transparent transparent; 
-    border-top-color: #fafafa;
+    border-color: transparent; 
+    border-bottom-color: #f2f2f2;
 }
 
 #indication_slot {
-    height: 12px;
+    height: 8px;
     position: relative;
-    border-top: 1px #151515 solid;
-    box-shadow: 0 -1px 3px #151515;
+    border-bottom: 1px #d2d2d2 solid;
+    background-color: #f2f2f2;
 }
 
 #indication_slot_border {
@@ -548,18 +547,14 @@ pre {
     height: 2px;
     position: absolute;
     border-radius: 1px;
-    background-color: #111;
 }
 
 #indication_light {
     width: 39px;
     height: 2px;
-    top: 4px;
-    background: #ADE6FF;
+    top: 3px;
+    background: #73f;
     position: absolute;
-    -webkit-box-shadow: -1px 0 6px #fff;
-    box-shadow: 0 0 4px #fff;
-    border-radius: 1px;
 }
 
 #console {
@@ -798,7 +793,6 @@ label {
 .tweet_more_menu_btn {
     display: block;
     height: 20px;
-    font-size: 10px;
     color: #fff;
     line-height: 20px;
     text-decoration: none;
@@ -868,6 +862,11 @@ label {
 
 .btn_people_request {
     margin: 0 auto;
+}
+
+.header_content {
+    padding: 5px 0;
+    border-left: 1px #ddd solid;
 }
 
 .header_frame {
@@ -1450,11 +1449,6 @@ label {
     right: 2px;
 }
 
-.tweetview > .header_content {
-    padding: 5px 0;
-    border-left: 1px #ddd solid;
-}
-
 .tweetview > .listview_body {
     padding: 0px 0px;
     list-style-type: none;
@@ -1500,7 +1494,7 @@ label {
 }
 
 .card {
-    padding: 5px;
+    padding: 10px;
     min-height: 50px;
     position: relative;
     border-top: 1px #ddd solid;
@@ -1600,7 +1594,7 @@ label {
     background-image: none;
     background-repeat: no-repeat;
     background-size: contain;
-    -webkit-border-radius: 7px;
+    border-radius: 2px;
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
 
@@ -1928,6 +1922,13 @@ td {
 }
 .clear {
     clear: both;
+}
+
+.ic_hotot {
+    background: transparent url(../image/ic_hotot.png) no-repeat;
+}
+.ic_compose {
+    background: transparent url(../image/ic_compose.png) no-repeat;
 }
 
 .ic_home {

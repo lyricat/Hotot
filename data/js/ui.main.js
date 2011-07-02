@@ -184,7 +184,6 @@ function hide () {
 show:
 function show () {
     daemon.start();
-    ui.StatusBox.show();
     globals.in_main_view = true;
     this.me.show();
 },

@@ -1,6 +1,6 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.Header = {
-
+isHototMenuClosed: true,
 init:
 function init () {
     $('#btn_my_profile').click(
@@ -14,34 +14,13 @@ function init () {
 
     $('#header').mouseleave(
     function (event) {
-        $('#hotot_menu').hide();
-        $('#exts_menu').hide();
+        ui.Header.closeHototMenu();
         globals.ratelimit_bubble.hide();
     });
 
     $('#hotot_menu').mouseleave(
     function (event) {
-        $('#hotot_menu').hide();
-    });
-    $('#btn_hotot').click(
-    function (event) {
-        $('#exts_menu').hide();
-        $('#hotot_menu').toggle();
-    });
-
-    $('#exts_menu').mouseleave(
-    function (event) {
-        $('#exts_menu').hide();
-    });
-    $('#btn_exts_menu').click(
-    function (event) {
-        $('#hotot_menu').hide();
-        if ($('#exts_menu > li').length == 1) {
-            $('#exts_menu_empty_hint').show();
-        } else if (1 < $('#exts_menu > li').length) {
-            $('#exts_menu_empty_hint').hide();
-        }
-        $('#exts_menu').toggle();
+        ui.Header.closeHototMenu();
     });
 
     $('#exts_menu_empty_hint').click(
@@ -91,6 +70,20 @@ function init () {
         ui.Welcome.show();
         daemon.stop();
     });
+},
+
+openHototMenu:
+function openHototMenu() {
+    $('#hotot_button').addClass('hlight');
+    $('#hotot_menu').show();
+    ui.Header.isHototMenuClosed = false;
+},
+
+closeHototMenu:
+function closeHototMenu() {
+    $('#hotot_button').removeClass('hlight');
+    $('#hotot_menu').hide();
+    ui.Header.isHototMenuClosed = true;
 },
 
 };

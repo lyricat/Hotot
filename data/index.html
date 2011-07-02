@@ -66,7 +66,7 @@ var layout_opts = {
     ,   paneClass:                  'ui-layout-pane'
     ,   north__slidable:            false
     ,   north__closable:            true
-    ,   north__size:                20
+    ,   north__size:                44
     ,   north__showOverflowOnHover: true
     ,   north__spacing_open :       0
     ,   north__spacing_closed:      0
@@ -77,7 +77,7 @@ var layout_opts = {
     ,   east__initClosed:           true
     ,   east__slidable: true
     ,	east__fxSettings_open:		{ easing: "easeOutBounce" }
-    ,   south__size:                48
+    ,   south__size:                0
     ,   south__spacing_open:        0
     ,   south__spacing_closed:      0
     ,   south__initClosed:          true
@@ -96,7 +96,18 @@ function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();
     ui.Slider.column_num = parseInt(view_width / 400) || 1;
     globals.tweet_block_width = view_width / ui.Slider.column_num;
-    $(".tweetview").width(globals.tweet_block_width);
+    $('.tweetview').width(globals.tweet_block_width);
+
+    var status_box_w = $(window).width()*0.6;
+    if (status_box_w < 550) {       // 550, max-width of #status_box
+        if (status_box_w < 300) {   // 300, min-width of #status_box
+            status_box_w = 300;
+        }
+    } else {
+        status_box_w = 550;
+    }
+    $('#status_box').width(status_box_w)
+        .css('left', ($(window).width() - status_box_w)/2 + 'px');
 }
 
 function hotot_action(uri) {
@@ -499,9 +510,6 @@ jQuery(function($) {
     $(document).click(
     function (event) {
         if (event.button == 0) {
-            if ($(event.target).parents('#context_menu').length == 0 && event.target.id != 'context_menu') {
-                ui.StatusBox.close();
-            }
             ui.ContextMenu.hide();
         }
     });
@@ -687,64 +695,59 @@ jQuery(function($) {
 </section><!-- center -->
 <section id="header">
     <div id="header_inner">
-    <a id="btn_my_profile" class="profile_img_wrapper" href="javascript:void(0);">
-    </a>
-    <div id="version" class="version"></div>
-    <ul id="ctrl_panel">
-        <li>
-            <a id="btn_reload" class="panel_btn" href="javascript:void(0);" title="Reload timeline"></a>
-        </li>
-        <li id="btn_exts_menu_wrap">
-            <a id="btn_exts_menu" class="panel_btn" href="javascript:void(0);" title="Extensions ..."></a>
-            <ul id="exts_menu" class="hotot_menu">
-                <li id="exts_menu_empty_hint">
-                    <a href="javascript:void(0);">No Extension Icon</a>
-                </li>
-            </ul>
-        </li>
-        <li id="btn_hotot_wrap">
-            <a id="btn_hotot" class="panel_btn" href="javascript:void(0);" title="More ..."></a>
-            <ul id="hotot_menu" class="hotot_menu">
-                <li>
-                    <a id="btn_prefs" href="javascript:void(0);">Preferences</a>
-                </li>
-                <li>
-                    <a id="btn_exts" href="javascript:void(0);">Extensions</a>
-                </li>
-                <li>
-                    <a id="btn_kismet" href="javascript:void(0);">Kismet Firewall</a>
-                </li>
-                <li>
-                    <a id="btn_about" href="javascript:void(0);">About &amp; Help</a>
-                </li>
-                <li>
-                     <a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
-                </li>
-
-            </ul> 
-        </li>
-    </ul>
-    </div>
-</section>
-<section id="bottom">
     <div id="indication">
         <ul id="indicator_btns">
-            <li class="stick_left" style="display: none">
-                <a id="indicator_add_btn" class="indicator_btn" href="#add" title="Add A New Column"><span class="ic_home"></span></a>
+            <li class="stick_left">
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Add A New Column"><span class="icon ic_hotot"></span></a>
                 <span class="shape"></span>
             </li>        
+            <li>
+                <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose"></span></a>
+                <span class="shape"></span>
+            </li>  
         </ul>
         <div id="indication_slot">
             <div id="indication_slot_border"></div>
             <div id="indication_light"></div>
         </div>
     </div>
+    <a id="btn_my_profile" class="profile_img_wrapper" href="javascript:void(0);"></a>
+    <div id="hotot_menu">
+        <div id="sys_menu_frame">
+            <ul id="sys_menu" class="hotot_menu">
+                <li>
+                    <a id="btn_prefs" href="javascript:void(0);">Preferences</a>
+                </li><li>
+                    <a id="btn_exts" href="javascript:void(0);">Extensions</a>
+                </li><li>
+                    <a id="btn_kismet" href="javascript:void(0);">Kismet Firewall</a>
+                </li><li>
+                    <a id="btn_about" href="javascript:void(0);">About &amp; Help</a>
+                </li>
+                <li class="separator"><span></span></li>
+                <li>
+                     <a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
+                </li>
+            </ul> 
+        </div>
+        <div id="exts_menu_frame">
+            <h2 style="padding: 5px 0;">Extensions</h2>
+            <ul id="exts_menu" class="hotot_menu">
+                <li id="exts_menu_empty_hint">
+                    <a href="javascript:void(0);">No Extension Icon</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</section>
+<section id="bottom">
+
 </section> <!-- bottom -->
 
 </div><!-- container -->
         
 <section id="status_box" class="closed">
-    <span id="bubble_shape_shadow"></span>
     <span id="bubble_shape"></span>
 
     <div id="status_info">
@@ -754,7 +757,9 @@ jQuery(function($) {
         </div>
         <a id="btn_clear_status_info" href="javascript:void(0);"></a>
     </div>
-    <textarea id="tbox_status" class="textarea closed"></textarea>
+    <div id="tbox_status_wrapper" class="textarea">
+        <textarea id="tbox_status" class="closed"></textarea>
+    </div>
     <div id="status_ctrl">
         <a id="toggle_mode" width="20" class="button" title="Click to compose message"></a>
         <a id="btn_shorturl" class="button"  title="URL shortener"></a>

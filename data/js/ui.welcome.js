@@ -263,7 +263,6 @@ function authenticate_pass(result) {
     ui.Welcome.hide();
     ui.Main.show();
     globals.layout.open('north');
-    globals.layout.open('south');
     kismet.load();
     document.title = _('hotot') + ' | ' + conf.current_name;
     hotot_action('system/sign_in');    
