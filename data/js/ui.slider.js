@@ -225,6 +225,8 @@ function slide_to(id) {
             });
         }
     );    
+    $(ui.Main.selected_tweet_id).removeClass('selected'); 
+    ui.Main.selected_tweet_id = null;
     $('#tweet_bar').hide();
 },
 

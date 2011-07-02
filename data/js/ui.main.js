@@ -5,6 +5,8 @@ me: {},
 
 active_tweet_id: null,
 
+selected_tweet_id: null,
+
 use_preload_conversation: true,
 
 use_auto_loadmore: false,
@@ -559,6 +561,7 @@ function bind_tweet_action(id) {
     function (event) {
         ui.Main.set_tweet_bar(id);
         if (event.button == 0) {
+            ui.Main.selected_tweet_id = id;
             ui.StatusBox.close();
             ui.ContextMenu.hide();
         }
@@ -895,15 +898,22 @@ move_to_tweet:
 function move_to_tweet(pos) {
     var target = null;
     var current = null;
-    var cur_view = ui.Main.views[ui.Slider.current];
-    if (!cur_view.hasOwnProperty('selected_item_id')) {
-        cur_view.selected_item_id 
-            = '#'+ cur_view._body.find('.card:first').attr('id');
+    var cur_view = null;
+    if (ui.Main.selected_tweet_id != null) {
+        current = $(ui.Main.selected_tweet_id);   
     }
-    current = $(cur_view.selected_item_id);
-    if (current.length == 0) {
-        return;
+    // if we lose current placemarker ...
+    if (current == null || current.length == 0) {
+        cur_view = ui.Main.views[ui.Slider.current];
+        if (!cur_view.hasOwnProperty('selected_item_id')) {
+            cur_view.selected_item_id 
+                = '#'+ cur_view._body.find('.card:first').attr('id');
+        }
+        current = $(cur_view.selected_item_id);
+    } else {
+        cur_view= ui.Main.views[current.parents('.listview').attr('name')];
     }
+    hotot_log('#'+ current.attr('id'), current.text())
     var container = cur_view._body;
     if (pos == 'top') {
         target = container.find('.card:first');
@@ -919,15 +929,16 @@ function move_to_tweet(pos) {
     } else {
         target = $(pos); 
     }
-
     if (target.length == 0) {
         target = current;
     }
+    hotot_log('#'+ target.attr('id'), target.text())
     cur_view._me.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}, 300);
     current.removeClass('selected');
     target.addClass('selected');
-    cur_view.selected_item_id = '#'+ target.attr('id');
+    ui.Main.selected_tweet_id = '#'+ target.attr('id');
+    cur_view.selected_item_id = ui.Main.selected_tweet_id;
     target.focus();
 },
 

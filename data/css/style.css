@@ -212,9 +212,10 @@ pre {
     display: block;
     box-shadow: none;
 }
+
 #exts_menu_frame {
-    width: 160px;
-    margin-left: 160px;
+    width: 179px;
+    margin-left: 151px;
 }
 
 .hotot_menu {
@@ -1509,12 +1510,22 @@ label {
     border-bottom: 1px #ddd solid;
 }
 
+.card.selected {
+    border-bottom: 1px #bbb solid;
+}
+
 .card > .tweet_selected_indicator {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 5px;
+    width: 1px;
     bottom: 0px;
+    background-color: #4C6CF5;
+    display: none;
+}
+
+.card.selected > .tweet_selected_indicator {
+    display: block;
 }
 
 .card > .tweet_active_indicator {
