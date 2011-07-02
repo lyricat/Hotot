@@ -360,9 +360,25 @@ function init_hotkey() {
 
     // @TODO Actions, prefix 'a'
     // 'a' to open action menu, deprecated
-    hotkey.register(hotkey.calculate(65, false, false), ui.ActionMenu.show);
+    var ia = hotkey.calculate(65, false, false);
     // 'a' then 'r' to reply
+    hotkey.register([ia, hotkey.calculate(82,false,false)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_reply_click(null, ui.Main.selected_tweet_id, null); 
+            }
+        }
+    });
     // 'a' then 'q' to quote
+    hotkey.register([ia, hotkey.calculate(81,false,false)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_rt_click(null, ui.Main.selected_tweet_id, null); 
+            }
+        }
+    });
     // 'a' then 's' to favorite/un-fav
     // 'a' then 'a' to reply all
     // 'a' then <Shift>+'r' to retweet/undo-retweet

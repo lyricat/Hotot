@@ -437,7 +437,7 @@ function close() {
         , 'linear'
         , function () {
             ui.StatusBox.hide();
-            ui.Main.views[ui.Slider.current].focus();
+            ui.Main.views[ui.Slider.current]._body.focus();
         });
     ui.StatusBox.stop_screen_name_detect();
     $('#indicator_compose_btn').removeClass('hlight');

@@ -561,7 +561,9 @@ function bind_tweet_action(id) {
     function (event) {
         ui.Main.set_tweet_bar(id);
         if (event.button == 0) {
+            $(ui.Main.selected_tweet_id).addClass('selected');
             ui.Main.selected_tweet_id = id;
+            $(id).addClass('selected');
             ui.StatusBox.close();
             ui.ContextMenu.hide();
         }
