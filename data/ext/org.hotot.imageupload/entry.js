@@ -33,7 +33,7 @@ services : {
 },
 
 on_ext_btn_clicked:
-function on_btn_upload_clicked(event) {
+function on_ext_btn_clicked(event) {
     if (lib.twitterapi.use_oauth) {
         ext.HototImageUpload.upload_dialog.open();
     } else {
@@ -47,8 +47,8 @@ on_btn_upload_clicked:
 function on_btn_upload_clicked(event) {
     if (ext.HototImageUpload.select_filename == ''
         || ext.HototImageUpload.select_filename == 'None') {
-        toast.set('Please choose an image.').show();
-        return;
+        //toast.set('Please choose an image.').show();
+        //return;
     }
 
     var signed_params = jsOAuth.form_signed_params(
@@ -85,15 +85,23 @@ function on_btn_upload_clicked(event) {
     }
 
     toast.set('Uploading ... ').show();
-    lib.network.do_request(
-        'POST'
-        , ext.HototImageUpload.services[service_name].url
-        , params 
-        , headers
-        , [['media', ext.HototImageUpload.select_filename]] 
-        , ext.HototImageUpload.success
-        , ext.HototImageUpload.fail
-        );
+    var reader = new FileReader();
+    var file = $('#ext_hotot_upload_image_file').get(0).files[0];
+    reader.onload = function (e) {
+        var result = e.target.result;
+        var ret = lib.network.encode_multipart_formdata(params,file, result);
+        $.extend(headers, ret[0]);
+        lib.network.do_request(
+            'POST'
+            , ext.HototImageUpload.services[service_name].url
+            , params 
+            , headers
+            , ret[1]
+            , ext.HototImageUpload.success
+            , ext.HototImageUpload.fail
+            );
+    }
+    reader.readAsDataURL(file);
 },
 
 on_btn_brow_clicked:
@@ -161,6 +169,12 @@ function enable() {
         <a href="http://img.ly" target="_blank" class="button">img.ly</a>\
         <a href="http://twitpic.com" target="_blank" class="button">twitpic.com</a>\
         <a href="http://plixi.com" target="_blank" class="button">plixi.com</a>\
+        <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="combo">\
+            <option value="img.ly" default="1">img.ly</option>\
+            <option value="twitpic.com">twitpic.com</option>\
+            <option value="plixi.com">plixi.com</option>\
+        </select>\
+        <input id="ext_hotot_upload_image_file" type="file"/>\
         </p>\
     </div>';
     
@@ -175,8 +189,8 @@ function enable() {
     ext.HototImageUpload.upload_dialog 
         = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
             , title, header_html_2, body_html_2
-            , [{  id:'#ext_uploadimage_upload_btn', label: 'Close'
-                , click: function(){ext.HototImageUpload.upload_dialog.close()}}]
+            , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
+                , click: ext.HototImageUpload.on_btn_upload_clicked}]
             );
     }
     ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})

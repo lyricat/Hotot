@@ -30,6 +30,34 @@ function normalize_result(result) {
     return result;
 },
 
+encode_multipart_formdata:
+function encode_multipart_formdata(fields, file, data) {
+    var BOUNDARY = 'HototFormBoundary31415926535897932384626'
+    var CRLF = '\r\n'
+    var L = []
+    total_size = 0
+    for (var key in fields) {
+        value = fields[key];
+        L.push('--' + BOUNDARY);
+        L.push('Content-Disposition: form-data; name="'+key+'"');
+        L.push('');
+        L.push(value);
+    }
+    L.push('--' + BOUNDARY);
+    L.push('Content-Disposition: form-data; name="media"; filename="hotot.png"');
+    L.push('Content-Type: ' + file.type);
+    L.push('');
+    L.push(data);
+    total_size += file.size;
+
+    L.push('--' + BOUNDARY + '--')
+    L.push('')
+    var body = L.join(CRLF)
+    var headers = {'content-type':'multipart/form-data; boundary=' + BOUNDARY
+        , 'content-length': body.length};
+    return [headers, body]
+},
+
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
     var now = Date.now();
@@ -40,7 +68,7 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
     lib.network.last_req_url = req_url;
 
     if (!req_headers) req_headers = {};
-    if (lib.network.py_request || req_files.length != 0) {
+    if (lib.network.py_request){ //|| req_files.length != 0) {
         var task_uuid = lib.network.generate_uuid();
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
@@ -57,12 +85,13 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
         
-        hotot_log('Req', JSON.stringify({'type':req_method, 'url': req_url, 'data': req_params}));
+        hotot_log('Req', JSON.stringify({'type':req_method, 'url': req_url, 'data':req_params}));
 
         jQuery.ajax({    
             type: req_method,
             url: req_url,
-            data: req_params,
+            processData: (req_files == null),
+            data: (req_files == null? req_params:req_files),
             beforeSend: 
             function(xhr) {
                 for (var k in req_headers) {

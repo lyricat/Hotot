@@ -106,8 +106,7 @@ function update_tweet_block_width() {
     } else {
         status_box_w = 550;
     }
-    $('#status_box').width(status_box_w)
-        .css('left', ($(window).width() - status_box_w)/2 + 'px');
+    $('#status_box').width(status_box_w);
 }
 
 function hotot_action(uri) {
@@ -714,11 +713,11 @@ jQuery(function($) {
     <div id="indication">
         <ul id="indicator_btns">
             <li class="stick_left">
-                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Add A New Column"><span class="icon ic_hotot"></span></a>
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot"></span></a>
                 <span class="shape"></span>
             </li>        
-            <li>
-                <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose"></span></a>
+            <li class="stick_left" style="width: 150px; left: 36px;">
+                <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose">Compose</span></a>
                 <span class="shape"></span>
             </li>  
         </ul>

@@ -437,7 +437,10 @@ function close() {
         , 'linear'
         , function () {
             ui.StatusBox.hide();
-            ui.Main.views[ui.Slider.current]._body.focus();
+            setTimeout(function () {
+            ui.Main.views[ui.Slider.current]._body.click();
+            $(ui.Main.selected_tweet_id).click();
+            }, 500);
         });
     ui.StatusBox.stop_screen_name_detect();
     $('#indicator_compose_btn').removeClass('hlight');

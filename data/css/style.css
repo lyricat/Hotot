@@ -191,7 +191,7 @@ pre {
     position: absolute;
     top: 35px;
     left: 0px;
-    width: 320px;
+    width: 330px;
     background: white;
     box-shadow: 2px 2px 3px #888;
     display: none;
@@ -250,7 +250,7 @@ pre {
     text-decoration:none;
     background-position: 0 center !important;
     background-repeat: no-repeat !important;
-    color: #000;
+    color: #555;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -290,12 +290,12 @@ pre {
     background-position: right top;
     min-width: 300px;
     max-width: 550px;
-    -webkit-box-shadow: 0px 1px 5px #333;
+    box-shadow: 2px 2px 3px #888;
     border-radius: 5px 5px;
     padding: 0;
     position: absolute;
     left: 0;
-    top: 37px;
+    top: 36px;
     z-index: 10000;
     display: none;
 }
@@ -362,8 +362,6 @@ pre {
 }
 
 #status_info {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     display: none;
     padding: 5px;
     min-height: 30px;
@@ -455,12 +453,12 @@ pre {
 
 #indication li.stick_right {
     position: absolute !important;
-    right: 0 !important;
+    right: 0;
 }
 
 #indication li.stick_left {
     position: absolute !important;
-    left: 0 !important;
+    left: 0;
 }
 
 #indication li:first-child {
@@ -473,6 +471,7 @@ pre {
     display: inline-block;
     font-size: 12px;
     position: absolute;
+    text-decoration: none;
 }
     
 #indication li > .indicator_btn:hover {
@@ -481,6 +480,7 @@ pre {
 
 #indication li > .indicator_btn.hlight {
     background-color: white;
+    color: #36c;
 }
 
 #indication li > .indicator_btn > .icon {
@@ -531,6 +531,27 @@ pre {
     border-width: 8px 8px 8px 8px; /* vary these values to change the angle of the vertex */
     border-color: transparent; 
     border-bottom-color: #f2f2f2;
+}
+
+#indicator_compose_btn {
+    width: 150px !important;
+    color: white;
+    background-position: 5px center;
+    text-align: center;
+    line-height: 32px;
+    text-decoration: none;
+    font-size: 14px !important;
+    font-weight: bold;
+    border-right: 1px #444 solid;
+    border-left: 1px #444 solid;
+}
+
+#indicator_compose_btn span.icon {
+    background-position: 5px -43px !important;
+}
+
+#indicator_compose_btn.hlight span.icon {
+    background-position: 5px 5px !important;
 }
 
 #indication_slot {

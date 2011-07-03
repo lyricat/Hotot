@@ -129,7 +129,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , url
             , params
             , headers
-            , [] 
+            , null 
             , on_success
             , on_error
             );
@@ -150,7 +150,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
             , url
             , params
             , headers
-            , []
+            , null
             , on_success
             , on_error
             );
