@@ -73,6 +73,10 @@ function init () {
     };
     toggle_mode.create();
 
+    $('#btn_imageuploader').click(function () {
+        globals.imageuploader_dialog.open();    
+    })
+
     $('#btn_clear_status_info').click(
     function (event) {
         $(this).parent().hide();

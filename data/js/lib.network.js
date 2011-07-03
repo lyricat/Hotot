@@ -32,10 +32,14 @@ function normalize_result(result) {
 
 encode_multipart_formdata:
 function encode_multipart_formdata(fields, file, data) {
+    if (!window.BlobBuilder) {
+        window.BlobBuilder = window.WebKitBlobBuilder;
+    }
+    var bb = new BlobBuilder();
     var BOUNDARY = 'HototFormBoundary31415926535897932384626'
     var CRLF = '\r\n'
-    var L = []
-    total_size = 0
+    var L = [];
+    var bytes = [];
     for (var key in fields) {
         value = fields[key];
         L.push('--' + BOUNDARY);
@@ -47,14 +51,19 @@ function encode_multipart_formdata(fields, file, data) {
     L.push('Content-Disposition: form-data; name="media"; filename="hotot.png"');
     L.push('Content-Type: ' + file.type);
     L.push('');
-    L.push(data);
-    total_size += file.size;
-
+    var str = L.join(CRLF) + CRLF;
+    for (var i = 0; i < str.length; i+= 1) {
+        bb.append(str.substring(i, i+1));
+    }
+    bb.append(data);
+    bb.append(CRLF);
+    L = [];
     L.push('--' + BOUNDARY + '--')
     L.push('')
-    var body = L.join(CRLF)
+    bb.append(L.join(CRLF)); 
+    var body = bb.getBlob();
     var headers = {'content-type':'multipart/form-data; boundary=' + BOUNDARY
-        , 'content-length': body.length};
+        , 'content-length': body.size};
     return [headers, body]
 },
 
@@ -97,6 +106,7 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
                 for (var k in req_headers) {
                     xhr.setRequestHeader(k, req_headers[k]);
                 }
+                xhr.overrideMimeType('text/plain; charset=x-user-defined');
             },
             success: 
             function(result, textStatus, xhr) {

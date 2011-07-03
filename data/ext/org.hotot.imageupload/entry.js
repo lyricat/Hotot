@@ -101,7 +101,7 @@ function on_btn_upload_clicked(event) {
             , ext.HototImageUpload.fail
             );
     }
-    reader.readAsDataURL(file);
+    reader.readAsArrayBuffer(file);
 },
 
 on_btn_brow_clicked:

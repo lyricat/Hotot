@@ -291,7 +291,7 @@ pre {
     min-width: 300px;
     max-width: 550px;
     box-shadow: 2px 2px 3px #888;
-    border-radius: 5px 5px;
+    border-radius: 2px;
     padding: 0;
     position: absolute;
     left: 0;
@@ -333,14 +333,18 @@ pre {
     background: transparent url(../image/ic16_dm.png) no-repeat center center !important;
 }
 
-#toggle_mode, #btn_shorturl {
-    width: 4px !important;
+#btn_imageuploader {
+    background: transparent url(../image/ic16_imageuploader.png) no-repeat center center !important;
+}
+
+#toggle_mode, #btn_shorturl, #btn_imageuploader {
+    width: 6px !important;
     min-width: 0 !important;
     float: left;
     border: none;
 }
 
-#toggle_mode:hover, #btn_shorturl:hover {
+#toggle_mode:hover, #btn_shorturl:hover, #btn_imageuploader:hover {
     background-color: #ccc !important;
 }
 
@@ -1400,7 +1404,79 @@ label {
 .kismet_rule.selected {
     background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
     color: white;
+}
+
+
+/*===== ImageUploader Dialog ================================*/
+#imageuploader_dlg {
+    
+}
+
+#imageuploader_dlg .dialog_header {
+    height: 0px;
+    padding: 0;
 } 
+
+#imageuploader_dlg .dialog_body {
+    height: 500px;
+}
+
+#imageuploader_dlg .dialog_footer {
+    height: 30px;
+    padding: 10px;
+}
+
+#imageuploader_dlg .service_list {
+    list-style-type: none;
+    text-align: center;
+    font-size: 14px;
+}
+
+#imageuploader_dlg .service_list li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+#imageuploader_dlg .service {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+#imageuploader_dlg .service.selected {
+    background: #f2f2f2;
+}
+
+#imageuploader_dlg .service:hover {
+    background: #36c;
+    color: white;
+}
+
+#imageuploader_dlg .dragarea {
+    border: 4px #CCC dashed;
+    padding: 20px;
+    font-size: 20px;
+    min-height: 200px;
+    vertical-align: middle;
+    color: #888;
+    height: 250px;
+}
+
+#imageuploader_dlg .preview {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    margin-top: 20px;
+    height: 200px;
+}
+
+#imageuploader_dlg .message {
+    width: 95%;
+    height: 30px;
+}
+
 /*===== Class styles ================================*/
 .page {
     margin: 0 auto;

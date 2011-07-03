@@ -915,7 +915,6 @@ function move_to_tweet(pos) {
     } else {
         cur_view= ui.Main.views[current.parents('.listview').attr('name')];
     }
-    hotot_log('#'+ current.attr('id'), current.text())
     var container = cur_view._body;
     if (pos == 'top') {
         target = container.find('.card:first');
@@ -934,7 +933,6 @@ function move_to_tweet(pos) {
     if (target.length == 0) {
         target = current;
     }
-    hotot_log('#'+ target.attr('id'), target.text())
     cur_view._me.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}, 300);
     current.removeClass('selected');

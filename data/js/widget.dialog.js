@@ -99,7 +99,7 @@ function WidgetDialog(obj) {
         var body_h = self._me_h - self._header_h - self._footer_h;
         var body_padding = parseInt(self._body.css('padding-top'))
             + parseInt(self._body.css('padding-bottom'));
-        self._body.css({'height': (body_h - body_padding - 20) + 'px'});
+        self._body.css({'height': (body_h - body_padding - 30) + 'px'});
         // 20px = dialog_body.padding + border_num
     };
 
