@@ -18,7 +18,7 @@ procs: {},
 
 archive_names: [],
 
-mask_text: '******** Masked Text Field <a href="#" title="{%TEXT%}">&para;</a> *******',
+mask_text: '******** Masked Text Field ********',
 
 init:
 function init() {
@@ -68,7 +68,7 @@ function filter(tweets, action) {
         for (var j = 0; j < kismet.enforcer[action].length; j += 1) {
             var rule = kismet.enforcer[action][j];
             if (rule.disabled == 1) {
-                break;
+                continue;
             }
             var field_value = kismet.get_field_value(rule.field, tweet);
             var ret = false;
@@ -148,8 +148,7 @@ function notify(tweets, i) {
 mask:
 function mask(tweets, i) {
     var tweet = $.extend(true, {}, tweets[i]);
-    tweets[i].text = kismet.mask_text.replace('{%TEXT%}'
-        , tweets[i].text);
+    tweets[i].text = kismet.mask_text;
     db.dump_tweets([tweet]);
 },
 
