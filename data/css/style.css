@@ -537,10 +537,9 @@ pre {
     border-bottom-color: #f2f2f2;
 }
 
+
 #indicator_compose_btn {
-    width: 150px !important;
     color: white;
-    background-position: 5px center;
     text-align: center;
     line-height: 32px;
     text-decoration: none;
@@ -548,13 +547,20 @@ pre {
     font-weight: bold;
     border-right: 1px #444 solid;
     border-left: 1px #444 solid;
+    text-indent: -999999px;
 }
 
-#indicator_compose_btn span.icon {
+#indicator_compose_btn.with_label {
+    text-indent: 0px;
+    width: 150px !important;
+    background-position: 5px center;
+}
+
+#indicator_compose_btn.with_label span.icon {
     background-position: 5px -43px !important;
 }
 
-#indicator_compose_btn.hlight span.icon {
+#indicator_compose_btn.with_label.hlight span.icon {
     background-position: 5px 5px !important;
 }
 

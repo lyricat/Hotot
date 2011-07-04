@@ -35,7 +35,11 @@ services : {
 on_ext_btn_clicked:
 function on_ext_btn_clicked(event) {
     if (lib.twitterapi.use_oauth) {
-        ext.HototImageUpload.upload_dialog.open();
+        if (util.is_native_platform()) {
+            ext.HototImageUpload.upload_dialog.open();
+        } else {
+            globals.imageuploader_dialog.open();
+        }
     } else {
         title = 'Error !'
         content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
@@ -47,8 +51,8 @@ on_btn_upload_clicked:
 function on_btn_upload_clicked(event) {
     if (ext.HototImageUpload.select_filename == ''
         || ext.HototImageUpload.select_filename == 'None') {
-        //toast.set('Please choose an image.').show();
-        //return;
+        toast.set('Please choose an image.').show();
+        return;
     }
 
     var signed_params = jsOAuth.form_signed_params(
@@ -151,7 +155,6 @@ function enable() {
     // create upload dialog
     var title = 'Upload image to ...'
     var header_html = '<h3>Upload to ...</h3>';
-    var header_html_2 = '<h3>Current platform doesn\'t support to upload file. You can upload images follow those links:</h3>';
     var body_html = 
         '<div class="dialog_block"><h3>- Services -</h3><p>\
         <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="combo">\
@@ -163,20 +166,6 @@ function enable() {
         <div class="dialog_block"><h3>- Preview &amp; Comments -</h3><p>\
         <img id="ext_hotot_upload_image_prev" style="max-height:100px;width:100px; border:1px #ccc solid;" style="float: left;"/>\
         <textarea id="ext_hotot_upload_image_message" class="textarea" style="min-height: 100px;"></textarea></p></div>';
-    var body_html_2 = 
-    '<div class="dialog_block"><h3>- Services -</h3>\
-        <p>\
-        <a href="http://img.ly" target="_blank" class="button">img.ly</a>\
-        <a href="http://twitpic.com" target="_blank" class="button">twitpic.com</a>\
-        <a href="http://plixi.com" target="_blank" class="button">plixi.com</a>\
-        <select id="ext_hotot_upload_image_services" title="Choose a service." style="width: 120px" class="combo">\
-            <option value="img.ly" default="1">img.ly</option>\
-            <option value="twitpic.com">twitpic.com</option>\
-            <option value="plixi.com">plixi.com</option>\
-        </select>\
-        <input id="ext_hotot_upload_image_file" type="file"/>\
-        </p>\
-    </div>';
     
     if (util.is_native_platform()) {
     ext.HototImageUpload.upload_dialog 
@@ -185,14 +174,7 @@ function enable() {
             , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
                 , click: ext.HototImageUpload.on_btn_upload_clicked}]
             );
-    } else {
-    ext.HototImageUpload.upload_dialog 
-        = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
-            , title, header_html_2, body_html_2
-            , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
-                , click: ext.HototImageUpload.on_btn_upload_clicked}]
-            );
-    }
+    } 
     ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})
     ext.HototImageUpload.upload_dialog.resize(400, 250);
 },

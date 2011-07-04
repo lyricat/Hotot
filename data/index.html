@@ -99,6 +99,12 @@ function update_tweet_block_width() {
     globals.tweet_block_width = view_width / ui.Slider.column_num;
     $('.tweetview').width(globals.tweet_block_width);
 
+    if (ui.Slider.column_num == 1) {
+        $('#indicator_compose_btn').removeClass('with_label');
+    } else {
+        $('#indicator_compose_btn').addClass('with_label');
+    }
+
     var status_box_w = $(window).width()*0.6;
     if (status_box_w < 550) {       // 550, max-width of #status_box
         if (status_box_w < 300) {   // 300, min-width of #status_box

@@ -74,7 +74,20 @@ function init () {
     toggle_mode.create();
 
     $('#btn_imageuploader').click(function () {
-        globals.imageuploader_dialog.open();    
+        if (lib.twitterapi.use_oauth) {
+            if (util.is_native_platform()) {
+                if (!ext.exts_info['org.hotot.imageupload']['enable']) {
+                    ext.exts_info['org.hotot.imageupload'].extension.enable();
+                }
+                ext.HototImageUpload.upload_dialog.open();
+            } else {
+                globals.imageuploader_dialog.open();
+            }
+        } else {
+            title = 'Error !'
+            content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
+            widget.DialogManager.alert(title, content); 
+        }
     })
 
     $('#btn_clear_status_info').click(
