@@ -23,7 +23,10 @@ function init_search_view(view) {
         sub_view_btns.removeClass('selected');
         $(this).addClass('selected');
         ui.SearchView.switch_sub_view(view, pagename);
-    });},
+    });
+
+    widget.autocomplete.connect(search_entry);
+},
     
 destroy_people_view:
 function destroy_people_view(view) {

@@ -211,6 +211,8 @@ function init () {
     $('#status_box').click(function () {
         return false;    
     })
+    
+    widget.autocomplete.connect($('#tbox_dm_target'));
 
     ui.StatusBox.close(); 
 },
@@ -260,17 +262,17 @@ change_mode:
 function change_mode(mode) {
     if (mode == ui.StatusBox.MODE_DM) {
         $('#status_box').removeClass('reply_mode').addClass('dm_mode');
-        $('#dm_target').show();
+        $('#tbox_dm_target').show();
         $('#status_info').show();
         $('#status_info_text').html('<span class="info_hint">'
             + _('compose_messages_to') + '</span>');
     } else if (mode == ui.StatusBox.MODE_REPLY){
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
         $('#status_info').show();
-        $('#dm_target').hide();
+        $('#tbox_dm_target').hide();
     } else {
         $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
-        $('#dm_target').hide();
+        $('#tbox_dm_target').hide();
         $('#status_info').hide();
     }
     ui.StatusBox.current_mode = mode;

@@ -56,7 +56,11 @@ function init () {
                 ui.Header.closeHototMenu();
             }
         } else {
-            ui.Slider.slide_to(view_name);
+            if (ui.Slider.current == view_name) {
+                ui.Main.move_to_tweet('top');
+            } else { 
+                ui.Slider.slide_to(view_name);
+            }
         }
         return false;
     });

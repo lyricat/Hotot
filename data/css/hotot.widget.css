@@ -385,6 +385,7 @@ disabled:
     z-index: 99999;
 }
 .bubble_container {
+    
 }
 .bubble_body { 
     border-radius: 2px;
@@ -399,5 +400,31 @@ disabled:
     width: 100px;
     border: 1 #ccc solid;
 }
+/* = widget.autocomplete = */
+.autocomplete {
+    list-style-type: none;
+    max-height: 200px;
+    overflow: auto;
+    background-color: white;
+    border: 1px #ddd solid;
+    display: none;
+    position: absolute;
+    background: white;
+    text-align: left;
+    text-indent: 30px;
+}
 
+.autocomplete li.selected { 
+    background: lightgray;
+}
+
+.autocomplete li { 
+    display: block;
+    height: 24px;
+    line-height: 24px;
+}
+
+.autocomplete li:hover {
+    
+}
 

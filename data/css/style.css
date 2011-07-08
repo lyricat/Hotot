@@ -348,18 +348,6 @@ pre {
     background-color: #ccc !important;
 }
 
-#dm_target {
-    border: 1px #90abc4 solid;
-    width: 200px;
-    padding: 1px 5px;
-}
-
-#tbox_dm_target {
-    padding: 0;
-    border: 0px transparent none;
-    background: transparent;
-}
-
 #status_len {
     float: left;
     font-size: 10px;

@@ -196,7 +196,6 @@ function init () {
     function (event) {
         globals.about_dialog.open();
     });
-
     return this;
 },
 
