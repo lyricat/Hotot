@@ -829,11 +829,12 @@ function on_expander_click(btn, event) {
 
     var container = $(li.find('.tweet_thread')[0]);
 
-    container.parent().toggle();
     if ($(btn).hasClass('expand')) {
         $(btn).removeClass('expand');
+        container.parent().hide();
     } else {
         $(btn).addClass('expand');
+        container.parent().show();
         if (container.children('.card').length == 0) {
             li.find('.tweet_thread_hint').show();
             li.find('.btn_tweet_thread_more').hide();

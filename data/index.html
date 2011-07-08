@@ -372,7 +372,6 @@ function init_hotkey() {
     });
 
     // @TODO Actions, prefix 'a'
-    // 'a' to open action menu, deprecated
     var ia = hotkey.calculate(65, false, false);
     // 'a' then 'r' to reply
     hotkey.register([ia, hotkey.calculate(82,false,false)], function() {
@@ -396,7 +395,26 @@ function init_hotkey() {
     // 'a' then 'a' to reply all
     // 'a' then <Shift>+'r' to retweet/undo-retweet
     // 'a' then 'd' to delete
-    
+   
+    // 'z' then 'o' to expand
+    var iz = hotkey.calculate(90);
+    hotkey.register([iz, hotkey.calculate(79, false, false)], function () {
+        if (ui.Main.selected_tweet_id != null) {
+            var btn = $(ui.Main.selected_tweet_id)
+                .find('.btn_tweet_thread:first');
+            btn.removeClass('expand');
+            btn.click();
+        }
+    });
+    // 'z' then 'c' to expand
+    hotkey.register([iz, hotkey.calculate(67, false, false)], function () {
+        if (ui.Main.selected_tweet_id != null) {
+            var btn = $(ui.Main.selected_tweet_id)
+                .find('.btn_tweet_thread:first')
+            btn.addClass('expand');
+            btn.click();
+        }
+    });
     // shift + '9' to toggl
     hotkey.register(hotkey.calculate(57, true, false), ui.Sidebar.toggle);
     // :)
