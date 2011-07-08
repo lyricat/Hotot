@@ -14,11 +14,6 @@ function WidgetAutoComplete(obj) {
 
     self.onKeyDown = function onKeyDown(event) {
         var key_code = event.keyCode;
-        if ((key_code <= 90 && 65 <= key_code)
-            || (48 <= key_code && key_code <= 57)
-            || 95 == key_code || key_code == 8) {
-            self.detect(event);
-        }
         
         if (key_code == 13) {
             if (self._inDetecting) {
@@ -58,6 +53,13 @@ function WidgetAutoComplete(obj) {
             current.removeClass('selected');
             return false;
         }
+
+        if ((key_code <= 90 && 65 <= key_code)
+            || (48 <= key_code && key_code <= 57)
+            || 95 == key_code || key_code == 8) {
+            self.detect(event);
+        }
+
     };
 
     self.startDetecting = function startDetect() { 
@@ -88,7 +90,7 @@ function WidgetAutoComplete(obj) {
         }
         // get the text after '@'
         if (event.keyCode == 8) {
-            self.inputText = rearText.substring(atIdx + 1, curPos-1) 
+            self.inputText = rearText.substring(atIdx + 1, curPos - 1) 
         } else {
             self.inputText = rearText.substring(atIdx + 1, curPos) 
                 + String.fromCharCode(event.keyCode);
@@ -105,7 +107,7 @@ function WidgetAutoComplete(obj) {
             self.candidate.children('li').unbind('click');
             self.candidate.html(str).show();
             self.candidate.children('li').click(function (event) {
-                var append = $(this).text().substring(text.length - 1); 
+                var append = $(this).text().substring(self.inputText.length); 
                 self.competeName(append);
                 self.stopDetecting();
             });

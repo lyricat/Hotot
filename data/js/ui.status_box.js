@@ -15,17 +15,7 @@ POS_END: -1,
 
 current_mode: 0,
 
-close_timeout: 30000,
-
-open_timeout: 700,
-
 is_closed: false,
-
-auto_complete_hlight_idx: 0,
-
-auto_complete_selected: '',
-
-is_detecting_name: false,
 
 use_hover_box: true,
 
@@ -101,16 +91,13 @@ function init () {
     $('#tbox_status').keydown(
     function (event) {
         ui.StatusBox.update_status_len();
-
-        var key_code = event.keyCode;
-        
         // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
         // However, if ignore all keydown event will cause some bugs
         // if user use IM to compose status text. 
         // for example, 
         // backspace doesn't work, can't type english characters, etc. 
         // so i only ignore event associate with program's behaviors.
-        if (event.ctrlKey && key_code == 13) {
+        if (event.ctrlKey && event.keyCode == 13) {
             ui.StatusBox.keydown_twice_flag += 1;
             if (ui.StatusBox.keydown_twice_flag % 2 == 0 
                 && util.is_native_platform()) 
@@ -118,83 +105,13 @@ function init () {
             // shortcut binding Ctrl+Enter
             $('#btn_update').click();
             return false;
-        } 
-
-        if (key_code == 13) {
-            if (! ui.StatusBox.is_detecting_name)
-                return ;
-            var append = ui.StatusBox.auto_complete_selected
-                .substring(ui.StatusBox.get_screen_name().length - 1); 
-            ui.StatusBox.insert_status_text(append, null);
-            return false;
-        }
-        if (key_code == 38 || key_code == 40) {         
-            if (ui.StatusBox.is_detecting_name)
-                return false;
-        }
-        
+        }         
     });
     
     $('#tbox_status').keypress(
     function (event) {
-        if (event.keyCode == 64) { //@
-            ui.StatusBox.start_screen_name_detect();
-        }
-        if (event.keyCode == 32) { // space
-            ui.StatusBox.stop_screen_name_detect();
-        }
         ui.StatusBox.update_status_len();
-    });
-     
-    $('#tbox_status').keyup(
-    function (event) {
-        if (event.keyCode == 27) { //ESC to close
-            ui.StatusBox.close();
-            return false;
-        }
-
-        if (event.keyCode == 13) {
-            if (ui.StatusBox.is_detecting_name) {
-                ui.StatusBox.stop_screen_name_detect();
-                return false;
-            }
-        }
-
-        if (event.keyCode == 38 || event.keyCode == 40) { 
-        // up or down
-            if (! ui.StatusBox.is_detecting_name)
-                return true;
-            var screen_name_list = $('#screen_name_auto_complete');
-            var items = screen_name_list.find('li');
-            var item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
-            item.removeClass('hlight');
-            
-            if (event.keyCode == 38) 
-                ui.StatusBox.auto_complete_hlight_idx -= 1;
-            if (event.keyCode == 40) 
-                ui.StatusBox.auto_complete_hlight_idx += 1;
-
-            if (ui.StatusBox.auto_complete_hlight_idx == -1 ) {
-                ui.StatusBox.auto_complete_hlight_idx = items.length - 1;
-            } 
-            if (ui.StatusBox.auto_complete_hlight_idx == items.length) {
-                ui.StatusBox.auto_complete_hlight_idx = 0;
-            } 
-
-            item = items.eq(ui.StatusBox.auto_complete_hlight_idx);
-            item.addClass('hlight');
-
-            screen_name_list.stop().animate({scrollTop: item.get(0).offsetTop - screen_name_list.get(0).offsetTop}); 
-            ui.StatusBox.auto_complete_selected = item.text();
-            return false;
-        } 
-        ui.StatusBox.auto_complete_hlight_idx = 0;
-        ui.StatusBox.auto_complete(event);
-
-        ui.StatusBox.update_status_len();
-    });
-    
-    $('#tbox_status').focus(
+    }).focus(
     function (event) {
         ui.StatusBox.update_status_len();
     }).change(
@@ -212,6 +129,7 @@ function init () {
         return false;    
     })
     
+    widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 
     ui.StatusBox.close(); 
@@ -249,13 +167,6 @@ function on_btn_short_url_clicked(event) {
     }
     $(window).queue('_short_url', procs);
     $(window).dequeue('_short_url');
-},
-
-lazy_close:
-function lazy_close() {
-    window.clearTimeout(ui.StatusBox.close_countdown_timer);
-    ui.StatusBox.close_countdown_timer = window.setTimeout(
-        ui.StatusBox.close, ui.StatusBox.close_timeout);
 },
 
 change_mode:
@@ -381,62 +292,6 @@ function set_dm_target(screen_name) {
     $('#tbox_dm_target').val(screen_name);
 },
 
-auto_complete:
-function auto_complete(event) {
-    if (! ui.StatusBox.is_detecting_name)
-        return;
-    var key_code = event.keyCode;
-    if ((key_code <= 90 && 65 <= key_code)
-        || (48 <= key_code && key_code <= 57)
-        || 95 == key_code || key_code == 8) {
-        var name = ui.StatusBox.get_screen_name().substring(1);
-        if (name == '') {
-            $('#screen_name_auto_complete').html('').hide();
-        } else {
-            db.get_screen_names_starts_with(name,
-            function (tx, rs) {
-                var result_list = []
-                for (var i = 0, l = rs.rows.length; i < l; i += 1) { 
-                    result_list.push(rs.rows.item(i).screen_name)
-                }
-                var str = '<li>'+result_list.join('</li><li>')+'</li>';
-                $('#screen_name_auto_complete').html(str).show();
-                $('#screen_name_auto_complete > li').unbind('click');
-                $('#screen_name_auto_complete > li').click(
-                function (event) {
-                    var append = $(this).text().substring(ui.StatusBox.get_screen_name().length - 1); 
-                    ui.StatusBox.insert_status_text(append, null);
-                    ui.StatusBox.stop_screen_name_detect();
-                });
-
-                $('#screen_name_auto_complete li:first').addClass('hlight');
-                ui.StatusBox.auto_complete_selected 
-                    = $('#screen_name_auto_complete li:first').text();
-            });
-        }
-    } 
-},
-
-get_screen_name:
-function get_screen_name() {
-    var current_pos = ui.StatusBox.get_cursor_pos();
-    var screen_name = $('#tbox_status').val().substring(
-        ui.StatusBox.screen_name_start_pos, current_pos);
-    return screen_name;
-},
-
-start_screen_name_detect:
-function start_screen_name_detect() {
-    ui.StatusBox.screen_name_start_pos = ui.StatusBox.get_cursor_pos();
-    ui.StatusBox.is_detecting_name = true;
-},
-
-stop_screen_name_detect:
-function stop_screen_name_detect() {
-    ui.StatusBox.is_detecting_name = false;
-    $('#screen_name_auto_complete').hide();
-},
-
 show:
 function show() {
     $('#status_box').show()
@@ -461,7 +316,6 @@ function close() {
             $(ui.Main.selected_tweet_id).click();
             }, 500);
         });
-    ui.StatusBox.stop_screen_name_detect();
     $('#indicator_compose_btn').removeClass('hlight');
     ui.StatusBox.is_closed = true;
 },
@@ -505,23 +359,6 @@ function move_cursor(pos) {
                 range.moveStart('character', pos);
                 range.select();
         }
-},
-
-get_cursor_pos:
-function get_cursor_pos(){
-    var pos = 0;
-    var box = $('#tbox_status').get(0);
-    $('#tbox_status').focus();
-        if (document.selection) {
-        // IE
-            var sel = document.selection.createRange();
-            sel.moveStart('character', -box.value.length);
-            pos = sel.text.length;
-        } else if (box.selectionStart || box.selectionStart == '0') {
-        // others
-            pos = box.selectionStart;
-        }
-    return pos;
 },
 
 };

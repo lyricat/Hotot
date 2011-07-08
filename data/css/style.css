@@ -402,21 +402,6 @@ pre {
     font-size: 10px;
 }
 
-#screen_name_auto_complete {
-    margin: 5px;
-    list-style-type:none; 
-    font-size: 12px;
-    max-height: 100px;
-    overflow: auto;
-    color: #333;
-    border-top: 1px #ccc solid;
-}
-
-#screen_name_auto_complete > li.hlight {
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
-    color: #fff;
-}
-
 /* ===== Buttom =================================== */
 #indication {
     text-align: center;
