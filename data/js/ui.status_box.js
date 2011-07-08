@@ -341,7 +341,7 @@ function post_message_cb(result) {
 
 append_status_text:
 function append_status_text(text) {
-    var orig = $.trim($('#tbox_status').attr('value'));
+    var orig = $('#tbox_status').attr('value');
     if (orig.length == 0) {
         $('#tbox_status').val(text);
     } else {
