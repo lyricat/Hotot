@@ -32,6 +32,7 @@ function WidgetAutoComplete(obj) {
             if (self._inDetecting) {
                 self.stopDetecting();
             }
+            return;
         }
 
         if (key_code == 38 || key_code == 40) { 
@@ -85,9 +86,6 @@ function WidgetAutoComplete(obj) {
             self.stopDetecting();
             return; 
         }
-        if (!self._inDetecting) {
-            self.startDetecting();
-        }
         // get the text after '@'
         if (event.keyCode == 8) {
             self.inputText = rearText.substring(atIdx + 1, curPos - 1) 
@@ -97,7 +95,11 @@ function WidgetAutoComplete(obj) {
         }
         if (self.inputText.match(/^[\S]+$/g) == null) {
             return;
-        } 
+        }
+        // start 
+        if (!self._inDetecting) {
+            self.startDetecting();
+        }
         self.filter(self.inputText, function (result_list) {
             if (result_list.length == 0) {
                 self.candidate.hide();
