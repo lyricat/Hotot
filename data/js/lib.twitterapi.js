@@ -583,10 +583,10 @@ function watch_user_streams(callback) {
             return;
         }
         if (callback) {
-            newText.split('\n').forEach(function(line) {
-                if (line && line.length > 2) {
+            newText.split(/(^{[^\0]+?}$)/gm).forEach(function(line) {
+                if (line && line.length > 5) {
                     try {
-                        ret = JSON.parse(line);
+                        ret = JSON.parse(line.replace(/\n/g, ''));
                     } catch(e) {
                         hotot_log('Streams callback', e.message + ', line:\n' + line);
                         return;

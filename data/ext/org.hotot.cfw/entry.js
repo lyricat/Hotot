@@ -7,7 +7,7 @@ name: 'Hotot Content Firewall',
 
 description: 'filter out tweets based on content/user/source.',
 
-version: '0.2',
+version: '0.3',
 
 author: 'Xu Zhen',
 
@@ -27,7 +27,7 @@ prefs: {
 db: null,
 
 on_add_tweets:
-function on_add_tweets(tweets, container, reversion) {
+function on_add_tweets(tweets, view) {
 	if (tweets.length == 0) {
 		return;
 	}
@@ -38,27 +38,30 @@ function on_add_tweets(tweets, container, reversion) {
 		return;
 	}
 
-	switch (container.pagename) {
-		case 'home_timeline':
-			if (!prefs.timeline) {
-				return;
+	try {
+		switch (view.name.split("-")[0]) {
+			case 'home':
+				if (!prefs.timeline) {
+					return;
+				}
+				break;
+			case 'mentions':
+				if (!prefs.mentions) {
+					return;
+				}
+				break;
+			case 'messages':
+				if (!prefs.messages) {
+					return;
+				}
+				break;
+			default:
+				if (!prefs.others) {
+					return;
+				}
 			}
-			break;
-		case 'mentions':
-			if (!prefs.mentions) {
-				return;
-			}
-			break;
-		case 'direct_messages_inbox':
-		case 'direct_messages_outbox':
-			if (!prefs.messages) {
-				return;
-			}
-			break;
-		default:
-			if (!prefs.others) {
-				return;
-			}
+	} catch(ex) {
+		hotot_log('Content Firewall', 'unexpected view name: ' + view.name);
 	}
 
 	var check_tweets = function (rulelist, tweets, ignorelist, callback) {
