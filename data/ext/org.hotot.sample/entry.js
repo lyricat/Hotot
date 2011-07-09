@@ -14,10 +14,10 @@ author: 'Shellex Wai',
 url: 'http://hotot.org',
 
 on_add_tweets:
-function on_add_tweets(tweets, container) {
+function on_add_tweets(tweets, view) {
     // just for debug.
     hotot_log('Test',
-        'Update ['+container.pagename+'], '+ tweets.length +' items');
+        'Update ['+view.name+'], '+ tweets.length +' items');
 },
 
 enable:
