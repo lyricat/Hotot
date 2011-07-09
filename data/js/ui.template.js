@@ -303,7 +303,7 @@ kismet_rule_t:
 
 init:
 function init() {
-    ui.Template.reg_url = ui.Template.reg_vaild_preceding_chars
+    ui.Template.reg_url = ''//ui.Template.reg_vaild_preceding_chars
     + '('
         + ui.Template.reg_url_proto_chars 
         + ui.Template.reg_url_path_chars
