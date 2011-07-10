@@ -6,7 +6,7 @@ name: 'Hotot Image Uploader',
 
 description: 'To upload picture to social photo sharing services.',
 
-version: '1.0',
+version: '1.1',
 
 author: 'Shellex Wai',
 
@@ -89,23 +89,15 @@ function on_btn_upload_clicked(event) {
     }
 
     toast.set('Uploading ... ').show();
-    var reader = new FileReader();
-    var file = $('#ext_hotot_upload_image_file').get(0).files[0];
-    reader.onload = function (e) {
-        var result = e.target.result;
-        var ret = lib.network.encode_multipart_formdata(params,file, result);
-        $.extend(headers, ret[0]);
-        lib.network.do_request(
-            'POST'
-            , ext.HototImageUpload.services[service_name].url
-            , params 
-            , headers
-            , ret[1]
-            , ext.HototImageUpload.success
-            , ext.HototImageUpload.fail
-            );
-    }
-    reader.readAsArrayBuffer(file);
+    lib.network.do_request(
+        'POST'
+        , ext.HototImageUpload.services[service_name].url
+        , params 
+        , headers
+        , [['media', ext.HototImageUpload.select_filename]] 
+        , ext.HototImageUpload.success
+        , ext.HototImageUpload.fail
+        );
 },
 
 on_btn_brow_clicked:
@@ -167,14 +159,12 @@ function enable() {
         <img id="ext_hotot_upload_image_prev" style="max-height:100px;width:100px; border:1px #ccc solid;" style="float: left;"/>\
         <textarea id="ext_hotot_upload_image_message" class="textarea" style="min-height: 100px;"></textarea></p></div>';
     
-    if (util.is_native_platform()) {
     ext.HototImageUpload.upload_dialog 
         = widget.DialogManager.build_dialog('#ext_imageupload_dialog'
             , title, header_html, body_html
             , [{  id:'#ext_uploadimage_upload_btn', label: 'Upload'
                 , click: ext.HototImageUpload.on_btn_upload_clicked}]
             );
-    } 
     ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})
     ext.HototImageUpload.upload_dialog.resize(400, 250);
 },

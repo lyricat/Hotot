@@ -77,7 +77,8 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
     lib.network.last_req_url = req_url;
 
     if (!req_headers) req_headers = {};
-    if (lib.network.py_request){ //|| req_files.length != 0) {
+    if (lib.network.py_request 
+        || (req_files && req_files.constructor == Array && req_files.length != 0)) {
         var task_uuid = lib.network.generate_uuid();
         lib.network.success_task_table[task_uuid] = on_success;
         lib.network.error_task_table[task_uuid] = on_error;
