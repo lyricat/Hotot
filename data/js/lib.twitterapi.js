@@ -532,6 +532,7 @@ function watch_user_streams(callback) {
     watch_user_streams.times += 1;
     watch_user_streams.is_running = true;
     watch_user_streams.last_text_length = 0;
+    watch_user_streams.last_empty_time = Date.now();
 
     url = 'https://userstream.twitter.com/2/user.json';
     sign_url = url;
@@ -580,9 +581,17 @@ function watch_user_streams(callback) {
         // empty reply
         if (newText.length < 5) {
             hotot_log('Streams XHR', 'res nothing');
+            var now = Date.now();
+            if (90000 < now - watch_user_streams.last_empty_time) {
+                hotot_log('Streams Timeout', now - watch_user_streams.last_empty_time);
+                watch_user_streams.is_running = false;
+                setTimeout(watch_user_streams, 100, callback);
+                setTimeout(xhr.abort, 100);
+            }
             return;
         }
         if (callback) {
+            watch_user_streams.last_empty_time = Date.now();
             newText.split(/(^{[^\0]+?}$)/gm).forEach(function(line) {
                 if (line && line.length > 5) {
                     try {

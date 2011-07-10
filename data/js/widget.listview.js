@@ -254,6 +254,7 @@ widget.ListView = WidgetListView;
 widget.ListView.trim_page = function trim_page(view) {
     var cards = view._body.children('.card:gt('+conf.vars.trim_bound+')');
     cards.find('.a').unbind();
+    cards.find('.card').unbind();
     cards.unbind();
     cards.remove();
     // reset self.max_id 
