@@ -141,26 +141,6 @@ pre {
     background-color: #aaa;
 }
 
-#btn_reload {
-    background-image: url(../image/refresh_l.png) ;
-}
-
-#btn_reload:hover {
-    background-image: url(../image/refresh_h.png) ;
-}
-
-#btn_exts_menu_wrap {
-    position:relative;
-}
-
-#btn_exts_menu {
-    background-image: url(../image/plus-in_l.png) ;
-}
-
-#btn_exts_menu:hover {
-    background-image: url(../image/plus-in_h.png) ;
-}
-
 #exts_menu >li >a {
     padding-left: 25px;
     background-position: 5px center !important;
@@ -172,18 +152,6 @@ pre {
 
 #exts_menu_empty_hint {
     display: none;
-}
-
-#btn_hotot_wrap {
-    position:relative;
-}
-
-#btn_hotot {
-    background-image: url(../image/menu_l.png);
-}
-
-#btn_hotot:hover {
-    background-image: url(../image/menu_h.png);
 }
 
 #hotot_menu {
@@ -482,7 +450,6 @@ pre {
 }
 
 #indication li > .indicator_btn.unread {
-    /* @TODO need a image here*/
     background-image: url(../image/emit.png);
     background-position: center -13px;
     background-repeat: no-repeat;
