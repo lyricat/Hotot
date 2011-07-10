@@ -594,7 +594,7 @@ pre {
 /* ===== Notification ============================== */
 #notification_area {
     position: fixed;
-    top: 0;
+    top: 38px;
     text-align: center;
     z-index: 999999999;
     width: 100%;
