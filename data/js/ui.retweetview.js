@@ -31,6 +31,14 @@ function init_view(view) {
         ui.RetweetView.switch_sub_view(view, pagename);
     });
 },
+ 
+destroy_view:
+function destroy_view(view) {
+    // unbind
+    view._header.find('.radio_group_btn').unbind();
+    // remove slide, view and DOM
+    ui.Slider.remove(view.name);
+},
 
 switch_sub_view:
 function switch_sub_view(view, name) {

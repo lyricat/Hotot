@@ -646,8 +646,7 @@ function form_view(name, title, cls) {
     m.NAME = name;
     m.TITLE = title
     m.CLASS = cls;
-    if (name == 'home'||name=='mentions'
-        ||name=="messages"||name=="search"||name=='retweets') {
+    if (name == 'home') {
         m.CAN_CLOSE = 'none';
     } else {
         m.CAN_CLOSE = 'block';

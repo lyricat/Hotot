@@ -13,8 +13,8 @@ init:
 function init() {
 },
 
-init_people_view:
-function init_people_view(view) {
+init_view:
+function init_view(view) {
     var vcard = view._header.find('.people_vcard');
     var vcard_profile_btns = vcard.find('.radio_group_btn');
     vcard_profile_btns.click(function (event) {
@@ -84,8 +84,8 @@ function init_people_view(view) {
     });
 },
     
-destroy_people_view:
-function destroy_people_view(view) {
+destroy_view:
+function destroy_view(view) {
     // unbind
     var vcard = view._header.find('.people_vcard');
     vcard.find('.button').unbind();

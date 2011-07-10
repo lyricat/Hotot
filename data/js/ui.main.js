@@ -13,10 +13,6 @@ use_auto_loadmore: false,
 
 // info of blocks. all pages use as containers to display tweets.
 views: {
-    'home': null,
-    'mentions': null,
-    'messages': null,
-    'search': null
 },
 
 init:
@@ -99,79 +95,10 @@ function init () {
 
 reset_views:
 function reset_views() {
-    ui.Slider.add('search'
-        , {title: 'Search', icon:'image/ic_search.png'}
-        , { 'type':'tweet', 'title': 'Search'
-            , 'load': ui.SearchView.load_tweet
-            , 'loadmore': ui.SearchView.loadmore_tweet
-            , 'load_success': ui.SearchView.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.SearchView.loadmore_tweet_success
-            , 'loadmore_fail': null
-            , 'former': ui.Template.form_search
-            , 'init': ui.SearchView.init_search_view
-            , 'destroy': ui.SearchView.destroy_search_view            
-            , 'header_html': ui.Template.search_header_t
-            , 'method': 'poll'
-            , 'interval': -1
-            , 'item_type': 'search'
-            , 'is_trim': false
-        });
-    ui.Slider.add('home'
-        , { title:'Home Timeline', icon:'image/ic_home.png'}
-        , { 'type':'tweet', 'title': 'Home Timeline'
-            , 'load': ui.Main.load_home
-            , 'loadmore': ui.Main.loadmore_home
-            , 'load_success': ui.Main.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.Main.loadmore_tweet_success
-            , 'loadmore_fail': null
-            , 'former': ui.Template.form_tweet
-            , 'method': 'push'
-            , 'interval': 60
-            , 'item_type': 'id'
-        });
-    ui.Slider.add('mentions', {title:'Mentions',icon:'image/ic_mention.png'}
-        , { 'type':'tweet', 'title': 'Mentions'
-            , 'load': ui.Main.load_mentions
-            , 'loadmore': ui.Main.loadmore_mentions
-            , 'load_success': ui.Main.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.Main.loadmore_tweet_success
-            , 'loadmore_fail': null
-            , 'former': ui.Template.form_tweet
-            , 'method': 'push'
-            , 'interval': 60
-            , 'item_type': 'id'
-        });
-    ui.Slider.add('messages', {title:'Messages', icon:'image/ic_dm.png'}
-        , { 'type':'tweet', 'title': 'Messages'
-            , 'load': ui.Main.load_messages
-            , 'loadmore': ui.Main.loadmore_messages
-            , 'load_success': ui.Main.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.Main.loadmore_tweet_success
-            , 'loadmore_fail': null
-            , 'former': ui.Template.form_dm
-            , 'method': 'push'
-            , 'interval': 120
-            , 'item_type': 'id'
-        });
-    ui.Slider.add('retweets', {title:'Retweets', icon:'image/ic_retweet.png'}
-        , { 'type':'tweet', 'title': 'Retweets'
-            , 'load': ui.RetweetView.load_retweeted_to_me 
-            , 'loadmore': ui.RetweetView.loadmore_retweeted_to_me
-            , 'load_success': ui.Main.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.Main.loadmore_tweet_success
-            , 'loadmore_fail': null
-            , 'init': ui.RetweetView.init_view
-            , 'header_html': ui.Template.retweets_header_t
-            , 'former': ui.Template.form_tweet
-            , 'method': 'poll'
-            , 'interval': 180
-            , 'item_type': 'id'
-        });
+    console.log(ui.Slider.addDefaultView('search'));
+    ui.Slider.addDefaultView('home');
+    ui.Slider.addDefaultView('mentions');
+    ui.Slider.addDefaultView('messages');
     return;
 },
 
@@ -312,6 +239,11 @@ function loadmore_people_success(self, json) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
+},
+
+destroy_view:
+function destroy_view(view) {
+    ui.Slider.remove(view.name);
 },
 
 add_people:

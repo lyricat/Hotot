@@ -137,6 +137,8 @@ function WidgetListView(id, name, params) {
     };
 
     self.destroy = function destroy() {
+        self._body.find('a').unbind();
+        self._body.find('.card').unbind().remove();
         if (self._destory != null) {
             self._destory(self);
         }
@@ -161,6 +163,7 @@ function WidgetListView(id, name, params) {
     };
 
     self.load_success = function load_success(json) {
+        if (self == null) return;
         self._footer.hide();
         if (json.length == 0) { return; }
         for (var i = 0, l = json.length; i < l; i+= 1) {
@@ -206,6 +209,7 @@ function WidgetListView(id, name, params) {
     };
     
     self.loadmore_success = function loadmore_success(json) {
+        if (self == null) return;
         self._footer.hide();
         if (json.length == 0) { return; }
         for (var i = 0, l = json.length; i < l; i+= 1) {

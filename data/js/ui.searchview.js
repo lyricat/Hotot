@@ -4,7 +4,7 @@ init:
 function init() {
 },
 
-init_search_view:
+init_view:
 function init_search_view(view) {
     var search_btn = view._header.find('.search_btn'); 
     var search_entry = view._header.find('.search_entry');
@@ -28,8 +28,8 @@ function init_search_view(view) {
     widget.autocomplete.connect(search_entry);
 },
     
-destroy_people_view:
-function destroy_people_view(view) {
+destroy_view:
+function destroy_view(view) {
     // unbind
     view._header.find('.search_btn, .search_entry').unbind();
     // remove slide, view and DOM

@@ -186,7 +186,16 @@ pre {
     margin-left: 151px;
 }
 
+#slider_menu {
+    position: absolute;
+    top: 35px;
+    box-shadow: 2px 2px 3px #888;
+    max-width: 180px;
+    border-radius: 0;
+}
+
 .hotot_menu {
+    text-align: left;
     padding: 5px 0;
     right: 0;
     list-style-type: none;
@@ -216,7 +225,7 @@ pre {
     line-height: 20px;
     display: block;
     text-decoration:none;
-    background-position: 0 center !important;
+    background-position: 2px center !important;
     background-repeat: no-repeat !important;
     color: #555;
     white-space:nowrap;
@@ -224,9 +233,18 @@ pre {
     text-overflow: ellipsis;
 }
 
+.hotot_menu > li > a.checked {
+    background-image: url(../image/ic16_checked.png);
+}
+
+.hotot_menu > li > a.unchecked {
+}
+
 .hotot_menu > li > a:hover {
     color: #fff;
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+    background-color: #2048F3;
+    background-repeat: no-repeat;
+    background-position: 3px center;
 }
 
 #bubble_shape {
@@ -1983,6 +2001,9 @@ td {
 }
 .ic_compose {
     background: transparent url(../image/ic_compose.png) no-repeat;
+}
+.ic_add {
+    background: transparent url(../image/ic_add.png) no-repeat;
 }
 
 .ic_home {

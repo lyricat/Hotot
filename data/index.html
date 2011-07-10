@@ -97,9 +97,12 @@ function change_effects_level(level) {
 function update_tweet_block_width() {
     var view_width = $(window).width() - $('#aside').width();
     ui.Slider.column_num = parseInt(view_width / 400) || 1;
+    if (ui.Slider.tweet_blocks.length < ui.Slider.column_num) {
+        ui.Slider.column_num = ui.Slider.tweet_blocks.length;
+    }
     globals.tweet_block_width = view_width / ui.Slider.column_num;
     $('.tweetview').width(globals.tweet_block_width);
-
+    
     if (ui.Slider.column_num == 1) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
@@ -151,8 +154,8 @@ function open_people(screen_name) {
             , 'loadmore_success': ui.Main.loadmore_tweet_success
             , 'loadmore_fail': null
             , 'former': ui.Template.form_tweet
-            , 'init': ui.PeopleView.init_people_view
-            , 'destroy': ui.PeopleView.destroy_people_view
+            , 'init': ui.PeopleView.init_view
+            , 'destroy': ui.PeopleView.destroy_view
             , 'header_html': ui.Template.people_vcard_t
             , 'method': 'poll'
             , 'interval': 120
@@ -752,6 +755,11 @@ jQuery(function($) {
                 <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose">Compose</span></a>
                 <span class="shape"></span>
             </li>  
+            <li>
+                <a id="indicator_add_btn" class="indicator_btn action_button" href="#add" title="Add new views"><span class="icon ic_add"></span></a>
+                <span class="shape"></span>
+            </li>  
+
         </ul>
         <div id="indication_slot">
             <div id="indication_slot_border"></div>
@@ -785,7 +793,21 @@ jQuery(function($) {
                 </li>
             </ul>
         </div>
-    </div>
+    </div> <!-- hotot_menu -->
+    <ul id="slider_menu" class="hotot_menu">
+        <li>
+            <a href="#mentions">Mentions view</a>
+        </li>
+        <li>
+            <a href="#messages">Messages view</a>
+        </li>
+        <li>
+            <a href="#retweets">Retweets view</a>
+        </li>
+        <li>
+            <a href="#search">Search view</a>
+        </li>
+    </ul>
     </div>
 </section>
 <section id="bottom">
