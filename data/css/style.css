@@ -34,8 +34,8 @@ pre {
 }
 
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-button:start:decrement,
@@ -49,23 +49,31 @@ pre {
     background: #fafafa;
 }
 
+::-webkit-scrollbar-thumb {
+    -webkit-transition: all 0.2s ease-in;
+    background: #fafafa;
+}
+::-webkit-scrollbar-thumb:vertical {
+    border-right: 4px orange solid;
+    height: 50px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+    border-bottom: 4px orange solid;
+    width: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: orange;
+    border:0;
+}
+
 #status_box ::-webkit-scrollbar-track-piece {
     border-color: #fff;
 }
 
 .dialog ::-webkit-scrollbar-track-piece {
-    background-color: #f2f2f2;
+    background-color: #fff;
 }
 
-::-webkit-scrollbar-thumb:vertical {
-    height: 50px;
-    background: orange;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-    width: 50px;
-    background: orange;
-}
 
 #container {
     height:100%;
@@ -91,6 +99,7 @@ pre {
     height: 28px;
     display: block;
     background-image: url(../image/ic48_profile_image.png);
+    margin-top: -15px;
 }
 
 #ratelimit_bubble .bubble_body{
@@ -387,6 +396,35 @@ pre {
     font-weight: lighter;
     font-size: 10px;
 }
+
+#view_title_bar {
+    height: 20px;
+    width: 800000px;
+}
+
+#view_title_bar .view_title {
+    background: #F2F2F2;
+    color: #333;
+    text-align: center;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    border-bottom: 1px #ddd solid;
+    border-left: 1px #ddd solid;
+    float: left;
+    position: relative;
+}
+
+#view_title_bar .close_btn {
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
 
 /* ===== Buttom =================================== */
 #indication {
@@ -1459,7 +1497,6 @@ label {
 }
 
 .tweetview > .listview_header {
-    min-height: 16px;
     font-size: 12px;
     border: 0;
     position: relative;
@@ -1484,7 +1521,9 @@ label {
     line-height: 20px;
     font-weight: bold;
     border-bottom: 1px #ddd solid;
+    display: none;
 }
+
 #home_tweetview .header_title {
     background-color: #37c;
     color: white;
@@ -1501,14 +1540,6 @@ label {
     background-color: #c73;
     color: white;
     border-bottom-color: #aaa;
-}
-.tweetview .close_btn {
-    width: 16px;
-    height: 16px;
-    display: block;
-    position: absolute;
-    top: 2px;
-    right: 2px;
 }
 
 .tweetview > .listview_body {
@@ -1561,6 +1592,7 @@ label {
     position: relative;
     border-top: 1px #ddd solid;
     color: black;
+    border-bottom: 1px #fafafa solid;
 }
 
 .card:first-child {

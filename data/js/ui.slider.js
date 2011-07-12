@@ -11,6 +11,8 @@ column_num: 1,
 
 tweet_blocks: [],
 
+displayed: [],
+
 isSliderMenuClosed: true,
 
 init:
@@ -58,8 +60,11 @@ function init () {
         var ret = ui.Slider.addDefaultView(name);
         if (ret == true) {
             $(this).addClass('checked');
-            ui.Main.views[name].load();
+            if (name != 'search') {
+                ui.Main.views[name].load();
+            }
         }
+        ui.Slider.slide_to(name);
         ui.Slider.closeSliderMenu();
         return false;
     });
@@ -67,6 +72,13 @@ function init () {
     function (event) {
         ui.Slider.closeSliderMenu();
     });
+
+    $('#view_title_bar .close_btn').click(function () {
+        var name = $(this).parent().attr('name');
+        ui.Main.views[name].destroy();
+    });
+    
+    ui.Slider.view_titles = $('.view_title');
 },
 
 add:
@@ -85,11 +97,12 @@ function add_indicator(name, opts) {
     var html = ui.Template.form_indicator(name, opts.title, opts.icon);
     if (name == 'search') {
         html = html.replace('{%STICK%}', 'stick_right');
+        ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length, 0, 'search');
     } else {
         html = html.replace('{%STICK%}', 'no_stick');
+        ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
     }
     $(html).insertBefore($('#indicator_add_btn').parent());
-    ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
 },
 
 add_view:
@@ -197,6 +210,18 @@ function slide_to(id) {
     {
         if (i + page_offset < 0) { continue; }
         ui.Slider.displayed.push(ui.Slider.tweet_blocks[i + page_offset]);
+    }
+    // update view title
+    for (var i = 0; i < ui.Slider.column_num; i += 1) {
+        var view_title = $(ui.Slider.view_titles[i]);
+        view_title.attr('name', ui.Slider.displayed[i])
+        view_title.children('.title')
+            .text(ui.Main.views[ui.Slider.displayed[i]].title);
+        if (ui.Slider.displayed[i] == 'home' || ui.Slider.displayed[i] == 'search') {
+            view_title.children('.close_btn').hide();
+        } else {
+            view_title.children('.close_btn').show();
+        }
     }
      
     // change indicators style

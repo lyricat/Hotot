@@ -49,7 +49,6 @@ function WidgetListView(id, name, params) {
         self._body = self._me.children('.listview_body');
         self._header = self._me.children('.listview_header');
         self._footer = self._me.children('.listview_footer');
-        self._close_btn = self._header.find('.close_btn');
         if (typeof(params) != 'undefined') {
             for (var k in params) {
                 switch (k) {
@@ -129,9 +128,6 @@ function WidgetListView(id, name, params) {
             }
             // hide tweet bar
             ui.Main.tweet_bar.hide();
-        });
-        self._close_btn.click(function () {
-            self.destroy();
         });
         self._header.children('.header_content').html(self.header_html);
     };

@@ -286,7 +286,7 @@ retweets_header_t:
 view_t:
 '<div id="{%ID%}" \
     name="{%NAME%}" class="listview {%CLASS%}"> \
-    <div class="listview_header"><div class="header_title">{%TITLE%}</div><a href="#" style="display:{%CAN_CLOSE%}" class="close_btn ic_close"></a><div class="header_content">{%HEADER%}</div></div> \
+    <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
     <ul class="listview_body"></ul> \
     <div class="listview_footer"> \
         <div class="load_more_info"><img src="image/ani_loading_bar_gray.gif"/></div> \
@@ -367,7 +367,7 @@ function init() {
     };
 
     ui.Template.view_m = {
-        ID:'', CLASS:'tweetview', NAME: '', TITLE: '', CAN_CLOSE: ''
+        ID:'', CLASS:'tweetview', NAME: '', CAN_CLOSE: ''
     };
 
     ui.Template.indicator_m = {
@@ -644,7 +644,6 @@ function form_view(name, title, cls) {
     var m = ui.Template.view_m;
     m.ID = name + '_tweetview';
     m.NAME = name;
-    m.TITLE = title
     m.CLASS = cls;
     if (name == 'home') {
         m.CAN_CLOSE = 'none';

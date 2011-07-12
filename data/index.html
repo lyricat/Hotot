@@ -68,7 +68,7 @@ var layout_opts = {
     ,   paneClass:                  'ui-layout-pane'
     ,   north__slidable:            false
     ,   north__closable:            true
-    ,   north__size:                44
+    ,   north__size:                66
     ,   north__showOverflowOnHover: true
     ,   north__spacing_open :       0
     ,   north__spacing_closed:      0
@@ -101,7 +101,9 @@ function update_tweet_block_width() {
         ui.Slider.column_num = ui.Slider.tweet_blocks.length;
     }
     globals.tweet_block_width = view_width / ui.Slider.column_num;
+    $('.view_title:gt(ui.Slider.column_num)').hide();
     $('.tweetview').width(globals.tweet_block_width);
+    $('.view_title').width(globals.tweet_block_width - 1);
     
     if (ui.Slider.column_num == 1) {
         $('#indicator_compose_btn').removeClass('with_label');
@@ -766,6 +768,45 @@ jQuery(function($) {
             <div id="indication_light"></div>
         </div>
     </div>
+    <div id="view_title_bar">
+        <div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div><div class="view_title">
+            <span class="title"></span>
+            <a href="#" class="close_btn ic_close"></a>
+        </div>
+    </div>
     <a id="btn_my_profile" class="profile_img_wrapper" href="javascript:void(0);"></a>
     <div id="hotot_menu">
         <div id="sys_menu_frame">
@@ -803,9 +844,6 @@ jQuery(function($) {
         </li>
         <li>
             <a href="#retweets">Retweets view</a>
-        </li>
-        <li>
-            <a href="#search">Search view</a>
         </li>
     </ul>
     </div>
