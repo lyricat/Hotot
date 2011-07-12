@@ -1512,36 +1512,6 @@ label {
     text-align: center;
 }
 
-.tweetview .header_title {
-    background: #f2f2f2;
-    color: #333;
-    text-align: center;
-    font-size: 13px;
-    height: 20px;
-    line-height: 20px;
-    font-weight: bold;
-    border-bottom: 1px #ddd solid;
-    display: none;
-}
-
-#home_tweetview .header_title {
-    background-color: #37c;
-    color: white;
-    border-bottom-color: #aaa;
-}
-
-#mentions_tweetview .header_title {
-    background-color: #6a3;
-    color: white;
-    border-bottom-color: #aaa;
-}
-
-#messages_tweetview .header_title {
-    background-color: #c73;
-    color: white;
-    border-bottom-color: #aaa;
-}
-
 .tweetview > .listview_body {
     padding: 0px 0px;
     list-style-type: none;
