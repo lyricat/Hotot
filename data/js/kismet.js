@@ -53,7 +53,8 @@ get_field_value:
 function get_field_value(field_code, tweet) {
     if (field_code == 0) {
         return (tweet.user != undefined)?tweet.user.screen_name
-            :tweet.sender.screen_name;
+            :((tweet.sender != undefined)?tweet.sender.screen_name
+                :tweet.from_user);
     } else if (field_code == 1) {
         return tweet.text;
     } else {

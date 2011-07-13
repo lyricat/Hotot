@@ -322,7 +322,7 @@ function init() {
 
     ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
         
-	ui.Template.reg_hash_tag = new RegExp(ui.Template.reg_hash_tag_template
+    ui.Template.reg_hash_tag = new RegExp(ui.Template.reg_hash_tag_template
         .replace(new RegExp('{%LATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_latin_chars)
         .replace(new RegExp('{%NONLATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_nonlatin_chars)
     , 'ig');
