@@ -76,7 +76,7 @@ function load_tweet(view, success, fail) {
             '<a href=\'javascript:open_people("'+user.screen_name+'")\'>'+user.screen_name+'</a>'
         );
     }, function (xhr, textStatus, errorThrown) {
-        view._header.find('.search_people_result').show();
+        view._header.find('.search_people_result').hide();
     });
 },
 

@@ -525,7 +525,7 @@ function bind_tweet_action(id) {
 
     $(id).find('.hash_href').click(
     function (event) {
-        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href').substring(1));
+        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
         ui.Slider.addDefaultView('search') || ui.Slider.add('search');
         ui.Main.views.search._header.find('.search_btn').click();
         return false;
