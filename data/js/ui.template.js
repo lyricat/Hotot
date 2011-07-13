@@ -11,7 +11,12 @@ reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 
 reg_user_name_chars: '[@＠](\\w+)',
 
-reg_hash_tag: new RegExp('(^|\\s)[#＃](\\w+)', 'g'),
+// from https://si0.twimg.com/a/1310499774/javascripts/phoenix.bundle.js
+reg_hash_tag_latin_chars: 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ\\303\\277',
+reg_hash_tag_nonlatin_chars: '\u0400-\u04ff\u0500-\u0527\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\u30a1-\u30fa\uff66-\uff9e\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3400-\u4dbf\u4e00-\u9fff\ua700-\ub73f\ub740-\ub81f\uf800-\ufa1f',
+reg_hash_tag_template: '(^|\\s)[#＃]([a-z_{%LATIN_CHARS%}{%NONLATIN_CHARS%}][a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]*)',
+
+reg_hash_tag: null,
 
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
@@ -317,6 +322,11 @@ function init() {
 
     ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
         
+	ui.Template.reg_hash_tag = new RegExp(ui.Template.reg_hash_tag_template
+        .replace(new RegExp('{%LATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_latin_chars)
+        .replace(new RegExp('{%NONLATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_nonlatin_chars)
+    , 'ig');
+
     ui.Template.tweet_m = {
           ID:'', TWEET_ID:'', RETWEET_ID:''
         , REPLY_ID:'',SCREEN_NAME:'',REPLY_NAME:'', USER_NAME:''
