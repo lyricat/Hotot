@@ -95,7 +95,7 @@ function init () {
 
 reset_views:
 function reset_views() {
-    console.log(ui.Slider.addDefaultView('search'));
+    ui.Slider.addDefaultView('search');
     ui.Slider.addDefaultView('home');
     ui.Slider.addDefaultView('mentions');
     ui.Slider.addDefaultView('messages');
@@ -331,7 +331,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         var dom_id = self.name+'-'+batch_arr[i].id_str;
         new_tweets_height += $('#'+dom_id).get(0).clientHeight;
     }
-    // prelaad 
+    // preload 
     if (ui.Main.use_preload_conversation && self.hasOwnProperty('_me')) {
         for (var i = 0; i < json_obj.length; i += 1) {
             if (json_obj[i].in_reply_to_status_id_str == null) {
@@ -525,7 +525,9 @@ function bind_tweet_action(id) {
 
     $(id).find('.hash_href').click(
     function (event) {
-        ui.SearchView.do_search($(this).attr('href').substring(1));
+        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href').substring(1));
+        ui.Slider.addDefaultView('search') || ui.Slider.add('search');
+        ui.Main.views.search._header.find('.search_btn').click();
         return false;
     });
 
