@@ -101,6 +101,7 @@ function switch_sub_view(view, name) {
         view.is_trim = true;
         view.item_type = 'id';
         view.since_id = 1;
+        view.former = ui.Template.form_tweet;
         view._load = ui.PeopleView.load_timeline;
         view._loadmore = ui.PeopleView.loadmore_timeline;
         view._load_success = ui.Main.load_tweet_success;
@@ -110,6 +111,7 @@ function switch_sub_view(view, name) {
         view.is_trim = false;
         view.item_type = 'page';
         view.page = 1;
+        view.former = ui.Template.form_tweet;
         view._load = ui.PeopleView.load_fav;
         view._loadmore = ui.PeopleView.loadmore_fav;
         view._load_success = ui.Main.load_tweet_success;
@@ -119,6 +121,7 @@ function switch_sub_view(view, name) {
         view.is_trim = false;
         view.item_type = 'cursor';
         view.cursor = '';
+        view.former = ui.Template.form_people;
         view._load = ui.PeopleView.load_friend;
         view._loadmore = ui.PeopleView.loadmore_friend;
         view._load_success = ui.Main.load_people_success;
@@ -128,6 +131,7 @@ function switch_sub_view(view, name) {
         view.is_trim = false;
         view.item_type = 'cursor';
         view.cursor = '';
+        view.former = ui.Template.form_people;
         view._load = ui.PeopleView.load_follower;
         view._loadmore = ui.PeopleView.loadmore_follower;
         view._load_success = ui.Main.load_people_success;
