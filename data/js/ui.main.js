@@ -527,7 +527,7 @@ function bind_tweet_action(id) {
     function (event) {
         ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
         ui.Slider.addDefaultView('search') || ui.Slider.add('search');
-        ui.Main.views.search._header.find('.search_btn').click();
+        ui.Main.views.search._header.find('.search_tweet').click();
         return false;
     });
 
