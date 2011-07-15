@@ -68,12 +68,13 @@ function poll() {
     for (var i = 0; i < daemon.push_views.length; i += 1) {
         var view = daemon.push_views[i];
         var interval = view.interval;
-        if (daemon.use_streaming) {
+        if (daemon.use_streaming && lib.twitterapi.watch_user_streams.is_running) {
             // poll push_views per 15 minutes when the Steaming xhr works
-            // poll them as normal if Streaming xhr doesn't work
+            // poll them as normal if Streaming xhr is not running or the user stream is disabled.
             interval = 900;
         }
         if (daemon.time % (Math.ceil(interval / 60) * 60) == 0) {
+            hotot_log('poll as push', view.name);
             view.load();
             step += 1;
         }
@@ -107,7 +108,7 @@ function push() {
         }
         if (ret.text && ret.user) {
             // ignore retweets of me
-            if (ret.hasOwnProperty('retweeted_status')) {
+            if (ret.hasOwnProperty('retweeted_status') && ret.user.screen_name == globals.myself.screen_name) {
                 return;
             }
             var now = Date.now();
@@ -135,32 +136,6 @@ function push() {
             daemon.home_last_time = now;
             return;
         }
-
-        /*
-        // direct_messages
-        if (ret.direct_message) {
-            //hotot_log('Streams DM', ret.direct_message.sender.name + ': ' + ret.direct_message.text);
-            if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
-                ui.Main.views.messages.load_success([ret]);
-            }
-            return;
-        }
-        // timeline
-        if (ret.text && ret.user) {
-            ui.Main.views.home.load_success([ret]);
-            // mentions
-            if (ret.entities) {
-                user_mentions = ret.entities.user_mentions;
-                myname = globals.myself.screen_name;
-                for (var i = 0, l = user_mentions.length; i < l; i +=1) {
-                    if (user_mentions[i].screen_name == myname) {
-                        ui.Main.views.mentions.load_success([ret]);
-                    }
-                }
-            }
-            return;
-        }
-        */
     }
     lib.twitterapi.watch_user_streams(on_ret);
 },
