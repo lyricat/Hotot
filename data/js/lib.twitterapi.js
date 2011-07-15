@@ -532,11 +532,11 @@ function watch_user_streams(callback) {
     watch_user_streams.times += 1;
     watch_user_streams.is_running = true;
     watch_user_streams.last_text_length = 0;
-    watch_user_streams.last_empty_time = Date.now();
 
-    url = 'https://userstream.twitter.com/2/user.json';
-    sign_url = url;
-    params = {'with' : 'followings'};
+    var empty_tester = new RegExp('^[\n\r\t ]*$', 'g');
+    var url = 'https://userstream.twitter.com/2/user.json';
+    var sign_url = url;
+    var params = {'with' : 'followings'};
 
     var signed_params = jsOAuth.form_signed_params(
                 sign_url, jsOAuth.access_token, 'GET', params, false);
@@ -546,6 +546,7 @@ function watch_user_streams(callback) {
     hotot_log('Streams Open', url);
 
     var xhr = new XMLHttpRequest();
+    watch_user_streams.xhr = xhr;
     xhr.open('GET', url, true);
     xhr.setRequestHeader('X-User-Agent', 'Hotot 0.9.6');
     xhr.setRequestHeader('User-Agent', 'Hotot 0.9.6');
@@ -558,7 +559,6 @@ function watch_user_streams(callback) {
         if (xhr.status == 420) {
             hotot_log('Streams XHR', '420 error');
             watch_user_streams.is_running = false;
-            setTimeout(xhr.abort, 100);
         }
         watch_user_streams.is_running = false;
         hotot_log('Streams Exit', xhr.createAt + ' -> ' + new Date().toLocaleString());
@@ -571,38 +571,34 @@ function watch_user_streams(callback) {
                              + ', times: ' + watch_user_streams.times
                              + ', createAt: ' + xhr.createAt);
         watch_user_streams.last_text_length = xhr.responseText.length;
-        // limit xhr.responseText length & restart
+        // limit xhr.responseText length & abort 
         if (xhr.responseText.length > 500000) {
             hotot_log('Streams Rec', xhr.responseText.length);
-            watch_user_streams.is_running = false;
-            setTimeout(watch_user_streams, 100, callback);
-            setTimeout(xhr.abort, 100);
+            setTimeout(function(){xhr.abort();}, 100);
         }
-        // empty reply
-        if (newText.length < 5) {
+        // empty reply, twitter use newline to keep stream alive
+        if (empty_tester.test(newText)) {
             hotot_log('Streams XHR', 'res nothing');
-            var now = Date.now();
-            if (90000 < now - watch_user_streams.last_empty_time) {
-                hotot_log('Streams Timeout', now - watch_user_streams.last_empty_time);
-                watch_user_streams.is_running = false;
-                setTimeout(watch_user_streams, 100, callback);
-                setTimeout(xhr.abort, 100);
-            }
             return;
         }
         if (callback) {
-            watch_user_streams.last_empty_time = Date.now();
-            newText.split(/(^{[^\0]+?}$)/gm).forEach(function(line) {
-                if (line && line.length > 5) {
-                    try {
-                        ret = JSON.parse(line.replace(/\n/g, ''));
-                    } catch(e) {
-                        hotot_log('Streams callback', e.message + ', line:\n' + line);
-                        return;
+            // @TODO the procedure to process tweets can be simpler.
+            // because all json objects are complete.
+            var lines = newText.split(/[\n\r]/g);
+            for (var i = 0; i < lines.length; i += 1) {
+                var line = lines[i].split(/({[^\0]+})/gm);
+                for (var j = 0; j < line.length; j += 1) {
+                    if (!empty_tester.test(line[j])) {
+                        try {
+                            ret = JSON.parse(line[j]);
+                            callback(ret);
+                        } catch(e) {
+                            console.log('Streams callback', e.message, 'j='+j, line);
+                            return;
+                        }
                     }
-                    return callback(ret);
                 }
-            });
+            }
         }
     }
     xhr.send(null);
