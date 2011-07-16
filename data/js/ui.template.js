@@ -28,6 +28,17 @@ tweet_t:
     <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn tweet_reply_btn" title="Reply this tweet" href="#reply" data-i18n-title="reply"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_fav_btn" title="Fav/Un-fav this tweet" href="#fav" data-i18n-title="fav_or_unfav"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
+        </li>\
+    </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
@@ -66,6 +77,17 @@ retweeted_by_t:
     <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn tweet_reply_btn" title="Reply this tweet" href="#reply" data-i18n-title="reply"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_fav_btn" title="Fav/Un-fav this tweet" href="#fav" data-i18n-title="fav_or_unfav"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
+        </li>\
+    </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
@@ -105,6 +127,15 @@ message_t:
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn tweet_dm_reply_btn" title="Reply them" href="#reply_dm" data-i18n-title="reply"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_dm_delete_btn" title="Delete" href="#delete" data-i18n-title="retweet"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
+        </li>\
+    </ul>\
     <div class="card_body">\
         <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
@@ -128,6 +159,17 @@ search_t:
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn tweet_reply_btn" title="Reply this tweet" href="#reply" data-i18n-title="reply"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_fav_btn" title="Fav/Un-fav this tweet" href="#fav" data-i18n-title="fav_or_unfav"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
+        </li>\
+    </ul>\
     <div class="card_body">\
         <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
@@ -153,6 +195,13 @@ people_t:
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn people_follow_btn" title="Follow them" href="#follow" data-i18n-title="follow"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn people_unfollow_btn" title="Unfollow them" href="#unfollow" data-i18n-title="unfollow"></a>\
+        </li>\
+    </ul>\
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
