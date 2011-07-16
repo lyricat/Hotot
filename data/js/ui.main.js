@@ -19,38 +19,12 @@ init:
 function init () {
     this.me = $('#main_page');
     this.reset_views();
-    ui.Main.tweet_bar = $('#tweet_bar');
-
     //tweet bar
     // -- more menu --
-    $('#tweet_more_menu_trigger').hover(
-    function (event) {
-        $('#tweet_more_menu').show();
-    },
-    function (event) {
-        $('#tweet_more_menu').hide();
-    });
-
-    $('#tweet_reply_btn').click(
-    function (event) {
-        ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
-        return false;
-    });
-
     $('#tweet_rt_btn').click(
     function (event) {
         ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
         return false;
-    });
-
-    $('#tweet_retweet_btn').click(
-    function (event) {
-        ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
-    });
-
-    $('#tweet_fav_btn').click(
-    function (event) {
-        ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
     });
 
     $('#tweet_reply_all_btn').click(
@@ -69,28 +43,11 @@ function init () {
     function (event) {
         ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
     });
-
-    $('#tweet_dm_reply_btn').click(
-    function (event) {
-        ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
-        return false;
-    });
     
-    $('#tweet_dm_delete_btn').click(
-    function (event) {
-        ui.Main.on_dm_delete_click(this, ui.Main.active_tweet_id, event);
-        return false;
-    });
-    
-    $('#people_follow_btn').click(
-    function (event) {
-        ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
-    });
+    $('#tweet_more_menu').mouseleave(function(){
+        $(this).hide();    
+    })
 
-    $('#people_unfollow_btn').click(
-    function (event) {
-        ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
-    });
 },
 
 reset_views:
@@ -491,21 +448,25 @@ bind_tweet_action:
 function bind_tweet_action(id) {
     $(id).click(
     function (event) {
-        ui.Main.set_tweet_bar(id);
         if (event.button == 0) {
             $(ui.Main.selected_tweet_id).removeClass('selected');
             ui.Main.selected_tweet_id = id;
             $(id).addClass('selected');
             ui.StatusBox.close();
             ui.ContextMenu.hide();
+            ui.Main.closeTweetMoreMenu();
         }
         event.stopPropagation();
     });
     $(id).mouseover(function () {
         ui.Main.set_active_tweet_id(id);
-        ui.Main.set_tweet_bar(id);
         event.stopPropagation();
     });
+    $(id).hover(function (){
+        $(id).find('.tweet_bar').show();
+    }, function () {
+        $(id).find('.tweet_bar').hide();
+    })
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
@@ -556,6 +517,55 @@ function bind_tweet_action(id) {
             _this = null;
         });
     });
+    
+    //tweet bar buttons
+    $(id).find('.tweet_more_menu_trigger').mouseenter(
+    function (event) {
+        ui.Main.openTweetMoreMenu($(id), $(this));
+    }).click(function(event){
+        if (ui.Main.isTweetMoreMenuClosed) {
+            ui.Main.openTweetMoreMenu($(id), $(this));
+        } else {
+            ui.Main.closeTweetMoreMenu();
+        }
+        return false;
+    });
+
+    // type: tweet
+    $(id).find('.tweet_reply_btn').click(function(event) {
+        ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
+    $(id).find('.tweet_retweet_btn').click(
+    function (event) {
+        ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
+    });
+    $(id).find('.tweet_fav_btn').click(
+    function (event) {
+        ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
+    });
+
+    // type: message 
+    $(id).find('.tweet_dm_reply_btn').click(
+    function (event) {
+        ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
+    $(id).find('.tweet_dm_delete_btn').click(
+    function (event) {
+        ui.Main.on_dm_delete_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
+
+    // type: people
+    $(id).find('.people_follow_btn').click(
+    function (event) {
+        ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
+    });
+    $(id).find('.people_unfollow_btn').click(
+    function (event) {
+        ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
+    });
 },
 
 unbind_tweet_action:
@@ -600,13 +610,12 @@ on_retweet_click:
 function on_retweet_click(btn, li_id, event) {
     var li = $(li_id);
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
-    if ($(btn).hasClass('retweeted')) {
+    if (li.hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
         toast.set(_('undo_retweeting_dots')).show(-1);
         lib.twitterapi.destroy_status(rt_id, 
         function (result) {
             toast.set(_('undo_successfully')).show();
-            $(btn).removeClass('retweeted').attr('title', _('retweet this tweet'));
             li.removeClass('retweeted');
         });
     } else {
@@ -615,7 +624,6 @@ function on_retweet_click(btn, li_id, event) {
         function (result) {
             toast.set(_('retweet_successfully')).show();
             li.attr('my_retweet_id', result.id_str);
-            $(btn).addClass('retweeted').attr('title', _('undo_retweet'));
             li.addClass('retweeted');
         });
     }
@@ -694,19 +702,19 @@ on_fav_click:
 function on_fav_click(btn, li_id, event) {
     var li = $(li_id);
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
-    if ($(li).hasClass('faved')) {
+    if (li.hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.destroy_favorite(id, 
         function (result) {
             toast.set(_('successfully')).show();
-            $(li).removeClass('faved');
+            li.removeClass('faved');
         });
     } else {
         toast.set(_('favorite_this_tweet_dots')).show(-1);
         lib.twitterapi.create_favorite(id, 
         function (result) {
             toast.set(_('Successfully')).show();
-            $(li).addClass('faved');
+            li.addClass('faved');
         });
     }
 },
@@ -720,7 +728,7 @@ function on_follow_btn_click(btn, li_id, event) {
     function () {
         toast.set(
             _('follow_at') + screen_name+' '+ _('successfully')).show();
-        li.attr('following', 'true');
+        li.attr('following', 'true').addClass('following');
     });
 },
 
@@ -733,7 +741,7 @@ function on_unfollow_btn_click(btn, li_id, event) {
     function () {
         toast.set(
             _('unfollow_at') + screen_name+ ' '+ _('successfully')).show();
-        li.attr('following', 'false');
+        li.attr('following', 'false').removeClass('following');
     });
 },
 
@@ -882,89 +890,32 @@ function set_active_tweet_id(id) {
     ui.Main.active_tweet_id = id;
 },
 
-set_tweet_bar: 
-function set_tweet_bar(li_id) {
-    var li = $(li_id);
-    var tweet_block = $(li.parents('.tweetview')[0]);
-    // place tweet bar to a correct position
-    var offset_top = 0; var offset_right = 0; 
-    if (li.attr('in_thread') == 'true') {
-        var vc = li.parents('.card')[0];
-        offset_top = vc.offsetTop
-            - tweet_block.get(0).scrollTop + li.get(0).offsetTop + 5;
-        offset_right = ($(window).width() - $('#aside').width())
-            - vc.offsetLeft + vc.width + li.get(0).offsetLeft + 25;
-    } else {
-        offset_top = li.get(0).offsetTop 
-            - tweet_block.get(0).scrollTop + 5;
-        offset_right = ($(window).width() - $('#aside').width())
-            - (li.get(0).offsetLeft + li.width()) + 5;
+openTweetMoreMenu:
+function openTweetMoreMenu(li, btn) {
+    var type = li.attr('type');
+    switch(type) {
+    case 'people':
+    case 'message':
+        $('#tweet_more_menu .separator').prevAll().hide();
+    break;
+    default: // tweet & search
+        $('#tweet_more_menu .separator').prevAll().show();
+    break;
     }
-    $('#tweet_bar').css('top', offset_top + 'px');
-    $('#tweet_bar').css('right', offset_right + 'px');
-    $('#tweet_bar').show();
-
-    // show different items according type of card
-    var group_map = {
-          'tweet': [$('#tweet_reply_btn'), $('#tweet_retweet_btn')
-            , $('#tweet_more_menu_btn')
-            , $('#tweet_rt_btn'), $('#tweet_fav_btn')
-            , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
-        , 'message': [$('#tweet_dm_reply_btn'), $('#tweet_dm_delete_btn'),$('#tweet_more_menu_btn')]
-        , 'search': [$('#tweet_reply_btn'), $('#tweet_retweet_btn')
-            , $('#tweet_more_menu_btn')
-            , $('#tweet_rt_btn'), $('#tweet_fav_btn')
-            , $('#tweet_reply_all_btn'), $('#tweet_dm_btn')]
-        , 'people': [$('#people_follow_btn'), $('people_unfollow_btn')]
-    };
-
-    if (group_map.hasOwnProperty(li.attr('type'))) {
-        $('.tweet_bar_btn').parent().hide();
-        $('.tweet_more_menu_btn').parent().hide();
-        for (var i = 0, l = group_map[li.attr('type')].length; i < l; i += 1) {
-            group_map[li.attr('type')][i].parent().show();
-        }
-    } else {
-        $('#tweet_bar').hide();
-    } 
-    // enable exts
-    $('.ext_tweet_more_menu_btn').parent().show();
-
-    // others
+    // deletable?
     if (li.attr('deletable') == 'true') {
         $('#tweet_del_btn').parent().css('display', 'block');
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');
     }
-    if (li.attr('retweetable') == 'true') {
-        $('#tweet_retweet_btn').parent().css('display', 'inline-block');
-    } else {
-        $('#tweet_retweet_btn').parent().css('display', 'none');
-    }
-    if (li.attr('type') == 'people') {
-        if (li.attr('following') == 'true') {
-            $('#people_follow_btn').parent().hide();
-            $('#people_unfollow_btn').parent().show();
-        } else {
-            $('#people_follow_btn').parent().show();
-            $('#people_unfollow_btn').parent().hide();
-        }
-    }
-    if (li.hasClass('retweeted')) {
-        $('#tweet_retweet_btn').addClass('retweeted');
-    } else {
-        $('#tweet_retweet_btn').removeClass('retweeted');
-    }
-    if (li.hasClass('faved')) {
-        $('#tweet_fav_btn').addClass('faved');
-    } else {
-        $('#tweet_fav_btn').removeClass('faved');
-    }    
-    if ($('#tweet_bar li:last').hasClass('separator')) {
-        $('#tweet_bar li:last').hide();
-    } else {
-        $('#tweet_bar li.separator').show();
-    }
+    $('#tweet_more_menu').css({'left': (btn.offset().left - 135)+'px', 'top': (btn.offset().top - 42)+'px'}).show();
+    ui.Main.isTweetMoreMenuClosed = false;
+},
+
+closeTweetMoreMenu:
+function closeTweetMoreMenu() {
+    $('#tweet_more_menu').hide();
+    ui.Main.isTweetMoreMenuClosed = true;
 },
 
 unique:

@@ -762,16 +762,18 @@ label {
     width: auto;
 }
 
-#tweet_bar {
+.tweet_bar {
     list-style-type: none;
     height: 24px;
     top: 0px;
+    right: 10px;
     position: absolute;
     text-align: right;
     display: none;
+    z-index: 9;
 }
 
-#tweet_bar > li {
+.tweet_bar > li {
     display: inline-block;
 }
 
@@ -788,77 +790,53 @@ label {
     background-position-y: -24px !important;
 }
 
-#tweet_reply_btn {
+.tweet_reply_btn {
     background-position: 0px 0px;
 }
-#tweet_fav_btn {
+.tweet_fav_btn {
     background-position: -48px 0px;
 }
-#tweet_fav_btn.faved {
+.card.faved .tweet_fav_btn {
     background-position: -48px -48px !important;
 }
-#tweet_retweet_btn {
+.tweet_retweet_btn {
     background-position: -24px 0px;
 }
-#tweet_retweet_btn.retweeted {
-    background-position: -24px -48px;
+.card.retweeted .tweet_retweet_btn{
+    background-position: -24px -48px !important;
 }
-#tweet_more_menu_btn {
+.tweet_more_menu_trigger {
     background-position: -120px 0;
 }
-#tweet_dm_reply_btn {
+.tweet_dm_reply_btn {
     background-position: 0 0;
 }
-#tweet_dm_delete_btn {
+.tweet_dm_delete_btn {
     background-position: -96px 0;
 }
-#people_follow_btn {
+.people_follow_btn {
     background-position: -72px 0;
+    display: inline-block;
 }
-#people_unfollow_btn {
+.people_unfollow_btn {
     background-position: -96px 0;
-}
-
-#tweet_more_menu_trigger {
-    position: relative;
-}
-
-.tweet_more_menu {
-    position: absolute;
     display: none;
-    list-style-type:none;
-    text-align: left;
-    top: 22px;
-    right: -5px;
-    width: 100px;
-    z-index: 10004;
 }
+.card[following="true"] .people_follow_btn {
+    display: none !important;
+}
+.card[following="true"] .people_unfollow_btn {
+    display: inline-block !important;
+}
+
 #tweet_more_menu {
     position: absolute;
     display: none;
     list-style-type:none;
     text-align: left;
-    top: 23px;
-    right: -5px;
-    min-width: 100px;
+    width: 160px;
     z-index: 10004;
 }
-
-.tweet_more_menu_btn {
-    display: block;
-    height: 20px;
-    color: #fff;
-    line-height: 20px;
-    text-decoration: none;
-    background-position: 2px 2px;
-    padding-left: 20px;
-}
-
-.tweet_more_menu_btn:hover {
-    background-color: #a8b1fe;
-    color: #000; 
-}
-
 .people_vcard {
     display: block !important; 
     color: #333;

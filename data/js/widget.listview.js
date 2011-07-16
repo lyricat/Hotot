@@ -127,7 +127,7 @@ function WidgetListView(id, name, params) {
                 }
             }
             // hide tweet bar
-            ui.Main.tweet_bar.hide();
+            ui.Main.closeTweetMoreMenu();
         });
         self._header.children('.header_content').html(self.header_html);
     };
