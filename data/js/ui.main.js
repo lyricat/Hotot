@@ -109,11 +109,17 @@ function load_messages(self, success, fail) {
     lib.twitterapi.get_direct_messages(
         since_id, null
         , conf.vars.items_per_request, success);
+    lib.twitterapi.get_sent_direct_messages(
+        since_id, null
+        , conf.vars.items_per_request, success);
 },
 
 loadmore_messages: 
 function loadmore_messages(self, success, fail) {
     lib.twitterapi.get_direct_messages(
+        1, self.max_id, conf.vars.items_per_request, 
+        success);
+    lib.twitterapi.get_sent_direct_messages(
         1, self.max_id, conf.vars.items_per_request, 
         success);
 },
