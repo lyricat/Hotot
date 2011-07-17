@@ -457,13 +457,12 @@ function bind_tweet_action(id) {
             ui.Main.closeTweetMoreMenu();
         }
         event.stopPropagation();
-    });
-    $(id).mouseover(function () {
+    }).mouseover(function () {
         ui.Main.set_active_tweet_id(id);
         event.stopPropagation();
-    });
-    $(id).hover(function (){
+    }).hover(function (){
         $(id).find('.tweet_bar').show();
+        ui.Main.closeTweetMoreMenu();
     }, function () {
         $(id).find('.tweet_bar').hide();
     })
