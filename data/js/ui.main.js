@@ -538,7 +538,11 @@ function bind_tweet_action(id) {
 
     // type: tweet
     $(id).find('.tweet_reply_btn').click(function(event) {
-        ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
+        if (conf.settings.use_default_reply_all) {
+            ui.Main.on_reply_all_click(this, ui.Main.active_tweet_id, event);
+        } else {
+            ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
+        }
         return false;
     });
     $(id).find('.tweet_retweet_btn').click(
