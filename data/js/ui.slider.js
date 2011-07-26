@@ -137,11 +137,16 @@ function add_view(name, opts) {
 remove:
 function remove(name) {
     if (ui.Slider.tweet_blocks.indexOf(name) != -1) {
-        var prev = ui.Slider.tweet_blocks[ui.Slider.get_page_pos(name) - 1];
         ui.Slider.remove_indicator(name);
         ui.Slider.remove_view(name);
         if (name == ui.Slider.current) {
-            ui.Slider.slide_to(prev);
+            var prev = ui.Slider.tweet_blocks[ui.Slider.get_page_pos(name) - 1];
+            var next = ui.Slider.tweet_blocks[ui.Slider.get_page_pos(name) + 1];
+            if (prev) {
+                ui.Slider.slide_to(prev);
+            } else if (next) {
+                ui.Slider.slide_to(next);
+            }
         } else {
             ui.Slider.slide_to(ui.Slider.current);
         }
@@ -189,7 +194,7 @@ function slide_to(id) {
             && 0 <= fixed_idx - parseInt(ui.Slider.column_num/2))
         ? fixed_idx - parseInt(ui.Slider.column_num/2) : fixed_idx;
 
-    $('#main_page_slider').css('width', '1000%');
+    $('#main_page_slider').css('width', max_col_num + '00%');
     // slide page
     if (conf.get_current_profile()) {
         if (conf.get_current_profile().preferences.effects_level != 0) {
