@@ -63,7 +63,7 @@ function WidgetDialog(obj) {
                 self._offsetY = event.clientY - pos.top;
                 event.target.style.cursor = "move";
 
-                $('body').css('-khtml-user-select', 'none');
+                $('body').css('-webkit-user-select', 'none');
             })
             .mouseup(function (event) {
                  if (self._drag) {
