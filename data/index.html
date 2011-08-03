@@ -5,6 +5,7 @@
     <title>Home | Hotot</title>
     <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" /> 
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
+    <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" /> 
     <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" /> 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
@@ -78,7 +79,7 @@ var layout_opts = {
     ,   east__size:                 0
     ,   east__initClosed:           true
     ,   east__slidable: true
-    ,	east__fxSettings_open:		{ easing: "easeOutBounce" }
+    ,   east__fxSettings_open:      { easing: "easeOutBounce" }
     ,   south__size:                0
     ,   south__spacing_open:        0
     ,   south__spacing_closed:      0
@@ -92,6 +93,19 @@ var layout_opts = {
 
 function change_effects_level(level) {
     $('#effects_level').attr('href', 'css/effects_' + level + '.css');
+}
+
+function change_theme(theme_name) {
+    $('#hotot_theme').attr('href', 'theme/' + theme_name + '/style.css');
+    $.getJSON('theme/' + theme_name + '/info.json',
+    function (hotot_theme_info) {
+        $('#prefs_theme_name').text(hotot_theme_info.name);
+        $('#prefs_theme_author').text(hotot_theme_info.author);
+        $('#prefs_theme_web').text(hotot_theme_info.web)
+            .attr('href', hotot_theme_info.web);
+        $('#prefs_theme_desc').text(hotot_theme_info.description);
+        $('#prefs_theme_preview').attr('src', 'theme/'+theme_name+'/preview.png');
+    });
 }
 
 function update_tweet_block_width() {
@@ -986,6 +1000,42 @@ jQuery(function($) {
             </div>
         </div> <!-- END of #prefs_account -->
         <div id='prefs_appearance' class="prefs_dlg_page">
+            <div class="dialog_block">
+            <h3>- <span data-i18n-text="theme">Theme</span> -</h3>
+            <p>
+                <table class="void_table" border="0">
+                    <tr>
+                        <td><label class="label">Themes</label></td>
+                        <td>
+                        <select id="sel_prefs_theme" class="combo"
+                            title="Select a theme" style="width:150px;">
+                            <option value="New Hope">A New Hope</option>
+                            <option value="Classic">Classic</option>
+                        </select>
+                        </td>
+                        <td rowspan="5" style="text-align: right">
+                            <img id="prefs_theme_preview" src="#" 
+                            alt="No Preview"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="label">Name</label></td>
+                        <td><label class="label" id="prefs_theme_name"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label">Author</label></td>
+                        <td><label class="label" id="prefs_theme_author"></label></td>
+                    </tr>
+                    <tr>
+                        <td><label class="label">Web</label></td>
+                        <td ><a class="label" id="prefs_theme_web" href="#"></a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="prefs_theme_desc"></td>
+                    </tr>
+                </table>
+            </p>
+            </div>
             <div class="dialog_block">
             <h3>- <span data-i18n-text="font">Font</span> -</h3>
             <p>

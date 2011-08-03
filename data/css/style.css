@@ -897,12 +897,12 @@ label {
 }
 
 .header_content {
-    padding: 5px 0;
+    padding: 0;
     border-left: 1px #ddd solid;
 }
 
 .header_frame {
-    margin: 0 5px;
+    margin: 5px;
     text-align: center;
 }
 
@@ -1240,6 +1240,12 @@ label {
 
 
 /*===== Preferences Dialog ================================*/
+
+#prefs_theme_preview {
+    width: 200px;
+    height: 124px;
+    border: 1px #CCC solid;
+}
 
 #prefs_font_preview {
     text-align: center;
@@ -1881,6 +1887,13 @@ td {
     text-align: left;
     padding: 3px 10px 2px;
     border: 1px solid #ccc;
+}
+.void_table {
+    frame: "void";
+    width: 100%;
+}
+.void_table td {
+    border: 0;
 }
 
 /* overwrite widgets styles*/

@@ -27,6 +27,10 @@ function init () {
     };
     btn_regain_token.create();
 
+    $('#sel_prefs_theme').bind('click change keypress blur', function () {
+        change_theme($(this).val());
+    });
+
     $('#sel_prefs_font_family, #tbox_prefs_font_size, #tbox_prefs_custom_font, #rdo_use_custom_font, #rdo_use_system_font').bind('click change keypress blur',
     function (event) {
         ui.PrefsDlg.update_font_preview();
@@ -161,6 +165,8 @@ function load_prefs() {
     $('#chk_prefs_remember_password').attr('checked'
         , prefs.remember_password);
     // Appearance
+    $('#sel_prefs_theme').val(prefs.theme);
+    
     var options_arr = []; var selected_idx = 0;
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
@@ -225,6 +231,7 @@ function save_prefs() {
     prefs['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
     // Looks & Feels
+    prefs['theme'] = $('#sel_prefs_theme').val();
     prefs['custom_font'] = $('#tbox_prefs_custom_font').val();
     prefs['font_family_used'] = $('#sel_prefs_font_family').val();
     prefs['font_size'] = $('#tbox_prefs_font_size').val();

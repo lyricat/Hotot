@@ -1,0 +1,105 @@
+#main_page ::-webkit-scrollbar-track-piece {
+    background-color: #666;
+    border-left: 5px #ccc solid;
+    border-right: 5px #ccc solid;
+}
+
+#main_page ::-webkit-scrollbar-thumb {
+    -webkit-transition: all 0.2s ease-in;
+    border: 0;
+    background: #fafafa;
+}
+#main_page ::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background: #333;
+    border-radius: 5px;
+}
+#main_page ::-webkit-scrollbar-thumb:hover {
+    background: #333;
+    border:0;
+}
+.card {
+    border-top: 0;
+}
+.card.selected .tweet_selected_indicator {
+    width: 5px;
+}
+.card.normal {
+    background:-webkit-gradient(linear, left top, left bottom, from(#eceef3), to(#dfe2e5));
+    border-color: #bbb;
+    color: #2c2e36;
+}
+.card.normal a {
+    color: #585858;
+}
+.card.normal .text a {
+    color: #D67514 !important;
+}
+.card.normal > .who > .who_href {
+    color: #2c2e36;
+}
+.card.normal .tweet_thread {
+    border: 1px #c4c7cb solid;
+    border-bottom: 0;
+}
+.card.normal .tweet_ctrl {
+    border-color: #c4c7cb;
+}
+
+.card.mention {
+    background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
+    border-color: #c4987d;
+    color: #502805;
+}
+.card.mention a {
+    color: #D67514;
+}
+.card.mention > .who > .who_href {
+    color: #502805;
+}
+.card.mention .tweet_thread {
+    border: 1px #c4987d solid;
+    border-bottom: 0;
+}
+.card.mention .tweet_ctrl {
+    border-color: #c4987d;
+}
+
+.card.message {
+    background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
+    border-color:#90abc4;
+    color: #14465f;
+}
+.card.message a {
+    color: #376AE4;
+}
+.card.message > .who > .who_href {
+    color: #14465f;
+}
+.card.message .tweet_thread {
+    border: 1px #90abc4 solid;
+    border-bottom: 0;
+}
+.card.message .tweet_ctrl {
+    border-color: #90abc4;
+}
+
+.card.me {
+    background:-webkit-gradient(linear, left top, left bottom, from(#d1f4c3), to(#b6dd96));
+    border-color:#75A565;
+    color: #264408;
+}
+.card.me a {
+    color: #238000;
+}
+.card.me > .who > .who_href {
+    color: #264408;
+}
+.card.me .tweet_thread {
+    border: 1px #75A565 solid;
+    border-bottom: 0;
+}
+.card.me .tweet_ctrl {
+    border-color: #75A565;
+}
+

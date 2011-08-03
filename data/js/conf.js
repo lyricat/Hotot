@@ -35,6 +35,7 @@ default_prefs: {
         , 'default_password':''
         , 'access_token': ''
           // Look & Feels:
+        , 'theme': 'New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
@@ -73,6 +74,7 @@ default_prefs: {
         , 'default_password':''
         , 'access_token': ''
           // Look & Feels:
+        , 'theme': 'New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
@@ -246,6 +248,7 @@ function apply_prefs(name) {
         = prefs.use_direct_messages_inbox_notify_sound;
 
     $('#chk_remember_password').attr('checked', prefs.remember_password);
+    change_theme(prefs.theme);
     $('body').css('font-family', prefs.use_custom_font
         ? prefs.custom_font: prefs.font_family_used);
     globals.tweet_font_size = prefs.font_size;

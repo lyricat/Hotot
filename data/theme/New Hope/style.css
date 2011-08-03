@@ -1,0 +1,52 @@
+#main_page ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#main_page ::-webkit-scrollbar-button:start:decrement,
+#main_page ::-webkit-scrollbar-button:end:increment {
+    height: 0px;
+    display: block;
+    background-color: transparent;
+}
+
+#main_page ::-webkit-scrollbar-track-piece {
+    background: #fafafa;
+}
+
+#main_page ::-webkit-scrollbar-thumb {
+    -webkit-transition: all 0.2s ease-in;
+    background: #fafafa;
+}
+#main_page ::-webkit-scrollbar-thumb:vertical {
+    border-right: 4px orange solid;
+    height: 50px;
+}
+#main_page ::-webkit-scrollbar-thumb:horizontal {
+    border-bottom: 4px orange solid;
+    width: 50px;
+}
+
+#main_page ::-webkit-scrollbar-thumb:hover {
+    background: orange;
+    border:0;
+}
+
+#main_page {
+    display: none;
+    background: #fafafa; 
+    position: relative;
+}
+
+#main_page_slider {
+    height: 100%;
+    width: auto;
+}
+
+.people_vcard {
+    display: block !important; 
+    color: #333;
+    padding: 5px;
+    position: relative;
+}
+
