@@ -101,8 +101,8 @@ function push() {
     }
     function on_ret(ret) {
         if (ret.direct_message) {
-            if (ret.direct_message.recipient_screen_name == globals.myself.screen_name) {
-                ui.Main.views.messages.load_success([ret]);
+            if (ret.direct_message.recipient_screen_name == globals.myself.screen_name || ret.direct_message.sender_screen_name == globals.myself.screen_name) {
+                ui.Main.views.messages.load_success([ret.direct_message]);
             }
             return;
         }
