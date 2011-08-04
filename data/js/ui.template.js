@@ -34,7 +34,7 @@ tweet_t:
         </li><li>\
         <a class="tweet_bar_btn tweet_fav_btn" title="Fav/Un-fav this tweet" href="#fav" data-i18n-title="fav_or_unfav"></a>\
         </li><li>\
-        <a class="tweabar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
+        <a class="tweet_bar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
         </li><li>\
         <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
         </li>\
