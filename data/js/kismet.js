@@ -94,7 +94,7 @@ function filter(tweets, action) {
                 ret = rule.pattern.test(field_value);
             }
             if (ret) {
-                kismet.procs[action](tweets, i);
+                kismet.procs[action](rule, tweets, i);
                 if (action == 'drop') { l -= 1; }
             }
         }
@@ -135,27 +135,48 @@ function update_rules() {
 },
 
 drop:
-function drop(tweets, i) {
+function drop(rule, tweets, i) {
     tweets.splice(i, 1);
 },
 
 notify:
-function notify(tweets, i) {
+function notify(rule, tweets, i) {
     var user = tweets[i].hasOwnProperty('user')? tweets[i].user:tweets[i].sender;
     hotot_notify(user.screen_name, tweets[i].text
         , user.profile_image_url , 'content');
 },
 
 mask:
-function mask(tweets, i) {
+function mask(rule, tweets, i) {
     var tweet = $.extend(true, {}, tweets[i]);
     tweets[i].text = kismet.mask_text;
     db.dump_tweets([tweet]);
 },
 
 archive:
-function notify(tweets, i) {
-    hotot_log('Kismet', 'do archive');
+function archive(rule, tweets, i) {
+    var formal_name = encodeBase64(rule.name).replace(/=/g, '_');
+    if (!ui.Main.views.hasOwnProperty('kismet_' + formal_name)) {
+        ui.Slider.add('kismet_'+ formal_name, 
+          {title:'Kismet # ' + rule.name, icon:'image/ic_archive.png'}
+        , { 'type':'tweet', 'title': 'Kismet # '+ rule.name
+            , 'load': null 
+            , 'loadmore': null
+            , 'load_success': ui.Main.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': null
+            , 'loadmore_fail': null
+            , 'former': ui.Template.form_tweet
+            , 'destroy': function destroy(view) {
+                ui.Slider.remove(view.name);
+            }
+            , 'method': 'poll'
+            , 'interval': -1
+            , 'item_type': 'id'
+        });
+        ui.Slider.slide_to(ui.Slider.current);
+    }
+    ui.Main.views['kismet_' + formal_name].load_success([tweets[i]]);
 },
 };
 

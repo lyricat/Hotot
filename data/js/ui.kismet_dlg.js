@@ -67,6 +67,7 @@ function init() {
 
     $('#kismet_rule_ctrl .remove').click(function () {
         var li = $('#kismet_rule_list .kismet_rule.selected').parent();
+        $('#kismet_rule_name').val('');
         li.remove();
     });
 

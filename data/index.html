@@ -96,7 +96,6 @@ function change_effects_level(level) {
 }
 
 function change_theme(theme_name, theme_path) {
-    hotot_log(theme_name, theme_path)
     $('#hotot_theme').attr('href', theme_path + '/style.css');
     $.getJSON(theme_path + '/info.json',
     function (hotot_theme_info) {
@@ -1608,11 +1607,10 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
                 <td><input id="kismet_action_mask"
                     type="checkbox" class="mask checkbox" value="2"/>
                     <label for="kismet_action_mask">Mask</label></td>
-                <td style="display:none;"><input id="kismet_action_archive" 
+                <td><input id="kismet_action_archive" 
                     type="checkbox" class="checkbox" value="3"/>
-                    <label for="kismet_action_archive">Archive</label>: 
-                    <select id="kismet_action_archive_name"class="combo">
-                    <option value="-1">select ... </option></select></td>
+                    <label for="kismet_action_archive">Archive</label> 
+                </td>
             </tr>
             </table>
         </div>

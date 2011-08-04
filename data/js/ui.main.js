@@ -253,6 +253,9 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // apply drop filter
     if (ignore_kismet == undefined || ignore_kismet == false) {
         kismet.filter(json_obj, 'drop');
+        if (self.name.indexOf('kismet_') != 0 && self.name != 'messages' && self.name != 'search'){
+            kismet.filter(json_obj, 'archive');
+        }
         kismet.filter(json_obj, 'mask');
     }
      
