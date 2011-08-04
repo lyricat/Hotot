@@ -34,7 +34,7 @@ tweet_t:
         </li><li>\
         <a class="tweet_bar_btn tweet_fav_btn" title="Fav/Un-fav this tweet" href="#fav" data-i18n-title="fav_or_unfav"></a>\
         </li><li>\
-        <a class="tweet_bar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
+        <a class="tweabar_btn tweet_retweet_btn" title="Official retweet/un-retweet this tweet" href="#retweet" data-i18n-title="retweet"></a>\
         </li><li>\
         <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
         </li>\
@@ -216,7 +216,7 @@ people_t:
 
 people_vcard_t:
 '<div class="header_frame"><div class="people_vcard vcard">\
-    <div class="profile_img_wrapper"></div>\
+    <a target="_blank" class="profile_img_wrapper"></a>\
     <div class="vcard_body">\
         <center>\
         <ul class="people_vcard_radio_group radio_group"> \
@@ -744,6 +744,7 @@ function fill_vcard(user_obj, vcard_container) {
     var created_at_str = ui.Template.format_time(created_at);
     
     vcard_container.find('.profile_img_wrapper')
+        .attr('href', user_obj.profile_image_url.replace(/_normal/, ''))
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
     vcard_container.find('.screen_name')
         .attr('href', conf.get_current_profile().preferences.base_url + user_obj.screen_name)
