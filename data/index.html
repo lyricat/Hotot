@@ -95,16 +95,17 @@ function change_effects_level(level) {
     $('#effects_level').attr('href', 'css/effects_' + level + '.css');
 }
 
-function change_theme(theme_name) {
-    $('#hotot_theme').attr('href', 'theme/' + theme_name + '/style.css');
-    $.getJSON('theme/' + theme_name + '/info.json',
+function change_theme(theme_name, theme_path) {
+    hotot_log(theme_name, theme_path)
+    $('#hotot_theme').attr('href', theme_path + '/style.css');
+    $.getJSON(theme_path + '/info.json',
     function (hotot_theme_info) {
         $('#prefs_theme_name').text(hotot_theme_info.name);
         $('#prefs_theme_author').text(hotot_theme_info.author);
         $('#prefs_theme_web').text(hotot_theme_info.web)
             .attr('href', hotot_theme_info.web);
         $('#prefs_theme_desc').text(hotot_theme_info.description);
-        $('#prefs_theme_preview').attr('src', 'theme/'+theme_name+'/preview.png');
+        $('#prefs_theme_preview').attr('src', theme_path+'/preview.png');
     });
 }
 
@@ -455,6 +456,7 @@ function overlay_variables(vars) {
         conf.vars.cache_dir = vars.cache_dir;
         conf.vars.avatar_cache_dir = vars.avatar_cache_dir;
         conf.settings.font_list = vars.extra_fonts;
+        conf.vars.extra_themes = vars.extra_themes
         ext.extras = vars.extra_exts;
         i18n.locale = vars.locale;
     }
@@ -1028,7 +1030,7 @@ jQuery(function($) {
                     </tr>
                     <tr>
                         <td><label class="label">Web</label></td>
-                        <td ><a class="label" id="prefs_theme_web" href="#"></a></td>
+                        <td ><a class="label" id="prefs_theme_web" target="_blank" href="#"></a></td>
                     </tr>
                     <tr>
                         <td colspan="2" id="prefs_theme_desc"></td>

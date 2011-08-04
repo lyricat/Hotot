@@ -11,6 +11,7 @@ import glib
 
 PROGRAM_NAME = 'hotot'
 EXT_DIR_NAME = 'ext'
+THEME_DIR_NAME = 'theme'
 CONF_DIR = os.path.join(glib.get_user_config_dir(), PROGRAM_NAME)
 DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(glib.get_user_cache_dir(), PROGRAM_NAME)

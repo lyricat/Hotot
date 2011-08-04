@@ -123,6 +123,18 @@ def get_extra_exts():
             exts.append('file://%s' % ext_js)
     return exts
 
+def get_extra_themes():
+    import glob
+    themes = []
+    files = glob.glob(os.path.join(config.CONF_DIR, config.THEME_DIR_NAME) + '/*')
+    theme_dirs = filter(lambda x: os.path.isdir(x), files)
+    for dir in theme_dirs:
+        info_file = os.path.join(dir, 'info.json')
+        style_file = os.path.join(dir, 'style.css')
+        if os.path.exists(info_file) and os.path.exists(style_file):
+            themes.append('file://%s' % dir)
+    return themes
+
 def get_extra_fonts():
     font_list = [ff.get_name() for ff in
     gtk.gdk.pango_context_get().list_families()]

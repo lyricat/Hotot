@@ -27,8 +27,8 @@ function init () {
     };
     btn_regain_token.create();
 
-    $('#sel_prefs_theme').bind('click change keypress blur', function () {
-        change_theme($(this).val());
+    $('#sel_prefs_theme').bind('change', function () {
+        change_theme($(this).val(), $(this).children('option[value="'+$(this).val()+'"]').attr('path'));
     });
 
     $('#sel_prefs_font_family, #tbox_prefs_font_size, #tbox_prefs_custom_font, #rdo_use_custom_font, #rdo_use_system_font').bind('click change keypress blur',
@@ -164,10 +164,26 @@ function load_prefs() {
     // Account
     $('#chk_prefs_remember_password').attr('checked'
         , prefs.remember_password);
+
     // Appearance
+    var options_arr = []; 
+    for (var i = 0, l = conf.vars.builtin_themes.length; i < l; i += 1) {
+        var theme_name = conf.vars.builtin_themes[i];
+        options_arr.push('<option value="'
+            + theme_name + '" path="theme/'
+            + theme_name + '">' + theme_name + '</option>');
+    }
+    for (var i = 0, l = conf.vars.extra_themes.length; i < l; i += 1) {
+        var theme_name = conf.vars.extra_themes[i].substring(conf.vars.extra_themes[i].lastIndexOf('/') + 1);
+        options_arr.push('<option value="'
+            + theme_name + '" path="'
+            + conf.vars.extra_themes[i] + '">'
+            + theme_name + '</option>');
+    }
+    $('#sel_prefs_theme').html(options_arr.join(''));
     $('#sel_prefs_theme').val(prefs.theme);
     
-    var options_arr = []; var selected_idx = 0;
+    options_arr = []; var selected_idx = 0;
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
         options_arr.push('<option value="'
@@ -232,6 +248,7 @@ function save_prefs() {
         = $('#chk_prefs_remember_password').attr('checked');
     // Looks & Feels
     prefs['theme'] = $('#sel_prefs_theme').val();
+    prefs['theme_path'] = $('#sel_prefs_theme').children('option[value="'+$('#sel_prefs_theme').val()+'"]').attr('path');
     prefs['custom_font'] = $('#tbox_prefs_custom_font').val();
     prefs['font_family_used'] = $('#sel_prefs_font_family').val();
     prefs['font_size'] = $('#tbox_prefs_font_size').val();
