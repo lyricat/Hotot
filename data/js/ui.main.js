@@ -492,6 +492,13 @@ function bind_tweet_action(id) {
         return false;
     });
 
+    $(id).find('.list_href').click(
+    function (event) {
+        var target = $(this).attr('href').substring(1).split('/');
+        open_list(target[0], target[1]);
+        return false;
+    });
+
     $(id).find('.hash_href').click(
     function (event) {
         ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));

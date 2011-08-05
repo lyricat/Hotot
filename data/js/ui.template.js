@@ -11,6 +11,8 @@ reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 
 reg_user_name_chars: '[@＠](\\w+)',
 
+reg_list_name_template: '[@＠](\\w+/[a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]+)',
+
 // from https://si0.twimg.com/a/1310750171/javascripts/phoenix.bundle.js
 reg_hash_tag_latin_chars: 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ\\303\\277',
 reg_hash_tag_nonlatin_chars: '\u0400-\u04ff\u0500-\u0527\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\u30a1-\u30fa\uff66-\uff9e\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3400-\u4dbf\u4e00-\u9fff\ua700-\ub73f\ub740-\ub81f\uf800-\ufa1f\u3005',
@@ -224,7 +226,7 @@ people_vcard_t:
             </li><li><a class="radio_group_btn" href="#people_vcard_stat_page">STAT</a> \
             </li></ul>\
         </center>\
-        <div class="people_vcard_tabs_pages">\
+        <div class="vcard_tabs_pages">\
         <table class="people_vcard_info_page vcard_tabs_page radio_group_page" border="0" cellpadding="0" cellspacing="0"> \
             <tr><td>Name: </td><td> \
                 <a class="screen_name" target="_blank" href="#"></a> \
@@ -254,14 +256,17 @@ people_vcard_t:
             <tr><td>Friends: </td> \
                 <td><span class="friend_cnt"></span></td> \
             </tr> \
+            <tr><td>Listed: </td> \
+                <td><span class="listed_cnt"></span></td> \
+            </tr> \
             <tr><td>Relation: </td> \
                 <td><span class="relation"></span></td> \
             </tr> \
         </table> \
         </div><!-- vcard tabs pages --> \
     </div> <!-- vcard body --> \
-    <div class="people_vcard_ctrl"> \
-        <ul class="people_vcard_action_btns"> \
+    <div class="vcard_ctrl"> \
+        <ul class="vcard_action_btns"> \
         <li><a class="vcard_follow button" \
                 href="javascript:void(0);" >Follow</a> \
         </li><li> \
@@ -296,6 +301,54 @@ people_vcard_t:
     <a class="people_request_btn button" href="#" target="_blank">Send Request</a> \
     </div> \
 </div></div>',
+
+list_vcard_t:
+'<div class="header_frame"><div class="list_vcard vcard">\
+    <a target="_blank" class="profile_img_wrapper"></a>\
+    <div class="vcard_body">\
+        <div class="vcard_tabs_pages">\
+        <table border="0" cellpadding="0" cellspacing="0" class="vcard_tabs_page" style="display:block;"> \
+            <tr><td>Name: </td><td> \
+                <a class="name" target="_blank" href="#"></a></td> \
+            </tr> \
+            <tr><td>Owner: </td> \
+                <td><a class="owner" target="_blank" href="#"></a></td> \
+            </tr> \
+            <tr><td>Description: </td> \
+                <td><span class="description"></span></td> \
+            </tr> \
+        </table> \
+        </div>\
+    </div> <!-- vcard body --> \
+    <div class="vcard_ctrl"> \
+        <ul class="vcard_action_btns"> \
+        <li><a class="vcard_follow button" \
+                href="javascript:void(0);" >Follow</a> \
+        </li><li> \
+            <a class="vcard_delete button" \
+                href="javascript:void(0);">Delete</a> \
+        </li><li> \
+            <a class="vcard_edit button" \
+                href="javascript:void(0);" style="display:none;">Edit</a>\
+        </li> \
+        </ul> \
+    </div><!-- #list_vcard_ctrl --> \
+</div> <!-- vcard --> \
+<div class="list_view_toggle"> \
+    <ol class="list_view_toggle_btns radio_group"> \
+        <li><a class="list_view_tweet_btn radio_group_btn selected" href="#tweet">Tweets</a> \
+        </li><li> \
+        <a class="list_view_follower_btn radio_group_btn" href="#follower">Followers</a> \
+        </li><li> \
+        <a class="list_view_following_btn radio_group_btn" href="#following">Following</a> \
+        </li> \
+    </ol> \
+</div> \
+<div class="list_lock_hint"> \
+    <h1>Them has protected his/her list.</span></h1> \
+    <p>Only the owner can access this list.</p> \
+</div></div>',
+
 
 search_header_t: 
 '<div class="header_frame"> \
@@ -365,7 +418,14 @@ function init() {
 
     ui.Template.reg_user = new RegExp('(^|\\s|'
             + ui.Template.reg_cn_chars + ')'
-        + ui.Template.reg_user_name_chars, 'g'),
+        + ui.Template.reg_user_name_chars, 'g');
+
+    ui.Template.reg_list = new RegExp('(^|\\s|'
+            + ui.Template.reg_cn_chars + ')'
+        + ui.Template.reg_list_name_template
+            .replace(/{%LATIN_CHARS%}/g, ui.Template.reg_hash_tag_latin_chars)
+            .replace(/{%NONLATIN_CHARS%}/g, ui.Template.reg_hash_tag_nonlatin_chars) 
+    , 'ig');
 
     ui.Template.reg_link = new RegExp(ui.Template.reg_url);
 
@@ -735,8 +795,8 @@ function form_kismet_rule(rule) {
     return ui.Template.render(ui.Template.kismet_rule_t, m);
 },
 
-fill_vcard:
-function fill_vcard(user_obj, vcard_container) {
+fill_people_vcard:
+function fill_people_vcard(user_obj, vcard_container) {
     var created_at = new Date(Date.parse(user_obj.created_at));
     var now = new Date();
     var differ = Math.floor((now-created_at)/(1000 * 60 * 60 * 24));
@@ -755,6 +815,7 @@ function fill_vcard(user_obj, vcard_container) {
         Math.round(user_obj.statuses_count / differ * 100)/ 100);
     vcard_container.find('.follower_cnt').text(user_obj.followers_count);
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
+    vcard_container.find('.listed_cnt').text(user_obj.listed_count);
     vcard_container.find('.bio').text('').text(user_obj.description);
     vcard_container.find('.location').text('').text(user_obj.location);
     vcard_container.find('.join').text(created_at_str);
@@ -767,6 +828,22 @@ function fill_vcard(user_obj, vcard_container) {
     }
 },
 
+fill_list_vcard:
+function fill_list_vcard(view) {
+    var vcard_container = view._header;
+    vcard_container.find('.profile_img_wrapper')
+        .attr('style', 'background-image:url('
+            + lib.twitterapi.get_user_profile_image(view.screen_name, 'normal') + ');');
+    vcard_container.find('.name')
+        .attr('href', conf.get_current_profile().preferences.base_url + view.screen_name + '/' + view.slug)
+        .text(view.slug);
+    vcard_container.find('.owner')
+        .attr('href', conf.get_current_profile().preferences.base_url + view.screen_name)
+        .text(view.screen_name);
+    vcard_container.find('.description').text('');
+},
+
+
 form_text:
 function form_text(text) {
     text = text.replace(/"/g, '&#34;');
@@ -774,6 +851,8 @@ function form_text(text) {
     text = text.replace(/\$/g, '$$$');
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
+    text = text.replace(ui.Template.reg_list
+        , '$1@<a class="list_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_user
         , '$1@<a class="who_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag

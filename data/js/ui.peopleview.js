@@ -179,7 +179,7 @@ function render_people_view(self, user_obj, proc) {
     var request_hint = self._header.find('.people_request_hint');
     var toggle_btns = self._header.find('.people_view_toggle');
     btn_follow.show();
-    ui.Template.fill_vcard(user_obj, self._header);
+    ui.Template.fill_people_vcard(user_obj, self._header);
     db.dump_users([user_obj]);
     if (user_obj.screen_name == globals.myself.screen_name) {
         btn_edit.show();

@@ -45,6 +45,7 @@
     <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.peopleview.js"></script>
+    <script type="text/javascript" src="js/ui.listview.js"></script>
     <script type="text/javascript" src="js/ui.searchview.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
@@ -179,7 +180,35 @@ function open_people(screen_name) {
             , 'is_trim': true
             , 'screen_name': screen_name
         });
-    ui.Main.views['people_' + screen_name].load();
+    ui.Main.views[name].load();
+    ui.Slider.slide_to(name);
+}
+
+function open_list(screen_name, slug) {
+    toast.set('Lookup @'+screen_name+'/'+slug+'... ').show();
+    var name = 'list_'+screen_name+'_'+slug;
+    var title = 'List @' + screen_name + '/'+slug;
+    ui.Slider.add(name
+        , {title: title, icon:'image/ic_people.png'}
+        , {   'type': 'tweet', 'title': title
+            , 'load': ui.ListView.load_timeline
+            , 'loadmore': ui.ListView.loadmore_timeline
+            , 'load_success': ui.Main.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.Main.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'former': ui.Template.form_tweet
+            , 'init': ui.ListView.init_view
+            , 'destroy': ui.ListView.destroy_view
+            , 'header_html': ui.Template.list_vcard_t
+            , 'method': 'poll'
+            , 'interval': 120
+            , 'item_type': 'id'
+            , 'is_trim': true
+            , 'screen_name': screen_name
+            , 'slug': slug
+        });
+    ui.Main.views[name].load();
     ui.Slider.slide_to(name);
 }
 
@@ -317,6 +346,7 @@ function init_ui() {
     ui.RetweetView.init();
     ui.DMTabs.init();
     ui.PeopleView.init();
+    ui.ListView.init();
     ui.SearchView.init();
     ui.PinDlg.init();
     ui.PrefsDlg.init();

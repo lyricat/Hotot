@@ -38,6 +38,7 @@ function WidgetListView(id, name, params) {
     self.page = 1;
     self.cursor = '';
     self.screen_name = '';
+    self.slug = '';
 
     self.use_notify = false;
     self.use_notify_type = 'count';

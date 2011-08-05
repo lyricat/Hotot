@@ -494,6 +494,44 @@ function destroy_blocks(screen_name, on_success) {
     lib.twitterapi.post(url, params, on_success);
 },
 
+get_list_statuses:
+function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/statuses.json';
+    var params = {
+        'include_entities': '1',
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'since_id': since_id,
+    };
+    if (max_id != null)
+        params['max_id'] = max_id;
+    lib.twitterapi.get(url, params, on_success);
+},
+
+get_list_subscribers:
+function get_list_subscribers(owner_screen_name, slug, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/subscribers.json';
+    var params = {
+        'include_entities': '1',
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'cursor': cursor,
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+get_list_members:
+function get_list_members(owner_screen_name, slug, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/members.json';
+    var params = {
+        'include_entities': '1',
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'cursor': cursor,
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
 verify:
 function verify(on_success) {
     var url = lib.twitterapi.api_base + 'account/verify_credentials.json';

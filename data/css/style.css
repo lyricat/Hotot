@@ -837,29 +837,33 @@ label {
     width: 160px;
     z-index: 10004;
 }
-.people_vcard {
+.people_vcard, .list_vcard {
     display: block !important; 
     color: #333;
     padding: 5px;
     position: relative;
 }
 
-.people_vcard_ctrl {
+.people_vcard .vcard_ctrl, .list_vcard .vcard_ctrl {
     text-align: center;
 }
 
-.people_vcard_tabs_pages {
+.vcard_body {
+    min-height: 50px;
+}
+
+.vcard_tabs_pages {
     margin-left: 60px;
     font-size: 12px;
 }
 
-.people_vcard_action_btns {
+.vcard_action_btns {
     margin: 5px 10px;
     border-top: 1px #ccc solid;
     padding: 5px;
 }
 
-.people_vcard_action_btns li {
+.vcard_action_btns li {
     list-style-type: none;
     display: inline-block;
 }
@@ -868,7 +872,7 @@ label {
     text-align: center;
 }
 
-.people_request_hint, .search_no_result_hint {
+.people_request_hint, .search_no_result_hint, .list_lock_hint {
     background: #fef6a8 none no-repeat 20px center;
     border: 1px solid #fcfc19;
     color: #990000;
@@ -879,7 +883,7 @@ label {
     font-size: 14px;
 }
 
-.people_request_hint {
+.people_request_hint, .list_lock_hint {
     background-image: url(../image/ic48_lock.png) !important;
 }
 
@@ -902,7 +906,7 @@ label {
 }
 
 .header_frame {
-    margin: 5px;
+    margin: 5px 5px 0 5px;
     text-align: center;
 }
 
@@ -927,7 +931,7 @@ label {
 .search_no_result_hint .keywords {
     font-weight: bold;
 }
-.retweets_view_toggle, .search_view_toggle, .people_view_toggle {
+.retweets_view_toggle, .search_view_toggle, .people_view_toggle, .list_view_toggle {
     text-align: center;
     margin-top: 5px;
 }
