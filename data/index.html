@@ -589,6 +589,14 @@ jQuery(function($) {
         }
     };
 
+    document.body.onmousewheel = function (event) {
+        if (event.wheelDeltaX && event.wheelDeltaX < 0){
+            ui.Slider.slide_to_next();
+        } else if (event.wheelDeltaX && event.wheelDeltaX > 0){
+            ui.Slider.slide_to_prev();
+        }
+    };
+
     $(window).resize(
     function () {
         update_tweet_block_width();
