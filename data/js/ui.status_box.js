@@ -311,10 +311,6 @@ function close() {
         , 'linear'
         , function () {
             ui.StatusBox.hide();
-            setTimeout(function () {
-            ui.Main.views[ui.Slider.current]._body.click();
-            $(ui.Main.selected_tweet_id).click();
-            }, 500);
         });
     $('#indicator_compose_btn').removeClass('hlight');
     ui.StatusBox.is_closed = true;

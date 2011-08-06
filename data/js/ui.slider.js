@@ -15,6 +15,8 @@ displayed: [],
 
 isSliderMenuClosed: true,
 
+state: null,
+
 init:
 function init () {
     this.id = '#main_page_slider';
@@ -81,11 +83,60 @@ function init () {
     ui.Slider.view_titles = $('.view_title');
 },
 
+save_state:
+function save_state() {
+    ui.Slider.state.order = ui.Slider.tweet_blocks;
+    conf.get_current_profile().preferences.slider_state = ui.Slider.state;
+    conf.save_prefs(conf.current_name);
+},
+
+resume_state:
+function resume_state() {
+    ui.Slider.state = conf.get_current_profile().preferences.slider_state;
+    if (ui.Slider.state == null || ui.Slider.state.order.length < 2) {
+        ui.Slider.state = {order: [], views: {}};
+        ui.Slider.addDefaultView('search');
+        ui.Slider.addDefaultView('home');
+        ui.Slider.addDefaultView('mentions');
+        ui.Slider.addDefaultView('messages');
+    } else {
+        ui.Slider.addDefaultView('search');
+        ui.Slider.addDefaultView('home');
+        for (var i = 0; i < ui.Slider.state.order.length; i += 1) {
+            var name = ui.Slider.state.order[i];
+            if (name == 'search' || name == 'home') continue;
+            var vs = ui.Slider.state.views[name];
+            switch (vs.type) {
+            case 'tweet':
+                ui.Slider.addDefaultView(name);
+            break;
+            case 'people':
+                open_people(vs.screen_name);
+            break;
+            case 'list':
+                open_list(vs.screen_name, vs.slug);
+            break;
+            }
+        }
+    }
+},
+
 add:
 function add(name, indicator_opts, view_opts) {
     if (ui.Slider.tweet_blocks.indexOf(name) == -1) {
         ui.Slider.add_view(name, view_opts);
         ui.Slider.add_indicator(name, indicator_opts);
+        switch (view_opts.type) {
+        case 'tweet':
+            ui.Slider.state.views[name] = {type: view_opts.type};
+        break;
+        case 'people':
+            ui.Slider.state.views[name] = {type: view_opts.type, screen_name: view_opts.screen_name};
+        break;
+        case 'list':
+            ui.Slider.state.views[name] = {type: view_opts.type, screen_name: view_opts.screen_name, slug: view_opts.slug};
+        break;
+        } 
     } else {
         ui.Slider.slide_to(name);
     }
@@ -150,6 +201,7 @@ function remove(name) {
         } else {
             ui.Slider.slide_to(ui.Slider.current);
         }
+        delete ui.Slider.state.views[name];
     }
 },
 

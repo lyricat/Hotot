@@ -18,7 +18,6 @@ views: {
 init:
 function init () {
     this.me = $('#main_page');
-    this.reset_views();
     //tweet bar
     // -- more menu --
     $('#tweet_rt_btn').click(
@@ -48,15 +47,6 @@ function init () {
         $(this).hide();    
     })
 
-},
-
-reset_views:
-function reset_views() {
-    ui.Slider.addDefaultView('search');
-    ui.Slider.addDefaultView('home');
-    ui.Slider.addDefaultView('mentions');
-    ui.Slider.addDefaultView('messages');
-    return;
 },
 
 hide:

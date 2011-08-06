@@ -260,6 +260,7 @@ function authenticate_pass(result) {
         }, 100);
     toast.set(_('authentication_ok')).show();
     ui.Welcome.hide();
+    ui.Slider.resume_state();
     ui.Main.show();
     globals.layout.open('north');
     kismet.load();
