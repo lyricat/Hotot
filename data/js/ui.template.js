@@ -300,7 +300,7 @@ people_vcard_t:
                 href="javascript:void(0);">Lists of Them</a>\
             </li><li><a class="listed_lists_menu_item"\
                 href="javascript:void(0);" \
-                title="All Lists following me">Lists Following me</a>\
+                title="All Lists following Them">Lists Following Them</a>\
             </li><li><a class="create_list_menu_item" \
                 href="javascript:void(0);" \
                 title="Create A List">Create A List</a>\
