@@ -50,6 +50,7 @@
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
     <script type="text/javascript" src="js/ui.prefs_dlg.js"></script>
     <script type="text/javascript" src="js/ui.profile_dlg.js"></script>
+    <script type="text/javascript" src="js/ui.list_attr_dlg.js"></script>
     <script type="text/javascript" src="js/ui.kismet_dlg.js"></script>
     <script type="text/javascript" src="js/ui.imageuploader.js"></script>
     <script type="text/javascript" src="js/ui.exts_dlg.js"></script>
@@ -158,6 +159,7 @@ function quit() {
 }
 
 function open_people(screen_name) {
+    // @TODO check this user if exists or not
     toast.set('Lookup @'+screen_name+'... ').show();
     var name = 'people_'+screen_name;
     var title = '@' + screen_name + '\'s Profile';
@@ -185,6 +187,7 @@ function open_people(screen_name) {
 }
 
 function open_list(screen_name, slug) {
+    // @TODO check this list if exists or not
     toast.set('Lookup @'+screen_name+'/'+slug+'... ').show();
     var name = 'list_'+screen_name+'_'+slug;
     var title = 'List @' + screen_name + '/'+slug;
@@ -298,6 +301,11 @@ function init_dialogs() {
     globals.profile_dialog.place(widget.DialogManager.CENTER);
     globals.profile_dialog.create();
 
+    globals.list_attr_dialog = new widget.Dialog('#list_attr_dlg');
+    globals.list_attr_dialog.resize(500, 330);
+    globals.list_attr_dialog.place(widget.DialogManager.CENTER);
+    globals.list_attr_dialog.create();
+
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
     globals.prefs_dialog.resize(500, 400);
     globals.prefs_dialog.place(widget.DialogManager.CENTER);
@@ -351,6 +359,7 @@ function init_ui() {
     ui.PinDlg.init();
     ui.PrefsDlg.init();
     ui.ProfileDlg.init();
+    ui.ListAttrDlg.init();
     ui.KismetDlg.init();
     ui.ExtsDlg.init();
     ui.ErrorDlg.init();
@@ -1537,6 +1546,48 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_footer">
     <a id="btn_profile_cancel" class="button" data-i18n-text="cancel">Cancel</a>
     <a id="btn_profile_update" class="button" data-i18n-text="update">Update</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- List Attribute dialog -->
+<div id="list_attr_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="List">List</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div class="dialog_body">
+    <table class="void_table">
+        <tr>
+            <td><label class="label">List name:</label></td>
+            <td><input id="list_attr_slug" type="text" class="entry" placeholder="Your List name here" style="width: 350px;"/></td>
+        </tr>
+        <tr>
+            <td><label class="label">Description:</label></td>
+            <td><textarea id="list_attr_desc" class="textarea" placeholder="Under 100 characters, optional." style="height: 120px; width: 350px;"></textarea></td>
+        </tr>
+        <tr>
+            <td><label class="label">Privacy:</label></td>
+            <td>
+                <input id="list_attr_privacy_public" class="radio" 
+                    type="radio" name="list_attr_privacy" value="public"
+                    title="Anyone can follow this list" checked> 
+                <label class="label"
+                    for="list_attr_privacy_public">Public</label>
+                <input id="list_attr_privacy_private" class="radio"
+                    type="radio" name="list_attr_privacy" value="private"
+                    title="Only you can access this list"> 
+                <label class="label" 
+                    for="list_attr_privacy_private">Private</label>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_list_attr_cancel" class="button dialog_close_btn" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_list_attr_update" class="button" data-i18n-text="update">Update</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>

@@ -494,6 +494,26 @@ function destroy_blocks(screen_name, on_success) {
     lib.twitterapi.post(url, params, on_success);
 },
 
+get_user_listed_lists:
+function get_listed_lists(screen_name, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/memberships.json';
+    var params = {
+        'screen_name' : screen_name,
+        'cursor': cursor
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
+get_user_lists:
+function get_user_lists(screen_name, cursor, on_success) {
+    var url = lib.twitterapi.api_base + 'lists.json';
+    var params = {
+        'screen_name' : screen_name,
+        'cursor': cursor
+    };
+    lib.twitterapi.get(url, params, on_success);
+},
+
 get_list_statuses:
 function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success) {
     var url = lib.twitterapi.api_base + 'lists/statuses.json';
@@ -530,6 +550,59 @@ function get_list_members(owner_screen_name, slug, cursor, on_success) {
         'cursor': cursor,
     };
     lib.twitterapi.get(url, params, on_success);
+},
+
+create_list_subscriber:
+function create_list_subscriber(owner_screen_name, slug, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/subscribers/create.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+destroy_list_subscriber:
+function destroy_list_subscriber(owner_screen_name, slug, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/subscribers/destroy.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+create_list:
+function create_list(slug, description, mode, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/create.json';
+    var params = {
+        'name': slug,
+        'mode': mode,
+        'description': description
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+destroy_list:
+function destroy_list(owner_screen_name, slug, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/destroy.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+update_list:
+function update_list(owner_screen_name, slug, description, mode, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/update.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'mode': mode,
+        'description': description
+    };
+    lib.twitterapi.post(url, params, on_success);
 },
 
 verify:

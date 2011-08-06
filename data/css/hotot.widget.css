@@ -170,6 +170,7 @@ disabled:
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
     font-size: 14px;
     font-family: monospace;
+    margin: 0;
 }
 
 .entry:focus, .textarea:focus {
@@ -207,7 +208,6 @@ disabled:
     margin: 0;
     list-style-type: none;
     display: inline-block;
-    min-width: 80px;
     height: 32px;
     margin-left: -1px;
 }
@@ -218,7 +218,7 @@ disabled:
     text-align: center;
     height: 30px;
     line-height: 30px;
-    min-width: 70px;
+    min-width: 60px;
     padding: 0 5px;
     color: #777;
     border-right: 1px #ccc solid;

@@ -199,9 +199,9 @@ people_t:
     </div>\
     <ul class="tweet_bar">\
         <li>\
-        <a class="tweet_bar_btn people_follow_btn" title="Follow them" href="#follow" data-i18n-title="follow"></a>\
+        <a class="tweet_bar_btn follow_btn" title="Follow them" href="#follow" data-i18n-title="follow"></a>\
         </li><li>\
-        <a class="tweet_bar_btn people_unfollow_btn" title="Unfollow them" href="#unfollow" data-i18n-title="unfollow"></a>\
+        <a class="tweet_bar_btn unfollow_btn" title="Unfollow them" href="#unfollow" data-i18n-title="unfollow"></a>\
         </li>\
     </ul>\
     <div class="card_body">\
@@ -291,6 +291,21 @@ people_vcard_t:
         <a class="people_view_follower_btn radio_group_btn" href="#follower">Followers</a> \
         </li><li> \
         <a class="people_view_friend_btn radio_group_btn" href="#friend">Friends</a> \
+        </li><li class="people_view_list_trigger"> \
+        <a class="people_view_list_btn radio_group_btn" href="#list">Lists &#x25BE;\
+        </a> \
+        <ul class="lists_memu hotot_menu">\
+            <li><a class="user_lists_menu_item" \
+                title="Lists of Them"\
+                href="javascript:void(0);">Lists of Them</a>\
+            </li><li><a class="listed_lists_menu_item"\
+                href="javascript:void(0);" \
+                title="All Lists following me">Lists Following me</a>\
+            </li><li><a class="create_list_menu_item" \
+                href="javascript:void(0);" \
+                title="Create A List">Create A List</a>\
+            </li>\
+        </ul>\
         </li> \
     </ol> \
 </div> \
@@ -301,6 +316,31 @@ people_vcard_t:
     <a class="people_request_btn button" href="#" target="_blank">Send Request</a> \
     </div> \
 </div></div>',
+
+list_t:
+'<li id="{%LIST_ID%}" class="list_card card normal" type="list" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} slug={%SLUG%}>\
+    <div class="tweet_active_indicator"></div>\
+    <div class="tweet_selected_indicator"></div>\
+    <div class="profile_img_wrapper" title="@{%USER_NAME%}/{%SLUG%}" style="background-image: url({%PROFILE_IMG%})">\
+    </div>\
+    <ul class="tweet_bar">\
+        <li>\
+        <a class="tweet_bar_btn follow_btn" title="Follow them" href="#follow" data-i18n-title="follow"></a>\
+        </li><li>\
+        <a class="tweet_bar_btn unfollow_btn" title="Unfollow them" href="#unfollow" data-i18n-title="unfollow"></a>\
+        </li>\
+    </ul>\
+    <div class="card_body">\
+        <div id="{%USER_ID%}" class="who">\
+        <a class="list_href" href="#{%SCREEN_NAME%}/{%SLUG%}" title="{%USER_NAME%}/{%SLUG%}">\
+            @{%SCREEN_NAME%}/{%SLUG%}\
+        </a>\
+        </div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask"></span>\
+</li>',
 
 list_vcard_t:
 '<div class="header_frame"><div class="list_vcard vcard">\
@@ -483,6 +523,11 @@ function init() {
     ui.Template.people_m = {
           USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
         , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+    };
+
+    ui.Template.list_m = {
+          LIST_ID:'', SCREEN_NAME:'', SLUG:'', NAME:'', MODE:''
+        , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
     };
 
     ui.Template.view_m = {
@@ -756,6 +801,21 @@ function form_people(user_obj, pagename) {
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
 
     return ui.Template.render(ui.Template.people_t, m);
+},
+
+form_list:
+function form_people(list_obj, pagename) {
+    var m = ui.Template.list_m;
+    m.LIST_ID = pagename + '-' + list_obj.id_str;
+    m.SCREEN_NAME = list_obj.user.screen_name;
+    m.SLUG = list_obj.slug;
+    m.NAME = list_obj.name;
+    m.MODE = list_obj.mode;
+    m.DESCRIPTION = list_obj.description;
+    m.PROFILE_IMG = list_obj.user.profile_image_url;
+    m.FOLLOWING = list_obj.following;
+    m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    return ui.Template.render(ui.Template.list_t, m);
 },
 
 form_view:

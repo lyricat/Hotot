@@ -26,26 +26,44 @@ function init_view(view) {
         ui.ListView.switch_sub_view(view, pagename);
     });
 
-    vcard.find('.vcard_follow').click('click',
-    function (event) {
+    vcard.find('.vcard_follow').click(function (event) {
         var _this = this;
         if ($(this).hasClass('unfo')) {
             toast.set("Unfollow @" + view.screen_name + " ...").show();
-            lib.twitterapi.destroy_friendships(view.screen_name,
-            function () {
+            lib.twitterapi.destroy_list_subscriber(view.screen_name
+                , view.slug, function () {
                 toast.set(
-                    "Unfollow @"+ view.screen_name+" Successfully!").show();
+                    "Unfollow @"+ view.screen_name + '/' + view.slug + " Successfully!").show();
                 $(_this).text('Follow').removeClass('unfo');
             });
         } else {
             toast.set("Follow @" + view.screen_name + " ...").show();
-            lib.twitterapi.create_friendships(view.screen_name,
-            function () {
+            lib.twitterapi.create_list_subscriber(view.screen_name
+                , view.slug, function () {
                 toast.set(
-                    "Follow @"+ view.screen_name+" Successfully!").show();
+                    "Follow @"+ view.screen_name +'/' + view.slug+" Successfully!").show();
                 $(_this).text('Unfollow').addClass('unfo');
             });
         }
+    });
+
+    vcard.find('.vcard_edit').click(function () {
+        ui.ListAttrDlg.load(view.screen_name, view.slug, '', 'private');
+        globals.list_attr_dialog.open();
+        return false;
+    });
+
+    vcard.find('.vcard_delete').click(function () {
+        var ans = confirm('Are you sure you want to delete this list?');
+        if (ans) {
+            toast.set("Delete List @" + view.screen_name + '/' + view.slug + " ...").show();
+            lib.twitterapi.destroy_list(view.screen_name, view.slug
+            , function () {
+                toast.set("Delete List @" + view.screen_name + '/' + view.slug + " Successfully!").show();
+                ui.Slider.remove(view.name);
+            });
+        }
+        return false;
     });
 },
     
@@ -110,12 +128,9 @@ function render_list_view(view) {
         btn_delete.show();
     } else {
         btn_follow.show();
+        btn_edit.hide();
+        btn_delete.hide();
     }
-    // @TODO
-    btn_follow.hide();
-    btn_edit.hide();
-    btn_delete.hide();
-
     ui.Template.fill_list_vcard(view);
 },
 

@@ -186,6 +186,15 @@ function load_people_success(self, json) {
     return ret;
 },
 
+load_list_success:
+function load_list_success(self, json) {
+    var ret = ui.Main.add_people(self, json.lists);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
+    return ret;
+},
+
 loadmore_tweet_success:
 function loadmore_tweet_success(self, json) {
     var ret = ui.Main.add_tweets(self, json, true);
@@ -198,6 +207,15 @@ function loadmore_tweet_success(self, json) {
 loadmore_people_success:
 function loadmore_people_success(self, json) {
     var ret = ui.Main.add_people(self, json.users);
+    if (self.changed) {
+        ui.Slider.set_unread(self.name);
+    }
+    return ret;
+},
+
+loadmore_list_success:
+function loadmore_list_success(self, json) {
+    var ret = ui.Main.add_people(self, json.lists);
     if (self.changed) {
         ui.Slider.set_unread(self.name);
     }
@@ -474,7 +492,7 @@ function bind_tweet_action(id) {
         ui.Main.closeTweetMoreMenu();
     }, function () {
         $(id).find('.tweet_bar').hide();
-    })
+    });
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
@@ -577,11 +595,11 @@ function bind_tweet_action(id) {
     });
 
     // type: people
-    $(id).find('.people_follow_btn').click(
+    $(id).find('.follow_btn').click(
     function (event) {
         ui.Main.on_follow_btn_click(this, ui.Main.active_tweet_id, event);
     });
-    $(id).find('.people_unfollow_btn').click(
+    $(id).find('.unfollow_btn').click(
     function (event) {
         ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
     });
@@ -741,27 +759,51 @@ function on_fav_click(btn, li_id, event) {
 on_follow_btn_click:
 function on_follow_btn_click(btn, li_id, event) {
     var li = $(li_id);
-    var screen_name = li.attr('screen_name');
-    toast.set(_('follow_at') + screen_name + ' ' + _('dots')).show();
-    lib.twitterapi.create_friendships(screen_name,
-    function () {
-        toast.set(
-            _('follow_at') + screen_name+' '+ _('successfully')).show();
-        li.attr('following', 'true').addClass('following');
-    });
+    if (li.attr('type') == 'people') {
+        var screen_name = li.attr('screen_name');
+        toast.set(_('follow_at') + screen_name + ' ' + _('dots')).show();
+        lib.twitterapi.create_friendships(screen_name,
+        function () {
+            toast.set(
+                _('follow_at') + screen_name+' '+ _('successfully')).show();
+            li.attr('following', 'true').addClass('following');
+        });
+    } else if (li.attr('type') == 'list') {
+        var screen_name = li.attr('screen_name');
+        var slug = li.attr('slug');
+        toast.set(_('follow_at') + screen_name + '/' + slug + ' ' + _('dots')).show();
+        lib.twitterapi.create_list_subscriber(screen_name, slug,
+        function () {
+            toast.set(
+                _('follow_at') + screen_name + '/' + slug + ' '+ _('successfully')).show();
+            li.attr('following', 'true').addClass('following');
+        });
+    }
 },
 
 on_unfollow_btn_click:
 function on_unfollow_btn_click(btn, li_id, event) {
     var li = $(li_id);
-    var screen_name = li.attr('screen_name');
-    toast.set(_('unfollow_at') + screen_name + ' '+ _('dots')).show();
-    lib.twitterapi.destroy_friendships(screen_name,
-    function () {
-        toast.set(
-            _('unfollow_at') + screen_name+ ' '+ _('successfully')).show();
-        li.attr('following', 'false').removeClass('following');
-    });
+    if (li.attr('type') == 'people') {
+        var screen_name = li.attr('screen_name');
+        toast.set(_('unfollow_at') + screen_name + ' '+ _('dots')).show();
+        lib.twitterapi.destroy_friendships(screen_name,
+        function () {
+            toast.set(
+                _('unfollow_at') + screen_name+ ' '+ _('successfully')).show();
+            li.attr('following', 'false').removeClass('following');
+        });
+    } else if (li.attr('type') == 'list') {
+        var screen_name = li.attr('screen_name');
+        var slug = li.attr('slug');
+        toast.set(_('unfollow_at') + screen_name + '/' + slug + ' ' + _('dots')).show();
+        lib.twitterapi.destroy_list_subscriber(screen_name, slug,
+        function () {
+            toast.set(
+                _('unfollow_at') + screen_name + '/' + slug + ' '+ _('successfully')).show();
+            li.attr('following', 'false').removeClass('following');
+        });
+    }
 },
 
 on_thread_more_click:

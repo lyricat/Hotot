@@ -23,14 +23,20 @@ function init_view(view) {
         $(this).addClass('selected');
         vcard.find('.vcard_tabs_page').hide();
         vcard.find(pagename).show();
+        return false;
     });
     var toggle = view._header.find('.people_view_toggle');
     var sub_view_btns = toggle.find('.radio_group_btn');
     sub_view_btns.click(function (event) {
         var pagename = $(this).attr('href').substring(1);
-        sub_view_btns.removeClass('selected');
-        $(this).addClass('selected');
-        ui.PeopleView.switch_sub_view(view, pagename);
+        if (pagename == 'list') {
+            toggle.find('.lists_memu').toggle();
+        } else {
+            sub_view_btns.removeClass('selected');
+            $(this).addClass('selected');
+            ui.PeopleView.switch_sub_view(view, pagename);
+        }
+        return false;
     });
 
     vcard.find('.vcard_follow').click('click',
@@ -82,6 +88,53 @@ function init_view(view) {
         ui.ProfileDlg.request_profile();    
         globals.profile_dialog.open();
     });
+
+    var lists_memu = toggle.find('.lists_memu');
+    toggle.find('.people_view_list_trigger').mouseleave(function () {
+        lists_memu.hide();
+    });
+
+    lists_memu.find('.user_lists_menu_item').click(function () {
+        view.is_trim = false;
+        view.item_type = 'cursor';
+        view.cursor = '';
+        view.former = ui.Template.form_list;
+        view._load = ui.PeopleView.load_lists;
+        view._loadmore = ui.PeopleView.loadmore_lists;
+        view._load_success = ui.Main.load_list_success;
+        view._loadmore_success = ui.Main.loadmore_list_success;
+        lists_memu.hide();
+        sub_view_btns.removeClass('selected');
+        $('.people_view_list_btn').addClass('selected');
+        view.clear();
+        view.load();
+        return false;
+    });
+
+    lists_memu.find('.listed_lists_menu_item').click(function () {
+        view.is_trim = false;
+        view.item_type = 'cursor';
+        view.cursor = '';
+        view.former = ui.Template.form_list;
+        view._load = ui.PeopleView.load_listed_lists;
+        view._loadmore = ui.PeopleView.loadmore_listed_lists;
+        view._load_success = ui.Main.load_list_success;
+        view._loadmore_success = ui.Main.loadmore_list_success;
+        lists_memu.hide();
+        sub_view_btns.removeClass('selected');
+        $('.people_view_list_btn').addClass('selected');
+        view.clear();
+        view.load();
+        return false;
+    });
+    
+    lists_memu.find('.create_list_menu_item').click(function () {
+        ui.ListAttrDlg.load(globals.myself.screen_name,'', '', 'public');
+        globals.list_attr_dialog.open(); 
+        lists_memu.hide();
+        return false;
+    });
+    
 },
     
 destroy_view:
@@ -181,11 +234,13 @@ function render_people_view(self, user_obj, proc) {
     btn_follow.show();
     ui.Template.fill_people_vcard(user_obj, self._header);
     db.dump_users([user_obj]);
+    self._header.find('.create_list_menu_item').hide();
     if (user_obj.screen_name == globals.myself.screen_name) {
         btn_edit.show();
         btn_follow.hide();
         btn_block.hide();
         btn_unblock.hide();
+        self._header.find('.create_list_menu_item').show();
         proc();
         self.protected_user = false;
     } else {
@@ -272,6 +327,26 @@ function load_friend(view, success, fail) {
 loadmore_friend:
 function loadmore_friend(view, success, fail) {
     lib.twitterapi.get_user_friends(view.screen_name, view.cursor, success);
+},
+
+load_lists:
+function load_lists(view, success, fail) {
+    lib.twitterapi.get_user_lists(view.screen_name, -1, success);
+},
+
+loadmore_lists:
+function loadmore_lists(view, success, fail) {
+    lib.twitterapi.get_user_lists(view.screen_name, view.cursor, success);
+},
+
+load_listed_lists:
+function load_listed_lists(view, success, fail) {
+    lib.twitterapi.get_user_listed_lists(view.screen_name, -1, success);
+},
+
+loadmore_listed_lists:
+function loadmore_listed_lists(view, success, fail) {
+    lib.twitterapi.get_user_listed_lists(view.screen_name, view.cursor, success);
 },
 
 };

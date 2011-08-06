@@ -814,18 +814,18 @@ label {
 .tweet_dm_delete_btn {
     background-position: -96px 0;
 }
-.people_follow_btn {
+.follow_btn {
     background-position: -72px 0;
     display: inline-block;
 }
-.people_unfollow_btn {
+.unfollow_btn {
     background-position: -96px 0;
     display: none;
 }
-.card[following="true"] .people_follow_btn {
+.card[following="true"] .follow_btn {
     display: none !important;
 }
-.card[following="true"] .people_unfollow_btn {
+.card[following="true"] .unfollow_btn {
     display: inline-block !important;
 }
 
@@ -894,6 +894,18 @@ label {
 
 .people_request_hint > p, .people_request_hint > h1{
     margin: 5px 0 5px 60px;
+}
+
+.people_view_list_trigger {
+    position: relative;
+}
+
+.people_view_list_trigger .lists_memu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    right: -8px;
 }
 
 .btn_people_request {
@@ -1227,13 +1239,13 @@ label {
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #profile_dlg .dialog_header {
+#oauth_dlg .dialog_header, #profile_dlg .dialog_header, #list_attr_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer {
     padding: 10px;
     height: 32px; 
 }
@@ -1894,8 +1906,8 @@ td {
     border: 1px solid #ccc;
 }
 .void_table {
-    frame: "void";
-    width: 100%;
+    frame: "void" !important;
+    width: 100% !important;
 }
 .void_table td {
     border: 0;
