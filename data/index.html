@@ -570,10 +570,29 @@ function on_load_finish() {
                 $('#profile_avator_list a:first').click();
                 $(window).dequeue('_on_load_finish');
             });
+            });
+        // 6. run track code
+        procs.push(function () {
+            track();
+            $(window).dequeue('_on_load_finish');
         });
         $(window).queue('_on_load_finish', procs);
         $(window).dequeue('_on_load_finish');
     }
+}
+
+function track() {
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-18538886-4']);
+     _gaq.push(['_setCustomVar', 1, 'Platform', conf.vars.platform, 1]);
+     _gaq.push(['_setCustomVar', 2, 'Version', conf.vars.version, 1]);
+     _gaq.push(['_trackPageview']);
+
+     setTimeout(function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = 'https://ssl.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     }, 0);
 }
 
 var globals = {
@@ -1787,17 +1806,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <span id="tweet_cache"></span>
 <audio id="audio_notify" src="./sound/notify.wav"></audio>
 <script>
-     var _gaq = _gaq || [];
-     _gaq.push(['_setAccount', 'UA-18538886-4']);
-     _gaq.push(['_setCustomVar', 1, 'Platform', conf.vars.platform, 1]);
-     _gaq.push(['_setCustomVar', 2, 'Version', conf.vars.version, 1]);
-     _gaq.push(['_trackPageview']);
 
-     setTimeout(function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = 'https://ssl.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     }, 0);
 </script>
 </body>
 </html>
