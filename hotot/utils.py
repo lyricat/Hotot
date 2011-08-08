@@ -11,7 +11,6 @@ import mimetypes, mimetools
 
 import config
 import locale
-import ctypes
 
 try: import i18n
 except: from gettext import gettext as _
@@ -31,28 +30,39 @@ def open_webbrowser(uri):
     subprocess.Popen([browser, uri])
 
 def webkit_set_proxy_uri(uri):
+    from ctypes import *
     if uri and '://' not in uri:
         uri = 'https://' + uri
     try:
         if os.name == 'nt':
-            libgobject = ctypes.CDLL('libgobject-2.0-0.dll')
-            libsoup = ctypes.CDLL('libsoup-2.4-1.dll')
-            libwebkit = ctypes.CDLL('libwebkit-1.0-2.dll')
+            libgobject = CDLL('libgobject-2.0-0.dll')
+            libsoup = CDLL('libsoup-2.4-1.dll')
+            libwebkit = CDLL('libwebkit-1.0-2.dll')
         else:
-            libgobject = ctypes.CDLL('libgobject-2.0.so.0')
-            libsoup = ctypes.CDLL('libsoup-2.4.so.1')
+            libgobject = CDLL('libgobject-2.0.so.0')
+            libsoup = CDLL('libsoup-2.4.so.1')
             try:
-                libwebkit = ctypes.CDLL('libwebkitgtk-1.0.so.0')
+                libwebkit = CDLL('libwebkitgtk-1.0.so.0')
             except:
-                libwebkit = ctypes.CDLL('libwebkit-1.0.so.2')
+                libwebkit = CDLL('libwebkit-1.0.so.2')
             pass
-        proxy_uri = libsoup.soup_uri_new(str(uri)) if uri else 0
-        session = libwebkit.webkit_get_default_session()
-        libgobject.g_object_set(session, "proxy-uri", proxy_uri, None)
+        soup_uri_new = libsoup.soup_uri_new
+        soup_uri_new.restype = c_void_p
+        soup_uri_new.argtypes = [ c_char_p ]
+        proxy_uri = soup_uri_new(str(uri)) if uri else 0
+        get_session = libwebkit.webkit_get_default_session
+        get_session.restype = c_void_p
+        session = get_session()
+        g_object_set = libgobject.g_object_set
+        g_object_set.argtypes = [ c_void_p, c_char_p, c_void_p, c_void_p ]
+        g_object_set(session, "proxy-uri", proxy_uri, None)
         if proxy_uri:
-            libsoup.soup_uri_free(proxy_uri)
-        libgobject.g_object_set(session, "max-conns", 20, None)
-        libgobject.g_object_set(session, "max-conns-per-host", 5, None)
+            soup_uri_free = libsoup.soup_uri_free
+            soup_uri_free.argtypes = [ c_void_p ]
+            soup_uri_free(proxy_uri)
+        g_object_set.argtypes = [ c_void_p, c_char_p, c_int, c_void_p ]
+        g_object_set(session, "max-conns", 20, None)
+        g_object_set(session, "max-conns-per-host", 5, None)
         return 0
     except:
         exctype, value = sys.exc_info()[:2]
