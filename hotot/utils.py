@@ -30,7 +30,7 @@ def open_webbrowser(uri):
     subprocess.Popen([browser, uri])
 
 def webkit_set_proxy_uri(uri):
-    from ctypes import *
+    from ctypes import CDLL, c_void_p, c_char_p, c_int
     if uri and '://' not in uri:
         uri = 'https://' + uri
     try:
