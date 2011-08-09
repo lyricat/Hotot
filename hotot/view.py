@@ -60,6 +60,8 @@ class MainView(WebView):
             return True
         elif uri.startswith('about:'):
             return True
+        elif uri.startswith('http://stat.hotot.org'):
+            return False
         else:
             utils.open_webbrowser(uri)
         return True
