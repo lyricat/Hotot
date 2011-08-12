@@ -709,7 +709,7 @@ jQuery(function($) {
             <a id="btn_oauth_sign_in" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
         </p>
         <p style="text-align:right; font-size: 10px;">
-            <a id="clean_token_btn" style="color:red; text-decoration:none;" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
+            <a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
         </p>
         </div>
 
@@ -740,9 +740,9 @@ jQuery(function($) {
         </div><!--tabs-->
         <div style="clear:both"></div>
         <div class="bottom">
-            <a id="btn_welcome_delete_profile" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
-            <a id="btn_welcome_prefs" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>     
-            <a id="btn_welcome_exts" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
+            <a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
+            <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>     
+            <a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
         </div>
         <div style="clear:both"></div>
     </div><!-- END of #sign_in_block -->
@@ -755,7 +755,7 @@ jQuery(function($) {
     </div>
     <div id="welcome_bottom">
         <p>
-        <a id="btn_welcome_about" href="javascript:void(0)" data-i18n-text="help">Help</a>
+        <a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
         </p>
     </div>
 </section>
@@ -855,22 +855,22 @@ jQuery(function($) {
             <a href="#" class="close_btn ic_close"></a>
         </div>
     </div>
-    <a id="btn_my_profile" class="profile_img_wrapper" href="javascript:void(0);"></a>
+    <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
     <div id="hotot_menu">
         <div id="sys_menu_frame">
             <ul id="sys_menu" class="hotot_menu">
                 <li>
-                    <a id="btn_prefs" href="javascript:void(0);">Preferences</a>
+                    <a id="btn_prefs" title="Preferences" href="javascript:void(0);">Preferences</a>
                 </li><li>
-                    <a id="btn_exts" href="javascript:void(0);">Extensions</a>
+                    <a id="btn_exts" title="Extensions" href="javascript:void(0);">Extensions</a>
                 </li><li>
-                    <a id="btn_kismet" href="javascript:void(0);">Kismet Firewall</a>
+                    <a id="btn_kismet" title="Kismet Firewall" href="javascript:void(0);">Kismet Firewall</a>
                 </li><li>
-                    <a id="btn_about" href="javascript:void(0);">About &amp; Help</a>
+                    <a id="btn_about" title="About & Help" href="javascript:void(0);">About &amp; Help</a>
                 </li>
                 <li class="separator"><span></span></li>
                 <li>
-                     <a id="btn_sign_out" href="javascript:void(0);">Sign out</a>
+                     <a id="btn_sign_out" title="Sign out" href="javascript:void(0);">Sign out</a>
                 </li>
             </ul> 
         </div>
@@ -878,7 +878,7 @@ jQuery(function($) {
             <h2 style="padding: 5px 0; margin-left: 5px;">Extensions</h2>
             <ul id="exts_menu" class="hotot_menu">
                 <li id="exts_menu_empty_hint">
-                    <a href="javascript:void(0);">No Extension Icon</a>
+                    <a title="No Extension Icon" href="javascript:void(0);">No Extension Icon</a>
                 </li>
             </ul>
         </div>
@@ -908,7 +908,7 @@ jQuery(function($) {
     <div id="status_info">
         <div id="status_info_text"></div>
         <input type="text" id="tbox_dm_target" class="entry" value="">
-        <a id="btn_clear_status_info" href="javascript:void(0);"></a>
+        <a id="btn_clear_status_info" title="Write a normal tweet" href="javascript:void(0);"></a>
     </div>
     <div id="tbox_status_wrapper" class="textarea">
         <textarea id="tbox_status" class="closed"></textarea>
@@ -936,9 +936,9 @@ jQuery(function($) {
     <input type="text" class="entry" id="tbox_finder"/>
     <label for="tbox_finder" class="label"
         id="finder_matched_info"></label>
-    <a id="btn_finder_prev" href="javascript:void(0);"></a>
-    <a id="btn_finder_next" href="javascript:void(0);"></a>
-    <a id="btn_finder_close" href="javascript:void(0);"></a>
+    <a id="btn_finder_prev" title="Previous" href="javascript:void(0);"></a>
+    <a id="btn_finder_next" title="Next" href="javascript:void(0);"></a>
+    <a id="btn_finder_close" title="Close" href="javascript:void(0);"></a>
     </div>
 </section>
 
@@ -956,7 +956,7 @@ jQuery(function($) {
 <div id="prefs_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="preferences">Preferences</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1321,7 +1321,7 @@ jQuery(function($) {
 <div id="oauth_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title">First time to Sign in with Twitter</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1353,8 +1353,8 @@ jQuery(function($) {
         </div>
     </div>
     <div class="dialog_footer">
-    <a id="btn_oauth_pin_cancel" class="button" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="btn_oauth_pin_ok" class="button" href="javascript:void(0);" data-i18n-text="ok">OK</a>
+    <a id="btn_oauth_pin_cancel" class="button" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_oauth_pin_ok" class="button" title="OK" href="javascript:void(0);" data-i18n-text="ok">OK</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>
@@ -1363,7 +1363,7 @@ jQuery(function($) {
 <div id="about_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="about_and_help">About &amp; Help</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1503,7 +1503,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="profile_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="profile">Profile</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1564,7 +1564,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="list_attr_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="List">List</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1606,7 +1606,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="exts_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="extensions">Extenstions</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1639,7 +1639,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="kismet_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="kismet_content_firewall">Kismet Content Firewall</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     
     <div class="dialog_container">
@@ -1726,7 +1726,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="imageuploader_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="upload_photo">Upload Photo</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1762,7 +1762,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="error_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="errors">Errors</h2>
-        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1786,10 +1786,10 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <section id="context_menu">
     <ul class="hotot_menu">
-        <li><a id="context_menuitem_copy" class="select_only native_only" href="javascript:void(0);" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
-        <li><a id="context_menuitem_paste" class="editable_only native_only" href="javascript:void(0);" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
-        <li><a id="context_menuitem_web_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_google">Search in Google</a></li>
-        <li><a id="context_menuitem_twitter_search" class="select_only" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
+        <li><a id="context_menuitem_copy" class="select_only native_only" title="Copy" href="javascript:void(0);" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
+        <li><a id="context_menuitem_paste" class="editable_only native_only" title="Paste" href="javascript:void(0);" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
+        <li><a id="context_menuitem_web_search" class="select_only" title="Search in Google" href="javascript:void(0);" data-i18n-text="search_in_google">Search in Google</a></li>
+        <li><a id="context_menuitem_twitter_search" class="select_only" title="Search in Twitter" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
     </ul>
 </section>
 
