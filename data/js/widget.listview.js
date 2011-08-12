@@ -50,6 +50,24 @@ function WidgetListView(id, name, params) {
         self._body = self._me.children('.listview_body');
         self._header = self._me.children('.listview_header');
         self._footer = self._me.children('.listview_footer');
+
+        // notification
+        var prefs = conf.profiles[conf.current_name].preferences;
+        var name_mapping = {
+            'home': 'home_timeline',
+            'mentions': 'mentions',
+            'messages': 'direct_messages_inbox'
+        };
+        switch (name) {
+            case 'home':
+            case 'mentions':
+            case 'messages':
+                var mname = name_mapping[name];
+                self.use_notify = prefs['use_' + mname + '_notify'];
+                self.use_notify_type = prefs['use_' + mname + '_notify_type'];
+                self.use_notify_sound = prefs['use_' + mname + '_notify_sound'];
+        }
+
         if (typeof(params) != 'undefined') {
             for (var k in params) {
                 switch (k) {
