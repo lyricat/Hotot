@@ -9,7 +9,7 @@ use_streaming: false,
 
 timer: null,
 
-timer_interval: 60000,
+timer_interval: 120000,
 
 home_queue: [],
 
@@ -46,7 +46,7 @@ function work() {
         daemon.poll();
         daemon.push();
     }
-    daemon.time += 60;
+    daemon.time += 120;
     if (daemon.time == 3600) { // reset timer per hour
         daemon.time = 0;
     }
@@ -73,7 +73,7 @@ function poll() {
             // poll them as normal if Streaming xhr is not running or the user stream is disabled.
             interval = 900;
         }
-        if (daemon.time % (Math.ceil(interval / 60) * 60) == 0) {
+        if (daemon.time % (Math.ceil(interval / 120) * 120) == 0) {
             hotot_log('poll as push', view.name);
             view.load();
             step += 1;
