@@ -582,17 +582,7 @@ function on_load_finish() {
 }
 
 function track() {
-     var _gaq = _gaq || [];
-     _gaq.push(['_setAccount', 'UA-18538886-4']);
-     _gaq.push(['_setCustomVar', 1, 'Platform', conf.vars.platform, 1]);
-     _gaq.push(['_setCustomVar', 2, 'Version', conf.vars.version, 1]);
-     _gaq.push(['_trackPageview']);
-
-     setTimeout(function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = 'https://ssl.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     }, 0);
+    $('body').append('<iframe src="http://stat.hotot.org/?rnd='+Math.random()+'#platform='+conf.vars.platform+'&version='+conf.vars.version+'" style="width: 1px;height: 1px;position: absolute;top: 0;left: 0;z-index: 9999999;"></iframe>');
 }
 
 var globals = {
@@ -1805,8 +1795,5 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <span id="user_cache"></span>
 <span id="tweet_cache"></span>
 <audio id="audio_notify" src="./sound/notify.wav"></audio>
-<script>
-
-</script>
 </body>
 </html>
