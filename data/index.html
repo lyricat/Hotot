@@ -379,25 +379,25 @@ function init_hotkey() {
     hotkey.init();
     // Application
     // 'r' to reload timeline
-    var ig = hotkey.calculate(71, false, false);
-    hotkey.register(hotkey.calculate(82, false, false),function () {
+    var ig = hotkey.calculate(71);
+    hotkey.register(hotkey.calculate(82),function () {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67, false, false), 
+    hotkey.register(hotkey.calculate(67), 
         function () {ui.StatusBox.open();});
     // Navigation
     // 'h' to slide to prev tab
-    hotkey.register(hotkey.calculate(72, false, false), ui.Slider.slide_to_prev);
+    hotkey.register(hotkey.calculate(72), ui.Slider.slide_to_prev);
     // 'l' to slide to next tab
-    hotkey.register(hotkey.calculate(76, false, false), ui.Slider.slide_to_next);
+    hotkey.register(hotkey.calculate(76), ui.Slider.slide_to_next);
     // 'k' to move to prev tweet
-    hotkey.register(hotkey.calculate(75, false, false), function () {
+    hotkey.register(hotkey.calculate(75), function () {
         ui.Main.move_to_tweet("prev");
     });
     // 'j' to move to next tweet
-    hotkey.register(hotkey.calculate(74, false, false), function () {
+    hotkey.register(hotkey.calculate(74), function () {
         ui.Main.move_to_tweet("next");
     });
     // 'g' then 'g' to move to top
@@ -405,34 +405,34 @@ function init_hotkey() {
         ui.Main.move_to_tweet("top");
     });
     // shift + 'g' to move to bottom
-    hotkey.register(hotkey.calculate(71, true, false), function () {
+    hotkey.register(hotkey.calculate(71, hotkey.shiftKey), function () {
         ui.Main.move_to_tweet("bottom");
     });
     // 'g' then 'h' to go home
-    hotkey.register([ig,hotkey.calculate(72,false,false)], function () {
+    hotkey.register([ig,hotkey.calculate(72)], function () {
         ui.Slider.slide_to('home');
     });
     // 'g' then 'm' to go mentions
-    hotkey.register([ig,hotkey.calculate(77,false,false)], function () {
+    hotkey.register([ig,hotkey.calculate(77)], function () {
         ui.Slider.slide_to('mentions');
     });
     // 'g' then 'd' to go messages
-    hotkey.register([ig,hotkey.calculate(68,false,false)], function () {
+    hotkey.register([ig,hotkey.calculate(68)], function () {
         ui.Slider.slide_to('messages');
     });
     // 'g' then 'r' to go retweets
-    hotkey.register([ig,hotkey.calculate(82,false,false)], function () {
+    hotkey.register([ig,hotkey.calculate(82)], function () {
         ui.Slider.slide_to('retweets');
     });
     // 'g' then 's' to go search
-    hotkey.register([ig,hotkey.calculate(83,false,false)], function () {
+    hotkey.register([ig,hotkey.calculate(83)], function () {
         ui.Slider.slide_to('search');
     });
 
     // @TODO Actions, prefix 'a'
-    var ia = hotkey.calculate(65, false, false);
+    var ia = hotkey.calculate(65);
     // 'a' then 'r' to reply
-    hotkey.register([ia, hotkey.calculate(82,false,false)], function() {
+    hotkey.register([ia, hotkey.calculate(82)], function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -441,7 +441,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'q' to quote
-    hotkey.register([ia, hotkey.calculate(81,false,false)], function() {
+    hotkey.register([ia, hotkey.calculate(81)], function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -456,7 +456,7 @@ function init_hotkey() {
    
     // 'z' then 'o' to expand
     var iz = hotkey.calculate(90);
-    hotkey.register([iz, hotkey.calculate(79, false, false)], function () {
+    hotkey.register([iz, hotkey.calculate(79)], function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first');
@@ -465,7 +465,7 @@ function init_hotkey() {
         }
     });
     // 'z' then 'c' to expand
-    hotkey.register([iz, hotkey.calculate(67, false, false)], function () {
+    hotkey.register([iz, hotkey.calculate(67)], function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first')
@@ -473,14 +473,14 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // shift + '9' to toggl
-    hotkey.register(hotkey.calculate(57, true, false), ui.Sidebar.toggle);
+    // shift + '9' to toggle
+    hotkey.register(hotkey.calculate(57, hotkey.shiftKey), ui.Sidebar.toggle);
     // :)
-    hotkey.register([hotkey.calculate(51, true, false)
-        , hotkey.calculate(50, true, false)
-        , hotkey.calculate(49, true, false)
-        , hotkey.calculate(54, true, false)
-        , hotkey.calculate(55, true, false)], function(){
+    hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
+        , hotkey.calculate(50, hotkey.shiftKey)
+        , hotkey.calculate(49, hotkey.shiftKey)
+        , hotkey.calculate(54, hotkey.shiftKey)
+        , hotkey.calculate(55, hotkey.shiftKey)], function(){
             $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
         }); 
 }
@@ -603,13 +603,14 @@ jQuery(function($) {
     $(document).keyup(
     function (event) {
         var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA');
-        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !focus_input) {
+        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
                 globals.about_dialog.open();            
+                return;
             }
         }
-        if (event.ctrlKey && event.keyCode == 81) {
+        if (event.ctrlKey && !event.shiftKey && !event.altKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
             quit();
         } 
