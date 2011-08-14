@@ -189,7 +189,7 @@ function do_translate_tweet(li_id, dst_lang) {
     var style = 'background:transparent url('
                 + 'ext/'+ext.HototTranslate.id+'/ic16_translate.png'
                 +') no-repeat;padding-left:20px;';
-    ext.HototTranslate.do_translate(dst_lang, text.text(),
+    ext.HototTranslate.do_translate(dst_lang, text.attr('alt') || text.text(),
     function (result) {
         var content = '';
         if (result.responseStatus == 200) {
