@@ -6,6 +6,12 @@ map: [],
 matched: [], // matched proc 
 iqueue: [],
 state: 0,
+
+// mod key definition
+shiftKey: 1,
+ctrlKey: 2,
+altKey: 4,
+
 init:
 function init() {
 },
@@ -17,7 +23,7 @@ function crack(event) {
         hotkey.iqueue.splice(0, hotkey.iqueue.length);
         return;
     }
-    var idx = hotkey.calculate(event.keyCode, event.shiftKey, event.ctrlKey); 
+    var idx = hotkey.calculate(event.keyCode, event.shiftKey?hotkey.shiftKey:null, event.ctrlKey?hotkey.ctrlKey:null, event.altKey?hotkey.altKey:null); 
     hotkey.iqueue.push(idx);
     if (hotkey.state == 0) { // new input
         hotkey.state = 1;
@@ -54,10 +60,14 @@ function register(idxs, callback) {
 },
 
 calculate:
-function calculate(keyCode, shiftKey, ctrlKey) {
-    var idx = (keyCode - 49)*4;
-    if (shiftKey) { idx += 1;}
-    if (ctrlKey) { idx += 2;}
+function calculate(keyCode, modkeys) {
+    var idx = keyCode << 3;
+    for (var i = 1, i_max = arguments.length; i < i_max; i++) {
+        var key = arguments[i];
+        if (key === hotkey.shiftKey || key === hotkey.ctrlKey || key === hotkey.altKey) {
+            idx |= key;
+        }
+    }
     return idx;
 },
     
