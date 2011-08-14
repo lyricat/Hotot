@@ -61,7 +61,40 @@ function init_view(view) {
         }
     });
 
-    vcard.find('.vcard_block').click(
+    vcard.find('.vcard_edit').click(
+    function (event) { 
+        ui.ProfileDlg.request_profile();    
+        globals.profile_dialog.open();
+    });
+
+    var people_action_more_memu = vcard.find('.people_action_more_memu');
+    vcard.find('.people_action_more_trigger').mouseleave(function () {
+        people_action_more_memu.hide();
+    });
+
+    vcard.find('.vcard_more').click(function () {
+        people_action_more_memu.toggle();
+    });
+
+    vcard.find('.mention_menu_item').click(
+    function (event) {
+        ui.StatusBox.set_status_text('@' + view.screen_name+' ');
+        ui.StatusBox.open(
+        function() {
+            ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+        });
+        people_action_more_memu.hide();
+        return false;
+    });
+
+    vcard.find('.add_to_list_menu_item').click(
+    function (event) {
+        ui.AddToListDlg.load();
+        globals.add_to_list_dialog.open(); 
+    });
+
+    vcard.find('.block_menu_item').click(
     function (event) {
         if (!confirm("Are you sure you want to block @"+view.screen_name+"?!\n"))
             return;
@@ -71,9 +104,10 @@ function init_view(view) {
             toast.set(
                 "Block @"+ view.screen_name+" Successfully!").show();
         });
+        people_action_more_memu.hide();
     });
 
-    vcard.find('.vcard_unblock').click(
+    vcard.find('.unblock_menu_item').click(
     function (event) {
         toast.set("Unblock @" + view.screen_name + " ...").show();
         lib.twitterapi.create_blocks(view.screen_name,
@@ -81,12 +115,20 @@ function init_view(view) {
             toast.set(
                 "Unblock @"+ view.screen_name+" Successfully").show();
         });
+        people_action_more_memu.hide();
     });
 
-    vcard.find('.vcard_edit').click(
-    function (event) { 
-        ui.ProfileDlg.request_profile();    
-        globals.profile_dialog.open();
+    vcard.find('.report_spam_menu_item').click(
+    function (event) {
+        if(!confirm('Are you sure you want to BLOCK them and REPORT for SPAM?')) 
+            return;
+        toast.set("Report @" + view.screen_name + " for spam...").show();
+        lib.twitterapi.create_blocks(view.screen_name,
+        function () {
+            toast.set(
+                "Report @"+ view.screen_name+" for Spam Successfully").show();
+        });
+        people_action_more_memu.hide();
     });
 
     var lists_memu = toggle.find('.lists_memu');
