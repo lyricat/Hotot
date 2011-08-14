@@ -639,9 +639,9 @@ jQuery(function($) {
     };
 
     document.body.onmousewheel = function (event) {
-        if (event.wheelDeltaX && event.wheelDeltaX < 0){
+        if (event.wheelDeltaX && event.wheelDeltaX < -20){
             ui.Slider.slide_to_next();
-        } else if (event.wheelDeltaX && event.wheelDeltaX > 0){
+        } else if (event.wheelDeltaX && event.wheelDeltaX > 20){
             ui.Slider.slide_to_prev();
         }
     };
