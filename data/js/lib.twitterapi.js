@@ -160,7 +160,7 @@ function do_ajax(method, url, params, headers, on_success, on_error){
 update_status:
 function update_status(text, reply_to_id, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/update.json';
-    var params = {'status': text};
+    var params = {'status': text, 'include_entities': '1'};
     if (reply_to_id) {
         params['in_reply_to_status_id'] = reply_to_id;
     }

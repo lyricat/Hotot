@@ -47,7 +47,7 @@ tweet_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -96,7 +96,7 @@ retweeted_by_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -144,7 +144,7 @@ message_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -178,7 +178,7 @@ search_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
@@ -210,7 +210,7 @@ people_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+        <div class="text" alt="{%ALT}" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -352,7 +352,7 @@ list_t:
             @{%SCREEN_NAME%}/{%SLUG%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+        <div class="text" alt="{%ALT}" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -632,6 +632,17 @@ function form_tweet (tweet_obj, pagename) {
             + retweet_name + '</a>, ';
     }
 
+    var text = tweet_obj.text;
+    if (tweet_obj.entities && tweet_obj.entities.urls) {
+        var urls = tweet_obj.entities.urls;
+        for (var i = 0, l = urls.length; i < l; i += 1) {
+            var url = urls[i];
+            if (url.url && url.expanded_url) {
+              text = text.replace(url.url, url.expanded_url);
+            }
+        }
+    }
+
     var m = ui.Template.tweet_m;
     m.ID = pagename+'-'+id;
     m.TWEET_ID = id;
@@ -642,7 +653,8 @@ function form_tweet (tweet_obj, pagename) {
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
-    m.TEXT = ui.Template.form_text(tweet_obj.text);
+    m.TEXT = ui.Template.form_text(text);
+    m.ALT = tweet_obj.text.replace(/"/g, '&quot;');
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
 

@@ -622,7 +622,8 @@ on_rt_click:
 function on_rt_click(btn, li_id, event) {
     var li = $(li_id);
     var screen_name = li.attr('screen_name');
-    var text = $(li.find('.text')[0]).text();
+    var _text = $(li.find('.text')[0]);
+    var text = _text.attr('alt') || _text.text();
 
     ui.StatusBox.set_status_text("RT @" + screen_name
         + ': ' + text + ' ');
