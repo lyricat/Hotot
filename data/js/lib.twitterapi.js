@@ -552,6 +552,28 @@ function get_list_members(owner_screen_name, slug, cursor, on_success) {
     lib.twitterapi.get(url, params, on_success);
 },
 
+create_list_member:
+function create_list_member(owner_screen_name, slug, screen_name, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/members/create.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'screen_name': screen_name,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
+destroy_list_member:
+function destroy_list_member(owner_screen_name, slug, screen_name, on_success) {
+    var url = lib.twitterapi.api_base + 'lists/members/destroy.json';
+    var params = {
+        'owner_screen_name' : owner_screen_name,
+        'slug': slug,
+        'screen_name': screen_name,
+    };
+    lib.twitterapi.post(url, params, on_success);
+},
+
 create_list_subscriber:
 function create_list_subscriber(owner_screen_name, slug, on_success) {
     var url = lib.twitterapi.api_base + 'lists/subscribers/create.json';

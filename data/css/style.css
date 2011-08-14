@@ -863,9 +863,21 @@ label {
     padding: 5px;
 }
 
-.vcard_action_btns li {
+.vcard_action_btns > li {
     list-style-type: none;
     display: inline-block;
+}
+
+.people_action_more_trigger {
+    position: relative;
+}
+
+.people_action_more_trigger .people_action_more_memu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    right: -8px;
 }
 
 .people_view_toggle {
@@ -1239,13 +1251,13 @@ label {
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #profile_dlg .dialog_header, #list_attr_dlg .dialog_header {
+#oauth_dlg .dialog_header, #profile_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer, #add_to_list_dlg .dialog_footer{
     padding: 10px;
     height: 32px; 
 }

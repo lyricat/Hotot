@@ -306,6 +306,11 @@ function init_dialogs() {
     globals.list_attr_dialog.place(widget.DialogManager.CENTER);
     globals.list_attr_dialog.create();
 
+    globals.add_to_list_dialog = new widget.Dialog('#add_to_list_dlg');
+    globals.add_to_list_dialog.resize(400, 260);
+    globals.add_to_list_dialog.place(widget.DialogManager.CENTER);
+    globals.add_to_list_dialog.create();
+
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
     globals.prefs_dialog.resize(500, 400);
     globals.prefs_dialog.place(widget.DialogManager.CENTER);
@@ -1596,6 +1601,50 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_footer">
     <a id="btn_list_attr_cancel" class="button dialog_close_btn" data-i18n-text="cancel">Cancel</a>
     <a id="btn_list_attr_update" class="button" data-i18n-text="update">Update</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div>
+
+<!-- Add to List dialog -->
+<div id="add_to_list_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="List">Add to List</h2>
+        <a class="dialog_close_btn" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+    <div class="dialog_body">
+        <ul id="add_to_list_list">
+            <li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 1</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 2</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 3</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 4</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 5</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 6</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 7</label>
+            </li><li>
+                <input type="checkbox" class="checkbox"/>
+                <label class="label">List 8</label>
+            </li>
+        </ul>
+    </div>
+    <div class="dialog_footer">
+    <a id="btn_add_to_list_cancel" class="button dialog_close_btn" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_add_to_list_update" class="button" data-i18n-text="update">Update</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>

@@ -270,14 +270,30 @@ people_vcard_t:
         <li><a class="vcard_follow button" \
                 href="javascript:void(0);" >Follow</a> \
         </li><li> \
-            <a class="vcard_block button" \
-                href="javascript:void(0);" >Block</a> \
-        </li><li> \
-            <a class="vcard_unblock button" \
-                href="javascript:void(0);">Unblock</a> \
-        </li><li> \
             <a class="vcard_edit button" \
                 href="javascript:void(0);" style="display:none;">Edit</a>\
+        </li><li class="people_action_more_trigger"> \
+            <a class="vcard_more button" \
+                href="javascript:void(0);">More &#x25BE;</a> \
+            <ul class="people_action_more_memu hotot_menu">\
+                <li><a class="mention_menu_item" \
+                    title="Mention them"\
+                    href="javascript:void(0);">Mention them</a>\
+                </li><li style="display:none;"><a class="add_to_list_menu_item" \
+                    title="Add them to a list"\
+                    href="javascript:void(0);">Add to List</a>\
+                </li><li class="separator"><span></span>\
+                </li><li><a class="block_menu_item" \
+                    title="Block"\
+                    href="javascript:void(0);">Block</a>\
+                </li><li><a class="unblock_menu_item"\
+                    href="javascript:void(0);" \
+                    title="Unblock">Unblock</a>\
+                </li><li><a class="report_spam_menu_item" \
+                    href="javascript:void(0);" \
+                    title="Report Spam">Report Spam</a>\
+                </li>\
+            </ul>\
         </li> \
         </ul> \
     </div><!-- #people_vcard_ctrl --> \

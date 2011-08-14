@@ -304,6 +304,7 @@ disabled:
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     position:relative;
+    border-bottom: 1px #CCC solid;
 }
 
 .dialog_bar > .dialog_close_btn {
@@ -323,7 +324,6 @@ disabled:
     color: #333;
     text-shadow: 0 1px 0px white;
     background: #F2F2F2;
-    border-bottom: 1px #CCC solid;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     margin: 0;
