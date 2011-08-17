@@ -236,6 +236,9 @@ function slide_to(id) {
  * displayed:  012 012 123 234 345 335
  */
     var idx = ui.Slider.get_page_pos(id);
+    if (idx == -1) {
+        return;
+    }
     var width = globals.tweet_block_width;
     var max_col_num = ui.Slider.tweet_blocks.length;
     ui.Slider.current = id;
