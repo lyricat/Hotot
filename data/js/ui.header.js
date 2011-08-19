@@ -65,7 +65,7 @@ function init () {
         }
         globals.layout.close('north');
         globals.layout.close('south');
-        ui.Main.reset_views();
+        //ui.Main.reset_views();
         ui.Main.hide();
         ui.Welcome.show();
         daemon.stop();
