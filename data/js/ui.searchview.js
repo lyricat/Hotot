@@ -2,6 +2,7 @@ if (typeof ui == 'undefined') var ui = {};
 ui.SearchView = {
 init:
 function init() {
+
 },
 
 init_view:
@@ -68,6 +69,9 @@ function load_tweet(view, success, fail) {
     "refresh_url": "?since_id=84559462639222784&q=hotot",
     "next_page": "?page=3&max_id=84559462639222784&q=hotot",
     */
+    if ($.trim(view.query).length == 0) {
+        success([]);
+    }
     lib.twitterapi.search(view.query, 1, view.max_id, null, success);   
     lib.twitterapi.show_user(view.query,
     function (user) {

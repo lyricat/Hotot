@@ -12,7 +12,7 @@ function init () {
         globals.ratelimit_bubble.show();
     });
 
-    $('#header').mouseleave(
+    $('#btn_my_profile').mouseleave(
     function (event) {
         ui.Header.closeHototMenu();
         globals.ratelimit_bubble.hide();

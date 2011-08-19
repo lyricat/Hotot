@@ -41,8 +41,7 @@ function WidgetListView(id, name, params) {
     self.slug = '';
 
     self.use_notify = false;
-    self.use_notify_type = 'count';
-    self.use_notify_sound = true;
+    self.use_notify_sound = false;
     self.use_auto_update = true;
 
     self.init = function init(id, name, params) {
@@ -65,7 +64,6 @@ function WidgetListView(id, name, params) {
             case 'messages':
                 var mname = name_mapping[name];
                 self.use_notify = prefs['use_' + mname + '_notify'];
-                self.use_notify_type = prefs['use_' + mname + '_notify_type'];
                 self.use_notify_sound = prefs['use_' + mname + '_notify_sound'];
         }
 

@@ -59,6 +59,9 @@ function poll() {
     var step = 0;
     for (var i = 0; i < daemon.poll_views.length; i += 1) {
         var view = daemon.poll_views[i];
+        if (!view.use_auto_update) {
+            continue;
+        }
         var interval = view.interval;
         if (daemon.time % (Math.ceil(interval / 60) * 60) == 0) {
             view.load();
@@ -67,6 +70,9 @@ function poll() {
     }
     for (var i = 0; i < daemon.push_views.length; i += 1) {
         var view = daemon.push_views[i];
+        if (!view.use_auto_update) {
+            continue;
+        }
         var interval = view.interval;
         if (daemon.use_streaming && lib.twitterapi.watch_user_streams.is_running) {
             // poll push_views per 15 minutes when the Steaming xhr works
@@ -102,7 +108,9 @@ function push() {
     function on_ret(ret) {
         if (ret.direct_message) {
             if (ret.direct_message.recipient_screen_name == globals.myself.screen_name || ret.direct_message.sender_screen_name == globals.myself.screen_name) {
-                ui.Main.views.messages.load_success([ret.direct_message]);
+                if (ui.Main.views.messages.use_auto_update) {
+                    ui.Main.views.messages.load_success([ret.direct_message]);
+                }
             }
             return;
         }
@@ -114,22 +122,27 @@ function push() {
             var now = Date.now();
             if (now - daemon.home_last_time > 1000) {
                 hotot_log('daemon push', 1);
-                ui.Main.views.home.load_success([ret]);
+                if (ui.Main.views.home.use_auto_update) {
+                    ui.Main.views.home.load_success([ret]);
+                }
             } else {
                 daemon.home_queue.push(ret);
                 if (128 < daemon.home_queue.length) {
                     hotot_log('daemon push, batch', daemon.home_queue.length);
-                    ui.Main.views.home.load_success(daemon.home_queue);
+                    if (ui.Main.views.home.use_auto_update) {
+                        ui.Main.views.home.load_success(daemon.home_queue);
+                    }
                     daemon.home_queue.splice(0, daemon.home_queue.length);
                 }
             }
             // mentions
             if (ret.entities) {
-                user_mentions = ret.entities.user_mentions;
-                myname = globals.myself.screen_name;
-                for (var i = 0, l = user_mentions.length; i < l; i +=1) {
-                    if (user_mentions[i].screen_name == myname) {
-                        ui.Main.views.mentions.load_success([ret]);
+                var user_mentions = ret.entities.user_mentions;
+                if (ui.Main.views.mentions.use_auto_update) {
+                    for (var i = 0, l = user_mentions.length; i < l; i +=1) {
+                        if (user_mentions[i].screen_name == globals.myself.screen_name) {
+                            ui.Main.views.mentions.load_success([ret]);
+                        }
                     }
                 }
             }

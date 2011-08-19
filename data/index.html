@@ -158,14 +158,14 @@ function quit() {
     });
 }
 
-function open_people(screen_name) {
+function open_people(screen_name, additional_opts) {
     // @TODO check this user if exists or not
     toast.set('Lookup @'+screen_name+'... ').show();
     var name = 'people_'+screen_name;
     var title = '@' + screen_name + '\'s Profile';
     ui.Slider.add(name
         , {title: title, icon:'image/ic_people.png'}
-        , {   'type': 'people', 'title': title
+        , $.extend({   'type': 'people', 'title': title
             , 'load': ui.PeopleView.load_timeline
             , 'loadmore': ui.PeopleView.loadmore_timeline
             , 'load_success': ui.Main.load_tweet_success
@@ -181,19 +181,19 @@ function open_people(screen_name) {
             , 'item_type': 'id'
             , 'is_trim': true
             , 'screen_name': screen_name
-        });
+        }, additional_opts));
     ui.Main.views[name].load();
     ui.Slider.slide_to(name);
 }
 
-function open_list(screen_name, slug) {
+function open_list(screen_name, slug, additional_opts) {
     // @TODO check this list if exists or not
     toast.set('Lookup @'+screen_name+'/'+slug+'... ').show();
     var name = 'list_'+screen_name+'_'+slug;
     var title = 'List @' + screen_name + '/'+slug;
     ui.Slider.add(name
         , {title: title, icon:'image/ic_people.png'}
-        , {   'type': 'list', 'title': title
+        , $.extend({   'type': 'list', 'title': title
             , 'load': ui.ListView.load_timeline
             , 'loadmore': ui.ListView.loadmore_timeline
             , 'load_success': ui.Main.load_tweet_success
@@ -210,7 +210,7 @@ function open_list(screen_name, slug) {
             , 'is_trim': true
             , 'screen_name': screen_name
             , 'slug': slug
-        });
+        }, additional_opts));
     ui.Main.views[name].load();
     ui.Slider.slide_to(name);
 }
@@ -801,6 +801,7 @@ jQuery(function($) {
     </li>
     <li class="separator"><span></span></li>
     </ul>
+    <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
 </section>
 </section><!-- center -->
 <section id="header">
@@ -877,7 +878,6 @@ jQuery(function($) {
             <a href="#" class="setting_btn ic_gear"></a>
         </div>
     </div>
-    <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
     <div id="hotot_menu">
         <div id="sys_menu_frame">
             <ul id="sys_menu" class="hotot_menu">

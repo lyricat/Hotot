@@ -61,7 +61,7 @@ function init () {
 
     $('#slider_menu a').click(function(){
         var name = $(this).attr('href').substring(1);
-        var ret = ui.Slider.addDefaultView(name);
+        var ret = ui.Slider.addDefaultView(name, {});
         if (ret == true) {
             $(this).addClass('checked');
             if (name != 'search') {
@@ -103,7 +103,10 @@ function init () {
 
     $('#view_setting_menuitem_notify').click(function () {
         if (ui.Slider.settingView != null) {
-            ui.Slider.settingView.use_notify = !ui.Slider.settingView.use_notify; 
+            ui.Slider.settingView.use_notify 
+                = !ui.Slider.settingView.use_notify; 
+            ui.Slider.state.views[ui.Slider.settingView.name].use_notify
+                = ui.Slider.settingView.use_notify;
             if (ui.Slider.settingView.use_notify) {
                 $(this).addClass('checked');
             } else {
@@ -115,7 +118,10 @@ function init () {
 
     $('#view_setting_menuitem_auto_update').click(function () {
         if (ui.Slider.settingView != null) {
-            ui.Slider.settingView.use_auto_update = !ui.Slider.settingView.use_auto_update;
+            ui.Slider.settingView.use_auto_update 
+                = !ui.Slider.settingView.use_auto_update;
+            ui.Slider.state.views[ui.Slider.settingView.name].use_auto_update
+                = ui.Slider.settingView.use_auto_update;
             if (ui.Slider.settingView.use_auto_update) {
                 $(this).addClass('checked');
             } else {
@@ -127,7 +133,10 @@ function init () {
 
     $('#view_setting_menuitem_sound').click(function () {
         if (ui.Slider.settingView != null) {
-            ui.Slider.settingView.use_notify_sound = !ui.Slider.settingView.use_notify_sound;
+            ui.Slider.settingView.use_notify_sound 
+                = !ui.Slider.settingView.use_notify_sound;
+            ui.Slider.state.views[ui.Slider.settingView.name].use_notify_sound
+                = ui.Slider.settingView.use_notify_sound;
             if (ui.Slider.settingView.use_notify_sound) {
                 $(this).addClass('checked');
             } else {
@@ -152,26 +161,26 @@ function resume_state() {
     ui.Slider.state = conf.get_current_profile().preferences.slider_state;
     if (ui.Slider.state == null || ui.Slider.state.order.length < 2) {
         ui.Slider.state = {order: [], views: {}};
-        ui.Slider.addDefaultView('search');
-        ui.Slider.addDefaultView('home');
-        ui.Slider.addDefaultView('mentions');
-        ui.Slider.addDefaultView('messages');
+        ui.Slider.addDefaultView('search', {});
+        ui.Slider.addDefaultView('home', {});
+        ui.Slider.addDefaultView('mentions', {});
+        ui.Slider.addDefaultView('messages', {});
     } else {
-        ui.Slider.addDefaultView('search');
-        ui.Slider.addDefaultView('home');
+        ui.Slider.addDefaultView('search', ui.Slider.state.views.search);
+        ui.Slider.addDefaultView('home', ui.Slider.state.views.home);
         for (var i = 0; i < ui.Slider.state.order.length; i += 1) {
             var name = ui.Slider.state.order[i];
             if (name == 'search' || name == 'home') continue;
-            var vs = ui.Slider.state.views[name];
-            switch (vs.type) {
+            var opts = ui.Slider.state.views[name];
+            switch (opts.type) {
             case 'tweet':
-                ui.Slider.addDefaultView(name);
+                ui.Slider.addDefaultView(name, opts);
             break;
             case 'people':
-                open_people(vs.screen_name);
+                open_people(opts.screen_name, opts);
             break;
             case 'list':
-                open_list(vs.screen_name, vs.slug);
+                open_list(opts.screen_name, opts.slug, opts);
             break;
             }
         }
@@ -490,7 +499,7 @@ function closeViewSettingMenu() {
 },
 
 addDefaultView:
-function addDefaultView(name) {
+function addDefaultView(name, opts) {
     if (ui.Main.views.hasOwnProperty(name)) {
         return false;
     }
@@ -498,7 +507,7 @@ function addDefaultView(name) {
     case 'search':
     ui.Slider.add('search'
         , {title: 'Search', icon:'image/ic_search.png'}
-        , { 'type':'tweet', 'title': 'Search'
+        , $.extend({ 'type':'tweet', 'title': 'Search'
             , 'load': ui.SearchView.load_tweet
             , 'loadmore': ui.SearchView.loadmore_tweet
             , 'load_success': ui.SearchView.load_tweet_success
@@ -510,16 +519,16 @@ function addDefaultView(name) {
             , 'destroy': ui.SearchView.destroy_view            
             , 'header_html': ui.Template.search_header_t
             , 'method': 'poll'
-            , 'interval': -1
+            , 'interval': 240
             , 'item_type': 'search'
             , 'is_trim': false
-            , 'use_auto_update': false
-        });
+            , 'use_auto_update': true
+        }, opts));
     break;
     case 'home':
     ui.Slider.add('home'
         , { title:'Home Timeline', icon:'image/ic_home.png'}
-        , { 'type':'tweet', 'title': 'Home Timeline'
+        , $.extend({ 'type':'tweet', 'title': 'Home Timeline'
             , 'load': ui.Main.load_home
             , 'loadmore': ui.Main.loadmore_home
             , 'load_success': ui.Main.load_tweet_success
@@ -532,11 +541,11 @@ function addDefaultView(name) {
             , 'interval': 60
             , 'item_type': 'id'
             , 'use_notify': false
-        });
+        }, opts));
     break;
     case 'mentions':
     ui.Slider.add('mentions', {title:'Mentions',icon:'image/ic_mention.png'}
-        , { 'type':'tweet', 'title': 'Mentions'
+        , $.extend({ 'type':'tweet', 'title': 'Mentions'
             , 'load': ui.Main.load_mentions
             , 'loadmore': ui.Main.loadmore_mentions
             , 'load_success': ui.Main.load_tweet_success
@@ -548,11 +557,11 @@ function addDefaultView(name) {
             , 'method': 'push'
             , 'interval': 60
             , 'item_type': 'id'
-        });
+        }, opts));
     break;
     case 'messages':
     ui.Slider.add('messages', {title:'Messages', icon:'image/ic_dm.png'}
-        , { 'type':'tweet', 'title': 'Messages'
+        , $.extend({ 'type':'tweet', 'title': 'Messages'
             , 'load': ui.Main.load_messages
             , 'loadmore': ui.Main.loadmore_messages
             , 'load_success': ui.Main.load_tweet_success
@@ -564,11 +573,11 @@ function addDefaultView(name) {
             , 'method': 'push'
             , 'interval': 120
             , 'item_type': 'id'
-        });
+        }, opts));
     break;
     case 'retweets':
-    ui.Slider.add('retweets', {title:'Retweets', icon:'image/ic_retweet.png'}
-        , { 'type':'tweet', 'title': 'Retweets'
+    ui.Slider.add('retweets',{title:'Retweets', icon:'image/ic_retweet.png'}
+        , $.extend({ 'type':'tweet', 'title': 'Retweets'
             , 'load': ui.RetweetView.load_retweeted_to_me 
             , 'loadmore': ui.RetweetView.loadmore_retweeted_to_me
             , 'load_success': ui.Main.load_tweet_success
@@ -582,7 +591,7 @@ function addDefaultView(name) {
             , 'method': 'poll'
             , 'interval': 180
             , 'item_type': 'id'
-        });
+        }, opts));
     break;
     default: break;
     }
