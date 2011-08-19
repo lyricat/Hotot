@@ -769,6 +769,11 @@ jQuery(function($) {
     <div id="main_page_slider">
     </div>
     <ul id="tweet_more_menu" class="hotot_menu">
+    <li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn" 
+        title="Retweet this tweet"
+        href="javascript:void(0);"
+        data-i18n-text="retweet"
+        >Retweet</a></li>
     <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn" 
         title="Quote this tweet"
         href="javascript:void(0);"
@@ -1158,12 +1163,6 @@ jQuery(function($) {
                 <label for="chk_prefs_use_native_notify" class="label"
                     data-i18n-text="use_native_notify_system"
                     >Use Native Notify System</label><br/>
-                <input id="chk_prefs_use_hover_box"
-                    title="Hover to open tweet box" class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_hover_box" class="label"
-                    data-i18n-text="hover_to_open_tweet_box"
-                    >Hover to open tweet box</label><br/>
                 <input id="chk_prefs_use_preload_conversation" 
                     title="Preload latest tweet in a conversation if it is cached." 
                     class="checkbox"
@@ -1172,6 +1171,22 @@ jQuery(function($) {
                     class="label"
                     data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
                     >Preload latest tweets in conversations if possible.</label><br/>
+                <input id="chk_prefs_use_alt_retweet"
+                    title="Replace default retweet action with quote"
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_alt_retweet"
+                    class="label"
+                    data-i18n-text="use_quote_as_default_retweet_action"
+                    >Use quote as default retweet action.</label><br/>
+                <input id="chk_prefs_use_media_preview"
+                    title="Preview the media if possible."
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_media_preview"
+                    class="label"
+                    data-i18n-text="preview_embedded_media"
+                    >Preview embedded media.</label><br/>
             </p>
             </div>
             <div class="dialog_block">

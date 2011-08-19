@@ -45,8 +45,9 @@ default_prefs: {
         , 'font_size': 12
         , 'effects_level': 1
         , 'use_native_notify': true
-        , 'use_hover_box': true
         , 'use_preload_conversation': true
+        , 'use_alt_retweet': false
+        , 'use_media_preview': true
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
         , 'sign_api_base': 'https://api.twitter.com/1/'
@@ -76,8 +77,9 @@ default_prefs: {
         , 'font_size': 12
         , 'effects_level': 1
         , 'use_native_notify': true
-        , 'use_hover_box': true
         , 'use_preload_conversation': true
+        , 'use_alt_retweet': false
+        , 'use_media_preview': true
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
         , 'sign_api_base': 'https://identi.ca/api/'
@@ -245,7 +247,6 @@ function apply_prefs(name) {
         ? prefs.custom_font: prefs.font_family_used);
     globals.tweet_font_size = prefs.font_size;
     change_effects_level(prefs.effects_level);
-    ui.StatusBox.use_hover_box = prefs.use_hover_box;
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;
 
     lib.twitterapi.api_base = prefs.api_base;

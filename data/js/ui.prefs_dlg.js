@@ -208,10 +208,12 @@ function load_prefs() {
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_native_notify').attr('checked'
         , prefs.use_native_notify);
-    $('#chk_prefs_use_hover_box').attr('checked'
-        , prefs.use_hover_box);
     $('#chk_prefs_use_preload_conversation').attr('checked'
         , prefs.use_preload_conversation);
+    $('#chk_prefs_use_alt_retweet').attr('checked'
+        , prefs.use_alt_retweet);
+    $('#chk_prefs_use_media_preview').attr('checked'
+        , prefs.use_media_preview);
 
     // Advanced
     $('#tbox_prefs_api_base').val(prefs.api_base);
@@ -249,12 +251,15 @@ function save_prefs() {
     prefs['use_custom_font'] = $('#rdo_use_custom_font').attr('checked');
     prefs['effects_level'] 
         = parseInt($('input:radio[name="effects"]:checked').val());
+    // behaviors
     prefs['use_native_notify']
         = $('#chk_prefs_use_native_notify').attr('checked');
-    prefs['use_hover_box']
-        = $('#chk_prefs_use_hover_box').attr('checked');   
     prefs['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').attr('checked'); 
+    prefs['use_media_preview']
+        = $('#chk_prefs_use_media_preview').attr('checked'); 
+    prefs['use_alt_retweet']
+        = $('#chk_prefs_use_alt_retweet').attr('checked'); 
 
     // Advanced
     prefs['api_base']

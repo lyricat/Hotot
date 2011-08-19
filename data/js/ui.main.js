@@ -20,6 +20,11 @@ function init () {
     this.me = $('#main_page');
     //tweet bar
     // -- more menu --
+    $('#tweet_alt_retweet_btn').click(
+    function (event) {
+        ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
     $('#tweet_rt_btn').click(
     function (event) {
         ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
@@ -537,10 +542,7 @@ function bind_tweet_action(id) {
     });
     
     //tweet bar buttons
-    $(id).find('.tweet_more_menu_trigger').mouseenter(
-    function (event) {
-        ui.Main.openTweetMoreMenu($(id), $(this));
-    }).click(function(event){
+    $(id).find('.tweet_more_menu_trigger').click(function(event){
         if (ui.Main.isTweetMoreMenuClosed) {
             ui.Main.openTweetMoreMenu($(id), $(this));
         } else {
@@ -560,11 +562,17 @@ function bind_tweet_action(id) {
     });
     $(id).find('.tweet_retweet_btn').click(
     function (event) {
-        ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
+        if (conf.get_current_profile().preferences.use_alt_retweet) {
+            ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
+        } else {
+            ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
+        }
+        return false;
     });
     $(id).find('.tweet_fav_btn').click(
     function (event) {
         ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
+        return false;
     });
 
     // type: message 
@@ -954,6 +962,14 @@ function openTweetMoreMenu(li, btn) {
         $('#tweet_del_btn').parent().css('display', 'block');
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');
+    }
+    // retweet or quote?
+    if (conf.get_current_profile().preferences.use_alt_retweet) {
+        $('#tweet_alt_retweet_btn').parent().css('display', 'block');
+        $('#tweet_rt_btn').parent().css('display', 'none');
+    } else {
+        $('#tweet_alt_retweet_btn').parent().css('display', 'none');
+        $('#tweet_rt_btn').parent().css('display', 'block');
     }
     $('#tweet_more_menu').css({'left': (btn.offset().left - 135)+'px', 'top': (btn.offset().top - 42)+'px'}).show();
     ui.Main.isTweetMoreMenuClosed = false;

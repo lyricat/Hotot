@@ -17,8 +17,6 @@ current_mode: 0,
 
 is_closed: false,
 
-use_hover_box: true,
-
 short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa64b6d311ff19d48030d6c&format=json&longUrl=',
 // @BUG (webkit for linux)
 // keyup and keydown will fire twice in Chrome
