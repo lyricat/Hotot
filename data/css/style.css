@@ -105,6 +105,11 @@ pre {
     background-image: url(../image/ic48_profile_image.png);
     box-shadow: 1px 1px 5px #333;
     -webkit-box-reflect: none;
+    opacity: 0.4;
+}
+
+#btn_my_profile:hover {
+    opacity: 1;
 }
 
 #ratelimit_bubble .bubble_body{
