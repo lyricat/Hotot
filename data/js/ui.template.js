@@ -464,6 +464,55 @@ kismet_rule_t:
     disabled="{%DISABLED%}" field="{%FIELD%}" pattern="{%PATTERN%}"     \
     actions="{%ACTIONS%}" {%ADDITION%} href="#">{%NAME%}</a></li>',
 
+preview_link_reg: {
+'img.ly': {
+    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9]+))"','g'),
+    base: 'http://img.ly/show/thumb/'
+},
+'twitpic.com': {
+    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9]+))"','g'),
+    base: 'http://twitpic.com/show/thumb/'
+},
+'twitgoo.com': {
+    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9]+))"','g'),
+    base: 'http://twitgoo.com/show/thumb/'
+},
+'yfrog.com': {
+    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9]+))"','g'),
+    tail: '.th.jpg'
+},
+'moby.to': {
+    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"','g'),
+    tail: ':thumbnail'
+},
+'instagr.am': {
+    reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9]+)\\/*)"','g'),
+    tail: 'media?size=m'
+},
+'plixi.com': {
+    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"','g'),
+    base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
+},
+'picplz.com': {
+    reg: new RegExp('href="(http:\\/\\/picplz.com\\/([a-zA-Z0-9]+))"','g'), 
+    tail: '/thumb/' 
+},
+'raw': {
+    reg: new RegExp('href="([a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif))"', 'gi')
+},
+
+'youtube.com': {
+    reg: new RegExp('href="(http:\\/\\/(www.)?youtube.com\\/watch\\?v\\=([A-Za-z0-9_\\-]+))','g'),
+    base: 'http://img.youtube.com/vi/',
+    tail: '/default.jpg',
+},
+
+},
+
+preview_border_style: 'margin:2px 5px; padding:0; display:inline-block;',
+
+preview_style: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0; height: 150px',
+
 init:
 function init() {
     ui.Template.reg_url = ''//ui.Template.reg_vaild_preceding_chars
@@ -950,8 +999,70 @@ function form_text(text) {
     if (ui.Template.reg_is_rtl.test(text)) {
         text = '<div align="right" dir="rtl">' + text + '</div>';
     }
+    if (conf.get_current_profile().preferences.use_media_preview) {
+        text = ui.Template.form_preview(text);
+    }
     return text;
 },
+
+form_media:
+function form_media(href, src) {
+    var html = '<a style="' 
+        + ui.Template.preview_border_style
+        + '" href="'+href+'" target="_blank"><img style="'
+        + ui.Template.preview_style
+        + '" src="'+ src +'" /></a>'
+    return html;
+},
+
+form_preview:
+function form_preview(text) {
+    var html_arr = [];
+    var link_reg = ui.Template.preview_link_reg;
+    for (var pvd_name in link_reg) {
+        var match = link_reg[pvd_name].reg.exec(text);
+        while (match != null) {
+            switch (pvd_name) {
+            case 'img.ly':
+            case 'twitpic.com':  
+            case 'twitgoo.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[1], link_reg[pvd_name].base + match[2]));
+            break;
+            case 'yfrog.com':
+            case 'moby.to':
+            case 'instagr.am':
+            case 'picplz.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[1], match[1] + link_reg[pvd_name].tail));
+            break;
+            case 'plixi.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[1], link_reg[pvd_name].base +match[1]));
+            break;
+            case 'raw':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[1], match[1]));
+            break;
+            case 'youtube.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[1], link_reg[pvd_name].base + match[3] + link_reg[pvd_name].tail));
+            break;
+            }
+            match = link_reg[pvd_name].reg.exec(text);
+        }
+    }
+    if (html_arr.length != 0) {
+        text += '<p>'+ html_arr.join('')+'</p>';
+    }
+    return text;
+},
+
 
 form_status_indicators:
 function form_status_indicators(tweet) {
