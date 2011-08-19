@@ -143,22 +143,17 @@ function load_tweet_success(self, json) {
     }
     // notify
     if (ui.Main.views[self.name].use_notify) {
-        if (ui.Main.views[self.name].use_notify_type == 'count') {
-            hotot_notify('Update page ' + self.name, ret + " new items."
+        var user = ''; var text = '';
+        for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
+            user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
+            text = json[i].text;
+            hotot_notify(user.screen_name, text
+                , user.profile_image_url , 'content');
+        }
+        if (3 < ret) {
+            hotot_notify("Update page " + self.name 
+                , "and " + (ret - 2) + " new items remained."
                 , null, 'count');
-        } else {
-            var user = ''; var text = '';
-            for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
-                user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
-                text = json[i].text;
-                hotot_notify(user.screen_name, text
-                    , user.profile_image_url , 'content');
-            }
-            if (3 < ret) {
-                hotot_notify("Update page " + self.name 
-                    , "and " + (ret - 2) + " new items remained."
-                    , null, 'count');
-            }
         }
         if (ui.Main.views[self.name].use_notify_sound) {
             $('#audio_notify').get(0).play();
@@ -315,7 +310,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
             var listview = {'name': dom_id
-                , 'former': ui.Template.form_tweet
+                , 'former': ui. 生日快乐Template.form_tweet
                 , '_body': thread_container};
             ui.Main.preload_thread(listview, json_obj[i]);
         }

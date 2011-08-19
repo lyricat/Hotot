@@ -15,6 +15,8 @@ displayed: [],
 
 isSliderMenuClosed: true,
 
+isViewSettingMenuClosed: true,
+
 state: null,
 
 init:
@@ -78,8 +80,63 @@ function init () {
     $('#view_title_bar .close_btn').click(function () {
         var name = $(this).parent().attr('name');
         ui.Main.views[name].destroy();
+        return false;
     });
     
+    $('#view_title_bar .setting_btn').click(function () {
+        if (ui.Slider.isViewSettingMenuClosed) {
+            var name = $(this).parent().attr('name');
+            ui.Slider.openViewSettingMenu(ui.Main.views[name], $(this));
+            ui.Slider.settingView = ui.Main.views[name];
+        } else {
+            ui.Slider.closeViewSettingMenu();
+            ui.Slider.settingView = null;
+        }
+        return false;
+    });
+
+    $('#view_setting_menu').mouseleave(
+    function (event) {
+        ui.Slider.closeViewSettingMenu();
+        ui.Slider.settingView = null;
+    });
+
+    $('#view_setting_menuitem_notify').click(function () {
+        if (ui.Slider.settingView != null) {
+            ui.Slider.settingView.use_notify = !ui.Slider.settingView.use_notify; 
+            if (ui.Slider.settingView.use_notify) {
+                $(this).addClass('checked');
+            } else {
+                $(this).removeClass('checked');
+            }
+        }
+        return false;
+    });
+
+    $('#view_setting_menuitem_auto_update').click(function () {
+        if (ui.Slider.settingView != null) {
+            ui.Slider.settingView.use_auto_update = !ui.Slider.settingView.use_auto_update;
+            if (ui.Slider.settingView.use_auto_update) {
+                $(this).addClass('checked');
+            } else {
+                $(this).removeClass('checked');
+            }
+        }
+        return false;
+    });
+
+    $('#view_setting_menuitem_sound').click(function () {
+        if (ui.Slider.settingView != null) {
+            ui.Slider.settingView.use_notify_sound = !ui.Slider.settingView.use_notify_sound;
+            if (ui.Slider.settingView.use_notify_sound) {
+                $(this).addClass('checked');
+            } else {
+                $(this).removeClass('checked');
+            }
+        }
+        return false;
+    });
+
     ui.Slider.view_titles = $('.view_title');
 },
 
@@ -128,13 +185,28 @@ function add(name, indicator_opts, view_opts) {
         ui.Slider.add_indicator(name, indicator_opts);
         switch (view_opts.type) {
         case 'tweet':
-            ui.Slider.state.views[name] = {type: view_opts.type};
+            ui.Slider.state.views[name] = {
+                  type: view_opts.type
+                , use_notify: view_opts.use_notify
+                , use_notify_sound: view_opts.use_notify_sound
+                , use_auto_update: view_opts.use_auto_update };
         break;
         case 'people':
-            ui.Slider.state.views[name] = {type: view_opts.type, screen_name: view_opts.screen_name};
+            ui.Slider.state.views[name] = {
+                  type: view_opts.type
+                , screen_name: view_opts.screen_name
+                , use_notify: view_opts.use_notify
+                , use_notify_sound: view_opts.use_notify_sound
+                , use_auto_update: view_opts.use_auto_update };
         break;
         case 'list':
-            ui.Slider.state.views[name] = {type: view_opts.type, screen_name: view_opts.screen_name, slug: view_opts.slug};
+            ui.Slider.state.views[name] = {
+                  type: view_opts.type
+                , screen_name: view_opts.screen_name
+                , slug: view_opts.slug
+                , use_notify: view_opts.use_notify
+                , use_notify_sound: view_opts.use_notify_sound
+                , use_auto_update: view_opts.use_auto_update };
         break;
         } 
     } else {
@@ -397,6 +469,26 @@ function closeSliderMenu() {
     ui.Slider.isSliderMenuClosed = true;
 },
 
+openViewSettingMenu:
+function openViewSettingMenu(view, btn) {
+    $('#view_setting_menu').css({'left': (btn.offset().left)+'px', 'top': (btn.offset().top+btn.height())+'px'}).show();
+    $('#view_setting_menu a').each(function (i, n) {
+        var key = $(n).attr('href').substring(1);
+        if (view.hasOwnProperty(key) && view[key] == true) {
+            $(n).addClass('checked');
+        } else {
+            $(n).removeClass('checked');
+        }
+    });
+    ui.Slider.isViewSettingMenuClosed = false;
+},
+
+closeViewSettingMenu:
+function closeViewSettingMenu() {
+    $('#view_setting_menu').hide();
+    ui.Slider.isViewSettingMenuClosed = true;
+},
+
 addDefaultView:
 function addDefaultView(name) {
     if (ui.Main.views.hasOwnProperty(name)) {
@@ -421,6 +513,7 @@ function addDefaultView(name) {
             , 'interval': -1
             , 'item_type': 'search'
             , 'is_trim': false
+            , 'use_auto_update': false
         });
     break;
     case 'home':
@@ -438,6 +531,7 @@ function addDefaultView(name) {
             , 'method': 'push'
             , 'interval': 60
             , 'item_type': 'id'
+            , 'use_notify': false
         });
     break;
     case 'mentions':

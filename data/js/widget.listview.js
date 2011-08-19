@@ -43,6 +43,7 @@ function WidgetListView(id, name, params) {
     self.use_notify = false;
     self.use_notify_type = 'count';
     self.use_notify_sound = true;
+    self.use_auto_update = true;
 
     self.init = function init(id, name, params) {
         self._me = $(id);

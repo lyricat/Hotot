@@ -416,6 +416,19 @@ pre {
     position: relative;
 }
 
+#view_title_bar .title:active {
+    background-color: white;
+}
+
+#view_title_bar .setting_btn {
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
 #view_title_bar .close_btn {
     width: 16px;
     height: 16px;
@@ -1897,6 +1910,17 @@ label {
     display: block;
 }
 
+#view_setting_menu {
+    position: absolute;
+    z-index: 100012;
+    display: none;
+}
+
+#view_setting_menu ul{
+    display: block;
+    min-width: 150px;
+}
+
 .dialog table {
     width: 90%;
     border-collapse: collapse;
@@ -1977,7 +2001,9 @@ td {
 .ic_search {
     background: transparent url(../image/ic_search.png) no-repeat;
 }
+.ic_gear {
+    background: transparent url(../image/ic16_gear.png) no-repeat;
+}
 .ic_close {
     background: transparent url(../image/ic16_close.png) no-repeat;
 }
-

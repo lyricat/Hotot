@@ -212,16 +212,7 @@ function load_prefs() {
         , prefs.use_hover_box);
     $('#chk_prefs_use_preload_conversation').attr('checked'
         , prefs.use_preload_conversation);
-    // Update
-    var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
-    for (var i = 0, l = pages.length; i < l; i += 1) {
-        $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked'
-            , prefs['use_'+pages[i]+'_notify']);
-        $('#sel_prefs_use_'+pages[i]+'_notify_type').val(
-            prefs['use_'+pages[i]+'_notify_type']);
-        $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked'
-            , prefs['use_'+pages[i]+'_notify_sound']);
-    }
+
     // Advanced
     $('#tbox_prefs_api_base').val(prefs.api_base);
     $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
@@ -264,16 +255,7 @@ function save_prefs() {
         = $('#chk_prefs_use_hover_box').attr('checked');   
     prefs['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').attr('checked'); 
-    // Update
-    var pages = ['home_timeline', 'mentions', 'direct_messages_inbox']
-    for (var i = 0, l = pages.length; i < l; i += 1) {
-        prefs['use_'+pages[i]+'_notify']
-            = $('#chk_prefs_use_'+pages[i]+'_notify').attr('checked');
-        prefs['use_'+pages[i]+'_notify_type']
-            = $('#sel_prefs_use_'+pages[i]+'_notify_type').val();
-        prefs['use_'+pages[i]+'_notify_sound']
-            = $('#chk_prefs_use_'+pages[i]+'_notify_sound').attr('checked');
-    }
+
     // Advanced
     prefs['api_base']
         = $('#tbox_prefs_api_base').attr('value');

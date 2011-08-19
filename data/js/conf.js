@@ -47,16 +47,6 @@ default_prefs: {
         , 'use_native_notify': true
         , 'use_hover_box': true
         , 'use_preload_conversation': true
-          // Update:
-        , 'use_home_timeline_notify': true
-        , 'use_home_timeline_notify_type': 'count'
-        , 'use_home_timeline_notify_sound': true
-        , 'use_mentions_notify': true
-        , 'use_mentions_notify_type': 'content'
-        , 'use_mentions_notify_sound': true
-        , 'use_direct_messages_inbox_notify': true
-        , 'use_direct_messages_inbox_notify_type': 'content'
-        , 'use_direct_messages_inbox_notify_sound': true
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
         , 'sign_api_base': 'https://api.twitter.com/1/'
@@ -88,16 +78,6 @@ default_prefs: {
         , 'use_native_notify': true
         , 'use_hover_box': true
         , 'use_preload_conversation': true
-          // Update:
-        , 'use_home_timeline_notify': true
-        , 'use_home_timeline_notify_type': 'count'
-        , 'use_home_timeline_notify_sound': true
-        , 'use_mentions_notify': true
-        , 'use_mentions_notify_type': 'content'
-        , 'use_mentions_notify_sound': true
-        , 'use_direct_messages_inbox_notify': true
-        , 'use_direct_messages_inbox_notify_type': 'content'
-        , 'use_direct_messages_inbox_notify_sound': true
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
         , 'sign_api_base': 'https://identi.ca/api/'

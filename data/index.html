@@ -825,39 +825,51 @@ jQuery(function($) {
         <div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
             <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div>
     </div>
     <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
@@ -1186,88 +1198,6 @@ jQuery(function($) {
                 <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets"
                     >More effects like shadows and glow of widgets.</span>
                 <label/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="notification">Notification</span> -</h3>
-            <p>
-                <table id="notification_table">
-                <tbody>
-                <tr><th data-i18n-text="page">Page</th><th data-i18n-text="notify">Notify</th><th data-i18n-text="type">Type</th><th data-i18n-text="sound">Sound</th></tr>
-                <tr><td data-i18n-text="home_timeline">Home</td>
-                    <td>
-                    <input id="chk_prefs_use_home_timeline_notify"
-                        title="Notify when home page has new tweets"
-                        class="checkbox"
-                        type="checkbox"/>
-                    </td>
-                    <td>
-                    <select 
-                    id="sel_prefs_use_home_timeline_notify_type"
-                    title="Type" style="width: 85px" class="combo">
-                        <option value="count" 
-                            data-i18n-text="count">count</option>
-                        <option value="content"
-                            data-i18n-text="content">content</option>
-                    </select> 
-                    </td>
-                    <td>
-                    <input id="chk_prefs_use_home_timeline_notify_sound"
-                        title="Play sound when home page has new tweets"
-                        class="checkbox"
-                        type="checkbox"/>             
-                    </td>
-                </tr>
-                <tr><td data-i18n-text="mentions">Mentions</td>
-                    <td>
-                    <input id="chk_prefs_use_mentions_notify"
-                        title="Notify when some new tweets mention me."
-                        class="checkbox"
-                        type="checkbox"/>
-                    </td>
-                    <td>
-                    <select 
-                    id="sel_prefs_use_mentions_notify_type"
-                    title="Type" style="width: 85px" class="combo">
-                        <option value="count" 
-                            data-i18n-text="count">count</option>
-                        <option value="content"
-                            data-i18n-text="content">content</option>
-                    </select> 
-                    </td>
-                    <td>
-                    <input id="chk_prefs_use_mentions_notify_sound"
-                        title="Play swhen some new tweets mention me."
-                        class="checkbox"
-                        type="checkbox"/>             
-                    </td>
-                </tr>
-                <tr><td data-i18n-text="direct_messages">Message</td>
-                    <td>
-                    <input id="chk_prefs_use_direct_messages_inbox_notify"
-                        title="Notify when some new direct messages coming." 
-                        class="checkbox"
-                        type="checkbox"/>
-                    </td>
-                    <td>
-            <select 
-            id="sel_prefs_use_direct_messages_inbox_notify_type"
-            title="Type" style="width: 85px" class="combo">
-                    <option value="count" 
-                        data-i18n-text="count">count</option>
-                    <option value="content"
-                        data-i18n-text="content">content</option>
-            </select> 
-                    </td>
-                    <td>
-                    <input id="chk_prefs_use_direct_messages_inbox_notify_sound"
-                        title="Play when some new direct messages coming." 
-                        class="checkbox"
-                        type="checkbox"/>             
-                    </td>
-                </tr>
-                </tbody>
-                </table>
             </p>
             </div>
         </div><!-- END of prefs_appearance -->
@@ -1839,6 +1769,14 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <li><a id="context_menuitem_twitter_search" class="select_only" title="Search in Twitter" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
     </ul>
 </section>
+
+<div id="view_setting_menu">
+    <ul class="hotot_menu">
+        <li><a id="view_setting_menuitem_notify" title="Notify" href="#use_notify" data-i18n-text="notify">Notify</a></li>
+        <li><a id="view_setting_menuitem_auto_update" title="Stop" href="#use_auto_update" data-i18n-text="auto_update">Auto Update</a></li>
+        <li><a id="view_setting_menuitem_sound" title="Notify with sound" href="#use_notify_sound" data-i18n-text="sound">Sound</a></li>
+    </ul>
+</div>
 
 <span id="user_cache"></span>
 <span id="tweet_cache"></span>
