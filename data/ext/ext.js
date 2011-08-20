@@ -4,13 +4,11 @@ ext = {
 builtins: [
     , 'org.hotot.cfw'
     , 'org.hotot.gmap'
-    , 'org.hotot.imagepreview'
     , 'org.hotot.imageupload'
     , 'org.hotot.instapaper'
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
     , 'org.hotot.translate'
-    , 'org.hotot.videopreview'
 ],
 
 extras: [],
