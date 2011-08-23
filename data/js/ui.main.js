@@ -315,7 +315,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
             var listview = {'name': dom_id
-                , 'former': ui. 生日快乐Template.form_tweet
+                , 'former': ui.Template.form_tweet
                 , '_body': thread_container};
             ui.Main.preload_thread(listview, json_obj[i]);
         }
