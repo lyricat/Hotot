@@ -17,6 +17,8 @@ current_mode: 0,
 
 is_closed: false,
 
+reg_fake_dots: null,
+
 short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa64b6d311ff19d48030d6c&format=json&longUrl=',
 // @BUG (webkit for linux)
 // keyup and keydown will fire twice in Chrome
@@ -106,15 +108,9 @@ function init () {
         }         
     });
     
-    $('#tbox_status').keypress(
-    function (event) {
+    $('#tbox_status').blur(function (event) {
         ui.StatusBox.update_status_len();
-    }).focus(
-    function (event) {
-        ui.StatusBox.update_status_len();
-    }).change(
-    function (event) {
-        ui.StatusBox.update_status_len();
+        ui.StatusBox.formalize();
     });
 
     $('#tbox_dm_target').click(
@@ -126,6 +122,8 @@ function init () {
     $('#status_box').click(function () {
         return false;    
     })
+
+    ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
     
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
@@ -165,6 +163,13 @@ function on_btn_short_url_clicked(event) {
     }
     $(window).queue('_short_url', procs);
     $(window).dequeue('_short_url');
+},
+
+formalize:
+function formalize() {
+    var text = $('#tbox_status').val(); 
+    text = text.replace(ui.StatusBox.reg_fake_dots, '…');
+    $('#tbox_status').val(text);
 },
 
 change_mode:
