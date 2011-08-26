@@ -33,18 +33,21 @@ function init () {
         var view_name = $(this).attr('href').substring(1);
         if (view_name == 'add') {
             if (ui.Slider.isSliderMenuClosed) {
+                ui.Header.closeAll();
                 ui.Slider.openSliderMenu();
             } else {
                 ui.Slider.closeSliderMenu();
             }
         } else if (view_name == 'compose') {
             if (ui.StatusBox.is_closed) {
+                ui.Header.closeAll();
                 ui.StatusBox.open();
             } else {
                 ui.StatusBox.close();
             }
         } else if (view_name == 'hotot') {
             if (ui.Header.isHototMenuClosed) {
+                ui.Header.closeAll();
                 ui.Header.openHototMenu();
             } else {
                 ui.Header.closeHototMenu();
@@ -85,6 +88,7 @@ function init () {
     
     $('#view_title_bar .setting_btn').click(function () {
         if (ui.Slider.isViewSettingMenuClosed) {
+            ui.Header.closeAll();
             var name = $(this).parent().attr('name');
             ui.Slider.openViewSettingMenu(ui.Main.views[name], $(this));
             ui.Slider.settingView = ui.Main.views[name];
@@ -499,6 +503,7 @@ function closeViewSettingMenu() {
     $('#view_setting_menu').hide();
     ui.Slider.isViewSettingMenuClosed = true;
 },
+
 
 addDefaultView:
 function addDefaultView(name, opts) {

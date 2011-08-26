@@ -86,6 +86,15 @@ function closeHototMenu() {
     ui.Header.isHototMenuClosed = true;
 },
 
+closeAll:
+function closeAll() {
+    ui.Slider.closeViewSettingMenu();
+    ui.Slider.closeSliderMenu();
+    ui.Header.closeHototMenu();
+    ui.Main.closeTweetMoreMenu();
+    ui.StatusBox.close();
+},
+
 };
 
 

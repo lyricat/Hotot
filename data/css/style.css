@@ -828,6 +828,9 @@ label {
 .card.retweeted .tweet_retweet_btn{
     background-position: -24px -48px !important;
 }
+.card[retweetable="false"] .tweet_retweet_btn {
+    display: none;
+}
 .tweet_more_menu_trigger {
     background-position: -120px 0;
 }
