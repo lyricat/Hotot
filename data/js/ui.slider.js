@@ -420,6 +420,7 @@ function slide_to_prev() {
     var prev_id = '';
     if (ui.Slider.current == 'home') {
         prev_id = 'search';
+        return true;
     } else {
         var idx = ui.Slider.get_page_pos(ui.Slider.current);
         prev_id = ui.Slider.tweet_blocks[idx - 1];
@@ -432,6 +433,7 @@ function slide_to_next() {
     var next_id = '';
     if (ui.Slider.current == 'search') {
         next_id = 'home';
+        return true;
     } else {
         var idx = ui.Slider.get_page_pos(ui.Slider.current);
         next_id = ui.Slider.tweet_blocks[idx + 1];

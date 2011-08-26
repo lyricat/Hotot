@@ -641,9 +641,13 @@ jQuery(function($) {
         } else {
             ui.Slider.slide_to_prev();
         }
+        return true;
     };
 
     document.body.onmousewheel = function (event) {
+        if (event.wheelDeltaY && (event.wheelDeltaX > 50 || event.wheelDeltaX < 50)){
+            return true;
+        }
         if (event.wheelDeltaX && event.wheelDeltaX < -90){
             ui.Slider.slide_to_next();
         } else if (event.wheelDeltaX && event.wheelDeltaX > 90){
