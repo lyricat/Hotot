@@ -789,6 +789,11 @@ jQuery(function($) {
         title="Reply All"
         data-i18n-text="reply_all"
         >Reply All</a></li>
+    <li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn" 
+        title="Reply this tweet"
+        href="javascript:void(0);"
+        data-i18n-text="reply"
+        >Reply</a></li>
     <li><a id="tweet_dm_btn" 
         class="tweet_more_menu_btn"
         href="javascript:void(0);" 
@@ -1183,6 +1188,14 @@ jQuery(function($) {
                     class="label"
                     data-i18n-text="use_quote_as_default_retweet_action"
                     >Use quote as default retweet action.</label><br/>
+                <input id="chk_prefs_use_alt_reply"
+                    title="Replace default reply action with reply all"
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_alt_reply"
+                    class="label"
+                    data-i18n-text="use_replay_all_as_default_reply_action"
+                    >Use reply all as default reply action.</label><br/>
                 <input id="chk_prefs_use_media_preview"
                     title="Preview the media if possible."
                     class="checkbox"

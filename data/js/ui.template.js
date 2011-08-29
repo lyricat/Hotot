@@ -133,7 +133,7 @@ message_t:
         <li>\
         <a class="tweet_bar_btn tweet_dm_reply_btn" title="Reply them" href="#reply_dm" data-i18n-title="reply"></a>\
         </li><li>\
-        <a class="tweet_bar_btn tweet_dm_delete_btn" title="Delete" href="#delete" data-i18n-title="retweet"></a>\
+        <a class="tweet_bar_btn tweet_dm_delete_btn" title="Delete" href="#delete" data-i18n-title="delete"></a>\
         </li><li>\
         <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
         </li>\

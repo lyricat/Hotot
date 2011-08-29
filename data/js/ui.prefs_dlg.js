@@ -212,6 +212,8 @@ function load_prefs() {
         , prefs.use_preload_conversation);
     $('#chk_prefs_use_alt_retweet').attr('checked'
         , prefs.use_alt_retweet);
+    $('#chk_prefs_use_alt_reply').attr('checked'
+        , prefs.use_alt_reply);
     $('#chk_prefs_use_media_preview').attr('checked'
         , prefs.use_media_preview);
 
@@ -256,10 +258,12 @@ function save_prefs() {
         = $('#chk_prefs_use_native_notify').attr('checked');
     prefs['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').attr('checked'); 
-    prefs['use_media_preview']
-        = $('#chk_prefs_use_media_preview').attr('checked'); 
     prefs['use_alt_retweet']
         = $('#chk_prefs_use_alt_retweet').attr('checked'); 
+    prefs['use_alt_reply']
+        = $('#chk_prefs_use_alt_reply').attr('checked'); 
+    prefs['use_media_preview']
+        = $('#chk_prefs_use_media_preview').attr('checked'); 
 
     // Advanced
     prefs['api_base']

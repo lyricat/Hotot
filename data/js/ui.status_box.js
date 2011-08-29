@@ -307,7 +307,7 @@ function hide() {
 
 close:
 function close() {
-    $('#tbox_status').animate({ 
+    $('#tbox_status').stop().animate({ 
             height: "0px", 
         }
         , 100
@@ -321,8 +321,7 @@ function close() {
 
 open:
 function open(on_finish) {
-    window.clearTimeout(ui.StatusBox.close_countdown_timer);    
-    $('#tbox_status').animate({ 
+    $('#tbox_status').stop().animate({ 
             height: "150px", 
         }
         , 100

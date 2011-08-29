@@ -47,6 +47,7 @@ default_prefs: {
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
+        , 'use_alt_reply': false
         , 'use_media_preview': true
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
@@ -79,6 +80,7 @@ default_prefs: {
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
+        , 'use_alt_reply': false
         , 'use_media_preview': true
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'

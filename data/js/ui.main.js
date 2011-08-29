@@ -25,6 +25,11 @@ function init () {
         ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
         return false;
     });
+    $('#tweet_alt_reply_btn').click(
+    function (event) {
+        ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
+        return false;
+    });
     $('#tweet_rt_btn').click(
     function (event) {
         ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
@@ -552,22 +557,35 @@ function bind_tweet_action(id) {
     });
 
     // type: tweet
-    $(id).find('.tweet_reply_btn').click(function(event) {
-        if (conf.settings.use_default_reply_all) {
-            ui.Main.on_reply_all_click(this, ui.Main.active_tweet_id, event);
+    $(id).find('.tweet_reply_btn').click(function(ev) {
+        if (conf.get_current_profile().preferences.use_alt_reply) {
+            ui.Main.on_reply_all_click(this, ui.Main.active_tweet_id, ev);
         } else {
-            ui.Main.on_reply_click(this, ui.Main.active_tweet_id, event);
+            ui.Main.on_reply_click(this, ui.Main.active_tweet_id, ev);
         }
         return false;
+    }).mouseenter(function (ev) {
+        if (conf.get_current_profile().preferences.use_alt_reply) {
+            $(this).attr('title', 'Reply All.');
+        } else {
+            $(this).attr('title', 'Reply this tweet.');
+        }
     });
+
     $(id).find('.tweet_retweet_btn').click(
-    function (event) {
+    function (ev) {
         if (conf.get_current_profile().preferences.use_alt_retweet) {
-            ui.Main.on_rt_click(this, ui.Main.active_tweet_id, event);
+            ui.Main.on_rt_click(this, ui.Main.active_tweet_id, ev);
         } else {
-            ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
+            ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, ev);
         }
         return false;
+    }).mouseenter(function (ev) {
+        if (conf.get_current_profile().preferences.use_alt_retweet) {
+            $(this).attr('title', 'Quote this tweet.');
+        } else {
+            $(this).attr('title', 'Retweet/Un-retweet this tweet.');
+        }
     });
     $(id).find('.tweet_fav_btn').click(
     function (event) {
@@ -964,12 +982,21 @@ function openTweetMoreMenu(li, btn) {
         $('#tweet_del_btn').parent().css('display', 'none');
     }
     // retweet or quote?
-    if (conf.get_current_profile().preferences.use_alt_retweet) {
+    if (conf.get_current_profile().preferences.use_alt_retweet && 
+        li.attr('retweetable') == 'true') {
         $('#tweet_alt_retweet_btn').parent().css('display', 'block');
         $('#tweet_rt_btn').parent().css('display', 'none');
     } else {
         $('#tweet_alt_retweet_btn').parent().css('display', 'none');
         $('#tweet_rt_btn').parent().css('display', 'block');
+    }
+    // reply or reply all
+    if (conf.get_current_profile().preferences.use_alt_reply) {
+        $('#tweet_alt_reply_btn').parent().css('display', 'block');
+        $('#tweet_reply_all_btn').parent().css('display', 'none');
+    } else {
+        $('#tweet_alt_reply_btn').parent().css('display', 'none');
+        $('#tweet_reply_all_btn').parent().css('display', 'block');
     }
     $('#tweet_more_menu').css({'left': (btn.offset().left - 135)+'px', 'top': (btn.offset().top - 42)+'px'}).show();
     ui.Main.isTweetMoreMenuClosed = false;
