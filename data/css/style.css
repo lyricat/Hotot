@@ -409,7 +409,8 @@ pre {
 
 #view_title_bar {
     height: 20px;
-    width: 800000px;
+    width: 100%;
+    overflow: hidden;
 }
 
 #view_title_bar .view_title {
