@@ -26,12 +26,24 @@ short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa
 // @WORKAROUND use the flag to ignore the first one.
 keydown_twice_flag: 0,
 
+get_status_len:
+function get_status_len(status_text) {
+    var rep_url = function (url) {
+        if (url.length > 20) {
+            return '01234567890123456789';
+        } else {
+            return url;
+        }
+    }
+    return status_text.replace(ui.Template.reg_link_g, rep_url).length
+},
+
 init:
 function init () {
     ui.StatusBox.btn_update = new widget.Button('#btn_update');
     ui.StatusBox.btn_update.on_clicked = function(event){
         var status_text = $.trim($('#tbox_status').attr('value'));
-        if (status_text.length > 140) {
+        if (ui.StatusBox.get_status_len(status_text) > 140) {
             toast.set(
                 _('status_is_over_140_characters')).show();
             return;
@@ -217,7 +229,7 @@ function update_status_cb(result) {
 
 update_status_len:
 function update_status_len() {
-    var status_len = $('#tbox_status').attr('value').length;
+    var status_len = ui.StatusBox.get_status_len($('#tbox_status').attr('value'));
     if (status_len > globals.max_status_len)
         $('#status_len').css('color', '#cc0000');
     else
