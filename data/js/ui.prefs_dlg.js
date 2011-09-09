@@ -220,7 +220,7 @@ function load_prefs() {
     // Advanced
     $('#tbox_prefs_api_base').val(prefs.api_base);
     $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
-    $('#tbox_prefs_search_api_base').val(prefs.search_api_base);
+    $('#tbox_prefs_search_api_base2').val(prefs.search_api_base2);
     $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
     $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
     $('#chk_prefs_use_same_sign_api_base').attr('checked'
@@ -270,8 +270,8 @@ function save_prefs() {
         = $('#tbox_prefs_api_base').attr('value');
     prefs['sign_api_base'] 
         = $('#tbox_prefs_sign_api_base').attr('value');
-    prefs['search_api_base'] 
-        = $('#tbox_prefs_search_api_base').attr('value');
+    prefs['search_api_base2'] 
+        = $('#tbox_prefs_search_api_base2').attr('value');
     prefs['oauth_base'] 
         = $('#tbox_prefs_oauth_base').attr('value');    
     prefs['sign_oauth_base'] 

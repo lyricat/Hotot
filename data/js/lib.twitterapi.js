@@ -12,7 +12,7 @@ api_base: 'https://api.twitter.com/',
 
 sign_api_base: 'https://api.twitter.com/',
 
-search_api_base: 'https://search.twitter.com/',
+search_api_base2: 'https://twitter.com/phoenix_search.phoenix',
 
 use_same_sign_api_base: true,
 
@@ -645,16 +645,35 @@ function verify(on_success) {
 
 search:
 function search(query, page, since_id, max_id, on_success) {
-    var url = lib.twitterapi.search_api_base + 'search.json';
-    var params={
-        'q': query,
-    };
-    if (since_id != null) params['since_id'] = since_id;
-    if (max_id != null) params['max_id'] = max_id;
-    if (page != null) params['page'] = page;
-    lib.twitterapi.source = '';
-    lib.twitterapi.get(url, params, on_success);
-    lib.twitterapi.source = 'Hotot';
+    var url = lib.twitterapi.search_api_base2;
+    if (url = 'https://twitter.com/phoenix_search.phoenix'){
+        var params={
+            'q': query,
+        };
+        params['format'] = 'phoenix';
+        params['include_entities'] = 'true';
+        if (since_id != null) params['since_id'] = since_id;
+        _page = [];
+        _page.push('rpp=100');
+        _page.push('q=' + encodeURI(query));
+        if (max_id != null) _page.push('max_id=' + max_id);
+        if (page != null) _page.push('page=' + page);
+        params['page'] = _page.join('&');
+        lib.twitterapi.source = '';
+        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.source = 'Hotot';
+    } else {
+        var params={
+            'q': query,
+        };
+        if (since_id != null) params['since_id'] = since_id;
+        if (max_id != null) params['max_id'] = max_id;
+        if (page != null) params['page'] = page;
+        lib.twitterapi.source = '';
+        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.source = 'Hotot';
+    }
+
 },
 
 abort_watch_user_streams:
