@@ -828,6 +828,9 @@ function form_retweeted_by(tweet_obj, pagename) {
 
 form_search:
 function form_search(tweet_obj, pagename) {
+    if (tweet_obj.user != undefined) {
+        return ui.Template.form_tweet(tweet_obj, pagename);
+    }
     var id = tweet_obj.id_str;
     var source = tweet_obj.source.replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&quot;/g, '');
     var timestamp = Date.parse(tweet_obj.created_at);

@@ -103,8 +103,8 @@ function loadmore_people(view, success, fail) {
 load_tweet_success:
 function load_tweet_success(view, json) {
     var tweets = [];
-    if (json.constructor == Object && json.results != undefined) {
-        tweets = json.results;
+    if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
+        tweets = json.results || json.statuses;
     }
     ui.Slider.set_unread(view.name);
     if (tweets.length == 0) {
@@ -121,8 +121,8 @@ function load_tweet_success(view, json) {
 loadmore_tweet_success:
 function loadmore_tweet_success(view, json) {
     var tweets = [];
-    if (json.constructor == Object && typeof json.results != 'undefined') {
-        tweets = json.results;
+    if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
+        tweets = json.results || json.statuses;
     }
     ui.Slider.set_unread(view.name);
     return ui.Main.add_tweets(view, tweets);
