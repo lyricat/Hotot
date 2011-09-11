@@ -27,20 +27,26 @@ http_code_msg_table : {
 },
 
 default_error_handler:
-function default_error_handler(xhr, textStatus, errorThrown) {
+function default_error_handler(url, xhr, textStatus, errorThrown) {
     var msg = '';
     var tech_info = '';
     if (xhr.status in lib.twitterapi.http_code_msg_table) {
         msg = lib.twitterapi.http_code_msg_table[xhr.status];
-        tech_info = 'HTTP Code:'+ xhr.status + '\nDetails:'+ xhr.statusText;
+        tech_info = 'HTTP Code:'+ xhr.status 
+            + '\nDetails:' + xhr.statusText + '\nURL:' + url;
     } else {
         msg = 'Unknow Error';
-        tech_info = 'HTTP Code:' + xhr.status + '\nReason:'+ xhr.statusText;
+        tech_info = 'HTTP Code:' + xhr.status 
+            + '\nReason:'+ xhr.statusText + '\nURL:' + url;
     }
-    try {
-        ui.ErrorDlg.alert('Ooops, An API Error Occurred!', msg, tech_info);
-    } catch (e) {
-        hotot_log('Error:'+xhr.status, xhr.statusText);
+    if (xhr.status == 0) {
+        toast.set('Lost connection with server ...').show();
+    } else {
+        try {
+            ui.ErrorDlg.alert('Ooops, An API Error Occurred!', msg, tech_info);
+        } catch (e) {
+            hotot_log('Error:'+xhr.status, xhr.statusText);
+        }
     }
     return;
 },
@@ -80,7 +86,7 @@ function get(ajax_url, ajax_params, on_success, on_error) {
         },
         function(xhr, textStatus, errorThrown) {
             if (on_error == undefined || on_error == null) {
-                lib.twitterapi.default_error_handler(xhr, textStatus, errorThrown);
+                lib.twitterapi.default_error_handler(ajax_url, xhr, textStatus, errorThrown);
             } else {
                 on_error(xhr, textStatus, errorThrown);
             }
@@ -97,7 +103,7 @@ function post(ajax_url, ajax_params, on_success, on_error) {
         },
         function(xhr, textStatus, errorThrown) {
             if (on_error ==  undefined || on_error == null) {
-                lib.twitterapi.default_error_handler(xhr, textStatus, errorThrown);
+                lib.twitterapi.default_error_handler(ajax_url, xhr, textStatus, errorThrown);
             } else {
                 on_error(xhr, textStatus, errorThrown);
             }
