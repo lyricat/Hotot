@@ -65,13 +65,20 @@ pre {
     background: orange;
     border:0;
 }
-
 #status_box ::-webkit-scrollbar-track-piece {
-    border-color: #fff;
+    background: #fafafa;
 }
-
+#status_box ::-webkit-scrollbar-thumb {
+    background: #fff;
+}
+#status_box ::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
 .dialog ::-webkit-scrollbar-track-piece {
     background-color: #fff;
+}
+#dialog ::-webkit-scrollbar-thumb {
+    background: #fff;
 }
 
 
@@ -311,14 +318,48 @@ pre {
 
 #tbox_status {
     width: 100%;
-    height: 15px;
-    border: 1px #ccc solid;
+    height: 150px;
     color: #333;
     background-color: #fff;
     font-size: 14px;
     resize: none;
     border: 0;
     outline: none;
+}
+
+#status_smiley {
+    width: 100%;
+    height: 150px;
+    color: #333;
+    background-color: #fff;
+    font-size: 14px;
+    border: 0;
+    display: none;
+    overflow: auto;
+}
+
+#status_smiley_inner {
+    margin-right: 24px;
+}
+
+#status_smiley .close_btn {
+    display: block;
+    height: 24px;
+    width: 24px;
+    float: right;
+    background-position: center;
+}
+
+.smiley {
+    background: lightgray;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding: 3px 6px;
 }
 
 #status_ctrl {
@@ -334,6 +375,9 @@ pre {
     background: transparent url(../image/ic16_link.png) no-repeat center center !important;
 }
 
+#btn_smiley {
+    background: transparent none no-repeat center center !important;
+}
 #toggle_mode {
     background: transparent url(../image/ic16_dm.png) no-repeat center center !important;
 }
@@ -342,14 +386,15 @@ pre {
     background: transparent url(../image/ic16_imageuploader.png) no-repeat center center !important;
 }
 
-#toggle_mode, #btn_shorturl, #btn_imageuploader {
+#toggle_mode, #btn_shorturl, #btn_imageuploader, #btn_smiley {
     width: 6px !important;
     min-width: 0 !important;
     float: left;
     border: none;
+    background-color: transparent !important;
 }
 
-#toggle_mode:hover, #btn_shorturl:hover, #btn_imageuploader:hover {
+#toggle_mode:hover, #btn_shorturl:hover, #btn_imageuploader:hover, #btn_smiley:hover {
     background-color: #ccc !important;
 }
 

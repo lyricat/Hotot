@@ -75,6 +75,23 @@ function init () {
     };
     toggle_mode.create();
 
+    $('#btn_smiley').click(function () {
+        $('#tbox_status').hide();
+        $('#status_smiley').show();
+    });
+
+    $('#status_smiley .close_btn').click(function () {
+        $('#status_smiley').hide();
+        $('#tbox_status').show();
+    });
+
+    $('#status_smiley .smiley').click(function () {
+        $('#status_smiley').hide();
+        $('#tbox_status').show();
+        ui.StatusBox.append_status_text(' ' + $(this).text());
+        return false;
+    });
+
     $('#btn_imageuploader').click(function () {
         if (lib.twitterapi.use_oauth) {
             if (util.is_native_platform()) {
