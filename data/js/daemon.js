@@ -50,7 +50,8 @@ function work() {
     if (daemon.time == 3600) { // reset timer per hour
         daemon.time = 0;
     }
-    ui.Slider.save_state(); 
+    ui.Slider.save_state();
+    conf.save_prefs(conf.current_name);
     daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
 },
 

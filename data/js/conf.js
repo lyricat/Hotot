@@ -197,10 +197,14 @@ function save_prefs(name, callback) {
 },
 
 load_prefs:
-function load_prefs(name) {
+function load_prefs(name, callback) {
     db.get_profile(name, 
     function(profile) {
-        conf.profiles[name] = JSON.parse(profile.preferences);
+        profile.preferences = JSON.parse(profile.preferences);
+        conf.profiles[name] = profile;
+        if (typeof (callback) != 'undefined') {
+            callback();
+        }
     });
 },
 

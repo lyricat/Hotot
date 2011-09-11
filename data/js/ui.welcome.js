@@ -259,16 +259,18 @@ function authenticate_pass(result) {
         $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
         }, 100);
     toast.set(_('authentication_ok')).show();
-    ui.Welcome.hide();
-    ui.Slider.resume_state();
-    ui.Main.show();
-    globals.layout.open('north');
-    kismet.load();
-    document.title = _('hotot') + ' | ' + conf.current_name;
-    hotot_action('system/sign_in');    
-    setTimeout(function () {
-        ui.Slider.slide_to('home');
-    }, 1000);
+    conf.load_prefs(conf.current_name, function() {
+        ui.Welcome.hide();
+        ui.Slider.resume_state();
+        ui.Main.show();
+        globals.layout.open('north');
+        kismet.load();
+        document.title = _('hotot') + ' | ' + conf.current_name;
+        hotot_action('system/sign_in');    
+        setTimeout(function () {
+            ui.Slider.slide_to('home');
+        }, 1000);
+    });
 },
 
 load_daily_hint:

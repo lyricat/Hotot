@@ -157,7 +157,6 @@ save_state:
 function save_state() {
     ui.Slider.state.order = ui.Slider.tweet_blocks;
     conf.get_current_profile().preferences.slider_state = ui.Slider.state;
-    conf.save_prefs(conf.current_name);
 },
 
 resume_state:
