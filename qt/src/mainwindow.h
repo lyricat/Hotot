@@ -42,6 +42,7 @@ public:
 protected Q_SLOTS:
     void loadFinished(bool ok);
     void trayIconClicked(QSystemTrayIcon::ActivationReason reason);
+    void messageClicked();
 
 protected:
     void initDatabases();

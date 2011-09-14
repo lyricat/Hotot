@@ -61,6 +61,10 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this,
             SLOT(trayIconClicked(QSystemTrayIcon::ActivationReason)));
+    connect(m_trayicon,
+             SIGNAL(messageClicked()),
+            this,
+            SLOT(messageClicked()));
 
     m_menu = new QMenu(this);
     QAction* action;
@@ -159,10 +163,18 @@ void MainWindow::trayIconClicked(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
     {
-        if (this->isVisible())
-            this->hide();
+        if (this->isActiveWindow())
+        {
+            if (this->isVisible())
+                this->hide();
+        }
         else
-            this->show();
+        {
+            if (!this->isVisible())
+                this->show();
+            this->activateWindow();
+            this->raise();
+        }
     }
 }
 
@@ -171,6 +183,15 @@ void MainWindow::notification(QString type, QString title, QString message, QStr
     m_trayicon->showMessage(title, message);
 }
 
-
+void MainWindow::messageClicked()
+{
+    if (!this->isActiveWindow())
+    {
+        if (!this->isVisible())
+            this->show();
+        this->activateWindow();
+        this->raise();
+    }
+}
 
 #include "mainwindow.moc"
