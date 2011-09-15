@@ -1,3 +1,4 @@
+include_directories(${QT_INCLUDE_DIR})
 include_directories(${QT_QTCORE_INCLUDE_DIR})
 include_directories(${QT_QTGUI_INCLUDE_DIR})
 include_directories(${QT_QTSQL_INCLUDE_DIR})
