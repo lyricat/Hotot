@@ -28,7 +28,7 @@ tweet_t:
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
     <div class="tweet_retweet_indicator"></div>\
-    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}\n\n{%DESCRIPTION%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <ul class="tweet_bar">\
         <li>\
@@ -43,7 +43,7 @@ tweet_t:
     </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -127,7 +127,7 @@ message_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
-    <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
+    <div class="profile_img_wrapper" title="{%USER_NAME%}\n\n{%DESCRIPTION%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <ul class="tweet_bar">\
         <li>\
@@ -140,7 +140,7 @@ message_t:
     </ul>\
     <div class="card_body">\
         <div class="who">\
-        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
+        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -623,6 +623,7 @@ function form_dm(dm_obj, pagename) {
     m.TWEET_ID = dm_obj.id_str;
     m.SCREEN_NAME = dm_obj.sender.screen_name;
     m.USER_NAME = dm_obj.sender.name;
+    m.DESCRIPTION = dm_obj.sender.description;
     m.PROFILE_IMG = dm_obj.sender.profile_image_url;
     m.TEXT = text;
     m.SCHEME = 'message';
@@ -662,7 +663,7 @@ function form_tweet (tweet_obj, pagename) {
 
     // choose color scheme
     var scheme = 'normal';
-    if (tweet_obj.entities) {
+    if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
         for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
         {
             if (tweet_obj.entities.user_mentions[i].screen_name
@@ -701,6 +702,7 @@ function form_tweet (tweet_obj, pagename) {
     m.SCREEN_NAME = tweet_obj.user.screen_name;
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
+    m.DESCRIPTION = tweet_obj.user.description;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
     m.TEXT = ui.Template.form_text(text);
     m.ALT = tweet_obj.text.replace(/"/g, '&quot;');
@@ -731,7 +733,19 @@ function form_tweet (tweet_obj, pagename) {
     m.TRANS_via = "via";
     m.TRANS_View_more_conversation = "view more conversation";
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
-    return ui.Template.render(ui.Template.tweet_t, m);
+    var msg = ui.Template.render(ui.Template.tweet_t, m);
+
+    if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
+        for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
+        {
+            var screen_name = tweet_obj.entities.user_mentions[i].screen_name;
+            var name = tweet_obj.entities.user_mentions[i].name.replace(/"/g, '&quot;');
+            var reg_ulink = new RegExp('>(' + screen_name + ')<', 'ig');
+            msg = msg.replace(reg_ulink, ' title="' + name + '">$1<')
+        }
+    }
+
+    return msg;
 },
 
 form_retweeted_by:
@@ -764,7 +778,7 @@ function form_retweeted_by(tweet_obj, pagename) {
 
     // choose color scheme
     var scheme = 'normal';
-    if (tweet_obj.entities) {
+    if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
         for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
         {
             if (tweet_obj.entities.user_mentions[i].screen_name
