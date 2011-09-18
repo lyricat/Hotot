@@ -73,6 +73,7 @@ function load_tweet(view, success, fail) {
         success([]);
         return;
     }
+    view.page = 1;
     lib.twitterapi.search(view.query, 1, view.max_id, null, success);   
     lib.twitterapi.show_user(view.query,
     function (user) {
@@ -87,6 +88,7 @@ function load_tweet(view, success, fail) {
 
 loadmore_tweet:
 function loadmore_tweet(view, success, fail) {
+    if (!view.page) view.page = 1;
     lib.twitterapi.search(view.query, view.page + 1, null, view.max_id, success);   
 },
 
@@ -120,6 +122,7 @@ function load_tweet_success(view, json) {
 
 loadmore_tweet_success:
 function loadmore_tweet_success(view, json) {
+    if (view.page) view.page += 1;
     var tweets = [];
     if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
         tweets = json.results || json.statuses;
