@@ -31,6 +31,26 @@
 		"message": "关注",
 		"description": "data/js/ui.template.js"
 	},
+	"unfollow": {
+		"message": "解除关注",
+		"description": ""
+	},
+	"Follow": {
+		"message": "关注",
+		"description": ""
+	},
+	"Unfollow": {
+		"message": "解除关注",
+		"description": ""
+	},
+	"Follow @": {
+		"message": "关注 @",
+		"description": ""
+	},
+	"Unfollow @": {
+		"message": "解除关注 @",
+		"description": ""
+	},
 	"font": {
 		"message": "字体",
 		"description": ""
@@ -815,8 +835,16 @@
 		"message": "感官",
 		"description": ""
 	},
+	"edit": {
+		"message": "编辑",
+		"description": "data/js/ui.template.js"
+	},
 	"more_actions": {
 		"message": "更多动作",
+		"description": "data/js/ui.template.js"
+	},
+	"mention_them": {
+		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {

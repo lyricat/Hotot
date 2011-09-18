@@ -43,20 +43,20 @@ function init_view(view) {
     function (event) {
         var _this = this;
         if ($(this).hasClass('unfo')) {
-            toast.set("Unfollow @" + view.screen_name + " ...").show();
+            toast.set(_("Unfollow @") + view.screen_name + " ...").show();
             lib.twitterapi.destroy_friendships(view.screen_name,
             function () {
                 toast.set(
-                    "Unfollow @"+ view.screen_name+" Successfully!").show();
-                $(_this).text('Follow').removeClass('unfo');
+                    _("Unfollow @")+ view.screen_name+" Successfully!").show();
+                $(_this).text(_("Follow")).removeClass('unfo');
             });
         } else {
-            toast.set("Follow @" + view.screen_name + " ...").show();
+            toast.set(_("Follow @") + view.screen_name + " ...").show();
             lib.twitterapi.create_friendships(view.screen_name,
             function () {
                 toast.set(
-                    "Follow @"+ view.screen_name+" Successfully!").show();
-                $(_this).text('Unfollow').addClass('unfo');
+                    _("Follow @")+ view.screen_name+" Successfully!").show();
+                $(_this).text(_("Unfollow")).addClass('unfo');
             });
         }
     });
@@ -298,7 +298,7 @@ function render_people_view(self, user_obj, proc) {
                     + user_obj.screen_name);
             self.protected_user = true;
         } else {
-            btn_follow.html('Follow');
+            btn_follow.html(_("Follow"));
             btn_follow.removeClass('unfo');
             proc();
             self.protected_user = false;
@@ -310,7 +310,7 @@ function render_people_view(self, user_obj, proc) {
                 ui.PeopleView.relation_map[rel]
             );
             if (rel == 1 || rel == 3) {
-                btn_follow.html('Unfollow');
+                btn_follow.html(_("Unfollow"));
                 btn_follow.addClass('unfo');
             }
     });
