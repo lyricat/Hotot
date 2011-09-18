@@ -222,44 +222,44 @@ people_vcard_t:
     <div class="vcard_body">\
         <center>\
         <ul class="people_vcard_radio_group radio_group"> \
-            <li><a class="radio_group_btn selected" href="#people_vcard_info_page">INFO</a> \
-            </li><li><a class="radio_group_btn" href="#people_vcard_stat_page">STAT</a> \
+            <li><a class="radio_group_btn selected" href="#people_vcard_info_page">{%TRANS_info%}</a> \
+            </li><li><a class="radio_group_btn" href="#people_vcard_stat_page">{%TRANS_stat%}</a> \
             </li></ul>\
         </center>\
         <div class="vcard_tabs_pages">\
         <table class="people_vcard_info_page vcard_tabs_page radio_group_page" border="0" cellpadding="0" cellspacing="0"> \
-            <tr><td>Name: </td><td> \
+            <tr><td>{%TRANS_name%}: </td><td> \
                 <a class="screen_name" target="_blank" href="#"></a> \
                 (<span class="name"></span>) </td> \
             </tr> \
-            <tr><td>Bio: </td> \
+            <tr><td>{%TRANS_bio%}: </td> \
                 <td><span class="bio"></span></td> \
             </tr> \
-            <tr><td>Web: </td> \
+            <tr><td>{%TRANS_web%}: </td> \
                 <td><a class="web" target="_blank" href="#" class="link"></a></td> \
             </tr> \
-            <tr><td>Location: </td> \
+            <tr><td>{%TRANS_location%}: </td> \
                 <td><span class="location"></span></td> \
             </tr> \
         </table> \
         <table class="people_vcard_stat_page vcard_tabs_page radio_group_page"> \
-            <tr><td>Join: </td> \
+            <tr><td>{%TRANS_join%}: </td> \
                 <td><span class="join"></span></td> \
             </tr> \
-            <tr><td>Tweets: </td> \
+            <tr><td>{%TRANS_tweet_cnt%}: </td> \
                 <td><span class="tweet_cnt"></span> \
                 (<span class="tweet_per_day_cnt"></span> per day)</td> \
             </tr> \
-            <tr><td>Followers: </td> \
+            <tr><td>{%TRANS_follower_cnt%}: </td> \
                 <td><span class="follower_cnt"></span></td> \
             </tr> \
-            <tr><td>Friends: </td> \
+            <tr><td>{%TRANS_friend_cnt%}: </td> \
                 <td><span class="friend_cnt"></span></td> \
             </tr> \
-            <tr><td>Listed: </td> \
+            <tr><td>{%TRANS_listed_cnt%}: </td> \
                 <td><span class="listed_cnt"></span></td> \
             </tr> \
-            <tr><td>Relation: </td> \
+            <tr><td>{%TRANS_relation%}: </td> \
                 <td><span class="relation"></span></td> \
             </tr> \
         </table> \
@@ -268,30 +268,30 @@ people_vcard_t:
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
         <li><a class="vcard_follow button" \
-                href="javascript:void(0);" >Follow</a> \
+                href="javascript:void(0);" >{%TRANS_follow%}</a> \
         </li><li> \
             <a class="vcard_edit button" \
-                href="javascript:void(0);" style="display:none;">Edit</a>\
+                href="javascript:void(0);" style="display:none;">{%TRANS_edit%}</a>\
         </li><li class="people_action_more_trigger"> \
             <a class="vcard_more button" \
-                href="javascript:void(0);">More &#x25BE;</a> \
+                href="javascript:void(0);">{%TRANS_more_actions%} &#x25BE;</a> \
             <ul class="people_action_more_memu hotot_menu">\
                 <li><a class="mention_menu_item" \
                     title="Mention them"\
-                    href="javascript:void(0);">Mention them</a>\
+                    href="javascript:void(0);">{%TRANS_mention_them%}</a>\
                 </li><li style="display:none;"><a class="add_to_list_menu_item" \
                     title="Add them to a list"\
-                    href="javascript:void(0);">Add to List</a>\
+                    href="javascript:void(0);">{%TRANS_add_to_list%}</a>\
                 </li><li class="separator"><span></span>\
                 </li><li><a class="block_menu_item" \
                     title="Block"\
-                    href="javascript:void(0);">Block</a>\
+                    href="javascript:void(0);">{%TRANS_block%}</a>\
                 </li><li><a class="unblock_menu_item"\
                     href="javascript:void(0);" \
-                    title="Unblock">Unblock</a>\
+                    title="Unblock">{%TRANS_unblock%}</a>\
                 </li><li><a class="report_spam_menu_item" \
                     href="javascript:void(0);" \
-                    title="Report Spam">Report Spam</a>\
+                    title="Report Spam">{%TRANS_report_spam%}</a>\
                 </li>\
             </ul>\
         </li> \
@@ -300,26 +300,26 @@ people_vcard_t:
 </div> <!-- vcard --> \
 <div class="people_view_toggle"> \
     <ol class="people_view_toggle_btns radio_group"> \
-        <li><a class="people_view_tweet_btn radio_group_btn selected" href="#tweet">Tweets</a> \
+        <li><a class="people_view_tweet_btn radio_group_btn selected" href="#tweet">{%TRANS_tweets%}</a> \
         </li><li> \
-        <a class="people_view_fav_btn radio_group_btn" href="#fav">Favs</a> \
+        <a class="people_view_fav_btn radio_group_btn" href="#fav">{%TRANS_favs%}</a> \
         </li><li> \
-        <a class="people_view_follower_btn radio_group_btn" href="#follower">Followers</a> \
+        <a class="people_view_follower_btn radio_group_btn" href="#follower">{%TRANS_followers%}</a> \
         </li><li> \
-        <a class="people_view_friend_btn radio_group_btn" href="#friend">Friends</a> \
+        <a class="people_view_friend_btn radio_group_btn" href="#friend">{%TRANS_friends%}</a> \
         </li><li class="people_view_list_trigger"> \
-        <a class="people_view_list_btn radio_group_btn" href="#list">Lists &#x25BE;\
+        <a class="people_view_list_btn radio_group_btn" href="#list">{%TRANS_lists%} &#x25BE;\
         </a> \
         <ul class="lists_memu hotot_menu">\
             <li><a class="user_lists_menu_item" \
                 title="Lists of Them"\
-                href="javascript:void(0);">Lists of Them</a>\
+                href="javascript:void(0);">{%TRANS_lists_of_them%}</a>\
             </li><li><a class="listed_lists_menu_item"\
                 href="javascript:void(0);" \
-                title="All Lists following Them">Lists Following Them</a>\
+                title="All Lists following Them">{%TRANS_lists_following_them%}</a>\
             </li><li><a class="create_list_menu_item" \
                 href="javascript:void(0);" \
-                title="Create A List">Create A List</a>\
+                title="Create A List">{%TRANS_create_a_list%}</a>\
             </li>\
         </ul>\
         </li> \
@@ -608,6 +608,30 @@ function init() {
         , METHOD:'', ACTIONS: '', ADDITION: '', NAME: ''
     };
 
+    ui.Template.people_vcard_m = {
+          TRANS_info: _('info'), TRANS_stat: _('stat')
+        , TRANS_name: _('name'), TRANS_bio: _('bio')
+        , TRANS_web: _('web'), TRANS_location: _('location')
+        , TRANS_join: _('join'), TRANS_tweet_cnt: _('tweet_cnt')
+        , TRANS_tweet_cnt: _('tweet_cnt')
+        , TRANS_follower_cnt: _('follower_cnt')
+        , TRANS_friend_cnt: _('friend_cnt')
+        , TRANS_listed_cnt: _('listed_cnt')
+        , TRANS_relation: _('relation')
+        , TRANS_follow: _('follow'), TRANS_more_actions: _('more_actions')
+        , TRANS_add_to_list: _('add_to_list')
+        , TRANS_block: _('block')
+        , TRANS_unblock: _('unblock')
+        , TRANS_report_spam: _('report_spam')
+        , TRANS_tweets: _('tweets'), TRANS_favs: _('favs')
+        , TRANS_followers: _('followers'), TRANS_friends: _('friends')
+        , TRANS_lists: _('lists'), TRANS_lists_of_them: _('lists_of_them')
+        , TRANS_lists_following_them: _('lists_following_them')
+        , TRANS_create_a_list: _('create_a_list')
+    }
+
+    ui.Template.people_vcard_t = ui.Template.render(ui.Template.people_vcard_t, ui.Template.people_vcard_m);
+
 },
 
 form_dm:
@@ -647,7 +671,7 @@ function form_tweet (tweet_obj, pagename) {
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.in_reply_to_status_id_str;    
     var reply_str = (reply_id != null) ?
-        "reply to " + '<a class="who_href" href="#'
+        _('reply_to') + ' <a class="who_href" href="#'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
@@ -677,7 +701,7 @@ function form_tweet (tweet_obj, pagename) {
         scheme = 'me';
     }
     if (retweet_name != '') {
-        retweet_str = "retweeted by " +  '<a class="who_href" href="#'
+        retweet_str = _('retweeted_by') +  ' <a class="who_href" href="#'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
     }
@@ -721,17 +745,17 @@ function form_tweet (tweet_obj, pagename) {
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
-    m.TRANS_Delete = "Delete";
-    m.TRANS_Delete_this_tweet = "Delete this tweet";
-    m.TRANS_Loading = "Loading...";
-    m.TRANS_Official_retweet_this_tweet = "Official retweet this tweet.";
-    m.TRANS_Reply_All = "Reply All";
-    m.TRANS_Reply_this_tweet = "Reply this tweet.";
-    m.TRANS_RT_this_tweet = "RT this tweet.";
-    m.TRANS_Send_Message = "Send message";
-    m.TRANS_Send_Message_to_them = "Send message to them";
-    m.TRANS_via = "via";
-    m.TRANS_View_more_conversation = "view more conversation";
+    m.TRANS_Delete = _('delete');
+    m.TRANS_Delete_this_tweet = _('delete_this_tweet');
+    m.TRANS_Loading = _('loading_dots');
+    m.TRANS_Official_retweet_this_tweet = _('official_retweet_this_tweet');
+    m.TRANS_Reply_All = _('reply_all');
+    m.TRANS_Reply_this_tweet = _('reply_this_tweet');
+    m.TRANS_RT_this_tweet = _('rt_this_tweet');
+    m.TRANS_Send_Message = _('send_message');
+    m.TRANS_Send_Message_to_them = _('send_message_to_them');
+    m.TRANS_via = _('via');
+    m.TRANS_View_more_conversation = _('view_more_conversation');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
     var msg = ui.Template.render(ui.Template.tweet_t, m);
 
@@ -762,7 +786,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.in_reply_to_status_id_str;    
     var reply_str = (reply_id != null) ?
-        "reply to " + '<a class="who_href" href="#'
+        _('reply to') + ' <a class="who_href" href="#'
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
@@ -792,7 +816,7 @@ function form_retweeted_by(tweet_obj, pagename) {
         scheme = 'me';
     }
     if (retweet_name != '') {
-        retweet_str = "retweeted by " +  '<a class="who_href" href="#'
+        retweet_str = _('retweeted_by') +  ' <a class="who_href" href="#'
             + retweet_name + '">'
             + retweet_name + '</a>, ';
     }
@@ -822,19 +846,19 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
-    m.TRANS_Delete = "Delete";
-    m.TRANS_Delete_this_tweet = "Delete this tweet";
-    m.TRANS_Loading = "Loading...";
-    m.TRANS_Official_retweet_this_tweet = "Official retweet this tweet.";
-    m.TRANS_Reply_All = "Reply All";
-    m.TRANS_Reply_this_tweet = "Reply this tweet.";
-    m.TRANS_RT_this_tweet = "RT this tweet.";
-    m.TRANS_Send_Message = "Send message";
-    m.TRANS_Send_Message_to_them = "Send message to them";
-    m.TRANS_via = "via";
-    m.TRANS_View_more_conversation = "view more conversation";
-    m.TRANS_Retweeted_by = "by";
-    m.TRANS_Show_retweeters = "click to show";
+    m.TRANS_Delete = _('delete');
+    m.TRANS_Delete_this_tweet = _('delete_this_tweet');
+    m.TRANS_Loading = _('loading_dots');
+    m.TRANS_Official_retweet_this_tweet = _('official_retweet_this_tweet');
+    m.TRANS_Reply_All = _('reply_All');
+    m.TRANS_Reply_this_tweet = _('reply_this_tweet');
+    m.TRANS_RT_this_tweet = _('rt_this_tweet');
+    m.TRANS_Send_Message = _('send_message');
+    m.TRANS_Send_Message_to_them = _('send_message_to_them');
+    m.TRANS_via = _('via');
+    m.TRANS_View_more_conversation = _('view_more_conversation');
+    m.TRANS_Retweeted_by = _('retweeted_by');
+    m.TRANS_Show_retweeters = _('click_to_show');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
 
     return ui.Template.render(ui.Template.retweeted_by_t, m);
@@ -877,7 +901,7 @@ function form_search(tweet_obj, pagename) {
     m.SHORT_TIMESTAMP = created_at_short_str;
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
-    m.TRANS_via = 'via';
+    m.TRANS_via = _('via');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
 
     return ui.Template.render(ui.Template.search_t, m);

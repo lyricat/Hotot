@@ -19,17 +19,37 @@
 		"message": "使用原生通知机制",
 		"description": ""
 	},
+	"unblock": {
+		"message": "接触屏蔽",
+		"description": "data/js/ui.template.js"
+	},
+	"relation": {
+		"message": "关系",
+		"description": "data/js/ui.template.js"
+	},
+	"follow": {
+		"message": "关注",
+		"description": "data/js/ui.template.js"
+	},
 	"font": {
 		"message": "字体",
 		"description": ""
 	},
 	"fine": {
-		"message": "还好",
+		"message": "还能hold住",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"add_to_list": {
+		"message": "添加到列表",
+		"description": "data/js/ui.template.js"
+	},
 	"compose": {
-		"message": "编写",
+		"message": "撰写新状态",
 		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "回复",
+		"description": "data/js/ui.template.js"
 	},
 	"remember_password": {
 		"message": "记住密码",
@@ -71,8 +91,8 @@
 		"message": "上传",
 		"description": "data/index.html"
 	},
-	"reload": {
-		"message": "重新加载",
+	"kismet_firewall": {
+		"message": "Kismet 防火墙",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
@@ -90,6 +110,10 @@
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
 		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和API地址。",
 		"description": "data/js/ui.welcome.js"
+	},
+	"rt_this_tweet": {
+		"message": "引用",
+		"description": "data/js/ui.template.js"
 	},
 	"paste_from_clipboard": {
 		"message": "从剪贴板粘贴",
@@ -203,9 +227,17 @@
 		"message": "删除",
 		"description": ""
 	},
-	"options": {
-		"message": "选项",
-		"description": "data/js/ui.exts_dlg.js"
+	"official_retweet_this_tweet": {
+		"message": "转发",
+		"description": "data/js/ui.template.js"
+	},
+	"delete_this_tweet": {
+		"message": "删除",
+		"description": "data/js/ui.template.js"
+	},
+	"via": {
+		"message": "发自",
+		"description": "data/js/ui.template.js"
 	},
 	"about_and_help": {
 		"message": "关于和帮助",
@@ -225,6 +257,10 @@
 	},
 	"retweet_or_un_retweet": {
 		"message": "转发/取消转发",
+		"description": "data/index.html"
+	},
+	"sign_out": {
+		"message": "登出",
 		"description": "data/index.html"
 	},
 	"search_api_base2": {
@@ -271,6 +307,14 @@
 		"message": "关注@",
 		"description": "data/js/ui.main.js"
 	},
+	"friend_cnt": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeted_by": {
+		"message": "转发人:",
+		"description": "data/js/ui.template.js"
+	},
 	"same_signing_api_base": {
 		"message": "使用相同API进行签名",
 		"description": ""
@@ -282,6 +326,10 @@
 	"account": {
 		"message": "账户",
 		"description": ""
+	},
+	"join": {
+		"message": "加入",
+		"description": "data/js/ui.template.js"
 	},
 	"my_power": {
 		"message": "魔法值",
@@ -307,6 +355,10 @@
 		"message": "低",
 		"description": "data/index.html"
 	},
+	"click_to_show": {
+		"message": "点击查看",
+		"description": "data/js/ui.template.js"
+	},
 	"profile_name": {
 		"message": "账户名",
 		"description": ""
@@ -331,6 +383,10 @@
 		"message": "撤销转发...",
 		"description": "data/js/ui.main.js"
 	},
+	"followers": {
+		"message": "关注者",
+		"description": "data/js/ui.template.js"
+	},
 	"reset_time": {
 		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
@@ -351,6 +407,10 @@
 		"message": "列表",
 		"description": "data/index.html"
 	},
+	"tweet_cnt": {
+		"message": "状态",
+		"description": "data/js/ui.template.js"
+	},
 	"sign_in": {
 		"message": "登入",
 		"description": ""
@@ -370,6 +430,14 @@
 	"font_size": {
 		"message": "字体大小",
 		"description": ""
+	},
+	"options": {
+		"message": "选项",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"block": {
+		"message": "屏蔽",
+		"description": "data/js/ui.template.js"
 	},
 	"step_two": {
 		"message": "第二步",
@@ -411,9 +479,17 @@
 		"message": "收藏...",
 		"description": "data/js/ui.main.js"
 	},
+	"web": {
+		"message": "网址",
+		"description": "data/js/ui.template.js"
+	},
 	"regain_access_token_with_twitter": {
 		"message": "重新获取Twitter访问令牌",
 		"description": ""
+	},
+	"send_message_to_them": {
+		"message": "发送私信",
+		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
 		"message": "使用Ctrl+Enter更新",
@@ -455,6 +531,10 @@
 		"message": "高级",
 		"description": ""
 	},
+	"report_spam": {
+		"message": "报告垃圾账户",
+		"description": "data/js/ui.template.js"
+	},
 	"name": {
 		"message": "名字",
 		"description": ""
@@ -487,6 +567,10 @@
 		"message": "成功！",
 		"description": "data/js/ui.main.js"
 	},
+	"lists_following_them": {
+		"message": "包含该用户的列表",
+		"description": "data/js/ui.template.js"
+	},
 	"cancel": {
 		"message": "取消",
 		"description": ""
@@ -499,13 +583,29 @@
 		"message": "成功发送！",
 		"description": "data/js/ui.status_box.js"
 	},
+	"reload": {
+		"message": "重新加载",
+		"description": "data/index.html"
+	},
 	"authentication_ok": {
 		"message": "验证通过！",
 		"description": "data/js/ui.welcome.js"
 	},
+	"view_more_conversation": {
+		"message": "查看会话",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "该用户的列表",
+		"description": "data/js/ui.template.js"
+	},
 	"clear_and_close": {
 		"message": "清空并且关闭",
 		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "被列表",
+		"description": "data/js/ui.template.js"
 	},
 	"credits": {
 		"message": "致谢",
@@ -519,9 +619,17 @@
 		"message": "切换到前一页",
 		"description": "data/index.html"
 	},
+	"favs": {
+		"message": "收藏",
+		"description": "data/js/ui.template.js"
+	},
 	"tweets_per_day": {
 		"message": "每日发推量",
 		"description": "data/index.html"
+	},
+	"create_a_list": {
+		"message": "创建一个新列表",
+		"description": "data/js/ui.template.js"
 	},
 	"copy_to_clipboard": {
 		"message": "复制到剪贴板",
@@ -591,9 +699,25 @@
 		"message": "使用同样的OAuth地址进行签名",
 		"description": ""
 	},
+	"loading_dots": {
+		"message": "加载中…",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "列表",
+		"description": "data/js/ui.template.js"
+	},
 	"pin_code": {
 		"message": "PIN Code",
 		"description": ""
+	},
+	"info": {
+		"message": "信息",
+		"description": "data/js/ui.template.js"
+	},
+	"follower_cnt": {
+		"message": "关注者",
+		"description": "data/js/ui.template.js"
 	},
 	"use_quote_as_default_retweet_action": {
 		"message": "使用『引用』作为默认转发方式",
@@ -630,6 +754,10 @@
 	"whisper": {
 		"message": "低语",
 		"description": "data/js/ui.welcome.js"
+	},
+	"no_extension": {
+		"message": "木有扩展",
+		"description": "data/index.html"
 	},
 	"join_time": {
 		"message": "加入时间",
@@ -687,6 +815,14 @@
 		"message": "感官",
 		"description": ""
 	},
+	"more_actions": {
+		"message": "更多动作",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
 	"enable_proxy": {
 		"message": "启用代理",
 		"description": ""
@@ -694,6 +830,10 @@
 	"clear": {
 		"message": "清除",
 		"description": ""
+	},
+	"reply_to": {
+		"message": "回应",
+		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
 		"message": "登录到Twitter",

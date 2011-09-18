@@ -19,6 +19,18 @@
 		"message": "Use native notify system",
 		"description": "data/index.html"
 	},
+	"unblock": {
+		"message": "Unblock",
+		"description": "data/js/ui.template.js"
+	},
+	"relation": {
+		"message": "Relation",
+		"description": "data/js/ui.template.js"
+	},
+	"follow": {
+		"message": "Follow",
+		"description": "data/js/ui.template.js"
+	},
 	"font": {
 		"message": "Font",
 		"description": "data/index.html"
@@ -27,9 +39,17 @@
 		"message": "Fine",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"add_to_list": {
+		"message": "Add to list",
+		"description": "data/js/ui.template.js"
+	},
 	"compose": {
 		"message": "Compose",
 		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "Reply this tweet",
+		"description": "data/js/ui.template.js"
 	},
 	"remember_password": {
 		"message": "Remember Password",
@@ -71,8 +91,8 @@
 		"message": "Upload",
 		"description": "data/index.html"
 	},
-	"reload": {
-		"message": "Reload",
+	"kismet_firewall": {
+		"message": "Kismet Firewall",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
@@ -90,6 +110,10 @@
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
 		"message": "Cannot authenticate you! Please check your username/password and API Base",
 		"description": "data/js/ui.welcome.js"
+	},
+	"rt_this_tweet": {
+		"message": "RT this tweet",
+		"description": "data/js/ui.template.js"
 	},
 	"paste_from_clipboard": {
 		"message": "Paste from clipboard",
@@ -203,9 +227,17 @@
 		"message": "Delete",
 		"description": "data/index.html"
 	},
-	"options": {
-		"message": "Options",
-		"description": "data/js/ui.exts_dlg.js"
+	"official_retweet_this_tweet": {
+		"message": "Official retweet this tweet",
+		"description": "data/js/ui.template.js"
+	},
+	"delete_this_tweet": {
+		"message": "Delete this tweet",
+		"description": "data/js/ui.template.js"
+	},
+	"via": {
+		"message": "via",
+		"description": "data/js/ui.template.js"
 	},
 	"about_and_help": {
 		"message": "About & Help",
@@ -225,6 +257,10 @@
 	},
 	"retweet_or_un_retweet": {
 		"message": "Retweet/Un-retweet",
+		"description": "data/index.html"
+	},
+	"sign_out": {
+		"message": "Sign Out",
 		"description": "data/index.html"
 	},
 	"search_api_base2": {
@@ -271,6 +307,14 @@
 		"message": "Follow @",
 		"description": "data/js/ui.main.js"
 	},
+	"friend_cnt": {
+		"message": "Friend",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeted_by": {
+		"message": "Retweeted by",
+		"description": "data/js/ui.template.js"
+	},
 	"same_signing_api_base": {
 		"message": "Same Signing API Base",
 		"description": "data/index.html"
@@ -282,6 +326,10 @@
 	"account": {
 		"message": "Account",
 		"description": "data/index.html"
+	},
+	"join": {
+		"message": "Join",
+		"description": "data/js/ui.template.js"
 	},
 	"my_power": {
 		"message": "My Power",
@@ -307,6 +355,10 @@
 		"message": "Low",
 		"description": "data/index.html"
 	},
+	"click_to_show": {
+		"message": "Click to show",
+		"description": "data/js/ui.template.js"
+	},
 	"profile_name": {
 		"message": "Profile Name",
 		"description": "data/index.html"
@@ -331,6 +383,10 @@
 		"message": "Undo retweeting ...",
 		"description": "data/js/ui.main.js"
 	},
+	"followers": {
+		"message": "Followers",
+		"description": "data/js/ui.template.js"
+	},
 	"reset_time": {
 		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
@@ -351,6 +407,10 @@
 		"message": "List",
 		"description": "data/index.html"
 	},
+	"tweet_cnt": {
+		"message": "Tweet",
+		"description": "data/js/ui.template.js"
+	},
 	"sign_in": {
 		"message": "Sign In",
 		"description": "data/index.html"
@@ -370,6 +430,14 @@
 	"font_size": {
 		"message": "Font Size",
 		"description": "data/index.html"
+	},
+	"options": {
+		"message": "Options",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"block": {
+		"message": "Block",
+		"description": "data/js/ui.template.js"
 	},
 	"step_two": {
 		"message": "Step 2",
@@ -411,9 +479,17 @@
 		"message": "Favorite this tweet ...",
 		"description": "data/js/ui.main.js"
 	},
+	"web": {
+		"message": "Web",
+		"description": "data/js/ui.template.js"
+	},
 	"regain_access_token_with_twitter": {
 		"message": "Regain Access Token with Twitter",
 		"description": "data/index.html"
+	},
+	"send_message_to_them": {
+		"message": "Send message to them",
+		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
 		"message": "Press Ctrl + Enter to Update",
@@ -455,6 +531,10 @@
 		"message": "Advanced",
 		"description": "data/index.html"
 	},
+	"report_spam": {
+		"message": "Report Spam",
+		"description": "data/js/ui.template.js"
+	},
 	"name": {
 		"message": "Name",
 		"description": "data/index.html"
@@ -487,6 +567,10 @@
 		"message": "Successfully",
 		"description": "data/js/ui.main.js"
 	},
+	"lists_following_them": {
+		"message": "Lists following them",
+		"description": "data/js/ui.template.js"
+	},
 	"cancel": {
 		"message": "Cancel",
 		"description": "data/index.html"
@@ -499,13 +583,29 @@
 		"message": "Post Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
+	"reload": {
+		"message": "Reload",
+		"description": "data/index.html"
+	},
 	"authentication_ok": {
 		"message": "Authentication OK!",
 		"description": "data/js/ui.welcome.js"
 	},
+	"view_more_conversation": {
+		"message": "View more conversation",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "Lists of them",
+		"description": "data/js/ui.template.js"
+	},
 	"clear_and_close": {
 		"message": "Clear & Close",
 		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "Listed",
+		"description": "data/js/ui.template.js"
 	},
 	"credits": {
 		"message": "Credits",
@@ -519,9 +619,17 @@
 		"message": "Slide to prev page",
 		"description": "data/index.html"
 	},
+	"favs": {
+		"message": "Favs",
+		"description": "data/js/ui.template.js"
+	},
 	"tweets_per_day": {
 		"message": "Tweets Per Day",
 		"description": "data/index.html"
+	},
+	"create_a_list": {
+		"message": "Create A List",
+		"description": "data/js/ui.template.js"
 	},
 	"copy_to_clipboard": {
 		"message": "Copy to clipboard",
@@ -591,9 +699,25 @@
 		"message": "Same Signing OAuth Base",
 		"description": "data/index.html"
 	},
+	"loading_dots": {
+		"message": "Loading ... ",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "Lists",
+		"description": "data/js/ui.template.js"
+	},
 	"pin_code": {
 		"message": "PIN Code",
 		"description": "data/index.html"
+	},
+	"info": {
+		"message": "INFO",
+		"description": "data/js/ui.template.js"
+	},
+	"follower_cnt": {
+		"message": "Follower",
+		"description": "data/js/ui.template.js"
 	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Use QUOTE as default retweet action",
@@ -630,6 +754,10 @@
 	"whisper": {
 		"message": "Whisper",
 		"description": "data/js/ui.welcome.js"
+	},
+	"no_extension": {
+		"message": "No Extension",
+		"description": "data/index.html"
 	},
 	"join_time": {
 		"message": "Join",
@@ -687,6 +815,14 @@
 		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
+	"more_actions": {
+		"message": "More",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "Friends",
+		"description": "data/js/ui.template.js"
+	},
 	"enable_proxy": {
 		"message": "Enable Proxy",
 		"description": "data/index.html"
@@ -694,6 +830,10 @@
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
+	},
+	"reply_to": {
+		"message": "reply to",
+		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
 		"message": "Sign in with Twitter",
