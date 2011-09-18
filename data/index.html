@@ -455,10 +455,53 @@ function init_hotkey() {
         }
     });
     // 'a' then 's' to favorite/un-fav
+    hotkey.register([ia, hotkey.calculate(83)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
+            }
+        }
+    });
+
     // 'a' then 'a' to reply all
+    hotkey.register([ia, ia], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_reply_all_click(null, ui.Main.selected_tweet_id, null); 
+            }
+        }
+    });
+
     // 'a' then <Shift>+'r' to retweet/undo-retweet
+    hotkey.register([ia, hotkey.calculate(82, hotkey.shiftKey)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, ev);
+            }
+        }
+    });
     // 'a' then 'd' to delete
-   
+    hotkey.register([ia, hotkey.calculate(68)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
+            }
+        }
+    });
+    // 'a' then 'm' to send msg 
+    hotkey.register([ia, hotkey.calculate(77)], function() {
+        if (ui.Main.selected_tweet_id != null) {
+            var current = $(ui.Main.selected_tweet_id);
+            if (current.length != 0) {
+                ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
+            }
+        }
+    });
+
     // 'z' then 'o' to expand
     var iz = hotkey.calculate(90);
     hotkey.register([iz, hotkey.calculate(79)], function () {
@@ -1444,13 +1487,14 @@ jQuery(function($) {
                 <tr><td data-i18n-text="move_to_next_tweet">Move to next tweet</td><td>j</td></tr>
                 <tr><td data-i18n-text="move_to_top">Move to top</td><td>gg</td></tr>
                 <tr><td data-i18n-text="move_to_bottom">Move to bottom</td><td>&lt;Shift&gt;g</td></tr>
-                <tr><td data-i18n-text="enter_compose_mode">Enter compose mode</td><td>c</td></tr>
-                <tr><td data-i18n-text="enter_action_mode">Enter action mode</td><td>a</td></tr>
-                <tr><th class="sub" colspan="2" data-i18n-text="action_mode">Action Mode</th></tr>
-                <tr><td data-i18n-text="prev_action">Prev action</td><td>k</td></tr>
-                <tr><td data-i18n-text="next_action">Next action</td><td>j</td></tr>
-                <tr><td data-i18n-text="trigger_action">Trigger action</td><td>&lt;Tab&gt; or &lt;Enter&gt;  </td></tr>
-                <tr><td data-i18n-text="exit_action_mode">Exit action mode</td><td>&lt;ESC&gt; or a</td></tr>
+                <tr><td data-i18n-text="compose">Compose</td><td>c</td></tr>
+                <tr><td data-i18n-text="reply">Reply</td><td>ar</td></tr>
+                <tr><td data-i18n-text="reply_all">Reply All</td><td>aa</td></tr>
+                <tr><td data-i18n-text="quote">Quote</td><td>aq</td></tr>
+                <tr><td data-i18n-text="fav_or_un_fav">Fav/Un-fav</td><td>as</td></tr>
+                <tr><td data-i18n-text="send_message">Send Message</td><td>am</td></tr>
+                <tr><td data-i18n-text="delete">Delete</td><td>ad</td></tr>
+                <tr><td data-i18n-text="retweet/un_retweet">Retweet/Un-retweet</td><td>a&lt;Shift&gt;r</td></tr>
                 </tbody>
                 </table>
             </p>

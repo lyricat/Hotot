@@ -138,7 +138,10 @@ function init () {
             // shortcut binding Ctrl+Enter
             $('#btn_update').click();
             return false;
-        }         
+        }
+        if (event.keyCode == 27) { // esc
+            ui.StatusBox.close();
+        }
     });
     
     $('#tbox_status').blur(function (event) {
@@ -405,6 +408,8 @@ function close() {
         , 'linear'
         , function () {
             ui.StatusBox.hide();
+            $('#tbox_status').blur();
+            $('#'+ui.Slider.current+'_tweetview .card:eq(0)').focus();
         });
     $('#indicator_compose_btn').removeClass('hlight');
     ui.StatusBox.is_closed = true;
