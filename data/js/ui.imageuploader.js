@@ -64,6 +64,32 @@ function init() {
 
 upload:
 function upload(file) {
+    // form params
+    var msg = ui.ImageUploader.me.find('.message').val();
+    var service_name = ui.ImageUploader.service_name;
+    var params = {'message': msg};
+    switch (service_name) {
+    case 'twitpic.com' :
+        params['key'] = ui.ImageUploader.services[service_name].key;
+    break;
+    case 'lockerz.com' :
+        params['isoauth'] = 'true';
+        params['response_format'] = 'JSON';
+        params['api_key'] = ui.ImageUploader.services[service_name].key;
+    break;
+    }
+
+    toast.set('Uploading ... ').show();
+    ui.ImageUploader.upload_image(
+          ui.ImageUploader.services[service_name].url
+        , params
+        , file
+        , ui.ImageUploader.success
+        , ui.ImageUploader.fail);
+},
+
+upload_image:
+function upload_image(url, params, file, success, fail) {
     var signed_params = jsOAuth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
             , jsOAuth.access_token
@@ -82,35 +108,20 @@ function upload(file) {
 
     var headers = {'X-Verify-Credentials-Authorization': auth_str
         , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
-    var msg = ui.ImageUploader.me.find('.message').val();
-    var service_name = ui.ImageUploader.service_name;
-    var params = {'message': msg};
-    switch (service_name) {
-    case 'twitpic.com' :
-        params['key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    case 'lockerz.com' :
-        params['isoauth'] = 'true';
-        params['response_format'] = 'JSON';
-        params['api_key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    }
-
-    toast.set('Uploading ... ').show();
     var reader = new FileReader();
     reader.onload = function (e) {
         var result = e.target.result;
-        var ret = lib.network.encode_multipart_formdata(params,file, result);
+        var ret = lib.network.encode_multipart_formdata(
+            params, file, result);
         $.extend(headers, ret[0]);
         lib.network.do_request(
             'POST'
-            , ui.ImageUploader.services[service_name].url
+            , url
             , params 
             , headers
             , ret[1]
-            , ui.ImageUploader.success
-            , ui.ImageUploader.fail
-            );
+            , success
+            , fail);
     }
     reader.readAsArrayBuffer(file);
 },
@@ -120,6 +131,7 @@ function success(result) {
     globals.imageuploader_dialog.close();
     toast.set('Uploading Successfully!').show();
     ui.StatusBox.open();
+    var url = ''; var text = '';
     switch (ui.ImageUploader.service_name) {
     case 'lockerz.com':
         url = result.MediaUrl;

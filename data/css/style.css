@@ -328,6 +328,7 @@ pre {
 
 #tbox_status_wrapper {
     margin:5px;
+    height: 160px;
 }
 
 #tbox_status {
@@ -339,6 +340,30 @@ pre {
     resize: none;
     border: 0;
     outline: none;
+}
+
+#status_image_preview_wrapper {
+    height: 161px;
+    width: 145px;
+    float: left;
+    margin: 5px;
+    display: none;
+}
+
+#status_image_preview_wrapper .close_btn {
+    display: block;
+    height: 24px;
+    width: 24px;
+    background-position: center;
+    float: right;
+}
+
+#status_image_preview {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 161px;
+    width: 145px;
 }
 
 #status_smiley {
@@ -467,7 +492,7 @@ pre {
 }
 
 #view_title_bar {
-    height: 20px;
+    height: 21px;
     width: 100%;
     overflow: hidden;
 }

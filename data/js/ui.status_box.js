@@ -9,6 +9,8 @@ MODE_REPLY: 1,
 
 MODE_DM: 2,
 
+MODE_IMG: 3,
+
 POS_BEGIN: 0,
 
 POS_END: -1,
@@ -51,6 +53,8 @@ function init () {
         if (status_text.length != 0) {
             if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
                 ui.StatusBox.post_message(status_text);
+            } else if (ui.StatusBox.current_mode==ui.StatusBox.MODE_IMG){
+                ui.StatusBox.post_image(status_text);
             } else {
                 ui.StatusBox.update_status(status_text);
             }
@@ -142,6 +146,30 @@ function init () {
         ui.StatusBox.formalize();
     });
 
+    $('#status_box').bind('dragover', function () {
+        return false;    
+    }).bind('dragend', function () {
+        return false;
+    }).bind('drop', function (ev) {
+        ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
+        console.log(ui.StatusBox.file);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#status_image_preview')
+                .css('background-image', 'url('+e.target.result+')');
+        }
+        reader.readAsDataURL(ui.StatusBox.file);
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_IMG);
+        return false;
+    });
+
+    $('#status_image_preview_wrapper .close_btn').click(function () {
+        ui.StatusBox.file = null;
+        $('#status_image_preview').css('background-image', 'none');
+        $('#tbox_status').val('');
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+    });
+
     $('#tbox_dm_target').click(
     function (event) {
         return false;
@@ -213,10 +241,15 @@ function change_mode(mode) {
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
         $('#status_info').show();
         $('#tbox_dm_target').hide();
+    } else if (mode == ui.StatusBox.MODE_IMG) {
+        $('#tbox_status_wrapper').css('margin-left', '155px');
+        $('#status_image_preview_wrapper').show();
     } else {
         $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
         $('#tbox_dm_target').hide();
         $('#status_info').hide();
+        $('#tbox_status_wrapper').css('margin-left', '5px');
+        $('#status_image_preview_wrapper').hide();
     }
     ui.StatusBox.current_mode = mode;
 },
@@ -237,6 +270,8 @@ function update_status_cb(result) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     toast.set(_('update_successfully')).show();
     $('#status_info').hide();
+    ui.StatusBox.file = null;
+    $('#status_image_preview').css('background-image', 'none');
     $('#tbox_status').val(''); 
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
@@ -283,6 +318,33 @@ function post_message_cb(result) {
     return this;
 },
 
+post_image:
+function post_image(msg) {
+    var params = {'message': msg};
+    toast.set('Uploading ... ').show();
+    ui.ImageUploader.upload_image(
+          ui.ImageUploader.services['img.ly'].url
+        , params
+        , ui.StatusBox.file
+        , ui.StatusBox.post_image_cb
+        , function () {
+            toast.set('Failed!').show();
+            $('#status_image_preview').css('background-image', 'none');
+            $('#tbox_status').val(''); 
+            ui.StatusBox.file = null;
+            ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+        });
+},
+
+post_image_cb:
+function post_image_cb(result) {
+    toast.set('Uploading Successfully!').show();
+    var text = result.text + ' '+ result.url;
+    $('#tbox_status').val(text);
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+    ui.StatusBox.update_status(text);
+    return this;
+},
 
 append_status_text:
 function append_status_text(text) {
