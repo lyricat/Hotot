@@ -365,7 +365,10 @@ function get_user_timeline(user_id, screen_name, since_id,
 show_status:
 function show_status(id, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'statuses/show/'+id+'.json';
-    lib.twitterapi.get(url, {}, on_success, on_error);
+    var params={
+        'include_entities': '1',
+    };
+    lib.twitterapi.get(url, params, on_success, on_error);
 },
 
 show_user:
