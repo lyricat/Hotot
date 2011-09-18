@@ -31,26 +31,6 @@
 		"message": "Follow",
 		"description": "data/js/ui.template.js"
 	},
-	"unfollow": {
-		"message": "Unfollow",
-		"description": ""
-	},
-	"Follow": {
-		"message": "Follow",
-		"description": ""
-	},
-	"Unfollow": {
-		"message": "Unfollow",
-		"description": ""
-	},
-	"Follow @": {
-		"message": "Follow @",
-		"description": ""
-	},
-	"Unfollow @": {
-		"message": "Unfollow @",
-		"description": ""
-	},
 	"font": {
 		"message": "Font",
 		"description": "data/index.html"
@@ -563,6 +543,10 @@
 		"message": "Tweet View",
 		"description": "data/index.html"
 	},
+	"edit": {
+		"message": "Edit",
+		"description": "data/js/ui.template.js"
+	},
 	"powerfull": {
 		"message": "Powerfull",
 		"description": "data/js/lib.twitterapi.js"
@@ -835,16 +819,8 @@
 		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
-	"edit": {
-		"message": "Edit",
-		"description": "data/js/ui.template.js"
-	},
 	"more_actions": {
 		"message": "More",
-		"description": "data/js/ui.template.js"
-	},
-	"mention_them": {
-		"message": "Mention",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
@@ -858,6 +834,10 @@
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "Mention",
+		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
 		"message": "reply to",

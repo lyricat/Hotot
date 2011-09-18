@@ -43,20 +43,20 @@ function init_view(view) {
     function (event) {
         var _this = this;
         if ($(this).hasClass('unfo')) {
-            toast.set(_("Unfollow @") + view.screen_name + " ...").show();
+            toast.set(_("unfollow_at") + view.screen_name + " ...").show();
             lib.twitterapi.destroy_friendships(view.screen_name,
             function () {
                 toast.set(
-                    _("Unfollow @")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("Follow")).removeClass('unfo');
+                    _("unfollow_at")+ view.screen_name+" Successfully!").show();
+                $(_this).text(_("follow")).removeClass('unfo');
             });
         } else {
-            toast.set(_("Follow @") + view.screen_name + " ...").show();
+            toast.set(_("follow_at") + view.screen_name + " ...").show();
             lib.twitterapi.create_friendships(view.screen_name,
             function () {
                 toast.set(
-                    _("Follow @")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("Unfollow")).addClass('unfo');
+                    _("follow_at")+ view.screen_name+" Successfully!").show();
+                $(_this).text(_("unfollow")).addClass('unfo');
             });
         }
     });

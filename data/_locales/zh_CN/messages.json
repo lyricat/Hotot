@@ -31,26 +31,6 @@
 		"message": "关注",
 		"description": "data/js/ui.template.js"
 	},
-	"unfollow": {
-		"message": "解除关注",
-		"description": ""
-	},
-	"Follow": {
-		"message": "关注",
-		"description": ""
-	},
-	"Unfollow": {
-		"message": "解除关注",
-		"description": ""
-	},
-	"Follow @": {
-		"message": "关注 @",
-		"description": ""
-	},
-	"Unfollow @": {
-		"message": "解除关注 @",
-		"description": ""
-	},
 	"font": {
 		"message": "字体",
 		"description": ""
@@ -563,6 +543,10 @@
 		"message": "状态视图",
 		"description": "data/index.html"
 	},
+	"edit": {
+		"message": "编辑",
+		"description": "data/js/ui.template.js"
+	},
 	"powerfull": {
 		"message": "精力充沛",
 		"description": "data/js/lib.twitterapi.js"
@@ -835,16 +819,8 @@
 		"message": "感官",
 		"description": ""
 	},
-	"edit": {
-		"message": "编辑",
-		"description": "data/js/ui.template.js"
-	},
 	"more_actions": {
 		"message": "更多动作",
-		"description": "data/js/ui.template.js"
-	},
-	"mention_them": {
-		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
@@ -858,6 +834,10 @@
 	"clear": {
 		"message": "清除",
 		"description": ""
+	},
+	"mention_them": {
+		"message": "提及",
+		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
 		"message": "回应",
