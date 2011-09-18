@@ -197,10 +197,16 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {       // friedns or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') {  //fav, 
-            self.page = json.page + 1; 
+            if (json.page){
+                self.page = json.page + 1;
+            }
         } else if (self.item_type == 'search'){
-            self.max_id = json.max_id_str;
-            self.page = json.page;
+            if (json.max_id_str){
+                self.max_id = json.max_id_str;
+            }
+            if (json.page){
+                self.page = json.page;
+            }
         } else {    // other
             self.since_id = json[count - 1].id_str;
             if (self.max_id == null) {
@@ -238,10 +244,16 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {        // friends or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { // fav, 
-            self.page = self.page + 1; 
+            if (json.page){
+                self.page = self.page + 1;
+            }
         } else if (self.item_type == 'search'){
-            self.max_id = json.max_id_str;
-            self.page = json.page;
+            if (json.max_id_str){
+                self.max_id = json.max_id_str;
+            }
+            if (json.page){
+                self.page = json.page;
+            }
         } else {    // other
             if (count == 0) { return; }
             self.max_id = json[count - 1].id_str;
