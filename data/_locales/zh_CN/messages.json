@@ -20,7 +20,7 @@
 		"description": ""
 	},
 	"unblock": {
-		"message": "接触屏蔽",
+		"message": "取消屏蔽",
 		"description": "data/js/ui.template.js"
 	},
 	"relation": {
