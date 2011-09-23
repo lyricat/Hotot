@@ -244,7 +244,7 @@ def get_urlopen():
     if get_prefs('use_http_proxy_auth'):
         username = str(get_prefs('http_proxy_name'))
         password = str(get_prefs('http_proxy_password'))
-        auth_handler = urllib2.HTTPBasicAuthHandler()
+        auth_handler = urllib2.ProxyBasicAuthHandler()
         auth_handler.add_password(None, url, username, password)
         return urllib2.build_opener(auth_handler).open
     else:
