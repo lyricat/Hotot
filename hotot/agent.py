@@ -242,11 +242,12 @@ def get_urlopen():
     port = str(get_prefs('http_proxy_port'))
     url = scheme + '://' + host + ':' + port
     if get_prefs('use_http_proxy_auth'):
+        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
         username = str(get_prefs('http_proxy_name'))
         password = str(get_prefs('http_proxy_password'))
         auth_handler = urllib2.ProxyBasicAuthHandler()
         auth_handler.add_password(None, url, username, password)
-        return urllib2.build_opener(auth_handler).open
+        return urllib2.build_opener(proxy_support, auth_handler).open
     else:
         proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
         return urllib2.build_opener(proxy_support).open
