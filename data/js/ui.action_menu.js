@@ -104,8 +104,8 @@ function sync() {
         var tweet_obj = JSON.parse(row.json);
         var user = typeof tweet_obj.sender != 'undefined'? tweet_obj.sender 
             : tweet_obj.user;
-        var info ='<span class="info_hint">'+ user.screen_name + ':</span>"' + tweet_obj.text + '"';
-        $('#action_menu_info').html(info);
+        $('#action_menu_info').empty().append($('<span class="info_hint"/>').text(user.screen_name + ':'))
+            .append(document.createTextNode('"' + tweet_obj.text + '"'));
     });
     // reset 
     ui.ActionMenu.me.find('.action_menu_item.selected').removeClass('selected');

@@ -85,8 +85,7 @@ function init() {
         var current = $($('#kismet_rule_list .kismet_rule.selected').parent().get(0));
         var prev = current.prev('li');
         if (prev.length != 0) {
-            prev.before('<li>'+current.html()+'</li>');
-            current.remove();
+            prev.before(current);
         }
     });
 
@@ -94,8 +93,7 @@ function init() {
         var current = $($('#kismet_rule_list .kismet_rule.selected').parent().get(0));
         var next = current.next('li');
         if (next.length != 0) {
-            next.after('<li>'+current.html()+'</li>');
-            current.remove();
+            next.after(current);
         }
     });
 

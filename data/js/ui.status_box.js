@@ -116,7 +116,7 @@ function init () {
     $('#btn_clear_status_info').click(
     function (event) {
         $(this).parent().hide();
-        $('#status_info_text').text('');
+        $('#status_info_text').empty();
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         ui.reply_to_id = null;
     });
@@ -177,7 +177,7 @@ function init () {
     function (event) {
         return false;
     })
-    $('#status_len').html('0/' + globals.max_status_len);      
+    $('#status_len').text('0/' + globals.max_status_len);      
 
     $('#status_box').click(function () {
         return false;    
@@ -238,8 +238,7 @@ function change_mode(mode) {
         $('#status_box').removeClass('reply_mode').addClass('dm_mode');
         $('#tbox_dm_target').show();
         $('#status_info').show();
-        $('#status_info_text').html('<span class="info_hint">'
-            + _('compose_messages_to') + '</span>');
+        ui.StatusBox.set_status_info(_('compose_messages_to'));
     } else if (mode == ui.StatusBox.MODE_REPLY){
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
         $('#status_info').show();
@@ -289,7 +288,7 @@ function update_status_len() {
         $('#status_len').css('color', '#cc0000');
     else
         $('#status_len').css('color', '#aaa');
-    $('#status_len').html(status_len + '/' + globals.max_status_len);
+    $('#status_len').text(status_len + '/' + globals.max_status_len);
     return this;
 },
 
@@ -380,8 +379,12 @@ function set_status_text(text) {
 },
 
 set_status_info:
-function set_status_info(info) {
-    $('#status_info_text').html(info);
+function set_status_info(hint, info) {
+    var textbar = $('#status_info_text').empty();
+    $('<span class="info_hint"/>').text(hint).appendTo(textbar);
+    if (info != null && info !== '') {
+        $(document.createTextNode(' ' + info)).appendTo(textbar);
+    }
 },
 
 set_dm_target:
