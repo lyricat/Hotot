@@ -359,6 +359,10 @@
 		"message": "点击查看",
 		"description": "data/js/ui.template.js"
 	},
+	"click_to_show_retweeters": {
+		"message": "点击查看转发人",
+		"description": "data/js/ui.template.js"
+	},
 	"profile_name": {
 		"message": "账户名",
 		"description": ""

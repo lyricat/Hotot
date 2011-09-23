@@ -166,35 +166,27 @@ function load_prefs() {
         , prefs.remember_password);
 
     // Appearance
-    var options_arr = []; 
+    var theme_list = $('#sel_prefs_theme').empty();
     for (var i = 0, l = conf.vars.builtin_themes.length; i < l; i += 1) {
         var theme_name = conf.vars.builtin_themes[i];
-        options_arr.push('<option value="'
-            + theme_name + '" path="theme/'
-            + theme_name + '">' + theme_name + '</option>');
+        $('<option/>').attr({'value': theme_name, 'path': 'theme/' + theme_name}).text(theme_name).appendTo(theme_list);
     }
     for (var i = 0, l = conf.vars.extra_themes.length; i < l; i += 1) {
         var theme_name = conf.vars.extra_themes[i].substring(conf.vars.extra_themes[i].lastIndexOf('/') + 1);
-        options_arr.push('<option value="'
-            + theme_name + '" path="'
-            + conf.vars.extra_themes[i] + '">'
-            + theme_name + '</option>');
+        $('<option/>').attr({'value': theme_name, 'path': conf.vars.extra_themes[i]}).text(theme_name).appendTo(theme_list);
     }
-    $('#sel_prefs_theme').html(options_arr.join(''));
-    $('#sel_prefs_theme').val(prefs.theme);
+    theme_list.val(prefs.theme);
+    theme_list = null;
     
-    options_arr = []; var selected_idx = 0;
+    var ff_list = $('#sel_prefs_font_family').empty();
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
-        options_arr.push('<option value="'
-            + ff_name + '">' + ff_name + '</option>');
-        if (ff_name == prefs.font_family_used) {
-            selected_idx = i;
-        }
+        $('<option/>').attr('value', ff_name).text(ff_name).appendTo(ff_list);
     }
+    ff_list.val(prefs.font_family_used);
+    ff_list = null;
+    
     $('#tbox_prefs_custom_font').val(prefs.custom_font);    
-    $('#sel_prefs_font_family').html(options_arr.join(''))
-    $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
     $('#tbox_prefs_font_size').val(prefs.font_size);    
     if (prefs.use_custom_font) {
         $('#rdo_use_custom_font').attr('checked', prefs.use_custom_font);

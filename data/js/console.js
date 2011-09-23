@@ -100,7 +100,7 @@ function form_result (type, raw_result) {
 
 out:
 function out (text) {
-    $('#console_out').append('<p>'+text+'</p>');
+    $('#console_out').append($('<p/>').text(text));
 },
 
 raw_out:
@@ -110,12 +110,14 @@ function raw_out (html) {
 
 href_out:
 function href_out(link) {
-    $('#console_out').append('<p><a href="'+link+'">'+link+'</a><p/>');
+    var p = $('<p/>');
+    $('<a/>').appendTo(p).attr('href', link).text(link);
+    $('#console_out').append(p);
 },
 
 clear:
 function console_clear() {
-    $('#console_out').html('');
+    $('#console_out').empty();
     return '';
 },
 

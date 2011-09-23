@@ -14,13 +14,13 @@ function init() {
 
 set:
 function set(msg) {
-    this.me.html(msg);
+    this.me.text(msg);
     return this;
 },
 
 clear:
 function clear() {
-    this.me.html('');
+    this.me.empty();
     return this;
 },
 

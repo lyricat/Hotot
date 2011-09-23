@@ -298,7 +298,7 @@ function render_people_view(self, user_obj, proc) {
                     + user_obj.screen_name);
             self.protected_user = true;
         } else {
-            btn_follow.html(_("Follow"));
+            btn_follow.text(_("Follow"));
             btn_follow.removeClass('unfo');
             proc();
             self.protected_user = false;
@@ -306,11 +306,11 @@ function render_people_view(self, user_obj, proc) {
     }
     ui.PeopleView.get_relationship(user_obj.screen_name
         , function (rel) {
-            self._header.find('.relation').html(
+            self._header.find('.relation').text(
                 ui.PeopleView.relation_map[rel]
             );
             if (rel == 1 || rel == 3) {
-                btn_follow.html(_("Unfollow"));
+                btn_follow.text(_("Unfollow"));
                 btn_follow.addClass('unfo');
             }
     });

@@ -277,8 +277,7 @@ load_daily_hint:
 function load_daily_hint() {
     if (Date.now() % 3 == 0) {
         var r = parseInt(Math.random() * daily_hints.length);
-        $('#daily_hint').html(
-            '<strong>'+_('whisper')+'</strong>: ' + daily_hints[r]);
+        $('#daily_hint').empty().append($('<strong/>').text(_('whisper') + ': ')).append(document.createTextNode(daily_hints[r]));
     }
 },
 

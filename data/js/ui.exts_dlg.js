@@ -35,23 +35,37 @@ function init () {
 
 load_ext_list:
 function load_ext_list() {
-    ext_arr = [];
+    var exts_list = $('#exts_container > ul').empty();
     for (var ext_id in ext.exts_info) {
         var info = ext.exts_info[ext_id];
-        ext_arr.push('<li id="ext_' + ext_id + '" class="ext_item"">'
-            + '<div class="ext_icon_wrap">'
-                + '<img class="ext_icon" src="'+info.icon+'"/></div>'
-            + '<div class="ext_item_body">'
-                + '<span class="ext_name">'+info.name+'</span> - '
-                + _('version') +' <span>'+ info.version + '</span><br/>'
-                + '<span>'+_('author')+':</span> <span>'+info.author+'</span><br/>'
-                + '<span>'+_('website')+':</span> <a class="ext_url" href="'+info.url+'">'+info.url+'</a><br/>'
-                + '<p class="ext_description">' + info.description.replace(/\n/g, '<br/>') + '</p>'
-                + '<div class="ext_ctrl" style="padding-top: 5px; border-top: 1px #ccc solid"><a href="javascript:void(0);" class="button enable_btn">'+_('enable')+'</a> '
-                + (info.has_options?' <a href="javascript:void(0);" class="button options_btn">'+_('options')+'</a>': '')
-            + '</div></div></li>');
+        var li = $('<li class="ext_item"/>').attr('id', 'ext_' + ext_id);
+        var div = $('<div class="ext_icon_wrap"/>').appendTo(li);
+        $('<img class="ext_icon"/>').attr('src', info.icon).appendTo(div);
+        div = $('<div class="ext_item_body"/>').appendTo(li);
+        $('<span class="ext_name"/>').text(info.name).appendTo(div);
+        $(document.createTextNode(' - ' + _('version') + ' ')).appendTo(div);
+        $('<span/>').text(info.version).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<span/>').text(_('author') + ': ').appendTo(div);
+        $('<span/>').text(info.author).appendTo(div);
+        $('<br/>').appendTo(div);
+        $('<span/>').text(_('website') + ': ').appendTo(div);
+        $('<a class="ext_url"/>').attr('href', info.url).text(info.url).appendTo(div);
+        $('<br/>').appendTo(div);
+        var d = info.description.split('\n');
+        var p = $('<p class="ext_description"/>').appendTo(div);
+        $(document.createTextNode(d[0])).appendTo(p);
+        for (var i = 1, l = d.length; i < l; i++) {
+            $('<br/>').appendTo(p);
+            $(document.createTextNode(d[i])).appendTo(p);
+        }
+        var sdiv = $('<div class="ext_ctrl" style="padding-top: 5px; border-top: 1px #ccc solid">').appendTo(div);
+        $('<a href="javascript:void(0);" class="button enable_btn"/>').text(_('enable')).appendTo(sdiv);
+        if (info.has_options) {
+            $('<a href="javascript:void(0);" class="button options_btn"/>').text(_('options')).appendTo(sdiv);
+        }
+        exts_list.append(li);
     }
-    $('#exts_container > ul').html(ext_arr.join(''));
 
     // @TODO enable enabled ext items cause Issue 31
     /*

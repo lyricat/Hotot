@@ -359,6 +359,10 @@
 		"message": "Click to show",
 		"description": "data/js/ui.template.js"
 	},
+	"click_to_show_retweeters": {
+		"message": "Click to show retweeters",
+		"description": "data/js/ui.template.js"
+	},
 	"profile_name": {
 		"message": "Profile Name",
 		"description": "data/index.html"
