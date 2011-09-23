@@ -248,7 +248,7 @@ def get_urlopen():
         auth_handler.add_password(None, url, username, password)
         return urllib2.build_opener(auth_handler).open
     else:
-        proxy_support = urllib2.ProxyHandler({ scheme: url })
+        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
         return urllib2.build_opener(proxy_support).open
 
 def _get(url, params={}, req_headers={}, req_timeout=None):
