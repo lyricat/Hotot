@@ -615,10 +615,6 @@
 		"message": "致谢",
 		"description": ""
 	},
-	"host": {
-		"message": "主机",
-		"description": ""
-	},
 	"slide_to_prev_page": {
 		"message": "切换到前一页",
 		"description": "data/index.html"
@@ -774,10 +770,6 @@
 	"oops_a_network_error_occurs": {
 		"message": "矮油～ 发生了一个网路错误！",
 		"description": "data/js/ui.welcome.js"
-	},
-	"port": {
-		"message": "端口",
-		"description": ""
 	},
 	"website": {
 		"message": "网址",

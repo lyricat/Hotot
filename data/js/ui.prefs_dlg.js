@@ -59,8 +59,17 @@ function init () {
     
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
-        $('#tbox_prefs_http_proxy_host').attr('disabled', !$(this).attr('checked'));
-        $('#tbox_prefs_http_proxy_port').attr('disabled', !$(this).attr('checked'));
+        $('#sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).attr('checked'));
+        if (! $('#chk_prefs_use_http_proxy_auth').attr('disabled')) { 
+            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').attr('checked'));
+        } else {
+            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        }
+    });
+
+    $('#chk_prefs_use_http_proxy_auth').click(
+    function (event) {
+        $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).attr('checked'));
     });
 
     var btn_prefs_ok = new widget.Button('#btn_prefs_ok');
@@ -111,15 +120,22 @@ function load_settings() {
     if (util.is_native_platform()) {
         $('#chk_prefs_use_http_proxy').attr('checked'
             , conf.settings.use_http_proxy);
+        $('#sel_prefs_http_proxy_scheme').val(conf.settings.http_proxy_scheme || 'http');
         $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
         $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
         if (! conf.settings.use_http_proxy) {
-            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
-            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        }
+        $('#chk_prefs_use_http_proxy_auth').attr('checked'
+            , conf.settings.use_http_proxy_auth);
+        $('#tbox_prefs_http_proxy_auth_name').val(conf.settings.http_proxy_auth_name);
+        $('#tbox_prefs_http_proxy_auth_password').val(conf.settings.http_proxy_auth_password);
+        if (! conf.settings.use_http_proxy_auth) {
+            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
         }
     } else {
         $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
-        $('#chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port').attr('disabled', true);
+        $('#chk_prefs_use_http_proxy, #sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
     }
 },
 
@@ -136,22 +152,20 @@ function save_settings() {
     if (util.is_native_platform()) {
         conf.settings.use_http_proxy
             = $('#chk_prefs_use_http_proxy').attr('checked');
+        conf.settings.http_proxy_scheme
+            = $('#sel_prefs_http_proxy_scheme').val();
         conf.settings.http_proxy_host 
             = $('#tbox_prefs_http_proxy_host').val();
         conf.settings.http_proxy_port 
-            = $('#tbox_prefs_http_proxy_port').val();
-        conf.settings.use_http_proxy
-            = $('#chk_prefs_use_http_proxy').attr('checked');
-        conf.settings.http_proxy_host
-            = $('#tbox_prefs_http_proxy_host').attr('value');
-        conf.settings.http_proxy_port
-            = $('#tbox_prefs_http_proxy_port').attr('value');
-        if (conf.settings.http_proxy_port == '') {
+            = parseInt($('#tbox_prefs_http_proxy_port').val());
+        conf.settings.use_http_proxy_auth
+            = $('#chk_prefs_use_http_proxy_auth').attr('checked');
+        conf.settings.http_proxy_auth_name
+            = $('#tbox_prefs_http_proxy_auth_name').val();
+        conf.settings.http_proxy_auth_password
+            = $('#tbox_prefs_http_proxy_auth_password').val();
+        if (isNaN(conf.settings.http_proxy_port)) {
             conf.settings.http_proxy_port = 0;
-        }
-        if (! conf.settings.use_http_proxy) {
-            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
-            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
         }
     }
     // save

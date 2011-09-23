@@ -615,10 +615,6 @@
 		"message": "Credits",
 		"description": "data/index.html"
 	},
-	"host": {
-		"message": "Host",
-		"description": "data/index.html"
-	},
 	"slide_to_prev_page": {
 		"message": "Slide to prev page",
 		"description": "data/index.html"
@@ -774,10 +770,6 @@
 	"oops_a_network_error_occurs": {
 		"message": "Oops, A Network Error Occurs",
 		"description": "data/js/ui.welcome.js"
-	},
-	"port": {
-		"message": "Port",
-		"description": "data/index.html"
 	},
 	"website": {
 		"message": "Website",

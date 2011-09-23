@@ -231,12 +231,28 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
 
+def get_urlopen():
+    if not get_prefs('use_http_proxy'):
+        return urllib2.urlopen
+    
+    scheme = str(get_prefs('http_proxy_scheme'))
+    if not scheme:
+        scheme = 'http'
+    host = str(get_prefs('http_proxy_host'))
+    port = str(get_prefs('http_proxy_port'))
+    url = scheme + '://' + host + ':' + port
+    if get_prefs('use_http_proxy_auth'):
+        username = str(get_prefs('http_proxy_name'))
+        password = str(get_prefs('http_proxy_password'))
+        auth_handler = urllib2.HTTPBasicAuthHandler()
+        auth_handler.add_password(None, url, username, password)
+        return urllib2.build_opener(auth_handler).open
+    else:
+        proxy_support = urllib2.ProxyHandler({ scheme: url })
+        return urllib2.build_opener(proxy_support).open
+
 def _get(url, params={}, req_headers={}, req_timeout=None):
-    urlopen = urllib2.urlopen
-    if get_prefs('use_http_proxy'):
-        proxy_support = urllib2.ProxyHandler(
-            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
-        urlopen = urllib2.build_opener(proxy_support).open
+    urlopen = get_urlopen()
     request =  urllib2.Request(url, headers=req_headers)
     ret = urlopen(request, timeout=req_timeout).read()
     return ret
@@ -248,11 +264,7 @@ def _post(url, params={}, req_headers={}, files=[], additions='', req_timeout=No
         req_headers.update(files_headers)
         additions += files_data
 
-    urlopen = urllib2.urlopen
-    if get_prefs('use_http_proxy'):
-        proxy_support = urllib2.ProxyHandler(
-            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
-        urlopen = urllib2.build_opener(proxy_support).open
+    urlopen = get_urlopen()
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])

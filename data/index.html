@@ -1123,16 +1123,38 @@ jQuery(function($) {
                     for="chk_prefs_use_http_proxy"
                     class="label" data-i18n-text="enable_proxy">
                     Enable Proxy
-                </label><br/> 
-                <label class="label" data-i18n-text="host">Host</label>
+                </label><br/>
+                <select id="sel_prefs_http_proxy_scheme" class="combo"
+                    title="Select a proxy scheme">
+                    <option value="http">http</option>
+                    <option value="https">https</option>
+                </select>
+                <label class="label">://</label>
                 <input id="tbox_prefs_http_proxy_host"
                     title="HTTP Proxy Host" 
                     style="width: 120px;" 
                     type="text" class="entry"/>
-                <label class="label" data-i18n-text="port">Port</label>
+                <label class="label">:</label>
                 <input id="tbox_prefs_http_proxy_port"
                     title="HTTP Proxy Port" 
-                    style="width: 30px;"
+                    style="width: 40px;"
+					type="text" class="entry"/><br/>
+                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
+                    title="Need Authentication" type="checkbox"/>
+				<label id="label_prefs_http_proxy_auth" 
+                    for="chk_prefs_use_http_proxy_auth"
+                    class="label" data-i18n-text="proxy_auth">
+                    Authentication
+                </label><br/> 
+                <label class="label" data-i18n-text="proxy_auth_name">Name</label>
+                <input id="tbox_prefs_http_proxy_auth_name"
+                    title="HTTP Proxy Authentication Name" 
+                    style="width: 120px;" 
+                    type="text" class="entry"/>
+                <label class="label" data-i18n-text="proxy_auth_password">Password</label>
+                <input id="tbox_prefs_http_proxy_auth_password"
+                    title="HTTP Proxy Authentication Password" 
+                    style="width: 120px;"
                     type="text" class="entry"/><br/>
             </p>
             </div>
