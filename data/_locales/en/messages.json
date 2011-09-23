@@ -455,6 +455,18 @@
 		"message": "HTTP Proxy",
 		"description": "data/index.html"
 	},
+	"proxy_auth": {
+		"message": "Authentication",
+		"description": "data/index.html"
+	},
+	"proxy_auth_name": {
+		"message": "Username",
+		"description": "data/index.html"
+	},
+	"proxy_auth_password": {
+		"message": "Password",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Use REPLY ALL as default reply action",
 		"description": "data/index.html"

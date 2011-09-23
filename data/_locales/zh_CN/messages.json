@@ -455,6 +455,18 @@
 		"message": "HTTP代理",
 		"description": ""
 	},
+	"proxy_auth": {
+		"message": "代理认证",
+		"description": "data/index.html"
+	},
+	"proxy_auth_name": {
+		"message": "用户名",
+		"description": "data/index.html"
+	},
+	"proxy_auth_password": {
+		"message": "密码",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "使用『回复所有』作为默认回复方式",
 		"description": "data/index.html"
