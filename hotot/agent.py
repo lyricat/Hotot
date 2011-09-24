@@ -231,29 +231,12 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     '''  % (uuid, uuid);
     gobject.idle_add(webv.execute_script, scripts)
 
-def get_urlopen():
-    if not get_prefs('use_http_proxy'):
-        return urllib2.urlopen
-    
-    scheme = str(get_prefs('http_proxy_scheme'))
-    if not scheme:
-        scheme = 'http'
-    host = str(get_prefs('http_proxy_host'))
-    port = str(get_prefs('http_proxy_port'))
-    url = scheme + '://' + host + ':' + port
-    if get_prefs('use_http_proxy_auth'):
-        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
-        username = str(get_prefs('http_proxy_name'))
-        password = str(get_prefs('http_proxy_password'))
-        auth_handler = urllib2.ProxyBasicAuthHandler()
-        auth_handler.add_password(None, url, username, password)
-        return urllib2.build_opener(proxy_support, auth_handler).open
-    else:
-        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
-        return urllib2.build_opener(proxy_support).open
-
 def _get(url, params={}, req_headers={}, req_timeout=None):
-    urlopen = get_urlopen()
+    urlopen = urllib2.urlopen
+    if get_prefs('use_http_proxy'):
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
+        urlopen = urllib2.build_opener(proxy_support).open
     request =  urllib2.Request(url, headers=req_headers)
     ret = urlopen(request, timeout=req_timeout).read()
     return ret
@@ -265,7 +248,11 @@ def _post(url, params={}, req_headers={}, files=[], additions='', req_timeout=No
         req_headers.update(files_headers)
         additions += files_data
 
-    urlopen = get_urlopen()
+    urlopen = urllib2.urlopen
+    if get_prefs('use_http_proxy'):
+        proxy_support = urllib2.ProxyHandler(
+            {"http" : get_prefs('http_proxy_host') +':'+str(get_prefs('http_proxy_port'))})
+        urlopen = urllib2.build_opener(proxy_support).open
     params = dict([(k.encode('utf8')
             , v.encode('utf8') if type(v)==unicode else v) 
                 for k, v in params.items()])

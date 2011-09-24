@@ -105,12 +105,9 @@ function WidgetAutoComplete(obj) {
                 self.candidate.hide();
                 return;
             }
+            var str = '<li>'+result_list.join('</li><li>')+'</li>';
             self.candidate.children('li').unbind('click');
-            self.candidate.empty();
-            for (var i = 0, l = result_list.length; i < l; i++) {
-                self.candidate.append($('<li/>').text(result_list[i]));
-            }
-            self.candidate.show();
+            self.candidate.html(str).show();
             self.candidate.children('li').click(function (event) {
                 var append = $(this).text().substring(self.inputText.length); 
                 self.competeName(append);

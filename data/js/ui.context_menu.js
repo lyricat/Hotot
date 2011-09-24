@@ -60,14 +60,12 @@ function init() {
                         display_str = display_str.substring(0, 24) + ' ... ';
                     }
                     if (!$(item).attr("text-template")) {
-                        $(item).attr("text-template", $(item).text());
+                        $(item).attr("text-template", $(item).html());
                     }
                     var content = $(item).attr("text-template").split("@");
                     if (content.length > 1) {
-                        $(item).text(content[0]).append($('<strong></strong>').text("'" + display_str + "'"));
-                        if (content[1]) {
-                            $(item).append(document.createTextNode(content[1]));
-                        }
+                        $(item).html(content[0] + '<strong></strong>' + content[1]);
+                        $(item).find("strong").text("'" + display_str + "'");
                     }
                 } else {
                     return;

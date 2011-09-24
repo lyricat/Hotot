@@ -78,7 +78,9 @@ function load_tweet(view, success, fail) {
     lib.twitterapi.show_user(view.query,
     function (user) {
         view._header.find('.search_people_result').show();
-        view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
+        view._header.find('.search_people_inner').html(
+            '<a href=\'javascript:open_people("'+user.screen_name+'")\'>'+user.screen_name+'</a>'
+        );
     }, function (xhr, textStatus, errorThrown) {
         view._header.find('.search_people_result').hide();
     });

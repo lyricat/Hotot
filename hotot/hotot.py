@@ -166,24 +166,21 @@ class Hotot:
 
     def apply_proxy_setting(self):
         if config.settings['use_http_proxy']:
-            proxy_host = config.settings['http_proxy_host']
-            proxy_port = config.settings['http_proxy_port']
-            proxy_scheme = config.settings['http_proxy_scheme']
-            if not proxy_scheme:
-                proxy_scheme = 'http'
-            if config.settings['use_http_proxy_auth']:
-                auth_user = config.settings['http_proxy_auth_name']
-                auth_pass = config.settings['http_proxy_auth_password']
-                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, auth_user, auth_pass)
-            else:
-                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, '', '')
+            proxy_uri = "https://%s:%s" % (
+                  config.settings['http_proxy_host']
+                , config.settings['http_proxy_port'])            
+            if config.settings['http_proxy_host'].startswith('http://'):
+                proxy_uri = "%s:%s" % (
+                      config.settings['http_proxy_host']
+                    , config.settings['http_proxy_port'])  
+            utils.webkit_set_proxy_uri(proxy_uri)
         else:
-            utils.webkit_set_proxy_uri('', '', '', '', '')
+            utils.webkit_set_proxy_uri("")
         # workaround for a BUG of webkitgtk/soupsession
         # proxy authentication
         agent.execute_script('''
             new Image().src='http://google.com/';''');
-
+        
     def init_hotkey(self):
         try:
             keybinder.bind(
@@ -193,7 +190,7 @@ class Hotot:
             pass
 
     def create_trayicon(self):
-        """
+        """ 
         Create status icon and connect signals
         """
         self.trayicon = gtk.StatusIcon()

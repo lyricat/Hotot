@@ -144,10 +144,6 @@ disabled:
     box-shadow:  0 0 1px #333;
 }
 
-.checkbox:checked:disabled, .radio:checked:disabled {
-    background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#b0b0b0));
-}
-
 .checkbox.dark, .radio.dark {
     background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333));
     border: 1px #444 solid;
@@ -156,10 +152,6 @@ disabled:
 .checkbox.dark:checked, .radio.dark:checked {
     border: 3px #444 solid;
     background: -webkit-gradient(linear, left top, left bottom, from(#bbeaff), to(#4ac3ff));
-}
-
-.checkbox.dark:checked:disabled, .radio.dark:checked:disabled {
-    background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#b0b0b0));
 }
 
 .radio {

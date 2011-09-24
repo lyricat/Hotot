@@ -59,17 +59,8 @@ function init () {
     
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
-        $('#sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).attr('checked'));
-        if (! $('#chk_prefs_use_http_proxy_auth').attr('disabled')) { 
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').attr('checked'));
-        } else {
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
-        }
-    });
-
-    $('#chk_prefs_use_http_proxy_auth').click(
-    function (event) {
-        $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_host').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_port').attr('disabled', !$(this).attr('checked'));
     });
 
     var btn_prefs_ok = new widget.Button('#btn_prefs_ok');
@@ -120,22 +111,15 @@ function load_settings() {
     if (util.is_native_platform()) {
         $('#chk_prefs_use_http_proxy').attr('checked'
             , conf.settings.use_http_proxy);
-        $('#sel_prefs_http_proxy_scheme').val(conf.settings.http_proxy_scheme || 'http');
         $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
         $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
         if (! conf.settings.use_http_proxy) {
-            $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
-        }
-        $('#chk_prefs_use_http_proxy_auth').attr('checked'
-            , conf.settings.use_http_proxy_auth);
-        $('#tbox_prefs_http_proxy_auth_name').val(conf.settings.http_proxy_auth_name);
-        $('#tbox_prefs_http_proxy_auth_password').val(conf.settings.http_proxy_auth_password);
-        if (! conf.settings.use_http_proxy_auth) {
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
         }
     } else {
         $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
-        $('#chk_prefs_use_http_proxy, #sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        $('#chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port').attr('disabled', true);
     }
 },
 
@@ -152,20 +136,22 @@ function save_settings() {
     if (util.is_native_platform()) {
         conf.settings.use_http_proxy
             = $('#chk_prefs_use_http_proxy').attr('checked');
-        conf.settings.http_proxy_scheme
-            = $('#sel_prefs_http_proxy_scheme').val();
         conf.settings.http_proxy_host 
             = $('#tbox_prefs_http_proxy_host').val();
         conf.settings.http_proxy_port 
-            = parseInt($('#tbox_prefs_http_proxy_port').val());
-        conf.settings.use_http_proxy_auth
-            = $('#chk_prefs_use_http_proxy_auth').attr('checked');
-        conf.settings.http_proxy_auth_name
-            = $('#tbox_prefs_http_proxy_auth_name').val();
-        conf.settings.http_proxy_auth_password
-            = $('#tbox_prefs_http_proxy_auth_password').val();
-        if (isNaN(conf.settings.http_proxy_port)) {
+            = $('#tbox_prefs_http_proxy_port').val();
+        conf.settings.use_http_proxy
+            = $('#chk_prefs_use_http_proxy').attr('checked');
+        conf.settings.http_proxy_host
+            = $('#tbox_prefs_http_proxy_host').attr('value');
+        conf.settings.http_proxy_port
+            = $('#tbox_prefs_http_proxy_port').attr('value');
+        if (conf.settings.http_proxy_port == '') {
             conf.settings.http_proxy_port = 0;
+        }
+        if (! conf.settings.use_http_proxy) {
+            $('#tbox_prefs_http_proxy_host').attr('disabled', true);
+            $('#tbox_prefs_http_proxy_port').attr('disabled', true);
         }
     }
     // save
@@ -180,27 +166,35 @@ function load_prefs() {
         , prefs.remember_password);
 
     // Appearance
-    var theme_list = $('#sel_prefs_theme').empty();
+    var options_arr = []; 
     for (var i = 0, l = conf.vars.builtin_themes.length; i < l; i += 1) {
         var theme_name = conf.vars.builtin_themes[i];
-        $('<option/>').attr({'value': theme_name, 'path': 'theme/' + theme_name}).text(theme_name).appendTo(theme_list);
+        options_arr.push('<option value="'
+            + theme_name + '" path="theme/'
+            + theme_name + '">' + theme_name + '</option>');
     }
     for (var i = 0, l = conf.vars.extra_themes.length; i < l; i += 1) {
         var theme_name = conf.vars.extra_themes[i].substring(conf.vars.extra_themes[i].lastIndexOf('/') + 1);
-        $('<option/>').attr({'value': theme_name, 'path': conf.vars.extra_themes[i]}).text(theme_name).appendTo(theme_list);
+        options_arr.push('<option value="'
+            + theme_name + '" path="'
+            + conf.vars.extra_themes[i] + '">'
+            + theme_name + '</option>');
     }
-    theme_list.val(prefs.theme);
-    theme_list = null;
+    $('#sel_prefs_theme').html(options_arr.join(''));
+    $('#sel_prefs_theme').val(prefs.theme);
     
-    var ff_list = $('#sel_prefs_font_family').empty();
+    options_arr = []; var selected_idx = 0;
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
-        $('<option/>').attr('value', ff_name).text(ff_name).appendTo(ff_list);
+        options_arr.push('<option value="'
+            + ff_name + '">' + ff_name + '</option>');
+        if (ff_name == prefs.font_family_used) {
+            selected_idx = i;
+        }
     }
-    ff_list.val(prefs.font_family_used);
-    ff_list = null;
-    
     $('#tbox_prefs_custom_font').val(prefs.custom_font);    
+    $('#sel_prefs_font_family').html(options_arr.join(''))
+    $('#sel_prefs_font_family').attr('selectedIndex', selected_idx);
     $('#tbox_prefs_font_size').val(prefs.font_size);    
     if (prefs.use_custom_font) {
         $('#rdo_use_custom_font').attr('checked', prefs.use_custom_font);

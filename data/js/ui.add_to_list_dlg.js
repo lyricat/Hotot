@@ -21,15 +21,14 @@ function update() {
 
 load:
 function load() {
-    var container = $('#add_to_list_list').empty();
+    var container = $('#add_to_list_list');
     lib.twitterapi.get_user_lists(globals.myself.screen_name, -1
     , function (json) {
+        var arr = [];
         for (var i = 0; i < json.lists.length; i += 1) {
-            var li = $('<li/>');
-            $('<input type="checkbox" class="checkbox"/>').attr('value', json.lists[i].slug).appendTo(li);
-            $('<label class="label"/>').text(json.lists[i].name).appendTo(li);
-            container.append(li)
+            arr.push('<li><input type="checkbox" class="checkbox" value="'+json.lists[i].slug+'"/><label class="label">'+json.lists[i].name+'</label></li>');
         }
+        container.html(arr.join('\n'));
     });
 },
 

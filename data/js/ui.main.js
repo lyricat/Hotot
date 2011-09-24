@@ -530,14 +530,12 @@ function bind_tweet_action(id) {
             if (_this == null) {
                 return;
             }
-            list.empty();
-            var ul = $('<ul/>').appendTo(list);
+            list.html("<ul></ul>");
+            var ul = list.find("ul");
             for (var i = 0, l = result.length; i < l; i++) {
-                var p = result[i];
-                var li = $('<li/>');
-                var a = $('<a/>').appendTo(li).attr('href', '#' + p.screen_name);
-                $('<img height="24" width="24"/>').attr({'title': '@' + p.screen_name + ' (' + p.name + ')', 'src': p.profile_image_url}).appendTo(a);
-                a.click(function() {
+               var p = result[i];
+               var li = $('<li><a href="#' + p.screen_name + '"><img height="24" width="24" title="@' + p.screen_name + ' (' + p.name + ')" src="' + p.profile_image_url + '"/></a></li>');
+                li.find("a").click(function() {
                     open_people($(this).attr('href').substring(1));
                 });
                 li.appendTo(ul);
@@ -632,7 +630,7 @@ function on_reply_click(btn, li_id, event) {
     var text = $(li.find('.text')[0]).text();
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('REPLY TO', screen_name + ':"' + text + '"');
+    ui.StatusBox.set_status_info('<span class="info_hint">REPLY TO</span> '+ screen_name + ':"' + text + '"');
     ui.StatusBox.append_status_text('@' + li.attr('screen_name') + ' ');
     ui.StatusBox.open(
     function() {
@@ -699,7 +697,7 @@ function on_reply_all_click(btn, li_id, event) {
     }
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info(_('reply to'), text);
+    ui.StatusBox.set_status_info('<span class="info_hint">'+_('reply to')+'</span>  ' + text);
     ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     ui.StatusBox.open(
     function() {
