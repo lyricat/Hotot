@@ -655,7 +655,7 @@ function verify(on_success) {
 search:
 function search(query, page, since_id, max_id, on_success) {
     var url = lib.twitterapi.search_api_base2;
-    if (url = 'https://twitter.com/phoenix_search.phoenix'){
+    if (url == 'https://twitter.com/phoenix_search.phoenix'){
         var params={
             'q': query,
         };
