@@ -235,9 +235,7 @@ def get_urlopen():
     if not get_prefs('use_http_proxy'):
         return urllib2.urlopen
     
-    scheme = str(get_prefs('http_proxy_scheme'))
-    if not scheme:
-        scheme = 'https'
+    scheme = 'https'
     host = str(get_prefs('http_proxy_host'))
     port = str(get_prefs('http_proxy_port'))
     url = scheme + '://' + host + ':' + port

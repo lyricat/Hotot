@@ -19,7 +19,6 @@ default_settings: {
       'use_verbose_mode': true
       // Globals -> proxy:
     , 'use_http_proxy': false
-    , 'http_proxy_scheme': 'http'
     , 'http_proxy_host': ''
     , 'http_proxy_port': 0
     , 'use_http_proxy_auth': false

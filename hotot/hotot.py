@@ -168,9 +168,7 @@ class Hotot:
         if config.settings['use_http_proxy']:
             proxy_host = config.settings['http_proxy_host']
             proxy_port = config.settings['http_proxy_port']
-            proxy_scheme = config.settings['http_proxy_scheme']
-            if not proxy_scheme:
-                proxy_scheme = 'http'
+            proxy_scheme = 'https'
             if config.settings['use_http_proxy_auth']:
                 auth_user = config.settings['http_proxy_auth_name']
                 auth_pass = config.settings['http_proxy_auth_password']

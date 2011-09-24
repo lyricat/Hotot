@@ -31,8 +31,6 @@ def open_webbrowser(uri):
 
 def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
     from ctypes import CDLL, c_void_p, c_char_p, c_int
-    if uri and '://' not in uri:
-        uri = 'https://' + uri    
     try:
         if os.name == 'nt':
             libgobject = CDLL('libgobject-2.0-0.dll')
