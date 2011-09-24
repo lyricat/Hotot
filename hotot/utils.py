@@ -29,10 +29,10 @@ def open_webbrowser(uri):
         browser = 'start'
     subprocess.Popen([browser, uri])
 
-def webkit_set_proxy_uri(uri):
+def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
     from ctypes import CDLL, c_void_p, c_char_p, c_int
     if uri and '://' not in uri:
-        uri = 'https://' + uri
+        uri = 'https://' + uri    
     try:
         if os.name == 'nt':
             libgobject = CDLL('libgobject-2.0-0.dll')
@@ -46,23 +46,52 @@ def webkit_set_proxy_uri(uri):
             except:
                 libwebkit = CDLL('libwebkit-1.0.so.2')
             pass
-        soup_uri_new = libsoup.soup_uri_new
-        soup_uri_new.restype = c_void_p
-        soup_uri_new.argtypes = [ c_char_p ]
-        proxy_uri = soup_uri_new(str(uri)) if uri else 0
+
         get_session = libwebkit.webkit_get_default_session
         get_session.restype = c_void_p
         session = get_session()
         g_object_set = libgobject.g_object_set
-        g_object_set.argtypes = [ c_void_p, c_char_p, c_void_p, c_void_p ]
-        g_object_set(session, "proxy-uri", proxy_uri, None)
-        if proxy_uri:
-            soup_uri_free = libsoup.soup_uri_free
-            soup_uri_free.argtypes = [ c_void_p ]
-            soup_uri_free(proxy_uri)
+        if session == 0:
+            return 1
+
         g_object_set.argtypes = [ c_void_p, c_char_p, c_int, c_void_p ]
         g_object_set(session, "max-conns", 20, None)
         g_object_set(session, "max-conns-per-host", 5, None)
+
+        if host:
+            soup_uri_new = libsoup.soup_uri_new
+            soup_uri_new.restype = c_void_p
+            soup_uri_new.argtypes = [ c_char_p ]
+            proxy_uri = soup_uri_new(None)
+            if proxy_uri == 0:
+                return 1
+
+            soup_uri_set_scheme = libsoup.soup_uri_set_scheme
+            soup_uri_set_scheme.argtypes = [ c_void_p, c_char_p ]
+            soup_uri_set_scheme(proxy_uri, str(scheme))
+
+            soup_uri_set_host = libsoup.soup_uri_set_host
+            soup_uri_set_host.argtypes = [ c_void_p, c_char_p ]
+            soup_uri_set_host(proxy_uri, str(host))
+            if port:
+                soup_uri_set_port = libsoup.soup_uri_set_port
+                soup_uri_set_port.argtypes = [ c_void_p, c_int ]
+                soup_uri_set_port(proxy_uri, int(port))
+            if user:
+                soup_uri_set_user = libsoup.soup_uri_set_user
+                soup_uri_set_user.argtypes = [ c_void_p, c_char_p ]
+                soup_uri_set_user(proxy_uri, str(user))
+            if passwd:
+                soup_uri_set_password = libsoup.soup_uri_set_password
+                soup_uri_set_password.argtypes = [ c_void_p, c_char_p ]
+                soup_uri_set_password(proxy_uri, str(passwd))
+
+            g_object_set.argtypes = [ c_void_p, c_char_p, c_void_p, c_void_p ]
+            g_object_set(session, "proxy-uri", proxy_uri, None)
+
+            soup_uri_free = libsoup.soup_uri_free
+            soup_uri_free.argtypes = [ c_void_p ]
+            soup_uri_free(proxy_uri)
         return 0
     except:
         exctype, value = sys.exc_info()[:2]
@@ -80,9 +109,9 @@ def open_file_chooser_dialog():
     if resp == gtk.RESPONSE_OK:
         sel_file =  fc_dlg.get_filename()
     fc_dlg.destroy()
-    gtk.gdk.threads_leave() 
+    gtk.gdk.threads_leave()
     return sel_file
-    
+
 def encode_multipart_formdata(fields, files):
     BOUNDARY = mimetools.choose_boundary()
     CRLF = '\r\n'
@@ -160,4 +189,4 @@ def get_extra_fonts():
 def get_locale():
     lang, encode = locale.getdefaultlocale()
     return lang
-    
+
