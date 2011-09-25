@@ -512,8 +512,8 @@ function addDefaultView(name, opts) {
     switch (name) {
     case 'search':
     ui.Slider.add('search'
-        , {title: 'Search', icon:'image/ic_search.png'}
-        , $.extend({ 'type':'tweet', 'title': 'Search'
+        , {title: _('search'), icon:'image/ic_search.png'}
+        , $.extend({ 'type':'tweet', 'title': _('search')
             , 'load': ui.SearchView.load_tweet
             , 'loadmore': ui.SearchView.loadmore_tweet
             , 'load_success': ui.SearchView.load_tweet_success
@@ -533,8 +533,8 @@ function addDefaultView(name, opts) {
     break;
     case 'home':
     ui.Slider.add('home'
-        , { title:'Home Timeline', icon:'image/ic_home.png'}
-        , $.extend({ 'type':'tweet', 'title': 'Home Timeline'
+        , { title: _('home_timeline'), icon:'image/ic_home.png'}
+        , $.extend({ 'type':'tweet', 'title': _('home_timeline')
             , 'load': ui.Main.load_home
             , 'loadmore': ui.Main.loadmore_home
             , 'load_success': ui.Main.load_tweet_success
@@ -550,8 +550,9 @@ function addDefaultView(name, opts) {
         }, opts));
     break;
     case 'mentions':
-    ui.Slider.add('mentions', {title:'Mentions',icon:'image/ic_mention.png'}
-        , $.extend({ 'type':'tweet', 'title': 'Mentions'
+    ui.Slider.add('mentions'
+        , {title: _('mentions'),icon:'image/ic_mention.png'}
+        , $.extend({ 'type':'tweet', 'title': _('mentions')
             , 'load': ui.Main.load_mentions
             , 'loadmore': ui.Main.loadmore_mentions
             , 'load_success': ui.Main.load_tweet_success
@@ -566,8 +567,9 @@ function addDefaultView(name, opts) {
         }, opts));
     break;
     case 'messages':
-    ui.Slider.add('messages', {title:'Messages', icon:'image/ic_dm.png'}
-        , $.extend({ 'type':'tweet', 'title': 'Messages'
+    ui.Slider.add('messages'
+        , {title: _('messages'), icon:'image/ic_dm.png'}
+        , $.extend({ 'type':'tweet', 'title': _('messages')
             , 'load': ui.Main.load_messages
             , 'loadmore': ui.Main.loadmore_messages
             , 'load_success': ui.Main.load_tweet_success
@@ -582,8 +584,9 @@ function addDefaultView(name, opts) {
         }, opts));
     break;
     case 'retweets':
-    ui.Slider.add('retweets',{title:'Retweets', icon:'image/ic_retweet.png'}
-        , $.extend({ 'type':'tweet', 'title': 'Retweets'
+    ui.Slider.add('retweets'
+        , {title: _('retweets'), icon:'image/ic_retweet.png'}
+        , $.extend({ 'type':'tweet', 'title': _('retweets')
             , 'load': ui.RetweetView.load_retweeted_to_me 
             , 'loadmore': ui.RetweetView.loadmore_retweeted_to_me
             , 'load_success': ui.Main.load_tweet_success

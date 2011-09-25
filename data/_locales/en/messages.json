@@ -215,6 +215,10 @@
 		"message": "Extra",
 		"description": "data/index.html"
 	},
+	"search": {
+		"message": "Search",
+		"description": "data/js/ui.slider.js"
+	},
 	"license": {
 		"message": "License",
 		"description": "data/index.html"
@@ -230,6 +234,10 @@
 	"action": {
 		"message": "Action",
 		"description": "data/index.html"
+	},
+	"mentions": {
+		"message": "Mentions",
+		"description": "data/js/ui.slider.js"
 	},
 	"delete": {
 		"message": "Delete",
@@ -299,6 +307,10 @@
 		"message": "Disable decoration of widgets and some animations.",
 		"description": "data/index.html"
 	},
+	"retweets": {
+		"message": "Retweets",
+		"description": "data/js/ui.slider.js"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -359,6 +371,10 @@
 		"message": "Restore Defaults",
 		"description": "data/index.html"
 	},
+	"home_timeline": {
+		"message": "Home Timeline",
+		"description": "data/js/ui.slider.js"
+	},
 	"behavior": {
 		"message": "Behavior",
 		"description": "data/index.html"
@@ -406,6 +422,10 @@
 	"reset_time": {
 		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"retweets_view": {
+		"message": "Retweets View",
+		"description": "data/index.html"
 	},
 	"step_one": {
 		"message": "Step 1",
@@ -491,6 +511,10 @@
 		"message": "Keyboard",
 		"description": "data/index.html"
 	},
+	"add_new_views": {
+		"message": "Add new views",
+		"description": "data/index.html"
+	},
 	"favorite_this_tweet_dots": {
 		"message": "Favorite this tweet ...",
 		"description": "data/js/ui.main.js"
@@ -530,6 +554,10 @@
 	"weakness": {
 		"message": "Weakness",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"mentions_view": {
+		"message": "Mentions View",
+		"description": "data/index.html"
 	},
 	"effects": {
 		"message": "Effects",
@@ -662,6 +690,10 @@
 	"ok": {
 		"message": "OK",
 		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "Messages",
+		"description": "data/js/ui.slider.js"
 	},
 	"use_ubuntu_indicator": {
 		"message": "Use Ubuntu Indicator",
@@ -846,6 +878,10 @@
 	"friends": {
 		"message": "Friends",
 		"description": "data/js/ui.template.js"
+	},
+	"messages_view": {
+		"message": "Messages View",
+		"description": "data/index.html"
 	},
 	"enable_proxy": {
 		"message": "Enable Proxy",

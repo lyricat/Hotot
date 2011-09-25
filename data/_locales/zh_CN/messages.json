@@ -215,6 +215,10 @@
 		"message": "高",
 		"description": "data/index.html"
 	},
+	"search": {
+		"message": "搜索",
+		"description": "data/js/ui.slider.js"
+	},
 	"license": {
 		"message": "许可",
 		"description": ""
@@ -230,6 +234,10 @@
 	"action": {
 		"message": "动作",
 		"description": "data/index.html"
+	},
+	"mentions": {
+		"message": "提到你的",
+		"description": "data/js/ui.slider.js"
 	},
 	"delete": {
 		"message": "删除",
@@ -299,6 +307,10 @@
 		"message": "禁用控件集装饰和部分动画。",
 		"description": "data/index.html"
 	},
+	"retweets": {
+		"message": "转发与被转发",
+		"description": "data/js/ui.slider.js"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -359,6 +371,10 @@
 		"message": "恢复默认值",
 		"description": ""
 	},
+	"home_timeline": {
+		"message": "时间线",
+		"description": "data/js/ui.slider.js"
+	},
 	"behavior": {
 		"message": "行为",
 		"description": ""
@@ -406,6 +422,10 @@
 	"reset_time": {
 		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"retweets_view": {
+		"message": "转发",
+		"description": "data/index.html"
 	},
 	"step_one": {
 		"message": "第一步",
@@ -491,6 +511,10 @@
 		"message": "键盘",
 		"description": ""
 	},
+	"add_new_views": {
+		"message": "添加新视图",
+		"description": "data/index.html"
+	},
 	"favorite_this_tweet_dots": {
 		"message": "收藏...",
 		"description": "data/js/ui.main.js"
@@ -530,6 +554,10 @@
 	"weakness": {
 		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"mentions_view": {
+		"message": "提到我的",
+		"description": "data/index.html"
 	},
 	"effects": {
 		"message": "效果",
@@ -662,6 +690,10 @@
 	"ok": {
 		"message": "确定",
 		"description": ""
+	},
+	"messages": {
+		"message": "私信",
+		"description": "data/js/ui.slider.js"
 	},
 	"use_ubuntu_indicator": {
 		"message": "使用Ubuntu Indicator",
@@ -846,6 +878,10 @@
 	"friends": {
 		"message": "朋友",
 		"description": "data/js/ui.template.js"
+	},
+	"messages_view": {
+		"message": "私信",
+		"description": "data/index.html"
 	},
 	"enable_proxy": {
 		"message": "启用代理",
