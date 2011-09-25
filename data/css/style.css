@@ -1166,20 +1166,20 @@ label {
     margin: 10px 0;
 }
 
-#profile_avator_list {
+#profile_avatar_list {
     list-style-type: none;
     margin: 0 auto;
     text-align: center;
 }
 
-#profile_avator_list > li {
+#profile_avatar_list > li {
     display: inline-block;
     width: 32px;
     height: 32px;
     margin: 0 2px;
 }
 
-#profile_avator_list > li > a {
+#profile_avatar_list > li > a {
     width: 32px;
     height: 32px;
     display: inline-block;
@@ -1190,22 +1190,22 @@ label {
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));c
 }
 
-#profile_avator_list > li > a:hover {
+#profile_avatar_list > li > a:hover {
     background-color: #fff;
     -webkit-box-shadow: 0 0 15px #fff;
     -moz-box-shadow: 0 0 15px #fff;
     box-shadow: 0 0 15px #fff;
 }
 
-#profile_avator_list > li > a.selected {
+#profile_avatar_list > li > a.selected {
     background-color: #f2f2f2;
 }
 
-#profile_avator_list > li > a.twitter {
+#profile_avatar_list > li > a.twitter {
     background-image: url(../image/ic32_profile_twitter.png);
 }
 
-#profile_avator_list > li > a.identica {
+#profile_avatar_list > li > a.identica {
     background-image: url(../image/ic32_profile_identica.png);
 }
 
@@ -1492,7 +1492,7 @@ label {
 }
 
 /*===== Profile Dialog ================================*/
-#profile_avator {
+#profile_avatar {
     width: 64px !important;
     height: 64px !important;
     margin: 0 auto;

@@ -1,16 +1,19 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.PeopleView = {
 
-relation_map: { 
-      0: 'Hey, it\'s YOU!'
-    , 1: '&infin; You are friends.'
-    , 2: '&ni; You are followed by them.'
-    , 3: '&isin; You are following.'
-    , 4: '&empty; You are not following each other.'
-},
+relation_map: {},
+
+relation_icon_set: ['', '&infin;', '&ni;', '&isin;', '&empty; '],
 
 init:
 function init() {
+    ui.PeopleView.relation_map = { 
+          0: _('hey_it_is_you')
+        , 1: _('you_are_friends')
+        , 2: _('you_are_followed_by_them')
+        , 3: _('you_are_following')
+        , 4: _('you_are_not_following_each_other')
+    };
 },
 
 init_view:
@@ -308,6 +311,9 @@ function render_people_view(self, user_obj, proc) {
         , function (rel) {
             self._header.find('.relation').text(
                 ui.PeopleView.relation_map[rel]
+            );
+            self._header.find('.relation').prepend(
+                ui.PeopleView.relation_icon_set[rel]
             );
             if (rel == 1 || rel == 3) {
                 btn_follow.text(_("Unfollow"));

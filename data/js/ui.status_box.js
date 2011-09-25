@@ -44,6 +44,7 @@ init:
 function init () {
     ui.StatusBox.btn_update = new widget.Button('#btn_update');
     ui.StatusBox.btn_update.on_clicked = function(event){
+        ui.StatusBox.formalize();
         var status_text = $.trim($('#tbox_status').attr('value'));
         if (ui.StatusBox.get_status_len(status_text) > 140) {
             toast.set(
@@ -229,6 +230,7 @@ formalize:
 function formalize() {
     var text = $('#tbox_status').val(); 
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
+    text = text.replace('<3', '&#x2665;');
     $('#tbox_status').val(text);
 },
 

@@ -20,7 +20,7 @@ function init () {
             conf.save_token(conf.current_name, jsOAuth.access_token);
             // change to main view
             globals.oauth_dialog.close();
-            $('#profile_avator_list a.selected').click();
+            $('#profile_avatar_list a.selected').click();
         },
         function (xhr, textStatus, errorThrown) {
             globals.oauth_dialog.close();
