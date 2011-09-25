@@ -732,7 +732,7 @@ function form_tweet (tweet_obj, pagename) {
     m.DESCRIPTION = tweet_obj.user.description;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
     m.TEXT = ui.Template.form_text(text);
-    m.ALT = tweet_obj.text.replace(/"/g, '&quot;');
+    m.ALT = ui.Template.convert_chars(tweet_obj.text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
 
@@ -1025,12 +1025,17 @@ function fill_list_vcard(view) {
     vcard_container.find('.description').text('');
 },
 
+convert_chars:
+function convert_chars(text) {
+    text = text.replace(/"/g, '&#34;');
+    text = text.replace(/'/g, '&#39;');
+    text = text.replace(/\$/g, '&#36;');
+    return text;
+},
 
 form_text:
 function form_text(text) {
-    text = text.replace(/"/g, '&#34;');
-    text = text.replace(/'/g, '&#39;');
-    text = text.replace(/\$/g, '$$$');
+    text = ui.Template.convert_chars(text);
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list

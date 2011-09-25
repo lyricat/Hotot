@@ -116,7 +116,7 @@ function update_tweet_block_width() {
     if (ui.Slider.tweet_blocks.length < ui.Slider.column_num) {
         ui.Slider.column_num = ui.Slider.tweet_blocks.length;
     }
-    globals.tweet_block_width = view_width / ui.Slider.column_num - 1;
+    globals.tweet_block_width = view_width / ui.Slider.column_num;
     $('.view_title:gt(ui.Slider.column_num)').hide();
     $('.tweetview').width(globals.tweet_block_width);
     $('.view_title').width(globals.tweet_block_width - 1);
