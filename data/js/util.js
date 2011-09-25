@@ -99,8 +99,8 @@ function cache_avatar(user_obj) {
     });
 },
 
-get_avator:
-function get_avator(screen_name, callback) {
+get_avatar:
+function get_avatar(screen_name, callback) {
     if (util.is_native_platform()) {
         db.get_user(screen_name, function (user) {
             var imgurl = user.profile_image_url;

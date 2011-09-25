@@ -9,11 +9,6 @@ init:
 function init () {
     ui.ProfileDlg.id = '#profile_dlg';
 
-    $('#btn_change_profile_avator').click(
-    function (event) {
-        hotot_action('action/choose_file/ui.profile_dlg.select_finish');
-    });
-
     var btn_profile_update = new widget.Button('#btn_profile_update');
     btn_profile_update.on_clicked = function (event) {
         var err = ui.FormChecker.check_config_error(
@@ -60,7 +55,11 @@ function init () {
         ui.ProfileDlg.limit_test(this, 160);
         return false;
     });
-
+    $('#btn_update_profile_avatar').keyup(
+    function(event){
+        ui.ProfileDlg.update_avatar(); 
+        return false;
+    });
 },
 
 limit_test:
@@ -87,7 +86,7 @@ function update_profile() {
 
 request_profile:
 function request_profile() {
-    $('#profile_avator').attr('style'
+    $('#profile_avatar').attr('style'
         , 'background-image:url('+lib.twitterapi.get_user_profile_image(
             globals.myself.screen_name, 'bigger')+');');
     var timestamp = Date.parse(globals.myself.created_at);
@@ -110,12 +109,18 @@ function request_profile() {
     $('#tbox_profile_bio').val(globals.myself.description);
 },
 
-update_avator:
-function update_avator() {
-    lib.twitterapi.update_profile_image(raw_img, 
-    function (result){
-        alert(result);
-    })
+update_avatar:
+function update_avatar() {
+    var reader = new FileReader();
+    var file = $('#btn_change_profile_avatar').get(0).files[0];
+    reader.onload = function (e) {
+        var result = e.target.result;
+        lib.twitterapi.update_profile_image(result.substring(result.indexOf('base64,')+7), 
+        function (ret){
+            console.log(ret);
+        });
+    }
+    reader.readAsDataURL(file);
 },
 
 }

@@ -67,6 +67,10 @@
 		"message": "点击继续",
 		"description": ""
 	},
+	"click_to_show_retweeters": {
+		"message": "点击查看转发人",
+		"description": "data/js/ui.template.js"
+	},
 	"destroy_successfully": {
 		"message": "删除成功！",
 		"description": "data/js/ui.main.js"
@@ -78,6 +82,10 @@
 	"nearly_dead": {
 		"message": "都快挂了",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"proxy_auth_password": {
+		"message": "密码",
+		"description": "data/index.html"
 	},
 	"disabled": {
 		"message": "禁用的",
@@ -120,8 +128,12 @@
 		"description": "date/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "亲！请指定收件人！",
+		"message": "殿下，请指定收件人！",
 		"description": "data/js/ui.status_box.js"
+	},
+	"proxy_auth": {
+		"message": "代理认证",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "关闭",
@@ -203,10 +215,6 @@
 		"message": "高",
 		"description": "data/index.html"
 	},
-	"change_avatar": {
-		"message": "换头像",
-		"description": "data/index.html"
-	},
 	"license": {
 		"message": "许可",
 		"description": ""
@@ -240,8 +248,12 @@
 		"description": "data/js/ui.template.js"
 	},
 	"about_and_help": {
-		"message": "关于和帮助",
+		"message": "关于与帮助",
 		"description": ""
+	},
+	"hey_it_is_you": {
+		"message": "殿下，这是您自己！",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"regain_access_token": {
 		"message": "重新获取访问令牌",
@@ -272,7 +284,7 @@
 		"description": ""
 	},
 	"new_profile_has_been_created": {
-		"message": "殿下您的新账户已经创建成功！",
+		"message": "殿下，您的新账户已经创建成功！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"shortcuts": {
@@ -302,6 +314,10 @@
 	"enable": {
 		"message": "启用",
 		"description": "data/js/ui.exts_dlg.js"
+	},
+	"proxy_auth_name": {
+		"message": "用户名",
+		"description": "data/index.html"
 	},
 	"follow_at": {
 		"message": "关注@",
@@ -357,10 +373,6 @@
 	},
 	"click_to_show": {
 		"message": "点击查看",
-		"description": "data/js/ui.template.js"
-	},
-	"click_to_show_retweeters": {
-		"message": "点击查看转发人",
 		"description": "data/js/ui.template.js"
 	},
 	"profile_name": {
@@ -458,18 +470,6 @@
 	"http_proxy": {
 		"message": "HTTP代理",
 		"description": ""
-	},
-	"proxy_auth": {
-		"message": "代理认证",
-		"description": "data/index.html"
-	},
-	"proxy_auth_name": {
-		"message": "用户名",
-		"description": "data/index.html"
-	},
-	"proxy_auth_password": {
-		"message": "密码",
-		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "使用『回复所有』作为默认回复方式",
@@ -624,7 +624,7 @@
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
-		"message": "被列表",
+		"message": "列表中",
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
@@ -707,6 +707,14 @@
 		"message": "更新成功！",
 		"description": "data/js/ui.status_box.js"
 	},
+	"you_are_not_following_each_other": {
+		"message": "你们宛如路人，擦身而过，不相往来。",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "你默默地，关注着他／她／它…",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"friend_stat": {
 		"message": "朋友统计",
 		"description": ""
@@ -722,6 +730,10 @@
 	"lists": {
 		"message": "列表",
 		"description": "data/js/ui.template.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "他／她／它默默地关注着你…",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"pin_code": {
 		"message": "PIN Code",
@@ -842,6 +854,10 @@
 	"clear": {
 		"message": "清除",
 		"description": ""
+	},
+	"you_are_friends": {
+		"message": "你们默默地关注着对方…",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"mention_them": {
 		"message": "提及",

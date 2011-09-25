@@ -67,6 +67,10 @@
 		"message": "Click Me to Continue",
 		"description": "data/index.html"
 	},
+	"click_to_show_retweeters": {
+		"message": "Click to show retweeters",
+		"description": "data/js/ui.template.js"
+	},
 	"destroy_successfully": {
 		"message": "Destroy Successfully!",
 		"description": "data/js/ui.main.js"
@@ -78,6 +82,10 @@
 	"nearly_dead": {
 		"message": "Nearly Dead",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"proxy_auth_password": {
+		"message": "Password",
+		"description": "data/index.html"
 	},
 	"disabled": {
 		"message": "Disabled",
@@ -122,6 +130,10 @@
 	"please_enter_the_recipient": {
 		"message": "please enter the recipient!",
 		"description": "data/js/ui.status_box.js"
+	},
+	"proxy_auth": {
+		"message": "Authentication",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "Close",
@@ -203,10 +215,6 @@
 		"message": "Extra",
 		"description": "data/index.html"
 	},
-	"change_avatar": {
-		"message": "Change Avatar",
-		"description": "data/index.html"
-	},
 	"license": {
 		"message": "License",
 		"description": "data/index.html"
@@ -242,6 +250,10 @@
 	"about_and_help": {
 		"message": "About & Help",
 		"description": "data/index.html"
+	},
+	"hey_it_is_you": {
+		"message": "Hey, it's You!",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"regain_access_token": {
 		"message": "Regain Access Token",
@@ -303,6 +315,10 @@
 		"message": "Enable",
 		"description": "data/js/ui.exts_dlg.js"
 	},
+	"proxy_auth_name": {
+		"message": "Username",
+		"description": "data/index.html"
+	},
 	"follow_at": {
 		"message": "Follow @",
 		"description": "data/js/ui.main.js"
@@ -357,10 +373,6 @@
 	},
 	"click_to_show": {
 		"message": "Click to show",
-		"description": "data/js/ui.template.js"
-	},
-	"click_to_show_retweeters": {
-		"message": "Click to show retweeters",
 		"description": "data/js/ui.template.js"
 	},
 	"profile_name": {
@@ -457,18 +469,6 @@
 	},
 	"http_proxy": {
 		"message": "HTTP Proxy",
-		"description": "data/index.html"
-	},
-	"proxy_auth": {
-		"message": "Authentication",
-		"description": "data/index.html"
-	},
-	"proxy_auth_name": {
-		"message": "Username",
-		"description": "data/index.html"
-	},
-	"proxy_auth_password": {
-		"message": "Password",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -707,6 +707,14 @@
 		"message": "Update Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
+	"you_are_not_following_each_other": {
+		"message": "You are not following each other.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "You are following",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"friend_stat": {
 		"message": "Friend",
 		"description": "data/index.html"
@@ -722,6 +730,10 @@
 	"lists": {
 		"message": "Lists",
 		"description": "data/js/ui.template.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "You are followed by them.",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"pin_code": {
 		"message": "PIN Code",
@@ -842,6 +854,10 @@
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
+	},
+	"you_are_friends": {
+		"message": "You are friends.",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"mention_them": {
 		"message": "Mention",

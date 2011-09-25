@@ -618,7 +618,7 @@ function on_load_finish() {
                 $('#welcome_page_main').fadeIn();  
                 ui.Welcome.load_daily_hint();
                 ui.Welcome.load_profiles_info();
-                $('#profile_avator_list a:first').click();
+                $('#profile_avatar_list a:first').click();
                 $(window).dequeue('_on_load_finish');
             });
             });
@@ -741,7 +741,7 @@ jQuery(function($) {
 <section id="welcome_page" class="page">
     <h1 data-i18n-text="hotot">Hotot</h1>
     <div id="welcome_page_main">
-    <ul id="profile_avator_list">
+    <ul id="profile_avatar_list">
         <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
     </ul>
     <h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
@@ -1022,6 +1022,7 @@ jQuery(function($) {
             <a href="#" class="smiley smiley_smile">(&#x2267;&#x25BD;&#x2266;)y </a>
             <a href="#" class="smiley smiley_smile">m(_ _)m</a>
             <a href="#" class="smiley smiley_smile">(&#x3064;&#x0434;C)</a>
+            <a href="#" class="smiley smiley_smile">&#x03A3;(&#x3063;°&#x0434;°)&#x3063;</a>
             <a href="#" class="smiley smiley_smile">&#x2261;(&#x2594;&#xFE4F;&#x2594;)&#x2261;</a>
             <a href="#" class="smiley smiley_smile">(-''-)</a>
             <a href="#" class="smiley smiley_smile">&#x25D5;&#x203F;&#x203F;&#x25D5;</a>
@@ -1595,10 +1596,9 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="dialog_block">
         <h3>- <span data-i18n-text="picture">Picture</span> -</h3>
         <p style="text-align:center; min-height:70px;">
-            <span id="profile_avator" class="profile_img_wrapper"></span>
-            <a id="btn_change_profile_avatar" class="button" style="display:none" data-i18n-text="change_avatar">Change avatar
-                <span class="placeholder"></span>            
-            </a>
+            <span id="profile_avatar" class="profile_img_wrapper"></span>
+            <input id="btn_change_profile_avatar" style="display:none" type="file" value"Change avatar"/>
+            <a id="btn_update_profile_avatar" style="display:none" href="#" class="button">Upload</a>
         </p>
         </div>
 

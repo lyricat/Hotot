@@ -147,7 +147,7 @@ function init () {
                 toast.set(_('new_profile_has_been_created')).show();
                 conf.reload(function () {
                     ui.Welcome.load_profiles_info();
-                    $('#profile_avator_list a[href="'+prefix+'@'+ui.Welcome.selected_service+'"]').click();
+                    $('#profile_avatar_list a[href="'+prefix+'@'+ui.Welcome.selected_service+'"]').click();
                 });
             }
         });
@@ -163,7 +163,7 @@ function init () {
         
     $('#btn_welcome_exts').click(
     function (event) {
-        $('#profile_avator_list a.selected').click();
+        $('#profile_avatar_list a.selected').click();
         ui.ExtsDlg.load_ext_list();
         globals.exts_dialog.open();
     });
@@ -173,7 +173,7 @@ function init () {
         if (confirm('The operation will erases the access token of this profile.\n Are you sure you want to continue?!\n')) 
         {
             conf.clean_token(conf.current_name);
-            $('#profile_avator_list a.selected').click();
+            $('#profile_avatar_list a.selected').click();
         }
     });
 
@@ -186,7 +186,7 @@ function init () {
                 if (result) {
                     delete conf.profiles[conf.current_name];
                     ui.Welcome.load_profiles_info();
-                    $('#profile_avator_list a:first').click();
+                    $('#profile_avatar_list a:first').click();
                 }        
             });
         }
@@ -201,16 +201,16 @@ function init () {
 
 load_profiles_info:
 function load_profiles_info() {
-    $('#profile_avator_list a').unbind('click');
-    $('#profile_avator_list li').not('.new_profile_item').remove();
+    $('#profile_avatar_list a').unbind('click');
+    $('#profile_avatar_list li').not('.new_profile_item').remove();
 
     for (var name in conf.profiles) {
         var protocol = conf.profiles[name].protocol;
         var prefs = conf.profiles[name].preferences;
-        $('#profile_avator_list').prepend(
+        $('#profile_avatar_list').prepend(
             '<li><a title="'+name+'" href="'+name+'" class="'+protocol+'"></a></li>');
     }
-    $('#profile_avator_list a').click(
+    $('#profile_avatar_list a').click(
     function (event) {
         var profile_name = $(this).attr('href');
         ui.Welcome.selected_profile = profile_name;
@@ -235,7 +235,7 @@ function load_profiles_info() {
                 conf.profiles[profile_name].preferences.default_password);
             $('#chk_remember_password').val(
                 conf.profiles[profile_name].preferences.remember_password);
-            $('#profile_avator_list a').not(this).removeClass('selected');
+            $('#profile_avatar_list a').not(this).removeClass('selected');
             $(this).addClass('selected');
             // apply preferences
             conf.apply_prefs(profile_name);

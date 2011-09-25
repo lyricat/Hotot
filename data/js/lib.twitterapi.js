@@ -434,13 +434,13 @@ function get_user_profile_image(screen_name, size) {
 },
 
 update_profile_image:
-function update_profile_image() {
+function update_profile_image(image, on_success) {
     var url = lib.twitterapi.api_base + 'account/update_profile_image.json'
-    var sign_url = lib.twitterapi.use_same_sign_api_base? url
-        :url.replace(lib.twitterapi.api_base, lib.twitterapi.sign_api_base);
-    var signed_params = jsOAuth.form_signed_params(
-          sign_url, jsOAuth.access_token, 'POST', {} , true);
-    return [url, signed_params];
+    var params = {'image': image, 
+        'include_entities': 'true',
+        'skip_status': 'true'
+    };
+    lib.twitterapi.post(url, params, on_success);
 },
 
 update_profile:
