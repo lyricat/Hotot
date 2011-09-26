@@ -246,7 +246,6 @@ def main():
     app = Hotot()
     agent.app = app
     if HAS_INDICATOR:
-        #TODO the icon is only work when installed to /usr/share/icons/hicolor/
         indicator = appindicator.Indicator('hotot',
                                            'hotot',
                                            appindicator.CATEGORY_COMMUNICATIONS)
