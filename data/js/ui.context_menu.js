@@ -34,14 +34,51 @@ function init() {
     function (event) {
         ui.SearchView.do_search(ui.Main.views.search, $.trim(ui.ContextMenu.selected_string));
     });
-    
+
+    function word_at(event) {
+      var el = $(event.target);
+      var str = new String(el.attr('value'));
+      var cursorPos = el.get()[0].selectionStart;
+      var pre = str.substring(0, cursorPos);
+      var post = str.substring(cursorPos, str.length);
+      var start = pre.lastIndexOf(" ");
+      var end = post.indexOf(" ");
+      return str.substring(start + 1, cursorPos + end);
+    }
+
     $('body').get(0).oncontextmenu = function (event) {
         ui.ContextMenu.event_element = event.target;
 
-        ui.ContextMenu.selected_string 
+        ui.ContextMenu.selected_string
             = $.trim(document.getSelection().toString());
 
-        $('#context_menu').css(
+	//Remove any suggestions added previously
+	$('#context_menu .spell_suggest').remove();
+	if (event.target.id == "tbox_status") {
+	  //If context menu invoked inside status box, hookup suggestions
+	  var suggestions = [];
+	  var current_word = word_at(event);
+	  if (current_word.length != 0) {
+            hotot_action('spell/' + current_word);
+            suggestions = ui.StatusBox.get_spell_suggestions();
+            suggestions.forEach(function(s) {
+	      $('#context_menu ul').append('<li><a class="spell_suggest">' + s + '</a></li>');
+	    });
+          }
+
+	  $('#context_menu .spell_suggest').click(
+	    function (event) {
+              var text = ui.StatusBox.get_status_text();
+              var target = $(event.target);
+              var correction = target.attr('text');
+              text = text.replace(current_word, correction);
+              ui.StatusBox.set_status_text(text);
+	  });
+	} else {
+	  //If context menu invoked outside status box, dont do anything
+	}
+
+	$('#context_menu').css(
             {'left':event.clientX, 'top':event.clientY}
         );
         $('#context_menu li').hide();
@@ -78,7 +115,7 @@ function init() {
                 ui.ContextMenu.editable_element = null;
                 if (element.tagName != "INPUT" && element.tagName != "TEXTAREA") {
                     return;
-                } else if (element.tagName == "INPUT" && element.type != 'text') { 
+                } else if (element.tagName == "INPUT" && element.type != 'text') {
                     return;
                 } else if (element.readOnly) {
                     return;
@@ -109,6 +146,6 @@ hide:
 function hide() {
     $('#context_menu').hide();
     ui.ContextMenu.is_hide = true;
-},
+}
 
 };

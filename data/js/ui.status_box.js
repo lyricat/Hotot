@@ -28,6 +28,8 @@ short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa
 // @WORKAROUND use the flag to ignore the first one.
 keydown_twice_flag: 0,
 
+spell_suggestions: null,
+
 get_status_len:
 function get_status_len(status_text) {
     var rep_url = function (url) {
@@ -67,7 +69,7 @@ function init () {
     btn_shorturl.on_clicked = ui.StatusBox.on_btn_short_url_clicked;
     btn_shorturl.create();
 
-    var btn_clear = new widget.Button('#btn_clear'); 
+    var btn_clear = new widget.Button('#btn_clear');
     btn_clear.on_clicked = function (event) {
         $('#tbox_status').attr('value', '');
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
@@ -110,7 +112,7 @@ function init () {
         } else {
             title = 'Error !'
             content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
-            widget.DialogManager.alert(title, content); 
+            widget.DialogManager.alert(title, content);
         }
     })
 
@@ -127,14 +129,14 @@ function init () {
         ui.StatusBox.update_status_len();
         // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
         // However, if ignore all keydown event will cause some bugs
-        // if user use IM to compose status text. 
-        // for example, 
-        // backspace doesn't work, can't type english characters, etc. 
+        // if user use IM to compose status text.
+        // for example,
+        // backspace doesn't work, can't type english characters, etc.
         // so i only ignore event associate with program's behaviors.
         if (event.ctrlKey && event.keyCode == 13) {
             ui.StatusBox.keydown_twice_flag += 1;
-            if (ui.StatusBox.keydown_twice_flag % 2 == 0 
-                && util.is_native_platform()) 
+            if (ui.StatusBox.keydown_twice_flag % 2 == 0
+                && util.is_native_platform())
                 return false;
             // shortcut binding Ctrl+Enter
             $('#btn_update').click();
@@ -144,18 +146,18 @@ function init () {
             ui.StatusBox.close();
         }
     });
-    
+
     $('#tbox_status').blur(function (event) {
         ui.StatusBox.update_status_len();
         ui.StatusBox.formalize();
     });
 
     $('#status_box').bind('dragover', function () {
-        return false;    
+        return false;
     }).bind('dragend', function () {
         return false;
     }).bind('drop', function (ev) {
-        ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
+        ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0];
         console.log(ui.StatusBox.file);
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -178,18 +180,18 @@ function init () {
     function (event) {
         return false;
     })
-    $('#status_len').text('0/' + globals.max_status_len);      
+    $('#status_len').text('0/' + globals.max_status_len);
 
     $('#status_box').click(function () {
-        return false;    
+        return false;
     })
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
-    
+
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 
-    ui.StatusBox.close(); 
+    ui.StatusBox.close();
 },
 
 on_btn_short_url_clicked:
@@ -200,7 +202,7 @@ function on_btn_short_url_clicked(event) {
         var req_url = ui.StatusBox.short_url_base + urls[i];
         procs.push(function () {
             lib.network.do_request('GET',
-            req_url, 
+            req_url,
             {},
             {},
             [],
@@ -228,7 +230,7 @@ function on_btn_short_url_clicked(event) {
 
 formalize:
 function formalize() {
-    var text = $('#tbox_status').val(); 
+    var text = $('#tbox_status').val();
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
     text = text.replace('<3', '&#x2665;');
     $('#tbox_status').val(text);
@@ -276,7 +278,7 @@ function update_status_cb(result) {
     $('#status_info').hide();
     ui.StatusBox.file = null;
     $('#status_image_preview').css('background-image', 'none');
-    $('#tbox_status').val(''); 
+    $('#tbox_status').val('');
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.close();
     ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
@@ -316,7 +318,7 @@ post_message_cb:
 function post_message_cb(result) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     toast.set(_('post_successfully')).show();
-    $('#tbox_status').val(''); 
+    $('#tbox_status').val('');
     $('#status_info').hide();
     ui.StatusBox.close();
     return this;
@@ -334,7 +336,7 @@ function post_image(msg) {
         , function () {
             toast.set('Failed!').show();
             $('#status_image_preview').css('background-image', 'none');
-            $('#tbox_status').val(''); 
+            $('#tbox_status').val('');
             ui.StatusBox.file = null;
             ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         });
@@ -370,7 +372,7 @@ function insert_status_text(text, pos) {
     }
     $('#tbox_status').val(
         $('#tbox_status').val().substr(0, pos)
-        + text 
+        + text
         + $('#tbox_status').val().substring(pos));
 },
 
@@ -406,8 +408,8 @@ function hide() {
 
 close:
 function close() {
-    $('#tbox_status').stop().animate({ 
-            height: "0px", 
+    $('#tbox_status').stop().animate({
+            height: "0px",
         }
         , 100
         , 'linear'
@@ -422,8 +424,8 @@ function close() {
 
 open:
 function open(on_finish) {
-    $('#tbox_status').stop().animate({ 
-            height: "150px", 
+    $('#tbox_status').stop().animate({
+            height: "150px",
         }
         , 100
         , 'linear'
@@ -442,7 +444,7 @@ move_cursor:
 function move_cursor(pos) {
     if (typeof pos == 'undefined')
         return;
-    if (pos == ui.StatusBox.POS_END) 
+    if (pos == ui.StatusBox.POS_END)
         pos = $('#tbox_status').attr('value').length;
 
     $('#tbox_status').focus();
@@ -460,7 +462,25 @@ function move_cursor(pos) {
         }
 },
 
+set_spell_suggestions:
+function set_spell_suggestions(text) {
+    this.suggestions = text;
+    return this;
+},
+
+get_spell_suggestions:
+function get_spell_suggestions() {
+    return this.suggestions.split("|");
+},
+
+get_status_text:
+function get_status_text() {
+  return $.trim($('#tbox_status').attr('value'));
+},
+
+set_status_text:
+function set_status_text(text) {
+  $.trim($('#tbox_status').val(text));
+}
+
 };
-
-
-

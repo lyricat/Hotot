@@ -13,6 +13,8 @@ import hotot
 import os
 import sys
 import subprocess
+import enchant
+import locale
 
 try: import i18n
 except: from gettext import gettext as _
@@ -56,6 +58,10 @@ http_code_msg_table = {
     , 503: 'Server is overcapacity. Please try again later.'
 }
 
+locale_lang = locale.getdefaultlocale()[0]
+dictionary = enchant.Dict(locale_lang);
+
+
 def init_notify():
     if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
         return
@@ -86,6 +92,12 @@ def crack_hotot(uri):
             req_params = dict([(k.encode('utf8'), v)
                 for k, v in json.loads(raw_json).items()])
             crack_request(req_params)
+        elif params[0] == 'spell':
+            if dictionary.check(params[1]) == False:
+                suggestions = dictionary.suggest(params[1])
+                webv.execute_script('ui.StatusBox.set_spell_suggestions("' + "|".join(suggestions) +  '");')
+
+
     except Exception, e:
         import traceback
         print "Exception:"
