@@ -4,7 +4,7 @@
 [ -x /usr/bin/apt-get ] && {
     INSTALL_LAYOUT='--install-layout deb'
     python -c 'import webkit, keybinder, pynotify, DistUtilsExtra.command' \
-    || sudo apt-get install python-webkit python-notify python-keybinder python-distutils-extra
+    || sudo apt-get install python-webkit python-notify python-keybinder python-distutils-extra python-enchant
 }
 
 python setup.py build_i18n -m
