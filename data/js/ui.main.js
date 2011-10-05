@@ -165,6 +165,7 @@ function load_tweet_success(self, json) {
                 , "and " + (ret - 2) + " new items remained."
                 , null, 'count');
         }
+        unread_alert(ret);
         if (ui.Main.views[self.name].use_notify_sound) {
             $('#audio_notify').get(0).play();
         }

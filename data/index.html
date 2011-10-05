@@ -254,6 +254,26 @@ function hotot_log(label, content) {
         }
     }
 }
+function unread_alert(count) {
+    var sp = 0;
+    var proc = function (){
+        sp ^= 1;
+        document.title = '('+(sp?globals.unread_count:' ! ')+')' + _('hotot') + ' | ' + conf.current_name;
+        globals.unread_alert_timer = setTimeout(proc, 2000);
+    }
+    clearTimeout(globals.unread_alert_timer);
+    if (count == 0) {
+        globals.unread_count = 0;
+        document.title = _('hotot') + ' | ' + conf.current_name;
+    } else {
+        globals.unread_count += count;
+        if (util.is_native_platform()) {
+            // @TODO, Message Menu ...
+        } else {
+            proc();
+        }
+    }
+}
 
 /* 
     = startup process =
@@ -644,6 +664,8 @@ var globals = {
     , in_main_view: false
     , load_flags: 0
     , ratelimit_bubble: null
+    , unread_alert_timer: null
+    , unread_count: null
 };
 
 jQuery(function($) {
@@ -700,6 +722,9 @@ jQuery(function($) {
             ui.Slider.slide_to_prev();
         }
     };
+    $('body').focus(function () {    
+        unread_alert(0);
+    });
 
     $(window).resize(
     function () {

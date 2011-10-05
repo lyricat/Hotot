@@ -462,6 +462,12 @@ function set_unread(name) {
     }
 },
 
+mark_read:
+function mark_read(name) {
+    var btn = $('#indication .indicator_btn[href="#'+name+'"]');
+    btn.removeClass('unread');
+},
+
 openSliderMenu:
 function openSliderMenu() {
     $('#indicator_add_btn').addClass('hlight');
