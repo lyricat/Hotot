@@ -132,9 +132,6 @@ def crack_system(params):
         elif type == 'count':
             notify.update(summary, body)
             notify.show()
-    elif params[1] == 'unread_alert':
-        unread_count = urllib.unquote(params[2])
-        app.unread_alert("unread", "Unread", "Items", unread_count)
     elif params[1] == 'load_settings':
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)

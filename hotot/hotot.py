@@ -6,7 +6,6 @@
 '''
 import gtk
 import gobject
-import os
 import view
 import config
 import agent
@@ -14,7 +13,7 @@ import keybinder
 import utils
 
 try:
-    import indicate
+    import appindicator
 except ImportError:
     HAS_INDICATOR = False
 else:
@@ -40,9 +39,6 @@ class Hotot:
         self.build_gui()
         if not HAS_INDICATOR:
             self.create_trayicon()
-        else:
-            self.create_indicator()
-            self.indicators = {}
 
     def build_gui(self):
         self.window = gtk.Window()
@@ -88,10 +84,10 @@ class Hotot:
         menuitem_file_menu = gtk.Menu()
 
         mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
-        mitem_resume.connect('activate', self.on_mitem_resume_activate)
+        mitem_resume.connect('activate', self.on_mitem_resume_activate);
         menuitem_file_menu.append(mitem_resume)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
-        mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
+        mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
         menuitem_file_menu.append(mitem_prefs)
 
         menuitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
@@ -111,43 +107,10 @@ class Hotot:
         menubar.set_size_request(0, 0)
         menubar.show_all()
         vbox.pack_start(menubar, expand=0, fill=0, padding=0)
-
         ##
         self.window.set_geometry_hints(min_height=380, min_width=460)
         self.window.show()
         self.window.connect('delete-event', gtk.Widget.hide_on_delete)
-
-    def create_indicator(self):
-        # Memssage Menu indicator
-        self.mm = indicate.indicate_server_ref_default()
-        self.mm.set_type('message.hotot')
-        self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
-        self.mm.connect('server-display', self.on_mm_activate)
-        self.mm.show()
-
-    def unread_alert(self, subtype, sender, body="", count="0"): 
-        if HAS_INDICATOR:
-            try:
-                idr = indicate.Indicator()
-            except:
-                idr = indicate.IndicatorMessage()
-            idr.set_property('subtype', subtype)
-            idr.set_property('sender', sender)
-            idr.set_property('body', body)
-            # idr.set_property("icon", None)
-            idr.set_property('draw-attention', 'true' if count != '0' else 'false')
-            idr.set_property('count', count)
-            idr.connect('user-display', self.on_mm_activate)
-            idr.show()
-            self.indicators[subtype] = idr
-
-    def on_mm_activate(self, idr, arg1):
-        if HAS_INDICATOR:
-            subtype = idr.get_property('subtype')
-            idr.set_property('draw-attention', 'false')
-            self.window.present()
-            if subtype in self.indicators:
-                del self.indicators[subtype]
 
     def on_btn_update_clicked(self, btn):
         if (self.tbox_status.get_text_length() <= 140):
@@ -283,7 +246,12 @@ def main():
     app = Hotot()
     agent.app = app
     if HAS_INDICATOR:
-        pass
+        indicator = appindicator.Indicator('hotot',
+                                           'hotot',
+                                           appindicator.CATEGORY_COMMUNICATIONS)
+        indicator.set_status(appindicator.STATUS_ACTIVE)
+        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+        indicator.set_menu(app.menu_tray)
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()
