@@ -265,10 +265,13 @@ function unread_alert(count) {
     if (count == 0) {
         globals.unread_count = 0;
         document.title = _('hotot') + ' | ' + conf.current_name;
+        if (util.is_native_platform()) {
+            hotot_action('system/unread_alert/0');
+        }
     } else {
         globals.unread_count += count;
         if (util.is_native_platform()) {
-            // @TODO, Message Menu ...
+            hotot_action('system/unread_alert/'+globals.unread_count);
         } else {
             proc();
         }
