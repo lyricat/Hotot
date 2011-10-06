@@ -122,7 +122,7 @@ class Hotot:
         self.mm = indicate.indicate_server_ref_default()
         self.mm.set_type('message.hotot')
         self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
-        self.mm.connect('server-display', self.on_mm_activate)
+        self.mm.connect('server-display', self.on_mm_server_activate)
         self.mm.show()
 
     def unread_alert(self, subtype, sender, body="", count="0"): 
@@ -148,6 +148,9 @@ class Hotot:
             self.window.present()
             if subtype in self.indicators:
                 del self.indicators[subtype]
+            
+    def on_mm_server_activate(self, serv, arg1):
+        self.window.present()
 
     def on_btn_update_clicked(self, btn):
         if (self.tbox_status.get_text_length() <= 140):
