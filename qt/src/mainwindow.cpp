@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreState(settings.value("windowState").toByteArray());
 
     this->setWindowTitle(i18n("Hotot"));
-    this->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png" )));
+    this->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png")));
     ui->setupUi(this);
 
     m_menu = new QMenu(this);
@@ -77,14 +77,14 @@ MainWindow::MainWindow(QWidget *parent) :
 #else
     m_tray = new QtTrayBackend(this);
 #endif
-    
+
     m_tray->setContextMenu(m_menu);
     this->addAction(action);
 
     this->m_page = new HototWebPage(this);
 
     QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
-    QWebSettings::setOfflineStorageDefaultQuota(15*1024*1024);
+    QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
     m_webView = ui->webView;
     ui->webView->setPage(m_page);
@@ -116,8 +116,7 @@ MainWindow::~MainWindow()
 void MainWindow::loadFinished(bool ok)
 {
     disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
-    if (ok)
-    {
+    if (ok) {
         initDatabases();
         m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_TWEET_CACHE_SIZE = 2048;"));
         m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_USER_CACHE_SIZE = 128;"));
@@ -130,28 +129,24 @@ void MainWindow::initDatabases()
 {
     const QWebSecurityOrigin& origin = m_webView->page()->currentFrame()->securityOrigin();
     const QList<QWebDatabase>& databases = origin.databases();
-    Q_FOREACH(QWebDatabase webDatabase, databases)
-    {
+    Q_FOREACH(QWebDatabase webDatabase, databases) {
         {
             QSqlDatabase sqldb = QSqlDatabase::addDatabase("QSQLITE", "myconnection");
             sqldb.setDatabaseName(webDatabase.fileName());
             if (sqldb.open()) {
                 sqldb.exec("vacuum");
 
-                if (webDatabase.name() == "hotot.cache")
-                {
+                if (webDatabase.name() == "hotot.cache") {
                     sqldb.exec("vacuum");
                     QSqlQuery result = sqldb.exec("select value from Info where key=\"settings\"");
-                    while (result.next())
-                    {
+                    while (result.next()) {
                         QString settings = result.value(0).toString();
                         m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
                         bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
                         int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
                         QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
 
-                        if (useHttpProxy)
-                        {
+                        if (useHttpProxy) {
                             QNetworkProxy proxy(QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
@@ -169,13 +164,10 @@ void MainWindow::initDatabases()
 
 void MainWindow::triggerVisible()
 {
-    if (this->isActiveWindow())
-    {
+    if (this->isActiveWindow()) {
         if (this->isVisible())
             this->hide();
-    }
-    else
-    {
+    } else {
         if (!this->isVisible())
             this->show();
         this->activateWindow();
@@ -190,8 +182,7 @@ void MainWindow::notification(QString type, QString title, QString message, QStr
 
 void MainWindow::activate()
 {
-    if (!this->isActiveWindow())
-    {
+    if (!this->isActiveWindow()) {
         if (!this->isVisible())
             this->show();
         this->activateWindow();

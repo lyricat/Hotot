@@ -31,10 +31,10 @@ class HototWebPage : public QWebPage
 public:
     HototWebPage(MainWindow *mainWindow, QObject* parent = 0);
 protected Q_SLOTS:
-    void requestFinished(HototRequest* request, QByteArray result, QString uuid ,bool error);
+    void requestFinished(HototRequest* request, QByteArray result, QString uuid , bool error);
 protected:
-    virtual bool acceptNavigationRequest ( QWebFrame * frame, const QNetworkRequest & request, NavigationType type );
-    virtual void javaScriptAlert ( QWebFrame * frame, const QString & msg );
+    virtual bool acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type);
+    virtual void javaScriptAlert(QWebFrame * frame, const QString & msg);
     bool handleUri(const QString& string);
 private:
     MainWindow* m_mainWindow;

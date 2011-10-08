@@ -23,22 +23,22 @@
 #include <QNetworkReply>
 #include "formpost.h"
 
-HototRequest::HototRequest ( const QString& uuid,
-                  const QString& request_method,
-                  const QString& request_url,
-                  const QMap<QString, QVariant>& request_params,
-                  const QMap<QString, QVariant>& request_headers,
-                  const QList<QVariant>& request_files,
-                  const QString&  userAgent,
-                  QNetworkAccessManager* manager,
-                  QObject* parent) : QObject ( parent ),
-                  m_uuid(uuid),
-                  m_method(request_method),
-                  m_url(request_url),
-                  m_params(request_params),
-                  m_headers(request_headers),
-                  m_files(request_files),
-                  m_userAgent(userAgent)
+HototRequest::HototRequest(const QString& uuid,
+                           const QString& request_method,
+                           const QString& request_url,
+                           const QMap<QString, QVariant>& request_params,
+                           const QMap<QString, QVariant>& request_headers,
+                           const QList<QVariant>& request_files,
+                           const QString&  userAgent,
+                           QNetworkAccessManager* manager,
+                           QObject* parent) : QObject(parent),
+    m_uuid(uuid),
+    m_method(request_method),
+    m_url(request_url),
+    m_params(request_params),
+    m_headers(request_headers),
+    m_files(request_files),
+    m_userAgent(userAgent)
 {
     m_manager = manager;
 }
@@ -56,18 +56,15 @@ bool HototRequest::doRequest()
         request.setRawHeader(iter.key().toUtf8(), iter.value().toString().toUtf8());
 
     m_reply = NULL;
-    if (m_method == "POST")
-    {
+    if (m_method == "POST") {
         FormPost formPost(m_manager);
         QMap< QString, QVariant >::const_iterator paramiter = m_params.begin();
 
         for (; paramiter != m_params.end(); paramiter ++)
             formPost.addField(paramiter.key(), paramiter.value().toString());
-        Q_FOREACH(const QVariant& filepair, m_files)
-        {
+        Q_FOREACH(const QVariant & filepair, m_files) {
             QList<QVariant> list = filepair.toList();
-            if (list.length() == 2)
-            {
+            if (list.length() == 2) {
                 QString filename = list[1].toString();
                 QString mimeType;
                 if (filename.endsWith(".jpg") || filename.endsWith(".jpeg"))
@@ -82,18 +79,14 @@ bool HototRequest::doRequest()
             }
         }
         m_reply = formPost.postData(request);
-    }
-    else
-    {
+    } else {
         m_reply = m_manager->get(request);
     }
 
-    if (m_reply)
-    {
+    if (m_reply) {
         connect(m_reply, SIGNAL(finished()), this, SLOT(finished()));
         return true;
-    }
-    else
+    } else
         return false;
 }
 

@@ -15,8 +15,8 @@
 
 class FormPost: public QObject
 {
-Q_OBJECT
-  public:
+    Q_OBJECT
+public:
     FormPost(QNetworkAccessManager* manager);
     QString userAgent();
     void setUserAgent(QString agent);
@@ -30,7 +30,7 @@ Q_OBJECT
     QNetworkReply * postData(QNetworkRequest& request);
     QByteArray response();
     QNetworkAccessManager * http;
-  private:
+private:
     QByteArray data;
     QByteArray strToEnc(QString s);
     QString encodingS;
@@ -42,7 +42,7 @@ Q_OBJECT
     QStringList fileNames;
     QStringList fileMimes;
     QList<QByteArray> files;
-  private slots:
+private slots:
     void readData(QNetworkReply * r);
 };
 

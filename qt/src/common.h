@@ -20,8 +20,12 @@
 #include "config.h"
 
 #ifdef HAVE_KDE
-#include <KLocalizedString>
+#   include <KLocalizedString>
 #else
-#include <libintl.h>
-#define i18n(x) QString::fromUtf8(gettext(x))
+#   ifdef Q_WS_WIN
+#       define i18n(x) tr(x)
+#   else
+#       include <libintl.h>
+#       define i18n(x) QString::fromUtf8(gettext(x))
+#   endif
 #endif

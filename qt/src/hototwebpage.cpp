@@ -35,7 +35,7 @@ HototWebPage::HototWebPage(MainWindow *window, QObject* parent) :
     this->m_mainWindow = window;
 }
 
-bool HototWebPage::acceptNavigationRequest ( QWebFrame * frame, const QNetworkRequest & request, NavigationType type )
+bool HototWebPage::acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type)
 {
     Q_UNUSED(frame);
     Q_UNUSED(type);
@@ -45,70 +45,48 @@ bool HototWebPage::acceptNavigationRequest ( QWebFrame * frame, const QNetworkRe
 bool HototWebPage::handleUri(const QString& originmsg)
 {
     QString msg = originmsg;
-    if (msg.startsWith("hotot:"))
-    {
+    if (msg.startsWith("hotot:")) {
         msg = msg.mid(6);
         QString type = msg.section("/", 0, 0);
         QString method = msg.section("/", 1, 1);
-        if (type == "system")
-        {
-            if (method == "notify")
-            {
+        if (type == "system") {
+            if (method == "notify") {
                 QString notify_type = QUrl::fromPercentEncoding(msg.section("/", 2, 2).toUtf8());
                 QString title = QUrl::fromPercentEncoding(msg.section("/", 3, 3).toUtf8());
                 QString summary = QUrl::fromPercentEncoding(msg.section("/", 4, 4).toUtf8());
                 QString image = QUrl::fromPercentEncoding(msg.section("/", 5, 5).toUtf8());
 
                 m_mainWindow->notification(notify_type, title, summary, image);
-            }
-            else if (method == "unread_alert")
-            {
+            } else if (method == "unread_alert") {
                 QString number = QUrl::fromPercentEncoding(msg.section("/", 2, 2).toUtf8());
                 m_mainWindow->unreadAlert(number);
             }
-        }
-        else if (type == "action")
-        {
-            if (method == "search")
-            {
+        } else if (type == "action") {
+            if (method == "search") {
 
-            }
-            else if (method == "choose_file")
-            {
+            } else if (method == "choose_file") {
                 QFileDialog dialog;
                 dialog.setAcceptMode(QFileDialog::AcceptOpen);
                 dialog.setFileMode(QFileDialog::ExistingFile);
                 dialog.setNameFilter(tr("Images (*.png *.bmp *.jpg *.gif)"));
                 int result = dialog.exec();
-                if (result)
-                {
+                if (result) {
                     QStringList fileNames = dialog.selectedFiles();
-                    if (fileNames.size() > 0)
-                    {
+                    if (fileNames.size() > 0) {
                         QString callback = msg.section("/", 2, 2);
                         this->currentFrame()->evaluateJavaScript(QString("%1(\"%2\")").arg(callback, fileNames[0]));
                     }
                 }
-            }
-            else if (method == "save_avatar")
-            {
-            }
-            else if (method == "log")
-            {
-            }
-            else if (method == "paste_clipboard_text")
-            {
+            } else if (method == "save_avatar") {
+            } else if (method == "log") {
+            } else if (method == "paste_clipboard_text") {
                 this->triggerAction(QWebPage::Paste);
-            }
-            else if (method == "set_clipboard_text")
-            {
+            } else if (method == "set_clipboard_text") {
                 QClipboard *clipboard = QApplication::clipboard();
                 if (clipboard)
                     clipboard->setText(msg.section("/", 2, -1));
             }
-        }
-        else if (type == "request")
-        {
+        } else if (type == "request") {
             QString json = QUrl::fromPercentEncoding(msg.section("/", 1, -1).toUtf8());
             this->currentFrame()->evaluateJavaScript(QString("hotot_qt_request_json = %1 ;").arg(json));
             QString request_uuid = this->currentFrame()->evaluateJavaScript(QString("hotot_qt_request_json.uuid")).toString();
@@ -127,25 +105,17 @@ bool HototWebPage::handleUri(const QString& originmsg)
                 request_files,
                 this->userAgentForUrl(request_url),
                 this->networkAccessManager());
-            connect(request, SIGNAL(requestFinished(HototRequest*,QByteArray,QString,bool)), this, SLOT(requestFinished(HototRequest*,QByteArray,QString,bool)));
+            connect(request, SIGNAL(requestFinished(HototRequest*, QByteArray, QString, bool)), this, SLOT(requestFinished(HototRequest*, QByteArray, QString, bool)));
             if (!request->doRequest())
                 delete request;
         }
-    }
-    else if (msg.startsWith("file://") || msg.startsWith("qrc:"))
-    {
+    } else if (msg.startsWith("file://") || msg.startsWith("qrc:")) {
         return true;
-    }
-    else if (msg.startsWith("about:"))
-    {
+    } else if (msg.startsWith("about:")) {
         return false;
-    }
-    else if (msg.startsWith("http://stat.hotot.org"))
-    {
+    } else if (msg.startsWith("http://stat.hotot.org")) {
         return false;
-    }
-    else
-    {
+    } else {
         QDesktopServices::openUrl(msg);
     }
     return false;
@@ -157,25 +127,22 @@ void HototWebPage::javaScriptAlert(QWebFrame *frame, const QString &msg)
     handleUri(msg);
 }
 
-void HototWebPage::requestFinished(HototRequest* request, QByteArray result, QString uuid ,bool error)
+void HototWebPage::requestFinished(HototRequest* request, QByteArray result, QString uuid , bool error)
 {
     QString strresult = QString::fromUtf8(result);
-    if (error)
-    {
+    if (error) {
         QString scripts = QString("widget.DialogManager.alert('%1', '%2');\n"
                                   "lib.network.error_task_table['%3']('');\n"
                                  ).arg("Ooops, an Error occurred!", strresult, uuid);
         this->currentFrame()->evaluateJavaScript(scripts);
-    }
-    else
-    {
+    } else {
         QString scripts;
         if (strresult.startsWith("[") || strresult.startsWith("{"))
             scripts = QString("lib.network.success_task_table['%1'](%2);"
-                                 ).arg(uuid, strresult);
+                             ).arg(uuid, strresult);
         else
             scripts = QString("lib.network.success_task_table['%1']('%2');"
-                                 ).arg(uuid, strresult);
+                             ).arg(uuid, strresult);
         this->currentFrame()->evaluateJavaScript(scripts);
     }
     request->deleteLater();

@@ -30,18 +30,19 @@ class FormPost;
 class QNetworkReply;
 class QNetworkAccessManager;
 
-class HototRequest : public QObject {
+class HototRequest : public QObject
+{
     Q_OBJECT
 public:
-    HototRequest( const QString& uuid,
-                  const QString& request_method,
-                  const QString& request_url,
-                  const QMap<QString, QVariant>& request_params,
-                  const QMap<QString, QVariant>& request_headers,
-                  const QList<QVariant>& request_files,
-                  const QString&  userAgent,
-                  QNetworkAccessManager* manager,
-                  QObject* parent = 0);
+    HototRequest(const QString& uuid,
+                 const QString& request_method,
+                 const QString& request_url,
+                 const QMap<QString, QVariant>& request_params,
+                 const QMap<QString, QVariant>& request_headers,
+                 const QList<QVariant>& request_files,
+                 const QString&  userAgent,
+                 QNetworkAccessManager* manager,
+                 QObject* parent = 0);
     ~HototRequest();
 
     bool doRequest();

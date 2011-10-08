@@ -26,8 +26,9 @@
 
 class TrayIconBackend;
 class KStatusNotifierItem;
-namespace Ui {
-    class MainWindow;
+namespace Ui
+{
+class MainWindow;
 }
 
 class QWebView;
