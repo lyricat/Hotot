@@ -2,7 +2,6 @@
 
 #ifndef __FORMPOST_H__
 #define __FORMPOST_H__
-#include <QtPlugin>
 #include <QString>
 #include <QByteArray>
 #include <QFile>

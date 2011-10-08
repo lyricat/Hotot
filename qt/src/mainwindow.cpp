@@ -17,8 +17,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "common.h"
+
+// system
+#include <unistd.h>
+
+// Qt
 #include <QWebView>
 #include <QWebDatabase>
 #include <QWebSettings>
@@ -33,13 +37,20 @@
 #include <QLocale>
 #include <QSystemTrayIcon>
 #include <QMenu>
+
+// Hotot
+#include "ui_mainwindow.h"
+#include "mainwindow.h"
 #include "hototwebpage.h"
-#include "config.h"
+#include "trayiconbackend.h"
+#include "qttraybackend.h"
+#ifdef HAVE_KDE
+#include "kdetraybackend.h"
+#endif
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_trayicon(0),
     m_page(0),
     m_webView(0)
 {
@@ -50,30 +61,24 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
 
-    this->setWindowTitle(tr("Hotot"));
+    this->setWindowTitle(i18n("Hotot"));
     this->setWindowIcon(QIcon::fromTheme("hotot-qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png" )));
     ui->setupUi(this);
 
-    m_trayicon = new QSystemTrayIcon(this);
-    m_trayicon->setIcon(QIcon::fromTheme("hotot-qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png" )));
-    m_trayicon->show();
-    connect(m_trayicon,
-            SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-            this,
-            SLOT(trayIconClicked(QSystemTrayIcon::ActivationReason)));
-    connect(m_trayicon,
-             SIGNAL(messageClicked()),
-            this,
-            SLOT(messageClicked()));
-
     m_menu = new QMenu(this);
     QAction* action;
-    action = new QAction(QIcon::fromTheme("application-exit"), tr("&Exit"), this);
+    action = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     action->setShortcut(QKeySequence::Quit);
     connect(action, SIGNAL(triggered()), this, SLOT(close()));
     m_menu->addAction(action);
 
-    m_trayicon->setContextMenu(m_menu);
+#ifdef HAVE_KDE
+    m_tray = new KDETrayBackend(this);
+#else
+    m_tray = new QtTrayBackend(this);
+#endif
+    
+    m_tray->setContextMenu(m_menu);
     this->addAction(action);
 
     this->m_page = new HototWebPage(this);
@@ -127,63 +132,63 @@ void MainWindow::initDatabases()
     const QList<QWebDatabase>& databases = origin.databases();
     Q_FOREACH(QWebDatabase webDatabase, databases)
     {
-        QSqlDatabase sqldb = QSqlDatabase::addDatabase("QSQLITE", "myconnection");
-        sqldb.setDatabaseName(webDatabase.fileName());
-        if (sqldb.open()) {
-            sqldb.exec("vacuum");
-
-            if (webDatabase.name() == "hotot.cache")
-            {
+        {
+            QSqlDatabase sqldb = QSqlDatabase::addDatabase("QSQLITE", "myconnection");
+            sqldb.setDatabaseName(webDatabase.fileName());
+            if (sqldb.open()) {
                 sqldb.exec("vacuum");
-                QSqlQuery result = sqldb.exec("select value from Info where key=\"settings\"");
-                while (result.next())
+
+                if (webDatabase.name() == "hotot.cache")
                 {
-                    QString settings = result.value(0).toString();
-                    m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
-                    bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
-                    int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
-                    QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
-
-                    if (useHttpProxy)
+                    sqldb.exec("vacuum");
+                    QSqlQuery result = sqldb.exec("select value from Info where key=\"settings\"");
+                    while (result.next())
                     {
-                        QNetworkProxy proxy(QNetworkProxy::HttpProxy,
-                                            httpProxyHost,
-                                            httpProxyPort);
+                        QString settings = result.value(0).toString();
+                        m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
+                        bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
+                        int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
+                        QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
 
-                        m_webView->page()->networkAccessManager()->setProxy(proxy);
+                        if (useHttpProxy)
+                        {
+                            QNetworkProxy proxy(QNetworkProxy::HttpProxy,
+                                                httpProxyHost,
+                                                httpProxyPort);
+
+                            m_webView->page()->networkAccessManager()->setProxy(proxy);
+                        }
                     }
                 }
+                sqldb.close();
             }
-            sqldb.close();
         }
+        QSqlDatabase::removeDatabase("myconnection");
     }
 }
 
-void MainWindow::trayIconClicked(QSystemTrayIcon::ActivationReason reason)
+void MainWindow::triggerVisible()
 {
-    if (reason == QSystemTrayIcon::Trigger)
+    if (this->isActiveWindow())
     {
-        if (this->isActiveWindow())
-        {
-            if (this->isVisible())
-                this->hide();
-        }
-        else
-        {
-            if (!this->isVisible())
-                this->show();
-            this->activateWindow();
-            this->raise();
-        }
+        if (this->isVisible())
+            this->hide();
+    }
+    else
+    {
+        if (!this->isVisible())
+            this->show();
+        this->activateWindow();
+        this->raise();
     }
 }
 
 void MainWindow::notification(QString type, QString title, QString message, QString image)
 {
-    m_trayicon->showMessage(title, message);
+    m_tray->showMessage(type, title, message, image);
 }
 
-void MainWindow::messageClicked()
+void MainWindow::activate()
 {
     if (!this->isActiveWindow())
     {
@@ -192,6 +197,11 @@ void MainWindow::messageClicked()
         this->activateWindow();
         this->raise();
     }
+}
+
+void MainWindow::unreadAlert(QString number)
+{
+    m_tray->unreadAlert(number);
 }
 
 #include "mainwindow.moc"

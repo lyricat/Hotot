@@ -1,0 +1,96 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Weng Xuetian <wengxt@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/shellex/Hotot/issues\n"
+"POT-Creation-Date: 2011-10-09 05:39+0800\n"
+"PO-Revision-Date: 2011-10-09 05:40+0800\n"
+"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
+"Language-Team: Chinese Simplified <kde-china@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../src/kdetraybackend.cpp:52 ../src/qttraybackend.cpp:52
+msgid "%1 unread Messages"
+msgstr "%1 条未读信息"
+
+#: ../src/main.cpp:51
+msgid "(c) 2009-2011 Shellex Wai\n"
+msgstr "(c) 2009-2011 Shellex Wai\n"
+
+#: ../src/main.cpp:62
+msgid "Artwork"
+msgstr "美工"
+
+#: ../src/main.cpp:58 ../src/main.cpp:59 ../src/main.cpp:60 ../src/main.cpp:61
+msgid "Developer"
+msgstr "开发"
+
+#: ../src/main.cpp:57
+msgid "Developer and Artwork"
+msgstr "开发和美工"
+
+#: ../src/main.cpp:63
+msgid "Document"
+msgstr "文档"
+
+#: ../src/main.cpp:62
+msgid "Evan"
+msgstr "Evan"
+
+#. i18n: file: ../src/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: ../src/kdetraybackend.cpp:23 ../src/main.cpp:47 rc.cpp:3
+msgid "Hotot"
+msgstr "Hotot"
+
+#: ../src/main.cpp:58
+msgid "Jiahua Huang"
+msgstr "Jiahua Huang"
+
+#: ../src/main.cpp:59
+msgid "Jimmy Xu"
+msgstr "Jimmy Xu"
+
+#: ../src/main.cpp:49
+msgid "Lightweight, Flexible Microblogging"
+msgstr "轻量，灵活的微博客客户端"
+
+#: ../src/main.cpp:63
+msgid "Marguerite Su"
+msgstr "Marguerite Su"
+
+#: ../src/main.cpp:57
+msgid "Shellex Wai"
+msgstr "Shellex Wai"
+
+#: ../src/main.cpp:60
+msgid "Tualatrix Chou"
+msgstr "Tualatrix Chou"
+
+#: ../src/main.cpp:61
+msgid "Xu Zhen"
+msgstr "Xu Zhen"
+
+#: rc.cpp:8
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wengxt@gmail.com"
+
+#: rc.cpp:7
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "CSSlayer Weng"
+
+#. i18n: file: ../src/mainwindow.ui:22
+#. i18n: ectx: property (url), widget (QWebView, webView)
+#: rc.cpp:6
+msgid "about:blank"
+msgstr "about:blank"

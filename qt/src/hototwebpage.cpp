@@ -61,7 +61,11 @@ bool HototWebPage::handleUri(const QString& originmsg)
 
                 m_mainWindow->notification(notify_type, title, summary, image);
             }
-
+            else if (method == "unread_alert")
+            {
+                QString number = QUrl::fromPercentEncoding(msg.section("/", 2, 2).toUtf8());
+                m_mainWindow->unreadAlert(number);
+            }
         }
         else if (type == "action")
         {

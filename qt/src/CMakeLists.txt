@@ -14,7 +14,16 @@ set(Hotot_QT_SRCS
     main.cpp
     mainwindow.cpp
     hototwebpage.cpp
+    trayiconbackend.cpp
+    qttraybackend.cpp
 )
+
+if (HAVE_KDE)
+    set(Hotot_QT_SRCS
+        ${Hotot_QT_SRCS}
+        kdetraybackend.cpp
+    )
+endif (HAVE_KDE)
 
 qt4_automoc(${Hotot_QT_SRCS})
 qt4_wrap_ui(Hotot_QT_SRCS mainwindow.ui)
@@ -26,5 +35,9 @@ target_link_libraries(hotot-qt
     ${QT_QTWEBKIT_LIBRARY}
     ${QT_QTNETWORK_LIBRARY}
 )
+
+if(HAVE_KDE)
+    target_link_libraries(hotot-qt ${KDE4_KDEUI_LIBRARY})
+endif(HAVE_KDE)
 
 install(TARGETS hotot-qt DESTINATION bin)
