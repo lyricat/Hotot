@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
 {
 #ifdef HAVE_KDE
 
-    KAboutData aboutData( "hotot-qt",                                   // internal name
-                        0,                                         // catalog name
+    KAboutData aboutData( "hotot_qt",                                   // internal name
+                        "hotot-qt",                                     // catalog name
                         ki18n("Hotot"),                            // program name
                         "0.9.9",                             // app version from config-kmess.h
                         ki18n("Lightweight, Flexible Microblogging"),  // short description
