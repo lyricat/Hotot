@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
                         ki18n("Hotot"),                            // program name
                         "0.9.9",                             // app version from config-kmess.h
                         ki18n("Lightweight, Flexible Microblogging"),  // short description
-                        KAboutData::License_LGPL,                   // license
+                        KAboutData::License_GPL_V2,                   // license
                         ki18n("(c) 2009-2011 Shellex Wai\n"),   // copyright
                         KLocalizedString(),
                         "http://www.hotot.org/",                   // home page
