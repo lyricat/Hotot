@@ -6,4 +6,3 @@ Comment=Lightweight Twitter Client base on QtWebkit
 Exec=hotot-qt
 Icon=hotot_qt
 Categories=Qt;Network;
-X-DBUS-StartupType=Unique
