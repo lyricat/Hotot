@@ -349,9 +349,10 @@ function get_user_timeline(user_id, screen_name, since_id,
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id > 10)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     if (user_id != null) 
