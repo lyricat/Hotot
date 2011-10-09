@@ -19,10 +19,15 @@
 
 #include "common.h"
 
+// Qt
+#include <QPainter>
+
 // KDE
 #include <KStatusNotifierItem>
 #include <KMenu>
 #include <KIcon>
+#include <KGlobalSettings>
+#include <KColorScheme>
 
 // Hotot
 #include "mainwindow.h"
@@ -33,7 +38,7 @@ KDETrayBackend::KDETrayBackend(MainWindow* parent):
     m_mainWindow(parent),
     m_statusNotifierItem(new KStatusNotifierItem("hotot-qt", this))
 {
-    m_statusNotifierItem->setIconByName("hotot_qt");
+    m_statusNotifierItem->setIconByName("hotot_qt-inactive");
     m_statusNotifierItem->setTitle("Hotot");
     m_statusNotifierItem->setToolTipIconByName("hotot_qt");
     m_statusNotifierItem->setStatus(KStatusNotifierItem::Active);
@@ -67,7 +72,14 @@ void KDETrayBackend::activate()
 
 void KDETrayBackend::unreadAlert(QString number)
 {
-    m_statusNotifierItem->setToolTipSubTitle(i18n("%1 unread Messages").arg(number));
+    int n = number.toInt();
+    if (n > 0)
+    {
+        m_statusNotifierItem->setIconByName("hotot_qt-active");
+    }
+    else
+        m_statusNotifierItem->setIconByName("hotot_qt-inactive");
+    m_statusNotifierItem->setToolTip( "hotot_qt", i18n("Hotot"), i18np( "1 unread post", "%1 unread posts", n ) );
 }
 
 #include "kdetraybackend.moc"
