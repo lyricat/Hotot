@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 2.6)
 
 project(hotot-qt)
 
-find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
 find_package(Gettext REQUIRED)
 
 option(WITH_KDE "Enable KDE4 integration" ON)
@@ -20,6 +19,8 @@ if(WITH_KDE)
     endif(KDE4_FOUND)
     else(WITH_KDE)
         message(STATUS "Not enabling KDE4 integration")
+else(WITH_KDE)
+    find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
 endif(WITH_KDE)
 
 configure_file(config.h.in config.h)
