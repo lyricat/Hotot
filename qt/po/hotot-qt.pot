@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/shellex/Hotot/issues\n"
-"POT-Creation-Date: 2011-10-09 05:39+0800\n"
+"POT-Creation-Date: 2011-10-09 16:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,67 +16,80 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #. i18n: file: ../src/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: ../src/kdetraybackend.cpp:23 ../src/main.cpp:47 rc.cpp:3
+#: ../src/kdetraybackend.cpp:42 ../src/kdetraybackend.cpp:46
+#: ../src/kdetraybackend.cpp:80 ../src/main.cpp:46 ../src/mainwindow.cpp:64
+#: rc.cpp:3
 msgid "Hotot"
 msgstr ""
 
-#: ../src/kdetraybackend.cpp:52 ../src/qttraybackend.cpp:52
-msgid "%1 unread Messages"
-msgstr ""
+#: ../src/kdetraybackend.cpp:80
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/main.cpp:49
+#: ../src/main.cpp:48
 msgid "Lightweight, Flexible Microblogging"
 msgstr ""
 
-#: ../src/main.cpp:51
+#: ../src/main.cpp:50
 msgid "(c) 2009-2011 Shellex Wai\n"
 msgstr ""
 
-#: ../src/main.cpp:57
+#: ../src/main.cpp:56
 msgid "Shellex Wai"
 msgstr ""
 
-#: ../src/main.cpp:57
+#: ../src/main.cpp:56
 msgid "Developer and Artwork"
 msgstr ""
 
-#: ../src/main.cpp:58
+#: ../src/main.cpp:57
 msgid "Jiahua Huang"
 msgstr ""
 
-#: ../src/main.cpp:58 ../src/main.cpp:59 ../src/main.cpp:60 ../src/main.cpp:61
+#: ../src/main.cpp:57 ../src/main.cpp:58 ../src/main.cpp:59 ../src/main.cpp:60
 msgid "Developer"
 msgstr ""
 
-#: ../src/main.cpp:59
+#: ../src/main.cpp:58
 msgid "Jimmy Xu"
 msgstr ""
 
-#: ../src/main.cpp:60
+#: ../src/main.cpp:59
 msgid "Tualatrix Chou"
 msgstr ""
 
-#: ../src/main.cpp:61
+#: ../src/main.cpp:60
 msgid "Xu Zhen"
 msgstr ""
 
-#: ../src/main.cpp:62
+#: ../src/main.cpp:61
 msgid "Evan"
 msgstr ""
 
-#: ../src/main.cpp:62
+#: ../src/main.cpp:61
 msgid "Artwork"
 msgstr ""
 
-#: ../src/main.cpp:63
+#: ../src/main.cpp:62
 msgid "Marguerite Su"
 msgstr ""
 
-#: ../src/main.cpp:63
+#: ../src/main.cpp:62
 msgid "Document"
+msgstr ""
+
+#: ../src/mainwindow.cpp:70
+msgid "&Exit"
+msgstr ""
+
+#: ../src/qttraybackend.cpp:71
+msgid "%1 unread Messages"
 msgstr ""
 
 #. i18n: file: ../src/mainwindow.ui:22

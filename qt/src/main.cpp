@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
                         );
 
     aboutData.addAuthor(ki18n("Shellex Wai"),       ki18n("Developer and Artwork"), "5h3ll3x@gmail.com");
-    aboutData.addAuthor(ki18n("Jiahua Huang"),        ki18n("Developer"),                     "jhuangjiahua" "@" "gmail" "." "com");
-    aboutData.addAuthor(ki18n("Jimmy Xu"),            ki18n("Developer"),               "xu.jimmy.wrk" "@" "gmail" "." "com");
-    aboutData.addAuthor(ki18n("Tualatrix Chou"), ki18n("Developer"),             "tualatrix" "@" "gmail" "." "com");
-    aboutData.addAuthor(ki18n("Xu Zhen"), ki18n("Developer"),             "xnreformer" "@" "gmail" "." "com");
-    aboutData.addAuthor(ki18n("Evan"),          ki18n("Artwork"),             "www.freemagi.com");
-    aboutData.addAuthor(ki18n("Marguerite Su"),       ki18n("Document"),             "admin"  "@" "doublechou.pp.ru");
+    aboutData.addAuthor(ki18n("Jiahua Huang"),      ki18n("Developer"),             "jhuangjiahua" "@" "gmail" "." "com");
+    aboutData.addAuthor(ki18n("Jimmy Xu"),          ki18n("Developer"),             "xu.jimmy.wrk" "@" "gmail" "." "com");
+    aboutData.addAuthor(ki18n("Tualatrix Chou"),    ki18n("Developer"),             "tualatrix" "@" "gmail" "." "com");
+    aboutData.addAuthor(ki18n("Xu Zhen"),           ki18n("Developer"),             "xnreformer" "@" "gmail" "." "com");
+    aboutData.addAuthor(ki18n("Evan"),              ki18n("Artwork"),               "www.freemagi.com");
+    aboutData.addAuthor(ki18n("Marguerite Su"),     ki18n("Document"),              "admin"  "@" "doublechou.pp.ru");
 
     KCmdLineOptions options;
     KCmdLineArgs::init(argc, argv, &aboutData);

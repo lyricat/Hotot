@@ -39,8 +39,7 @@ KDETrayBackend::KDETrayBackend(MainWindow* parent):
     m_statusNotifierItem(new KStatusNotifierItem("hotot-qt", this))
 {
     m_statusNotifierItem->setIconByName("hotot_qt-inactive");
-    m_statusNotifierItem->setTitle("Hotot");
-    m_statusNotifierItem->setToolTipIconByName("hotot_qt");
+    m_statusNotifierItem->setToolTip( "hotot_qt", i18n("Hotot"), "" );
     m_statusNotifierItem->setStatus(KStatusNotifierItem::Active);
     m_statusNotifierItem->setCategory(KStatusNotifierItem::Communications);
     m_statusNotifierItem->setStandardActionsEnabled(false);
@@ -53,7 +52,6 @@ void KDETrayBackend::showMessage(QString type, QString title, QString message, Q
 {
     Q_UNUSED(type)
     Q_UNUSED(image)
-    m_statusNotifierItem->setStatus(KStatusNotifierItem::NeedsAttention);
     m_statusNotifierItem->showMessage(title, message, "hotot_qt", 4000);
 }
 
