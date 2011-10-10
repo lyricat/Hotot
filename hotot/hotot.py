@@ -52,6 +52,7 @@ class Hotot:
         self.build_gui()
         self.insplashing = False
         self.mm_indicators = {}
+        self.trayicon_pixbuf = [None, None]
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -154,26 +155,30 @@ class Hotot:
             idr.show()
             self.mm_indicators[subtype] = idr
 
-        if HAS_INDICATOR:
-            if count == '0':
-                self.stop_splash_icon()
-            else:
-                self.start_splash_icon()
+        if count == '0':
+            self.stop_splash_icon()
+        else:
+            self.start_splash_icon()
 
     def start_splash_icon(self):
         if self.insplashing:
             return
-        if HAS_INDICATOR:
-            def splash_proc():
-                flag = 0
-                while self.insplashing:
+        def splash_proc():
+            flag = 0
+            while self.insplashing:
+                if HAS_INDICATOR:
                     self.indicator.set_status(appindicator.STATUS_ATTENTION if flag else appindicator.STATUS_ACTIVE)
-                    flag ^= 1
-                    time.sleep(1)
+                else:
+                    self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[flag])
+                flag ^= 1
+                time.sleep(1)
+            if HAS_INDICATOR:
                 self.indicator.set_status(appindicator.STATUS_ACTIVE)
-            self.insplashing = True
-            th = threading.Thread(target = splash_proc)
-            th.start()
+            else:
+                self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
+        self.insplashing = True
+        th = threading.Thread(target = splash_proc)
+        th.start()
 
     def stop_splash_icon(self):
         self.insplashing = False
@@ -276,8 +281,11 @@ class Hotot:
         self.trayicon.connect('activate', self.on_trayicon_activate)
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
         self.trayicon.set_tooltip(_("Hotot: Click to Active."))
-        self.trayicon.set_from_file(
+        self.trayicon_pixbuf[0] = gtk.gdk.pixbuf_new_from_file(
             utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+        self.trayicon_pixbuf[1] = gtk.gdk.pixbuf_new_from_file(
+            utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
+        self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
         self.trayicon.set_visible(True)
 
     def on_trayicon_activate(self, icon):
