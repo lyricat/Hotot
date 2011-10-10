@@ -12,17 +12,28 @@ import config
 import agent
 import keybinder
 import utils
+import threading
+import time
 
 try:
     import appindicator
-    import indicate
 except ImportError:
     HAS_INDICATOR = False
 else:
     HAS_INDICATOR = True
 
+try:
+    import indicate
+except ImportError:
+    HAS_ME_MENU = False
+else:
+    HAS_ME_MENU = True
+
 if __import__('os').environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
     HAS_INDICATOR = False
+    HAS_ME_MENU = False
+
+HAS_ME_MENU = False
 
 try: import i18n
 except: from gettext import gettext as _
@@ -39,11 +50,13 @@ class Hotot:
         self.active_profile = 'default'
         self.protocol = ''
         self.build_gui()
+        self.insplashing = False
+        self.mm_indicators = {}
         if not HAS_INDICATOR:
             self.create_trayicon()
-        else:
-            self.create_indicator()
-            self.indicators = {}
+
+        if HAS_ME_MENU:
+            self.create_memenu()
 
     def build_gui(self):
         self.window = gtk.Window()
@@ -118,7 +131,7 @@ class Hotot:
         self.window.show()
         self.window.connect('delete-event', gtk.Widget.hide_on_delete)
 
-    def create_indicator(self):
+    def create_memenu(self):
         # Memssage Menu indicator
         self.mm = indicate.indicate_server_ref_default()
         self.mm.set_type('message.hotot')
@@ -127,7 +140,7 @@ class Hotot:
         self.mm.show()
 
     def unread_alert(self, subtype, sender, body="", count="0"): 
-        if HAS_INDICATOR:
+        if HAS_ME_MENU:
             try:
                 idr = indicate.Indicator()
             except:
@@ -135,20 +148,43 @@ class Hotot:
             idr.set_property('subtype', subtype)
             idr.set_property('sender', sender)
             idr.set_property('body', body)
-            # idr.set_property("icon", None)
             idr.set_property('draw-attention', 'true' if count != '0' else 'false')
             idr.set_property('count', count)
             idr.connect('user-display', self.on_mm_activate)
             idr.show()
-            self.indicators[subtype] = idr
+            self.mm_indicators[subtype] = idr
+
+        if HAS_INDICATOR:
+            if count == '0':
+                self.stop_splash_icon()
+            else:
+                self.start_splash_icon()
+
+    def start_splash_icon(self):
+        if self.insplashing:
+            return
+        if HAS_INDICATOR:
+            def splash_proc():
+                flag = 0
+                while self.insplashing:
+                    self.indicator.set_status(appindicator.STATUS_ATTENTION if flag else appindicator.STATUS_ACTIVE)
+                    flag ^= 1
+                    time.sleep(1)
+                self.indicator.set_status(appindicator.STATUS_ACTIVE)
+            self.insplashing = True
+            th = threading.Thread(target = splash_proc)
+            th.start()
+
+    def stop_splash_icon(self):
+        self.insplashing = False
 
     def on_mm_activate(self, idr, arg1):
-        if HAS_INDICATOR:
+        if HAS_ME_MENU:
             subtype = idr.get_property('subtype')
             idr.set_property('draw-attention', 'false')
             self.window.present()
-            if subtype in self.indicators:
-                del self.indicators[subtype]
+            if subtype in self.mm_indicators:
+                del self.mm_indicators[subtype]
             
     def on_mm_server_activate(self, serv, arg1):
         self.window.present()
@@ -188,6 +224,7 @@ class Hotot:
         self.quit()
 
     def quit(self, *args):
+        self.stop_splash_icon()
         gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit()
@@ -291,8 +328,11 @@ def main():
                                             'hotot',
                                             appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+        indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
         indicator.set_menu(app.menu_tray)
+        app.indicator = indicator
+
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()
