@@ -154,15 +154,18 @@ function load_tweet_success(self, json) {
     // notify
     if (ui.Main.views[self.name].use_notify) {
         var user = ''; var text = '';
+        var notify_count = 0
         for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
             user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
+            if (user.screen_name == globals.myself.screen_name) 
+                continue;
             text = json[i].text;
-            hotot_notify(user.screen_name, text
-                , user.profile_image_url , 'content');
+            hotot_notify(user.screen_name, text, user.profile_image_url , 'content');
+            notify_count += 1;
         }
-        if (3 < ret) {
+        if (3 < notify_count) {
             hotot_notify("Update page " + self.name 
-                , "and " + (ret - 2) + " new items remained."
+                , "and " + (notify_count - 2) + " new items remained."
                 , null, 'count');
         }
         unread_alert(ret);
