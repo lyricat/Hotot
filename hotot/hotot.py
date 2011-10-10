@@ -14,6 +14,7 @@ import keybinder
 import utils
 
 try:
+    import appindicator
     import indicate
 except ImportError:
     HAS_INDICATOR = False
@@ -286,7 +287,12 @@ def main():
     app = Hotot()
     agent.app = app
     if HAS_INDICATOR:
-        pass
+        indicator = appindicator.Indicator('hotot',
+                                            'hotot',
+                                            appindicator.CATEGORY_COMMUNICATIONS)
+        indicator.set_status(appindicator.STATUS_ACTIVE)
+        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+        indicator.set_menu(app.menu_tray)
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()
