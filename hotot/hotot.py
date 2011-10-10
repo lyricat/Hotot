@@ -12,6 +12,8 @@ import config
 import agent
 import keybinder
 import utils
+import dbus
+import dbus.service 
 import threading
 import time
 
@@ -44,6 +46,19 @@ try:
 except:
     pass
 
+HOTOT_DBUS_PATH = '/org/hotot/service'
+HOTOT_DBUS_NAME = 'org.hotot.service'
+
+class HototDbusService(dbus.service.Object):
+    def __init__(self, app):
+        bus_name = dbus.service.BusName(HOTOT_DBUS_NAME, bus=dbus.SessionBus())
+        dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
+        self.app = app
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender')
+    def unread(self, sender=None):
+        return self.app.state['unread_count']
+
 class Hotot:
     def __init__(self):
         self.is_sign_in = False
@@ -53,6 +68,9 @@ class Hotot:
         self.insplashing = False
         self.mm_indicators = {}
         self.trayicon_pixbuf = [None, None]
+        self.state = {
+            'unread_count': 0
+        }
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -149,16 +167,19 @@ class Hotot:
             idr.set_property('subtype', subtype)
             idr.set_property('sender', sender)
             idr.set_property('body', body)
-            idr.set_property('draw-attention', 'true' if count != '0' else 'false')
+            idr.set_property('draw-attention', 'true' if count > 0 else 'false')
             idr.set_property('count', count)
             idr.connect('user-display', self.on_mm_activate)
             idr.show()
             self.mm_indicators[subtype] = idr
 
-        if count == '0':
-            self.stop_splash_icon()
-        else:
+        if count > 0:
             self.start_splash_icon()
+        else:
+            self.stop_splash_icon()
+        
+        self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
+        self.state['unread_count'] = count
 
     def start_splash_icon(self):
         if self.insplashing:
@@ -340,6 +361,10 @@ def main():
         indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
+
+    from dbus.mainloop.glib import DBusGMainLoop
+    DBusGMainLoop(set_as_default=True)
+    HDService = HototDbusService(app)
 
     gtk.gdk.threads_enter()
     gtk.main()
