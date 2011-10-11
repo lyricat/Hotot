@@ -613,10 +613,6 @@ pre {
     box-shadow: 0 1px 3px #000;
 }
 
-#indication li > .indicator_btn:hover > span.icon {
-    background-position: center 5px;
-}
-
 #indication li > .indicator_btn.unread {
     background-image: url(../image/emit.png);
     background-position: center -13px;
@@ -627,7 +623,7 @@ pre {
     /* @TODO need a image here*/
 }
 
-#indication li > .indicator_btn.selected > span.icon, #indication li > .indicator_btn.unread > span.icon {
+#indication li > .indicator_btn.unread > span.icon {
     background-position: center 5px;
 }
 
