@@ -316,6 +316,7 @@ class Hotot:
         if self.window.is_active():
             self.window.hide()
         else:
+            self.stop_splash_icon()
             self.window.present()
 
     def on_trayicon_popup_menu(self, icon, button, activate_time):
