@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 #else
-#ifndef Q_WS_WIN
+#ifndef Q_OS_WIN32
     bind_textdomain_codeset("hotot-qt", "UTF-8");
 #endif
     QApplication a(argc, argv);
