@@ -237,6 +237,7 @@ function add_indicator(name, opts) {
         html = html.replace('{%STICK%}', 'no_stick');
         ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
     }
+
     $(html).insertBefore($('#indicator_add_btn').parent());
 },
 
@@ -308,7 +309,7 @@ remove_indicator:
 function remove_indicator(name) {
     var idx = ui.Slider.tweet_blocks.indexOf(name);
     ui.Slider.tweet_blocks.splice(idx, 1);
-    $('#indicator_btns li[name="'+name+'"]').remove();
+    $('#indicator_btns > div[name="'+name+'"]').remove();
 },
 
 slide_to:
