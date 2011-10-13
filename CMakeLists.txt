@@ -19,9 +19,11 @@ if(WITH_KDE)
     endif(KDE4_FOUND)
     else(WITH_KDE)
         message(STATUS "Not enabling KDE4 integration")
-else(WITH_KDE)
-    find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
 endif(WITH_KDE)
+
+if(NOT HAVE_KDE)
+    find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
+endif(NOT HAVE_KDE)
 
 configure_file(config.h.in config.h)
 

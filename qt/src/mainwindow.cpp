@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_page(0),
     m_webView(0)
 {
-#ifdef Q_WS_X11
+#ifdef Q_OS_UNIX
     chdir(PREFIX);
 #endif
     QSettings settings("hotot-qt", "hotot");
@@ -96,7 +96,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
 
+    
+#ifdef Q_OS_UNIX
+    m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
+#else
     m_webView->load(QUrl("share/hotot-qt/html/index.html"));
+#endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
 }
 
