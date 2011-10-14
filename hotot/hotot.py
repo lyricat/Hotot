@@ -178,7 +178,8 @@ class Hotot:
         else:
             self.stop_splash_icon()
         
-        self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
+        if not HAS_INDICATOR:
+            self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
 
     def start_splash_icon(self):

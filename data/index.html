@@ -127,7 +127,7 @@ function update_tweet_block_width() {
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
     $('#indicator_btns').children('.no_stick:eq(0)')
-        .css('margin-left', (($(window).width() - idrs.length * 40)/2) + 'px');
+        .css('margin-left', (($(window).width()-(idrs.length+1) * 40)/2) + 'px');
 
     // adjust width of compose button
     if (ui.Slider.column_num == 1) {
@@ -578,6 +578,7 @@ function overlay_variables(vars) {
         conf.vars.extra_themes = vars.extra_themes
         ext.extras = vars.extra_exts;
         i18n.locale = vars.locale;
+        globals.load_flags = 1;
     }
 }
 
@@ -745,6 +746,7 @@ jQuery(function($) {
                 conf.settings.size_h = $(window).height();
                 conf.save_settings()
                 ui.Slider.slide_to(ui.Slider.current);
+                hotot_log("load_flags", globals.load_flags);
             }
         }
     });

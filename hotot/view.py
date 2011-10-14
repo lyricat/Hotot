@@ -78,6 +78,8 @@ class MainView(WebView):
         return True
 
     def on_load_finish(self, view, webframe):
+        if self.load_finish_flag:
+            return
         self.load_finish_flag = True;
         agent.webv = self
         # overlay extra variables of web part
@@ -94,7 +96,6 @@ class MainView(WebView):
         # and then, notify web part i am ready to work :)
         gobject.idle_add(view.execute_script, '''
             overlay_variables(%s);
-            globals.load_flags = 1;
             ''' % json.dumps(variables))
 
     def on_over_link(self, view, alt, href):
