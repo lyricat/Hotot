@@ -1077,8 +1077,6 @@ label {
 #welcome_page {
     background: #9DC5E7 url(../image/mask.png);
     width: 100%;
-    border-left: 1px #eee solid;
-    border-right: 1px #aaa solid;
     position: relative;
 }
 
