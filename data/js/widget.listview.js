@@ -179,6 +179,7 @@ function WidgetListView(id, name, params) {
     self.load_success = function load_success(json) {
         if (self == null) return;
         self._footer.hide();
+        if (json.length == 0) { return; }
         var tweets = json;
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
@@ -235,6 +236,7 @@ function WidgetListView(id, name, params) {
     self.loadmore_success = function loadmore_success(json) {
         if (self == null) return;
         self._footer.hide();
+        if (json.length == 0) { return; }
         var tweets = json;
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;

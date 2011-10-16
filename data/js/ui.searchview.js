@@ -73,6 +73,7 @@ function load_tweet(view, success, fail) {
         success([]);
         return;
     }
+    view.page = 1;
     lib.twitterapi.search(view.query, view.page, view.since_id, view.max_id, success);   
     lib.twitterapi.show_user(view.query,
     function (user) {
