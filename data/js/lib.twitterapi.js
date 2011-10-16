@@ -221,9 +221,10 @@ function get_home_timeline(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
 
@@ -237,9 +238,10 @@ function get_mentions(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -263,9 +265,10 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -278,9 +281,10 @@ function get_sent_direct_messages(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -293,9 +297,10 @@ function get_retweeted_by_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -308,9 +313,10 @@ function get_retweeted_to_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -323,9 +329,10 @@ function get_retweets_of_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'since_id': since_id,
         'count': count,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);
@@ -351,7 +358,7 @@ function get_user_timeline(user_id, screen_name, since_id,
         'page': '0',
         'count': count,
     };
-    if (since_id > 10)
+    if (since_id != null)
         params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
@@ -541,8 +548,9 @@ function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success
         'include_entities': '1',
         'owner_screen_name' : owner_screen_name,
         'slug': slug,
-        'since_id': since_id,
     };
+    if (since_id != null)
+        params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
     lib.twitterapi.get(url, params, on_success);

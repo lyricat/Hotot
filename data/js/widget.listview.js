@@ -33,7 +33,7 @@ function WidgetListView(id, name, params) {
     self.changed = false;
     self.is_trim = true;
 
-    self.since_id = 1;
+    self.since_id = null;
     self.max_id = null;
     self.page = 1;
     self.cursor = '';
