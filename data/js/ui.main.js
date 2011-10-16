@@ -85,7 +85,7 @@ loadmore_home:
 function loadmore_home(self, success, fail) {
     var max_id = self.max_id;
     lib.twitterapi.get_home_timeline(
-        1, max_id, conf.vars.items_per_request, 
+        null, max_id, conf.vars.items_per_request, 
         success);
 },
 
@@ -99,7 +99,7 @@ function load_mentions(self, success, fail) {
 loadmore_mentions: 
 function loadmore_mentions(self, success, fail) {
     lib.twitterapi.get_mentions(
-        1, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request, 
         success);
 },
 
@@ -117,10 +117,10 @@ function load_messages(self, success, fail) {
 loadmore_messages: 
 function loadmore_messages(self, success, fail) {
     lib.twitterapi.get_direct_messages(
-        1, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request, 
         success);
     lib.twitterapi.get_sent_direct_messages(
-        1, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request, 
         success);
 },
 

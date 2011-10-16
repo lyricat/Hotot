@@ -533,7 +533,7 @@ function addDefaultView(name, opts) {
             , 'header_html': ui.Template.search_header_t
             , 'method': 'poll'
             , 'interval': 240
-            , 'item_type': 'search'
+            , 'item_type': 'phoenix_search'
             , 'is_trim': false
             , 'use_auto_update': true
         }, opts));

@@ -179,10 +179,14 @@ function WidgetListView(id, name, params) {
     self.load_success = function load_success(json) {
         if (self == null) return;
         self._footer.hide();
-        if (json.length == 0) { return; }
-        for (var i = 0, l = json.length; i < l; i+= 1) {
-            if (!json[i].hasOwnProperty('id_str')) {
-                json[i].id_str = json[i].id.toString();
+        var tweets = json;
+        if (self.item_type == 'phoenix_search') {
+            tweets = json.statuses;
+        }
+        if (tweets.length == 0) { return; }
+        for (var i = 0, l = tweets.length; i < l; i+= 1) {
+            if (! tweets[i].hasOwnProperty('id_str')) {
+                tweets[i].id_str = tweets[i].id.toString();
             }
         }
 
@@ -200,7 +204,7 @@ function WidgetListView(id, name, params) {
             if (json.page){
                 self.page = json.page + 1;
             }
-        } else if (self.item_type == 'search'){
+        } else if (self.item_type == 'search'){ 
             if (json.max_id_str){
                 self.max_id = json.max_id_str;
             }
@@ -208,9 +212,9 @@ function WidgetListView(id, name, params) {
                 self.page = json.page;
             }
         } else {    // other
-            self.since_id = json[count - 1].id_str;
+            self.since_id = tweets[count - 1].id_str;
             if (self.max_id == null) {
-                self.max_id = json[0].id_str;
+                self.max_id = tweets[0].id_str;
             }
         }
         // thread container doesn't have a property '_me'
@@ -231,10 +235,14 @@ function WidgetListView(id, name, params) {
     self.loadmore_success = function loadmore_success(json) {
         if (self == null) return;
         self._footer.hide();
-        if (json.length == 0) { return; }
-        for (var i = 0, l = json.length; i < l; i+= 1) {
-            if (!json[i].hasOwnProperty('id_str')) {
-                json[i].id_str = json[i].id.toString();
+        var tweets = json;
+        if (self.item_type == 'phoenix_search') {
+            tweets = json.statuses;
+        }
+        if (tweets.length == 0) { return; }
+        for (var i = 0, l = tweets.length; i < l; i+= 1) {
+            if (!tweets[i].hasOwnProperty('id_str')) {
+                tweets[i].id_str = tweets[i].id.toString();
             }
         }
         // load callback
@@ -256,9 +264,9 @@ function WidgetListView(id, name, params) {
             }
         } else {    // other
             if (count == 0) { return; }
-            self.max_id = json[count - 1].id_str;
+            self.max_id = tweets[count - 1].id_str;
             if (self.since_id == 1) {
-                self.since_id = json[0].id_str;
+                self.since_id = tweets[0].id_str;
             }
         }
     };

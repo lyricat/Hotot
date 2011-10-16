@@ -671,6 +671,7 @@ function search(query, page, since_id, max_id, on_success) {
         params['format'] = 'phoenix';
         params['include_entities'] = 'true';
         if (since_id != null) params['since_id'] = since_id;
+        if (max_id != null) params['max_id'] = max_id;
         _page = [];
         _page.push('rpp=100');
         _page.push('q=' + encodeURI(query));

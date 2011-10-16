@@ -74,7 +74,7 @@ function load_retweeted_to_me(view, success, fail) {
 loadmore_retweeted_to_me:
 function loadmore_retweeted_to_me(view, success, fail) {
     lib.twitterapi.get_retweeted_to_me(
-        view.since_id , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 load_retweeted_by_me:
@@ -86,7 +86,7 @@ function load_retweeted_by_me(view, success, fail) {
 loadmore_retweeted_by_me:
 function loadmore_retweeted_by_me(view, success, fail) {
     lib.twitterapi.get_retweeted_by_me(
-        view.since_id , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 load_retweets_of_me:
@@ -98,7 +98,7 @@ function load_retweets_of_me(view, success, fail) {
 loadmore_retweets_of_me:
 function load(view, success, fail) {
     lib.twitterapi.get_retweets_of_me(
-        view.since_id , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 };
