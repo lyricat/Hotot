@@ -96,6 +96,7 @@ class MainView(WebView):
         # and then, notify web part i am ready to work :)
         gobject.idle_add(view.execute_script, '''
             overlay_variables(%s);
+            globals.load_flags = 1;
             ''' % json.dumps(variables))
 
     def on_over_link(self, view, alt, href):
