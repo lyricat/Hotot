@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
 
-from setuptools import setup
+from distutils.core import setup
 from DistUtilsExtra.command import *
 from glob import glob
 import os, os.path
@@ -9,7 +9,7 @@ import os, os.path
 def get_data_files(root, data_dir):
     return [
             (root + parent[len(data_dir):], [ os.path.join(parent, fn) for fn in files ])
-                for parent, dirs, files in os.walk(data_dir) if files and not parent.startswith('data/icons')
+                for parent, dirs, files in os.walk(data_dir) if files and (not parent.startswith('data/icons') or 'icons' in root)
            ]
 
 setup(name='hotot',
@@ -41,7 +41,7 @@ Features include:
       packages = ['hotot'],
       data_files = [
           ('share/pixmaps', ['hotot.png']),
-      ] + get_data_files('share/hotot', 'data'),
+      ] + get_data_files('share/hotot', 'data') + get_data_files('share/icons/hicolor', 'data/icons'),
       cmdclass = { "build" :  build_extra.build_extra,
                    "build_i18n" :  build_i18n.build_i18n,
                  }
