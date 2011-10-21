@@ -58,12 +58,12 @@ MainWindow::MainWindow(QWidget *parent) :
     chdir(PREFIX);
 #endif
     QSettings settings("hotot-qt", "hotot");
+
+    setWindowTitle(i18n("Hotot"));
+    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png")));
+    ui->setupUi(this);
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
-
-    this->setWindowTitle(i18n("Hotot"));
-    this->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png")));
-    ui->setupUi(this);
 
     m_menu = new QMenu(this);
     QAction* action;
@@ -79,9 +79,9 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     m_tray->setContextMenu(m_menu);
-    this->addAction(action);
+    addAction(action);
 
-    this->m_page = new HototWebPage(this);
+    m_page = new HototWebPage(this);
 
     QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
@@ -169,14 +169,14 @@ void MainWindow::initDatabases()
 
 void MainWindow::triggerVisible()
 {
-    if (this->isActiveWindow()) {
-        if (this->isVisible())
-            this->hide();
+    if (isActiveWindow()) {
+        if (isVisible())
+            hide();
     } else {
-        if (!this->isVisible())
-            this->show();
-        this->activateWindow();
-        this->raise();
+        if (!isVisible())
+            show();
+        activateWindow();
+        raise();
     }
 }
 
@@ -187,11 +187,11 @@ void MainWindow::notification(QString type, QString title, QString message, QStr
 
 void MainWindow::activate()
 {
-    if (!this->isActiveWindow()) {
-        if (!this->isVisible())
-            this->show();
-        this->activateWindow();
-        this->raise();
+    if (!isActiveWindow()) {
+        if (!isVisible())
+            show();
+        activateWindow();
+        raise();
     }
 }
 

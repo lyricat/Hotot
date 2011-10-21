@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>608</height>
+    <width>16</width>
+    <height>16</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QWebView" name="webView">
-      <property name="url">
+     <widget class="QWebView" name="webView" native="true">
+      <property name="url" stdset="0">
        <url>
         <string>about:blank</string>
        </url>
