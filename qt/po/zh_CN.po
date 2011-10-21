@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/shellex/Hotot/issues\n"
 "POT-Creation-Date: 2011-10-09 16:22+0800\n"
-"PO-Revision-Date: 2011-10-09 16:23+0800\n"
+"PO-Revision-Date: 2011-10-22 04:15+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-china@kde.org>\n"
 "Language: \n"
@@ -23,7 +23,7 @@ msgstr "%1 条未读信息"
 
 #: ../src/mainwindow.cpp:70
 msgid "&Exit"
-msgstr ""
+msgstr "退出(&E)"
 
 #: ../src/main.cpp:50
 msgid "(c) 2009-2011 Shellex Wai\n"
@@ -106,3 +106,4 @@ msgstr "CSSlayer Weng"
 #: rc.cpp:6
 msgid "about:blank"
 msgstr "about:blank"
+

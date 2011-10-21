@@ -44,7 +44,6 @@ bool HototWebPage::acceptNavigationRequest(QWebFrame * frame, const QNetworkRequ
 
 bool HototWebPage::handleUri(const QString& originmsg)
 {
-    qDebug() << originmsg;
     QString msg = originmsg;
     if (msg.startsWith("hotot:")) {
         msg = msg.mid(6);

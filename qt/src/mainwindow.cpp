@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QSettings settings("hotot-qt", "hotot");
 
     setWindowTitle(i18n("Hotot"));
-    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png")));
+    setWindowIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
     ui->setupUi(this);
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
