@@ -15,6 +15,12 @@ import locale
 try: import i18n
 except: from gettext import gettext as _
 
+supported_locate = {
+      'en_US': 'en'
+    , 'zh_CN': 'zh_CN'
+    , 'ja_JP': 'ja'
+}
+
 _browser = ''
 
 def open_webbrowser(uri):
@@ -185,6 +191,11 @@ def get_extra_fonts():
     return font_list
 
 def get_locale():
-    lang, encode = locale.getdefaultlocale()
-    return lang
+    try:
+        lang, encode = locale.getdefaultlocale()
+    except:
+        lang = 'en'
+    if lang in supported_locate:
+        return supported_locate[lang]
+    return 'en'
 

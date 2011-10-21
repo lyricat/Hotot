@@ -16,7 +16,7 @@ reg_list_name_template: '[@＠](\\w+/[a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]+
 // from https://si0.twimg.com/a/1310750171/javascripts/phoenix.bundle.js
 reg_hash_tag_latin_chars: 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ\\303\\277',
 reg_hash_tag_nonlatin_chars: '\u0400-\u04ff\u0500-\u0527\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\u30a1-\u30fa\uff66-\uff9e\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3400-\u4dbf\u4e00-\u9fff\ua700-\ub73f\ub740-\ub81f\uf800-\ufa1f\u3005',
-reg_hash_tag_template: '(^|\\s)[#＃]([a-z_{%LATIN_CHARS%}{%NONLATIN_CHARS%}][a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]*)',
+reg_hash_tag_template: '(^|\\s)[#＃]([a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]*)',
 
 reg_hash_tag: null,
 
@@ -457,7 +457,7 @@ view_t:
 </div>',
 
 indicator_t:
-    '<li class="{%STICK%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></li>',
+    '<div class="{%STICK%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></div>',
 
 kismet_rule_t:
 '<li><a class="kismet_rule" name="{%NAME%}" type="{%TYPE%}" method="{%METHOD%}"\

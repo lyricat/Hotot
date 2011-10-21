@@ -68,37 +68,37 @@ function switch_sub_view(view, name) {
 load_retweeted_to_me:
 function load_retweeted_to_me(view, success, fail) {
     lib.twitterapi.get_retweeted_to_me(
-        1 , null, conf.vars.items_per_request, success);
+        view.since_id , null, conf.vars.items_per_request, success);
 },
 
 loadmore_retweeted_to_me:
 function loadmore_retweeted_to_me(view, success, fail) {
     lib.twitterapi.get_retweeted_to_me(
-        1 , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 load_retweeted_by_me:
 function load_retweeted_by_me(view, success, fail) {
     lib.twitterapi.get_retweeted_by_me(
-        1 , null, conf.vars.items_per_request, success);
+        view.since_id , null, conf.vars.items_per_request, success);
 },
 
 loadmore_retweeted_by_me:
 function loadmore_retweeted_by_me(view, success, fail) {
     lib.twitterapi.get_retweeted_by_me(
-        1 , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 load_retweets_of_me:
 function load_retweets_of_me(view, success, fail) {
     lib.twitterapi.get_retweets_of_me(
-        1 , null, conf.vars.items_per_request, success);
+        view.since_id , null, conf.vars.items_per_request, success);
 },
 
 loadmore_retweets_of_me:
 function load(view, success, fail) {
     lib.twitterapi.get_retweets_of_me(
-        1 , view.max_id, conf.vars.items_per_request, success);
+        null , view.max_id, conf.vars.items_per_request, success);
 },
 
 };

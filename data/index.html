@@ -71,7 +71,7 @@ var layout_opts = {
     ,   paneClass:                  'ui-layout-pane'
     ,   north__slidable:            false
     ,   north__closable:            true
-    ,   north__size:                66
+    ,   north__size:                70
     ,   north__showOverflowOnHover: true
     ,   north__spacing_open :       0
     ,   north__spacing_closed:      0
@@ -124,12 +124,19 @@ function update_tweet_block_width() {
     $('.tweetview').width(globals.tweet_block_width);
     $('.view_title').width(globals.tweet_block_width - 1);
     
+    // no_stick indicators
+    var idrs = $('#indicator_btns').children('.no_stick');
+    $('#indicator_btns').children('.no_stick:eq(0)')
+        .css('margin-left', (($(window).width()-(idrs.length+1) * 40)/2) + 'px');
+
+    // adjust width of compose button
     if (ui.Slider.column_num == 1) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
         $('#indicator_compose_btn').addClass('with_label');
     }
 
+    // adjust width of compose box
     var status_box_w = $(window).width()*0.6;
     if (status_box_w < 550) {       // 550, max-width of #status_box
         if (status_box_w < 400) {   // 400, min-width of #status_box
@@ -890,21 +897,21 @@ jQuery(function($) {
 <section id="header">
     <div id="header_inner">
     <div id="indication">
-        <ul id="indicator_btns">
-            <li class="stick_left">
+        <div id="indicator_btns">
+            <div class="stick_left">
                 <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot"></span></a>
                 <span class="shape"></span>
-            </li>        
-            <li class="stick_left" style="width: 150px; left: 36px;">
+            </div>        
+            <div class="stick_left" style="width: 150px; left: 40px;">
                 <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose" data-i18n-text="compose" data-i18n-title="compose">Compose</span></a>
                 <span class="shape"></span>
-            </li>  
-            <li>
+            </div>  
+            <div>
                 <a id="indicator_add_btn" class="indicator_btn action_button" href="#add" title="Add new views" data-i18n-title="add_new_views"><span class="icon ic_add"></span></a>
                 <span class="shape"></span>
-            </li>  
+            </div>  
 
-        </ul>
+        </div>
         <div id="indication_slot">
             <div id="indication_slot_border"></div>
             <div id="indication_light"></div>
