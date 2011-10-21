@@ -56,7 +56,7 @@
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
-		"message": "Click the buttone below",
+		"message": "Click the button below",
 		"description": "data/index.html"
 	},
 	"theme": {
@@ -76,7 +76,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"some_error_occur": {
-		"message": "Some Error Occur",
+		"message": "Some Error Occured",
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
@@ -228,7 +228,7 @@
 		"description": "data/index.html"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "Charactor `@` is not allowed in profile prefix",
+		"message": "Character `@` is not allowed in profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
 	"action": {
