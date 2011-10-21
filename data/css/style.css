@@ -622,7 +622,7 @@ pre {
 }
 
 #indication .indicator_btn.unread > span.icon {
-    background-position: center 7px;
+    background-position: center center;
 }
 
 #indication  span.shape {
