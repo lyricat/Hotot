@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreState(settings.value("windowState").toByteArray());
 
     this->setWindowTitle(i18n("Hotot"));
-    this->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot_classics.png")));
+    this->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
     ui->setupUi(this);
 
     m_menu = new QMenu(this);
