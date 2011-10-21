@@ -628,7 +628,7 @@
 		"description": "data/index.html"
 	},
 	"post_successfully": {
-		"message": "Post Successfully!",
+		"message": "Posted Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"reload": {
@@ -676,7 +676,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"copy_to_clipboard": {
-		"message": "Copy to clipboard",
+		"message": "Copy into clipboard",
 		"description": "date/index.html"
 	},
 	"about": {
@@ -708,7 +708,7 @@
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "Preview Embedded Meida",
+		"message": "Preview Embedded Media",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -736,7 +736,7 @@
 		"description": "data/index.html"
 	},
 	"update_successfully": {
-		"message": "Update Successfully!",
+		"message": "Updated Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"you_are_not_following_each_other": {
@@ -792,7 +792,7 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "You MUST restart Hotot for some changes below to take effect. And these options will affect ALL accounts",
+		"message": "You MUST restart Hotot for some changes below to take effect. And these changes will affect ALL accounts",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
@@ -852,7 +852,7 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "This profile may has already exists!",
+		"message": "This profile may already exist!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"quote": {
