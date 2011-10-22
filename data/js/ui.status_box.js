@@ -61,7 +61,7 @@ function init () {
             } else {
                 if (ui.StatusBox.last_sent_text == status_text) {
                     toast.set(
-                        _('Oops! You already tweeted that..')).show();
+                        'Oops! You already tweeted that..').show();
                 } else {
                     ui.StatusBox.update_status(status_text);
                 }
