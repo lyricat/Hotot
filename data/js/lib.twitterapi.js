@@ -18,8 +18,11 @@ use_same_sign_api_base: true,
 
 source: 'Hotot',
 
+default_error_method: 'notify',
+
 http_code_msg_table : {
-      401: 'Server cannot authenticate you. Please check your username/password and API base.'
+      0: 'Lost connection with server.'
+    , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
     , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
     , 502: 'Server is down or being upgraded. Please try again later.'
@@ -39,15 +42,20 @@ function default_error_handler(url, xhr, textStatus, errorThrown) {
         tech_info = 'HTTP Code:' + xhr.status 
             + '\nReason:'+ xhr.statusText + '\nURL:' + url;
     }
-    if (xhr.status == 0) {
-        toast.set('Lost connection with server ...').show();
-    } else {
-        try {
-            ui.ErrorDlg.alert('Ooops, An API Error Occurred!', msg, tech_info);
-        } catch (e) {
-            hotot_log('Error:'+xhr.status, xhr.statusText);
-        }
+    switch (lib.twitterapi.default_error_method) {
+        case 'notify':
+            hotot_notify('Ooops, An Error Occurred!', msg, null, 'content');
+        break;
+        case 'dialog':
+            ui.ErrorDlg.alert('Ooops, An Error Occurred!', msg, tech_info);
+        break;
+        case 'toast':
+            toast.set('Error #' + xhr.status + ': ' + msg);
+        break;
+        default:
+        break;
     }
+    hotot_log('Error #' + xhr.status + ',' + xhr.statusText, msg +' '+url);
     return;
 },
 
