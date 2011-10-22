@@ -76,7 +76,6 @@ class Hotot:
 
         if HAS_ME_MENU:
             self.create_memenu()
-        self.start_blinking()
 
     def build_gui(self):
         self.window = gtk.Window()

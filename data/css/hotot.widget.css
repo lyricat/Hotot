@@ -39,7 +39,7 @@ disabled:
     line-height: 30px;
     min-width: 70px;
     padding: 0 10px;
-    color: #777;
+    color: #333;
     border: 1px #ccc solid;
     margin-left: 1px;
     text-decoration: none;
@@ -58,7 +58,7 @@ disabled:
 }
 
 .button:hover {
-    color: #333;
+    color: #777;
 }
 
 .button.dark:hover {
@@ -195,6 +195,7 @@ disabled:
     -webkit-box-shadow: inset 0 1px 4px #bbeaff;
     -moz-box-shadow: inset 0 1px 4px #bbeaff;
     box-shadow: inset 0 1px 4px #bbeaff;
+    border-color: #4D90FE;
 }
 
 .entry.dark:focus, .textarea.dark:focus {

@@ -1054,6 +1054,12 @@ label {
     width: 220px;
     margin-right: 10px;
 }
+.search_box {
+    background-color: #F2F2F2;
+    border: #E5E5E5 solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
 .search_people_result {
     display: none;
 }
@@ -1069,8 +1075,7 @@ label {
     margin-top: 5px;
 }
 .search_view_toggle {
-    margin-bottom: 5px;
-    margin-top: 0;
+    margin-top: 5px;
 }
 
 /*===== Welcome Page ================================*/
@@ -1660,10 +1665,6 @@ label {
     font-size: 12px;
     border: 0;
     position: relative;
-}
-
-.tweetview > .listview_header * {
-    vertical-align: middle;
 }
 
 .tweetview > .listview_footer {
