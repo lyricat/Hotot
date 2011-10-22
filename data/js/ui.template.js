@@ -672,7 +672,8 @@ function form_tweet (tweet_obj, pagename) {
         retweet_id = tweet_obj.id_str;
     }
     var reply_name = tweet_obj.in_reply_to_screen_name;
-    var reply_id = tweet_obj.in_reply_to_status_id_str;    
+    var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str')
+            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;    
     var reply_str = (reply_id != null) ?
         _('reply_to') + ' <a class="who_href" href="#'
             + reply_name + '">'
@@ -787,7 +788,8 @@ function form_retweeted_by(tweet_obj, pagename) {
         retweet_id = tweet_obj.id_str;
     }
     var reply_name = tweet_obj.in_reply_to_screen_name;
-    var reply_id = tweet_obj.in_reply_to_status_id_str;    
+    var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str')
+            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;    
     var reply_str = (reply_id != null) ?
         _('reply to') + ' <a class="who_href" href="#'
             + reply_name + '">'
