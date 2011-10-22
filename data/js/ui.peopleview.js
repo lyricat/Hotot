@@ -332,7 +332,11 @@ function load_timeline(view, success, fail) {
                     , null, null, conf.vars.items_per_request, success);
             });
     }
-    lib.twitterapi.show_user(view.screen_name, render_proc);
+    lib.twitterapi.show_user(view.screen_name, render_proc, function () {
+        widget.DialogManager.alert('This person is not exists.'
+            , 'The person @' + view.screen_name + ' you are looking up is not exists. He/she may have deleted the account or changed the user name.');
+        view.destroy();
+    });
 },
 
 loadmore_timeline:

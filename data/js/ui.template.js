@@ -408,9 +408,10 @@ list_vcard_t:
 
 search_header_t: 
 '<div class="header_frame"> \
+    <div class="search_box"> \
     <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
     <div class="search_people_result"> \
-        <label class="label">One user matched: </label> <span class="search_people_inner"></span>\
+        <span>One user matched: </span> <span class="search_people_inner"></span>\
     </div>\
     <div class="search_view_toggle">\
         <ol class="search_view_toggle_btns radio_group">\
@@ -428,6 +429,7 @@ search_header_t:
          - <span>Make sure all words are spelled correctly.</span><br/> \
          - <span>Try different keywords.</span><br/> \
          - <span>Try more general keywords.</span><br/></p> \
+    </div> \
     </div> \
 </div>',
 
