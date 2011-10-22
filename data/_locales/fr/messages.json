@@ -852,7 +852,7 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "Ce profil existe peut-être déjà !"
+		"message": "Ce profil existe peut-être déjà!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"quote": {

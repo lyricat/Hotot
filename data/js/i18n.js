@@ -14,12 +14,13 @@ function init(callback) {
     } else {
         $.getJSON('_locales/' + i18n.locale + '/messages.json',
         function (result) {
-            hotot_log('i18n', 'use locale: '+i18n.locale);
+            hotot_log('i18n', 'Use locale: '+i18n.locale);
             i18n.load_dict(result);
             i18n.trans_html();
             callback();
-        }).error(function(){
-            hotot_log('i18n', 'use default locale: '+i18n.default_locale);
+        }).error(function(jqXHR, txt, err){
+            hotot_log('i18n', txt);
+            hotot_log('i18n', 'Load messages "'+i18n.locale+'" failed. Use default locale: '+i18n.default_locale);
             $.getJSON('_locales/en/messages.json',
             function (result) {
                 i18n.load_dict(result);

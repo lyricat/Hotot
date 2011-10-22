@@ -57,6 +57,7 @@ def walk_cb(empty_trans, dir_name, f_names):
     if dir_name.endswith('data/_locales/'):
         return
     file_path = os.path.join(dir_name, 'messages.json')
+    print 'File:', file_path
     if 'messages.json' in f_names:
         trans_file = open(file_path, 'r')
         exists_data = trans_file.read()

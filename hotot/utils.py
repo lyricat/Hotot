@@ -19,6 +19,7 @@ supported_locate = {
       'en_US': 'en'
     , 'zh_CN': 'zh_CN'
     , 'ja_JP': 'ja'
+    , 'fr_FR': 'fr'
 }
 
 _browser = ''
