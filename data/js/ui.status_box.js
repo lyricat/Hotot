@@ -21,6 +21,8 @@ is_closed: false,
 
 reg_fake_dots: null,
 
+last_sent_text: '',
+
 short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa64b6d311ff19d48030d6c&format=json&longUrl=',
 // @BUG (webkit for linux)
 // keyup and keydown will fire twice in Chrome
@@ -57,7 +59,12 @@ function init () {
             } else if (ui.StatusBox.current_mode==ui.StatusBox.MODE_IMG){
                 ui.StatusBox.post_image(status_text);
             } else {
-                ui.StatusBox.update_status(status_text);
+                if (ui.StatusBox.last_sent_text == status_text) {
+                    toast.set(
+                        _('Oops! You already tweeted that..')).show();
+                } else {
+                    ui.StatusBox.update_status(status_text);
+                }
             }
         }
     };
@@ -264,7 +271,10 @@ function update_status(status_text) {
         toast.set(_('updating_dots')).show(-1);
         lib.twitterapi.update_status(status_text
             , ui.StatusBox.reply_to_id
-            , ui.StatusBox.update_status_cb);
+            , function (result) {
+                ui.StatusBox.last_sent_text = status_text;
+                ui.StatusBox.update_status_cb(result)
+            });
     }
     return this;
 },
