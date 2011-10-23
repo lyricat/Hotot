@@ -58,7 +58,7 @@ disabled:
 }
 
 .button:hover {
-    color: #777;
+    color: #555;
 }
 
 .button.dark:hover {
@@ -86,7 +86,9 @@ disabled:
 .button.dark.disabled {
     color: #aaa !important;
 }
-
+.button:focus {
+    border-color: #4D90FE !important;
+}
 /* = Combo = */
 .combo {
     outline: none;
@@ -122,6 +124,9 @@ disabled:
     color: #fff;
 }
 
+.combo:focus {
+    border-color: #4D90FE;
+}
 
 /* = widget.checkbox = */
 
@@ -162,8 +167,13 @@ disabled:
     background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#b0b0b0));
 }
 
+.checked:focus, .radio:focus {
+    border-color: #4D90FE;
+}
+
 .radio {
     border-radius: 8px;
+    outline: none;
 }
 
 /* = widget.label = */
