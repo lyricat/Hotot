@@ -468,35 +468,35 @@ kismet_rule_t:
 
 preview_link_reg: {
 'img.ly': {
-    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+))"','g'),
     base: 'http://img.ly/show/thumb/'
 },
 'twitpic.com': {
-    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9_\\-]+))"','g'),
     base: 'http://twitpic.com/show/thumb/'
 },
 'twitgoo.com': {
-    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9_\\-]+))"','g'),
     base: 'http://twitgoo.com/show/thumb/'
 },
 'yfrog.com': {
-    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9_\\-]+))"','g'),
     tail: '.th.jpg'
 },
 'moby.to': {
-    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9_\\-]+))"','g'),
     tail: ':thumbnail'
 },
 'instagr.am': {
-    reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9]+)\\/*)"','g'),
+    reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9_\\-]+)\\/*)"','g'),
     tail: 'media?size=m'
 },
 'plixi.com': {
-    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9]+))"','g'),
+    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9_\\-]+))"','g'),
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
 },
 'picplz.com': {
-    reg: new RegExp('href="(http:\\/\\/picplz.com\\/([a-zA-Z0-9]+))"','g'), 
+    reg: new RegExp('href="(http:\\/\\/picplz.com\\/([a-zA-Z0-9_\\-]+))"','g'), 
     tail: '/thumb/' 
 },
 'raw': {
