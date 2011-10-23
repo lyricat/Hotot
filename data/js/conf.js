@@ -40,6 +40,7 @@ default_prefs: {
         , 'default_password':''
         , 'access_token': ''
           // Look & Feels:
+        , 'lang': 'auto'
         , 'theme': 'New Hope'
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
@@ -73,6 +74,7 @@ default_prefs: {
         , 'default_password':''
         , 'access_token': ''
           // Look & Feels:
+        , 'lang': 'auto'
         , 'theme': 'New Hope'
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
@@ -224,33 +226,9 @@ function apply_prefs(name) {
     var active_profile = conf.profiles[name];
     var prefs = active_profile.preferences;
     conf.current_name = name;
-    // notification
-    if (ui.Main.views.hasOwnProperty('home')) {
-    ui.Main.views['home'].use_notify 
-        = prefs.use_home_timeline_notify; 
-    ui.Main.views['home'].use_notify_type
-        = prefs.use_home_timeline_notify_type;
-    ui.Main.views['home'].use_notify_sound
-        = prefs.use_home_timeline_notify_sound;
-    }
-    if (ui.Main.views.hasOwnProperty('mentions')) {
-    ui.Main.views['mentions'].use_notify
-        = prefs.use_mentions_notify;
-    ui.Main.views['mentions'].use_notify_type
-        = prefs.use_mentions_notify_type;
-    ui.Main.views['mentions'].use_notify_sound
-        = prefs.use_mentions_notify_sound;
-    }
-    if (ui.Main.views.hasOwnProperty('messages')) {
-    ui.Main.views['messages'].use_notify
-        = prefs.use_direct_messages_inbox_notify;
-    ui.Main.views['messages'].use_notify_type
-        = prefs.use_direct_messages_inbox_notify_type;
-    ui.Main.views['messages'].use_notify_sound
-        = prefs.use_direct_messages_inbox_notify_sound;
-    }
 
     $('#chk_remember_password').attr('checked', prefs.remember_password);
+    i18n.change(prefs.lang);
     change_theme(prefs.theme, prefs.theme_path);
     $('body').css('font-family', prefs.use_custom_font
         ? prefs.custom_font: prefs.font_family_used);

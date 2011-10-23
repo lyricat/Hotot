@@ -30,6 +30,10 @@ function init () {
     $('#sel_prefs_theme').bind('change', function () {
         change_theme($(this).val(), $(this).children('option[value="'+$(this).val()+'"]').attr('path'));
     });
+    
+    $('#sel_prefs_lang').bind('change', function () {
+        i18n.change($(this).val());
+    });
 
     $('#sel_prefs_font_family, #tbox_prefs_font_size, #tbox_prefs_custom_font, #rdo_use_custom_font, #rdo_use_system_font').bind('click change keypress blur',
     function (event) {
@@ -180,6 +184,9 @@ function load_prefs() {
         , prefs.remember_password);
 
     // Appearance
+    var lang_list = $('#sel_prefs_lang');
+    lang_list.val(prefs.lang);
+
     var theme_list = $('#sel_prefs_theme').empty();
     for (var i = 0, l = conf.vars.builtin_themes.length; i < l; i += 1) {
         var theme_name = conf.vars.builtin_themes[i];
@@ -248,6 +255,8 @@ function save_prefs() {
     prefs['remember_password']
         = $('#chk_prefs_remember_password').attr('checked');
     // Looks & Feels
+    prefs['lang'] = $('#sel_prefs_lang').val();
+
     prefs['theme'] = $('#sel_prefs_theme').val();
     prefs['theme_path'] = $('#sel_prefs_theme').children('option[value="'+$('#sel_prefs_theme').val()+'"]').attr('path');
     prefs['custom_font'] = $('#tbox_prefs_custom_font').val();

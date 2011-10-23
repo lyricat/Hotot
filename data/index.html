@@ -1141,6 +1141,10 @@ jQuery(function($) {
                     href="#prefs_appearance" 
                     class="radio_group_btn"
                     data-i18n-text="look_and_feels">Looks &amp; Feels</a>
+            </li><li><a id="btn_prefs_behavior"
+                    href="#prefs_behavior" 
+                    class="radio_group_btn"
+                    data-i18n-text="behavior">Behavior</a>
             </li><li><a id="btn_prefs_advanced"
                     href="#prefs_advanced" 
                     class="radio_group_btn"
@@ -1243,6 +1247,20 @@ jQuery(function($) {
         </div> <!-- END of #prefs_account -->
         <div id='prefs_appearance' class="prefs_dlg_page">
             <div class="dialog_block">
+            <h3>- <span data-i18n-text="language">Language</span> -</h3>
+            <p>
+                <label>Interface language: </label>
+                <select id="sel_prefs_lang" class="combo"
+                        title="Select a language">
+                    <option value="auto">Auto Detect</option>
+                    <option value="zh_CN">Chinese (Simplified)</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="ja">Japanese</option>
+                </select>
+            </p>
+            </div>
+            <div class="dialog_block">
             <h3>- <span data-i18n-text="theme">Theme</span> -</h3>
             <p>
                 <table class="void_table" border="0">
@@ -1317,6 +1335,35 @@ jQuery(function($) {
             </p>
             </div>
             <div class="dialog_block">
+            <h3>- <span data-i18n-text="effects">Effects</span> -</h3>
+            <p>
+                <input id="rdo_effects_level_low" type="radio"
+                    class="radio" name="effects" value="0" checked/>
+                <strong><label class="label" data-i18n-text="effects_low"
+                    >Low</label>:</strong>
+                <label class="label" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
+                    >Disable decoration of widgets and some animations.</label>
+                <br/>
+                <input id="rdo_effects_level_normal" type="radio"
+                    class="radio" name="effects" value="1"/>
+                <strong><label class="label" data-i18n-text="effects_normal"
+                    >Normal</label>:</strong>
+                <label class="label" data-i18n-text="balance_between_attractiveness_and_preformance"
+                    >Balance between attractiveness and performance.</label>
+                <br/>
+                <input id="rdo_effects_level_extra" type="radio"
+                    class="radio" name="effects" value="2"/>
+                <strong><label class="label" data-i18n-text="effects_extra"
+                    >Extra</label>:</strong>
+                <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets"
+                    >More effects like shadows and glow of widgets.</span>
+                <label/>
+            </p>
+            </div>
+ 
+        </div><!-- END of prefs_appearance -->
+        <div id='prefs_behavior' class="prefs_dlg_page">
+            <div class="dialog_block">
             <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify" 
@@ -1359,33 +1406,7 @@ jQuery(function($) {
                     >Preview embedded media.</label><br/>
             </p>
             </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="effects">Effects</span> -</h3>
-            <p>
-                <input id="rdo_effects_level_low" type="radio"
-                    class="radio" name="effects" value="0" checked/>
-                <strong><label class="label" data-i18n-text="effects_low"
-                    >Low</label>:</strong>
-                <label class="label" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
-                    >Disable decoration of widgets and some animations.</label>
-                <br/>
-                <input id="rdo_effects_level_normal" type="radio"
-                    class="radio" name="effects" value="1"/>
-                <strong><label class="label" data-i18n-text="effects_normal"
-                    >Normal</label>:</strong>
-                <label class="label" data-i18n-text="balance_between_attractiveness_and_preformance"
-                    >Balance between attractiveness and performance.</label>
-                <br/>
-                <input id="rdo_effects_level_extra" type="radio"
-                    class="radio" name="effects" value="2"/>
-                <strong><label class="label" data-i18n-text="effects_extra"
-                    >Extra</label>:</strong>
-                <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets"
-                    >More effects like shadows and glow of widgets.</span>
-                <label/>
-            </p>
-            </div>
-        </div><!-- END of prefs_appearance -->
+       </div><!-- END of prefs_behavior-->
         <div id='prefs_advanced' class="prefs_dlg_page"> 
             <div class="dialog_block">
             <h3>- <span data-i18n-text="api_setting">API Settings</span> -</h3>

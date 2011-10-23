@@ -3,29 +3,45 @@ default_locale: 'en',
 
 locale: 'en',
 
+forced: false,
+
 dict: {},
 
 init:
 function init(callback) {
-    if (conf.vars.platform == 'Chrome') {
-        i18n.locale =  window.navigator.language.replace('-', '_');
-        i18n.trans_html();
-        callback();
+    i18n.change(i18n.locale, callback);
+    return ;
+},
+
+change:
+function change(code, callback) {
+    if (code == 'auto') {
+        i18n.forced = false;
+        code = i18n.locale;
     } else {
-        $.getJSON('_locales/' + i18n.locale + '/messages.json',
+        i18n.forced = true;
+    }
+    if (conf.vars.platform == 'Chrome' && !i18n.forced) {
+        i18n.trans_html();
+        if (callback != undefined)
+            callback();
+    } else {
+        $.getJSON('_locales/' + code + '/messages.json',
         function (result) {
-            hotot_log('i18n', 'Use locale: '+i18n.locale);
+            hotot_log('i18n', 'Use locale: ' + code);
             i18n.load_dict(result);
             i18n.trans_html();
-            callback();
+            if (callback != undefined)
+                callback();
         }).error(function(jqXHR, txt, err){
             hotot_log('i18n', txt);
-            hotot_log('i18n', 'Load messages "'+i18n.locale+'" failed. Use default locale: '+i18n.default_locale);
+            hotot_log('i18n', 'Load messages "'+ code +'" failed. Use default locale: '+i18n.default_locale);
             $.getJSON('_locales/en/messages.json',
             function (result) {
                 i18n.load_dict(result);
                 i18n.trans_html();
-                callback();
+                if (callback != undefined)
+                    callback();
             });
         });
     }
@@ -38,7 +54,7 @@ function load_dict(new_dict) {
 
 get_message:
 function get_message(msg) {
-    if (conf.vars.platform == 'Chrome') {
+    if (conf.vars.platform == 'Chrome' && !i18n.forced) {
         return chrome.i18n.getMessage(msg);
     } else {
         if (i18n.dict != null && i18n.dict.hasOwnProperty(msg)) {
