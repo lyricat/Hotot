@@ -284,7 +284,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retweeter/Un-retweet",
+		"message": "Retweeter/Dé-retweeter",
 		"description": "data/index.html"
 	},
 	"sign_out": {
@@ -292,7 +292,7 @@
 		"description": "data/index.html"
 	},
 	"search_api_base2": {
-		"message": "Search API Base",
+		"message": "Cherche la Base API",
 		"description": "data/index.html"
 	},
 	"px": {
@@ -384,7 +384,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"behavior": {
-		"message": "Behavior",
+		"message": "Comportement",
 		"description": "data/index.html"
 	},
 	"updating_dots": {
@@ -412,7 +412,7 @@
 		"description": "data/index.html"
 	},
 	"author": {
-		"message": "Autheur",
+		"message": "Auteur",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
@@ -428,7 +428,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "Reset Time",
+		"message": "Réinitialiser l'heure",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"extensions": {
@@ -592,7 +592,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"name": {
-		"message": "Name",
+		"message": "Nom",
 		"description": "data/index.html"
 	},
 	"tweet_view": {
@@ -640,7 +640,7 @@
 		"description": "data/index.html"
 	},
 	"post_successfully": {
-		"message": "Post Successfully!",
+		"message": "Envoyé avec succès!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"reload": {
@@ -704,7 +704,7 @@
 		"description": "data/index.html"
 	},
 	"language": {
-		"message": "",
+		"message": "Langage",
 		"description": "data/index.html"
 	},
 	"messages": {
@@ -716,15 +716,15 @@
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Status is over 140 characters!",
+		"message": "Le status dépasse les 140 caractères",
 		"description": "data/js/ui.status_box.js"
 	},
 	"select_a_language": {
-		"message": "",
+		"message": "Selectionnez une langue",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "Prévisualiser les médias",
+		"message": "Prévisualiser le média intégré",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -756,7 +756,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "You are not following each other.",
+		"message": "Vous ne vous suivez pas entre vous.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
@@ -836,7 +836,7 @@
 		"description": "data/index.html"
 	},
 	"join_time": {
-		"message": "Join",
+		"message": "Rejoindre",
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
