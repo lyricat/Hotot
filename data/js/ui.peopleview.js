@@ -332,10 +332,13 @@ function load_timeline(view, success, fail) {
                     , null, null, conf.vars.items_per_request, success);
             });
     }
-    lib.twitterapi.show_user(view.screen_name, render_proc, function () {
-        widget.DialogManager.alert('This person does not exist.'
-            , 'The person @' + view.screen_name + ' you are looking for does not exist. He/she may have deleted the account or changed the user name.');
-        view.destroy();
+    lib.twitterapi.show_user(view.screen_name, render_proc,
+        function (xhr, textStatus, errorThrown) {
+            if (xhr.status == 404) {
+                widget.DialogManager.alert('This person does not exist.'
+                    , 'The person @' + view.screen_name + ' you are looking for does not exist. He/she may have deleted the account or changed the user name.');
+                view.destroy();
+            }
     });
 },
 
