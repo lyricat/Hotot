@@ -15,6 +15,10 @@
 		"message": "プロフィールの名称を入力してください",
 		"description": "data/js/ui.welcome.js"
 	},
+	"themes": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_native_notify_system": {
 		"message": "ネイティブ通知システムを利用",
 		"description": ""
@@ -74,6 +78,10 @@
 	"destroy_successfully": {
 		"message": "削除しました",
 		"description": "data/js/ui.main.js"
+	},
+	"interface_language": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"some_error_occur": {
 		"message": "エラーが出ました",
@@ -423,6 +431,10 @@
 		"message": "リセット・タイム",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"extensions": {
+		"message": "プラグイン",
+		"description": ""
+	},
 	"retweets_view": {
 		"message": "リツイート",
 		"description": "data/index.html"
@@ -691,6 +703,10 @@
 		"message": "確認する",
 		"description": ""
 	},
+	"language": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"messages": {
 		"message": "メッセージ",
 		"description": "data/js/ui.slider.js"
@@ -703,9 +719,9 @@
 		"message": "140文字を超えてしまいました",
 		"description": "data/js/ui.status_box.js"
 	},
-	"extensions": {
-		"message": "プラグイン",
-		"description": ""
+	"select_a_language": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
 		"message": "メディアをプレビューする",

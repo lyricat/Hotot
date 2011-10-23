@@ -15,6 +15,10 @@
 		"message": "Veuillez entrer un nom de profil",
 		"description": "data/js/ui.welcome.js"
 	},
+	"themes": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_native_notify_system": {
 		"message": "Utiliser le système de notification natif",
 		"description": "data/index.html"
@@ -74,6 +78,10 @@
 	"destroy_successfully": {
 		"message": "Suppression effectuée avec succès !",
 		"description": "data/js/ui.main.js"
+	},
+	"interface_language": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"some_error_occur": {
 		"message": "Une erreur est survenue",
@@ -423,6 +431,10 @@
 		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"extensions": {
+		"message": "Extensions",
+		"description": "data/index.html"
+	},
 	"retweets_view": {
 		"message": "Retweets View",
 		"description": "data/index.html"
@@ -691,6 +703,10 @@
 		"message": "OK",
 		"description": "data/index.html"
 	},
+	"language": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"messages": {
 		"message": "Messages",
 		"description": "data/js/ui.slider.js"
@@ -703,8 +719,8 @@
 		"message": "Status is over 140 characters!",
 		"description": "data/js/ui.status_box.js"
 	},
-	"extensions": {
-		"message": "Extensions",
+	"select_a_language": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {

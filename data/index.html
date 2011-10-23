@@ -1249,9 +1249,10 @@ jQuery(function($) {
             <div class="dialog_block">
             <h3>- <span data-i18n-text="language">Language</span> -</h3>
             <p>
-                <label>Interface language: </label>
+                <label data-i18n-text="interface_language">Interface language: </label>
                 <select id="sel_prefs_lang" class="combo"
-                        title="Select a language">
+                    title="Select a language"
+                    data-i18n-title="select_a_language">
                     <option value="auto">Auto Detect</option>
                     <option value="zh_CN">Chinese (Simplified)</option>
                     <option value="en">English</option>
@@ -1265,7 +1266,8 @@ jQuery(function($) {
             <p>
                 <table class="void_table" border="0">
                     <tr>
-                        <td><label class="label">Themes</label></td>
+                        <td><label class="label" 
+                                data-i18n-text="themes">Themes</label></td>
                         <td>
                         <select id="sel_prefs_theme" class="combo"
                             title="Select a theme" style="width:150px;">
@@ -1279,15 +1281,18 @@ jQuery(function($) {
                         </td>
                     </tr>
                     <tr>
-                        <td><label class="label">Name</label></td>
+                        <td><label class="label" 
+                                data-i18n-text="name">Name</label></td>
                         <td><label class="label" id="prefs_theme_name"></label></td>
                     </tr>
                     <tr>
-                        <td><label class="label">Author</label></td>
+                        <td><label class="label"
+                                data-i18n-text="author">Author</label></td>
                         <td><label class="label" id="prefs_theme_author"></label></td>
                     </tr>
                     <tr>
-                        <td><label class="label">Web</label></td>
+                        <td><label class="label"
+                                data-i18n-text="web">Web</label></td>
                         <td ><a class="label" id="prefs_theme_web" target="_blank" href="#"></a></td>
                     </tr>
                     <tr>

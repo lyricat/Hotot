@@ -15,6 +15,10 @@
 		"message": "请输入一个账户前缀",
 		"description": "data/js/ui.welcome.js"
 	},
+	"themes": {
+		"message": "主题",
+		"description": "data/index.html"
+	},
 	"use_native_notify_system": {
 		"message": "使用原生通知机制",
 		"description": ""
@@ -74,6 +78,10 @@
 	"destroy_successfully": {
 		"message": "删除成功！",
 		"description": "data/js/ui.main.js"
+	},
+	"interface_language": {
+		"message": "介面语言",
+		"description": "data/index.html"
 	},
 	"some_error_occur": {
 		"message": "矮油～ 发生了点错误耶 >_<",
@@ -423,6 +431,10 @@
 		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"extensions": {
+		"message": "扩展",
+		"description": ""
+	},
 	"retweets_view": {
 		"message": "转发",
 		"description": "data/index.html"
@@ -691,6 +703,10 @@
 		"message": "确定",
 		"description": ""
 	},
+	"language": {
+		"message": "语言",
+		"description": "data/index.html"
+	},
 	"messages": {
 		"message": "私信",
 		"description": "data/js/ui.slider.js"
@@ -703,9 +719,9 @@
 		"message": "超过140字了，亲！",
 		"description": "data/js/ui.status_box.js"
 	},
-	"extensions": {
-		"message": "扩展",
-		"description": ""
+	"select_a_language": {
+		"message": "选择语言",
+		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
 		"message": "预览嵌入的多媒体",

@@ -15,6 +15,10 @@
 		"message": "Please enter a profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
+	"themes": {
+		"message": "Themes",
+		"description": "data/index.html"
+	},
 	"use_native_notify_system": {
 		"message": "Use native notify system",
 		"description": "data/index.html"
@@ -74,6 +78,10 @@
 	"destroy_successfully": {
 		"message": "Destroy Successfully!",
 		"description": "data/js/ui.main.js"
+	},
+	"interface_language": {
+		"message": "Interface language",
+		"description": "data/index.html"
 	},
 	"some_error_occur": {
 		"message": "Some Error Occured",
@@ -423,6 +431,10 @@
 		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"extensions": {
+		"message": "Extensions",
+		"description": "data/index.html"
+	},
 	"retweets_view": {
 		"message": "Retweets View",
 		"description": "data/index.html"
@@ -691,6 +703,10 @@
 		"message": "OK",
 		"description": "data/index.html"
 	},
+	"language": {
+		"message": "Language",
+		"description": "data/index.html"
+	},
 	"messages": {
 		"message": "Messages",
 		"description": "data/js/ui.slider.js"
@@ -703,8 +719,8 @@
 		"message": "Status is over 140 characters!",
 		"description": "data/js/ui.status_box.js"
 	},
-	"extensions": {
-		"message": "Extensions",
+	"select_a_language": {
+		"message": "Select a language",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
