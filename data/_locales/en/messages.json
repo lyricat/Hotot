@@ -423,7 +423,7 @@
 		"message": "Undo retweeting ...",
 		"description": "data/js/ui.main.js"
 	},
-	"followers" {
+	"followers": {
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
 	},
