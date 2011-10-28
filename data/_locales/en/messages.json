@@ -740,7 +740,7 @@
 		"description": "data/index.html"
 	},
 	"follower_stat": {
-		"message": "Follower",
+		"message": "Followers",
 		"description": "data/index.html"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
@@ -764,7 +764,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"friend_stat": {
-		"message": "Friend",
+		"message": "Friends",
 		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
