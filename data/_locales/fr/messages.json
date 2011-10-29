@@ -916,7 +916,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "répondre à",
+		"message": "en réponse à",
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
