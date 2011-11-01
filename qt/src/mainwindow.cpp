@@ -50,7 +50,7 @@
 #endif
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+    ParentWindow(parent),
     ui(new Ui::MainWindow),
     m_page(0),
     m_webView(0),
@@ -59,20 +59,28 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
 #endif
-    QSettings settings("hotot-qt", "hotot");
-
     setWindowTitle(i18n("Hotot"));
     setWindowIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+#ifndef MEEGO_EDITION_HARMATTAN
+    QWidget* widget = new QWidget(this);
+    ui->setupUi(widget);
+    this->setCentralWidget(widget);
+#else
     ui->setupUi(this);
+#endif
+
+#ifndef MEEGO_EDITION_HARMATTAN
+    QSettings settings("hotot-qt", "hotot");
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
+#endif
 
     m_menu = new QMenu(this);
     m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     m_actionExit->setShortcut(QKeySequence::Quit);
     connect(m_actionExit, SIGNAL(triggered()), this, SLOT(close()));
     m_menu->addAction(m_actionExit);
-    
+
     m_actionDev = new QAction(QIcon::fromTheme("configure"), i18n("&Developer Tool"), this);
     connect(m_actionDev, SIGNAL(triggered()), this, SLOT(showDeveloperTool()));
 
@@ -99,10 +107,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
-    
-     m_inspector = new QWebInspector;
-     m_inspector->setPage(m_page);
-    
+
+    m_inspector = new QWebInspector;
+    m_inspector->setPage(m_page);
+
 #ifdef Q_OS_UNIX
     m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
 #else
@@ -113,10 +121,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+#ifndef MEEGO_EDITION_HARMATTAN
     QSettings settings("hotot-qt", "hotot");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
-    QMainWindow::closeEvent(event);
+#endif
+    ParentWindow::closeEvent(event);
 }
 
 MainWindow::~MainWindow()
@@ -215,12 +225,10 @@ void MainWindow::setEnableDeveloperTool(bool e)
     else
         m_menu->removeAction(m_actionDev);
     m_tray->setContextMenu(m_menu);
-    
+
 }
 
 void MainWindow::showDeveloperTool()
 {
     m_inspector->setVisible(true);
 }
-
-#include "mainwindow.moc"

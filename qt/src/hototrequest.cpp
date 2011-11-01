@@ -99,6 +99,3 @@ void HototRequest::finished()
     m_reply->deleteLater();
     m_reply = NULL;
 }
-
-
-#include "hototrequest.moc"

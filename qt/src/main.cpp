@@ -31,6 +31,11 @@
 #include <KDebug>
 #endif
 
+// Meego
+#ifdef MEEGO_EDITION_HARMATTAN
+#include <MApplication>
+#endif
+
 // System
 #include <stdio.h>
 
@@ -77,7 +82,7 @@ int main(int argc, char *argv[])
 
     KCmdLineArgs::addCmdLineOptions(options);
     KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-    
+
     enableDeveloper = args->isSet("dev");
 
     KApplication a;
@@ -85,28 +90,32 @@ int main(int argc, char *argv[])
 #ifndef Q_OS_WIN32
     bind_textdomain_codeset("hotot-qt", "UTF-8");
 #endif
+#ifdef MEEGO_EDITION_HARMATTAN
+    MApplication a(argc, argv);
+#else
     QApplication a(argc, argv);
-    
+
     int opt;
-    while((opt = getopt(argc, argv, "dh")) != -1) {
-        switch(opt) {
-            case 'd':
-                enableDeveloper = true;
-                break;
-            case 'h':
-                Usage();
-                return 0;
-            default:
-                Usage();
-                exit(EXIT_FAILURE);
-                break;
+    while ((opt = getopt(argc, argv, "dh")) != -1) {
+        switch (opt) {
+        case 'd':
+            enableDeveloper = true;
+            break;
+        case 'h':
+            Usage();
+            return 0;
+        default:
+            Usage();
+            exit(EXIT_FAILURE);
+            break;
         }
     }
-    
+#endif
+
 #endif
     MainWindow w;
     w.setEnableDeveloperTool(enableDeveloper);
-    
+
     w.show();
 
     return a.exec();

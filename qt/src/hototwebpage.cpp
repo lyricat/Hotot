@@ -17,7 +17,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "hototwebpage.h"
+// Qt
 #include <QDebug>
 #include <QProcess>
 #include <QClipboard>
@@ -26,6 +26,9 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QWebFrame>
+
+// Hotot
+#include "hototwebpage.h"
 #include "hototrequest.h"
 #include "mainwindow.h"
 
@@ -147,5 +150,3 @@ void HototWebPage::requestFinished(HototRequest* request, QByteArray result, QSt
     }
     request->deleteLater();
 }
-
-#include "hototwebpage.moc"

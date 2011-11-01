@@ -150,5 +150,3 @@ QByteArray FormPost::response()
 {
     return this->data;
 }
-
-#include "formpost.moc"

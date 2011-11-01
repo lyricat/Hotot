@@ -70,6 +70,3 @@ void QtTrayBackend::unreadAlert(QString number)
 {
     m_trayicon->setToolTip(i18n("%1 unread Messages").arg(number));
 }
-
-
-#include "qttraybackend.moc"
