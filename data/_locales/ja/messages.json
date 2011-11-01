@@ -723,6 +723,10 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"more_actions": {
+		"message": "もっと",
+		"description": "data/js/ui.template.js"
+	},
 	"preview_embedded_media": {
 		"message": "メディアをプレビューする",
 		"description": "data/index.html"
@@ -855,6 +859,10 @@
 		"message": "もっとエフェクトを使う",
 		"description": "data/index.html"
 	},
+	"my_favs": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
+	},
 	"slide_to_next_page": {
 		"message": "次のページにとばす",
 		"description": "data/index.html"
@@ -887,9 +895,9 @@
 		"message": "外見",
 		"description": ""
 	},
-	"more_actions": {
-		"message": "もっと",
-		"description": "data/js/ui.template.js"
+	"favs_view": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"friends": {
 		"message": "友達",

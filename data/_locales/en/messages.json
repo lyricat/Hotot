@@ -723,6 +723,10 @@
 		"message": "Select a language",
 		"description": "data/index.html"
 	},
+	"more_actions": {
+		"message": "More",
+		"description": "data/js/ui.template.js"
+	},
 	"preview_embedded_media": {
 		"message": "Preview Embedded Media",
 		"description": "data/index.html"
@@ -855,6 +859,10 @@
 		"message": "More effects like shadows and glow of widgets",
 		"description": "data/index.html"
 	},
+	"my_favs": {
+		"message": "My Favorites",
+		"description": "data/js/ui.slider.js"
+	},
 	"slide_to_next_page": {
 		"message": "Slide to next page",
 		"description": "data/index.html"
@@ -887,9 +895,9 @@
 		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
-	"more_actions": {
-		"message": "More",
-		"description": "data/js/ui.template.js"
+	"favs_view": {
+		"message": "Favs View",
+		"description": "data/index.html"
 	},
 	"friends": {
 		"message": "Friends",

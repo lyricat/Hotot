@@ -723,6 +723,10 @@
 		"message": "选择语言",
 		"description": "data/index.html"
 	},
+	"more_actions": {
+		"message": "更多动作",
+		"description": "data/js/ui.template.js"
+	},
 	"preview_embedded_media": {
 		"message": "预览嵌入的多媒体",
 		"description": "data/index.html"
@@ -855,6 +859,10 @@
 		"message": "开启更多特效，比如阴影和发光。",
 		"description": "data/index.html"
 	},
+	"my_favs": {
+		"message": "我的收藏",
+		"description": "data/js/ui.slider.js"
+	},
 	"slide_to_next_page": {
 		"message": "切换到下一页",
 		"description": "data/index.html"
@@ -887,9 +895,9 @@
 		"message": "感官",
 		"description": ""
 	},
-	"more_actions": {
-		"message": "更多动作",
-		"description": "data/js/ui.template.js"
+	"favs_view": {
+		"message": "我的收藏",
+		"description": "data/index.html"
 	},
 	"friends": {
 		"message": "朋友",
