@@ -19,6 +19,8 @@
 
 #ifndef KDETRAY_BACKEND_H
 #define KDETRAY_BACKEND_H
+
+// Hotot
 #include "trayiconbackend.h"
 
 class KStatusNotifierItem;

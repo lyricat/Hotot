@@ -20,13 +20,27 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "common.h"
+
 // Qt
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 
+// Meego
+#ifdef MEEGO_EDITION_HARMATTAN
+#include <MApplicationWindow>
+#endif
+
 class QWebInspector;
 class TrayIconBackend;
 class KStatusNotifierItem;
+
+#ifdef MEEGO_EDITION_HARMATTAN
+typedef MApplicationWindow ParentWindow;
+#else
+typedef QMainWindow ParentWindow;
+#endif
+
 namespace Ui
 {
 class MainWindow;
@@ -35,7 +49,7 @@ class MainWindow;
 class QWebView;
 class HototWebPage;
 
-class MainWindow : public QMainWindow
+class MainWindow : public ParentWindow
 {
     Q_OBJECT
 public:

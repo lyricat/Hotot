@@ -19,6 +19,8 @@
 
 #ifndef TRAYICON_BACKEND_H
 #define TRAYICON_BACKEND_H
+
+// Qt
 #include <QObject>
 
 class MainWindow;
