@@ -24,6 +24,7 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 
+class QWebInspector;
 class TrayIconBackend;
 class KStatusNotifierItem;
 namespace Ui
@@ -44,9 +45,11 @@ public:
     void triggerVisible();
     void activate();
     void unreadAlert(QString number);
+    void setEnableDeveloperTool(bool e);
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
+    void showDeveloperTool();
 
 protected:
     void initDatabases();
@@ -56,8 +59,11 @@ private:
     Ui::MainWindow *ui;
     HototWebPage* m_page;
     QWebView* m_webView;
+    QWebInspector* m_inspector;
     QMenu* m_menu;
     TrayIconBackend* m_tray;
+    QAction* m_actionExit;
+    QAction* m_actionDev;
 };
 
 #endif // MAINWINDOW_H

@@ -37,8 +37,17 @@
 // Hotot
 #include "mainwindow.h"
 
+void Usage()
+{
+    printf("Usage: hotot-qt [options]\n"
+           "\t\t-d\tEnable Develope Tool\n"
+           "\t\t-h\tShow this help\n"
+          );
+}
+
 int main(int argc, char *argv[])
 {
+    bool enableDeveloper = false;
 #ifdef HAVE_KDE
 
     KAboutData aboutData("hotot",                                        // internal name
@@ -62,23 +71,43 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(ki18n("Marguerite Su"),     ki18n("Document"),              "admin"  "@" "doublechou.pp.ru");
 
     KCmdLineOptions options;
+    options.add("d");
+    options.add("dev", ki18n("Enable developer Tool"));
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineArgs::addCmdLineOptions(options);
-    KCmdLineArgs::parsedArgs();
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+    
+    enableDeveloper = args->isSet("dev");
 
     KApplication a;
-    MainWindow w;
-    w.show();
-    return a.exec();
 #else
 #ifndef Q_OS_WIN32
     bind_textdomain_codeset("hotot-qt", "UTF-8");
 #endif
     QApplication a(argc, argv);
+    
+    int opt;
+    while((opt = getopt(argc, argv, "dh")) != -1) {
+        switch(opt) {
+            case 'd':
+                enableDeveloper = true;
+                break;
+            case 'h':
+                Usage();
+                return 0;
+            default:
+                Usage();
+                exit(EXIT_FAILURE);
+                break;
+        }
+    }
+    
+#endif
     MainWindow w;
+    w.setEnableDeveloperTool(enableDeveloper);
+    
     w.show();
 
     return a.exec();
-#endif
 }

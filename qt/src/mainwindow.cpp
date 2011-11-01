@@ -37,6 +37,7 @@
 #include <QLocale>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QWebInspector>
 
 // Hotot
 #include "ui_mainwindow.h"
@@ -52,7 +53,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_page(0),
-    m_webView(0)
+    m_webView(0),
+    m_inspector(0)
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -66,11 +68,13 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreState(settings.value("windowState").toByteArray());
 
     m_menu = new QMenu(this);
-    QAction* action;
-    action = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
-    action->setShortcut(QKeySequence::Quit);
-    connect(action, SIGNAL(triggered()), this, SLOT(close()));
-    m_menu->addAction(action);
+    m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
+    m_actionExit->setShortcut(QKeySequence::Quit);
+    connect(m_actionExit, SIGNAL(triggered()), this, SLOT(close()));
+    m_menu->addAction(m_actionExit);
+    
+    m_actionDev = new QAction(QIcon::fromTheme("configure"), i18n("&Developer Tool"), this);
+    connect(m_actionDev, SIGNAL(triggered()), this, SLOT(showDeveloperTool()));
 
 #ifdef HAVE_KDE
     m_tray = new KDETrayBackend(this);
@@ -79,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     m_tray->setContextMenu(m_menu);
-    addAction(action);
+    addAction(m_actionExit);
 
     m_page = new HototWebPage(this);
 
@@ -95,7 +99,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
     ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
-
+    
+     m_inspector = new QWebInspector;
+     m_inspector->setPage(m_page);
     
 #ifdef Q_OS_UNIX
     m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
@@ -116,6 +122,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete m_inspector;
 }
 
 void MainWindow::loadFinished(bool ok)
@@ -198,6 +205,22 @@ void MainWindow::activate()
 void MainWindow::unreadAlert(QString number)
 {
     m_tray->unreadAlert(number);
+}
+
+void MainWindow::setEnableDeveloperTool(bool e)
+{
+    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
+    if (e)
+        m_menu->insertAction(m_actionExit, m_actionDev);
+    else
+        m_menu->removeAction(m_actionDev);
+    m_tray->setContextMenu(m_menu);
+    
+}
+
+void MainWindow::showDeveloperTool()
+{
+    m_inspector->setVisible(true);
 }
 
 #include "mainwindow.moc"

@@ -21,6 +21,8 @@
 
 // Qt
 #include <QPainter>
+#include <QDebug>
+#include <QApplication>
 
 // KDE
 #include <KStatusNotifierItem>
@@ -28,6 +30,9 @@
 #include <KIcon>
 #include <KGlobalSettings>
 #include <KColorScheme>
+#include <KGlobal>
+#include <KComponentData>
+#include <KAboutData>
 
 // Hotot
 #include "mainwindow.h"
@@ -58,6 +63,11 @@ void KDETrayBackend::showMessage(QString type, QString title, QString message, Q
 void KDETrayBackend::setContextMenu(QMenu* menu)
 {
     KMenu* kmenu = m_statusNotifierItem->contextMenu();
+    Q_FOREACH(QAction * action, kmenu->actions()) {
+        kmenu->removeAction(action);
+    }
+    kmenu->addTitle(qApp->windowIcon(), KGlobal::caption());
+    kmenu->setTitle(KGlobal::mainComponent().aboutData()->programName());
     Q_FOREACH(QAction * action, menu->actions()) {
         kmenu->addAction(action);
     }
