@@ -16,6 +16,7 @@ set(Hotot_QT_SRCS
     hototwebpage.cpp
     trayiconbackend.cpp
     qttraybackend.cpp
+    hototwebview.cpp
 )
 
 set(Hotot_QT_MOC_SRCS
@@ -25,6 +26,7 @@ set(Hotot_QT_MOC_SRCS
     hototwebpage.h
     qttraybackend.h
     trayiconbackend.h
+    hototwebview.h
 )
 
 if (HAVE_KDE)

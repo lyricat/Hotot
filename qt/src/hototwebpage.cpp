@@ -17,6 +17,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include "common.h"
+
 // Qt
 #include <QDebug>
 #include <QProcess>
@@ -26,6 +28,10 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QWebFrame>
+
+#ifdef MEEGO_EDITION_HARMATTAN
+#include <MMessageBox>
+#endif
 
 // Hotot
 #include "hototwebpage.h"
@@ -129,6 +135,19 @@ void HototWebPage::javaScriptAlert(QWebFrame *frame, const QString &msg)
     Q_UNUSED(frame);
     handleUri(msg);
 }
+
+#ifdef MEEGO_EDITION_HARMATTAN
+bool HototWebPage::javaScriptConfirm(QWebFrame *frame, const QString &msg)
+{
+    Q_UNUSED(frame);
+    MMessageBox *messageBox = new MMessageBox(msg, M::YesButton|M::NoButton);
+    //int result = messageBox->exec(m_mainWindow);
+    messageBox->appear(MSceneWindow::DestroyWhenDone);
+    int result = 0;
+    return (result == MDialog::Accepted);
+}
+
+#endif
 
 void HototWebPage::requestFinished(HototRequest* request, QByteArray result, QString uuid , bool error)
 {

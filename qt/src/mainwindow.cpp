@@ -23,7 +23,8 @@
 #include <unistd.h>
 
 // Qt
-#include <QWebView>
+#include <QApplication>
+#include <QGraphicsWebView>
 #include <QWebDatabase>
 #include <QWebSettings>
 #include <QDir>
@@ -38,22 +39,26 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QWebInspector>
+#include <QGraphicsView>
+
+#ifdef MEEGO_EDITION_HARMATTAN
+#include <MApplicationPage>
+#endif
 
 // Hotot
-#include "ui_mainwindow.h"
 #include "mainwindow.h"
 #include "hototwebpage.h"
 #include "trayiconbackend.h"
 #include "qttraybackend.h"
+#include "hototwebview.h"
 #ifdef HAVE_KDE
 #include "kdetraybackend.h"
 #endif
 
 MainWindow::MainWindow(QWidget *parent) :
     ParentWindow(parent),
-    ui(new Ui::MainWindow),
     m_page(0),
-    m_webView(0),
+    m_webView(new QGraphicsWebView),
     m_inspector(0)
 {
 #ifdef Q_OS_UNIX
@@ -62,11 +67,17 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(i18n("Hotot"));
     setWindowIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
 #ifndef MEEGO_EDITION_HARMATTAN
-    QWidget* widget = new QWidget(this);
-    ui->setupUi(widget);
-    this->setCentralWidget(widget);
+    HototWebView* view = new HototWebView(m_webView, this);
+    this->setCentralWidget(view);
 #else
-    ui->setupUi(this);
+    MApplicationPage* page = new MApplicationPage;
+    page->setCentralWidget(m_webView);
+    page->setComponentsDisplayMode(MApplicationPage::AllComponents,
+                                           MApplicationPageModel::Hide);
+    page->setAutoMarginsForComponentsEnabled(false);
+    page->resize(page->exposedContentRect().size());
+    page->appear(this, MSceneWindow::DestroyWhenDone);
+    page->setPannable(false);
 #endif
 
 #ifndef MEEGO_EDITION_HARMATTAN
@@ -91,25 +102,32 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     m_tray->setContextMenu(m_menu);
+#ifndef MEEGO_EDITION_HARMATTAN
     addAction(m_actionExit);
+#endif
 
     m_page = new HototWebPage(this);
 
     QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
-    m_webView = ui->webView;
-    ui->webView->setPage(m_page);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
+    m_webView->setPage(m_page);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
 
     m_inspector = new QWebInspector;
     m_inspector->setPage(m_page);
+
+#ifdef MEEGO_EDITION_HARMATTAN
+    connect(page, SIGNAL(exposedContentRectChanged()), this, SLOT(contentSizeChanged()));
+    m_page->setPreferredContentsSize(page->exposedContentRect().size().toSize());
+    m_webView->setResizesToContents(true);
+#endif
 
 #ifdef Q_OS_UNIX
     m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
@@ -118,6 +136,13 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
 }
+
+#ifdef MEEGO_EDITION_HARMATTAN
+void MainWindow::contentSizeChanged()
+{
+    m_page->setPreferredContentsSize(currentPage()->exposedContentRect().size().toSize());
+}
+#endif
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
@@ -131,7 +156,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
     delete m_inspector;
 }
 
@@ -219,7 +243,7 @@ void MainWindow::unreadAlert(QString number)
 
 void MainWindow::setEnableDeveloperTool(bool e)
 {
-    ui->webView->settings()->globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
+    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
     if (e)
         m_menu->insertAction(m_actionExit, m_actionDev);
     else

@@ -17,33 +17,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef HOTOTWEBPAGE_H
-#define HOTOTWEBPAGE_H
+#include "hototwebview.h"
 
-#include "common.h"
-
-// Qt
-#include <QWebPage>
-#include <QByteArray>
-
-class HototRequest;
-class MainWindow;
-class HototWebPage : public QWebPage
+HototWebView::HototWebView(QGraphicsWebView* webview, QWidget* parent)
+    : QGraphicsView(new QGraphicsScene(), parent), m_webview(webview)
 {
-    Q_OBJECT
-public:
-    HototWebPage(MainWindow *mainWindow, QObject* parent = 0);
-protected Q_SLOTS:
-    void requestFinished(HototRequest* request, QByteArray result, QString uuid , bool error);
-protected:
-    virtual bool acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type);
-    virtual void javaScriptAlert(QWebFrame * frame, const QString & msg);
-#ifdef MEEGO_EDITION_HARMATTAN
-    virtual bool javaScriptConfirm(QWebFrame *frame, const QString &msg);
-#endif
-    bool handleUri(const QString& string);
-private:
-    MainWindow* m_mainWindow;
-};
+    setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+    setOptimizationFlags(QGraphicsView::DontSavePainterState);
 
-#endif // HototWebPage_H
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    setFrameShape(QFrame::NoFrame);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    scene()->addItem(m_webview);
+}
+
+void HototWebView::resizeEvent(QResizeEvent *e)
+{
+    QGraphicsView::resizeEvent(e);
+    setUpdatesEnabled(false);
+
+    if (!m_webview)
+        return;
+
+    QRectF rect(QPointF(0, 0), size());
+    scene()->setSceneRect(rect);
+
+    m_webview->setGeometry(rect);
+    setUpdatesEnabled(true);
+    update();
+}
+

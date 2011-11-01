@@ -17,33 +17,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef HOTOTWEBPAGE_H
-#define HOTOTWEBPAGE_H
+#include <QGraphicsView>
+#include <QGraphicsWebView>
 
-#include "common.h"
-
-// Qt
-#include <QWebPage>
-#include <QByteArray>
-
-class HototRequest;
-class MainWindow;
-class HototWebPage : public QWebPage
+class HototWebView : public QGraphicsView
 {
     Q_OBJECT
 public:
-    HototWebPage(MainWindow *mainWindow, QObject* parent = 0);
-protected Q_SLOTS:
-    void requestFinished(HototRequest* request, QByteArray result, QString uuid , bool error);
+    HototWebView(QGraphicsWebView* webview, QWidget *parent = 0);
+
 protected:
-    virtual bool acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type);
-    virtual void javaScriptAlert(QWebFrame * frame, const QString & msg);
-#ifdef MEEGO_EDITION_HARMATTAN
-    virtual bool javaScriptConfirm(QWebFrame *frame, const QString &msg);
-#endif
-    bool handleUri(const QString& string);
+    void resizeEvent(QResizeEvent *e);
+
 private:
-    MainWindow* m_mainWindow;
+    QGraphicsWebView *m_webview;
 };
 
-#endif // HototWebPage_H

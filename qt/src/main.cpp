@@ -116,6 +116,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.setEnableDeveloperTool(enableDeveloper);
 
+#ifdef MEEGO_EDITION_HARMATTAN
+    w.setOrientationAngle(M::Angle0);
+    w.setOrientationAngleLocked(true);
+#endif
+
     w.show();
 
     return a.exec();

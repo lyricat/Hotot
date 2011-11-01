@@ -41,12 +41,7 @@ typedef MApplicationWindow ParentWindow;
 typedef QMainWindow ParentWindow;
 #endif
 
-namespace Ui
-{
-class MainWindow;
-}
-
-class QWebView;
+class QGraphicsWebView;
 class HototWebPage;
 
 class MainWindow : public ParentWindow
@@ -64,15 +59,17 @@ public:
 protected Q_SLOTS:
     void loadFinished(bool ok);
     void showDeveloperTool();
+#ifdef MEEGO_EDITION_HARMATTAN
+    void contentSizeChanged();
+#endif
 
 protected:
     void initDatabases();
     void closeEvent(QCloseEvent *evnet);
 
 private:
-    Ui::MainWindow *ui;
     HototWebPage* m_page;
-    QWebView* m_webView;
+    QGraphicsWebView* m_webView;
     QWebInspector* m_inspector;
     QMenu* m_menu;
     TrayIconBackend* m_tray;
