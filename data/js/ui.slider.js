@@ -609,6 +609,29 @@ function addDefaultView(name, opts) {
             , 'item_type': 'id'
         }, opts));
     break;
+    case 'favs':
+    ui.Slider.add('favs'
+        , {title: _('favs'), icon:'image/ic_fav.png'}
+        , $.extend({ 'type':'tweet', 'title': _('my_favs')
+            , 'load': ui.PeopleView.load_fav
+            , 'loadmore': ui.PeopleView.loadmore_fav
+            , 'load_success': ui.Main.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.Main.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'init': function (view) {
+                    view.screen_name = globals.myself.screen_name; 
+                    view.load();
+                }
+            , 'destroy': function (view) {
+                    ui.Slider.remove(view.name);
+                }            
+            , 'former': ui.Template.form_tweet
+            , 'method': 'poll'
+            , 'interval': 360
+            , 'item_type': 'page'
+        }, opts));
+    break;
     default: break;
     }
     return true;
