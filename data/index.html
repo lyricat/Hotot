@@ -3,10 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Home | Hotot</title>
-    <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" /> 
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /> 
-    <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" /> 
-    <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" />
+    <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" />
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
     <script type="text/javascript" src="js/base64.js"></script>
@@ -14,14 +14,14 @@
     <script type="text/javascript" src="js/lib.network.js"></script>
     <script type="text/javascript" src="js/lib.twitterapi.js"></script>
     <script type="text/javascript" src="js/js-oauth.js"></script>
-    
+
     <script type="text/javascript" src="js/widget.button.js"></script>
     <script type="text/javascript" src="js/widget.radio_group.js"></script>
     <script type="text/javascript" src="js/widget.dialog.js"></script>
     <script type="text/javascript" src="js/widget.bubble.js"></script>
     <script type="text/javascript" src="js/widget.listview.js"></script>
     <script type="text/javascript" src="js/widget.autocomplete.js"></script>
-    
+
     <script type="text/javascript" src="js/hotkey.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
@@ -60,12 +60,12 @@
     <script type="text/javascript" src="js/ui.finder.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
     <script type="text/javascript" src="js/ui.context_menu.js"></script>
-    
+
     <script type="text/javascript" src="ext/ext.js"></script>
 <script type="text/javascript">
 var layout_opts = {
-        closable:                   true        
-    ,   resizable:                  true        
+        closable:                   true
+    ,   resizable:                  true
     ,   slidable:                   true
     ,   enableCursorHotkey:         false
     ,   paneClass:                  'ui-layout-pane'
@@ -123,7 +123,7 @@ function update_tweet_block_width() {
     $('.view_title:gt(ui.Slider.column_num)').hide();
     $('.tweetview').width(globals.tweet_block_width);
     $('.view_title').width(globals.tweet_block_width - 1);
-    
+
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
     $('#indicator_btns').children('.no_stick:eq(0)')
@@ -151,7 +151,7 @@ function update_tweet_block_width() {
 function hotot_action(uri) {
     if (util.is_native_platform()) {
         alert('hotot:' + uri);
-    } 
+    }
 }
 
 function quit() {
@@ -159,7 +159,7 @@ function quit() {
         conf.save_prefs(conf.current_name, function(){
             if (conf.vars.platform == 'Chrome') {
                 chrome.tabs.getCurrent(function (tab) {
-                    chrome.tabs.remove(tab.id);    
+                    chrome.tabs.remove(tab.id);
                 });
             } else {
                 hotot_action('system/quit');
@@ -226,22 +226,22 @@ function open_list(screen_name, slug, additional_opts) {
 }
 
 function reply_tweet(tid, text) {
-     
+
 }
 
 function send_tweet(text) {
-    
+
 }
 
 function send_dm(screen_name) {
-    
+
 }
 
 function navigate_action(uri) {
     if (util.is_native_platform()) {
         window.location.href = uri;
     } else {
-        window.open(uri); 
+        window.open(uri);
     }
 }
 
@@ -252,7 +252,7 @@ function hotot_notify(title, summary, image, type) {
 function hotot_log(label, content) {
     if (conf.settings.use_verbose_mode) {
         if (util.is_native_platform()) {
-            hotot_action('action/log/' + encodeURIComponent(label) 
+            hotot_action('action/log/' + encodeURIComponent(label)
                 + '/' + encodeURIComponent(content));
         } else if (conf.vars.platform == 'Chrome') {
             console.log('[' + label + '] ' + content);
@@ -285,7 +285,7 @@ function unread_alert(count) {
     }
 }
 
-/* 
+/*
     = startup process =
     - document.ready -> init() -> db.init() -> daemon.init()
         -> conf.init() -> ext.init() -> set loading flags
@@ -298,7 +298,7 @@ function init(callback) {
     procs.push(function() {
         db.init(function () {
             $(window).dequeue('_page_init');
-        });    
+        });
     });
     procs.push(function() {
         daemon.init();
@@ -307,7 +307,7 @@ function init(callback) {
     procs.push(function() {
         conf.init(function () {
             $(window).dequeue('_page_init');
-        });    
+        });
     });
     procs.push(function() {
         ext.init();
@@ -423,7 +423,7 @@ function init_hotkey() {
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67), 
+    hotkey.register(hotkey.calculate(67),
         function () {ui.StatusBox.open();});
     // Navigation
     // 'h' to slide to prev tab
@@ -474,7 +474,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_reply_click(null, ui.Main.selected_tweet_id, null); 
+                ui.Main.on_reply_click(null, ui.Main.selected_tweet_id, null);
             }
         }
     });
@@ -483,7 +483,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_rt_click(null, ui.Main.selected_tweet_id, null); 
+                ui.Main.on_rt_click(null, ui.Main.selected_tweet_id, null);
             }
         }
     });
@@ -502,7 +502,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_reply_all_click(null, ui.Main.selected_tweet_id, null); 
+                ui.Main.on_reply_all_click(null, ui.Main.selected_tweet_id, null);
             }
         }
     });
@@ -525,7 +525,7 @@ function init_hotkey() {
             }
         }
     });
-    // 'a' then 'm' to send msg 
+    // 'a' then 'm' to send msg
     hotkey.register([ia, hotkey.calculate(77)], function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
@@ -563,14 +563,14 @@ function init_hotkey() {
         , hotkey.calculate(54, hotkey.shiftKey)
         , hotkey.calculate(55, hotkey.shiftKey)], function(){
             $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
-        }); 
+        });
 }
 
-function overlay_variables(vars) {        
+function overlay_variables(vars) {
     conf.vars.platform = vars.platform;
     hotot_log('init', 'overlay_variables()');
     if (util.is_native_platform()) {
-        // native variables 
+        // native variables
         conf.vars.conf_dir = vars.conf_dir;
         conf.vars.cache_dir = vars.cache_dir;
         conf.vars.avatar_cache_dir = vars.avatar_cache_dir;
@@ -609,24 +609,24 @@ function on_load_finish() {
             ext.init_exts();
             $(window).dequeue('_on_load_finish');
         });
-        
+
         // 2. push settings to native platform
         if (util.is_native_platform()) {
-            procs.push(function () {    
+            procs.push(function () {
                 hotot_log('init', 'on_load_finish() -> push settings');
-                hotot_action('system/load_settings/' 
+                hotot_action('system/load_settings/'
                     + encodeURIComponent(JSON.stringify(conf.settings)))
                 globals.load_flags = 2;
                 $(window).dequeue('_on_load_finish');
             });
         } else {
-            procs.push(function () {    
+            procs.push(function () {
                 hotot_log('init', 'on_load_finish() -> push settings');
                 $(window).width(conf.settings.size_w);
                 $(window).height(conf.settings.size_h);
-                globals.load_flags = 2;    
+                globals.load_flags = 2;
                 $(window).dequeue('_on_load_finish');
-            }); 
+            });
         }
         // 3. i18n
         procs.push(function() {
@@ -645,7 +645,7 @@ function on_load_finish() {
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
-                $('#welcome_page_main').fadeIn();  
+                $('#welcome_page_main').fadeIn();
                 ui.Welcome.load_daily_hint();
                 ui.Welcome.load_profiles_info();
                 $('#profile_avatar_list a:first').click();
@@ -689,14 +689,14 @@ jQuery(function($) {
         if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
-                globals.about_dialog.open();            
+                globals.about_dialog.open();
                 return;
             }
         }
         if (event.ctrlKey && !event.shiftKey && !event.altKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
             quit();
-        } 
+        }
         if (focus_input || !globals.in_main_view)
             return
         if (! ui.ActionMenu.is_hide) {
@@ -732,7 +732,7 @@ jQuery(function($) {
             ui.Slider.slide_to_prev();
         }
     };
-    $('body').focus(function () {    
+    $('body').focus(function () {
         unread_alert(0);
     });
 
@@ -831,7 +831,7 @@ jQuery(function($) {
         <div style="clear:both"></div>
         <div class="bottom">
             <a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
-            <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>     
+            <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
             <a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
         </div>
         <div style="clear:both"></div>
@@ -854,30 +854,30 @@ jQuery(function($) {
     <div id="main_page_slider">
     </div>
     <ul id="tweet_more_menu" class="hotot_menu">
-    <li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn" 
+    <li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
         title="Retweet this tweet"
         href="javascript:void(0);"
         data-i18n-text="retweet"
         >Retweet</a></li>
-    <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn" 
+    <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
         title="Quote this tweet"
         href="javascript:void(0);"
         data-i18n-text="quote"
         >Quote</a></li>
     <li><a id="tweet_reply_all_btn"
         class="tweet_more_menu_btn"
-        href="javascript:void(0);" 
+        href="javascript:void(0);"
         title="Reply All"
         data-i18n-text="reply_all"
         >Reply All</a></li>
-    <li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn" 
+    <li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
         title="Reply this tweet"
         href="javascript:void(0);"
         data-i18n-text="reply"
         >Reply</a></li>
-    <li><a id="tweet_dm_btn" 
+    <li><a id="tweet_dm_btn"
         class="tweet_more_menu_btn"
-        href="javascript:void(0);" 
+        href="javascript:void(0);"
         title="Send Message to them"
         data-i18n-text="send_message"
         >Send Message</a></li>
@@ -901,15 +901,15 @@ jQuery(function($) {
             <div class="stick_left">
                 <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot"></span></a>
                 <span class="shape"></span>
-            </div>        
+            </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
                 <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose" data-i18n-text="compose" data-i18n-title="compose">Compose</span></a>
                 <span class="shape"></span>
-            </div>  
+            </div>
             <div>
                 <a id="indicator_add_btn" class="indicator_btn action_button" href="#add" title="Add new views" data-i18n-title="add_new_views"><span class="icon ic_add"></span></a>
                 <span class="shape"></span>
-            </div>  
+            </div>
 
         </div>
         <div id="indication_slot">
@@ -984,7 +984,7 @@ jQuery(function($) {
                 <li>
                      <a id="btn_sign_out" title="Sign out" href="javascript:void(0);" data-i18n-text="sign_out">Sign out</a>
                 </li>
-            </ul> 
+            </ul>
         </div>
         <div id="exts_menu_frame">
             <h2 style="padding: 5px 0; margin-left: 5px;" data-i18n-text="extensions">Extensions</h2>
@@ -1013,7 +1013,7 @@ jQuery(function($) {
 </section> <!-- bottom -->
 
 </div><!-- container -->
-        
+
 <section id="status_box" class="closed">
     <span id="bubble_shape"></span>
 
@@ -1130,23 +1130,23 @@ jQuery(function($) {
     <div class="dialog_header">
         <ul id="prefs_dlg_btns" class="radio_group dark">
             <li><a id="btn_prefs_global"
-                    href="#prefs_global" 
+                    href="#prefs_global"
                     class="radio_group_btn selected"
                     data-i18n-text="globals">Globals</a>
             </li><li><a id="btn_prefs_account"
-                    href="#prefs_account" 
+                    href="#prefs_account"
                     class="radio_group_btn"
                     data-i18n-text="account">Account</a>
             </li><li><a id="btn_prefs_appearance"
-                    href="#prefs_appearance" 
+                    href="#prefs_appearance"
                     class="radio_group_btn"
                     data-i18n-text="look_and_feels">Looks &amp; Feels</a>
             </li><li><a id="btn_prefs_behavior"
-                    href="#prefs_behavior" 
+                    href="#prefs_behavior"
                     class="radio_group_btn"
                     data-i18n-text="behavior">Behavior</a>
             </li><li><a id="btn_prefs_advanced"
-                    href="#prefs_advanced" 
+                    href="#prefs_advanced"
                     class="radio_group_btn"
                     data-i18n-text="advanced">Advanced</a>
             </li>
@@ -1163,35 +1163,35 @@ jQuery(function($) {
             <p>
                 <input id="chk_prefs_use_http_proxy" class="checkbox"
                     title="Use HTTP Proxy" type="checkbox"/>
-                <label id="label_prefs_use_http_proxy" 
+                <label id="label_prefs_use_http_proxy"
                     for="chk_prefs_use_http_proxy"
                     class="label" data-i18n-text="enable_proxy">
                     Enable Proxy
                 </label><br/>
                 <input id="tbox_prefs_http_proxy_host"
-                    title="HTTP Proxy Host" 
-                    style="width: 120px;" 
+                    title="HTTP Proxy Host"
+                    style="width: 120px;"
                     type="text" class="entry"/>
                 <label class="label">:</label>
                 <input id="tbox_prefs_http_proxy_port"
-                    title="HTTP Proxy Port" 
+                    title="HTTP Proxy Port"
                     style="width: 40px;"
                     type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
                     title="Need Authentication" type="checkbox"/>
-                <label id="label_prefs_http_proxy_auth" 
+                <label id="label_prefs_http_proxy_auth"
                     for="chk_prefs_use_http_proxy_auth"
                     class="label" data-i18n-text="proxy_auth">
                     Authentication
-                </label><br/> 
+                </label><br/>
                 <label class="label" data-i18n-text="proxy_auth_name">Username</label>
                 <input id="tbox_prefs_http_proxy_auth_name"
-                    title="HTTP Proxy Authentication Name" 
-                    style="width: 120px;" 
+                    title="HTTP Proxy Authentication Name"
+                    style="width: 120px;"
                     type="text" class="entry"/>
                 <label class="label" data-i18n-text="proxy_auth_password">Password</label>
                 <input id="tbox_prefs_http_proxy_auth_password"
-                    title="HTTP Proxy Authentication Password" 
+                    title="HTTP Proxy Authentication Password"
                     style="width: 120px;"
                     type="text" class="entry"/><br/>
             </p>
@@ -1200,7 +1200,7 @@ jQuery(function($) {
             <h3>- <span data-i18n-text="keybinding">Keybinding</span> -</h3>
             <p>
                 <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
-                <input id="tbox_prefs_shortcut_summon_hotot" 
+                <input id="tbox_prefs_shortcut_summon_hotot"
                      title="Summon Hot Key"
                      type="text" class="entry"/><br/>
             </p>
@@ -1209,14 +1209,14 @@ jQuery(function($) {
             <h3>- <span data-i18n-text="misc">Misc</span> -</h3>
             <p>
                 <input id="chk_prefs_use_verbose_mode"
-                    title="Enable verbose mode or not" 
+                    title="Enable verbose mode or not"
                     type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_verbose_mode"
                     class="label"
                     data-i18n-text="enable_verbose_mode"
                     >Enable verbose mode</label><br/>
                 <input id="chk_prefs_use_ubuntu_indicator"
-                    title="Use Ubuntu Indicator" 
+                    title="Use Ubuntu Indicator"
                     type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_ubuntu_indicator" class="label"
                     data-i18n-text="use_ubuntu_indicator"
@@ -1237,7 +1237,7 @@ jQuery(function($) {
             <h3>- <span data-i18n-text="identica">Identi.ca</span> -</h3>
             <p>
                 <input id="chk_prefs_remember_password"
-                    type="checkbox" class="checkbox" 
+                    type="checkbox" class="checkbox"
                     title="Remember Password" checked="1"/>
                 <label for="chk_prefs_remember_password" class="label"
                     data-i18n-text="remember_password">Remember Password
@@ -1254,6 +1254,7 @@ jQuery(function($) {
                     title="Select a language"
                     data-i18n-title="select_a_language">
                     <option value="auto">Auto Detect</option>
+                    <option value="pt_BR">Brazilian Portuguese</option>
                     <option value="zh_CN">Chinese (Simplified)</option>
                     <option value="en">English</option>
                     <option value="fr">French</option>
@@ -1267,7 +1268,7 @@ jQuery(function($) {
             <p>
                 <table class="void_table" border="0">
                     <tr>
-                        <td><label class="label" 
+                        <td><label class="label"
                                 data-i18n-text="themes">Themes</label></td>
                         <td>
                         <select id="sel_prefs_theme" class="combo"
@@ -1277,12 +1278,12 @@ jQuery(function($) {
                         </select>
                         </td>
                         <td rowspan="5" style="text-align: right">
-                            <img id="prefs_theme_preview" src="#" 
+                            <img id="prefs_theme_preview" src="#"
                             alt="No Preview"/>
                         </td>
                     </tr>
                     <tr>
-                        <td><label class="label" 
+                        <td><label class="label"
                                 data-i18n-text="name">Name</label></td>
                         <td><label class="label" id="prefs_theme_name"></label></td>
                     </tr>
@@ -1312,7 +1313,7 @@ jQuery(function($) {
                 <label class="label"
                     data-i18n-text="system_font">System Font</label>
                 </td><td>
-                <input id="rdo_use_custom_font" type="radio" 
+                <input id="rdo_use_custom_font" type="radio"
                     class="radio" name="font" />
                 <label class="label"
                     data-i18n-text="custom_font">Custom Font</label>
@@ -1326,10 +1327,10 @@ jQuery(function($) {
                     <option value="1">1</option>
                 </select></td><td>
                 <input id="tbox_prefs_custom_font"
-                    title="Custom Font" 
+                    title="Custom Font"
                     type="text" class="entry"/></td><td>
-                <input id="tbox_prefs_font_size" 
-                    title="Font Size" 
+                <input id="tbox_prefs_font_size"
+                    title="Font Size"
                     style="width:30px" type="text" class="entry"/>
                 <label class="label" data-i18n-text="px">px</label></td></tr>
                 </tbody></table>
@@ -1366,23 +1367,23 @@ jQuery(function($) {
                 <label/>
             </p>
             </div>
- 
+
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
             <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
-                <input id="chk_prefs_use_native_notify" 
+                <input id="chk_prefs_use_native_notify"
                     title="Use Native Notify" class="checkbox"
                     type="checkbox"/>
                 <label for="chk_prefs_use_native_notify" class="label"
                     data-i18n-text="use_native_notify_system"
                     >Use Native Notify System</label><br/>
-                <input id="chk_prefs_use_preload_conversation" 
-                    title="Preload latest tweet in a conversation if it is cached." 
+                <input id="chk_prefs_use_preload_conversation"
+                    title="Preload latest tweet in a conversation if it is cached."
                     class="checkbox"
                     type="checkbox"/>
-                <label for="chk_prefs_use_preload_conversation"  
+                <label for="chk_prefs_use_preload_conversation"
                     class="label"
                     data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
                     >Preload latest tweets in conversations if possible.</label><br/>
@@ -1413,11 +1414,11 @@ jQuery(function($) {
             </p>
             </div>
        </div><!-- END of prefs_behavior-->
-        <div id='prefs_advanced' class="prefs_dlg_page"> 
+        <div id='prefs_advanced' class="prefs_dlg_page">
             <div class="dialog_block">
             <h3>- <span data-i18n-text="api_setting">API Settings</span> -</h3>
             <p>
-                <label class="label" 
+                <label class="label"
                     data-i18n-text="api_base">API Base</label><br/>
                 <input id="tbox_prefs_api_base"
                     title="API Base" type="text" class="entry"/><br/>
@@ -1428,15 +1429,15 @@ jQuery(function($) {
                     data-i18n-text="same_signing_api_base" class="label"
                     >Same signing API base:
                 </label><br/>
-                <input id="tbox_prefs_sign_api_base"  
+                <input id="tbox_prefs_sign_api_base"
                     title="Signing API Base"
                     type="text" class="entry"/><br/>
                 <label class="label" data-i18n-text="oauth_base"
                     >OAuth Base</label><br/>
-                <input id="tbox_prefs_oauth_base" 
+                <input id="tbox_prefs_oauth_base"
                     title="OAuth Base" type="text" class="entry"/><br/>
                 <input id="chk_prefs_use_same_sign_oauth_base"
-                    title="Use same Signing OAuth Base" 
+                    title="Use same Signing OAuth Base"
                     type="checkbox" class="checkbox"/>
                 <label for="chk_prefs_use_same_sign_oauth_base"
                     class="label"
@@ -1446,11 +1447,11 @@ jQuery(function($) {
                 <input id="tbox_prefs_sign_oauth_base"
                     title="Signing OAuth Base"
                     type="text" class="entry"/><br/>
-                <label class="label" 
+                <label class="label"
                     data-i18n-text="search_api_base2"
                     >Search API Base</label><br/>
                 <input id="tbox_prefs_search_api_base2"
-                    title="Search API Base" 
+                    title="Search API Base"
                     type="text" class="entry"/><br/>
             </p>
             </div>
@@ -1492,7 +1493,7 @@ jQuery(function($) {
         <p data-i18n-text="copy_the_pin_code_and_paste_it_into_the_box_below"
         >Copy the PIN Code and paste it into the box below</p>
         <p style="text-align: center;">
-            <label class="label" 
+            <label class="label"
                 data-i18n-text="pin_code">PIN Code:</label>
             <br/>
             <input id="tbox_oauth_pin" type="text" class="entry"/><br/>
@@ -1516,19 +1517,19 @@ jQuery(function($) {
     <div class="dialog_header">
         <ul id="about_dlg_btns" class="radio_group dark">
             <li><a id="btn_about_about"
-                    href="#about_about" 
+                    href="#about_about"
                     class="radio_group_btn selected"
                     data-i18n-text="about">About</a>
             </li><li><a id="btn_about_keyboard"
-                    href="#about_keyboard" 
+                    href="#about_keyboard"
                     class="radio_group_btn"
                     data-i18n-text="keyboard">Keyboard</a>
             </li><li><a id="btn_about_credits"
-                    href="#about_credits" 
+                    href="#about_credits"
                     class="radio_group_btn"
                     data-i18n-text="credits">Credits</a>
             </li><li><a id="btn_about_license"
-                    href="#about_license" 
+                    href="#about_license"
                     class="radio_group_btn"
                     data-i18n-text="license">License</a>
             </li>
@@ -1588,7 +1589,7 @@ jQuery(function($) {
             <h3>- <span data-i18n-text="credits">Credits</span> -</h3>
             <p>
                 <label>Written by</label>:<br/>
-                - Shellex Wai &lt;<a target="_blank" href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt; 
+                - Shellex Wai &lt;<a target="_blank" href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/shellex">@shellex</a>)<br/>
 
                 - Jiahua Huang &lt;<a target="_blank" href="mailto:jhuangjiahua@gmail.com">jhuangjiahua@gmail.com</a>&gt;
@@ -1605,13 +1606,13 @@ jQuery(function($) {
             </p>
             <p>
                 <label>Artwork by</label>: <br/>
-                - Evan &lt;<a target="_blank" href="http://www.freemagi.com.com">www.freemagi.com</a>&gt; 
+                - Evan &lt;<a target="_blank" href="http://www.freemagi.com.com">www.freemagi.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
                 - Shellex Wai <br/>
             </p>
             <p>
                 <label>Document by</label>: <br/>
-                - Marguerite Su &lt;<a target="_blank" href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt; 
+                - Marguerite Su &lt;<a target="_blank" href="mailto:admin@doublechou.pp.ru">admin@doublechou.pp.ru</a>&gt;
                 (<a target="_blank" href="http://twitter.com/doublechou">@doublechou</a>)<br/>
 
             </p>
@@ -1675,7 +1676,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             <span id="profile_tweet_per_day_cnt"></span><br/>
             <label class="label" data-i18n-text="friend_stat">Friends</span>: </label>
             <span id="profile_friend_cnt"></span><br/>
-            <label class="label" data-i18n-text="follower_stat">Followers</span>: </label> 
+            <label class="label" data-i18n-text="follower_stat">Followers</span>: </label>
             <span id="profile_follower_cnt"></span><br/>
             <label class="label" data-i18n-text="favorites">Favourites</span>: </label>
             <span id="profile_favourite_cnt"></span><br/>
@@ -1726,15 +1727,15 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <tr>
             <td><label class="label">Privacy:</label></td>
             <td>
-                <input id="list_attr_privacy_public" class="radio" 
+                <input id="list_attr_privacy_public" class="radio"
                     type="radio" name="list_attr_privacy" value="public"
-                    title="Anyone can follow this list" checked> 
+                    title="Anyone can follow this list" checked>
                 <label class="label"
                     for="list_attr_privacy_public">Public</label>
                 <input id="list_attr_privacy_private" class="radio"
                     type="radio" name="list_attr_privacy" value="private"
-                    title="Only you can access this list"> 
-                <label class="label" 
+                    title="Only you can access this list">
+                <label class="label"
                     for="list_attr_privacy_private">Private</label>
             </td>
         </tr>
@@ -1830,11 +1831,11 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <h2 class="dialog_title" data-i18n-text="kismet_content_firewall">Kismet Content Firewall</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
-    
+
     <div class="dialog_container">
-    
+
     <div class="dialog_header"></div>
-    
+
     <div id="kismet_dlg_body" class="dialog_body">
         <ul id="kismet_rule_list">
         </ul>
@@ -1852,11 +1853,11 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             <table>
             <tr>
                 <td>
-                    <label class="label" 
+                    <label class="label"
                         for="kismet_rule_name">Name:</label>
                 </td>
                 <td colspan="2">
-                    <input id="kismet_rule_name" 
+                    <input id="kismet_rule_name"
                         type="text" class="entry"/>
                 </td>
                 <td><label class="label">Type: </label>
@@ -1895,9 +1896,9 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
                 <td><input id="kismet_action_mask"
                     type="checkbox" class="mask checkbox" value="2"/>
                     <label for="kismet_action_mask">Mask</label></td>
-                <td><input id="kismet_action_archive" 
+                <td><input id="kismet_action_archive"
                     type="checkbox" class="checkbox" value="3"/>
-                    <label for="kismet_action_archive">Archive</label> 
+                    <label for="kismet_action_archive">Archive</label>
                 </td>
             </tr>
             </table>
