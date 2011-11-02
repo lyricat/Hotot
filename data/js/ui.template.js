@@ -450,7 +450,7 @@ retweets_header_t:
 
 view_t:
 '<div id="{%ID%}" \
-    name="{%NAME%}" class="listview {%CLASS%}"> \
+    name="{%NAME%}" class="listview {%CLASS%} {%ROLE%}"> \
     <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
     <ul class="listview_body"></ul> \
     <div class="listview_footer"> \
@@ -459,7 +459,7 @@ view_t:
 </div>',
 
 indicator_t:
-    '<div class="{%STICK%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></div>',
+    '<div class="{%STICK%} {%ROLE%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></div>',
 
 kismet_rule_t:
 '<li><a class="kismet_rule" name="{%NAME%}" type="{%TYPE%}" method="{%METHOD%}"\
@@ -599,11 +599,11 @@ function init() {
     };
 
     ui.Template.view_m = {
-        ID:'', CLASS:'tweetview', NAME: '', CAN_CLOSE: ''
+        ID:'', CLASS:'tweetview', NAME: '', CAN_CLOSE: '', ROLE: ''
     };
 
     ui.Template.indicator_m = {
-        TARGET: '', TITLE: '', ICON: ''
+        TARGET: '', TITLE: '', ICON: '', ROLE: ''
     };
 
     ui.Template.kismet_rule_m = {
@@ -955,6 +955,11 @@ function form_view(name, title, cls) {
     } else {
         m.CAN_CLOSE = 'block';
     }
+    if (ui.Slider.system_views.hasOwnProperty(name)) {
+        m.ROLE = 'system_view';
+    } else {
+        m.ROLE = 'custom_view';
+    }
     return ui.Template.render(ui.Template.view_t, m);
 },
 
@@ -964,6 +969,11 @@ function form_indicator(target, title, icon) {
     m.TARGET = target
     m.TITLE = title;
     m.ICON = icon;
+    if (ui.Slider.system_views.hasOwnProperty(target)) {
+        m.ROLE = 'system_view';
+    } else {
+        m.ROLE = 'custom_view';
+    }
     return ui.Template.render(ui.Template.indicator_t, m);
 },
 

@@ -19,6 +19,8 @@ isViewSettingMenuClosed: true,
 
 state: null,
 
+system_views: {'home':0, 'mentions':0, 'messages':0, 'retweets':0, 'favs':0, 'search':0},
+
 init:
 function init () {
     this.id = '#main_page_slider';
@@ -257,13 +259,19 @@ function add_indicator(name, opts) {
     var html = ui.Template.form_indicator(name, opts.title, opts.icon);
     if (name == 'search') {
         html = html.replace('{%STICK%}', 'stick_right');
+        $(html).insertBefore($('#indicator_add_btn').parent());
         ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length, 0, 'search');
     } else {
         html = html.replace('{%STICK%}', 'no_stick');
-        ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
+        var pos = $('#indicator_add_btn').parent().prevAll('.system_view');
+        if (pos.length == 0) {
+            $(html).insertBefore($('#indicator_add_btn').parent());
+            ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
+        } else {
+            $(html).insertAfter($(pos.get(0)));
+            ui.Slider.tweet_blocks.splice(pos.length-1, 0, name);
+        }
     }
-
-    $(html).insertBefore($('#indicator_add_btn').parent());
 },
 
 add_view:
@@ -274,8 +282,14 @@ function add_view(name, opts) {
     if (name == 'search') {
         $('#main_page_slider').append(ui.Template.form_view(name, opts.title, 'tweetview'));
     } else {
-        $(ui.Template.form_view(name, opts.title, 'tweetview'))
-            .insertBefore('#search_tweetview');
+        var pos = $('#search_tweetview').prevAll('.system_view');
+        if (pos.length == 0) {
+            $(ui.Template.form_view(name, opts.title, 'tweetview'))
+                .insertBefore($('#search_tweetview'));
+        } else {
+            $(ui.Template.form_view(name, opts.title, 'tweetview'))
+                .insertAfter($(pos.get(0)));
+        }
     }
     // add to ui.Main.views
     var v = new widget.ListView('#'+name+'_tweetview', name, opts);
