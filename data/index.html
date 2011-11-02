@@ -202,7 +202,7 @@ function open_list(screen_name, slug, additional_opts) {
     var name = 'list_'+screen_name+'_'+slug;
     var title = 'List @' + screen_name + '/'+slug;
     ui.Slider.add(name
-        , {title: title, icon:'image/ic_people.png'}
+        , {title: title, icon:'image/ic_list.png'}
         , $.extend({   'type': 'list', 'title': title
             , 'load': ui.ListView.load_timeline
             , 'loadmore': ui.ListView.loadmore_timeline
@@ -1006,7 +1006,13 @@ jQuery(function($) {
             <a href="#retweets" data-i18n-text="retweets_view">Retweets view</a>
         </li>
         <li>
-            <a href="#favs" data-i18n-text="favs_view">Favs view</a>
+        <a href="#favs" data-i18n-text="favs_view">Favourites view</a>
+        </li>
+        <li>
+        <a href="#people" data-i18n-text="open_a_profile_dots">Open a Profile...</a>
+        </li>
+        <li>
+        <a href="#list" data-i18n-text="open_a_list_dots">Open a List ...</a>
         </li>
     </ul>
     </div>

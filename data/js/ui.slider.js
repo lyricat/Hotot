@@ -64,12 +64,37 @@ function init () {
 
     $('#slider_menu a').click(function(){
         var name = $(this).attr('href').substring(1);
-        var ret = ui.Slider.addDefaultView(name, {});
-        if (ret == true) {
-            $(this).addClass('checked');
-            if (name != 'search') {
-                ui.Main.views[name].load();
+        var ret = null;
+        switch (name) {
+        case 'people':
+            ret = widget.DialogManager.prompt('Input a screenname:', 
+                'form @screenname',
+                function (ret) {
+                    if (ret != '') {
+                        if (ret[0] == '@') ret = ret.substring(1);
+                        open_people(ret, {});
+                    }
+                });
+        break;
+        case 'list':
+            ret = widget.DialogManager.prompt('Input a List name:',
+                'form: @screenname/slug',
+                function (ret) {
+                    if (ret != '') {
+                        if (ret[0] == '@') ret = ret.substring(1);
+                        open_list(ret.substring(0, ret.indexOf('/')),
+                            ret.substring(ret.indexOf('/')+1), {});
+                    }
+                });
+        break;
+        default:
+            if (ui.Slider.addDefaultView(name, {}) == true) {
+                $(this).addClass('checked');
+                if (name != 'search') {
+                    ui.Main.views[name].load();
+                }
             }
+        break;
         }
         ui.Slider.slide_to(name);
         ui.Slider.closeSliderMenu();

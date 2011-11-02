@@ -236,9 +236,13 @@ function set_above(dialog) {
 
 alert_footer: '<a href="javascript:void(0)" class="button dialog_close_btn">Close</a>',
 
-alert_header: '<h1 style="font-size: 20px;">{%TITLE%}</h1>',
+alert_header: '<h1 style="font-size: 16px;">{%TITLE%}</h1>',
 
 button_html: '<a href="javascript:void(0)" class="button" id="{%ID%}">{%LABEL%}</a>',
+
+prompt_body: '<div class="dialog_block"><p>{%MESSAGE%}</p><p><input class="entry" type="text"/></p></div>',
+
+prompt_header: '<h1 style="font-size: 16px;">{%TITLE%}</h1>',
 
 alert:
 function alert(title, message) {
@@ -254,6 +258,30 @@ function alert(title, message) {
     message_box.destroy_on_close = true;
     message_box.create();
     message_box.open();
+},
+
+prompt:
+function prompt(title, message, callback) {
+    var id = '#message_box_' + String(Math.random()).substring(2);
+    prompt_dialog = widget.DialogManager.build_dialog(
+            id, title, 
+            widget.DialogManager.prompt_header.replace('{%TITLE%}', title),
+            widget.DialogManager.prompt_body.replace('{%MESSAGE%}', message), 
+            [{'id': id+'_ok_btn', label: 'OK', click: 
+                function (event) {
+                    var ret = $(id).find('.entry').val();
+                    if (callback != undefined) {
+                        callback(ret);
+                        prompt_dialog.destroy();
+                    }
+                }}]
+        );
+    prompt_dialog.set_title('Hotot says:');
+    prompt_dialog.set_styles('header', {'height': '30px', 'padding':'10px'});
+    prompt_dialog.set_styles('footer', {'height': '30px', 'padding':'10px'});
+    prompt_dialog.set_styles('body', {'padding':'10px'});
+    prompt_dialog.resize(400, 280);
+    prompt_dialog.open();
 },
 
 build_dialog:

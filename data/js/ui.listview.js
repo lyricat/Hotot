@@ -137,7 +137,13 @@ function render_list_view(view) {
 load_timeline:
 function load_timeline(view, success, fail) {
     ui.ListView.render_list_view(view);
-    lib.twitterapi.get_list_statuses(view.screen_name, view.slug, 1, null, success);
+    lib.twitterapi.get_list_statuses(view.screen_name, view.slug, 1, null, success, function (xhr, textStatus, errorThrown) {
+            if (xhr.status == 404) {
+                widget.DialogManager.alert('This list does not exist.'
+                    , 'The list @' + view.screen_name + '/' +view.slug+' you are looking for does not exist.');
+                view.destroy();
+            }
+    });
 },
 
 loadmore_timeline:

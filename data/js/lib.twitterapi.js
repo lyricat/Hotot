@@ -550,7 +550,7 @@ function get_user_lists(screen_name, cursor, on_success) {
 },
 
 get_list_statuses:
-function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success) {
+function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'lists/statuses.json';
     var params = {
         'include_entities': '1',
@@ -561,7 +561,7 @@ function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success
         params['since_id'] = since_id;
     if (max_id != null)
         params['max_id'] = max_id;
-    lib.twitterapi.get(url, params, on_success);
+    lib.twitterapi.get(url, params, on_success, on_error);
 },
 
 get_list_subscribers:
