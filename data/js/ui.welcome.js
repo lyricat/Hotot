@@ -58,7 +58,12 @@ function init () {
             cur_profile.preferences.default_password = '';
         }
         conf.save_prefs(conf.current_name);
+
         // verify ...
+        var old_label = ui.Welcome.btn_basic_auth_sign_in.get_label();
+        ui.Welcome.btn_basic_auth_sign_in.set_label(_('sign_in_dots'));
+        ui.Welcome.btn_basic_auth_sign_in.set_sensitive(false);
+
         lib.twitterapi.verify(
         function (result) {
             if (result.screen_name) {
@@ -73,6 +78,8 @@ function init () {
                     , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
                     , result.toString());
             }
+            ui.Welcome.btn_basic_auth_sign_in.set_label(old_label);
+            ui.Welcome.btn_basic_auth_sign_in.set_sensitive(true);
         });
     };
     ui.Welcome.btn_basic_auth_sign_in.create();
@@ -88,6 +95,11 @@ function init () {
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
         lib.twitterapi.use_oauth = true;
         toast.set(_('sign_in_dots')).show();
+
+        var old_label = ui.Welcome.btn_oauth_sign_in.get_label();
+        ui.Welcome.btn_oauth_sign_in.set_label(_('sign_in_dots'));
+        ui.Welcome.btn_oauth_sign_in.set_sensitive(false);
+
         if (jsOAuth.access_token == ''
             || jsOAuth.access_token.constructor != Object) { 
         // access_token is not existed
@@ -121,6 +133,8 @@ function init () {
                         , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
                         , result);
                 }
+                ui.Welcome.btn_oauth_sign_in.set_label(old_label);
+                ui.Welcome.btn_oauth_sign_in.set_sensitive(true);
             });
         }
     };
