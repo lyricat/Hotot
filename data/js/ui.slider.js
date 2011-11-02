@@ -249,7 +249,27 @@ function add(name, indicator_opts, view_opts) {
                 , use_notify_sound: view_opts.use_notify_sound
                 , use_auto_update: view_opts.use_auto_update };
         break;
-        } 
+        }
+        $('#' + name + '_tweetview')[0].ontouchstart = function (e) {
+            event.preventDefault();
+            if (this.start === 1 || !event.touches.length) return;
+            this.start = 1;
+            var touch = event.touches[0];
+            this.startX = touch.pageX;
+            this.startY = touch.pageY;
+        }
+        $('#' + name + '_tweetview')[0].ontouchmove = function (e) {
+                event.preventDefault();
+		if (this.start !== 1 || !event.touches.length) return;
+		
+		var touch = event.touches[0];
+		this.scrollTop += this.startY - touch.pageY;
+                this.startX = touch.pageX;
+                this.startY = touch.pageY;
+        }
+        $('#' + name + '_tweetview')[0].ontouchend = function (e) {
+                this.start = 0;
+        }
     } else {
         ui.Slider.slide_to(name);
     }
