@@ -32,37 +32,36 @@ disabled:
 */
 /* = widget.button = */
 .button {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
     display: inline-block;
     text-align: center;
     height: 30px;
     line-height: 30px;
     min-width: 70px;
     padding: 0 10px;
-    color: #333;
+    color: #222;
     border: 1px #ccc solid;
     margin-left: 1px;
     text-decoration: none;
     font-size: 12px;
     border-radius: 2px;
     cursor: pointer;
-    font-weight: bold;
     text-shadow: #fff 0 1px 1px; 
 }
 
 .button.dark {
-    color: #ddd;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    color: #4ac3ff;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
     border: 1px #444 solid;
-    text-shadow: #333 0 -1px 1px; 
+    text-shadow: #4ac3ff 0 0 15px; 
 }
 
 .button:hover {
-    color: #555;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
 }
 
 .button.dark:hover {
-    color: #eee;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
 }
 
 .button:active {
@@ -79,12 +78,14 @@ disabled:
 
 .button.disabled {
     color: #999 !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
 }
 .button.dark.disabled {
     color: #aaa !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
 }
 .button:focus {
     border-color: #4D90FE !important;
@@ -92,7 +93,7 @@ disabled:
 /* = Combo = */
 .combo {
     outline: none;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
     display: inline-block;
     text-align: center;
     height: 30px;
@@ -111,17 +112,17 @@ disabled:
 
 .combo.dark {
     color: #ddd;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
     border: 1px #444 solid;
     text-shadow: #333 0 -1px 1px; 
 }
 
 .combo:hover {
-    color: #000;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
 }
 
 .combo.dark:hover {
-    color: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
 }
 
 .combo:focus {
@@ -253,7 +254,7 @@ disabled:
     line-height: 30px;
     min-width: 60px;
     padding: 0 5px;
-    color: #777;
+    color: #444;
     border-right: 1px #ccc solid;
     border-bottom: 1px #ccc solid;
     border-top: 1px #ccc solid;
@@ -266,7 +267,7 @@ disabled:
 }
 
 .radio_group > li > .radio_group_btn:hover {
-    color: #333;
+    color: #222;
 }
 
 .radio_group.dark > li > .radio_group_btn {
