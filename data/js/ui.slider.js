@@ -19,6 +19,8 @@ isViewSettingMenuClosed: true,
 
 state: null,
 
+FLOAT_ICON: 1,
+
 system_views: {'home':0, 'mentions':0, 'messages':0, 'retweets':0, 'favs':0, 'search':0},
 
 init:
@@ -485,13 +487,15 @@ function slide_to_next() {
 },
 
 set_icon:
-function set_icon(name, icon) {
+function set_icon(name, icon, style) {
     var btn = $('#indication .indicator_btn[href="#'+name+'"]');
     var span_icon = btn.children('span');
     var img_icon = btn.children('img');
-    span_icon.hide();
     img_icon.show();
     img_icon.attr('src', icon);
+    if (style == ui.Slider.FLOAT_ICON) {
+        img_icon.addClass('float_icon')
+    }
 },
 
 set_unread:

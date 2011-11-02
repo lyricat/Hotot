@@ -604,11 +604,19 @@ pre {
     height: 28px;
     margin-top: 6px;
     background-color: #333;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     -webkit-box-shadow: 0 1px 3px #000;
     -moz-box-shadow: 0 1px 3px #000;
     box-shadow: 0 1px 3px #000;
+}
+
+#indication .indicator_btn > img.float_icon {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+    margin-top: 6px;
 }
 
 #indication .indicator_btn.unread {

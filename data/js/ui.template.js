@@ -459,7 +459,7 @@ view_t:
 </div>',
 
 indicator_t:
-    '<div class="{%STICK%} {%ROLE%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><span class="icon" style="background-image:url({%ICON%})"></span><img class="icon"/></a><span class="shape"></span></div>',
+    '<div class="{%STICK%} {%ROLE%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><img class="icon"/><span class="icon" style="background-image:url({%ICON%})"></span></a><span class="shape"></span></div>',
 
 kismet_rule_t:
 '<li><a class="kismet_rule" name="{%NAME%}" type="{%TYPE%}" method="{%METHOD%}"\
