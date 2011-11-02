@@ -347,8 +347,8 @@
 		"message": "朋友",
 		"description": "data/js/ui.template.js"
 	},
-	"retweeted_by": {
-		"message": "转发人:",
+	"mention_them": {
+		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
 	"same_signing_api_base": {
@@ -399,6 +399,10 @@
 		"message": "点击查看",
 		"description": "data/js/ui.template.js"
 	},
+	"open_a_list_dots": {
+		"message": "打开一个列表",
+		"description": "data/index.html"
+	},
 	"profile_name": {
 		"message": "账户名",
 		"description": ""
@@ -427,8 +431,8 @@
 		"message": "关注者",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "下次补魔时间",
+	"weakness": {
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"extensions": {
@@ -563,8 +567,8 @@
 		"message": "自述",
 		"description": ""
 	},
-	"weakness": {
-		"message": "虚弱",
+	"reset_time": {
+		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"mentions_view": {
@@ -787,6 +791,10 @@
 		"message": "他／她／它默默地关注着你…",
 		"description": "data/js/ui.peopleview.js"
 	},
+	"open_a_profile_dots": {
+		"message": "打开一个用户页",
+		"description": "data/index.html"
+	},
 	"pin_code": {
 		"message": "PIN Code",
 		"description": ""
@@ -919,8 +927,8 @@
 		"message": "你们默默地关注着对方…",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"mention_them": {
-		"message": "提及",
+	"retweeted_by": {
+		"message": "转发人:",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {

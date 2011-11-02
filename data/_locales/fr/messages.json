@@ -347,8 +347,8 @@
 		"message": "Ami",
 		"description": "data/js/ui.template.js"
 	},
-	"retweeted_by": {
-		"message": "Retweeté par",
+	"mention_them": {
+		"message": "Mention",
 		"description": "data/js/ui.template.js"
 	},
 	"same_signing_api_base": {
@@ -399,6 +399,10 @@
 		"message": "Cliquez pour afficher",
 		"description": "data/js/ui.template.js"
 	},
+	"open_a_list_dots": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"profile_name": {
 		"message": "Nom du profil",
 		"description": "data/index.html"
@@ -427,8 +431,8 @@
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "Réinitialiser l'heure",
+	"weakness": {
+		"message": "Faiblesse",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"extensions": {
@@ -563,8 +567,8 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"weakness": {
-		"message": "Faiblesse",
+	"reset_time": {
+		"message": "Réinitialiser l'heure",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"mentions_view": {
@@ -787,6 +791,10 @@
 		"message": "Ils vous suivent",
 		"description": "data/js/ui.peopleview.js"
 	},
+	"open_a_profile_dots": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"pin_code": {
 		"message": "Code PIN",
 		"description": "data/index.html"
@@ -919,8 +927,8 @@
 		"message": "Vous êtes amis.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"mention_them": {
-		"message": "Mention",
+	"retweeted_by": {
+		"message": "Retweeté par",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {

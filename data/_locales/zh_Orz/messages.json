@@ -1,322 +1,322 @@
 {
 	"unfollow_at": {
-		"message": "Dejar de seguir @",
+		"message": "不再尾行@",
 		"description": "data/js/ui.main.js"
 	},
 	"all": {
-		"message": "Todos",
-		"description": "data/index.html"
+		"message": "全部",
+		"description": "All"
 	},
 	"global": {
-		"message": "Global",
+		"message": "全局",
 		"description": "data/index.html"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "Por favor, introduce un prefijo para el perfil",
+		"message": "请输入一个账户前缀",
 		"description": "data/js/ui.welcome.js"
 	},
 	"themes": {
-		"message": "Temas",
+		"message": "皮皮",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
-		"message": "Utilizar el sistema de notificación nativo",
-		"description": "data/index.html"
+		"message": "使用原生通知机制",
+		"description": ""
 	},
 	"unblock": {
-		"message": "Desbloquear",
+		"message": "不再B Ta",
 		"description": "data/js/ui.template.js"
 	},
 	"relation": {
-		"message": "Relación",
+		"message": "关系",
 		"description": "data/js/ui.template.js"
 	},
 	"follow": {
-		"message": "Seguir",
+		"message": "尾行",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
-		"message": "Tipografia",
-		"description": "data/index.html"
+		"message": "字体",
+		"description": ""
 	},
 	"fine": {
-		"message": "Fino",
+		"message": "还能hold住",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"add_to_list": {
-		"message": "Agregar a una lista",
+		"message": "圈养",
 		"description": "data/js/ui.template.js"
 	},
 	"compose": {
-		"message": "Componer",
+		"message": "吾要吐槽",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
-		"message": "Responder este tweet",
+		"message": "回复",
 		"description": "data/js/ui.template.js"
 	},
 	"remember_password": {
-		"message": "Recordar Contraseña",
-		"description": "data/index.html"
+		"message": "记住密码",
+		"description": ""
 	},
 	"click_the_button_below": {
-		"message": "HaZ clic en el botón de abajo",
-		"description": "data/index.html"
+		"message": "点击下面的按钮",
+		"description": ""
 	},
 	"theme": {
-		"message": "Tema",
+		"message": "皮皮",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "Haz clic en mí para continuar",
-		"description": "data/index.html"
+		"message": "点击继续",
+		"description": ""
 	},
 	"click_to_show_retweeters": {
-		"message": "Haz clic para mostrar retwiteros",
+		"message": "点击查看转发人",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Destruido con exito!",
+		"message": "删除成功！",
 		"description": "data/js/ui.main.js"
 	},
 	"interface_language": {
-		"message": "Idioma de la interfaz",
+		"message": "皮皮语言",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "Ups, algún error ha ocurrido",
+		"message": "矮油～ 发生了点错误耶 >_<",
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
-		"message": "Casi Muerto",
+		"message": "吾都快挂了啦～",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"proxy_auth_password": {
-		"message": "Contraseña",
+		"message": "密码",
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "Deshabilitado",
-		"description": "data/index.html"
+		"message": "禁用的",
+		"description": ""
 	},
 	"access_token_doesnt_exist": {
-		"message": "Token de Acceso no existe",
+		"message": "呜呜，访问令牌不存在～",
 		"description": "data/index.html"
 	},
 	"upload": {
-		"message": "Subir",
+		"message": "上传",
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Cortafuegos Kismet",
+		"message": "Kismet 防火墙",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retwiteado exitosamente!",
+		"message": "转发成功！",
 		"description": "data/js/ui.main.js"
 	},
 	"search_in_twitter": {
-		"message": "Buscar @ en Twitter",
-		"description": "data/index.html"
+		"message": "在Twitter中搜索@",
+		"description": ""
 	},
 	"loading_resources_hint": {
-		"message": "Cargando Recursos ...",
-		"description": "data/index.html"
+		"message": "加载资源中...",
+		"description": ""
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "No puedo autorizarte! Por favor, comprueba tu nombre de usuario / contraseña y Base API",
+		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和API地址。",
 		"description": "data/js/ui.welcome.js"
 	},
 	"rt_this_tweet": {
-		"message": "RT este tweet",
+		"message": "引用",
 		"description": "data/js/ui.template.js"
 	},
 	"paste_from_clipboard": {
-		"message": "Pegar desde el Portapapeles",
+		"message": "从剪贴板粘贴",
 		"description": "date/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "Por favor, introduce el recipiente!",
+		"message": "殿下，请指定收件人！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"proxy_auth": {
-		"message": "Autorización",
+		"message": "代理认证",
 		"description": "data/index.html"
 	},
 	"close": {
-		"message": "Cerrar",
-		"description": "data/index.html"
+		"message": "关闭",
+		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "El rápido zorro marrón salta sobre el perro perezoso.",
-		"description": "data/index.html"
+		"message": "我能吞下玻璃而不伤身体噢。",
+		"description": ""
 	},
 	"retweet": {
-		"message": "Retwitear",
-		"description": "data/index.html"
+		"message": "转发",
+		"description": ""
 	},
 	"enable_verbose_mode": {
-		"message": "Habilitar el Modo Detallado",
-		"description": "data/index.html"
+		"message": "启用啰嗦模式",
+		"description": ""
 	},
 	"errors": {
-		"message": "Errores",
+		"message": "错误",
 		"description": "data/index.html"
 	},
 	"preferences": {
-		"message": "Preferencias",
-		"description": "data/index.html"
+		"message": "首选项",
+		"description": ""
 	},
 	"auto_update": {
-		"message": "Auto Actualizar",
+		"message": "自动更新",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Iniciando Sesión ...",
+		"message": "登入中……",
 		"description": "data/js/ui.welcome.js"
 	},
 	"compose_messages_to": {
-		"message": "COMPONER MENSAJE A",
+		"message": "写私信",
 		"description": "data/js/ui.status_box.js"
 	},
 	"version": {
-		"message": "Versión",
+		"message": "版本",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"oauth_base": {
-		"message": "Base OAuth",
-		"description": "data/index.html"
+		"message": "OAuth Base",
+		"description": ""
 	},
 	"reply": {
-		"message": "Responder",
-		"description": "data/index.html"
+		"message": "回复",
+		"description": ""
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Ups, ha ocurrido un error de API!",
+		"message": "矮油～ 发生了一个API错误",
 		"description": "data/js/ui.welcome.js"
 	},
 	"hotot": {
-		"message": "Hotot",
-		"description": "data/index.html"
+		"message": "傲兔吐槽客户端",
+		"description": ""
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Copia el Codigo PIN y pegalo en la caja de abajo",
-		"description": "data/index.html"
+		"message": "复制PIN Code并且将它粘贴到下面的傲娇文本框",
+		"description": ""
 	},
 	"api_setting": {
-		"message": "Configuración de la API",
-		"description": "data/index.html"
+		"message": "傲娇API设置",
+		"description": ""
 	},
 	"undo_successfully": {
-		"message": "Deshecho exitosamente!",
+		"message": "撤销成功！",
 		"description": "data/js/ui.main.js"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Des-favorizar este tweet ...",
+		"message": "取消收藏...",
 		"description": "data/js/ui.main.js"
 	},
 	"quit_hotot": {
-		"message": "Cerrar Hotot",
+		"message": "退出傲兔吐槽客户端",
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "Extra",
+		"message": "超",
 		"description": "data/index.html"
 	},
 	"search": {
-		"message": "Buscar",
+		"message": "搜索",
 		"description": "data/js/ui.slider.js"
 	},
 	"license": {
-		"message": "Licencia",
-		"description": "data/index.html"
+		"message": "许可",
+		"description": ""
 	},
 	"move_to_top": {
-		"message": "Mover hasta la cima",
+		"message": "移到顶部",
 		"description": "data/index.html"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "El caracter `@` no esta permitido como prefijo en un perfil",
+		"message": "不允许在账户前缀中使用`@`字符哦喵",
 		"description": "data/js/ui.welcome.js"
 	},
 	"action": {
-		"message": "Acción",
+		"message": "动作",
 		"description": "data/index.html"
 	},
 	"mentions": {
-		"message": "Menciones",
+		"message": "中枪板",
 		"description": "data/js/ui.slider.js"
 	},
 	"delete": {
-		"message": "Borrar",
-		"description": "data/index.html"
+		"message": "删除",
+		"description": ""
 	},
 	"official_retweet_this_tweet": {
-		"message": "Retwitear de manera tradicional",
+		"message": "转发",
 		"description": "data/js/ui.template.js"
 	},
 	"delete_this_tweet": {
-		"message": "Borrar este tweet",
+		"message": "删除",
 		"description": "data/js/ui.template.js"
 	},
 	"via": {
-		"message": "via",
+		"message": "发自",
 		"description": "data/js/ui.template.js"
 	},
 	"about_and_help": {
-		"message": "Acerca de & Ayuda",
-		"description": "data/index.html"
+		"message": "关于与帮助",
+		"description": ""
 	},
 	"hey_it_is_you": {
-		"message": "Hey, eres tu!",
+		"message": "殿下，这是您自己！",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"regain_access_token": {
-		"message": "Recuperar el Token de Acceso",
-		"description": "data/index.html"
+		"message": "重新获取傲娇的访问令牌",
+		"description": ""
 	},
 	"globals": {
-		"message": "Globales",
-		"description": "data/index.html"
+		"message": "全局",
+		"description": ""
 	},
 	"create_profile": {
-		"message": "Crear Perfil",
-		"description": "data/index.html"
+		"message": "创建账户",
+		"description": ""
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retwitear/Deshacer Retweet",
+		"message": "转发/取消转发",
 		"description": "data/index.html"
 	},
 	"sign_out": {
-		"message": "Cerrar Sesión",
+		"message": "登出",
 		"description": "data/index.html"
 	},
 	"search_api_base2": {
-		"message": "Buscar Base API",
-		"description": "data/index.html"
+		"message": "Search API Base",
+		"description": ""
 	},
 	"px": {
-		"message": "px",
-		"description": "data/index.html"
+		"message": "像素",
+		"description": ""
 	},
 	"new_profile_has_been_created": {
-		"message": "Un Nuevo Perfil ha sido creado!",
+		"message": "殿下，汝之新账户已经创建成功！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"shortcuts": {
-		"message": "Atajos",
+		"message": "快捷键",
 		"description": "data/index.html"
 	},
 	"preview": {
-		"message": "Vista Previa",
+		"message": "预览",
 		"description": "data/index.html"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Desactivar la decoración de los widgets y algunas animaciones.",
+		"message": "禁用控件集装饰和部分动画。",
 		"description": "data/index.html"
 	},
 	"retweets": {
-		"message": "Retweets",
+		"message": "转发与被转发",
 		"description": "data/js/ui.slider.js"
 	},
 	"dots": {
@@ -324,79 +324,79 @@
 		"description": "data/js/ui.main.js"
 	},
 	"gain_access_token": {
-		"message": "Obtener Token de Acceso",
+		"message": "获取访问令牌",
 		"description": "data/js/ui.welcome.js"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Des-Fav",
+		"message": "收藏/取消收藏",
 		"description": "data/index.html"
 	},
 	"enable": {
-		"message": "Habilitar",
+		"message": "启用",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"proxy_auth_name": {
-		"message": "Nombre de Usuario",
+		"message": "用户名",
 		"description": "data/index.html"
 	},
 	"follow_at": {
-		"message": "Seguir @",
+		"message": "尾行@",
 		"description": "data/js/ui.main.js"
 	},
 	"friend_cnt": {
-		"message": "Amigo",
+		"message": "朋友",
 		"description": "data/js/ui.template.js"
 	},
 	"mention_them": {
-		"message": "Mencionar",
+		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
 	"same_signing_api_base": {
-		"message": "Misma firma en API Base",
-		"description": "data/index.html"
+		"message": "使用相同API进行签名",
+		"description": ""
 	},
 	"sound": {
-		"message": "Sonido",
-		"description": "data/index.html"
+		"message": "提示音",
+		"description": ""
 	},
 	"account": {
-		"message": "Cuenta",
-		"description": "data/index.html"
+		"message": "账户",
+		"description": ""
 	},
 	"join": {
-		"message": "Usuario desde",
+		"message": "生日",
 		"description": "data/js/ui.template.js"
 	},
 	"my_power": {
-		"message": "Mi Poder",
+		"message": "魔法值",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"keyboard_shortcuts": {
-		"message": "Atajos de teclado",
-		"description": "data/index.html"
+		"message": "键盘快捷键",
+		"description": ""
 	},
 	"restore_defaults": {
-		"message": "Restaurar Valores Predeterminados",
-		"description": "data/index.html"
+		"message": "恢复默认值",
+		"description": ""
 	},
 	"home_timeline": {
-		"message": "Tu Cronologia",
+		"message": "时间线",
 		"description": "data/js/ui.slider.js"
 	},
 	"behavior": {
-		"message": "Comportamiento",
-		"description": "data/index.html"
+		"message": "行为",
+		"description": ""
 	},
 	"updating_dots": {
-		"message": "Actualizando ...",
+		"message": "更新中……",
 		"description": "data/js/ui.status_box.js"
 	},
 	"effects_low": {
-		"message": "Bajo",
+		"message": "低",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
-		"message": "Haz clic para mostrar",
+		"message": "点击查看",
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
@@ -404,391 +404,391 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "Nombre de Perfil",
-		"description": "data/index.html"
+		"message": "账户名",
+		"description": ""
 	},
 	"clean_token": {
-		"message": "Limpiar token",
+		"message": "清空令牌",
 		"description": "data/index.html"
 	},
 	"information": {
-		"message": "Información",
-		"description": "data/index.html"
+		"message": "信息",
+		"description": ""
 	},
 	"author": {
-		"message": "Autor",
+		"message": "作者",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Precargar los tweets más recientes en las conversaciones, si es posible.",
-		"description": "data/index.html"
+		"message": "如果可能的话，预加载对话的上一条状态",
+		"description": ""
 	},
 	"undo_retweeting_dots": {
-		"message": "Deshaciendo retweet ...",
+		"message": "撤销转发...",
 		"description": "data/js/ui.main.js"
 	},
 	"followers": {
-		"message": "Seguidores",
+		"message": "粉丝",
 		"description": "data/js/ui.template.js"
 	},
 	"weakness": {
-		"message": "Débil",
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"extensions": {
-		"message": "Extenciones",
-		"description": "data/index.html"
+		"message": "扩展",
+		"description": ""
 	},
 	"retweets_view": {
-		"message": "Mostrar retweets",
+		"message": "转发",
 		"description": "data/index.html"
 	},
 	"step_one": {
-		"message": "Paso 1",
-		"description": "data/index.html"
+		"message": "第一步",
+		"description": ""
 	},
 	"profile": {
-		"message": "Perfil",
+		"message": "账户",
 		"description": "data/index.html"
 	},
 	"effects_normal": {
-		"message": "Normal",
+		"message": "中",
 		"description": "data/index.html"
 	},
 	"List": {
-		"message": "Lista",
+		"message": "圈（jun）",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "Tweets",
+		"message": "状态",
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in": {
-		"message": "Iniciar Sesión",
-		"description": "data/index.html"
+		"message": "登入",
+		"description": ""
 	},
 	"disable": {
-		"message": "Deshabilitar",
+		"message": "禁用",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"favorites": {
-		"message": "Favoritos",
+		"message": "收藏",
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Mover al siguiente tweet",
+		"message": "移动到下一条状态",
 		"description": "data/index.html"
 	},
 	"font_size": {
-		"message": "Tamaño de la fuente",
-		"description": "data/index.html"
+		"message": "字体大小",
+		"description": ""
 	},
 	"options": {
-		"message": "Opciones",
+		"message": "选项",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"block": {
-		"message": "Bloquear",
+		"message": "B了",
 		"description": "data/js/ui.template.js"
 	},
 	"step_two": {
-		"message": "Paso 2",
-		"description": "data/index.html"
+		"message": "第二步",
+		"description": ""
 	},
 	"help": {
-		"message": "Ayuda",
-		"description": "data/index.html"
+		"message": "帮助",
+		"description": ""
 	},
 	"posting_dots": {
-		"message": "Publicando ...",
+		"message": "发送中……",
 		"description": "data/js/ui.status_box.js"
 	},
 	"http_proxy": {
-		"message": "Proxy HTTP",
-		"description": "data/index.html"
+		"message": "HTTP代理",
+		"description": ""
 	},
 	"use_reply_all_as_default_reply_action": {
-		"message": "Usar RESPONDER A TODOS como acción por defecto al responder",
+		"message": "使用『回复所有』作为默认回复方式",
 		"description": "data/index.html"
 	},
 	"summon_hotot": {
-		"message": "Invocar Hotot (como: <ALT>C)",
-		"description": "data/index.html"
+		"message": "召唤Hotot 『比如: <ALT>C』",
+		"description": ""
 	},
 	"send_message": {
-		"message": "Enviar mensaje",
-		"description": "data/index.html"
+		"message": "发送消息",
+		"description": ""
 	},
 	"network_error_please_try_later": {
-		"message": "Error de Red! Por favor intentalo mas tarde.",
+		"message": "网路故障，请稍候再试喵！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"keyboard": {
-		"message": "Teclado",
-		"description": "data/index.html"
+		"message": "键盘",
+		"description": ""
 	},
 	"add_new_views": {
-		"message": "Agregar nuevas vistas",
+		"message": "添加新视图",
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Agregar a favoritos ...",
+		"message": "收藏...",
 		"description": "data/js/ui.main.js"
 	},
 	"web": {
-		"message": "Web",
+		"message": "网址",
 		"description": "data/js/ui.template.js"
 	},
 	"regain_access_token_with_twitter": {
-		"message": "Recuperar el Token de Acceso con Twitter",
-		"description": "data/index.html"
+		"message": "重新获取Twitter访问令牌",
+		"description": ""
 	},
 	"send_message_to_them": {
-		"message": "Enviarle mensaje",
+		"message": "发送私信",
 		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "Presiona Ctrl + Enter para Publicar",
-		"description": "data/index.html"
+		"message": "使用Ctrl+Enter更新",
+		"description": ""
 	},
 	"location": {
-		"message": "Ubicación",
-		"description": "data/index.html"
+		"message": "位置",
+		"description": ""
 	},
 	"tweets": {
-		"message": "Tweets",
-		"description": "data/index.html"
+		"message": "状态",
+		"description": ""
 	},
 	"save": {
-		"message": "Guardar",
+		"message": "保存",
 		"description": "data/index.html"
 	},
 	"bio": {
-		"message": "Bio",
-		"description": "data/index.html"
+		"message": "自述",
+		"description": ""
 	},
 	"reset_time": {
-		"message": "Restablecer Tiempo",
+		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"mentions_view": {
-		"message": "Mostrar Menciones",
+		"message": "提到我的",
 		"description": "data/index.html"
 	},
 	"effects": {
-		"message": "Efectos",
+		"message": "效果",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Moverse al Tweet anterior",
+		"message": "移动到上一条状态",
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "Contraseña",
-		"description": "data/index.html"
+		"message": "密码",
+		"description": ""
 	},
 	"advanced": {
-		"message": "Avanzado",
-		"description": "data/index.html"
+		"message": "高级",
+		"description": ""
 	},
 	"report_spam": {
-		"message": "Reportar Spam",
+		"message": "报告垃圾账户",
 		"description": "data/js/ui.template.js"
 	},
 	"name": {
-		"message": "Nombre",
-		"description": "data/index.html"
+		"message": "名字",
+		"description": ""
 	},
 	"tweet_view": {
-		"message": "Mostrar Tweets",
+		"message": "状态视图",
 		"description": "data/index.html"
 	},
 	"edit": {
-		"message": "Editar",
+		"message": "编辑",
 		"description": "data/js/ui.template.js"
 	},
 	"powerfull": {
-		"message": "Poderoso",
+		"message": "精力充沛",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"kismet_content_firewall": {
-		"message": "Cortafuegos Kismet",
+		"message": "Kismet 防火墙",
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "Saludos!",
-		"description": "data/index.html"
+		"message": "殿下您好！",
+		"description": ""
 	},
 	"system_font": {
-		"message": "Fuente del sistema",
-		"description": "data/index.html"
+		"message": "系统字体",
+		"description": ""
 	},
 	"twitter": {
 		"message": "Twitter",
-		"description": "data/index.html"
+		"description": ""
 	},
 	"successfully": {
-		"message": "Exitosamente",
+		"message": "成功！",
 		"description": "data/js/ui.main.js"
 	},
 	"lists_following_them": {
-		"message": "Listas siguiendo a Usuario",
+		"message": "包含该用户的列表",
 		"description": "data/js/ui.template.js"
 	},
 	"cancel": {
-		"message": "Cancelar",
-		"description": "data/index.html"
+		"message": "取消",
+		"description": ""
 	},
 	"search_in_google": {
-		"message": "Buscar @ en Google",
-		"description": "data/index.html"
+		"message": "在Google中搜索@",
+		"description": ""
 	},
 	"post_successfully": {
-		"message": "Publicado Exitosamente!",
+		"message": "成功发送！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"reload": {
-		"message": "Recargar",
+		"message": "重新加载",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Autorizacion OK!",
+		"message": "验证通过！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"view_more_conversation": {
-		"message": "Ver mas conversación",
+		"message": "查看会话",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
-		"message": "Listas del Usuario ",
+		"message": "该用户的列表",
 		"description": "data/js/ui.template.js"
 	},
 	"clear_and_close": {
-		"message": "Limpiar y Cerrar",
+		"message": "清空并且关闭",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
-		"message": "Listado en",
+		"message": "列表中",
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "Creditos",
-		"description": "data/index.html"
+		"message": "致谢",
+		"description": ""
 	},
 	"slide_to_prev_page": {
-		"message": "Deslizar a pagina anterior",
+		"message": "切换到前一页",
 		"description": "data/index.html"
 	},
 	"favs": {
-		"message": "Favs",
+		"message": "收藏",
 		"description": "data/js/ui.template.js"
 	},
 	"tweets_per_day": {
-		"message": "Tweets Por Dia",
+		"message": "每日发推量",
 		"description": "data/index.html"
 	},
 	"create_a_list": {
-		"message": "Crear una lista",
+		"message": "创建一个新列表",
 		"description": "data/js/ui.template.js"
 	},
 	"copy_to_clipboard": {
-		"message": "Copiar al portapapeles",
+		"message": "复制到剪贴板",
 		"description": "date/index.html"
 	},
 	"about": {
-		"message": "Acerca de",
-		"description": "data/index.html"
+		"message": "关于",
+		"description": ""
 	},
 	"move_to_bottom": {
-		"message": "Mover al fondo",
+		"message": "移到底部",
 		"description": "data/index.html"
 	},
 	"ok": {
-		"message": "OK",
-		"description": "data/index.html"
+		"message": "确定",
+		"description": ""
 	},
 	"language": {
-		"message": "Idioma",
+		"message": "语言",
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "Mensajes",
+		"message": "私信",
 		"description": "data/js/ui.slider.js"
 	},
 	"use_ubuntu_indicator": {
-		"message": "Utilizar el Indicador de Ubuntu",
-		"description": "data/index.html"
+		"message": "使用Ubuntu Indicator",
+		"description": ""
 	},
 	"status_is_over_140_characters": {
-		"message": "Tu Tweet contiene mas de 140 caracteres!",
+		"message": "超过140字了，亲！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"select_a_language": {
-		"message": "Selecciona un idioma",
+		"message": "选择语言",
 		"description": "data/index.html"
 	},
 	"more_actions": {
-		"message": "Más",
+		"message": "更多动作",
 		"description": "data/js/ui.template.js"
 	},
 	"preview_embedded_media": {
-		"message": "Mostrar Fotos y Videos",
+		"message": "预览嵌入的多媒体",
 		"description": "data/index.html"
 	},
 	"api_base": {
-		"message": "Base API",
-		"description": "data/index.html"
+		"message": "API Base",
+		"description": ""
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "Equilibrio entre atractivos y el rendimiento.",
+		"message": "在性能和养眼度之间保持平衡。",
 		"description": "data/index.html"
 	},
 	"misc": {
-		"message": "Misc",
+		"message": "杂项",
 		"description": "data/index.html"
 	},
 	"follower_stat": {
-		"message": "Seguidores",
-		"description": "data/index.html"
+		"message": "粉丝统计",
+		"description": ""
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "O copia la dirección y lo abrela en tu navegador.",
-		"description": "data/index.html"
+		"message": "或者在浏览器中打开以下地址",
+		"description": ""
 	},
 	"notify": {
-		"message": "Notificar",
-		"description": "data/index.html"
+		"message": "通知",
+		"description": ""
 	},
 	"update_successfully": {
-		"message": "Actualizado Exitosamente!",
+		"message": "更新成功！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "No se siguen el uno al otro.",
+		"message": "你们宛如路人，擦身而过，不相往来。",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "Lo estas siguiendo.",
+		"message": "你默默地，关注着他／她／它…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"friend_stat": {
-		"message": "Siguiendo",
-		"description": "data/index.html"
+		"message": "朋友统计",
+		"description": ""
 	},
 	"same_signing_oauth_base": {
-		"message": "Misma firma en Base OAuth",
-		"description": "data/index.html"
+		"message": "使用同样的OAuth地址进行签名",
+		"description": ""
 	},
 	"loading_dots": {
-		"message": "Cargando ... ",
+		"message": "加载中…",
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
-		"message": "Listas",
+		"message": "列表",
 		"description": "data/js/ui.template.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "Eres seguido por El.",
+		"message": "他／她／它默默地关注着你…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"open_a_profile_dots": {
@@ -796,147 +796,147 @@
 		"description": "data/index.html"
 	},
 	"pin_code": {
-		"message": "Código PIN",
-		"description": "data/index.html"
+		"message": "PIN Code",
+		"description": ""
 	},
 	"info": {
-		"message": "INFO",
+		"message": "信息",
 		"description": "data/js/ui.template.js"
 	},
 	"follower_cnt": {
-		"message": "Seguidor",
+		"message": "关注者",
 		"description": "data/js/ui.template.js"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Usar CITAR como acción por defecto al retwitear",
+		"message": "使用『引用』作为默认转发方式",
 		"description": "data/index.html"
 	},
 	"enabled": {
-		"message": "Habilitado",
-		"description": "data/index.html"
+		"message": "已启用",
+		"description": ""
 	},
 	"username": {
-		"message": "Nombre de usuario",
-		"description": "data/index.html"
+		"message": "用户名",
+		"description": ""
 	},
 	"globals_restart_hint": {
-		"message": "Ahora DEBES reinciar Hotot para que algunos cambios tomen efecto. Y estos cambios afectaran a TODAS las cuentas",
-		"description": "data/index.html"
+		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
+		"description": ""
 	},
 	"upload_photo": {
-		"message": "Subir Foto.",
+		"message": "上传照片",
 		"description": "data/index.html"
 	},
 	"identica": {
 		"message": "Identi.ca",
-		"description": "data/index.html"
+		"description": ""
 	},
 	"reply_all": {
-		"message": "Responder a Todos",
-		"description": "data/index.html"
+		"message": "回复所有",
+		"description": ""
 	},
 	"custom_font": {
-		"message": "Fuente personalizada",
-		"description": "data/index.html"
+		"message": "自定义字体",
+		"description": ""
 	},
 	"whisper": {
-		"message": "Secreto",
+		"message": "低语",
 		"description": "data/js/ui.welcome.js"
 	},
 	"no_extension": {
-		"message": "Sin Extension",
+		"message": "木有扩展",
 		"description": "data/index.html"
 	},
 	"join_time": {
-		"message": "Unirse",
-		"description": "data/index.html"
+		"message": "加入时间",
+		"description": ""
 	},
 	"retweeting_dots": {
-		"message": "Retwiteando ...",
+		"message": "转发中...",
 		"description": "data/js/ui.main.js"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Ups, ha ocurrido un Error de Red",
+		"message": "矮油～ 发生了一个网路错误！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"website": {
-		"message": "Sitio Web",
+		"message": "网址",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Mas efectos como sombras y brillo en los widgets",
+		"message": "开启更多特效，比如阴影和发光。",
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "",
+		"message": "我的收藏",
 		"description": "data/js/ui.slider.js"
 	},
 	"slide_to_next_page": {
-		"message": "Deslizar a la siguiente página",
+		"message": "切换到下一页",
 		"description": "data/index.html"
 	},
 	"picture": {
-		"message": "Foto",
+		"message": "照片",
 		"description": "data/index.html"
 	},
 	"stat": {
-		"message": "ESTADO",
-		"description": "data/index.html"
+		"message": "统计",
+		"description": ""
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "Este perfil puede que ya exista!",
+		"message": "这个账户已经存在了噢！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"quote": {
-		"message": "Citar",
-		"description": "data/index.html"
+		"message": "引用",
+		"description": ""
 	},
 	"keybinding": {
-		"message": "Combinación de teclas",
-		"description": "data/index.html"
+		"message": "热键绑定",
+		"description": ""
 	},
 	"update": {
-		"message": "Actualizar",
-		"description": "data/index.html"
+		"message": "更新",
+		"description": ""
 	},
 	"look_and_feels": {
-		"message": "Apariencia",
-		"description": "data/index.html"
+		"message": "感官",
+		"description": ""
 	},
 	"favs_view": {
-		"message": "",
+		"message": "我的收藏",
 		"description": "data/index.html"
 	},
 	"friends": {
-		"message": "Amigos",
+		"message": "朋友",
 		"description": "data/js/ui.template.js"
 	},
 	"messages_view": {
-		"message": "Mostrar Mensajes",
+		"message": "私信",
 		"description": "data/index.html"
 	},
 	"enable_proxy": {
-		"message": "Habilitar Proxy",
-		"description": "data/index.html"
+		"message": "启用代理",
+		"description": ""
 	},
 	"clear": {
-		"message": "Limpiar",
-		"description": "data/index.html"
+		"message": "清除",
+		"description": ""
 	},
 	"you_are_friends": {
-		"message": "Son amigos.",
+		"message": "你们默默地关注着对方…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"retweeted_by": {
-		"message": "Retwiteado por",
+		"message": "转发人:",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "Responder a",
+		"message": "回应",
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
-		"message": "Iniciar sesion con Twitter",
-		"description": "data/index.html"
+		"message": "登录到Twitter",
+		"description": ""
 	}
 }
