@@ -259,16 +259,17 @@ function add(name, indicator_opts, view_opts) {
             this.startY = touch.pageY;
         }
         $('#' + name + '_tweetview')[0].ontouchmove = function (e) {
-                event.preventDefault();
-		if (this.start !== 1 || !event.touches.length) return;
-		
-		var touch = event.touches[0];
-		this.scrollTop += this.startY - touch.pageY;
-                this.startX = touch.pageX;
-                this.startY = touch.pageY;
+            event.preventDefault();
+            if (this.start !== 1 || !event.touches.length) {
+                return;
+            }
+            var touch = event.touches[0];
+            this.scrollTop += this.startY - touch.pageY;
+            this.startX = touch.pageX;
+            this.startY = touch.pageY;
         }
         $('#' + name + '_tweetview')[0].ontouchend = function (e) {
-                this.start = 0;
+            this.start = 0;
         }
     } else {
         ui.Slider.slide_to(name);
