@@ -309,6 +309,7 @@ function update_status(status_text) {
                 ui.StatusBox.update_status_cb(result);
             }, function (xhr, textStatus, errorThrown) {
                 toast.set('Update failed! Save as draft.').show(3);
+                ui.StatusBox.last_sent_text = '';
                 ui.StatusBox.save_draft(draft);
             });
         ui.StatusBox.close();
@@ -357,7 +358,7 @@ function post_message(message_text) {
                 , name
                 , ui.StatusBox.post_message_cb
                 , function (xhr, textStatus, errorThrown) {
-                    toast.set('Update failed! Save as draft.').show(3);
+                    toast.set('Post failed! Save as draft.').show(3);
                     ui.StatusBox.save_draft(draft);
                 });
             ui.StatusBox.close();
