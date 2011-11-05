@@ -303,7 +303,7 @@ function update_status(status_text) {
         ui.StatusBox.reset();
 
         lib.twitterapi.update_status(status_text
-            , ui.StatusBox.reply_to_id
+            , draft.reply_to_id
             , function (result) {
                 ui.StatusBox.last_sent_text = status_text;
                 ui.StatusBox.update_status_cb(result);
