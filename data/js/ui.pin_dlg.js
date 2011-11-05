@@ -21,6 +21,8 @@ function init () {
             // change to main view
             globals.oauth_dialog.close();
             $('#profile_avatar_list a.selected').click();
+            ui.Welcome.btn_oauth_sign_in.set_sensitive(true);
+            ui.Welcome.btn_oauth_sign_in.click();
         },
         function (xhr, textStatus, errorThrown) {
             globals.oauth_dialog.close();
