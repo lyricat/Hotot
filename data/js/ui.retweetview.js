@@ -60,6 +60,8 @@ function switch_sub_view(view, name) {
     break;
     default: break;
     }
+    view.since_id = null;
+    view.max_id = null;
     view.clear();
     view.load();
 },
