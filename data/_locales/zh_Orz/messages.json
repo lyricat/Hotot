@@ -1,6 +1,6 @@
 {
 	"unfollow_at": {
-		"message": "不再尾行@",
+		"message": "不再暗恋@",
 		"description": "data/js/ui.main.js"
 	},
 	"all": {
@@ -32,7 +32,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"follow": {
-		"message": "尾行",
+		"message": "暗恋",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
@@ -134,6 +134,10 @@
 	"paste_from_clipboard": {
 		"message": "从剪贴板粘贴",
 		"description": "date/index.html"
+	},
+	"url_shortener": {
+		"message": "压缩链接",
+		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
 		"message": "殿下，请指定收件人！",
@@ -351,6 +355,10 @@
 		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
+	"undo_retweeting_dots": {
+		"message": "撤销转发...",
+		"description": "data/js/ui.main.js"
+	},
 	"same_signing_api_base": {
 		"message": "使用相同API进行签名",
 		"description": ""
@@ -366,6 +374,10 @@
 	"join": {
 		"message": "生日",
 		"description": "data/js/ui.template.js"
+	},
+	"image_uploader": {
+		"message": "糟糕图上传器",
+		"description": "data/index.html"
 	},
 	"my_power": {
 		"message": "魔法值",
@@ -400,7 +412,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
-		"message": "",
+		"message": "打开一个猪圈...",
 		"description": "data/index.html"
 	},
 	"profile_name": {
@@ -409,6 +421,10 @@
 	},
 	"clean_token": {
 		"message": "清空令牌",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "保存成草稿",
 		"description": "data/index.html"
 	},
 	"information": {
@@ -423,9 +439,9 @@
 		"message": "如果可能的话，预加载对话的上一条状态",
 		"description": ""
 	},
-	"undo_retweeting_dots": {
-		"message": "撤销转发...",
-		"description": "data/js/ui.main.js"
+	"Insert_smiley": {
+		"message": "插入颜文字",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "粉丝",
@@ -767,6 +783,10 @@
 		"message": "你们宛如路人，擦身而过，不相往来。",
 		"description": "data/js/ui.peopleview.js"
 	},
+	"click_to_compose_message": {
+		"message": "点击写DM",
+		"description": "data/index.html"
+	},
 	"you_are_following": {
 		"message": "你默默地，关注着他／她／它…",
 		"description": "data/js/ui.peopleview.js"
@@ -792,7 +812,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"open_a_profile_dots": {
-		"message": "",
+		"message": "打开一个人的心...",
 		"description": "data/index.html"
 	},
 	"pin_code": {
@@ -854,6 +874,10 @@
 	"retweeting_dots": {
 		"message": "转发中...",
 		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "草稿",
+		"description": "data/js/ui.status_box.js"
 	},
 	"oops_a_network_error_occurs": {
 		"message": "矮油～ 发生了一个网路错误！",

@@ -410,7 +410,7 @@ function save_draft(draft) {
     $('#status_drafts .btn_draft_clear').unbind().click(function() {
         $(this).parent().remove();
         var count = $('#status_drafts li').length;
-        $('#status_drafts summary').text('Drafts ('+count+')');
+        $('#status_drafts summary').text(_('drafts') + '(' + count + ')');
         if (count == 0) {
             $('#status_drafts').hide();
         }

@@ -135,6 +135,10 @@
 		"message": "Colar da área de transferência",
 		"description": "date/index.html"
 	},
+	"url_shortener": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"please_enter_the_recipient": {
 		"message": "Por favor digite o destinatário!",
 		"description": "data/js/ui.status_box.js"
@@ -351,6 +355,10 @@
 		"message": "Mencione",
 		"description": "data/js/ui.template.js"
 	},
+	"undo_retweeting_dots": {
+		"message": "Desfazendo retuíte ...",
+		"description": "data/js/ui.main.js"
+	},
 	"same_signing_api_base": {
 		"message": "A mesma API base de autenticação",
 		"description": "data/index.html"
@@ -366,6 +374,10 @@
 	"join": {
 		"message": "Associar-se",
 		"description": "data/js/ui.template.js"
+	},
+	"image_uploader": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"my_power": {
 		"message": "Meu poder",
@@ -411,6 +423,10 @@
 		"message": "Limpar token",
 		"description": "data/index.html"
 	},
+	"save_as_draft": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"information": {
 		"message": "Informação",
 		"description": "data/index.html"
@@ -423,9 +439,9 @@
 		"message": "Pre-carregar últimos tweets numa conversa se for possível.",
 		"description": "data/index.html"
 	},
-	"undo_retweeting_dots": {
-		"message": "Desfazendo retuíte ...",
-		"description": "data/js/ui.main.js"
+	"Insert_smiley": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "Seguidores",
@@ -767,6 +783,10 @@
 		"message": "Vocês não estão seguindo um ao outro.",
 		"description": "data/js/ui.peopleview.js"
 	},
+	"click_to_compose_message": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_following": {
 		"message": "Vocês estão se seguindo",
 		"description": "data/js/ui.peopleview.js"
@@ -854,6 +874,10 @@
 	"retweeting_dots": {
 		"message": "Retuitando ...",
 		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "",
+		"description": "data/js/ui.status_box.js"
 	},
 	"oops_a_network_error_occurs": {
 		"message": "Oops, ocorreu um erro de rede",

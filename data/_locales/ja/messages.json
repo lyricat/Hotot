@@ -135,6 +135,10 @@
 		"message": "ペスト",
 		"description": "date/index.html"
 	},
+	"url_shortener": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"please_enter_the_recipient": {
 		"message": "宛先を選んでください",
 		"description": "data/js/ui.status_box.js"
@@ -351,6 +355,10 @@
 		"message": "言及",
 		"description": "data/js/ui.template.js"
 	},
+	"undo_retweeting_dots": {
+		"message": "リツイートを解除する",
+		"description": "data/js/ui.main.js"
+	},
 	"same_signing_api_base": {
 		"message": "同じAPIでサーンする",
 		"description": ""
@@ -366,6 +374,10 @@
 	"join": {
 		"message": "登録する",
 		"description": "data/js/ui.template.js"
+	},
+	"image_uploader": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"my_power": {
 		"message": "魔法パワー",
@@ -411,6 +423,10 @@
 		"message": "トークンを削除する",
 		"description": "data/index.html"
 	},
+	"save_as_draft": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"information": {
 		"message": "インフォ",
 		"description": ""
@@ -423,9 +439,9 @@
 		"message": "出来る限り最新ツイートの対話をプレロードする",
 		"description": ""
 	},
-	"undo_retweeting_dots": {
-		"message": "リツイートを解除する",
-		"description": "data/js/ui.main.js"
+	"Insert_smiley": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "フォロワー",
@@ -767,6 +783,10 @@
 		"message": "フォローしていません",
 		"description": "data/js/ui.peopleview.js"
 	},
+	"click_to_compose_message": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_following": {
 		"message": "フォローしています",
 		"description": "data/js/ui.peopleview.js"
@@ -854,6 +874,10 @@
 	"retweeting_dots": {
 		"message": "リツイートなう...",
 		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "",
+		"description": "data/js/ui.status_box.js"
 	},
 	"oops_a_network_error_occurs": {
 		"message": "インターネット障害",
