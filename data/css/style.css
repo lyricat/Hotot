@@ -318,7 +318,7 @@ pre {
     padding: 0;
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 35px;
     z-index: 10000;
     display: none;
     -webkit-box-shadow: 2px 2px 3px #888;
@@ -415,7 +415,7 @@ pre {
 }
 
 #btn_smiley {
-    background: transparent none no-repeat center center !important;
+    background: transparent url(../image/ic16_smile.png) no-repeat center center !important;
 }
 #toggle_mode {
     background: transparent url(../image/ic16_dm.png) no-repeat center center !important;
@@ -425,15 +425,20 @@ pre {
     background: transparent url(../image/ic16_imageuploader.png) no-repeat center center !important;
 }
 
-#toggle_mode, #btn_shorturl, #btn_imageuploader, #btn_smiley {
+#btn_save_draft {
+    background: transparent url(../image/ic16_save_alt.png) no-repeat center center !important;
+}
+
+#status_ctrl .toolbar_button {
     width: 6px !important;
     min-width: 0 !important;
     float: left;
     border: none;
+    padding: 0 12px;
     background-color: transparent !important;
 }
 
-#toggle_mode:hover, #btn_shorturl:hover, #btn_imageuploader:hover, #btn_smiley:hover {
+#status_ctrl .toolbar_button:hover {
     background-color: #ccc !important;
 }
 
@@ -444,9 +449,71 @@ pre {
 
 #status_info {
     display: none;
-    padding: 5px;
-    min-height: 30px;
+    padding: 2px 5px;
+    min-height: 24px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+#status_drafts{
+    display: none;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+#status_drafts .sub_label {
+    display: block;
+    padding: 0 5px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10px;
+    font-weight: bold;
+    background: #666 url(../image/mask.png);
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#status_drafts li {
+    margin: 0;
+    padding: 5px 10px;
+    border-bottom: 1px #ccc solid;
+    position: relative;
     font-size: 12px;
+    min-height: 20px;
+}
+
+#status_drafts .text {
+    margin-right: 30px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 18px;
+    overflow: hidden;
+    display: block;
+    color: #333;
+}
+#status_drafts .text:hover {
+    color: blue;
+}
+
+#status_info_text {
+    font-size: 12px;
+    min-height: 20px;
+    border: none;
+    padding: 2px 30px 2px 10px;
+    float: left;
+}
+
+#status_drafts .btn_draft_clear {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    top: 5px;
+    display: block;
+    background: transparent url(../image/ic16_close.png) no-repeat;
+    background-position: center;
 }
 
 #status_box.reply_mode #status_info{
@@ -461,6 +528,13 @@ pre {
     color: #14465f;
 }
 
+#tbox_dm_target {
+    height: 20px;
+    font-size: 12px;
+    line-height: 14px;
+    display: block;
+}
+
 .info_hint {
     font-weight: bold;
 }
@@ -469,19 +543,15 @@ pre {
     height: 20px;
     width: 20px;
     right: 10px;
-    top: 10px;
+    top: 4px;
     position: absolute;
     display: block;
     background: transparent url(../image/ic16_close.png) no-repeat;
-    background-position: 2px 2px;
+    background-position: center;
 }
 
 #btn_clear_status_info:hover {
     border-color: #fff;
-}
-
-#status_info_text {
-    padding-right: 30px;
 }
 
 #status_tips {

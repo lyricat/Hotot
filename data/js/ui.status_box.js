@@ -54,8 +54,7 @@ function init () {
             return;
         }
 
-        ui.StatusBox.btn_update.set_label(_('updating_dots'));
-        ui.StatusBox.btn_update.set_sensitive(false);
+        // ui.StatusBox.btn_update.set_label(_('updating_dots'));
 
         if (status_text.length != 0) {
             if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
@@ -88,6 +87,7 @@ function init () {
     var toggle_mode = new widget.Button('#toggle_mode');
     toggle_mode.on_clicked = function (event) {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
+        $('#tbox_dm_target').focus();
     };
     toggle_mode.create();
 
@@ -123,7 +123,25 @@ function init () {
             content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
             widget.DialogManager.alert(title, content); 
         }
-    })
+    });
+
+    $('#btn_save_draft').click(function () {
+        if ($.trim($('#tbox_status').val()).length == 0) {
+            return false;
+        }
+        var draft = {
+            'mode': ui.StatusBox.current_mode,
+            'text': $('#tbox_status').val(),
+        };
+        if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
+            draft.reply_to_id = ui.StatusBox.reply_to_id;
+            draft.reply_text = encodeURIComponent($('#status_box .info_text').text())
+        } else if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
+            draft.recipient =encodeURIComponent($('#tbox_dm_target').val());
+        }
+        ui.StatusBox.save_draft(draft);
+        ui.StatusBox.reset();
+    });
 
     $('#btn_clear_status_info').click(
     function (event) {
@@ -188,12 +206,13 @@ function init () {
     $('#tbox_dm_target').click(
     function (event) {
         return false;
-    })
+    });
+
     $('#status_len').text('0/' + globals.max_status_len);      
 
-    $('#status_box').click(function () {
-        return false;    
-    })
+    $('#status_box').click(function (event) {
+        event.stopPropagation();
+    });
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
     
@@ -273,30 +292,36 @@ update_status:
 function update_status(status_text) {
     if (status_text.length != 0) {
         toast.set(_('updating_dots')).show(-1);
+        var draft = {
+            'mode': ui.StatusBox.MODE_TWEET, 
+            'text': status_text
+        };
+        if (ui.StatusBox.MODE_REPLY) {
+            draft.reply_to_id = ui.StatusBox.reply_to_id;
+            draft.reply_text = encodeURIComponent($('#status_box .info_text').text());
+        }
+        ui.StatusBox.reset();
+
         lib.twitterapi.update_status(status_text
             , ui.StatusBox.reply_to_id
             , function (result) {
                 ui.StatusBox.last_sent_text = status_text;
-                ui.StatusBox.update_status_cb(result)
+                ui.StatusBox.update_status_cb(result);
+            }, function (xhr, textStatus, errorThrown) {
+                toast.set('Update failed! Save as draft.').show(3);
+                ui.StatusBox.save_draft(draft);
             });
+        ui.StatusBox.close();
     }
     return this;
 },
 
 update_status_cb:
 function update_status_cb(result) {
-    ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     toast.set(_('update_successfully')).show();
-    $('#status_info').hide();
     ui.StatusBox.file = null;
     $('#status_image_preview').css('background-image', 'none');
-    $('#tbox_status').val(''); 
-    ui.StatusBox.reply_to_id = null;
-    ui.StatusBox.close();
     ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
-
-    ui.StatusBox.btn_update.set_label(_('update'));
-    ui.StatusBox.btn_update.set_sensitive(true);
     return this;
 },
 
@@ -315,6 +340,12 @@ post_message:
 function post_message(message_text) {
     if (message_text.length != 0) {
         var name = $.trim($('#tbox_dm_target').val());
+        var draft = {
+            'mode': ui.StatusBox.MODE_TWEET, 
+            'text': message_text,
+            'recipient': encodeURIComponent(name)
+        };
+        ui.StatusBox.reset();
         if (name == '') {
             toast.set(_('please_enter_the_recipient')).show(-1);
         } else {
@@ -324,7 +355,12 @@ function post_message(message_text) {
                   message_text
                 , null
                 , name
-                , ui.StatusBox.post_message_cb);
+                , ui.StatusBox.post_message_cb
+                , function (xhr, textStatus, errorThrown) {
+                    toast.set('Update failed! Save as draft.').show(3);
+                    ui.StatusBox.save_draft(draft);
+                });
+            ui.StatusBox.close();
         }
     }
 },
@@ -336,8 +372,6 @@ function post_message_cb(result) {
     $('#tbox_status').val(''); 
     $('#status_info').hide();
     ui.StatusBox.close();
-    ui.StatusBox.btn_update.set_label(_('update'));
-    ui.StatusBox.btn_update.set_sensitive(true);
     return this;
 },
 
@@ -366,10 +400,47 @@ function post_image_cb(result) {
     $('#tbox_status').val(text);
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     ui.StatusBox.update_status(text);
-
-    ui.StatusBox.btn_update.set_label(_('update'));
-    ui.StatusBox.btn_update.set_sensitive(true);
     return this;
+},
+
+save_draft:
+function save_draft(draft) {
+    $('#status_drafts ul').append(ui.Template.form_status_draft(draft));
+    $('#status_drafts .btn_draft_clear').unbind().click(function() {
+        $(this).parent().remove();
+        var count = $('#status_drafts li').length;
+        $('#status_drafts summary').text('Drafts ('+count+')');
+        if (count == 0) {
+            $('#status_drafts').hide();
+        }
+    });
+    $('#status_drafts .text').unbind().click(function() {
+        var li = $(this).parent();
+        var mode = parseInt(li.attr('mode'));
+        ui.StatusBox.change_mode(mode);
+        ui.StatusBox.set_status_text($(this).text());
+        switch (mode){
+        case ui.StatusBox.MODE_REPLY:
+            ui.StatusBox.reply_to_id = parseInt(li.attr('reply_to_id'))
+            ui.StatusBox.set_status_info('REPLY TO', decodeURIComponent(li.attr('reply_text')));
+        case ui.StatusBox.MODE_IMG:
+        break;
+        case ui.StatusBox.MODE_DM:
+            ui.StatusBox.set_dm_target(decodeURIComponent(li.attr('recipient')));
+        break;
+        default: 
+        break;
+        }
+        li.remove();
+        var count = $('#status_drafts li').length;
+        $('#status_drafts summary').text('Drafts ('+count+')');
+        if (count == 0) {
+            $('#status_drafts').hide();
+        }
+    });
+    var count = $('#status_drafts li').length;
+    $('#status_drafts summary').text('Drafts ('+count+')');
+    $('#status_drafts').show();
 },
 
 append_status_text:
@@ -396,6 +467,16 @@ function insert_status_text(text, pos) {
         + $('#tbox_status').val().substring(pos));
 },
 
+reset:
+function reset() {
+    ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+    $('#status_info').hide();
+    $('#status_image_preview').css('background-image', 'none');
+    $('#tbox_status').val(''); 
+    ui.StatusBox.file = null;
+    ui.StatusBox.reply_to_id = null;
+},
+
 set_status_text:
 function set_status_text(text) {
     $('#tbox_status').attr('value', text);
@@ -407,7 +488,7 @@ function set_status_info(hint, info) {
     var textbar = $('#status_info_text').empty();
     $('<span class="info_hint"/>').text(hint).appendTo(textbar);
     if (info != null && info !== '') {
-        $(document.createTextNode(' ' + info)).appendTo(textbar);
+        $(' <span class="info_text"/>').text(info).appendTo(textbar);
     }
 },
 

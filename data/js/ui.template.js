@@ -466,6 +466,9 @@ kismet_rule_t:
     disabled="{%DISABLED%}" field="{%FIELD%}" pattern="{%PATTERN%}"     \
     actions="{%ACTIONS%}" {%ADDITION%} href="#">{%NAME%}</a></li>',
 
+status_draft_t:
+'<li mode="{%MODE%}" reply_to_id="{%REPLY_TO_ID%}" reply_text="{%REPLY_TEXT%}" recipient="{%RECIPIENT%}"><a class="text">{%TEXT%}</a><a class="btn_draft_clear" href="#"></a></li>',
+
 preview_link_reg: {
 'img.ly': {
     reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+))"','g'),
@@ -609,6 +612,11 @@ function init() {
     ui.Template.kismet_rule_m = {
           TYPE:'', DISABLED:'', FIELD:'', PATTERN:''
         , METHOD:'', ACTIONS: '', ADDITION: '', NAME: ''
+    };
+
+    ui.Template.status_draft_m = {
+          MODE:'', TEXT:'', REPLY_TO_ID: '', REPLY_TEXT: ''
+        , RECIPIENT: ''
     };
 
     ui.Template.people_vcard_m = {
@@ -989,6 +997,22 @@ function form_kismet_rule(rule) {
     m.FIELD = rule.field;
     m.DISABLED = rule.disabled;
     return ui.Template.render(ui.Template.kismet_rule_t, m);
+},
+
+form_status_draft:
+function form_status_draft(draft) {
+    var m = ui.Template.status_draft_m;
+    m.MODE = draft.mode;
+    m.TEXT = draft.text;
+    if (m.MODE == ui.StatusBox.MODE_REPLY) {
+        m.REPLY_TO_ID = draft.reply_to_id;
+        m.REPLY_TEXT = draft.reply_text;
+    } else if (m.MODE == ui.StatusBox.MODE_DM) {
+        m.RECIPIENT = draft.recipient;
+    } else if (m.MODE == ui.StatusBox.MODE_IMG) {
+        
+    }
+    return ui.Template.render(ui.Template.status_draft_t, m);
 },
 
 fill_people_vcard:

@@ -703,7 +703,7 @@ function on_reply_all_click(btn, li_id, event) {
     }
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info(_('reply to'), text);
+    ui.StatusBox.set_status_info(_('reply_to'), text);
     ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     ui.StatusBox.open(
     function() {

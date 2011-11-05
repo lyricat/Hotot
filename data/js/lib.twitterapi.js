@@ -172,13 +172,13 @@ function do_ajax(method, url, params, headers, on_success, on_error){
 },
 
 update_status:
-function update_status(text, reply_to_id, on_success) {
+function update_status(text, reply_to_id, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'statuses/update.json';
     var params = {'status': text, 'include_entities': '1'};
     if (reply_to_id) {
         params['in_reply_to_status_id'] = reply_to_id;
     }
-    lib.twitterapi.post(url, params, on_success);
+    lib.twitterapi.post(url, params, on_success, on_error);
 },
 
 retweet_status:
@@ -194,7 +194,7 @@ function destroy_status(retweet_id, on_success) {
 },
 
 new_direct_messages:
-function new_direct_messages(text, user_id, screen_name, on_success) {
+function new_direct_messages(text, user_id, screen_name, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'direct_messages/new.json';
     var params = {
         'text': text,
@@ -202,7 +202,7 @@ function new_direct_messages(text, user_id, screen_name, on_success) {
     };
     if (user_id != null)
         params['user_id'] = user_id;
-    lib.twitterapi.post(url, params, on_success);
+    lib.twitterapi.post(url, params, on_success, on_error);
 },
 
 destroy_direct_messages:
@@ -664,9 +664,9 @@ function update_list(owner_screen_name, slug, description, mode, on_success) {
 },
 
 verify:
-function verify(on_success) {
+function verify(on_success, on_error) {
     var url = lib.twitterapi.api_base + 'account/verify_credentials.json';
-    lib.twitterapi.get(url, {}, on_success);
+    lib.twitterapi.get(url, {}, on_success, on_error);
 },
 
 search:
