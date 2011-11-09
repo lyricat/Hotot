@@ -173,6 +173,11 @@ function load_tweet_success(self, json) {
             $('#audio_notify').get(0).play();
         }
     }
+    // push state
+    if (util.is_native_platform()) {
+        hotot_action('system/incoming/' + group + '/' 
+            + encodeURIComponent(JSON.stringify(tweets)))
+    }
     return json.length;
 },
 

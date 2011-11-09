@@ -225,6 +225,18 @@ function open_list(screen_name, slug, additional_opts) {
     ui.Slider.slide_to(name);
 }
 
+function update_status(text) {
+    lib.twitterapi.update_status(text, null,
+        function (result) {
+            hotot_notify('Notice', 'Sent a status:' + text, null , 'content');
+        },
+        function (xhr, textStatus, errorThrown) {
+            toast.set('Update failed! Save as draft.').show(3);
+            ui.StatusBox.last_sent_text = '';
+            ui.StatusBox.save_draft(draft);
+        });
+}
+
 function reply_tweet(tid, text) {
 
 }
