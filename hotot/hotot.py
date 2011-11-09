@@ -55,9 +55,21 @@ class HototDbusService(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender')
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="i")
     def unread(self, sender=None):
         return self.app.state['unread_count']
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def show(self, sender=None):
+        return self.app.window.present()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def hide(self, sender=None):
+        return self.app.window.hide()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def quit(self, sender=None):
+        return self.app.quit()
 
 class Hotot:
     def __init__(self):
@@ -158,7 +170,7 @@ class Hotot:
         self.mm.connect('server-display', self.on_mm_server_activate)
         self.mm.show()
 
-    def unread_alert(self, subtype, sender, body="", count="0"): 
+    def unread_alert(self, subtype, sender, body="", count=0):
         if HAS_ME_MENU:
             try:
                 idr = indicate.Indicator()
