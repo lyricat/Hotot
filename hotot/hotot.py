@@ -16,6 +16,7 @@ import dbus
 import dbus.service 
 import threading
 import time
+from dbus.mainloop.glib import DBusGMainLoop
 
 try:
     import appindicator
@@ -55,9 +56,30 @@ class HototDbusService(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender')
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="i")
     def unread(self, sender=None):
         return self.app.state['unread_count']
+
+    @dbus.service.signal(dbus_interface=HOTOT_DBUS_NAME)
+    def incoming(self, group, tweets):
+        pass
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME)
+    def update_status(self, text):
+        app.update_status(text)
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def show(self, sender=None):
+        return self.app.window.present()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def hide(self, sender=None):
+        return self.app.window.hide()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def quit(self, sender=None):
+        return self.app.quit()
+
 
 class Hotot:
     def __init__(self):
@@ -68,9 +90,11 @@ class Hotot:
         self.mm_indicators = {}
         self.trayicon_pixbuf = [None, None]
         self.state = {
-            'unread_count': 0
+            'unread_count': 0,
         }
+
         self.inblinking = False
+        self.dbus_service = HototDbusService(self)
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -158,7 +182,13 @@ class Hotot:
         self.mm.connect('server-display', self.on_mm_server_activate)
         self.mm.show()
 
-    def unread_alert(self, subtype, sender, body="", count="0"): 
+    def emit_incoming(self, group, tweets):
+        self.dbus_service.incoming(group, tweets)
+
+    def update_status(self, text):
+        self.webv.execute_script('update_status("%s")' % text)
+
+    def unread_alert(self, subtype, sender, body="", count=0):
         if HAS_ME_MENU:
             try:
                 idr = indicate.Indicator()
@@ -342,6 +372,8 @@ class Hotot:
         self.is_sign_in = False
 
 def main():
+    DBusGMainLoop(set_as_default=True)
+
     global HAS_INDICATOR
     gtk.gdk.threads_init()
     config.loads();
@@ -367,9 +399,6 @@ def main():
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 
-    from dbus.mainloop.glib import DBusGMainLoop
-    DBusGMainLoop(set_as_default=True)
-    HDService = HototDbusService(app)
 
     gtk.gdk.threads_enter()
     gtk.main()
