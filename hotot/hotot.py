@@ -56,26 +56,30 @@ class HototDbusService(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender')
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="i")
     def unread(self, sender=None):
         return self.app.state['unread_count']
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', out_signature='s')
-    def incoming(self, sender=None):
-        return self.app.state['incoming'].__str__()
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', out_signature='s')
-    def incoming_count(self, sender=None):
-        return self.app.state['incoming_count'].__str__() 
-
     @dbus.service.signal(dbus_interface=HOTOT_DBUS_NAME)
     def incoming(self, group, tweets):
-        #you emit signals by calling the signal's skeleton method
         pass
 
     @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME)
     def update_status(self, text):
         app.update_status(text)
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def show(self, sender=None):
+        return self.app.window.present()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def hide(self, sender=None):
+        return self.app.window.hide()
+
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
+    def quit(self, sender=None):
+        return self.app.quit()
+
 
 class Hotot:
     def __init__(self):
@@ -184,7 +188,7 @@ class Hotot:
     def update_status(self, text):
         self.webv.execute_script('update_status("%s")' % text)
 
-    def unread_alert(self, subtype, sender, body="", count="0"): 
+    def unread_alert(self, subtype, sender, body="", count=0):
         if HAS_ME_MENU:
             try:
                 idr = indicate.Indicator()
