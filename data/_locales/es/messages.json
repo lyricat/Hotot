@@ -392,7 +392,7 @@
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Tú timeline",
+		"message": "Tu timeline",
 		"description": "data/js/ui.slider.js"
 	},
 	"behavior": {
