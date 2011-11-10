@@ -12,15 +12,16 @@ import agent
 #import keybinder
 import utils
 import dbus
-import dbus.service 
+import dbus.service
 import threading
 import time
+from dbus.mainloop.glib import DBusGMainLoop
 
 try:
-    from gi.repository import AppIndicator
+    from gi.repository import AppIndicator3
 except ImportError:
     try:
-        from gi.repository import AppIndicator3
+        from gi.repository import AppIndicator
     except ImportError:
         HAS_INDICATOR = False
     else:
@@ -95,7 +96,9 @@ class Hotot:
         self.state = {
             'unread_count': 0
         }
+
         self.inblinking = False
+        self.dbus_service = HototDbusService(self)
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -187,6 +190,9 @@ class Hotot:
         self.mm.connect('server-display', self.on_mm_server_activate)
         self.mm.show()
 
+    def update_status(self, text):
+        self.webv.execute_script('update_status("%s")' % text)
+
     def unread_alert(self, subtype, sender, body="", count=0):
         if HAS_ME_MENU:
             try:
@@ -247,12 +253,6 @@ class Hotot:
             
     def on_mm_server_activate(self, serv, arg1):
         self.window.present()
-
-    def on_btn_update_clicked(self, btn):
-        if (self.tbox_status.get_text_length() <= 140):
-            agent.update_status(self.tbox_status.get_text())
-            self.tbox_status.set_text('')
-            self.inputw.hide()
 
     def on_mitem_resume_activate(self, item):
         self.window.present()
@@ -363,6 +363,8 @@ class Hotot:
         self.is_sign_in = False
 
 def main():
+    DBusGMainLoop(set_as_default=True)
+
     global HAS_INDICATOR
     Gdk.threads_init()
     config.loads();
@@ -388,9 +390,6 @@ def main():
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 
-    from dbus.mainloop.glib import DBusGMainLoop
-    DBusGMainLoop(set_as_default=True)
-    HDService = HototDbusService(app)
 
     Gdk.threads_enter()
     Gtk.main()
