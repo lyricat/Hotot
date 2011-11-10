@@ -41,7 +41,7 @@
 KDETrayBackend::KDETrayBackend(MainWindow* parent):
     TrayIconBackend(parent),
     m_mainWindow(parent),
-    m_statusNotifierItem(new KStatusNotifierItem("hotot-qt", this))
+    m_statusNotifierItem(new KStatusNotifierItem("hotot_qt", this))
 {
     m_statusNotifierItem->setIconByName("hotot_qt-inactive");
     m_statusNotifierItem->setToolTip("hotot_qt", i18n("Hotot"), "");
