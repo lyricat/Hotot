@@ -11,7 +11,7 @@ try: import i18n
 except: from gettext import gettext as _
 
 class MainView(WebKit.WebView):
-    def __init__(self):
+    def __init__(self, devtools=False):
         WebKit.WebView.__init__(self)
         self.load_finish_flag = False
         self.set_property('can-focus', True)
@@ -26,20 +26,26 @@ class MainView(WebKit.WebView):
             settings.set_property('enable-page-cache', True)
             settings.set_property('tab-key-cycles-through-elements', True)
             settings.set_property('enable-file-access-from-file-uris', True)
-            #settings.set_property('enable-developer-extras', True)
             settings.set_property('enable-spell-checking', False)
             settings.set_property('enable-caret-browsing', False)
+            settings.set_property('enable-developer-extras', devtools)
         except:
             print 'Error: settings property was not set.'
+
         WebKit.set_web_database_directory_path(config.DB_DIR)
         WebKit.set_default_web_database_quota(1024**3L)
+        
         ## bind events
         self.connect('navigation-requested', self.on_navigation_requested);
         self.connect('new-window-policy-decision-requested', self.on_new_window_requested);
         self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
         self.connect("hovering-over-link", self.on_over_link);
-        self.connect("populate-popup", self.on_menu_popup);
+
+        if devtools:
+            from inspector import Inspector
+            Inspector(self.get_inspector())
+
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
         self.load_html_string(template, 'file://' + templatefile)
@@ -102,7 +108,3 @@ class MainView(WebKit.WebView):
         if not alt and not href.startswith('file:'):
             self.parent.set_tooltip_text(href)
 
-    def on_menu_popup(self, label, menu):
-        menuitems = menu.get_children()
-        for menuitem in menuitems:
-            print menuitem.get_label()

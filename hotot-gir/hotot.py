@@ -6,6 +6,7 @@
 '''
 from gi.repository import Gtk, Gdk, GObject, GdkPixbuf;
 import os
+import sys
 import view
 import config
 import agent
@@ -15,47 +16,15 @@ import dbus
 import dbus.service
 import threading
 import time
-from dbus.mainloop.glib import DBusGMainLoop
 
-try:
-    from gi.repository import AppIndicator3
-except ImportError:
-    try:
-        from gi.repository import AppIndicator
-    except ImportError:
-        HAS_INDICATOR = False
-    else:
-        HAS_INDICATOR = True
-else:
-    HAS_INDICATOR = True
-
-try:
-    from gi.repository import Indicate
-except ImportError:
-    HAS_ME_MENU = False
-else:
-    HAS_ME_MENU = True
-
-if __import__('os').environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
-    HAS_INDICATOR = False
-    HAS_ME_MENU = False
-
-HAS_ME_MENU = False
-
-try: import i18n
-except: from gettext import gettext as _
-
-try:
-    from gi.repository import GLib;
-    GLib.set_application_name(_("Hotot"))
-except:
-    pass
 
 HOTOT_DBUS_PATH = '/org/hotot/service'
 HOTOT_DBUS_NAME = 'org.hotot.service'
 
 class HototDbusService(dbus.service.Object):
     def __init__(self, app):
+        from dbus.mainloop.glib import DBusGMainLoop
+        DBusGMainLoop(set_as_default=True)
         bus_name = dbus.service.BusName(HOTOT_DBUS_NAME, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
@@ -99,10 +68,41 @@ class Hotot:
 
         self.inblinking = False
         self.dbus_service = HototDbusService(self)
-        if not HAS_INDICATOR:
+
+        if os.environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
+            self.has_indicator = False
+            self.has_me_menu = False
+        else:
+            try:
+                from gi.repository import AppIndicator3
+            except ImportError:
+                try:
+                    from gi.repository import AppIndicator
+                except ImportError:
+                    self.has_indicator = False
+                else:
+                    self.has_indicator = True
+            else:
+                self.has_indicator = True
+
+            try:
+                from gi.repository import Indicate
+            except ImportError:
+                self.has_me_menu = False
+            else:
+                self.has_me_menu = True
+
+        if self.has_indicator:
+            indicator = AppIndicator.Indicator('hotot', 'hotot', appindicator.CATEGORY_COMMUNICATIONS)
+            indicator.set_status(appindicator.STATUS_ACTIVE)
+            indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
+            indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
+            indicator.set_menu(app.traymenu)
+            app.indicator = indicator
+        else:
             self.create_trayicon()
 
-        if HAS_ME_MENU:
+        if self.has_me_menu:
             self.create_memenu()
 
     def build_gui(self):
@@ -119,7 +119,7 @@ class Hotot:
 
         vbox = Gtk.VBox()
         scrollw = Gtk.ScrolledWindow()
-        self.webv = view.MainView()
+        self.webv = view.MainView(ENABLE_DEV_TOOLS)
         self.webv.parent = scrollw
 
         agent.view = self.webv
@@ -129,39 +129,51 @@ class Hotot:
         vbox.show_all()
         self.window.add(vbox)
 
-        self.menu_tray = Gtk.Menu()
-        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Resume/Hide"))
-        mitem_resume.connect('activate', self.on_trayicon_activate);
-        self.menu_tray.append(mitem_resume)
+        self.traymenu = Gtk.Menu()
+        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Show"))
+        mitem_resume.connect('activate', self.on_mitem_show_activate);
+        self.traymenu.append(mitem_resume)
+        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Hide"))
+        mitem_resume.connect('activate', self.on_mitem_hide_activate);
+        self.traymenu.append(mitem_resume)
+        if (ENABLE_DEV_TOOLS):
+            mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
+            mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, Gtk.IconSize.MENU))
+            mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
+            self.traymenu.append(mitem_inspector)
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
-        self.menu_tray.append(mitem_prefs)
+        self.traymenu.append(mitem_prefs)
         mitem_about = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, None)
         mitem_about.connect('activate', self.on_mitem_about_activate);
-        self.menu_tray.append(mitem_about)
+        self.traymenu.append(mitem_about)
         mitem_quit = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, None)
         mitem_quit.connect('activate', self.on_mitem_quit_activate);
-        self.menu_tray.append(mitem_quit)
+        self.traymenu.append(mitem_quit)
 
-        self.menu_tray.show_all()
+        self.traymenu.show_all()
 
         ## support for ubuntu unity indicator-appmenu
-        menubar = Gtk.MenuBar()
+        self.menubar = Gtk.MenuBar()
+
         menuitem_file = Gtk.MenuItem.new_with_mnemonic(_("_File"))
         menuitem_file_menu = Gtk.Menu()
-
-        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Resume/Hide"))
-        mitem_resume.connect('activate', self.on_mitem_resume_activate)
+        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Show"))
+        mitem_resume.connect('activate', self.on_mitem_show_activate)
         menuitem_file_menu.append(mitem_resume)
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
-
+        if (ENABLE_DEV_TOOLS):
+            mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
+            mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, 16))
+            mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
+            menuitem_file_menu.append(mitem_inspector)
         menuitem_quit = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, None)
         menuitem_quit.connect("activate", self.quit)
         menuitem_file_menu.append(menuitem_quit)
         menuitem_file.set_submenu(menuitem_file_menu)
-        menubar.append(menuitem_file)
+        self.menubar.append(menuitem_file)
 
         menuitem_help = Gtk.MenuItem.new_with_mnemonic(_("_Help"))
         menuitem_help_menu = Gtk.Menu()
@@ -169,11 +181,12 @@ class Hotot:
         menuitem_about.connect("activate", self.on_mitem_about_activate)
         menuitem_help_menu.append(menuitem_about)
         menuitem_help.set_submenu(menuitem_help_menu)
-        menubar.append(menuitem_help)
+        self.menubar.append(menuitem_help)
 
-        menubar.set_size_request(0, 0)
-        menubar.show_all()
-        vbox.pack_start(menubar, expand=0, fill=0, padding=0)
+        self.menubar.set_size_request(0, 0)
+        self.menubar.show_all()
+        self.menubar.hide()
+        vbox.pack_start(self.menubar, expand=0, fill=0, padding=0)
 
         ##
         geometry = Gdk.Geometry()
@@ -194,7 +207,7 @@ class Hotot:
         self.webv.execute_script('update_status("%s")' % text)
 
     def unread_alert(self, subtype, sender, body="", count=0):
-        if HAS_ME_MENU:
+        if self.has_me_menu:
             try:
                 idr = Indicate.Indicator()
             except:
@@ -213,7 +226,7 @@ class Hotot:
         else:
             self.stop_blinking()
         
-        if not HAS_INDICATOR:
+        if not self.has_indicator:
             self.trayicon.set_tooltip_text("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
 
@@ -223,13 +236,13 @@ class Hotot:
         def blink_proc():
             flag = 0
             while self.inblinking:
-                if HAS_INDICATOR:
+                if self.has_indicator:
                     self.indicator.set_status(AppIndicator.STATUS_ATTENTION if flag else AppIndicator.STATUS_ACTIVE)
                 else:
                     self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[flag])
                 flag ^= 1
                 time.sleep(1)
-            if HAS_INDICATOR:
+            if self.has_indicator:
                 self.indicator.set_status(AppIndicator.STATUS_ACTIVE)
             else:
                 self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
@@ -244,7 +257,7 @@ class Hotot:
         return widget.hide_on_delete()
 
     def on_mm_activate(self, idr, arg1):
-        if HAS_ME_MENU:
+        if self.has_me_menu:
             subtype = idr.get_property('subtype')
             idr.set_property('draw-attention', 'false')
             self.window.present()
@@ -254,8 +267,15 @@ class Hotot:
     def on_mm_server_activate(self, serv, arg1):
         self.window.present()
 
-    def on_mitem_resume_activate(self, item):
+    def on_mitem_show_activate(self, item):
         self.window.present()
+
+    def on_mitem_hide_activate(self, item):
+        self.window.hide()
+
+    def on_mitem_inspector_activate(self, item):
+        inspector = self.webv.get_inspector()
+        inspector.inspect_coordinates(0, 0)
 
     def on_mitem_prefs_activate(self, item):
         agent.execute_script('''
@@ -335,14 +355,21 @@ class Hotot:
         GObject.idle_add(self._on_trayicon_activate, icon)
 
     def _on_trayicon_activate(self, icon):
-        if self.window.is_active():
+        if self.window.get_visible():
             self.window.hide()
         else:
             self.stop_blinking()
             self.window.present()
 
     def on_trayicon_popup_menu(self, icon, button, activate_time):
-        self.menu_tray.popup(None, None
+        menuitems = self.traymenu.get_children()
+        if self.window.get_visible():
+            menuitems[0].hide();
+            menuitems[1].show();
+        else:
+            menuitems[1].hide();
+            menuitems[0].show();
+        self.traymenu.popup(None, None
             , None, None, button=button
             , activate_time=activate_time)
 
@@ -362,35 +389,39 @@ class Hotot:
     def on_sign_out(self):
         self.is_sign_in = False
 
-def main():
-    DBusGMainLoop(set_as_default=True)
+def usage():
+    print '''Usage: hotot [OPTION...]
+  -d, --dev                enable dev tools
+  -h, --help               show this help info'''
 
-    global HAS_INDICATOR
+def main():
+    global ENABLE_DEV_TOOLS
+    ENABLE_DEV_TOOLS = False
+    for arg in sys.argv:
+        if arg in ('-h', '--help'):
+            usage()
+            sys.exit()
+        elif arg in ('-d', '--dev'):
+            ENABLE_DEV_TOOLS = True
+
+    try:
+        import i18n
+    except:
+        from gettext import gettext as _
+
+    try:
+        from gi.repository import GLib;
+        GLib.set_application_name(_("Hotot"))
+    except:
+        pass
+
     Gdk.threads_init()
     config.loads();
-    try:
-        import ctypes
-        libc = ctypes.CDLL('libc.so.6')
-        libc.prctl(15, 'hotot', 0, 0, 0)
-    except:
-        import dl
-        libc = dl.open('/lib/libc.so.6')
-        libc.call('prctl', 15, 'hotot', 0, 0, 0)
-        
+
     agent.init_notify()
     app = Hotot()
     agent.app = app
-    if HAS_INDICATOR:
-        indicator = AppIndicator.Indicator('hotot',
-                                            'hotot',
-                                            appindicator.CATEGORY_COMMUNICATIONS)
-        indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
-        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
-        indicator.set_menu(app.menu_tray)
-        app.indicator = indicator
-
-
+    
     Gdk.threads_enter()
     Gtk.main()
     Gdk.threads_leave()
