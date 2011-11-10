@@ -4,29 +4,32 @@
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
-import gtk
-import gobject
+from gi.repository import Gtk, Gdk, GObject, GdkPixbuf;
 import os
 import view
 import config
 import agent
-import keybinder
+#import keybinder
 import utils
 import dbus
 import dbus.service 
 import threading
 import time
-from dbus.mainloop.glib import DBusGMainLoop
 
 try:
-    import appindicator
+    from gi.repository import AppIndicator
 except ImportError:
-    HAS_INDICATOR = False
+    try:
+        from gi.repository import AppIndicator3
+    except ImportError:
+        HAS_INDICATOR = False
+    else:
+        HAS_INDICATOR = True
 else:
     HAS_INDICATOR = True
 
 try:
-    import indicate
+    from gi.repository import Indicate
 except ImportError:
     HAS_ME_MENU = False
 else:
@@ -42,8 +45,8 @@ try: import i18n
 except: from gettext import gettext as _
 
 try:
-    import glib
-    glib.set_application_name(_("Hotot"))
+    from gi.repository import GLib;
+    GLib.set_application_name(_("Hotot"))
 except:
     pass
 
@@ -90,11 +93,9 @@ class Hotot:
         self.mm_indicators = {}
         self.trayicon_pixbuf = [None, None]
         self.state = {
-            'unread_count': 0,
+            'unread_count': 0
         }
-
         self.inblinking = False
-        self.dbus_service = HototDbusService(self)
         if not HAS_INDICATOR:
             self.create_trayicon()
 
@@ -102,64 +103,66 @@ class Hotot:
             self.create_memenu()
 
     def build_gui(self):
-        self.window = gtk.Window()
-        gtk.window_set_default_icon_from_file(
+        self.window = Gtk.Window()
+        self.window.set_default_icon_from_file(
             utils.get_ui_object('image/ic128_hotot.png'))
         self.window.set_icon_from_file(
             utils.get_ui_object('image/ic128_hotot.png'))
 
         self.window.set_title(_("Hotot"))
-        self.window.set_position(gtk.WIN_POS_CENTER)
+        self.window.set_position(Gtk.WindowPosition.CENTER)
         #self.window.set_default_size(500, 550)
+        self.window.connect('delete-event', self.on_window_delete)
 
-        vbox = gtk.VBox()
-        scrollw = gtk.ScrolledWindow()
+        vbox = Gtk.VBox()
+        scrollw = Gtk.ScrolledWindow()
         self.webv = view.MainView()
+        self.webv.parent = scrollw
 
         agent.view = self.webv
 
         scrollw.add(self.webv)
-        vbox.pack_start(scrollw)
+        vbox.pack_start(scrollw, True, True, 0)
         vbox.show_all()
         self.window.add(vbox)
 
-        self.menu_tray = gtk.Menu()
-        mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
+        self.menu_tray = Gtk.Menu()
+        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_trayicon_activate);
         self.menu_tray.append(mitem_resume)
-        mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
+        mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
         self.menu_tray.append(mitem_prefs)
-        mitem_about = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
+        mitem_about = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, None)
         mitem_about.connect('activate', self.on_mitem_about_activate);
         self.menu_tray.append(mitem_about)
-        mitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+        mitem_quit = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, None)
         mitem_quit.connect('activate', self.on_mitem_quit_activate);
         self.menu_tray.append(mitem_quit)
 
         self.menu_tray.show_all()
 
         ## support for ubuntu unity indicator-appmenu
-        menubar = gtk.MenuBar()
-        menuitem_file = gtk.MenuItem(_("_File"))
-        menuitem_file_menu = gtk.Menu()
+        menubar = Gtk.MenuBar()
+        menuitem_file = Gtk.MenuItem.new_with_mnemonic(_("_File"))
+        menuitem_file_menu = Gtk.Menu()
 
-        mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
+        mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_mitem_resume_activate)
         menuitem_file_menu.append(mitem_resume)
-        mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
+        mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
 
-        menuitem_quit = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+        menuitem_quit = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, None)
         menuitem_quit.connect("activate", self.quit)
         menuitem_file_menu.append(menuitem_quit)
         menuitem_file.set_submenu(menuitem_file_menu)
         menubar.append(menuitem_file)
 
-        menuitem_help = gtk.MenuItem(_("_Help"))
-        menuitem_help_menu = gtk.Menu()
-        menuitem_about = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
+        menuitem_help = Gtk.MenuItem.new_with_mnemonic(_("_Help"))
+        menuitem_help_menu = Gtk.Menu()
+        menuitem_about = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_ABOUT, None)
         menuitem_about.connect("activate", self.on_mitem_about_activate)
         menuitem_help_menu.append(menuitem_about)
         menuitem_help.set_submenu(menuitem_help_menu)
@@ -170,30 +173,26 @@ class Hotot:
         vbox.pack_start(menubar, expand=0, fill=0, padding=0)
 
         ##
-        self.window.set_geometry_hints(min_height=380, min_width=460)
+        geometry = Gdk.Geometry()
+        geometry.min_height = 400
+        geometry.min_width = 460
+        self.window.set_geometry_hints(self.window, geometry, Gdk.WindowHints.MIN_SIZE)
         self.window.show()
-        self.window.connect('delete-event', gtk.Widget.hide_on_delete)
 
     def create_memenu(self):
         # Memssage Menu indicator
-        self.mm = indicate.indicate_server_ref_default()
+        self.mm = Indicate.indicate_server_ref_default()
         self.mm.set_type('message.hotot')
         self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
         self.mm.connect('server-display', self.on_mm_server_activate)
         self.mm.show()
 
-    def emit_incoming(self, group, tweets):
-        self.dbus_service.incoming(group, tweets)
-
-    def update_status(self, text):
-        self.webv.execute_script('update_status("%s")' % text)
-
     def unread_alert(self, subtype, sender, body="", count=0):
         if HAS_ME_MENU:
             try:
-                idr = indicate.Indicator()
+                idr = Indicate.Indicator()
             except:
-                idr = indicate.IndicatorMessage()
+                idr = Indicate.IndicatorMessage()
             idr.set_property('subtype', subtype)
             idr.set_property('sender', sender)
             idr.set_property('body', body)
@@ -209,7 +208,7 @@ class Hotot:
             self.stop_blinking()
         
         if not HAS_INDICATOR:
-            self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
+            self.trayicon.set_tooltip_text("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
 
     def start_blinking(self):
@@ -219,13 +218,13 @@ class Hotot:
             flag = 0
             while self.inblinking:
                 if HAS_INDICATOR:
-                    self.indicator.set_status(appindicator.STATUS_ATTENTION if flag else appindicator.STATUS_ACTIVE)
+                    self.indicator.set_status(AppIndicator.STATUS_ATTENTION if flag else AppIndicator.STATUS_ACTIVE)
                 else:
                     self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[flag])
                 flag ^= 1
                 time.sleep(1)
             if HAS_INDICATOR:
-                self.indicator.set_status(appindicator.STATUS_ACTIVE)
+                self.indicator.set_status(AppIndicator.STATUS_ACTIVE)
             else:
                 self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
         self.inblinking = True
@@ -234,6 +233,9 @@ class Hotot:
 
     def stop_blinking(self):
         self.inblinking = False
+
+    def on_window_delete(self, widget, event):
+        return widget.hide_on_delete()
 
     def on_mm_activate(self, idr, arg1):
         if HAS_ME_MENU:
@@ -251,17 +253,6 @@ class Hotot:
             agent.update_status(self.tbox_status.get_text())
             self.tbox_status.set_text('')
             self.inputw.hide()
-
-    def on_tbox_status_changed(self, entry):
-        if (self.tbox_status.get_text_length() <= 140):
-            entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.Color('#fff'))
-        else:
-            entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.Color('#f00'))
-
-    def on_tbox_status_key_released(self, entry, event):
-        if event.keyval == gtk.keysyms.Return:
-            self.btn_update.clicked();
-            entry.stop_emission('insert-text')
 
     def on_mitem_resume_activate(self, item):
         self.window.present()
@@ -282,9 +273,9 @@ class Hotot:
 
     def quit(self, *args):
         self.stop_blinking()
-        gtk.gdk.threads_leave()
+        Gdk.threads_leave()
         self.window.destroy()
-        gtk.main_quit()
+        Gtk.main_quit()
         import sys
         sys.exit(0)
 
@@ -292,7 +283,7 @@ class Hotot:
         # init hotkey
         self.init_hotkey()
         # resize window
-        self.window.set_gravity(gtk.gdk.GRAVITY_CENTER)
+        self.window.set_gravity(Gdk.Gravity.CENTER)
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])
@@ -329,19 +320,19 @@ class Hotot:
         """
         Create status icon and connect signals
         """
-        self.trayicon = gtk.StatusIcon()
+        self.trayicon = Gtk.StatusIcon()
         self.trayicon.connect('activate', self.on_trayicon_activate)
         self.trayicon.connect('popup-menu', self.on_trayicon_popup_menu)
-        self.trayicon.set_tooltip(_("Hotot: Click to Active."))
-        self.trayicon_pixbuf[0] = gtk.gdk.pixbuf_new_from_file(
+        self.trayicon.set_tooltip_text(_("Hotot: Click to Active."))
+        self.trayicon_pixbuf[0] = GdkPixbuf.Pixbuf.new_from_file(
             utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
-        self.trayicon_pixbuf[1] = gtk.gdk.pixbuf_new_from_file(
+        self.trayicon_pixbuf[1] = GdkPixbuf.Pixbuf.new_from_file(
             utils.get_ui_object('image/ic24_hotot_mono_light_blink.svg'))
         self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
         self.trayicon.set_visible(True)
 
     def on_trayicon_activate(self, icon):
-        gobject.idle_add(self._on_trayicon_activate, icon)
+        GObject.idle_add(self._on_trayicon_activate, icon)
 
     def _on_trayicon_activate(self, icon):
         if self.window.is_active():
@@ -352,11 +343,11 @@ class Hotot:
 
     def on_trayicon_popup_menu(self, icon, button, activate_time):
         self.menu_tray.popup(None, None
-            , None, button=button
+            , None, None, button=button
             , activate_time=activate_time)
 
     def on_hotkey_compose(self):
-        gobject.idle_add(self._on_hotkey_compose)
+        GObject.idle_add(self._on_hotkey_compose)
 
     def _on_hotkey_compose(self):
         if not self.webv.is_focus():
@@ -372,10 +363,8 @@ class Hotot:
         self.is_sign_in = False
 
 def main():
-    DBusGMainLoop(set_as_default=True)
-
     global HAS_INDICATOR
-    gtk.gdk.threads_init()
+    Gdk.threads_init()
     config.loads();
     try:
         import ctypes
@@ -390,7 +379,7 @@ def main():
     app = Hotot()
     agent.app = app
     if HAS_INDICATOR:
-        indicator = appindicator.Indicator('hotot',
+        indicator = AppIndicator.Indicator('hotot',
                                             'hotot',
                                             appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
@@ -399,10 +388,13 @@ def main():
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 
+    from dbus.mainloop.glib import DBusGMainLoop
+    DBusGMainLoop(set_as_default=True)
+    HDService = HototDbusService(app)
 
-    gtk.gdk.threads_enter()
-    gtk.main()
-    gtk.gdk.threads_leave()
+    Gdk.threads_enter()
+    Gtk.main()
+    Gdk.threads_leave()
 
 if __name__ == '__main__':
     main()
