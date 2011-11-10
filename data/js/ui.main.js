@@ -175,7 +175,7 @@ function load_tweet_success(self, json) {
     }
     // push state
     if (util.is_native_platform()) {
-        hotot_action('system/incoming/' + group + '/' 
+        hotot_action('system/incoming/' + self.name + '/' 
             + encodeURIComponent(JSON.stringify(tweets)))
     }
     return json.length;
