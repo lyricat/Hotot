@@ -112,6 +112,7 @@ class Hotot:
         self.window.set_title(_("Hotot"))
         self.window.set_position(Gtk.WindowPosition.CENTER)
         #self.window.set_default_size(500, 550)
+        self.window.connect('delete-event', self.on_window_delete)
 
         vbox = Gtk.VBox()
         scrollw = Gtk.ScrolledWindow()
@@ -177,7 +178,6 @@ class Hotot:
         geometry.min_width = 460
         self.window.set_geometry_hints(self.window, geometry, Gdk.WindowHints.MIN_SIZE)
         self.window.show()
-        self.window.connect('delete-event', self.on_window_delete)
 
     def create_memenu(self):
         # Memssage Menu indicator
@@ -234,8 +234,8 @@ class Hotot:
     def stop_blinking(self):
         self.inblinking = False
 
-    def on_window_delete(self, event, user_data):
-        self.window.hide_on_delete()
+    def on_window_delete(self, widget, event):
+        return widget.hide_on_delete()
 
     def on_mm_activate(self, idr, arg1):
         if HAS_ME_MENU:
