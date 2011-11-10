@@ -960,7 +960,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "Responder a",
+		"message": "Responder a ",
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
