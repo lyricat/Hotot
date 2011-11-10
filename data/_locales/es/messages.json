@@ -35,6 +35,10 @@
 		"message": "Seguir",
 		"description": "data/js/ui.template.js"
 	},
+	"unfollow": {
+		"message": "Dejar de seguir",
+		"description": "data/js/ui.template.js"
+	},
 	"font": {
 		"message": "Tipografía",
 		"description": "data/index.html"
