@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
     chdir(PREFIX);
 #endif
     setWindowTitle(i18n("Hotot"));
-    setWindowIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
 #ifndef MEEGO_EDITION_HARMATTAN
     HototWebView* view = new HototWebView(m_webView, this);
     this->setCentralWidget(view);
