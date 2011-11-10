@@ -4,7 +4,7 @@
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
-from gi.repository import Gtk, Gdk, GObject, GdkPixbuf;
+from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
 import os
 import sys
 import view
@@ -410,8 +410,8 @@ def main():
         from gettext import gettext as _
 
     try:
-        from gi.repository import GLib;
-        GLib.set_application_name(_("Hotot"))
+        import prctl
+        prctl.set_name('hotot')
     except:
         pass
 
