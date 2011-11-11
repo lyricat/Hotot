@@ -52,9 +52,9 @@ function init () {
     function (event) {
         ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
     });
-    
+
     $('#tweet_more_menu').mouseleave(function(){
-        $(this).hide();    
+        $(this).hide();
     })
 
 },
@@ -77,7 +77,7 @@ function show () {
 load_home:
 function load_home(self, success, fail) {
     lib.twitterapi.get_home_timeline(
-        self.since_id, null, conf.vars.items_per_request, 
+        self.since_id, null, conf.vars.items_per_request,
         success);
 },
 
@@ -85,25 +85,25 @@ loadmore_home:
 function loadmore_home(self, success, fail) {
     var max_id = self.max_id;
     lib.twitterapi.get_home_timeline(
-        null, max_id, conf.vars.items_per_request, 
+        null, max_id, conf.vars.items_per_request,
         success);
 },
 
-load_mentions: 
+load_mentions:
 function load_mentions(self, success, fail) {
     lib.twitterapi.get_mentions(
-        self.since_id, null, conf.vars.items_per_request, 
+        self.since_id, null, conf.vars.items_per_request,
         success);
 },
 
-loadmore_mentions: 
+loadmore_mentions:
 function loadmore_mentions(self, success, fail) {
     lib.twitterapi.get_mentions(
-        null, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request,
         success);
 },
 
-load_messages: 
+load_messages:
 function load_messages(self, success, fail) {
     var since_id = self.since_id;
     lib.twitterapi.get_direct_messages(
@@ -114,13 +114,13 @@ function load_messages(self, success, fail) {
         , conf.vars.items_per_request, success);
 },
 
-loadmore_messages: 
+loadmore_messages:
 function loadmore_messages(self, success, fail) {
     lib.twitterapi.get_direct_messages(
-        null, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request,
         success);
     lib.twitterapi.get_sent_direct_messages(
-        null, self.max_id, conf.vars.items_per_request, 
+        null, self.max_id, conf.vars.items_per_request,
         success);
 },
 
@@ -131,7 +131,7 @@ function load_tweet_success(self, json) {
         ui.Slider.set_unread(self.name);
     }
     // in fact, ret equals to json.length
-    if (ret == 0) { 
+    if (ret == 0) {
         return json.length;
     }
     var current_profile = conf.get_current_profile();
@@ -148,7 +148,7 @@ function load_tweet_success(self, json) {
         }
     }
     ret = json.length - i - 1;
-    if (ret == 0) { 
+    if (ret == 0) {
         return json.length;
     }
     // notify
@@ -157,14 +157,14 @@ function load_tweet_success(self, json) {
         var notify_count = 0
         for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
             user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
-            if (user.screen_name == globals.myself.screen_name) 
+            if (user.screen_name == globals.myself.screen_name)
                 continue;
             text = json[i].text;
             hotot_notify(user.screen_name, text, user.profile_image_url , 'content');
             notify_count += 1;
         }
         if (3 < notify_count) {
-            hotot_notify("Update page " + self.name 
+            hotot_notify("Update page " + self.name
                 , "and " + (notify_count - 2) + " new items remained."
                 , null, 'count');
         }
@@ -175,7 +175,7 @@ function load_tweet_success(self, json) {
     }
     // push state
     if (util.is_native_platform()) {
-        hotot_action('system/incoming/' + self.name + '/' 
+        hotot_action('system/incoming/' + self.name + '/'
             + encodeURIComponent(JSON.stringify(json)))
     }
     return json.length;
@@ -242,7 +242,7 @@ function add_people(self, users) {
     // if timeline is not on the top
     // resume to the postion before new tweets were added
     // offset = N* (clientHeight + border-width)
-    // @TODO 
+    // @TODO
     if (self.hasOwnProperty('_me') && self.resume_pos) {
         self._me.get(0).scrollTop += new_tweets_height + users.length;
     }
@@ -280,7 +280,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
         kismet.filter(json_obj, 'mask');
     }
-     
+
     var new_tweets_height = 0;
     // sort
     // if reversion: large ... small
@@ -291,7 +291,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     var i = 0;
     var batch_arr = [];
     while (i < json_obj.length) {
-        var ret = ui.Main.insert_isolated_tweet(self, json_obj[i], reversion) 
+        var ret = ui.Main.insert_isolated_tweet(self, json_obj[i], reversion)
         if (ret[0] == -1) {
             // remove the duplicate tweet from json_obj
             json_obj.splice(i, 1);
@@ -319,7 +319,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         var dom_id = self.name+'-'+batch_arr[i].id_str;
         new_tweets_height += $('#'+dom_id).get(0).clientHeight;
     }
-    // preload 
+    // preload
     if (ui.Main.use_preload_conversation && self.hasOwnProperty('_me')) {
         for (var i = 0; i < json_obj.length; i += 1) {
             if (json_obj[i].in_reply_to_status_id_str == null) {
@@ -333,7 +333,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
                 , '_body': thread_container};
             ui.Main.preload_thread(listview, json_obj[i]);
         }
-    } 
+    }
 
     // if timeline is not on the top
     // resume to the postion before new tweets were added
@@ -345,7 +345,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // cache users' avatars in mentions
     /*
     if (container.pagename == 'mentions') {
-        for (var i = 0, l = json_obj.length; i < l; i += 1){                      
+        for (var i = 0, l = json_obj.length; i < l; i += 1){
             var user = typeof json_obj[i].sender != 'undefined'
                 ? json_obj[i].sender : json_obj[i].user;
             util.cache_avatar(user);
@@ -383,7 +383,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     if (ignore_kismet == undefined) {
         kismet.filter(json_obj, 'notify');
     }
-    
+
     // bind events
     for (var i = 0, l = json_obj.length; i < l; i += 1) {
         ui.Main.bind_tweet_action('#'+self.name +'-'+json_obj[i].id_str);
@@ -397,9 +397,9 @@ function sort(json_obj, reversion) {
     if (1 < json_obj.length) {
         json_obj.sort(function (a, b) {
             if (reversion)  {
-                return util.compare_id(b.id_str, a.id_str); 
+                return util.compare_id(b.id_str, a.id_str);
             } else {
-                return util.compare_id(a.id_str, b.id_str); 
+                return util.compare_id(a.id_str, b.id_str);
             }
         });
     }
@@ -419,13 +419,13 @@ function insert_isolated_tweet(self, tweet, reversion) {
     while (true) {
         if (next_one == null) {
             // insert to end of container
-            // or the top of the container, 
+            // or the top of the container,
             // according to argument `reversion`
             if (c != 0) {
                 if (reversion) {
-                    self._body.prepend(this_one_html);            
+                    self._body.prepend(this_one_html);
                 } else {
-                    self._body.append(this_one_html);            
+                    self._body.append(this_one_html);
                 }
             }
             return [c, this_one_html];
@@ -443,7 +443,7 @@ function insert_isolated_tweet(self, tweet, reversion) {
                     if (c != 0) { $(next_one).before(this_one_html); }
                     return [c, this_one_html];
                 }
-            } else {                
+            } else {
                 //next_one_id > this.id_str
                 if (reversion) {
                     if (c != 0) { $(next_one).after(this_one_html); }
@@ -459,7 +459,7 @@ function insert_isolated_tweet(self, tweet, reversion) {
 
 get_next_tweet_dom:
 function get_next_tweet_dom(view, current, reversion) {
-    /* return the next/prev brother DOM of current. 
+    /* return the next/prev brother DOM of current.
      * if current is null, return the first/last DOM of tweets
      * if no tweet at the next position, return null
      * */
@@ -556,7 +556,7 @@ function bind_tweet_action(id) {
             _this = null;
         });
     });
-    
+
     //tweet bar buttons
     $(id).find('.tweet_more_menu_trigger').click(function(event){
         if (ui.Main.isTweetMoreMenuClosed) {
@@ -604,7 +604,7 @@ function bind_tweet_action(id) {
         return false;
     });
 
-    // type: message 
+    // type: message
     $(id).find('.tweet_dm_reply_btn').click(
     function (event) {
         ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
@@ -673,14 +673,14 @@ function on_retweet_click(btn, li_id, event) {
     if (li.hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
         toast.set(_('undo_retweeting_dots')).show(-1);
-        lib.twitterapi.destroy_status(rt_id, 
+        lib.twitterapi.destroy_status(rt_id,
         function (result) {
             toast.set(_('undo_successfully')).show();
             li.removeClass('retweeted');
         });
     } else {
         toast.set(_('retweeting_dots')).show(-1);
-        lib.twitterapi.retweet_status(id, 
+        lib.twitterapi.retweet_status(id,
         function (result) {
             toast.set(_('retweet_successfully')).show();
             li.attr('my_retweet_id', result.id_str);
@@ -736,7 +736,7 @@ function on_del_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
     toast.set('Destroy ...').show(-1);
-    lib.twitterapi.destroy_status(id, 
+    lib.twitterapi.destroy_status(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
         li.remove();
@@ -749,7 +749,7 @@ function on_dm_delete_click(btn, li_id, event) {
     var li = $(li_id);
     var id = li.attr('tweet_id');
     toast.set('Destroy ...').show(-1);
-    lib.twitterapi.destroy_direct_messages(id, 
+    lib.twitterapi.destroy_direct_messages(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
         li.remove();
@@ -764,14 +764,14 @@ function on_fav_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     if (li.hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
-        lib.twitterapi.destroy_favorite(id, 
+        lib.twitterapi.destroy_favorite(id,
         function (result) {
             toast.set(_('successfully')).show();
             li.removeClass('faved');
         });
     } else {
         toast.set(_('favorite_this_tweet_dots')).show(-1);
-        lib.twitterapi.create_favorite(id, 
+        lib.twitterapi.create_favorite(id,
         function (result) {
             toast.set(_('Successfully')).show();
             li.addClass('faved');
@@ -887,7 +887,7 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
         if (reply_id == null) { // end of thread.
             on_finish();
             return ;
-        } else { 
+        } else {
             ui.Main.load_thread_proc(listview, reply_id, on_finish, on_error);
         }
     }
@@ -907,7 +907,7 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
 
 preload_thread:
 function preload_thread(listview, tweet_obj) {
-    db.get_tweet(tweet_obj.in_reply_to_status_id_str, 
+    db.get_tweet(tweet_obj.in_reply_to_status_id_str,
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
@@ -920,7 +920,7 @@ function preload_thread(listview, tweet_obj) {
             }
             listview._body.parent().show();
         }
-    }); 
+    });
 },
 
 move_to_tweet:
@@ -929,13 +929,13 @@ function move_to_tweet(pos) {
     var current = null;
     var cur_view = null;
     if (ui.Main.selected_tweet_id != null) {
-        current = $(ui.Main.selected_tweet_id);   
+        current = $(ui.Main.selected_tweet_id);
     }
     // if we lose current placemarker ...
     if (current == null || current.length == 0) {
         cur_view = ui.Main.views[ui.Slider.current];
         if (!cur_view.hasOwnProperty('selected_item_id')) {
-            cur_view.selected_item_id 
+            cur_view.selected_item_id
                 = '#'+ cur_view._body.find('.card:first').attr('id');
         }
         current = $(cur_view.selected_item_id);
@@ -955,10 +955,14 @@ function move_to_tweet(pos) {
     } else if (pos == 'orig') {
         target = current;
     } else {
-        target = $(pos); 
+        target = $(pos);
     }
     if (target.length == 0) {
         target = current;
+    }
+    if (target == null || target.length == 0) {
+        // too bad
+        return;
     }
     cur_view._me.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}, 300);
@@ -993,7 +997,7 @@ function openTweetMoreMenu(li, btn) {
         $('#tweet_del_btn').parent().css('display', 'none');
     }
     // retweet or quote?
-    if (conf.get_current_profile().preferences.use_alt_retweet && 
+    if (conf.get_current_profile().preferences.use_alt_retweet &&
         li.attr('retweetable') == 'true') {
         $('#tweet_alt_retweet_btn').parent().css('display', 'block');
         $('#tweet_rt_btn').parent().css('display', 'none');
