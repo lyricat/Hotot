@@ -110,10 +110,7 @@ def crack_action(params):
     elif params[1] == 'paste_clipboard_text':
         webv.paste_clipboard();
     elif params[1] == 'set_clipboard_text':
-        clipboard = Gtk.Clipboard()
-        text = list(params)
-        del text[0:2]
-        clipboard.set_text('/'.join(text))
+        webv.copy_clipboard();
 
 def crack_system(params):
     if params[1] == 'notify':

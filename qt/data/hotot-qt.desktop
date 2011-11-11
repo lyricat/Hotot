@@ -4,5 +4,5 @@ GenericName=Twitter Client
 Type=Application
 Comment=Lightweight Twitter Client base on QtWebkit
 Exec=hotot-qt
-Icon=hotot
+Icon=hotot_qt
 Categories=Qt;Network;

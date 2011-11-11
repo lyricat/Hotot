@@ -1,6 +1,6 @@
 {
 	"unfollow_at": {
-		"message": "Dejar de seguir @",
+		"message": "Dejar de seguir a @",
 		"description": "data/js/ui.main.js"
 	},
 	"all": {
@@ -36,7 +36,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
-		"message": "Tipografia",
+		"message": "Tipografía",
 		"description": "data/index.html"
 	},
 	"fine": {
@@ -44,11 +44,11 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"add_to_list": {
-		"message": "Agregar a una lista",
+		"message": "Añadir a una lista",
 		"description": "data/js/ui.template.js"
 	},
 	"compose": {
-		"message": "Componer",
+		"message": "Redactar",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
@@ -60,7 +60,7 @@
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
-		"message": "HaZ clic en el botón de abajo",
+		"message": "Haz clic en el botón de abajo",
 		"description": "data/index.html"
 	},
 	"theme": {
@@ -68,15 +68,15 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "Haz clic en mí para continuar",
+		"message": "Clic para continuar",
 		"description": "data/index.html"
 	},
 	"click_to_show_retweeters": {
-		"message": "Haz clic para mostrar retwiteros",
+		"message": "Clic para mostrar retweeters",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Destruido con exito!",
+		"message": "¡Borrado con éxito!",
 		"description": "data/js/ui.main.js"
 	},
 	"interface_language": {
@@ -88,7 +88,7 @@
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
-		"message": "Casi Muerto",
+		"message": "Casi muerto",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"proxy_auth_password": {
@@ -96,11 +96,11 @@
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "Deshabilitado",
+		"message": "Deshabilitados",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
-		"message": "Token de Acceso no existe",
+		"message": "El token de acceso no existe",
 		"description": "data/index.html"
 	},
 	"upload": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retwiteado exitosamente!",
+		"message": "¡Retweet con éxito!",
 		"description": "data/js/ui.main.js"
 	},
 	"search_in_twitter": {
@@ -120,11 +120,11 @@
 		"description": "data/index.html"
 	},
 	"loading_resources_hint": {
-		"message": "Cargando Recursos ...",
+		"message": "Cargando recursos ...",
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "No puedo autorizarte! Por favor, comprueba tu nombre de usuario / contraseña y Base API",
+		"message": "¡No puedo autorizarte! Por favor, comprueba tu nombre de usuario / contraseña y la Base API",
 		"description": "data/js/ui.welcome.js"
 	},
 	"rt_this_tweet": {
@@ -132,15 +132,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"paste_from_clipboard": {
-		"message": "Pegar desde el Portapapeles",
+		"message": "Pegar desde el portapapeles",
 		"description": "date/index.html"
 	},
 	"url_shortener": {
-		"message": "",
+		"message": "Acortador de URLs",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "Por favor, introduce el recipiente!",
+		"message": "¡Por favor, introduce el destinatario!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"proxy_auth": {
@@ -156,7 +156,7 @@
 		"description": "data/index.html"
 	},
 	"retweet": {
-		"message": "Retwitear",
+		"message": "Retweet",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -172,15 +172,15 @@
 		"description": "data/index.html"
 	},
 	"auto_update": {
-		"message": "Auto Actualizar",
+		"message": "Actualizar automáticamente",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Iniciando Sesión ...",
+		"message": "Iniciando sesión ...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"compose_messages_to": {
-		"message": "COMPONER MENSAJE A",
+		"message": "ENVIAR MENSAJE A",
 		"description": "data/js/ui.status_box.js"
 	},
 	"version": {
@@ -196,7 +196,7 @@
 		"description": "data/index.html"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Ups, ha ocurrido un error de API!",
+		"message": "Ups, ¡ha ocurrido un error de API!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"hotot": {
@@ -204,7 +204,7 @@
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Copia el Codigo PIN y pegalo en la caja de abajo",
+		"message": "Copia el código PIN y pégalo en la caja de abajo",
 		"description": "data/index.html"
 	},
 	"api_setting": {
@@ -212,11 +212,11 @@
 		"description": "data/index.html"
 	},
 	"undo_successfully": {
-		"message": "Deshecho exitosamente!",
+		"message": "¡Deshecho exitoso!",
 		"description": "data/js/ui.main.js"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Des-favorizar este tweet ...",
+		"message": "Quitar de favoritos ...",
 		"description": "data/js/ui.main.js"
 	},
 	"quit_hotot": {
@@ -236,11 +236,11 @@
 		"description": "data/index.html"
 	},
 	"move_to_top": {
-		"message": "Mover hasta la cima",
+		"message": "Mover hasta arriba",
 		"description": "data/index.html"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "El caracter `@` no esta permitido como prefijo en un perfil",
+		"message": "El caracter `@` no está permitido como prefijo en un perfil",
 		"description": "data/js/ui.welcome.js"
 	},
 	"action": {
@@ -256,7 +256,7 @@
 		"description": "data/index.html"
 	},
 	"official_retweet_this_tweet": {
-		"message": "Retwitear de manera tradicional",
+		"message": "Retweet de manera tradicional",
 		"description": "data/js/ui.template.js"
 	},
 	"delete_this_tweet": {
@@ -264,7 +264,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"via": {
-		"message": "via",
+		"message": "vía",
 		"description": "data/js/ui.template.js"
 	},
 	"about_and_help": {
@@ -272,11 +272,11 @@
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
-		"message": "Hey, eres tu!",
+		"message": "!Hey, eres tú!",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"regain_access_token": {
-		"message": "Recuperar el Token de Acceso",
+		"message": "Recuperar el token de acceso",
 		"description": "data/index.html"
 	},
 	"globals": {
@@ -284,19 +284,19 @@
 		"description": "data/index.html"
 	},
 	"create_profile": {
-		"message": "Crear Perfil",
+		"message": "Crear perfil",
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retwitear/Deshacer Retweet",
+		"message": "Retweet/Deshacer retweet",
 		"description": "data/index.html"
 	},
 	"sign_out": {
-		"message": "Cerrar Sesión",
+		"message": "Cerrar sesión",
 		"description": "data/index.html"
 	},
 	"search_api_base2": {
-		"message": "Buscar Base API",
+		"message": "Buscar base API",
 		"description": "data/index.html"
 	},
 	"px": {
@@ -304,7 +304,7 @@
 		"description": "data/index.html"
 	},
 	"new_profile_has_been_created": {
-		"message": "Un Nuevo Perfil ha sido creado!",
+		"message": "Un nuevo perfil ha sido creado",
 		"description": "data/js/ui.welcome.js"
 	},
 	"shortcuts": {
@@ -312,7 +312,7 @@
 		"description": "data/index.html"
 	},
 	"preview": {
-		"message": "Vista Previa",
+		"message": "Vista previa",
 		"description": "data/index.html"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
@@ -328,11 +328,11 @@
 		"description": "data/js/ui.main.js"
 	},
 	"gain_access_token": {
-		"message": "Obtener Token de Acceso",
+		"message": "Obtener token de acceso",
 		"description": "data/js/ui.welcome.js"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Des-Fav",
+		"message": "Fav/Quitar Fav",
 		"description": "data/index.html"
 	},
 	"enable": {
@@ -360,7 +360,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"same_signing_api_base": {
-		"message": "Misma firma en API Base",
+		"message": "Misma firma en Base API",
 		"description": "data/index.html"
 	},
 	"sound": {
@@ -380,7 +380,7 @@
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "Mi Poder",
+		"message": "Mi poder",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"keyboard_shortcuts": {
@@ -388,11 +388,11 @@
 		"description": "data/index.html"
 	},
 	"restore_defaults": {
-		"message": "Restaurar Valores Predeterminados",
+		"message": "Restaurar valores predeterminados",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Tu Cronologia",
+		"message": "Tu timeline",
 		"description": "data/js/ui.slider.js"
 	},
 	"behavior": {
@@ -412,19 +412,19 @@
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
-		"message": "",
+		"message": "Abriendo una lista ...",
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "Nombre de Perfil",
+		"message": "Nombre de perfil",
 		"description": "data/index.html"
 	},
 	"clean_token": {
-		"message": "Limpiar token",
+		"message": "Borrar token",
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
-		"message": "",
+		"message": "Guardar como un borrador",
 		"description": "data/index.html"
 	},
 	"information": {
@@ -436,11 +436,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Precargar los tweets más recientes en las conversaciones, si es posible.",
+		"message": "Precargar, si es posible, los tweets más recientes en las conversaciones",
 		"description": "data/index.html"
 	},
 	"Insert_smiley": {
-		"message": "",
+		"message": "Insertar emoticono",
 		"description": "data/index.html"
 	},
 	"followers": {
@@ -452,7 +452,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"extensions": {
-		"message": "Extenciones",
+		"message": "Extensiones",
 		"description": "data/index.html"
 	},
 	"retweets_view": {
@@ -480,7 +480,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in": {
-		"message": "Iniciar Sesión",
+		"message": "Iniciar sesión",
 		"description": "data/index.html"
 	},
 	"disable": {
@@ -536,7 +536,7 @@
 		"description": "data/index.html"
 	},
 	"network_error_please_try_later": {
-		"message": "Error de Red! Por favor intentalo mas tarde.",
+		"message": "¡Error de red! Por favor intentalo mas tarde.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"keyboard": {
@@ -556,7 +556,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"regain_access_token_with_twitter": {
-		"message": "Recuperar el Token de Acceso con Twitter",
+		"message": "Recuperar el token de acceso con Twitter",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
@@ -564,7 +564,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "Presiona Ctrl + Enter para Publicar",
+		"message": "Presiona Ctrl + Enter para publicar",
 		"description": "data/index.html"
 	},
 	"location": {
@@ -584,11 +584,11 @@
 		"description": "data/index.html"
 	},
 	"reset_time": {
-		"message": "Restablecer Tiempo",
+		"message": "Resetear tiempo",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"mentions_view": {
-		"message": "Mostrar Menciones",
+		"message": "Mostrar menciones",
 		"description": "data/index.html"
 	},
 	"effects": {
@@ -596,7 +596,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Moverse al Tweet anterior",
+		"message": "Moverse al tweet anterior",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -616,7 +616,7 @@
 		"description": "data/index.html"
 	},
 	"tweet_view": {
-		"message": "Mostrar Tweets",
+		"message": "Mostrar tweets",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -632,7 +632,7 @@
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "Saludos!",
+		"message": "¡Hola!",
 		"description": "data/index.html"
 	},
 	"system_font": {
@@ -648,7 +648,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"lists_following_them": {
-		"message": "Listas siguiendo a Usuario",
+		"message": "Listas siguiendo al usuario",
 		"description": "data/js/ui.template.js"
 	},
 	"cancel": {
@@ -660,7 +660,7 @@
 		"description": "data/index.html"
 	},
 	"post_successfully": {
-		"message": "Publicado Exitosamente!",
+		"message": "¡Publicado con éxito!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"reload": {
@@ -668,19 +668,19 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Autorizacion OK!",
+		"message": "¡Autorización válida!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"view_more_conversation": {
-		"message": "Ver mas conversación",
+		"message": "Ver más conversación",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
-		"message": "Listas del Usuario ",
+		"message": "Listas del usuario ",
 		"description": "data/js/ui.template.js"
 	},
 	"clear_and_close": {
-		"message": "Limpiar y Cerrar",
+		"message": "Limpiar y cerrar",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
@@ -688,11 +688,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "Creditos",
+		"message": "Créditos",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Deslizar a pagina anterior",
+		"message": "Ir a página anterior",
 		"description": "data/index.html"
 	},
 	"favs": {
@@ -700,7 +700,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"tweets_per_day": {
-		"message": "Tweets Por Dia",
+		"message": "Tweets Por día",
 		"description": "data/index.html"
 	},
 	"create_a_list": {
@@ -720,7 +720,7 @@
 		"description": "data/index.html"
 	},
 	"ok": {
-		"message": "OK",
+		"message": "Aceptar",
 		"description": "data/index.html"
 	},
 	"language": {
@@ -732,11 +732,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"use_ubuntu_indicator": {
-		"message": "Utilizar el Indicador de Ubuntu",
+		"message": "Utilizar el indicador de Ubuntu",
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Tu Tweet contiene mas de 140 caracteres!",
+		"message": "¡Tu tweet contiene más de 140 caracteres!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"select_a_language": {
@@ -748,7 +748,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"preview_embedded_media": {
-		"message": "Mostrar Fotos y Videos",
+		"message": "Mostrar fotos y vídeos",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -756,7 +756,7 @@
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "Equilibrio entre atractivos y el rendimiento.",
+		"message": "Equilibrio entre estética y rendimiento.",
 		"description": "data/index.html"
 	},
 	"misc": {
@@ -768,7 +768,7 @@
 		"description": "data/index.html"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "O copia la dirección y lo abrela en tu navegador.",
+		"message": "O copia la dirección y abrela en tu navegador.",
 		"description": "data/index.html"
 	},
 	"notify": {
@@ -776,19 +776,19 @@
 		"description": "data/index.html"
 	},
 	"update_successfully": {
-		"message": "Actualizado Exitosamente!",
+		"message": "¡Actualizado con éxito!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "No se siguen el uno al otro.",
+		"message": "No os seguís mutuamente.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"click_to_compose_message": {
-		"message": "",
+		"message": "Clic para redactar mensaje",
 		"description": "data/index.html"
 	},
 	"you_are_following": {
-		"message": "Lo estas siguiendo.",
+		"message": "Le estás siguiendo.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"friend_stat": {
@@ -808,11 +808,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "Eres seguido por El.",
+		"message": "Él te sigue.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"open_a_profile_dots": {
-		"message": "",
+		"message": "Abriendo perfil ...",
 		"description": "data/index.html"
 	},
 	"pin_code": {
@@ -828,11 +828,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Usar CITAR como acción por defecto al retwitear",
+		"message": "Usar CITAR como acción por defecto al hacer retweet",
 		"description": "data/index.html"
 	},
 	"enabled": {
-		"message": "Habilitado",
+		"message": "Habilitados",
 		"description": "data/index.html"
 	},
 	"username": {
@@ -840,11 +840,11 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "Ahora DEBES reinciar Hotot para que algunos cambios tomen efecto. Y estos cambios afectaran a TODAS las cuentas",
+		"message": "DEBES reinciar Hotot para que algunos cambios tengan efecto. Estos cambios afectaran a TODAS las cuentas",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
-		"message": "Subir Foto.",
+		"message": "Subir foto.",
 		"description": "data/index.html"
 	},
 	"identica": {
@@ -852,7 +852,7 @@
 		"description": "data/index.html"
 	},
 	"reply_all": {
-		"message": "Responder a Todos",
+		"message": "Responder a todos",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -864,7 +864,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"no_extension": {
-		"message": "Sin Extension",
+		"message": "Sin extensión",
 		"description": "data/index.html"
 	},
 	"join_time": {
@@ -872,23 +872,23 @@
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
-		"message": "Retwiteando ...",
+		"message": "Haciendo retweet ...",
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "",
+		"message": "Borradores",
 		"description": "data/js/ui.status_box.js"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Ups, ha ocurrido un Error de Red",
+		"message": "Ups, ha ocurrido un error de red",
 		"description": "data/js/ui.welcome.js"
 	},
 	"website": {
-		"message": "Sitio Web",
+		"message": "Sitio web",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Mas efectos como sombras y brillo en los widgets",
+		"message": "Más efectos como sombras y brillo en los widgets",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -896,7 +896,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"slide_to_next_page": {
-		"message": "Deslizar a la siguiente página",
+		"message": "Ir a la siguiente página",
 		"description": "data/index.html"
 	},
 	"picture": {
@@ -908,7 +908,7 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "Este perfil puede que ya exista!",
+		"message": "¡Este perfil puede que ya exista!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"quote": {
@@ -928,7 +928,7 @@
 		"description": "data/index.html"
 	},
 	"favs_view": {
-		"message": "",
+		"message": "Vista de favoritos",
 		"description": "data/index.html"
 	},
 	"friends": {
@@ -936,7 +936,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"messages_view": {
-		"message": "Mostrar Mensajes",
+		"message": "Mostrar mensajes",
 		"description": "data/index.html"
 	},
 	"enable_proxy": {
@@ -948,11 +948,11 @@
 		"description": "data/index.html"
 	},
 	"you_are_friends": {
-		"message": "Son amigos.",
+		"message": "Sois amigos.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"retweeted_by": {
-		"message": "Retwiteado por",
+		"message": "Retweet por",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
@@ -960,7 +960,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
-		"message": "Iniciar sesion con Twitter",
+		"message": "Iniciar sesión con Twitter",
 		"description": "data/index.html"
 	}
 }
