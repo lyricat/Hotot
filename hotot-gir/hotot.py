@@ -60,7 +60,6 @@ class Hotot:
         self.active_profile = 'default'
         self.protocol = ''
         self.build_gui()
-        self.mm_indicators = {}
         self.trayicon_pixbuf = [None, None]
         self.state = {
             'unread_count': 0
@@ -71,10 +70,9 @@ class Hotot:
 
         if os.environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
             self.has_indicator = False
-            self.has_me_menu = False
         else:
             try:
-                from gi.repository import AppIndicator3
+                from gi.repository import AppIndicator3 as AppIndicator
             except ImportError:
                 try:
                     from gi.repository import AppIndicator
@@ -85,25 +83,16 @@ class Hotot:
             else:
                 self.has_indicator = True
 
-            try:
-                from gi.repository import Indicate
-            except ImportError:
-                self.has_me_menu = False
-            else:
-                self.has_me_menu = True
-
         if self.has_indicator:
-            indicator = AppIndicator.Indicator('hotot', 'hotot', appindicator.CATEGORY_COMMUNICATIONS)
-            indicator.set_status(appindicator.STATUS_ACTIVE)
-            indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
-            indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
-            indicator.set_menu(app.traymenu)
-            app.indicator = indicator
+            self.indicator = AppIndicator.Indicator.new('hotot', 'hotot', AppIndicator.IndicatorCategory.COMMUNICATIONS)
+            self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
+            self.indicator.set_icon_theme_path(utils.get_ui_object('image/'))
+            self.indicator.set_icon_full('ic24_hotot_mono_light', 'hotot')
+            self.indicator.set_attention_icon_full('ic24_hotot_mono_dark', 'hotot')
+            self.indicator.set_menu(self.traymenu)
+            self.indicatorStatus = AppIndicator.IndicatorStatus
         else:
             self.create_trayicon()
-
-        if self.has_me_menu:
-            self.create_memenu()
 
     def build_gui(self):
         self.window = Gtk.Window()
@@ -116,6 +105,8 @@ class Hotot:
         self.window.set_position(Gtk.WindowPosition.CENTER)
         #self.window.set_default_size(500, 550)
         self.window.connect('delete-event', self.on_window_delete)
+        self.window.connect('show', self.on_window_show_or_hide)
+        self.window.connect('hide', self.on_window_show_or_hide)
 
         vbox = Gtk.VBox()
         scrollw = Gtk.ScrolledWindow()
@@ -195,32 +186,10 @@ class Hotot:
         self.window.set_geometry_hints(self.window, geometry, Gdk.WindowHints.MIN_SIZE)
         self.window.show()
 
-    def create_memenu(self):
-        # Memssage Menu indicator
-        self.mm = Indicate.indicate_server_ref_default()
-        self.mm.set_type('message.hotot')
-        self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
-        self.mm.connect('server-display', self.on_mm_server_activate)
-        self.mm.show()
-
     def update_status(self, text):
         self.webv.execute_script('update_status("%s")' % text)
 
     def unread_alert(self, subtype, sender, body="", count=0):
-        if self.has_me_menu:
-            try:
-                idr = Indicate.Indicator()
-            except:
-                idr = Indicate.IndicatorMessage()
-            idr.set_property('subtype', subtype)
-            idr.set_property('sender', sender)
-            idr.set_property('body', body)
-            idr.set_property('draw-attention', 'true' if count > 0 else 'false')
-            idr.set_property('count', count)
-            idr.connect('user-display', self.on_mm_activate)
-            idr.show()
-            self.mm_indicators[subtype] = idr
-
         if count > 0:
             self.start_blinking()
         else:
@@ -237,13 +206,13 @@ class Hotot:
             flag = 0
             while self.inblinking:
                 if self.has_indicator:
-                    self.indicator.set_status(AppIndicator.STATUS_ATTENTION if flag else AppIndicator.STATUS_ACTIVE)
+                    self.indicator.set_status(self.indicatorStatus.ATTENTION if flag else self.indicatorStatus.ACTIVE)
                 else:
                     self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[flag])
                 flag ^= 1
                 time.sleep(1)
             if self.has_indicator:
-                self.indicator.set_status(AppIndicator.STATUS_ACTIVE)
+                self.indicator.set_status(self.indicatorStatus.ACTIVE)
             else:
                 self.trayicon.set_from_pixbuf(self.trayicon_pixbuf[0])
         self.inblinking = True
@@ -256,16 +225,14 @@ class Hotot:
     def on_window_delete(self, widget, event):
         return widget.hide_on_delete()
 
-    def on_mm_activate(self, idr, arg1):
-        if self.has_me_menu:
-            subtype = idr.get_property('subtype')
-            idr.set_property('draw-attention', 'false')
-            self.window.present()
-            if subtype in self.mm_indicators:
-                del self.mm_indicators[subtype]
-            
-    def on_mm_server_activate(self, serv, arg1):
-        self.window.present()
+    def on_window_show_or_hide(self, widget):
+        menuitems = self.traymenu.get_children()
+        if self.window.get_visible():
+            menuitems[0].hide();
+            menuitems[1].show();
+        else:
+            menuitems[1].hide();
+            menuitems[0].show();
 
     def on_mitem_show_activate(self, item):
         self.window.present()
@@ -362,13 +329,6 @@ class Hotot:
             self.window.present()
 
     def on_trayicon_popup_menu(self, icon, button, activate_time):
-        menuitems = self.traymenu.get_children()
-        if self.window.get_visible():
-            menuitems[0].hide();
-            menuitems[1].show();
-        else:
-            menuitems[1].hide();
-            menuitems[0].show();
         self.traymenu.popup(None, None
             , None, None, button=button
             , activate_time=activate_time)
@@ -397,12 +357,16 @@ def usage():
 def main():
     global ENABLE_DEV_TOOLS
     ENABLE_DEV_TOOLS = False
-    for arg in sys.argv:
+    for arg in sys.argv[1:]:
         if arg in ('-h', '--help'):
             usage()
             sys.exit()
         elif arg in ('-d', '--dev'):
             ENABLE_DEV_TOOLS = True
+        else:
+            print "hotot: unrecognized option '%s'" % arg
+            usage()
+            sys.exit(1)
 
     try:
         import i18n
