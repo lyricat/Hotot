@@ -43,15 +43,15 @@ class HototDbusService(dbus.service.Object):
 
     @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
     def show(self):
-        return self.app.window.present()
+        self.app.window.present()
 
     @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
     def hide(self):
-        return self.app.window.hide()
+        self.app.window.hide()
 
     @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
     def quit(self):
-        return self.app.quit()
+        self.app.quit()
 
 
 class Hotot:
@@ -351,7 +351,7 @@ class Hotot:
 
 def usage():
     print '''Usage: hotot [OPTION...]
-  -d, --dev                enable dev tools
+  -d, --dev                enable hotot inspector
   -h, --help               show this help info'''
 
 def main():

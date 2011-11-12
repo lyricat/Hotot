@@ -48,7 +48,7 @@ class MainView(WebKit.WebView):
 
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
-        self.load_html_string(template, 'file://' + templatefile)
+        self.load_string(template, 'text/html', 'UTF-8', 'file://' + templatefile)
 
     def on_navigation_requested(self, view, webframe, request):
         return self.handle_uri(request.get_uri())

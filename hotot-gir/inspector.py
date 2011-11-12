@@ -23,6 +23,7 @@ class Inspector (Gtk.Window):
         """initialize the WebInspector class"""
         Gtk.Window.__init__(self)
         self.set_default_size(600, 480)
+        self.set_title("Hotot Inspector")
 
         self._web_inspector = inspector
 
