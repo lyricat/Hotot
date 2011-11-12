@@ -359,7 +359,7 @@ function get_retweeted_by_whom(tweet_id, count, on_success) {
 
 get_user_timeline:
 function get_user_timeline(user_id, screen_name, since_id, 
-    max_id, count, on_success) {
+    max_id, count, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'statuses/user_timeline.json';
     var params={
         'include_entities': '1',
@@ -374,7 +374,7 @@ function get_user_timeline(user_id, screen_name, since_id,
         params['user_id'] = user_id;
     if (screen_name!=null)
         params['screen_name'] = screen_name;
-    lib.twitterapi.get(url, params, on_success);
+    lib.twitterapi.get(url, params, on_success, on_error);
     return;
 },
 

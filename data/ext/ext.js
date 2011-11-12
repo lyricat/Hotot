@@ -9,6 +9,7 @@ builtins: [
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
     , 'org.hotot.translate'
+    , 'org.hotot.stat'
 ],
 
 extras: [],
