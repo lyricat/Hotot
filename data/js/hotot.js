@@ -46,18 +46,22 @@ function change_theme(theme_name, theme_path) {
 }
 
 function update_tweet_block_width() {
-    var view_width = $(window).width() - $('#aside').width();
+    var view_width = $(window).width();
     ui.Slider.column_num = parseInt(view_width / 400) || 1;
     if (ui.Slider.tweet_blocks.length < ui.Slider.column_num) {
         ui.Slider.column_num = ui.Slider.tweet_blocks.length;
     }
-    globals.tweet_block_width = view_width / ui.Slider.column_num;
+    globals.tweet_block_width = parseInt(view_width / ui.Slider.column_num);
     if (view_width > 1280) {
         globals.tweet_block_width -= 1;
     }
     $('.view_title:gt(ui.Slider.column_num)').hide();
     $('.tweetview').width(globals.tweet_block_width);
-    $('.view_title').width(globals.tweet_block_width - 1);
+    $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
+        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
+    $('.view_title').width(globals.tweet_block_width-1);
+    $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
+        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1);
 
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
