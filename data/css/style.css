@@ -825,12 +825,6 @@ pre {
     overflow: hidden;
 }
 
-/* ===== Side Nav ================================== */
-#aside {
-    background: #d6d6d6;
-    display: none;
-}
-
 /* ===== Notification ============================== */
 #notification_area {
     position: fixed;

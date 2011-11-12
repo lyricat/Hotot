@@ -11,19 +11,12 @@ var layout_opts = {
     ,   north__spacing_open :       0
     ,   north__spacing_closed:      0
     ,   north__initClosed:          true
-    ,   east__spacing_open:         0
-    ,   east__spacing_closed:       0
-    ,   east__size:                 0
-    ,   east__initClosed:           true
-    ,   east__slidable: true
-    ,   east__fxSettings_open:      { easing: "easeOutBounce" }
     ,   south__size:                0
     ,   south__spacing_open:        0
     ,   south__spacing_closed:      0
     ,   south__initClosed:          true
     ,   south__showOverflowOnHover: true
     ,   north__paneSelector:        '#header'
-    ,   east__paneSelector:         '#aside'
     ,   center__paneSelector:       '#center'
     ,   south__paneSelector:        '#bottom'
 };
@@ -505,8 +498,6 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // shift + '9' to toggle
-    hotkey.register(hotkey.calculate(57, hotkey.shiftKey), ui.Sidebar.toggle);
     // :)
     hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
         , hotkey.calculate(50, hotkey.shiftKey)
