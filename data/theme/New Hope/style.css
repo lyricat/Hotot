@@ -49,4 +49,9 @@
     padding: 5px;
     position: relative;
 }
-
+.tweet_bar_btn {
+    background-position-y: -48px;
+}
+.tweet_bar_btn:hover {
+    background-position-y: -72px;
+}

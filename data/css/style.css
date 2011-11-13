@@ -721,7 +721,7 @@ pre {
 #indicator_compose_btn {
     color: white;
     text-align: center;
-    line-height: 32px;
+    line-height: 36px;
     text-decoration: none;
     font-size: 14px !important;
     font-weight: bold;
@@ -962,45 +962,41 @@ label {
     display: inline-block;
     background-repeat: no-repeat;
     background-image: url(../image/tweet_ctrl_icons.png);
+    background-position-y: 0px;
 }
-
-.tweet_bar_btn:hover {
-    background-position-y: -24px !important;
-}
-
 .tweet_reply_btn {
-    background-position: 0px 0px;
+    background-position-x: 0px;
 }
 .tweet_fav_btn {
-    background-position: -48px 0px;
+    background-position-x: -48px;
 }
 .card.faved .tweet_fav_btn {
-    background-position: -48px -48px !important;
+    background-position: -48px -96px !important;
 }
 .tweet_retweet_btn {
-    background-position: -24px 0px;
+    background-position-x: -24px;
 }
 .card.retweeted .tweet_retweet_btn{
-    background-position: -24px -48px !important;
+    background-position: -24px -96px !important;
 }
 .card[retweetable="false"] .tweet_retweet_btn {
     display: none;
 }
 .tweet_more_menu_trigger {
-    background-position: -120px 0;
+    background-position-x: -120px;
 }
 .tweet_dm_reply_btn {
-    background-position: 0 0;
+    background-position-x: 0;
 }
 .tweet_dm_delete_btn {
-    background-position: -96px 0;
+    background-position-x: -96px;
 }
 .follow_btn {
-    background-position: -72px 0;
+    background-position-x: -72px;
     display: inline-block;
 }
 .unfollow_btn {
-    background-position: -96px 0;
+    background-position-x: -96px;
     display: none;
 }
 .card[following="true"] .follow_btn {
@@ -1008,6 +1004,10 @@ label {
 }
 .card[following="true"] .unfollow_btn {
     display: inline-block !important;
+}
+
+.tweet_bar_btn:hover {
+    background-position-y: -24px;
 }
 
 #tweet_more_menu {
@@ -1047,6 +1047,7 @@ label {
 .vcard_action_btns > li {
     list-style-type: none;
     display: inline-block;
+    margin: 0 2px;
 }
 
 .people_action_more_trigger {
@@ -1760,10 +1761,6 @@ label {
     position: relative;
 }
 
-.vcard * {
-    color: #333;
-}
-
 .vcard_tabs_page {
     border: none;
     border-collapse:collapse;
@@ -1927,6 +1924,7 @@ label {
 .card_body > .retweet_mark {
     padding-left: 20px;
     background: transparent url(../image/ic16_retweet_light.png) no-repeat;
+    background-position: 0 center;
 }
 
 .card_body a {
