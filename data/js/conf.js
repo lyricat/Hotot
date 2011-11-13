@@ -10,7 +10,7 @@ vars: {
     , 'column_max_width': 400
     , 'items_per_request': 50
     , 'trim_bound': 100
-    , 'builtin_themes': ['New Hope', 'Classic']
+    , 'builtin_themes': ['New Hope', 'Classic', 'Iron Heart']
     , 'extra_themes': []
 },
 
