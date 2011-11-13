@@ -41,8 +41,8 @@ def open_webbrowser(uri):
 def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
     try:
         session = WebKit.get_default_session()
-        session.set_property("max-conns", 20)
-        session.set_property("max-conns-per-host", 5)
+        session.set_property("max-conns", 1)
+        session.set_property("max-conns-per-host", 1)
 
         if host:
             proxy_uri = Soup.URI()
