@@ -79,7 +79,7 @@ a {
     color: #4AC3FF;
 }
 .card.selected {
-    border-bottom: 1px #111 solid;
+    border-bottom: 0px #111 solid;
 }
 .card:last-child {
     border-bottom: 0;
