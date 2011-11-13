@@ -177,7 +177,10 @@ class Hotot:
         self.menubar.set_size_request(0, 0)
         self.menubar.show_all()
         self.menubar.hide()
-        vbox.pack_start(self.menubar, expand=0, fill=0, padding=0)
+        vport = Gtk.Viewport()
+        vport.set_size_request(0, 0)
+        vport.add(self.menubar)
+        vbox.pack_start(vport, expand=0, fill=0, padding=0)
 
         ##
         geometry = Gdk.Geometry()
