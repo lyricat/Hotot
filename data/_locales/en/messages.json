@@ -76,7 +76,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Destroy Successfully!",
+		"message": "Destroyed Successfully!",
 		"description": "data/js/ui.main.js"
 	},
 	"interface_language": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retweet Successfully!",
+		"message": "Retweet Successful!",
 		"description": "data/js/ui.main.js"
 	},
 	"search_in_twitter": {
@@ -212,7 +212,7 @@
 		"description": "data/index.html"
 	},
 	"undo_successfully": {
-		"message": "Undo Successfully!",
+		"message": "Undo Successful!",
 		"description": "data/js/ui.main.js"
 	},
 	"un_favorite_this_tweet_dots": {
