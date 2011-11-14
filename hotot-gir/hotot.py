@@ -192,7 +192,7 @@ class Hotot:
     def update_status(self, text):
         self.webv.execute_script('update_status("%s")' % text)
 
-    def unread_alert(self, subtype, sender, body="", count=0):
+    def unread_alert(self, count=0):
         if count > 0:
             self.start_blinking()
         else:
