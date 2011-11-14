@@ -56,6 +56,34 @@
     padding: 5px;
     position: relative;
 }
+#indication span.shape {
+    border-bottom-color: #393939;
+}
+#view_title_bar {
+    border-bottom: 1px #4AC3FF solid;
+}
+#view_title_bar .view_title {
+    background: #393939;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px #393939 solid;
+    border-left: 1px #393939 solid;
+}
+#view_title_bar .setting_btn {
+    background-image: url(./ic16_gear.png);
+}
+#view_title_bar .close_btn {
+    background-image: url(./ic16_close.png);
+}
+#indication_slot {
+    background-color: #393939;
+    border-bottom: 1px #222 solid;
+}
+#indication_light {
+    background: #4AC3FF;
+    -webkit-box-shadow: 0 0 10px #4AC3FF;
+    box-shadow: 0 0 10px #4AC3FF;
+}
 .tweetview > .listview_body {
     border-color: #333 !important;
 }
@@ -74,6 +102,9 @@
 }
 .card.me a {
     color: #F9BA5E;
+}
+.card.mention a {
+    color: #94C631;
 }
 a {
     color: #4AC3FF;
@@ -113,19 +144,19 @@ a {
 
 #main_page .button {
     color: #4ac3ff;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#282828));
     border: 1px #333 solid;
     text-shadow: #4ac3ff 0 0 15px; 
 }
 
 #main_page .button:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#333));
 }
 
 #main_page .button:active {
-    -webkit-box-shadow: inset #333 0 0 5px;
-    -moz-box-shadow: inset #333 0 0 5px;
-    box-shadow: inset #333 0 0 5px;
+    -webkit-box-shadow: inset #222 0 0 10px;
+    -moz-box-shadow: inset #222 0 0 10px;
+    box-shadow: inset #222 0 0 10px;
 }
 #main_page .entry:focus {
     -webkit-box-shadow: inset 0 1px 4px #4ac3ff;
@@ -139,7 +170,7 @@ a {
 }
 
 #main_page .radio_group > li > .radio_group_btn {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#282828));
     color: #ddd;
     text-shadow: #333 0 -1px 1px; 
     border-right: 1px #333 solid;
@@ -155,7 +186,7 @@ a {
 #main_page .radio_group > li > .radio_group_btn.selected {
     color: #4ac3ff;
     text-shadow: #4ac3ff 0 0 15px; 
-    background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#555));
+    background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#444));
     border-color: #333;
 }
 
