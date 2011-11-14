@@ -185,7 +185,6 @@ function init () {
         return false;
     }).bind('drop', function (ev) {
         ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
-        console.log(ui.StatusBox.file);
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#status_image_preview')
