@@ -43,8 +43,8 @@ class MainView(WebKit.WebView):
         self.connect("hovering-over-link", self.on_over_link);
 
         if devtools:
-            from inspector import Inspector
-            Inspector(self.get_inspector())
+            from inspector import HototInspector
+            HototInspector(self.get_inspector())
 
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()

@@ -245,7 +245,7 @@ class Hotot:
 
     def on_mitem_inspector_activate(self, item):
         inspector = self.webv.get_inspector()
-        inspector.inspect_coordinates(0, 0)
+        inspector.show()
 
     def on_mitem_prefs_activate(self, item):
         agent.execute_script('''
