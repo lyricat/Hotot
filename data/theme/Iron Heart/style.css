@@ -115,6 +115,9 @@ a {
 .card:last-child {
     border-bottom: 0;
 }
+.tweet_meta a {
+    color: #888;
+}
 .header_content {
     border-left: 1px #333 solid;
 }

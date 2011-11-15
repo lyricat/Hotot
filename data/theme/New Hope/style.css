@@ -55,3 +55,6 @@
 .tweet_bar_btn:hover {
     background-position-y: -72px;
 }
+.tweet_meta a {
+    color: #888;
+}
