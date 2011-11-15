@@ -14,6 +14,8 @@ class HototInspector ():
         self.window.set_title("Hotot Inspector")
         self.window.connect("delete-event", self.on_delete_event)
 
+        inspector.set_property("javascript-profiling-enabled", True)
+        inspector.set_property("timeline-profiling-enabled", True)
         inspector.connect("inspect-web-view", self.on_inspect_web_view)
         inspector.connect("show-window", self.on_show_window)
         inspector.connect("close-window", self.on_close_window)
