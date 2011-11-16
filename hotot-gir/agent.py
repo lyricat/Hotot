@@ -45,6 +45,7 @@ if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
 else:
     from gi.repository import Notify
     Notify.init(_("Hotot Notification"))
+    notify = Notify.Notification()
 
 webv = None 
 app = None
