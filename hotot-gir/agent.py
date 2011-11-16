@@ -18,13 +18,16 @@ except: from gettext import gettext as _
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
+USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
 
 ## Disable GtkNotification on Gnome3
 screen = Gdk.Screen.get_default()
-window_manager_name = screen.get_window_manager_name().lower() if screen else ''
-if 'mutter' in window_manager_name:
-    USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
+try:
+    window_manager_name = screen.get_window_manager_name().lower() if screen else ''
+    if window_manager_name in ['metacity']:
+        USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
+except:
+    pass
 
 if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
     import gtknotification
