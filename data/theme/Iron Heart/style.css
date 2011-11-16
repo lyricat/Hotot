@@ -116,7 +116,7 @@ a {
     border-bottom: 0;
 }
 .tweet_meta a {
-    color: #888;
+    color: #888 !important;
 }
 .header_content {
     border-left: 1px #333 solid;
@@ -191,6 +191,13 @@ a {
     text-shadow: #4ac3ff 0 0 15px; 
     background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#444));
     border-color: #333;
+}
+.btn_tweet_thread {
+    background-image: url(fold.png);
+}
+
+.btn_tweet_thread.expand {
+    background-image: url(expand.png);
 }
 
 

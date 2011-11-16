@@ -56,5 +56,5 @@
     background-position-y: -72px;
 }
 .tweet_meta a {
-    color: #888;
+    color: #888 !important;
 }
