@@ -1,0 +1,1 @@
+<script src="js/background.js"></script>
