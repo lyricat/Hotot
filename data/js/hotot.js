@@ -596,20 +596,61 @@ function on_load_finish() {
             });
         // 6. run track code
         procs.push(function () {
-            track();
+            var track_proc = util.is_native_platform()? track_alt: track;
+            track_proc({'platform': conf.vars.platform,
+                'version': conf.vars.version});
             $(window).dequeue('_on_load_finish');
         });
         $(window).queue('_on_load_finish', procs);
         $(window).dequeue('_on_load_finish');
     }
 }
+function track(vars) {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18538886-4']);
+    _gaq.push(['_setCustomVar', 1, 'Platform', vars.platform, 1]);
+    _gaq.push(['_setCustomVar', 2, 'Version', vars.version, 1]);
+    _gaq.push(['_trackPageview']);
 
-function track() {
-    $('body').append('<iframe id="track_frame" src="http://stat.hotot.org/?rnd='+Math.random()+'#platform='+conf.vars.platform+'&version='+conf.vars.version+'" style="width: 1px;height: 1px;position: absolute;top: 0;left: 0;z-index: 9999999;"></iframe>');
-    setTimeout(function () {
-        $('#track_frame').height(10).width(10);
-        $('#track_frame').hide();
-    }, 1000);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+}
+
+function track_alt(vars) {  
+    function rand(min, max) {
+        return min + Math.floor(Math.random() * (max - min));
+    }
+    var img = new Image();
+    var urchinCode = 'UA-18538886-4';
+    var i=1000000000;
+    var utmn=rand(i,9999999999);
+    var cookie=rand(10000000,99999999);
+    var random=rand(i,2147483647);
+    var today=(new Date()).getTime();
+    var win = window.location;
+    var urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=5.2.0'
+        + '&utms=6'
+        + '&utmn=' + utmn
+        + '&utme=' + '8(Platform*Version)9('+vars.platform+'*'+vars.version+')11(1*1)'
+        + '&utmcs=UTF-8&utmsr=-&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=-'
+        + '&utmdt=' + encodeURIComponent(document.title)
+        + '&utmhn=' + win.host 
+        + '&utmr=' + win
+        + '&utmp=' + win.pathname 
+        + '&utmac=' + urchinCode
+        + '&utmcc=__utma%3D' + cookie+'.'+random+'.'+today+'.'+today+'.'
+            +today+'.2%3B%2B__utmb%3D'
+            +cookie+'%3B%2B__utmc%3D'
+            +cookie+'%3B%2B__utmz%3D'
+            +cookie+'.'+today
+            +'.2.2.utmccn%3D(referral)%7Cutmcsr%3D'
+            + win.host + '%7Cutmcct%3D'
+            + win.pathname + '%7Cutmcmd%3Dreferral%3B%2B__utmv%3D'
+            +cookie+'.-%3B';
+    img.src = urchinUrl;
 }
 
 var globals = {
