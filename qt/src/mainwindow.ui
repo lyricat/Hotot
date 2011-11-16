@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>16</width>
-    <height>16</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>240</width>
+    <height>320</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Hotot</string>
