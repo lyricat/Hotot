@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 
     KApplication a;
 #else
-#ifndef Q_OS_WIN32
+#if !defined(Q_OS_WIN32) && !defined(Q_OS_MAC)
     bind_textdomain_codeset("hotot-qt", "UTF-8");
 #endif
 #ifdef MEEGO_EDITION_HARMATTAN
