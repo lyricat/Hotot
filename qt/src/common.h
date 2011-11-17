@@ -22,7 +22,7 @@
 #ifdef HAVE_KDE
 #   include <KLocalizedString>
 #else
-#   ifdef Q_OS_WIN32
+#   if defined(Q_OS_WIN32) || defined(Q_OS_MAC)
 #       define i18n(x) tr(x)
 #   else
 #       include <libintl.h>
