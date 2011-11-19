@@ -180,7 +180,7 @@ class Hotot:
         vport = Gtk.Viewport()
         vport.set_size_request(0, 0)
         vport.add(self.menubar)
-        vbox.pack_start(vport, expand=0, fill=0, padding=0)
+        vbox.pack_start(vport, False, False, False)
 
         ##
         geometry = Gdk.Geometry()

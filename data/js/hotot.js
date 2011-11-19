@@ -596,9 +596,17 @@ function on_load_finish() {
             });
         // 6. run track code
         procs.push(function () {
-            var track_proc = util.is_native_platform()? track_alt: track;
-            track_proc({'platform': conf.vars.platform,
-                'version': conf.vars.version});
+            if (util.is_native_platform()) {
+                track_alt({
+                    'platform': conf.vars.platform,
+                    'version': conf.vars.version}
+                );
+            } else {
+                track({
+                    'platform': conf.vars.platform,
+                    'version': conf.vars.version}
+                );
+            }
             $(window).dequeue('_on_load_finish');
         });
         $(window).queue('_on_load_finish', procs);
@@ -606,17 +614,11 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18538886-4']);
-    _gaq.push(['_setCustomVar', 1, 'Platform', vars.platform, 1]);
-    _gaq.push(['_setCustomVar', 2, 'Version', vars.version, 1]);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    var pageTracker = _gat._getTracker("UA-18538886-4");
+    pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
+    pageTracker._setCustomVar(2, 'Version', vars.version, 1);
+    pageTracker._trackPageview();
+    return;
 }
 
 function track_alt(vars) {  
@@ -635,10 +637,10 @@ function track_alt(vars) {
         + '&utms=6'
         + '&utmn=' + utmn
         + '&utme=' + '8(Platform*Version)9('+vars.platform+'*'+vars.version+')11(1*1)'
-        + '&utmcs=UTF-8&utmsr=-&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=-'
+        + '&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.0 d1'
         + '&utmdt=' + encodeURIComponent(document.title)
         + '&utmhn=' + win.host 
-        + '&utmr=' + win
+        + '&utmr=-'
         + '&utmp=' + win.pathname 
         + '&utmac=' + urchinCode
         + '&utmcc=__utma%3D' + cookie+'.'+random+'.'+today+'.'+today+'.'

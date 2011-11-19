@@ -102,4 +102,9 @@
 .card.me .tweet_ctrl {
     border-color: #75A565;
 }
-
+.tweet_bar_btn {
+    background-position-y: -48px;
+}
+.tweet_bar_btn:hover {
+    background-position-y: -72px;
+}
