@@ -67,8 +67,10 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(i18n("Hotot"));
     setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
     qApp->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    m_webView->setPreferredSize(QSize(640, 480));
 #ifndef MEEGO_EDITION_HARMATTAN
     HototWebView* view = new HototWebView(m_webView, this);
+    this->resize(QSize(640, 480));
     this->setCentralWidget(view);
 #else
     MApplicationPage* page = new MApplicationPage;
