@@ -17,4 +17,6 @@ echo "\033[1;31;40m[i] Done!\033[0m"
 rm -f hotot-chrome.zip
 zip -r hotot-chrome.zip hotot-chrome
 cp hotot-chrome.zip /tmp
+rm -rf hotot-chrome
+
 
