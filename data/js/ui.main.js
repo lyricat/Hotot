@@ -492,10 +492,10 @@ function bind_tweet_action(id) {
         ui.Main.set_active_tweet_id(id);
         event.stopPropagation();
     }).hover(function (){
-        $(id).find('.tweet_bar').show();
+        $(id).children('.tweet_bar').show();
         ui.Main.closeTweetMoreMenu();
     }, function () {
-        $(id).find('.tweet_bar').hide();
+        $(id).children('.tweet_bar').hide();
     });
 
     $(id).find('.btn_tweet_thread:first').click(
