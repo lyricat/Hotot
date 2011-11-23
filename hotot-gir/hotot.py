@@ -382,7 +382,7 @@ def main():
     except:
         pass
 
-    Gdk.threads_init()
+    GObject.threads_init()
     config.loads();
 
     agent.init_notify()
