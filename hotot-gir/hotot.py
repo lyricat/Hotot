@@ -55,10 +55,11 @@ class HototDbusService(dbus.service.Object):
 
 
 class Hotot:
-    def __init__(self):
+    def __init__(self, enable_inspector):
         self.is_sign_in = False
         self.active_profile = 'default'
         self.protocol = ''
+        self.enable_inspector = enable_inspector
         self.build_gui()
         self.trayicon_pixbuf = [None, None]
         self.state = {
@@ -110,7 +111,7 @@ class Hotot:
 
         vbox = Gtk.VBox()
         scrollw = Gtk.ScrolledWindow()
-        self.webv = view.MainView(ENABLE_DEV_TOOLS)
+        self.webv = view.MainView(self.enable_inspector)
         self.webv.parent = scrollw
 
         agent.view = self.webv
@@ -127,7 +128,7 @@ class Hotot:
         mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Hide"))
         mitem_resume.connect('activate', self.on_mitem_hide_activate);
         self.traymenu.append(mitem_resume)
-        if (ENABLE_DEV_TOOLS):
+        if (self.enable_inspector):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
             mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, Gtk.IconSize.MENU))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
@@ -155,7 +156,7 @@ class Hotot:
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
-        if (ENABLE_DEV_TOOLS):
+        if (self.enable_inspector):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
             mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, 16))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
@@ -358,14 +359,13 @@ def usage():
   -h, --help               show this help info'''
 
 def main():
-    global ENABLE_DEV_TOOLS
-    ENABLE_DEV_TOOLS = False
+    enable_inspector = False
     for arg in sys.argv[1:]:
         if arg in ('-h', '--help'):
             usage()
             sys.exit()
         elif arg in ('-d', '--dev'):
-            ENABLE_DEV_TOOLS = True
+            enable_inspector = True
         else:
             print "hotot: unrecognized option '%s'" % arg
             usage()
@@ -386,7 +386,7 @@ def main():
     config.loads();
 
     agent.init_notify()
-    app = Hotot()
+    app = Hotot(enable_inspector)
     agent.app = app
     
     Gdk.threads_enter()
