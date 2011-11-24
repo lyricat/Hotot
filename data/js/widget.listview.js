@@ -213,9 +213,9 @@ function WidgetListView(id, name, params) {
                 self.page = json.page;
             }
         } else {    // other
-            self.since_id = tweets[count - 1].id_str;
+            self.since_id = tweets[0].id_str;
             if (self.max_id == null) {
-                self.max_id = tweets[0].id_str;
+                self.max_id = tweets[count - 1].id_str;
             }
         }
         // thread container doesn't have a property '_me'
@@ -267,7 +267,7 @@ function WidgetListView(id, name, params) {
         } else {    // other
             if (count == 0) { return; }
             self.max_id = tweets[count - 1].id_str;
-            if (self.since_id == 1) {
+            if (self.since_id == null) {
                 self.since_id = tweets[0].id_str;
             }
         }
