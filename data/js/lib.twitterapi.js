@@ -363,6 +363,7 @@ function get_user_timeline(user_id, screen_name, since_id,
     var url = lib.twitterapi.api_base + 'statuses/user_timeline.json';
     var params={
         'include_entities': '1',
+        'include_rts': 'true',
         'page': '0',
         'count': count,
     };

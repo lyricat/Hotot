@@ -192,16 +192,26 @@ void MainWindow::initDatabases()
                         QString settings = result.value(0).toString();
                         m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
                         bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
+                        bool useHttpProxyAuth = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy_auth").toBool();
                         int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
                         QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
+                        QString httpProxyAuthName = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_name").toString();
+                        QString httpProxyAuthPassword = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
 
                         if (useHttpProxy) {
                             QNetworkProxy proxy(QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
+                            
+                            if (useHttpProxyAuth)
+                            {
+                                proxy.setUser(httpProxyAuthName);
+                                proxy.setPassword(httpProxyAuthPassword);
+                            }
 
                             m_webView->page()->networkAccessManager()->setProxy(proxy);
                         }
+                        
                     }
                 }
                 sqldb.close();

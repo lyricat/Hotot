@@ -19,6 +19,7 @@ class HototInspector ():
         inspector.connect("inspect-web-view", self.on_inspect_web_view)
         inspector.connect("show-window", self.on_show_window)
         inspector.connect("close-window", self.on_close_window)
+        inspector.connect("finished", self.on_finished)
 
     def __del__ (self):
         self.window.destory()
@@ -37,3 +38,7 @@ class HototInspector ():
     def on_close_window (self, inspector):
         self.window.hide()
         return True
+
+    def on_finished (self, inspector):
+        self.window.hide()
+
