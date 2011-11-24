@@ -7,7 +7,7 @@ name: 'Hotot Translate',
 
 description: 'Translate tweets.',
 
-version: '1.0',
+version: '1.1',
 
 author: 'Shellex Wai',
 
