@@ -90,6 +90,16 @@ disabled:
 .button:focus {
     border-color: #4D90FE !important;
 }
+.button .icon {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
 /* = Combo = */
 .combo {
     outline: none;
