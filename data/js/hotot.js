@@ -163,14 +163,16 @@ function update_status(text) {
             hotot_notify('Notice', 'Sent a status:' + text, null , 'content');
         },
         function (xhr, textStatus, errorThrown) {
-            toast.set('Update failed! Save as draft.').show(3);
-            ui.StatusBox.last_sent_text = '';
-            ui.StatusBox.save_draft(draft);
         });
 }
 
 function reply_tweet(tid, text) {
-
+    lib.twitterapi.update_status(text, tid,
+        function (result) {
+            hotot_notify('Notice', 'Reply a status:' + text, null , 'content');
+        },
+        function (xhr, textStatus, errorThrown) {
+        });
 }
 
 function send_tweet(text) {
@@ -313,7 +315,7 @@ function init_dialogs() {
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
 
-    globals.kismet_dialog = new widget.Dialog('#kismet_dlg');
+    globals.kismet_dialog = new widget.Dialog('#kismet_dialog');
     globals.kismet_dialog.resize(600, 500);
     globals.kismet_dialog.place(widget.DialogManager.CENTER);
     globals.kismet_dialog.create();

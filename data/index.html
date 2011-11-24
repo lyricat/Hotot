@@ -187,6 +187,14 @@
         data-i18n-text="delete"
         >Delete</a>
     </li>
+    <li style="display:none;">
+        <a id="tweet_filter_btn"
+        class="tweet_more_menu_btn"
+        href="javascript:void(0);"
+        title="Filter this tweet"
+        data-i18n-text="filter_like_it"
+        >Filter like it</a>
+    </li>
     <li class="separator"><span></span></li>
     </ul>
     <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
@@ -1139,91 +1147,113 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 </div>
 
 <!-- Kismet Dialog -->
-<div id="kismet_dlg" class="dialog">
+<div id="kismet_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="kismet_content_firewall">Kismet Content Firewall</h2>
+        <h2 class="dialog_title" data-i18n-text="kismet_firewall">Kismet Firewall</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
-
     <div class="dialog_container">
-
-    <div class="dialog_header"></div>
-
-    <div id="kismet_dlg_body" class="dialog_body">
-        <ul id="kismet_rule_list">
+    <div class="dialog_header">
+        <ul id="kismet_cat_btns" class="radio_group dark">
+            <li>
+            	<a href="#rulebased_page" class="radio_group_btn">Rule-based Filter</a>
+            </li><li>
+            	<a href="#intelligent_page" class="radio_group_btn">Intelligent Filter</a>
+            </li>
         </ul>
-        <hr/>
-        <ul id="kismet_rule_ctrl">
-            <li><a href="#" class="new button">+ Add</a></li>
-            <li><a href="#" class="remove button">&times; Remove</a></li>
-            <li><a href="#" class="enable button">&oplus; Enable</a></li>
-            <li><a href="#" class="disable button">&otimes; Disable</a></li>
-            <li><a href="#" class="up button">&uarr; Up</a></li>
-            <li><a href="#" class="down button">&darr; Down</a></li>
-        </ul>
-
-        <div id="kismet_rule_info" class="dialog_block">
-            <table>
-            <tr>
-                <td>
-                    <label class="label"
-                        for="kismet_rule_name">Name:</label>
-                </td>
-                <td colspan="2">
-                    <input id="kismet_rule_name"
-                        type="text" class="entry"/>
-                </td>
-                <td><label class="label">Type: </label>
-                    <select id="kismet_type" class="combo">
-                    <option value="0">Plain text</option>
-                    <option value="1">RegExp</option>
-                </select></td>
-            <tr>
-            <tr>
-                <td><label class="label">Field: </label>
-                </td><td>
-                    <select id="kismet_field" class="combo">
-                    <option value="0">User name</option>
-                    <option value="1">Text</option>
-                    <option value="2">Source</option>
-                </select></td>
-                <td><select id="kismet_method" class="combo">
-                    <option value="0">Equal</option>
-                    <option value="1">Contain</option>
-                    <option value="2">Starts with</option>
-                    <option value="3">Ends with</option>
-                </select></td>
-                <td><input type="text" id="kismet_pattern" class="entry"/></td>
-            </tr>
-            </table>
-        </div>
-        <div id="kismet_rule_action" class="dialog_block">
-            <h3><span>Action</span></h3>
-            <table>
-            <tr><td><input id="kismet_action_drop"
-                    type="checkbox" class="drop checkbox" value="0"/>
-                    <label for="kismet_action_drop">Drop</label></td>
-                <td><input id="kismet_action_notify"
-                    type="checkbox" class="notify checkbox" value="1"/>
-                    <label for="kismet_action_notify">Notify</label></td>
-                <td><input id="kismet_action_mask"
-                    type="checkbox" class="mask checkbox" value="2"/>
-                    <label for="kismet_action_mask">Mask</label></td>
-                <td><input id="kismet_action_archive"
-                    type="checkbox" class="checkbox" value="3"/>
-                    <label for="kismet_action_archive">Archive</label>
-                </td>
-            </tr>
-            </table>
-        </div>
     </div>
-
+    <div class="dialog_body">
+        <div class="rulebased_page kismet_page">
+            <div class="ctrl">
+                <a id="kismet_add_rule_btn" href="#" class="button">Add</a>
+                <a id="kismet_edit_rule_btn" href="#" class="button">Edit</a>
+                <a id="kismet_remove_rule_btn" href="#" class="button">Remove</a>
+                <a style="display:none" href="#" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
+            </div>
+            <ul id="kismet_rule_list" class="rule_list">
+                <li><a href="#" class="rule">aaa</a></li>
+            </ul>
+        </div>
+        <div class="intelligent_page kismet_page">
+            <p>Not available yet :)</p>
+        </div>
+    </div> <!-- .body -->
     <div class="dialog_footer">
-    <a id="kismet_cancel_btn" class="button" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_save_btn" class="button" data-i18n-text="save">Save</a>
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_save_btn" class="button" title="Save changes" href="javascript:void(0);" data-i18n-text="save">Save</a>
     </div>
-    </div><!-- END of .dialog_container -->
+    </div>
 </div>
+
+<div id="kismet_rule_edit_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="add">Rule Editor</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <div class="dialog_block">
+            <h3>- Name -</h3>
+            <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
+        </div>
+        <div class="dialog_block">
+            <h3>- Rule -</h3>
+            <p><textarea id="kismet_rule_edit_data" class="textarea"  value style="width:450px; height: 40px;"></textarea></p>
+        </div>
+        <div id="kismet_quick_refs">
+        <details>
+        <summary class="sub_label">Quick References</summary>
+        <p>
+        <ul class="docs">
+            <li><h4><a href="#" class="kismet_sample">keyword</a></h4>
+                <p>simply a keyword</p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">via:{source name}</a></h4>
+                <p>where this tweet comes form.</p>
+                <p>example: <a href="#" class="kismet_sample">via:foursquare</a></p>
+
+            </li>
+            <li><h4><a href="#" class="kismet_sample">tag:{tag name}</a></h4>
+                <p>What hash tag contained by this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">via:#FuckGFW</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">name:{screen name}</a></h4>
+                <p>who post this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">name:MentionTo</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">mention:{screen name}</a></h4>
+                <p>who are mentioned in this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">mention:aiww</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">has:{attribute}</a></h4>
+                <p>what attribute this tweet has.</p>
+                <p>supported attributes: <a href="#" class="kismet_sample">has:geo</a>, <a href="#" class="kismet_sample">has:url</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">do:{action}</a></h4>
+                <p>take action if all conditions are true.</p>
+                <p>supported action:
+                    <ul style="list-style-type:circle; padding-left:20px;">
+                        <li><a href="#" class="kismet_sample">do:drop</a>, drop this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:mask</a>, mask this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:notify</a>, notify this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:archive</a>, archive this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
+                    </ul>
+                </p>
+            </li>
+        </ul>
+        </p>
+        </details>
+        </div>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_rule_edit_ok" class="button" title="OK" href="javascript:void(0);" data-i18n-text="ok">OK</a>
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_rule_edit_dialog -->
 
 <!-- ImageUploader dialog -->
 <div id="imageuploader_dlg" class="dialog">
@@ -1260,6 +1290,27 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div>
     </div><!-- END of .dialog_container -->
 </div>
+
+<div id="kismet_guide_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="kimset_guide">Kismet Guide</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <div class="dialog_block">
+        <p>Which field do you wanna block? Click to select.</p>
+        <p class="sample_area">
+        </p>
+        </div>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_guide_next_btn" class="button" title="Cancel" href="javascript:void(0);" data-i18n-text="next">Next</a>
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_source_edit_dialog -->
 
 <!-- Error dialog -->
 <div id="error_dlg" class="dialog">

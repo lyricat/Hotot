@@ -2,204 +2,173 @@ if (typeof ui == 'undefined') var ui = {};
 ui.KismetDlg = {
 init:
 function init() {
-    $('#kismet_rule_list .kismet_rule').live('click', function(event) {
-        var selected = $('#kismet_rule_list .selected');
-        if (selected.length == 0) {
-            $('#kismet_rule_ctrl .new').click();
+    var filter_btns = new widget.RadioGroup('#kismet_cat_btns');
+    filter_btns.on_clicked = function (btn, event) {
+        var name = btn.attr('href').substring(1);
+        ui.KismetDlg.switch_category(name);
+        return false;
+    };
+    filter_btns.create();
+    $('#kismet_cat_btns .radio_group_btn:eq(0)').click();
+
+    
+    // dialogs
+    ui.KismetDlg.rule_edit_dialog = new widget.Dialog('#kismet_rule_edit_dialog');
+    ui.KismetDlg.rule_edit_dialog.set_styles('header', 
+            {'height': '0px', 'padding':'0px', 'display': 'none'});
+    ui.KismetDlg.rule_edit_dialog.resize(500, 450);
+    ui.KismetDlg.rule_edit_dialog.create();
+    
+    ui.KismetDlg.guide_dialog = new widget.Dialog('#kismet_guide_dialog');
+    ui.KismetDlg.guide_dialog.set_styles('header', 
+            {'height': '0px', 'padding':'0px', 'display': 'none'});
+    ui.KismetDlg.guide_dialog.resize(500, 400);
+    ui.KismetDlg.guide_dialog.create();
+
+    $('.kismet_sample').click(function () {
+        var text = $(this).text();
+        $('#kismet_rule_edit_data').val($('#kismet_rule_edit_data').val() + ' ' +text);
+        return false;
+    });
+
+    $('#kismet_add_rule_btn').click(function () {
+        ui.KismetDlg.show_edit_dialog({name:'', rule:''});
+        return false;
+    });
+
+    $('#kismet_rule_edit_ok').click(function () {
+        var name = $.trim($('#kismet_rule_edit_name').val());
+        var data = $.trim($('#kismet_rule_edit_data').val());
+        if (name.length == 0 || data.length == 0) {
+            widget.DialogManager.alert('Hey', 'It\'s empty!');
+            return false;
         }
-        if (selected.attr('name') == $(this).attr('name')) {
-            return;
-        }
-        ui.KismetDlg.update_rule(selected.attr('name'));
-        selected.removeClass('selected');
+        var rule = { name: name, data: data };
+        kismet.update_rule(rule);
+        kismet.save();
+        ui.KismetDlg.reload();
+        ui.KismetDlg.rule_edit_dialog.close();
+    });
+
+    $('#kismet_dialog .rule').live('click', function () {
+        $('#kismet_rule_list .rule').removeClass('selected');
         $(this).addClass('selected');
-        var name = $(this).text();
-        var rule_id = $(this).attr('rule_id');
-        var type = $(this).attr('type');
-        var field = $(this).attr('field');
-        var method = $(this).attr('method');
-        var pattern = $(this).attr('pattern');
-        var acts = $(this).attr('actions').split(':');
-
-        $('#kismet_rule_name').val(name);
-        $('#kismet_type').val(type); 
-        if (type == '0') {
-            $('#kismet_method').val(method).removeAttr('disabled');
-        } else {
-            $('#kismet_method').attr('disabled','true'); 
-        }
-        $('#kismet_field').val(field); 
-        $('#kismet_pattern').val(pattern); 
-
-        $('#kismet_rule_action input[type=checkbox]')
-            .attr('checked', false);
-        $('#kismet_action_archive_name').val(archive_name)
-            .removeAttr('disabled');
-        for (var i = 0; i < acts.length; i += 1) {
-            var act = acts[i];
-            if (act == '0') {
-                $('#kismet_action_drop').attr('checked', true); 
-            } else if (act == '1') {
-                $('#kismet_action_notify').attr('checked',true); 
-            } else if (act == '2') {
-                $('#kismet_action_mask').attr('checked',true); 
-            } else if (act == '3') {
-                $('#kismet_action_archive').attr('checked',true); 
-                var archive_name = $(this).attr('archive_name')
-                $('#kismet_action_archive_name').val(archive_name)
-                    .removeAttr('disabled');
-            }
-        }
-    });
-
-    $('#kismet_rule_ctrl .new').click(function () {
-        var name = $.trim($('#kismet_rule_name').val());  
-        var exists = $('#kismet_rule_list .kismet_rule[name="'+name+'"]');
-        if (name.length == 0) return;
-        if (exists.length == 0) {
-            ui.KismetDlg.add_rule(name);
-        } else {
-            ui.KismetDlg.update_rule(name);
-            $('#kismet_rule_list .selected').removeClass('selected');
-            ui.KismetDlg.clear_info();
-        }
-    });
-
-    $('#kismet_rule_ctrl .remove').click(function () {
-        var li = $('#kismet_rule_list .kismet_rule.selected').parent();
-        $('#kismet_rule_name').val('');
-        li.remove();
-    });
-
-    $('#kismet_rule_ctrl .enable').click(function () {
-        var current = $('#kismet_rule_list .kismet_rule.selected');
-        current.removeAttr('disabled');
-    });
-
-    $('#kismet_rule_ctrl .disable').click(function () {
-        var current = $('#kismet_rule_list .kismet_rule.selected');
-        current.attr('disabled', '1');
+        return false;
     });
     
-    $('#kismet_rule_ctrl .up').click(function () {
-        var current = $($('#kismet_rule_list .kismet_rule.selected').parent().get(0));
-        var prev = current.prev('li');
-        if (prev.length != 0) {
-            prev.before(current);
-        }
+    $('#kismet_remove_rule_btn').click(function () {
+        var s=$('#kismet_rule_list .rule.selected');
+        if (s.length == 0) { return false; }
+        kismet.remove_rule(decodeURIComponent(s.attr('rule_name')));
+        ui.KismetDlg.reload();
+        return false;
     });
-
-    $('#kismet_rule_ctrl .down').click(function () {
-        var current = $($('#kismet_rule_list .kismet_rule.selected').parent().get(0));
-        var next = current.next('li');
-        if (next.length != 0) {
-            next.after(current);
-        }
+    
+    $('#kismet_edit_rule_btn').click(function () {
+        var s=$('#kismet_rule_list .rule.selected');
+        if (s.length == 0) { return false; }
+        var rule = {
+            name: decodeURIComponent(s.attr('rule_name')),
+            data: decodeURIComponent(s.attr('rule_data')),
+        };
+        ui.KismetDlg.show_edit_dialog(rule);
+        return false;
     });
-
-    $('#kismet_type').change(function () {
-        if ($(this).val() == 0) {
-            $('#kismet_method').removeAttr('disabled');
-        } else {
-            $('#kismet_method').attr('disabled', 'true');
-        }
-    });
-
-    $('#kismet_action_archive').click(function () {
-        if ($(this).attr('checked') == true) {
-            $('#kismet_method').removeAttr('disabled');
-        } else {
-            $('#kismet_method').attr('disabled', 'true');
-        }
-    });
-
+    
     $('#kismet_save_btn').click(function () {
-        ui.KismetDlg.save();
+        kismet.save();
         globals.kismet_dialog.close();
+        return false;
     });
-    
-    $('#kismet_cancel_btn').click(function () {
-        globals.kismet_dialog.close();
+
+    $('#kismet_guide_next_btn').click(function () {
+        var marked = $('#kismet_guide_dialog .marked');
+        if (marked.length == 0) { //  
+            toast.set('Please select a field!').show(3);
+            return false;
+        } else {
+            var rule_data_arr = [];
+            for (var i = 0; i < marked.length; i += 1) {
+                var text = $.trim($(marked[i]).text());
+                if ($(marked[i]).hasClass('who_href')) {
+                    rule_data_arr.push('name:' + text);
+                } else if ($(marked[i]).parent().hasClass('tweet_source')) {
+                    rule_data_arr.push('via:' + text);
+                } else if ($(marked[i]).hasClass('word')) {
+                    if (text[0] == '#') {
+                        rule_data_arr.push('tag:' + text);
+                    } else {
+                        rule_data_arr.push(text);
+                    }
+                }
+            }
+            var rule_data = rule_data_arr.join(' ');
+            var rule = {name: '', data: rule_data}; 
+            ui.KismetDlg.show_edit_dialog(rule);
+            ui.KismetDlg.guide_dialog.close();
+        }
+        return false;
     });
+    ui.KismetDlg.reload();
 },
 
-load:
-function load() {
+switch_category:
+function switch_category(name) {
+    $('#kismet_dialog .kismet_page').hide();
+    $('#kismet_dialog .'+name).show();
+},
+
+show_edit_dialog:
+function show_edit_dialog(default_value) {
+    if (default_value) {
+        $('#kismet_rule_edit_name').val(default_value.name);
+        $('#kismet_rule_edit_data').val(default_value.data);
+    } else {
+        $('#kismet_rule_edit_dialog .entry').val('');
+    }
+    var e = $('#kismet_rule_edit_dialog .entry:eq(0)');
+    e.get(0).selectionStart = e.val().length;
+    e.get(0).selectionEnd = e.val().length;
+    e.focus();
+    ui.KismetDlg.rule_edit_dialog.open();
+},
+
+load_guide:
+function load_guide(tweet) {
+    if (tweet.user != undefined) {
+        var html = ui.Template.form_tweet(tweet, "kismet_guide");
+        $('#kismet_guide_dialog .sample_area').html(html);
+        var words = tweet.text.split(/[\s,-:;'".，。；：-]/)
+            .filter(function (x) { return x.length != 0; })
+            .map(function (x) {
+                return '<span class="word">' + x + '</span>';
+            });
+        $('#kismet_guide_dialog .sample_area .text').html(words.join(' '));
+    }
+    $('#kismet_guide_dialog .sample_area .who_href, #kismet_guide_dialog .sample_area .word, #kismet_guide_dialog .sample_area .tweet_source > a, #kismet_guide_dialog .sample_area .hash_href')
+        .unbind()
+        .click(function (ev) {
+            if (ev.target == this) {
+                $(this).toggleClass('marked');
+            }
+            return false;
+        });
+},
+
+reload:
+function reload() {
     $('#kismet_rule_list').empty();
     for (var i = 0; i < kismet.rules.length; i += 1) {
-        $('#kismet_rule_list').append(
-            ui.Template.form_kismet_rule(kismet.rules[i]));
+        var li = $('<li/>');
+        var rule = $('<a class="rule"/>');
+        rule.appendTo(li);
+        rule.text(kismet.rules[i].name);
+        rule.attr('rule_name', encodeURIComponent(kismet.rules[i].name));
+        rule.attr('rule_data', encodeURIComponent(kismet.rules[i].data));
+        $('<a href="#" class="edit"/>').appendTo(li);
+        $('<a href="#" class="delete"/>').appendTo(li);
+        li.appendTo($('#kismet_rule_list'));
     }
-},
-
-save:
-function save() {
-    var rules = [];
-    $('#kismet_rule_list .kismet_rule').each(function (i, n) {
-        var obj = $(n);
-        var rule = {name: obj.attr('name')
-            , type: parseInt(obj.attr('type'))
-            , method: parseInt(obj.attr('method'))
-            , pattern: obj.attr('pattern')
-            , field: parseInt(obj.attr('field'))
-            , disabled: parseInt(obj.attr('disabled'))
-            , actions: obj.attr('actions').split(':')
-            , archive_name: obj.attr('archive_name')};
-        for (var i = 0; i < rule.actions.length; i += 1) {
-            rule.actions[i] = parseInt(rule.actions[i]);
-        }
-        rules.push(rule);
-    });
-    kismet.rules = rules;
-    kismet.update_rules();
-    kismet.save();
-},
-
-add_rule:
-function add_rule(name) {
-    var rule = {};
-    rule.name = name;
-    rule.type = parseInt($('#kismet_type').val());
-    rule.method = parseInt($('#kismet_method').val());
-    rule.field = parseInt($('#kismet_field').val());
-    rule.pattern = $('#kismet_pattern').val();
-    rule.disabled = '0';
-    rule.archive_name = '';
-    var acts = [];
-    $('#kismet_rule_action input[type=checkbox]').each(function (i, n) {
-        if ($(n).attr('checked') == true) {
-            acts.push($(n).val())
-        }
-    });
-    rule.actions = acts;
-    $('#kismet_rule_list').append(
-        ui.Template.form_kismet_rule(rule));
-},
-
-update_rule:
-function update_rule(name) {
-    var rule = {};
-    rule.name = name;
-    rule.type = parseInt($('#kismet_type').val());
-    rule.method = parseInt($('#kismet_method').val());
-    rule.field = parseInt($('#kismet_field').val());
-    rule.pattern = $('#kismet_pattern').val();
-    var acts = [];
-    $('#kismet_rule_action input[type=checkbox]').each(function (i, n) {
-        if ($(n).attr('checked') == true) {
-            acts.push($(n).val())
-        }
-    });
-    rule.actions = acts.join(':');
-    $('#kismet_rule_list .kismet_rule[name="'+name+'"]').attr(rule);
-},
-
-clear_info:
-function clear_info() {
-    $('#kismet_rule_info input[type=text]').val('');
-    $('#kismet_rule_info select').val(0);
-    $('#kismet_rule_action input[type=checkbox]').attr('checked', false);
-    $('#kismet_action_archive_name').attr('disabled', true);
 },
 
 }

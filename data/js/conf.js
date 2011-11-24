@@ -63,9 +63,10 @@ default_prefs: {
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
-        , 'kismet_rules': []
+        , 'kismet_rules': {}
         , 'base_url': 'https://twitter.com/'
         , 'slider_state': null
+        , 'views_lastest_id': {}
       }
     , 'identica': {
           // Account:
@@ -97,9 +98,10 @@ default_prefs: {
         , 'search_api_base2': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
-        , 'kismet_rules': []
+        , 'kismet_rules': {}
         , 'base_url': 'https://identi.ca/'
         , 'slider_state': null
+        , 'views_lastest_id': {}
       }
 },
 

@@ -49,7 +49,7 @@ function init () {
     
     $('#btn_kismet').click(
     function (event) {
-        ui.KismetDlg.load();
+        ui.KismetDlg.reload();
         globals.kismet_dialog.open();
     });
 
