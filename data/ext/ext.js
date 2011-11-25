@@ -10,6 +10,7 @@ builtins: [
     , 'org.hotot.shorturl'
     , 'org.hotot.translate'
     , 'org.hotot.stat'
+    , 'org.hotot.readitlater'
 ],
 
 extras: [],
