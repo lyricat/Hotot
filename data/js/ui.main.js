@@ -961,6 +961,7 @@ function move_to_tweet(pos) {
     } else if (pos == 'orig') {
         target = current;
     } else {
+        cur_view = ui.Main.views[pos.split('-')[0].substring(1)];
         target = $(pos);
     }
     if (target.length == 0) {

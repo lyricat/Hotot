@@ -491,7 +491,7 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // 'z' then 'c' to expand
+    // 'z' then 'c' to fold 
     hotkey.register([iz, hotkey.calculate(67)], function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
@@ -499,6 +499,10 @@ function init_hotkey() {
             btn.addClass('expand');
             btn.click();
         }
+    });
+    // '/' to open finder
+    hotkey.register([hotkey.calculate(191)], function () {
+        ui.Finder.show();
     });
     // :)
     hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
