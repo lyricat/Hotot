@@ -1123,10 +1123,19 @@ label {
     text-align: center;
 }
 
-.header_inner > .search_entry {
+.search_box > .search_entry {
     text-align: left;
-    width: 220px;
+    width: 300px;
     margin-right: 10px;
+    vertical-align: middle;
+}
+.search_box > .search_entry_clear_btn {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: -40px;
+    background: transparent url(../image/ic16_clear_text.png) no-repeat center;
+    vertical-align: middle;
 }
 .search_box {
     background-color: #F2F2F2;
@@ -2229,4 +2238,7 @@ td {
 }
 .ic_close {
     background: transparent url(../image/ic16_close.png) no-repeat;
+}
+.ic_clear_text {
+    background: transparent url(../image/ic16_clear_text.png) no-repeat;
 }
