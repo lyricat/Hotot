@@ -54,6 +54,17 @@ function init() {
         ui.KismetDlg.rule_edit_dialog.close();
         return false;
     });
+    
+    $('#kismet_rule_edit_verify').click(function () {
+        var data = $.trim($('#kismet_rule_edit_data').val());
+        var ret = kismet.compile(data);
+        if (ret != kismet.ERROR) {
+            widget.DialogManager.alert('Verify Result', kismet.rule_string);
+        } else {
+            toast.set('Verify failed, please check your rule.').show(3);
+        }
+        return false;
+    });
 
     $('#kismet_dialog .rule').live('click', function () {
         $('#kismet_rule_list .rule').removeClass('selected');
