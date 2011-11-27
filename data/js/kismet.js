@@ -1,5 +1,7 @@
 var kismet = {
 
+    ERROR: -1,
+
     OP_ATOM:0,
 //unary operator
     OP_NOT: 1,      // !
@@ -41,7 +43,7 @@ var kismet = {
 
     MASK_TEXT: '******** Masked Text Field ********',
 
-    reserved_words: ['has', 'name', 'tag', 'via', 'do'],
+    reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention'],
 
     rules: [],
 
@@ -51,29 +53,24 @@ var kismet = {
    condition express:
     cond_exp := [op, arg_list]
     op := OP_BLAH
-    arg := cond_exp | true | false
-    grammar: [OP ARG_LIST]
-    text example: 
    
    action express:
     act_exp := [act, arg_list]
     act := ACT_BLAH
-    arg := String | Number | Boolean
  */
 
 /*
     enforcer = {
         name: name,
-        cond: cond_exp,
-        action: [act_exp, act_exp, ... act_exp]
+        cond: [cond_exp, cond_exp ... cond_exp]
+        action: [act_exp, act_exp ... act_exp]
     } 
 
     text:
     $rule := $field $field $field ...
-    $field := $keyword | $field_key:$field_value
-    $keyword := "[all char]+" | [all char without \s and :]+
-    $field_key := source | user | retweeter | tag | do 
-    $field_value := "[all char]+" | [all char without \s, \\ and : ]+ 
+    $field := $word | $field_key:$word
+    $field_key := via | name | mention | tag | has | do 
+    $word := "[all char]+" | [all char without \s, \\ and : ]+ 
                 | /[all char]+/i*
     
  */
@@ -147,7 +144,6 @@ function remove_rule(name) {
     }  
 },
 
-
 eval_bool_exp:
 function eval_bool_exp (exp, incoming) {
     if (!exp) return false;
@@ -208,10 +204,16 @@ function eval_bool_exp (exp, incoming) {
         return t0.test(t1);
     break;
     case kismet.OP_HASH_HAS:
-        return (t0.indexOf(t1) != -1);
+        if (t1.constructor == RegExp)
+            return (t0.filter(function(x) {return t1.test(x)}).length!=0);
+        else 
+            return (t0.indexOf(t1) != -1);
     break;
-    case kismet.OP_MANTION_HAS:
-        return (t0.indexOf(t1) != -1);
+    case kismet.OP_MENTION_HAS:
+        if (t1.constructor == RegExp)
+            return (t0.filter(function(x) {return t1.test(x)}).length!=0);
+        else
+            return (t0.indexOf(t1) != -1);
     break;
     case kismet.OP_HAS_GEO:
         return (t0);
@@ -398,47 +400,44 @@ process_action:
 function process_action(tokens, pos) {
     switch (tokens[pos][1]) {
     case 'drop':
+        kismet.action_string_array.push('DROP the tweet');
         return [[kismet.ACT_DROP], 3];
     break;
     case 'mask':
+        kismet.action_string_array.push('MASK the tweet');
         return [[kismet.ACT_MASK], 3];
     break;
     case 'notify':
+        kismet.action_string_array.push('NOTIFY me');
         return [[kismet.ACT_NOTIFY], 3];
     break;
     case 'archive':
+        kismet.action_string_array.push('ARCHIVE the tweet');
         return [[kismet.ACT_ARCHIVE], 3];
     break;
     case 'reply':
-        if (tokens.length < pos + 3 &&
-            tokens[pos + 1][0] != kismet.TYPE_LBRA && 
+        if (tokens.length < pos + 3 || 
+            (tokens[pos + 1][0] != kismet.TYPE_LBRA && 
             tokens[pos + 3][0] != kismet.TYPE_RBRA && 
-            tokens[pos + 2][0] != kismet.TYPE_STR) {
-            return [[kismet.OP_STR_HAS, '$TEXT', 'do:'+tokens[pos]],3];
+            tokens[pos + 2][0] != kismet.TYPE_STR)) {
+            return [kismet.ERROR, 3];
         }
+        kismet.action_string_array.push('REPLY the tweet');
         return [[kismet.ACT_REPLY, tokens[pos + 2][1]], 6];
     break;
     case 'quote':
+        if (tokens.length < pos + 3 || 
+            (tokens[pos + 1][0] != kismet.TYPE_LBRA && 
+            tokens[pos + 3][0] != kismet.TYPE_RBRA && 
+            tokens[pos + 2][0] != kismet.TYPE_STR)) {
+            return [kismet.ERROR, 3];
+        }
+        kismet.action_string_array.push('QUOTE the tweet');
         return [[kismet.ACT_QUOTE, tokens[pos + 2][1]], 6];
     break;
     default:
-        return [kismet.OP_STR_HAS, "$TEXT", 'do:'+tokens[pos][1], 3];
+        return [kismet.ERROR, 3];
     break;
-    }
-},
-
-process_value:
-function process_value(val) {
-    if (val.length < 3) {
-        return val;
-    } else {
-        if (/^".+"$/.test(val)) {
-            return val.slice(1, val.length - 1);
-        } else if (/^\/.*\/i?$/.test(val)) {
-            return new RegExp(val.slice(1, val.length - 1), val[val.length-1] == 'i'? 'i': ''); 
-        } else {
-            return val;
-        }
     }
 },
 
@@ -447,14 +446,16 @@ function process_has(tokens, pos) {
     switch (tokens[pos][1]) {
     case 'map':
     case 'geo':
+        kismet.cond_string_array.push('HAS geo info');
         return [[kismet.OP_HAS_GEO], 3];
     break;
     case 'link':
     case 'url':
+        kismet.cond_string_array.push('HAS link');
         return [[kismet.OP_HAS_LINK], 3];
     break;
     default:
-        return [[kismet.OP_STR_HAS, '$TEXT', 'has:'+tokens[pos][1]], 3];
+        return [kismet.ERROR, 3];
     break;
     }
 },
@@ -462,21 +463,25 @@ function process_has(tokens, pos) {
 process_field:
 function process_field(tokens, pos) {
     var first = tokens[pos], second = null, third = null;
-    if (pos + 2 >= tokens.length)
+    if (pos + 2 >= tokens.length) {
+        kismet.cond_string_array.push('CONTAINS ' + first[1]);
         return [[kismet.OP_STR_HAS, '$TEXT', first[1]], 1];
+    }
     if (tokens[pos + 1][0] != kismet.TYPE_COLON) 
-        return [[kismet.OP_STR_HAS, '$TEXT', first[1]], 1];
+        return [kismet.ERROR, 1];
     if (tokens[pos + 2][0] != kismet.TYPE_WORD &&
         tokens[pos + 2][0] != kismet.TYPE_STR &&
         tokens[pos + 2][0] != kismet.TYPE_RE) {
-        return [[kismet.OP_STR_HAS, '$TEXT', first[1]], 1];
+        return [kismet.ERROR, 3];
     }
     second = tokens[pos + 2];
     switch (first[1]) {
     case 'via':
-        if (tokens[pos + 2][0] == kismet.TYPE_RE) {
+        if (second[0] == kismet.TYPE_RE) {
+            kismet.cond_string_array.push('COMES FROM /'+second[1]+'/'+second[2]);
             return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$SOURCE'], 3];
         } else {
+            kismet.cond_string_array.push('COMES FROM ' + second[1]);
             return [[kismet.OP_TEQ, '$SOURCE', second[1]], 3];
         }
     break;
@@ -484,23 +489,37 @@ function process_field(tokens, pos) {
         return kismet.process_action(tokens, pos + 2);
     break;
     case 'tag':
-        return [[kismet.OP_HASH_HAS, '$HASHTAGS', second[1]], 3];
+        if (second[0] == kismet.TYPE_RE) {
+            kismet.cond_string_array.push('TAGGED @' + second[1]);
+            return [[kismet.OP_HASH_HAS, '$HASHTAGS', new RegExp(second[1],second[2])], 3];
+        } else {
+            kismet.cond_string_array.push('TAGGED AS #' + second[1]);
+            return [[kismet.OP_HASH_HAS, '$HASHTAGS', second[1]], 3];
+        }
     break;
     case 'name':
-        if (tokens[pos + 2][0] == kismet.TYPE_RE) {
+        if (second[0] == kismet.TYPE_RE) {
+            kismet.cond_string_array.push('SENT BY @/'+second[1]+'/'+second[2]);
             return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$NAME'], 3];
         } else {
+            kismet.cond_string_array.push('SENT BY @' + second[1]);
             return [[kismet.OP_TEQ, '$NAME', second[1]], 3];
         }
     break;
     case 'mention':
-        return [[kismet.OP_MANTION_HAS, '$MENIONS',second[1]], 3];
+        if (second[0] == kismet.TYPE_RE) {
+            kismet.cond_string_array.push('MENIONS @' + second[1]);
+            return [[kismet.OP_MENTION_HAS, '$MENIONS', new RegExp(second[1],second[2])], 3];
+        } else {
+            kismet.cond_string_array.push('MENIONS @' + second[1]);
+            return [[kismet.OP_MENTION_HAS, '$MENIONS', second[1]], 3];
+        }
     break;
     case 'has':
         return kismet.process_has(val);
     break;
     default:
-        return [[kismet.OP_STR_HAS,'$TEXT', first[1]+':'+second[1]], 3];
+        return [kismet.ERROR, 3];
     break;
     }
 },
@@ -602,24 +621,33 @@ function compile(str) {
     var inst = null;
     var rule = {name: '', cond: [], action: []};
     var i = 0;
+    var token = null;
+    kismet.rule_string = '';
+    kismet.action_string_array = [];
+    kismet.cond_string_array = [];
     while (i < tokens.length) {
-        var token = tokens[i];
+        token = tokens[i];
+        inst = null;
         switch (token[0]) {
         case kismet.TYPE_WORD:
             if (kismet.reserved_words.indexOf(token[1]) == -1) {
+                kismet.cond_string_array.push('CONTAINS ' + token[1]);
                 inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
                 i += 1;
             } else {
                 ret = kismet.process_field(tokens, i);
-                inst = ret[0];
+                if (ret != kismet.ERROR)
+                    inst = ret[0];
                 i += ret[1];
             }
         break;
         case kismet.TYPE_STR:
+            kismet.cond_string_array.push('CONTAINS ' + token[1]);
             inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
             i += 1;
         break;
         case kismet.TYPE_RE:
+            kismet.cond_string_array.push('MATCH /'+token[1]+'/'+token[2]);
             inst = [kismet.OP_REG_TEST, new RegExp(token[1], token[2]), '$TEXT'];
             i += 1;
         break;
@@ -627,26 +655,24 @@ function compile(str) {
             i += 1;
         break;
         }
-        /*
-        if (token[0] == '"' && token[token.length-1] == '"') {
-            inst = kismet.process_keyword(token.slice(1, a.length-1));
-        } else {
-            var sep_pos = token.indexOf(':');
-            if (sep_pos == -1) {
-                inst = kismet.process_keyword(token);
+        if (inst != null) {
+            if (kismet.act_code_map.indexOf(inst[0]) != -1) {
+                rule.action.push(inst);
             } else {
-                field_key = token.slice(0, sep_pos);
-                field_value = kismet.process_value(token.slice(sep_pos + 1));
-                inst = kismet.process_field(field_key, field_value);
+                rule.cond.push(inst);
             }
         }
-        */
-        if (kismet.act_code_map.indexOf(inst[0]) != -1) {
-            rule.action.push(inst);
-        } else {
-            rule.cond.push(inst);
-        }
     }
+    // generate docs
+    if (kismet.action_string_array.length == 0) {
+        kismet.action_string_array.push('Drop the tweet');
+    }
+    if (kismet.cond_string_array.length == 0) {
+        return kismet.ERROR;
+    }
+    kismet.rule_string = kismet.action_string_array.join(' and ')
+        + ' if it '
+        + kismet.cond_string_array.join(' and ');
     // console.log('Compile:', rule)
     return rule;
 },

@@ -40,7 +40,11 @@ function init() {
         var name = $.trim($('#kismet_rule_edit_name').val());
         var data = $.trim($('#kismet_rule_edit_data').val());
         if (name.length == 0 || data.length == 0) {
-            widget.DialogManager.alert('Hey', 'It\'s empty!');
+            toast.set('Please fill all fields.').show(3);
+            return false;
+        }
+        if (kismet.compile(data) == kismet.ERROR) {
+            toast.set('Verify failed, please check your rule.').show(3);
             return false;
         }
         var rule = { name: name, data: data };
@@ -48,15 +52,18 @@ function init() {
         kismet.save();
         ui.KismetDlg.reload();
         ui.KismetDlg.rule_edit_dialog.close();
+        return false;
     });
 
     $('#kismet_dialog .rule').live('click', function () {
         $('#kismet_rule_list .rule').removeClass('selected');
         $(this).addClass('selected');
+        $('#kismet_rule_list .rule').parent().removeClass('selected');
+        $(this).parent().addClass('selected');
         return false;
     });
     
-    $('#kismet_remove_rule_btn').click(function () {
+    $('#kismet_dialog .delete_btn').live('click', function () {
         var s=$('#kismet_rule_list .rule.selected');
         if (s.length == 0) { return false; }
         kismet.remove_rule(decodeURIComponent(s.attr('rule_name')));
@@ -64,7 +71,7 @@ function init() {
         return false;
     });
     
-    $('#kismet_edit_rule_btn').click(function () {
+    $('#kismet_dialog .edit_btn').live('click', function () {
         var s=$('#kismet_rule_list .rule.selected');
         if (s.length == 0) { return false; }
         var rule = {
@@ -86,27 +93,33 @@ function init() {
         if (marked.length == 0) { //  
             toast.set('Please select a field!').show(3);
             return false;
-        } else {
-            var rule_data_arr = [];
-            for (var i = 0; i < marked.length; i += 1) {
-                var text = $.trim($(marked[i]).text());
-                if ($(marked[i]).hasClass('who_href')) {
-                    rule_data_arr.push('name:' + text);
-                } else if ($(marked[i]).parent().hasClass('tweet_source')) {
-                    rule_data_arr.push('via:' + text);
-                } else if ($(marked[i]).hasClass('word')) {
-                    if (text[0] == '#') {
-                        rule_data_arr.push('tag:' + text);
-                    } else {
-                        rule_data_arr.push(text);
-                    }
+        }
+        var rule_data_arr = [];
+        for (var i = 0; i < marked.length; i += 1) {
+            var text = $.trim($(marked[i]).text());
+            if ($(marked[i]).hasClass('who_href')) {
+                rule_data_arr.push('name:' + text);
+            } else if ($(marked[i]).parent().hasClass('tweet_source')) {
+                rule_data_arr.push('via:"' + text + '"');
+            } else if ($(marked[i]).hasClass('word')) {
+                if (text[0] == '#') {
+                    rule_data_arr.push('tag:' + text.substring(1));
+                } else if (text[0] == '@') {
+                    rule_data_arr.push('mention:' + text.substring(1));
+                } else {
+                    rule_data_arr.push('"'+text+'"');
                 }
             }
-            var rule_data = rule_data_arr.join(' ');
-            var rule = {name: '', data: rule_data}; 
-            ui.KismetDlg.show_edit_dialog(rule);
-            ui.KismetDlg.guide_dialog.close();
         }
+        $('#kismet_guide_dialog .checkbox:checked').each(function (i, n) {
+            rule_data_arr.push('do:' + $(n).val());
+        });
+        var rule_data = rule_data_arr.join(' ');
+        if (kismet.compile(rule_data) != kismet.ERROR) {
+            var rule = {name: kismet.rule_string, data: rule_data};
+            ui.KismetDlg.show_edit_dialog(rule);
+        }
+        ui.KismetDlg.guide_dialog.close();
         return false;
     });
     ui.KismetDlg.reload();
@@ -126,11 +139,11 @@ function show_edit_dialog(default_value) {
     } else {
         $('#kismet_rule_edit_dialog .entry').val('');
     }
+    ui.KismetDlg.rule_edit_dialog.open();
     var e = $('#kismet_rule_edit_dialog .entry:eq(0)');
     e.get(0).selectionStart = e.val().length;
     e.get(0).selectionEnd = e.val().length;
     e.focus();
-    ui.KismetDlg.rule_edit_dialog.open();
 },
 
 load_guide:
@@ -157,6 +170,8 @@ function load_guide(tweet) {
 
 reload:
 function reload() {
+    $('#kismet_rule_list .button').unbind();
+    $('#kismet_rule_list .rule').unbind();
     $('#kismet_rule_list').empty();
     for (var i = 0; i < kismet.rules.length; i += 1) {
         var li = $('<li/>');
@@ -165,10 +180,10 @@ function reload() {
         rule.text(kismet.rules[i].name);
         rule.attr('rule_name', encodeURIComponent(kismet.rules[i].name));
         rule.attr('rule_data', encodeURIComponent(kismet.rules[i].data));
-        $('<a href="#" class="edit"/>').appendTo(li);
-        $('<a href="#" class="delete"/>').appendTo(li);
+        $('<div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>').appendTo(li);
         li.appendTo($('#kismet_rule_list'));
     }
 },
+
 
 }

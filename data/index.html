@@ -187,8 +187,7 @@
         data-i18n-text="delete"
         >Delete</a>
     </li>
-    <!--
-    <li style="display:none;">
+    <li>
         <a id="tweet_filter_btn"
         class="tweet_more_menu_btn"
         href="javascript:void(0);"
@@ -196,7 +195,6 @@
         data-i18n-text="filter_like_it"
         >Filter like it</a>
     </li>
-    -->
     <li class="separator"><span></span></li>
     </ul>
     <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
@@ -1169,12 +1167,13 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="rulebased_page kismet_page">
             <div class="ctrl">
                 <a id="kismet_add_rule_btn" href="#" class="button">Add</a>
-                <a id="kismet_edit_rule_btn" href="#" class="button">Edit</a>
-                <a id="kismet_remove_rule_btn" href="#" class="button">Remove</a>
                 <a style="display:none" href="#" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
             </div>
             <ul id="kismet_rule_list" class="rule_list">
-                <li><a href="#" class="rule">aaa</a></li>
+                <li><a href="#" class="rule">aaa</a>
+                    <div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>
+                </li>
+            </ul>
             </ul>
         </div>
         <div class="intelligent_page kismet_page">
@@ -1205,7 +1204,20 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             <p><textarea id="kismet_rule_edit_data" class="textarea"  value style="width:450px; height: 40px;"></textarea></p>
         </div>
         <div id="kismet_quick_refs">
-        <details>
+        <details style="width: 240px; float: left;">
+        <summary class="sub_label">Examples</summary>
+        <p>
+        <ul class="docs">
+            <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
+            <li><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
+            <li><a href="#" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
+            <li><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
+            <li><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
+            <li><a href="#" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
+        </ul>
+        </p>
+        </details>
+        <details style="margin-left: 245px;">
         <summary class="sub_label">Quick References</summary>
         <p>
         <ul class="docs">
@@ -1258,6 +1270,36 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div> <!-- .dialog_container -->
 </div> <!-- #kismet_rule_edit_dialog -->
 
+<div id="kismet_guide_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="kimset_guide">Kismet Guide</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <div class="dialog_block">
+        <h3>1. Select fields you wanna block</h3>
+        <p class="sample_area">
+        </p>
+        </div>
+        <div class="dialog_block action_block">
+            <h3>2. Select Actions</h3>
+            <p>
+            <input type="checkbox" class="checkbox" value="drop" checked/><label>Drop</label>
+            <input type="checkbox" class="checkbox" value="mask"/><label>Mask</label>
+            <input type="checkbox" class="checkbox" value="notify"/><label>Notify</label>
+            <input type="checkbox" class="checkbox" value="archive"/><label>Archive</label>
+            </p>
+        </div>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_guide_next_btn" class="button" title="Cancel" href="javascript:void(0);" data-i18n-text="next">Next</a>
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_guide_dialog -->
+
 <!-- ImageUploader dialog -->
 <div id="imageuploader_dlg" class="dialog">
     <div class="dialog_bar">
@@ -1293,27 +1335,6 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div>
     </div><!-- END of .dialog_container -->
 </div>
-
-<div id="kismet_guide_dialog" class="dialog">
-    <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="kimset_guide">Kismet Guide</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
-    </div>
-    <div class="dialog_container">
-    <div class="dialog_header"></div> <!-- .dialog_header -->
-    <div class="dialog_body">
-        <div class="dialog_block">
-        <p>Which field do you wanna block? Click to select.</p>
-        <p class="sample_area">
-        </p>
-        </div>
-    </div><!-- .dialog_body -->
-    <div class="dialog_footer">
-    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_guide_next_btn" class="button" title="Cancel" href="javascript:void(0);" data-i18n-text="next">Next</a>
-    </div>
-    </div> <!-- .dialog_container -->
-</div> <!-- #kismet_source_edit_dialog -->
 
 <!-- Error dialog -->
 <div id="error_dlg" class="dialog">

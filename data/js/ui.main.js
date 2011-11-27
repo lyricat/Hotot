@@ -364,21 +364,19 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     }
     */
     // dumps to cache
-    if (self.name != 'search') {
-        db.get_tweet_cache_size(function (size) {
-            if (db.MAX_TWEET_CACHE_SIZE < size) {
-                toast.set("Reducing ... ").show(-1);
-                db.reduce_tweet_cache(
-                    parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
-                , function () {
-                    toast.set("Reduce Successfully!").show();
-                    db.dump_tweets(json_obj);
-                })
-            } else {
+    db.get_tweet_cache_size(function (size) {
+        if (db.MAX_TWEET_CACHE_SIZE < size) {
+            toast.set("Reducing ... ").show(-1);
+            db.reduce_tweet_cache(
+                parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
+            , function () {
+                toast.set("Reduce Successfully!").show();
                 db.dump_tweets(json_obj);
-            }
-        });
-    }
+            })
+        } else {
+            db.dump_tweets(json_obj);
+        }
+    });
 
     if (!reversion && json_obj.length != 0) {
         if (self.item_type == 'cursor') {       // friedns or followers

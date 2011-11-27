@@ -1606,38 +1606,46 @@ label {
 #kismet_dialog .rule_list {
     border: 1px #ccc solid;
     overflow-y: auto;
-    min-height: 300px;
+    height: 300px;
 }
 #kismet_dialog .rule_list li {
     position: relative;
     display: block;
+    border-top:1px #ccc solid;
+    border-right:1px #ccc solid;
+}
+
+#kismet_dialog .rule_list li:last-child {
+    border-bottom:1px #ccc solid;
+    border-top: 1px #ccc solid;
+}
+#kismet_dialog .rule_list li:first-child {
+    border-top: 0;
 }
 #kismet_dialog .rule {
-    padding: 3px 5px;
+    padding: 0px 15px;
     display: block;
     text-decoration: none;
     color: #333;
-    height: 16px;
-    line-height: 16px;    
+    height: 30px;
+    line-height: 30px;
     font-size: 14px;
     cursor: pointer;
 }
-#kismet_dialog .rule:hover {
-    background: lightgray;
-}
+
 #kismet_dialog .kismet_page {
     display: none;
 }
 
-#kismet_dialog .mute {
-    display: block;
-}
 #kismet_dialog .ctrl .button {
     vertical-align: middle;
 }
 
+#kismet_dialog .rule:hover {
+    background: lightgray;
+}
 #kismet_dialog .rule.selected {
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3)) !important;
     color: white;
 }
 #kismet_guide_dialog .sample_area {
@@ -1677,7 +1685,7 @@ label {
 }
 
 #kismet_quick_refs ul.docs {
-    height: 160px;
+    height: 180px;
     overflow: auto;
     border: 1px #ccc solid;
     padding: 5px;
@@ -1693,6 +1701,20 @@ label {
     padding-left: 5px;
 }
 
+#kismet_dialog .item_ctrl {
+    display: none;
+    background-color:#f2f2f2;
+    height: 30px;
+    text-align: right;
+    padding: 10px 30px;
+}
+#kismet_dialog .item_ctrl .button{
+    margin: 0 10px;
+}
+
+#kismet_dialog li.selected .item_ctrl {
+    display: block;
+}
 
 /*===== ImageUploader Dialog ================================*/
 #imageuploader_dlg {
