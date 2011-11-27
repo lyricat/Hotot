@@ -214,6 +214,7 @@ function init () {
     });
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
+    ui.StatusBox.reg_fake_dots2 = new RegExp('(…\\.+)|(…。+)', 'g');
     
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
@@ -259,6 +260,7 @@ formalize:
 function formalize() {
     var text = $('#tbox_status').val(); 
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
+    text = text.replace(ui.StatusBox.reg_fake_dots2, '……');
     text = text.replace('<3', '&#x2665;');
     $('#tbox_status').val(text);
 },
