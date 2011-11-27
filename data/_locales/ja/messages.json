@@ -43,9 +43,9 @@
 		"message": "よし",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"add_to_list": {
-		"message": "リストに追加する",
-		"description": "data/js/ui.template.js"
+	"find": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"compose": {
 		"message": "ツィート",
@@ -183,6 +183,10 @@
 		"message": "メッセージを作成してください",
 		"description": "data/js/ui.status_box.js"
 	},
+	"add_to_list": {
+		"message": "リストに追加する",
+		"description": "data/js/ui.template.js"
+	},
 	"version": {
 		"message": "バージョン",
 		"description": "data/js/ui.exts_dlg.js"
@@ -231,6 +235,10 @@
 		"message": "検索",
 		"description": "data/js/ui.slider.js"
 	},
+	"drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"license": {
 		"message": "ライセンス",
 		"description": ""
@@ -251,8 +259,8 @@
 		"message": "@関連",
 		"description": "data/js/ui.slider.js"
 	},
-	"delete": {
-		"message": "削除する",
+	"identica": {
+		"message": "Identi.ca",
 		"description": ""
 	},
 	"official_retweet_this_tweet": {
@@ -299,6 +307,10 @@
 		"message": "APIベースを検索する",
 		"description": ""
 	},
+	"quick_references": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"px": {
 		"message": "ピクセル",
 		"description": ""
@@ -307,9 +319,13 @@
 		"message": "プロファイルを作りました",
 		"description": "data/js/ui.welcome.js"
 	},
-	"shortcuts": {
-		"message": "ショートカットキー",
+	"next": {
+		"message": "",
 		"description": "data/index.html"
+	},
+	"custom_font": {
+		"message": "フォント設定",
+		"description": ""
 	},
 	"preview": {
 		"message": "プレビュー",
@@ -351,13 +367,9 @@
 		"message": "友達",
 		"description": "data/js/ui.template.js"
 	},
-	"mention_them": {
-		"message": "言及",
+	"retweeted_by": {
+		"message": "拡散者:",
 		"description": "data/js/ui.template.js"
-	},
-	"undo_retweeting_dots": {
-		"message": "リツイートを解除する",
-		"description": "data/js/ui.main.js"
 	},
 	"same_signing_api_base": {
 		"message": "同じAPIでサーンする",
@@ -387,8 +399,8 @@
 		"message": "ショートカットキー",
 		"description": ""
 	},
-	"restore_defaults": {
-		"message": "既定値に戻す",
+	"profile_name": {
+		"message": "プロファイル名",
 		"description": ""
 	},
 	"home_timeline": {
@@ -415,8 +427,8 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"profile_name": {
-		"message": "プロファイル名",
+	"restore_defaults": {
+		"message": "既定値に戻す",
 		"description": ""
 	},
 	"clean_token": {
@@ -439,7 +451,11 @@
 		"message": "出来る限り最新ツイートの対話をプレロードする",
 		"description": ""
 	},
-	"Insert_smiley": {
+	"undo_retweeting_dots": {
+		"message": "リツイートを解除する",
+		"description": "data/js/ui.main.js"
+	},
+	"archive": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -451,9 +467,9 @@
 		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"extensions": {
-		"message": "プラグイン",
-		"description": ""
+	"select_fields": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"retweets_view": {
 		"message": "リツイート",
@@ -469,6 +485,10 @@
 	},
 	"effects_normal": {
 		"message": "普通なエフェクト",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -491,9 +511,13 @@
 		"message": "お気に入り",
 		"description": "data/index.html"
 	},
-	"move_to_next_tweet": {
-		"message": "次のツイートに行く",
+	"intelligent_filter": {
+		"message": "",
 		"description": "data/index.html"
+	},
+	"you_are_not_following_each_other": {
+		"message": "フォローしていません",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"font_size": {
 		"message": "フォントサイズ",
@@ -506,6 +530,10 @@
 	"block": {
 		"message": "ブロック",
 		"description": "data/js/ui.template.js"
+	},
+	"verify": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"step_two": {
 		"message": "ステップ２",
@@ -539,6 +567,10 @@
 		"message": "ネットワーク障害、後でもう一度アクセスしてみてください",
 		"description": "data/js/ui.welcome.js"
 	},
+	"favs_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"keyboard": {
 		"message": "キーボード",
 		"description": ""
@@ -558,6 +590,10 @@
 	"regain_access_token_with_twitter": {
 		"message": "トークンを再び取る",
 		"description": ""
+	},
+	"add": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"send_message_to_them": {
 		"message": "メッセージを送る",
@@ -627,8 +663,8 @@
 		"message": "パワフル",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"kismet_content_firewall": {
-		"message": "キスメット・ファイアウォール",
+	"drop": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -655,9 +691,17 @@
 		"message": "取り消す",
 		"description": ""
 	},
+	"examples": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"search_in_google": {
 		"message": "グーグルで検索する：@",
 		"description": ""
+	},
+	"select_actions": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "ツイートしました",
@@ -665,6 +709,10 @@
 	},
 	"reload": {
 		"message": "リロード",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -679,6 +727,10 @@
 		"message": "このユーザーのリスト",
 		"description": "data/js/ui.template.js"
 	},
+	"reply_all": {
+		"message": "全員に返信する",
+		"description": ""
+	},
 	"clear_and_close": {
 		"message": "クリアして閉じる",
 		"description": "data/index.html"
@@ -686,6 +738,10 @@
 	"listed_cnt": {
 		"message": "リスト",
 		"description": "data/js/ui.template.js"
+	},
+	"kimset_guide": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "感謝",
@@ -743,9 +799,13 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"more_actions": {
-		"message": "もっと",
-		"description": "data/js/ui.template.js"
+	"Insert_smiley": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
 		"message": "メディアをプレビューする",
@@ -779,9 +839,9 @@
 		"message": "アップデートした",
 		"description": "data/js/ui.status_box.js"
 	},
-	"you_are_not_following_each_other": {
-		"message": "フォローしていません",
-		"description": "data/js/ui.peopleview.js"
+	"move_to_next_tweet": {
+		"message": "次のツイートに行く",
+		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
 		"message": "",
@@ -815,6 +875,10 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"extensions": {
+		"message": "プラグイン",
+		"description": ""
+	},
 	"pin_code": {
 		"message": "PINコード",
 		"description": ""
@@ -835,10 +899,6 @@
 		"message": "有効",
 		"description": ""
 	},
-	"username": {
-		"message": "ユーザネーム",
-		"description": ""
-	},
 	"globals_restart_hint": {
 		"message": "本ページの設定は、リスタートしてから有効になります",
 		"description": ""
@@ -847,17 +907,17 @@
 		"message": "写真をアップロードする",
 		"description": "data/index.html"
 	},
-	"identica": {
-		"message": "Identi.ca",
+	"delete": {
+		"message": "削除する",
 		"description": ""
 	},
-	"reply_all": {
-		"message": "全員に返信する",
+	"username": {
+		"message": "ユーザネーム",
 		"description": ""
 	},
-	"custom_font": {
-		"message": "フォント設定",
-		"description": ""
+	"shortcuts": {
+		"message": "ショートカットキー",
+		"description": "data/index.html"
 	},
 	"whisper": {
 		"message": "ウィスパー",
@@ -923,13 +983,21 @@
 		"message": "アップデート",
 		"description": ""
 	},
+	"rule_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"filter_like_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"look_and_feels": {
 		"message": "外見",
 		"description": ""
 	},
-	"favs_view": {
-		"message": "",
-		"description": "data/index.html"
+	"more_actions": {
+		"message": "もっと",
+		"description": "data/js/ui.template.js"
 	},
 	"friends": {
 		"message": "友達",
@@ -951,8 +1019,16 @@
 		"message": "あなたたちは友達です",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"retweeted_by": {
-		"message": "拡散者:",
+	"mask": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"rule": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "言及",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {

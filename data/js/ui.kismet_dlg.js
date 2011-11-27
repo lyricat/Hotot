@@ -191,7 +191,7 @@ function reload() {
         rule.text(kismet.rules[i].name);
         rule.attr('rule_name', encodeURIComponent(kismet.rules[i].name));
         rule.attr('rule_data', encodeURIComponent(kismet.rules[i].data));
-        $('<div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>').appendTo(li);
+        $('<div class="item_ctrl"><a href="#" class="button edit_btn">' + _('edit') + '</a><a href="#" class="button delete_btn">'+_('delete')+'</a></div>').appendTo(li);
         li.appendTo($('#kismet_rule_list'));
     }
 },

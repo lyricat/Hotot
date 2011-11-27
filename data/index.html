@@ -1157,16 +1157,16 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header">
         <ul id="kismet_cat_btns" class="radio_group dark">
             <li>
-            	<a href="#rulebased_page" class="radio_group_btn">Rule-based Filter</a>
+            	<a href="#rulebased_page" class="radio_group_btn" data-i18n-text="rule_based_filter">Rule-based Filter</a>
             </li><li>
-            	<a href="#intelligent_page" class="radio_group_btn">Intelligent Filter</a>
+            	<a href="#intelligent_page" class="radio_group_btn" data-i18n-text="intelligent_filter">Intelligent Filter</a>
             </li>
         </ul>
     </div>
     <div class="dialog_body">
         <div class="rulebased_page kismet_page">
             <div class="ctrl">
-                <a id="kismet_add_rule_btn" href="#" class="button">Add</a>
+                <a id="kismet_add_rule_btn" href="#" class="button" data-i18n-text="add">Add</a>
                 <a style="display:none" href="#" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
             </div>
             <ul id="kismet_rule_list" class="rule_list">
@@ -1177,7 +1177,9 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             </ul>
         </div>
         <div class="intelligent_page kismet_page">
-            <p>Not available yet :)</p>
+            <div class="dialog_block">
+                <p>Not available yet :)</p>
+            </div>
         </div>
     </div> <!-- .body -->
     <div class="dialog_footer">
@@ -1189,23 +1191,23 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <div id="kismet_rule_edit_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="add">Rule Editor</h2>
+        <h2 class="dialog_title" data-i18n-text="rule_editor">Rule Editor</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <div class="dialog_block">
-            <h3>- Name -</h3>
+            <h3>- <span data-i18n-text="rule_name">Rule Name</span> -</h3>
             <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
         </div>
         <div class="dialog_block">
-            <h3>- Rule -</h3>
+            <h3>- <span data-i18n-text="rule">Rule</span> -</h3>
             <p><textarea id="kismet_rule_edit_data" class="textarea"  value style="width:450px; height: 40px;"></textarea></p>
         </div>
         <div id="kismet_quick_refs">
         <details style="width: 240px; float: left;">
-        <summary class="sub_label">Examples</summary>
+        <summary class="sub_label" data-i18n-text="examples">Examples</summary>
         <p>
         <ul class="docs">
             <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
@@ -1218,7 +1220,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </p>
         </details>
         <details style="margin-left: 245px;">
-        <summary class="sub_label">Quick References</summary>
+        <summary class="sub_label" data-i18n-text="quick_references">Quick References</summary>
         <p>
         <ul class="docs">
             <li><h4><a href="#" class="kismet_sample">keyword</a></h4>
@@ -1280,17 +1282,17 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <div class="dialog_block">
-        <h3>1. Select fields you wanna block</h3>
+            <h3>1. <span data-i18n-data="select_fields">Select fields</span></h3>
         <p class="sample_area">
         </p>
         </div>
         <div class="dialog_block action_block">
-            <h3>2. Select Actions</h3>
+            <h3>2. <span data-i18n-data="select_actions">Select Actions</span></h3>
             <p>
-            <input type="checkbox" class="checkbox" value="drop" checked/><label>Drop</label>
-            <input type="checkbox" class="checkbox" value="mask"/><label>Mask</label>
-            <input type="checkbox" class="checkbox" value="notify"/><label>Notify</label>
-            <input type="checkbox" class="checkbox" value="archive"/><label>Archive</label>
+            <input type="checkbox" class="checkbox" value="drop" checked/><label data-i18n-text="drop">Drop</label>
+            <input type="checkbox" class="checkbox" value="mask"/><label data-i18n-text="mask">Mask</label>
+            <input type="checkbox" class="checkbox" value="notify"/><label data-i18n-text="notify">Notify</label>
+            <input type="checkbox" class="checkbox" value="archive"/><label data-i18n-text="archive">Archive</label>
             </p>
         </div>
     </div><!-- .dialog_body -->
@@ -1311,7 +1313,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header"></div>
     <div class="dialog_body">
         <div class="dialog_block">
-            <p><label>Upload to ... </label>
+            <p><label data-i18n-text="upload_to_dots">Upload to ... </label>
             <ul class="service_list">
                 <li><a class="service selected" href="#img.ly">img.ly</a></li>
                 <li><a class="service" href="#twitpic.com">twitpic.com</a></li>
@@ -1320,7 +1322,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             </p>
             <p>
             <div class="dragarea">
-                Drag a photo here
+                <span data-i18n-text="drag_a_photo_here">Drag a photo here</span>
                 <div class="preview"></div>
             </div>
             </p>
