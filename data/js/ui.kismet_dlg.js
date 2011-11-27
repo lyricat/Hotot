@@ -16,7 +16,7 @@ function init() {
     ui.KismetDlg.rule_edit_dialog = new widget.Dialog('#kismet_rule_edit_dialog');
     ui.KismetDlg.rule_edit_dialog.set_styles('header', 
             {'height': '0px', 'padding':'0px', 'display': 'none'});
-    ui.KismetDlg.rule_edit_dialog.resize(500, 450);
+    ui.KismetDlg.rule_edit_dialog.resize(500, 500);
     ui.KismetDlg.rule_edit_dialog.create();
     
     ui.KismetDlg.guide_dialog = new widget.Dialog('#kismet_guide_dialog');
