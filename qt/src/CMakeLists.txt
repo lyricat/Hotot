@@ -41,7 +41,6 @@ if (HAVE_KDE)
 endif (HAVE_KDE)
 
 qt4_wrap_cpp(Hotot_QT_MOCS ${Hotot_QT_MOC_SRCS})
-qt4_wrap_ui(Hotot_QT_SRCS mainwindow.ui)
 add_executable(hotot-qt ${Hotot_QT_SRCS} ${Hotot_QT_MOCS})
 target_link_libraries(hotot-qt
     ${QT_QTCORE_LIBRARY}

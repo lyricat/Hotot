@@ -126,6 +126,8 @@ function WidgetAutoComplete(obj) {
         self._me.val(
             text.substr(0, curPos)
                 + append + text.substring(curPos));
+        self._me.get(0).selectionStart = curPos + append.length;
+        self._me.get(0).selectionEnd = curPos + append.length;
     };
 
     self.filter = function filter(text, callback) {

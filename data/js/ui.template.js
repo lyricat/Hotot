@@ -409,7 +409,8 @@ list_vcard_t:
 search_header_t: 
 '<div class="header_frame"> \
     <div class="search_box"> \
-    <input class="search_entry entry" type="text"/><a href="#" class="search_btn button">Search</a> \
+    <input class="search_entry entry" type="text" placeholder="Type and press enter to search."/> \
+    <a href="#" class="search_entry_clear_btn"></a>\
     <div class="search_people_result"> \
         <span>One user matched: </span> <span class="search_people_inner"></span>\
     </div>\

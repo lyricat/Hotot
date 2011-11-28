@@ -43,9 +43,9 @@
 		"message": "Fine",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"add_to_list": {
-		"message": "Add to list",
-		"description": "data/js/ui.template.js"
+	"find": {
+		"message": "Find",
+		"description": "data/index.html"
 	},
 	"compose": {
 		"message": "Compose",
@@ -76,7 +76,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Destroy Successfully!",
+		"message": "Destroyed Successfully!",
 		"description": "data/js/ui.main.js"
 	},
 	"interface_language": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retweet Successfully!",
+		"message": "Retweet Successful!",
 		"description": "data/js/ui.main.js"
 	},
 	"search_in_twitter": {
@@ -183,6 +183,10 @@
 		"message": "COMPOSE MESSAGE To",
 		"description": "data/js/ui.status_box.js"
 	},
+	"add_to_list": {
+		"message": "Add to list",
+		"description": "data/js/ui.template.js"
+	},
 	"version": {
 		"message": "Version",
 		"description": "data/js/ui.exts_dlg.js"
@@ -212,7 +216,7 @@
 		"description": "data/index.html"
 	},
 	"undo_successfully": {
-		"message": "Undo Successfully!",
+		"message": "Undo Successful!",
 		"description": "data/js/ui.main.js"
 	},
 	"un_favorite_this_tweet_dots": {
@@ -230,6 +234,10 @@
 	"search": {
 		"message": "Search",
 		"description": "data/js/ui.slider.js"
+	},
+	"drag_a_photo_here": {
+		"message": "Drag a photo here",
+		"description": "data/index.html"
 	},
 	"license": {
 		"message": "License",
@@ -251,8 +259,8 @@
 		"message": "Mentions",
 		"description": "data/js/ui.slider.js"
 	},
-	"delete": {
-		"message": "Delete",
+	"identica": {
+		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
 	"official_retweet_this_tweet": {
@@ -299,6 +307,10 @@
 		"message": "Search API Base",
 		"description": "data/index.html"
 	},
+	"quick_references": {
+		"message": "Quick References",
+		"description": "data/index.html"
+	},
 	"px": {
 		"message": "px",
 		"description": "data/index.html"
@@ -307,8 +319,12 @@
 		"message": "New Profile has been created!",
 		"description": "data/js/ui.welcome.js"
 	},
-	"shortcuts": {
-		"message": "Shortcuts",
+	"next": {
+		"message": "Next",
+		"description": "data/index.html"
+	},
+	"custom_font": {
+		"message": "Custom Font",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -351,13 +367,9 @@
 		"message": "Friend",
 		"description": "data/js/ui.template.js"
 	},
-	"mention_them": {
-		"message": "Mention",
+	"retweeted_by": {
+		"message": "Retweeted by",
 		"description": "data/js/ui.template.js"
-	},
-	"undo_retweeting_dots": {
-		"message": "Undo retweeting ...",
-		"description": "data/js/ui.main.js"
 	},
 	"same_signing_api_base": {
 		"message": "Same Signing API Base",
@@ -387,8 +399,8 @@
 		"message": "Keyboard Shortcuts",
 		"description": "data/index.html"
 	},
-	"restore_defaults": {
-		"message": "Restore Defaults",
+	"profile_name": {
+		"message": "Profile Name",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -415,8 +427,8 @@
 		"message": "Open a List ...",
 		"description": "data/index.html"
 	},
-	"profile_name": {
-		"message": "Profile Name",
+	"restore_defaults": {
+		"message": "Restore Defaults",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -439,8 +451,12 @@
 		"message": "Preload latest tweets in conversations if possible.",
 		"description": "data/index.html"
 	},
-	"Insert_smiley": {
-		"message": "Insert simley",
+	"undo_retweeting_dots": {
+		"message": "Undo retweeting ...",
+		"description": "data/js/ui.main.js"
+	},
+	"archive": {
+		"message": "Archive",
 		"description": "data/index.html"
 	},
 	"followers": {
@@ -451,8 +467,8 @@
 		"message": "Weakness",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"extensions": {
-		"message": "Extensions",
+	"select_fields": {
+		"message": "Select fields",
 		"description": "data/index.html"
 	},
 	"retweets_view": {
@@ -469,6 +485,10 @@
 	},
 	"effects_normal": {
 		"message": "Normal",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "Rule Editor",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -491,9 +511,13 @@
 		"message": "Favorites",
 		"description": "data/index.html"
 	},
-	"move_to_next_tweet": {
-		"message": "Move to next tweet",
+	"intelligent_filter": {
+		"message": "Intelligent Filter",
 		"description": "data/index.html"
+	},
+	"you_are_not_following_each_other": {
+		"message": "You are not following each other.",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"font_size": {
 		"message": "Font Size",
@@ -506,6 +530,10 @@
 	"block": {
 		"message": "Block",
 		"description": "data/js/ui.template.js"
+	},
+	"verify": {
+		"message": "Verify",
+		"description": "data/index.html"
 	},
 	"step_two": {
 		"message": "Step 2",
@@ -539,6 +567,10 @@
 		"message": "Network Error! Please try later.",
 		"description": "data/js/ui.welcome.js"
 	},
+	"favs_view": {
+		"message": "Favorites View",
+		"description": "data/index.html"
+	},
 	"keyboard": {
 		"message": "Keyboard",
 		"description": "data/index.html"
@@ -557,6 +589,10 @@
 	},
 	"regain_access_token_with_twitter": {
 		"message": "Regain Access Token with Twitter",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "Add",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
@@ -627,8 +663,8 @@
 		"message": "Powerfull",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"kismet_content_firewall": {
-		"message": "Kismet Firewall",
+	"drop": {
+		"message": "Drop",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -655,8 +691,16 @@
 		"message": "Cancel",
 		"description": "data/index.html"
 	},
+	"examples": {
+		"message": "Examples",
+		"description": "data/index.html"
+	},
 	"search_in_google": {
 		"message": "Search @ in Google",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "Select actions",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -665,6 +709,10 @@
 	},
 	"reload": {
 		"message": "Reload",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "Rule-based filter",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -679,6 +727,10 @@
 		"message": "Lists of them",
 		"description": "data/js/ui.template.js"
 	},
+	"reply_all": {
+		"message": "Reply All",
+		"description": "data/index.html"
+	},
 	"clear_and_close": {
 		"message": "Clear & Close",
 		"description": "data/index.html"
@@ -686,6 +738,10 @@
 	"listed_cnt": {
 		"message": "Listed",
 		"description": "data/js/ui.template.js"
+	},
+	"kimset_guide": {
+		"message": "Kismet Guide",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "Credits",
@@ -743,9 +799,13 @@
 		"message": "Select a language",
 		"description": "data/index.html"
 	},
-	"more_actions": {
-		"message": "More",
-		"description": "data/js/ui.template.js"
+	"Insert_smiley": {
+		"message": "Insert simley",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "Upload to ...",
+		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
 		"message": "Preview Embedded Media",
@@ -779,9 +839,9 @@
 		"message": "Updated Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
-	"you_are_not_following_each_other": {
-		"message": "You are not following each other.",
-		"description": "data/js/ui.peopleview.js"
+	"move_to_next_tweet": {
+		"message": "Move to next tweet",
+		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
 		"message": "Click to compose message",
@@ -815,6 +875,10 @@
 		"message": "Open a Profile ...",
 		"description": "data/index.html"
 	},
+	"extensions": {
+		"message": "Extensions",
+		"description": "data/index.html"
+	},
 	"pin_code": {
 		"message": "PIN Code",
 		"description": "data/index.html"
@@ -835,10 +899,6 @@
 		"message": "Enabled",
 		"description": "data/index.html"
 	},
-	"username": {
-		"message": "Username",
-		"description": "data/index.html"
-	},
 	"globals_restart_hint": {
 		"message": "You MUST restart Hotot for some changes below to take effect. And these changes will affect ALL accounts",
 		"description": "data/index.html"
@@ -847,16 +907,16 @@
 		"message": "Upload Photo.",
 		"description": "data/index.html"
 	},
-	"identica": {
-		"message": "Identi.ca",
+	"delete": {
+		"message": "Delete",
 		"description": "data/index.html"
 	},
-	"reply_all": {
-		"message": "Reply All",
+	"username": {
+		"message": "Username",
 		"description": "data/index.html"
 	},
-	"custom_font": {
-		"message": "Custom Font",
+	"shortcuts": {
+		"message": "Shortcuts",
 		"description": "data/index.html"
 	},
 	"whisper": {
@@ -923,13 +983,21 @@
 		"message": "Update",
 		"description": "data/index.html"
 	},
+	"rule_name": {
+		"message": "Rule Name",
+		"description": "data/index.html"
+	},
+	"filter_like_it": {
+		"message": "filter like it",
+		"description": "data/index.html"
+	},
 	"look_and_feels": {
 		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
-	"favs_view": {
-		"message": "Favorites View",
-		"description": "data/index.html"
+	"more_actions": {
+		"message": "More",
+		"description": "data/js/ui.template.js"
 	},
 	"friends": {
 		"message": "Friends",
@@ -951,8 +1019,16 @@
 		"message": "You are friends.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"retweeted_by": {
-		"message": "Retweeted by",
+	"mask": {
+		"message": "Mask",
+		"description": "data/index.html"
+	},
+	"rule": {
+		"message": "Rule",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "Mention",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {

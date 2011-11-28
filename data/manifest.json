@@ -1,0 +1,23 @@
+{
+  "name": "Hotot",
+  "description": "Hotot Twitter client for Chrome",
+  "version": "0.9.7.26",
+  "default_locale": "en",
+  "background_page": "background.html",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "16": "image/ic16_hotot.png",
+    "24": "image/ic24_hotot.png",
+    "128": "image/ic128_hotot.png"
+  },
+  "permissions": [
+    "<all_urls>",
+    "unlimitedStorage",
+    "notifications",
+    "tabs"
+  ]
+}

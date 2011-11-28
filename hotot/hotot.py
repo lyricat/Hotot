@@ -56,28 +56,28 @@ class HototDbusService(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="i")
-    def unread(self, sender=None):
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="i")
+    def unread(self):
         return self.app.state['unread_count']
 
     @dbus.service.signal(dbus_interface=HOTOT_DBUS_NAME)
     def incoming(self, group, tweets):
         pass
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME)
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="s", out_signature="")
     def update_status(self, text):
-        app.update_status(text)
+        self.app.update_status(text)
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
-    def show(self, sender=None):
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
+    def show(self):
         return self.app.window.present()
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
-    def hide(self, sender=None):
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
+    def hide(self):
         return self.app.window.hide()
 
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, sender_keyword='sender', in_signature="", out_signature="")
-    def quit(self, sender=None):
+    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
+    def quit(self):
         return self.app.quit()
 
 

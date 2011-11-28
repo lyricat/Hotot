@@ -7,7 +7,7 @@ name: 'Hotot Translate',
 
 description: 'Translate tweets.',
 
-version: '1.0',
+version: '1.1',
 
 author: 'Shellex Wai',
 
@@ -34,10 +34,10 @@ languages: {
  'bg':  'Bulgarian'   ,
  'my':  'Burmese'     ,
  'ca':  'Catalan'     ,
- 'chr':  'Cherokee'    ,
- 'zh':  'Chinese'     ,
- 'zh-CN':  'Chinese (Simplified)' ,
- 'zh-TW':  'Chinese (Traditional)' ,
+ 'chr':  'Cherokee'   ,
+ 'zh':  '中文'        ,
+ 'zh-CN':  '简体中文' ,
+ 'zh-TW':  '繁體中文' ,
  'co':  'Corsican'    ,
  'hr':  'Croatian'    ,
  'cs':  'Czech'       ,
@@ -50,11 +50,11 @@ languages: {
  'fo':  'Faroese'     ,
  'tl':  'Filipino'    ,
  'fi':  'Finnish'     ,
- 'fr':  'French'      ,
+ 'fr':  'Française'   ,
  'fy':  'Frisian'     ,
  'gl':  'Galician'    ,
  'ka':  'Georgian'    ,
- 'de':  'German'      ,
+ 'de':  'Deutsch'      ,
  'el':  'Greek'       ,
  'gu':  'Gujarati'    ,
  'ht':  'Haitian (Creole)' ,
@@ -106,7 +106,7 @@ languages: {
  'si':  'Sinhalese' ,
  'sk':  'Slovak' ,
  'sl':  'Slovenian' ,
- 'es':  'Spanish' ,
+ 'es':  'Español' ,
  'su':  'Sundanese' ,
  'sw':  'Swahili' ,
  'sv':  'Swedish' ,
@@ -178,8 +178,25 @@ function do_translate_selection(dst_lang) {
 
 do_translate:
 function do_translate(dst_lang, text, callback) {
-    var url = 'http://ajax.googleapis.com/ajax/services/language/translate?langpair=|' + dst_lang + '&v=1.0&q=' + encodeURIComponent(text)
-    $.getJSON(url, callback);
+    var url = 'http://translate.google.com/translate_a/t?client=t&text=' + encodeURIComponent(text) + '&hl=' + dst_lang + '&sl=auto&tl=' + dst_lang + '&multires=1&otf=2&ssel=0&tsel=0&uptl=' + dst_lang + '&alttl=en&sc=1';
+    $.ajax({
+        url: url,
+        success: function(data, textStatus, jqXHR) {
+            result = {};
+            result.responseData = {};
+            res = JSON.parse(data.replace(/,,+/g, ','));
+            if (res[0] && res[0][0] && (text = res[0][0][0])) {
+                result.responseStatus = 200;
+                result.responseData.translatedText = text;
+            }
+            callback(result);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            data = {};
+            data.responseDetails = 'Err...';
+            callback(data);
+        },
+    });
 },
 
 do_translate_tweet:

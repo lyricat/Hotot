@@ -65,9 +65,12 @@ MainWindow::MainWindow(QWidget *parent) :
     chdir(PREFIX);
 #endif
     setWindowTitle(i18n("Hotot"));
-    setWindowIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    qApp->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    m_webView->setPreferredSize(QSize(640, 480));
 #ifndef MEEGO_EDITION_HARMATTAN
     HototWebView* view = new HototWebView(m_webView, this);
+    this->resize(QSize(640, 480));
     this->setCentralWidget(view);
 #else
     MApplicationPage* page = new MApplicationPage;
@@ -189,16 +192,26 @@ void MainWindow::initDatabases()
                         QString settings = result.value(0).toString();
                         m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
                         bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
+                        bool useHttpProxyAuth = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy_auth").toBool();
                         int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
                         QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
+                        QString httpProxyAuthName = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_name").toString();
+                        QString httpProxyAuthPassword = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
 
                         if (useHttpProxy) {
                             QNetworkProxy proxy(QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
+                            
+                            if (useHttpProxyAuth)
+                            {
+                                proxy.setUser(httpProxyAuthName);
+                                proxy.setPassword(httpProxyAuthPassword);
+                            }
 
                             m_webView->page()->networkAccessManager()->setProxy(proxy);
                         }
+                        
                     }
                 }
                 sqldb.close();

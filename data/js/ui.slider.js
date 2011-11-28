@@ -408,7 +408,7 @@ function slide_to(id) {
                 }
             );
         } else {
-            ui.Slider.me.css('marginLeft', (0 - page_offset * width + ui.Slider.column_num) +'px');
+            ui.Slider.me.css('marginLeft', (0 - page_offset * width) +'px');
             $('#main_page_slider').css('width', 'auto');
         }
     }

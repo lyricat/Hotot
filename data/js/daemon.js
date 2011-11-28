@@ -87,7 +87,7 @@ function poll() {
         }
     }
     if (step != 0) {
-        toast.set('Update '+ step +' page(s) on schedule.').show();
+        toast.set('Updated '+ step +' page(s) on schedule.').show();
     }
 },
 
@@ -138,8 +138,8 @@ function push() {
             }
             // mentions
             if (ret.entities) {
-                var user_mentions = ret.entities.user_mentions;
-                if (ui.Main.views.mentions.use_auto_update) {
+                if (ui.Main.views.mentions && ui.Main.views.mentions.use_auto_update) {
+                    var user_mentions = ret.entities.user_mentions;
                     for (var i = 0, l = user_mentions.length; i < l; i +=1) {
                         if (user_mentions[i].screen_name == globals.myself.screen_name) {
                             ui.Main.views.mentions.load_success([ret]);
