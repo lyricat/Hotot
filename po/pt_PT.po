@@ -244,7 +244,7 @@ msgstr "O caracter `@` não é permitido no nome do perfil!"
 
 #: ../data/ui/js/ui.profile_dlg.js:97
 msgid "Update profile ..."
-msgstr "A actualizar perfil ...""
+msgstr "A actualizar perfil ..."
 
 #: ../data/ui/js/ui.profile_dlg.js:101
 msgid "Update profile successfully!"
@@ -623,7 +623,7 @@ msgstr "Som"
 
 #: ../data/ui/index.html:726
 msgid "'Notify when home page has new tweets'"
-msgstr "Notificar quando a linha cronológica tem novos tweets'""
+msgstr "Notificar quando a linha cronológica tem novos tweets'"
 
 #: ../data/ui/index.html:732 ../data/ui/index.html:754
 #: ../data/ui/index.html:776
