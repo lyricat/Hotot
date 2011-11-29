@@ -1,5 +1,6 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.SearchView = {
+since_id: null,
 init:
 function init() {
 
@@ -78,7 +79,6 @@ function load_tweet(view, success, fail) {
         return;
     }
     view.page = 1;
-    view.since_id = null;
     lib.twitterapi.search(view.query, view.page, view.since_id, null, success);
     lib.twitterapi.show_user(view.query,
     function (user) {
@@ -115,7 +115,10 @@ function load_tweet_success(view, json) {
     if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
         tweets = json.results || json.statuses;
     }
-    ui.Slider.set_unread(view.name);
+    if (ui.SearchView.since_id != view.since_id) {
+        ui.Slider.set_unread(view.name);
+        ui.SearchView.since_id = view.since_id;
+    }
     if (tweets.length == 0) {
         view._header.find('.search_no_result_hint').show();
         view._header.find('.keywords').text(
@@ -154,7 +157,9 @@ do_search:
 function do_search(view, query) {
     view.query = $.trim(query);
     if (view.query.length == 0) return;
+    ui.SearchView.since_id = null;
     view.max_id = null;
+    view.since_id = null;
     view.clear();
     view.load();
 },
@@ -162,8 +167,12 @@ function do_search(view, query) {
 clear:
 function clear(view) {
     view._header.find('.search_people_result').hide();
+    ui.SearchView.since_id = null;
+    view.max_id = null;
+    view.since_id = null;
     view.query = ''; 
     view.clear();
+    ui.SearchView.since_id = 0;
 },
 
 };

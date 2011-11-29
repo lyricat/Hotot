@@ -467,8 +467,9 @@ function process_field(tokens, pos) {
         kismet.cond_string_array.push('CONTAINS ' + first[1]);
         return [[kismet.OP_STR_HAS, '$TEXT', first[1]], 1];
     }
-    if (tokens[pos + 1][0] != kismet.TYPE_COLON) 
+    if (tokens[pos + 1][0] != kismet.TYPE_COLON) {
         return [kismet.ERROR, 1];
+    }
     if (tokens[pos + 2][0] != kismet.TYPE_WORD &&
         tokens[pos + 2][0] != kismet.TYPE_STR &&
         tokens[pos + 2][0] != kismet.TYPE_RE) {
