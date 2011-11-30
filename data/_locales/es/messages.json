@@ -848,7 +848,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Clic para redactar mensaje",
+		"message": "Redactar mensaje directo",
 		"description": "data/index.html"
 	},
 	"you_are_following": {
