@@ -624,7 +624,7 @@
 		"description": "data/index.html"
 	},
 	"reset_time": {
-		"message": "Reiniciar tiempo",
+		"message": "Hora de reinicio",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"mentions_view": {
