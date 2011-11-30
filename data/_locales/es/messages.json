@@ -16,7 +16,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"themes": {
-		"message": "Temas",
+		"message": "Temaa",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
@@ -956,7 +956,7 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "",
+		"message": "Mis favoritos",
 		"description": "data/js/ui.slider.js"
 	},
 	"slide_to_next_page": {
