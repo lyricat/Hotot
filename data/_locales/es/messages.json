@@ -428,7 +428,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
-		"message": "Abriendo una lista ...",
+		"message": "Abrir lista",
 		"description": "data/index.html"
 	},
 	"restore_defaults": {
@@ -876,7 +876,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"open_a_profile_dots": {
-		"message": "Abriendo perfil ...",
+		"message": "Abrir perfil",
 		"description": "data/index.html"
 	},
 	"extensions": {
