@@ -45,6 +45,8 @@ var kismet = {
 
     reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention'],
 
+    mute_list: {},
+
     rules: [],
 
     enforcers: [],
@@ -76,12 +78,23 @@ var kismet = {
  */
 init:
 function init() {
+    kismet.mute_list = {
+        'name': [],
+        'word': [],
+        'source': [],
+    }
     kismet.act_code_map = [kismet.ACT_DROP, kismet.ACT_NOTIFY, kismet.ACT_MASK, kismet.ACT_ARCHIVE, kismet.ACT_REPLY, kismet.ACT_QUOTE];
 },
 
 load:
 function load() {
     var active_profile = conf.get_current_profile();
+    // load mute list
+    kismet.mute_list = active_profile.preferences.kismet_mute_list;
+    if (kismet.mute_list.constructor != Object) {
+        kismet.mute_list = {'name': [], 'word': [], 'source':[]};
+    }
+    // load rules
     kismet.rules = active_profile.preferences.kismet_rules;
     if (kismet.rules.constructor != Array) {
         kismet.rules = [];
@@ -95,8 +108,9 @@ function load() {
 save:
 function save() {
     if (typeof conf != 'undefined') {
-    conf.get_current_profile().preferences.kismet_rules = kismet.rules;
-    conf.save_prefs(conf.current_name);
+        conf.get_current_profile().preferences.kismet_rules = kismet.rules;
+        conf.get_current_profile().preferences.kismet_mute_list = kismet.mute_list;
+        conf.save_prefs(conf.current_name);
     }
 },
 
@@ -142,6 +156,13 @@ function remove_rule(name) {
             break;
         }
     }  
+},
+
+update_mute_list:
+function update_mute_list(field, value) {
+    if (kismet.mute_list[field].indexOf(value) == -1) {
+        kismet.mute_list[field].push(value);
+    }
 },
 
 eval_bool_exp:
@@ -337,6 +358,25 @@ function do_mask(rule, act, incoming) {
 filter_proc:
 function filter_proc(single) {
     var ret = true;
+    var user = single.hasOwnProperty('user')? single.user:
+                single.hasOwnProperty('sender')?single.sender: null;
+    // check mute_list
+    for (var i = 0; i < kismet.mute_list.name.length; i += 1) {
+        if (user && user.screen_name === kismet.mute_list.name[i]) {
+            return false;
+        }
+    }
+    for (var i = 0; i < kismet.mute_list.source.length; i += 1) {
+        if (single.source && single.source.replace(/<.*?>/g, '') === kismet.mute_list.source[i]) {
+            return false;
+        }
+    }
+    for (var i = 0; i < kismet.mute_list.word.length; i += 1) {
+        if (single.text && single.text.indexOf(kismet.mute_list.word[i]) !== -1) {
+            return false;
+        }
+    }
+    // check rules
     for (var i = 0; i < kismet.enforcers.length; i += 1) {
         if (kismet.eval_cond(kismet.enforcers[i].cond, single)) {
             console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
@@ -680,59 +720,4 @@ function compile(str) {
 
 };
 
-/*
-function test() {
-    kismet.init();
-    //test_token();
-    var testcases = [
-        'fuckgfw do:drop',
-        'aiww Here do:mask',
-        'via:foursquare do:drop',
-        'tag:FuckGFW do:drop',
-        'name:shellex do:drop',
-        '"A B C" do:drop',
-        'Hey do:reply("Hey")',
-        'via:"Hotot for Chrome" do:reply("Hey, you are using Hotot!")',
-        '/^RT .*$/i do:drop',
-        'via:/^Hotot.*$/i do:drop',
-    ];
-    for (var i = 0; i < testcases.length; i+= 1) {
-        kismet.update_rule({name: testcases[i], data: testcases[i]});
-        console.log("Rule #"+i+":", testcases[i]);
-    }
-    console.log(kismet.enforcers); 
-    test_filter();
-}
-function test_token() {
-    var testcases = [
-        'fuck+gfw do:drop',
-        '"A B C" do:mask',
-        'K do:mask',
-        'Rt mention:shellex do:reply("Hey")',
-    ];
-    for (var i = 0; i < testcases.length; i+= 1) {
-        var ret = kismet.read_tokens(testcases[i]);
-        console.log("Rule #"+i+":", ret);
-    }
 
-}
-function test_filter() {
-    console.log('= Filter Test');
-    var simple_in = [
-            {text: 'fuckgfw!', user: {screen_name:'a'}},
-            {text: 'I am Here #FuckGFW', entities:{hashtags:[{text:'FuckGFW'}]}, user: {screen_name:'b'}},
-            {text: 'I am Here', user: {screen_name:'shellex'}},
-            {text: 'I am Here', source:'foursquare', },
-            {text: 'blah blah blah', source:'Hotot for Chrome', },
-            {text: 'I am Here, aiww', user: {screen_name:'c'}},
-            {text: 'A B C D'},
-            {text: 'I am Here, Hey' },
-            {text: 'RT @shellex without comment.' },
-        ];
-
-    var ret = kismet.filter(simple_in);
-    console.log(ret);
-}
-test();
-
-        */

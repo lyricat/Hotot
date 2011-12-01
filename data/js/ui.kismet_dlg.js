@@ -11,7 +11,6 @@ function init() {
     filter_btns.create();
     $('#kismet_cat_btns .radio_group_btn:eq(0)').click();
 
-    
     // dialogs
     ui.KismetDlg.rule_edit_dialog = new widget.Dialog('#kismet_rule_edit_dialog');
     ui.KismetDlg.rule_edit_dialog.set_styles('header', 
@@ -94,45 +93,65 @@ function init() {
     });
     
     $('#kismet_save_btn').click(function () {
-        kismet.save();
+        ui.KismetDlg.save();
         globals.kismet_dialog.close();
         return false;
     });
 
     $('#kismet_guide_next_btn').click(function () {
         var marked = $('#kismet_guide_dialog .marked');
-        if (marked.length == 0) { //  
+        var actions = $('#kismet_guide_dialog .checkbox:checked');
+        if (marked.length === 0) { //  
             toast.set('Please select a field!').show(3);
             return false;
         }
-        var rule_data_arr = [];
-        for (var i = 0; i < marked.length; i += 1) {
-            var text = $.trim($(marked[i]).text());
-            if ($(marked[i]).hasClass('who_href')) {
-                rule_data_arr.push('name:' + text);
-            } else if ($(marked[i]).parent().hasClass('tweet_source')) {
-                rule_data_arr.push('via:"' + text + '"');
-            } else if ($(marked[i]).hasClass('word')) {
-                if (text[0] == '#') {
-                    rule_data_arr.push('tag:' + text.substring(1));
-                } else if (text[0] == '@') {
-                    rule_data_arr.push('mention:' + text.substring(1));
-                } else {
-                    rule_data_arr.push('"'+text+'"');
+        if (marked.length === 1 
+            && (actions.length == 0 || actions.length === 1 
+                && actions.val() === 'drop')) { // simple, use mute list
+            var field = 'word';
+            var text = $.trim($(marked[0]).text());
+            if ($(marked[0]).hasClass('who_href')) {
+                field = 'name';
+            } else if ($(marked[0]).parent().hasClass('tweet_source')) {
+                field = 'source';
+            } else if ($(marked[0]).hasClass('word')) {
+                field = 'word';
+            }
+            kismet.update_mute_list(field, text);
+            toast.set('You have muted '+ field +' "'+text+'"').show(3);
+        } else { // complex, use kismet rule 
+            var rule_data_arr = [];
+            for (var i = 0; i < marked.length; i += 1) {
+                var text = $.trim($(marked[i]).text());
+                if ($(marked[i]).hasClass('who_href')) {
+                    rule_data_arr.push('name:' + text);
+                } else if ($(marked[i]).parent().hasClass('tweet_source')) {
+                    rule_data_arr.push('via:"' + text + '"');
+                } else if ($(marked[i]).hasClass('word')) {
+                    if (text[0] == '#') {
+                        rule_data_arr.push('tag:' + text.substring(1));
+                    } else if (text[0] == '@') {
+                        rule_data_arr.push('mention:' + text.substring(1));
+                    } else {
+                        rule_data_arr.push('"'+text+'"');
+                    }
                 }
             }
-        }
-        $('#kismet_guide_dialog .checkbox:checked').each(function (i, n) {
-            rule_data_arr.push('do:' + $(n).val());
-        });
-        var rule_data = rule_data_arr.join(' ');
-        if (kismet.compile(rule_data) != kismet.ERROR) {
-            var rule = {name: kismet.rule_string, data: rule_data};
-            ui.KismetDlg.show_edit_dialog(rule);
+            actions.each(
+                function (i, n) {
+                    rule_data_arr.push('do:' + $(n).val());
+                }
+            );
+            var rule_data = rule_data_arr.join(' ');
+            if (kismet.compile(rule_data) != kismet.ERROR) {
+                var rule = {name: kismet.rule_string, data: rule_data};
+                ui.KismetDlg.show_edit_dialog(rule);
+            }
         }
         ui.KismetDlg.guide_dialog.close();
         return false;
     });
+
     ui.KismetDlg.reload();
 },
 
@@ -179,8 +198,32 @@ function load_guide(tweet) {
         });
 },
 
-reload:
-function reload() {
+save:
+function save() {
+    var names = $('#kismet_dialog .mute_name_list').val().split(',');
+    var words = $('#kismet_dialog .mute_word_list').val().split(',');
+    var sources = $('#kismet_dialog .mute_source_list').val().split(',');
+    names = names.filter(function (x) { return !(/^\s*$/.test(x));});
+    words = words.filter(function (x) { return !(/^\s*$/.test(x));});
+    sources = sources.filter(function (x) { return !(/^\s*$/.test(x));});
+    names = names.map(function (x) { return $.trim(x);});
+    words = words.map(function (x) { return $.trim(x);});
+    sources = sources.map(function (x) { return $.trim(x);});
+    kismet.mute_list = {
+        name: names, word: words, source: sources
+    };
+    kismet.save();
+},
+
+reload_mute_list:
+function reload_mute_list() {
+    $('#kismet_dialog .mute_name_list').val(kismet.mute_list.name.join(', '));
+    $('#kismet_dialog .mute_word_list').val(kismet.mute_list.word.join(', '));
+    $('#kismet_dialog .mute_source_list').val(kismet.mute_list.source.join(', '));
+},
+
+reload_rules:
+function reload_rules() {
     $('#kismet_rule_list .button').unbind();
     $('#kismet_rule_list .rule').unbind();
     $('#kismet_rule_list').empty();
@@ -194,6 +237,12 @@ function reload() {
         $('<div class="item_ctrl"><a href="#" class="button edit_btn">' + _('edit') + '</a><a href="#" class="button delete_btn">'+_('delete')+'</a></div>').appendTo(li);
         li.appendTo($('#kismet_rule_list'));
     }
+},
+
+reload:
+function reload() {
+    ui.KismetDlg.reload_mute_list();
+    ui.KismetDlg.reload_rules();
 },
 
 
