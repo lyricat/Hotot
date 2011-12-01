@@ -83,6 +83,10 @@
 		"message": "Interface language",
 		"description": "data/index.html"
 	},
+	"kismet_guide": {
+		"message": "Kismet Guide",
+		"description": "data/index.html"
+	},
 	"some_error_occur": {
 		"message": "Some Error Occured",
 		"description": "data/index.html"
@@ -218,6 +222,10 @@
 	"undo_successfully": {
 		"message": "Undo Successful!",
 		"description": "data/js/ui.main.js"
+	},
+	"kismet_mute_hint": {
+		"message": "WARNNING: Tweets that have following attributes will not appear on your timeline.",
+		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Un-favorite this tweet ...",
@@ -395,6 +403,10 @@
 		"message": "My Power",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"mute_filter": {
+		"message": "Mute Filter",
+		"description": "data/index.html"
+	},
 	"keyboard_shortcuts": {
 		"message": "Keyboard Shortcuts",
 		"description": "data/index.html"
@@ -447,8 +459,8 @@
 		"message": "Author",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Preload latest tweets in conversations if possible.",
+	"verify": {
+		"message": "Verify",
 		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
@@ -531,8 +543,8 @@
 		"message": "Block",
 		"description": "data/js/ui.template.js"
 	},
-	"verify": {
-		"message": "Verify",
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Preload latest tweets in conversations if possible.",
 		"description": "data/index.html"
 	},
 	"step_two": {
@@ -712,7 +724,7 @@
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
-		"message": "Rule-based filter",
+		"message": "Rule-based Filter",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -738,10 +750,6 @@
 	"listed_cnt": {
 		"message": "Listed",
 		"description": "data/js/ui.template.js"
-	},
-	"kimset_guide": {
-		"message": "Kismet Guide",
-		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "Credits",
@@ -988,7 +996,7 @@
 		"description": "data/index.html"
 	},
 	"filter_like_it": {
-		"message": "filter like it",
+		"message": "Filter like it",
 		"description": "data/index.html"
 	},
 	"look_and_feels": {

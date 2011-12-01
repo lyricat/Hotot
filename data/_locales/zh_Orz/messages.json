@@ -83,6 +83,10 @@
 		"message": "皮皮语言",
 		"description": "data/index.html"
 	},
+	"kismet_guide": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"some_error_occur": {
 		"message": "矮油～ 发生了点错误耶 >_<",
 		"description": "data/index.html"
@@ -218,6 +222,10 @@
 	"undo_successfully": {
 		"message": "撤销成功！",
 		"description": "data/js/ui.main.js"
+	},
+	"kismet_mute_hint": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
 		"message": "取消收藏...",
@@ -395,6 +403,10 @@
 		"message": "魔法值",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"mute_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"keyboard_shortcuts": {
 		"message": "键盘快捷键",
 		"description": ""
@@ -447,9 +459,9 @@
 		"message": "作者",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "如果可能的话，预加载对话的上一条状态",
-		"description": ""
+	"verify": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
 		"message": "撤销转发...",
@@ -531,9 +543,9 @@
 		"message": "B了",
 		"description": "data/js/ui.template.js"
 	},
-	"verify": {
-		"message": "",
-		"description": "data/index.html"
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "如果可能的话，预加载对话的上一条状态",
+		"description": ""
 	},
 	"step_two": {
 		"message": "第二步",
@@ -738,10 +750,6 @@
 	"listed_cnt": {
 		"message": "列表中",
 		"description": "data/js/ui.template.js"
-	},
-	"kimset_guide": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "致谢",
