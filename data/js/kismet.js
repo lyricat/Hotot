@@ -91,7 +91,7 @@ function load() {
     var active_profile = conf.get_current_profile();
     // load mute list
     kismet.mute_list = active_profile.preferences.kismet_mute_list;
-    if (kismet.mute_list.constructor != Object) {
+    if (!kismet.mute_list || kismet.mute_list.constructor != Object) {
         kismet.mute_list = {'name': [], 'word': [], 'source':[]};
     }
     // load rules
