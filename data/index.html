@@ -1157,6 +1157,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header">
         <ul id="kismet_cat_btns" class="radio_group dark">
             <li>
+            	<a href="#mute_page" class="radio_group_btn" data-i18n-text="mute_filter">Mute Filter</a>
+            </li><li>
             	<a href="#rulebased_page" class="radio_group_btn" data-i18n-text="rule_based_filter">Rule-based Filter</a>
             </li><li>
             	<a href="#intelligent_page" class="radio_group_btn" data-i18n-text="intelligent_filter">Intelligent Filter</a>
@@ -1164,6 +1166,27 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </ul>
     </div>
     <div class="dialog_body">
+        <div class="mute_page kismet_page">
+            <div class="dialog_block hint" data-i18n-text="kismet_mute_hint">WARNING: Tweets that have following attributes will not appear on your timeline.</div>
+            <div class="dialog_block">
+                <h3>Mute by user name</h3>
+                <p>
+                    <input type="text" class="entry mute_name_list" placeholder="screen_name1, screen_name2"/>
+                </p>
+            </div>
+            <div class="dialog_block">
+                <h3>Mute by containing words</h3>
+                <p>
+                    <input type="text" class="entry mute_word_list" placeholder="word1, word2"/>
+                </p>
+            </div>
+            <div class="dialog_block">
+                <h3>Mute by source</h3>
+                <p>
+                    <input type="text" class="entry mute_source_list" placeholder="client name1, client name2"/>
+                </p>
+            </div>
+        </div>
         <div class="rulebased_page kismet_page">
             <div class="ctrl">
                 <a id="kismet_add_rule_btn" href="#" class="button" data-i18n-text="add">Add</a>
@@ -1275,7 +1298,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <div id="kismet_guide_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="kimset_guide">Kismet Guide</h2>
+        <h2 class="dialog_title" data-i18n-text="kismet_guide">Kismet Guide</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">

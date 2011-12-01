@@ -8,7 +8,7 @@ name: 'Hotot Short URL',
 
 description: 'To configure short URL services.',
 
-version: '1.2',
+version: '1.2.1',
 
 author: 'Xoan Sampaiño',
 
@@ -68,6 +68,18 @@ services: {
             long_url: 'url'
         }
     },
+    'yourls': {
+        name: 'Yourls',
+        url: 'http://twitter.com/Simounet',
+        params: {
+        yourlsbase: 'yourlsIsMyGuide',
+            api_key: {
+                param: 'signature',
+                help: 'http://yourls.net/'
+            },
+            long_url: 'url'
+        }
+    },
     'other': {
         name: 'Other',
         params: {}
@@ -78,6 +90,8 @@ user_login: undefined,
 
 user_api_key: undefined,
 
+user_yourlsbase: undefined,
+
 service_url: undefined,
 
 set_service_url:
@@ -87,6 +101,9 @@ function set_service_url(service_index) {
     });
     ext.HototShortUrl.prefs.get(service_index + '_api_key', function(key, val) {
         ext.HototShortUrl.user_api_key = val;
+    });
+    ext.HototShortUrl.prefs.get(service_index + '_yourlsbase', function(key, val) {
+        ext.HototShortUrl.user_yourlsbase = val;
     });
     // Workaround to fix db transaction queue...
     // Is not possible to concatenate db values, so make a new transaction
@@ -100,7 +117,11 @@ function set_service_url(service_index) {
         } //
         var service = ext.HototShortUrl.services[val]; //
         if (service.url) {
-            var service_url = service.url + '?';
+			if (service.params.yourlsbase) {
+				var service_url = ext.HototShortUrl.user_yourlsbase + '?';
+			} else {
+				var service_url = service.url + '?';
+			}
             if (service.params.login) {
                 service_url+= service.params.login + '=';
                 service_url+= ext.HototShortUrl.user_login + '&';
@@ -111,6 +132,9 @@ function set_service_url(service_index) {
             }
             if (service.params.extra) {
                 service_url+= $.param(service.params.extra) + '&';
+            }
+			if (service.params.yourlsbase) {
+				service_url+= 'action=shorturl&format=simple&';
             }
             service_url += service.params.long_url + '=';
         } else {
@@ -162,6 +186,7 @@ function on_btn_save_prefs_clicked(event) {
         service: $('#ext_hotot_short_url_service').val(),
         login: $('#ext_hotot_short_url_login input').val(),
         api_key: $('#ext_hotot_short_url_api_key input').val(),
+        yourlsbase: $('#ext_hotot_short_url_yourlsbase input').val(),
         other: $('#ext_hotot_short_url_other input').val()
     };
     var service = ext.HototShortUrl.services[prefs.service];
@@ -180,6 +205,9 @@ function on_btn_save_prefs_clicked(event) {
     if (service.params.api_key) {
         ext.HototShortUrl.prefs.set(prefs.service + '_api_key', prefs.api_key);
     }
+    if (service.params.yourlsbase) {
+        ext.HototShortUrl.prefs.set(prefs.service + '_yourlsbase', prefs.yourlsbase);
+    }
     if (service.url == undefined) {
         ext.HototShortUrl.prefs.set('other', prefs.other);
     }
@@ -196,6 +224,9 @@ function create_option_dialog() {
         </select>\
         </p><p id="ext_hotot_short_url_login">\
         <label>Login:</label> \
+        <input type="text" class="dark" />\
+        </p><p id="ext_hotot_short_url_yourlsbase">\
+        <label>YOURLs url (ex: http://yoursite.com/yourls-api.php):</label> \
         <input type="text" class="dark" />\
         </p><p id="ext_hotot_short_url_api_key">\
         <label>API Key:</label> \
@@ -231,6 +262,9 @@ function create_option_dialog() {
         service.params.login
             ? $('#ext_hotot_short_url_login').show()
             : $('#ext_hotot_short_url_login').hide();
+        service.params.yourlsbase
+            ? $('#ext_hotot_short_url_yourlsbase').show()
+            : $('#ext_hotot_short_url_yourlsbase').hide();
         service.params.api_key
             ? $('#ext_hotot_short_url_api_key').show()
             : $('#ext_hotot_short_url_api_key').hide();
@@ -251,6 +285,11 @@ function create_option_dialog() {
         ext.HototShortUrl.prefs.get(
             $(this).val() + '_api_key', function(key, val) {
                 $('#ext_hotot_short_url_api_key input').val(val);
+            }
+        );
+        ext.HototShortUrl.prefs.get(
+            $(this).val() + '_yourlsbase', function(key, val) {
+                $('#ext_hotot_short_url_yourlsbase input').val(val);
             }
         );
     }).attr('title', 'Choose a Service');

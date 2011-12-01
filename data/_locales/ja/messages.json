@@ -83,6 +83,10 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"kismet_guide": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"some_error_occur": {
 		"message": "エラーが出ました",
 		"description": "data/index.html"
@@ -218,6 +222,10 @@
 	"undo_successfully": {
 		"message": "取り消す",
 		"description": "data/js/ui.main.js"
+	},
+	"kismet_mute_hint": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
 		"message": "お気に入りに登録解除",
@@ -395,6 +403,10 @@
 		"message": "魔法パワー",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"mute_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"keyboard_shortcuts": {
 		"message": "ショートカットキー",
 		"description": ""
@@ -447,9 +459,9 @@
 		"message": "作者",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "出来る限り最新ツイートの対話をプレロードする",
-		"description": ""
+	"verify": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
 		"message": "リツイートを解除する",
@@ -531,9 +543,9 @@
 		"message": "ブロック",
 		"description": "data/js/ui.template.js"
 	},
-	"verify": {
-		"message": "",
-		"description": "data/index.html"
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "出来る限り最新ツイートの対話をプレロードする",
+		"description": ""
 	},
 	"step_two": {
 		"message": "ステップ２",
@@ -738,10 +750,6 @@
 	"listed_cnt": {
 		"message": "リスト",
 		"description": "data/js/ui.template.js"
-	},
-	"kimset_guide": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "感謝",

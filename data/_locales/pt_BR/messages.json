@@ -83,6 +83,10 @@
 		"message": "Idioma da interface",
 		"description": "data/index.html"
 	},
+	"kismet_guide": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"some_error_occur": {
 		"message": "Aconteceu algum erro",
 		"description": "data/index.html"
@@ -218,6 +222,10 @@
 	"undo_successfully": {
 		"message": "Desfeito com sucesso!",
 		"description": "data/js/ui.main.js"
+	},
+	"kismet_mute_hint": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Remover tweet dos favoritos ...",
@@ -395,6 +403,10 @@
 		"message": "Meu poder",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"mute_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"keyboard_shortcuts": {
 		"message": "Atalhos de teclado",
 		"description": "data/index.html"
@@ -447,8 +459,8 @@
 		"message": "Autor",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Pre-carregar últimos tweets numa conversa se for possível.",
+	"verify": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
@@ -531,8 +543,8 @@
 		"message": "Bloquear",
 		"description": "data/js/ui.template.js"
 	},
-	"verify": {
-		"message": "",
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Pre-carregar últimos tweets numa conversa se for possível.",
 		"description": "data/index.html"
 	},
 	"step_two": {
@@ -738,10 +750,6 @@
 	"listed_cnt": {
 		"message": "Listado",
 		"description": "data/js/ui.template.js"
-	},
-	"kimset_guide": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "Créditos",
