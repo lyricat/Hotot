@@ -472,39 +472,39 @@ status_draft_t:
 
 preview_link_reg: {
 'img.ly': {
-    reg: new RegExp('href="(http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+)','g'),
     base: 'http://img.ly/show/thumb/'
 },
 'twitpic.com': {
-    reg: new RegExp('href="(http:\\/\\/twitpic.com\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/twitpic.com\\/([a-zA-Z0-9_\\-]+)','g'),
     base: 'http://twitpic.com/show/thumb/'
 },
 'twitgoo.com': {
-    reg: new RegExp('href="(http:\\/\\/twitgoo.com\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/twitgoo.com\\/([a-zA-Z0-9_\\-]+)','g'),
     base: 'http://twitgoo.com/show/thumb/'
 },
 'yfrog.com': {
-    reg: new RegExp('href="(http:\\/\\/yfrog.com\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/yfrog.com\\/([a-zA-Z0-9_\\-]+)','g'),
     tail: '.th.jpg'
 },
 'moby.to': {
-    reg: new RegExp('href="(http:\\/\\/moby.to\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/moby.to\\/([a-zA-Z0-9_\\-]+)','g'),
     tail: ':thumbnail'
 },
 'instagr.am': {
-    reg: new RegExp('href="(http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9_\\-]+)\\/*)"','g'),
+    reg: new RegExp('http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9_\\-]+)\\/?','g'),
     tail: 'media?size=m'
 },
 'plixi.com': {
-    reg: new RegExp('href="(http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9_\\-]+))"','g'),
+    reg: new RegExp('http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9_\\-]+)','g'),
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
 },
 'picplz.com': {
-    reg: new RegExp('href="(http:\\/\\/picplz.com\\/([a-zA-Z0-9_\\-]+))"','g'), 
+    reg: new RegExp('http:\\/\\/picplz.com\\/([a-zA-Z0-9_\\-]+)','g'), 
     tail: '/thumb/' 
 },
 'raw': {
-    reg: new RegExp('href="([a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif))"', 'gi')
+    reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif)"', 'gi')
 },
 
 'youtube.com': {
@@ -514,10 +514,6 @@ preview_link_reg: {
 },
 
 },
-
-preview_border_style: 'margin:2px 5px; padding:0; display:inline-block;',
-
-preview_style: 'padding:4px; border:1px #ccc solid; background:#fff; margin:0; height: 150px',
 
 init:
 function init() {
@@ -654,7 +650,7 @@ function form_dm(dm_obj, pagename) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var text = ui.Template.form_text('@'+dm_obj.recipient.screen_name +' ' + dm_obj.text);
+    var text = ui.Template.form_text(dm_obj);
 
     var m = ui.Template.message_m;
     m.ID = pagename + '-' + dm_obj.id_str;
@@ -721,13 +717,18 @@ function form_tweet (tweet_obj, pagename) {
             + retweet_name + '</a>, ';
     }
 
-    var text = tweet_obj.text;
+    var alt_text = tweet_obj.text;
     if (tweet_obj.entities && tweet_obj.entities.urls) {
-        var urls = tweet_obj.entities.urls;
+        var urls = null;
+        if (tweet_obj.entities.media) {
+            urls = tweet_obj.entities.urls.concat(tweet_obj.entities.media);
+        } else {
+            urls = tweet_obj.entities.urls;
+        }
         for (var i = 0, l = urls.length; i < l; i += 1) {
             var url = urls[i];
             if (url.url && url.expanded_url) {
-              text = text.replace(url.url, url.expanded_url);
+              tweet_obj.text = tweet_obj.text.replace(url.url, url.expanded_url);
             }
         }
     }
@@ -743,8 +744,8 @@ function form_tweet (tweet_obj, pagename) {
     m.USER_NAME = tweet_obj.user.name;
     m.DESCRIPTION = tweet_obj.user.description;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
-    m.TEXT = ui.Template.form_text(text);
-    m.ALT = ui.Template.convert_chars(tweet_obj.text);
+    m.TEXT = ui.Template.form_text(tweet_obj);
+    m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
 
@@ -846,7 +847,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
-    m.TEXT = ui.Template.form_text(tweet_obj.text);
+    m.TEXT = ui.Template.form_text(tweet_obj);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
 
@@ -896,7 +897,7 @@ function form_search(tweet_obj, pagename) {
     if (created_at.toDateString() != new Date().toDateString()){
         created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
     }
-    var text = ui.Template.form_text(tweet_obj.text);
+    var text = ui.Template.form_text(tweet_obj);
     // choose color scheme
     var scheme = 'normal';
     if (text.indexOf(globals.myself.screen_name) != -1) {
@@ -1073,8 +1074,8 @@ function convert_chars(text) {
 },
 
 form_text:
-function form_text(text) {
-    text = ui.Template.convert_chars(text);
+function form_text(tweet) {
+    var text = ui.Template.convert_chars(tweet.text);
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
@@ -1089,27 +1090,22 @@ function form_text(text) {
         text = '<div align="right" dir="rtl">' + text + '</div>';
     }
     if (conf.get_current_profile().preferences.use_media_preview) {
-        text = ui.Template.form_preview(text);
+        text += ui.Template.form_preview(tweet);
     }
     return text;
 },
 
 form_media:
 function form_media(href, src) {
-    var html = '<a style="' 
-        + ui.Template.preview_border_style
-        + '" href="'+href+'" target="_blank"><img style="'
-        + ui.Template.preview_style
-        + '" src="'+ src +'" /></a>'
-    return html;
+    return '<a href="'+href+'" target="_blank"><img src="'+ src +'" /></a>'
 },
 
 form_preview:
-function form_preview(text) {
+function form_preview(tweet) {
     var html_arr = [];
     var link_reg = ui.Template.preview_link_reg;
     for (var pvd_name in link_reg) {
-        var match = link_reg[pvd_name].reg.exec(text);
+        var match = link_reg[pvd_name].reg.exec(tweet.text);
         while (match != null) {
             switch (pvd_name) {
             case 'img.ly':
@@ -1117,7 +1113,7 @@ function form_preview(text) {
             case 'twitgoo.com':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[1], link_reg[pvd_name].base + match[2]));
+                        match[0], link_reg[pvd_name].base + match[1]));
             break;
             case 'yfrog.com':
             case 'moby.to':
@@ -1143,13 +1139,26 @@ function form_preview(text) {
                         match[1], link_reg[pvd_name].base + match[3] + link_reg[pvd_name].tail));
             break;
             }
-            match = link_reg[pvd_name].reg.exec(text);
+            match = link_reg[pvd_name].reg.exec(tweet.text);
+        }
+    }
+    // twitter official picture service
+    if (tweet.entities && tweet.entities.media) {
+        for (var i = 0; i < tweet.entities.media.length; i += 1) {
+            var media = tweet.entities.media[i];
+            if (media.expanded_url && media.media_url) {
+                html_arr.push(
+                    ui.Template.form_media(
+                        tweet.entities.media[i].expanded_url,
+                        tweet.entities.media[i].media_url + ':thumb'
+                        ));
+            }
         }
     }
     if (html_arr.length != 0) {
-        text += '<p>'+ html_arr.join('')+'</p>';
+        return '<p class="media_preview">'+ html_arr.join('')+'</p>';
     }
-    return text;
+    return '';
 },
 
 

@@ -2009,6 +2009,18 @@ label {
     word-wrap: break-word;
 }
 
+.media_preview a {
+    margin:2px 5px;
+    padding:0;
+    display:inline-block;
+}
+.media_preview img {
+    padding:4px;
+    border:1px #ccc solid;
+    background:#fff; 
+    margin:0;
+    height: 150px
+}
 
 .tweet_meta {
     left: 10px;
