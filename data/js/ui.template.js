@@ -1121,22 +1121,22 @@ function form_preview(tweet) {
             case 'picplz.com':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[1], match[1] + link_reg[pvd_name].tail));
+                        match[0], match[0] + link_reg[pvd_name].tail));
             break;
             case 'plixi.com':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[1], link_reg[pvd_name].base +match[1]));
+                        match[0], link_reg[pvd_name].base +match[0]));
             break;
             case 'raw':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[1], match[1]));
+                        match[0], match[0]));
             break;
             case 'youtube.com':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[1], link_reg[pvd_name].base + match[3] + link_reg[pvd_name].tail));
+                        match[0], link_reg[pvd_name].base + match[2] + link_reg[pvd_name].tail));
             break;
             }
             match = link_reg[pvd_name].reg.exec(tweet.text);
