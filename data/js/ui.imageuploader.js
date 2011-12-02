@@ -112,7 +112,7 @@ function upload_image(url, params, file, success, fail) {
     reader.onload = function (e) {
         var result = e.target.result;
         var ret = lib.network.encode_multipart_formdata(
-            params, file, result);
+            params, file, 'media', result);
         $.extend(headers, ret[0]);
         lib.network.do_request(
             'POST'

@@ -29,11 +29,21 @@ function init () {
     };
     btn_profile_update.create();
 
-    var btn_profile_cancel = new widget.Button('#btn_profile_cancel');
-    btn_profile_cancel.on_clicked = function (event) {
-        globals.profile_dialog.close();
-    };
-    btn_profile_cancel.create();
+    $('#btn_change_profile_avatar').change(function () {
+        var file = $('#btn_change_profile_avatar').get(0).files[0];
+        // @TODO form checker
+        if (file.size > 700 * 1000) {
+            toast.set('Your picture must be less than 700 kb in size.').show(3);
+            return false;
+        } 
+        if (!(/.*(jpg|jpeg|png|gif)$/i.test(file.name))) {
+            toast.set('Your picture must be a valid GIF, JPG, or PNG image.').show(3);
+            return false;
+        }
+        ui.ProfileDlg.update_avatar(file);
+        toast.set('Uploading new avatar ...').show(3);
+        return false;
+    });
 
     $('#tbox_profile_name').keyup(
     function(event){
@@ -53,11 +63,6 @@ function init () {
     $('#tbox_profile_bio').keyup(
     function(event){
         ui.ProfileDlg.limit_test(this, 160);
-        return false;
-    });
-    $('#btn_update_profile_avatar').keyup(
-    function(event){
-        ui.ProfileDlg.update_avatar(); 
         return false;
     });
 },
@@ -86,23 +91,8 @@ function update_profile() {
 
 request_profile:
 function request_profile() {
-    $('#profile_avatar').attr('style'
-        , 'background-image:url('+lib.twitterapi.get_user_profile_image(
-            globals.myself.screen_name, 'bigger')+');');
-    var timestamp = Date.parse(globals.myself.created_at);
-    var create_at = new Date();
-    create_at.setTime(timestamp);
-    var now = new Date();
-    var differ = Math.floor((now-create_at)/(1000 * 60 * 60 * 24));
-    $('#profile_join').text(decodeURIComponent(escape(create_at.toLocaleDateString())));
-    $('#profile_tweet_cnt').text(globals.myself.statuses_count);
-    $('#profile_tweet_per_day_cnt').text(
-         Math.round( globals.myself.statuses_count / differ * 100)/ 100);
-
-    $('#profile_friend_cnt').text(globals.myself.friends_count);
-    $('#profile_follower_cnt').text(globals.myself.followers_count);
-    $('#profile_favourite_cnt').text(globals.myself.favourites_count);
-     
+    $('#profile_avatar').css('background-image', 'url('+lib.twitterapi.get_user_profile_image(
+            globals.myself.screen_name, 'bigger')+')');
     $('#tbox_profile_name').val(globals.myself.name);
     $('#tbox_profile_website').val(globals.myself.url);
     $('#tbox_profile_location').val(globals.myself.location);
@@ -110,17 +100,26 @@ function request_profile() {
 },
 
 update_avatar:
-function update_avatar() {
+function update_avatar(file) {
     var reader = new FileReader();
-    var file = $('#btn_change_profile_avatar').get(0).files[0];
+    // if I send base64 encoded image, it'll tell me the image is too large... fuck you, Twitter!
     reader.onload = function (e) {
         var result = e.target.result;
-        lib.twitterapi.update_profile_image(result.substring(result.indexOf('base64,')+7), 
+        //result = result.substring(result.indexOf('base64,')+7);
+        lib.twitterapi.update_profile_image(file, result,
         function (ret){
-            console.log(ret);
+            globals.myself = ret;
+            var reader_new = new FileReader();
+            reader_new.onload = function (e) {
+                $('#profile_avatar').css('background-image', 
+                    'url('+e.target.result+')');
+            }
+            reader_new.readAsDataURL(file);
+            toast.set('Uploading new avatar ... Done!').show(3);
         });
     }
-    reader.readAsDataURL(file);
+    reader.readAsArrayBuffer(file);
+    //reader.readAsDataURL(file);
 },
 
 }
