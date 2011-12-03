@@ -84,8 +84,6 @@ function test_file_image(file) {
     var ret = false;
     if (/.*(jpg|jpeg|png|gif)$/i.test(file.name)) {
         ret = true;
-    } else {
-        break;
     }
     return ret;
 },
@@ -95,8 +93,6 @@ function test_file_size_bound(file, bound) {
     var ret = false;
     if (file.size < bound) {
         ret = true;
-    } else {
-        break;
     }
     return ret;
 },
