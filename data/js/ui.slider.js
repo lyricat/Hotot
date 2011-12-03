@@ -74,7 +74,8 @@ function init () {
             ret = widget.DialogManager.prompt('Input a screenname:', 
                 'form @screenname',
                 function (ret) {
-                    if (ret != '') {
+                    ret = $.trim(ret);
+                    if (ret.length !== 0) {
                         if (ret[0] == '@') ret = ret.substring(1);
                         open_people(ret, {});
                     }
@@ -84,7 +85,8 @@ function init () {
             ret = widget.DialogManager.prompt('Input a List name:',
                 'form: @screenname/slug',
                 function (ret) {
-                    if (ret != '') {
+                    ret = $.trim(ret);
+                    if (ret.length !== 0) {
                         if (ret[0] == '@') ret = ret.substring(1);
                         open_list(ret.substring(0, ret.indexOf('/')),
                             ret.substring(ret.indexOf('/')+1), {});

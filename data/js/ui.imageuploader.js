@@ -52,6 +52,10 @@ function init() {
         return false;
     }).bind('drop', function (ev) {
         ui.ImageUploader.file = ev.originalEvent.dataTransfer.files[0]; 
+        if (! ui.FormChecker.test_file_image(ui.ImageUploader.file)) {
+            toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+            return false;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
             ui.ImageUploader.me.find('.preview')
@@ -64,6 +68,10 @@ function init() {
 
 upload:
 function upload(file) {
+    if (! ui.FormChecker.test_file_image(file)) {
+        toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+        return false;
+    }
     // form params
     var msg = ui.ImageUploader.me.find('.message').val();
     var service_name = ui.ImageUploader.service_name;
