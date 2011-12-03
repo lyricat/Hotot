@@ -24,6 +24,7 @@ default_error_method: 'notify',
 
 http_code_msg_table : {
       0: 'Lost connection with server.'
+    , 400: 'Bad Request: The request was invalid.'
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
     , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
