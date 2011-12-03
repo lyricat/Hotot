@@ -692,7 +692,6 @@
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify"
                     title="Use Native Notify" class="checkbox"
@@ -732,6 +731,20 @@
                     class="label"
                     data-i18n-text="preview_embedded_media"
                     >Preview embedded media.</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- <span data-i18n-text="default_picture_service">Default Picture Service</span> -</h3>
+            <p>
+                <select id="sel_prefs_default_picture_service"
+                    class="combo"
+                    title="Select a default picture service"
+                    data-i18n-title="select_a_default_picture_service">
+                    <option value="twitter.com">Twitter Official Service</option>
+                    <option value="img.ly">Img.ly</option>
+                    <option value="twitpic.com">Twitpic.com</option>
+                    <option value="lockerz.com">Lockerz.com</option>
+                </select>
             </p>
             </div>
        </div><!-- END of prefs_behavior-->
@@ -1314,7 +1327,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             <p><label data-i18n-text="upload_to_dots">Upload to ... </label>
             <ul class="service_list">
                 <li><a class="service" href="#img.ly">img.ly</a></li>
-                <li><a class="service selected" href="#twitter.com">twitter.com</a></li>
+                <li><a class="service" href="#twitter.com">twitter.com</a></li>
                 <li><a class="service" href="#twitpic.com">twitpic.com</a></li>
                 <li><a class="service" href="#lockerz.com">lockerz.com</a></li>
             </ul>

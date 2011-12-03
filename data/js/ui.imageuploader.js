@@ -45,9 +45,6 @@ function init() {
         $(this).addClass('selected');
         ui.ImageUploader.service_name = $(this).attr('href').substring(1);
     });
-    ui.ImageUploader.service_name = 
-        ui.ImageUploader.me.find('.service.selected')
-            .attr('href').substring(1);
 
     ui.ImageUploader.me.find('.dragarea').bind('dragover', function () {
         return false;    
@@ -104,6 +101,9 @@ upload_image_official:
 function upload_image_official(params, file, success, fail) {
     var reader = new FileReader();
     reader.onload = function (e) {
+        if (params['message'].length === 0) {
+            params['message'] = 'I have uploaded a photo.'
+        }
         lib.twitterapi.update_with_media(params['message'], 
             null, file, e.target.result, success, fail);
     }
@@ -182,4 +182,17 @@ function fail(result) {
     ui.ImageUploader.me.find('.preview').css('background-image', 'none');
 },
 
+show:
+function show() {
+    ui.ImageUploader.me.find('.service').removeClass('selected');
+    ui.ImageUploader.me.find('.service[href="#'
+        + ui.ImageUploader.service_name 
+        + '"]').addClass('selected');
+    globals.imageuploader_dialog.open();
+},
+
+hide:
+function hide() {
+
+},
 }

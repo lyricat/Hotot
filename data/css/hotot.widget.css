@@ -404,7 +404,7 @@ disabled:
 }
 
 .dialog_block {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.6em;
     word-wrap: break-all; 
     white-space:normal;
@@ -412,7 +412,7 @@ disabled:
 
 .dialog_block h3 {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .dialog_block p {

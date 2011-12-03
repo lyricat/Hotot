@@ -38,7 +38,7 @@ function on_ext_btn_clicked(event) {
         if (util.is_native_platform()) {
             ext.HototImageUpload.upload_dialog.open();
         } else {
-            globals.imageuploader_dialog.open();
+            ui.ImageUploader.show();
         }
     } else {
         title = 'Error !'

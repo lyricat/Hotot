@@ -53,6 +53,7 @@ default_prefs: {
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
         , 'sign_api_base': 'https://api.twitter.com/1/'
@@ -89,6 +90,7 @@ default_prefs: {
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
         , 'sign_api_base': 'https://identi.ca/api/'
@@ -251,6 +253,8 @@ function apply_prefs(name) {
     jsOAuth.access_token = prefs.access_token;
     jsOAuth.key = prefs.consumer_key || jsOAuth.key;
     jsOAuth.secret = prefs.consumer_secret || jsOAuth.secret;
+    
+    ui.ImageUploader.service_name = prefs.default_picture_service;
 
     for (var id in ext.exts_info) {
         ext.disable_ext(id);
