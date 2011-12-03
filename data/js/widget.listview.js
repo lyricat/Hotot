@@ -184,7 +184,6 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
         }
-        if (tweets.length == 0) { return; }
         for (var i = 0, l = tweets.length; i < l; i+= 1) {
             if (! tweets[i].hasOwnProperty('id_str')) {
                 tweets[i].id_str = tweets[i].id.toString();
@@ -241,7 +240,6 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
         }
-        if (tweets.length == 0) { return; }
         for (var i = 0, l = tweets.length; i < l; i+= 1) {
             if (!tweets[i].hasOwnProperty('id_str')) {
                 tweets[i].id_str = tweets[i].id.toString();

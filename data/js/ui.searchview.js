@@ -115,6 +115,7 @@ function load_tweet_success(view, json) {
     if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
         tweets = json.results || json.statuses;
     }
+    console.log(tweets);
     if (ui.SearchView.since_id != view.since_id) {
         ui.Slider.set_unread(view.name);
         ui.SearchView.since_id = view.since_id;

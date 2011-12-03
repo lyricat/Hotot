@@ -741,7 +741,7 @@ function verify(on_success, on_error) {
 },
 
 search:
-function search(query, page, since_id, max_id, on_success) {
+function search(query, page, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.search_api_base2;
     if (url == 'https://twitter.com/phoenix_search.phoenix'){
         var params={
@@ -758,7 +758,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (page != null) _page.push('page=' + page);
         params['page'] = _page.join('&');
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     } else {
         var params={
@@ -768,7 +768,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (max_id != null) params['max_id'] = max_id;
         if (page != null) params['page'] = page;
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     }
 

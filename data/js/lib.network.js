@@ -69,12 +69,18 @@ function encode_multipart_formdata(fields, file, name, data) {
 
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
+    // drop the request if it appears repeatedly in a short time
+    var pos = req_url.indexOf('?');
+    if (pos === -1) {
+        var req_url_head = req_url.substring(0, pos);
+    }
     var now = Date.now();
-    if (lib.network.last_req_url ==  req_url && now - lib.network.last_req_time < 1000) {
+    if (lib.network.last_req_url ==  req_url_head && now - lib.network.last_req_time < 500) {
         return;
     }
+
     lib.network.last_req_time = now;
-    lib.network.last_req_url = req_url;
+    lib.network.last_req_url = req_url_head;
 
     if (!req_headers) req_headers = {};
     if (lib.network.py_request 
