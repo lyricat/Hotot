@@ -14,6 +14,8 @@ sign_api_base: 'https://api.twitter.com/',
 
 search_api_base2: 'https://twitter.com/phoenix_search.phoenix',
 
+upload_api_base: 'https://upload.twitter.com/1/',
+
 use_same_sign_api_base: true,
 
 source: 'Hotot',
@@ -179,6 +181,45 @@ function update_status(text, reply_to_id, on_success, on_error) {
         params['in_reply_to_status_id'] = reply_to_id;
     }
     lib.twitterapi.post(url, params, on_success, on_error);
+},
+
+update_with_media:
+function update_with_media(text, reply_to_id, file, file_data, on_success, on_error) {
+    var url = lib.twitterapi.upload_api_base + 'statuses/update_with_media.json';
+    var signed_params = jsOAuth.form_signed_params(
+              url
+            , jsOAuth.access_token
+            , 'POST'
+            , {}
+            , true);
+    var params = {'status': text, 'include_entities': '1'};
+    if (reply_to_id) {
+        params['in_reply_to_status_id'] = reply_to_id;
+    }
+    $.extend(params, signed_params);
+
+    var auth_str = 
+        'OAuth oauth_consumer_key="'+signed_params.oauth_consumer_key+'"'
+    + ', oauth_signature_method="'+signed_params.oauth_signature_method+'"'
+    + ', oauth_token="'+signed_params.oauth_token+'"'
+    + ', oauth_timestamp="'+signed_params.oauth_timestamp+'"'
+    + ', oauth_nonce="'+ signed_params.oauth_nonce +'"'
+    + ', oauth_version="'+signed_params.oauth_version+'"'
+    + ', oauth_signature="'
+        + encodeURIComponent(signed_params.oauth_signature)+'"';
+    var headers = {'Authorization': auth_str};
+    var form_data = lib.network.encode_multipart_formdata(
+            params, file, 'media[]', file_data);
+    $.extend(headers, form_data[0]);
+
+    lib.network.do_request(
+            'POST'
+            , url
+            , signed_params 
+            , headers
+            , form_data[1] // body
+            , on_success
+            , on_error);
 },
 
 retweet_status:
@@ -455,8 +496,6 @@ function get_user_profile_image(screen_name, size) {
 update_profile_image:
 function update_profile_image(file, file_data, on_success) {
     var url = lib.twitterapi.api_base + 'account/update_profile_image.json';
-    var params = {'include_entities': 'true'};
-
     var signed_params = jsOAuth.form_signed_params(
               url
             , jsOAuth.access_token

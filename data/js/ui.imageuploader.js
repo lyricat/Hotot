@@ -12,6 +12,9 @@ services : {
           url: 'http://api.plixi.com/api/upload.aspx'
         , key: 'a3beab3a-d1ae-46c0-a4ab-5ac73d8eb43a'
     },
+    'twitter.com': {
+          url: 'https://upload.twitter.com/1/update_with_media.json'
+    }
 },
 
 service_name: '',
@@ -90,6 +93,25 @@ function upload(file) {
 
 upload_image:
 function upload_image(url, params, file, success, fail) {
+    if (ui.ImageUploader.service_name === 'twitter.com') {
+        ui.ImageUploader.upload_image_official(params, file, success, fail);
+    } else {
+        ui.ImageUploader.upload_image_oauth_echo(url, params, file, success, fail);
+    }
+},
+
+upload_image_official:
+function upload_image_official(params, file, success, fail) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        lib.twitterapi.update_with_media(params['message'], 
+            null, file, e.target.result, success, fail);
+    }
+    reader.readAsArrayBuffer(file);
+},
+
+upload_image_oauth_echo:
+function upload_image_oauth_echo(url, params, file, success, fail) {
     var signed_params = jsOAuth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
             , jsOAuth.access_token
@@ -130,22 +152,26 @@ success:
 function success(result) {
     globals.imageuploader_dialog.close();
     toast.set('Uploading Successfully!').show();
-    ui.StatusBox.open();
-    var url = ''; var text = '';
-    switch (ui.ImageUploader.service_name) {
-    case 'lockerz.com':
-        url = result.MediaUrl;
-        text = ui.ImageUploader.me.find('.message').val();
-    break;
-    default:
-        url = result.url;
-        text = result.text;
-    break;
+    if (ui.ImageUploader.service_name == 'twitter.com') {
+        ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
+    } else {
+        ui.StatusBox.open();
+        var url = ''; var text = '';
+        switch (ui.ImageUploader.service_name) {
+        case 'lockerz.com':
+            url = result.MediaUrl;
+            text = ui.ImageUploader.me.find('.message').val();
+        break;
+        default:
+            url = result.url;
+            text = result.text;
+        break;
+        }
+        ui.StatusBox.append_status_text(text + ' '+ url);
+        ui.ImageUploader.file = null;
+        ui.ImageUploader.me.find('.message').val('');
+        ui.ImageUploader.me.find('.preview').css('background-image', 'none');
     }
-    ui.StatusBox.append_status_text(text + ' '+ url);
-    ui.ImageUploader.file = null;
-    ui.ImageUploader.me.find('.message').val('');
-    ui.ImageUploader.me.find('.preview').css('background-image', 'none');
 },
 
 fail:
