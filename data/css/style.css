@@ -1449,7 +1449,12 @@ label {
 }
 
 #profile_dlg .entry {
-    width: 50%;
+    width: 95%;
+}
+
+#profile_dlg .dialog_header {
+    padding: 10px;
+    height: 48px;
 }
 
 #prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
@@ -1458,7 +1463,7 @@ label {
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #profile_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
+#oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
@@ -1569,11 +1574,7 @@ label {
 
 /*===== Profile Dialog ================================*/
 #profile_avatar {
-    width: 64px !important;
-    height: 64px !important;
-    margin: 0 auto;
-    padding: 1px;
-    display: block !important;
+
 }
 
 #profile_stat * {
@@ -2009,6 +2010,18 @@ label {
     word-wrap: break-word;
 }
 
+.media_preview a {
+    margin:2px 5px;
+    padding:0;
+    display:inline-block;
+}
+.media_preview img {
+    padding:4px;
+    border:1px #ccc solid;
+    background:#fff; 
+    margin:0;
+    height: 150px
+}
 
 .tweet_meta {
     left: 10px;

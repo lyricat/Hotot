@@ -692,7 +692,6 @@
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify"
                     title="Use Native Notify" class="checkbox"
@@ -732,6 +731,20 @@
                     class="label"
                     data-i18n-text="preview_embedded_media"
                     >Preview embedded media.</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- <span data-i18n-text="default_picture_service">Default Picture Service</span> -</h3>
+            <p>
+                <select id="sel_prefs_default_picture_service"
+                    class="combo"
+                    title="Select a default picture service"
+                    data-i18n-title="select_a_default_picture_service">
+                    <option value="twitter.com">Twitter Official Service</option>
+                    <option value="img.ly">Img.ly</option>
+                    <option value="twitpic.com">Twitpic.com</option>
+                    <option value="lockerz.com">Lockerz.com</option>
+                </select>
             </p>
             </div>
        </div><!-- END of prefs_behavior-->
@@ -975,39 +988,15 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
-    <div class="dialog_header"></div>
-    <div id="profile_dlg_body" class="dialog_body">
-    <div style="float:left; width: 150px;">
-        <div class="dialog_block">
-        <h3>- <span data-i18n-text="picture">Picture</span> -</h3>
-        <p style="text-align:center; min-height:70px;">
-            <span id="profile_avatar" class="profile_img_wrapper"></span>
-            <input id="btn_change_profile_avatar" style="display:none" type="file" value"Change avatar"/>
-            <a id="btn_update_profile_avatar" style="display:none" href="#" class="button">Upload</a>
-        </p>
-        </div>
-
-        <div class="dialog_block">
-        <h3>- <span data-i18n-text="stat">Stat</span> -</h3>
-        <p id="profile_stat">
-            <label class="label" data-i18n-text="join_time">Join</span>: </label>
-            <span id="profile_join"></span><br/>
-            <label class="label" data-i18n-text="tweets">Tweets</span>: </label>
-            <span id="profile_tweet_cnt"></span><br/>
-            <label class="label" data-i18n-text="tweets_per_day">Tweets per Day</span>: </label>
-            <span id="profile_tweet_per_day_cnt"></span><br/>
-            <label class="label" data-i18n-text="friend_stat">Friends</span>: </label>
-            <span id="profile_friend_cnt"></span><br/>
-            <label class="label" data-i18n-text="follower_stat">Followers</span>: </label>
-            <span id="profile_follower_cnt"></span><br/>
-            <label class="label" data-i18n-text="favorites">Favourites</span>: </label>
-            <span id="profile_favourite_cnt"></span><br/>
-        </p>
+    <div class="dialog_header">
+        <div style="position: relative; height: 48px">
+        <div id="profile_avatar" class="profile_img_wrapper" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px;-webkit-box-reflect:none;margin:0;"></div>
+        <input id="btn_change_profile_avatar" type="file" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px; z-index: 10; cursor: pointer; opacity: 0;"/>
+        <p style="position: absolute; left: 60px; bottom: 0px;"> Change your Profile picture by clicking it.</p>
         </div>
     </div>
-    <div>
+    <div id="profile_dlg_body" class="dialog_body">
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="information">Information</span> -</h3>
         <p>
             <label class="label" data-i18n-text="name">Name</label><br/>
             <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
@@ -1020,9 +1009,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </p>
         </div>
     </div>
-    </div>
     <div class="dialog_footer">
-    <a id="btn_profile_cancel" class="button" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_profile_cancel" class="dialog_close_btn button" data-i18n-text="cancel">Cancel</a>
     <a id="btn_profile_update" class="button" data-i18n-text="update">Update</a>
     </div>
     </div><!-- END of .dialog_container -->
@@ -1338,7 +1326,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="dialog_block">
             <p><label data-i18n-text="upload_to_dots">Upload to ... </label>
             <ul class="service_list">
-                <li><a class="service selected" href="#img.ly">img.ly</a></li>
+                <li><a class="service" href="#img.ly">img.ly</a></li>
+                <li><a class="service" href="#twitter.com">twitter.com</a></li>
                 <li><a class="service" href="#twitpic.com">twitpic.com</a></li>
                 <li><a class="service" href="#lockerz.com">lockerz.com</a></li>
             </ul>

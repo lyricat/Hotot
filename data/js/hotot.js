@@ -276,7 +276,7 @@ function init_dialogs() {
     globals.oauth_dialog.create();
 
     globals.profile_dialog = new widget.Dialog('#profile_dlg');
-    globals.profile_dialog.resize(500, 400);
+    globals.profile_dialog.resize(500, 450);
     globals.profile_dialog.place(widget.DialogManager.CENTER);
     globals.profile_dialog.create();
 
@@ -620,10 +620,12 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    var pageTracker = _gat._getTracker("UA-18538886-4");
-    pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
-    pageTracker._setCustomVar(2, 'Version', vars.version, 1);
-    pageTracker._trackPageview();
+    try {
+        var pageTracker = _gat._getTracker("UA-18538886-4");
+        pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
+        pageTracker._setCustomVar(2, 'Version', vars.version, 1);
+        pageTracker._trackPageview();
+    } catch (e) {}
     return;
 }
 
