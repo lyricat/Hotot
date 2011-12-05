@@ -185,6 +185,12 @@ function init () {
         return false;
     }).bind('drop', function (ev) {
         ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
+
+        if (! ui.FormChecker.test_file_image(ui.StatusBox.file)) {
+            toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+            return false;
+        }
+
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#status_image_preview')

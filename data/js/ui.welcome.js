@@ -80,6 +80,10 @@ function init () {
             }
             ui.Welcome.btn_basic_auth_sign_in.set_label(old_label);
             ui.Welcome.btn_basic_auth_sign_in.set_sensitive(true);
+        },
+        function (xhr, textStatus, errorThrown) {
+            ui.Welcome.btn_basic_auth_sign_in.set_label(old_label);
+            ui.Welcome.btn_basic_auth_sign_in.set_sensitive(true);
         });
     };
     ui.Welcome.btn_basic_auth_sign_in.create();
@@ -133,6 +137,10 @@ function init () {
                         , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
                         , result);
                 }
+                ui.Welcome.btn_oauth_sign_in.set_label(old_label);
+                ui.Welcome.btn_oauth_sign_in.set_sensitive(true);
+            }, 
+            function (xhr, textStatus, errorThrown) {
                 ui.Welcome.btn_oauth_sign_in.set_label(old_label);
                 ui.Welcome.btn_oauth_sign_in.set_sensitive(true);
             });

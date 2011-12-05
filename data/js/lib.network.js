@@ -69,12 +69,6 @@ function encode_multipart_formdata(fields, file, name, data) {
 
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
-    var now = Date.now();
-    if (lib.network.last_req_url ==  req_url && now - lib.network.last_req_time < 1000) {
-        return;
-    }
-    lib.network.last_req_time = now;
-    lib.network.last_req_url = req_url;
 
     if (!req_headers) req_headers = {};
     if (lib.network.py_request 

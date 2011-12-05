@@ -48,6 +48,7 @@ function switch_sub_view(view, name) {
         view._load = ui.SearchView.load_tweet
         view._loadmore = ui.SearchView.loadmore_tweet;
         view._load_success = ui.SearchView.load_tweet_success;
+        view._load_fail = ui.SearchView.load_tweet_fail;
         view._loadmore_success = ui.SearchView.loadmore_tweet_success;
     break;
     case 'people':
@@ -75,7 +76,7 @@ function load_tweet(view, success, fail) {
     "next_page": "?page=3&max_id=84559462639222784&q=hotot",
     */
     if ($.trim(view.query).length == 0) {
-        success([]);
+        fail(view, {ignore: true});
         return;
     }
     view.page = 1;
@@ -115,6 +116,9 @@ function load_tweet_success(view, json) {
     if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
         tweets = json.results || json.statuses;
     }
+    if (json.constructor == Object && json.ignore) {
+        return 0;
+    }
     if (ui.SearchView.since_id != view.since_id) {
         ui.Slider.set_unread(view.name);
         ui.SearchView.since_id = view.since_id;
@@ -127,6 +131,13 @@ function load_tweet_success(view, json) {
     } else {
         view._header.find('.search_no_result_hint').hide();
         return ui.Main.add_tweets(view, tweets);
+    }
+},
+
+load_tweet_fail:
+function load_tweet_fail(view, json) {
+    if (json && json.ignore) {
+        view._header.find('.search_no_result_hint').hide();
     }
 },
 

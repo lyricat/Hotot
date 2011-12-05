@@ -26,18 +26,18 @@ function init () {
                 globals.profile_dialog.close();
             }
         }
+        return false;
     };
     btn_profile_update.create();
 
     $('#btn_change_profile_avatar').change(function () {
         var file = $('#btn_change_profile_avatar').get(0).files[0];
-        // @TODO form checker
-        if (file.size > 700 * 1000) {
+        if (! ui.FormChecker.test_file_size_bound(file, 700 * 1000)) {
             toast.set('Your picture must be less than 700 kb in size.').show(3);
             return false;
         } 
-        if (!(/.*(jpg|jpeg|png|gif)$/i.test(file.name))) {
-            toast.set('Your picture must be a valid GIF, JPG, or PNG image.').show(3);
+        if (! ui.FormChecker.test_file_image(file)) {
+            toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
             return false;
         }
         ui.ProfileDlg.update_avatar(file);

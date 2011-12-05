@@ -24,6 +24,7 @@ default_error_method: 'notify',
 
 http_code_msg_table : {
       0: 'Lost connection with server.'
+    , 400: 'Bad Request: The request was invalid.'
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
     , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
@@ -740,7 +741,7 @@ function verify(on_success, on_error) {
 },
 
 search:
-function search(query, page, since_id, max_id, on_success) {
+function search(query, page, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.search_api_base2;
     if (url == 'https://twitter.com/phoenix_search.phoenix'){
         var params={
@@ -757,7 +758,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (page != null) _page.push('page=' + page);
         params['page'] = _page.join('&');
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     } else {
         var params={
@@ -767,7 +768,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (max_id != null) params['max_id'] = max_id;
         if (page != null) params['page'] = page;
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     }
 

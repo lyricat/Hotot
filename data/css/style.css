@@ -1150,12 +1150,13 @@ label {
 .search_no_result_hint .keywords {
     font-weight: bold;
 }
-.retweets_view_toggle, .search_view_toggle, .people_view_toggle, .list_view_toggle {
+.retweets_view_toggle, .people_view_toggle, .list_view_toggle {
     text-align: center;
     margin-top: 5px;
 }
 .search_view_toggle {
     margin-top: 5px;
+    text-align: right;
 }
 
 /*===== Welcome Page ================================*/

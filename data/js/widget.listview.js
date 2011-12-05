@@ -23,6 +23,7 @@ function WidgetListView(id, name, params) {
     self._loadmore_fail = null;
     self._init = null;
     self._destory = null;
+    self._last_load_more_time = Date.now();
     self.former = null;
     self.method = '';
     self.header_html = '';
@@ -139,9 +140,12 @@ function WidgetListView(id, name, params) {
                 self._body.children('.card:hidden:lt(20)').show();
                 // load more automaticly
                 if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
-
+                    var now = Date.now();
                     self.resume_pos = false;
-                    self.loadmore();
+                    if (1000 <= now - self._last_load_more_time) {
+                        self._last_load_more_time = now;
+                        self.loadmore();
+                    }
                 }
             }
             // hide tweet bar
@@ -184,7 +188,6 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
         }
-        if (tweets.length == 0) { return; }
         for (var i = 0, l = tweets.length; i < l; i+= 1) {
             if (! tweets[i].hasOwnProperty('id_str')) {
                 tweets[i].id_str = tweets[i].id.toString();
@@ -228,6 +231,7 @@ function WidgetListView(id, name, params) {
     };
     
     self.load_fail = function load_fail(json) {
+        self._footer.hide();
         if (self._load_fail != null) {
             self._load_fail(self, json)
         }
@@ -241,7 +245,6 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
         }
-        if (tweets.length == 0) { return; }
         for (var i = 0, l = tweets.length; i < l; i+= 1) {
             if (!tweets[i].hasOwnProperty('id_str')) {
                 tweets[i].id_str = tweets[i].id.toString();
