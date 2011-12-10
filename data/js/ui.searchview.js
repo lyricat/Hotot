@@ -123,10 +123,10 @@ function load_tweet_success(view, json) {
         ui.Slider.set_unread(view.name);
         ui.SearchView.since_id = view.since_id;
     }
-    if (tweets.length == 0) {
+    if (tweets.length == 0 && view.since_id == null) {
         view._header.find('.search_no_result_hint').show();
         view._header.find('.keywords').text(
-            decodeURIComponent(json.query));
+            decodeURIComponent(view.query));
         return 0;
     } else {
         view._header.find('.search_no_result_hint').hide();
@@ -166,12 +166,10 @@ function loadmore_people_success(view, json) {
 
 do_search:
 function do_search(view, query) {
+    ui.SearchView.clear(view);
     view.query = $.trim(query);
+    console.log(view.query);
     if (view.query.length == 0) return;
-    ui.SearchView.since_id = null;
-    view.max_id = null;
-    view.since_id = null;
-    view.clear();
     view.load();
 },
 
