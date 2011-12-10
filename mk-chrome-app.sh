@@ -2,6 +2,10 @@
 SRC=data/
 DEST=hotot-chrome/
 
+echo "\033[1;31;40m[i]Update Version ...\033[0m"
+VER=`sed -n -e 's/.*version\": \"\([0-9.]*\)\",/\1/p' ${SRC}manifest.json`
+sed -i "s/'version': '[0-9.]*'/'version': '${VER}'/g" ${SRC}js/conf.js
+
 echo "\033[1;31;40m[i]Sync ...\033[0m"
 # ignore .*.swp, .hgignore, etc
 rsync -av --exclude '.*.*' $SRC $DEST
