@@ -33,6 +33,10 @@ pre {
     margin: 10px 0;
 }
 
+::selection {
+    background: #a8d1ff;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
