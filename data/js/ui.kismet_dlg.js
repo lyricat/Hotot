@@ -23,6 +23,21 @@ function init() {
             {'height': '0px', 'padding':'0px', 'display': 'none'});
     ui.KismetDlg.guide_dialog.resize(500, 400);
     ui.KismetDlg.guide_dialog.create();
+    
+    ui.KismetDlg.color_guide_dialog = new widget.Dialog('#kismet_color_guide_dialog');
+    ui.KismetDlg.color_guide_dialog.set_styles('header', 
+            {'height': '0px', 'padding':'0px', 'display': 'none'});
+    ui.KismetDlg.color_guide_dialog.set_styles('footer', 
+            {'height': '0px', 'padding':'0px', 'display': 'none'});
+    ui.KismetDlg.color_guide_dialog.resize(500, 300);
+    ui.KismetDlg.color_guide_dialog.create();
+
+    var color_cells = $('#kismet_color_list .cell');
+    var color_hrefs = $('#kismet_color_list a');
+    for (var i = 0; i < kismet.default_color.length; i += 1) {
+        $(color_cells.get(i+1)).css('background-color', kismet.default_color[i]);
+        $(color_hrefs.get(i+1)).attr('href', kismet.default_color[i]);
+    }
 
     $('.kismet_sample').click(function () {
         var text = $(this).text();
@@ -152,6 +167,18 @@ function init() {
         return false;
     });
 
+    $('#kismet_color_list a').click(function () {
+        var color_code = $(this).attr('href');
+        var screen_name = $('#kismet_color_guide_dialog').data('screen_name');
+        var li = $('.card[screen_name="'+screen_name+'"]');
+        if (screen_name) {
+            kismet.set_user_color(screen_name, color_code);
+            li.find('.tweet_color_label').css('background-color', color_code);
+        }
+        ui.KismetDlg.color_guide_dialog.close();
+        conf.save_prefs(conf.current_name);
+        return false;
+    });
     ui.KismetDlg.reload();
 },
 

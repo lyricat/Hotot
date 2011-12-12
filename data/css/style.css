@@ -1725,6 +1725,39 @@ label {
     display: block;
 }
 
+#kismet_color_list {
+    list-style-type: none;
+}
+#kismet_color_list li, #kismet_color_list a{
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    color: #333;
+}
+#kismet_color_list li{
+    position: relative;
+}
+
+#kismet_color_list li:hover {
+    background-color: lightgray;
+}
+
+#kismet_color_list .cell {
+    content: " ";
+    display: block;
+    float: left;
+    border: 1px #333 solid;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+}
+#kismet_color_list a {
+    padding-left: 40px;
+    text-decoration: none;
+}
 /*===== ImageUploader Dialog ================================*/
 #imageuploader_dlg {
     
@@ -1899,16 +1932,13 @@ label {
     display: block;
 }
 
-.card > .tweet_active_indicator {
+.card > .tweet_color_label {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 30%;
-    height: 100%;
-}
-
-.card.active > .tweet_active_indicator{
-    background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
+    width: 5px;
+    bottom: 0px;
+    display: block;
 }
 
 .card > .tweet_fav_indicator {

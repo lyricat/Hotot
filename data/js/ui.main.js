@@ -62,6 +62,13 @@ function init () {
             ui.KismetDlg.guide_dialog.open();
         });
     });
+    $('#tweet_set_color_btn').click(
+    function (ev) {
+        var li = $(ui.Main.active_tweet_id);
+        var screen_name = li.attr('screen_name');
+        ui.KismetDlg.color_guide_dialog.open();
+        $('#kismet_color_guide_dialog').data('screen_name', screen_name);
+    });
 
     $('#tweet_more_menu').mouseleave(function(){
         $(this).hide();

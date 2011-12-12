@@ -24,7 +24,7 @@ reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-
 
 tweet_t: 
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
-    <div class="tweet_active_indicator"></div>\
+    <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
     <div class="tweet_retweet_indicator"></div>\
@@ -554,7 +554,8 @@ function init() {
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
         , TRANS_via:'', TRANS_View_more_conversation:''
-        , TWEET_BASE_URL: '', IN_THREAD: '',
+        , TWEET_BASE_URL: '', IN_THREAD: ''
+        , COLOR_LABEL: ''
     };
 
     ui.Template.retweeted_by_m = {
@@ -748,9 +749,11 @@ function form_tweet (tweet_obj, pagename) {
     m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
-
+    
     m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
+    
+    m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
 
     m.REPLY_TEXT = reply_str;
     m.RETWEET_TEXT = retweet_str;

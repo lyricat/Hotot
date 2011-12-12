@@ -94,7 +94,7 @@
     margin-left: 10px;
     padding-left: 0;
 }
-.card > .tweet_selected_indicator {
+.card > .tweet_selected_indicator, .card > .tweet_color_label {
     left: -10px;
 }
 .card.normal a {

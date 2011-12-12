@@ -66,6 +66,7 @@ default_prefs: {
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
         , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
+        , 'kismet_colored_user_map': {}
         , 'base_url': 'https://twitter.com/'
         , 'slider_state': null
         , 'views_lastest_id': {}
@@ -103,6 +104,7 @@ default_prefs: {
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
         , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
+        , 'kismet_colored_user_map': {}
         , 'base_url': 'https://identi.ca/'
         , 'slider_state': null
         , 'views_lastest_id': {}

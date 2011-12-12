@@ -51,6 +51,14 @@ var kismet = {
 
     enforcers: [],
 
+    colored_user_map: {},
+
+    default_color: [
+        '#EB374B', '#FFE11D', '#73F560', '#63C6FF', 
+        '#FFA135', '#C262FF', '#5C33FF', '#B30002', 
+        '#2E3333', '#7A005A', '#FF6C00', '#B4FC2C', 
+        '#00FC50', '#F4F50A', '#DBFFDB', '#277077'],
+
 /* 
    condition express:
     cond_exp := [op, arg_list]
@@ -89,6 +97,11 @@ function init() {
 load:
 function load() {
     var active_profile = conf.get_current_profile();
+    // load colored user map
+    kismet.colored_user_map = active_profile.preferences.kismet_colored_user_map;
+    if (!kismet.colored_user_map || kismet.colored_user_map.constructor != Object) {
+        kismet.colored_user_map = {};
+    }
     // load mute list
     kismet.mute_list = active_profile.preferences.kismet_mute_list;
     if (!kismet.mute_list || kismet.mute_list.constructor != Object) {
@@ -96,7 +109,7 @@ function load() {
     }
     // load rules
     kismet.rules = active_profile.preferences.kismet_rules;
-    if (kismet.rules.constructor != Array) {
+    if (!kismet.rules || kismet.rules.constructor != Array) {
         kismet.rules = [];
     }
     kismet.enforcers = [];
@@ -108,6 +121,8 @@ function load() {
 save:
 function save() {
     if (typeof conf != 'undefined') {
+        conf.get_current_profile().preferences.kismet_colored_user_map
+            = kismet.colored_user_map;
         conf.get_current_profile().preferences.kismet_rules = kismet.rules;
         conf.get_current_profile().preferences.kismet_mute_list = kismet.mute_list;
         conf.save_prefs(conf.current_name);
@@ -163,6 +178,23 @@ function update_mute_list(field, value) {
     if (kismet.mute_list[field].indexOf(value) == -1) {
         kismet.mute_list[field].push(value);
     }
+},
+
+set_user_color:
+function set_user_color(screen_name, color) {
+    if (color === null || color.length < 4 || color[0] !== '#') {
+        delete kismet.colored_user_map[screen_name];
+    } else {
+        kismet.colored_user_map[screen_name] = color;
+    }
+},
+
+get_user_color:
+function get_user_color(screen_name) {
+    if (kismet.colored_user_map.hasOwnProperty(screen_name)) {
+        return kismet.colored_user_map[screen_name];
+    }
+    return 'transparent';
 },
 
 eval_bool_exp:
