@@ -447,7 +447,7 @@ function get_holder_value(name, tweet) {
         else
             return [];
     break;
-    case '$MENIONS':
+    case '$MENTIONS':
         if (tweet.entities && tweet.entities.user_mentions)
             return tweet.entities.user_mentions.map(function(t){return t.screen_name});
         else
@@ -581,11 +581,11 @@ function process_field(tokens, pos) {
     break;
     case 'mention':
         if (second[0] == kismet.TYPE_RE) {
-            kismet.cond_string_array.push('MENIONS @' + second[1]);
-            return [[kismet.OP_MENTION_HAS, '$MENIONS', new RegExp(second[1],second[2])], 3];
+            kismet.cond_string_array.push('MENTIONS @' + second[1]);
+            return [[kismet.OP_MENTION_HAS, '$MENTIONS', new RegExp(second[1],second[2])], 3];
         } else {
-            kismet.cond_string_array.push('MENIONS @' + second[1]);
-            return [[kismet.OP_MENTION_HAS, '$MENIONS', second[1]], 3];
+            kismet.cond_string_array.push('MENTIONS @' + second[1]);
+            return [[kismet.OP_MENTION_HAS, '$MENTIONS', second[1]], 3];
         }
     break;
     case 'has':
