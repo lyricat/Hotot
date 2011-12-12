@@ -143,6 +143,10 @@
 		"message": "URL缩短器",
 		"description": "data/index.html"
 	},
+	"schizophrenia": {
+		"message": "裂裂的芬芳",
+		"description": "data/index.html"
+	},
 	"please_enter_the_recipient": {
 		"message": "殿下，请指定收件人！",
 		"description": "data/js/ui.status_box.js"
@@ -199,6 +203,10 @@
 		"message": "OAuth Base",
 		"description": ""
 	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "吾之旅程在那星辰大海",
+		"description": "data/index.html"
+	},
 	"reply": {
 		"message": "回复",
 		"description": ""
@@ -243,6 +251,10 @@
 		"message": "搜索",
 		"description": "data/js/ui.slider.js"
 	},
+	"hidden_dark_minds": {
+		"message": "腹黑的老K",
+		"description": "data/index.html"
+	},
 	"drag_a_photo_here": {
 		"message": "拖拽一张照片至此处",
 		"description": "data/index.html"
@@ -250,6 +262,10 @@
 	"license": {
 		"message": "许可",
 		"description": ""
+	},
+	"panda_acts_cute": {
+		"message": "卖萌的熊猫",
+		"description": "data/index.html"
 	},
 	"move_to_top": {
 		"message": "移到顶部",
@@ -327,6 +343,10 @@
 		"message": "殿下，您的新账户已经创建成功！",
 		"description": "data/js/ui.welcome.js"
 	},
+	"shiny_old_times_before_marriage": {
+		"message": "婚前的旧时光",
+		"description": "data/index.html"
+	},
 	"next": {
 		"message": "下一步",
 		"description": "data/index.html"
@@ -403,8 +423,8 @@
 		"message": "魔法值",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"mute_filter": {
-		"message": "屏蔽器",
+	"cuddly": {
+		"message": "可乐小V",
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
@@ -422,6 +442,10 @@
 	"behavior": {
 		"message": "行为",
 		"description": ""
+	},
+	"Insert_smiley": {
+		"message": "插入表情",
+		"description": "data/index.html"
 	},
 	"updating_dots": {
 		"message": "更新中……",
@@ -447,13 +471,13 @@
 		"message": "清空令牌",
 		"description": "data/index.html"
 	},
+	"network_error_please_try_later": {
+		"message": "网路故障，请稍候再试喵！",
+		"description": "data/js/ui.welcome.js"
+	},
 	"save_as_draft": {
 		"message": "保存到草稿",
 		"description": "data/index.html"
-	},
-	"information": {
-		"message": "信息",
-		"description": ""
 	},
 	"author": {
 		"message": "作者",
@@ -463,12 +487,8 @@
 		"message": "校验",
 		"description": "data/index.html"
 	},
-	"undo_retweeting_dots": {
-		"message": "撤销转发...",
-		"description": "data/js/ui.main.js"
-	},
-	"archive": {
-		"message": "归档",
+	"just_cannot_stop_thinking_of_here": {
+		"message": "吾只是有点怀念这儿",
 		"description": "data/index.html"
 	},
 	"followers": {
@@ -499,8 +519,8 @@
 		"message": "中",
 		"description": "data/index.html"
 	},
-	"rule_editor": {
-		"message": "规则编辑器",
+	"select_a_default_picture_service": {
+		"message": "选择一个默认图片服务",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -519,8 +539,8 @@
 		"message": "禁用",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"favorites": {
-		"message": "收藏",
+	"to_a_cold_beauty": {
+		"message": "冷艳的嘉敏",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -534,6 +554,10 @@
 	"font_size": {
 		"message": "字体大小",
 		"description": ""
+	},
+	"bloody_marguerite": {
+		"message": "血腥的苏酱",
+		"description": "data/index.html"
 	},
 	"options": {
 		"message": "选项",
@@ -575,9 +599,9 @@
 		"message": "发送消息",
 		"description": ""
 	},
-	"network_error_please_try_later": {
-		"message": "网路故障，请稍候再试喵！",
-		"description": "data/js/ui.welcome.js"
+	"undo_retweeting_dots": {
+		"message": "撤销转发...",
+		"description": "data/js/ui.main.js"
 	},
 	"favs_view": {
 		"message": "我的收藏",
@@ -635,6 +659,10 @@
 		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"default_picture_service": {
+		"message": "默认图片服务",
+		"description": "data/index.html"
+	},
 	"mentions_view": {
 		"message": "提到我的",
 		"description": "data/index.html"
@@ -650,6 +678,10 @@
 	"password": {
 		"message": "密码",
 		"description": ""
+	},
+	"transparent": {
+		"message": "透明",
+		"description": "data/index.html"
 	},
 	"advanced": {
 		"message": "高级",
@@ -682,6 +714,10 @@
 	"greeting": {
 		"message": "殿下您好！",
 		"description": ""
+	},
+	"assassin_s_tango": {
+		"message": "壳酱的诡计",
+		"description": "data/index.html"
 	},
 	"system_font": {
 		"message": "系统字体",
@@ -731,9 +767,17 @@
 		"message": "验证通过！",
 		"description": "data/js/ui.welcome.js"
 	},
+	"mute_filter": {
+		"message": "屏蔽器",
+		"description": "data/index.html"
+	},
 	"view_more_conversation": {
 		"message": "查看会话",
 		"description": "data/js/ui.template.js"
+	},
+	"wanna_have_relationship_with": {
+		"message": "咸湿佬",
+		"description": "data/index.html"
 	},
 	"lists_of_them": {
 		"message": "该用户的列表",
@@ -762,10 +806,6 @@
 	"favs": {
 		"message": "收藏",
 		"description": "data/js/ui.template.js"
-	},
-	"tweets_per_day": {
-		"message": "每日发推量",
-		"description": "data/index.html"
 	},
 	"create_a_list": {
 		"message": "创建一个新列表",
@@ -803,12 +843,16 @@
 		"message": "超过140字了，亲！",
 		"description": "data/js/ui.status_box.js"
 	},
+	"titian_s_elegance": {
+		"message": "文艺的缇香",
+		"description": "data/index.html"
+	},
 	"select_a_language": {
 		"message": "选择语言",
 		"description": "data/index.html"
 	},
-	"Insert_smiley": {
-		"message": "插入表情",
+	"virushou_s_integrity": {
+		"message": "火炬的正直",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
@@ -817,6 +861,10 @@
 	},
 	"preview_embedded_media": {
 		"message": "预览嵌入的多媒体",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "规则编辑器",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -831,10 +879,6 @@
 		"message": "杂项",
 		"description": "data/index.html"
 	},
-	"follower_stat": {
-		"message": "粉丝统计",
-		"description": ""
-	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
 		"message": "或者在浏览器中打开以下地址",
 		"description": ""
@@ -842,6 +886,10 @@
 	"notify": {
 		"message": "通知",
 		"description": ""
+	},
+	"set_color_label": {
+		"message": "染色",
+		"description": "data/index.html"
 	},
 	"update_successfully": {
 		"message": "更新成功！",
@@ -858,10 +906,6 @@
 	"you_are_following": {
 		"message": "你默默地，关注着他／她／它…",
 		"description": "data/js/ui.peopleview.js"
-	},
-	"friend_stat": {
-		"message": "朋友统计",
-		"description": ""
 	},
 	"same_signing_oauth_base": {
 		"message": "使用同样的OAuth地址进行签名",
@@ -923,6 +967,10 @@
 		"message": "用户名",
 		"description": ""
 	},
+	"struggling_adventurers": {
+		"message": "苦逼的Kee叔",
+		"description": "data/index.html"
+	},
 	"shortcuts": {
 		"message": "快捷键",
 		"description": "data/index.html"
@@ -935,9 +983,17 @@
 		"message": "木有扩展",
 		"description": "data/index.html"
 	},
-	"join_time": {
-		"message": "加入时间",
-		"description": ""
+	"pretty_wife": {
+		"message": "俏人妻西乔",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "祝汝幸福",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "归档",
+		"description": "data/index.html"
 	},
 	"retweeting_dots": {
 		"message": "转发中...",
@@ -965,10 +1021,6 @@
 	},
 	"slide_to_next_page": {
 		"message": "切换到下一页",
-		"description": "data/index.html"
-	},
-	"picture": {
-		"message": "照片",
 		"description": "data/index.html"
 	},
 	"stat": {

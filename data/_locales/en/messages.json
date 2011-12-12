@@ -143,6 +143,10 @@
 		"message": "URL shortener",
 		"description": "data/index.html"
 	},
+	"schizophrenia": {
+		"message": "Schizophrenia",
+		"description": "data/index.html"
+	},
 	"please_enter_the_recipient": {
 		"message": "please enter the recipient!",
 		"description": "data/js/ui.status_box.js"
@@ -199,6 +203,10 @@
 		"message": "OAuth Base",
 		"description": "data/index.html"
 	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "My Journey is to the sea of stars",
+		"description": "data/index.html"
+	},
 	"reply": {
 		"message": "Reply",
 		"description": "data/index.html"
@@ -243,12 +251,20 @@
 		"message": "Search",
 		"description": "data/js/ui.slider.js"
 	},
+	"hidden_dark_minds": {
+		"message": "Hidden dark minds",
+		"description": "data/index.html"
+	},
 	"drag_a_photo_here": {
 		"message": "Drag a photo here",
 		"description": "data/index.html"
 	},
 	"license": {
 		"message": "License",
+		"description": "data/index.html"
+	},
+	"panda_acts_cute": {
+		"message": "Panda acts cute",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -327,6 +343,10 @@
 		"message": "New Profile has been created!",
 		"description": "data/js/ui.welcome.js"
 	},
+	"shiny_old_times_before_marriage": {
+		"message": "Shiny old times before marriage",
+		"description": "data/index.html"
+	},
 	"next": {
 		"message": "Next",
 		"description": "data/index.html"
@@ -403,8 +423,8 @@
 		"message": "My Power",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"mute_filter": {
-		"message": "Mute Filter",
+	"cuddly": {
+		"message": "Cuddly",
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
@@ -421,6 +441,10 @@
 	},
 	"behavior": {
 		"message": "Behavior",
+		"description": "data/index.html"
+	},
+	"Insert_smiley": {
+		"message": "Insert simley",
 		"description": "data/index.html"
 	},
 	"updating_dots": {
@@ -447,12 +471,12 @@
 		"message": "Clean token",
 		"description": "data/index.html"
 	},
+	"network_error_please_try_later": {
+		"message": "Network Error! Please try later.",
+		"description": "data/js/ui.welcome.js"
+	},
 	"save_as_draft": {
 		"message": "Save as draft",
-		"description": "data/index.html"
-	},
-	"information": {
-		"message": "Information",
 		"description": "data/index.html"
 	},
 	"author": {
@@ -463,12 +487,8 @@
 		"message": "Verify",
 		"description": "data/index.html"
 	},
-	"undo_retweeting_dots": {
-		"message": "Undo retweeting ...",
-		"description": "data/js/ui.main.js"
-	},
-	"archive": {
-		"message": "Archive",
+	"just_cannot_stop_thinking_of_here": {
+		"message": "Just can't stop thinking of here",
 		"description": "data/index.html"
 	},
 	"followers": {
@@ -499,8 +519,8 @@
 		"message": "Normal",
 		"description": "data/index.html"
 	},
-	"rule_editor": {
-		"message": "Rule Editor",
+	"select_a_default_picture_service": {
+		"message": "Select a default picture service",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -519,8 +539,8 @@
 		"message": "Disable",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"favorites": {
-		"message": "Favorites",
+	"to_a_cold_beauty": {
+		"message": "To a code beauty",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -533,6 +553,10 @@
 	},
 	"font_size": {
 		"message": "Font Size",
+		"description": "data/index.html"
+	},
+	"bloody_marguerite": {
+		"message": "Bloody Marguerite",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -575,9 +599,9 @@
 		"message": "Send Message",
 		"description": "data/index.html"
 	},
-	"network_error_please_try_later": {
-		"message": "Network Error! Please try later.",
-		"description": "data/js/ui.welcome.js"
+	"undo_retweeting_dots": {
+		"message": "Undo retweeting ...",
+		"description": "data/js/ui.main.js"
 	},
 	"favs_view": {
 		"message": "Favorites View",
@@ -635,6 +659,10 @@
 		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"default_picture_service": {
+		"message": "Default Picture Service",
+		"description": "data/index.html"
+	},
 	"mentions_view": {
 		"message": "Mentions View",
 		"description": "data/index.html"
@@ -649,6 +677,10 @@
 	},
 	"password": {
 		"message": "Password",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "Transparent",
 		"description": "data/index.html"
 	},
 	"advanced": {
@@ -681,6 +713,10 @@
 	},
 	"greeting": {
 		"message": "Greetings!",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "Assassin's Tango",
 		"description": "data/index.html"
 	},
 	"system_font": {
@@ -731,9 +767,17 @@
 		"message": "Authentication OK!",
 		"description": "data/js/ui.welcome.js"
 	},
+	"mute_filter": {
+		"message": "Mute Filter",
+		"description": "data/index.html"
+	},
 	"view_more_conversation": {
 		"message": "View more conversation",
 		"description": "data/js/ui.template.js"
+	},
+	"wanna_have_relationship_with": {
+		"message": "Wanna have a relationship with",
+		"description": "data/index.html"
 	},
 	"lists_of_them": {
 		"message": "Lists of them",
@@ -762,10 +806,6 @@
 	"favs": {
 		"message": "Favs",
 		"description": "data/js/ui.template.js"
-	},
-	"tweets_per_day": {
-		"message": "Tweets Per Day",
-		"description": "data/index.html"
 	},
 	"create_a_list": {
 		"message": "Create A List",
@@ -803,12 +843,16 @@
 		"message": "Status is over 140 characters!",
 		"description": "data/js/ui.status_box.js"
 	},
+	"titian_s_elegance": {
+		"message": "Titan's elegance",
+		"description": "data/index.html"
+	},
 	"select_a_language": {
 		"message": "Select a language",
 		"description": "data/index.html"
 	},
-	"Insert_smiley": {
-		"message": "Insert simley",
+	"virushou_s_integrity": {
+		"message": "Virsuhou's Integrity",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
@@ -817,6 +861,10 @@
 	},
 	"preview_embedded_media": {
 		"message": "Preview Embedded Media",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "Rule Editor",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -831,16 +879,16 @@
 		"message": "Misc",
 		"description": "data/index.html"
 	},
-	"follower_stat": {
-		"message": "Followers",
-		"description": "data/index.html"
-	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
 		"message": "Or copy the address and open it in your browser.",
 		"description": "data/index.html"
 	},
 	"notify": {
 		"message": "Notify",
+		"description": "data/index.html"
+	},
+	"set_color_label": {
+		"message": "Set Color Label",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
@@ -858,10 +906,6 @@
 	"you_are_following": {
 		"message": "You are following",
 		"description": "data/js/ui.peopleview.js"
-	},
-	"friend_stat": {
-		"message": "Friends",
-		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
 		"message": "Same Signing OAuth Base",
@@ -923,6 +967,10 @@
 		"message": "Username",
 		"description": "data/index.html"
 	},
+	"struggling_adventurers": {
+		"message": "Struggling Adventurers",
+		"description": "data/index.html"
+	},
 	"shortcuts": {
 		"message": "Shortcuts",
 		"description": "data/index.html"
@@ -935,8 +983,16 @@
 		"message": "No Extension",
 		"description": "data/index.html"
 	},
-	"join_time": {
-		"message": "Join",
+	"pretty_wife": {
+		"message": "Pretty wife",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "Tranquil",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "Archive",
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
@@ -967,10 +1023,6 @@
 		"message": "Slide to next page",
 		"description": "data/index.html"
 	},
-	"picture": {
-		"message": "Picture",
-		"description": "data/index.html"
-	},
 	"stat": {
 		"message": "STAT",
 		"description": "data/index.html"
@@ -996,7 +1048,7 @@
 		"description": "data/index.html"
 	},
 	"filter_like_it": {
-		"message": "Filter like it",
+		"message": "Filter Like It",
 		"description": "data/index.html"
 	},
 	"look_and_feels": {
