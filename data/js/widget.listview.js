@@ -205,9 +205,7 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {       // friedns or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') {  //fav, 
-            if (json.page){
-                self.page = json.page + 1;
-            }
+            self.page = self.page + 1;
         } else if (self.item_type == 'search'){ 
             if (json.max_id_str){
                 self.max_id = json.max_id_str;
@@ -257,9 +255,7 @@ function WidgetListView(id, name, params) {
         if (self.item_type == 'cursor') {        // friends or followers
             self.cursor = json.next_cursor_str;
         } else if (self.item_type == 'page') { // fav, 
-            if (json.page){
-                self.page = self.page + 1;
-            }
+            self.page = self.page + 1;
         } else if (self.item_type == 'search'){
             if (json.max_id_str){
                 self.max_id = json.max_id_str;

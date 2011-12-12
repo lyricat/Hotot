@@ -696,6 +696,7 @@ function addDefaultView(name, opts) {
             , 'method': 'poll'
             , 'interval': 360
             , 'item_type': 'page'
+            , 'is_trim': false
         }, opts));
     break;
     default: break;
