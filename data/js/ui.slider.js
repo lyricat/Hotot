@@ -428,7 +428,7 @@ function slide_to(id) {
         view_title.attr('name', ui.Slider.displayed[i])
         view_title.children('.title')
             .text(ui.Main.views[ui.Slider.displayed[i]].title);
-        if (ui.Slider.displayed[i] == 'home' || ui.Slider.displayed[i] == 'search') {
+        if (ui.Slider.displayed[i] == 'home' || ui.Slider.displayed[i] == 'mentions' || ui.Slider.displayed[i] == 'search') {
             view_title.children('.close_btn').hide();
         } else {
             view_title.children('.close_btn').show();
