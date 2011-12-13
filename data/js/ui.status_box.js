@@ -116,7 +116,7 @@ function init () {
                 }
                 ext.HototImageUpload.upload_dialog.open();
             } else {
-                globals.imageuploader_dialog.open();
+                ui.ImageUploader.show();
             }
         } else {
             title = 'Error !'
@@ -185,6 +185,12 @@ function init () {
         return false;
     }).bind('drop', function (ev) {
         ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
+
+        if (! ui.FormChecker.test_file_image(ui.StatusBox.file)) {
+            toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+            return false;
+        }
+
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#status_image_preview')
@@ -214,6 +220,7 @@ function init () {
     });
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
+    ui.StatusBox.reg_fake_dots2 = new RegExp('(…\\.+)|(…。+)', 'g');
     
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
@@ -259,6 +266,7 @@ formalize:
 function formalize() {
     var text = $('#tbox_status').val(); 
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
+    text = text.replace(ui.StatusBox.reg_fake_dots2, '……');
     text = text.replace('<3', '&#x2665;');
     $('#tbox_status').val(text);
 },
@@ -378,9 +386,19 @@ function post_message_cb(result) {
 post_image:
 function post_image(msg) {
     var params = {'message': msg};
+    switch (ui.ImageUploader.service_name) {
+    case 'twitpic.com' :
+        params['key'] = ui.ImageUploader.services['twitpic.com'].key;
+    break;
+    case 'lockerz.com' :
+        params['isoauth'] = 'true';
+        params['response_format'] = 'JSON';
+        params['api_key'] = ui.ImageUploader.services['lockerz.com'].key;
+    break;
+    }
     toast.set('Uploading ... ').show();
     ui.ImageUploader.upload_image(
-          ui.ImageUploader.services['img.ly'].url
+          ui.ImageUploader.services[ui.ImageUploader.service_name].url
         , params
         , ui.StatusBox.file
         , ui.StatusBox.post_image_cb
@@ -396,10 +414,15 @@ function post_image(msg) {
 post_image_cb:
 function post_image_cb(result) {
     toast.set('Uploading Successfully!').show();
-    var text = result.text + ' '+ result.url;
-    $('#tbox_status').val(text);
-    ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
-    ui.StatusBox.update_status(text);
+    if (ui.ImageUploader.service_name === 'twitter.com') {
+        ui.StatusBox.reset(); 
+        ui.StatusBox.close(); 
+        ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
+    } else {
+        var text = result.text + ' '+ result.url;
+        $('#tbox_status').val(text);
+        ui.StatusBox.update_status(text);
+    }
     return this;
 },
 

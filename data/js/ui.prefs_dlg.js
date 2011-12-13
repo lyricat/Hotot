@@ -63,7 +63,7 @@ function init () {
     
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
-        $('#sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).attr('checked'));
         if (! $('#chk_prefs_use_http_proxy_auth').attr('disabled')) { 
             $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').attr('checked'));
         } else {
@@ -124,7 +124,6 @@ function load_settings() {
     if (util.is_native_platform()) {
         $('#chk_prefs_use_http_proxy').attr('checked'
             , conf.settings.use_http_proxy);
-        $('#sel_prefs_http_proxy_scheme').val(conf.settings.http_proxy_scheme || 'http');
         $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
         $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
         if (! conf.settings.use_http_proxy) {
@@ -139,7 +138,7 @@ function load_settings() {
         }
     } else {
         $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
-        $('#chk_prefs_use_http_proxy, #sel_prefs_http_proxy_scheme, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        $('#chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
     }
 },
 
@@ -156,8 +155,6 @@ function save_settings() {
     if (util.is_native_platform()) {
         conf.settings.use_http_proxy
             = $('#chk_prefs_use_http_proxy').attr('checked');
-        conf.settings.http_proxy_scheme
-            = $('#sel_prefs_http_proxy_scheme').val();
         conf.settings.http_proxy_host 
             = $('#tbox_prefs_http_proxy_host').val();
         conf.settings.http_proxy_port 
@@ -184,8 +181,7 @@ function load_prefs() {
         , prefs.remember_password);
 
     // Appearance
-    var lang_list = $('#sel_prefs_lang');
-    lang_list.val(prefs.lang);
+    $('#sel_prefs_lang').val(prefs.lang);
 
     var theme_list = $('#sel_prefs_theme').empty();
     for (var i = 0, l = conf.vars.builtin_themes.length; i < l; i += 1) {
@@ -229,6 +225,8 @@ function load_prefs() {
         , prefs.use_alt_reply);
     $('#chk_prefs_use_media_preview').attr('checked'
         , prefs.use_media_preview);
+    
+    $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
 
     // Advanced
     $('#tbox_prefs_api_base').val(prefs.api_base);
@@ -279,6 +277,7 @@ function save_prefs() {
         = $('#chk_prefs_use_alt_reply').attr('checked'); 
     prefs['use_media_preview']
         = $('#chk_prefs_use_media_preview').attr('checked'); 
+    prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
 
     // Advanced
     prefs['api_base']

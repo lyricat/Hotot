@@ -7,6 +7,10 @@
 		"message": "全部",
 		"description": "All"
 	},
+	"to_cold_beauty": {
+		"message": "冷艳的嘉敏",
+		"description": "data/index.html"
+	},
 	"global": {
 		"message": "全局",
 		"description": "data/index.html"
@@ -43,9 +47,9 @@
 		"message": "还能hold住",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"add_to_list": {
-		"message": "添加到列表",
-		"description": "data/js/ui.template.js"
+	"find": {
+		"message": "查找",
+		"description": "data/index.html"
 	},
 	"compose": {
 		"message": "撰写新状态",
@@ -81,6 +85,10 @@
 	},
 	"interface_language": {
 		"message": "介面语言",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Kismet 向导",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
@@ -139,6 +147,10 @@
 		"message": "URL缩短器",
 		"description": "data/index.html"
 	},
+	"schizophrenia": {
+		"message": "裂裂的芬芳",
+		"description": "data/index.html"
+	},
 	"please_enter_the_recipient": {
 		"message": "殿下，请指定收件人！",
 		"description": "data/js/ui.status_box.js"
@@ -183,6 +195,10 @@
 		"message": "写私信",
 		"description": "data/js/ui.status_box.js"
 	},
+	"add_to_list": {
+		"message": "添加到列表",
+		"description": "data/js/ui.template.js"
+	},
 	"version": {
 		"message": "版本",
 		"description": "data/js/ui.exts_dlg.js"
@@ -190,6 +206,10 @@
 	"oauth_base": {
 		"message": "OAuth Base",
 		"description": ""
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "吾之旅程在那星辰大海",
+		"description": "data/index.html"
 	},
 	"reply": {
 		"message": "回复",
@@ -215,6 +235,10 @@
 		"message": "撤销成功！",
 		"description": "data/js/ui.main.js"
 	},
+	"kismet_mute_hint": {
+		"message": "警告：凡是具备如下特征的推都将被抛弃，不予显示。",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "取消收藏...",
 		"description": "data/js/ui.main.js"
@@ -231,9 +255,21 @@
 		"message": "搜索",
 		"description": "data/js/ui.slider.js"
 	},
+	"hidden_dark_minds": {
+		"message": "腹黑的老K",
+		"description": "data/index.html"
+	},
+	"drag_a_photo_here": {
+		"message": "拖拽一张照片至此处",
+		"description": "data/index.html"
+	},
 	"license": {
 		"message": "许可",
 		"description": ""
+	},
+	"panda_acts_cute": {
+		"message": "卖萌的熊猫",
+		"description": "data/index.html"
 	},
 	"move_to_top": {
 		"message": "移到顶部",
@@ -251,8 +287,8 @@
 		"message": "提到你的",
 		"description": "data/js/ui.slider.js"
 	},
-	"delete": {
-		"message": "删除",
+	"identica": {
+		"message": "Identi.ca",
 		"description": ""
 	},
 	"official_retweet_this_tweet": {
@@ -299,6 +335,10 @@
 		"message": "Search API Base",
 		"description": ""
 	},
+	"quick_references": {
+		"message": "快速参考",
+		"description": "data/index.html"
+	},
 	"px": {
 		"message": "像素",
 		"description": ""
@@ -307,9 +347,17 @@
 		"message": "殿下，您的新账户已经创建成功！",
 		"description": "data/js/ui.welcome.js"
 	},
-	"shortcuts": {
-		"message": "快捷键",
+	"shiny_old_times_before_marriage": {
+		"message": "婚前的旧时光",
 		"description": "data/index.html"
+	},
+	"next": {
+		"message": "下一步",
+		"description": "data/index.html"
+	},
+	"custom_font": {
+		"message": "自定义字体",
+		"description": ""
 	},
 	"preview": {
 		"message": "预览",
@@ -351,13 +399,9 @@
 		"message": "朋友",
 		"description": "data/js/ui.template.js"
 	},
-	"mention_them": {
-		"message": "提及",
+	"retweeted_by": {
+		"message": "转发人:",
 		"description": "data/js/ui.template.js"
-	},
-	"undo_retweeting_dots": {
-		"message": "撤销转发...",
-		"description": "data/js/ui.main.js"
 	},
 	"same_signing_api_base": {
 		"message": "使用相同API进行签名",
@@ -383,12 +427,16 @@
 		"message": "魔法值",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"cuddly": {
+		"message": "可乐小V",
+		"description": "data/index.html"
+	},
 	"keyboard_shortcuts": {
 		"message": "键盘快捷键",
 		"description": ""
 	},
-	"restore_defaults": {
-		"message": "恢复默认值",
+	"profile_name": {
+		"message": "账户名",
 		"description": ""
 	},
 	"home_timeline": {
@@ -398,6 +446,10 @@
 	"behavior": {
 		"message": "行为",
 		"description": ""
+	},
+	"Insert_smiley": {
+		"message": "插入表情",
+		"description": "data/index.html"
 	},
 	"updating_dots": {
 		"message": "更新中……",
@@ -415,32 +467,32 @@
 		"message": "打开一个列表",
 		"description": "data/index.html"
 	},
-	"profile_name": {
-		"message": "账户名",
+	"restore_defaults": {
+		"message": "恢复默认值",
 		"description": ""
 	},
 	"clean_token": {
 		"message": "清空令牌",
 		"description": "data/index.html"
 	},
+	"network_error_please_try_later": {
+		"message": "网路故障，请稍候再试喵！",
+		"description": "data/js/ui.welcome.js"
+	},
 	"save_as_draft": {
 		"message": "保存到草稿",
 		"description": "data/index.html"
-	},
-	"information": {
-		"message": "信息",
-		"description": ""
 	},
 	"author": {
 		"message": "作者",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "如果可能的话，预加载对话的上一条状态",
-		"description": ""
+	"verify": {
+		"message": "校验",
+		"description": "data/index.html"
 	},
-	"Insert_smiley": {
-		"message": "插入表情",
+	"just_cannot_stop_thinking_of_here": {
+		"message": "吾只是有点怀念这儿",
 		"description": "data/index.html"
 	},
 	"followers": {
@@ -451,9 +503,9 @@
 		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"extensions": {
-		"message": "扩展",
-		"description": ""
+	"select_fields": {
+		"message": "选择您感兴趣的部位",
+		"description": "data/index.html"
 	},
 	"retweets_view": {
 		"message": "转发",
@@ -469,6 +521,10 @@
 	},
 	"effects_normal": {
 		"message": "中",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "选择一个默认图片服务",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -487,17 +543,21 @@
 		"message": "禁用",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"favorites": {
-		"message": "收藏",
+	"intelligent_filter": {
+		"message": "智能过滤器",
 		"description": "data/index.html"
 	},
-	"move_to_next_tweet": {
-		"message": "移动到下一条状态",
-		"description": "data/index.html"
+	"you_are_not_following_each_other": {
+		"message": "你们宛如路人，擦身而过，不相往来。",
+		"description": "data/js/ui.peopleview.js"
 	},
 	"font_size": {
 		"message": "字体大小",
 		"description": ""
+	},
+	"bloody_marguerite": {
+		"message": "血腥的苏酱",
+		"description": "data/index.html"
 	},
 	"options": {
 		"message": "选项",
@@ -506,6 +566,10 @@
 	"block": {
 		"message": "屏蔽",
 		"description": "data/js/ui.template.js"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "如果可能的话，预加载对话的上一条状态",
+		"description": ""
 	},
 	"step_two": {
 		"message": "第二步",
@@ -535,9 +599,13 @@
 		"message": "发送消息",
 		"description": ""
 	},
-	"network_error_please_try_later": {
-		"message": "网路故障，请稍候再试喵！",
-		"description": "data/js/ui.welcome.js"
+	"undo_retweeting_dots": {
+		"message": "撤销转发...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs_view": {
+		"message": "我的收藏",
+		"description": "data/index.html"
 	},
 	"keyboard": {
 		"message": "键盘",
@@ -558,6 +626,10 @@
 	"regain_access_token_with_twitter": {
 		"message": "重新获取Twitter访问令牌",
 		"description": ""
+	},
+	"add": {
+		"message": "添加",
+		"description": "data/index.html"
 	},
 	"send_message_to_them": {
 		"message": "发送私信",
@@ -587,6 +659,10 @@
 		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"default_picture_service": {
+		"message": "默认图片服务",
+		"description": "data/index.html"
+	},
 	"mentions_view": {
 		"message": "提到我的",
 		"description": "data/index.html"
@@ -602,6 +678,10 @@
 	"password": {
 		"message": "密码",
 		"description": ""
+	},
+	"transparent": {
+		"message": "透明",
+		"description": "data/index.html"
 	},
 	"advanced": {
 		"message": "高级",
@@ -627,13 +707,17 @@
 		"message": "精力充沛",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"kismet_content_firewall": {
-		"message": "Kismet 防火墙",
+	"drop": {
+		"message": "丢弃",
 		"description": "data/index.html"
 	},
 	"greeting": {
 		"message": "殿下您好！",
 		"description": ""
+	},
+	"assassin_s_tango": {
+		"message": "壳酱的诡计",
+		"description": "data/index.html"
 	},
 	"system_font": {
 		"message": "系统字体",
@@ -655,9 +739,17 @@
 		"message": "取消",
 		"description": ""
 	},
+	"examples": {
+		"message": "示例",
+		"description": "data/index.html"
+	},
 	"search_in_google": {
 		"message": "在Google中搜索@",
 		"description": ""
+	},
+	"select_actions": {
+		"message": "选择动作",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "成功发送！",
@@ -667,17 +759,33 @@
 		"message": "重新加载",
 		"description": "data/index.html"
 	},
+	"rule_based_filter": {
+		"message": "规则过滤器",
+		"description": "data/index.html"
+	},
 	"authentication_ok": {
 		"message": "验证通过！",
 		"description": "data/js/ui.welcome.js"
+	},
+	"mute_filter": {
+		"message": "屏蔽器",
+		"description": "data/index.html"
 	},
 	"view_more_conversation": {
 		"message": "查看会话",
 		"description": "data/js/ui.template.js"
 	},
+	"wanna_have_relationship_with": {
+		"message": "咸湿佬",
+		"description": "data/index.html"
+	},
 	"lists_of_them": {
 		"message": "该用户的列表",
 		"description": "data/js/ui.template.js"
+	},
+	"reply_all": {
+		"message": "回复所有",
+		"description": ""
 	},
 	"clear_and_close": {
 		"message": "清空并且关闭",
@@ -698,10 +806,6 @@
 	"favs": {
 		"message": "收藏",
 		"description": "data/js/ui.template.js"
-	},
-	"tweets_per_day": {
-		"message": "每日发推量",
-		"description": "data/index.html"
 	},
 	"create_a_list": {
 		"message": "创建一个新列表",
@@ -739,16 +843,28 @@
 		"message": "超过140字了，亲！",
 		"description": "data/js/ui.status_box.js"
 	},
+	"titian_s_elegance": {
+		"message": "文艺的缇香",
+		"description": "data/index.html"
+	},
 	"select_a_language": {
 		"message": "选择语言",
 		"description": "data/index.html"
 	},
-	"more_actions": {
-		"message": "更多动作",
-		"description": "data/js/ui.template.js"
+	"virushou_s_integrity": {
+		"message": "火炬的正直",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "上传到 ...",
+		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
 		"message": "预览嵌入的多媒体",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "规则编辑器",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -763,10 +879,6 @@
 		"message": "杂项",
 		"description": "data/index.html"
 	},
-	"follower_stat": {
-		"message": "粉丝统计",
-		"description": ""
-	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
 		"message": "或者在浏览器中打开以下地址",
 		"description": ""
@@ -775,13 +887,17 @@
 		"message": "通知",
 		"description": ""
 	},
+	"set_color_label": {
+		"message": "染色",
+		"description": "data/index.html"
+	},
 	"update_successfully": {
 		"message": "更新成功！",
 		"description": "data/js/ui.status_box.js"
 	},
-	"you_are_not_following_each_other": {
-		"message": "你们宛如路人，擦身而过，不相往来。",
-		"description": "data/js/ui.peopleview.js"
+	"move_to_next_tweet": {
+		"message": "移动到下一条状态",
+		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
 		"message": "点击切换DM模式",
@@ -790,10 +906,6 @@
 	"you_are_following": {
 		"message": "你默默地，关注着他／她／它…",
 		"description": "data/js/ui.peopleview.js"
-	},
-	"friend_stat": {
-		"message": "朋友统计",
-		"description": ""
 	},
 	"same_signing_oauth_base": {
 		"message": "使用同样的OAuth地址进行签名",
@@ -815,6 +927,10 @@
 		"message": "打开一个用户页",
 		"description": "data/index.html"
 	},
+	"extensions": {
+		"message": "扩展",
+		"description": ""
+	},
 	"pin_code": {
 		"message": "PIN Code",
 		"description": ""
@@ -835,10 +951,6 @@
 		"message": "已启用",
 		"description": ""
 	},
-	"username": {
-		"message": "用户名",
-		"description": ""
-	},
 	"globals_restart_hint": {
 		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
 		"description": ""
@@ -847,17 +959,21 @@
 		"message": "上传照片",
 		"description": "data/index.html"
 	},
-	"identica": {
-		"message": "Identi.ca",
+	"delete": {
+		"message": "删除",
 		"description": ""
 	},
-	"reply_all": {
-		"message": "回复所有",
+	"username": {
+		"message": "用户名",
 		"description": ""
 	},
-	"custom_font": {
-		"message": "自定义字体",
-		"description": ""
+	"struggling_adventurers": {
+		"message": "苦逼的Kee叔",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "快捷键",
+		"description": "data/index.html"
 	},
 	"whisper": {
 		"message": "低语",
@@ -867,9 +983,17 @@
 		"message": "木有扩展",
 		"description": "data/index.html"
 	},
-	"join_time": {
-		"message": "加入时间",
-		"description": ""
+	"pretty_wife": {
+		"message": "俏人妻西乔",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "祝汝幸福",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "归档",
+		"description": "data/index.html"
 	},
 	"retweeting_dots": {
 		"message": "转发中...",
@@ -899,10 +1023,6 @@
 		"message": "切换到下一页",
 		"description": "data/index.html"
 	},
-	"picture": {
-		"message": "照片",
-		"description": "data/index.html"
-	},
 	"stat": {
 		"message": "统计",
 		"description": ""
@@ -923,13 +1043,21 @@
 		"message": "更新",
 		"description": ""
 	},
+	"rule_name": {
+		"message": "规则名",
+		"description": "data/index.html"
+	},
+	"filter_like_it": {
+		"message": "过滤类似的推",
+		"description": "data/index.html"
+	},
 	"look_and_feels": {
 		"message": "感官",
 		"description": ""
 	},
-	"favs_view": {
-		"message": "我的收藏",
-		"description": "data/index.html"
+	"more_actions": {
+		"message": "更多动作",
+		"description": "data/js/ui.template.js"
 	},
 	"friends": {
 		"message": "朋友",
@@ -951,8 +1079,16 @@
 		"message": "你们默默地关注着对方…",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"retweeted_by": {
-		"message": "转发人:",
+	"mask": {
+		"message": "屏蔽",
+		"description": "data/index.html"
+	},
+	"rule": {
+		"message": "规则",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "提及",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {

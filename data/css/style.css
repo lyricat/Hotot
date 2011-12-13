@@ -33,6 +33,10 @@ pre {
     margin: 10px 0;
 }
 
+::selection {
+    background: #a8d1ff;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -849,19 +853,16 @@ pre {
 
 /* ===== Finder =================================== */
 #finder_bar {
-    top: 0px;    
+    bottom: 0px;
     z-index: 9999;
     position: fixed;
     right: 20px;
-    font-size:12px;
-    padding: 0px 5px 3px 5px;
+    font-size: 12px;
+    padding: 3px 5px;
     display: none;
-    background: #ececec;
-    border-color: transparent #ccc #ccc #ccc;
-    border-width: 1px;
-    border-style: solid; 
-    border-bottom-left-radius: 3px 3px;
-    border-bottom-right-radius: 3px 3px;
+    background: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 3px 3px;
+    border-top-right-radius: 3px 3px;
 }
 
 #finder_wrapper {
@@ -872,10 +873,10 @@ pre {
 
 #tbox_finder {
     width: 150px;
+    font-size: 12px;
     height: 14px;
+    line-height: 14px;
     display: inline-block;
-    background: none;
-    border: none;
     margin: 0;
     vertical-align:middle;
 }
@@ -1123,10 +1124,19 @@ label {
     text-align: center;
 }
 
-.header_inner > .search_entry {
+.search_box > .search_entry {
     text-align: left;
-    width: 220px;
+    width: 300px;
     margin-right: 10px;
+    vertical-align: middle;
+}
+.search_box > .search_entry_clear_btn {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: -40px;
+    background: transparent url(../image/ic16_clear_text.png) no-repeat center;
+    vertical-align: middle;
 }
 .search_box {
     background-color: #F2F2F2;
@@ -1144,12 +1154,13 @@ label {
 .search_no_result_hint .keywords {
     font-weight: bold;
 }
-.retweets_view_toggle, .search_view_toggle, .people_view_toggle, .list_view_toggle {
+.retweets_view_toggle, .people_view_toggle, .list_view_toggle {
     text-align: center;
     margin-top: 5px;
 }
 .search_view_toggle {
     margin-top: 5px;
+    text-align: right;
 }
 
 /*===== Welcome Page ================================*/
@@ -1443,16 +1454,21 @@ label {
 }
 
 #profile_dlg .entry {
-    width: 50%;
+    width: 95%;
 }
 
-#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header {
+#profile_dlg .dialog_header {
+    padding: 10px;
+    height: 48px;
+}
+
+#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
     padding: 10px;
     height: 32px;
     background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #profile_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
+#oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
     height: 0;
     padding: 0;
     display: none;
@@ -1563,11 +1579,7 @@ label {
 
 /*===== Profile Dialog ================================*/
 #profile_avatar {
-    width: 64px !important;
-    height: 64px !important;
-    margin: 0 auto;
-    padding: 1px;
-    display: block !important;
+
 }
 
 #profile_stat * {
@@ -1580,74 +1592,172 @@ label {
 }
 
 /*===== Kismet Dialog ================================*/
-#kismet_dlg .dialog_header {
-    height: 0px;
-    padding: 0;
-} 
 
-#kismet_dlg .dialog_body {
+#kismet_dialog {
+    width: 600px;
+    margin: 0 auto;
+}
+#kismet_dialog .header {
+    padding: 20px;
+    background-color: #323232;
+}
+#kismet_dialog .body {
+    background-color: #fff;
+    height: 500px;
+    padding: 10px 20px;
+}
+#kismet_dialog .ctrl {
+    margin-bottom: 10px;
+}
+#kismet_dialog .rule_list {
+    border: 1px #ccc solid;
+    overflow-y: auto;
     height: 300px;
 }
-
-#kismet_dlg .dialog_footer {
-    height: 30px;
-    padding: 10px;
-}
-
-#kismet_rule_list {
-    height: 50%;
-    border: 1px #ccc solid;
-    background-color: #fff;
-    overflow: auto;
-}
-
-#kismet_rule_action, #kismet_rule_info {
-    margin-top: 10px;
-}
-
-#kismet_dlg table {
-    width: 100%;
-}
-
-#kismet_rule_ctrl li {
-    display: inline-block;
-}
-
-#kismet_rule_ctrl a {
-    display: inline-block;
-    height: 20px;
-    line-height: 20px;
-    padding: 0;
-}
-
-#kismet_rule_ctrl a:hover {
-    border-color: #ccc;
-}
-
-.kismet_rule {
+#kismet_dialog .rule_list li {
+    position: relative;
     display: block;
-    line-height: 20px;
-    height: 20px;
-    padding: 2px 5px;
-    color: black;
-    text-decoration: none;
-    border-bottom: 1px #ddd solid;
+    border-top:1px #ccc solid;
+    border-right:1px #ccc solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.kismet_rule:hover {
+#kismet_dialog .rule_list li:last-child {
+    border-bottom:1px #ccc solid;
+    border-top: 1px #ccc solid;
+}
+#kismet_dialog .rule_list li:first-child {
+    border-top: 0;
+}
+#kismet_dialog .rule {
+    padding: 0px 15px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#kismet_dialog .kismet_page {
+    display: none;
+}
+
+#kismet_dialog .ctrl .button {
+    vertical-align: middle;
+}
+
+#kismet_dialog .rule:hover {
     background: lightgray;
 }
-
-.kismet_rule[disabled="1"] {
-    color: gray !important;
-}
-
-.kismet_rule.selected {
-    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+#kismet_dialog .rule.selected {
+    background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3)) !important;
     color: white;
 }
+#kismet_guide_dialog .sample_area {
+    background-color: white;
+    border: 1px #ccc solid;
+    font-size: 12px;
+    line-height: 20px;
+}
+#kismet_guide_dialog .sample_area *{
+    color: #333 !important;
+    background-color: white;
+}
+#kismet_guide_dialog .sample_area .tweet_fav_indicator {
+    display: none;
+}
+#kismet_guide_dialog .sample_area .text{ 
+    line-height: 2em;
+}
+#kismet_guide_dialog .sample_area .who_href,
+#kismet_guide_dialog .sample_area .word,
+#kismet_guide_dialog .sample_area .hash_href,
+#kismet_guide_dialog .sample_area .tweet_source > a{ 
+    border: 1px #666 solid;
+    padding: 2px;
+    margin: 5px;
+    cursor: pointer;
+}
+#kismet_guide_dialog .sample_area .marked{ 
+    border: 1px red solid;
+    background-color: rgba(255,0,0, 0.3);
+}
+#kismet_quick_refs {
+    font-size: 11px;
+}
+#kismet_quick_refs a {
+    color: blue !important;
+}
 
+#kismet_quick_refs ul.docs {
+    height: 180px;
+    overflow: auto;
+    border: 1px #ccc solid;
+    padding: 5px;
+}
+#kismet_quick_refs h4 {
+    font-weight: bold;
+    padding: 3px 0px;
+}
+#kismet_quick_refs li{
+    margin: 5px 0;
+}
+#kismet_quick_refs li p {
+    padding-left: 5px;
+}
 
+#kismet_dialog .item_ctrl {
+    display: none;
+    background-color:#f2f2f2;
+    height: 30px;
+    text-align: right;
+    padding: 10px 30px;
+}
+#kismet_dialog .item_ctrl .button{
+    margin: 0 10px;
+}
+
+#kismet_dialog li.selected .item_ctrl {
+    display: block;
+}
+
+#kismet_color_list {
+    list-style-type: none;
+}
+#kismet_color_list li, #kismet_color_list a{
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    color: #333;
+}
+#kismet_color_list li{
+    position: relative;
+}
+
+#kismet_color_list li:hover {
+    background-color: lightgray;
+}
+
+#kismet_color_list .cell {
+    content: " ";
+    display: block;
+    float: left;
+    border: 1px #333 solid;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+}
+#kismet_color_list a {
+    padding-left: 40px;
+    text-decoration: none;
+}
 /*===== ImageUploader Dialog ================================*/
 #imageuploader_dlg {
     
@@ -1822,16 +1932,13 @@ label {
     display: block;
 }
 
-.card > .tweet_active_indicator {
+.card > .tweet_color_label {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 30%;
-    height: 100%;
-}
-
-.card.active > .tweet_active_indicator{
-    background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0.8)), to(rgba(255,255,255,0)));
+    width: 5px;
+    bottom: 0px;
+    display: block;
 }
 
 .card > .tweet_fav_indicator {
@@ -1938,6 +2045,18 @@ label {
     word-wrap: break-word;
 }
 
+.media_preview a {
+    margin:2px 5px;
+    padding:0;
+    display:inline-block;
+}
+.media_preview img {
+    padding:4px;
+    border:1px #ccc solid;
+    background:#fff; 
+    margin:0;
+    height: 150px
+}
 
 .tweet_meta {
     left: 10px;
@@ -2189,4 +2308,7 @@ td {
 }
 .ic_close {
     background: transparent url(../image/ic16_close.png) no-repeat;
+}
+.ic_clear_text {
+    background: transparent url(../image/ic16_clear_text.png) no-repeat;
 }

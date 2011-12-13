@@ -14,6 +14,8 @@ sign_api_base: 'https://api.twitter.com/',
 
 search_api_base2: 'https://twitter.com/phoenix_search.phoenix',
 
+upload_api_base: 'https://upload.twitter.com/1/',
+
 use_same_sign_api_base: true,
 
 source: 'Hotot',
@@ -22,6 +24,7 @@ default_error_method: 'notify',
 
 http_code_msg_table : {
       0: 'Lost connection with server.'
+    , 400: 'Bad Request: The request was invalid.'
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
     , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
@@ -181,6 +184,45 @@ function update_status(text, reply_to_id, on_success, on_error) {
     lib.twitterapi.post(url, params, on_success, on_error);
 },
 
+update_with_media:
+function update_with_media(text, reply_to_id, file, file_data, on_success, on_error) {
+    var url = lib.twitterapi.upload_api_base + 'statuses/update_with_media.json';
+    var signed_params = jsOAuth.form_signed_params(
+              url
+            , jsOAuth.access_token
+            , 'POST'
+            , {}
+            , true);
+    var params = {'status': text, 'include_entities': '1'};
+    if (reply_to_id) {
+        params['in_reply_to_status_id'] = reply_to_id;
+    }
+    $.extend(params, signed_params);
+
+    var auth_str = 
+        'OAuth oauth_consumer_key="'+signed_params.oauth_consumer_key+'"'
+    + ', oauth_signature_method="'+signed_params.oauth_signature_method+'"'
+    + ', oauth_token="'+signed_params.oauth_token+'"'
+    + ', oauth_timestamp="'+signed_params.oauth_timestamp+'"'
+    + ', oauth_nonce="'+ signed_params.oauth_nonce +'"'
+    + ', oauth_version="'+signed_params.oauth_version+'"'
+    + ', oauth_signature="'
+        + encodeURIComponent(signed_params.oauth_signature)+'"';
+    var headers = {'Authorization': auth_str};
+    var form_data = lib.network.encode_multipart_formdata(
+            params, file, 'media[]', file_data);
+    $.extend(headers, form_data[0]);
+
+    lib.network.do_request(
+            'POST'
+            , url
+            , signed_params 
+            , headers
+            , form_data[1] // body
+            , on_success
+            , on_error);
+},
+
 retweet_status:
 function retweet_status(retweet_id, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweet/'+retweet_id+'.json';
@@ -245,6 +287,7 @@ function get_mentions(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/mentions.json';
     var params={
         'include_entities': '1',
+        'include_rts': '1',
         'page': '0',
         'count': count,
     };
@@ -363,7 +406,7 @@ function get_user_timeline(user_id, screen_name, since_id,
     var url = lib.twitterapi.api_base + 'statuses/user_timeline.json';
     var params={
         'include_entities': '1',
-        'include_rts': 'true',
+        'include_rts': '1',
         'page': '0',
         'count': count,
     };
@@ -446,18 +489,45 @@ get_user_profile_image:
 function get_user_profile_image(screen_name, size) {
     var url = lib.twitterapi.api_base + 'users/profile_image/twitter.json'
         + '?size='+ size
-        + '&screen_name=' + screen_name;
+        + '&screen_name=' + screen_name
+        + '&rnd=' + Math.random();
     return url;
 },
 
 update_profile_image:
-function update_profile_image(image, on_success) {
-    var url = lib.twitterapi.api_base + 'account/update_profile_image.json'
-    var params = {'image': image, 
-        'include_entities': 'true',
-        'skip_status': 'true'
-    };
-    lib.twitterapi.post(url, params, on_success);
+function update_profile_image(file, file_data, on_success) {
+    var url = lib.twitterapi.api_base + 'account/update_profile_image.json';
+    var signed_params = jsOAuth.form_signed_params(
+              url
+            , jsOAuth.access_token
+            , 'POST'
+            , {}
+            , true);
+    var auth_str = 
+        'OAuth oauth_consumer_key="'+signed_params.oauth_consumer_key+'"'
+    + ', oauth_signature_method="'+signed_params.oauth_signature_method+'"'
+    + ', oauth_token="'+signed_params.oauth_token+'"'
+    + ', oauth_timestamp="'+signed_params.oauth_timestamp+'"'
+    + ', oauth_nonce="'+ signed_params.oauth_nonce +'"'
+    + ', oauth_version="'+signed_params.oauth_version+'"'
+    + ', oauth_signature="'
+        + encodeURIComponent(signed_params.oauth_signature)+'"';
+    
+    var headers = {'Authorization': auth_str};
+
+    var form_data = lib.network.encode_multipart_formdata(
+            signed_params, file, 'image', file_data);
+
+    $.extend(headers, form_data[0]);
+    lib.network.do_request(
+            'POST'
+            , url
+            , signed_params 
+            , headers
+            , form_data[1] // body
+            , on_success
+            , null);
+    //lib.twitterapi.post(url, params, on_success);
 },
 
 update_profile:
@@ -671,7 +741,7 @@ function verify(on_success, on_error) {
 },
 
 search:
-function search(query, page, since_id, max_id, on_success) {
+function search(query, page, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.search_api_base2;
     if (url == 'https://twitter.com/phoenix_search.phoenix'){
         var params={
@@ -688,7 +758,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (page != null) _page.push('page=' + page);
         params['page'] = _page.join('&');
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     } else {
         var params={
@@ -698,7 +768,7 @@ function search(query, page, since_id, max_id, on_success) {
         if (max_id != null) params['max_id'] = max_id;
         if (page != null) params['page'] = page;
         lib.twitterapi.source = '';
-        lib.twitterapi.get(url, params, on_success);
+        lib.twitterapi.get(url, params, on_success, on_error);
         lib.twitterapi.source = 'Hotot';
     }
 

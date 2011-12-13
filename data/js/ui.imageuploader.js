@@ -12,6 +12,9 @@ services : {
           url: 'http://api.plixi.com/api/upload.aspx'
         , key: 'a3beab3a-d1ae-46c0-a4ab-5ac73d8eb43a'
     },
+    'twitter.com': {
+          url: 'https://upload.twitter.com/1/update_with_media.json'
+    }
 },
 
 service_name: '',
@@ -42,9 +45,6 @@ function init() {
         $(this).addClass('selected');
         ui.ImageUploader.service_name = $(this).attr('href').substring(1);
     });
-    ui.ImageUploader.service_name = 
-        ui.ImageUploader.me.find('.service.selected')
-            .attr('href').substring(1);
 
     ui.ImageUploader.me.find('.dragarea').bind('dragover', function () {
         return false;    
@@ -52,6 +52,10 @@ function init() {
         return false;
     }).bind('drop', function (ev) {
         ui.ImageUploader.file = ev.originalEvent.dataTransfer.files[0]; 
+        if (! ui.FormChecker.test_file_image(ui.ImageUploader.file)) {
+            toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+            return false;
+        }
         var reader = new FileReader();
         reader.onload = function (e) {
             ui.ImageUploader.me.find('.preview')
@@ -64,6 +68,10 @@ function init() {
 
 upload:
 function upload(file) {
+    if (! ui.FormChecker.test_file_image(file)) {
+        toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
+        return false;
+    }
     // form params
     var msg = ui.ImageUploader.me.find('.message').val();
     var service_name = ui.ImageUploader.service_name;
@@ -90,6 +98,28 @@ function upload(file) {
 
 upload_image:
 function upload_image(url, params, file, success, fail) {
+    if (ui.ImageUploader.service_name === 'twitter.com') {
+        ui.ImageUploader.upload_image_official(params, file, success, fail);
+    } else {
+        ui.ImageUploader.upload_image_oauth_echo(url, params, file, success, fail);
+    }
+},
+
+upload_image_official:
+function upload_image_official(params, file, success, fail) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        if (params['message'].length === 0) {
+            params['message'] = 'I have uploaded a photo.'
+        }
+        lib.twitterapi.update_with_media(params['message'], 
+            null, file, e.target.result, success, fail);
+    }
+    reader.readAsArrayBuffer(file);
+},
+
+upload_image_oauth_echo:
+function upload_image_oauth_echo(url, params, file, success, fail) {
     var signed_params = jsOAuth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
             , jsOAuth.access_token
@@ -112,7 +142,7 @@ function upload_image(url, params, file, success, fail) {
     reader.onload = function (e) {
         var result = e.target.result;
         var ret = lib.network.encode_multipart_formdata(
-            params, file, result);
+            params, file, 'media', result);
         $.extend(headers, ret[0]);
         lib.network.do_request(
             'POST'
@@ -130,22 +160,26 @@ success:
 function success(result) {
     globals.imageuploader_dialog.close();
     toast.set('Uploading Successfully!').show();
-    ui.StatusBox.open();
-    var url = ''; var text = '';
-    switch (ui.ImageUploader.service_name) {
-    case 'lockerz.com':
-        url = result.MediaUrl;
-        text = ui.ImageUploader.me.find('.message').val();
-    break;
-    default:
-        url = result.url;
-        text = result.text;
-    break;
+    if (ui.ImageUploader.service_name == 'twitter.com') {
+        ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
+    } else {
+        ui.StatusBox.open();
+        var url = ''; var text = '';
+        switch (ui.ImageUploader.service_name) {
+        case 'lockerz.com':
+            url = result.MediaUrl;
+            text = ui.ImageUploader.me.find('.message').val();
+        break;
+        default:
+            url = result.url;
+            text = result.text;
+        break;
+        }
+        ui.StatusBox.append_status_text(text + ' '+ url);
+        ui.ImageUploader.file = null;
+        ui.ImageUploader.me.find('.message').val('');
+        ui.ImageUploader.me.find('.preview').css('background-image', 'none');
     }
-    ui.StatusBox.append_status_text(text + ' '+ url);
-    ui.ImageUploader.file = null;
-    ui.ImageUploader.me.find('.message').val('');
-    ui.ImageUploader.me.find('.preview').css('background-image', 'none');
 },
 
 fail:
@@ -156,4 +190,17 @@ function fail(result) {
     ui.ImageUploader.me.find('.preview').css('background-image', 'none');
 },
 
+show:
+function show() {
+    ui.ImageUploader.me.find('.service').removeClass('selected');
+    ui.ImageUploader.me.find('.service[href="#'
+        + ui.ImageUploader.service_name 
+        + '"]').addClass('selected');
+    globals.imageuploader_dialog.open();
+},
+
+hide:
+function hide() {
+
+},
 }

@@ -53,6 +53,23 @@ function init () {
         ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
     });
 
+    $('#tweet_filter_btn').click(
+    function (event) {
+        var li = $(ui.Main.active_tweet_id);
+        var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
+        db.get_tweet(id, function (tx, rs) {
+            ui.KismetDlg.load_guide(JSON.parse(rs.rows.item(0).json));
+            ui.KismetDlg.guide_dialog.open();
+        });
+    });
+    $('#tweet_set_color_btn').click(
+    function (ev) {
+        var li = $(ui.Main.active_tweet_id);
+        var screen_name = li.attr('screen_name');
+        ui.KismetDlg.color_guide_dialog.open();
+        $('#kismet_color_guide_dialog').data('screen_name', screen_name);
+    });
+
     $('#tweet_more_menu').mouseleave(function(){
         $(this).hide();
     })
@@ -136,10 +153,13 @@ function load_tweet_success(self, json) {
     }
     var current_profile = conf.get_current_profile();
     var prefs = current_profile.preferences;
-    var latest_id = prefs[self.name + '_latest_id'] || "0";
+    if (!prefs.views_lastest_id) {
+        prefs.views_lastest_id = {};
+    }
+    var latest_id = prefs.views_lastest_id[self.name + '_latest_id'] || "0";
     var last_id = json[json.length - 1].id_str;
     if (util.compare_id(last_id, latest_id) > 0) {
-        prefs[self.name + '_latest_id'] = last_id;
+        prefs.views_lastest_id[self.name + '_latest_id'] = last_id;
     }
     var i = json.length - 1;
     for ( ; i >= 0 ; i -= 1) {
@@ -272,13 +292,11 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
  *   id of the lastest tweet.
  */
     ui.Main.unique(json_obj);
-    // apply drop filter
+    // apply kismet filter
     if (ignore_kismet == undefined || ignore_kismet == false) {
-        kismet.filter(json_obj, 'drop');
-        if (self.name.indexOf('kismet_') != 0 && self.name != 'messages' && self.name != 'search'){
-            kismet.filter(json_obj, 'archive');
+        if (self.name.indexOf('kismet_') != 0){
+            json_obj = kismet.filter(json_obj);
         }
-        kismet.filter(json_obj, 'mask');
     }
 
     var new_tweets_height = 0;
@@ -353,21 +371,19 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     }
     */
     // dumps to cache
-    if (self.name != 'search') {
-        db.get_tweet_cache_size(function (size) {
-            if (db.MAX_TWEET_CACHE_SIZE < size) {
-                toast.set("Reducing ... ").show(-1);
-                db.reduce_tweet_cache(
-                    parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
-                , function () {
-                    toast.set("Reduce Successfully!").show();
-                    db.dump_tweets(json_obj);
-                })
-            } else {
+    db.get_tweet_cache_size(function (size) {
+        if (db.MAX_TWEET_CACHE_SIZE < size) {
+            toast.set("Reducing ... ").show(-1);
+            db.reduce_tweet_cache(
+                parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
+            , function () {
+                toast.set("Reduce Successfully!").show();
                 db.dump_tweets(json_obj);
-            }
-        });
-    }
+            })
+        } else {
+            db.dump_tweets(json_obj);
+        }
+    });
 
     if (!reversion && json_obj.length != 0) {
         if (self.item_type == 'cursor') {       // friedns or followers
@@ -377,11 +393,6 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
     } else {
         self.changed = false;
-    }
-
-    // apply notify filter
-    if (ignore_kismet == undefined) {
-        kismet.filter(json_obj, 'notify');
     }
 
     // bind events
@@ -955,6 +966,7 @@ function move_to_tweet(pos) {
     } else if (pos == 'orig') {
         target = current;
     } else {
+        cur_view = ui.Main.views[pos.split('-')[0].substring(1)];
         target = $(pos);
     }
     if (target.length == 0) {

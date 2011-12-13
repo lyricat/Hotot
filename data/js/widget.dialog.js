@@ -282,6 +282,7 @@ function prompt(title, message, callback) {
     prompt_dialog.set_styles('body', {'padding':'10px'});
     prompt_dialog.resize(400, 280);
     prompt_dialog.open();
+    $(id).find('.entry').focus();
 },
 
 build_dialog:

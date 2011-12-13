@@ -329,7 +329,7 @@ function load_timeline(view, success, fail) {
         ui.PeopleView.render_people_view(view, user_obj 
             , function () {
                 lib.twitterapi.get_user_timeline(null, view.screen_name
-                    , null, null, conf.vars.items_per_request, success);
+                    , view.since_id, null, conf.vars.items_per_request, success);
             });
     }
     lib.twitterapi.show_user(view.screen_name, render_proc,

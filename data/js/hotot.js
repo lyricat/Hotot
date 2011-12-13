@@ -163,14 +163,16 @@ function update_status(text) {
             hotot_notify('Notice', 'Sent a status:' + text, null , 'content');
         },
         function (xhr, textStatus, errorThrown) {
-            toast.set('Update failed! Save as draft.').show(3);
-            ui.StatusBox.last_sent_text = '';
-            ui.StatusBox.save_draft(draft);
         });
 }
 
 function reply_tweet(tid, text) {
-
+    lib.twitterapi.update_status(text, tid,
+        function (result) {
+            hotot_notify('Notice', 'Reply a status:' + text, null , 'content');
+        },
+        function (xhr, textStatus, errorThrown) {
+        });
 }
 
 function send_tweet(text) {
@@ -274,7 +276,7 @@ function init_dialogs() {
     globals.oauth_dialog.create();
 
     globals.profile_dialog = new widget.Dialog('#profile_dlg');
-    globals.profile_dialog.resize(500, 400);
+    globals.profile_dialog.resize(500, 450);
     globals.profile_dialog.place(widget.DialogManager.CENTER);
     globals.profile_dialog.create();
 
@@ -313,7 +315,7 @@ function init_dialogs() {
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
 
-    globals.kismet_dialog = new widget.Dialog('#kismet_dlg');
+    globals.kismet_dialog = new widget.Dialog('#kismet_dialog');
     globals.kismet_dialog.resize(600, 500);
     globals.kismet_dialog.place(widget.DialogManager.CENTER);
     globals.kismet_dialog.create();
@@ -489,7 +491,7 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // 'z' then 'c' to expand
+    // 'z' then 'c' to fold 
     hotkey.register([iz, hotkey.calculate(67)], function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
@@ -497,6 +499,10 @@ function init_hotkey() {
             btn.addClass('expand');
             btn.click();
         }
+    });
+    // '/' to open finder
+    hotkey.register([hotkey.calculate(191)], function () {
+        ui.Finder.show();
     });
     // :)
     hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
@@ -614,10 +620,12 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    var pageTracker = _gat._getTracker("UA-18538886-4");
-    pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
-    pageTracker._setCustomVar(2, 'Version', vars.version, 1);
-    pageTracker._trackPageview();
+    try {
+        var pageTracker = _gat._getTracker("UA-18538886-4");
+        pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
+        pageTracker._setCustomVar(2, 'Version', vars.version, 1);
+        pageTracker._trackPageview();
+    } catch (e) {}
     return;
 }
 

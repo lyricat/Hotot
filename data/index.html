@@ -188,6 +188,23 @@
         >Delete</a>
     </li>
     <li class="separator"><span></span></li>
+    <li>
+        <a id="tweet_set_color_btn"
+        class="tweet_more_menu_btn"
+        href="javascript:void(0);"
+        title="Set color label to the sender"
+        data-i18n-text="set_color_label"
+        >Set Color Label</a>
+    </li>
+    <li>
+        <a id="tweet_filter_btn"
+        class="tweet_more_menu_btn"
+        href="javascript:void(0);"
+        title="Filter this tweet"
+        data-i18n-text="filter_like_it"
+        >Filter like it</a>
+    </li>
+    <li class="separator"><span></span></li>
     </ul>
     <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
 </section>
@@ -684,7 +701,6 @@
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="behavior">Behavior</span> -</h3>
             <p>
                 <input id="chk_prefs_use_native_notify"
                     title="Use Native Notify" class="checkbox"
@@ -724,6 +740,20 @@
                     class="label"
                     data-i18n-text="preview_embedded_media"
                     >Preview embedded media.</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3>- <span data-i18n-text="default_picture_service">Default Picture Service</span> -</h3>
+            <p>
+                <select id="sel_prefs_default_picture_service"
+                    class="combo"
+                    title="Select a default picture service"
+                    data-i18n-title="select_a_default_picture_service">
+                    <option value="twitter.com">Twitter Official Service</option>
+                    <option value="img.ly">Img.ly</option>
+                    <option value="twitpic.com">Twitpic.com</option>
+                    <option value="lockerz.com">Lockerz.com</option>
+                </select>
             </p>
             </div>
        </div><!-- END of prefs_behavior-->
@@ -892,6 +922,7 @@
                 <tr><td data-i18n-text="send_message">Send Message</td><td>am</td></tr>
                 <tr><td data-i18n-text="delete">Delete</td><td>ad</td></tr>
                 <tr><td data-i18n-text="retweet_or_un_retweet">Retweet/Un-retweet</td><td>a&lt;Shift&gt;r</td></tr>
+                <tr><td data-i18n-text="find">Find</td><td>/</td></tr>
                 </tbody>
                 </table>
             </p>
@@ -919,7 +950,7 @@
             </p>
             <p>
                 <label>Artwork by</label>: <br/>
-                - Evan &lt;<a target="_blank" href="http://www.freemagi.com.com">www.freemagi.com</a>&gt;
+                - Evan &lt;<a target="_blank" href="http://www.freemagi.com">www.freemagi.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
                 - Shellex Wai <br/>
             </p>
@@ -966,39 +997,15 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
-    <div class="dialog_header"></div>
-    <div id="profile_dlg_body" class="dialog_body">
-    <div style="float:left; width: 150px;">
-        <div class="dialog_block">
-        <h3>- <span data-i18n-text="picture">Picture</span> -</h3>
-        <p style="text-align:center; min-height:70px;">
-            <span id="profile_avatar" class="profile_img_wrapper"></span>
-            <input id="btn_change_profile_avatar" style="display:none" type="file" value"Change avatar"/>
-            <a id="btn_update_profile_avatar" style="display:none" href="#" class="button">Upload</a>
-        </p>
-        </div>
-
-        <div class="dialog_block">
-        <h3>- <span data-i18n-text="stat">Stat</span> -</h3>
-        <p id="profile_stat">
-            <label class="label" data-i18n-text="join_time">Join</span>: </label>
-            <span id="profile_join"></span><br/>
-            <label class="label" data-i18n-text="tweets">Tweets</span>: </label>
-            <span id="profile_tweet_cnt"></span><br/>
-            <label class="label" data-i18n-text="tweets_per_day">Tweets per Day</span>: </label>
-            <span id="profile_tweet_per_day_cnt"></span><br/>
-            <label class="label" data-i18n-text="friend_stat">Friends</span>: </label>
-            <span id="profile_friend_cnt"></span><br/>
-            <label class="label" data-i18n-text="follower_stat">Followers</span>: </label>
-            <span id="profile_follower_cnt"></span><br/>
-            <label class="label" data-i18n-text="favorites">Favourites</span>: </label>
-            <span id="profile_favourite_cnt"></span><br/>
-        </p>
+    <div class="dialog_header">
+        <div style="position: relative; height: 48px">
+        <div id="profile_avatar" class="profile_img_wrapper" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px;-webkit-box-reflect:none;margin:0;"></div>
+        <input id="btn_change_profile_avatar" type="file" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px; z-index: 10; cursor: pointer; opacity: 0;"/>
+        <p style="position: absolute; left: 60px; bottom: 0px;"> Change your Profile picture by clicking it.</p>
         </div>
     </div>
-    <div>
+    <div id="profile_dlg_body" class="dialog_body">
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="information">Information</span> -</h3>
         <p>
             <label class="label" data-i18n-text="name">Name</label><br/>
             <input id="tbox_profile_name" title="Name" type="text" class="entry"/><br/>
@@ -1011,9 +1018,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </p>
         </div>
     </div>
-    </div>
     <div class="dialog_footer">
-    <a id="btn_profile_cancel" class="button" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_profile_cancel" class="dialog_close_btn button" data-i18n-text="cancel">Cancel</a>
     <a id="btn_profile_update" class="button" data-i18n-text="update">Update</a>
     </div>
     </div><!-- END of .dialog_container -->
@@ -1139,91 +1145,216 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 </div>
 
 <!-- Kismet Dialog -->
-<div id="kismet_dlg" class="dialog">
+<div id="kismet_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="kismet_content_firewall">Kismet Content Firewall</h2>
+        <h2 class="dialog_title" data-i18n-text="kismet_firewall">Kismet Firewall</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
-
     <div class="dialog_container">
-
-    <div class="dialog_header"></div>
-
-    <div id="kismet_dlg_body" class="dialog_body">
-        <ul id="kismet_rule_list">
+    <div class="dialog_header">
+        <ul id="kismet_cat_btns" class="radio_group dark">
+            <li>
+            	<a href="#mute_page" class="radio_group_btn" data-i18n-text="mute_filter">Mute Filter</a>
+            </li><li>
+            	<a href="#rulebased_page" class="radio_group_btn" data-i18n-text="rule_based_filter">Rule-based Filter</a>
+            </li><li>
+            	<a href="#intelligent_page" class="radio_group_btn" data-i18n-text="intelligent_filter">Intelligent Filter</a>
+            </li>
         </ul>
-        <hr/>
-        <ul id="kismet_rule_ctrl">
-            <li><a href="#" class="new button">+ Add</a></li>
-            <li><a href="#" class="remove button">&times; Remove</a></li>
-            <li><a href="#" class="enable button">&oplus; Enable</a></li>
-            <li><a href="#" class="disable button">&otimes; Disable</a></li>
-            <li><a href="#" class="up button">&uarr; Up</a></li>
-            <li><a href="#" class="down button">&darr; Down</a></li>
-        </ul>
-
-        <div id="kismet_rule_info" class="dialog_block">
-            <table>
-            <tr>
-                <td>
-                    <label class="label"
-                        for="kismet_rule_name">Name:</label>
-                </td>
-                <td colspan="2">
-                    <input id="kismet_rule_name"
-                        type="text" class="entry"/>
-                </td>
-                <td><label class="label">Type: </label>
-                    <select id="kismet_type" class="combo">
-                    <option value="0">Plain text</option>
-                    <option value="1">RegExp</option>
-                </select></td>
-            <tr>
-            <tr>
-                <td><label class="label">Field: </label>
-                </td><td>
-                    <select id="kismet_field" class="combo">
-                    <option value="0">User name</option>
-                    <option value="1">Text</option>
-                    <option value="2">Source</option>
-                </select></td>
-                <td><select id="kismet_method" class="combo">
-                    <option value="0">Equal</option>
-                    <option value="1">Contain</option>
-                    <option value="2">Starts with</option>
-                    <option value="3">Ends with</option>
-                </select></td>
-                <td><input type="text" id="kismet_pattern" class="entry"/></td>
-            </tr>
-            </table>
-        </div>
-        <div id="kismet_rule_action" class="dialog_block">
-            <h3><span>Action</span></h3>
-            <table>
-            <tr><td><input id="kismet_action_drop"
-                    type="checkbox" class="drop checkbox" value="0"/>
-                    <label for="kismet_action_drop">Drop</label></td>
-                <td><input id="kismet_action_notify"
-                    type="checkbox" class="notify checkbox" value="1"/>
-                    <label for="kismet_action_notify">Notify</label></td>
-                <td><input id="kismet_action_mask"
-                    type="checkbox" class="mask checkbox" value="2"/>
-                    <label for="kismet_action_mask">Mask</label></td>
-                <td><input id="kismet_action_archive"
-                    type="checkbox" class="checkbox" value="3"/>
-                    <label for="kismet_action_archive">Archive</label>
-                </td>
-            </tr>
-            </table>
-        </div>
     </div>
-
+    <div class="dialog_body">
+        <div class="mute_page kismet_page">
+            <div class="dialog_block hint" data-i18n-text="kismet_mute_hint">WARNING: Tweets that have following attributes will not appear on your timeline.</div>
+            <div class="dialog_block">
+                <h3>Mute by user name</h3>
+                <p>
+                    <input type="text" class="entry mute_name_list" placeholder="screen_name1, screen_name2"/>
+                </p>
+            </div>
+            <div class="dialog_block">
+                <h3>Mute by containing words</h3>
+                <p>
+                    <input type="text" class="entry mute_word_list" placeholder="word1, word2"/>
+                </p>
+            </div>
+            <div class="dialog_block">
+                <h3>Mute by source</h3>
+                <p>
+                    <input type="text" class="entry mute_source_list" placeholder="client name1, client name2"/>
+                </p>
+            </div>
+        </div>
+        <div class="rulebased_page kismet_page">
+            <div class="ctrl">
+                <a id="kismet_add_rule_btn" href="#" class="button" data-i18n-text="add">Add</a>
+                <a style="display:none" href="#" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
+            </div>
+            <ul id="kismet_rule_list" class="rule_list">
+                <li><a href="#" class="rule">aaa</a>
+                    <div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>
+                </li>
+            </ul>
+            </ul>
+        </div>
+        <div class="intelligent_page kismet_page">
+            <div class="dialog_block">
+                <p>Not available yet :)</p>
+            </div>
+        </div>
+    </div> <!-- .body -->
     <div class="dialog_footer">
-    <a id="kismet_cancel_btn" class="button" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_save_btn" class="button" data-i18n-text="save">Save</a>
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_save_btn" class="button" title="Save changes" href="javascript:void(0);" data-i18n-text="save">Save</a>
     </div>
-    </div><!-- END of .dialog_container -->
+    </div>
 </div>
+
+<div id="kismet_rule_edit_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="rule_editor">Rule Editor</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <div class="dialog_block">
+            <h3>- <span data-i18n-text="rule_name">Rule Name</span> -</h3>
+            <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
+        </div>
+        <div class="dialog_block">
+            <h3>- <span data-i18n-text="rule">Rule</span> -</h3>
+            <p><textarea id="kismet_rule_edit_data" class="textarea"  value style="width:450px; height: 40px;"></textarea></p>
+        </div>
+        <div id="kismet_quick_refs">
+        <details style="width: 240px; float: left;">
+        <summary class="sub_label" data-i18n-text="examples">Examples</summary>
+        <p>
+        <ul class="docs">
+            <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
+            <li><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
+            <li><a href="#" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
+            <li><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
+            <li><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
+            <li><a href="#" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
+        </ul>
+        </p>
+        </details>
+        <details style="margin-left: 245px;">
+        <summary class="sub_label" data-i18n-text="quick_references">Quick References</summary>
+        <p>
+        <ul class="docs">
+            <li><h4><a href="#" class="kismet_sample">keyword</a></h4>
+                <p>simply a keyword</p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">via:{source name}</a></h4>
+                <p>where this tweet comes form.</p>
+                <p>example: <a href="#" class="kismet_sample">via:foursquare</a></p>
+
+            </li>
+            <li><h4><a href="#" class="kismet_sample">tag:{tag name}</a></h4>
+                <p>What hash tag contained by this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">via:#FuckGFW</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">name:{screen name}</a></h4>
+                <p>who post this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">name:MentionTo</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">mention:{screen name}</a></h4>
+                <p>who are mentioned in this tweet.</p>
+                <p>example: <a href="#" class="kismet_sample">mention:aiww</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">has:{attribute}</a></h4>
+                <p>what attribute this tweet has.</p>
+                <p>supported attributes: <a href="#" class="kismet_sample">has:geo</a>, <a href="#" class="kismet_sample">has:url</a></p>
+            </li>
+            <li><h4><a href="#" class="kismet_sample">do:{action}</a></h4>
+                <p>take action if all conditions are true.</p>
+                <p>supported action:
+                    <ul style="list-style-type:circle; padding-left:20px;">
+                        <li><a href="#" class="kismet_sample">do:drop</a>, drop this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:mask</a>, mask this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:notify</a>, notify this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:archive</a>, archive this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
+                    </ul>
+                </p>
+            </li>
+        </ul>
+        </p>
+        </details>
+        </div>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    <a id="kismet_rule_edit_verify" class="button" title="Verify" href="javascript:void(0);" data-i18n-text="verify">Verify</a>
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_rule_edit_ok" class="button" title="OK" href="javascript:void(0);" data-i18n-text="ok">OK</a>
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_rule_edit_dialog -->
+
+<div id="kismet_guide_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="kismet_guide">Kismet Guide</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <div class="dialog_block">
+            <h3>1. <span data-i18n-data="select_fields">Select fields</span></h3>
+        <p class="sample_area">
+        </p>
+        </div>
+        <div class="dialog_block action_block">
+            <h3>2. <span data-i18n-data="select_actions">Select Actions</span></h3>
+            <p>
+            <input type="checkbox" class="checkbox" value="drop" checked/><label data-i18n-text="drop">Drop</label>
+            <input type="checkbox" class="checkbox" value="mask"/><label data-i18n-text="mask">Mask</label>
+            <input type="checkbox" class="checkbox" value="notify"/><label data-i18n-text="notify">Notify</label>
+            <input type="checkbox" class="checkbox" value="archive"/><label data-i18n-text="archive">Archive</label>
+            </p>
+        </div>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    <a class="button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_guide_next_btn" class="button" title="Cancel" href="javascript:void(0);" data-i18n-text="next">Next</a>
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_guide_dialog -->
+
+<div id="kismet_color_guide_dialog" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="set_color_label">Set Color Label</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div> <!-- .dialog_header -->
+    <div class="dialog_body">
+        <ul id="kismet_color_list">
+            <li><span class="cell"></span><a href="transparent" data-i18n-text="transparent">Transparent</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="cuddly">Cuddly</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="wanna_have_relationship_with">Wanna have relationship with</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="my_journey_is_to_the_sea_of_stars">My journey is to the sea of stars</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="virushou_s_integrity">Virushuo's Integrity</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="shiny_old_times_before_marriage">Shiny old times before marriage</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="panda_acts_cute">Panda acts cute</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="schizophrenia">Schizophrenia</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="bloody_marguerite">Bloody Marguerite</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="hidden_dark_minds">Hidden Dark Minds</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="to_cold_beauty">To Cold Beauty</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="assassin_s_tango">Assassin's Tango</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="titian_s_elegance">Titian's Elegance</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="pretty_wife">Pretty Wife</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="tranquil">Tranquil</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="just_cannot_stop_thinking_of_here">Just can't stop thinking of here</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="struggling_adventurers">Struggling adventurers</a></li>
+        </ul>
+    </div><!-- .dialog_body -->
+    <div class="dialog_footer">
+    </div>
+    </div> <!-- .dialog_container -->
+</div> <!-- #kismet_color_guide_dialog -->
 
 <!-- ImageUploader dialog -->
 <div id="imageuploader_dlg" class="dialog">
@@ -1235,16 +1366,17 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header"></div>
     <div class="dialog_body">
         <div class="dialog_block">
-            <p><label>Upload to ... </label>
+            <p><label data-i18n-text="upload_to_dots">Upload to ... </label>
             <ul class="service_list">
-                <li><a class="service selected" href="#img.ly">img.ly</a></li>
+                <li><a class="service" href="#img.ly">img.ly</a></li>
+                <li><a class="service" href="#twitter.com">twitter.com</a></li>
                 <li><a class="service" href="#twitpic.com">twitpic.com</a></li>
                 <li><a class="service" href="#lockerz.com">lockerz.com</a></li>
             </ul>
             </p>
             <p>
             <div class="dragarea">
-                Drag a photo here
+                <span data-i18n-text="drag_a_photo_here">Drag a photo here</span>
                 <div class="preview"></div>
             </div>
             </p>

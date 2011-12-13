@@ -3,7 +3,7 @@ conf = {
 
 vars: {
       'platform': 'Linux'
-    , 'version': '0.9.7'
+    , 'version': '0.9.7.32'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -53,6 +53,7 @@ default_prefs: {
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
         , 'sign_api_base': 'https://api.twitter.com/1/'
@@ -64,8 +65,11 @@ default_prefs: {
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
+        , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
+        , 'kismet_colored_user_map': {}
         , 'base_url': 'https://twitter.com/'
         , 'slider_state': null
+        , 'views_lastest_id': {}
       }
     , 'identica': {
           // Account:
@@ -87,6 +91,7 @@ default_prefs: {
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
         , 'sign_api_base': 'https://identi.ca/api/'
@@ -98,8 +103,11 @@ default_prefs: {
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
+        , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
+        , 'kismet_colored_user_map': {}
         , 'base_url': 'https://identi.ca/'
         , 'slider_state': null
+        , 'views_lastest_id': {}
       }
 },
 
@@ -247,6 +255,8 @@ function apply_prefs(name) {
     jsOAuth.access_token = prefs.access_token;
     jsOAuth.key = prefs.consumer_key || jsOAuth.key;
     jsOAuth.secret = prefs.consumer_secret || jsOAuth.secret;
+    
+    ui.ImageUploader.service_name = prefs.default_picture_service;
 
     for (var id in ext.exts_info) {
         ext.disable_ext(id);

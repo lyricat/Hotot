@@ -1,5 +1,6 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.SearchView = {
+since_id: null,
 init:
 function init() {
 
@@ -7,15 +8,15 @@ function init() {
 
 init_view:
 function init_search_view(view) {
-    var search_btn = view._header.find('.search_btn'); 
     var search_entry = view._header.find('.search_entry');
-    search_btn.click(function () {
-        ui.SearchView.do_search(view, search_entry.val());    
-    });
     search_entry.keypress(function (ev) {
         if (ev.keyCode == 13) {
             ui.SearchView.do_search(view, search_entry.val());    
         }
+    });
+    view._header.find('.search_entry_clear_btn').click(function () {
+        search_entry.val('');
+        ui.SearchView.clear(view);    
     });
     var toggle = view._header.find('.search_view_toggle');
     var sub_view_btns = toggle.find('.radio_group_btn');
@@ -41,13 +42,18 @@ switch_sub_view:
 function switch_sub_view(view, name) {
     switch (name) {
     case 'tweet':
+        view.item_type = 'phoenix_search';
+        view.since_id = 1;
         view.former = ui.Template.form_search;
         view._load = ui.SearchView.load_tweet
         view._loadmore = ui.SearchView.loadmore_tweet;
         view._load_success = ui.SearchView.load_tweet_success;
+        view._load_fail = ui.SearchView.load_tweet_fail;
         view._loadmore_success = ui.SearchView.loadmore_tweet_success;
     break;
     case 'people':
+        view.item_type = 'page';
+        view.page = 1;
         view.former = ui.Template.form_people;
         view._load = ui.SearchView.load_people;
         view._loadmore = ui.SearchView.loadmore_people;
@@ -70,12 +76,11 @@ function load_tweet(view, success, fail) {
     "next_page": "?page=3&max_id=84559462639222784&q=hotot",
     */
     if ($.trim(view.query).length == 0) {
-        success([]);
+        fail(view, {ignore: true});
         return;
     }
     view.page = 1;
-    view.since_id = null;
-    lib.twitterapi.search(view.query, view.page, view.since_id, null, success);   
+    lib.twitterapi.search(view.query, view.page, view.since_id, null, success);
     lib.twitterapi.show_user(view.query,
     function (user) {
         view._header.find('.search_people_result').show();
@@ -93,6 +98,10 @@ function loadmore_tweet(view, success, fail) {
 
 load_people:
 function load_people(view, success, fail) {
+    if ($.trim(view.query).length == 0) {
+        success([]);
+        return;
+    }
     lib.twitterapi.search_user(view.query, 1, success, fail);   
 },
 
@@ -107,15 +116,28 @@ function load_tweet_success(view, json) {
     if (json.constructor == Object && (json.results != undefined || json.statuses != undefined)) {
         tweets = json.results || json.statuses;
     }
-    ui.Slider.set_unread(view.name);
-    if (tweets.length == 0) {
+    if (json.constructor == Object && json.ignore) {
+        return 0;
+    }
+    if (ui.SearchView.since_id != view.since_id) {
+        ui.Slider.set_unread(view.name);
+        ui.SearchView.since_id = view.since_id;
+    }
+    if (tweets.length == 0 && view.since_id == null) {
         view._header.find('.search_no_result_hint').show();
         view._header.find('.keywords').text(
-            decodeURIComponent(json.query));
+            decodeURIComponent(view.query));
         return 0;
     } else {
         view._header.find('.search_no_result_hint').hide();
         return ui.Main.add_tweets(view, tweets);
+    }
+},
+
+load_tweet_fail:
+function load_tweet_fail(view, json) {
+    if (json && json.ignore) {
+        view._header.find('.search_no_result_hint').hide();
     }
 },
 
@@ -144,11 +166,22 @@ function loadmore_people_success(view, json) {
 
 do_search:
 function do_search(view, query) {
+    ui.SearchView.clear(view);
     view.query = $.trim(query);
+    console.log(view.query);
     if (view.query.length == 0) return;
-    view.max_id = null;
-    view.clear();
     view.load();
+},
+
+clear:
+function clear(view) {
+    view._header.find('.search_people_result').hide();
+    ui.SearchView.since_id = null;
+    view.max_id = null;
+    view.since_id = null;
+    view.query = ''; 
+    view.clear();
+    ui.SearchView.since_id = 0;
 },
 
 };

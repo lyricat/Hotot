@@ -31,7 +31,7 @@ function normalize_result(result) {
 },
 
 encode_multipart_formdata:
-function encode_multipart_formdata(fields, file, data) {
+function encode_multipart_formdata(fields, file, name, data) {
     if (!window.BlobBuilder) {
         window.BlobBuilder = window.WebKitBlobBuilder;
     }
@@ -48,7 +48,7 @@ function encode_multipart_formdata(fields, file, data) {
         L.push(value);
     }
     L.push('--' + BOUNDARY);
-    L.push('Content-Disposition: form-data; name="media"; filename="hotot.png"');
+    L.push('Content-Disposition: form-data; name="'+name+'"; filename="'+file.name+'"');
     L.push('Content-Type: ' + file.type);
     L.push('');
     var str = L.join(CRLF) + CRLF;
@@ -58,8 +58,8 @@ function encode_multipart_formdata(fields, file, data) {
     bb.append(data);
     bb.append(CRLF);
     L = [];
-    L.push('--' + BOUNDARY + '--')
-    L.push('')
+    L.push('--' + BOUNDARY + '--');
+    L.push('');
     bb.append(L.join(CRLF)); 
     var body = bb.getBlob();
     var headers = {'content-type':'multipart/form-data; boundary=' + BOUNDARY
@@ -69,12 +69,6 @@ function encode_multipart_formdata(fields, file, data) {
 
 do_request:
 function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
-    var now = Date.now();
-    if (lib.network.last_req_url ==  req_url && now - lib.network.last_req_time < 1000) {
-        return;
-    }
-    lib.network.last_req_time = now;
-    lib.network.last_req_url = req_url;
 
     if (!req_headers) req_headers = {};
     if (lib.network.py_request 
