@@ -244,7 +244,7 @@ void MainWindow::triggerVisible()
             if( !isActiveWindow() ) // not minimised and without focus
             {
                 KWindowSystem::setOnDesktop( winId(), currentDesktop );
-                KWindowSystem::activateWindow( winId() );
+                KWindowSystem::forceActiveWindow( winId() );
             }
             else // Amarok has focus
             {
@@ -255,7 +255,7 @@ void MainWindow::triggerVisible()
         {
             setWindowState( windowState() & ~Qt::WindowMinimized );
             KWindowSystem::setOnDesktop( winId(), currentDesktop );
-            KWindowSystem::activateWindow( winId() );
+            KWindowSystem::forceActiveWindow( winId() );
         }
     }
 #else
