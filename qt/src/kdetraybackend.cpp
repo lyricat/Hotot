@@ -39,7 +39,8 @@
 #include "kdetraybackend.h"
 
 KDETrayBackend::KDETrayBackend(MainWindow* parent):
-    TrayIconBackend(parent),
+    QObject(parent),
+    TrayIconInterface(),
     m_mainWindow(parent),
     m_statusNotifierItem(new KStatusNotifierItem("hotot_qt", this))
 {
@@ -50,7 +51,7 @@ KDETrayBackend::KDETrayBackend(MainWindow* parent):
     m_statusNotifierItem->setStandardActionsEnabled(false);
     m_statusNotifierItem->setToolTipTitle(i18n("Hotot"));
 
-    connect(m_statusNotifierItem, SIGNAL(activateRequested(bool, QPoint)), this, SLOT(activate()));
+    connect(m_statusNotifierItem, SIGNAL(activateRequested(bool, QPoint)), this, SLOT(activate(bool, QPoint)));
 }
 
 void KDETrayBackend::showMessage(QString type, QString title, QString message, QString image)
@@ -73,7 +74,7 @@ void KDETrayBackend::setContextMenu(QMenu* menu)
     }
 }
 
-void KDETrayBackend::activate()
+void KDETrayBackend::activate(bool active, const QPoint& pos)
 {
     m_mainWindow->triggerVisible();
 }

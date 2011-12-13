@@ -27,7 +27,8 @@
 #include "mainwindow.h"
 
 QtTrayBackend::QtTrayBackend(MainWindow* parent):
-    TrayIconBackend(parent),
+    QObject(parent),
+    TrayIconInterface(),
     m_mainWindow(parent),
     m_trayicon(new QSystemTrayIcon(this))
 {

@@ -14,7 +14,7 @@ set(Hotot_QT_SRCS
     main.cpp
     mainwindow.cpp
     hototwebpage.cpp
-    trayiconbackend.cpp
+   
     qttraybackend.cpp
     hototwebview.cpp
 )
@@ -25,7 +25,6 @@ set(Hotot_QT_MOC_SRCS
     hototrequest.h
     hototwebpage.h
     qttraybackend.h
-    trayiconbackend.h
     hototwebview.h
 )
 

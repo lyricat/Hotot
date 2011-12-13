@@ -41,6 +41,10 @@
 #include <QWebInspector>
 #include <QGraphicsView>
 
+#ifdef HAVE_KDE
+#include <KWindowSystem>
+#endif
+
 #ifdef MEEGO_EDITION_HARMATTAN
 #include <MApplicationPage>
 #endif
@@ -48,7 +52,7 @@
 // Hotot
 #include "mainwindow.h"
 #include "hototwebpage.h"
-#include "trayiconbackend.h"
+#include "trayiconinterface.h"
 #include "qttraybackend.h"
 #include "hototwebview.h"
 #ifdef HAVE_KDE
@@ -223,15 +227,43 @@ void MainWindow::initDatabases()
 
 void MainWindow::triggerVisible()
 {
-    if (isActiveWindow()) {
-        if (isVisible())
-            hide();
-    } else {
-        if (!isVisible())
-            show();
-        activateWindow();
-        raise();
+#ifndef Q_WS_MAC
+#ifdef HAVE_KDE
+    const KWindowInfo info = KWindowSystem::windowInfo( winId(), 0, 0 );
+    const int currentDesktop = KWindowSystem::currentDesktop();
+    if( !isVisible() )
+    {
+        setVisible( true );
+        KWindowSystem::setOnDesktop( winId(), currentDesktop );
+        KWindowSystem::forceActiveWindow( winId() );
     }
+    else
+    {
+        if( !isMinimized() )
+        {
+            if( !isActiveWindow() ) // not minimised and without focus
+            {
+                KWindowSystem::setOnDesktop( winId(), currentDesktop );
+                KWindowSystem::activateWindow( winId() );
+            }
+            else // Amarok has focus
+            {
+                setVisible( false );
+            }
+        }
+        else // Amarok is minimised
+        {
+            setWindowState( windowState() & ~Qt::WindowMinimized );
+            KWindowSystem::setOnDesktop( winId(), currentDesktop );
+            KWindowSystem::activateWindow( winId() );
+        }
+    }
+#else
+    setVisible(!isVisible());
+#endif
+#else
+    show();
+#endif
 }
 
 void MainWindow::notification(QString type, QString title, QString message, QString image)
@@ -242,10 +274,17 @@ void MainWindow::notification(QString type, QString title, QString message, QStr
 void MainWindow::activate()
 {
     if (!isActiveWindow()) {
-        if (!isVisible())
+        if (!isVisible()) {
+#ifndef Q_WS_MAC
+#ifdef HAVE_KDE
+            KWindowSystem::activateWindow( winId() );
+#else
+            setVisible(true);
+#endif
+#else
             show();
-        activateWindow();
-        raise();
+#endif
+        }
     }
 }
 

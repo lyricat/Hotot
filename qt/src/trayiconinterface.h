@@ -17,29 +17,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Hotot
-#include "trayiconbackend.h"
-#include "mainwindow.h"
+#ifndef TRAYICON_BACKEND_H
+#define TRAYICON_BACKEND_H
 
-TrayIconBackend::TrayIconBackend(MainWindow* parent): QObject(parent)
+// Qt
+#include <QObject>
+
+class MainWindow;
+class QMenu;
+struct TrayIconInterface
 {
+public:
+    virtual ~TrayIconInterface() {};
+    virtual void setContextMenu(QMenu* menu) = 0;
+    virtual void showMessage(QString type, QString title, QString message, QString image) = 0;
+    virtual void unreadAlert(QString number) = 0;
+};
+    
+Q_DECLARE_INTERFACE(TrayIconInterface, "org.hotot.TrayIconInterface")
 
-}
-
-void TrayIconBackend::setContextMenu(QMenu* menu)
-{
-    Q_UNUSED(menu)
-}
-
-void TrayIconBackend::showMessage(QString type, QString title, QString message, QString image)
-{
-    Q_UNUSED(type)
-    Q_UNUSED(image)
-    Q_UNUSED(title)
-    Q_UNUSED(message)
-}
-
-void TrayIconBackend::unreadAlert(QString number)
-{
-    Q_UNUSED(number)
-}
+#endif

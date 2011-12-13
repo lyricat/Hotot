@@ -24,11 +24,13 @@
 #include <QSystemTrayIcon>
 
 // Hotot
-#include "trayiconbackend.h"
+#include "trayiconinterface.h"
 
-class QtTrayBackend : public TrayIconBackend
+class QtTrayBackend : public QObject,
+                      public TrayIconInterface
 {
     Q_OBJECT
+    Q_INTERFACES(TrayIconInterface)
 public:
     QtTrayBackend(MainWindow* parent = 0);
     virtual void setContextMenu(QMenu* menu);

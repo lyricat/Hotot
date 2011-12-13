@@ -32,7 +32,7 @@
 #endif
 
 class QWebInspector;
-class TrayIconBackend;
+struct TrayIconInterface;
 class KStatusNotifierItem;
 
 #ifdef MEEGO_EDITION_HARMATTAN
@@ -72,7 +72,7 @@ private:
     QGraphicsWebView* m_webView;
     QWebInspector* m_inspector;
     QMenu* m_menu;
-    TrayIconBackend* m_tray;
+    TrayIconInterface* m_tray;
     QAction* m_actionExit;
     QAction* m_actionDev;
 };

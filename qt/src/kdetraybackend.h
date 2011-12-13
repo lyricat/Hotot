@@ -20,20 +20,25 @@
 #ifndef KDETRAY_BACKEND_H
 #define KDETRAY_BACKEND_H
 
+// Qt
+#include <QPoint>
+
 // Hotot
-#include "trayiconbackend.h"
+#include "trayiconinterface.h"
 
 class KStatusNotifierItem;
-class KDETrayBackend : public TrayIconBackend
+class KDETrayBackend : public QObject,
+                       public TrayIconInterface
 {
     Q_OBJECT
+    Q_INTERFACES(TrayIconInterface)
 public:
     KDETrayBackend(MainWindow* parent = 0);
     virtual void setContextMenu(QMenu* menu);
     virtual void showMessage(QString type, QString title, QString message, QString image);
     virtual void unreadAlert(QString number);
 protected Q_SLOTS:
-    void activate();
+    void activate(bool active, const QPoint& pos);
 private:
     MainWindow* m_mainWindow;
     KStatusNotifierItem* m_statusNotifierItem;
