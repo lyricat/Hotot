@@ -7,6 +7,10 @@
 		"message": "Todas",
 		"description": "data/index.html"
 	},
+	"to_cold_beauty": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"global": {
 		"message": "Global",
 		"description": "data/index.html"
@@ -538,10 +542,6 @@
 	"disable": {
 		"message": "Deshabilitar",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"to_a_cold_beauty": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"intelligent_filter": {
 		"message": "Filtro inteligente",

@@ -7,6 +7,10 @@
 		"message": "全部",
 		"description": "All"
 	},
+	"to_cold_beauty": {
+		"message": "冷艳的嘉敏",
+		"description": "data/index.html"
+	},
 	"global": {
 		"message": "全局",
 		"description": "data/index.html"
@@ -538,10 +542,6 @@
 	"disable": {
 		"message": "禁用",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"to_a_cold_beauty": {
-		"message": "冷艳的嘉敏",
-		"description": "data/index.html"
 	},
 	"intelligent_filter": {
 		"message": "智能过滤器",

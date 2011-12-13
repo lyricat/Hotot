@@ -7,6 +7,10 @@
 		"message": "すべて",
 		"description": "All"
 	},
+	"to_cold_beauty": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"global": {
 		"message": "グロバル",
 		"description": "data/index.html"
@@ -538,10 +542,6 @@
 	"disable": {
 		"message": "無効にする",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"to_a_cold_beauty": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"intelligent_filter": {
 		"message": "",

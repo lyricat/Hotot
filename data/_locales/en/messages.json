@@ -7,6 +7,10 @@
 		"message": "All",
 		"description": "data/index.html"
 	},
+	"to_cold_beauty": {
+		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
 	"global": {
 		"message": "Global",
 		"description": "data/index.html"
@@ -539,10 +543,6 @@
 		"message": "Disable",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"to_a_cold_beauty": {
-		"message": "To a code beauty",
-		"description": "data/index.html"
-	},
 	"intelligent_filter": {
 		"message": "Intelligent Filter",
 		"description": "data/index.html"
@@ -844,7 +844,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"titian_s_elegance": {
-		"message": "Titan's elegance",
+		"message": "Titian's elegance",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -852,7 +852,7 @@
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
-		"message": "Virsuhou's Integrity",
+		"message": "Virushou's Integrity",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
