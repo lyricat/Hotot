@@ -200,7 +200,7 @@ function switch_sub_view(view, name) {
         view.item_type = 'id';
         view.since_id = 1;
         view.former = ui.Template.form_tweet;
-        view._load = ui.PeopleView.load_timeline;
+        view._load = ui.PeopleView.load_timeline_full;
         view._loadmore = ui.PeopleView.loadmore_timeline;
         view._load_success = ui.Main.load_tweet_success;
         view._loadmore_success = ui.Main.loadmore_tweet_success;
@@ -322,8 +322,8 @@ function render_people_view(self, user_obj, proc) {
     });
 },
 
-load_timeline:
-function load_timeline(view, success, fail) {
+load_timeline_full:
+function load_timeline_full(view, success, fail) {
     var render_proc = function (user_obj) {
         ui.Slider.set_icon(view.name, user_obj.profile_image_url);
         ui.PeopleView.render_people_view(view, user_obj 
@@ -331,6 +331,7 @@ function load_timeline(view, success, fail) {
                 lib.twitterapi.get_user_timeline(null, view.screen_name
                     , view.since_id, null, conf.vars.items_per_request, success);
             });
+        view._load = ui.PeopleView.load_timeline;
     }
     lib.twitterapi.show_user(view.screen_name, render_proc,
         function (xhr, textStatus, errorThrown) {
@@ -340,6 +341,12 @@ function load_timeline(view, success, fail) {
                 view.destroy();
             }
     });
+},
+
+load_timeline:
+function load_timeline(view, success, fail) {
+    lib.twitterapi.get_user_timeline(null, view.screen_name
+        , view.since_id, null, conf.vars.items_per_request, success);
 },
 
 loadmore_timeline:

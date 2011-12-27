@@ -108,7 +108,7 @@ function open_people(screen_name, additional_opts) {
     ui.Slider.add(name
         , {title: title, icon:'image/ic_people.png'}
         , $.extend({   'type': 'people', 'title': title
-            , 'load': ui.PeopleView.load_timeline
+            , 'load': ui.PeopleView.load_timeline_full
             , 'loadmore': ui.PeopleView.loadmore_timeline
             , 'load_success': ui.Main.load_tweet_success
             , 'load_fail': null
