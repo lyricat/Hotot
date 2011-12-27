@@ -279,6 +279,9 @@ people_vcard_t:
                 <li><a class="mention_menu_item" \
                     title="Mention them"\
                     href="javascript:void(0);">{%TRANS_mention_them%}</a>\
+                </li><li><a class="message_menu_item" \
+                    title="Send Message to them"\
+                    href="javascript:void(0);">{%TRANS_message_them%}</a>\
                 </li><li style="display:none;"><a class="add_to_list_menu_item" \
                     title="Add them to a list"\
                     href="javascript:void(0);">{%TRANS_add_to_list%}</a>\
@@ -630,6 +633,7 @@ function init() {
         , TRANS_edit: _('edit')
         , TRANS_follow: _('follow'), TRANS_more_actions: _('more_actions')
         , TRANS_mention_them: _('mention_them')
+        , TRANS_message_them: _('send_message_to_them')
         , TRANS_add_to_list: _('add_to_list')
         , TRANS_block: _('block')
         , TRANS_unblock: _('unblock')
