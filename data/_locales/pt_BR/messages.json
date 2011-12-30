@@ -8,7 +8,7 @@
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
-		"message": "",
+		"message": "To cold beauty",
 		"description": "data/index.html"
 	},
 	"global": {
@@ -48,7 +48,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"find": {
-		"message": "",
+		"message": "Buscar",
 		"description": "data/index.html"
 	},
 	"compose": {
@@ -88,7 +88,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
-		"message": "",
+		"message": "Guia do Kismet",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
@@ -144,11 +144,11 @@
 		"description": "date/index.html"
 	},
 	"url_shortener": {
-		"message": "",
+		"message": "Encurtador de URL",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "",
+		"message": "Schizophrenia",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
@@ -208,7 +208,7 @@
 		"description": "data/index.html"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "",
+		"message": "Minha jornada é para o mar de estrelas",
 		"description": "data/index.html"
 	},
 	"reply": {
@@ -236,7 +236,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"kismet_mute_hint": {
-		"message": "",
+		"message": "ATENÇÃO: Tweets que tenha os seguintes atributos não aparecerão na sua timeline.",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
@@ -256,11 +256,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"hidden_dark_minds": {
-		"message": "",
+		"message": "Mentes obscuras escondidas",
 		"description": "data/index.html"
 	},
 	"drag_a_photo_here": {
-		"message": "",
+		"message": "Arraste uma foto para cá",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -268,7 +268,7 @@
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
-		"message": "",
+		"message": "Pandas são fofinhos",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -336,7 +336,7 @@
 		"description": "data/index.html"
 	},
 	"quick_references": {
-		"message": "",
+		"message": "Referências rápidas",
 		"description": "data/index.html"
 	},
 	"px": {
@@ -348,11 +348,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "",
+		"message": "Belos momentos antes do casamento",
 		"description": "data/index.html"
 	},
 	"next": {
-		"message": "",
+		"message": "Próximo",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -420,7 +420,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"image_uploader": {
-		"message": "",
+		"message": "Envio de imagens",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -428,7 +428,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"cuddly": {
-		"message": "",
+		"message": "Fofinho",
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
@@ -448,7 +448,7 @@
 		"description": "data/index.html"
 	},
 	"Insert_smiley": {
-		"message": "",
+		"message": "Insira um smiley",
 		"description": "data/index.html"
 	},
 	"updating_dots": {
@@ -464,7 +464,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
-		"message": "",
+		"message": "Abrir uma lista ...",
 		"description": "data/index.html"
 	},
 	"restore_defaults": {
@@ -480,7 +480,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"save_as_draft": {
-		"message": "",
+		"message": "Salvar como rascunho",
 		"description": "data/index.html"
 	},
 	"author": {
@@ -488,23 +488,23 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"verify": {
-		"message": "",
+		"message": "Verificar",
 		"description": "data/index.html"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "",
+		"message": "Simplismente não consigo parar de pensar daqui",
 		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "Seguidores",
 		"description": "data/js/ui.template.js"
 	},
-	"weakness": {
-		"message": "Fraqueza",
+	"reset_time": {
+		"message": "Tempo de reset",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
-		"message": "",
+		"message": "Escolha campos",
 		"description": "data/index.html"
 	},
 	"retweets_view": {
@@ -524,7 +524,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "",
+		"message": "Escolha um serviço de imagens padrão",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -544,7 +544,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"intelligent_filter": {
-		"message": "",
+		"message": "Filtro inteligente",
 		"description": "data/index.html"
 	},
 	"you_are_not_following_each_other": {
@@ -556,7 +556,7 @@
 		"description": "data/index.html"
 	},
 	"bloody_marguerite": {
-		"message": "",
+		"message": "Bloody Marguerite",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -604,7 +604,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"favs_view": {
-		"message": "",
+		"message": "Visão de favoritos",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -628,7 +628,7 @@
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "",
+		"message": "Adicionar",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
@@ -655,12 +655,12 @@
 		"message": "Biografia",
 		"description": "data/index.html"
 	},
-	"reset_time": {
-		"message": "Tempo de reset",
+	"weakness": {
+		"message": "Fraqueza",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
-		"message": "",
+		"message": "Serviço de imagens padrão",
 		"description": "data/index.html"
 	},
 	"mentions_view": {
@@ -680,7 +680,7 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "",
+		"message": "Transparente",
 		"description": "data/index.html"
 	},
 	"advanced": {
@@ -708,7 +708,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"drop": {
-		"message": "",
+		"message": "Descartar",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -716,7 +716,7 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "",
+		"message": "Tango do assassino",
 		"description": "data/index.html"
 	},
 	"system_font": {
@@ -740,7 +740,7 @@
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "",
+		"message": "Exemplos",
 		"description": "data/index.html"
 	},
 	"search_in_google": {
@@ -748,7 +748,7 @@
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "",
+		"message": "Escolha as ações",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -760,7 +760,7 @@
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
-		"message": "",
+		"message": "Filtro baseado em regras",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -768,7 +768,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"mute_filter": {
-		"message": "",
+		"message": "Silenciar filtro",
 		"description": "data/index.html"
 	},
 	"view_more_conversation": {
@@ -776,7 +776,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"wanna_have_relationship_with": {
-		"message": "",
+		"message": "Quer ter um relacionamento com",
 		"description": "data/index.html"
 	},
 	"lists_of_them": {
@@ -844,7 +844,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"titian_s_elegance": {
-		"message": "",
+		"message": "Elegância do titã",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -852,11 +852,11 @@
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
-		"message": "",
+		"message": "Integridade de Virushou",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "",
+		"message": "Enviar para ...",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
@@ -864,7 +864,7 @@
 		"description": "data/index.html"
 	},
 	"rule_editor": {
-		"message": "",
+		"message": "Editor de regras",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -888,7 +888,7 @@
 		"description": "data/index.html"
 	},
 	"set_color_label": {
-		"message": "",
+		"message": "Definir a cor do rótulo",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
@@ -900,7 +900,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "",
+		"message": "Clique para escrever uma mensagem",
 		"description": "data/index.html"
 	},
 	"you_are_following": {
@@ -924,7 +924,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"open_a_profile_dots": {
-		"message": "",
+		"message": "Abrir um perfil ...",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -968,7 +968,7 @@
 		"description": "data/index.html"
 	},
 	"struggling_adventurers": {
-		"message": "",
+		"message": "Lutando com aventureiros",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -984,15 +984,15 @@
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "",
+		"message": "Esposa bonita",
 		"description": "data/index.html"
 	},
 	"tranquil": {
-		"message": "",
+		"message": "Tranquilo",
 		"description": "data/index.html"
 	},
 	"archive": {
-		"message": "",
+		"message": "Arquivar",
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
@@ -1000,7 +1000,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "",
+		"message": "Rascunhos",
 		"description": "data/js/ui.status_box.js"
 	},
 	"oops_a_network_error_occurs": {
@@ -1016,7 +1016,7 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "",
+		"message": "Meus favoritos",
 		"description": "data/js/ui.slider.js"
 	},
 	"slide_to_next_page": {
@@ -1044,11 +1044,11 @@
 		"description": "data/index.html"
 	},
 	"rule_name": {
-		"message": "",
+		"message": "Nome da regra",
 		"description": "data/index.html"
 	},
 	"filter_like_it": {
-		"message": "",
+		"message": "Filtrar iguas a isso",
 		"description": "data/index.html"
 	},
 	"look_and_feels": {
@@ -1080,11 +1080,11 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"mask": {
-		"message": "",
+		"message": "Máscara",
 		"description": "data/index.html"
 	},
 	"rule": {
-		"message": "",
+		"message": "Regra",
 		"description": "data/index.html"
 	},
 	"mention_them": {
