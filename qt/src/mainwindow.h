@@ -61,11 +61,16 @@ protected Q_SLOTS:
     void showDeveloperTool();
 #ifdef MEEGO_EDITION_HARMATTAN
     void contentSizeChanged();
+#else
+    void toggleMinimizeToTray(bool checked);
 #endif
 
 protected:
     void initDatabases();
     void closeEvent(QCloseEvent *evnet);
+#ifndef MEEGO_EDITION_HARMATTAN
+    void changeEvent(QEvent *event);
+#endif
 
 private:
     HototWebPage* m_page;
@@ -75,6 +80,9 @@ private:
     TrayIconInterface* m_tray;
     QAction* m_actionExit;
     QAction* m_actionDev;
+#ifndef MEEGO_EDITION_HARMATTAN
+    QAction* m_actionMinimizeToTray;
+#endif
 };
 
 #endif // MAINWINDOW_H

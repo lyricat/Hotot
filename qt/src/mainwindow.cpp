@@ -94,6 +94,15 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     m_menu = new QMenu(this);
+
+#ifndef MEEGO_EDITION_HARMATTAN
+    m_actionMinimizeToTray = new QAction(i18n("&Minimize to Tray"), this);
+    m_actionMinimizeToTray->setCheckable(true);
+    m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
+    connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
+    m_menu->addAction(m_actionMinimizeToTray);
+#endif
+
     m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     m_actionExit->setShortcut(QKeySequence::Quit);
     connect(m_actionExit, SIGNAL(triggered()), this, SLOT(close()));
@@ -308,3 +317,22 @@ void MainWindow::showDeveloperTool()
 {
     m_inspector->setVisible(true);
 }
+
+#ifndef MEEGO_EDITION_HARMATTAN
+void MainWindow::toggleMinimizeToTray(bool checked)
+{
+    QSettings settings("hotot-qt", "hotot");
+    settings.setValue("minimizeToTray", checked);
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::WindowStateChange) {
+        if (isMinimized() && m_actionMinimizeToTray->isChecked()) {
+            hide();
+        }
+    }
+    ParentWindow::changeEvent(event);
+}
+#endif
+
