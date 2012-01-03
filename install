@@ -16,9 +16,10 @@
 
 python setup.py build_i18n -m
 python setup.py build
-# For (maybe old) Fedora users
-cat /etc/issue | grep -iq fedora
-if [ $? -eq 0 ]; then
+# Test whether user can sudo
+id | grep -q wheel
+if [ $? -ne 0 ]; then
+    echo "Install...(root password needed)"
     su -c "python setup.py install --record record.log"
 else
     sudo python setup.py install $INSTALL_LAYOUT --record record.log
