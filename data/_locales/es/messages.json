@@ -20,7 +20,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"themes": {
-		"message": "Temaa",
+		"message": "Tema",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
@@ -192,7 +192,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"compose_messages_to": {
-		"message": "ENVIAR MENSAJE A",
+		"message": "ENVIAR MENSAJE DIRECTO A",
 		"description": "data/js/ui.status_box.js"
 	},
 	"add_to_list": {
@@ -596,7 +596,7 @@
 		"description": "data/index.html"
 	},
 	"send_message": {
-		"message": "Enviar mensaje",
+		"message": "Enviar mensaje directo",
 		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
@@ -1064,7 +1064,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"messages_view": {
-		"message": "Mostrar mensajes",
+		"message": "Mostrar mensajes directos",
 		"description": "data/index.html"
 	},
 	"enable_proxy": {
