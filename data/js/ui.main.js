@@ -332,11 +332,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     } else {
         self._body.prepend(batch_html);
     }
-    // calculator the height of remaining tweets
-    for (var i = 0; i < batch_arr.length; i += 1) {
-        var dom_id = self.name+'-'+batch_arr[i].id_str;
-        new_tweets_height += $('#'+dom_id).get(0).clientHeight;
-    }
+
     // preload
     if (ui.Main.use_preload_conversation && self.hasOwnProperty('_me')) {
         for (var i = 0; i < json_obj.length; i += 1) {
@@ -353,12 +349,21 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
     }
 
-    // if timeline is not on the top
-    // resume to the postion before new tweets were added
-    // offset = N* (clientHeight + border-width)
-    if (self.hasOwnProperty('_me') && self.resume_pos) {
-        self._me.get(0).scrollTop += new_tweets_height + json_obj.length;
-    }
+    setTimeout(function () {
+        // calculator the height of remaining tweets
+        for (var i = 0; i < batch_arr.length; i += 1) {
+            var dom_id = self.name+'-'+batch_arr[i].id_str;
+            new_tweets_height += $('#'+dom_id).get(0).clientHeight;
+        }
+        
+        // if timeline is not on the top
+        // resume to the postion before new tweets were added
+        // offset = N* (clientHeight + border-width)
+        if (self.hasOwnProperty('_me') && self.resume_pos) {
+            self._me.animate(
+                {scrollTop: (self._me.get(0).scrollTop + new_tweets_height + json_obj.length) + 'px'}, 200);
+        }
+    }, 500);
 
     // cache users' avatars in mentions
     /*
