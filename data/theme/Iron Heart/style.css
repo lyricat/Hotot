@@ -5,36 +5,36 @@
     box-shadow: 2px 2px 3px #111;
     -webkit-box-shadow: 2px 2px 3px #111;
 }
-#main_page ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-#main_page ::-webkit-scrollbar-button:start:decrement,
-#main_page ::-webkit-scrollbar-button:end:increment {
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
     height: 0px;
     display: block;
     background-color: transparent;
 }
 
-#main_page ::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece {
     background: #232223;
 }
 
-#main_page ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     -webkit-transition: all 0.2s ease-in;
     background: #232223;
 }
-#main_page ::-webkit-scrollbar-thumb:vertical {
+::-webkit-scrollbar-thumb:vertical {
     border-right: 4px #6f6f6f solid;
     height: 50px;
 }
-#main_page ::-webkit-scrollbar-thumb:horizontal {
+::-webkit-scrollbar-thumb:horizontal {
     border-bottom: 4px #6f6f6f solid;
     width: 50px;
 }
 
-#main_page ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #6f6f6f;
     border:0;
 }
@@ -110,6 +110,7 @@ a {
     color: #4AC3FF;
 }
 .card.selected {
+    background-color: none;
     border-bottom: 0px #111 solid;
 }
 .card:last-child {

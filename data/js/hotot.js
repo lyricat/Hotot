@@ -754,6 +754,8 @@ jQuery(function($) {
         $("#count > ul").hide();
     });
 
+    jQuery.fx.interval = 50;    
+
     init();
 
     update_tweet_block_width();

@@ -21,6 +21,10 @@ function change(code, callback) {
     } else {
         i18n.forced = true;
     }
+    if (i18n.current == code) {
+        return;
+    }
+    i18n.current = code;
     if (conf.vars.platform == 'Chrome' && !i18n.forced) {
         i18n.trans_html();
         if (callback != undefined)

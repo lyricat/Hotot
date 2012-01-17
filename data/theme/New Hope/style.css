@@ -1,53 +1,68 @@
-#main_page ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-#main_page ::-webkit-scrollbar-button:start:decrement,
-#main_page ::-webkit-scrollbar-button:end:increment {
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
     height: 0px;
     display: block;
     background-color: transparent;
 }
 
-#main_page ::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece {
     background: #fafafa;
 }
 
-#main_page ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     -webkit-transition: all 0.2s ease-in;
     background: #fafafa;
 }
-#main_page ::-webkit-scrollbar-thumb:vertical {
+::-webkit-scrollbar-thumb:vertical {
     border-right: 4px orange solid;
     height: 50px;
 }
-#main_page ::-webkit-scrollbar-thumb:horizontal {
+::-webkit-scrollbar-thumb:horizontal {
     border-bottom: 4px orange solid;
     width: 50px;
 }
-
-#main_page ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: orange;
     border:0;
 }
 
-#main_page {
-    display: none;
-    background: #fafafa; 
-    position: relative;
+#status_box ::-webkit-scrollbar-track-piece {
+    background: #fafafa;
+}
+#status_box ::-webkit-scrollbar-thumb {
+    background: #fff;
+}
+#status_box ::-webkit-scrollbar-thumb:hover {
+    background: orange;
+}
+.dialog ::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+}
+.dialog ::-webkit-scrollbar-thumb {
+    background: #fff;
 }
 
-#main_page_slider {
-    height: 100%;
-    width: auto;
+#header_inner {
+    background: #333 url(../image/mask.png);
+    border-bottom: 1px #2d2d2d solid;
+}
+#indication {
+    -webkit-box-shadow: inset 0 0 5px black;
+    -moz-box-shadow: inset 0 0 5px black;
+    box-shadow: inset 0 0 5px black;
+}
+#main_page {
+    background: #fafafa; 
 }
 
 .people_vcard {
-    display: block !important; 
     color: #333;
     padding: 5px;
-    position: relative;
 }
 .tweet_bar_btn {
     background-position-y: -48px;
@@ -57,4 +72,60 @@
 }
 .tweet_meta a {
     color: #888 !important;
+}
+.vcard_action_btns {
+    border-top: 1px #ccc solid;
+}
+.header_content {
+    border-left: 1px #ddd solid;
+}
+.search_box, .vcard, .header_inner {
+    background-color: #F2F2F2;
+    border: #E5E5E5 solid 1px;
+}
+.card {
+    border-top: 1px #ddd solid;
+    color: black;
+    border-bottom: 1px #fafafa solid;
+}
+
+.card:first-child {
+    border-top: 0; 
+}
+
+.card:last-child {
+    border-bottom: 1px #ddd solid;
+}
+
+.card.selected {
+    background-color: #fafafa;
+    border-bottom: 1px #bbb solid;
+}
+
+.card > .tweet_selected_indicator {
+    background-color: #4C6CF5;
+}
+.card.normal a {
+    color: #36c;
+}
+.card.me a {
+    color: #63c;
+}
+
+.card.message a {
+    color: #c63;
+}
+
+.card.mention a {
+    color: #492;
+}
+.profile_img_wrapper {
+    -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
+}
+::selection {
+    background: #a8d1ff;
+}
+
+#indication_light {
+    background: #73f;
 }
