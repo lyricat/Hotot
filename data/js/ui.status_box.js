@@ -448,7 +448,7 @@ function save_draft(draft) {
         ui.StatusBox.set_status_text($(this).text());
         switch (mode){
         case ui.StatusBox.MODE_REPLY:
-            ui.StatusBox.reply_to_id = parseInt(li.attr('reply_to_id'))
+            ui.StatusBox.reply_to_id = li.attr('reply_to_id')
             ui.StatusBox.set_status_info('REPLY TO', decodeURIComponent(li.attr('reply_text')));
         case ui.StatusBox.MODE_IMG:
         break;
