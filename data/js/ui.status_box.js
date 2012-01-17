@@ -80,6 +80,8 @@ function init () {
     var btn_clear = new widget.Button('#btn_clear'); 
     btn_clear.on_clicked = function (event) {
         $('#tbox_status').attr('value', '');
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+        ui.reply_to_id = null;
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
     };
     btn_clear.create();
@@ -464,6 +466,8 @@ function save_draft(draft) {
         if (count == 0) {
             $('#status_drafts').hide();
         }
+
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
     });
     var count = $('#status_drafts li').length;
     $('#status_drafts summary').text('Drafts ('+count+')');
