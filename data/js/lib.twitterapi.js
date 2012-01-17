@@ -26,6 +26,12 @@ http_code_msg_table : {
       0: 'Lost connection with server.'
     , 400: 'Bad Request: The request was invalid.'
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
+    , 403: {
+        'update': 'Twitter does not allow to update duplicate status :(',
+        'retweet': 'You have already retweeted this tweet.',
+        'fav': 'You have already marked this tweet as favorite.',
+        'unknown': 'Twitter refuse your request.'
+    }
     , 404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 500: 'Server is broken. Please try again later.'
     , 502: 'Server is down or being upgraded. Please try again later.'
@@ -37,7 +43,19 @@ function default_error_handler(url, xhr, textStatus, errorThrown) {
     var msg = '';
     var tech_info = '';
     if (xhr.status in lib.twitterapi.http_code_msg_table) {
-        msg = lib.twitterapi.http_code_msg_table[xhr.status];
+        if (xhr.status != 403) {
+            msg = lib.twitterapi.http_code_msg_table[xhr.status];
+        } else {
+            if (url.indexOf('favorites/create/') !== -1) {
+                msg = lib.twitterapi.http_code_msg_table[403]['fav'];
+            } else if (url.indexOf('statuses/retweet/') !== -1) {
+                msg = lib.twitterapi.http_code_msg_table[403]['retweet'];
+            } else if (url.indexOf('statuses/update.json') !== -1) {
+                msg = lib.twitterapi.http_code_msg_table[403]['update'];
+            } else {
+                msg = lib.twitterapi.http_code_msg_table[403]['unknown'];
+            }
+        }
         tech_info = 'HTTP Code:'+ xhr.status 
             + '\nDetails:' + xhr.statusText + '\nURL:' + url;
     } else {
@@ -47,7 +65,7 @@ function default_error_handler(url, xhr, textStatus, errorThrown) {
     }
     switch (lib.twitterapi.default_error_method) {
         case 'notify':
-            hotot_notify('Ooops, An Error Occurred!', msg, null, 'content');
+            hotot_notify('Ooops, An Error Occurred!', msg + '\n' + tech_info, null, 'content');
         break;
         case 'dialog':
             ui.ErrorDlg.alert('Ooops, An Error Occurred!', msg, tech_info);
