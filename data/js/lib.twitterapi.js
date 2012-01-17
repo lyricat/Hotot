@@ -28,7 +28,7 @@ http_code_msg_table : {
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
     , 403: {
         'update': 'Twitter does not allow to update duplicate status :(',
-        'retweet': 'You have already retweeted this tweet.',
+        'retweet': 'You have already retweeted this tweet, or it is protected.',
         'fav': 'You have already marked this tweet as favorite.',
         'unknown': 'Twitter refuse your request.'
     }
