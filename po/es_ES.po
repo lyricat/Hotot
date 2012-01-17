@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-30 11:04+0100\n"
+"POT-Creation-Date: 2012-01-15 19:25+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: César Suárez Ortega <suarez.ortega.cesar@gmail.com>\n"
+"Last-Translator: César Suárez <suarez.ortega.cesar@gmail.com>\n"
 "Language-Team: \n"
 "Language: Português/Portugal\n"
 "MIME-Version: 1.0\n"
@@ -26,11 +26,11 @@ msgstr "Hotot"
 
 #: ../hotot/hotot.py:127 ../hotot/hotot.py:147
 msgid "_Resume/Hide"
-msgstr "_Continuar/Esconder"
+msgstr "_Mostrar/Esconder"
 
 #: ../hotot/hotot.py:144
 msgid "_File"
-msgstr "_Fichero"
+msgstr "_Archivo"
 
 #: ../hotot/hotot.py:160
 msgid "_Help"
