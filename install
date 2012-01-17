@@ -1,5 +1,6 @@
 #!/bin/bash -
 # Contributor: Victor Mishel Vera Sanchez (mishudark) <moonsadly@gmail.com>
+#              Alick Zhao (alick) <alick9188@gmail.com>
 
 [ -x /usr/bin/apt-get ] && {
     INSTALL_LAYOUT='--install-layout deb'
@@ -7,6 +8,19 @@
     || sudo apt-get install python-webkit python-notify python-keybinder python-distutils-extra
 }
 
+# For Fedora users
+[ -x /usr/bin/yum ] && {
+    python -c 'import webkit, keybinder, pynotify, DistUtilsExtra.command' \
+    || { echo "Install dependencies using yum...(root password needed)"; su -c 'yum install pywebkitgtk notify-python python-keybinder python-distutils-extra'; }
+}
+
 python setup.py build_i18n -m
 python setup.py build
-sudo python setup.py install $INSTALL_LAYOUT --record record.log
+# Test whether user can sudo
+id | grep -q wheel
+if [ $? -ne 0 ]; then
+    echo "Install...(root password needed)"
+    su -c "python setup.py install --record record.log"
+else
+    sudo python setup.py install $INSTALL_LAYOUT --record record.log
+fi
