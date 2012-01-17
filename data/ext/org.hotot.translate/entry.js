@@ -182,17 +182,22 @@ function do_translate(dst_lang, text, callback) {
     $.ajax({
         url: url,
         success: function(data, textStatus, jqXHR) {
-            result = {};
+            var result = {};
             result.responseData = {};
-            res = JSON.parse(data.replace(/,,+/g, ','));
-            if (res[0] && res[0][0] && (text = res[0][0][0])) {
-                result.responseStatus = 200;
-                result.responseData.translatedText = text;
+            var res = JSON.parse(data.replace(/,,+/g, ','));
+            var translatedText = '';
+            if (res[0]) {
+                for (var i = 0; i < res[0].length; i += 1) {
+                    translatedText += res[0][i][0];
+                }
             }
+            result.lang = res[1];
+            result.responseStatus = 200;
+            result.responseData.translatedText = translatedText;
             callback(result);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            data = {};
+            var data = {};
             data.responseDetails = 'Err...';
             callback(data);
         },
@@ -212,7 +217,7 @@ function do_translate_tweet(li_id, dst_lang) {
         var content = '';
         if (result.responseStatus == 200) {
             content = '<strong style="'+style+'">'
-                + ext.HototTranslate.languages[dst_lang] +'</strong>: '
+                + result.lang + '&rarr;'+ ext.HototTranslate.languages[dst_lang] +'</strong>: '
                 + result.responseData.translatedText;
         } else {
             content = '<strong style="'+style+'">ERROR</strong>: ' + result.responseDetails;
