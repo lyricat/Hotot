@@ -321,7 +321,7 @@ function do_action(rule, incoming) {
 
 do_drop:
 function do_drop(rule, act, incoming) {
-    console.log('[ACT]', 'Drop the incoming!');
+    // console.log('[ACT]', 'Drop the incoming!');
 },
 
 do_notify:
@@ -334,7 +334,7 @@ function do_notify(rule, act, incoming) {
 
 do_archive:
 function do_archive(rule, act, incoming) {
-    console.log('[ACT]','Archive the incoming!');
+    // console.log('[ACT]','Archive the incoming!');
     var formal_name = encodeBase64(rule.name).replace(/=/g, '_');
     if (!ui.Main.views.hasOwnProperty('kismet_' + formal_name)) {
         ui.Slider.add('kismet_'+ formal_name, 
@@ -361,7 +361,7 @@ function do_archive(rule, act, incoming) {
 
 do_reply:
 function do_reply(rule, act, incoming) {
-    console.log('[ACT]', 'Make a response!');
+    // console.log('[ACT]', 'Make a response!');
     var user = incoming.hasOwnProperty('user')? 
             incoming.user: incoming.sender;
     if (typeof globals != 'undefined' &&
@@ -372,7 +372,7 @@ function do_reply(rule, act, incoming) {
 
 do_quote:
 function do_quote(rule, act, incoming) {
-    console.log('[ACT]', 'Make a quote!');
+    // console.log('[ACT]', 'Make a quote!');
     var user = incoming.hasOwnProperty('user')? 
             incoming.user: incoming.sender;
     if (typeof globals != 'undefined' &&
@@ -384,7 +384,7 @@ function do_quote(rule, act, incoming) {
 do_mask:
 function do_mask(rule, act, incoming) {
     incoming.text = kismet.MASK_TEXT;
-    console.log('[ACT]', 'Mask the incoming!');
+    // console.log('[ACT]', 'Mask the incoming!');
 },
 
 filter_proc:
@@ -411,7 +411,7 @@ function filter_proc(single) {
     // check rules
     for (var i = 0; i < kismet.enforcers.length; i += 1) {
         if (kismet.eval_cond(kismet.enforcers[i].cond, single)) {
-            console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
+            // console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
             ret = kismet.do_action(kismet.enforcers[i], single);
             if (!ret) break;
         }

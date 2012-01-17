@@ -151,9 +151,14 @@ function init () {
         ui.reply_to_id = null;
     });
 
-    $('#tbox_status').keydown(
+    $('#tbox_status').keyup(
     function (event) {
         ui.StatusBox.update_status_len();
+    });
+
+    $('#tbox_status').keydown(
+    function (event) {
+        //ui.StatusBox.update_status_len();
         // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
         // However, if ignore all keydown event will cause some bugs
         // if user use IM to compose status text. 
@@ -335,13 +340,12 @@ function update_status_cb(result) {
 
 update_status_len:
 function update_status_len() {
-    var status_len = ui.StatusBox.get_status_len($('#tbox_status').attr('value'));
+    var status_len = ui.StatusBox.get_status_len($('#tbox_status').val());
     if (status_len > globals.max_status_len)
         $('#status_len').css('color', '#cc0000');
     else
         $('#status_len').css('color', '#aaa');
     $('#status_len').text(status_len + '/' + globals.max_status_len);
-    return this;
 },
 
 post_message:
