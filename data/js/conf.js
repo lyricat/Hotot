@@ -245,7 +245,7 @@ function apply_prefs(name) {
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;
 
     lib.twitterapi.api_base = prefs.api_base;
-    lib.twitterapi.upload_api_base = prefs.api_base;
+    lib.twitterapi.upload_api_base = prefs.upload_api_base;
     lib.twitterapi.sign_api_base = prefs.sign_api_base;
     lib.twitterapi.search_api_base2 = prefs.search_api_base2;
     lib.twitterapi.use_same_sign_api_base = prefs.use_same_sign_api_base;
