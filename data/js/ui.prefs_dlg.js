@@ -290,6 +290,8 @@ function save_prefs() {
         = $('#tbox_prefs_oauth_base').attr('value');    
     prefs['sign_oauth_base'] 
         = $('#tbox_prefs_sign_oauth_base').attr('value');
+    prefs['upload_api_base']
+        = $('#tbox_prefs_upload_api_base').attr('value');
     prefs['use_same_sign_api_base']
         = $('#chk_prefs_use_same_sign_api_base').attr('checked');
     prefs['use_same_sign_oauth_base']
