@@ -91,11 +91,14 @@
     border-top: 1px #333 solid;
     color: #ECE8DD;
     border-bottom: 0px #111 solid;
-    margin-left: 10px;
     padding-left: 0;
+    margin-left: 10px;
 }
 .card > .tweet_selected_indicator, .card > .tweet_color_label {
     left: -10px;
+}
+.card > .tweet_selected_indicator {
+    background-color: #4C6CF5;
 }
 .card.normal a {
     color: #4AC3FF;
@@ -110,7 +113,7 @@ a {
     color: #4AC3FF;
 }
 .card.selected {
-    background-color: none;
+    background-color: #232223;
     border-bottom: 0px #111 solid;
 }
 .card:last-child {
