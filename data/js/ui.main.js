@@ -349,7 +349,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
     }
 
-    setTimeout(function () {
+    //setTimeout(function () {
         // calculator the height of remaining tweets
         for (var i = 0; i < batch_arr.length; i += 1) {
             var dom_id = self.name+'-'+batch_arr[i].id_str;
@@ -360,10 +360,13 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         // resume to the postion before new tweets were added
         // offset = N* (clientHeight + border-width)
         if (self.hasOwnProperty('_me') && self.resume_pos) {
+            /*
             self._me.animate(
                 {scrollTop: (self._me.get(0).scrollTop + new_tweets_height + json_obj.length) + 'px'}, 200);
+                */
+            self._me.get(0).scrollTop += new_tweets_height + json_obj.length;
         }
-    }, 500);
+    //}, 50);
 
     // cache users' avatars in mentions
     /*
