@@ -62,6 +62,7 @@ default_prefs: {
         , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
+        , 'upload_api_base': 'https://upload.twitter.com/1/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
@@ -100,6 +101,7 @@ default_prefs: {
         , 'sign_oauth_base': 'https://identi.ca/api/oauth/'
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://identi.ca/api/'
+        , 'upload_api_base': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
@@ -247,6 +249,7 @@ function apply_prefs(name) {
     lib.twitterapi.api_base = prefs.api_base;
     lib.twitterapi.sign_api_base = prefs.sign_api_base;
     lib.twitterapi.search_api_base2 = prefs.search_api_base2;
+    lib.twitterapi.upload_api_base = prefs.upload_api_base;
     lib.twitterapi.use_same_sign_api_base = prefs.use_same_sign_api_base;
     jsOAuth.oauth_base = prefs.oauth_base;
     jsOAuth.sign_oauth_base = prefs.sign_oauth_base;
