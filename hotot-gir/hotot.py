@@ -227,7 +227,10 @@ class Hotot:
         self.inblinking = False
 
     def on_window_delete(self, widget, event):
-        return widget.hide_on_delete()
+        if config.settings['close_to_exit']:
+            self.quit() 
+        else:
+            return widget.hide_on_delete()
 
     def on_window_show_or_hide(self, widget):
         menuitems = self.traymenu.get_children()

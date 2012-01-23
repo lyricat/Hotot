@@ -119,7 +119,7 @@ function init () {
                 ext.HototImageUpload.upload_dialog.open();
             } else {
                 ui.ImageUploader.show();
-            }
+            } 
         } else {
             title = 'Error !'
             content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'

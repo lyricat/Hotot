@@ -172,7 +172,7 @@ class Hotot:
         ##
         self.window.set_geometry_hints(min_height=380, min_width=460)
         self.window.show()
-        self.window.connect('delete-event', gtk.Widget.hide_on_delete)
+        self.window.connect('delete-event', self.on_window_delete)
 
     def create_memenu(self):
         # Memssage Menu indicator
@@ -234,6 +234,12 @@ class Hotot:
 
     def stop_blinking(self):
         self.inblinking = False
+
+    def on_window_delete(self, widget, event):
+        if config.settings['close_to_exit']:
+            self.quit() 
+        else:
+            return widget.hide_on_delete()
 
     def on_mm_activate(self, idr, arg1):
         if HAS_ME_MENU:

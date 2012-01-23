@@ -118,6 +118,8 @@ function load_settings() {
         , conf.settings.use_verbose_mode);
     $('#chk_prefs_use_ubuntu_indicator').attr('checked'
         , conf.settings.use_ubuntu_indicator);
+    $('#chk_prefs_close_to_exit').attr('checked'
+        , conf.settings.close_to_exit);
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
@@ -149,6 +151,8 @@ function save_settings() {
         = $('#chk_prefs_use_verbose_mode').attr('checked');
     conf.settings.use_ubuntu_indicator 
         = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
+    conf.settings.close_to_exit 
+        = $('#chk_prefs_close_to_exit').attr('checked');
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // proxy

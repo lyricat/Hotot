@@ -28,6 +28,7 @@ default_settings: {
     , 'size_w': 500
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
+    , 'close_to_exit': false
     , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
     , 'use_default_reply_all': false
 },
