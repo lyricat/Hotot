@@ -290,12 +290,12 @@ normalize_prefs:
 function normalize_prefs(protocol, prefs) {
     var default_prefs = conf.get_default_prefs(protocol);
     for (var k in default_prefs) {
-        if (!(k in prefs)) {
+        if (!prefs.hasOwnProperty(k)) {
             prefs[k] = default_prefs[k];
         }
     }
     for (var k in prefs) {
-        if (!(k in default_prefs)) {
+        if (!default_prefs.hasOwnProperty(k)) {
             delete prefs['k'];
         } 
     }
