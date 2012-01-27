@@ -420,8 +420,9 @@ def main():
                                             'hotot',
                                             appindicator.CATEGORY_COMMUNICATIONS)
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
-        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
+        indicator.set_icon_theme_path(utils.get_ui_object('image'))
+        indicator.set_icon('ic24_hotot_mono_light')
+        indicator.set_attention_icon('ic24_hotot_mono_dark')
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 
