@@ -106,6 +106,7 @@ class Hotot:
         self.window.set_position(Gtk.WindowPosition.CENTER)
         #self.window.set_default_size(500, 550)
         self.window.connect('delete-event', self.on_window_delete)
+        self.window.connect('size-allocate', self.on_window_size_allocate)
         self.window.connect('show', self.on_window_show_or_hide)
         self.window.connect('hide', self.on_window_show_or_hide)
 
@@ -232,6 +233,12 @@ class Hotot:
         else:
             return widget.hide_on_delete()
 
+    def on_window_size_allocate(self, widget, allocation):
+        x, y = self.window.get_position()
+        script = 'if (conf) {conf.settings.pos_x=%d; \
+        conf.settings.pos_y=%d;}' % (x, y)
+        GObject.idle_add(self.webv.execute_script, script)
+
     def on_window_show_or_hide(self, widget):
         menuitems = self.traymenu.get_children()
         if self.window.get_visible():
@@ -281,8 +288,12 @@ class Hotot:
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])
+        self.window.move(
+              config.settings['pos_x']
+            , config.settings['pos_y'])
         # apply proxy
         self.apply_proxy_setting()
+
 
     def apply_proxy_setting(self):
         if config.settings['use_http_proxy']:

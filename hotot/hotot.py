@@ -173,6 +173,7 @@ class Hotot:
         self.window.set_geometry_hints(min_height=380, min_width=460)
         self.window.show()
         self.window.connect('delete-event', self.on_window_delete)
+        self.window.connect('size-allocate', self.on_window_size_allocate)
 
     def create_memenu(self):
         # Memssage Menu indicator
@@ -241,6 +242,12 @@ class Hotot:
         else:
             return widget.hide_on_delete()
 
+    def on_window_size_allocate(self, widget, allocation):
+        x, y = self.window.get_position()
+        script = 'if (conf) {conf.settings.pos_x=%d; \
+        conf.settings.pos_y=%d;}' % (x, y)
+        gobject.idle_add(self.webv.execute_script, script)
+
     def on_mm_activate(self, idr, arg1):
         if HAS_ME_MENU:
             subtype = idr.get_property('subtype')
@@ -302,6 +309,9 @@ class Hotot:
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])
+        self.window.move(
+              config.settings['pos_x']
+            , config.settings['pos_y'])
         # apply proxy
         self.apply_proxy_setting()
 
