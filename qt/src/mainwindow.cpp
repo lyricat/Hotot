@@ -40,6 +40,7 @@
 #include <QMenu>
 #include <QWebInspector>
 #include <QGraphicsView>
+#include <QTimer>
 
 #ifdef HAVE_KDE
 #include <KWindowSystem>
@@ -268,7 +269,15 @@ void MainWindow::triggerVisible()
         }
     }
 #else
-    setVisible(!isVisible());
+    if (isVisible()) {
+        setVisible(!isVisible());
+    }
+    else {
+        setVisible(!isVisible());
+        setWindowState(windowState() & ~Qt::WindowMinimized);
+        activateWindow();
+    }
+
 #endif
 #else
     show();
@@ -327,12 +336,15 @@ void MainWindow::toggleMinimizeToTray(bool checked)
 
 void MainWindow::changeEvent(QEvent *event)
 {
+    ParentWindow::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange) {
-        if (isMinimized() && m_actionMinimizeToTray->isChecked()) {
-            hide();
+        QWindowStateChangeEvent* e = (QWindowStateChangeEvent*) event;
+        if (m_actionMinimizeToTray->isChecked() && isMinimized() && !e->oldState().testFlag(Qt::WindowMinimized)) {
+            qApp->processEvents();
+            QTimer::singleShot(0, this, SLOT(hide()));
+            event->ignore();
         }
     }
-    ParentWindow::changeEvent(event);
 }
 #endif
 
