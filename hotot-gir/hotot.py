@@ -104,7 +104,7 @@ class Hotot:
 
         self.window.set_title(_("Hotot"))
         self.window.set_position(Gtk.WindowPosition.CENTER)
-        #self.window.set_default_size(500, 550)
+
         self.window.connect('delete-event', self.on_window_delete)
         self.window.connect('size-allocate', self.on_window_size_allocate)
         self.window.connect('show', self.on_window_show_or_hide)
@@ -126,6 +126,9 @@ class Hotot:
         mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Show"))
         mitem_resume.connect('activate', self.on_mitem_show_activate);
         self.traymenu.append(mitem_resume)
+        mitem_compose = Gtk.MenuItem.new_with_mnemonic(_("_Compose"))
+        mitem_compose.connect('activate', self.on_mitem_compose);
+        self.traymenu.append(mitem_compose)
         mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Hide"))
         mitem_resume.connect('activate', self.on_mitem_hide_activate);
         self.traymenu.append(mitem_resume)
@@ -154,6 +157,9 @@ class Hotot:
         mitem_resume = Gtk.MenuItem.new_with_mnemonic(_("_Show"))
         mitem_resume.connect('activate', self.on_mitem_show_activate)
         menuitem_file_menu.append(mitem_resume)
+        mitem_compose = Gtk.MenuItem.new_with_mnemonic(_("_Compose"))
+        mitem_compose.connect('activate', self.on_mitem_compose)
+        menuitem_file_menu.append(mitem_compose)
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
@@ -228,7 +234,7 @@ class Hotot:
         self.inblinking = False
 
     def on_window_delete(self, widget, event):
-        if config.settings['close_to_exit']:
+        if 'close_to_exit' in config.settings and config.settings['close_to_exit']:
             self.quit() 
         else:
             return widget.hide_on_delete()
@@ -263,6 +269,11 @@ class Hotot:
         ui.PrefsDlg.load_settings(conf.settings);
         ui.PrefsDlg.load_prefs();
         globals.prefs_dialog.open();''');
+        self.window.present()
+
+    def on_mitem_compose(self, item):
+        if self.is_sign_in:
+            agent.execute_script('ui.StatusBox.open();')
         self.window.present()
 
     def on_mitem_about_activate(self, item):
