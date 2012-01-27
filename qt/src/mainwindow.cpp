@@ -64,7 +64,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
     m_webView(new QGraphicsWebView),
+#ifndef MEEGO_EDITION_HARMATTAN
+    m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
+#endif
     m_inspector(0)
+
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -97,7 +101,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_menu = new QMenu(this);
 
 #ifndef MEEGO_EDITION_HARMATTAN
-    m_actionMinimizeToTray = new QAction(i18n("&Minimize to Tray"), this);
     m_actionMinimizeToTray->setCheckable(true);
     m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
@@ -338,9 +341,7 @@ void MainWindow::changeEvent(QEvent *event)
 {
     ParentWindow::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange) {
-        QWindowStateChangeEvent* e = (QWindowStateChangeEvent*) event;
-        if (m_actionMinimizeToTray->isChecked() && isMinimized() && !e->oldState().testFlag(Qt::WindowMinimized)) {
-            qApp->processEvents();
+        if (m_actionMinimizeToTray->isChecked() && isMinimized()) {
             QTimer::singleShot(0, this, SLOT(hide()));
             event->ignore();
         }

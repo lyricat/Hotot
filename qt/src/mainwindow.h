@@ -75,7 +75,6 @@ protected:
 private:
     HototWebPage* m_page;
     QGraphicsWebView* m_webView;
-    QWebInspector* m_inspector;
     QMenu* m_menu;
     TrayIconInterface* m_tray;
     QAction* m_actionExit;
@@ -83,6 +82,7 @@ private:
 #ifndef MEEGO_EDITION_HARMATTAN
     QAction* m_actionMinimizeToTray;
 #endif
+    QWebInspector* m_inspector;
 };
 
 #endif // MAINWINDOW_H
