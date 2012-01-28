@@ -152,7 +152,8 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef Q_OS_UNIX
     m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
 #else
-    m_webView->load(QUrl("share/hotot-qt/html/index.html"));
+    QFileInfo f("share/hotot-qt/html/index.html");
+    m_webView->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
 }
