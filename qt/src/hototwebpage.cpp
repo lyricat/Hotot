@@ -83,7 +83,7 @@ bool HototWebPage::handleUri(const QString& originmsg)
                     QStringList fileNames = dialog.selectedFiles();
                     if (fileNames.size() > 0) {
                         QString callback = msg.section("/", 2, 2);
-                        currentFrame()->evaluateJavaScript(QString("%1(\"%2\")").arg(callback, fileNames[0]));
+                        currentFrame()->evaluateJavaScript(QString("%1(\"%2\")").arg(callback, QUrl::fromLocalFile(fileNames[0]).toString().replace("file://", "")));
                     }
                 }
             } else if (method == "save_avatar") {

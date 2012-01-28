@@ -48,7 +48,7 @@ class MainWindow : public ParentWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(bool useSocket, QWidget *parent = 0);
     ~MainWindow();
     void notification(QString type, QString title, QString message, QString image);
     void triggerVisible();
@@ -75,7 +75,6 @@ protected:
 private:
     HototWebPage* m_page;
     QGraphicsWebView* m_webView;
-    QWebInspector* m_inspector;
     QMenu* m_menu;
     TrayIconInterface* m_tray;
     QAction* m_actionExit;
@@ -83,6 +82,8 @@ private:
 #ifndef MEEGO_EDITION_HARMATTAN
     QAction* m_actionMinimizeToTray;
 #endif
+    QWebInspector* m_inspector;
+    bool m_useSocket;
 };
 
 #endif // MAINWINDOW_H
