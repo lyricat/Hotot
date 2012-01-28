@@ -75,7 +75,12 @@ bool HototRequest::doRequest()
                     mimeType = "image/png";
                 else
                     mimeType = "application/octet-stream";
-                formPost.addFile(list[0].toString(), list[1].toString(), mimeType);
+#ifdef Q_OS_WIN
+                while(filename.at(0) == '/') {
+                    filename = filename.mid(1);
+                }
+#endif
+                formPost.addFile(list[0].toString(), filename, mimeType);
             }
         }
         m_reply = formPost.postData(request);
