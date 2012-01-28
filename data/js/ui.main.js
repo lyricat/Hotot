@@ -665,10 +665,13 @@ function on_reply_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     var screen_name = li.attr('screen_name');
     var text = $(li.find('.text')[0]).text();
+    var orig_text = $('#tbox_status').val();
 
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_status_info('REPLY TO', screen_name + ':"' + text + '"');
-    ui.StatusBox.append_status_text('@' + li.attr('screen_name') + ' ');
+    if (orig_text.indexOf('@'+screen_name) == -1) {
+        ui.StatusBox.insert_status_text('@' + li.attr('screen_name') + ' ', null);
+    }
     ui.StatusBox.open(
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
@@ -721,14 +724,16 @@ function on_reply_all_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     var screen_name = li.attr('screen_name');
     var text = $(li.find('.text')[0]).text();
+    var orig_text = $('#tbox_status').val();
     // @TODO reduce this process by entities
     var who_names = [ '@' + screen_name];
     var match = ui.Template.reg_user.exec(text);
     while (match != null ) {
         if (match[2] != globals.myself.screen_name) {
             var name = '@' + match[2];
-            if (who_names.indexOf(name) == -1)
+            if (orig_text.indexOf(name) == -1 && who_names.indexOf(name) == -1) {
                 who_names.push(name);
+            }
         }
         match = ui.Template.reg_user.exec(text);
     }
