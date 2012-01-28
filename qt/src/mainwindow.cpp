@@ -60,14 +60,15 @@
 #include "kdetraybackend.h"
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
     m_webView(new QGraphicsWebView),
 #ifndef MEEGO_EDITION_HARMATTAN
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
-    m_inspector(0)
+    m_inspector(0),
+    m_useSocket(useSocket)
 
 {
 #ifdef Q_OS_UNIX
@@ -217,7 +218,7 @@ void MainWindow::initDatabases()
                         QString httpProxyAuthPassword = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
 
                         if (useHttpProxy) {
-                            QNetworkProxy proxy(QNetworkProxy::HttpProxy,
+                            QNetworkProxy proxy(m_useSocket ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
                             

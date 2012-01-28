@@ -48,7 +48,7 @@ class MainWindow : public ParentWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(bool useSocket, QWidget *parent = 0);
     ~MainWindow();
     void notification(QString type, QString title, QString message, QString image);
     void triggerVisible();
@@ -83,6 +83,7 @@ private:
     QAction* m_actionMinimizeToTray;
 #endif
     QWebInspector* m_inspector;
+    bool m_useSocket;
 };
 
 #endif // MAINWINDOW_H
