@@ -249,7 +249,7 @@ class Hotot:
 
     def on_window_size_allocate(self, widget, allocation):
         x, y = self.window.get_position()
-        script = 'if (conf) {conf.settings.pos_x=%d; \
+        script = 'if (typeof conf==="undefined"){conf.settings.pos_x=%d; \
         conf.settings.pos_y=%d;}' % (x, y)
         gobject.idle_add(self.webv.execute_script, script)
 

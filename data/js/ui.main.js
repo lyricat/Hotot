@@ -144,38 +144,22 @@ function loadmore_messages(self, success, fail) {
 load_tweet_success:
 function load_tweet_success(self, json) {
     var ret = ui.Main.add_tweets(self, json, false);
-    if (self.changed) {
-        ui.Slider.set_unread(self.name);
-    }
     // in fact, ret equals to json.length
     if (ret == 0) {
         return json.length;
     }
-    var current_profile = conf.get_current_profile();
-    var prefs = current_profile.preferences;
-    if (!prefs.views_lastest_id) {
-        prefs.views_lastest_id = {};
-    }
-    var latest_id = prefs.views_lastest_id[self.name + '_latest_id'] || "0";
-    var last_id = json[json.length - 1].id_str;
-    if (util.compare_id(last_id, latest_id) > 0) {
-        prefs.views_lastest_id[self.name + '_latest_id'] = last_id;
-    }
-    var i = json.length - 1;
-    for ( ; i >= 0 ; i -= 1) {
-        if (util.compare_id(json[i].id_str, latest_id) <= 0) {
-            break;
-        }
-    }
-    ret = json.length - i - 1;
-    if (ret == 0) {
+
+    if (self.incoming_num <= 0) {
         return json.length;
     }
+    hotot_log('incoming_num of '+self.name, self.incoming_num);
+
+    ui.Slider.set_unread(self.name);
     // notify
     if (ui.Main.views[self.name].use_notify) {
         var user = ''; var text = '';
         var notify_count = 0
-        for (var i = json.length - 1; json.length - 3 <= i && 0 <= i; i -= 1) {
+        for (var i = 0; i < self.incoming_num && i <= 3; i += 1) {
             user = json[i].hasOwnProperty('user') ? json[i].user : json[i].sender;
             if (user.screen_name == globals.myself.screen_name)
                 continue;
@@ -188,7 +172,7 @@ function load_tweet_success(self, json) {
                 , "and " + (notify_count - 2) + " new items remained."
                 , null, 'count');
         }
-        unread_alert(ret);
+        unread_alert(self.incoming_num);
         if (ui.Main.views[self.name].use_notify_sound) {
             $('#audio_notify').get(0).play();
         }
@@ -204,7 +188,7 @@ function load_tweet_success(self, json) {
 load_people_success:
 function load_people_success(self, json) {
     var ret = ui.Main.add_people(self, json.users);
-    if (self.changed) {
+    if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
@@ -213,7 +197,7 @@ function load_people_success(self, json) {
 load_list_success:
 function load_list_success(self, json) {
     var ret = ui.Main.add_people(self, json.lists);
-    if (self.changed) {
+    if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
@@ -222,7 +206,7 @@ function load_list_success(self, json) {
 loadmore_tweet_success:
 function loadmore_tweet_success(self, json) {
     var ret = ui.Main.add_tweets(self, json, true);
-    if (self.changed) {
+    if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
@@ -231,7 +215,7 @@ function loadmore_tweet_success(self, json) {
 loadmore_people_success:
 function loadmore_people_success(self, json) {
     var ret = ui.Main.add_people(self, json.users);
-    if (self.changed) {
+    if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
@@ -240,7 +224,7 @@ function loadmore_people_success(self, json) {
 loadmore_list_success:
 function loadmore_list_success(self, json) {
     var ret = ui.Main.add_people(self, json.lists);
-    if (self.changed) {
+    if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
     }
     return ret;
@@ -393,6 +377,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
     });
 
+    /*
     if (!reversion && json_obj.length != 0) {
         if (self.item_type == 'cursor') {       // friedns or followers
             self.changed = (self.cursor != json_obj.next_cursor_str);
@@ -401,6 +386,28 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
         }
     } else {
         self.changed = false;
+    }
+    */
+
+    if (!reversion && json_obj.length != 0 && self.item_type == 'id') {
+        var current_profile = conf.get_current_profile();
+        var prefs = current_profile.preferences;
+        if (!prefs.hasOwnProperty('views_lastest_id')) {
+            prefs.views_lastest_id = {};
+        }
+        var latest_id = prefs.views_lastest_id[self.name + '_latest_id'] || "0";
+        var last_id = json_obj[json_obj.length - 1].id_str;
+        if (util.compare_id(last_id, latest_id) > 0) {
+            prefs.views_lastest_id[self.name + '_latest_id'] = last_id;
+        }
+        self.incoming_num = 0;
+        for (var i = json_obj.length - 1; json_obj.length - 3 <= i && 0 <= i; i -= 1, self.incoming_num += 1) {
+            if (util.compare_id(json_obj[i].id_str, latest_id) <= 0) {
+                break;
+            }
+        }
+    } else {
+        self.incoming_num = 0;
     }
 
     // bind events

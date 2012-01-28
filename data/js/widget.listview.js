@@ -31,7 +31,7 @@ function WidgetListView(id, name, params) {
     self.title = 'New Page';
     self.interval = 0;
     self.resume_pos = false;
-    self.changed = false;
+    self.incoming_num = 0;
     self.is_trim = true;
 
     self.since_id = null;
