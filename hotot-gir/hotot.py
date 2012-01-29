@@ -106,7 +106,7 @@ class Hotot:
         self.window.set_position(Gtk.WindowPosition.CENTER)
 
         self.window.connect('delete-event', self.on_window_delete)
-        self.window.connect('size-allocate', self.on_window_size_allocate)
+        # self.window.connect('size-allocate', self.on_window_size_allocate)
         self.window.connect('show', self.on_window_show_or_hide)
         self.window.connect('hide', self.on_window_show_or_hide)
 
@@ -241,7 +241,7 @@ class Hotot:
 
     def on_window_size_allocate(self, widget, allocation):
         x, y = self.window.get_position()
-        script = 'if (typeof conf==="undefined"){conf.settings.pos_x=%d; \
+        script = 'if (typeof conf!=="undefined"){conf.settings.pos_x=%d; \
         conf.settings.pos_y=%d;}' % (x, y)
         GObject.idle_add(self.webv.execute_script, script)
 
@@ -299,9 +299,6 @@ class Hotot:
         self.window.resize(
               config.settings['size_w']
             , config.settings['size_h'])
-        self.window.move(
-              config.settings['pos_x']
-            , config.settings['pos_y'])
         # apply proxy
         self.apply_proxy_setting()
 
