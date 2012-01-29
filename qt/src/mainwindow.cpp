@@ -110,7 +110,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 
     m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     m_actionExit->setShortcut(QKeySequence::Quit);
-    connect(m_actionExit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(m_actionExit, SIGNAL(triggered()), this, SLOT(exit()));
     m_menu->addAction(m_actionExit);
 
     m_actionDev = new QAction(QIcon::fromTheme("configure"), i18n("&Developer Tool"), this);
@@ -172,8 +172,30 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QSettings settings("hotot-qt", "hotot");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
-#endif
+    if (isCloseToExit()) {
+        exit();
+    }
+    else {
+        event->ignore();
+        hide();
+    }
+#else
     ParentWindow::closeEvent(event);
+#endif
+}
+
+void MainWindow::exit()
+{
+    qApp->exit();
+}
+
+bool MainWindow::isCloseToExit() {
+    QVariant var = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.close_to_exit");
+    if (var.isValid()) {
+        return var.toBool();
+    }
+    else 
+        return false;
 }
 
 MainWindow::~MainWindow()

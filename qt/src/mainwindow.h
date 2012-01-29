@@ -59,6 +59,7 @@ public:
 protected Q_SLOTS:
     void loadFinished(bool ok);
     void showDeveloperTool();
+    void exit();
 #ifdef MEEGO_EDITION_HARMATTAN
     void contentSizeChanged();
 #else
@@ -67,6 +68,7 @@ protected Q_SLOTS:
 
 protected:
     void initDatabases();
+    bool isCloseToExit();
     void closeEvent(QCloseEvent *evnet);
 #ifndef MEEGO_EDITION_HARMATTAN
     void changeEvent(QEvent *event);
