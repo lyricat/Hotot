@@ -510,7 +510,7 @@ function reset() {
 
 set_status_text:
 function set_status_text(text) {
-    $('#tbox_status').attr('value', text);
+    $('#tbox_status').val(text);
     $('#tbox_status').removeClass('hint_style');
 },
 
