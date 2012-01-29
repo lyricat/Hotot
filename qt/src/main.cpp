@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     int opt;
-    while ((opt = getopt(argc, argv, "dh")) != -1) {
+    while ((opt = getopt(argc, argv, "sdh")) != -1) {
         switch (opt) {
         case 's':
             enableSocket = true;

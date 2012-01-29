@@ -415,9 +415,9 @@ def main():
     if HAS_INDICATOR:
         indicator = appindicator.Indicator('hotot',
                                             'hotot',
-                                            appindicator.CATEGORY_COMMUNICATIONS)
+                                            appindicator.CATEGORY_COMMUNICATIONS,
+                                            utils.get_ui_object('image'))
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_icon_theme_path(utils.get_ui_object('image'))
         indicator.set_icon('ic24_hotot_mono_light')
         indicator.set_attention_icon('ic24_hotot_mono_dark')
         indicator.set_menu(app.menu_tray)

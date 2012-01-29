@@ -88,6 +88,7 @@ bool HototWebPage::handleUri(const QString& originmsg)
                 }
             } else if (method == "save_avatar") {
             } else if (method == "log") {
+                qDebug() << msg;
             } else if (method == "paste_clipboard_text") {
                 triggerAction(QWebPage::Paste);
             } else if (method == "set_clipboard_text") {
