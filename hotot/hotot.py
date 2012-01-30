@@ -168,9 +168,6 @@ class Hotot:
         self.window.connect('delete-event', self.on_window_delete)
         # self.window.connect('size-allocate', self.on_window_size_allocate)
 
-    def emit_incoming(self, group, tweets):
-        self.dbus_service.incoming(group, tweets)
-
     def update_status(self, text):
         self.webv.execute_script('update_status("%s")' % text)
 
