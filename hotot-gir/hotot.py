@@ -134,7 +134,7 @@ class Hotot:
         self.traymenu.append(mitem_compose)
         if (self.enable_inspector):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
-            mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, Gtk.IconSize.MENU))
+            mitem_inspector.set_image(Gtk.Image.new_from_stock(Gtk.STOCK_FIND, Gtk.IconSize.MENU))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
             self.traymenu.append(mitem_inspector)
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
@@ -165,7 +165,7 @@ class Hotot:
         menuitem_file_menu.append(mitem_prefs)
         if (self.enable_inspector):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
-            mitem_inspector.set_image(Gtk.Image().new_from_stock(Gtk.STOCK_FIND, 16))
+            mitem_inspector.set_image(Gtk.Image.new_from_stock(Gtk.STOCK_FIND, 16))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
             menuitem_file_menu.append(mitem_inspector)
         menuitem_quit = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_QUIT, None)
