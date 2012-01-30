@@ -16,6 +16,8 @@ DB_DIR = os.path.join(CONF_DIR, 'db')
 CACHE_DIR = os.path.join(GLib.get_user_cache_dir(), PROGRAM_NAME)
 AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
 
+ENABLE_INSPECTOR = False
+
 DATA_DIRS = []
 
 DATA_BASE_DIRS = [

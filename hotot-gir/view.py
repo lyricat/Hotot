@@ -11,12 +11,13 @@ try: import i18n
 except: from gettext import gettext as _
 
 class MainView(WebKit.WebView):
-    def __init__(self, devtools=False):
+    def __init__(self, parentWidget):
         WebKit.WebView.__init__(self)
         self.load_finish_flag = False
         self.set_property('can-focus', True)
         self.set_property('can-default', True)
         self.set_full_content_zoom(1)
+        self.parentWidget = parentWidget;
 
         settings = self.get_settings()
         try:
@@ -28,7 +29,7 @@ class MainView(WebKit.WebView):
             settings.set_property('enable-file-access-from-file-uris', True)
             settings.set_property('enable-spell-checking', False)
             settings.set_property('enable-caret-browsing', False)
-            settings.set_property('enable-developer-extras', devtools)
+            settings.set_property('enable-developer-extras', config.ENABLE_INSPECTOR)
         except:
             print 'Error: settings property was not set.'
 
@@ -42,7 +43,7 @@ class MainView(WebKit.WebView):
         self.connect('load-finished', self.on_load_finish);
         self.connect("hovering-over-link", self.on_over_link);
 
-        if devtools:
+        if config.ENABLE_INSPECTOR:
             from inspector import HototInspector
             HototInspector(self.get_inspector())
 
@@ -106,5 +107,5 @@ class MainView(WebKit.WebView):
     def on_over_link(self, view, alt, href):
         href = href or ""
         if not alt and not href.startswith('file:'):
-            self.parent.set_tooltip_text(href)
+            self.parentWidget.set_tooltip_text(href)
 

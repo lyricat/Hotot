@@ -4,62 +4,24 @@
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
-from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
 import os
 import sys
-import view
-import config
-import agent
-#import keybinder
-import utils
-import dbus
-import dbus.service
 import threading
 import time
-
-
-HOTOT_DBUS_PATH = '/org/hotot/service'
-HOTOT_DBUS_NAME = 'org.hotot.service'
-
-class HototDbusService(dbus.service.Object):
-    def __init__(self, app):
-        from dbus.mainloop.glib import DBusGMainLoop
-        DBusGMainLoop(set_as_default=True)
-        bus_name = dbus.service.BusName(HOTOT_DBUS_NAME, bus=dbus.SessionBus())
-        dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
-        self.app = app
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="i")
-    def unread(self):
-        return self.app.state['unread_count']
-
-    @dbus.service.signal(dbus_interface=HOTOT_DBUS_NAME)
-    def incoming(self, group, tweets):
-        pass
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="s", out_signature="")
-    def update_status(self, text):
-        self.app.update_status(text)
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
-    def show(self):
-        self.app.window.present()
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
-    def hide(self):
-        self.app.window.hide()
-
-    @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="")
-    def quit(self):
-        self.app.quit()
-
+import config
+import gi
+gi.require_version('Gtk', '3.0')
+gi.require_version('Gdk', '3.0')
+gi.require_version('GdkX11', '3.0')
+gi.require_version('WebKit', '3.0')
+from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
+import utils, agent, view
 
 class Hotot:
-    def __init__(self, enable_inspector):
+    def __init__(self):
         self.is_sign_in = False
         self.active_profile = 'default'
         self.protocol = ''
-        self.enable_inspector = enable_inspector
         self.build_gui()
         self.trayicon_pixbuf = [None, None]
         self.state = {
@@ -67,20 +29,20 @@ class Hotot:
         }
 
         self.inblinking = False
-        self.dbus_service = HototDbusService(self)
+
+        import dbuservice
+        self.dbus_service = dbuservice.DbusService(self)
 
         if os.environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
             self.has_indicator = False
         else:
             try:
+                gi.require_version('AppIndicator', '3.0')
                 from gi.repository import AppIndicator3 as AppIndicator
+            except ValueError:
+                self.has_indicator = False
             except ImportError:
-                try:
-                    from gi.repository import AppIndicator
-                except ImportError:
-                    self.has_indicator = False
-                else:
-                    self.has_indicator = True
+                self.has_indicator = False
             else:
                 self.has_indicator = True
 
@@ -112,8 +74,8 @@ class Hotot:
 
         vbox = Gtk.VBox()
         scrollw = Gtk.ScrolledWindow()
-        self.webv = view.MainView(self.enable_inspector)
-        self.webv.parent = scrollw
+
+        self.webv = view.MainView(scrollw)
 
         agent.view = self.webv
 
@@ -132,7 +94,7 @@ class Hotot:
         mitem_compose = Gtk.MenuItem.new_with_mnemonic(_("_Compose"))
         mitem_compose.connect('activate', self.on_mitem_compose);
         self.traymenu.append(mitem_compose)
-        if (self.enable_inspector):
+        if (config.ENABLE_INSPECTOR):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
             mitem_inspector.set_image(Gtk.Image.new_from_stock(Gtk.STOCK_FIND, Gtk.IconSize.MENU))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
@@ -163,7 +125,7 @@ class Hotot:
         mitem_prefs = Gtk.ImageMenuItem.new_from_stock(Gtk.STOCK_PREFERENCES, None)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
-        if (self.enable_inspector):
+        if (config.ENABLE_INSPECTOR):
             mitem_inspector = Gtk.ImageMenuItem.new_with_mnemonic(_("_Inspector"))
             mitem_inspector.set_image(Gtk.Image.new_from_stock(Gtk.STOCK_FIND, 16))
             mitem_inspector.connect('activate', self.on_mitem_inspector_activate)
@@ -378,18 +340,17 @@ class Hotot:
 def usage():
     print '''Usage: hotot [OPTION...]
   -d, --dev                enable hotot inspector
-  -h, --help               show this help info'''
+  -h, --help               display this help'''
 
 def main():
-    enable_inspector = False
-    for arg in sys.argv[1:]:
-        if arg in ('-h', '--help'):
+    for opt in sys.argv[1:]:
+        if opt in ('-h', '--help'):
             usage()
             sys.exit()
-        elif arg in ('-d', '--dev'):
-            enable_inspector = True
+        elif opt in ('-d', '--dev'):
+            config.ENABLE_INSPECTOR = True
         else:
-            print "hotot: unrecognized option '%s'" % arg
+            print "hotot: unrecognized option '%s'" % opt
             usage()
             sys.exit(1)
 
@@ -408,7 +369,7 @@ def main():
     config.loads();
 
     agent.init_notify()
-    app = Hotot(enable_inspector)
+    app = Hotot()
     agent.app = app
     
     Gdk.threads_enter()
