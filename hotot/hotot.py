@@ -25,18 +25,9 @@ except ImportError:
 else:
     HAS_INDICATOR = True
 
-try:
-    import indicate
-except ImportError:
-    HAS_ME_MENU = False
-else:
-    HAS_ME_MENU = True
-
 if __import__('os').environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
     HAS_INDICATOR = False
-    HAS_ME_MENU = False
 
-HAS_ME_MENU = False
 
 try: import i18n
 except: from gettext import gettext as _
@@ -97,9 +88,6 @@ class Hotot:
         self.dbus_service = HototDbusService(self)
         if not HAS_INDICATOR:
             self.create_trayicon()
-
-        if HAS_ME_MENU:
-            self.create_memenu()
 
     def build_gui(self):
         self.window = gtk.Window()
@@ -180,14 +168,6 @@ class Hotot:
         self.window.connect('delete-event', self.on_window_delete)
         # self.window.connect('size-allocate', self.on_window_size_allocate)
 
-    def create_memenu(self):
-        # Memssage Menu indicator
-        self.mm = indicate.indicate_server_ref_default()
-        self.mm.set_type('message.hotot')
-        self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
-        self.mm.connect('server-display', self.on_mm_server_activate)
-        self.mm.show()
-
     def emit_incoming(self, group, tweets):
         self.dbus_service.incoming(group, tweets)
 
@@ -195,20 +175,6 @@ class Hotot:
         self.webv.execute_script('update_status("%s")' % text)
 
     def unread_alert(self, subtype, sender, body="", count=0):
-        if HAS_ME_MENU:
-            try:
-                idr = indicate.Indicator()
-            except:
-                idr = indicate.IndicatorMessage()
-            idr.set_property('subtype', subtype)
-            idr.set_property('sender', sender)
-            idr.set_property('body', body)
-            idr.set_property('draw-attention', 'true' if count > 0 else 'false')
-            idr.set_property('count', count)
-            idr.connect('user-display', self.on_mm_activate)
-            idr.show()
-            self.mm_indicators[subtype] = idr
-
         if count > 0:
             self.start_blinking()
         else:
@@ -252,17 +218,6 @@ class Hotot:
         script = 'if (typeof conf !=="undefined"){conf.settings.pos_x=%d; \
         conf.settings.pos_y=%d;}' % (x, y)
         gobject.idle_add(self.webv.execute_script, script)
-
-    def on_mm_activate(self, idr, arg1):
-        if HAS_ME_MENU:
-            subtype = idr.get_property('subtype')
-            idr.set_property('draw-attention', 'false')
-            self.window.present()
-            if subtype in self.mm_indicators:
-                del self.mm_indicators[subtype]
-            
-    def on_mm_server_activate(self, serv, arg1):
-        self.window.present()
 
     def on_btn_update_clicked(self, btn):
         if (self.tbox_status.get_text_length() <= 140):
