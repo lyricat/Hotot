@@ -89,7 +89,7 @@ class Hotot:
             self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
             self.indicator.set_icon_theme_path(utils.get_ui_object('image/'))
             self.indicator.set_icon_full('ic24_hotot_mono_light', 'hotot')
-            self.indicator.set_attention_icon_full('ic24_hotot_mono_dark', 'hotot')
+            self.indicator.set_attention_icon_full('ic24_hotot_mono_light_blink', 'hotot')
             self.indicator.set_menu(self.traymenu)
             self.indicatorStatus = AppIndicator.IndicatorStatus
         else:

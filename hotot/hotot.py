@@ -419,7 +419,7 @@ def main():
                                             utils.get_ui_object('image'))
         indicator.set_status(appindicator.STATUS_ACTIVE)
         indicator.set_icon('ic24_hotot_mono_light')
-        indicator.set_attention_icon('ic24_hotot_mono_dark')
+        indicator.set_attention_icon('ic24_hotot_mono_light_blink')
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 
