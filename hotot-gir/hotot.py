@@ -37,10 +37,7 @@ class Hotot:
             self.has_indicator = False
         else:
             try:
-                gi.require_version('AppIndicator', '3.0')
                 from gi.repository import AppIndicator3 as AppIndicator
-            except ValueError:
-                self.has_indicator = False
             except ImportError:
                 self.has_indicator = False
             else:
