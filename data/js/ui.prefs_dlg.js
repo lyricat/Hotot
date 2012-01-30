@@ -53,19 +53,19 @@ function init () {
 
     $('#chk_prefs_use_same_sign_api_base').click(
     function (event) {
-        $('#tbox_prefs_sign_api_base').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_sign_api_base').attr('disabled', $(this).prop('checked'));
     });
 
     $('#chk_prefs_use_same_sign_oauth_base').click(
     function (event) {
-        $('#tbox_prefs_sign_oauth_base').attr('disabled', $(this).attr('checked'));
+        $('#tbox_prefs_sign_oauth_base').attr('disabled', $(this).prop('checked'));
     });
     
     $('#chk_prefs_use_http_proxy').click(
     function (event) {
-        $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).prop('checked'));
         if (! $('#chk_prefs_use_http_proxy_auth').attr('disabled')) { 
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').attr('checked'));
+            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').prop('checked'));
         } else {
             $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
         }
@@ -73,7 +73,7 @@ function init () {
 
     $('#chk_prefs_use_http_proxy_auth').click(
     function (event) {
-        $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).attr('checked'));
+        $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
     });
 
     var btn_prefs_ok = new widget.Button('#btn_prefs_ok');
@@ -114,24 +114,24 @@ function init () {
 load_settings:
 function load_settings() {
     // Globals
-    $('#chk_prefs_use_verbose_mode').attr('checked'
+    $('#chk_prefs_use_verbose_mode').prop('checked'
         , conf.settings.use_verbose_mode);
-    $('#chk_prefs_use_ubuntu_indicator').attr('checked'
+    $('#chk_prefs_use_ubuntu_indicator').prop('checked'
         , conf.settings.use_ubuntu_indicator);
-    $('#chk_prefs_close_to_exit').attr('checked'
+    $('#chk_prefs_close_to_exit').prop('checked'
         , conf.settings.close_to_exit);
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
     if (util.is_native_platform()) {
-        $('#chk_prefs_use_http_proxy').attr('checked'
+        $('#chk_prefs_use_http_proxy').prop('checked'
             , conf.settings.use_http_proxy);
         $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
         $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
         if (! conf.settings.use_http_proxy) {
             $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
         }
-        $('#chk_prefs_use_http_proxy_auth').attr('checked'
+        $('#chk_prefs_use_http_proxy_auth').prop('checked'
             , conf.settings.use_http_proxy_auth);
         $('#tbox_prefs_http_proxy_auth_name').val(conf.settings.http_proxy_auth_name);
         $('#tbox_prefs_http_proxy_auth_password').val(conf.settings.http_proxy_auth_password);
@@ -148,23 +148,23 @@ save_settings:
 function save_settings() {
     // Globals
     conf.settings.use_verbose_mode 
-        = $('#chk_prefs_use_verbose_mode').attr('checked');
+        = $('#chk_prefs_use_verbose_mode').prop('checked');
     conf.settings.use_ubuntu_indicator 
-        = $('#chk_prefs_use_ubuntu_indicator').attr('checked');
+        = $('#chk_prefs_use_ubuntu_indicator').prop('checked');
     conf.settings.close_to_exit 
-        = $('#chk_prefs_close_to_exit').attr('checked');
+        = $('#chk_prefs_close_to_exit').prop('checked');
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // proxy
     if (util.is_native_platform()) {
         conf.settings.use_http_proxy
-            = $('#chk_prefs_use_http_proxy').attr('checked');
+            = $('#chk_prefs_use_http_proxy').prop('checked');
         conf.settings.http_proxy_host 
             = $('#tbox_prefs_http_proxy_host').val();
         conf.settings.http_proxy_port 
             = parseInt($('#tbox_prefs_http_proxy_port').val());
         conf.settings.use_http_proxy_auth
-            = $('#chk_prefs_use_http_proxy_auth').attr('checked');
+            = $('#chk_prefs_use_http_proxy_auth').prop('checked');
         conf.settings.http_proxy_auth_name
             = $('#tbox_prefs_http_proxy_auth_name').val();
         conf.settings.http_proxy_auth_password
@@ -181,7 +181,7 @@ load_prefs:
 function load_prefs() {
     var prefs = conf.get_current_profile().preferences;
     // Account
-    $('#chk_prefs_remember_password').attr('checked'
+    $('#chk_prefs_remember_password').prop('checked'
         , prefs.remember_password);
 
     // Appearance
@@ -210,24 +210,24 @@ function load_prefs() {
     $('#tbox_prefs_custom_font').val(prefs.custom_font);    
     $('#tbox_prefs_font_size').val(prefs.font_size);    
     if (prefs.use_custom_font) {
-        $('#rdo_use_custom_font').attr('checked', prefs.use_custom_font);
+        $('#rdo_use_custom_font').prop('checked', prefs.use_custom_font);
     }
     switch (prefs.effects_level) {
-    case 0: $('#rdo_effects_level_low').attr('checked', true); break;
-    case 1: $('#rdo_effects_level_normal').attr('checked', true); break;
-    case 2: $('#rdo_effects_level_extra').attr('checked', true); break;
-    default: $('#rdo_effects_level_normal').attr('checked', true); break;
+    case 0: $('#rdo_effects_level_low').prop('checked', true); break;
+    case 1: $('#rdo_effects_level_normal').prop('checked', true); break;
+    case 2: $('#rdo_effects_level_extra').prop('checked', true); break;
+    default: $('#rdo_effects_level_normal').prop('checked', true); break;
     }  
     ui.PrefsDlg.update_font_preview();
-    $('#chk_prefs_use_native_notify').attr('checked'
+    $('#chk_prefs_use_native_notify').prop('checked'
         , prefs.use_native_notify);
-    $('#chk_prefs_use_preload_conversation').attr('checked'
+    $('#chk_prefs_use_preload_conversation').prop('checked'
         , prefs.use_preload_conversation);
-    $('#chk_prefs_use_alt_retweet').attr('checked'
+    $('#chk_prefs_use_alt_retweet').prop('checked'
         , prefs.use_alt_retweet);
-    $('#chk_prefs_use_alt_reply').attr('checked'
+    $('#chk_prefs_use_alt_reply').prop('checked'
         , prefs.use_alt_reply);
-    $('#chk_prefs_use_media_preview').attr('checked'
+    $('#chk_prefs_use_media_preview').prop('checked'
         , prefs.use_media_preview);
     
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
@@ -239,9 +239,9 @@ function load_prefs() {
     $('#tbox_prefs_upload_api_base').val(prefs.upload_api_base);
     $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
     $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
-    $('#chk_prefs_use_same_sign_api_base').attr('checked'
+    $('#chk_prefs_use_same_sign_api_base').prop('checked'
         , prefs.use_same_sign_api_base);
-    $('#chk_prefs_use_same_sign_oauth_base').attr('checked'
+    $('#chk_prefs_use_same_sign_oauth_base').prop('checked'
         , prefs.use_same_sign_oauth_base);
     if (prefs.use_same_sign_api_base) {
         $('#tbox_prefs_sign_api_base').attr('disabled', true);
@@ -256,7 +256,7 @@ function save_prefs() {
     var prefs = conf.get_current_profile().preferences;
     // Account
     prefs['remember_password']
-        = $('#chk_prefs_remember_password').attr('checked');
+        = $('#chk_prefs_remember_password').prop('checked');
     // Looks & Feels
     prefs['lang'] = $('#sel_prefs_lang').val();
 
@@ -268,20 +268,20 @@ function save_prefs() {
     if (prefs['font_size'] == '') {
         prefs['font_size'] = 12;
     }
-    prefs['use_custom_font'] = $('#rdo_use_custom_font').attr('checked');
+    prefs['use_custom_font'] = $('#rdo_use_custom_font').prop('checked');
     prefs['effects_level'] 
         = parseInt($('input:radio[name="effects"]:checked').val());
     // behaviors
     prefs['use_native_notify']
-        = $('#chk_prefs_use_native_notify').attr('checked');
+        = $('#chk_prefs_use_native_notify').prop('checked');
     prefs['use_preload_conversation']
-        = $('#chk_prefs_use_preload_conversation').attr('checked'); 
+        = $('#chk_prefs_use_preload_conversation').prop('checked'); 
     prefs['use_alt_retweet']
-        = $('#chk_prefs_use_alt_retweet').attr('checked'); 
+        = $('#chk_prefs_use_alt_retweet').prop('checked'); 
     prefs['use_alt_reply']
-        = $('#chk_prefs_use_alt_reply').attr('checked'); 
+        = $('#chk_prefs_use_alt_reply').prop('checked'); 
     prefs['use_media_preview']
-        = $('#chk_prefs_use_media_preview').attr('checked'); 
+        = $('#chk_prefs_use_media_preview').prop('checked'); 
     prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
 
     // Advanced
@@ -298,9 +298,9 @@ function save_prefs() {
     prefs['sign_oauth_base'] 
         = $('#tbox_prefs_sign_oauth_base').attr('value');
     prefs['use_same_sign_api_base']
-        = $('#chk_prefs_use_same_sign_api_base').attr('checked');
+        = $('#chk_prefs_use_same_sign_api_base').prop('checked');
     prefs['use_same_sign_oauth_base']
-        = $('#chk_prefs_use_same_sign_oauth_base').attr('checked');
+        = $('#chk_prefs_use_same_sign_oauth_base').prop('checked');
     // apply & save
     conf.apply_prefs(conf.current_name);
     conf.save_prefs(conf.current_name);
@@ -319,7 +319,7 @@ update_font_preview:
 function update_font_preview() {
     $('#prefs_font_preview')
         .css('font-family'
-            , $('#rdo_use_custom_font').attr('checked')
+            , $('#rdo_use_custom_font').prop('checked')
                 ? $('#tbox_prefs_custom_font').val() 
                     :$('#sel_prefs_font_family').attr('value'))
         .css('font-size'
