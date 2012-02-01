@@ -31,6 +31,8 @@ default_settings: {
     , 'close_to_exit': false
     , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
     , 'use_default_reply_all': false
+    , 'pos_x': 0
+    , 'pos_y': 0
 },
 
 default_prefs: {

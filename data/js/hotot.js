@@ -729,9 +729,13 @@ jQuery(function($) {
             ui.Slider.slide_to_prev();
         }
     };
-    $('body').focus(function () {
+    $(window).bind('focus click', function () {
         unread_alert(0);
     });
+    $('.card').live('click', function () {
+        unread_alert(0);
+    });
+
 
     $(window).resize(
     function () {

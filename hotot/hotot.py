@@ -25,18 +25,9 @@ except ImportError:
 else:
     HAS_INDICATOR = True
 
-try:
-    import indicate
-except ImportError:
-    HAS_ME_MENU = False
-else:
-    HAS_ME_MENU = True
-
 if __import__('os').environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
     HAS_INDICATOR = False
-    HAS_ME_MENU = False
 
-HAS_ME_MENU = False
 
 try: import i18n
 except: from gettext import gettext as _
@@ -98,9 +89,6 @@ class Hotot:
         if not HAS_INDICATOR:
             self.create_trayicon()
 
-        if HAS_ME_MENU:
-            self.create_memenu()
-
     def build_gui(self):
         self.window = gtk.Window()
         gtk.window_set_default_icon_from_file(
@@ -110,7 +98,6 @@ class Hotot:
 
         self.window.set_title(_("Hotot"))
         self.window.set_position(gtk.WIN_POS_CENTER)
-        #self.window.set_default_size(500, 550)
 
         vbox = gtk.VBox()
         scrollw = gtk.ScrolledWindow()
@@ -127,6 +114,9 @@ class Hotot:
         mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_trayicon_activate);
         self.menu_tray.append(mitem_resume)
+        mitem_compose = gtk.MenuItem(_("_Compose"))
+        mitem_compose.connect('activate', self.on_mitem_compose);
+        self.menu_tray.append(mitem_compose)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate);
         self.menu_tray.append(mitem_prefs)
@@ -147,6 +137,9 @@ class Hotot:
         mitem_resume = gtk.MenuItem(_("_Resume/Hide"))
         mitem_resume.connect('activate', self.on_mitem_resume_activate)
         menuitem_file_menu.append(mitem_resume)
+        mitem_compose = gtk.MenuItem(_("_Compose"))
+        mitem_compose.connect('activate', self.on_mitem_compose)
+        menuitem_file_menu.append(mitem_compose)
         mitem_prefs = gtk.ImageMenuItem(gtk.STOCK_PREFERENCES)
         mitem_prefs.connect('activate', self.on_mitem_prefs_activate)
         menuitem_file_menu.append(mitem_prefs)
@@ -173,36 +166,12 @@ class Hotot:
         self.window.set_geometry_hints(min_height=380, min_width=460)
         self.window.show()
         self.window.connect('delete-event', self.on_window_delete)
-
-    def create_memenu(self):
-        # Memssage Menu indicator
-        self.mm = indicate.indicate_server_ref_default()
-        self.mm.set_type('message.hotot')
-        self.mm.set_desktop_file(utils.get_ui_object('hotot.desktop'))
-        self.mm.connect('server-display', self.on_mm_server_activate)
-        self.mm.show()
-
-    def emit_incoming(self, group, tweets):
-        self.dbus_service.incoming(group, tweets)
+        # self.window.connect('size-allocate', self.on_window_size_allocate)
 
     def update_status(self, text):
         self.webv.execute_script('update_status("%s")' % text)
 
     def unread_alert(self, subtype, sender, body="", count=0):
-        if HAS_ME_MENU:
-            try:
-                idr = indicate.Indicator()
-            except:
-                idr = indicate.IndicatorMessage()
-            idr.set_property('subtype', subtype)
-            idr.set_property('sender', sender)
-            idr.set_property('body', body)
-            idr.set_property('draw-attention', 'true' if count > 0 else 'false')
-            idr.set_property('count', count)
-            idr.connect('user-display', self.on_mm_activate)
-            idr.show()
-            self.mm_indicators[subtype] = idr
-
         if count > 0:
             self.start_blinking()
         else:
@@ -236,21 +205,16 @@ class Hotot:
         self.inblinking = False
 
     def on_window_delete(self, widget, event):
-        if config.settings['close_to_exit']:
+        if 'close_to_exit' in config.settings and config.settings['close_to_exit']:
             self.quit() 
         else:
             return widget.hide_on_delete()
 
-    def on_mm_activate(self, idr, arg1):
-        if HAS_ME_MENU:
-            subtype = idr.get_property('subtype')
-            idr.set_property('draw-attention', 'false')
-            self.window.present()
-            if subtype in self.mm_indicators:
-                del self.mm_indicators[subtype]
-            
-    def on_mm_server_activate(self, serv, arg1):
-        self.window.present()
+    def on_window_size_allocate(self, widget, allocation):
+        x, y = self.window.get_position()
+        script = 'if (typeof conf !=="undefined"){conf.settings.pos_x=%d; \
+        conf.settings.pos_y=%d;}' % (x, y)
+        gobject.idle_add(self.webv.execute_script, script)
 
     def on_btn_update_clicked(self, btn):
         if (self.tbox_status.get_text_length() <= 140):
@@ -277,6 +241,11 @@ class Hotot:
         ui.PrefsDlg.load_settings(conf.settings);
         ui.PrefsDlg.load_prefs();
         globals.prefs_dialog.open();''');
+        self.window.present()
+
+    def on_mitem_compose(self, item):
+        if self.is_sign_in:
+            agent.execute_script('ui.StatusBox.open();')
         self.window.present()
 
     def on_mitem_about_activate(self, item):
@@ -398,10 +367,11 @@ def main():
     if HAS_INDICATOR:
         indicator = appindicator.Indicator('hotot',
                                             'hotot',
-                                            appindicator.CATEGORY_COMMUNICATIONS)
+                                            appindicator.CATEGORY_COMMUNICATIONS,
+                                            utils.get_ui_object('image'))
         indicator.set_status(appindicator.STATUS_ACTIVE)
-        indicator.set_icon(utils.get_ui_object('image/ic24_hotot_mono_light.svg'))
-        indicator.set_attention_icon(utils.get_ui_object('image/ic24_hotot_mono_dark.svg'))
+        indicator.set_icon('ic24_hotot_mono_light')
+        indicator.set_attention_icon('ic24_hotot_mono_light_blink')
         indicator.set_menu(app.menu_tray)
         app.indicator = indicator
 

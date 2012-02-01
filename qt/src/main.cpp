@@ -46,6 +46,7 @@ void Usage()
 {
     printf("Usage: hotot-qt [options]\n"
            "\t\t-d\tEnable Develope Tool\n"
+           "\t\t-s\tEnable Socket Proxy\n"
            "\t\t-h\tShow this help\n"
           );
 }
@@ -53,6 +54,8 @@ void Usage()
 int main(int argc, char *argv[])
 {
     bool enableDeveloper = false;
+    bool enableSocket = false;
+
 #ifdef HAVE_KDE
 
     KAboutData aboutData("hotot",                                        // internal name
@@ -78,12 +81,15 @@ int main(int argc, char *argv[])
     KCmdLineOptions options;
     options.add("d");
     options.add("dev", ki18n("Enable developer Tool"));
+    options.add("s");
+    options.add("socket", ki18n("Use Proxy as Socket Proxy instead of HTTP Proxy"));
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineArgs::addCmdLineOptions(options);
     KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
     enableDeveloper = args->isSet("dev");
+    enableSocket = args->isSet("socket");
 
     KApplication a;
 #else
@@ -96,8 +102,11 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     int opt;
-    while ((opt = getopt(argc, argv, "dh")) != -1) {
+    while ((opt = getopt(argc, argv, "sdh")) != -1) {
         switch (opt) {
+        case 's':
+            enableSocket = true;
+            break;
         case 'd':
             enableDeveloper = true;
             break;
@@ -113,7 +122,7 @@ int main(int argc, char *argv[])
 #endif
 
 #endif
-    MainWindow w;
+    MainWindow w(enableSocket);
     w.setEnableDeveloperTool(enableDeveloper);
 
 #ifdef MEEGO_EDITION_HARMATTAN

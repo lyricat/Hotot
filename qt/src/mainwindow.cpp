@@ -40,6 +40,7 @@
 #include <QMenu>
 #include <QWebInspector>
 #include <QGraphicsView>
+#include <QTimer>
 
 #ifdef HAVE_KDE
 #include <KWindowSystem>
@@ -59,11 +60,16 @@
 #include "kdetraybackend.h"
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
     m_webView(new QGraphicsWebView),
-    m_inspector(0)
+#ifndef MEEGO_EDITION_HARMATTAN
+    m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
+#endif
+    m_inspector(0),
+    m_useSocket(useSocket)
+
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -96,7 +102,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_menu = new QMenu(this);
 
 #ifndef MEEGO_EDITION_HARMATTAN
-    m_actionMinimizeToTray = new QAction(i18n("&Minimize to Tray"), this);
     m_actionMinimizeToTray->setCheckable(true);
     m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
@@ -105,7 +110,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     m_actionExit->setShortcut(QKeySequence::Quit);
-    connect(m_actionExit, SIGNAL(triggered()), this, SLOT(close()));
+    connect(m_actionExit, SIGNAL(triggered()), this, SLOT(exit()));
     m_menu->addAction(m_actionExit);
 
     m_actionDev = new QAction(QIcon::fromTheme("configure"), i18n("&Developer Tool"), this);
@@ -148,7 +153,8 @@ MainWindow::MainWindow(QWidget *parent) :
 #ifdef Q_OS_UNIX
     m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
 #else
-    m_webView->load(QUrl("share/hotot-qt/html/index.html"));
+    QFileInfo f("share/hotot-qt/html/index.html");
+    m_webView->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
 }
@@ -166,8 +172,30 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QSettings settings("hotot-qt", "hotot");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
-#endif
+    if (isCloseToExit()) {
+        exit();
+    }
+    else {
+        event->ignore();
+        hide();
+    }
+#else
     ParentWindow::closeEvent(event);
+#endif
+}
+
+void MainWindow::exit()
+{
+    qApp->exit();
+}
+
+bool MainWindow::isCloseToExit() {
+    QVariant var = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.close_to_exit");
+    if (var.isValid()) {
+        return var.toBool();
+    }
+    else 
+        return false;
 }
 
 MainWindow::~MainWindow()
@@ -212,7 +240,7 @@ void MainWindow::initDatabases()
                         QString httpProxyAuthPassword = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
 
                         if (useHttpProxy) {
-                            QNetworkProxy proxy(QNetworkProxy::HttpProxy,
+                            QNetworkProxy proxy(m_useSocket ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
                             
@@ -268,7 +296,15 @@ void MainWindow::triggerVisible()
         }
     }
 #else
-    setVisible(!isVisible());
+    if (isVisible()) {
+        setVisible(!isVisible());
+    }
+    else {
+        setVisible(!isVisible());
+        setWindowState(windowState() & ~Qt::WindowMinimized);
+        activateWindow();
+    }
+
 #endif
 #else
     show();
@@ -327,12 +363,13 @@ void MainWindow::toggleMinimizeToTray(bool checked)
 
 void MainWindow::changeEvent(QEvent *event)
 {
+    ParentWindow::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange) {
-        if (isMinimized() && m_actionMinimizeToTray->isChecked()) {
-            hide();
+        if (m_actionMinimizeToTray->isChecked() && isMinimized()) {
+            QTimer::singleShot(0, this, SLOT(hide()));
+            event->ignore();
         }
     }
-    ParentWindow::changeEvent(event);
 }
 #endif
 
