@@ -18,60 +18,60 @@ msgstr ""
 
 #: ../data/ui/js/ui.status_box.js:48
 msgid "Status is over 140 characters"
-msgstr ""
+msgstr "Status ist länger als 140 Zeichen"
 
 #: ../data/ui/js/ui.status_box.js:302
 msgid "Updating..."
-msgstr ""
+msgstr "Aktualisiere..."
 
 #: ../data/ui/js/ui.status_box.js:314
 msgid "Update Successfully!"
-msgstr ""
+msgstr "Aktualisierung erfolgreich!"
 
 #: ../data/ui/js/ui.status_box.js:343
 msgid "Please enter the recipient."
-msgstr ""
+msgstr "Bitte geben Sie einen Empfänger an."
 
 #: ../data/ui/js/ui.status_box.js:346
 msgid "Posting..."
-msgstr ""
+msgstr "Sende..."
 
 #: ../data/ui/js/ui.status_box.js:361
 msgid "Post Successfully!"
-msgstr ""
+msgstr "Erfolgreich gesendet!"
 
 #: ../data/ui/js/ui.dm_tabs.js:18 ../data/ui/js/ui.retweet_tabs.js:18
 #: ../data/ui/js/ui.header.js:38 ../data/ui/js/ui.main.js:126
 msgid "Loading Tweets..."
-msgstr ""
+msgstr "Lade Tweets..."
 
 #: ../data/ui/js/ui.exts_dlg.js:67
 msgid "Disable"
-msgstr ""
+msgstr "Deaktivieren"
 
 #: ../data/ui/js/ui.exts_dlg.js:70
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 #: ../data/ui/js/ui.template.js:158
 msgid "Reply Them."
-msgstr ""
+msgstr "Antworte ihnen."
 
 #: ../data/ui/js/ui.template.js:191
 msgid "reply to "
-msgstr ""
+msgstr "Antworte "
 
 #: ../data/ui/js/ui.template.js:206
 msgid "retweeted by "
-msgstr ""
+msgstr "retweeted von "
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Unfav it."
-msgstr ""
+msgstr "Nicht mehr favorisieren."
 
 #: ../data/ui/js/ui.template.js:232
 msgid "Fav it!"
-msgstr ""
+msgstr "Favorisieren!"
 
 #: ../data/ui/js/ui.template.js:237 ../data/ui/index.html:327
 msgid "Delete"
@@ -79,11 +79,11 @@ msgstr "Löschen"
 
 #: ../data/ui/js/ui.template.js:238
 msgid "Delete this tweet"
-msgstr ""
+msgstr "Lösche diesen Tweet"
 
 #: ../data/ui/js/ui.template.js:239
 msgid "Loading..."
-msgstr ""
+msgstr "Lade..."
 
 #: ../data/ui/js/ui.template.js:240
 msgid "Official retweet this tweet."
@@ -91,31 +91,31 @@ msgstr ""
 
 #: ../data/ui/js/ui.template.js:241
 msgid "Replay All"
-msgstr ""
+msgstr "Allen antworten"
 
 #: ../data/ui/js/ui.template.js:242
 msgid "Reply this tweet."
-msgstr ""
+msgstr "Antworte auf diesen Tweet"
 
 #: ../data/ui/js/ui.template.js:243
 msgid "RT this tweet."
-msgstr ""
+msgstr "RT diesen Tweet."
 
 #: ../data/ui/js/ui.template.js:244
 msgid "Send message"
-msgstr ""
+msgstr "Sende Nachricht"
 
 #: ../data/ui/js/ui.template.js:245
 msgid "Send message to them"
-msgstr ""
+msgstr "Sende ihnen eine Nachricht"
 
 #: ../data/ui/js/ui.template.js:246 ../data/ui/js/ui.template.js:288
 msgid "via"
-msgstr ""
+msgstr "via"
 
 #: ../data/ui/js/ui.template.js:247
 msgid "view more conversation"
-msgstr ""
+msgstr "mehr Konversionen ansehen"
 
 #: ../data/ui/js/ui.prefs_dlg.js:91 ../data/ui/js/ui.profile_dlg.js:40
 msgid "There are "
@@ -139,41 +139,41 @@ msgstr ""
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:139
 msgid "Unfollow @"
-msgstr ""
+msgstr "Entfolge @"
 
 #: ../data/ui/js/ui.main.js:135 ../data/ui/js/ui.main.js:143
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:169
 msgid " ..."
-msgstr ""
+msgstr " ..."
 
 #: ../data/ui/js/ui.main.js:139 ../data/ui/js/ui.main.js:147
 #: ../data/ui/js/ui.main.js:162
 msgid " Successfully!"
-msgstr ""
+msgstr " Erfolgreich!"
 
 #: ../data/ui/js/ui.main.js:143 ../data/ui/js/ui.main.js:147
 msgid "Follow @"
-msgstr ""
+msgstr "Folge @"
 
 #: ../data/ui/js/ui.main.js:156
 msgid "Are you sure you want to block @"
-msgstr ""
+msgstr "Möchten Sie @"
 
 #: ../data/ui/js/ui.main.js:156
 msgid "?!\n"
-msgstr ""
+msgstr " wirklich blockieren?!\n"
 
 #: ../data/ui/js/ui.main.js:158 ../data/ui/js/ui.main.js:162
 msgid "Block @"
-msgstr ""
+msgstr "Blockiere @"
 
 #: ../data/ui/js/ui.main.js:169 ../data/ui/js/ui.main.js:173
 msgid "Unblock @"
-msgstr ""
+msgstr "Entsperre @"
 
 #: ../data/ui/js/ui.main.js:173
 msgid " Successfully"
-msgstr ""
+msgstr " Erfolgreich"
 
 #: ../data/ui/js/ui.main.js:319 ../data/ui/js/ui.main.js:333
 msgid "Update page "
@@ -193,7 +193,7 @@ msgstr ""
 
 #: ../data/ui/js/ui.main.js:638
 msgid "RT @"
-msgstr ""
+msgstr "RT @"
 
 #: ../data/ui/js/ui.main.js:656
 msgid "Undo Retweeting ..."
@@ -264,7 +264,7 @@ msgstr "'Hier klicken, um eine Nachricht zu schreiben ...'"
 #. <F5> or 'r' to reload timeline
 #: ../data/ui/index.html:132
 msgid "'Loading Tweets...'"
-msgstr ""
+msgstr "Lade Tweets..."
 
 #: ../data/ui/index.html:235
 msgid "'Reload timeline.'"
@@ -305,7 +305,7 @@ msgstr "Hotot"
 
 #: ../data/ui/index.html:273
 msgid "'Create a new profile'"
-msgstr ""
+msgstr "Erstelle ein neues Profil"
 
 #: ../data/ui/index.html:276
 msgid "Greeting!"
@@ -338,7 +338,7 @@ msgstr "Anmelden"
 
 #: ../data/ui/index.html:315
 msgid "Profile Name:"
-msgstr ""
+msgstr "Profilname: "
 
 #: ../data/ui/index.html:333 ../data/ui/index.html:986
 msgid "Help"
@@ -362,11 +362,11 @@ msgstr "Gesendet"
 
 #: ../data/ui/index.html:392
 msgid "Retweeted By Others"
-msgstr "Retweet von anderen"
+msgstr "Retweets von anderen"
 
 #: ../data/ui/index.html:393
 msgid "Retweeted By Me"
-msgstr "Retweet von mir"
+msgstr "Retweets von mir"
 
 #: ../data/ui/index.html:394
 msgid "My Tweets, Retweeted"
