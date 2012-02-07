@@ -712,10 +712,7 @@ function addDefaultView(name, opts) {
             , 'load_fail': null
             , 'loadmore_success': ui.Main.loadmore_tweet_success
             , 'loadmore_fail': null
-            , 'init': function (view) {
-                    view.screen_name = globals.myself.screen_name;
-                    view.load();
-                }
+            , 'init': ui.TrendingTopicsView.init_view
             , 'destroy': function (view) {
                     ui.Slider.remove(view.name);
                 }

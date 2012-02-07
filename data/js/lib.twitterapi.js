@@ -328,6 +328,14 @@ function get_favorites(id, page, on_success) {
     return;
 },
 
+get_trending_topics:
+function get_trending_topics(on_success) {
+    var url = lib.twitterapi.api_base + 'trends/1.json';
+    var params = {};
+    lib.twitterapi.get(url, params, on_success);
+    return;
+},
+
 get_direct_messages:
 function get_direct_messages(since_id, max_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'direct_messages.json';
