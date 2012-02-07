@@ -706,7 +706,7 @@ function addDefaultView(name, opts) {
     ui.Slider.add('trending_topics'
         , {title: _('trending_topics'), icon:'image/ic_list.png'}
         , $.extend({ 'type':'tweet', 'title': _('trending_topics')
-            , '_load': ui.TrendingTopicsView.get_trending_topics_worldwide
+            , '_load': ui.TrendingTopicsView.get_trending_topics_local
             , '_load_success': ui.TrendingTopicsView.get_trending_topics_success
             , 'init': ui.TrendingTopicsView.init_view
             , 'destroy': function (view) {
