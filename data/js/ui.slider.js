@@ -706,12 +706,8 @@ function addDefaultView(name, opts) {
     ui.Slider.add('trending_topics'
         , {title: _('trending_topics'), icon:'image/ic_list.png'}
         , $.extend({ 'type':'tweet', 'title': _('trending_topics')
-            , 'load': ui.PeopleView.load_fav
-            , 'loadmore': ui.PeopleView.loadmore_fav
-            , 'load_success': ui.Main.load_tweet_success
-            , 'load_fail': null
-            , 'loadmore_success': ui.Main.loadmore_tweet_success
-            , 'loadmore_fail': null
+            , '_load': ui.TrendingTopicsView.get_trending_topics
+            , '_load_success': ui.TrendingTopicsView.get_trending_topics_success
             , 'init': ui.TrendingTopicsView.init_view
             , 'destroy': function (view) {
                     ui.Slider.remove(view.name);
