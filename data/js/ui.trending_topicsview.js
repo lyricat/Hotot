@@ -43,8 +43,9 @@ get_trending_topics_success:
 function get_trending_topics_success(self, json) {
     var trend_list = json[0].trends;
     for (trend_name in trend_list) {
-        self._body.append(trend_list[trend_name].name);
-        self._body.append('<br/>');
+        var m = ui.Template.trending_topic_m;
+        m.ID = trend_list[trend_name].name;
+        self._body.append(ui.Template.render(ui.Template.trending_topic_t, m));
     }
 },
 

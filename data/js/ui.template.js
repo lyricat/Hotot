@@ -71,6 +71,15 @@ tweet_t:
     </div>\
 </li>',
 
+trending_topic_t:
+'<li id="{%ID%}" class="card" type="trending_topic">\
+    <div class="card_body">\
+        <div class="text">{%ID%}</div>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask"></span>\
+</li>',
+
 retweeted_by_t: 
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
@@ -571,6 +580,10 @@ function init() {
         , TRANS_via:'', TRANS_View_more_conversation:''
         , TWEET_BASE_URL: '', IN_THREAD: ''
         , COLOR_LABEL: ''
+    };
+
+    ui.Template.trending_topic_m = {
+        ID:''
     };
 
     ui.Template.retweeted_by_m = {
