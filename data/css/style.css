@@ -1102,7 +1102,7 @@ label {
 .search_no_result_hint .keywords {
     font-weight: bold;
 }
-.retweets_view_toggle, .people_view_toggle, .list_view_toggle {
+.retweets_view_toggle, .people_view_toggle, .list_view_toggle, .trending_topics_view_toggle {
     text-align: center;
     margin-top: 5px;
 }
