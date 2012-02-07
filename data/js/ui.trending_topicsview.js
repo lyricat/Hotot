@@ -1,6 +1,8 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.TrendingTopicsView = {
 
+woeid: null,
+
 init:
 function init() {
     var btns = new widget.RadioGroup('#trend_topics_radio_group');
@@ -26,10 +28,15 @@ function init_view(view) {
 
 get_trending_topics_local:
 function get_trending_topics_local(view, success, fail) {
-    $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
-       $('.trending_topics_local').html('Local (' + data.geo.country + ')');
-       lib.twitterapi.get_trending_topics_local(success); 
-    });
+    if (ui.TrendingTopicsView.woeid == null) {
+        $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
+            ui.TrendingTopicsView.woeid = data.geo.woeid;
+            $('.trending_topics_local').html('Local (' + data.geo.country + ')');
+            lib.twitterapi.get_trending_topics_local(ui.TrendingTopicsView.woeid, success);
+        });
+    } else {
+        lib.twitterapi.get_trending_topics_local(ui.TrendingTopicsView.woeid, success);
+    }
     return 1; // There are always trend topics
 },
 

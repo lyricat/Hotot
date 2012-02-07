@@ -329,12 +329,10 @@ function get_favorites(id, page, on_success) {
 },
 
 get_trending_topics_local:
-function get_trending_topics_local(on_success) {
-    $.get('http://www.loc4lize.me/localize.json', function (data) {
-        var url = lib.twitterapi.api_base + 'trends/' + data.geo.woeid + '.json';
-        var params = {};
-        lib.twitterapi.get(url, params, on_success);
-    });
+function get_trending_topics_local(woeid, on_success) {
+    var url = lib.twitterapi.api_base + 'trends/' + woeid + '.json';
+    var params = {};
+    lib.twitterapi.get(url, params, on_success);
     return;
 },
 
