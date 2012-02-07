@@ -702,6 +702,30 @@ function addDefaultView(name, opts) {
             , 'is_trim': false
         }, opts));
     break;
+    case 'trending_topics':
+    ui.Slider.add('trending_topics'
+        , {title: _('trending_topics'), icon:'image/ic_list.png'}
+        , $.extend({ 'type':'tweet', 'title': _('trending_topics')
+            , 'load': ui.PeopleView.load_fav
+            , 'loadmore': ui.PeopleView.loadmore_fav
+            , 'load_success': ui.Main.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.Main.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'init': function (view) {
+                    view.screen_name = globals.myself.screen_name;
+                    view.load();
+                }
+            , 'destroy': function (view) {
+                    ui.Slider.remove(view.name);
+                }
+            , 'former': ui.Template.form_tweet
+            , 'method': 'poll'
+            , 'interval': 360
+            , 'item_type': 'page'
+            , 'is_trim': false
+        }, opts));
+    break;
     default: break;
     }
     return true;
