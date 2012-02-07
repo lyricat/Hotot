@@ -27,7 +27,7 @@ function init_view(view) {
 get_trending_topics_local:
 function get_trending_topics_local(view, success, fail) {
     $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
-       $('.trending_topics_local').html('Local (' + data.geo.city + ')');
+       $('.trending_topics_local').html('Local (' + data.geo.country_name + ')');
        lib.twitterapi.get_trending_topics_local(success); 
     });
     return 1; // There are always trend topics
