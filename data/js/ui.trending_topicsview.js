@@ -32,17 +32,17 @@ function get_trending_topics_local(view, success, fail) {
         $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
             ui.TrendingTopicsView.woeid = data.geo.woeid;
             $('.trending_topics_local').html('Local (' + data.geo.country + ')');
-            lib.twitterapi.get_trending_topics_local(ui.TrendingTopicsView.woeid, success);
+            lib.twitterapi.get_trending_topics(ui.TrendingTopicsView.woeid, success);
         });
     } else {
-        lib.twitterapi.get_trending_topics_local(ui.TrendingTopicsView.woeid, success);
+        lib.twitterapi.get_trending_topics(ui.TrendingTopicsView.woeid, success);
     }
     return 1; // There are always trend topics
 },
 
 get_trending_topics_worldwide:
 function get_trending_topics_worldwide(view, success, fail) {
-    lib.twitterapi.get_trending_topics_worldwide(success);
+    lib.twitterapi.get_trending_topics(1, success);
     return 1; // There are always trend topics
 },
 

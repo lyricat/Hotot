@@ -328,17 +328,9 @@ function get_favorites(id, page, on_success) {
     return;
 },
 
-get_trending_topics_local:
-function get_trending_topics_local(woeid, on_success) {
+get_trending_topics:
+function get_trending_topics(woeid, on_success) {
     var url = lib.twitterapi.api_base + 'trends/' + woeid + '.json';
-    var params = {};
-    lib.twitterapi.get(url, params, on_success);
-    return;
-},
-
-get_trending_topics_worldwide:
-function get_trending_topics_worldwide(on_success) {
-    var url = lib.twitterapi.api_base + 'trends/1.json';
     var params = {};
     lib.twitterapi.get(url, params, on_success);
     return;
