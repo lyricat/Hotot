@@ -59,6 +59,7 @@ function get_trending_topics_success(self, json) {
         m.ID = trend_list[trend_name].name;
         self._body.append(ui.Template.render(ui.Template.trending_topic_t, m));
     }
+    ui.Main.bind_tweet_action(self._body);
 },
 
 switch_sub_view:

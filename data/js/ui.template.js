@@ -74,7 +74,7 @@ tweet_t:
 trending_topic_t:
 '<li id="{%ID%}" class="card" type="trending_topic">\
     <div class="card_body">\
-        <div class="text">{%ID%}</div>\
+        <a class="hash_href" href="{%ID%}">{%ID%}</a>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
