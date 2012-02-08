@@ -33,7 +33,7 @@ function init_view(view) {
 get_trending_topics_local:
 function get_trending_topics_local(view, success, fail) {
     if (ui.TrendingTopicsView.woeid == null) {
-        $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
+        $.get('http://www.loc4lize.me/localize.json', function(data) {
             ui.TrendingTopicsView.woeid = data.geo.woeid;
             ui.TrendingTopicsView.city = data.geo.city;
             $('.trending_topics_local').html('Local (' + data.geo.city + ')');
