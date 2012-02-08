@@ -183,14 +183,17 @@ function WidgetListView(id, name, params) {
     self.load_success = function load_success(json) {
         if (self == null) return;
         self._footer.hide();
-        if (json.length == 0) { return; }
+        if (json.hasOwnProperty('length') && json.length == 0) { return; }
         var tweets = json;
         if (self.item_type == 'phoenix_search') {
             tweets = json.statuses;
         }
-        for (var i = 0, l = tweets.length; i < l; i+= 1) {
-            if (! tweets[i].hasOwnProperty('id_str')) {
-                tweets[i].id_str = tweets[i].id.toString();
+
+        if (tweets.hasOwnProperty('length')) {
+            for (var i = 0, l = tweets.length; i < l; i+= 1) {
+                if (!tweets[i].hasOwnProperty('id_str') && tweets[i].hasOwnProperty('id')) {
+                    tweets[i].id_str = tweets[i].id.toString();
+                }
             }
         }
 
