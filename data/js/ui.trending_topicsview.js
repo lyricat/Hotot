@@ -2,7 +2,7 @@ if (typeof ui == 'undefined') var ui = {};
 ui.TrendingTopicsView = {
 
 woeid: null,
-country: null,
+city: null,
 
 init:
 function init() {
@@ -25,8 +25,8 @@ function init_view(view) {
         $(this).addClass('selected');
         ui.TrendingTopicsView.switch_sub_view(view, pagename);
     });
-    if (ui.TrendingTopicsView.country) {
-        $('.trending_topics_local').html('Local (' + ui.TrendingTopicsView.country + ')');
+    if (ui.TrendingTopicsView.city) {
+        $('.trending_topics_local').html('Local (' + ui.TrendingTopicsView.city + ')');
     }
 },
 
@@ -35,8 +35,8 @@ function get_trending_topics_local(view, success, fail) {
     if (ui.TrendingTopicsView.woeid == null) {
         $.get('http://loc4lizer.heroku.com/localize.json', function(data) {
             ui.TrendingTopicsView.woeid = data.geo.woeid;
-            ui.TrendingTopicsView.country = data.geo.country;
-            $('.trending_topics_local').html('Local (' + data.geo.country + ')');
+            ui.TrendingTopicsView.city = data.geo.city;
+            $('.trending_topics_local').html('Local (' + data.geo.city + ')');
             lib.twitterapi.get_trending_topics(ui.TrendingTopicsView.woeid, success);
         });
     } else {
