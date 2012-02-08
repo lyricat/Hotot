@@ -74,7 +74,7 @@ tweet_t:
 trending_topic_t:
 '<li id="{%ID%}" class="card" type="trending_topic">\
     <div class="card_body">\
-        <a class="hash_href" href="{%ID%}">{%ID%}</a>\
+        <a class="hash_href trending_topic" href="{%ID%}">{%ID%}</a>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -468,7 +468,7 @@ trending_topics_header_t:
             href="#trending_topics_local">Local</a>\
         </li><li> \
             <a class="trending_topics_worldwide radio_group_btn"\
-            href="#trending_topics_worldwide">World wide</a>\
+            href="#trending_topics_worldwide">Worldwide</a>\
         </li>\
     </ol> \
 </div></div>',
