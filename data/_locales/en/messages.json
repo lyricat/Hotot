@@ -607,6 +607,10 @@
 		"message": "Favorites View",
 		"description": "data/index.html"
 	},
+	"trending_topics_view": {
+		"message": "Trending topics View",
+		"description": "data/index.html"
+	},
 	"keyboard": {
 		"message": "Keyboard",
 		"description": "data/index.html"
@@ -1017,6 +1021,10 @@
 	},
 	"my_favs": {
 		"message": "My Favorites",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics": {
+		"message": "Trending topics",
 		"description": "data/js/ui.slider.js"
 	},
 	"slide_to_next_page": {
