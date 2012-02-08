@@ -1036,6 +1036,18 @@ label {
     font-size: 18px;
 }
 
+.trending_topic {
+    margin-left: 50px;
+}
+
+.trend_topic_number {
+    font-size: 48px;
+}
+
+.keep_height {
+    height: 70px;
+}
+
 .people_request_hint > p, .people_request_hint > h1{
     margin: 5px 0 5px 60px;
 }

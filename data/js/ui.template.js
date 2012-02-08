@@ -73,8 +73,9 @@ tweet_t:
 
 trending_topic_t:
 '<li id="{%ID%}" class="card" type="trending_topic">\
-    <div class="card_body">\
-        <a class="hash_href trending_topic" href="{%ID%}">{%ID%}</a>\
+    <div class="profile_img_wrapper trend_topic_number">#{%ID%}</div>\
+    <div class="card_body keep_height">\
+        <a class="hash_href trending_topic" href="{%NAME%}">{%NAME%}</a>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -583,7 +584,7 @@ function init() {
     };
 
     ui.Template.trending_topic_m = {
-        ID:''
+        ID:'', NAME:''
     };
 
     ui.Template.retweeted_by_m = {

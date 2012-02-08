@@ -54,10 +54,13 @@ function get_trending_topics_worldwide(view, success, fail) {
 get_trending_topics_success:
 function get_trending_topics_success(self, json) {
     var trend_list = json[0].trends;
+    var i = 1;
     for (trend_name in trend_list) {
         var m = ui.Template.trending_topic_m;
-        m.ID = trend_list[trend_name].name;
+        m.ID = i;
+        m.NAME = trend_list[trend_name].name;
         self._body.append(ui.Template.render(ui.Template.trending_topic_t, m));
+        i++;
     }
     ui.Main.bind_tweet_action(self._body);
 },
