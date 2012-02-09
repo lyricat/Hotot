@@ -108,7 +108,7 @@ function basic_auth() {
 
 get:
 function get(ajax_url, ajax_params, on_success, on_error) {
-    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {},
+    lib.twitterapi.do_ajax('GET', ajax_url, ajax_params, {'X-PHX': 'true'},
         function(result, textStatus, xhr) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
@@ -125,7 +125,7 @@ function get(ajax_url, ajax_params, on_success, on_error) {
 
 post:
 function post(ajax_url, ajax_params, on_success, on_error) {
-    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {},
+    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {'X-PHX': 'true'},
         function(result, textStatus, xhr) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
