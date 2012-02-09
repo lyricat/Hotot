@@ -125,7 +125,7 @@ function get(ajax_url, ajax_params, on_success, on_error) {
 
 post:
 function post(ajax_url, ajax_params, on_success, on_error) {
-    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {'X-PHX': 'true'},
+    lib.twitterapi.do_ajax('POST', ajax_url, ajax_params, {},
         function(result, textStatus, xhr) {
             lib.twitterapi.success_handler(result, textStatus, xhr);
             on_success(result, textStatus, xhr);
