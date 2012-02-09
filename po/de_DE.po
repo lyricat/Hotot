@@ -305,11 +305,11 @@ msgstr "Hotot"
 
 #: ../data/ui/index.html:273
 msgid "'Create a new profile'"
-msgstr ""
+msgstr "'Neues Profil erstellen'"
 
 #: ../data/ui/index.html:276
 msgid "Greeting!"
-msgstr ""
+msgstr "Willkommen!"
 
 #: ../data/ui/index.html:287 ../data/ui/index.html:291
 #: ../data/ui/index.html:666
@@ -338,7 +338,7 @@ msgstr "Anmelden"
 
 #: ../data/ui/index.html:315
 msgid "Profile Name:"
-msgstr ""
+msgstr "Profilname:"
 
 #: ../data/ui/index.html:333 ../data/ui/index.html:986
 msgid "Help"
@@ -414,11 +414,11 @@ msgstr "Ort:"
 
 #: ../data/ui/index.html:464 ../data/ui/index.html:1097
 msgid "Join: "
-msgstr "Beigetreten:"
+msgstr "Beitreten:"
 
 #: ../data/ui/index.html:465 ../data/ui/index.html:1105
 msgid "Followers: "
-msgstr "Followers:"
+msgstr "Follower:"
 
 #: ../data/ui/index.html:466 ../data/ui/index.html:1103
 msgid "Friends: "
@@ -474,35 +474,35 @@ msgstr ""
 
 #: ../data/ui/index.html:534
 msgid "'Mentions'"
-msgstr ""
+msgstr "'Erwähnungen'"
 
 #: ../data/ui/index.html:538
 msgid "'Direct Messages'"
-msgstr ""
+msgstr "'Direktnachrichten'"
 
 #: ../data/ui/index.html:542
 msgid "'My favorites tweets'"
-msgstr ""
+msgstr "'Meine Favoriten-Tweets'"
 
 #: ../data/ui/index.html:546
 msgid "'Retweets and Retweeted'"
-msgstr ""
+msgstr "'Retweets und retweetet'"
 
 #: ../data/ui/index.html:550
 msgid "'Find someone you love.'"
-msgstr ""
+msgstr "'Finde jemanden, den du liebst.'"
 
 #: ../data/ui/index.html:554
 msgid "'Search for ... '"
-msgstr ""
+msgstr "'Suche nach...'"
 
 #: ../data/ui/index.html:576
 msgid "'Click to compose message'"
-msgstr ""
+msgstr "'Klicken zum Erstellen einer Nachricht'"
 
 #: ../data/ui/index.html:580
 msgid "'URL shortener'"
-msgstr ""
+msgstr "'URL-Verkürzer'"
 
 #: ../data/ui/index.html:583
 msgid "Clear"
@@ -550,11 +550,11 @@ msgstr "Zugriffstoken wiederherstellen"
 
 #: ../data/ui/index.html:677
 msgid "'Remember Password'"
-msgstr ""
+msgstr "'Passwort merken'"
 
 #: ../data/ui/index.html:685
 msgid "- Global Keybinding -"
-msgstr ""
+msgstr "- Globales Tastenkürzel -"
 
 #: ../data/ui/index.html:687 ../data/ui/index.html:854
 msgid "* You MUST restart Hotot for the changes below to take effect."
@@ -570,23 +570,23 @@ msgstr "'Tastenkombination für den Aufruf'"
 
 #: ../data/ui/index.html:697
 msgid "- Font Settings -"
-msgstr "- Font Einstellungen -"
+msgstr "- Schrifteinstellungen -"
 
 #: ../data/ui/index.html:700
 msgid "Font Family"
-msgstr "Font Familie"
+msgstr "Schriftfamilie"
 
 #: ../data/ui/index.html:702
 msgid "'Font Family'"
-msgstr "'Font Familie'"
+msgstr "'Schriftfamilie'"
 
 #: ../data/ui/index.html:708
 msgid "Font Size"
-msgstr "Font Größe"
+msgstr "Fontgröße"
 
 #: ../data/ui/index.html:709
 msgid "'Font Size'"
-msgstr ""
+msgstr "'Schriftgröße'"
 
 #: ../data/ui/index.html:711
 msgid "px"
@@ -606,19 +606,19 @@ msgstr "- Benachrichtigung -"
 
 #: ../data/ui/index.html:721
 msgid "Page"
-msgstr ""
+msgstr "Seite"
 
 #: ../data/ui/index.html:721
 msgid "Notify"
-msgstr ""
+msgstr "Benachrichtigen"
 
 #: ../data/ui/index.html:721
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: ../data/ui/index.html:721
 msgid "Sound"
-msgstr ""
+msgstr "Ton"
 
 #: ../data/ui/index.html:726
 msgid "'Notify when home page has new tweets'"
@@ -627,7 +627,7 @@ msgstr "'Benachrichten, wenn die Zeitleiste neue Tweets hat'"
 #: ../data/ui/index.html:732 ../data/ui/index.html:754
 #: ../data/ui/index.html:776
 msgid "'Type'"
-msgstr ""
+msgstr "'Typ'"
 
 #: ../data/ui/index.html:740
 msgid "'Play sound when home page has new tweets'"
@@ -643,11 +643,11 @@ msgstr "'Ton abspielen, wenn neue Tweets mich erwähnen.'"
 
 #: ../data/ui/index.html:770
 msgid "'Notify when some new direct messages coming.'"
-msgstr "'Benachrichtigen, wenn neue direkte Nachrichten eingehen.'"
+msgstr "'Benachrichtigen, wenn neue Direktnachrichten eingehen.'"
 
 #: ../data/ui/index.html:784
 msgid "'Play when some new direct messages coming.'"
-msgstr "'Ton abspielen, wenn neue direkte Nachrichten eingehen.'"
+msgstr "'Ton abspielen, wenn neue Direktnachrichten eingehen.'"
 
 #: ../data/ui/index.html:792
 msgid "- Display and Behavior -"
@@ -671,11 +671,11 @@ msgstr "System-Benachrichtigungssystem nutzen"
 
 #: ../data/ui/index.html:803
 msgid "'Use Ubuntu Indicator'"
-msgstr "'Ubuntu-Anzeige nutzen'"
+msgstr "'Ubuntu Indicator nutzen'"
 
 #: ../data/ui/index.html:805
 msgid "Use Ubuntu Indicator"
-msgstr "Ubuntu-Anzeige nutzen"
+msgstr "Ubuntu Indicator nutzen"
 
 #: ../data/ui/index.html:807
 msgid "'Hover to open tweet box'"
@@ -816,18 +816,19 @@ msgid ""
 "Step 1: click the button below or copy the address and open it in your "
 "browser."
 msgstr ""
-
+"Schritt 1: Klicke auf den Button unten oder kopiere die Adresse und öffne sie "
+" in deinem Browser."
 #: ../data/ui/index.html:911
 msgid "Click me to continue"
 msgstr "Klick mich an, um weiterzumachen"
 
 #: ../data/ui/index.html:917
 msgid "Step 2: copy the PIN Code and paste it into the box below;"
-msgstr ""
+msgstr "Schritt 2: kopiere den PIN-Code und füge ihn in das Feld unten ein;"
 
 #: ../data/ui/index.html:920
 msgid "PIN Code:"
-msgstr ""
+msgstr "PIN-Code:"
 
 #: ../data/ui/index.html:937
 msgid "About &amp; Help"
@@ -856,15 +857,15 @@ msgstr "Hotot"
 
 #: ../data/ui/index.html:968
 msgid "is a lightweight client for the "
-msgstr ""
+msgstr "ist ein leichter Client für den "
 
 #: ../data/ui/index.html:968
 msgid " microblogging service"
-msgstr ""
+msgstr " Microblogging-Dienst"
 
 #: ../data/ui/index.html:978
 msgid "- Keyboard shortcuts -"
-msgstr ""
+msgstr "- Tastenkürzel -"
 
 #: ../data/ui/index.html:983
 msgid "Action"
@@ -976,7 +977,7 @@ msgstr "Filtermodus verlassen"
 
 #: ../data/ui/index.html:1018
 msgid "- Credits -"
-msgstr ""
+msgstr "- Mitwirkende -"
 
 #: ../data/ui/index.html:1021
 msgid "Written by"
@@ -992,7 +993,7 @@ msgstr "Dokument von"
 
 #: ../data/ui/index.html:1047
 msgid "- License -"
-msgstr ""
+msgstr "- Lizenz -"
 
 #: ../data/ui/index.html:1079
 msgid "Profile"
@@ -1000,7 +1001,7 @@ msgstr "Profil"
 
 #: ../data/ui/index.html:1084
 msgid "- Picture -"
-msgstr ""
+msgstr "- Bild -"
 
 #: ../data/ui/index.html:1088
 msgid "Change avator"
@@ -1008,7 +1009,7 @@ msgstr "Avatar wechseln"
 
 #: ../data/ui/index.html:1094
 msgid "- Stat -"
-msgstr ""
+msgstr "- Statistik -"
 
 #: ../data/ui/index.html:1107
 msgid "Favourites: "
@@ -1016,7 +1017,7 @@ msgstr "Favoriten:"
 
 #: ../data/ui/index.html:1113
 msgid "- Information -"
-msgstr ""
+msgstr "- Information -"
 
 #: ../data/ui/index.html:1116
 msgid "Name"
@@ -1024,7 +1025,7 @@ msgstr "Name"
 
 #: ../data/ui/index.html:1117
 msgid "'Name'"
-msgstr ""
+msgstr "'Name'"
 
 #: ../data/ui/index.html:1118
 msgid "Location"
@@ -1032,7 +1033,7 @@ msgstr "Ort"
 
 #: ../data/ui/index.html:1119
 msgid "'Location'"
-msgstr ""
+msgstr "'Ort'"
 
 #: ../data/ui/index.html:1120
 msgid "Website"
@@ -1040,7 +1041,7 @@ msgstr "Webseite"
 
 #: ../data/ui/index.html:1121
 msgid "'Website'"
-msgstr ""
+msgstr "'Webseite'"
 
 #: ../data/ui/index.html:1122
 msgid "Bio"
@@ -1048,7 +1049,7 @@ msgstr "Bio"
 
 #: ../data/ui/index.html:1123
 msgid "'Bio'"
-msgstr ""
+msgstr "'Bio'"
 
 #: ../data/ui/index.html:1141
 msgid "Extenstions"
@@ -1072,7 +1073,7 @@ msgstr "Mit Twitter suchen"
 
 #: ../hotot/agent.py:18
 msgid "Hotot Notification"
-msgstr ""
+msgstr "Hotot-Benachrichtigung"
 
 #: ../hotot/hotot.py:71 ../hotot/hotot.py:91
 msgid "_Resume/Hide"
@@ -1092,7 +1093,7 @@ msgstr "Was geht ab?"
 
 #: ../hotot/hotot.py:209
 msgid "Hotot: Click to Active."
-msgstr ""
+msgstr "Hotot: Klicken zum aktivieren."
 
 #: ../hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
