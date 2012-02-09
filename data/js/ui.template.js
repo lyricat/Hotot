@@ -71,6 +71,16 @@ tweet_t:
     </div>\
 </li>',
 
+trending_topic_t:
+'<li id="{%ID%}" class="card" type="trending_topic">\
+    <div class="profile_img_wrapper trend_topic_number">#{%ID%}</div>\
+    <div class="card_body keep_height">\
+        <a class="hash_href trending_topic" href="{%NAME%}">{%NAME%}</a>\
+    </div>\
+    <span class="shape"></span>\
+    <span class="shape_mask"></span>\
+</li>',
+
 retweeted_by_t: 
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
@@ -452,6 +462,18 @@ retweets_header_t:
     </ol> \
 </div></div>',
 
+trending_topics_header_t:
+'<div class="header_frame"><div class="trending_topics_view_toggle"> \
+    <ol class="trending_topics_view_toggle_btns radio_group">\
+        <li><a class="trending_topics_local radio_group_btn selected" \
+            href="#trending_topics_local">Local</a>\
+        </li><li> \
+            <a class="trending_topics_worldwide radio_group_btn"\
+            href="#trending_topics_worldwide">Worldwide</a>\
+        </li>\
+    </ol> \
+</div></div>',
+
 view_t:
 '<div id="{%ID%}" \
     name="{%NAME%}" class="listview {%CLASS%} {%ROLE%}"> \
@@ -559,6 +581,10 @@ function init() {
         , TRANS_via:'', TRANS_View_more_conversation:''
         , TWEET_BASE_URL: '', IN_THREAD: ''
         , COLOR_LABEL: ''
+    };
+
+    ui.Template.trending_topic_m = {
+        ID:'', NAME:''
     };
 
     ui.Template.retweeted_by_m = {
