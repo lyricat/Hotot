@@ -115,6 +115,11 @@ function push() {
             }
             return;
         }
+        if (ret.delete && ret.delete.status) {
+            id = "#home-" + ret.delete.status.id_str;
+            $(id).addClass('deleted');
+            return;
+        }
         if (ret.text && ret.user) {
             // ignore retweets of me
             if (ret.hasOwnProperty('retweeted_status') && ret.user.screen_name == globals.myself.screen_name) {

@@ -1890,6 +1890,9 @@ label {
     display: block;
 }
 
+.card.deleted {
+	background-color: #f04040; 
+}
 .card > .tweet_color_label {
     position: absolute;
     top: 0px;
