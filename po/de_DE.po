@@ -815,19 +815,19 @@ msgstr "Die erste Anmeldung bei Twitter"
 msgid ""
 "Step 1: click the button below or copy the address and open it in your "
 "browser."
-msgstr "Schritt 1: Klicken Sie unten oder kopieren Sie die Adresse zum Öffnen in Ihren Browser"
+msgstr ""
 
 #: ../data/ui/index.html:911
 msgid "Click me to continue"
-msgstr "Anklicken zum Weiterzumachen"
+msgstr "Klick mich an, um weiterzumachen"
 
 #: ../data/ui/index.html:917
 msgid "Step 2: copy the PIN Code and paste it into the box below;"
-msgstr "Schritt 2: Kopieren Sie den PIN Code und fügen Sie diesen unten ein;"
+msgstr ""
 
 #: ../data/ui/index.html:920
 msgid "PIN Code:"
-msgstr "PIN Code:"
+msgstr ""
 
 #: ../data/ui/index.html:937
 msgid "About &amp; Help"
@@ -992,7 +992,7 @@ msgstr "Dokument von"
 
 #: ../data/ui/index.html:1047
 msgid "- License -"
-msgstr "- Lizenz -"
+msgstr ""
 
 #: ../data/ui/index.html:1079
 msgid "Profile"
@@ -1072,7 +1072,7 @@ msgstr "Mit Twitter suchen"
 
 #: ../hotot/agent.py:18
 msgid "Hotot Notification"
-msgstr "Hotot Benachrichtigung"
+msgstr ""
 
 #: ../hotot/hotot.py:71 ../hotot/hotot.py:91
 msgid "_Resume/Hide"
