@@ -120,7 +120,7 @@ function update_avatar(file) {
     }
     reader.readAsArrayBuffer(file);
     //reader.readAsDataURL(file);
-},
+}
 
 }
     

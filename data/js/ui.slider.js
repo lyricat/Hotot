@@ -723,7 +723,7 @@ function addDefaultView(name, opts) {
     default: break;
     }
     return true;
-},
+}
 
 };
 

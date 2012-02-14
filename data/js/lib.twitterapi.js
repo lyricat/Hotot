@@ -258,7 +258,7 @@ function new_direct_messages(text, user_id, screen_name, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'direct_messages/new.json';
     var params = {
         'text': text,
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     if (user_id != null)
         params['user_id'] = user_id;
@@ -289,7 +289,7 @@ function get_home_timeline(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -307,7 +307,7 @@ function get_mentions(since_id, max_id, count, on_success) {
         'include_entities': '1',
         'include_rts': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -322,7 +322,7 @@ function get_favorites(id, page, on_success) {
     var url = lib.twitterapi.api_base + 'favorites/'+id+'.json';
     var params={
         'include_entities': '1',
-        'page': page,
+        'page': page
     };
     lib.twitterapi.get(url, params, on_success);
     return;
@@ -342,7 +342,7 @@ function get_direct_messages(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -358,7 +358,7 @@ function get_sent_direct_messages(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -374,7 +374,7 @@ function get_retweeted_by_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -390,7 +390,7 @@ function get_retweeted_to_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -406,7 +406,7 @@ function get_retweets_of_me(since_id, max_id, count, on_success) {
     var params={
         'include_entities': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -420,7 +420,7 @@ get_retweeted_by_whom:
 function get_retweeted_by_whom(tweet_id, count, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/' + tweet_id + '/retweeted_by.json';
     var params={
-        'count': count,
+        'count': count
     };
     lib.twitterapi.get(url, params, on_success);
     return;
@@ -434,7 +434,7 @@ function get_user_timeline(user_id, screen_name, since_id,
         'include_entities': '1',
         'include_rts': '1',
         'page': '0',
-        'count': count,
+        'count': count
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -452,7 +452,7 @@ show_status:
 function show_status(id, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'statuses/show/'+id+'.json';
     var params={
-        'include_entities': '1',
+        'include_entities': '1'
     };
     lib.twitterapi.get(url, params, on_success, on_error);
 },
@@ -462,7 +462,7 @@ function show_user(screen_name, on_success, on_error) {
     var url = lib.twitterapi.api_base + 'users/show.json';
     var params={
         'include_entities': '1',
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     lib.twitterapi.get(url, params, on_success, on_error);
 },
@@ -474,7 +474,7 @@ function search_user(query, page, on_success, on_error) {
         'q': query,
         'page': page,
         'per_page': 20,
-        'include_entities': '1',
+        'include_entities': '1'
     };
     lib.twitterapi.get(url, params, on_success, on_error);
 },
@@ -573,7 +573,7 @@ function exists_friendships(source, target, on_success) {
     var url = lib.twitterapi.api_base + 'friendships/exists.json';
     var params={
         'user_a': source,
-        'user_b': target,
+        'user_b': target
     };
     lib.twitterapi.get(url, params, on_success);
 },
@@ -583,7 +583,7 @@ function show_friendships(source, target, on_success) {
     var url = lib.twitterapi.api_base + 'friendships/show.json';
     var params={
         'source_screen_name': source,
-        'target_screen_name': target,
+        'target_screen_name': target
     };
     lib.twitterapi.get(url, params, on_success);
 },
@@ -593,7 +593,7 @@ function create_friendships(screen_name, on_success) {
     var url = lib.twitterapi.api_base + 'friendships/create.json';
     var params={
         'screen_name': screen_name,
-        'follow': 'true',
+        'follow': 'true'
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -602,7 +602,7 @@ destroy_friendships:
 function destroy_friendships(screen_name, on_success) {
     var url = lib.twitterapi.api_base + 'friendships/destroy.json';
     var params={
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -612,7 +612,7 @@ function create_blocks(screen_name, on_success) {
     var url = lib.twitterapi.api_base + 'blocks/create.json';
     var params={
         'screen_name': screen_name,
-        'follow': 'true',
+        'follow': 'true'
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -621,7 +621,7 @@ destroy_blocks:
 function destroy_blocks(screen_name, on_success) {
     var url = lib.twitterapi.api_base + 'blocks/destroy.json';
     var params={
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -652,7 +652,7 @@ function get_list_statuses(owner_screen_name, slug, since_id, max_id, on_success
     var params = {
         'include_entities': '1',
         'owner_screen_name' : owner_screen_name,
-        'slug': slug,
+        'slug': slug
     };
     if (since_id != null)
         params['since_id'] = since_id;
@@ -668,7 +668,7 @@ function get_list_subscribers(owner_screen_name, slug, cursor, on_success) {
         'include_entities': '1',
         'owner_screen_name' : owner_screen_name,
         'slug': slug,
-        'cursor': cursor,
+        'cursor': cursor
     };
     lib.twitterapi.get(url, params, on_success);
 },
@@ -680,7 +680,7 @@ function get_list_members(owner_screen_name, slug, cursor, on_success) {
         'include_entities': '1',
         'owner_screen_name' : owner_screen_name,
         'slug': slug,
-        'cursor': cursor,
+        'cursor': cursor
     };
     lib.twitterapi.get(url, params, on_success);
 },
@@ -691,7 +691,7 @@ function create_list_member(owner_screen_name, slug, screen_name, on_success) {
     var params = {
         'owner_screen_name' : owner_screen_name,
         'slug': slug,
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -702,7 +702,7 @@ function destroy_list_member(owner_screen_name, slug, screen_name, on_success) {
     var params = {
         'owner_screen_name' : owner_screen_name,
         'slug': slug,
-        'screen_name': screen_name,
+        'screen_name': screen_name
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -712,7 +712,7 @@ function create_list_subscriber(owner_screen_name, slug, on_success) {
     var url = lib.twitterapi.api_base + 'lists/subscribers/create.json';
     var params = {
         'owner_screen_name' : owner_screen_name,
-        'slug': slug,
+        'slug': slug
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -722,7 +722,7 @@ function destroy_list_subscriber(owner_screen_name, slug, on_success) {
     var url = lib.twitterapi.api_base + 'lists/subscribers/destroy.json';
     var params = {
         'owner_screen_name' : owner_screen_name,
-        'slug': slug,
+        'slug': slug
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -743,7 +743,7 @@ function destroy_list(owner_screen_name, slug, on_success) {
     var url = lib.twitterapi.api_base + 'lists/destroy.json';
     var params = {
         'owner_screen_name' : owner_screen_name,
-        'slug': slug,
+        'slug': slug
     };
     lib.twitterapi.post(url, params, on_success);
 },
@@ -771,7 +771,7 @@ function search(query, page, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.search_api_base2;
     if (url == 'https://twitter.com/phoenix_search.phoenix'){
         var params={
-            'q': query,
+            'q': query
         };
         params['format'] = 'phoenix';
         params['include_entities'] = 'true';
@@ -788,7 +788,7 @@ function search(query, page, since_id, max_id, on_success, on_error) {
         lib.twitterapi.source = 'Hotot';
     } else {
         var params={
-            'q': query,
+            'q': query
         };
         if (since_id != null) params['since_id'] = since_id;
         if (max_id != null) params['max_id'] = max_id;
@@ -915,5 +915,5 @@ function add_streaming_filter(filter, callback) {
         params.push(k+'='+encodeURIComponent(filter[k]));
     }
     xhr.send(params.join('&'));
-},
+}
 };

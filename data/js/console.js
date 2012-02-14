@@ -119,7 +119,7 @@ clear:
 function console_clear() {
     $('#console_out').empty();
     return '';
-},
+}
 
 };
 

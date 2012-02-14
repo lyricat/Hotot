@@ -159,6 +159,6 @@ function toggle() {
     else
         ui.ActionMenu.hide();
     ui.ActionMenu.is_hide = !ui.ActionMenu.is_hide;
-},
+}
 
 };

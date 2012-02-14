@@ -95,8 +95,7 @@ function test_file_size_bound(file, bound) {
         ret = true;
     }
     return ret;
-},
-
+}
 
 };
 

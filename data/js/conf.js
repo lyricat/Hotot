@@ -318,7 +318,7 @@ function normalize_settings(settings) {
         } 
     }
     return settings;
-},
+}
 
 };
 

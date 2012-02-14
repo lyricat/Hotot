@@ -91,7 +91,7 @@ function load(screen_name, slug, desc, mode) {
 request:
 function request() {
 
-},
+}
 
 }
     

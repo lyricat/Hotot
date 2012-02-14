@@ -78,6 +78,6 @@ function switch_sub_view(view, name) {
     }
     view.clear();
     view.load();
-},
+}
 
 };

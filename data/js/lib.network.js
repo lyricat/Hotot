@@ -123,6 +123,6 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
             }
         }); 
     }
-},    
+}
 }
 

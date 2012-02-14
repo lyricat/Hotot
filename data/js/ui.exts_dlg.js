@@ -120,7 +120,7 @@ function bind_exts_btns() {
         return false;
     });
 
-},
+}
 
 }
     
