@@ -115,8 +115,8 @@ function push() {
             }
             return;
         }
-        if (ret.delete && ret.delete.status) {
-            id = "#home-" + ret.delete.status.id_str;
+        if (ret['delete'] && ret['delete']['status']) {
+            id = "#home-" + ret['delete']['status'].id_str;
             $(id).addClass('deleted');
             return;
         }
