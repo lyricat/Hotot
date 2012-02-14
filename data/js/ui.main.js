@@ -668,7 +668,7 @@ function on_reply_click(btn, li_id, event) {
     var orig_text = $('#tbox_status').val();
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('REPLY TO', screen_name + ':"' + text + '"');
+    ui.StatusBox.set_status_info('REPLY TO @', screen_name + ' : "' + text + '"');
     if (orig_text.indexOf('@'+screen_name) == -1) {
         ui.StatusBox.insert_status_text('@' + li.attr('screen_name') + ' ', null);
     }
