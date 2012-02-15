@@ -30,7 +30,7 @@ disable:
 function disable() {
     ext.unregister_listener(ext.ADD_TWEETS_LISTENER_AFTER
         , ext.Sample.on_add_tweets);
-},
+}
 
 }
 
