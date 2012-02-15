@@ -21,7 +21,7 @@ prefs: {
 	messages: false,
 	others: false,
 	whitelist: [],
-	blacklist: [],
+	blacklist: []
 },
 
 db: null,
@@ -421,7 +421,7 @@ function disable() {
 options:
 function options() {
 	ext.ContentFirewall.open_option_dialog();
-},
+}
 
 };
 

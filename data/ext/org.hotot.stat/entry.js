@@ -340,6 +340,6 @@ function disable() {
     if (ext.HototStat.stat_dialog) {
         ext.HototStat.stat_dialog.destroy();
     }
-},
+}
 
 }
