@@ -766,6 +766,27 @@ function verify(on_success, on_error) {
     lib.twitterapi.get(url, {}, on_success, on_error);
 },
 
+create_saved_search:
+function create_saved_search(query, on_success, on_error) {
+    var url = lib.twitterapi.api_base + 'saved_searches/create.json';
+    lib.twitterapi.post(url, {'query': query}, on_success, on_error);
+    return;
+},
+
+destroy_saved_search:
+function create_saved_search(id, on_success, on_error) {
+    var url = lib.twitterapi.api_base +'saved_searches/destroy/'+id+'.json';
+    lib.twitterapi.post(url, {}, on_success, on_error);
+    return;
+},
+
+get_saved_searches:
+function get_saved_searches(on_success, on_error) {
+    var url = lib.twitterapi.api_base + 'saved_searches.json';
+    lib.twitterapi.get(url, {}, on_success, on_error);
+    return;
+},
+
 search:
 function search(query, page, since_id, max_id, on_success, on_error) {
     var url = lib.twitterapi.search_api_base2;

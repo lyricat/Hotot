@@ -27,6 +27,7 @@ tweet_t:
     <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
+    <div class="deleted_mark"></div>\
     <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}\n\n{%DESCRIPTION%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
@@ -85,6 +86,7 @@ retweeted_by_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
+    <div class="deleted_mark"></div>\
     <div class="tweet_fav_indicator"></div>\
     <div class="tweet_retweet_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -169,6 +171,7 @@ search_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
+    <div class="deleted_mark"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <ul class="tweet_bar">\
@@ -426,6 +429,23 @@ search_header_t:
     <a href="#" class="search_entry_clear_btn"></a>\
     <div class="search_people_result"> \
         <span>One user matched: </span> <span class="search_people_inner"></span>\
+    </div>\
+    <div class="saved_searches" style="display:none;">\
+        <a id="create_saved_search_btn" class="button" \
+            href="javascript:void(0);"> +\
+        </a><div id="saved_searches_more_trigger">\
+            <a id="saved_searches_btn" class="vcard_more button" \
+                href="javascript:void(0);"> &#x25BE;</a> \
+            <ul id="saved_searches_more_menu" class="hotot_menu">\
+                <li><a class="" \
+                    title="Clear ALL"\
+                    href="javascript:void(0);">Clear All</a>\
+                </li><li class="separator"><span></span>\
+                </li><li>\
+                    <a class="saved_search_item" href="javascript:void(0)">a</a>\
+                </li>\
+            </ul>\
+        </div>\
     </div>\
     <div class="search_view_toggle">\
         <ol class="search_view_toggle_btns radio_group">\

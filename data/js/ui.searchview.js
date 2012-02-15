@@ -27,6 +27,42 @@ function init_search_view(view) {
         ui.SearchView.switch_sub_view(view, pagename);
     });
 
+    var saved_searches_more_menu = $('#saved_searches_more_menu');
+    $('#saved_searches_more_trigger').mouseleave(function () {
+        saved_searches_more_menu.hide();
+    });
+
+    $('#saved_searches_btn').click(function () {
+        lib.twitterapi.get_saved_searches(function (result) {
+            saved_searches_more_menu.find('.saved_search_item').remove();
+            var arr = [];
+            for (var i = 0; i < result.length; i += 1) {
+                arr.push(
+                    '<li><a class="saved_search_item" qid="'+result[i].id_str+'" href="javascript:void(0);">'+result[i].query+'</a></li>'
+                    );
+            }
+            saved_searches_more_menu.append(arr.join('\n'));
+            saved_searches_more_menu.show();
+        }, function () {
+            console.log("Error");
+        });
+    });
+
+    saved_searches_more_menu.find('.saved_search_item').live('click', function () {
+        ui.SearchView.do_search(view, $(this).text().trim());
+        saved_searches_more_menu.hide();
+        return false;
+    });
+
+    $('#create_saved_search_btn').click(function () {
+        var query = search_entry.val().trim();
+        lib.twitterapi.create_saved_search(query, function () {
+            toast.set('Saved Query "'+query+'"').show();
+        }, function () {
+            console.log("Too more queries");
+        });
+    });
+
     widget.autocomplete.connect(search_entry);
 },
     
@@ -168,7 +204,6 @@ do_search:
 function do_search(view, query) {
     ui.SearchView.clear(view);
     view.query = $.trim(query);
-    console.log(view.query);
     if (view.query.length == 0) return;
     view.load();
 },
