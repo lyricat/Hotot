@@ -69,7 +69,7 @@ function calculate(keyCode, modkeys) {
         }
     }
     return idx;
-},
+}
     
 };
 

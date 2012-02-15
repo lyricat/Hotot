@@ -217,7 +217,7 @@ function clear(view) {
     view.query = ''; 
     view.clear();
     ui.SearchView.since_id = 0;
-},
+}
 
 };
 

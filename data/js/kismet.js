@@ -89,7 +89,7 @@ function init() {
     kismet.mute_list = {
         'name': [],
         'word': [],
-        'source': [],
+        'source': []
     }
     kismet.act_code_map = [kismet.ACT_DROP, kismet.ACT_NOTIFY, kismet.ACT_MASK, kismet.ACT_ARCHIVE, kismet.ACT_REPLY, kismet.ACT_QUOTE];
 },
@@ -748,7 +748,7 @@ function compile(str) {
         + kismet.cond_string_array.join(' and ');
     // console.log('Compile:', rule)
     return rule;
-},
+}
 
 };
 

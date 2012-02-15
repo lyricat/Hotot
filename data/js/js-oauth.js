@@ -86,7 +86,7 @@ function form_signed_params(url, token, method, addition_params, use_dict) {
         'oauth_signature_method': 'HMAC-SHA1',
         'oauth_version': '1.0',
         'oauth_timestamp': jsOAuth.timestamp(),
-        'oauth_nonce': jsOAuth.nonce(),
+        'oauth_nonce': jsOAuth.nonce()
     };
     
     if (addition_params != null) {
@@ -179,6 +179,6 @@ function get_access_token(pin, on_success, on_error) {
                 on_error(xhr);
         }
     );
-},
+}
 
 };

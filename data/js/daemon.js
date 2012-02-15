@@ -205,7 +205,7 @@ function update_all() {
     for (var i = 0; i < daemon.push_views.length; i += 1) {
         daemon.push_views[i].load();
     }
-},
+}
 
 };
 

@@ -1069,7 +1069,7 @@ function unique (items) {
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
     return $($(btn).parents('.card')[0]);
-},
+}
 
 };
 

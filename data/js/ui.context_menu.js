@@ -109,6 +109,6 @@ hide:
 function hide() {
     $('#context_menu').hide();
     ui.ContextMenu.is_hide = true;
-},
+}
 
 };

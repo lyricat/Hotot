@@ -170,6 +170,6 @@ function load_following(view, success, fail) {
 loadmore_following:
 function loadmore_following(view, success, fail) {
     lib.twitterapi.get_list_members(view.screen_name, view.slug, view.cursor, success);
-},
+}
 
 };

@@ -133,7 +133,7 @@ function init () {
         }
         var draft = {
             'mode': ui.StatusBox.current_mode,
-            'text': $('#tbox_status').val(),
+            'text': $('#tbox_status').val()
         };
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
             draft.reply_to_id = ui.StatusBox.reply_to_id;
@@ -592,7 +592,7 @@ function move_cursor(pos) {
                 range.moveStart('character', pos);
                 range.select();
         }
-},
+}
 
 };
 
