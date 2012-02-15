@@ -95,7 +95,7 @@ function closeAll() {
     ui.Header.closeHototMenu();
     ui.Main.closeTweetMoreMenu();
     ui.StatusBox.close();
-},
+}
 
 };
 

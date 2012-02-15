@@ -101,7 +101,7 @@ function init() {
         if (s.length == 0) { return false; }
         var rule = {
             name: decodeURIComponent(s.attr('rule_name')),
-            data: decodeURIComponent(s.attr('rule_data')),
+            data: decodeURIComponent(s.attr('rule_data'))
         };
         ui.KismetDlg.show_edit_dialog(rule);
         return false;
@@ -270,7 +270,6 @@ reload:
 function reload() {
     ui.KismetDlg.reload_mute_list();
     ui.KismetDlg.reload_rules();
-},
-
+}
 
 }

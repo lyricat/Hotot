@@ -18,6 +18,6 @@ function init() {
     ui.DMTabs.current = '#direct_messages_inbox';
     $(ui.DMTabs.current + '_sub_block').show();
 
-},
+}
 
 };

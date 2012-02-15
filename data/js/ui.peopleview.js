@@ -420,6 +420,6 @@ function load_listed_lists(view, success, fail) {
 loadmore_listed_lists:
 function loadmore_listed_lists(view, success, fail) {
     lib.twitterapi.get_user_listed_lists(view.screen_name, view.cursor, success);
-},
+}
 
 };

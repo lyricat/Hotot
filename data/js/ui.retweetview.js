@@ -101,6 +101,6 @@ loadmore_retweets_of_me:
 function load(view, success, fail) {
     lib.twitterapi.get_retweets_of_me(
         null , view.max_id, conf.vars.items_per_request, success);
-},
+}
 
 };

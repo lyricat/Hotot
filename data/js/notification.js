@@ -46,6 +46,6 @@ function notify(title, summary, image, type) {
 push:
 function push(title, summary, image, type) {
     notification._queue.push([title, summary, image, type]);
-},
+}
 
 };

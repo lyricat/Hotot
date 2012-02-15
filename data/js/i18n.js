@@ -92,7 +92,7 @@ function trans_html() {
             obj.val(msg);
         }
     });
-},
+}
 };
 
 function _(msg) {

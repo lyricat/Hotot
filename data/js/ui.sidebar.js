@@ -17,6 +17,6 @@ function toggle() {
     update_tweet_block_width();
     ui.Sidebar.is_show = !ui.Sidebar.is_show;
     ui.Slider.slide_to(ui.Slider.current);
-},
+}
 
 };

@@ -1238,6 +1238,6 @@ function render(tpl, map) {
         text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
     }
     return text;
-},
+}
 
 }

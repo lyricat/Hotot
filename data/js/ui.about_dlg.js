@@ -17,7 +17,7 @@ function init () {
         globals.about_dialog.close();
     };
     btn_about_ok.create();
-},
+}
 
 }
 

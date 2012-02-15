@@ -38,7 +38,6 @@ hide:
 function hide() {
     toast.me.fadeOut();
     return this;
-},
+}
 
 };
-

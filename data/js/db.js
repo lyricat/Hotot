@@ -378,7 +378,7 @@ function get_all_profiles(callback) {
             }
         }); 
     });
-},
+}
 
 };
 

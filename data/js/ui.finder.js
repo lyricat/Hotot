@@ -135,7 +135,7 @@ function hide() {
     $(ui.Finder.id).hide();
     $(ui.Finder.tbox).blur();
     return this;
-},
+}
 
 };
 

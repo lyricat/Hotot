@@ -313,7 +313,7 @@ show:
 function show () {
     this.me.show();
     return this;
-},
+}
 
 }
 
