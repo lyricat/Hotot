@@ -1098,11 +1098,33 @@ label {
     background: transparent url(../image/ic16_clear_text.png) no-repeat center;
     vertical-align: middle;
 }
+.search_box .saved_searches {
+    position: absolute;
+    margin-top: 5px;
+    width: 200px;
+    text-align: left;
+} 
 .search_box {
     background-color: #F2F2F2;
     border: #E5E5E5 solid 1px;
     border-radius: 5px;
     padding: 10px;
+}
+#create_saved_search_btn {
+    padding: 0;
+    width: 32px !important;
+    min-width: 20px !important;
+    vertical-align: top;
+}
+#saved_searches_more_trigger {
+    display: inline-block;
+}
+#saved_searches_btn {
+    padding: 0 !important;
+    min-width: 12px !important;
+}
+#saved_searches_more_menu {
+    z-index: 30;
 }
 .search_people_result {
     display: none;
@@ -1889,9 +1911,19 @@ label {
 .card.selected > .tweet_selected_indicator {
     display: block;
 }
-
-.card.deleted {
-	background-color: #f04040; 
+.card > .deleted_mark {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 100px;
+    height: 50px;
+    background: transparent url(../image/deleted_mark.png) no-repeat;
+    display: none;
+    -moz-transform: rotate(340deg);
+    -webkit-transform: rotate(340deg);
+}
+.card.deleted > .deleted_mark {
+    display: block;
 }
 .card > .tweet_color_label {
     position: absolute;
