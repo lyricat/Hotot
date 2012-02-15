@@ -102,6 +102,12 @@
 .card.me .tweet_ctrl {
     border-color: #75A565;
 }
+.card.deleted a {
+    color: gray;
+}
+.card.deleted .text {
+    color: gray;
+}
 .tweet_bar_btn {
     background-position-y: -48px;
 }

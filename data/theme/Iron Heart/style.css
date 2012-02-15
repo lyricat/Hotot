@@ -112,6 +112,12 @@
 a {
     color: #4AC3FF;
 }
+.card.deleted a {
+    color: gray;
+}
+.card.deleted .text {
+    color: gray;
+}
 .card.selected {
     background-color: #232223;
     border-bottom: 0px #111 solid;

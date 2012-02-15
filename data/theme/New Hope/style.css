@@ -119,6 +119,12 @@
 .card.mention a {
     color: #492;
 }
+.card.deleted a {
+    color: gray;
+}
+.card.deleted .text {
+    color: gray;
+}
 .profile_img_wrapper {
     -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
 }
