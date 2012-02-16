@@ -30,7 +30,7 @@ services: {
         params: {
             long_url: 'url',
             extra: {
-                format: 'simple',
+                format: 'simple'
             }
         }
     },
@@ -334,6 +334,6 @@ function options() {
         ext.HototShortUrl.create_option_dialog();
     }
     ext.HototShortUrl.option_dialog.open();
-},
+}
 
 }

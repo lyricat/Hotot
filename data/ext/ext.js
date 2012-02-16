@@ -290,7 +290,7 @@ function add_tweet_more_menuitem(id) {
     a.unbind('click');
     var li = a.parent();
     li.remove();
-},
+}
 
 };
 

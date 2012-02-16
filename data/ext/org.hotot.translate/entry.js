@@ -200,7 +200,7 @@ function do_translate(dst_lang, text, callback) {
             var data = {};
             data.responseDetails = 'Err...';
             callback(data);
-        },
+        }
     });
 },
 
@@ -312,7 +312,7 @@ function options() {
             .attr('selectedIndex', selected_idx);
     });
     ext.HototTranslate.option_dialog.open();
-},
+}
 
 }
 

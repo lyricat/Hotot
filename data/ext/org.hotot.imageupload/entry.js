@@ -29,7 +29,7 @@ services : {
     'plixi.com': {
           url: 'http://api.plixi.com/api/upload.aspx'
         , key: 'a3beab3a-d1ae-46c0-a4ab-5ac73d8eb43a'
-    },
+    }
 },
 
 on_ext_btn_clicked:
@@ -175,6 +175,6 @@ function disable() {
     if (ext.HototImageUpload.upload_dialog) {
         ext.HototImageUpload.upload_dialog.destroy();
     }
-},
+}
 
 }

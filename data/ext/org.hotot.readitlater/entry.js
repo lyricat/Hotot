@@ -132,7 +132,7 @@ function options() {
         ext.HototReaditlater.create_option_dialog();        
     }
     ext.HototReaditlater.option_dialog.open();
-},
+}
 
 }
 
