@@ -77,7 +77,7 @@ void KDETrayBackend::setContextMenu(QMenu* menu)
 
 void KDETrayBackend::activate(bool active, const QPoint& pos)
 {
-    m_mainWindow->triggerVisible();
+//    m_mainWindow->triggerVisible();
 }
 
 void KDETrayBackend::unreadAlert(QString number)
