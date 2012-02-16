@@ -129,7 +129,7 @@ function options() {
         ext.HototInstapaper.create_option_dialog();        
     }
     ext.HototInstapaper.option_dialog.open();
-},
+}
 
 }
 

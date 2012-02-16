@@ -80,6 +80,6 @@ disable:
 function disable() {
     ext.unregister_listener(ext.FORM_TWEET_STATUS_INDICATOR_LISTENER
         , ext.HototGMap.on_form_indicator);
-},
+}
 }
 
