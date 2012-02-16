@@ -136,7 +136,8 @@ def crack_system(params):
         unread_count = int(urllib.unquote(params[2]))
         app.unread_alert("unread", "Unread", "Items", unread_count)
     elif params[1] == 'incoming':
-        app.emit_incoming(params[2], urllib.unquote(params[3]))
+        # @TODO
+        pass
     elif params[1] == 'load_settings':
         settings = json.loads(urllib.unquote(params[2]))
         config.load_settings(settings)
