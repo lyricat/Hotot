@@ -419,7 +419,7 @@
         <a id="btn_smiley" class="button toolbar_button" data-i18n-title="Insert_smiley" title="Insert smiley"></a>
         <a id="btn_imageuploader" class="button toolbar_button" data-i18n-title="image_uploader" title="Image uploader"></a>
         <a id="btn_save_draft" class="button toolbar_button" data-i18n-title="save_as_draft" title="Save as drafts"></a>
-        <input id="tbox_status_speech" class="button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
+        <input id="tbox_status_speech" class="button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();a.focus();ui.StatusBox.move_cursor(ui.StatusBox.POS_END);};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
         <a id="btn_clear" class="button" data-i18n-text="clear">Clear</a>
         <a id="btn_update" class="button" data-i18n-text="update">Update</a>
         <span class="clear"></span>
