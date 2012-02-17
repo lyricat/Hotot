@@ -44,6 +44,7 @@ KDETrayBackend::KDETrayBackend(MainWindow* parent):
     m_mainWindow(parent),
     m_statusNotifierItem(new KStatusNotifierItem("hotot_qt", this))
 {
+    m_statusNotifierItem->setAssociatedWidget(parent);
     m_statusNotifierItem->setIconByName("hotot_qt-inactive");
     m_statusNotifierItem->setToolTip("hotot_qt", i18n("Hotot"), "");
     m_statusNotifierItem->setStatus(KStatusNotifierItem::Active);
@@ -76,7 +77,7 @@ void KDETrayBackend::setContextMenu(QMenu* menu)
 
 void KDETrayBackend::activate(bool active, const QPoint& pos)
 {
-    m_mainWindow->triggerVisible();
+//    m_mainWindow->triggerVisible();
 }
 
 void KDETrayBackend::unreadAlert(QString number)
