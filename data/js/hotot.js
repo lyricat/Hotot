@@ -566,6 +566,7 @@ function on_load_finish() {
                     + encodeURIComponent(JSON.stringify(conf.settings)))
                 globals.load_flags = 2;
                 $(window).dequeue('_on_load_finish');
+                $('#tbox_status_speech').hide();
             });
         } else {
             procs.push(function () {

@@ -49,6 +49,9 @@ function change(code, callback) {
             });
         });
     }
+    if (conf.vars.platform == 'Chrome') {
+        $('#tbox_status_speech').attr('lang', i18n.current.replace('_', '-'));
+    }
 },
 
 load_dict:
