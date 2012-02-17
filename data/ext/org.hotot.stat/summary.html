@@ -60,7 +60,7 @@ h2 {
     text-align: center;
     padding: 20px;
 }
-#stat_charts {
+#user_stat_charts, #home_stat_charts {
     display: none;
 }
     </style> 
@@ -68,6 +68,8 @@ h2 {
     <script src="jquery.flot.min.js"></script>
     <script src="jquery.flot.pie.min.js"></script>
     <script>
+var user = {
+    update_tweet:
     function update_tweet(data) {
         var d = [];
         for (var i = 0; i < data.length; i += 1) {
@@ -82,7 +84,8 @@ h2 {
                     }}}
             }
         });
-    }
+    },
+    update_stat:
     function update_stat(data) {
         var hour_d=[], day_d=[];
         for (var i = 0; i < data.hour_stat.length; i += 1) {
@@ -108,7 +111,8 @@ h2 {
                     ,24,25,26,27,28,29,30,31]},
             grid: {backgroundColor: {colors: ['#fff','#f2f2f2']}}
         });
-    }
+    },
+    update_top_talkers:
     function update_top_talkers(talkers) {
         var data = [0];
         var ticks = [0];
@@ -123,7 +127,8 @@ h2 {
             xaxis: {ticks: ticks},
             grid: {backgroundColor: {colors: ['#fff','#f2f2f2']}}
         })
-    }
+    },
+    update_top_rt_users:
     function update_top_rt_users(talkers) {
         var data = [0];
         var ticks = [0];
@@ -138,7 +143,8 @@ h2 {
             xaxis: {ticks: ticks},
             grid: {backgroundColor: {colors: ['#fff','#f2f2f2']}}
         })
-    }
+    },
+    update_top_clients:
     function update_top_clients(clients) {
         var d = [];
         for (var i = 0; i < clients.length; i += 1) {
@@ -154,8 +160,8 @@ h2 {
                 },
             legend: { noColumns: 2 }
         });
-    }
-
+    },
+    update_follower_trend:
     function update_follower_trend(follower_stream) {
         var data = [0];
         for (var i = 0; i < follower_stream.length; i += 1) {
@@ -168,17 +174,38 @@ h2 {
             grid: {backgroundColor: {colors: ['#fff','#f2f2f2']}}
         })
     }
+};
+
+var home = {
+    update_top_speakers:
+    function update_top_speakers(user) {
+        var data = [0];
+        var ticks = [0];
+        for (var i = 0; i < user.length; i += 1) {
+            data.push([i+0.5, user[i][1]]);
+            ticks.push([i+0.5, user[i][0]]);
+        }
+        $.plot($('#top10_speakers_home_stat_chart'), [
+            { data:data, color:'#48BB32'}
+        ], {
+            series: {bars: {show:true, barWidth:0.6}},
+            xaxis: {ticks: ticks},
+            grid: {backgroundColor: {colors: ['#fff','#f2f2f2']}}
+        })
+    },
+};
 
     function start() {
-        $('#stat_charts').hide();
+        $('#user_stat_charts').hide();
+        $('#home_stat_charts').hide();
         $('#progress_bar_mask').show();
     }
-    function done() {
-        $('#stat_charts').show();
+    function done(arg) {
+        $('#'+arg+'_stat_charts').show();
         $('#progress_bar_mask').hide();
     }
     function progress_set_label(value) {
-        $('#stat_charts').show();
+        //$('#stat_charts').show();
         $('#progress_bar_mask .label').text(value);
     }
 
@@ -196,7 +223,7 @@ h2 {
             <div class="label">100/600</div>
         </div>
     </div>
-    <div id="stat_charts">
+    <div id="user_stat_charts">
         <h2>Tweet Stat</h2>
         <div id="tweet_chart" class="chart" style="height:150px;"></div>
         <h2>Tweets per Hour</h2>
@@ -212,6 +239,11 @@ h2 {
         <h2>Follower Trend</h2>
         <div id="follower_trend_stat_chart" class="chart"></div> 
     </div>    
+
+    <div id="home_stat_charts">
+        <h2>Top 8 Talkaholic</h2>
+        <div id="top10_speakers_home_stat_chart" class="chart"></div> 
+    </div>
 </div>
 </body>
 </html>

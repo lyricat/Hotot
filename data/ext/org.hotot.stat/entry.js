@@ -18,18 +18,24 @@ select_filename: '',
 
 stat_dialog: null,
 
-stat_info: {},
+user_stat_info: {},
+
+home_stat_info: {},
 
 rt_reg: new RegExp('RT\\s*@(\\w+)', 'g'),
 
-current: '#ext_hototstat_summary',
+current: '#ext_hototstat_home',
 
 header_html: 
 '<ul id="ext_hototstat_btns" class="radio_group">\
-    <li><a id="ext_hototstat_summary_btn"\
-        href="#ext_hototstat_summary" \
+    <li><a id="ext_hototstat_home_btn"\
+        href="#ext_hototstat_home" \
         class="radio_group_btn selected"\
-        >Statistic Summary</a>\
+        >HomeTimeline Statistic</a>\
+    </li><li><a id="ext_hototstat_user_btn"\
+        href="#ext_hototstat_user" \
+        class="radio_group_btn"\
+        >User Statistic</a>\
     </li><li><a id="ext_hototstat_relation_btn"\
         href="#ext_hototstat_relation" \
         class="radio_group_btn"\
@@ -37,13 +43,17 @@ header_html:
     </li>\
 </ul>',
 
-body_html: 
-'<div id="ext_hototstat_summary" class="dialog_block" style="text-align:center">\
+body_html:
+'<div id="ext_hototstat_home" class="dialog_block" style="text-align:center">\
+    <iframe width="600" align="center" height="1800" class="summary_frame" frameborder="0" scrolling="no" src="ext/org.hotot.stat/summary.html"></iframe>\
+</div>\
+<div id="ext_hototstat_user" class="dialog_block" style="text-align:center;display:none">\
     <div style="padding: 10px 20px;">\
         <input class="screen_name_tbox entry" type="text" placeholder="Type a screen name here and click `Update`">\
     </div>\
     <iframe width="600" align="center" height="1800" class="summary_frame" frameborder="0" scrolling="no" src="ext/org.hotot.stat/summary.html"></iframe>\
-    </div><div id="ext_hototstat_relation" class="dialog_block" style="display:none">\
+</div>\
+<div id="ext_hototstat_relation" class="dialog_block" style="display:none">\
     <div style="padding: 10px 20px;">\
         <div style="margin-bottom: 10px;">\
         <input class="screen_name1_tbox entry" type="text" placeholder="Type the first screen name here.">\
@@ -61,61 +71,73 @@ function on_ext_btn_clicked(event) {
 },
 
 update_stat_frame:
-function update_stat_frame() {
-    var si = ext.HototStat.stat_info;
-    var frame_win =  $('#ext_hototstat_summary .summary_frame').get(0).contentWindow;
-    frame_win.update_tweet([
-        ['Mentions', si.summary.mention_count]
-        , ['Retweets', si.summary.retweet_count]
-        , ['Quotes', si.summary.quote_count]
-        , ['Soliloquiz', si.summary.soliloquize_count]
-        ]);
-    frame_win.update_stat({
-        'hour_stat': si.summary_hour_stat
-        , 'day_stat': si.summary_day_stat
-    });
-    var top_talkers = [];
-    for (var k in si.all_talkers) {
-        top_talkers.push([k, si.all_talkers[k]]);
-    }
-    top_talkers.sort(function(a,b){return a[1]>b[1]?-1:1;});
-    top_talkers = top_talkers.slice(0, 8);
-    frame_win.update_top_talkers(top_talkers);
+function update_stat_frame(arg) {
+    if (arg == 'user') {
+        var si = ext.HototStat.user_stat_info;
+        var frame_win =  $('#ext_hototstat_user .summary_frame').get(0).contentWindow;
+        frame_win.user.update_tweet([
+            ['Mentions', si.summary.mention_count]
+            , ['Retweets', si.summary.retweet_count]
+            , ['Quotes', si.summary.quote_count]
+            , ['Soliloquiz', si.summary.soliloquize_count]
+            ]);
+        frame_win.user.update_stat({
+            'hour_stat': si.summary_hour_stat
+            , 'day_stat': si.summary_day_stat
+        });
+        var top_talkers = [];
+        for (var k in si.all_talkers) {
+            top_talkers.push([k, si.all_talkers[k]]);
+        }
+        top_talkers.sort(function(a,b){return a[1]>b[1]?-1:1;});
+        top_talkers = top_talkers.slice(0, 8);
+        frame_win.user.update_top_talkers(top_talkers);
 
-    var top_rt_users = [];
-    for (var k in si.all_rt_users) {
-        top_rt_users.push([k, si.all_rt_users[k]]);
-    }
-    top_rt_users.sort(function(a,b){return a[1]>b[1]?-1:1;});
-    top_rt_users = top_rt_users.slice(0, 8);
-    frame_win.update_top_rt_users(top_rt_users);
+        var top_rt_users = [];
+        for (var k in si.all_rt_users) {
+            top_rt_users.push([k, si.all_rt_users[k]]);
+        }
+        top_rt_users.sort(function(a,b){return a[1]>b[1]?-1:1;});
+        top_rt_users = top_rt_users.slice(0, 8);
+        frame_win.user.update_top_rt_users(top_rt_users);
 
-    var top_clients = [];
-    for (var k in si.all_clients) {
-        top_clients.push([k, si.all_clients[k]]);
-    }
-    top_clients.sort(function(a,b){return a[1]>b[1]?-1:1;});
-    top_clients = top_clients.slice(0, 8);
-    frame_win.update_top_clients(top_clients);
+        var top_clients = [];
+        for (var k in si.all_clients) {
+            top_clients.push([k, si.all_clients[k]]);
+        }
+        top_clients.sort(function(a,b){return a[1]>b[1]?-1:1;});
+        top_clients = top_clients.slice(0, 8);
+        frame_win.user.update_top_clients(top_clients);
 
-    frame_win.update_follower_trend(si.all_follower_stream);
+        frame_win.user.update_follower_trend(si.all_follower_stream);
+    } else {
+        var si = ext.HototStat.home_stat_info;
+        var frame_win =  $('#ext_hototstat_home .summary_frame').get(0).contentWindow;
+        var top_speakers = [];
+        for (var k in si.all_speakers) {
+            top_speakers.push([k, si.all_speakers[k]]);
+        }
+        top_speakers.sort(function(a,b){return a[1]>b[1]?-1:1;});
+        top_speakers = top_speakers.slice(0, 8);
+        frame_win.home.update_top_speakers(top_speakers);
+    }
 },
 
 fetch_user_tweets:
 function fetch_user_tweets(screen_name, callback) {
-    var frame_win =  $('#ext_hototstat_summary .summary_frame').get(0).contentWindow;
+    var frame_win =  $('#ext_hototstat_user .summary_frame').get(0).contentWindow;
     var procs = [];
     var last_id = null;
     frame_win.start();
     var fetch_proc = function () {
         frame_win.progress_set_label('Loading: '
-            + ext.HototStat.stat_info.summary.total_count);
+            + ext.HototStat.user_stat_info.summary.total_count);
         lib.twitterapi.get_user_timeline(null, screen_name, null,
             last_id, 200,
             function (tweets) {
                 if (tweets.length != 0) {
                     for (var i = 0; i < tweets.length; i += 1) {
-                        ext.HototStat.handle_tweet(tweets[i]);
+                        ext.HototStat.handle_user_tweet(tweets[i]);
                     }
                     last_id = tweets[tweets.length - 1].id_str;
                 } else {
@@ -135,11 +157,52 @@ function fetch_user_tweets(screen_name, callback) {
     }
     procs.push(function () {
         callback();
-        frame_win.done();
+        frame_win.done('user');
     });
     $(window).queue('_ext_stat_fetch', procs);
     $(window).dequeue('_ext_stat_fetch');
 },
+
+fetch_home_tweets:
+function fetch_home_tweets(callback) {
+    var frame_win =  $('#ext_hototstat_home .summary_frame').get(0).contentWindow;
+    var procs = [];
+    var last_id = null;
+    frame_win.start();
+    var fetch_proc = function () {
+        frame_win.progress_set_label('Loading: '
+            + ext.HototStat.home_stat_info.summary.total_count + '/1000');
+        lib.twitterapi.get_home_timeline(null,
+            last_id, 100,
+            function (tweets) {
+                if (tweets.length != 0) {
+                    for (var i = 0; i < tweets.length; i += 1) {
+                        ext.HototStat.handle_home_tweet(tweets[i]);
+                    }
+                    last_id = tweets[tweets.length - 1].id_str;
+                } else {
+                    toast.set("No tweet available, abort.").show();
+                }
+                setTimeout(function () {
+                    $(window).dequeue('_ext_stat_fetch');
+                }, 1000);
+            }, function (xhr, txt, exp) {
+                setTimeout(function () {
+                    $(window).dequeue('_ext_stat_fetch');
+                }, 1000);
+            });
+    }
+    for (var i = 0; i < 10; i += 1) {
+        procs.push(function () {fetch_proc();});
+    }
+    procs.push(function () {
+        callback();
+        frame_win.done('home');
+    });
+    $(window).queue('_ext_stat_fetch', procs);
+    $(window).dequeue('_ext_stat_fetch');
+},
+
 
 get_relationship:
 function get_relationship(screen_name1, screen_name2, callback) {
@@ -169,12 +232,18 @@ function get_relationship(screen_name1, screen_name2, callback) {
 
 on_btn_update_clicked:
 function on_btn_update_clicked(event) {
-    if (ext.HototStat.current == '#ext_hototstat_summary') {
+    if (ext.HototStat.current == '#ext_hototstat_user') {
         ext.HototStat.reset();
-        var screen_name=$('#ext_hototstat_summary .screen_name_tbox').val();
+        var screen_name=$('#ext_hototstat_user .screen_name_tbox').val();
         ext.HototStat.fetch_user_tweets(screen_name, 
             function () {
-                ext.HototStat.update_stat_frame() 
+                ext.HototStat.update_stat_frame('user');
+            });
+    } else if (ext.HototStat.current == '#ext_hototstat_home'){
+        ext.HototStat.reset();
+        ext.HototStat.fetch_home_tweets( 
+            function () {
+                ext.HototStat.update_stat_frame('home');
             });
     } else {
         var screen_name1=$('#ext_hototstat_relation .screen_name1_tbox').val();
@@ -213,7 +282,7 @@ function on_btn_close_clicked(event) {
 
 reset:
 function reset() {
-    ext.HototStat.stat_info = {
+    ext.HototStat.user_stat_info = {
         summary: {
               total_count:0
             , mention_count:0
@@ -243,62 +312,88 @@ function reset() {
               mention_map:{}
         }
     };
+
+    ext.HototStat.home_stat_info = {
+        summary: {
+              total_count:0
+            , mention_count:0
+            , retweet_count:0
+            , quote_count:0
+            , soliloquize_count:0
+        }, 
+        all_speakers: {},  
+    };
 },
 
-handle_tweet:
-function handle_tweet(tweet_obj) {
+handle_home_tweet:
+function handle_home_tweet(tweet_obj) {
+    if (!tweet_obj.hasOwnProperty('user')) {
+        return;
+    }
+    var home_stat_info = ext.HototStat.home_stat_info;
+    home_stat_info.summary.total_count += 1;
+    var name = tweet_obj.user.screen_name;
+    if (name in home_stat_info.all_speakers) {
+        home_stat_info.all_speakers[name] += 1;
+    } else {
+        home_stat_info.all_speakers[name] = 1;
+    }
+},
+
+handle_user_tweet:
+function handle_user_tweet(tweet_obj) {
     if (!tweet_obj.hasOwnProperty('user')) {
         return;
     }
 
     // summary of tweets
-    var stat_info = ext.HototStat.stat_info;
-    stat_info.summary.total_count += 1;
+    var user_stat_info = ext.HototStat.user_stat_info;
+    user_stat_info.summary.total_count += 1;
     if (tweet_obj.text.indexOf(' RT') != -1) {
-        stat_info.summary.quote_count += 1;
+        user_stat_info.summary.quote_count += 1;
     } 
     if (tweet_obj.text.indexOf('@') == -1) {
-        stat_info.summary.soliloquize_count += 1;
+        user_stat_info.summary.soliloquize_count += 1;
     } else {
-        stat_info.summary.mention_count += 1;
+        user_stat_info.summary.mention_count += 1;
     }
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
-        stat_info.summary.retweet_count += 1;
+        user_stat_info.summary.retweet_count += 1;
     }
     // summary of tweets per hours/day
     var time = new Date();
     time.setTime(Date.parse(tweet_obj.created_at));
-    stat_info.summary_hour_stat[time.getHours() - 1] += 1;
-    stat_info.summary_day_stat[time.getDay() - 1] += 1;
+    user_stat_info.summary_hour_stat[time.getHours() - 1] += 1;
+    user_stat_info.summary_day_stat[time.getDay() - 1] += 1;
     // summary of top 10 talkers and clients
     if (tweet_obj.entities) {
         for (var i = 0; i < tweet_obj.entities.user_mentions.length; i+=1) {
             var mention_name = tweet_obj.entities.user_mentions[i].screen_name;
-            if (mention_name in stat_info.all_talkers) {
-                stat_info.all_talkers[mention_name] += 1;
+            if (mention_name in user_stat_info.all_talkers) {
+                user_stat_info.all_talkers[mention_name] += 1;
             } else {
-                stat_info.all_talkers[mention_name] = 1;
+                user_stat_info.all_talkers[mention_name] = 1;
             }
         }
     }
     var client_name = tweet_obj.source.replace(/<.*?>/g, '');
     client_name.replace('</a>', '');
-    if (client_name in stat_info.all_clients) {
-        stat_info.all_clients[client_name] += 1;
+    if (client_name in user_stat_info.all_clients) {
+        user_stat_info.all_clients[client_name] += 1;
     } else {
-        stat_info.all_clients[client_name] = 1;
+        user_stat_info.all_clients[client_name] = 1;
     }
     var m = ext.HototStat.rt_reg.exec(tweet_obj.text);
     while (m != null) {
-        if (m[1] in stat_info.all_rt_users) {
-            stat_info.all_rt_users[m[1]] += 1;
+        if (m[1] in user_stat_info.all_rt_users) {
+            user_stat_info.all_rt_users[m[1]] += 1;
         } else {
-            stat_info.all_rt_users[m[1]] = 1;
+            user_stat_info.all_rt_users[m[1]] = 1;
         }
         m = ext.HototStat.rt_reg.exec(tweet_obj.text);
     }
     // follower stream
-    stat_info.all_follower_stream.push(tweet_obj.user.followers_count);
+    user_stat_info.all_follower_stream.push(tweet_obj.user.followers_count);
 },
 
 enable:
