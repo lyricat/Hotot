@@ -18,7 +18,8 @@ try: import i18n
 except: from gettext import gettext as _
 
 reload(sys)
-sys.setdefaultencoding('utf8')
+#sys.setdefaultencoding('utf8')
+sys.setdefaultencoding('iso8859-1')
 
 USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 
