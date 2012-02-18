@@ -25,6 +25,9 @@ class HototWebView : public QGraphicsView
     Q_OBJECT
 public:
     HototWebView(QGraphicsWebView* webview, QWidget *parent = 0);
+    
+    virtual void dragEnterEvent(QDragEnterEvent* event);
+    virtual void dropEvent(QDropEvent* event);
 
 protected:
     void resizeEvent(QResizeEvent *e);

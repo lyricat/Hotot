@@ -241,6 +241,43 @@ function update_with_media(text, reply_to_id, file, file_data, on_success, on_er
             , on_error);
 },
 
+update_with_media_filename:
+function update_with_media_filename(text, reply_to_id, filename, on_success, on_error) {
+    var url = lib.twitterapi.upload_api_base + 'statuses/update_with_media.json';
+    var signed_params = jsOAuth.form_signed_params(
+              url
+            , jsOAuth.access_token
+            , 'POST'
+            , {}
+            , true);
+    var params = {'status': text, 'include_entities': '1'};
+    if (reply_to_id) {
+        params['in_reply_to_status_id'] = reply_to_id;
+    }
+    $.extend(params, signed_params);
+
+    var auth_str = 
+        'OAuth oauth_consumer_key="'+signed_params.oauth_consumer_key+'"'
+    + ', oauth_signature_method="'+signed_params.oauth_signature_method+'"'
+    + ', oauth_token="'+signed_params.oauth_token+'"'
+    + ', oauth_timestamp="'+signed_params.oauth_timestamp+'"'
+    + ', oauth_nonce="'+ signed_params.oauth_nonce +'"'
+    + ', oauth_version="'+signed_params.oauth_version+'"'
+    + ', oauth_signature="'
+        + encodeURIComponent(signed_params.oauth_signature)+'"';
+    var headers = {'Authorization': auth_str};
+
+    lib.network.do_request(
+            'POST'
+            , url
+            , signed_params 
+            , headers
+            , [['media', filename]] 
+            , on_success
+            , on_error);
+},
+
+
 retweet_status:
 function retweet_status(retweet_id, on_success) {
     var url = lib.twitterapi.api_base + 'statuses/retweet/'+retweet_id+'.json';

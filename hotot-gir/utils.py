@@ -83,7 +83,7 @@ def encode_multipart_formdata(fields, files):
     total_size = 0
     L = []
     for key, value in fields.items():
-        key, value = key.encode('utf8'), value.encode('utf8')
+        key, value = str(key).encode('utf8'), str(value).encode('utf8')
         L.append('--' + BOUNDARY)
         L.append('Content-Disposition: form-data; name="%s"' % key)
         L.append('')
@@ -158,3 +158,16 @@ def get_locale():
     if lang in supported_locate:
         return supported_locate[lang]
     return 'en'
+
+def get_file_path_from_dnd_dropped_uri(uri):
+    path = ""
+    if uri.startswith('file:\\\\\\'): # windows
+        path = uri[8:] # 8 is len('file:///')
+    elif uri.startswith('file://'): # nautilus, rox
+        path = uri[7:] # 7 is len('file://')
+    elif uri.startswith('file:'): # xffm
+        path = uri[5:] # 5 is len('file:')
+    path = urllib.url2pathname(path) # escape special chars
+    path = path.strip('\r\n\x00') # remove \r\n and NULL
+
+    return path

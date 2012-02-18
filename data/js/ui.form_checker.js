@@ -82,7 +82,11 @@ function test_text_len_limit(widget, max_len) {
 test_file_image:
 function test_file_image(file) {
     var ret = false;
-    if (/.*(jpg|jpeg|png|gif)$/i.test(file.name)) {
+    var filename = file;
+    if (typeof (file) != 'string') {
+        filename = file.name;
+    }
+    if (/.*(jpg|jpeg|png|gif)$/i.test(filename)) {
         ret = true;
     }
     return ret;

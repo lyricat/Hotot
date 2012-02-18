@@ -9,6 +9,8 @@ import json
 
 try: import i18n
 except: from gettext import gettext as _
+TARGET_TYPE_URI_LIST = 80
+dnd_list = [ ( 'text/uri-list', 0, TARGET_TYPE_URI_LIST ) ]
 
 class MainView(WebKit.WebView):
     def __init__(self, parentWidget):
@@ -42,6 +44,14 @@ class MainView(WebKit.WebView):
         self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
         self.connect("hovering-over-link", self.on_over_link);
+        self.connect('drag_data_received', self.on_drag_data_received)
+        self.connect('drag_motion', self.on_drag_motion)
+        self.connect('drag_drop', self.on_drag_drop)
+        # @TODO DND for gir
+        te = Gtk.TargetEntry.new(
+            'text/uri-list', 0, TARGET_TYPE_URI_LIST)
+        self.drag_dest_set( Gtk.DestDefaults.ALL,
+                  [te], Gdk.DragAction.COPY)
 
         if config.ENABLE_INSPECTOR:
             from inspector import HototInspector
@@ -108,4 +118,29 @@ class MainView(WebKit.WebView):
         href = href or ""
         if not alt and not href.startswith('file:'):
             self.parentWidget.set_tooltip_text(href)
+
+    def on_drag_motion(self, view, context, x, y, time):
+        context.drag_status(Gdk.ACTION_COPY, time)
+        return True
+
+    def on_drag_drop(self, view, context, x, y, time):
+        context.finish(True, False, time)
+        return True 
+
+    def on_drag_data_received(self, view, context, x, y, selection, target_type, time):
+        if target_type != TARGET_TYPE_URI_LIST:
+            print target_type, 'is not supported.'
+            return
+        uri = selection.data.strip('\r\n\x00')
+        # print 'uri', uri
+        uri_splitted = uri.split()
+        if len(uri_splitted) >= 1:
+            path =utils.get_file_path_from_dnd_dropped_uri(uri_splitted[0])
+        else:
+            return
+        if os.path.isfile(path):
+            gobject.idle_add(view.execute_script, '''
+                ui.ImageUploader.pyload("%s");
+                ui.ImageUploader.show();
+                ''' % path)
 
