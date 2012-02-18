@@ -4,7 +4,6 @@ ext = {
 builtins: [
     , 'org.hotot.cfw'
     , 'org.hotot.gmap'
-    , 'org.hotot.imageupload'
     , 'org.hotot.instapaper'
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
