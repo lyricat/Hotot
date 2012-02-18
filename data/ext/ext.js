@@ -205,10 +205,13 @@ function load_exts(type, exts, callback) {
     var _load = function (idx) {
         var path = exts[idx];
         procs.push(function () {
-            $.getScript(path,
-            function () {
-                hotot_log('Load Extension', path);
-                $(window).dequeue('_load_exts' + type);
+            $.ajax(path, {
+                cache: true,
+                dataType: "script",
+                success: function () {
+                    hotot_log('Load Extension', path);
+                    $(window).dequeue('_load_exts' + type);
+                }
             });
         });
     };
