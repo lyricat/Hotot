@@ -166,7 +166,7 @@ function enable() {
                 , click: ext.HototImageUpload.on_btn_upload_clicked}]
             );
     ext.HototImageUpload.upload_dialog.set_styles('header', {'padding': '10px'})
-    ext.HototImageUpload.upload_dialog.resize(400, 250);
+    ext.HototImageUpload.upload_dialog.resize(400, 400);
 },
 
 disable:
