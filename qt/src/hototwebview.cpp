@@ -68,7 +68,7 @@ void HototWebView::dropEvent(QDropEvent* event)
         if (event->mimeData()->urls().length() <= 0)
             return;
         QUrl url = event->mimeData()->urls().at(0);
-        if (url.isLocalFile()) {
+        if (url.scheme() == "file") {
             QString cmd = QString(
                 "ui.ImageUploader.pyload(\"%1\");\n"
                 "ui.ImageUploader.show();"
