@@ -108,10 +108,10 @@
             <input id="tbox_basic_auth_username" class="entry" style="width: 170px;" type="text" value=""/><br/>
             <label data-i18n-text="password">Password:</label><br/>
             <input id="tbox_basic_auth_password" class="entry" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" class="checkbox" checked="1"/>
+            <input id="chk_remember_password" type="checkbox" class="checkbox" checked="checked"/>
             <label for="chk_remember_password" class="label" data-i18n-text="remember_password">Remember Password</label><br/>
             <div style="text-align:center">
-            <a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
+            	<a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
             </div>
         </p>
         </div>
@@ -579,7 +579,7 @@
             <p>
                 <input id="chk_prefs_remember_password"
                     type="checkbox" class="checkbox"
-                    title="Remember Password" checked="1"/>
+                    title="Remember Password" checked="checked"/>
                 <label for="chk_prefs_remember_password" class="label"
                     data-i18n-text="remember_password">Remember Password
                 </label><br/>
@@ -608,7 +608,7 @@
             <div class="dialog_block">
             <h3>- <span data-i18n-text="theme">Theme</span> -</h3>
             <p>
-                <table class="void_table" border="0">
+                <table class="void_table">
                     <tr>
                         <td><label class="label"
                                 data-i18n-text="themes">Themes</label></td>
@@ -704,9 +704,9 @@
                     class="radio" name="effects" value="2"/>
                 <strong><label class="label" data-i18n-text="effects_extra"
                     >Extra</label>:</strong>
-                <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets"
-                    >More effects like shadows and glow of widgets.</span>
-                <label/>
+                <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
+                	<span>More effects like shadows and glow of widgets.</span>
+                </label>
             </p>
             </div>
 
@@ -1212,7 +1212,6 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
                     <div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>
                 </li>
             </ul>
-            </ul>
         </div>
         <div class="intelligent_page kismet_page">
             <div class="dialog_block">
@@ -1241,20 +1240,20 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </div>
         <div class="dialog_block">
             <h3>- <span data-i18n-text="rule">Rule</span> -</h3>
-            <p><textarea id="kismet_rule_edit_data" class="textarea"  value style="width:450px; height: 40px;"></textarea></p>
+            <p><textarea id="kismet_rule_edit_data" class="textarea" style="width:450px; height: 40px;"></textarea></p>
         </div>
         <div id="kismet_quick_refs">
         <details style="width: 240px; float: left;">
         <summary class="sub_label" data-i18n-text="examples">Examples</summary>
         <p>
-        <ul class="docs">
-            <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
-            <li><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
-            <li><a href="#" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
-            <li><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
-            <li><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
-            <li><a href="#" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
-        </ul>
+	        <ul class="docs">
+	            <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
+	            <li><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
+	            <li><a href="#" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
+	            <li><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
+	            <li><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
+	            <li><a href="#" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
+	        </ul>
         </p>
         </details>
         <details style="margin-left: 245px;">
