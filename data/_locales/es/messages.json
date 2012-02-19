@@ -291,13 +291,17 @@
 		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
-	"official_retweet_this_tweet": {
-		"message": "Retweet oficial",
-		"description": "data/js/ui.template.js"
+	"open_a_profile_dots": {
+		"message": "Abrir perfil",
+		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
 		"message": "Borrar este tweet",
 		"description": "data/js/ui.template.js"
+	},
+	"trending_topics": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
 	},
 	"via": {
 		"message": "vía",
@@ -471,6 +475,10 @@
 		"message": "Restaurar valores predeterminados",
 		"description": "data/index.html"
 	},
+	"upload_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Borrar token",
 		"description": "data/index.html"
@@ -499,8 +507,8 @@
 		"message": "Seguidores",
 		"description": "data/js/ui.template.js"
 	},
-	"weakness": {
-		"message": "Débil",
+	"reset_time": {
+		"message": "Hora de reinicio",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -655,8 +663,8 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"reset_time": {
-		"message": "Hora de reinicio",
+	"weakness": {
+		"message": "Débil",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -667,12 +675,20 @@
 		"message": "Mostrar menciones",
 		"description": "data/index.html"
 	},
+	"official_retweet_this_tweet": {
+		"message": "Retweet oficial",
+		"description": "data/js/ui.template.js"
+	},
 	"effects": {
 		"message": "Efectos",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
 		"message": "Ir al tweet anterior",
+		"description": "data/index.html"
+	},
+	"trending_topics_view": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -923,10 +939,6 @@
 		"message": "Él te sigue.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"open_a_profile_dots": {
-		"message": "Abrir perfil",
-		"description": "data/index.html"
-	},
 	"extensions": {
 		"message": "Extensiones",
 		"description": "data/index.html"
@@ -1097,6 +1109,10 @@
 	},
 	"sign_in_with_twitter": {
 		"message": "Iniciar sesión con Twitter",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "",
 		"description": "data/index.html"
 	}
 }

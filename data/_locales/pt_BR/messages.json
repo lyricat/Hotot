@@ -291,13 +291,17 @@
 		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
-	"official_retweet_this_tweet": {
-		"message": "Retuíte esse tweet",
-		"description": "data/js/ui.template.js"
+	"open_a_profile_dots": {
+		"message": "Abrir um perfil ...",
+		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
 		"message": "Remova esse tweet",
 		"description": "data/js/ui.template.js"
+	},
+	"trending_topics": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
 	},
 	"via": {
 		"message": "via",
@@ -469,6 +473,10 @@
 	},
 	"restore_defaults": {
 		"message": "Restaurar configuração de fábrica",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -667,12 +675,20 @@
 		"message": "Visão de menções",
 		"description": "data/index.html"
 	},
+	"official_retweet_this_tweet": {
+		"message": "Retuíte esse tweet",
+		"description": "data/js/ui.template.js"
+	},
 	"effects": {
 		"message": "Efeitos",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
 		"message": "Mover par ao tweet anterior",
+		"description": "data/index.html"
+	},
+	"trending_topics_view": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -923,10 +939,6 @@
 		"message": "Você é seguido por eles.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"open_a_profile_dots": {
-		"message": "Abrir um perfil ...",
-		"description": "data/index.html"
-	},
 	"extensions": {
 		"message": "Extensões",
 		"description": "data/index.html"
@@ -1097,6 +1109,10 @@
 	},
 	"sign_in_with_twitter": {
 		"message": "Conectar-se com o Twitter",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "",
 		"description": "data/index.html"
 	}
 }

@@ -291,13 +291,17 @@
 		"message": "Identi.ca",
 		"description": "data/index.html"
 	},
-	"official_retweet_this_tweet": {
-		"message": "Official retweet this tweet",
-		"description": "data/js/ui.template.js"
+	"open_a_profile_dots": {
+		"message": "Open a Profile ...",
+		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
 		"message": "Delete this tweet",
 		"description": "data/js/ui.template.js"
+	},
+	"trending_topics": {
+		"message": "Trending topics",
+		"description": "data/js/ui.slider.js"
 	},
 	"via": {
 		"message": "via",
@@ -471,6 +475,10 @@
 		"message": "Restore Defaults",
 		"description": "data/index.html"
 	},
+	"upload_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Clean token",
 		"description": "data/index.html"
@@ -499,8 +507,8 @@
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
 	},
-	"weakness": {
-		"message": "Weakness",
+	"reset_time": {
+		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -607,10 +615,6 @@
 		"message": "Favorites View",
 		"description": "data/index.html"
 	},
-	"trending_topics_view": {
-		"message": "Trending topics View",
-		"description": "data/index.html"
-	},
 	"keyboard": {
 		"message": "Keyboard",
 		"description": "data/index.html"
@@ -659,8 +663,8 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"reset_time": {
-		"message": "Reset Time",
+	"weakness": {
+		"message": "Weakness",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -671,12 +675,20 @@
 		"message": "Mentions View",
 		"description": "data/index.html"
 	},
+	"official_retweet_this_tweet": {
+		"message": "Official retweet this tweet",
+		"description": "data/js/ui.template.js"
+	},
 	"effects": {
 		"message": "Effects",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
 		"message": "Move to prev tweet",
+		"description": "data/index.html"
+	},
+	"trending_topics_view": {
+		"message": "Trending topics View",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -927,10 +939,6 @@
 		"message": "You are followed by them.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"open_a_profile_dots": {
-		"message": "Open a Profile ...",
-		"description": "data/index.html"
-	},
 	"extensions": {
 		"message": "Extensions",
 		"description": "data/index.html"
@@ -1023,10 +1031,6 @@
 		"message": "My Favorites",
 		"description": "data/js/ui.slider.js"
 	},
-	"trending_topics": {
-		"message": "Trending topics",
-		"description": "data/js/ui.slider.js"
-	},
 	"slide_to_next_page": {
 		"message": "Slide to next page",
 		"description": "data/index.html"
@@ -1105,6 +1109,10 @@
 	},
 	"sign_in_with_twitter": {
 		"message": "Sign in with Twitter",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "",
 		"description": "data/index.html"
 	}
 }
