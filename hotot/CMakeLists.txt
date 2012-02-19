@@ -10,5 +10,5 @@ set(hotot_SRCS
 )
 
 foreach(pyfile ${hotot_SRCS})
-    PYTHON_INSTALL(${pyfile} ${PYTHON_SITE_PACKAGES_INSTALL_DIR})
+    PYTHON_INSTALL(${pyfile} ${PYTHON_SITE_PACKAGES_INSTALL_DIR}/hotot)
 endforeach(pyfile ${hotot_SRCS})
