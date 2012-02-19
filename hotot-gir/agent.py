@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:utf8 -*-
+# -*- coding: UTF-8 -*-
 from gi.repository import Gtk, Gdk, GdkX11, GdkPixbuf, GObject
 import json
 import config

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:utf8 -*-
+# -*- coding: UTF-8 -*-
 '''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+

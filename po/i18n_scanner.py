@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding:utf8 -*-
+#!/usr/bin/env python2
+# -*- coding: UTF-8 -*-
 
 import re
 import json
