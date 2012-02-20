@@ -82,6 +82,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     HototWebView* view = new HototWebView(m_webView, this);
     this->resize(QSize(640, 480));
     this->setCentralWidget(view);
+    this->setMinimumSize(QSize(400, 400));
 #else
     MApplicationPage* page = new MApplicationPage;
     page->setCentralWidget(m_webView);
