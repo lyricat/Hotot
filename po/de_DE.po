@@ -22,7 +22,7 @@ msgstr "Status ist länger als 140 Zeichen"
 
 #: ../data/ui/js/ui.status_box.js:302
 msgid "Updating..."
-msgstr "Aktualiere..."
+msgstr "Aktualisiere..."
 
 #: ../data/ui/js/ui.status_box.js:314
 msgid "Update Successfully!"
