@@ -556,7 +556,7 @@ preview_link_reg: {
     reg: new RegExp('href="(http:\\/\\/(www.)?youtube.com\\/watch\\?v\\=([A-Za-z0-9_\\-]+))','g'),
     base: 'http://img.youtube.com/vi/',
     tail: '/default.jpg',
-},
+}
 
 },
 
