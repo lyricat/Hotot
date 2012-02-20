@@ -856,9 +856,9 @@ function form_retweeted_by(tweet_obj, pagename) {
     var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str')
             ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;    
     var reply_str = (reply_id != null) ?
-        _('reply to') + ' <a class="who_href" href="#'
+        _('Reply to @') + ' <a class="who_href" href="#'
             + reply_name + '">'
-            + reply_name + '</a>'
+            + reply_name + '</a>: '
         : '';
 
     var timestamp = Date.parse(tweet_obj.created_at);
