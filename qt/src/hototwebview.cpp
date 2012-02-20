@@ -17,6 +17,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+// Qt
+#include <QWebFrame>
+#include <QDebug>
+
 #include "hototwebview.h"
 
 HototWebView::HototWebView(QGraphicsWebView* webview, QWidget* parent)
@@ -31,6 +35,7 @@ HototWebView::HototWebView(QGraphicsWebView* webview, QWidget* parent)
     setFrameShape(QFrame::NoFrame);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     scene()->addItem(m_webview);
+    setAcceptDrops(true);
 }
 
 void HototWebView::resizeEvent(QResizeEvent *e)
@@ -49,3 +54,26 @@ void HototWebView::resizeEvent(QResizeEvent *e)
     update();
 }
 
+void HototWebView::dragEnterEvent(QDragEnterEvent* event)
+{
+    if (event->mimeData()->hasFormat("text/uri-list") && event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void HototWebView::dropEvent(QDropEvent* event)
+{
+    if (!event->mimeData()->hasFormat("text/uri-list") || !event->mimeData()->hasUrls())
+        return;
+    else {
+        if (event->mimeData()->urls().length() <= 0)
+            return;
+        QUrl url = event->mimeData()->urls().at(0);
+        if (url.scheme() == "file") {
+            QString cmd = QString(
+                "ui.ImageUploader.pyload(\"%1\");\n"
+                "ui.ImageUploader.show();"
+            ).arg(url.toLocalFile());
+            m_webview->page()->currentFrame()->evaluateJavaScript(cmd);
+        }
+    }
+}

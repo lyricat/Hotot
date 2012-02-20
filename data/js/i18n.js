@@ -1,7 +1,7 @@
 var i18n = {
-default_locale: 'en',
+default_locale: window.navigator.language.replace('-', '_'),
 
-locale: 'en',
+locale: window.navigator.language.replace('-', '_'),
 
 forced: false,
 

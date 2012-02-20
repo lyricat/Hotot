@@ -18,8 +18,7 @@ try: import i18n
 except: from gettext import gettext as _
 
 reload(sys)
-#sys.setdefaultencoding('utf8')
-sys.setdefaultencoding('iso8859-1')
+sys.setdefaultencoding('utf8')
 
 USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 
@@ -202,6 +201,15 @@ def get_prefs(name):
 def set_prefs(name, value):
     config.settings[name] = value
 
+def _encoding_workaround(func):
+    def wrap(*args, **argkw):
+        sys.setdefaultencoding('iso8859-1')
+        result = func(*args, **argkw)
+        sys.setdefaultencoding('utf8')
+        return result
+    return wrap
+
+@_encoding_workaround
 def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     scripts = ''
     try:

@@ -291,13 +291,17 @@
 		"message": "Identi.ca",
 		"description": ""
 	},
-	"official_retweet_this_tweet": {
-		"message": "リツイート",
-		"description": "data/js/ui.template.js"
+	"open_a_profile_dots": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
 		"message": "削除する",
 		"description": "data/js/ui.template.js"
+	},
+	"trending_topics": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
 	},
 	"via": {
 		"message": "via",
@@ -471,6 +475,10 @@
 		"message": "既定値に戻す",
 		"description": ""
 	},
+	"upload_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "トークンを削除する",
 		"description": "data/index.html"
@@ -499,8 +507,8 @@
 		"message": "フォロワー",
 		"description": "data/js/ui.template.js"
 	},
-	"weakness": {
-		"message": "虚弱",
+	"reset_time": {
+		"message": "リセット・タイム",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -655,8 +663,8 @@
 		"message": "自己紹介",
 		"description": ""
 	},
-	"reset_time": {
-		"message": "リセット・タイム",
+	"weakness": {
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -667,12 +675,20 @@
 		"message": "@関連",
 		"description": "data/index.html"
 	},
+	"official_retweet_this_tweet": {
+		"message": "リツイート",
+		"description": "data/js/ui.template.js"
+	},
 	"effects": {
 		"message": "エフェクト",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
 		"message": "前のツイートに行く",
+		"description": "data/index.html"
+	},
+	"trending_topics_view": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -923,10 +939,6 @@
 		"message": "あなたをフォローしています",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"open_a_profile_dots": {
-		"message": "",
-		"description": "data/index.html"
-	},
 	"extensions": {
 		"message": "プラグイン",
 		"description": ""
@@ -1098,5 +1110,9 @@
 	"sign_in_with_twitter": {
 		"message": "Twitterにログインする",
 		"description": ""
+	},
+	"exit_hotot_when_close_window": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }

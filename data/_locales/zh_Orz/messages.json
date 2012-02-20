@@ -291,13 +291,17 @@
 		"message": "Identi.ca",
 		"description": ""
 	},
-	"official_retweet_this_tweet": {
-		"message": "转发",
-		"description": "data/js/ui.template.js"
+	"open_a_profile_dots": {
+		"message": "打开一个人的心...",
+		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
 		"message": "删除",
 		"description": "data/js/ui.template.js"
+	},
+	"trending_topics": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
 	},
 	"via": {
 		"message": "发自",
@@ -471,6 +475,10 @@
 		"message": "恢复默认值",
 		"description": ""
 	},
+	"upload_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "清空令牌",
 		"description": "data/index.html"
@@ -499,8 +507,8 @@
 		"message": "粉丝",
 		"description": "data/js/ui.template.js"
 	},
-	"weakness": {
-		"message": "虚弱",
+	"reset_time": {
+		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -655,8 +663,8 @@
 		"message": "自述",
 		"description": ""
 	},
-	"reset_time": {
-		"message": "下次补魔时间",
+	"weakness": {
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -667,12 +675,20 @@
 		"message": "提到我的",
 		"description": "data/index.html"
 	},
+	"official_retweet_this_tweet": {
+		"message": "转发",
+		"description": "data/js/ui.template.js"
+	},
 	"effects": {
 		"message": "效果",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
 		"message": "移动到上一条状态",
+		"description": "data/index.html"
+	},
+	"trending_topics_view": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -923,10 +939,6 @@
 		"message": "他／她／它默默地关注着你…",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"open_a_profile_dots": {
-		"message": "打开一个人的心...",
-		"description": "data/index.html"
-	},
 	"extensions": {
 		"message": "扩展",
 		"description": ""
@@ -1098,5 +1110,9 @@
 	"sign_in_with_twitter": {
 		"message": "登录到Twitter",
 		"description": ""
+	},
+	"exit_hotot_when_close_window": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }

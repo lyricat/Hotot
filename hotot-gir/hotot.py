@@ -164,7 +164,7 @@ class Hotot:
             self.start_blinking()
         else:
             self.stop_blinking()
-        
+
         if not self.has_indicator:
             self.trayicon.set_tooltip_text("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
@@ -194,7 +194,7 @@ class Hotot:
 
     def on_window_delete(self, widget, event):
         if 'close_to_exit' in config.settings and config.settings['close_to_exit']:
-            self.quit() 
+            self.quit()
         else:
             return widget.hide_on_delete()
 
@@ -247,6 +247,9 @@ class Hotot:
         Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
+        if hasattr(self, "xhk"):
+            self.xhk.clear()
+            self.xhk.stop()
         import sys
         sys.exit(0)
 
@@ -282,9 +285,16 @@ class Hotot:
 
     def init_hotkey(self):
         try:
-            keybinder.bind(
-                  config.settings['shortcut_summon_hotot']
-                , self.on_hotkey_compose)
+            import xhotkey
+            xhk = xhotkey.XHotKey()
+            keydesc = config.settings['shortcut_summon_hotot']
+            keycode, modifiers = xhk.parse(keydesc)
+            if keycode is None:
+                print "cannot register hotkey: %s" % keydesc
+            else:
+                xhk.bind(keycode, modifiers, self.on_hotkey_compose)
+                xhk.start()
+                self.xhk = xhk;
         except:
             pass
 
@@ -318,7 +328,7 @@ class Hotot:
             , None, None, button=button
             , activate_time=activate_time)
 
-    def on_hotkey_compose(self):
+    def on_hotkey_compose(self, event):
         GObject.idle_add(self._on_hotkey_compose)
 
     def _on_hotkey_compose(self):
@@ -368,7 +378,7 @@ def main():
     agent.init_notify()
     app = Hotot()
     agent.app = app
-    
+
     Gdk.threads_enter()
     Gtk.main()
     Gdk.threads_leave()
