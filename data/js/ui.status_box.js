@@ -449,7 +449,7 @@ function save_draft(draft) {
         switch (mode){
         case ui.StatusBox.MODE_REPLY:
             ui.StatusBox.reply_to_id = li.attr('reply_to_id')
-            ui.StatusBox.set_status_info('REPLY TO', decodeURIComponent(li.attr('reply_text')));
+            ui.StatusBox.set_status_info('Reply to', decodeURIComponent(li.attr('reply_text')));
         case ui.StatusBox.MODE_IMG:
         break;
         case ui.StatusBox.MODE_DM:
