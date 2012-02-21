@@ -1,0 +1,44 @@
+# List of source files which contain translatable strings.
+[encoding: UTF-8]
+#hotot
+${REL_SOURCE_ROOT}/hotot/__init__.py
+${REL_SOURCE_ROOT}/hotot/agent.py
+${REL_SOURCE_ROOT}/hotot/config.py
+${REL_SOURCE_ROOT}/hotot/gtknotification.py
+${REL_SOURCE_ROOT}/hotot/hotot.py
+${REL_SOURCE_ROOT}/hotot/utils.py
+${REL_SOURCE_ROOT}/hotot/view.py
+#hotot-gir
+${REL_SOURCE_ROOT}/hotot-gir/__init__.py
+${REL_SOURCE_ROOT}/hotot-gir/agent.py
+${REL_SOURCE_ROOT}/hotot-gir/config.py
+${REL_SOURCE_ROOT}/hotot-gir/dbusservice.py
+${REL_SOURCE_ROOT}/hotot-gir/gtknotification.py
+${REL_SOURCE_ROOT}/hotot-gir/hotot.py
+${REL_SOURCE_ROOT}/hotot-gir/inspector.py
+${REL_SOURCE_ROOT}/hotot-gir/utils.py
+${REL_SOURCE_ROOT}/hotot-gir/view.py
+${REL_SOURCE_ROOT}/hotot-gir/xhotkey.py
+#hotot-qt
+${REL_SOURCE_ROOT}/qt/src/common.h
+${REL_SOURCE_ROOT}/qt/src/formpost.cpp
+${REL_SOURCE_ROOT}/qt/src/formpost.h
+${REL_SOURCE_ROOT}/qt/src/hototrequest.cpp
+${REL_SOURCE_ROOT}/qt/src/hototrequest.h
+${REL_SOURCE_ROOT}/qt/src/hototwebpage.cpp
+${REL_SOURCE_ROOT}/qt/src/hototwebpage.h
+${REL_SOURCE_ROOT}/qt/src/hototwebview.cpp
+${REL_SOURCE_ROOT}/qt/src/hototwebview.h
+${REL_SOURCE_ROOT}/qt/src/kdetraybackend.cpp
+${REL_SOURCE_ROOT}/qt/src/kdetraybackend.h
+${REL_SOURCE_ROOT}/qt/src/main.cpp
+${REL_SOURCE_ROOT}/qt/src/mainwindow.cpp
+${REL_SOURCE_ROOT}/qt/src/mainwindow.h
+${REL_SOURCE_ROOT}/qt/src/qttraybackend.cpp
+${REL_SOURCE_ROOT}/qt/src/qttraybackend.h
+${REL_SOURCE_ROOT}/qt/src/trayiconbackend.h
+${REL_SOURCE_ROOT}/qt/src/trayiconinterface.h
+#desktop file
+${REL_SOURCE_ROOT}/misc/hotot.desktop.in
+${REL_SOURCE_ROOT}/misc/hotot-qt.desktop.in
+po/js.po
