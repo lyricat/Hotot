@@ -47,7 +47,7 @@ To build on arch:
 
 -DPYTHON_EXECUTABLE=/usr/bin/python2
 
-Info taken from #139 by @csslayer
 
 There is something about a Gtk version in Python using some sort of
 "distutils".
+
