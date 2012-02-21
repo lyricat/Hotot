@@ -9,6 +9,7 @@ Dependencies:
 * cmake
 * Qt4
 * intltool
+* python-keybinder (only gtk version)
 
 On Ubuntu 11.10 all of these ressources are available in the standard repositories.
 
