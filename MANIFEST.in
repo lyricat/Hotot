@@ -1,6 +1,0 @@
-include COPYING ChangeLog AUTHORS README
-include install install.ubuntu
-include *.in *.py *.png *.sh *.cmd *.cfg
-recursive-include script *
-recursive-include data *.js *.html *.htm *.png *.gif *.jpg *.py *.txt *.xml *.in *.conf *.ui
-recursive-include po *.po *.in

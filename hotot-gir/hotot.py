@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:utf8 -*-
+# -*- coding: UTF-8 -*-
 '''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
@@ -30,8 +30,8 @@ class Hotot:
 
         self.inblinking = False
 
-        import dbuservice
-        self.dbus_service = dbuservice.DbusService(self)
+        import dbusservice
+        self.dbus_service = dbusservice.DbusService(self)
 
         if os.environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
             self.has_indicator = False
