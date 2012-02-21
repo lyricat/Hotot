@@ -120,7 +120,7 @@ function concat(arr, lst) {
         arr.push(lst[i]);
     }
     return arr;
-},
+}
 
 };
 
