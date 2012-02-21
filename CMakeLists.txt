@@ -6,10 +6,10 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 find_package(Gettext REQUIRED)
 
 option(WITH_GTK "Enable GTK Version" On)
-option(WITH_GIR "Use GIR as GTK Version" On)
+option(WITH_GIR "Use GIR as GTK Version" Off)
 
 option(WITH_QT "Enable Qt Version" On)
-option(WITH_KDE "Enable KDE4 integration for Qt")
+option(WITH_KDE "Enable KDE4 integration for Qt" On)
 
 option(WITH_CHROME "Enable Chrome Version" Off)
 
