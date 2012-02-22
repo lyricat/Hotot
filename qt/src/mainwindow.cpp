@@ -75,13 +75,14 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     chdir(PREFIX);
 #endif
     setWindowTitle(i18n("Hotot"));
-    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
-    qApp->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot/image/ic64_hotot.png")));
+    qApp->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot/image/ic64_hotot.png")));
     m_webView->setPreferredSize(QSize(640, 480));
 #ifndef MEEGO_EDITION_HARMATTAN
     HototWebView* view = new HototWebView(m_webView, this);
     this->resize(QSize(640, 480));
     this->setCentralWidget(view);
+    this->setMinimumSize(QSize(400, 400));
 #else
     MApplicationPage* page = new MApplicationPage;
     page->setCentralWidget(m_webView);
@@ -151,9 +152,9 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 #endif
 
 #ifdef Q_OS_UNIX
-    m_webView->load(QUrl("file://" PREFIX "/share/hotot-qt/html/index.html"));
+    m_webView->load(QUrl("file://" PREFIX "/share/hotot/index.html"));
 #else
-    QFileInfo f("share/hotot-qt/html/index.html");
+    QFileInfo f("share/hotot/index.html");
     m_webView->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));

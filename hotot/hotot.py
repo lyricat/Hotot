@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:utf8 -*-
+# -*- coding: UTF-8 -*-
 '''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
@@ -10,7 +10,6 @@ import os
 import view
 import config
 import agent
-import keybinder
 import utils
 import dbus
 import dbus.service
@@ -295,6 +294,7 @@ class Hotot:
 
     def init_hotkey(self):
         try:
+            import keybinder
             keybinder.bind(
                   config.settings['shortcut_summon_hotot']
                 , self.on_hotkey_compose)

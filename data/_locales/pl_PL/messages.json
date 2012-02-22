@@ -12,7 +12,7 @@
 		"description": "data/index.html"
 	},
 	"global": {
-		"message": "Ogólny",
+		"message": "Ogólne",
 		"description": "data/index.html"
 	},
 	"please_entry_a_profile_prefix": {
@@ -20,7 +20,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"themes": {
-		"message": "Motywy",
+		"message": "Motyw",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
@@ -52,7 +52,7 @@
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "Utwórz",
+		"message": "Utwórz ćwierknięcie",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
@@ -116,7 +116,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Firewall Kismet",
+		"message": "Zapora Kismet",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
@@ -128,7 +128,7 @@
 		"description": "data/index.html"
 	},
 	"loading_resources_hint": {
-		"message": "Ładowanie zasobów ...",
+		"message": "Ładowanie zasobów...",
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
@@ -144,7 +144,7 @@
 		"description": "date/index.html"
 	},
 	"url_shortener": {
-		"message": "skracacz adresów URL",
+		"message": "Skracacz adresów URL",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
@@ -172,7 +172,7 @@
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
-		"message": "Aktywuj gadatliwy tryb",
+		"message": "Aktywuj tryb gadatliwy",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -184,11 +184,11 @@
 		"description": "data/index.html"
 	},
 	"auto_update": {
-		"message": "Automatyczna aktualizacja",
+		"message": "Automatyczne odświeżanie",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Zaloguj się ...",
+		"message": "Logowanie...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"compose_messages_to": {
@@ -240,7 +240,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Usuń to ćwierknięcia z ulubionych ...",
+		"message": "Usuń to ćwierknięcia z ulubionych...",
 		"description": "data/js/ui.main.js"
 	},
 	"quit_hotot": {
@@ -292,7 +292,7 @@
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "Otwórz profil ...",
+		"message": "Otwórz profil...",
 		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
@@ -368,7 +368,7 @@
 		"description": "data/index.html"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Wyłącz dekorecje widgetów i niektórych animacji.",
+		"message": "Wyłącz dekoracje widgetów i niektórych animacji",
 		"description": "data/index.html"
 	},
 	"retweets": {
@@ -412,7 +412,7 @@
 		"description": "data/index.html"
 	},
 	"sound": {
-		"message": "Dźwięk",
+		"message": "Powiadomienie dźwiękiem",
 		"description": "data/index.html"
 	},
 	"account": {
@@ -424,7 +424,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"image_uploader": {
-		"message": "Uploader zdjęć",
+		"message": "Wstaw obrazek",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -452,11 +452,11 @@
 		"description": "data/index.html"
 	},
 	"Insert_smiley": {
-		"message": "Wstaw uśmieszek",
+		"message": "Wstaw buźkę",
 		"description": "data/index.html"
 	},
 	"updating_dots": {
-		"message": "Aktualizacja ...",
+		"message": "Aktualizacja...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"effects_low": {
@@ -468,7 +468,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"open_a_list_dots": {
-		"message": "Otwórz listę ...",
+		"message": "Otwórz listę...",
 		"description": "data/index.html"
 	},
 	"restore_defaults": {
@@ -504,7 +504,7 @@
 		"description": "data/index.html"
 	},
 	"followers": {
-		"message": "Podążający",
+		"message": "Śledzący",
 		"description": "data/js/ui.template.js"
 	},
 	"weakness": {
@@ -576,7 +576,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Wstępnie wczytaj najnowsze ćwierknięcie do rozmowy jeśli to możliwe.",
+		"message": "Wstępnie wczytaj najnowsze ćwierknięcie do rozmowy jeśli to możliwe",
 		"description": "data/index.html"
 	},
 	"step_two": {
@@ -588,11 +588,11 @@
 		"description": "data/index.html"
 	},
 	"posting_dots": {
-		"message": "Pisanie ...",
+		"message": "Pisanie...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"http_proxy": {
-		"message": "HTTP Proxy",
+		"message": "Proxy HTTP",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -608,7 +608,7 @@
 		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
-		"message": "Cofnij przećwierknięcie ...",
+		"message": "Cofnij przećwierknięcie...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs_view": {
@@ -624,15 +624,15 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Dodaj to ćwierknięcie do ulubionych ...",
+		"message": "Dodaj to ćwierknięcie do ulubionych...",
 		"description": "data/js/ui.main.js"
 	},
 	"web": {
-		"message": "Sieć",
+		"message": "Strona",
 		"description": "data/js/ui.template.js"
 	},
 	"regain_access_token_with_twitter": {
-		"message": "Odzyskaj token dostępu poprzez Twitter",
+		"message": "Odzyskaj token dostępu do Twittera",
 		"description": "data/index.html"
 	},
 	"add": {
@@ -640,7 +640,7 @@
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
-		"message": "Wyślij wiadomość do nich",
+		"message": "Wyślij do nich wiadomość",
 		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
@@ -772,7 +772,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"reload": {
-		"message": "Załaduj ponownie",
+		"message": "Odśwież moją oś czasu",
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
@@ -872,7 +872,7 @@
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "Wrzuć do ...",
+		"message": "Wrzuć do...",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
@@ -888,7 +888,7 @@
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "Równowaga pomiędzy atrakcyjnością a wydajnością.",
+		"message": "Równowaga pomiędzy atrakcyjnym wyglądem a wydajnością",
 		"description": "data/index.html"
 	},
 	"misc": {
@@ -900,11 +900,11 @@
 		"description": "data/index.html"
 	},
 	"notify": {
-		"message": "Powiadomienie",
+		"message": "Powiadomienia",
 		"description": "data/index.html"
 	},
 	"set_color_label": {
-		"message": "Ustaw etykietę koloru",
+		"message": "Ustaw kolorową etykietę",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
@@ -928,7 +928,7 @@
 		"description": "data/index.html"
 	},
 	"loading_dots": {
-		"message": "Ładowanie ... ",
+		"message": "Ładowanie... ",
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
@@ -1008,7 +1008,7 @@
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
-		"message": "Przećwierkanie ...",
+		"message": "Przećwierkanie...",
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
@@ -1024,7 +1024,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Więcej efektów jak cienie i iskrzenie widgetów",
+		"message": "Więcej efektów jak cienie i błyszczące widgety",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -1108,7 +1108,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
-		"message": "Zaloguj się poprzez Twitter",
+		"message": "Zaloguj się do Twittera",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
