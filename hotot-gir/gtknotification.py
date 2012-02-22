@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
 from gi.repository import Gtk, Gdk, GLib, Pango;

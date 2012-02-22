@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from gi.repository import Gtk, Gdk, GObject, WebKit;
 Gdk.threads_init() ## fix issue 24

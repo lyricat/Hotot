@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from gi.repository import Gtk, Gdk, GdkX11, GdkPixbuf, GObject
 import json

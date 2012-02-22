@@ -25,13 +25,23 @@ add_custom_target(uninstall
 ##################### GTK Version ######################
 if (WITH_GTK)
     FIND_PACKAGE(PythonLibrary REQUIRED)
+    
+    if (NOT PYTHONLIBRARY_FOUND)
+        message(FATAL_ERROR "GTK Wrapper for Hotot need python")
+    endif (NOT PYTHONLIBRARY_FOUND)
+    
+    if (NOT (${PYTHON_VERSION_MAJOR} LESS 3))
+        message(FATAL_ERROR "Hotot requires python2 to work")
+    endif (NOT (${PYTHON_VERSION_MAJOR} LESS 3))
+    
     INCLUDE(PythonMacros)
     if (WITH_GIR)
         add_subdirectory(hotot-gir)
     else (WITH_GIR)
         add_subdirectory(hotot)
     endif (WITH_GIR)
-    install(PROGRAMS scripts/hotot DESTINATION bin )
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/scripts/hotot.in ${CMAKE_CURRENT_BINARY_DIR}/scripts/hotot @ONLY)
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/scripts/hotot DESTINATION bin )
 endif (WITH_GTK)
 
 

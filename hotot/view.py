@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 import gtk
 gtk.gdk.threads_init() ## fix issue 24

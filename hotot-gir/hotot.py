@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 '''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
