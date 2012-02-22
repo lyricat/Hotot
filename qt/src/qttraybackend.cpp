@@ -32,7 +32,7 @@ QtTrayBackend::QtTrayBackend(MainWindow* parent):
     m_mainWindow(parent),
     m_trayicon(new QSystemTrayIcon(this))
 {
-    m_trayicon->setIcon(QIcon::fromTheme("hotot", QIcon("share/hotot-qt/html/image/ic64_hotot.png")));
+    m_trayicon->setIcon(QIcon::fromTheme("hotot", QIcon("share/hotot/image/ic64_hotot.png")));
     m_trayicon->show();
     connect(m_trayicon,
             SIGNAL(activated(QSystemTrayIcon::ActivationReason)),

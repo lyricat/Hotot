@@ -68,11 +68,19 @@ void HototWebView::dropEvent(QDropEvent* event)
         if (event->mimeData()->urls().length() <= 0)
             return;
         QUrl url = event->mimeData()->urls().at(0);
+        qDebug() << url.toLocalFile();
         if (url.scheme() == "file") {
+#ifdef Q_OS_WIN
+            QString cmd = QString(
+                "ui.ImageUploader.pyload(\"/%1\");\n"
+                "ui.ImageUploader.show();"
+            ).arg(url.toLocalFile());
+#else
             QString cmd = QString(
                 "ui.ImageUploader.pyload(\"%1\");\n"
                 "ui.ImageUploader.show();"
             ).arg(url.toLocalFile());
+#endif
             m_webview->page()->currentFrame()->evaluateJavaScript(cmd);
         }
     }
