@@ -108,6 +108,9 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
     m_menu->addAction(m_actionMinimizeToTray);
 #endif
+    m_actionShow = new QAction(QIcon(), i18n("Show &MainWindow"), this);
+    connect(m_actionShow, SIGNAL(triggered()), this, SLOT(show()));
+    m_menu->addAction(m_actionShow);
 
     m_actionExit = new QAction(QIcon::fromTheme("application-exit"), i18n("&Exit"), this);
     m_actionExit->setShortcut(QKeySequence::Quit);

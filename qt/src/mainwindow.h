@@ -79,6 +79,7 @@ private:
     QGraphicsWebView* m_webView;
     QMenu* m_menu;
     TrayIconInterface* m_tray;
+    QAction* m_actionShow;
     QAction* m_actionExit;
     QAction* m_actionDev;
 #ifndef MEEGO_EDITION_HARMATTAN
