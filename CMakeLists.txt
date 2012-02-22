@@ -30,10 +30,6 @@ if (WITH_GTK)
         message(FATAL_ERROR "GTK Wrapper for Hotot need python")
     endif (NOT PYTHONLIBRARY_FOUND)
     
-    if (NOT (${PYTHON_VERSION_MAJOR} LESS 3))
-        message(FATAL_ERROR "Hotot requires python2 to work")
-    endif (NOT (${PYTHON_VERSION_MAJOR} LESS 3))
-    
     INCLUDE(PythonMacros)
     if (WITH_GIR)
         add_subdirectory(hotot-gir)
