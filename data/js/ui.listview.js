@@ -30,7 +30,7 @@ function init_view(view) {
         var _this = this;
         if ($(this).hasClass('unfo')) {
             toast.set("Unfollow @" + view.screen_name + " ...").show();
-            lib.twitterapi.destroy_list_subscriber(view.screen_name
+            globals.twitterClient.destroy_list_subscriber(view.screen_name
                 , view.slug, function () {
                 toast.set(
                     "Unfollow @"+ view.screen_name + '/' + view.slug + " Successfully!").show();
@@ -38,7 +38,7 @@ function init_view(view) {
             });
         } else {
             toast.set("Follow @" + view.screen_name + " ...").show();
-            lib.twitterapi.create_list_subscriber(view.screen_name
+            globals.twitterClient.create_list_subscriber(view.screen_name
                 , view.slug, function () {
                 toast.set(
                     "Follow @"+ view.screen_name +'/' + view.slug+" Successfully!").show();
@@ -57,7 +57,7 @@ function init_view(view) {
         var ans = confirm('Are you sure you want to delete this list?');
         if (ans) {
             toast.set("Delete List @" + view.screen_name + '/' + view.slug + " ...").show();
-            lib.twitterapi.destroy_list(view.screen_name, view.slug
+            globals.twitterClient.destroy_list(view.screen_name, view.slug
             , function () {
                 toast.set("Delete List @" + view.screen_name + '/' + view.slug + " Successfully!").show();
                 ui.Slider.remove(view.name);
@@ -131,14 +131,14 @@ function render_list_view(view) {
         btn_edit.hide();
         btn_delete.hide();
     }
-    ui.Slider.set_icon(view.name, lib.twitterapi.get_user_profile_image(view.screen_name, 'normal'), ui.Slider.FLOAT_ICON);
+    ui.Slider.set_icon(view.name, globals.twitterClient.get_user_profile_image(view.screen_name, 'normal'), ui.Slider.FLOAT_ICON);
     ui.Template.fill_list_vcard(view);
 },
 
 load_timeline:
 function load_timeline(view, success, fail) {
     ui.ListView.render_list_view(view);
-    lib.twitterapi.get_list_statuses(view.screen_name, view.slug, 1, null, success, function (xhr, textStatus, errorThrown) {
+    globals.twitterClient.get_list_statuses(view.screen_name, view.slug, 1, null, success, function (xhr, textStatus, errorThrown) {
             if (xhr.status == 404) {
                 widget.DialogManager.alert('This list does not exist.'
                     , 'The list @' + view.screen_name + '/' +view.slug+' you are looking for does not exist.');
@@ -149,27 +149,27 @@ function load_timeline(view, success, fail) {
 
 loadmore_timeline:
 function loadmore_people(view, success, fail) {
-    lib.twitterapi.get_list_statuses(view.screen_name, view.slug, 1, view.max_id, success);
+    globals.twitterClient.get_list_statuses(view.screen_name, view.slug, 1, view.max_id, success);
 },
 
 load_follower:
 function load_follower(view, success, fail) {
-    lib.twitterapi.get_list_subscribers(view.screen_name, view.slug, -1, success);
+    globals.twitterClient.get_list_subscribers(view.screen_name, view.slug, -1, success);
 },
 
 loadmore_follower:
 function loadmore_follower(view, success, fail) {
-    lib.twitterapi.get_list_subscribers(view.screen_name, view.slug, view.cursor, success);
+    globals.twitterClient.get_list_subscribers(view.screen_name, view.slug, view.cursor, success);
 },
 
 load_following:
 function load_following(view, success, fail) {
-    lib.twitterapi.get_list_members(view.screen_name, view.slug, -1, success);
+    globals.twitterClient.get_list_members(view.screen_name, view.slug, -1, success);
 },
 
 loadmore_following:
 function loadmore_following(view, success, fail) {
-    lib.twitterapi.get_list_members(view.screen_name, view.slug, view.cursor, success);
+    globals.twitterClient.get_list_members(view.screen_name, view.slug, view.cursor, success);
 }
 
 };

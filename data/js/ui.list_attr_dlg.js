@@ -55,14 +55,14 @@ function update() {
 
     if (ui.ListAttrDlg.create_new) {
         toast.set("Create List ...").show();
-        lib.twitterapi.create_list(slug, description, mode,
+        globals.twitterClient.create_list(slug, description, mode,
             function (result) {
                 toast.set("Create List successfully!").show();
                 globals.list_attr_dialog.close();
             });
     } else {
         toast.set("Update List ...").show();
-        lib.twitterapi.update_list(ui.ListAttrDlg.owner, slug
+        globals.twitterClient.update_list(ui.ListAttrDlg.owner, slug
             , description, mode,
             function (result) {
                 toast.set("Update List successfully!").show();

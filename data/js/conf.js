@@ -249,11 +249,11 @@ function apply_prefs(name) {
     change_effects_level(prefs.effects_level);
     ui.Main.use_preload_conversation = prefs.use_preload_conversation;
 
-    lib.twitterapi.api_base = prefs.api_base;
-    lib.twitterapi.sign_api_base = prefs.sign_api_base;
-    lib.twitterapi.search_api_base2 = prefs.search_api_base2;
-    lib.twitterapi.upload_api_base = prefs.upload_api_base;
-    lib.twitterapi.use_same_sign_api_base = prefs.use_same_sign_api_base;
+    globals.twitterClient.api_base = prefs.api_base;
+    globals.twitterClient.sign_api_base = prefs.sign_api_base;
+    globals.twitterClient.search_api_base2 = prefs.search_api_base2;
+    globals.twitterClient.upload_api_base = prefs.upload_api_base;
+    globals.twitterClient.use_same_sign_api_base = prefs.use_same_sign_api_base;
     jsOAuth.oauth_base = prefs.oauth_base;
     jsOAuth.sign_oauth_base = prefs.sign_oauth_base;
     jsOAuth.use_same_sign_oauth_base = prefs.use_same_sign_oauth_base;

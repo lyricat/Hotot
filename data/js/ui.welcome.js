@@ -39,21 +39,21 @@ function init () {
     ui.Welcome.btn_basic_auth_sign_in 
         = new widget.Button('#btn_basic_auth_sign_in');
     ui.Welcome.btn_basic_auth_sign_in.on_clicked = function (event) {
-        lib.twitterapi.username 
+        globals.twitterClient.username 
             = $('#tbox_basic_auth_username').attr('value');
-        lib.twitterapi.password 
+        globals.twitterClient.password 
             = $('#tbox_basic_auth_password').attr('value');
-        lib.twitterapi.use_oauth 
+        globals.twitterClient.use_oauth 
             = false;
         var cur_profile = conf.get_current_profile();
         cur_profile.preferences.remember_password
             = $('#chk_remember_password').attr('checked'); 
         cur_profile.preferences.default_username
-            = lib.twitterapi.username; 
+            = globals.twitterClient.username; 
         toast.set(_('sign_in_dots')).show();
         if (cur_profile.preferences.remember_password) {
             cur_profile.preferences.default_password
-                = lib.twitterapi.password;
+                = globals.twitterClient.password;
         } else {
             cur_profile.preferences.default_password = '';
         }
@@ -64,7 +64,7 @@ function init () {
         ui.Welcome.btn_basic_auth_sign_in.set_label(_('sign_in_dots'));
         ui.Welcome.btn_basic_auth_sign_in.set_sensitive(false);
 
-        lib.twitterapi.verify(
+        globals.twitterClient.verify(
         function (result) {
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
@@ -97,7 +97,7 @@ function init () {
     ui.Welcome.btn_oauth_sign_in 
         = new widget.Button('#btn_oauth_sign_in')
     ui.Welcome.btn_oauth_sign_in.on_clicked = function(event) {
-        lib.twitterapi.use_oauth = true;
+        globals.twitterClient.use_oauth = true;
         toast.set(_('sign_in_dots')).show();
 
         var old_label = ui.Welcome.btn_oauth_sign_in.get_label();
@@ -122,7 +122,7 @@ function init () {
         } else {
         // access_token is existed
         // then test it
-            lib.twitterapi.verify(
+            globals.twitterClient.verify(
             function (result) { 
             // access_token is valid
                 if (result.screen_name) {

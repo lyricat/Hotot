@@ -132,7 +132,7 @@ function fetch_user_tweets(screen_name, callback) {
     var fetch_proc = function () {
         frame_win.progress_set_label('Loading: '
             + ext.HototStat.user_stat_info.summary.total_count);
-        lib.twitterapi.get_user_timeline(null, screen_name, null,
+        globals.twitterClient.get_user_timeline(null, screen_name, null,
             last_id, 200,
             function (tweets) {
                 if (tweets.length != 0) {
@@ -172,7 +172,7 @@ function fetch_home_tweets(callback) {
     var fetch_proc = function () {
         frame_win.progress_set_label('Loading: '
             + ext.HototStat.home_stat_info.summary.total_count + '/1000');
-        lib.twitterapi.get_home_timeline(null,
+        globals.twitterClient.get_home_timeline(null,
             last_id, 100,
             function (tweets) {
                 if (tweets.length != 0) {
@@ -209,7 +209,7 @@ function get_relationship(screen_name1, screen_name2, callback) {
     if (screen_name1 == screen_name2) {
         callback(0)
     } else {
-        lib.twitterapi.show_friendships(
+        globals.twitterClient.show_friendships(
               screen_name2
             , screen_name1
             , function (result) {

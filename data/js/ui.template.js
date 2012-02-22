@@ -1108,7 +1108,7 @@ function fill_list_vcard(view) {
     var vcard_container = view._header;
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('
-            + lib.twitterapi.get_user_profile_image(view.screen_name, 'normal') + ');');
+            + globals.twitterClient.get_user_profile_image(view.screen_name, 'normal') + ');');
     vcard_container.find('.name')
         .attr('href', conf.get_current_profile().preferences.base_url + view.screen_name + '/' + view.slug)
         .text(view.slug);

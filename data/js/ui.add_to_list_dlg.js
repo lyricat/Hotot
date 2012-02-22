@@ -22,7 +22,7 @@ function update() {
 load:
 function load() {
     var container = $('#add_to_list_list').empty();
-    lib.twitterapi.get_user_lists(globals.myself.screen_name, -1
+    globals.twitterClient.get_user_lists(globals.myself.screen_name, -1
     , function (json) {
         for (var i = 0; i < json.lists.length; i += 1) {
             var li = $('<li/>');

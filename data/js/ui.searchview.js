@@ -33,7 +33,7 @@ function init_search_view(view) {
     });
 
     $('#saved_searches_btn').click(function () {
-        lib.twitterapi.get_saved_searches(function (result) {
+        globals.twitterClient.get_saved_searches(function (result) {
             saved_searches_more_menu.find('.saved_search_item').remove();
             var arr = [];
             for (var i = 0; i < result.length; i += 1) {
@@ -56,7 +56,7 @@ function init_search_view(view) {
 
     $('#create_saved_search_btn').click(function () {
         var query = search_entry.val().trim();
-        lib.twitterapi.create_saved_search(query, function () {
+        globals.twitterClient.create_saved_search(query, function () {
             toast.set('Saved Query "'+query+'"').show();
         }, function () {
             console.log("Too more queries");
@@ -116,8 +116,8 @@ function load_tweet(view, success, fail) {
         return;
     }
     view.page = 1;
-    lib.twitterapi.search(view.query, view.page, view.since_id, null, success);
-    lib.twitterapi.show_user(view.query,
+    globals.twitterClient.search(view.query, view.page, view.since_id, null, success);
+    globals.twitterClient.show_user(view.query,
     function (user) {
         view._header.find('.search_people_result').show();
         view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
@@ -129,7 +129,7 @@ function load_tweet(view, success, fail) {
 loadmore_tweet:
 function loadmore_tweet(view, success, fail) {
     if (!view.page) view.page = 1;
-    lib.twitterapi.search(view.query, view.page + 1, null, view.max_id, success);   
+    globals.twitterClient.search(view.query, view.page + 1, null, view.max_id, success);   
 },
 
 load_people:
@@ -138,12 +138,12 @@ function load_people(view, success, fail) {
         success([]);
         return;
     }
-    lib.twitterapi.search_user(view.query, 1, success, fail);   
+    globals.twitterClient.search_user(view.query, 1, success, fail);   
 },
 
 loadmore_people:
 function loadmore_people(view, success, fail) {
-    lib.twitterapi.search_user(view.query, view.page, success, fail);   
+    globals.twitterClient.search_user(view.query, view.page, success, fail);   
 },
 
 load_tweet_success:

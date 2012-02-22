@@ -192,12 +192,12 @@ function upload_image_official(params, file, success, fail) {
             if (params['message'].length === 0) {
                 params['message'] = 'I have uploaded a photo.'
             }
-            lib.twitterapi.update_with_media(params['message'], 
+            globals.twitterClient.update_with_media(params['message'], 
                 null, file, e.target.result, success, fail);
         }
         reader.readAsArrayBuffer(file);
     } else {
-        lib.twitterapi.update_with_media_filename(params['message'],
+        globals.twitterClient.update_with_media_filename(params['message'],
             null, file, success, fail);
     }
 },

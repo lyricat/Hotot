@@ -93,7 +93,7 @@ function show () {
 
 load_home:
 function load_home(self, success, fail) {
-    lib.twitterapi.get_home_timeline(
+    globals.twitterClient.get_home_timeline(
         self.since_id, null, conf.vars.items_per_request,
         success);
 },
@@ -101,21 +101,21 @@ function load_home(self, success, fail) {
 loadmore_home:
 function loadmore_home(self, success, fail) {
     var max_id = self.max_id;
-    lib.twitterapi.get_home_timeline(
+    globals.twitterClient.get_home_timeline(
         null, max_id, conf.vars.items_per_request,
         success);
 },
 
 load_mentions:
 function load_mentions(self, success, fail) {
-    lib.twitterapi.get_mentions(
+    globals.twitterClient.get_mentions(
         self.since_id, null, conf.vars.items_per_request,
         success);
 },
 
 loadmore_mentions:
 function loadmore_mentions(self, success, fail) {
-    lib.twitterapi.get_mentions(
+    globals.twitterClient.get_mentions(
         null, self.max_id, conf.vars.items_per_request,
         success);
 },
@@ -123,20 +123,20 @@ function loadmore_mentions(self, success, fail) {
 load_messages:
 function load_messages(self, success, fail) {
     var since_id = self.since_id;
-    lib.twitterapi.get_direct_messages(
+    globals.twitterClient.get_direct_messages(
         since_id, null
         , conf.vars.items_per_request, success);
-    lib.twitterapi.get_sent_direct_messages(
+    globals.twitterClient.get_sent_direct_messages(
         since_id, null
         , conf.vars.items_per_request, success);
 },
 
 loadmore_messages:
 function loadmore_messages(self, success, fail) {
-    lib.twitterapi.get_direct_messages(
+    globals.twitterClient.get_direct_messages(
         null, self.max_id, conf.vars.items_per_request,
         success);
-    lib.twitterapi.get_sent_direct_messages(
+    globals.twitterClient.get_sent_direct_messages(
         null, self.max_id, conf.vars.items_per_request,
         success);
 },
@@ -561,7 +561,7 @@ function bind_tweet_action(id) {
         var tweet_id = _this.attr("tweet_id");
         var list = $(".tweet_retweeters[tweet_id='" + tweet_id + "']");
         _this.text("loading...");
-        lib.twitterapi.get_retweeted_by_whom(tweet_id, 100, function(result) {
+        globals.twitterClient.get_retweeted_by_whom(tweet_id, 100, function(result) {
             if (_this == null) {
                 return;
             }
@@ -702,14 +702,14 @@ function on_retweet_click(btn, li_id, event) {
     if (li.hasClass('retweeted')) {
         var rt_id = li.attr('my_retweet_id')
         toast.set(_('undo_retweeting_dots')).show(-1);
-        lib.twitterapi.destroy_status(rt_id,
+        globals.twitterClient.destroy_status(rt_id,
         function (result) {
             toast.set(_('undo_successfully')).show();
             li.removeClass('retweeted');
         });
     } else {
         toast.set(_('retweeting_dots')).show(-1);
-        lib.twitterapi.retweet_status(id,
+        globals.twitterClient.retweet_status(id,
         function (result) {
             toast.set(_('retweet_successfully')).show();
             li.attr('my_retweet_id', result.id_str);
@@ -767,7 +767,7 @@ function on_del_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
     toast.set('Destroy ...').show(-1);
-    lib.twitterapi.destroy_status(id,
+    globals.twitterClient.destroy_status(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
         li.remove();
@@ -780,7 +780,7 @@ function on_dm_delete_click(btn, li_id, event) {
     var li = $(li_id);
     var id = li.attr('tweet_id');
     toast.set('Destroy ...').show(-1);
-    lib.twitterapi.destroy_direct_messages(id,
+    globals.twitterClient.destroy_direct_messages(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
         li.remove();
@@ -795,14 +795,14 @@ function on_fav_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
     if (li.hasClass('faved')) {
         toast.set(_('un_favorite_this_tweet_dots')).show(-1);
-        lib.twitterapi.destroy_favorite(id,
+        globals.twitterClient.destroy_favorite(id,
         function (result) {
             toast.set(_('successfully')).show();
             li.removeClass('faved');
         });
     } else {
         toast.set(_('favorite_this_tweet_dots')).show(-1);
-        lib.twitterapi.create_favorite(id,
+        globals.twitterClient.create_favorite(id,
         function (result) {
             toast.set(_('Successfully')).show();
             li.addClass('faved');
@@ -816,7 +816,7 @@ function on_follow_btn_click(btn, li_id, event) {
     if (li.attr('type') == 'people') {
         var screen_name = li.attr('screen_name');
         toast.set(_('follow_at') + screen_name + ' ' + _('dots')).show();
-        lib.twitterapi.create_friendships(screen_name,
+        globals.twitterClient.create_friendships(screen_name,
         function () {
             toast.set(
                 _('follow_at') + screen_name+' '+ _('successfully')).show();
@@ -826,7 +826,7 @@ function on_follow_btn_click(btn, li_id, event) {
         var screen_name = li.attr('screen_name');
         var slug = li.attr('slug');
         toast.set(_('follow_at') + screen_name + '/' + slug + ' ' + _('dots')).show();
-        lib.twitterapi.create_list_subscriber(screen_name, slug,
+        globals.twitterClient.create_list_subscriber(screen_name, slug,
         function () {
             toast.set(
                 _('follow_at') + screen_name + '/' + slug + ' '+ _('successfully')).show();
@@ -841,7 +841,7 @@ function on_unfollow_btn_click(btn, li_id, event) {
     if (li.attr('type') == 'people') {
         var screen_name = li.attr('screen_name');
         toast.set(_('unfollow_at') + screen_name + ' '+ _('dots')).show();
-        lib.twitterapi.destroy_friendships(screen_name,
+        globals.twitterClient.destroy_friendships(screen_name,
         function () {
             toast.set(
                 _('unfollow_at') + screen_name+ ' '+ _('successfully')).show();
@@ -851,7 +851,7 @@ function on_unfollow_btn_click(btn, li_id, event) {
         var screen_name = li.attr('screen_name');
         var slug = li.attr('slug');
         toast.set(_('unfollow_at') + screen_name + '/' + slug + ' ' + _('dots')).show();
-        lib.twitterapi.destroy_list_subscriber(screen_name, slug,
+        globals.twitterClient.destroy_list_subscriber(screen_name, slug,
         function () {
             toast.set(
                 _('unfollow_at') + screen_name + '/' + slug + ' '+ _('successfully')).show();
@@ -926,7 +926,7 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
     db.get_tweet(tweet_id,
     function (tx, rs) {
         if (rs.rows.length == 0) {
-            lib.twitterapi.show_status(tweet_id,
+            globals.twitterClient.show_status(tweet_id,
             function (result) {
                 load_thread_proc_cb(result);
             }, on_error);

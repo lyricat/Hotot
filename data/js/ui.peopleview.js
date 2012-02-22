@@ -47,7 +47,7 @@ function init_view(view) {
         var _this = this;
         if ($(this).hasClass('unfo')) {
             toast.set(_("unfollow_at") + view.screen_name + " ...").show();
-            lib.twitterapi.destroy_friendships(view.screen_name,
+            globals.twitterClient.destroy_friendships(view.screen_name,
             function () {
                 toast.set(
                     _("unfollow_at")+ view.screen_name+" Successfully!").show();
@@ -55,7 +55,7 @@ function init_view(view) {
             });
         } else {
             toast.set(_("follow_at") + view.screen_name + " ...").show();
-            lib.twitterapi.create_friendships(view.screen_name,
+            globals.twitterClient.create_friendships(view.screen_name,
             function () {
                 toast.set(
                     _("follow_at")+ view.screen_name+" Successfully!").show();
@@ -113,7 +113,7 @@ function init_view(view) {
         if (!confirm("Are you sure you want to block @"+view.screen_name+"?!\n"))
             return;
         toast.set("Block @" + view.screen_name + " ...").show();
-        lib.twitterapi.create_blocks(view.screen_name,
+        globals.twitterClient.create_blocks(view.screen_name,
         function () {
             toast.set(
                 "Block @"+ view.screen_name+" Successfully!").show();
@@ -124,7 +124,7 @@ function init_view(view) {
     vcard.find('.unblock_menu_item').click(
     function (event) {
         toast.set("Unblock @" + view.screen_name + " ...").show();
-        lib.twitterapi.create_blocks(view.screen_name,
+        globals.twitterClient.create_blocks(view.screen_name,
         function () {
             toast.set(
                 "Unblock @"+ view.screen_name+" Successfully").show();
@@ -137,7 +137,7 @@ function init_view(view) {
         if(!confirm('Are you sure you want to BLOCK them and REPORT for SPAM?')) 
             return;
         toast.set("Report @" + view.screen_name + " for spam...").show();
-        lib.twitterapi.create_blocks(view.screen_name,
+        globals.twitterClient.create_blocks(view.screen_name,
         function () {
             toast.set(
                 "Report @"+ view.screen_name+" for Spam Successfully").show();
@@ -257,7 +257,7 @@ function get_relationship(screen_name, callback) {
     if (screen_name == globals.myself.screen_name) {
         callback(0);
     } else {
-        lib.twitterapi.show_friendships(
+        globals.twitterClient.show_friendships(
               screen_name
             , globals.myself.screen_name
             , function (result) {
@@ -339,12 +339,12 @@ function load_timeline_full(view, success, fail) {
         ui.Slider.set_icon(view.name, user_obj.profile_image_url);
         ui.PeopleView.render_people_view(view, user_obj 
             , function () {
-                lib.twitterapi.get_user_timeline(null, view.screen_name
+                globals.twitterClient.get_user_timeline(null, view.screen_name
                     , view.since_id, null, conf.vars.items_per_request, success);
             });
         view._load = ui.PeopleView.load_timeline;
     }
-    lib.twitterapi.show_user(view.screen_name, render_proc,
+    globals.twitterClient.show_user(view.screen_name, render_proc,
         function (xhr, textStatus, errorThrown) {
             if (xhr.status == 404) {
                 widget.DialogManager.alert('This person does not exist.'
@@ -356,7 +356,7 @@ function load_timeline_full(view, success, fail) {
 
 load_timeline:
 function load_timeline(view, success, fail) {
-    lib.twitterapi.get_user_timeline(null, view.screen_name
+    globals.twitterClient.get_user_timeline(null, view.screen_name
         , view.since_id, null, conf.vars.items_per_request, success);
 },
 
@@ -366,7 +366,7 @@ function loadmore_people(self, success, fail) {
         self._footer.hide();
         return;
     }
-    lib.twitterapi.get_user_timeline(null
+    globals.twitterClient.get_user_timeline(null
         , self.screen_name
         , null 
         , self.max_id, 20, success);
@@ -374,52 +374,52 @@ function loadmore_people(self, success, fail) {
 
 load_fav:
 function load_fav(view, success, fail) {
-    lib.twitterapi.get_favorites(view.screen_name, 1, success);
+    globals.twitterClient.get_favorites(view.screen_name, 1, success);
 },
 
 loadmore_fav:
 function loadmore_fav(view, success, fail) {
-    lib.twitterapi.get_favorites(view.screen_name, view.page, success);
+    globals.twitterClient.get_favorites(view.screen_name, view.page, success);
 },
 
 load_follower:
 function load_follower(view, success, fail) {
-    lib.twitterapi.get_user_followers(view.screen_name, -1, success);
+    globals.twitterClient.get_user_followers(view.screen_name, -1, success);
 },
 
 loadmore_follower:
 function loadmore_follower(view, success, fail) {
-    lib.twitterapi.get_user_followers(view.screen_name, view.cursor, success);
+    globals.twitterClient.get_user_followers(view.screen_name, view.cursor, success);
 },
 
 load_friend:
 function load_friend(view, success, fail) {
-    lib.twitterapi.get_user_friends(view.screen_name, -1, success);
+    globals.twitterClient.get_user_friends(view.screen_name, -1, success);
 },
 
 loadmore_friend:
 function loadmore_friend(view, success, fail) {
-    lib.twitterapi.get_user_friends(view.screen_name, view.cursor, success);
+    globals.twitterClient.get_user_friends(view.screen_name, view.cursor, success);
 },
 
 load_lists:
 function load_lists(view, success, fail) {
-    lib.twitterapi.get_user_lists(view.screen_name, -1, success);
+    globals.twitterClient.get_user_lists(view.screen_name, -1, success);
 },
 
 loadmore_lists:
 function loadmore_lists(view, success, fail) {
-    lib.twitterapi.get_user_lists(view.screen_name, view.cursor, success);
+    globals.twitterClient.get_user_lists(view.screen_name, view.cursor, success);
 },
 
 load_listed_lists:
 function load_listed_lists(view, success, fail) {
-    lib.twitterapi.get_user_listed_lists(view.screen_name, -1, success);
+    globals.twitterClient.get_user_listed_lists(view.screen_name, -1, success);
 },
 
 loadmore_listed_lists:
 function loadmore_listed_lists(view, success, fail) {
-    lib.twitterapi.get_user_listed_lists(view.screen_name, view.cursor, success);
+    globals.twitterClient.get_user_listed_lists(view.screen_name, view.cursor, success);
 }
 
 };

@@ -81,7 +81,7 @@ function update_profile() {
     var bio = $('#tbox_profile_bio').val();
 
     toast.set("Update profile ...").show();
-    lib.twitterapi.update_profile(name, website, location, bio,
+    globals.twitterClient.update_profile(name, website, location, bio,
     function (result) {
         toast.set("Update profile successfully!").show();
         globals.myself = result;
@@ -91,7 +91,7 @@ function update_profile() {
 
 request_profile:
 function request_profile() {
-    $('#profile_avatar').css('background-image', 'url('+lib.twitterapi.get_user_profile_image(
+    $('#profile_avatar').css('background-image', 'url('+globals.twitterClient.get_user_profile_image(
             globals.myself.screen_name, 'bigger')+')');
     $('#tbox_profile_name').val(globals.myself.name);
     $('#tbox_profile_website').val(globals.myself.url);
@@ -106,7 +106,7 @@ function update_avatar(file) {
     reader.onload = function (e) {
         var result = e.target.result;
         //result = result.substring(result.indexOf('base64,')+7);
-        lib.twitterapi.update_profile_image(file, result,
+        globals.twitterClient.update_profile_image(file, result,
         function (ret){
             globals.myself = ret;
             var reader_new = new FileReader();

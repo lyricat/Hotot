@@ -33,7 +33,7 @@ daemon = {
     },
 
     work: function work() {
-        if (lib.twitterapi.use_oauth && lib.twitterapi.api_base.indexOf('https://api.twitter.com/') != - 1) {
+        if (globals.twitterClient.use_oauth && globals.twitterClient.api_base.indexOf('https://api.twitter.com/') != - 1) {
             daemon.use_streaming = true;
         }
         if (daemon.running) {
@@ -68,7 +68,7 @@ daemon = {
                 continue;
             }
             var interval = view.interval;
-            if (daemon.use_streaming && lib.twitterapi.watch_user_streams.is_running) {
+            if (daemon.use_streaming && globals.twitterClient.watch_user_streams.is_running) {
                 // poll push_views per 15 minutes when the Steaming xhr works
                 // poll them as normal if Streaming xhr is not running or the user stream is disabled.
                 interval = 900;
@@ -85,11 +85,11 @@ daemon = {
     },
 
     abort_push: function abort_push() {
-        lib.twitterapi.abort_watch_user_streams();
+        globals.twitterClient.abort_watch_user_streams();
     },
 
     push: function push() {
-        if (lib.twitterapi.watch_user_streams.is_running) {
+        if (globals.twitterClient.watch_user_streams.is_running) {
             if (daemon.home_queue.length > 0) {
                 hotot_log('daemon push, timeout', daemon.home_queue.length);
                 ui.Main.views.home.load_success(daemon.home_queue);
@@ -147,7 +147,7 @@ daemon = {
                 return;
             }
         }
-        lib.twitterapi.watch_user_streams(on_ret);
+        globals.twitterClient.watch_user_streams(on_ret);
     },
 
     register_poll_view: function register_poll_view(v, interval) {

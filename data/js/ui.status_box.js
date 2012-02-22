@@ -111,7 +111,7 @@ function init () {
     });
 
     $('#btn_imageuploader').click(function () {
-        if (lib.twitterapi.use_oauth) {
+        if (globals.twitterClient.use_oauth) {
             if (util.is_native_platform()) {
                 ui.ImageUploader.mode = ui.ImageUploader.MODE_PY;
             } else {
@@ -314,7 +314,7 @@ function update_status(status_text) {
         }
         ui.StatusBox.reset();
 
-        lib.twitterapi.update_status(status_text
+        globals.twitterClient.update_status(status_text
             , draft.reply_to_id
             , function (result) {
                 ui.StatusBox.last_sent_text = status_text;
@@ -363,7 +363,7 @@ function post_message(message_text) {
         } else {
             if (name[0] == '@') name = name.substring(1);
             toast.set(_('posting_dots')).show(-1);
-            lib.twitterapi.new_direct_messages(
+            globals.twitterClient.new_direct_messages(
                   message_text
                 , null
                 , name

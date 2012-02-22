@@ -158,7 +158,7 @@ function open_list(screen_name, slug, additional_opts) {
 }
 
 function update_status(text) {
-    lib.twitterapi.update_status(text, null,
+    globals.twitterClient.update_status(text, null,
         function (result) {
             hotot_notify('Notice', 'Sent a status:' + text, null , 'content');
         },
@@ -167,7 +167,7 @@ function update_status(text) {
 }
 
 function reply_tweet(tid, text) {
-    lib.twitterapi.update_status(text, tid,
+    globals.twitterClient.update_status(text, tid,
         function (result) {
             hotot_notify('Notice', 'Reply a status:' + text, null , 'content');
         },
@@ -240,6 +240,8 @@ function unread_alert(count) {
 
 function init(callback) {
     hotot_log('init', 'init()');
+    // twitter client
+    globals.twitterClient = new lib.twitter.Client();
     var procs = [];
     procs.push(function() {
         db.init(function () {
