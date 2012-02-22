@@ -121,7 +121,7 @@ function load_settings() {
     $('#chk_prefs_close_to_exit').prop('checked'
         , conf.settings.close_to_exit);
     $('#chk_prefs_sign_in_automatically').prop('checked'
-        , conf.settings.sign_in_automatically);        
+        , conf.settings.sign_in_automatically);
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy

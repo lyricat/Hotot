@@ -599,9 +599,8 @@ function on_load_finish() {
                 ui.Welcome.load_profiles_info();
                 $('#profile_avatar_list a:first').click();
                 $(window).dequeue('_on_load_finish');
-                
                 if (conf.settings.sign_in_automatically)
-                $('#btn_oauth_sign_in').trigger('click');                
+                $('#btn_oauth_sign_in').trigger('click');
             });
             });
         // 6. run track code
