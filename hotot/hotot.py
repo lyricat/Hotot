@@ -10,10 +10,9 @@ import os
 import view
 import config
 import agent
-import keybinder
 import utils
 import dbus
-import dbus.service 
+import dbus.service
 import threading
 import time
 from dbus.mainloop.glib import DBusGMainLoop
@@ -176,7 +175,7 @@ class Hotot:
             self.start_blinking()
         else:
             self.stop_blinking()
-        
+
         if not HAS_INDICATOR:
             self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
@@ -206,7 +205,7 @@ class Hotot:
 
     def on_window_delete(self, widget, event):
         if 'close_to_exit' in config.settings and config.settings['close_to_exit']:
-            self.quit() 
+            self.quit()
         else:
             return widget.hide_on_delete()
 
@@ -294,6 +293,7 @@ class Hotot:
 
     def init_hotkey(self):
         try:
+            import keybinder
             keybinder.bind(
                   config.settings['shortcut_summon_hotot']
                 , self.on_hotkey_compose)
@@ -360,7 +360,7 @@ def main():
         import dl
         libc = dl.open('/lib/libc.so.6')
         libc.call('prctl', 15, 'hotot', 0, 0, 0)
-        
+
     agent.init_notify()
     app = Hotot()
     agent.app = app
