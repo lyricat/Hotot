@@ -13,7 +13,7 @@ import agent
 import keybinder
 import utils
 import dbus
-import dbus.service 
+import dbus.service
 import threading
 import time
 from dbus.mainloop.glib import DBusGMainLoop
@@ -46,6 +46,7 @@ class HototDbusService(dbus.service.Object):
         bus_name = dbus.service.BusName(HOTOT_DBUS_NAME, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, HOTOT_DBUS_PATH)
         self.app = app
+        s = []
 
     @dbus.service.method(dbus_interface=HOTOT_DBUS_NAME, in_signature="", out_signature="i")
     def unread(self):
@@ -176,7 +177,7 @@ class Hotot:
             self.start_blinking()
         else:
             self.stop_blinking()
-        
+
         if not HAS_INDICATOR:
             self.trayicon.set_tooltip("Hotot: %d unread tweets/messages." % count if count > 0 else _("Hotot: Click to Active."))
         self.state['unread_count'] = count
@@ -206,7 +207,7 @@ class Hotot:
 
     def on_window_delete(self, widget, event):
         if 'close_to_exit' in config.settings and config.settings['close_to_exit']:
-            self.quit() 
+            self.quit()
         else:
             return widget.hide_on_delete()
 
@@ -360,7 +361,7 @@ def main():
         import dl
         libc = dl.open('/lib/libc.so.6')
         libc.call('prctl', 15, 'hotot', 0, 0, 0)
-        
+
     agent.init_notify()
     app = Hotot()
     agent.app = app
