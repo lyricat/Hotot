@@ -365,11 +365,11 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // dumps to cache
     db.get_tweet_cache_size(function (size) {
         if (db.MAX_TWEET_CACHE_SIZE < size) {
-            toast.set("Reducing ... ").show(-1);
+            toast.set(_("Reducing ... ")).show(-1);
             db.reduce_tweet_cache(
                 parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
             , function () {
-                toast.set("Reduce Successfully!").show();
+                toast.set(_("Reduce successfully!")).show();
                 db.dump_tweets(json_obj);
             })
         } else {
@@ -603,9 +603,9 @@ function bind_tweet_action(id) {
         return false;
     }).mouseenter(function (ev) {
         if (conf.get_current_profile().preferences.use_alt_reply) {
-            $(this).attr('title', 'Reply All.');
+            $(this).attr('title', _('Reply all.'));
         } else {
-            $(this).attr('title', 'Reply this tweet.');
+            $(this).attr('title', _('Reply to this tweet.'));
         }
     });
 
@@ -619,9 +619,9 @@ function bind_tweet_action(id) {
         return false;
     }).mouseenter(function (ev) {
         if (conf.get_current_profile().preferences.use_alt_retweet) {
-            $(this).attr('title', 'Quote this tweet.');
+            $(this).attr('title', _('Quote this tweet.'));
         } else {
-            $(this).attr('title', 'Retweet/Un-retweet this tweet.');
+            $(this).attr('title', _('Retweet/Un-retweet this tweet.'));
         }
     });
     $(id).find('.tweet_fav_btn').click(
@@ -766,7 +766,7 @@ function on_del_click(btn, li_id, event) {
     var li = $(li_id);
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
-    toast.set('Destroy ...').show(-1);
+    toast.set(_('Destroy...')).show(-1);
     lib.twitterapi.destroy_status(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
@@ -779,7 +779,7 @@ on_dm_delete_click:
 function on_dm_delete_click(btn, li_id, event) {
     var li = $(li_id);
     var id = li.attr('tweet_id');
-    toast.set('Destroy ...').show(-1);
+    toast.set(_('Destroy...')).show(-1);
     lib.twitterapi.destroy_direct_messages(id,
     function (result) {
         ui.Main.unbind_tweet_action(li_id);
