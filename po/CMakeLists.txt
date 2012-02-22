@@ -9,8 +9,8 @@ set(POT_FILE hotot.pot)
 configure_file(POTFILES.in.in ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in)
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/js.po
-                   COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/i18n_scanner.py
-                   COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/i18n_extractor.py > ${CMAKE_CURRENT_BINARY_DIR}/js.po
+                   COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/i18n_scanner.py
+                   COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/i18n_extractor.py > ${CMAKE_CURRENT_BINARY_DIR}/js.po
                    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
                    
 find_program(INTLTOOL_EXTRACT intltool-extract)
