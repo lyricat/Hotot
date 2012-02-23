@@ -1,25 +1,23 @@
 if (typeof (lib) == 'undefined') var lib = {};
 
-lib.network = {
+lib.Network = function Network (argument) {
+    var self = this;
+    self.py_request = false;
 
-py_request: false,
+    self.success_task_table = {};
 
-success_task_table: {},
+    self.error_task_table = {};
 
-error_task_table: {},
+    self.last_req_url = '';
 
-last_req_url: '',
-
-generate_uuid:
-function generate_uuid() {
+    self.generate_uuid = function generate_uuid() {
     var S4 = function() {
         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     }
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-},
+    };
 
-normalize_result:
-function normalize_result(result) {
+    self.normalize_result = function normalize_result(result) {
     if (result.constructor == String) {
         try {
             return JSON.parse(result);
@@ -28,10 +26,9 @@ function normalize_result(result) {
         }
     }
     return result;
-},
+};
 
-encode_multipart_formdata:
-function encode_multipart_formdata(fields, file, name, data) {
+    self.encode_multipart_formdata = function encode_multipart_formdata(fields, file, name, data) {
     if (!window.BlobBuilder) {
         window.BlobBuilder = window.WebKitBlobBuilder;
     }
@@ -65,17 +62,16 @@ function encode_multipart_formdata(fields, file, name, data) {
     var headers = {'content-type':'multipart/form-data; boundary=' + BOUNDARY
         , 'content-length': body.size};
     return [headers, body]
-},
+};
 
-do_request:
-function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
+self.do_request = function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
 
     if (!req_headers) req_headers = {};
-    if (lib.network.py_request 
+    if (self.py_request 
         || (req_files && req_files.constructor == Array && req_files.length != 0)) {
-        var task_uuid = lib.network.generate_uuid();
-        lib.network.success_task_table[task_uuid] = on_success;
-        lib.network.error_task_table[task_uuid] = on_error;
+        var task_uuid = self.generate_uuid();
+        self.success_task_table[task_uuid] = on_success;
+        self.error_task_table[task_uuid] = on_error;
         hotot_action('request/' +
             encodeURIComponent(JSON.stringify(
                 { uuid: task_uuid
@@ -85,9 +81,9 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
                 , files: req_files
                 , headers: req_headers })));
     } else {
-        var task_uuid = lib.network.generate_uuid();
-        lib.network.success_task_table[task_uuid] = on_success;
-        lib.network.error_task_table[task_uuid] = on_error;
+        var task_uuid = self.generate_uuid();
+        self.success_task_table[task_uuid] = on_success;
+        self.error_task_table[task_uuid] = on_error;
         
         hotot_log('Req', JSON.stringify({'type':req_method, 'url': req_url, 'data':req_params}));
 
@@ -106,23 +102,23 @@ function do_request(req_method, req_url, req_params, req_headers, req_files,on_s
             success: 
             function(result, textStatus, xhr) {
                 if ( on_success != null) {
-                    result = lib.network.normalize_result(result);
-                    lib.network.success_task_table[task_uuid](result, textStatus, xhr);
-                    delete lib.network.success_task_table[task_uuid];
-                    delete lib.network.error_task_table[task_uuid];
+                    result = self.normalize_result(result);
+                    self.success_task_table[task_uuid](result, textStatus, xhr);
+                    delete self.success_task_table[task_uuid];
+                    delete self.error_task_table[task_uuid];
                 }
             },
             error: 
             function (result, textStatus, xhr) {
                 if ( on_error != null) {
-                    result = lib.network.normalize_result(result);
-                    lib.network.error_task_table[task_uuid](result, textStatus, xhr);
-                    delete lib.network.success_task_table[task_uuid];
-                    delete lib.network.error_task_table[task_uuid];
+                    result = self.normalize_result(result);
+                    self.error_task_table[task_uuid](result, textStatus, xhr);
+                    delete self.success_task_table[task_uuid];
+                    delete self.error_task_table[task_uuid];
                 }
             }
         }); 
     }
-}
-}
+};
+};
 

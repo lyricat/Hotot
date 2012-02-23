@@ -241,8 +241,11 @@ function unread_alert(count) {
 function init(callback) {
     hotot_log('init', 'init()');
     // twitter client
+    globals.network = new lib.Network();
     globals.twitterClient = new lib.twitter.Client();
+    globals.twitterClient.network = globals.network;
     globals.twitterClient.oauth = new lib.OAuth();
+    globals.twitterClient.oauth.network = globals.network;
     var procs = [];
     procs.push(function() {
         db.init(function () {

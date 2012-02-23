@@ -15,6 +15,7 @@ function TwitterClient() {
     self.source = 'Hotot';
 
     self.oauth = null;
+    self.network = null;
 
     self.default_error_method = 'notify';
 
@@ -135,14 +136,14 @@ function TwitterClient() {
 
         if (self.use_oauth) {
             var signed_params = self.oauth.form_signed_params(
-            sign_url, self.oauth.access_token, method, params, lib.network.py_request && method == 'POST');
+            sign_url, self.oauth.access_token, method, params, self.network.py_request && method == 'POST');
             if (method == 'GET') {
                 url = url + '?' + signed_params;
                 params = {};
             } else {
                 params = signed_params
             }
-            lib.network.do_request(
+            self.network.do_request(
             method, url, params, headers, null, on_success, on_error);
         } else {
             if (method == 'GET') {
@@ -154,7 +155,7 @@ function TwitterClient() {
                 params = {};
             }
             headers['Authorization'] = self.basic_auth();
-            lib.network.do_request(
+            self.network.do_request(
             method, url, params, headers, null, on_success, on_error);
         }
     };
@@ -189,11 +190,11 @@ function TwitterClient() {
         var headers = {
             'Authorization': auth_str
         };
-        var form_data = lib.network.encode_multipart_formdata(
+        var form_data = self.network.encode_multipart_formdata(
         params, file, 'media[]', file_data);
         $.extend(headers, form_data[0]);
 
-        lib.network.do_request('POST', url, signed_params, headers, form_data[1] // body
+        self.network.do_request('POST', url, signed_params, headers, form_data[1] // body
         , on_success, on_error);
     },
 
@@ -216,7 +217,7 @@ function TwitterClient() {
             'Authorization': auth_str
         };
 
-        lib.network.do_request('POST', url, signed_params, headers, [['media', filename]], on_success, on_error);
+        self.network.do_request('POST', url, signed_params, headers, [['media', filename]], on_success, on_error);
     };
 
     self.retweet_status = function retweet_status(retweet_id, on_success) {
@@ -467,11 +468,11 @@ function TwitterClient() {
             'Authorization': auth_str
         };
 
-        var form_data = lib.network.encode_multipart_formdata(
+        var form_data = self.network.encode_multipart_formdata(
         signed_params, file, 'image', file_data);
 
         $.extend(headers, form_data[0]);
-        lib.network.do_request('POST', url, signed_params, headers, form_data[1] // body
+        self.network.do_request('POST', url, signed_params, headers, form_data[1] // body
         , on_success, null);
         //self.post(url, params, on_success);
     };

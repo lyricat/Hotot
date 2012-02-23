@@ -8,25 +8,27 @@
 if (!lib) var lib = {}
 lib.OAuth = function OAuth(argument) {
     var self = this;
-    var oauth_base = 'https://api.twitter.com/oauth/';
+    self.oauth_base = 'https://api.twitter.com/oauth/';
 
-    var sign_oauth_base = 'https://api.twitter.com/oauth/';
+    self.sign_oauth_base = 'https://api.twitter.com/oauth/';
 
-    var use_same_sign_oauth_base = false;
+    self.use_same_sign_oauth_base = false;
 
-    var request_token_url = 'request_token';
+    self.request_token_url = 'request_token';
 
-    var access_token_url = 'access_token';
+    self.access_token_url = 'access_token';
 
-    var user_auth_url = 'authorize';
+    self.user_auth_url = 'authorize';
 
-    var key = '';
+    self.key = '';
 
-    var secret = '';
+    self.secret = '';
 
-    var request_token = null;
+    self.request_token = null;
 
-    var access_token = null;
+    self.access_token = null;
+
+    self.network = null;
 
     self.quote = function quote(text) {
         text = encodeURIComponent(text);
@@ -113,7 +115,7 @@ lib.OAuth = function OAuth(argument) {
     self.form_signed_url(self.request_token_url, null, 'GET', null),
     */
         sign_base = self.use_same_sign_oauth_base ? self.oauth_base: self.sign_oauth_base;
-        lib.network.do_request('GET', self.oauth_base + self.request_token_url + '?' + self.form_signed_params(
+        self.network.do_request('GET', self.oauth_base + self.request_token_url + '?' + self.form_signed_params(
         sign_base + self.request_token_url, null, 'GET', null), {},
         {},
         [], function(result) {
@@ -140,7 +142,7 @@ lib.OAuth = function OAuth(argument) {
         };
         var params = self.form_signed_params(
         sign_base + self.access_token_url, self.request_token, 'GET', addition_params);
-        lib.network.do_request('GET', self.oauth_base + self.access_token_url + '?' + params, {},
+        self.network.do_request('GET', self.oauth_base + self.access_token_url + '?' + params, {},
         {},
         [], function(result) {
             var token_info = result;

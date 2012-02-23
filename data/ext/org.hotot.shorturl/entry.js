@@ -153,7 +153,7 @@ function on_btn_short_url_clicked(event) {
     var _requset = function (i) {
         var req_url = ext.HototShortUrl.service_url + encodeURIComponent(urls[i]);
         procs.push(function () {
-            lib.network.do_request('GET',
+            globals.network.do_request('GET',
             req_url,
             {},
             {},

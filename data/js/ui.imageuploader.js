@@ -134,7 +134,7 @@ function pyupload(filename) {
     }
 
     toast.set('Uploading ... ').show();
-    lib.network.do_request(
+    globals.network.do_request(
         'POST'
         , ui.ImageUploader.services[service_name].url
         , params 
@@ -227,10 +227,10 @@ function upload_image_oauth_echo(url, params, file, success, fail) {
         var reader = new FileReader();
         reader.onload = function (e) {
             var result = e.target.result;
-            var ret = lib.network.encode_multipart_formdata(
+            var ret = globals.network.encode_multipart_formdata(
                 params, file, 'media', result);
             $.extend(headers, ret[0]);
-            lib.network.do_request(
+            globals.network.do_request(
                 'POST'
                 , url
                 , params 
@@ -241,7 +241,7 @@ function upload_image_oauth_echo(url, params, file, success, fail) {
         }
         reader.readAsArrayBuffer(file);
     } else {
-        lib.network.do_request(
+        globals.network.do_request(
             'POST'
             , url
             , params 
