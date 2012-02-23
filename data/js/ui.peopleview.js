@@ -7,7 +7,7 @@ relation_icon_set: [' ', '&infin; ', '&ni; ', '&isin; ', '&empty; '],
 
 init:
 function init() {
-    ui.People.update_trans();
+    ui.PeopleView.update_trans();
 },
 
 update_trans:
