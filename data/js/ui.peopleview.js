@@ -3,10 +3,15 @@ ui.PeopleView = {
 
 relation_map: {},
 
-relation_icon_set: ['', '&infin;', '&ni;', '&isin;', '&empty; '],
+relation_icon_set: [' ', '&infin; ', '&ni; ', '&isin; ', '&empty; '],
 
 init:
 function init() {
+    ui.People.update_trans();
+},
+
+update_trans:
+function update_trans (argument) {
     ui.PeopleView.relation_map = { 
           0: _('hey_it_is_you')
         , 1: _('you_are_friends')
@@ -18,6 +23,8 @@ function init() {
 
 init_view:
 function init_view(view) {
+    ui.PeopleView.update_trans();
+
     var vcard = view._header.find('.people_vcard');
     var vcard_profile_btns = vcard.find('.radio_group_btn');
     vcard_profile_btns.click(function (event) {
