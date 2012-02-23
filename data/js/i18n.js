@@ -24,9 +24,13 @@ function change(code, callback) {
     if (i18n.current == code) {
         return;
     }
+    if (code === 'en_US' || code === 'en_GB') {
+        code = 'en';
+    }
     i18n.current = code;
     if (conf.vars.platform == 'Chrome' && !i18n.forced) {
         i18n.trans_html();
+        ui.Template.update_trans();
         if (callback != undefined)
             callback();
     } else {
@@ -35,6 +39,7 @@ function change(code, callback) {
             hotot_log('i18n', 'Use locale: ' + code);
             i18n.load_dict(result);
             i18n.trans_html();
+            ui.Template.update_trans();
             if (callback != undefined)
                 callback();
         }).error(function(jqXHR, txt, err){
@@ -44,6 +49,7 @@ function change(code, callback) {
             function (result) {
                 i18n.load_dict(result);
                 i18n.trans_html();
+                ui.Template.update_trans();
                 if (callback != undefined)
                     callback();
             });

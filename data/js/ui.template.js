@@ -229,7 +229,7 @@ people_t:
     <span class="shape_mask"></span>\
 </li>',
 
-people_vcard_t:
+people_vcard_t_orig:
 '<div class="header_frame"><div class="people_vcard vcard">\
     <a target="_blank" class="profile_img_wrapper"></a>\
     <div class="vcard_body">\
@@ -666,6 +666,11 @@ function init() {
         , RECIPIENT: ''
     };
 
+    ui.Template.update_trans(); 
+},
+
+update_trans:
+function update_trans() {
     ui.Template.people_vcard_m = {
           TRANS_info: _('info'), TRANS_stat: _('stat')
         , TRANS_name: _('name'), TRANS_bio: _('bio')
@@ -690,9 +695,7 @@ function init() {
         , TRANS_lists_following_them: _('lists_following_them')
         , TRANS_create_a_list: _('create_a_list')
     }
-
-    ui.Template.people_vcard_t = ui.Template.render(ui.Template.people_vcard_t, ui.Template.people_vcard_m);
-
+    ui.Template.people_vcard_t = ui.Template.render(ui.Template.people_vcard_t_orig, ui.Template.people_vcard_m);
 },
 
 form_dm:
