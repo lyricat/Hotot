@@ -231,8 +231,8 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
-    jsOAuth.key = localStorage.consumer_key || conf.vars.consumer_key;
-    jsOAuth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
+    globals.twitterClient.oauth.key = localStorage.consumer_key || conf.vars.consumer_key;
+    globals.twitterClient.oauth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
 },
 
 apply_prefs:
@@ -255,13 +255,14 @@ function apply_prefs(name) {
     globals.twitterClient.search_api_base2 = prefs.search_api_base2;
     globals.twitterClient.upload_api_base = prefs.upload_api_base;
     globals.twitterClient.use_same_sign_api_base = prefs.use_same_sign_api_base;
-    jsOAuth.oauth_base = prefs.oauth_base;
-    jsOAuth.sign_oauth_base = prefs.sign_oauth_base;
-    jsOAuth.use_same_sign_oauth_base = prefs.use_same_sign_oauth_base;
+    var oauth = globals.twitterClient.oauth;
+    oauth.oauth_base = prefs.oauth_base;
+    oauth.sign_oauth_base = prefs.sign_oauth_base;
+    oauth.use_same_sign_oauth_base = prefs.use_same_sign_oauth_base;
    
-    jsOAuth.access_token = prefs.access_token;
-    jsOAuth.key = prefs.consumer_key || jsOAuth.key;
-    jsOAuth.secret = prefs.consumer_secret || jsOAuth.secret;
+    oauth.access_token = prefs.access_token;
+    oauth.key = prefs.consumer_key || oauth.key;
+    oauth.secret = prefs.consumer_secret || oauth.secret;
     
     ui.ImageUploader.service_name = prefs.default_picture_service;
 

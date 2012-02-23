@@ -13,11 +13,11 @@ function init () {
         if (pin_code == '') 
             return
         toast.set("Authorizing ... ").show();
-        jsOAuth.get_access_token(pin_code,
+        globals.twitterClient.oauth.get_access_token(pin_code,
         function (result) {
             toast.set("Authentication OK!").show();
             // get a new access_token, dump it to disk.
-            conf.save_token(conf.current_name, jsOAuth.access_token);
+            conf.save_token(conf.current_name, globals.twitterClient.oauth.access_token);
             // change to main view
             globals.oauth_dialog.close();
             $('#profile_avatar_list a.selected').click();

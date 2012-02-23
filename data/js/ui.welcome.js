@@ -104,18 +104,18 @@ function init () {
         ui.Welcome.btn_oauth_sign_in.set_label(_('sign_in_dots'));
         ui.Welcome.btn_oauth_sign_in.set_sensitive(false);
 
-        if (jsOAuth.access_token == ''
-            || jsOAuth.access_token.constructor != Object) { 
+        if (globals.twitterClient.oauth.access_token == ''
+            || globals.twitterClient.oauth.access_token.constructor != Object) { 
         // access_token is not existed
         // then get a new one.
-            jsOAuth.get_request_token(
+            globals.twitterClient.oauth.get_request_token(
             function (result) {
                 if (result == '') {
                     ui.ErrorDlg.alert(
                         _('oops_a_network_error_occurs')
                       , _('network_error_please_try_later'), '');
                 } else {
-                    ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
+                    ui.PinDlg.set_auth_url(globals.twitterClient.oauth.get_auth_url());
                     globals.oauth_dialog.open();
                 }
             }); 
@@ -261,8 +261,8 @@ function load_profiles_info() {
             $(this).addClass('selected');
             // apply preferences
             conf.apply_prefs(profile_name);
-            if (jsOAuth.access_token == ''
-                || jsOAuth.access_token.constructor != Object) {
+            if (globals.twitterClient.oauth.access_token == ''
+                || globals.twitterClient.oauth.access_token.constructor != Object) {
                 $('#access_token_status_hint').css('visibility', 'visible');
                 $('#btn_oauth_sign_in').text(_('gain_access_token'));
             } else {

@@ -242,6 +242,7 @@ function init(callback) {
     hotot_log('init', 'init()');
     // twitter client
     globals.twitterClient = new lib.twitter.Client();
+    globals.twitterClient.oauth = new lib.OAuth();
     var procs = [];
     procs.push(function() {
         db.init(function () {

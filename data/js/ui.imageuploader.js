@@ -101,9 +101,9 @@ function pyupload(filename) {
         return;
     }
 
-    var signed_params = jsOAuth.form_signed_params(
+    var signed_params = globals.twitterClient.oauth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
-            , jsOAuth.access_token
+            , globals.twitterClient.oauth.access_token
             , 'GET'
             , {}
             , true);
@@ -204,9 +204,9 @@ function upload_image_official(params, file, success, fail) {
 
 upload_image_oauth_echo:
 function upload_image_oauth_echo(url, params, file, success, fail) {
-    var signed_params = jsOAuth.form_signed_params(
+    var signed_params = globals.twitterClient.oauth.form_signed_params(
               'https://api.twitter.com/1/account/verify_credentials.json'
-            , jsOAuth.access_token
+            , globals.twitterClient.oauth.access_token
             , 'GET'
             , {}
             , true);

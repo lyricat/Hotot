@@ -18,10 +18,10 @@ function init () {
 
     var btn_regain_token = new widget.Button('#btn_regain_token');
     btn_regain_token.on_clicked = function (event) {
-        jsOAuth.access_token = null;
-        jsOAuth.get_request_token(
+        globals.twitterClient.oauth.access_token = null;
+        globals.twitterClient.oauth.get_request_token(
             function (result) {
-                ui.PinDlg.set_auth_url(jsOAuth.get_auth_url());
+                ui.PinDlg.set_auth_url(globals.twitterClient.oauth.get_auth_url());
                 globals.oauth_dialog.open();
             }); 
     };

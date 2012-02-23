@@ -14,6 +14,8 @@ function TwitterClient() {
     self.use_same_sign_api_base = true;
     self.source = 'Hotot';
 
+    self.oauth = null;
+
     self.default_error_method = 'notify';
 
     self.http_code_msg_table = {
@@ -132,8 +134,8 @@ function TwitterClient() {
         sign_url = self.use_same_sign_api_base ? url: url.replace(self.api_base, self.sign_api_base);
 
         if (self.use_oauth) {
-            var signed_params = jsOAuth.form_signed_params(
-            sign_url, jsOAuth.access_token, method, params, lib.network.py_request && method == 'POST');
+            var signed_params = self.oauth.form_signed_params(
+            sign_url, self.oauth.access_token, method, params, lib.network.py_request && method == 'POST');
             if (method == 'GET') {
                 url = url + '?' + signed_params;
                 params = {};
@@ -171,8 +173,8 @@ function TwitterClient() {
 
     self.update_with_media = function update_with_media(text, reply_to_id, file, file_data, on_success, on_error) {
         var url = self.upload_api_base + 'statuses/update_with_media.json';
-        var signed_params = jsOAuth.form_signed_params(
-        url, jsOAuth.access_token, 'POST', {},
+        var signed_params = self.oauth.form_signed_params(
+        url, self.oauth.access_token, 'POST', {},
         true);
         var params = {
             'status': text,
@@ -197,8 +199,8 @@ function TwitterClient() {
 
     self.update_with_media_filename = function update_with_media_filename(text, reply_to_id, filename, on_success, on_error) {
         var url = self.upload_api_base + 'statuses/update_with_media.json';
-        var signed_params = jsOAuth.form_signed_params(
-        url, jsOAuth.access_token, 'POST', {},
+        var signed_params = self.oauth.form_signed_params(
+        url, self.oauth.access_token, 'POST', {},
         true);
         var params = {
             'status': text,
@@ -456,8 +458,8 @@ function TwitterClient() {
 
     self.update_profile_image = function update_profile_image(file, file_data, on_success) {
         var url = self.api_base + 'account/update_profile_image.json';
-        var signed_params = jsOAuth.form_signed_params(
-        url, jsOAuth.access_token, 'POST', {},
+        var signed_params = self.oauth.form_signed_params(
+        url, self.oauth.access_token, 'POST', {},
         true);
         var auth_str = 'OAuth oauth_consumer_key="' + signed_params.oauth_consumer_key + '"' + ', oauth_signature_method="' + signed_params.oauth_signature_method + '"' + ', oauth_token="' + signed_params.oauth_token + '"' + ', oauth_timestamp="' + signed_params.oauth_timestamp + '"' + ', oauth_nonce="' + signed_params.oauth_nonce + '"' + ', oauth_version="' + signed_params.oauth_version + '"' + ', oauth_signature="' + encodeURIComponent(signed_params.oauth_signature) + '"';
 
@@ -739,8 +741,8 @@ function TwitterClient() {
             'with': 'followings'
         };
 
-        var signed_params = jsOAuth.form_signed_params(
-        sign_url, jsOAuth.access_token, 'GET', params, false);
+        var signed_params = self.oauth.form_signed_params(
+        sign_url, self.oauth.access_token, 'GET', params, false);
         url = url + '?' + signed_params;
         params = {};
 
