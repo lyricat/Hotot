@@ -76,7 +76,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_show_retweeters": {
-		"message": "Kliknij aby pokazać przećwierkujących",
+		"message": "Kliknij aby pokazać przesyłających dalej",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
@@ -120,7 +120,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Przećwierknięcie pomyślne!",
+		"message": "Pomyślnie przesłano dalej!",
 		"description": "data/js/ui.main.js"
 	},
 	"search_in_twitter": {
@@ -168,7 +168,7 @@
 		"description": "data/index.html"
 	},
 	"retweet": {
-		"message": "Przećwierkaj",
+		"message": "Prześlij dalej",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -328,7 +328,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Przećwierkaj/Od-przećwierkaj",
+		"message": "Prześlij dalej/Nie przesyłaj dalej",
 		"description": "data/index.html"
 	},
 	"sign_out": {
@@ -372,7 +372,7 @@
 		"description": "data/index.html"
 	},
 	"retweets": {
-		"message": "Przećwierknięcia",
+		"message": "Przesłane dalej",
 		"description": "data/js/ui.slider.js"
 	},
 	"dots": {
@@ -404,7 +404,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"retweeted_by": {
-		"message": "Przećwierkane przez",
+		"message": "Przesłane dalej przez",
 		"description": "data/js/ui.template.js"
 	},
 	"same_signing_api_base": {
@@ -516,7 +516,7 @@
 		"description": "data/index.html"
 	},
 	"retweets_view": {
-		"message": "Widok przećwierknięć",
+		"message": "Widok przesłanych dalej",
 		"description": "data/index.html"
 	},
 	"step_one": {
@@ -608,7 +608,7 @@
 		"description": "data/index.html"
 	},
 	"undo_retweeting_dots": {
-		"message": "Cofnij przećwierknięcie...",
+		"message": "Cofnij przesyłanie dalej...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs_view": {
@@ -676,7 +676,7 @@
 		"description": "data/index.html"
 	},
 	"official_retweet_this_tweet": {
-		"message": "Oficjalnie przećwierkaj to ćwierknięcie",
+		"message": "Oficjalnie prześlij dalej to ćwierknięcie",
 		"description": "data/js/ui.template.js"
 	},
 	"effects": {
@@ -956,7 +956,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Użyj CYTUJ jako domyślną akcję przećwierknięcia",
+		"message": "Użyj CYTUJ jako domyślną akcję przesyłania dalej",
 		"description": "data/index.html"
 	},
 	"enabled": {
@@ -1008,7 +1008,7 @@
 		"description": "data/index.html"
 	},
 	"retweeting_dots": {
-		"message": "Przećwierkanie...",
+		"message": "Przesyłanie dalej...",
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
