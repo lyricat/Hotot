@@ -23,7 +23,7 @@ reg_hash_tag: null,
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}">\
     <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -168,7 +168,7 @@ message_t:
 </li>',
 
 search_t:
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}" link="{%LINK%}">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="deleted_mark"></div>\
@@ -772,6 +772,7 @@ function form_tweet (tweet_obj, pagename) {
     }
 
     var alt_text = tweet_obj.text;
+    var link = '';
     if (tweet_obj.entities && tweet_obj.entities.urls) {
         var urls = null;
         if (tweet_obj.entities.media) {
@@ -784,6 +785,9 @@ function form_tweet (tweet_obj, pagename) {
             if (url.url && url.expanded_url) {
               tweet_obj.text = tweet_obj.text.replace(url.url, url.expanded_url);
             }
+        }
+        if (tweet_obj.entities.urls.length > 0) {
+            link = tweet_obj.entities.urls[0].expanded_url;
         }
     }
 
@@ -829,6 +833,7 @@ function form_tweet (tweet_obj, pagename) {
     m.TRANS_via = _('via');
     m.TRANS_View_more_conversation = _('view_more_conversation');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
+    m.LINK = link;
     var msg = ui.Template.render(ui.Template.tweet_t, m);
 
     if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
@@ -962,6 +967,10 @@ function form_search(tweet_obj, pagename) {
     if (tweet_obj.from_user == globals.myself.screen_name) {
         scheme = 'me';
     }
+    var link = '';
+    if (tweet_obj.entities.urls.length > 0) {
+        link = tweet_obj.entities.urls[0].expanded_url;
+    }
 
     var m = ui.Template.search_m;
     m.ID = pagename + '-' + id;
@@ -977,6 +986,7 @@ function form_search(tweet_obj, pagename) {
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TRANS_via = _('via');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
+    m.LINK = link
 
     return ui.Template.render(ui.Template.search_t, m);
 },

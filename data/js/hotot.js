@@ -390,6 +390,18 @@ function init_hotkey() {
     hotkey.register(hotkey.calculate(74), function () {
         ui.Main.move_to_tweet("next");
     });
+
+    // 'u' to open people of current selected tweet 
+    hotkey.register(hotkey.calculate(85), function () {
+        ui.Main.on_open_people_btn_click(null, ui.Main.selected_tweet_id, null);
+    });
+    // 'x' to close current view
+    hotkey.register(hotkey.calculate(88), function () {
+        if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
+            ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
+        }
+    });
+
     // 'g' then 'g' to move to top
     hotkey.register([ig ,ig], function () {
         ui.Main.move_to_tweet("top");
@@ -444,7 +456,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_fav_click(this, ui.Main.active_tweet_id, event);
+                ui.Main.on_fav_click(null, ui.Main.active_tweet_id, null);
             }
         }
     });
@@ -464,7 +476,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, ev);
+                ui.Main.on_retweet_click(null, ui.Main.active_tweet_id, null);
             }
         }
     });
@@ -473,7 +485,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_del_click(this, ui.Main.active_tweet_id, event);
+                ui.Main.on_del_click(null, ui.Main.active_tweet_id, null);
             }
         }
     });
@@ -482,9 +494,13 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_dm_click(this, ui.Main.active_tweet_id, event);
+                ui.Main.on_dm_click(null, ui.Main.active_tweet_id, null);
             }
         }
+    });
+    // 'a' then 'o' to open first link of the selected tweet
+    hotkey.register([ia, hotkey.calculate(79)], function () {
+        ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
     });
 
     // 'z' then 'o' to expand
