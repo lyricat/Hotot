@@ -1,26 +1,85 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) Shellex Wei, 2010
 # Copyright (C) Jiahua Huang, 2010
 # This file is distributed under the same license as the PACKAGE package.
 # Shellex Wei <5h3ll3x@gmail.com>
-# Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
 # Jeonkwan Chan <jeonkwan@gmail.com>
+# Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
+# Weng Xuetian <wengxt@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-10 15:29+0800\n"
-"PO-Revision-Date: 2010-09-23 21:43+0800\n"
-"Last-Translator: Jiahua Huang <jhuangjiahua@gmail.com>\n"
-"Language-Team: Chinese/Simplified\n"
+"POT-Creation-Date: 2012-03-10 15:56+0800\n"
+"PO-Revision-Date: 2012-03-10 15:57+0800\n"
+"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
+"Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
 "Language: Chinese/Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+msgid "%1 unread Messages"
+msgstr "%1 条未读消息"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
+msgid "&Developer Tool"
+msgstr "开发工具 (&D)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
+msgid "&Exit"
+msgstr "退出(&E)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
+msgid "&Minimize to Tray"
+msgstr "最小化时隐藏到系统托盘 (&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+msgid "(c) 2009-2011 Shellex Wai\n"
+msgstr "(c) 2009-2011 Shellex Wai\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] "%1 条未读状态"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Artwork"
+msgstr "美工"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr "开发者"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr "美工/开发者"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Document"
+msgstr "文档编写"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr "启用开发者工具"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr "Evan"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:77
 #: ../..//misc/hotot.desktop.in.h:1
 msgid "Hotot"
 msgstr "傲兔"
@@ -30,12 +89,11 @@ msgstr "傲兔"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:38
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:46
 msgid "Hotot Notification"
-msgstr ""
+msgstr "Hotot 通知"
 
 #: ../..//misc/hotot-qt.desktop.in.h:1
-#, fuzzy
 msgid "Hotot Qt"
-msgstr "傲兔"
+msgstr "傲兔 (Qt)"
 
 #: ../..//misc/hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
@@ -46,24 +104,64 @@ msgstr "傲兔推特客户端"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:168
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:307
 msgid "Hotot: Click to Active."
-msgstr ""
+msgstr "Hotot: 单击激活"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr "Jiahua Huang"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr "Jimmy Xu"
 
 #: ../..//misc/hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
 
 #: ../..//misc/hotot-qt.desktop.in.h:2
-#, fuzzy
 msgid "Lightweight Twitter Client base on Qt and Webkit"
-msgstr "基于 Gtk2 Webkit 的轻巧推特客户端"
+msgstr "基于 Qt Webkit 的轻巧推特客户端"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr "轻量灵活的微博客"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, c-format
+msgid "Loading Search result %s ..."
+msgstr "加载搜索结果 %s ..."
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr "Marguerite Su"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr "Shellex Wai"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
+msgid "Show &MainWindow"
+msgstr "显示主窗口 (&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr "Tualatrix Chou"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr "使用 Socks 代理而不是 HTTP 代理"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr "Xu Zhen"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:90
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
-#, fuzzy
 msgid "_Compose"
-msgstr "撰写模式"
+msgstr "撰写 (_C)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113
@@ -77,12 +175,12 @@ msgstr "帮助(_H)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:87
 msgid "_Hide"
-msgstr ""
+msgstr "隐藏 (_H)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
 msgid "_Inspector"
-msgstr ""
+msgstr "检查器 (_I)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
@@ -92,7 +190,7 @@ msgstr "恢复/隐藏(_R)"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:84
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:115
 msgid "_Show"
-msgstr ""
+msgstr "显示 (_S)"
 
 #~ msgid " - did not match any result."
 #~ msgstr " - 没有任何结果"
@@ -225,9 +323,6 @@ msgstr ""
 #~ msgid "Apply keywords"
 #~ msgstr "应用关键字"
 
-#~ msgid "Artwork by"
-#~ msgstr "美工制作"
-
 #, fuzzy
 #~ msgid "Authentication"
 #~ msgstr "动作"
@@ -292,9 +387,6 @@ msgstr ""
 
 #~ msgid "DM"
 #~ msgstr "私信"
-
-#~ msgid "Document by"
-#~ msgstr "文档编写"
 
 #~ msgid "Enter action mode"
 #~ msgstr "进入 操作模式"

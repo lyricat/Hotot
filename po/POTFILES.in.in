@@ -41,4 +41,3 @@ ${REL_SOURCE_ROOT}/qt/src/trayiconinterface.h
 #desktop file
 ${REL_SOURCE_ROOT}/misc/hotot.desktop.in
 ${REL_SOURCE_ROOT}/misc/hotot-qt.desktop.in
-po/js.po

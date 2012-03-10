@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData("hotot",                                        // internal name
                          "hotot-qt",                                     // catalog name
                          ki18n("Hotot"),                            // program name
-                         "0.9.9",                             // app version from config-kmess.h
+                         "0.9.7",                             // app version 
                          ki18n("Lightweight, Flexible Microblogging"),  // short description
                          KAboutData::License_GPL_V2,                   // license
                          ki18n("(c) 2009-2011 Shellex Wai\n"),   // copyright
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     options.add("d");
     options.add("dev", ki18n("Enable developer Tool"));
     options.add("s");
-    options.add("socket", ki18n("Use Proxy as Socket Proxy instead of HTTP Proxy"));
+    options.add("socket", ki18n("Use Proxy as Socks Proxy instead of HTTP Proxy"));
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KCmdLineArgs::addCmdLineOptions(options);
