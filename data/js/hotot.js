@@ -486,6 +486,14 @@ function init_hotkey() {
             }
         }
     });
+    // 'a' then 'u' to open people of current selected tweet 
+    hotkey.register([ia, hotkey.calculate(85)], function () {
+        ui.Main.on_open_people_btn_click(null, ui.Main.selected_tweet_id, null);
+    });
+    // 'a' then 'o' to open first link of the selected tweet
+    hotkey.register([ia, hotkey.calculate(79)], function () {
+        ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
+    });
 
     // 'z' then 'o' to expand
     var iz = hotkey.calculate(90);
@@ -506,6 +514,15 @@ function init_hotkey() {
             btn.click();
         }
     });
+    
+    var it = hotkey.calculate(84);
+    // 't' then 'x' to close current view
+    hotkey.register([it, hotkey.calculate(88)], function () {
+        if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
+            ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
+        }
+    });
+
     // '/' to open finder
     hotkey.register([hotkey.calculate(191)], function () {
         ui.Finder.show();
