@@ -327,8 +327,7 @@ function normalize_settings(settings) {
 var daily_hints = [
       'Press "C" to compose quickly'
     , 'Press "R" will reload current page'
-    , 'Wanna quit hotot? try &lt;Ctrl&gt;+Q'
-    , 'I can act like VIM!'
+    , 'Wanna quit hotot? try <Ctrl>+Q'
     , 'I can act like VIM!'
     , 'Need more columns? Try to extend my window'
     , 'Need less columns? Try to resize my window to a small size'

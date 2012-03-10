@@ -297,8 +297,9 @@ function authenticate_pass(result) {
 
 load_daily_hint:
 function load_daily_hint() {
-    if (Date.now() % 3 == 0) {
+    if (Date.now() % 4 != 0) {
         var r = parseInt(Math.random() * daily_hints.length);
+        $('#daily_hint').removeAttr('data-i18n-text');
         $('#daily_hint').empty().append($('<strong/>').text(_('whisper') + ': ')).append(document.createTextNode(daily_hints[r]));
     }
 },
