@@ -156,7 +156,7 @@ message_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -624,7 +624,7 @@ function init() {
     };
 
     ui.Template.message_m = {
-          ID:'', TWEET_ID:'', SCREEN_NAME:''
+          ID:'', TWEET_ID:'', SCREEN_NAME:'', RECIPIENT_SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:''
         , SCHEME:'', TIMESTAMP:''
         , TWEET_FONT_SIZE:'', TRANS_Reply_Them:''
@@ -710,6 +710,7 @@ function form_dm(dm_obj, pagename) {
     m.ID = pagename + '-' + dm_obj.id_str;
     m.TWEET_ID = dm_obj.id_str;
     m.SCREEN_NAME = dm_obj.sender.screen_name;
+    m.RECIPIENT_SCREEN_NAME = dm_obj.recipient.screen_name;
     m.USER_NAME = dm_obj.sender.name;
     m.DESCRIPTION = dm_obj.sender.description;
     m.PROFILE_IMG = dm_obj.sender.profile_image_url;
