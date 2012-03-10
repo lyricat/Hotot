@@ -860,6 +860,22 @@ function on_unfollow_btn_click(btn, li_id, event) {
     }
 },
 
+on_open_link_btn_click:
+function on_open_link_btn_click(btn, li_id, event) {
+    var li = $(li_id);
+    var link = li.attr('link');
+    if (link.length > 0) window.open(link);
+},
+
+on_open_people_btn_click:
+function on_open_people_btn_click(btn, li_id, event) {
+    var li = $(li_id);
+    var screen_name = (li.attr('screen_name') == '' || li.attr('screen_name') == undefined)
+        ?li.attr('sender_screen_name'):li.attr('screen_name');
+    if (screen_name !== undefined && screen_name !== '')
+        open_people(screen_name);
+},
+
 on_thread_more_click:
 function on_thread_more_click(btn, event) {
     var li = ui.Main.ctrl_btn_to_li(btn);
