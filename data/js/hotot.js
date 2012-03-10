@@ -464,7 +464,7 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
-                ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, ev);
+                ui.Main.on_retweet_click(this, ui.Main.active_tweet_id, event);
             }
         }
     });
