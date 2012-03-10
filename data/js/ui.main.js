@@ -692,6 +692,7 @@ function on_rt_click(btn, li_id, event) {
     function() {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+        ui.StatusBox.update_status_len();
     });
 },
 
