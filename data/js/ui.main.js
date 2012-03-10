@@ -1028,22 +1028,24 @@ function openTweetMoreMenu(li, btn) {
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');
     }
-    // retweet or quote?
-    if (conf.get_current_profile().preferences.use_alt_retweet &&
-        li.attr('retweetable') == 'true') {
-        $('#tweet_alt_retweet_btn').parent().css('display', 'block');
-        $('#tweet_rt_btn').parent().css('display', 'none');
-    } else {
-        $('#tweet_alt_retweet_btn').parent().css('display', 'none');
-        $('#tweet_rt_btn').parent().css('display', 'block');
-    }
-    // reply or reply all
-    if (conf.get_current_profile().preferences.use_alt_reply) {
-        $('#tweet_alt_reply_btn').parent().css('display', 'block');
-        $('#tweet_reply_all_btn').parent().css('display', 'none');
-    } else {
-        $('#tweet_alt_reply_btn').parent().css('display', 'none');
-        $('#tweet_reply_all_btn').parent().css('display', 'block');
+    if (type != 'message') {
+        // retweet or quote?
+        if (conf.get_current_profile().preferences.use_alt_retweet &&
+            li.attr('retweetable') == 'true') {
+            $('#tweet_alt_retweet_btn').parent().css('display', 'block');
+            $('#tweet_rt_btn').parent().css('display', 'none');
+        } else {
+            $('#tweet_alt_retweet_btn').parent().css('display', 'none');
+            $('#tweet_rt_btn').parent().css('display', 'block');
+        }
+        // reply or reply all
+        if (conf.get_current_profile().preferences.use_alt_reply) {
+            $('#tweet_alt_reply_btn').parent().css('display', 'block');
+            $('#tweet_reply_all_btn').parent().css('display', 'none');
+        } else {
+            $('#tweet_alt_reply_btn').parent().css('display', 'none');
+            $('#tweet_reply_all_btn').parent().css('display', 'block');
+        }
     }
     $('#tweet_more_menu').css({'left': (btn.offset().left - 135)+'px', 'top': (btn.offset().top - 42)+'px'}).show();
     ui.Main.isTweetMoreMenuClosed = false;
