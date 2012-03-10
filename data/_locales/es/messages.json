@@ -103,6 +103,10 @@
 		"message": "Contraseña",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Deshabilitadas",
 		"description": "data/index.html"
@@ -311,9 +315,9 @@
 		"message": "Acerca de & Ayuda",
 		"description": "data/index.html"
 	},
-	"hey_it_is_you": {
-		"message": "¡Hey, eres tú!",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Recuperar el token de acceso",
@@ -507,8 +511,8 @@
 		"message": "Seguidores",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "Hora de reinicio",
+	"weakness": {
+		"message": "Débil",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "Precargar, si es posible, los tweets más recientes en las conversaciones",
 		"description": "data/index.html"
 	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "Paso 2",
 		"description": "data/index.html"
@@ -635,6 +643,10 @@
 		"message": "Recuperar el token de acceso con Twitter",
 		"description": "data/index.html"
 	},
+	"hey_it_is_you": {
+		"message": "¡Hey, eres tú!",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "Añadir",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"weakness": {
-		"message": "Débil",
+	"close_current_column": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "Hora de reinicio",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {

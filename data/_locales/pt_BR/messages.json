@@ -103,6 +103,10 @@
 		"message": "Senha",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Desativado",
 		"description": "data/index.html"
@@ -311,9 +315,9 @@
 		"message": "Sobre & ajuda",
 		"description": "data/index.html"
 	},
-	"hey_it_is_you": {
-		"message": "Olha, esse é você!",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Solicitar novamente o token de acesso",
@@ -507,8 +511,8 @@
 		"message": "Seguidores",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "Tempo de reset",
+	"weakness": {
+		"message": "Fraqueza",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "Pre-carregar últimos tweets numa conversa se for possível.",
 		"description": "data/index.html"
 	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "Passo 2",
 		"description": "data/index.html"
@@ -635,6 +643,10 @@
 		"message": "Solicitar novamente o token do Twitter",
 		"description": "data/index.html"
 	},
+	"hey_it_is_you": {
+		"message": "Olha, esse é você!",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "Adicionar",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "Biografia",
 		"description": "data/index.html"
 	},
-	"weakness": {
-		"message": "Fraqueza",
+	"close_current_column": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "Tempo de reset",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {

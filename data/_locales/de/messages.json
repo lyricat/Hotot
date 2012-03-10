@@ -103,6 +103,10 @@
 		"message": "Passwort",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Deaktiviert",
 		"description": "data/index.html"
@@ -311,9 +315,9 @@
 		"message": "Über & Hilfe",
 		"description": "data/index.html"
 	},
-	"hey_it_is_you": {
-		"message": "Hey, das sind Sie!",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Zugangstoken zurückziehen",
@@ -507,8 +511,8 @@
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "Zeit zurücksetzen",
+	"weakness": {
+		"message": "Schwach",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "Wenn möglich die neusten Tweets in Konversationen vorladen.",
 		"description": "data/index.html"
 	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "Schritt 2",
 		"description": "data/index.html"
@@ -635,6 +643,10 @@
 		"message": "Twitter-Zugangstoken zurückziehen",
 		"description": "data/index.html"
 	},
+	"hey_it_is_you": {
+		"message": "Hey, das sind Sie!",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "Hinzufügen",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"weakness": {
-		"message": "Schwach",
+	"close_current_column": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "Zeit zurücksetzen",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {

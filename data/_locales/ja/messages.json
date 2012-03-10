@@ -103,6 +103,10 @@
 		"message": "パスワード",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "無効",
 		"description": ""
@@ -311,9 +315,9 @@
 		"message": "ほっとっとについて・ヘルプ",
 		"description": ""
 	},
-	"hey_it_is_you": {
-		"message": "あなたです",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "トークンを再び取る",
@@ -507,8 +511,8 @@
 		"message": "フォロワー",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "リセット・タイム",
+	"weakness": {
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "出来る限り最新ツイートの対話をプレロードする",
 		"description": ""
 	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "ステップ２",
 		"description": ""
@@ -635,6 +643,10 @@
 		"message": "トークンを再び取る",
 		"description": ""
 	},
+	"hey_it_is_you": {
+		"message": "あなたです",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "自己紹介",
 		"description": ""
 	},
-	"weakness": {
-		"message": "虚弱",
+	"close_current_column": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "リセット・タイム",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {

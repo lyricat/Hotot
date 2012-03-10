@@ -103,6 +103,10 @@
 		"message": "密码",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "打开以后自动登陆",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "禁用的",
 		"description": ""
@@ -300,7 +304,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"trending_topics": {
-		"message": "",
+		"message": "趋势",
 		"description": "data/js/ui.slider.js"
 	},
 	"via": {
@@ -311,9 +315,9 @@
 		"message": "关于与帮助",
 		"description": ""
 	},
-	"hey_it_is_you": {
-		"message": "殿下，这是您自己！",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "打开此人的链接",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "重新获取访问令牌",
@@ -476,7 +480,7 @@
 		"description": ""
 	},
 	"upload_api_base": {
-		"message": "",
+		"message": "Upload API Base",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -507,8 +511,8 @@
 		"message": "关注者",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "下次补魔时间",
+	"weakness": {
+		"message": "虚弱",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "如果可能的话，预加载对话的上一条状态",
 		"description": ""
 	},
+	"open_first_link": {
+		"message": "打开第一个链接（如果存在的话）",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "第二步",
 		"description": ""
@@ -635,6 +643,10 @@
 		"message": "重新获取Twitter访问令牌",
 		"description": ""
 	},
+	"hey_it_is_you": {
+		"message": "殿下，这是您自己！",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "添加",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "自述",
 		"description": ""
 	},
-	"weakness": {
-		"message": "虚弱",
+	"close_current_column": {
+		"message": "关闭当前列",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "下次补魔时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -688,7 +704,7 @@
 		"description": "data/index.html"
 	},
 	"trending_topics_view": {
-		"message": "",
+		"message": "趋势",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -1112,7 +1128,7 @@
 		"description": ""
 	},
 	"exit_hotot_when_close_window": {
-		"message": "",
+		"message": "关闭窗口时退出Hotot",
 		"description": "data/index.html"
 	}
 }

@@ -103,6 +103,10 @@
 		"message": "Password",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "Automatically sign in after opening",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Disabled",
 		"description": "data/index.html"
@@ -311,9 +315,9 @@
 		"message": "About & Help",
 		"description": "data/index.html"
 	},
-	"hey_it_is_you": {
-		"message": "Hey, it's You!",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "Open speaker link",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Regain Access Token",
@@ -476,7 +480,7 @@
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "",
+		"message": "Upload API Base",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -507,8 +511,8 @@
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
 	},
-	"reset_time": {
-		"message": "Reset Time",
+	"weakness": {
+		"message": "Weakness",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"select_fields": {
@@ -579,6 +583,10 @@
 		"message": "Preload latest tweets in conversations if possible.",
 		"description": "data/index.html"
 	},
+	"open_first_link": {
+		"message": "Open first link",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "Step 2",
 		"description": "data/index.html"
@@ -635,6 +643,10 @@
 		"message": "Regain Access Token with Twitter",
 		"description": "data/index.html"
 	},
+	"hey_it_is_you": {
+		"message": "Hey, it's You!",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "Add",
 		"description": "data/index.html"
@@ -663,8 +675,12 @@
 		"message": "Bio",
 		"description": "data/index.html"
 	},
-	"weakness": {
-		"message": "Weakness",
+	"close_current_column": {
+		"message": "Close current column",
+		"description": "data/index.html"
+	},
+	"reset_time": {
+		"message": "Reset Time",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
@@ -1112,7 +1128,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "",
+		"message": "Exit Hotot when close window",
 		"description": "data/index.html"
 	}
 }

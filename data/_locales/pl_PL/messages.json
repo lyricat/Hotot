@@ -103,6 +103,10 @@
 		"message": "Hasło",
 		"description": "data/index.html"
 	},
+	"automatically_sign_in_after_opening": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"disabled": {
 		"message": "Nie aktywne",
 		"description": "data/index.html"
@@ -311,9 +315,9 @@
 		"message": "O programie & Pomoc",
 		"description": "data/index.html"
 	},
-	"hey_it_is_you": {
-		"message": "Hej, to Ty!",
-		"description": "data/js/ui.peopleview.js"
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"regain_access_token": {
 		"message": "Odzyskaj token dostępu",
@@ -579,6 +583,10 @@
 		"message": "Wstępnie wczytaj najnowsze ćwierknięcie do rozmowy jeśli to możliwe",
 		"description": "data/index.html"
 	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"step_two": {
 		"message": "Krok 2",
 		"description": "data/index.html"
@@ -635,6 +643,10 @@
 		"message": "Odzyskaj token dostępu do Twittera",
 		"description": "data/index.html"
 	},
+	"hey_it_is_you": {
+		"message": "Hej, to Ty!",
+		"description": "data/js/ui.peopleview.js"
+	},
 	"add": {
 		"message": "Dodaj",
 		"description": "data/index.html"
@@ -661,6 +673,10 @@
 	},
 	"bio": {
 		"message": "O mnie",
+		"description": "data/index.html"
+	},
+	"close_current_column": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"reset_time": {
