@@ -1,0 +1,6 @@
+For Fedora Packager:
+You have to copy all contents in hotot.changes into %changelog section of hotot.spec.example.
+
+For SuSE Packager:
+_service is used on openSUSE Build Service Web(build.opensuse.org) for automatically source handling.
+But due to openSUSE Factory Repository Policy, you can _ONLY_ use it in your own home repository to get a really fast changing Hotot distribution(Nightly).
