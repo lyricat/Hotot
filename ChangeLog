@@ -1,0 +1,130 @@
+The Latest Stable Version is 0.9.7.45
+The Latest Development Version is 0.9.7.46
+
+Version 0.9.7.46
+  *
+  *
+  *
+
+Version 0.9.7.45
+  * Build Fix. now KDE/GTK can be built at the same time.
+  * Translation update
+  * Bug fixes
+  * Documentation & Help update
+  * Universal image uploader for gir(gtk) and Chrome edition.
+
+Version 0.9.7.44
+  * Improve accuracy of Speech Input for Chrome edition.
+
+Version 0.9.7.43
+  * Speech Input for Chrome edition.
+
+Version 0.9.7.42
+  * Minor Style & CSS Fix
+  * Fix Qt edition. enables KDE but not run under it.
+  * Introduce "deleted tweet" style.
+  * Deutsch Translation.
+  * No Official 0.9.7.41 release. they forgot.
+
+Version 0.9.7.40
+  * Fix API limit bug.[no X-PHX:true for POST]
+
+Version 0.9.7.39
+  * GTK fixes.(checkbox in preference,appindicator,and etc.)
+  * Windows fixes.(filename,image preview,Qt 4.8,systemtray issues.)
+  * Improve "close to exit".
+  * Imporve "save last position".
+  * Update jquery.
+  * Loose API limit from 350/hour to 1000/hour.
+  * Brazilian Portuguese Translation completed.
+  * Add Trending Topics: Worldwide or Local City.
+  * Link hashtags to search box.
+  * Socket proxy support.
+
+Version 0.9.7.38
+  * Close to exit.
+
+Version 0.9.7.37
+  * Introduce STAP API proxy, support Twitter image upload.
+
+Version 0.9.7.36
+  * Replace precise scrolling resume with rough one,
+      to remove "timeline shake vertically after update".
+  * Code clean.
+
+Version 0.9.7.35
+  * Fixes on iron heart theme.
+
+Version 0.9.7.34
+  * Disabled auto scrolling.
+  * Install script: Fedora compatible.
+  * Fix bugs. character count, postion after closing tabs.
+  * Editable text after draft resumed.
+  * Conversation now can be resumed from draft.
+  * Minimize to tray.
+  * Update Spanish translation.
+  * Introduce Brazilian Portuguese translation.
+  * New theme: Iron Heart.
+
+Version 0.9.7.33
+  * Send Msg from user more menu.
+  * KDE window activate rework.
+
+Version 0.9.7.32
+  * Updated Translation for English, Spanish, French, Japanese,
+      Brazilian Portuguese, Simplified Chinese, and Orz Chinese(Moe).
+  * Color Label support.
+
+Version 0.9.7.31
+  * Fix: Cannot load more faved tweets.
+  * Repeated Search can be performed.
+  * Overwrite default selection color.
+
+Version 0.9.7.30
+  * Fix: Only send one request to load more contents.
+  * Re-enable sign in button after a failed request.
+  * Check file type before uploading image.
+
+Version 0.9.7.29
+  * Handle exception if failed to load ganalytics.
+  * Twitter picture service upload and preview.
+  * Support to change profile gravatar.
+
+Version 0.9.7.28
+  * Updated Translation for English, Spanish, French, Japanese,
+    Brazilian Portuguese, Simplified Chinese, and Orz Chinese(Moe).
+  * Mute options for Kismet.
+  * YOURLS url shorten service.
+
+Version 0.9.7.27
+  * Fixed duplicate tweets in search view.
+  * Automatically supplement ellipsis.
+  * Added Translation for Portugal Portuguese.
+
+Version 0.9.7.26
+  * Verify self rule for Kismet.
+    Simple Kismet rule syntax.
+  * Bring Finder back.
+  * Search People
+  * Retweets in all pages.
+  * Updated Translation for English, Spanish, French, Japanese,
+    Brazilian Portuguese, Simplified Chinese, and Orz Chinese(Moe).
+
+Version 0.9.7.25
+  * Introduce New Kismet filter. 
+  * New extension: ReadItLater.
+
+Version 0.9.7.24
+  * Author page URL fix.
+  * Support User/Password in Http proxy.
+
+Version 0.9.7.23
+  * Gir bug fixes. Increse max-connections.
+  * Google Translate extension update 1.1: API change.
+
+Version 0.9.7.22
+  * Update Icons.
+  * Retweets in User page.
+
+Version 0.9.7.21
+(to be continued)
