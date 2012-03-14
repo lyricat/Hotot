@@ -2,10 +2,13 @@
 Mon Mar 12 15:46:56 UTC 2012 - i@marguerite.su
 
 - Updated version 0.9.7.45
-  * Build Fix. now KDE/GTK can be built at the same time.
-  * Translation update
-  * Bug fixes
+  * Now KDE/GTK can be built at the same time.
+  * Translation update. New Polish Translation.
+  * Add more keyboard shortcuts.
+  * DM box now show recipient.
+  * Quote tweet calculate remaining chars correctly now.
   * Documentation & Help update
+  * Auto Sign in.
   * Universal image uploader for gir(gtk) and Chrome edition.
 - Previous version changelog
   * Version 0.9.7.44
@@ -57,7 +60,6 @@ Tue Jan 24 05:32:34 UTC 2012 - i@marguerite.su
     * Minimize to tray.
     * Update Spanish translation.
     * Introduce Brazilian Portuguese translation.
-    * New theme: Iron Heart.
   * Version 0.9.7.33
     * Send Msg from user more menu.
     * KDE window activate rework.
@@ -125,3 +127,55 @@ Wed Nov 23 09:00:47 UTC 2011 - i@marguerite.su
     * Update Icons.
     * Retweets in User page.
   * Version 0.9.7.21
+    * Merge Chrome edition into Main.
+  * Version 0.9.7
+    * Changed Search API to phoenix.
+    * Fix StatusBox Character Count. Treat Long URL same as t.co
+    * Fix load more in searchbox.
+    * Fix no entities error in conversation view.
+    * Fix icon directory.
+    * Remove dependency python-keybinder for Gir edition.
+    * Gir notification fix. enable some Gir features.
+      increase max-connection to 2. Gir menu/notify fix.
+    * Cursor fix. correct position after screen name insert.
+    * Asian-style Emoji(Smiley) Support.
+    * Qt edition with KDE integration initialed. Thanks to @csslayer.
+      Qt standalone edtion could run on Windows and Meego with starting
+      touch action support.
+    * Add bio to Bubble Prompt when hover on Friend's ID. support
+      inline ID Bubble Prompt.
+    * Drag & Upload pictures using status box.
+    * Added more hotokeys.
+    * Added http(s) proxy authentication support through urllib2.
+    * Unread alert for Chrome/GTK.
+    * Ubuntu Messaging menu support.
+    * DBus support.
+    * New iconset.
+    * Locale support. 
+      New Japanese/French/Spanish/Brazilian Portuguese Translation.
+    * instagr.am and picplz preview.
+    * Support to add list/profile view.
+    * Introduce draft box.
+    * Add Google Analytics.
+    * New Theme: Iron Heart.
+    * New extension: hotot stat.
+  * Version 0.9.6
+    * Fix api friends/ids. abort mission when try to slide to a
+      nonexistent view
+    * Now you can switch Quote/Retweet, Reply/Reply All action freely.
+    * Improve horizontal scroll on touchpad.
+    * Absorb picture/video preview mainstream.
+    * Fix empty search.
+    * to be continued.
+# A lot here.
+  * Version 0.9.3
+    * CSS fix. Hide box when no results return.
+      Restore toolbar to light color. Dialog width.
+      Fonts under Windows. 
+    * Icon fix.
+    * Clean dependencies.
+    * Minor Color change. Minor url change on Sign In page.
+    * A new web style contextmenu.
+  * Version 0.9.2
+    *
+  * Version 0.9.1

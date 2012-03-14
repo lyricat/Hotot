@@ -44,7 +44,7 @@
 		"description": ""
 	},
 	"fine": {
-		"message": "还能hold住",
+		"message": "还能 hold 住",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"find": {
@@ -52,7 +52,7 @@
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "撰写新状态",
+		"message": "发推",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
@@ -72,11 +72,11 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "点击继续",
+		"message": "点我继续",
 		"description": ""
 	},
 	"click_to_show_retweeters": {
-		"message": "点击查看转发人",
+		"message": "点我查看转发人",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
@@ -136,7 +136,7 @@
 		"description": ""
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和API地址。",
+		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和 API 地址。",
 		"description": "data/js/ui.welcome.js"
 	},
 	"rt_this_tweet": {
@@ -184,7 +184,7 @@
 		"description": "data/index.html"
 	},
 	"preferences": {
-		"message": "首选项",
+		"message": "偏好",
 		"description": ""
 	},
 	"auto_update": {
@@ -228,11 +228,11 @@
 		"description": ""
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "复制PIN Code并且将它粘贴到下面的文本框",
+		"message": "复制 PIN Code 并且将它粘贴到下面的文本框",
 		"description": ""
 	},
 	"api_setting": {
-		"message": "API设置",
+		"message": "API 设置",
 		"description": ""
 	},
 	"undo_successfully": {
@@ -412,7 +412,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"same_signing_api_base": {
-		"message": "使用相同API进行签名",
+		"message": "使用相同 API 进行签名",
 		"description": ""
 	},
 	"sound": {
@@ -456,7 +456,7 @@
 		"description": ""
 	},
 	"Insert_smiley": {
-		"message": "插入表情",
+		"message": "插入颜文字",
 		"description": "data/index.html"
 	},
 	"updating_dots": {
@@ -492,7 +492,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"save_as_draft": {
-		"message": "保存到草稿",
+		"message": "保存草稿",
 		"description": "data/index.html"
 	},
 	"author": {
@@ -600,7 +600,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"http_proxy": {
-		"message": "HTTP代理",
+		"message": "HTTP 代理",
 		"description": ""
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -640,11 +640,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"regain_access_token_with_twitter": {
-		"message": "重新获取Twitter访问令牌",
+		"message": "重新获取 Twitter 访问令牌",
 		"description": ""
 	},
 	"hey_it_is_you": {
-		"message": "殿下，这是您自己！",
+		"message": "殿下侬好！殿下再崴！",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"add": {
@@ -656,7 +656,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "使用Ctrl+Enter更新",
+		"message": "使用 Ctrl+Enter 更新",
 		"description": ""
 	},
 	"location": {
@@ -680,11 +680,11 @@
 		"description": "data/index.html"
 	},
 	"reset_time": {
-		"message": "下次补魔时间",
+		"message": "技能冷却时间还剩",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"default_picture_service": {
-		"message": "默认图片服务",
+		"message": "默认贴图服务",
 		"description": "data/index.html"
 	},
 	"mentions_view": {
@@ -720,7 +720,7 @@
 		"description": ""
 	},
 	"report_spam": {
-		"message": "报告垃圾账户",
+		"message": "举报垃圾账户",
 		"description": "data/js/ui.template.js"
 	},
 	"name": {
@@ -736,7 +736,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"powerfull": {
-		"message": "精力充沛",
+		"message": "地图炮充能完毕",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"drop": {
@@ -744,7 +744,7 @@
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "殿下您好！",
+		"message": "殿下侬好！",
 		"description": ""
 	},
 	"assassin_s_tango": {
@@ -856,7 +856,7 @@
 		"description": "data/index.html"
 	},
 	"ok": {
-		"message": "确定",
+		"message": "好呢",
 		"description": ""
 	},
 	"language": {
@@ -868,7 +868,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"use_ubuntu_indicator": {
-		"message": "使用Ubuntu Indicator",
+		"message": "使用乌斑兔 Indicator",
 		"description": ""
 	},
 	"status_is_over_140_characters": {
@@ -940,7 +940,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"same_signing_oauth_base": {
-		"message": "使用同样的OAuth地址进行签名",
+		"message": "使用同样的 OAuth 地址进行签名",
 		"description": ""
 	},
 	"loading_dots": {
@@ -1124,11 +1124,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"sign_in_with_twitter": {
-		"message": "登录到Twitter",
+		"message": "登录到 Twitter",
 		"description": ""
 	},
 	"exit_hotot_when_close_window": {
-		"message": "关闭窗口时退出Hotot",
+		"message": "关闭窗口时退出 Hotot",
 		"description": "data/index.html"
 	}
 }
