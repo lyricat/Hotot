@@ -58,6 +58,7 @@ public:
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
+    void onLinkHovered(const QString & link, const QString & title, const QString & textContent );
     void showDeveloperTool();
     void exit();
 #ifdef MEEGO_EDITION_HARMATTAN

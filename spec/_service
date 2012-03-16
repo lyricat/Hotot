@@ -1,0 +1,3 @@
+<services>
+  <service name="tar_scm"><param name="version">0.9.7.45</param><param name="url">http://github.com/shellex/Hotot.git</param><param name="filename">hotot-qt</param><param name="scm">git</param></service>
+<service name="recompress"><param name="file">*.tar</param><param name="compression">bz2</param></service><service name="set_version"/></services>

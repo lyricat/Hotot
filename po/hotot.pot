@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-10 15:29+0800\n"
+"POT-Creation-Date: 2012-03-10 15:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:37
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:45
@@ -24,9 +25,20 @@ msgstr ""
 msgid "Hotot Notification"
 msgstr ""
 
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, c-format
+msgid "Loading Search result %s ..."
+msgstr ""
+
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:77
 #: ../..//misc/hotot.desktop.in.h:1
 msgid "Hotot"
 msgstr ""
@@ -72,6 +84,95 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
 msgid "_Inspector"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+msgid "(c) 2009-2011 Shellex Wai\n"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Artwork"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Document"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
+msgid "&Minimize to Tray"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
+msgid "Show &MainWindow"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
+msgid "&Exit"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
+msgid "&Developer Tool"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+msgid "%1 unread Messages"
 msgstr ""
 
 #: ../..//misc/hotot.desktop.in.h:2

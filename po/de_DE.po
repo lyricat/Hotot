@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-10 15:29+0800\n"
+"POT-Creation-Date: 2012-03-10 15:56+0800\n"
 "PO-Revision-Date: 2010-10-17 18:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch/Deutschland\n"
@@ -16,9 +16,70 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+#, fuzzy
+msgid "%1 unread Messages"
+msgstr "Nachricht senden"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
+msgid "&Developer Tool"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
+msgid "&Exit"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
+msgid "&Minimize to Tray"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+msgid "(c) 2009-2011 Shellex Wai\n"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+#, fuzzy
+msgid "Artwork"
+msgstr "Grafik von"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+#, fuzzy
+msgid "Document"
+msgstr "Dokument von"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr ""
+
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:77
 #: ../..//misc/hotot.desktop.in.h:1
 msgid "Hotot"
 msgstr "Hotot"
@@ -46,6 +107,14 @@ msgstr "Hotot Twitter Client"
 msgid "Hotot: Click to Active."
 msgstr "Hotot: Klicken zum aktivieren."
 
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr ""
+
 #: ../..//misc/hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
 msgstr "Ein schlanker Twitter Client basierend auf Gtk2 und Webkit"
@@ -54,6 +123,40 @@ msgstr "Ein schlanker Twitter Client basierend auf Gtk2 und Webkit"
 #, fuzzy
 msgid "Lightweight Twitter Client base on Qt and Webkit"
 msgstr "Ein schlanker Twitter Client basierend auf Gtk2 und Webkit"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, fuzzy, c-format
+msgid "Loading Search result %s ..."
+msgstr "Lade Tweets..."
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
+msgid "Show &MainWindow"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
@@ -319,9 +422,6 @@ msgstr ""
 #~ msgid "Are you sure you want to block @"
 #~ msgstr "Willst du @"
 
-#~ msgid "Artwork by"
-#~ msgstr "Grafik von"
-
 #, fuzzy
 #~ msgid "Authentication"
 #~ msgstr "Anthentifizierung OK!"
@@ -427,9 +527,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Disabled"
 #~ msgstr "Deaktivieren"
-
-#~ msgid "Document by"
-#~ msgstr "Dokument von"
 
 #~ msgid "Enable"
 #~ msgstr "Aktivieren"
@@ -583,10 +680,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Loading ... "
 #~ msgstr "Lade..."
-
-#, fuzzy
-#~ msgid "Loading Resources ..."
-#~ msgstr "Lade Tweets..."
 
 #~ msgid "Location"
 #~ msgstr "Ort"
@@ -854,10 +947,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Select actions"
 #~ msgstr "Nächste Aktion"
-
-#, fuzzy
-#~ msgid "Send Message"
-#~ msgstr "Nachricht senden"
 
 #~ msgid "Send Request"
 #~ msgstr "Anfrage senden"

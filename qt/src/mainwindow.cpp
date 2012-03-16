@@ -38,6 +38,8 @@
 #include <QLocale>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QToolTip>
+#include <QCursor>
 #include <QWebInspector>
 #include <QGraphicsView>
 #include <QTimer>
@@ -161,6 +163,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     m_webView->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
+    connect(m_page, SIGNAL(linkHovered(QString, QString, QString)), this, SLOT(onLinkHovered(QString, QString, QString)));
 }
 
 #ifdef MEEGO_EDITION_HARMATTAN
@@ -377,3 +380,9 @@ void MainWindow::changeEvent(QEvent *event)
 }
 #endif
 
+void MainWindow::onLinkHovered(const QString & link, const QString & title, const QString & textContent )
+{
+    if (!link.isEmpty() && !title.isEmpty()) {
+        QToolTip::showText(QCursor::pos(), title);
+    }
+}
