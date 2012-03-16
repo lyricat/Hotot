@@ -628,16 +628,18 @@ function on_load_finish() {
             });
         // 6. run track code
         procs.push(function () {
-            if (util.is_native_platform()) {
-                track_alt({
-                    'platform': conf.vars.platform,
-                    'version': conf.vars.version}
-                );
-            } else {
-                track({
-                    'platform': conf.vars.platform,
-                    'version': conf.vars.version}
-                );
+            if (conf.settings.use_anonymous_stat) { 
+                if (util.is_native_platform()) {
+                    track_alt({
+                        'platform': conf.vars.platform,
+                        'version': conf.vars.version}
+                    );
+                } else {
+                   track({
+                       'platform': conf.vars.platform,
+                       'version': conf.vars.version}
+                   );
+                }
             }
             $(window).dequeue('_on_load_finish');
         });
@@ -646,12 +648,15 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    try {
-        var pageTracker = _gat._getTracker("UA-18538886-4");
-        pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
-        pageTracker._setCustomVar(2, 'Version', vars.version, 1);
-        pageTracker._trackPageview();
-    } catch (e) {}
+    $('head').append("<script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'></script>");
+    setTimeout(function () {
+        try {
+            var pageTracker = _gat._getTracker("UA-18538886-4");
+            pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
+            pageTracker._setCustomVar(2, 'Version', vars.version, 1);
+            pageTracker._trackPageview();
+        } catch (e) {}
+    }, 2000);
     return;
 }
 

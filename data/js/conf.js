@@ -24,6 +24,7 @@ default_settings: {
     , 'use_http_proxy_auth': false
     , 'http_proxy_auth_name': ''
     , 'http_proxy_auth_password': ''
+    , 'use_anonymous_stat': true
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
     , 'size_h': 550
@@ -52,11 +53,13 @@ default_prefs: {
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
         , 'effects_level': 1
+          // Behaviors
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
@@ -91,11 +94,13 @@ default_prefs: {
         , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
         , 'font_size': 12
         , 'effects_level': 1
+          // Behaviors
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'

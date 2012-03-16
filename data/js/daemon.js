@@ -107,8 +107,14 @@ daemon = {
                 return;
             }
             if (ret['delete'] && ret['delete']['status']) {
-                id = "#home-" + ret['delete']['status'].id_str;
-                $(id).addClass('deleted');
+                id = ret['delete']['status'].id_str;
+                if (conf.get_current_profile().preferences.use_deleted_mark) {
+                    $('#home-' + id).addClass('deleted');
+                    $('#mentions-' + id).addClass('deleted');
+                } else {
+                    $('#home-' + id).remove();
+                    $('#mentions-' + id).remove();
+                }
                 return;
             }
             if (ret.text && ret.user) {

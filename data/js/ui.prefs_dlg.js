@@ -122,6 +122,8 @@ function load_settings() {
         , conf.settings.close_to_exit);
     $('#chk_prefs_sign_in_automatically').prop('checked'
         , conf.settings.sign_in_automatically);
+    $('#chk_prefs_use_anonymous_stat').prop('checked'
+        , conf.settings.use_anonymous_stat);
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
@@ -157,6 +159,8 @@ function save_settings() {
         = $('#chk_prefs_close_to_exit').prop('checked');
     conf.settings.sign_in_automatically 
         = $('#chk_prefs_sign_in_automatically').prop('checked');
+    conf.settings.use_anonymous_stat 
+        = $('#chk_prefs_use_anonymous_stat').prop('checked');
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // proxy
@@ -233,7 +237,9 @@ function load_prefs() {
         , prefs.use_alt_reply);
     $('#chk_prefs_use_media_preview').prop('checked'
         , prefs.use_media_preview);
-    
+    $('#chk_prefs_use_deleted_mark').prop('checked'
+        , prefs.use_deleted_mark);
+
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
 
     // Advanced
@@ -286,6 +292,8 @@ function save_prefs() {
         = $('#chk_prefs_use_alt_reply').prop('checked'); 
     prefs['use_media_preview']
         = $('#chk_prefs_use_media_preview').prop('checked'); 
+    prefs['use_deleted_mark']
+        = $('#chk_prefs_use_deleted_mark').prop('checked'); 
     prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
 
     // Advanced
