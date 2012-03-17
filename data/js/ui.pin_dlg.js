@@ -31,6 +31,7 @@ function init () {
 
     $('#btn_oauth_pin_cancel').click(
     function (event) {
+        ui.Welcome.go.removeClass('loading');
         globals.oauth_dialog.close();
     });
 
