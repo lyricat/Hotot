@@ -78,7 +78,11 @@ function init () {
                 if (result) {
                     delete conf.profiles[conf.current_name];
                     ui.Welcome.load_profiles_info();
-                    $('#profile_avatar_list a:eq(1)').click();
+                    if ($('#profile_avatar_list a').length == 1) {
+                        $('#profile_avatar_list a:first').click();
+                    } else {
+                        $('#profile_avatar_list a:eq(1)').click();
+                    }
                 }        
             });
         }
@@ -214,14 +218,19 @@ function load_profiles_info() {
     $('#profile_avatar_list a').unbind('click');
     $('#profile_avatar_list li').not('.new_profile_item').remove();
 
-    var idx = 1;
+    var profiles = [];
     for (var name in conf.profiles) {
-        var protocol = conf.profiles[name].protocol;
-        var prefs = conf.profiles[name].preferences;
+        profiles.push([name, conf.profiles[name]]);
+    }
+    profiles.sort(function (a, b) {return b[1].order - a[1].order;})
+    for (var i = 0; i < profiles.length; i += 1) {
+        var name = profiles[i][0];
+        var protocol = profiles[i][1].protocol;
+        var prefs = profiles[i][1].preferences;
         var str = '<li><a title="'+ name
             + '" href="' + name
             + '" class="' + protocol
-            + '" idx="' + idx + '"';
+            + '" idx="' + (i + 1) + '"';
         if (prefs.profile_avatar.length != 0) {
             str += ' style="background-image: url('
                 + prefs.profile_avatar + ')"></a></li>';
@@ -229,7 +238,6 @@ function load_profiles_info() {
             str += '></a></li>';
         }
         $('#profile_avatar_list').append(str);
-        idx += 1;
     }
     $('#profile_avatar_list a').click(
     function (event) {
@@ -288,6 +296,7 @@ function authenticate_pass(result) {
     conf.get_current_profile().preferences.profile_avatar
         = globals.myself.profile_image_url;
     conf.apply_prefs(ui.Welcome.selected_profile, true);
+    conf.get_current_profile().order = Date.now();
     conf.save_prefs(conf.current_name);
 
     setTimeout(function () {

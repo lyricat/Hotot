@@ -217,6 +217,7 @@ function save_prefs(name, callback) {
     profile.protocol = conf.profiles[name].protocol;
     profile.preferences = JSON.stringify(conf.profiles[name].preferences);
     profile.order = conf.profiles[name].order;
+
     db.modify_profile(name, profile, function(result) {
         if (typeof (callback) != 'undefined') {
             callback();

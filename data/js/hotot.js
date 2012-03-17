@@ -88,7 +88,17 @@ function hotot_action(uri) {
 
 function quit() {
     conf.save_settings(function () {
-        conf.save_prefs(conf.current_name, function(){
+        if (conf.current_name.length != 0) {
+            conf.save_prefs(conf.current_name, function(){
+                if (conf.vars.platform == 'Chrome') {
+                    chrome.tabs.getCurrent(function (tab) {
+                        chrome.tabs.remove(tab.id);
+                    });
+                } else {
+                    hotot_action('system/quit');
+                }
+            });
+        } else {
             if (conf.vars.platform == 'Chrome') {
                 chrome.tabs.getCurrent(function (tab) {
                     chrome.tabs.remove(tab.id);
@@ -96,7 +106,7 @@ function quit() {
             } else {
                 hotot_action('system/quit');
             }
-        });
+        }
     });
 }
 
@@ -620,10 +630,15 @@ function on_load_finish() {
                 $('#welcome_page_main').fadeIn();
                 ui.Welcome.load_daily_hint();
                 ui.Welcome.load_profiles_info();
-                $('#profile_avatar_list a:eq(1)').click();
+                if ($('#profile_avatar_list a').length == 1) {
+                    $('#profile_avatar_list a:first').click();
+                } else {
+                    $('#profile_avatar_list a:eq(1)').click();
+                }
                 $(window).dequeue('_on_load_finish');
-                if (conf.settings.sign_in_automatically)
-                ui.Welcome.go.trigger('click');
+                if (conf.settings.sign_in_automatically) {
+                    ui.Welcome.go.trigger('click');
+                }
             });
             });
         // 6. run track code
@@ -723,6 +738,7 @@ jQuery(function($) {
         }
         if (event.ctrlKey && !event.shiftKey && !event.altKey && event.keyCode == 81) {
             // <Ctrl> + q to quit
+            //
             quit();
         }
         if (focus_input || !globals.in_main_view)
