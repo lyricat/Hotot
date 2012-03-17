@@ -78,7 +78,7 @@ function init () {
                 if (result) {
                     delete conf.profiles[conf.current_name];
                     ui.Welcome.load_profiles_info();
-                    $('#profile_avatar_list a:first').click();
+                    $('#profile_avatar_list a:eq(1)').click();
                 }        
             });
         }

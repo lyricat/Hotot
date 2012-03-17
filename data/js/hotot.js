@@ -620,7 +620,7 @@ function on_load_finish() {
                 $('#welcome_page_main').fadeIn();
                 ui.Welcome.load_daily_hint();
                 ui.Welcome.load_profiles_info();
-                $('#profile_avatar_list a:first').click();
+                $('#profile_avatar_list a:eq(1)').click();
                 $(window).dequeue('_on_load_finish');
                 if (conf.settings.sign_in_automatically)
                 ui.Welcome.go.trigger('click');
