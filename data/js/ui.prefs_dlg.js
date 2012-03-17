@@ -314,7 +314,7 @@ function save_prefs() {
     prefs['use_same_sign_oauth_base']
         = $('#chk_prefs_use_same_sign_oauth_base').prop('checked');
     // apply & save
-    conf.apply_prefs(conf.current_name);
+    conf.apply_prefs(conf.current_name, true);
     conf.save_prefs(conf.current_name);
 },
 

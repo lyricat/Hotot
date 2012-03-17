@@ -74,66 +74,48 @@
 <section id="center">
 <section id="welcome_page" class="page">
     <h1 data-i18n-text="hotot">Hotot</h1>
+    <div id="welcome_idicators">
+    	<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
+    </div>
     <div id="welcome_page_main">
     <ul id="profile_avatar_list">
-        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
+        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0"></a></li>
     </ul>
     <h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
     <div id="sign_in_block">
-        <h2 id="profile_title"></h2>
-        <div id="service_tabs">
-        <ul class="service_tabs_btns">
-            <li>
-            <a id="btn_service_twitter" service="twitter" href="#service_page_twitter" class="service_tabs_btn" title="Twitter">Twitter</a>
-            </li>
-            <li>
-            <a id="btn_service_identica" service="identica" href="#service_page_identica" class="service_tabs_btn" title="Identi.ca">Identi.ca</a>
-            </li>
-        </ul>
-        <div id="service_page_twitter" class="service_tabs_page">
-        <p>
-            <label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
-        </p>
-        <p style="text-align:center; margin:10px 0 50px 0;">
-            <a id="btn_oauth_sign_in" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
-        </p>
-        <p style="text-align:right; font-size: 10px;">
-            <a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
-        </p>
-        </div>
-
-        <div id="service_page_identica" class="service_tabs_page">
-        <p>
-            <label data-i18n-text="username">Username:</label><br/>
-            <input id="tbox_basic_auth_username" class="entry" style="width: 170px;" type="text" value=""/><br/>
-            <label data-i18n-text="password">Password:</label><br/>
-            <input id="tbox_basic_auth_password" class="entry" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" class="checkbox" checked="checked"/>
-            <label for="chk_remember_password" class="label" data-i18n-text="remember_password">Remember Password</label><br/>
-            <div style="text-align:center">
-            	<a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
+        <div class="inner">
+            <a class="go" href="#"></a>
+            <div class="profile_title"></div>
+            <div id="service_page_twitter" class="service_tabs_page">
+            <p style="font-style: italic;">
+                <label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
+            </p>
+            <p style="font-size: 10px; text-transform:uppercase">
+                <a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
+            </p>
             </div>
-        </p>
-        </div>
 
-        <div id="service_page_new" class="service_tabs_page">
-        <p>
-            <label data-i18n-text="profile_name">Profile Name:</label><br/>
-            <input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value=""/>
-            <label>@<span class="service_name"></span></label>
-            <div style="text-align:center;margin: 10px auto;">
-                <a id="btn_welcome_create_profile" class="button" title="Create a new Profile" data-i18n-title="create_profile" data-i18n-text="create_profile">Create Profile</a>
+            <div id="service_page_identica" class="service_tabs_page">
+                <input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" placeholder="Username"/>
+                <input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" placeholder="Password"/><br/>
             </div>
-        </p>
-        </div>
-        </div><!--tabs-->
+
+            <div id="service_page_new" class="service_tabs_page">
+                <label data-i18n-text="profile_name" for="tbox_new_profile_name">Profile Name:</label>
+                <input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value=""/>
+                <label>@</label>
+                <ul class="service_chooser">
+                    <li><a href="#twitter" title="Twitter" class="twitter selected">Twitter</a></li>
+                    <li><a href="#identica" title="Identi.ca" class="identica">Identi.ca</a></li>
+                </ul>
+            </div>
+        </div> <!-- END of #sign_in_block .inner -->
         <div style="clear:both"></div>
         <div class="bottom">
             <a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
             <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
             <a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
         </div>
-        <div style="clear:both"></div>
     </div><!-- END of #sign_in_block -->
     </div><!-- END of #welcome_page_main -->
     <div id="welcome_page_loading">
@@ -141,11 +123,6 @@
             <p><img src="image/ani_loading_bar.gif"/></p>
             <p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
         </div>
-    </div>
-    <div id="welcome_bottom">
-        <p>
-        <a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
-        </p>
     </div>
 </section>
 

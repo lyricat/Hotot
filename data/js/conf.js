@@ -70,7 +70,7 @@ default_prefs: {
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
         , 'upload_api_base': 'https://upload.twitter.com/1/'
-          // extensions:
+          // extensions and others
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
         , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
@@ -78,6 +78,8 @@ default_prefs: {
         , 'base_url': 'https://twitter.com/'
         , 'slider_state': null
         , 'views_lastest_id': {}
+        , 'welcome_background': ''
+        , 'profile_avatar': '' 
       }
     , 'identica': {
           // Account:
@@ -119,6 +121,8 @@ default_prefs: {
         , 'base_url': 'https://identi.ca/'
         , 'slider_state': null
         , 'views_lastest_id': {}
+        , 'welcome_background': ''
+        , 'profile_avatar': '' 
       }
 },
 
@@ -241,20 +245,27 @@ function apply_settings() {
 },
 
 apply_prefs:
-function apply_prefs(name) {
+function apply_prefs(name, full) {
     var active_profile = conf.profiles[name];
     var prefs = active_profile.preferences;
     conf.current_name = name;
 
-    $('#chk_remember_password').attr('checked', prefs.remember_password);
-    i18n.change(prefs.lang);
-    change_theme(prefs.theme, prefs.theme_path);
+    if (full == true) {
+        i18n.change(prefs.lang);
+        change_theme(prefs.theme, prefs.theme_path);
+        globals.tweet_font_size = prefs.font_size;
+        change_effects_level(prefs.effects_level);
+        ui.Main.use_preload_conversation = prefs.use_preload_conversation;
+        for (var id in ext.exts_info) {
+            ext.disable_ext(id);
+            if (prefs.exts_enabled.indexOf(id) != -1) {
+                ext.enable_ext(id);
+            }
+        }
+        ui.ImageUploader.service_name = prefs.default_picture_service;
+    }
     $('body').css('font-family', prefs.use_custom_font
         ? prefs.custom_font: prefs.font_family_used);
-    globals.tweet_font_size = prefs.font_size;
-    change_effects_level(prefs.effects_level);
-    ui.Main.use_preload_conversation = prefs.use_preload_conversation;
-
     globals.twitterClient.api_base = prefs.api_base;
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
     globals.twitterClient.search_api_base2 = prefs.search_api_base2;
@@ -268,15 +279,6 @@ function apply_prefs(name) {
     oauth.access_token = prefs.access_token;
     oauth.key = prefs.consumer_key || oauth.key;
     oauth.secret = prefs.consumer_secret || oauth.secret;
-    
-    ui.ImageUploader.service_name = prefs.default_picture_service;
-
-    for (var id in ext.exts_info) {
-        ext.disable_ext(id);
-        if (prefs.exts_enabled.indexOf(id) != -1) {
-            ext.enable_ext(id);
-        }
-    }
 },
 
 load_token:
