@@ -276,7 +276,7 @@ function load_profiles_info() {
 
         var offset = parseInt($(this).attr('idx')) * (74 + 7);
         $('#profile_avatar_list').stop().animate(
-            {'margin-top': '-' + (offset + 115) + 'px'}, 300);
+            {'margin-top': '-' + (offset + 165) + 'px'}, 300);
         return false;
     });
 },

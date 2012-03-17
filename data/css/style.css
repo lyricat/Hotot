@@ -1189,6 +1189,7 @@ label {
 	top: 0;
 	padding: 0 10px 3px 10px;
 	text-align: right;
+	z-index: 12;
 }
 
 #welcome_idicators a {
@@ -1303,9 +1304,9 @@ label {
 
 #sign_in_block {
 	position: absolute;
-	left: 10px;
+	left: 0px;
 	top: 50%;
-	margin-top: -100px;
+	margin-top: -150px;
 }
 
 #sign_in_block a {
@@ -1321,13 +1322,12 @@ label {
 	padding: 10px;
 	background: rgba(0, 0, 0, 0.7);
 	height: 64px;
-	border-radius: 3px;
 	border-top-right-radius: 42px;
 	border-bottom-right-radius: 42px;
 }
 
 #sign_in_block .inner > div {
-	margin: 0px 100px 0px 90px;
+	margin: 0px 100px 0px 110px;
 }
 
 #sign_in_block .bottom {
