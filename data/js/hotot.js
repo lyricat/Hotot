@@ -637,24 +637,20 @@ function on_load_finish() {
                 }
                 $(window).dequeue('_on_load_finish');
                 if (conf.settings.sign_in_automatically) {
-                    ui.Welcome.go.trigger('click');
+                    ui.Welcome.go.addClass('loading');
+                    setTimeout(function () {
+                        ui.Welcome.go.trigger('click');
+                    }, 2000);
                 }
             });
             });
         // 6. run track code
         procs.push(function () {
             if (conf.settings.use_anonymous_stat) { 
-                if (util.is_native_platform()) {
-                    track_alt({
-                        'platform': conf.vars.platform,
-                        'version': conf.vars.version}
-                    );
-                } else {
-                   track({
-                       'platform': conf.vars.platform,
-                       'version': conf.vars.version}
-                   );
-                }
+               track({
+                   'platform': conf.vars.platform,
+                   'version': conf.vars.version}
+               );
             }
             $(window).dequeue('_on_load_finish');
         });
@@ -663,50 +659,7 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    $('head').append("<script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'></script>");
-    setTimeout(function () {
-        try {
-            var pageTracker = _gat._getTracker("UA-18538886-4");
-            pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
-            pageTracker._setCustomVar(2, 'Version', vars.version, 1);
-            pageTracker._trackPageview();
-        } catch (e) {}
-    }, 2000);
     return;
-}
-
-function track_alt(vars) {  
-    function rand(min, max) {
-        return min + Math.floor(Math.random() * (max - min));
-    }
-    var img = new Image();
-    var urchinCode = 'UA-18538886-4';
-    var i=1000000000;
-    var utmn=rand(i,9999999999);
-    var cookie=rand(10000000,99999999);
-    var random=rand(i,2147483647);
-    var today=(new Date()).getTime();
-    var win = window.location;
-    var urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=5.2.0'
-        + '&utms=6'
-        + '&utmn=' + utmn
-        + '&utme=' + '8(Platform*Version)9('+vars.platform+'*'+vars.version+')11(1*1)'
-        + '&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.0 d1'
-        + '&utmdt=' + encodeURIComponent(document.title)
-        + '&utmhn=' + win.host 
-        + '&utmr=-'
-        + '&utmp=' + win.pathname 
-        + '&utmac=' + urchinCode
-        + '&utmcc=__utma%3D' + cookie+'.'+random+'.'+today+'.'+today+'.'
-            +today+'.2%3B%2B__utmb%3D'
-            +cookie+'%3B%2B__utmc%3D'
-            +cookie+'%3B%2B__utmz%3D'
-            +cookie+'.'+today
-            +'.2.2.utmccn%3D(referral)%7Cutmcsr%3D'
-            + win.host + '%7Cutmcct%3D'
-            + win.pathname + '%7Cutmcmd%3Dreferral%3B%2B__utmv%3D'
-            +cookie+'.-%3B';
-    img.src = urchinUrl;
 }
 
 var globals = {
