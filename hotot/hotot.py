@@ -272,6 +272,9 @@ class Hotot:
             , config.settings['size_h'])
         # apply proxy
         self.apply_proxy_setting()
+        # starts minimized
+        if config.settings['starts_minimized']:
+            self.window.hide()
 
     def apply_proxy_setting(self):
         if config.settings['use_http_proxy']:

@@ -287,7 +287,7 @@ function init(callback) {
 function init_dialogs() {
     hotot_log('init', 'init_dialogs()');
     globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
-    globals.oauth_dialog.resize(350, 350);
+    globals.oauth_dialog.resize(350, 400);
     globals.oauth_dialog.place(widget.DialogManager.CENTER);
     globals.oauth_dialog.create();
 

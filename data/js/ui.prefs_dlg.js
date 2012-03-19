@@ -122,6 +122,8 @@ function load_settings() {
         , conf.settings.close_to_exit);
     $('#chk_prefs_sign_in_automatically').prop('checked'
         , conf.settings.sign_in_automatically);
+    $('#chk_prefs_starts_minimized').prop('checked'
+        , conf.settings.starts_minimized);
     $('#chk_prefs_use_anonymous_stat').prop('checked'
         , conf.settings.use_anonymous_stat);
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
@@ -159,6 +161,8 @@ function save_settings() {
         = $('#chk_prefs_close_to_exit').prop('checked');
     conf.settings.sign_in_automatically 
         = $('#chk_prefs_sign_in_automatically').prop('checked');
+    conf.settings.starts_minimized 
+        = $('#chk_prefs_starts_minimized').prop('checked');
     conf.settings.use_anonymous_stat 
         = $('#chk_prefs_use_anonymous_stat').prop('checked');
     conf.settings.shortcut_summon_hotot 

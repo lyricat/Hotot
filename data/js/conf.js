@@ -31,6 +31,7 @@ default_settings: {
     , 'use_ubuntu_indicator': true
     , 'close_to_exit': false
     , 'sign_in_automatically': false
+    , 'starts_minimized': true
     , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
     , 'use_default_reply_all': false
     , 'pos_x': 0
