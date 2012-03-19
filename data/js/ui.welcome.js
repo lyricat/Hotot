@@ -33,15 +33,13 @@ function init () {
 
     ui.Welcome.go = $('#sign_in_block .go');
     ui.Welcome.go.click(function () {
-        if (!ui.Welcome.go.hasClass('loading')) {
-            if (ui.Welcome.selected_profile == 'default') {
-                ui.Welcome.create_profile();
-            } else {
-                if (ui.Welcome.selected_profile.indexOf('@twitter') != -1){
-                    ui.Welcome.oauth_sign_in();
-                } else { // identica
-                    ui.Welcome.basic_auth_sign_in();
-                }
+        if (ui.Welcome.selected_profile == 'default') {
+            ui.Welcome.create_profile();
+        } else {
+            if (ui.Welcome.selected_profile.indexOf('@twitter') != -1){
+                ui.Welcome.oauth_sign_in();
+            } else { // identica
+                ui.Welcome.basic_auth_sign_in();
             }
         }
     });

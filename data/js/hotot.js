@@ -668,7 +668,6 @@ function track(vars) {
         arr.push(k + '=' + vars[k]);
     }
     url += arr.join('&');
-    hotot_log('track', url)
     new Image().src = url;
     return;
 }
