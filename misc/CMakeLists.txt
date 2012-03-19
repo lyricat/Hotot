@@ -36,5 +36,12 @@ INTLTOOL_MERGE_TRANSLATION(${CMAKE_CURRENT_SOURCE_DIR}/hotot-qt.desktop.in ${CMA
 
 add_custom_target(desktopfile ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/hotot.desktop ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/hotot.desktop ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop
-        DESTINATION share/applications/)
+if (WITH_GTK)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/hotot.desktop 
+            DESTINATION share/applications/)
+endif (WITH_GTK)
+
+if (WITH_QT)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop
+            DESTINATION share/applications/)
+endif (WITH_QT)
