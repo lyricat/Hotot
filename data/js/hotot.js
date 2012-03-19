@@ -649,8 +649,11 @@ function on_load_finish() {
             if (conf.settings.use_anonymous_stat) { 
                track({
                    'platform': conf.vars.platform,
-                   'version': conf.vars.version}
-               );
+                   'version': conf.vars.version,
+                   'autologin': conf.settings.sign_in_automatically,
+                   'lang': window.navigator.language,
+                   'localeDate': new Date().toString()
+               });
             }
             $(window).dequeue('_on_load_finish');
         });
@@ -659,6 +662,14 @@ function on_load_finish() {
     }
 }
 function track(vars) {
+    var url = 'http://stat.hotot.org/?';
+    var arr = [];
+    for (var k in vars) {
+        arr.push(k + '=' + vars[k]);
+    }
+    url += arr.join('&');
+    hotot_log('track', url)
+    new Image().src = url;
     return;
 }
 
