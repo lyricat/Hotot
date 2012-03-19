@@ -48,13 +48,14 @@ function update_tweet_block_width() {
     if (view_width > 1280) {
         globals.tweet_block_width -= 1;
     }
-    $('.view_title:gt(ui.Slider.column_num)').hide();
+    $('.view_title:gt('+ui.Slider.column_num+')').hide();
+    $('.view_title:lt('+ui.Slider.column_num+')').show();
     $('.tweetview').width(globals.tweet_block_width);
     $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
         view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
     $('.view_title').width(globals.tweet_block_width-1);
     $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1);
+        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
 
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
