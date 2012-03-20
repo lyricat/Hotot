@@ -568,7 +568,7 @@ function init() {
         + ui.Template.reg_url_path_chars
     + '+)';
 
-    ui.Template.reg_user = new RegExp('(^|\\s|"|“|'
+    ui.Template.reg_user = new RegExp('(^|\\s|"|“|\\.|'
             + ui.Template.reg_cn_chars + ')'
         + ui.Template.reg_user_name_chars, 'g');
 
