@@ -320,7 +320,8 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // preload
     if (ui.Main.use_preload_conversation && self.hasOwnProperty('_me')) {
         for (var i = 0; i < json_obj.length; i += 1) {
-            if (json_obj[i].in_reply_to_status_id_str == null) {
+            if (json_obj[i].in_reply_to_status_id_str == null
+                && json_obj[i].in_reply_to_status_id == null) {
                 continue;
             }
             var dom_id = self.name + '-' + json_obj[i].id_str;
@@ -931,11 +932,13 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
         //listview.resume_pos = false;
         var count=ui.Main.add_tweets(listview, [prev_tweet_obj], true, true);
         // load the prev tweet in the thread.
-        var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
+        var reply_id = prev_tweet_obj.hasOwnProperty('in_reply_to_status_id_str') 
+            ? prev_tweet_obj.in_reply_to_status_id_str: prev_tweet_obj.in_reply_to_status_id;
         if (reply_id == null) { // end of thread.
             on_finish();
             return ;
         } else {
+            reply_id = reply_id.toString();
             ui.Main.load_thread_proc(listview, reply_id, on_finish, on_error);
         }
     }
@@ -955,7 +958,10 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
 
 preload_thread:
 function preload_thread(listview, tweet_obj) {
-    db.get_tweet(tweet_obj.in_reply_to_status_id_str,
+    var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str') ? tweet_obj.in_reply_to_status_id_str: tweet_obj.in_reply_to_status_id;
+    if (reply_id == null) return;
+    reply_id = reply_id.toString();
+    db.get_tweet(reply_id,
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
