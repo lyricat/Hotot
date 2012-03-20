@@ -505,6 +505,10 @@ function init_hotkey() {
     hotkey.register([ia, hotkey.calculate(79)], function () {
         ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
     });
+    // 'a' then 'f' to open finder
+    hotkey.register([ia, hotkey.calculate(70)], function () {
+        ui.Finder.show();
+    });
 
     // 'z' then 'o' to expand
     var iz = hotkey.calculate(90);
@@ -532,11 +536,6 @@ function init_hotkey() {
         if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
             ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
         }
-    });
-
-    // '/' to open finder
-    hotkey.register([hotkey.calculate(191)], function () {
-        ui.Finder.show();
     });
     // :)
     hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
