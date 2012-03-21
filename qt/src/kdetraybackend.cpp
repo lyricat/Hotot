@@ -46,7 +46,7 @@ KDETrayBackend::KDETrayBackend(MainWindow* parent):
 {
     m_statusNotifierItem->setAssociatedWidget(parent);
     m_statusNotifierItem->setIconByName("hotot_qt-inactive");
-    m_statusNotifierItem->setToolTip("hotot_qt", i18n("Hotot"), "");
+    m_statusNotifierItem->setToolTip("hotot", i18n("Hotot"), "");
     m_statusNotifierItem->setStatus(KStatusNotifierItem::Active);
     m_statusNotifierItem->setCategory(KStatusNotifierItem::Communications);
     m_statusNotifierItem->setStandardActionsEnabled(false);
@@ -59,7 +59,7 @@ void KDETrayBackend::showMessage(QString type, QString title, QString message, Q
 {
     Q_UNUSED(type)
     Q_UNUSED(image)
-    m_statusNotifierItem->showMessage(title, message, "hotot_qt", 4000);
+    m_statusNotifierItem->showMessage(title, message, "hotot", 4000);
 }
 
 void KDETrayBackend::setContextMenu(QMenu* menu)
@@ -87,5 +87,5 @@ void KDETrayBackend::unreadAlert(QString number)
         m_statusNotifierItem->setIconByName("hotot_qt-active");
     } else
         m_statusNotifierItem->setIconByName("hotot_qt-inactive");
-    m_statusNotifierItem->setToolTip("hotot_qt", i18n("Hotot"), i18np("1 unread post", "%1 unread posts", n));
+    m_statusNotifierItem->setToolTip("hotot", i18n("Hotot"), i18np("1 unread post", "%1 unread posts", n));
 }

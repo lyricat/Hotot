@@ -205,6 +205,28 @@ bool MainWindow::isCloseToExit() {
         return false;
 }
 
+bool MainWindow::isStartMinimized() {
+    QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.starts_minimized");
+    if (!mini.isValid())
+        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.starts_minimized");
+    if (mini.isValid()) {
+        return mini.toBool();
+    }
+    else 
+        return false;
+}
+
+bool MainWindow::isAutoSignIn() {
+    QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.sign_in_automatically");
+    if (!mini.isValid())
+        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.sign_in_automatically");
+    if (mini.isValid()) {
+        return mini.toBool();
+    }
+    else 
+        return false;
+}
+
 MainWindow::~MainWindow()
 {
     delete m_inspector;
@@ -215,10 +237,17 @@ void MainWindow::loadFinished(bool ok)
     disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
     if (ok) {
         initDatabases();
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_TWEET_CACHE_SIZE = 2048;"));
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_USER_CACHE_SIZE = 128;"));
         m_webView->page()->currentFrame()->evaluateJavaScript(QString("i18n.locale = \"%1\";").arg(QLocale::system().name()));
         m_webView->page()->currentFrame()->evaluateJavaScript("globals.load_flags = 1;");
+#ifndef MEEGO_EDITION_HARMATTAN
+        if (!isStartMinimized() || !isAutoSignIn())
+            show();
+#else
+        show();
+#endif
+    }
+    else {
+        show();
     }
 }
 
