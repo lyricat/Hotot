@@ -691,7 +691,7 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA');
+        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') && $(event.target).is(':visible');
         if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
