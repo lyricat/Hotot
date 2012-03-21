@@ -92,17 +92,21 @@ class XHotKey(threading.Thread):
                 if keycode != 0:
                     return None, None
                 if hasattr(Xlib.XK, "XK_" + k):
-                    keycode = getattr(Xlib.XK, "XK_" + k)
+                    keysym = getattr(Xlib.XK, "XK_" + k)
                 elif hasattr(Xlib.XK, "XK_" + kc):
-                    keycode = getattr(Xlib.XK, "XK_" + kc)
+                    keysym = getattr(Xlib.XK, "XK_" + kc)
                 elif hasattr(Xlib.XK, "XK_" + kc.lower()):
-                    keycode = getattr(Xlib.XK, "XK_" + kc.lower())
+                    keysym = getattr(Xlib.XK, "XK_" + kc.lower())
                 else:
                     return None, None
-                keycode = self.display.keysym_to_keycode(keycode)
+                keycode = self.display.keysym_to_keycode(keysym)
+        if keycode == 0:
+            return None, None
         return keycode, modifiers
 
     def bind(self, keycode, modifiers, callback):
+        if keycode == None or modifiers == None or callback == None:
+            return False
         k = str(keycode) + "-" + str(modifiers)
         if k not in self.registry:
             mode = Xlib.X.GrabModeAsync
