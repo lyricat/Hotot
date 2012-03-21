@@ -130,7 +130,5 @@ int main(int argc, char *argv[])
     w.setOrientationAngleLocked(true);
 #endif
 
-    w.show();
-
     return a.exec();
 }

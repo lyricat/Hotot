@@ -70,6 +70,8 @@ protected Q_SLOTS:
 protected:
     void initDatabases();
     bool isCloseToExit();
+    bool isStartMinimized();
+    bool isAutoSignIn();
     void closeEvent(QCloseEvent *evnet);
 #ifndef MEEGO_EDITION_HARMATTAN
     void changeEvent(QEvent *event);
