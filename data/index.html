@@ -72,135 +72,143 @@
 <div id="container">
 
 <section id="center">
-<section id="welcome_page" class="page">
-    <h1 data-i18n-text="hotot">Hotot</h1>
-    <div id="welcome_idicators">
-    	<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
-    </div>
-    <div id="welcome_page_main">
-    <ul id="profile_avatar_list">
-        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0"></a></li>
-    </ul>
-    <h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
-    <div id="sign_in_block">
-        <div class="inner">
-            <a class="go" href="#"></a>
-            <div class="profile_title"></div>
-            <div id="service_page_twitter" class="service_tabs_page">
-            <p style="font-style: italic;">
-                <label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
-            </p>
-            <p style="font-size: 10px; text-transform:uppercase">
-                <a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
-            </p>
-            </div>
+<div id="welcome_page" class="page">
+	<h1 data-i18n-text="hotot">Hotot</h1>
+	<div id="welcome_idicators">
+		<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
+	</div>
+	<div id="welcome_page_main">
+		<ul id="profile_avatar_list">
+			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0"></a></li>
+		</ul>
+		<h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
+		<div id="sign_in_block">
+			<div class="inner">
+				<a class="go" href="#"></a>
+				<div class="profile_title"></div>
+				<div id="service_page_twitter" class="service_tabs_page">
+					<p style="font-style: italic;">
+					<label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
+					</p>
+					<p style="font-size: 10px; text-transform:uppercase">
+					<a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
+					</p>
+				</div>
 
-            <div id="service_page_identica" class="service_tabs_page">
-                <input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" placeholder="Username"/>
-                <input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" placeholder="Password"/><br/>
-            </div>
+				<div id="service_page_identica" class="service_tabs_page">
+					<input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" placeholder="Username"/>
+					<input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" placeholder="Password"/><br/>
+				</div>
 
-            <div id="service_page_new" class="service_tabs_page">
-                <input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value="" placeholder="Profile Name"/>
-                <label>@</label>
-                <ul class="service_chooser">
-                    <li><a href="#twitter" title="Twitter" class="twitter selected">Twitter</a></li>
-                    <li><a href="#identica" title="Identi.ca" class="identica">Identi.ca</a></li>
-                </ul>
-            </div>
-        </div> <!-- END of #sign_in_block .inner -->
-        <div style="clear:both"></div>
-        <div class="bottom">
-            <a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
-            <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
-            <a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
-        </div>
-    </div><!-- END of #sign_in_block -->
-    </div><!-- END of #welcome_page_main -->
-    <div id="welcome_page_loading">
-        <div class="inner">
-            <p><img src="image/ani_loading_bar.gif"/></p>
-            <p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
-        </div>
-    </div>
-</section>
+				<div id="service_page_new" class="service_tabs_page">
+					<input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value="" placeholder="Profile Name"/>
+					<label>@</label>
+					<ul class="service_chooser">
+						<li><a href="#twitter" title="Twitter" class="twitter selected">Twitter</a></li>
+						<li><a href="#identica" title="Identi.ca" class="identica">Identi.ca</a></li>
+					</ul>
+				</div>
+			</div> <!-- END of #sign_in_block .inner -->
+			<div style="clear:both"></div>
+			<div class="bottom">
+				<a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
+				<a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
+				<a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
+			</div>
+		</div><!-- END of #sign_in_block -->
+	</div><!-- END of #welcome_page_main -->
+	<div id="welcome_page_loading">
+		<div class="inner">
+			<p><img src="image/ani_loading_bar.gif"/></p>
+			<p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
+		</div>
+	</div>
+</div>
 
-<section id="main_page" class="page">
-    <div id="main_page_slider">
-    </div>
-    <ul id="tweet_more_menu" class="hotot_menu">
-    <li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
-        title="Retweet this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="retweet"
-        >Retweet</a></li>
-    <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
-        title="Quote this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="quote"
-        >Quote</a></li>
-    <li><a id="tweet_reply_all_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Reply All"
-        data-i18n-text="reply_all"
-        >Reply All</a></li>
-    <li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
-        title="Reply this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="reply"
-        >Reply</a></li>
-    <li><a id="tweet_dm_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Send Message to them"
-        data-i18n-text="send_message"
-        >Send Message</a></li>
-    <li>
-        <a id="tweet_del_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Delete this tweet"
-        data-i18n-text="delete"
-        >Delete</a>
-    </li>
-    <li class="separator"><span></span></li>
-    <li>
-        <a id="tweet_set_color_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Set color label to the sender"
-        data-i18n-text="set_color_label"
-        >Set Color Label</a>
-    </li>
-    <li>
-        <a id="tweet_filter_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Filter this tweet"
-        data-i18n-text="filter_like_it"
-        >Filter like it</a>
-    </li>
-    <li class="separator"><span></span></li>
-    </ul>
-    <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
-</section>
+<div id="main_page" class="page">
+	<div id="main_page_slider">
+	</div>
+	<div id="empty_view_hint">
+		<h2>Hey!</h2>
+		<p>You don't have a view.</p>
+		<p>You should surely add one or more views by clicking the "Add" button above.</p>
+	</div>
+	<ul id="tweet_more_menu" class="hotot_menu">
+		<li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
+			title="Retweet this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="retweet"
+			>Retweet</a></li>
+		<li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
+			title="Quote this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="quote"
+			>Quote</a></li>
+		<li><a id="tweet_reply_all_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Reply All"
+			data-i18n-text="reply_all"
+			>Reply All</a></li>
+		<li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
+			title="Reply this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="reply"
+			>Reply</a></li>
+		<li><a id="tweet_dm_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Send Message to them"
+			data-i18n-text="send_message"
+			>Send Message</a></li>
+		<li>
+		<a id="tweet_del_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Delete this tweet"
+			data-i18n-text="delete"
+			>Delete</a>
+		</li>
+		<li class="separator"><span></span></li>
+		<li>
+		<a id="tweet_set_color_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Set color label to the sender"
+			data-i18n-text="set_color_label"
+			>Set Color Label</a>
+		</li>
+		<li>
+		<a id="tweet_filter_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Filter this tweet"
+			data-i18n-text="filter_like_it"
+			>Filter like it</a>
+		</li>
+		<li class="separator"><span></span></li>
+	</ul>
+	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
+</div>
 </section><!-- center -->
 <section id="header">
     <div id="header_inner">
     <div id="indication">
         <div id="indicator_btns">
             <div class="stick_left">
-                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot"></span></a>
-                <span class="shape"></span>
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
             </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
-                <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose" data-i18n-text="compose" data-i18n-title="compose">Compose</span></a>
-                <span class="shape"></span>
+							<a id="indicator_compose_btn" 
+								class="indicator_btn action_button" 
+								href="#compose" 
+								data-i18n-title="compose" title="Compose">
+								<span class="icon ic_compose"></span>
+								<span data-i18n-text="compose" style="float:left; margin-left: 10px;">Compose</span>
+							</a>
             </div>
-            <div>
+            <div class="no_stick">
                 <a id="indicator_add_btn" class="indicator_btn action_button" href="#add" title="Add new views" data-i18n-title="add_new_views"><span class="icon ic_add"></span></a>
-                <span class="shape"></span>
             </div>
 
         </div>
@@ -289,6 +297,9 @@
     </div> <!-- hotot_menu -->
     <ul id="slider_menu" class="hotot_menu">
         <li>
+            <a href="#home" data-i18n-text="home_view">Home view</a>
+        </li>
+        <li>
             <a href="#mentions" data-i18n-text="mentions_view">Mentions view</a>
         </li>
         <li>
@@ -299,6 +310,9 @@
         </li>
         <li>
             <a href="#favs" data-i18n-text="favs_view">Favourites view</a>
+        </li>
+        <li>
+            <a href="#search" data-i18n-text="search_view">Search view</a>
         </li>
         <li>
             <a href="#trending_topics" data-i18n-text="trending_topics_view">Trending topics view</a>

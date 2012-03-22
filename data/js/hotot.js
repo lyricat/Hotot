@@ -48,22 +48,34 @@ function update_tweet_block_width() {
     if (view_width > 1280) {
         globals.tweet_block_width -= 1;
     }
-    $('.view_title:gt('+ui.Slider.column_num+')').hide();
-    $('.view_title:lt('+ui.Slider.column_num+')').show();
-    $('.tweetview').width(globals.tweet_block_width);
-    $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
-    $('.view_title').width(globals.tweet_block_width-1);
-    $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
+    if (ui.Slider.column_num != 0) {
+        $('#main_page_slider').show();
+        $('#indication_light').show();
+        $('#empty_view_hint').hide();
+        $('.view_title:gt('+ui.Slider.column_num+')').hide();
+        $('.view_title:lt('+ui.Slider.column_num+')').show();
+        $('.tweetview').width(globals.tweet_block_width);
+        $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
+        $('.view_title').width(globals.tweet_block_width-1);
+        $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
+    } else {
+        $('#main_page_slider').hide();
+        $('#indication_light').hide();
+        $('#empty_view_hint').fadeIn();
+        $('.view_title').hide();    
+    }
 
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
     $('#indicator_btns').children('.no_stick:eq(0)')
         .css('margin-left', (($(window).width()-(idrs.length+1) * 40)/2) + 'px');
+    $('#indicator_btns').children('.no_stick:gt(0)')
+        .css('margin-left', '0px');
 
     // adjust width of compose button
-    if (ui.Slider.column_num == 1) {
+    if (view_width < 500) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
         $('#indicator_compose_btn').addClass('with_label');
@@ -755,7 +767,13 @@ jQuery(function($) {
                 conf.settings.size_w = $(window).width();
                 conf.settings.size_h = $(window).height();
                 conf.save_settings()
-                ui.Slider.slide_to(ui.Slider.current);
+                if (ui.Slider.column_num != 0) {
+                    if (ui.Slider.current.length == 0) {
+                        ui.Slider.slide_to(ui.Slider.tweet_blocks[0]);
+                    } else {
+                        ui.Slider.slide_to(ui.Slider.current);
+                    }
+                }
             }
         }
     });

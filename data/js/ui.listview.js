@@ -132,6 +132,7 @@ function render_list_view(view) {
         btn_delete.hide();
     }
     ui.Slider.set_icon(view.name, globals.twitterClient.get_user_profile_image(view.screen_name, 'normal'), ui.Slider.FLOAT_ICON);
+    ui.Slider.set_icon_alt(view.name, 'image/ic_list.png');
     ui.Template.fill_list_vcard(view);
 },
 

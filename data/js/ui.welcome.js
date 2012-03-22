@@ -308,6 +308,7 @@ function authenticate_pass(result) {
         globals.layout.open('north');
         kismet.load();
         document.title = _('hotot') + ' | ' + conf.current_name;
+
         hotot_action('system/sign_in');    
         ui.Welcome.go.removeClass('loading');
         setTimeout(function () {

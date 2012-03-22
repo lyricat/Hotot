@@ -5,7 +5,7 @@ me: {},
 
 id: '',
 
-current: 'home',
+current: '',
 
 column_num: 1,
 
@@ -20,6 +20,8 @@ isViewSettingMenuClosed: true,
 state: null,
 
 FLOAT_ICON: 1,
+
+BOARD_ICON: 2,
 
 system_views: {'home':0, 'mentions':0, 'messages':0, 'retweets':0, 'favs':0, 'search':0},
 
@@ -104,6 +106,8 @@ function init () {
         }
         ui.Slider.slide_to(name);
         ui.Slider.closeSliderMenu();
+        ui.Slider.save_state();
+        conf.save_prefs(conf.current_name);
         return false;
     });
     $('#slider_menu').mouseleave(
@@ -193,18 +197,15 @@ function save_state() {
 resume_state:
 function resume_state() {
     ui.Slider.state = conf.get_current_profile().preferences.slider_state;
-    if (ui.Slider.state == null || ui.Slider.state.order.length < 2) {
+    if (ui.Slider.state == null) {
         ui.Slider.state = {order: [], views: {}};
         ui.Slider.addDefaultView('search', {});
         ui.Slider.addDefaultView('home', {});
         ui.Slider.addDefaultView('mentions', {});
         ui.Slider.addDefaultView('messages', {});
     } else {
-        ui.Slider.addDefaultView('search', ui.Slider.state.views.search);
-        ui.Slider.addDefaultView('home', ui.Slider.state.views.home);
         for (var i = 0; i < ui.Slider.state.order.length; i += 1) {
             var name = ui.Slider.state.order[i];
-            if (name == 'search' || name == 'home') continue;
             var opts = ui.Slider.state.views[name];
             switch (opts.type) {
             case 'tweet':
@@ -219,6 +220,13 @@ function resume_state() {
             }
         }
     }
+    if (ui.Slider.column_num != 0) {
+        if (ui.Slider.current.length == 0) {
+            ui.Slider.slide_to(ui.Slider.tweet_blocks[0]);
+        } else {
+            ui.Slider.slide_to(ui.Slider.current);
+        }
+    }
 },
 
 add:
@@ -226,6 +234,7 @@ function add(name, indicator_opts, view_opts) {
     if (ui.Slider.tweet_blocks.indexOf(name) == -1) {
         ui.Slider.add_view(name, view_opts);
         ui.Slider.add_indicator(name, indicator_opts);
+        update_tweet_block_width();            
         switch (view_opts.type) {
         case 'tweet':
             ui.Slider.state.views[name] = {
@@ -282,21 +291,29 @@ add_indicator:
 function add_indicator(name, opts) {
     // create & add indicator_btns
     var html = ui.Template.form_indicator(name, opts.title, opts.icon);
+    var btn = null;
     if (name == 'search') {
         html = html.replace('{%STICK%}', 'stick_right');
-        $(html).insertBefore($('#indicator_add_btn').parent());
+        btn = $(html);
+        btn.insertBefore($('#indicator_add_btn').parent());
         ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length, 0, 'search');
     } else {
         html = html.replace('{%STICK%}', 'no_stick');
-        var pos = $('#indicator_add_btn').parent().prevAll('.system_view');
-        if (pos.length == 0) {
-            $(html).insertBefore($('#indicator_add_btn').parent());
-            ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
+        btn = $(html);
+        if ($('#search_tweetview').length == 0) {
+            btn.insertBefore($('#indicator_add_btn').parent());
+            ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length, 0, name);  
         } else {
-            $(html).insertAfter($(pos.get(0)));
-            ui.Slider.tweet_blocks.splice(pos.length-1, 0, name);
+            btn.insertBefore($('#indicator_add_btn').parent());
+            ui.Slider.tweet_blocks.splice(ui.Slider.tweet_blocks.length - 1, 0, name);
         }
     }
+    btn.bind('dragstart', ui.Slider.indicator_btn_drag_start);
+    btn.bind('dragenter', ui.Slider.indicator_btn_drag_enter);
+    btn.bind('dragleave', ui.Slider.indicator_btn_drag_leave);
+    btn.bind('dragover', ui.Slider.indicator_btn_drag_over);
+    btn.bind('drop', ui.Slider.indicator_btn_drop);
+    btn.bind('dragend', ui.Slider.indicator_btn_drag_end);
 },
 
 add_view:
@@ -307,13 +324,11 @@ function add_view(name, opts) {
     if (name == 'search') {
         $('#main_page_slider').append(ui.Template.form_view(name, opts.title, 'tweetview'));
     } else {
-        var pos = $('#search_tweetview').prevAll('.system_view');
-        if (pos.length == 0) {
-            $(ui.Template.form_view(name, opts.title, 'tweetview'))
-                .insertBefore($('#search_tweetview'));
+        if ($('#search_tweetview').length == 0) {
+            $('#main_page_slider').append(ui.Template.form_view(name, opts.title, 'tweetview'));
         } else {
             $(ui.Template.form_view(name, opts.title, 'tweetview'))
-                .insertAfter($(pos.get(0)));
+                .insertBefore($('#search_tweetview'));
         }
     }
     // add to ui.Main.views
@@ -331,7 +346,6 @@ function add_view(name, opts) {
     } else {
         // nothing to do
     }
-    update_tweet_block_width();            
 },
 
 remove:
@@ -348,12 +362,17 @@ function remove(name) {
         }
         ui.Slider.remove_indicator(name);
         ui.Slider.remove_view(name);
+        update_tweet_block_width();            
         delete ui.Slider.state.views[name];
         if (prev) { 
             ui.Slider.slide_to(prev);
         } else {
-            ui.Slider.slide_to('home');
+            if (ui.Slider.column_num != 0) {
+                ui.Slider.slide_to('home');
+            }
         }
+        ui.Slider.save_state();
+        conf.save_prefs(conf.current_name);
     }
 },
 
@@ -369,14 +388,15 @@ function remove_view(name) {
     delete ui.Main.views[name];
     v.clear();
     v.destroy();
-    update_tweet_block_width();            
 },
 
 remove_indicator:
 function remove_indicator(name) {
     var idx = ui.Slider.tweet_blocks.indexOf(name);
     ui.Slider.tweet_blocks.splice(idx, 1);
-    $('#indicator_btns > div[name="'+name+'"]').remove();
+    var btn = $('#indicator_btns > div[name="'+name+'"]');
+    btn.unbind();
+    btn.remove();
 },
 
 slide_to:
@@ -432,7 +452,7 @@ function slide_to(id) {
         view_title.children('.title')
             .text(ui.Main.views[ui.Slider.displayed[i]].title);
         if (ui.Slider.displayed[i] == 'home' || ui.Slider.displayed[i] == 'mentions' || ui.Slider.displayed[i] == 'search') {
-            view_title.children('.close_btn').hide();
+            view_title.children('.close_btn').show();
         } else {
             view_title.children('.close_btn').show();
         }
@@ -515,13 +535,23 @@ function slide_to_next() {
 set_icon:
 function set_icon(name, icon, style) {
     var btn = $('#indication .indicator_btn[href="#'+name+'"]');
-    var span_icon = btn.children('span');
-    var img_icon = btn.children('img');
+    var img_icon = btn.children('.icon');
     img_icon.show();
     img_icon.attr('src', icon);
     if (style == ui.Slider.FLOAT_ICON) {
-        img_icon.addClass('float_icon')
+        img_icon.addClass('float')
     }
+    if (style == ui.Slider.BOARD_ICON) {
+        img_icon.addClass('board')
+    }
+},
+
+set_icon_alt:
+function set_icon_alt(name, icon) {
+    var btn = $('#indication .indicator_btn[href="#'+name+'"]');
+    var span_icon = btn.children('.icon_alt');
+    span_icon.show();
+    span_icon.css('background-image', 'url('+icon+')');
 },
 
 set_unread:
@@ -579,6 +609,111 @@ function closeViewSettingMenu() {
     ui.Slider.isViewSettingMenuClosed = true;
 },
 
+indicator_btn_drag_start:
+function indicator_btn_drag_start(ev) {
+    var my_name = $(this).attr('name');
+    if (my_name == 'search') {
+        return false;
+    }
+    $(this).css('opacity', '0.5');
+    console.log(my_name)
+    ev.originalEvent.dataTransfer.effectAllowed = 'move';
+    ev.originalEvent.dataTransfer.setData('text/html', my_name);
+    hotot_log('drag start')
+    return true;
+},
+
+indicator_btn_drag_enter:
+function indicator_btn_drag_enter(ev) {
+    $(this).addClass('over');
+},
+
+indicator_btn_drag_leave:
+function indicator_btn_drag_leave(ev) {
+    $(this).removeClass('over');
+},
+
+indicator_btn_drag_end:
+function indicator_btn_drag_end(ev) {
+    $('#indicator_btns > div').removeClass('over');
+    $(this).css('opacity', '1');
+    return false;
+},
+
+indicator_btn_drag_over:
+function indicator_btn_drag_over(ev) {
+    if (ev.originalEvent.preventDefault) {
+        ev.originalEvent.preventDefault(); 
+    } 
+    ev.originalEvent.dataTransfer.dropEffect = 'move';
+    return false;
+},
+
+indicator_btn_drop:
+function indicator_btn_drop(ev) {
+    if (ev.originalEvent.stopPropagation) {
+        ev.originalEvent.stopPropagation(); 
+    } 
+    var src_name = ev.originalEvent.dataTransfer.getData('text/html');
+    var my_name = $(this).attr('name');
+    hotot_log('switch', my_name +' and '+ src_name)
+    if (my_name == 'search'
+        || ui.Slider.tweet_blocks.indexOf(my_name) == -1
+        || ui.Slider.tweet_blocks.indexOf(src_name) == -1) { 
+        return false;
+    }
+    if (my_name != src_name) {
+        // reorder indicator_btn
+        ui.Slider.swap_indicator(src_name, my_name);
+        // reorder views
+        ui.Slider.swap_view(src_name, my_name);
+        // reorder ui.Slider.tweet_blocks
+        var src_idx = ui.Slider.tweet_blocks.indexOf(src_name);
+        var dst_idx = ui.Slider.tweet_blocks.indexOf(my_name);
+        ui.Slider.tweet_blocks.splice(src_idx, 1, my_name);
+        ui.Slider.tweet_blocks.splice(dst_idx, 1, src_name);
+        // update
+        ui.Slider.slide_to(src_name);
+        update_tweet_block_width();
+    }
+    return false;
+},
+
+swap_indicator:
+function swap_indicator(src_name, dst_name) {
+    var dst_wrapper = $('#indicator_btns>div[name="'+dst_name+'"]');
+    var src_wrapper = $('#indicator_btns>div[name="'+src_name+'"]');
+    var src_former = src_wrapper.prev()
+    if (src_former.attr('name') == dst_name) {
+        dst_wrapper = dst_wrapper.detach();
+        dst_wrapper.insertAfter(src_wrapper);
+    } else {
+        src_wrapper = src_wrapper.detach();
+        src_wrapper.insertAfter(dst_wrapper);
+        dst_wrapper.detach();
+        dst_wrapper.insertAfter(src_former);
+    }
+},
+
+swap_view:
+function swap_view(src_name, dst_name) {
+    var dst_wrapper = $('#main_page_slider > .tweetview[name="'+dst_name+'"]');
+    var src_wrapper = $('#main_page_slider > .tweetview[name="'+src_name+'"]');
+    var src_former = src_wrapper.prev()
+    if (src_former.length != 0 && src_former.attr('name') == dst_name) {
+        dst_wrapper = dst_wrapper.detach();
+        dst_wrapper.insertAfter(src_wrapper);
+    } else {
+        src_wrapper = src_wrapper.detach();
+        src_wrapper.insertAfter(dst_wrapper);
+        dst_wrapper.detach();
+        if (src_former.length == 0) {
+            src_wrapper.parent().prepend(dst_wrapper);
+        } else {
+            dst_wrapper.insertAfter(src_former);
+        }
+    }
+},
 
 addDefaultView:
 function addDefaultView(name, opts) {
