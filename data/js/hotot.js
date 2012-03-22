@@ -75,7 +75,7 @@ function update_tweet_block_width() {
         .css('margin-left', '0px');
 
     // adjust width of compose button
-    if (view_width < 500) {
+    if (view_width < 800) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
         $('#indicator_compose_btn').addClass('with_label');
@@ -635,7 +635,19 @@ function on_load_finish() {
             init_ui();
             $(window).dequeue('_on_load_finish');
         });
-        // 5. finish, hide loading prompt
+        // 5. platform relatd ui staffs
+        procs.push(function() {
+            // @TODO DND image uploading in native platform
+            // is disabled for conflicting with HTML5 DND
+            if (util.is_native_platform()) {
+                $('#tbox_status').attr('placeholder', 'Share something new ...');
+                $('#imageuploader_dlg .drag_hint').hide();
+            } else {
+                $('#imageuploader_dlg .preview_hint').hide();
+            }
+            $(window).dequeue('_on_load_finish');
+        });
+        // 6. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
@@ -656,7 +668,7 @@ function on_load_finish() {
                 }
             });
             });
-        // 6. run track code
+        // 7. run track code
         procs.push(function () {
             if (conf.settings.use_anonymous_stat) { 
                track({

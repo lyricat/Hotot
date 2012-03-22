@@ -616,7 +616,6 @@ function indicator_btn_drag_start(ev) {
         return false;
     }
     $(this).css('opacity', '0.5');
-    console.log(my_name)
     ev.originalEvent.dataTransfer.effectAllowed = 'move';
     ev.originalEvent.dataTransfer.setData('text/html', my_name);
     hotot_log('drag start')
@@ -644,7 +643,7 @@ indicator_btn_drag_over:
 function indicator_btn_drag_over(ev) {
     if (ev.originalEvent.preventDefault) {
         ev.originalEvent.preventDefault(); 
-    } 
+    }
     ev.originalEvent.dataTransfer.dropEffect = 'move';
     return false;
 },
@@ -656,7 +655,6 @@ function indicator_btn_drop(ev) {
     } 
     var src_name = ev.originalEvent.dataTransfer.getData('text/html');
     var my_name = $(this).attr('name');
-    hotot_log('switch', my_name +' and '+ src_name)
     if (my_name == 'search'
         || ui.Slider.tweet_blocks.indexOf(my_name) == -1
         || ui.Slider.tweet_blocks.indexOf(src_name) == -1) { 
