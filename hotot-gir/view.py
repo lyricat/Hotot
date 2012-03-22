@@ -138,7 +138,7 @@ class MainView(WebKit.WebView):
         else:
             return
         if os.path.isfile(path):
-            gobject.idle_add(view.execute_script, '''
+            GObject.idle_add(view.execute_script, '''
                 ui.ImageUploader.pyload("%s");
                 ui.ImageUploader.show();
                 ''' % path)
