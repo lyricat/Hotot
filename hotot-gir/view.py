@@ -43,14 +43,14 @@ class MainView(WebKit.WebView):
         self.connect('script-alert', self.on_script_alert);
         self.connect('load-finished', self.on_load_finish);
         self.connect("hovering-over-link", self.on_over_link);
-        self.connect('drag_data_received', self.on_drag_data_received)
-        self.connect('drag_motion', self.on_drag_motion)
-        self.connect('drag_drop', self.on_drag_drop)
-        # @TODO DND for gir
-        te = Gtk.TargetEntry.new(
-            'text/uri-list', 0, TARGET_TYPE_URI_LIST)
-        self.drag_dest_set( Gtk.DestDefaults.ALL,
-                  [te], Gdk.DragAction.COPY)
+#       self.connect('drag_data_received', self.on_drag_data_received)
+#       self.connect('drag_motion', self.on_drag_motion)
+#       self.connect('drag_drop', self.on_drag_drop)
+#       # @TODO DND for gir
+#       te = Gtk.TargetEntry.new(
+#           'text/uri-list', 0, TARGET_TYPE_URI_LIST)
+#       self.drag_dest_set( Gtk.DestDefaults.ALL,
+#                 [te], Gdk.DragAction.COPY)
 
         if config.ENABLE_INSPECTOR:
             from inspector import HototInspector

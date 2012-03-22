@@ -44,12 +44,11 @@ class MainView(WebView):
         self.connect('script-alert', self.on_script_alert)
         self.connect('load-finished', self.on_load_finish)
         self.connect("hovering-over-link", self.on_over_link)
-        self.connect('drag_data_received', self.on_drag_data_received)
-        self.connect('drag_motion', self.on_drag_motion)
+#        self.connect('drag_data_received', self.on_drag_data_received)
+#        self.connect('drag_motion', self.on_drag_motion)
 #        self.connect('drag_drop', self.on_drag_drop)
-        self.drag_dest_set( gtk.DEST_DEFAULT_MOTION |
-                  gtk.DEST_DEFAULT_HIGHLIGHT | gtk.DEST_DEFAULT_DROP,
-                  dnd_list, gtk.gdk.ACTION_COPY)
+#        self.drag_dest_set(gtk.DEST_DEFAULT_DROP,
+#                  dnd_list, gtk.gdk.ACTION_COPY)
         templatefile = utils.get_ui_object(config.TEMPLATE)
         template = open(templatefile, 'rb').read()
         self.load_html_string(template, 'file://' + templatefile)
