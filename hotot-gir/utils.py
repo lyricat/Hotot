@@ -44,7 +44,7 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
         session.set_property("max-conns-per-host", 1)
 
         if host:
-            proxy_uri = Soup.URI()
+            proxy_uri = Soup.URI.new("http://127.0.0.1")
             proxy_uri.set_scheme(str(scheme))
             proxy_uri.set_host(str(host))
             if port:
