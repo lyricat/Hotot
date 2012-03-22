@@ -69,7 +69,7 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
             soup_uri_new = libsoup.soup_uri_new
             soup_uri_new.restype = c_void_p
             soup_uri_new.argtypes = [ c_char_p ]
-            proxy_uri = soup_uri_new(None)
+            proxy_uri = soup_uri_new("http://127.0.0.1")
             if proxy_uri == 0:
                 return 1
 
