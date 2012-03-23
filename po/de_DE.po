@@ -21,7 +21,7 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
 #, fuzzy
 msgid "%1 unread Messages"
-msgstr "%1 ungelesene Nachricht"
+msgstr "%1 ungelesene Nachrichten"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
 msgid "&Developer Tool"
