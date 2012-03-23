@@ -48,22 +48,34 @@ function update_tweet_block_width() {
     if (view_width > 1280) {
         globals.tweet_block_width -= 1;
     }
-    $('.view_title:gt('+ui.Slider.column_num+')').hide();
-    $('.view_title:lt('+ui.Slider.column_num+')').show();
-    $('.tweetview').width(globals.tweet_block_width);
-    $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
-    $('.view_title').width(globals.tweet_block_width-1);
-    $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
+    if (ui.Slider.column_num != 0) {
+        $('#main_page_slider').show();
+        $('#indication_light').show();
+        $('#empty_view_hint').hide();
+        $('.view_title:gt('+ui.Slider.column_num+')').hide();
+        $('.view_title:lt('+ui.Slider.column_num+')').show();
+        $('.tweetview').width(globals.tweet_block_width);
+        $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
+        $('.view_title').width(globals.tweet_block_width-1);
+        $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
+    } else {
+        $('#main_page_slider').hide();
+        $('#indication_light').hide();
+        $('#empty_view_hint').fadeIn();
+        $('.view_title').hide();    
+    }
 
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
     $('#indicator_btns').children('.no_stick:eq(0)')
         .css('margin-left', (($(window).width()-(idrs.length+1) * 40)/2) + 'px');
+    $('#indicator_btns').children('.no_stick:gt(0)')
+        .css('margin-left', '0px');
 
     // adjust width of compose button
-    if (ui.Slider.column_num == 1) {
+    if (view_width < 800) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
         $('#indicator_compose_btn').addClass('with_label');
@@ -505,6 +517,10 @@ function init_hotkey() {
     hotkey.register([ia, hotkey.calculate(79)], function () {
         ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
     });
+    // 'a' then 'f' to open finder
+    hotkey.register([ia, hotkey.calculate(70)], function () {
+        ui.Finder.show();
+    });
 
     // 'z' then 'o' to expand
     var iz = hotkey.calculate(90);
@@ -532,11 +548,6 @@ function init_hotkey() {
         if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
             ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
         }
-    });
-
-    // '/' to open finder
-    hotkey.register([hotkey.calculate(191)], function () {
-        ui.Finder.show();
     });
     // :)
     hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
@@ -624,7 +635,19 @@ function on_load_finish() {
             init_ui();
             $(window).dequeue('_on_load_finish');
         });
-        // 5. finish, hide loading prompt
+        // 5. platform relatd ui staffs
+        procs.push(function() {
+            // @TODO DND image uploading in native platform
+            // is disabled for conflicting with HTML5 DND
+            if (util.is_native_platform()) {
+                $('#tbox_status').attr('placeholder', 'Share something new ...');
+                $('#imageuploader_dlg .drag_hint').hide();
+            } else {
+                $('#imageuploader_dlg .preview_hint').hide();
+            }
+            $(window).dequeue('_on_load_finish');
+        });
+        // 6. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
@@ -645,7 +668,7 @@ function on_load_finish() {
                 }
             });
             });
-        // 6. run track code
+        // 7. run track code
         procs.push(function () {
             if (conf.settings.use_anonymous_stat) { 
                track({
@@ -692,7 +715,7 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA');
+        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') && $(event.target).is(':visible');
         if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
             if (event.keyCode == 191) {
                 // '?' to open help & about dialog
@@ -756,7 +779,13 @@ jQuery(function($) {
                 conf.settings.size_w = $(window).width();
                 conf.settings.size_h = $(window).height();
                 conf.save_settings()
-                ui.Slider.slide_to(ui.Slider.current);
+                if (ui.Slider.column_num != 0) {
+                    if (ui.Slider.current.length == 0) {
+                        ui.Slider.slide_to(ui.Slider.tweet_blocks[0]);
+                    } else {
+                        ui.Slider.slide_to(ui.Slider.current);
+                    }
+                }
             }
         }
     });

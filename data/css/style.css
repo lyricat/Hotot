@@ -532,6 +532,7 @@ pre {
 	height: 22px;
 	width: 100%;
 	overflow: hidden;
+	background: #F2F2F2;
 }
 
 #view_title_bar .view_title {
@@ -626,19 +627,23 @@ pre {
 	background-color: white;
 	color: #36c;
 }
-
-#indication .indicator_btn > .icon {
-	display: block;
+#indicator_btns > div.over {
+	background: rgba(133,133,255,0.5);
+}
+#indication .indicator_btn > .icon_alt {
+	display: none;
 	height: 40px;
 	background-position: center center;
 	background-repeat: no-repeat;
 }
 
-#indication .indicator_btn > img.icon {
-	display: none;
-	width: 28px;
-	height: 28px;
-	margin-top: 6px;
+#indication .indicator_btn > .icon {
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin: 8px auto 2px auto;
+}
+#indication .indicator_btn > .icon.board, #indication .indicator_btn > .icon.float {
 	background-color: #333;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -647,7 +652,7 @@ pre {
 	box-shadow: 0 1px 3px #000;
 }
 
-#indication .indicator_btn > img.float_icon {
+#indication .indicator_btn > .icon.float {
 	float: left;
 	width: 16px;
 	height: 16px;
@@ -702,12 +707,13 @@ pre {
 	background-position: 8px center;
 }
 
-#indicator_compose_btn.with_label span.icon {
-	background-position: 8px center !important;
+#indicator_compose_btn.with_label .icon {
+	background-position: center center;
+	float: left;
+	margin-left: 10px;
 }
 
-#indicator_compose_btn.with_label.hlight span.icon {
-	background-position: 8px center !important;
+#indicator_compose_btn.with_label.hlight .icon {
 }
 
 #indication_slot {
@@ -901,6 +907,21 @@ label {
 #main_page_slider {
 	height: 100%;
 	width: auto;
+}
+
+#empty_view_hint {
+	display: none;
+	font-size: 20px;
+	width: 400px;
+	margin: 0 auto;
+	background: transparent url(../image/hint_arrow_up.png) no-repeat 200px 10px;
+}
+#empty_view_hint h2 {
+	padding: 20px 0;
+	font-size: 40px;
+}
+#empty_view_hint p {
+	margin: 10px 0;
 }
 
 .tweet_bar {

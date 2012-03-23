@@ -1,5 +1,5 @@
 '''
-@author: U{Xu Zhen}
+@author: Xu Zhen
 @license: LGPLv3+
 
 usage:
@@ -14,7 +14,7 @@ x.start()
 key, modifiers = x.parse("<Alt><Ctrl><Shift>A")
 x.bind(key, modifiers, func)
 x.unbind(key, modifiers, func)
-key, modifiers = x.parse("<Alt><Ctrl><Shift>B")
+key, modifiers = x.parse("<Control><B>")
 x.bind(key, modifiers, func)
 x.bind(key, modifiers, func)
 x.bind(key, modifiers, func)
@@ -40,7 +40,6 @@ class XHotKey(threading.Thread):
         mask = Xlib.X.LockMask | Xlib.X.Mod2Mask | Xlib.X.Mod3Mask | Xlib.X.Mod5Mask
         self.ignore_masks = [x for x in xrange(mask+1) if not (x & ~mask)]
         self.mask = Xlib.X.ShiftMask | Xlib.X.ControlMask | Xlib.X.Mod1Mask | Xlib.X.Mod4Mask
-        mode = Xlib.X.GrabModeAsync
         self.registry = {}
 
     def run(self):
@@ -70,7 +69,7 @@ class XHotKey(threading.Thread):
         self.running = False
 
     def parse(self, keysdesc):
-        names = {
+        mod_names = {
             "Shift": Xlib.X.ShiftMask,
             "Ctrl": Xlib.X.ControlMask,
             "Control": Xlib.X.ControlMask,
@@ -84,24 +83,30 @@ class XHotKey(threading.Thread):
         modifiers = 0
         keycode = 0
         for k in keys:
-            kc = k.capitalize()
-            if kc == "":
+            if k == "":
                 continue
-            if kc in names:
-                modifiers |= names[kc]
+            kc = k.capitalize()
+            if kc in mod_names:
+                modifiers |= mod_names[kc]
             else:
                 if keycode != 0:
                     return None, None
-                if hasattr(Xlib.XK, "XK_" + kc):
-                    keycode = getattr(Xlib.XK, "XK_" + kc)
+                if hasattr(Xlib.XK, "XK_" + k):
+                    keysym = getattr(Xlib.XK, "XK_" + k)
+                elif hasattr(Xlib.XK, "XK_" + kc):
+                    keysym = getattr(Xlib.XK, "XK_" + kc)
                 elif hasattr(Xlib.XK, "XK_" + kc.lower()):
-                    keycode = getattr(Xlib.XK, "XK_" + kc.lower())
+                    keysym = getattr(Xlib.XK, "XK_" + kc.lower())
                 else:
                     return None, None
-                keycode = self.display.keysym_to_keycode(keycode)
+                keycode = self.display.keysym_to_keycode(keysym)
+        if keycode == 0:
+            return None, None
         return keycode, modifiers
 
     def bind(self, keycode, modifiers, callback):
+        if keycode == None or modifiers == None or callback == None:
+            return False
         k = str(keycode) + "-" + str(modifiers)
         if k not in self.registry:
             mode = Xlib.X.GrabModeAsync
