@@ -5,16 +5,16 @@ Version 0.9.7.48
   * Auto sign in (GTK and Qt).
 	* Starts minimized (GTK and Qt).
 	* Chrome fix (correct layout in Chrome 19.0.1068.1).
-	* Fix: name not highlighted if it's following a char.
-	* Fix: keep track identi.ca conversations.
-	* Change the keybinding to invoke finder (form '/' to 'ff').
+	* Fix: name not highlighted if it's following a char (issue #119).
+	* Fix: keep track identi.ca conversations (issue #48).
+	* Change the keybinding to invoke finder (form '/' to 'ff') (issue #42).
 	* Fix something about keysyms (Gir).
 	* Fix some icons problem in Qt version.
 	* Fix unconsidered copy-n-paste (Gtk/Gir).
-	* Fix: keyboard focus not working properly.
+	* Fix: keyboard focus not working properly (issue #131).
 	* Workaround for libsoup runtime (Gtk/Gir).
-	* Fix: cannot remember the columns state.
-	* Allow to sort columns manually.
+	* Fix: cannot remember the columns state (issue #174).
+	* Allow to sort columns manually (issue #113, #97).
 	* Allow to add/close all columns.
 
 Version 0.9.7.47
