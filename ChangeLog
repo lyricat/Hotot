@@ -1,10 +1,29 @@
-The Latest Stable Version is 0.9.7.45
-The Latest Development Version is 0.9.7.46
+The Latest Stable Version is 0.9.7.47
+The Latest Development Version is 0.9.7.48
+
+Version 0.9.7.48
+  * Auto sign in (GTK and Qt).
+	* Starts minimized (GTK and Qt).
+	* Chrome fix (correct layout in Chrome 19.0.1068.1).
+	* Fix: name not highlighted if it's following a char.
+	* Fix: keep track identi.ca conversations.
+	* Change the keybinding to invoke finder (form '/' to 'ff').
+	* Fix something about keysyms (Gir).
+	* Fix some icons problem in Qt version.
+	* Fix unconsidered copy-n-paste (Gtk/Gir).
+	* Fix: keyboard focus not working properly.
+	* Workaround for libsoup runtime (Gtk/Gir).
+	* Fix: cannot remember the columns state.
+	* Allow to sort columns manually.
+	* Allow to add/close all columns.
+
+Version 0.9.7.47
+  * New welcome page.
+	* Auto arrange the order of profiles.
 
 Version 0.9.7.46
-  *
-  *
-  *
+  * Image uploader fixes.
+  * New option for delete mark.
 
 Version 0.9.7.45
   * Now KDE/GTK can be built at the same time.
