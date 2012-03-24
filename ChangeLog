@@ -1,13 +1,10 @@
-The Latest Stable Version is 0.9.7.47
-The Latest Development Version is 0.9.7.48
+The Latest Stable Version is 0.9.7.49
+The Latest Development Version is 0.9.7.50
 
-Version 0.9.7.48
-  * Auto sign in (GTK and Qt).
-	* Starts minimized (GTK and Qt).
-	* Chrome fix (correct layout in Chrome 19.0.1068.1).
-	* Fix: name not highlighted if it's following a char (issue #119).
-	* Fix: keep track identi.ca conversations (issue #48).
-	* Change the keybinding to invoke finder (form '/' to 'ff') (issue #42).
+Version 0.9.7.50
+	* 
+
+Version 0.9.7.49
 	* Fix something about keysyms (Gir).
 	* Fix some icons problem in Qt version.
 	* Fix unconsidered copy-n-paste (Gtk/Gir).
@@ -16,6 +13,14 @@ Version 0.9.7.48
 	* Fix: cannot remember the columns state (issue #174).
 	* Allow to sort columns manually (issue #113, #97).
 	* Allow to add/close all columns.
+
+Version 0.9.7.48
+  * Auto sign in (GTK and Qt).
+	* Starts minimized (GTK and Qt).
+	* Chrome fix (correct layout in Chrome 19.0.1068.1).
+	* Fix: name not highlighted if it's following a char (issue #119).
+	* Fix: keep track identi.ca conversations (issue #48).
+	* Change the keybinding to invoke finder (form '/' to 'ff') (issue #42).
 
 Version 0.9.7.47
   * New welcome page.
