@@ -42,8 +42,8 @@ msgstr "(c) 2009-2011 Shellex Wai\n"
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
 msgid "1 unread post"
 msgid_plural "%1 unread posts"
-msgstr[0] "1 ungelesener post"
-msgstr[1] "%1 ungelesene posts"
+msgstr[0] "1 ungelesener Beitrag"
+msgstr[1] "%1 ungelesene Beiträge"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 #, fuzzy
@@ -146,7 +146,7 @@ msgstr "Shellex Wai"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
 msgid "Show &MainWindow"
-msgstr "Zeige %HauptFenster"
+msgstr "Zeige &HauptFenster"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 msgid "Tualatrix Chou"
