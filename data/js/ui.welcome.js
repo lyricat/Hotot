@@ -341,7 +341,10 @@ function hide () {
 
 show:
 function show () {
-    this.me.show();
+    var _this = this;
+    conf.reload(function () {
+        _this.me.show();
+    });
     return this;
 }
 

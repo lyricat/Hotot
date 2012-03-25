@@ -190,8 +190,10 @@ function init () {
 
 save_state:
 function save_state() {
-    ui.Slider.state.order = ui.Slider.tweet_blocks;
-    conf.get_current_profile().preferences.slider_state = ui.Slider.state;
+    conf.get_current_profile().preferences.slider_state = {
+        order: ui.Slider.tweet_blocks.slice(),
+        views: ui.Slider.state.views
+    };
 },
 
 resume_state:
@@ -349,7 +351,7 @@ function add_view(name, opts) {
 },
 
 remove:
-function remove(name) {
+function remove(name, not_save_state) {
     if (ui.Slider.tweet_blocks.indexOf(name) != -1) {
         var prev = 'home';
         if (name == ui.Slider.current) {
@@ -371,6 +373,8 @@ function remove(name) {
                 ui.Slider.slide_to('home');
             }
         }
+    }
+    if (not_save_state != true) {
         ui.Slider.save_state();
         conf.save_prefs(conf.current_name);
     }
@@ -387,7 +391,6 @@ function remove_view(name) {
     // remove from ui.Main.views
     delete ui.Main.views[name];
     v.clear();
-    v.destroy();
 },
 
 remove_indicator:

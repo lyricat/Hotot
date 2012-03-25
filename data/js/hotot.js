@@ -102,6 +102,7 @@ function hotot_action(uri) {
 function quit() {
     conf.save_settings(function () {
         if (conf.current_name.length != 0) {
+            ui.Slider.save_state();
             conf.save_prefs(conf.current_name, function(){
                 if (conf.vars.platform == 'Chrome') {
                     chrome.tabs.getCurrent(function (tab) {
@@ -122,7 +123,9 @@ function quit() {
         }
     });
 }
-
+$(window).unload(function() {
+    quit();
+});
 function open_people(screen_name, additional_opts) {
     // @TODO check this user if exists or not
     toast.set('Lookup @'+screen_name+'... ').show();

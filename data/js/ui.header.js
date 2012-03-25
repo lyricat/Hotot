@@ -63,7 +63,7 @@ function init () {
         ui.Slider.save_state();
         conf.save_prefs(conf.current_name, function() {
             for (var k in ui.Main.views) {
-                ui.Slider.remove(ui.Main.views[k].name);
+                ui.Slider.remove(ui.Main.views[k].name, true);
             }
             globals.layout.close('north');
             globals.layout.close('south');
