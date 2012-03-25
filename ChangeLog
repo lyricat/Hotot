@@ -3,6 +3,7 @@ The Latest Development Version is 0.9.7.51
 
 Version 0.9.7.51
 	* Fix: cannot remember the columns state (issue #174).
+	* Allow to save search result in Hotot (issue #52, #13)
 
 Version 0.9.7.50
 	* Allow to sort columns manually (issue #113, #97).

@@ -55,7 +55,9 @@ function init_search_view(view) {
     });
 
     $('#create_saved_search_btn').click(function () {
-        open_search(search_entry.val());
+        var query = search_entry.val().trim();
+        if (query.length == 0) return;
+        open_search(query);
         /*
         var query = search_entry.val().trim();
         globals.twitterClient.create_saved_search(query, function () {
