@@ -106,8 +106,6 @@ function init () {
         }
         ui.Slider.slide_to(name);
         ui.Slider.closeSliderMenu();
-        ui.Slider.save_state();
-        conf.save_prefs(conf.current_name);
         return false;
     });
     $('#slider_menu').mouseleave(
@@ -208,17 +206,23 @@ function resume_state() {
     } else {
         for (var i = 0; i < ui.Slider.state.order.length; i += 1) {
             var name = ui.Slider.state.order[i];
-            var opts = ui.Slider.state.views[name];
-            switch (opts.type) {
-            case 'tweet':
-                ui.Slider.addDefaultView(name, opts);
-            break;
-            case 'people':
-                open_people(opts.screen_name, opts);
-            break;
-            case 'list':
-                open_list(opts.screen_name, opts.slug, opts);
-            break;
+            // @TODO remove unavailable name in 'order'
+            if (ui.Slider.state.views.hasOwnProperty(name)) {
+                var opts = ui.Slider.state.views[name];
+                switch (opts.type) {
+                case 'tweet':
+                    ui.Slider.addDefaultView(name, opts);
+                break;
+                case 'people':
+                    open_people(opts.screen_name, opts);
+                break;
+                case 'list':
+                    open_list(opts.screen_name, opts.slug, opts);
+                break;
+                case 'saved_search':
+                    open_search(opts.query, opts);
+                break;
+                }
             }
         }
     }
@@ -262,6 +266,14 @@ function add(name, indicator_opts, view_opts) {
                 , use_notify_sound: view_opts.use_notify_sound
                 , use_auto_update: view_opts.use_auto_update };
         break;
+        case 'saved_search':
+            ui.Slider.state.views[name] = {
+                  type: view_opts.type
+                , query: view_opts.query
+                , use_notify: view_opts.use_notify
+                , use_notify_sound: view_opts.use_notify_sound
+                , use_auto_update: view_opts.use_auto_update };
+        break;
         }
         $('#' + name + '_tweetview')[0].ontouchstart = function (e) {
             event.preventDefault();
@@ -284,6 +296,9 @@ function add(name, indicator_opts, view_opts) {
         $('#' + name + '_tweetview')[0].ontouchend = function (e) {
             this.start = 0;
         }
+        // @TODO needn't save prefs in each time to add view on startup
+        ui.Slider.save_state();
+        conf.save_prefs(conf.current_name);
     } else {
         ui.Slider.slide_to(name);
     }
@@ -621,7 +636,6 @@ function indicator_btn_drag_start(ev) {
     $(this).css('opacity', '0.5');
     ev.originalEvent.dataTransfer.effectAllowed = 'move';
     ev.originalEvent.dataTransfer.setData('text/html', my_name);
-    hotot_log('drag start')
     return true;
 },
 
@@ -776,6 +790,7 @@ function addDefaultView(name, opts) {
             , 'method': 'push'
             , 'interval': 60
             , 'item_type': 'id'
+            , 'use_notify': true
         }, opts));
     break;
     case 'messages':
@@ -793,6 +808,7 @@ function addDefaultView(name, opts) {
             , 'method': 'push'
             , 'interval': 120
             , 'item_type': 'id'
+            , 'use_notify': true
         }, opts));
     break;
     case 'retweets':

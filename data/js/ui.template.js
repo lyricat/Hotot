@@ -432,7 +432,7 @@ search_header_t:
     </div>\
     <div class="saved_searches">\
         <a id="create_saved_search_btn" class="button" \
-            href="javascript:void(0);"> +\
+            href="javascript:void(0);" title="Detach"> +\
         </a><div id="saved_searches_more_trigger" style="display:none;">\
             <a id="saved_searches_btn" class="vcard_more button" \
                 href="javascript:void(0);"> &#x25BE;</a> \

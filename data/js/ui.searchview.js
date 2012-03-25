@@ -55,7 +55,7 @@ function init_search_view(view) {
     });
 
     $('#create_saved_search_btn').click(function () {
-        open_search(view.query);
+        open_search(search_entry.val());
         /*
         var query = search_entry.val().trim();
         globals.twitterClient.create_saved_search(query, function () {
@@ -120,13 +120,15 @@ function load_tweet(view, success, fail) {
     }
     view.page = 1;
     globals.twitterClient.search(view.query, view.page, view.since_id, null, success);
-    globals.twitterClient.show_user(view.query,
-    function (user) {
-        view._header.find('.search_people_result').show();
-        view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
-    }, function (xhr, textStatus, errorThrown) {
-        view._header.find('.search_people_result').hide();
-    });
+    if (view.type != 'saved_search') {
+        globals.twitterClient.show_user(view.query,
+        function (user) {
+            view._header.find('.search_people_result').show();
+            view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
+        }, function (xhr, textStatus, errorThrown) {
+            view._header.find('.search_people_result').hide();
+        });
+    }
 },
 
 loadmore_tweet:

@@ -185,11 +185,11 @@ function open_list(screen_name, slug, additional_opts) {
 
 function open_search(query, additional_opts) {
     toast.set('Lookup "'+ query +'"... ').show();
-    var name = 'search_'+ query;
+    var name = 'search_'+ util.generate_uuid();
     var title = 'Search Result of "' + query + '"';
     ui.Slider.add(name
         , {title: title, icon:'image/ic_search.png'}
-        , $.extend({ 'type': 'search_saved', 'title': title
+        , $.extend({ 'type': 'saved_search', 'title': title
             , 'load': ui.SearchView.load_tweet
             , 'loadmore': ui.SearchView.loadmore_tweet
             , 'load_success': ui.SearchView.load_tweet_success
