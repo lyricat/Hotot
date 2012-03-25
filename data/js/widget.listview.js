@@ -40,6 +40,7 @@ function WidgetListView(id, name, params) {
     self.cursor = '';
     self.screen_name = '';
     self.slug = '';
+    self.query = '';
 
     self.use_notify = false;
     self.use_notify_sound = false;

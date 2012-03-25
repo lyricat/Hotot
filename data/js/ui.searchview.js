@@ -55,12 +55,15 @@ function init_search_view(view) {
     });
 
     $('#create_saved_search_btn').click(function () {
+        open_search(view.query);
+        /*
         var query = search_entry.val().trim();
         globals.twitterClient.create_saved_search(query, function () {
             toast.set('Saved Query "'+query+'"').show();
         }, function () {
             console.log("Too more queries");
         });
+        */
     });
 
     widget.autocomplete.connect(search_entry);

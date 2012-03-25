@@ -183,6 +183,31 @@ function open_list(screen_name, slug, additional_opts) {
     ui.Slider.slide_to(name);
 }
 
+function open_search(query, additional_opts) {
+    toast.set('Lookup "'+ query +'"... ').show();
+    var name = 'search_'+ query;
+    var title = 'Search Result of "' + query + '"';
+    ui.Slider.add(name
+        , {title: title, icon:'image/ic_search.png'}
+        , $.extend({ 'type': 'search_saved', 'title': title
+            , 'load': ui.SearchView.load_tweet
+            , 'loadmore': ui.SearchView.loadmore_tweet
+            , 'load_success': ui.SearchView.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.SearchView.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'former': ui.Template.form_search
+            , 'destroy': ui.SearchView.destroy_view            
+            , 'method': 'poll'
+            , 'interval': 240
+            , 'item_type': 'phoenix_search'
+            , 'is_trim': false
+            , 'query': query
+        }, additional_opts));
+    ui.Main.views[name].load();
+    ui.Slider.slide_to(name);
+}
+
 function update_status(text) {
     globals.twitterClient.update_status(text, null,
         function (result) {
