@@ -564,9 +564,6 @@ msgstr "_Visible"
 #~ msgid "Extensions"
 #~ msgstr "Extensions"
 
-#~ msgid "Extensions"
-#~ msgstr "Extensions"
-
 #, fuzzy
 #~ msgid "Fav"
 #~ msgstr "Ajouter aux favoris"
