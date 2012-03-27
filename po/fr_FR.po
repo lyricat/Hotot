@@ -41,7 +41,7 @@ msgstr ""
 msgid "1 unread post"
 msgid_plural "%1 unread posts"
 msgstr[0] "1 message non lu"
-msgstr[1] "1% messages non lus"
+msgstr[1] "%1 messages non lus"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 #, fuzzy
@@ -144,7 +144,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
 msgid "Show &MainWindow"
-msgstr ""
+msgstr "Voir &MainWindow"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 msgid "Tualatrix Chou"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
 msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
-msgstr "Utiliser un Sock Proxy au lieu d'un roxy HTTP"
+msgstr "Utiliser un Sock Proxy au lieu d'un Proxy HTTP"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Xu Zhen"
@@ -164,7 +164,7 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
 #, fuzzy
 msgid "_Compose"
-msgstr "Tweetbox"
+msgstr "_Tweetbox"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113
@@ -199,7 +199,7 @@ msgstr "_Visible"
 #~ msgstr " - n'a abouti à aucun résultat."
 
 #~ msgid " Successfully!"
-#~ msgstr " réussi !"
+#~ msgstr " Réussi !"
 
 #~ msgid " errors in your change. Abort..."
 #~ msgstr " erreurs dans vos modifications. Annulation..."
@@ -230,7 +230,7 @@ msgstr "_Visible"
 #~ msgstr "'Messagerie'"
 
 #~ msgid "'Extensions ... '"
-#~ msgstr "'Extensions...'"
+#~ msgstr "'Extensions ...'"
 
 #~ msgid "'Find someone you love.'"
 #~ msgstr "'Retrouver des amis'"
@@ -251,7 +251,7 @@ msgstr "_Visible"
 #~ msgstr "'Survoler pour ouvrir le champ de tweet'"
 
 #~ msgid "'Loading Tweets...'"
-#~ msgstr "'Chargement des tweets'"
+#~ msgstr "'Chargement des tweets ...'"
 
 #~ msgid "'Location'"
 #~ msgstr "'Localisation'"
@@ -308,10 +308,10 @@ msgstr "_Visible"
 #~ msgstr "'Signing OAuth Base'"
 
 #~ msgid "'Socks Proxy Port'"
-#~ msgstr "'Socks Proxy Port'"
+#~ msgstr "'Port Proxy Socks'"
 
 #~ msgid "'Summon Hot Key'"
-#~ msgstr "'Raccourci d'invocation'"
+#~ msgstr "'Raccourci clavier'"
 
 #~ msgid "'Type'"
 #~ msgstr "'Type'"
@@ -320,13 +320,13 @@ msgstr "_Visible"
 #~ msgstr "'Utiliser un proxy HTTP'"
 
 #~ msgid "'Use Native Input'"
-#~ msgstr "'Utiliser la boite de dialogue système'"
+#~ msgstr "'Utiliser la boite de dialogue Système'"
 
 #~ msgid "'Use Native Notify'"
-#~ msgstr "'Utiliser les notifications systèmes'"
+#~ msgstr "'Utiliser les notifications Systèmes'"
 
 #~ msgid "'Use Socks Proxy'"
-#~ msgstr "'Utiliser un proxy Socks'"
+#~ msgstr "'Utiliser un Proxy Socks'"
 
 #~ msgid "'Use Ubuntu Indicator'"
 #~ msgstr "'Utiliser l‘applet de notification Ubuntu'"
@@ -431,7 +431,7 @@ msgstr "_Visible"
 #~ msgstr "Identification OK!"
 
 #~ msgid "Authentication OK!"
-#~ msgstr "Identification OK!"
+#~ msgstr "Identification OK !"
 
 #, fuzzy
 #~ msgid "Auto Update"
@@ -492,10 +492,10 @@ msgstr "_Visible"
 #~ msgstr "Console"
 
 #~ msgid "Consumer Key"
-#~ msgstr "Benutzerschlüssel"
+#~ msgstr "Clé Client"
 
 #~ msgid "Consumer Secret"
-#~ msgstr "Benutzer Geheimnis"
+#~ msgstr "Clé Secrète"
 
 #, fuzzy
 #~ msgid "Copy the PIN Code and paste it into the box below"
@@ -503,7 +503,7 @@ msgstr "_Visible"
 
 #, fuzzy
 #~ msgid "Create A List"
-#~ msgstr "Liste des tweets"
+#~ msgstr "Créer une liste"
 
 #, fuzzy
 #~ msgid "Create Profile"
@@ -616,7 +616,7 @@ msgstr "_Visible"
 
 #, fuzzy
 #~ msgid "Friends"
-#~ msgstr "Abonnements: "
+#~ msgstr "Abonnements"
 
 #~ msgid "GO"
 #~ msgstr "GO"
