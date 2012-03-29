@@ -1,6 +1,6 @@
 {
 	"unfollow_at": {
-		"message": "Unfollow @",
+		"message": "Désabonner @",
 		"description": "data/js/ui.main.js"
 	},
 	"all": {
@@ -520,7 +520,7 @@
 		"description": "data/index.html"
 	},
 	"retweets_view": {
-		"message": "Retweets View",
+		"message": "Vue Retweet",
 		"description": "data/index.html"
 	},
 	"step_one": {
@@ -728,7 +728,7 @@
 		"description": "data/index.html"
 	},
 	"tweet_view": {
-		"message": "Tweet View",
+		"message": "Vue Tweet",
 		"description": "data/index.html"
 	},
 	"edit": {
