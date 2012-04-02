@@ -644,7 +644,6 @@ pre {
 	margin: 8px auto 2px auto;
 }
 #indication .indicator_btn > .icon.board, #indication .indicator_btn > .icon.float {
-	background-color: #333;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0 1px 3px #000;
