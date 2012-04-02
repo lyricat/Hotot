@@ -102,7 +102,9 @@ function hotot_action(uri) {
 function quit() {
     conf.save_settings(function () {
         if (conf.current_name.length != 0) {
-            ui.Slider.save_state();
+            if (globals.in_main_view) {
+                ui.Slider.save_state();
+            }
             conf.save_prefs(conf.current_name, function(){
                 if (conf.vars.platform == 'Chrome') {
                     chrome.tabs.getCurrent(function (tab) {
@@ -348,7 +350,7 @@ function init_dialogs() {
     globals.add_to_list_dialog.create();
 
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
-    globals.prefs_dialog.resize(500, 400);
+    globals.prefs_dialog.resize(600, 600);
     globals.prefs_dialog.place(widget.DialogManager.CENTER);
     globals.prefs_dialog.create();
 
