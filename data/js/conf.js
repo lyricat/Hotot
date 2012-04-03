@@ -51,7 +51,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_size': 13
+        , 'font_size': 14
         , 'effects_level': 1
           // Behaviors
         , 'use_native_notify': true
@@ -93,7 +93,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_size': 13
+        , 'font_size': 14
         , 'effects_level': 1
           // Behaviors
         , 'use_native_notify': true
