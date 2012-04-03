@@ -8,7 +8,7 @@
 		"description": ""
 	},
 	"access_token_doesnt_exist": {
-		"message": "呜呜，访问令牌不存在",
+		"message": "呜呼，访问令牌之不存噫",
 		"description": "data/index.html"
 	},
 	"action": {
@@ -324,7 +324,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "我能吞下玻璃而不伤身体噢。",
+		"message": "吾能吞下玻璃而不伤身耶。",
 		"description": ""
 	},
 	"font_size": {

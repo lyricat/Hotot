@@ -222,6 +222,7 @@ pre {
 	white-space:nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-size: 13px;
 }
 
 .hotot_menu > li > a.checked {

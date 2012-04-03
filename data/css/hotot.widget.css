@@ -32,7 +32,6 @@ disabled:
 */
 /* = widget.button = */
 .button {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
     display: inline-block;
     text-align: center;
     height: 30px;
@@ -47,6 +46,7 @@ disabled:
     border-radius: 2px;
     cursor: pointer;
     text-shadow: #fff 0 1px 1px; 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, #FCFCFC), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
 }
 
 .button.dark {
@@ -57,7 +57,7 @@ disabled:
 }
 
 .button:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, #FCFCFC), color-stop(4%,#F8F8F8), color-stop(100%,#F2f2f2));
 }
 
 .button.dark:hover {
@@ -207,29 +207,23 @@ disabled:
 /* = widget.entry & widget.textarea = */
 /* == entry & textarea == */
 .entry, .textarea {
-    border: 1px #ccc solid;
-    padding: 2px 5px;
-    background-color: #fff;
-    outline: none;
-    font-size: 14px;
-    font-family: monospace;
-    margin: 0;
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+	background: #FCFCFC;
+	border: 1px solid #ddd;
+	padding: 2px 5px;
+	outline: none;
+	margin: 0;
+	color: #444;
+	-moz-box-shadow: 1px 1px 4px #F4F4F4 inset;
+	-webkit-box-shadow: 1px 1px 4px #F4F4F4 inset;
+	box-shadow: 1px 1px 4px #F4F4F4 inset;
 }
 
 .entry:focus, .textarea:focus {
-    -webkit-box-shadow: inset 0 1px 4px #bbeaff;
-    -moz-box-shadow: inset 0 1px 4px #bbeaff;
-    box-shadow: inset 0 1px 4px #bbeaff;
-    border-color: #4D90FE;
+	border-color: #bbb;
 }
 
 .entry.dark:focus, .textarea.dark:focus {
-    -webkit-box-shadow: inset 0 1px 4px #4ac3ff;
-    -moz-box-shadow: inset 0 1px 4px #4ac3ff;
-    box-shadow: inset 0 1px 4px #4ac3ff;
+  border-color: #4D90FE;
 }
 
 .entry.dark, .textarea.dark {
