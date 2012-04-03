@@ -255,6 +255,7 @@ class Hotot:
         self.quit()
 
     def quit(self, *args):
+        self.release_hotkey()
         self.stop_blinking()
         gtk.gdk.threads_leave()
         self.window.destroy()
@@ -298,6 +299,15 @@ class Hotot:
         try:
             import keybinder
             keybinder.bind(
+                  config.settings['shortcut_summon_hotot']
+                , self.on_hotkey_compose)
+        except:
+            pass
+
+    def release_hotkey(self):
+        try:
+            import keybinder
+            keybinder.unbind(
                   config.settings['shortcut_summon_hotot']
                 , self.on_hotkey_compose)
         except:

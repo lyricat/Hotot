@@ -242,6 +242,7 @@ class Hotot:
         self.quit()
 
     def quit(self, *args):
+        self.release_hotkey()
         self.stop_blinking()
         Gdk.threads_leave()
         self.window.destroy()
@@ -295,6 +296,21 @@ class Hotot:
                 print "cannot register hotkey: %s" % keydesc
             else:
                 xhk.bind(keycode, modifiers, self.on_hotkey_compose)
+                xhk.start()
+                self.xhk = xhk;
+        except:
+            pass
+
+    def release_hotkey(self):
+        try:
+            import xhotkey
+            xhk = xhotkey.XHotKey()
+            keydesc = config.settings['shortcut_summon_hotot']
+            keycode, modifiers = xhk.parse(keydesc)
+            if keycode is None:
+                print "cannot register hotkey: %s" % keydesc
+            else:
+                xhk.unbind(keycode, modifiers, self.on_hotkey_compose)
                 xhk.start()
                 self.xhk = xhk;
         except:
