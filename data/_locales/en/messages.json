@@ -59,8 +59,8 @@
 		"message": "Reply this tweet",
 		"description": "data/js/ui.template.js"
 	},
-	"remember_password": {
-		"message": "Remember Password",
+	"open_a_profile_dots": {
+		"message": "Open a Profile ...",
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
@@ -73,6 +73,10 @@
 	},
 	"click_me_to_continue": {
 		"message": "Click Me to Continue",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "Use Custom Font",
 		"description": "data/index.html"
 	},
 	"click_to_show_retweeters": {
@@ -99,16 +103,16 @@
 		"message": "Nearly Dead",
 		"description": "data/js/lib.twitterapi.js"
 	},
-	"proxy_auth_password": {
-		"message": "Password",
-		"description": "data/index.html"
-	},
 	"automatically_sign_in_after_opening": {
 		"message": "Automatically sign in after opening",
 		"description": "data/index.html"
 	},
 	"disabled": {
 		"message": "Disabled",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "Select a default picture service",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -158,6 +162,10 @@
 	"please_enter_the_recipient": {
 		"message": "please enter the recipient!",
 		"description": "data/js/ui.status_box.js"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"proxy_auth": {
 		"message": "Authentication",
@@ -291,13 +299,9 @@
 		"message": "Mentions",
 		"description": "data/js/ui.slider.js"
 	},
-	"identica": {
-		"message": "Identi.ca",
-		"description": "data/index.html"
-	},
-	"open_a_profile_dots": {
-		"message": "Open a Profile ...",
-		"description": "data/index.html"
+	"official_retweet_this_tweet": {
+		"message": "Official retweet this tweet",
+		"description": "data/js/ui.template.js"
 	},
 	"delete_this_tweet": {
 		"message": "Delete this tweet",
@@ -319,16 +323,8 @@
 		"message": "Open speaker link",
 		"description": "data/index.html"
 	},
-	"regain_access_token": {
-		"message": "Regain Access Token",
-		"description": "data/index.html"
-	},
-	"globals": {
-		"message": "Globals",
-		"description": "data/index.html"
-	},
-	"create_profile": {
-		"message": "Create Profile",
+	"cancel": {
+		"message": "Cancel",
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
@@ -347,10 +343,6 @@
 		"message": "Quick References",
 		"description": "data/index.html"
 	},
-	"px": {
-		"message": "px",
-		"description": "data/index.html"
-	},
 	"new_profile_has_been_created": {
 		"message": "New Profile has been created!",
 		"description": "data/js/ui.welcome.js"
@@ -361,10 +353,6 @@
 	},
 	"next": {
 		"message": "Next",
-		"description": "data/index.html"
-	},
-	"custom_font": {
-		"message": "Custom Font",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -379,13 +367,9 @@
 		"message": "Retweets",
 		"description": "data/js/ui.slider.js"
 	},
-	"dots": {
-		"message": "...",
-		"description": "data/js/ui.main.js"
-	},
-	"gain_access_token": {
-		"message": "Gain access token",
-		"description": "data/js/ui.welcome.js"
+	"website": {
+		"message": "Website",
+		"description": "data/js/ui.exts_dlg.js"
 	},
 	"fav_or_un_fav": {
 		"message": "Fav/Un-fav",
@@ -394,10 +378,6 @@
 	"enable": {
 		"message": "Enable",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"proxy_auth_name": {
-		"message": "Username",
-		"description": "data/index.html"
 	},
 	"follow_at": {
 		"message": "Follow @",
@@ -419,10 +399,6 @@
 		"message": "Sound",
 		"description": "data/index.html"
 	},
-	"account": {
-		"message": "Account",
-		"description": "data/index.html"
-	},
 	"join": {
 		"message": "Join",
 		"description": "data/js/ui.template.js"
@@ -435,16 +411,16 @@
 		"message": "My Power",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"appearance": {
+		"message": "Appearance",
+		"description": "data/index.html"
+	},
 	"cuddly": {
 		"message": "Cuddly",
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
 		"message": "Keyboard Shortcuts",
-		"description": "data/index.html"
-	},
-	"profile_name": {
-		"message": "Profile Name",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -507,9 +483,17 @@
 		"message": "Just can't stop thinking of here",
 		"description": "data/index.html"
 	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
 	"followers": {
 		"message": "Followers",
 		"description": "data/js/ui.template.js"
+	},
+	"system_integration": {
+		"message": "System Integration",
+		"description": "data/index.html"
 	},
 	"weakness": {
 		"message": "Weakness",
@@ -535,8 +519,8 @@
 		"message": "Normal",
 		"description": "data/index.html"
 	},
-	"select_a_default_picture_service": {
-		"message": "Select a default picture service",
+	"rule_editor": {
+		"message": "Rule Editor",
 		"description": "data/index.html"
 	},
 	"List": {
@@ -546,10 +530,6 @@
 	"tweet_cnt": {
 		"message": "Tweet",
 		"description": "data/js/ui.template.js"
-	},
-	"sign_in": {
-		"message": "Sign In",
-		"description": "data/index.html"
 	},
 	"disable": {
 		"message": "Disable",
@@ -565,6 +545,10 @@
 	},
 	"font_size": {
 		"message": "Font Size",
+		"description": "data/index.html"
+	},
+	"search_view": {
+		"message": "Search View",
 		"description": "data/index.html"
 	},
 	"bloody_marguerite": {
@@ -591,6 +575,14 @@
 		"message": "Step 2",
 		"description": "data/index.html"
 	},
+	"operations": {
+		"message": "Operations",
+		"description": "data/index.html"
+	},
+	"mark_deleted_tweets": {
+		"message": "Mark deleted tweets",
+		"description": "data/index.html"
+	},
 	"help": {
 		"message": "Help",
 		"description": "data/index.html"
@@ -609,6 +601,10 @@
 	},
 	"summon_hotot": {
 		"message": "Summon Hotot (like: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "Preview Here",
 		"description": "data/index.html"
 	},
 	"send_message": {
@@ -631,6 +627,10 @@
 		"message": "Add new views",
 		"description": "data/index.html"
 	},
+	"home_view": {
+		"message": "Home View",
+		"description": "data/index.html"
+	},
 	"favorite_this_tweet_dots": {
 		"message": "Favorite this tweet ...",
 		"description": "data/js/ui.main.js"
@@ -638,10 +638,6 @@
 	"web": {
 		"message": "Web",
 		"description": "data/js/ui.template.js"
-	},
-	"regain_access_token_with_twitter": {
-		"message": "Regain Access Token with Twitter",
-		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
 		"message": "Hey, it's You!",
@@ -691,10 +687,6 @@
 		"message": "Mentions View",
 		"description": "data/index.html"
 	},
-	"official_retweet_this_tweet": {
-		"message": "Official retweet this tweet",
-		"description": "data/js/ui.template.js"
-	},
 	"effects": {
 		"message": "Effects",
 		"description": "data/index.html"
@@ -705,10 +697,6 @@
 	},
 	"trending_topics_view": {
 		"message": "Trending topics View",
-		"description": "data/index.html"
-	},
-	"password": {
-		"message": "Password",
 		"description": "data/index.html"
 	},
 	"transparent": {
@@ -747,16 +735,12 @@
 		"message": "Greetings!",
 		"description": "data/index.html"
 	},
+	"debug": {
+		"message": "Debug",
+		"description": "data/index.html"
+	},
 	"assassin_s_tango": {
 		"message": "Assassin's Tango",
-		"description": "data/index.html"
-	},
-	"system_font": {
-		"message": "System Font",
-		"description": "data/index.html"
-	},
-	"twitter": {
-		"message": "Twitter",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -766,10 +750,6 @@
 	"lists_following_them": {
 		"message": "Lists following them",
 		"description": "data/js/ui.template.js"
-	},
-	"cancel": {
-		"message": "Cancel",
-		"description": "data/index.html"
 	},
 	"examples": {
 		"message": "Examples",
@@ -799,6 +779,10 @@
 		"message": "Authentication OK!",
 		"description": "data/js/ui.welcome.js"
 	},
+	"starts_minimized": {
+		"message": "Starts Minimized",
+		"description": "data/index.html"
+	},
 	"mute_filter": {
 		"message": "Mute Filter",
 		"description": "data/index.html"
@@ -814,10 +798,6 @@
 	"lists_of_them": {
 		"message": "Lists of them",
 		"description": "data/js/ui.template.js"
-	},
-	"reply_all": {
-		"message": "Reply All",
-		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Clear & Close",
@@ -895,10 +875,6 @@
 		"message": "Preview Embedded Media",
 		"description": "data/index.html"
 	},
-	"rule_editor": {
-		"message": "Rule Editor",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "API Base",
 		"description": "data/index.html"
@@ -909,6 +885,10 @@
 	},
 	"misc": {
 		"message": "Misc",
+		"description": "data/index.html"
+	},
+	"system": {
+		"message": "System",
 		"description": "data/index.html"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
@@ -991,8 +971,8 @@
 		"message": "Delete",
 		"description": "data/index.html"
 	},
-	"username": {
-		"message": "Username",
+	"reply_all": {
+		"message": "Reply All",
 		"description": "data/index.html"
 	},
 	"struggling_adventurers": {
@@ -1035,10 +1015,6 @@
 		"message": "Oops, A Network Error Occurs",
 		"description": "data/js/ui.welcome.js"
 	},
-	"website": {
-		"message": "Website",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
 		"message": "More effects like shadows and glow of widgets",
 		"description": "data/index.html"
@@ -1077,10 +1053,6 @@
 	},
 	"filter_like_it": {
 		"message": "Filter Like It",
-		"description": "data/index.html"
-	},
-	"look_and_feels": {
-		"message": "Look & Feels",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -1122,10 +1094,6 @@
 	"reply_to": {
 		"message": "reply to",
 		"description": "data/js/ui.template.js"
-	},
-	"sign_in_with_twitter": {
-		"message": "Sign in with Twitter",
-		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
 		"message": "Exit Hotot when close window",

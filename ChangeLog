@@ -1,5 +1,11 @@
-The Latest Stable Version is 0.9.7.50
-The Latest Development Version is 0.9.7.51
+The Latest Stable Version is 0.9.7.51
+The Latest Development Version is 0.9.7.52
+
+Version 0.9.7.52
+	* Improvements about UI
+	* A Lot of minor fixs
+	* Rearrange preferences dialog.
+	* Update German and French translations
 
 Version 0.9.7.51
 	* Fix: cannot remember the columns state (issue #174).

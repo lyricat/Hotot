@@ -82,9 +82,7 @@ def merge_trans(empty_trans, exists_trans):
         if key not in empty_trans:
             keys_not_supported.append(key)
     for key in keys_not_supported:
-        print 'Cannot find Key', key, 'in template, delete it? (y/n):' ,
-        if raw_input().strip() == 'y':
-            del exists_trans[key]
+        del exists_trans[key]
     new_trans = empty_trans.copy()
     new_trans.update(exists_trans)
     for key in new_trans:
