@@ -1810,6 +1810,7 @@ label {
 #imageuploader_dlg .dialog_header {
 	height: 0px;
 	padding: 0;
+	border: none;
 } 
 
 #imageuploader_dlg .dialog_body {
@@ -1870,6 +1871,28 @@ label {
 #imageuploader_dlg .message {
 	width: 95%;
 	height: 30px;
+}
+
+/*===== Image Preview Dialog ================================*/
+#imagepreview_dlg {
+	
+}
+
+#imagepreview_dlg .dialog_header {
+	height: 10px;
+	padding: 0;
+	border: none;
+} 
+
+#imagepreview_dlg .dialog_body {
+	padding: 0;
+}
+
+#imagepreview_dlg .preview {
+	max-width: 95%;
+	max-height: 95%;
+	display: block;
+	margin: 0 auto;
 }
 
 /*===== Class styles ================================*/

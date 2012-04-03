@@ -72,7 +72,7 @@ function init () {
 
     $('#tweet_more_menu').mouseleave(function(){
         $(this).hide();
-    })
+    });
 
 },
 
@@ -523,6 +523,11 @@ function bind_tweet_action(id) {
         ui.Main.closeTweetMoreMenu();
     }, function () {
         $(id).children('.tweet_bar').hide();
+    });
+
+    $(id).find('a[direct_url]').click(function () {
+        ui.Main.preview_image($(this).attr('direct_url'));
+        return false;
     });
 
     $(id).find('.btn_tweet_thread:first').click(
@@ -1094,6 +1099,13 @@ function unique (items) {
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
     return $($(btn).parents('.card')[0]);
+},
+
+preview_image:
+function preview_image (url) {
+    $('#imagepreview_dlg .preview').attr('src', url);
+    $('#imagepreview_dlg .orig_btn').attr('href', url);
+    globals.imagepreview_dialog.open();
 }
 
 };

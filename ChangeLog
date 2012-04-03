@@ -6,6 +6,9 @@ Version 0.9.7.52
 	* A Lot of minor fixs
 	* Rearrange preferences dialog.
 	* Update German, French and Traditional Chinese translations
+	* Update translation scanner script
+	* Allow to change language in welcome page
+	* Inline picture preview.
 
 Version 0.9.7.51
 	* Fix: cannot remember the columns state (issue #174).

@@ -518,7 +518,8 @@ status_draft_t:
 preview_link_reg: {
 'img.ly': {
     reg: new RegExp('http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+)','g'),
-    base: 'http://img.ly/show/thumb/'
+    base: 'http://img.ly/show/thumb/',
+    direct_base: 'http://img.ly/show/full/'
 },
 'twitpic.com': {
     reg: new RegExp('http:\\/\\/twitpic.com\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -526,7 +527,8 @@ preview_link_reg: {
 },
 'twitgoo.com': {
     reg: new RegExp('http:\\/\\/twitgoo.com\\/([a-zA-Z0-9_\\-]+)','g'),
-    base: 'http://twitgoo.com/show/thumb/'
+    base: 'http://twitgoo.com/show/thumb/',
+    direct_base: 'http://twitgoo.com/show/img/'
 },
 'yfrog.com': {
     reg: new RegExp('http:\\/\\/yfrog.com\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -538,7 +540,8 @@ preview_link_reg: {
 },
 'instagr.am': {
     reg: new RegExp('http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9_\\-]+)\\/?','g'),
-    tail: 'media?size=m'
+    tail: 'media?size=m',
+    direct_tail: 'media?size=l'
 },
 'plixi.com': {
     reg: new RegExp('http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -1162,8 +1165,12 @@ function form_text(tweet) {
 },
 
 form_media:
-function form_media(href, src) {
-    return '<a href="'+href+'" target="_blank"><img src="'+ src +'" /></a>'
+function form_media(href, src, direct_url) {
+    if (direct_url != undefined) {
+        return '<a direct_url="'+direct_url+'" href="'+href+'" target="_blank"><img src="'+ src +'" /></a>';
+    } else {
+        return '<a href="'+href+'" target="_blank"><img src="'+ src +'" /></a>';
+    }
 },
 
 form_preview:
@@ -1175,15 +1182,25 @@ function form_preview(tweet) {
         while (match != null) {
             switch (pvd_name) {
             case 'img.ly':
-            case 'twitpic.com':  
             case 'twitgoo.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[0], link_reg[pvd_name].base + match[1],
+                        link_reg[pvd_name].direct_base + match[1]));
+            break;
+            case 'twitpic.com':  
                 html_arr.push(
                     ui.Template.form_media(
                         match[0], link_reg[pvd_name].base + match[1]));
             break;
+            case 'instagr.am':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[0], match[0] + link_reg[pvd_name].tail,
+                        match[0] + link_reg[pvd_name].direct_tail));
+            break;
             case 'yfrog.com':
             case 'moby.to':
-            case 'instagr.am':
             case 'picplz.com':
                 html_arr.push(
                     ui.Template.form_media(
@@ -1197,7 +1214,7 @@ function form_preview(tweet) {
             case 'raw':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[0], match[0]));
+                        match[0], match[0], match[0]));
             break;
             case 'youtube.com':
                 html_arr.push(
@@ -1216,7 +1233,8 @@ function form_preview(tweet) {
                 html_arr.push(
                     ui.Template.form_media(
                         tweet.entities.media[i].expanded_url,
-                        tweet.entities.media[i].media_url + ':thumb'
+                        tweet.entities.media[i].media_url + ':thumb',
+                        tweet.entities.media[i].media_url
                         ));
             }
         }
