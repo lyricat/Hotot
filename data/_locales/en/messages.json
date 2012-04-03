@@ -164,7 +164,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "",
+		"message": "Let Hotot collects anonymous statistic information",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -410,6 +410,10 @@
 	"my_power": {
 		"message": "My Power",
 		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "First time to sign in with Twitter",
+		"description": "data/index.html"
 	},
 	"appearance": {
 		"message": "Appearance",

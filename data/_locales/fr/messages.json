@@ -411,6 +411,10 @@
 		"message": "Mon Pouvoir",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"appearance": {
 		"message": "",
 		"description": "data/index.html"

@@ -411,6 +411,10 @@
 		"message": "魔法值",
 		"description": "data/js/lib.twitterapi.js"
 	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "初见推特",
+		"description": "data/index.html"
+	},
 	"appearance": {
 		"message": "形",
 		"description": "data/index.html"
