@@ -403,7 +403,7 @@
 		"message": "登録する",
 		"description": "data/js/ui.template.js"
 	},
-	"image_uploader": {
+	"language": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -490,6 +490,10 @@
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
+	},
+	"label_with_color": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "フォロワー",
@@ -747,6 +751,10 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"filter_tweets_like_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"successfully": {
 		"message": "完成",
 		"description": "data/js/ui.main.js"
@@ -843,7 +851,7 @@
 		"message": "確認する",
 		"description": ""
 	},
-	"language": {
+	"image_uploader": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -863,9 +871,9 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"select_a_language": {
-		"message": "",
-		"description": "data/index.html"
+	"extensions": {
+		"message": "プラグイン",
+		"description": ""
 	},
 	"virushou_s_integrity": {
 		"message": "",
@@ -903,10 +911,6 @@
 		"message": "通知システム",
 		"description": ""
 	},
-	"set_color_label": {
-		"message": "",
-		"description": "data/index.html"
-	},
 	"update_successfully": {
 		"message": "アップデートした",
 		"description": "data/js/ui.status_box.js"
@@ -939,9 +943,9 @@
 		"message": "あなたをフォローしています",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"extensions": {
-		"message": "プラグイン",
-		"description": ""
+	"select_a_language": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"pin_code": {
 		"message": "PINコード",
@@ -1052,10 +1056,6 @@
 		"description": ""
 	},
 	"rule_name": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"filter_like_it": {
 		"message": "",
 		"description": "data/index.html"
 	},

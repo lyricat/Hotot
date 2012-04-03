@@ -403,8 +403,8 @@
 		"message": "Associar-se",
 		"description": "data/js/ui.template.js"
 	},
-	"image_uploader": {
-		"message": "Envio de imagens",
+	"language": {
+		"message": "Idioma",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -490,6 +490,10 @@
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
+	},
+	"label_with_color": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "Seguidores",
@@ -747,6 +751,10 @@
 		"message": "Tango do assassino",
 		"description": "data/index.html"
 	},
+	"filter_tweets_like_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"successfully": {
 		"message": "Sucesso",
 		"description": "data/js/ui.main.js"
@@ -843,8 +851,8 @@
 		"message": "OK",
 		"description": "data/index.html"
 	},
-	"language": {
-		"message": "Idioma",
+	"image_uploader": {
+		"message": "Envio de imagens",
 		"description": "data/index.html"
 	},
 	"messages": {
@@ -863,8 +871,8 @@
 		"message": "Elegância do titã",
 		"description": "data/index.html"
 	},
-	"select_a_language": {
-		"message": "Escolha um idioma",
+	"extensions": {
+		"message": "Extensões",
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
@@ -903,10 +911,6 @@
 		"message": "Notificar",
 		"description": "data/index.html"
 	},
-	"set_color_label": {
-		"message": "Definir a cor do rótulo",
-		"description": "data/index.html"
-	},
 	"update_successfully": {
 		"message": "Enviado com sucesso!",
 		"description": "data/js/ui.status_box.js"
@@ -939,8 +943,8 @@
 		"message": "Você é seguido por eles.",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"extensions": {
-		"message": "Extensões",
+	"select_a_language": {
+		"message": "Escolha um idioma",
 		"description": "data/index.html"
 	},
 	"pin_code": {
@@ -1053,10 +1057,6 @@
 	},
 	"rule_name": {
 		"message": "Nome da regra",
-		"description": "data/index.html"
-	},
-	"filter_like_it": {
-		"message": "Filtrar iguas a isso",
 		"description": "data/index.html"
 	},
 	"more_actions": {

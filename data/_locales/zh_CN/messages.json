@@ -403,8 +403,8 @@
 		"message": "加入",
 		"description": "data/js/ui.template.js"
 	},
-	"image_uploader": {
-		"message": "图片上传器",
+	"language": {
+		"message": "语言",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -490,6 +490,10 @@
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
+	},
+	"label_with_color": {
+		"message": "染色",
+		"description": "data/index.html"
 	},
 	"followers": {
 		"message": "关注者",
@@ -747,6 +751,10 @@
 		"message": "壳酱的诡计",
 		"description": "data/index.html"
 	},
+	"filter_tweets_like_it": {
+		"message": "过滤类似的推",
+		"description": "data/index.html"
+	},
 	"successfully": {
 		"message": "成功！",
 		"description": "data/js/ui.main.js"
@@ -843,8 +851,8 @@
 		"message": "好呢",
 		"description": ""
 	},
-	"language": {
-		"message": "语言",
+	"image_uploader": {
+		"message": "图片上传器",
 		"description": "data/index.html"
 	},
 	"messages": {
@@ -863,9 +871,9 @@
 		"message": "文艺的缇香",
 		"description": "data/index.html"
 	},
-	"select_a_language": {
-		"message": "选择语言",
-		"description": "data/index.html"
+	"extensions": {
+		"message": "扩展",
+		"description": ""
 	},
 	"virushou_s_integrity": {
 		"message": "火炬的正直",
@@ -903,10 +911,6 @@
 		"message": "通知",
 		"description": ""
 	},
-	"set_color_label": {
-		"message": "染色",
-		"description": "data/index.html"
-	},
 	"update_successfully": {
 		"message": "更新成功！",
 		"description": "data/js/ui.status_box.js"
@@ -939,9 +943,9 @@
 		"message": "他／她／它默默地关注着你…",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"extensions": {
-		"message": "扩展",
-		"description": ""
+	"select_a_language": {
+		"message": "选择语言",
+		"description": "data/index.html"
 	},
 	"pin_code": {
 		"message": "PIN Code",
@@ -1053,10 +1057,6 @@
 	},
 	"rule_name": {
 		"message": "规则名",
-		"description": "data/index.html"
-	},
-	"filter_like_it": {
-		"message": "过滤类似的推",
 		"description": "data/index.html"
 	},
 	"more_actions": {
