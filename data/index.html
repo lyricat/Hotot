@@ -454,22 +454,18 @@
     <div class="dialog_container">
     <div class="dialog_header">
         <ul id="prefs_dlg_btns" class="radio_group dark">
-            <li><a id="btn_prefs_global"
-                    href="#prefs_global"
-                    class="radio_group_btn selected"
-                    data-i18n-text="globals">Globals</a>
-            </li><li><a id="btn_prefs_account"
-                    href="#prefs_account"
-                    class="radio_group_btn"
-                    data-i18n-text="account">Account</a>
-            </li><li><a id="btn_prefs_appearance"
+            <li><a id="btn_prefs_appearance"
                     href="#prefs_appearance"
                     class="radio_group_btn"
-                    data-i18n-text="look_and_feels">Looks &amp; Feels</a>
+                    data-i18n-text="appearance">Appearance</a>
             </li><li><a id="btn_prefs_behavior"
                     href="#prefs_behavior"
                     class="radio_group_btn"
                     data-i18n-text="behavior">Behavior</a>
+            </li><li><a id="btn_prefs_system"
+                    href="#prefs_system"
+                    class="radio_group_btn"
+                    data-i18n-text="system">System</a>
             </li><li><a id="btn_prefs_advanced"
                     href="#prefs_advanced"
                     class="radio_group_btn"
@@ -479,124 +475,13 @@
     </div>
     <div id="prefs_dlg_body" class="dialog_body">
         <div id='prefs_global' class="prefs_dlg_page">
-            <div class="dialog_block hint"
-                data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
-                And these options will affect ALL accounts
-            </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="http_proxy">HTTP Proxy</span> -</h3>
-            <p>
-                <input id="chk_prefs_use_http_proxy" class="checkbox"
-                    title="Use HTTP Proxy" type="checkbox"/>
-                <label id="label_prefs_use_http_proxy"
-                    for="chk_prefs_use_http_proxy"
-                    class="label" data-i18n-text="enable_proxy">
-                    Enable Proxy
-                </label><br/>
-                <input id="tbox_prefs_http_proxy_host"
-                    title="HTTP Proxy Host"
-                    style="width: 120px;"
-                    type="text" class="entry"/>
-                <label class="label">:</label>
-                <input id="tbox_prefs_http_proxy_port"
-                    title="HTTP Proxy Port"
-                    style="width: 40px;"
-                    type="text" class="entry"/><br/>
-                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
-                    title="Need Authentication" type="checkbox"/>
-                <label id="label_prefs_http_proxy_auth"
-                    for="chk_prefs_use_http_proxy_auth"
-                    class="label" data-i18n-text="proxy_auth">
-                    Authentication
-                </label><br/>
-                <label class="label" data-i18n-text="proxy_auth_name">Username</label>
-                <input id="tbox_prefs_http_proxy_auth_name"
-                    title="HTTP Proxy Authentication Name"
-                    style="width: 120px;"
-                    type="text" class="entry"/>
-                <label class="label" data-i18n-text="proxy_auth_password">Password</label>
-                <input id="tbox_prefs_http_proxy_auth_password"
-                    title="HTTP Proxy Authentication Password"
-                    style="width: 120px;"
-                    type="text" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="keybinding">Keybinding</span> -</h3>
-            <p>
-                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
-                <input id="tbox_prefs_shortcut_summon_hotot"
-                     title="Summon Hot Key"
-                     type="text" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="misc">Misc</span> -</h3>
-            <p>
-                <input id="chk_prefs_use_verbose_mode"
-                    title="Enable verbose mode or not"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_verbose_mode"
-                    class="label"
-                    data-i18n-text="enable_verbose_mode"
-                    >Enable verbose mode</label><br/>
-                <input id="chk_prefs_use_ubuntu_indicator"
-                    title="Use Ubuntu Indicator"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_ubuntu_indicator" class="label"
-                    data-i18n-text="use_ubuntu_indicator"
-                    >Use Ubuntu indicator</label><br/>
-                <input id="chk_prefs_close_to_exit"
-                    title="Exit Hotot when close main window"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_close_to_exit" class="label"
-                    data-i18n-text="exit_hotot_when_close_window"
-                    >Exit Hotot when close main window</label><br/>
-                <input id="chk_prefs_sign_in_automatically"
-                     title="Automatically Sign in after opening"
-                     type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_sign_in_automatically" class="label"
-                     data-i18n-text="automatically_sign_in_after_opening"
-                     >Automatically Sign in after opening</label><br/>
-                <input id="chk_prefs_starts_minimized"
-                     title="Starts Minimized"
-                     type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_starts_minimized" class="label"
-                     data-i18n-text="starts_minimized"
-                     >Starts Minimized</label><br/>
-                <input id="chk_prefs_use_anonymous_stat"
-                    title="Let us colloect anonymous statistic information"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_anonymous_stat" class="label"
-                    data-i18n-text="let_us_colloect_anonymous_statistic_information"
-                    >Let us colloect anonymous statistic information</label><br/>
-            </p>
+
             </div>
         </div><!-- END of #prefs_global -->
-        <div id='prefs_account' class="prefs_dlg_page">
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="twitter">Twitter</span> -</h3>
-            <p>
-                <label class="label" data-i18n-text="regain_access_token">Regain Access Token</label><br/>
-                <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="regain_access_token_with_twitter">Regain Access Token with Twitter</a>
-            </p>
-            </div>
-
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="identica">Identi.ca</span> -</h3>
-            <p>
-                <input id="chk_prefs_remember_password"
-                    type="checkbox" class="checkbox"
-                    title="Remember Password" checked="checked"/>
-                <label for="chk_prefs_remember_password" class="label"
-                    data-i18n-text="remember_password">Remember Password
-                </label><br/>
-            </p>
-            </div>
-        </div> <!-- END of #prefs_account -->
         <div id='prefs_appearance' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="language">Language</span> -</h3>
+            <h3 data-i18n-text="language">Language</h3>
             <p>
                 <label data-i18n-text="interface_language">Interface language: </label>
                 <select id="sel_prefs_lang" class="combo"
@@ -615,7 +500,7 @@
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="theme">Theme</span> -</h3>
+            <h3 data-i18n-text="theme">Theme</h3>
             <p>
                 <table class="void_table">
                     <tr>
@@ -628,7 +513,7 @@
                             <option value="Classic">Classic</option>
                         </select>
                         </td>
-                        <td rowspan="5" style="text-align: right">
+                        <td rowspan="4" style="text-align: right">
                             <img id="prefs_theme_preview" src="#"
                             alt="No Preview"/>
                         </td>
@@ -649,42 +534,38 @@
                         <td ><a class="label" id="prefs_theme_web" target="_blank" href="#"></a></td>
                     </tr>
                     <tr>
-                        <td colspan="2" id="prefs_theme_desc"></td>
+                        <td colspan="3" id="prefs_theme_desc"></td>
                     </tr>
                 </table>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="font">Font</span> -</h3>
+            <h3 data-i18n-text="font">Font</h3>
             <p>
-                <table><tbody>
-                <tr><td>
-                <input id="rdo_use_system_font" type="radio"
-                    class="radio" name="font" checked/>
-                <label class="label"
-                    data-i18n-text="system_font">System Font</label>
-                </td><td>
-                <input id="rdo_use_custom_font" type="radio"
-                    class="radio" name="font" />
-                <label class="label"
-                    data-i18n-text="custom_font">Custom Font</label>
-                </td><td>
+                <input id="chk_use_custom_font" type="checkbox"
+                    class="checkbox" name="font" />
+                <label class="label" for="chk_use_custom_font"
+                    data-i18n-text="use_custom_font">Use Custom Font</label>
+                <input id="tbox_prefs_custom_font"
+										title="Custom Font" 
+										style="vertical-align:middle;width:120px"
+										type="text" class="entry"/>
+                <select id="sel_prefs_sys_font" class="combo"
+										style="vertical-align:middle;width:10px"
+                    title="Font Family">
+                    <option value="more">...</option>
+                </select>
+						</p>
+						<p>
                 <label class="label"
                     data-i18n-text="font_size">Font Size</label>
-                </td></tr>
-                <tr><td>
-                <select id="sel_prefs_font_family" class="combo"
-                    title="Font Family" style="width:100px;">
-                    <option value="1">1</option>
-                </select></td><td>
-                <input id="tbox_prefs_custom_font"
-                    title="Custom Font"
-                    type="text" class="entry"/></td><td>
-                <input id="tbox_prefs_font_size"
+                <input id="range_prefs_font_size"
                     title="Font Size"
-                    style="width:30px" type="text" class="entry"/>
-                <label class="label" data-i18n-text="px">px</label></td></tr>
-                </tbody></table>
+										max="28" min="6" value="12" step="1"
+										style="width:80px;vertical-align:middle;"
+										type="range"/>
+                <label class="label" id="range_prefs_font_size_st"
+                    data-i18n-text="font_size">12px</label>
             </p>
             <p>
                 <label class="label" data-i18n-text="preview">Preview:</label><br/>
@@ -693,7 +574,7 @@
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="effects">Effects</span> -</h3>
+            <h3 data-i18n-text="effects">Effects</h3>
             <p>
                 <input id="rdo_effects_level_low" type="radio"
                     class="radio" name="effects" value="0" checked/>
@@ -718,25 +599,11 @@
                 </label>
             </p>
             </div>
-
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
+            <h3 data-i18n-text="operations">Operations</h3>
             <p>
-                <input id="chk_prefs_use_native_notify"
-                    title="Use Native Notify" class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_native_notify" class="label"
-                    data-i18n-text="use_native_notify_system"
-                    >Use Native Notify System</label><br/>
-                <input id="chk_prefs_use_preload_conversation"
-                    title="Preload latest tweet in a conversation if it is cached."
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_preload_conversation"
-                    class="label"
-                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
-                    >Preload latest tweets in conversations if possible.</label><br/>
                 <input id="chk_prefs_use_alt_retweet"
                     title="Replace default retweet action with quote"
                     class="checkbox"
@@ -753,6 +620,19 @@
                     class="label"
                     data-i18n-text="use_reply_all_as_default_reply_action"
                     >Use reply all as default reply action.</label><br/>
+						</p>
+						</div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="misc">Misc</h3>
+            <p>
+                <input id="chk_prefs_use_preload_conversation"
+                    title="Preload latest tweet in a conversation if it is cached."
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_preload_conversation"
+                    class="label"
+                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
+                    >Preload latest tweets in conversations if possible.</label><br/>
                 <input id="chk_prefs_use_media_preview"
                     title="Preview the media if possible."
                     class="checkbox"
@@ -772,7 +652,7 @@
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="default_picture_service">Default Picture Service</span> -</h3>
+            <h3 data-i18n-text="default_picture_service">Default Picture Service</h3>
             <p>
                 <select id="sel_prefs_default_picture_service"
                     class="combo"
@@ -785,10 +665,122 @@
                 </select>
             </p>
             </div>
-       </div><!-- END of prefs_behavior-->
-        <div id='prefs_advanced' class="prefs_dlg_page">
+        </div><!-- END of prefs_behavior-->
+				<div id='prefs_system' class="prefs_dlg_page">
+            <div class="dialog_block hint"
+                data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
+                And these options will affect ALL accounts
+            </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="api_setting">API Settings</span> -</h3>
+            <h3 data-i18n-text="keybinding">Keybinding</h3>
+            <p>
+                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
+                <input id="tbox_prefs_shortcut_summon_hotot"
+                     title="Summon Hot Key"
+                     type="text" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="http_proxy">HTTP Proxy</h3>
+            <p>
+                <input id="chk_prefs_use_http_proxy" class="checkbox"
+                    title="Use HTTP Proxy" type="checkbox"/>
+                <label id="label_prefs_use_http_proxy"
+                    for="chk_prefs_use_http_proxy"
+                    class="label" data-i18n-text="enable_proxy">
+                    Enable Proxy
+                </label><br/>
+                <input id="tbox_prefs_http_proxy_host"
+                    title="HTTP Proxy Host"
+										style="width: 120px;"
+										placeholder="Proxy Host"
+                    type="text" class="entry"/>
+                <input id="tbox_prefs_http_proxy_port"
+                    title="HTTP Proxy Port"
+                    style="width: 120px;"
+										placeholder="Proxy Port"
+                    type="text" class="entry"/><br/>
+                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
+                    title="Need Authentication" type="checkbox"/>
+                <label id="label_prefs_http_proxy_auth"
+                    for="chk_prefs_use_http_proxy_auth"
+                    class="label" data-i18n-text="proxy_auth">
+                    Authentication
+                </label><br/>
+                <input id="tbox_prefs_http_proxy_auth_name"
+                    title="HTTP Proxy Authentication Name"
+                    style="width: 120px;"
+										placeholder="Username"
+                    type="text" class="entry"/>
+                <input id="tbox_prefs_http_proxy_auth_password"
+                    title="HTTP Proxy Authentication Password"
+                    style="width: 120px;"
+										placeholder="Password"
+                    type="text" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="system_integration">System Integration</h3>
+            <p>
+                <input id="chk_prefs_use_ubuntu_indicator"
+                    title="Use Ubuntu Indicator"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_ubuntu_indicator" class="label"
+                    data-i18n-text="use_ubuntu_indicator"
+                    >Use Ubuntu indicator</label><br/>
+                <input id="chk_prefs_use_native_notify"
+                    title="Use Native Notify" class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_native_notify" class="label"
+                    data-i18n-text="use_native_notify_system"
+                    >Use Native Notify System</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="misc">Misc</h3>
+            <p>
+                <input id="chk_prefs_close_to_exit"
+                    title="Exit Hotot when close main window"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_close_to_exit" class="label"
+                    data-i18n-text="exit_hotot_when_close_window"
+                    >Exit Hotot when close main window</label><br/>
+                <input id="chk_prefs_sign_in_automatically"
+                     title="Automatically Sign in after opening"
+                     type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_sign_in_automatically" class="label"
+                     data-i18n-text="automatically_sign_in_after_opening"
+                     >Automatically Sign in after opening</label><br/>
+                <input id="chk_prefs_starts_minimized"
+                     title="Starts Minimized"
+                     type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_starts_minimized" class="label"
+                     data-i18n-text="starts_minimized"
+                     >Starts Minimized</label><br/>
+						</p>
+						</div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="debug">Debug</h3>
+            <p>
+                <input id="chk_prefs_use_verbose_mode"
+                    title="Enable verbose mode or not"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_verbose_mode"
+                    class="label"
+                    data-i18n-text="enable_verbose_mode"
+                    >Enable verbose mode</label><br/>
+                <input id="chk_prefs_use_anonymous_stat"
+                    title="Let us colloect anonymous statistic information"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_anonymous_stat" class="label"
+                    data-i18n-text="let_us_colloect_anonymous_statistic_information"
+                    >Let us colloect anonymous statistic information</label><br/>
+						</p>
+						</div>
+        </div><!-- END of prefs_system-->
+				<div id='prefs_advanced' class="prefs_dlg_page">
+            <div class="dialog_block">
+            <h3 data-i18n-text="api_setting">API Settings</h3>
             <p>
                 <label class="label"
                     data-i18n-text="api_base">API Base</label><br/>
@@ -853,7 +845,7 @@
     <div class="dialog_header"></div>
     <div id="oauth_dlg_body" class="dialog_body">
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="step_one">Step 1</span> -</h3>
+        <h3 data-i18n-text="step_one">Step 1</h3>
         <p data-i18n-text="click_the_button_below">Click the button below </p>
         <p style="text-align: center">
         <a id="btn_oauth_user_auth" class="button" data-i18n-text="click_me_to_continue">
@@ -867,7 +859,7 @@
         </p>
         </div>
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="step_two">Step 2</span> -</h3>
+        <h3 data-i18n-text="step_two">Step 2</h3>
         <p data-i18n-text="copy_the_pin_code_and_paste_it_into_the_box_below"
         >Copy the PIN Code and paste it into the box below</p>
         <p style="text-align: center;">
@@ -916,7 +908,7 @@
     <div id="about_dlg_body" class="dialog_body">
         <div id="about_about" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="hotot">Hotot</span>
+            <h3 data-i18n-text="hotot">Hotot</span>
                 <span class="version"></span>-
             </h3>
             <p>
@@ -931,7 +923,7 @@
         </div>
         <div id="about_keyboard" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="keyboard_shortcuts">Keyboard shortcuts</span> -</h3>
+            <h3 data-i18n-text="keyboard_shortcuts">Keyboard shortcuts</h3>
             <p>
                 <table id="shortcuts_table">
                 <tbody>
@@ -968,7 +960,7 @@
         </div>
         <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="credits">Credits</span> -</h3>
+            <h3 data-i18n-text="credits">Credits</h3>
             <p>
                 <label>Written by</label>:<br/>
                 - Shellex Wai &lt;<a target="_blank" href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
@@ -1002,7 +994,7 @@
         </div>
         <div id="about_license" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="license">License</span> -</h3>
+            <h3 data-i18n-text="license">License</h3>
             <p>
 Hotot package is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -1255,11 +1247,11 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <div class="dialog_block">
-            <h3>- <span data-i18n-text="rule_name">Rule Name</span> -</h3>
+            <h3 data-i18n-text="rule_name">Rule Name</h3>
             <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
         </div>
         <div class="dialog_block">
-            <h3>- <span data-i18n-text="rule">Rule</span> -</h3>
+            <h3 data-i18n-text="rule">Rule</h3>
             <p><textarea id="kismet_rule_edit_data" class="textarea" style="width:450px; height: 40px;"></textarea></p>
         </div>
         <div id="kismet_quick_refs">

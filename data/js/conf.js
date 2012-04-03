@@ -51,8 +51,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
-        , 'font_size': 12
+        , 'font_size': 13
         , 'effects_level': 1
           // Behaviors
         , 'use_native_notify': true
@@ -94,8 +93,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
-        , 'font_size': 12
+        , 'font_size': 13
         , 'effects_level': 1
           // Behaviors
         , 'use_native_notify': true
@@ -266,8 +264,13 @@ function apply_prefs(name, full) {
         }
         ui.ImageUploader.service_name = prefs.default_picture_service;
     }
-    $('body').css('font-family', prefs.use_custom_font
-        ? prefs.custom_font: prefs.font_family_used);
+    var fonts = conf.get_default_font_settings();
+    $('body').css('font-family', fonts[0]);
+    if (prefs.use_custom_font) {
+        $('.listview, .dialog_block p').css('font-family', prefs.custom_font);
+    } else {
+        $('.listview, .dialog_block p').css('font-family', fonts[1]);
+    }
     globals.twitterClient.api_base = prefs.api_base;
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
     globals.twitterClient.search_api_base2 = prefs.search_api_base2;
@@ -329,6 +332,18 @@ function normalize_settings(settings) {
         } 
     }
     return settings;
+},
+
+get_default_font_settings:
+function get_default_font_settings () {
+    var platform = navigator.platform;
+    if (platform.indexOf('Windows') != -1) {
+        return ['"Segoe UI", "Microsoft YaHei", sans-serif', 'Verdana, sans-serif;'];
+    } else if (platform.indexOf('Mac') != -1) {
+        return ['"Helvetica Neue", "Hiragino Sans GB", sans-serif;', '"Lucida Grande", "Hiragino Sans GB", sans-serif;'];
+    } else {
+        return ['"Helvetica Neue", "Hiragino Sans GB", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif', '"Droid Sans Fallback", "WenQuanYi Micro Hei", Simhei, Simsun, sans-serif'];
+    }
 }
 
 };

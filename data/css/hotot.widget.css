@@ -411,8 +411,13 @@ disabled:
 }
 
 .dialog_block h3 {
-    margin: 5px 0;
-    font-size: 12px;
+	margin: 10px 0;
+	font-size: 13px;
+	background: #F2F2F2;
+	padding: 2px 0 4px 10px;
+	border-radius: 2px;
+	border: 1px #E6E6E6 solid;
+	text-shadow: 0 1px 1px white;
 }
 
 .dialog_block p {

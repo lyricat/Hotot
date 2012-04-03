@@ -14,18 +14,7 @@ function init () {
         $(page_name).show();
     };
     btns.create();
-    $('#btn_prefs_global').click();
-
-    var btn_regain_token = new widget.Button('#btn_regain_token');
-    btn_regain_token.on_clicked = function (event) {
-        globals.twitterClient.oauth.access_token = null;
-        globals.twitterClient.oauth.get_request_token(
-            function (result) {
-                ui.PinDlg.set_auth_url(globals.twitterClient.oauth.get_auth_url());
-                globals.oauth_dialog.open();
-            }); 
-    };
-    btn_regain_token.create();
+    $('#btn_prefs_appearance').click();
 
     $('#sel_prefs_theme').bind('change', function () {
         change_theme($(this).val(), $(this).children('option[value="'+$(this).val()+'"]').attr('path'));
@@ -35,20 +24,31 @@ function init () {
         i18n.change($(this).val());
     });
 
-    $('#sel_prefs_font_family, #tbox_prefs_font_size, #tbox_prefs_custom_font, #rdo_use_custom_font, #rdo_use_system_font').bind('click change keypress blur',
+    $('#sel_prefs_sys_font, #range_prefs_font_size, #tbox_prefs_custom_font, #chk_use_custom_font').bind('click change keypress blur',
     function (event) {
         ui.PrefsDlg.update_font_preview();
     });
 
-    $('#tbox_prefs_font_size, #tbox_prefs_http_proxy_port').blur(
+    $('#sel_prefs_sys_font').change(function (event) {
+        var val = $(this).val();
+        if (val != 'more') {
+            $('#tbox_prefs_custom_font').val(val);
+            $(this).val('more');
+        }
+    });
+
+    $('#chk_use_custom_font').click(function (event) {
+        $('#tbox_prefs_custom_font, #sel_prefs_sys_font').attr('disabled', !$(this).prop('checked'));
+    });
+
+    $('#range_prefs_font_size, #tbox_prefs_http_proxy_port').blur(
     function (event) {
         ui.FormChecker.test_int_value(this);
     });
-    $('#tbox_prefs_font_size').keypress(
+    $('#range_prefs_font_size').change(
     function (event) {
-        if (event.keyCode == 13){
-            ui.PrefsDlg.update_font_preview();
-        }
+        $('#range_prefs_font_size_st').text($(this).val() + 'px');
+        ui.PrefsDlg.update_font_preview();
     });
 
     $('#chk_prefs_use_same_sign_api_base').click(
@@ -192,10 +192,6 @@ function save_settings() {
 load_prefs:
 function load_prefs() {
     var prefs = conf.get_current_profile().preferences;
-    // Account
-    $('#chk_prefs_remember_password').prop('checked'
-        , prefs.remember_password);
-
     // Appearance
     $('#sel_prefs_lang').val(prefs.lang);
 
@@ -211,18 +207,22 @@ function load_prefs() {
     theme_list.val(prefs.theme);
     theme_list = null;
     
-    var ff_list = $('#sel_prefs_font_family').empty();
+    var ff_list = $('#sel_prefs_sys_font').empty();
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
         $('<option/>').attr('value', ff_name).text(ff_name).appendTo(ff_list);
     }
-    ff_list.val(prefs.font_family_used);
+    $('<option/>').attr('value', 'more').text('...').appendTo(ff_list);
+    ff_list.val('more');
     ff_list = null;
     
     $('#tbox_prefs_custom_font').val(prefs.custom_font);    
-    $('#tbox_prefs_font_size').val(prefs.font_size);    
+    $('#range_prefs_font_size').val(prefs.font_size);    
+    $('#range_prefs_font_size_st').text(prefs.font_size + 'px');
     if (prefs.use_custom_font) {
-        $('#rdo_use_custom_font').prop('checked', prefs.use_custom_font);
+        $('#chk_use_custom_font').prop('checked', prefs.use_custom_font);
+    } else {
+        $('#sel_prefs_sys_font, #tbox_prefs_custom_font').attr('disabled', true);
     }
     switch (prefs.effects_level) {
     case 0: $('#rdo_effects_level_low').prop('checked', true); break;
@@ -268,21 +268,17 @@ function load_prefs() {
 save_prefs:
 function save_prefs() {
     var prefs = conf.get_current_profile().preferences;
-    // Account
-    prefs['remember_password']
-        = $('#chk_prefs_remember_password').prop('checked');
     // Looks & Feels
     prefs['lang'] = $('#sel_prefs_lang').val();
 
     prefs['theme'] = $('#sel_prefs_theme').val();
     prefs['theme_path'] = $('#sel_prefs_theme').children('option[value="'+$('#sel_prefs_theme').val()+'"]').attr('path');
     prefs['custom_font'] = $('#tbox_prefs_custom_font').val();
-    prefs['font_family_used'] = $('#sel_prefs_font_family').val();
-    prefs['font_size'] = $('#tbox_prefs_font_size').val();
+    prefs['font_size'] = $('#range_prefs_font_size').val();
     if (prefs['font_size'] == '') {
         prefs['font_size'] = 12;
     }
-    prefs['use_custom_font'] = $('#rdo_use_custom_font').prop('checked');
+    prefs['use_custom_font'] = $('#chk_use_custom_font').prop('checked');
     prefs['effects_level'] 
         = parseInt($('input:radio[name="effects"]:checked').val());
     // behaviors
@@ -335,11 +331,11 @@ update_font_preview:
 function update_font_preview() {
     $('#prefs_font_preview')
         .css('font-family'
-            , $('#rdo_use_custom_font').prop('checked')
+            , $('#chk_use_custom_font').prop('checked')
                 ? $('#tbox_prefs_custom_font').val() 
-                    :$('#sel_prefs_font_family').attr('value'))
+                    : conf.get_default_font_settings())
         .css('font-size'
-            , $('#tbox_prefs_font_size').attr('value') + 'px');
+            , $('#range_prefs_font_size').val() + 'px');
 }
 
 }
