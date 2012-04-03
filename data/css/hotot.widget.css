@@ -138,6 +138,13 @@ disabled:
 .combo:focus {
     border-color: #4D90FE;
 }
+.combo.dark:focus {
+    border: 1px #444 solid;
+}
+.combo.dark option {
+	background: rgba(0,0,0,0.7);
+	color: white;
+}
 
 /* = widget.checkbox = */
 

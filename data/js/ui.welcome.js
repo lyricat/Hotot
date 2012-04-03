@@ -90,6 +90,14 @@ function init () {
     function (event) {
         globals.about_dialog.open();
     });
+
+    $('#sel_welcome_lang').bind('change', function () {
+        i18n.change($(this).val());
+        if (conf.current_name.length != 0) {
+            conf.get_current_profile().preferences['lang'] = $('#sel_welcome_lang').val();
+            conf.save_prefs(conf.current_name);    
+        }
+    });
     return this;
 },
 

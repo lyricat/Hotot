@@ -76,6 +76,21 @@
 	<h1 data-i18n-text="hotot">Hotot</h1>
 	<div id="welcome_idicators">
 		<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
+		<select id="sel_welcome_lang" class="combo dark"
+				title="Select a language"
+				style="height: 24px; line-height: 24px; width: 100px;"
+				data-i18n-title="select_a_language">
+				<option value="auto" data-i18n-title="language">Language</option>
+				<option value="de">Deutsch</option>
+				<option value="en">English</option>
+				<option value="es">Español</option>
+				<option value="fr">Français</option>
+				<option value="ja">日本語</option>
+				<option value="pl_PL">Polski</option>
+				<option value="pt_BR">Português(Brasil)</option>
+				<option value="zh_CN">简体中文</option>
+				<option value="zh_CLS">文言</option>
+		</select>
 	</div>
 	<div id="welcome_page_main">
 		<ul id="profile_avatar_list">
@@ -175,16 +190,16 @@
 			class="tweet_more_menu_btn"
 			href="javascript:void(0);"
 			title="Set color label to the sender"
-			data-i18n-text="set_color_label"
-			>Set Color Label</a>
+			data-i18n-text="label_with_color"
+			>Label with color</a>
 		</li>
 		<li>
 		<a id="tweet_filter_btn"
 			class="tweet_more_menu_btn"
 			href="javascript:void(0);"
 			title="Filter this tweet"
-			data-i18n-text="filter_like_it"
-			>Filter like it</a>
+			data-i18n-text="filter_tweets_like_it"
+			>Filter tweets like it</a>
 		</li>
 		<li class="separator"><span></span></li>
 	</ul>
@@ -406,7 +421,7 @@
     <div id="status_ctrl">
         <a id="toggle_mode" class="button toolbar_button" data-i18n-title="click_to_compose_message" title="Click to compose message"></a>
         <a id="btn_shorturl" class="button toolbar_button" data-i18n-title="url_shortener" title="URL shortener"></a>
-        <a id="btn_smiley" class="button toolbar_button" data-i18n-title="Insert_smiley" title="Insert smiley"></a>
+        <a id="btn_smiley" class="button toolbar_button" data-i18n-title="insert_smiley" title="Insert smiley"></a>
         <a id="btn_imageuploader" class="button toolbar_button" data-i18n-title="image_uploader" title="Image uploader"></a>
         <a id="btn_save_draft" class="button toolbar_button" data-i18n-title="save_as_draft" title="Save as drafts"></a>
         <input id="tbox_status_speech" class="button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();a.focus();ui.StatusBox.move_cursor(ui.StatusBox.POS_END);};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
@@ -487,16 +502,16 @@
                 <select id="sel_prefs_lang" class="combo"
                     title="Select a language"
                     data-i18n-title="select_a_language">
-                    <option value="auto">Auto Detect</option>
-                    <option value="pt_BR">Brazilian Portuguese</option>
-                    <option value="zh_CN">Chinese (Simplified)</option>
-                    <option value="zh_CLS">Chinese (Classic)</option>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="ja">Japanese</option>
-                    <option value="pl_PL">Polish</option>
-                    <option value="es">Spanish</option>
+										<option value="auto" data-i18n-title="language">Language</option>
+										<option value="de">Deutsch</option>
+										<option value="en">English</option>
+										<option value="es">Español</option>
+										<option value="fr">Français</option>
+										<option value="ja">日本語</option>
+										<option value="pl_PL">Polski</option>
+										<option value="pt_BR">Português(Brasil)</option>
+										<option value="zh_CN">简体中文</option>
+										<option value="zh_CLS">文言</option>
                 </select>
             </p>
             </div>
@@ -566,7 +581,7 @@
 										style="width:80px;vertical-align:middle;"
 										type="range"/>
                 <label class="label" id="range_prefs_font_size_st"
-                    data-i18n-text="font_size">12px</label>
+                    >12px</label>
             </p>
             <p>
                 <label class="label" data-i18n-text="preview">Preview:</label><br/>
@@ -1059,7 +1074,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <!-- List Attribute dialog -->
 <div id="list_attr_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="List">List</h2>
+        <h2 class="dialog_title" data-i18n-text="list">List</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1101,7 +1116,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <!-- Add to List dialog -->
 <div id="add_to_list_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="List">Add to List</h2>
+        <h2 class="dialog_title" data-i18n-text="list">Add to List</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1355,7 +1370,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <div id="kismet_color_guide_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="set_color_label">Set Color Label</h2>
+        <h2 class="dialog_title" data-i18n-text="label_with_color">Label with color</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
