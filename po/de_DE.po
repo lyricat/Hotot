@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Gerald Schmidhuber <gerald.schmidhuber@googlemail.com>, 2010.
 # Vinzenz Vietzke <vietzke@b1-systems.de>, 2012.
-# Poapfel <contact@poapfel.net>, 2012
+# Poapfel <contact@poapfel.net>, 2012.
 #
 msgid ""
 msgstr ""
@@ -25,7 +25,7 @@ msgstr "%1 ungelesene Nachrichten"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
 msgid "&Developer Tool"
-msgstr "%Entwickler Tool"
+msgstr "&Entwickler Tool"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
 msgid "&Exit"
