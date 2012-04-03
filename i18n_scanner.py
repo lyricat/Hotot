@@ -92,7 +92,11 @@ def merge_trans(empty_trans, exists_trans):
 
 def format_out(trans):
     arr = []
+    sorted_trans = []
     for k, v in trans.items():
+        sorted_trans.append((k, v))
+    sorted_trans.sort(lambda a, b: 0 if a[0] == b[0] else -1 if a[0]<b[0] else 1)
+    for k, v in sorted_trans:
         sub_arr = []
         for sub_k, sub_v in v.items():
             sub_arr.append('\t\t"%s": "%s"' % (sub_k, sub_v))
