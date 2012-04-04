@@ -255,8 +255,6 @@ function hotot_log(label, content) {
                 + '/' + encodeURIComponent(content));
         } else if (conf.vars.platform == 'Chrome') {
             console.log('[' + label + '] ' + content);
-        } else {
-            util.console.out('[' + label + '] ' + content);
         }
     }
 }
@@ -386,7 +384,6 @@ function init_dialogs() {
 }
 
 function init_ui() {
-    util.console.init();
     init_hotkey();
     kismet.init();
     notification.init();
