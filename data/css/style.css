@@ -537,11 +537,10 @@ pre {
 }
 
 #view_title_bar .view_title {
-	background: #F2F2F2;
 	color: #333;
 	text-align: center;
 	font-size: 13px;
-	height: 20px;
+	height: 21px;
 	line-height: 20px;
 	border-bottom: 1px #ddd solid;
 	border-left: 1px #ddd solid;
