@@ -542,7 +542,11 @@ function bind_tweet_action(id) {
 
     $(id).find('.who_href').click(
     function (event) {
-        open_people($(this).attr('href').substring(1));
+        if (event.which == 1) {
+            open_people($(this).attr('href').substring(1));
+        }else if (event.which == 2) {
+            open_people($(this).attr('href').substring(1), {}, true);
+        }
         return false;
     });
 
@@ -578,8 +582,12 @@ function bind_tweet_action(id) {
                 var li = $('<li/>');
                 var a = $('<a/>').appendTo(li).attr('href', '#' + p.screen_name);
                 $('<img height="24" width="24"/>').attr({'title': '@' + p.screen_name + ' (' + p.name + ')', 'src': p.profile_image_url}).appendTo(a);
-                a.click(function() {
-                    open_people($(this).attr('href').substring(1));
+                a.click(function(event) {
+                    if (event.which == 1) {
+                        open_people($(this).attr('href').substring(1));
+                    } else if (event.which == 2) {
+                        open_people($(this).attr('href').substring(1),{},true);
+                    }
                 });
                 li.appendTo(ul);
             }

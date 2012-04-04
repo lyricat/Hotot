@@ -214,13 +214,13 @@ function resume_state() {
                     ui.Slider.addDefaultView(name, opts);
                 break;
                 case 'people':
-                    open_people(opts.screen_name, opts);
+                    open_people(opts.screen_name, opts, true);
                 break;
                 case 'list':
-                    open_list(opts.screen_name, opts.slug, opts);
+                    open_list(opts.screen_name, opts.slug, opts, true);
                 break;
                 case 'saved_search':
-                    open_search(opts.query, opts);
+                    open_search(opts.query, opts, true);
                 break;
                 }
             }

@@ -128,7 +128,7 @@ function quit() {
 $(window).unload(function() {
     quit();
 });
-function open_people(screen_name, additional_opts) {
+function open_people(screen_name, additional_opts, in_background) {
     // @TODO check this user if exists or not
     toast.set('Lookup @'+screen_name+'... ').show();
     var name = 'people_'+screen_name;
@@ -153,10 +153,12 @@ function open_people(screen_name, additional_opts) {
             , 'screen_name': screen_name
         }, additional_opts));
     ui.Main.views[name].load();
-    ui.Slider.slide_to(name);
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
 }
 
-function open_list(screen_name, slug, additional_opts) {
+function open_list(screen_name, slug, additional_opts, in_background) {
     // @TODO check this list if exists or not
     toast.set('Lookup @'+screen_name+'/'+slug+'... ').show();
     var name = 'list_'+screen_name+'_'+slug;
@@ -182,10 +184,12 @@ function open_list(screen_name, slug, additional_opts) {
             , 'slug': slug
         }, additional_opts));
     ui.Main.views[name].load();
-    ui.Slider.slide_to(name);
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
 }
 
-function open_search(query, additional_opts) {
+function open_search(query, additional_opts, in_background) {
     toast.set('Lookup "'+ query +'"... ').show();
     var name = 'search_'+ util.generate_uuid();
     var title = 'Search Result of "' + query + '"';
@@ -207,7 +211,9 @@ function open_search(query, additional_opts) {
             , 'query': query
         }, additional_opts));
     ui.Main.views[name].load();
-    ui.Slider.slide_to(name);
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
 }
 
 function update_status(text) {
