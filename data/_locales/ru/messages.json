@@ -80,7 +80,7 @@
 		"description": "data/index.html"
 	},
 	"bio": {
-		"message": "Bio",
+		"message": "О себе",
 		"description": "data/index.html"
 	},
 	"block": {
@@ -120,7 +120,7 @@
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
-		"message": "Click the button below",
+		"message": "Нажмите на кнопку внизу",
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
@@ -228,15 +228,15 @@
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "Extra",
+		"message": "Екстра",
 		"description": "data/index.html"
 	},
 	"effects_low": {
-		"message": "Low",
+		"message": "Низкие",
 		"description": "data/index.html"
 	},
 	"effects_normal": {
-		"message": "Normal",
+		"message": "Нормальные",
 		"description": "data/index.html"
 	},
 	"enable": {
@@ -256,15 +256,15 @@
 		"description": "data/index.html"
 	},
 	"errors": {
-		"message": "Errors",
+		"message": "Ошибки",
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "Examples",
+		"message": "Примеры",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "Exit Hotot when close window",
+		"message": "Выходит из Hotot при закрытии окна",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -276,7 +276,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Favorite this tweet ...",
+		"message": "Добавить в избранное ...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -292,7 +292,7 @@
 		"description": "data/index.html"
 	},
 	"find": {
-		"message": "Find",
+		"message": "Найти",
 		"description": "data/index.html"
 	},
 	"fine": {
@@ -304,39 +304,39 @@
 		"description": "data/index.html"
 	},
 	"follow": {
-		"message": "Follow",
+		"message": "Читать",
 		"description": "data/js/ui.template.js"
 	},
 	"follow_at": {
-		"message": "Follow @",
+		"message": "Читать @",
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "Follower",
+		"message": "Читатели",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
-		"message": "Followers",
+		"message": "Читатели",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
-		"message": "Font",
+		"message": "Шрифт",
 		"description": "data/index.html"
 	},
 	"font_preview_hint": {
-		"message": "The quick brown fox jumps over the lazy dog.",
+		"message": "съешь же ещё этих мягких французских булок, да выпей чаю.",
 		"description": "data/index.html"
 	},
 	"font_size": {
-		"message": "Font Size",
+		"message": "Размер шрифта",
 		"description": "data/index.html"
 	},
 	"friend_cnt": {
-		"message": "Friend",
+		"message": "Друг",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "Friends",
+		"message": "Друзья",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
@@ -344,15 +344,15 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "You MUST restart Hotot for some changes below to take effect. And these changes will affect ALL accounts",
+		"message": "Вы должны перезапустить Hotot для того что бы включились некоторые эффекты. И все изминения повлияют для всех аккаунтов",
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "Greetings!",
+		"message": "Поздравляем!",
 		"description": "data/index.html"
 	},
 	"help": {
-		"message": "Help",
+		"message": "Помощь",
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
@@ -376,11 +376,11 @@
 		"description": "data/index.html"
 	},
 	"http_proxy": {
-		"message": "HTTP Proxy",
+		"message": "Прокси HTTP",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
-		"message": "Image uploader",
+		"message": "Загрузка изображение",
 		"description": "data/index.html"
 	},
 	"info": {
@@ -388,7 +388,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "Insert smiley",
+		"message": "Вставить смайл",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -396,11 +396,11 @@
 		"description": "data/index.html"
 	},
 	"interface_language": {
-		"message": "Interface language",
+		"message": "Язык интерфейса",
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "Join",
+		"message": "Присоединиться",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -436,7 +436,7 @@
 		"description": "data/index.html"
 	},
 	"language": {
-		"message": "Language",
+		"message": "Язык",
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
@@ -444,11 +444,11 @@
 		"description": "data/index.html"
 	},
 	"license": {
-		"message": "License",
+		"message": "Лицензия",
 		"description": "data/index.html"
 	},
 	"list": {
-		"message": "List",
+		"message": "Список",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
@@ -456,7 +456,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
-		"message": "Lists",
+		"message": "Списки",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
@@ -468,15 +468,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "Loading ... ",
+		"message": "Загрузка ... ",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "Loading Resources ...",
+		"message": "Загрузка ресурсов ...",
 		"description": "data/index.html"
 	},
 	"location": {
-		"message": "Location",
+		"message": "Местоположение",
 		"description": "data/index.html"
 	},
 	"mark_deleted_tweets": {
@@ -488,7 +488,7 @@
 		"description": "data/index.html"
 	},
 	"mention_them": {
-		"message": "Mention",
+		"message": "Упоминание",
 		"description": "data/js/ui.template.js"
 	},
 	"mentions": {
@@ -500,7 +500,7 @@
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "Messages",
+		"message": "Сообщение",
 		"description": "data/js/ui.slider.js"
 	},
 	"messages_view": {
@@ -516,7 +516,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "More effects like shadows and glow of widgets",
+		"message": "Больше эффектов типа теней и отблески виджетов",
 		"description": "data/index.html"
 	},
 	"move_to_bottom": {
@@ -524,11 +524,11 @@
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Move to next tweet",
+		"message": "Передвинуться к следующему твиту",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Move to prev tweet",
+		"message": "Передвинуться к предыдущему твиту",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -540,7 +540,7 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "My Favorites",
+		"message": "Мои избранные",
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
@@ -552,7 +552,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
-		"message": "Name",
+		"message": "Имя",
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
@@ -560,7 +560,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "Network Error! Please try later.",
+		"message": "Ошибка Сети! повторите попытку позже.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
@@ -568,7 +568,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
-		"message": "Next",
+		"message": "Следующий",
 		"description": "data/index.html"
 	},
 	"no_extension": {
