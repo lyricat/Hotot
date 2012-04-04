@@ -2082,7 +2082,7 @@ label {
 
 .card_body {
 	margin: 0 0 0 65px;
-	padding: 5px 10px 0px 10px;
+	padding: 0px 10px 0px 10px;
 	min-height: 50px;
 	position: relative;
 }
@@ -2094,6 +2094,7 @@ label {
 
 .card_body > .who > .who_href {
 	font-weight: bold;
+	font-size: 13px;
 }
 
 .card_body > .retweet_mark {
