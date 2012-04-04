@@ -1,10 +1,10 @@
 {
 	"about": {
-		"message": "About",
+		"message": "О программі",
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "About & Help",
+		"message": "Допомога",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -12,11 +12,11 @@
 		"description": "data/index.html"
 	},
 	"action": {
-		"message": "Action",
+		"message": "Дія",
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "Add",
+		"message": "Додати",
 		"description": "data/index.html"
 	},
 	"add_new_views": {
@@ -24,7 +24,7 @@
 		"description": "data/index.html"
 	},
 	"add_to_list": {
-		"message": "Add to list",
+		"message": "Додати до списку",
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
@@ -36,11 +36,11 @@
 		"description": "data/index.html"
 	},
 	"api_base": {
-		"message": "API Base",
+		"message": "База API",
 		"description": "data/index.html"
 	},
 	"api_setting": {
-		"message": "API Setting",
+		"message": "Налаштування API",
 		"description": "data/index.html"
 	},
 	"appearance": {
@@ -60,7 +60,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
-		"message": "Author",
+		"message": "Автор",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_update": {
