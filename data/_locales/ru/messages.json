@@ -1,10 +1,10 @@
 {
 	"about": {
-		"message": "About",
+		"message": "О программе",
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "About & Help",
+		"message": "Помощь",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -16,7 +16,7 @@
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "Add",
+		"message": "Добавить",
 		"description": "data/index.html"
 	},
 	"add_new_views": {
@@ -40,7 +40,7 @@
 		"description": "data/index.html"
 	},
 	"api_setting": {
-		"message": "API Setting",
+		"message": "Настройка API ",
 		"description": "data/index.html"
 	},
 	"appearance": {
@@ -48,7 +48,7 @@
 		"description": "data/index.html"
 	},
 	"archive": {
-		"message": "Archive",
+		"message": "Архив",
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
@@ -56,19 +56,19 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Authentication OK!",
+		"message": "Авторизация ",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
-		"message": "Author",
+		"message": "Автор",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_update": {
-		"message": "Auto Update",
+		"message": "Авто обновления",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
-		"message": "Automatically sign in after opening",
+		"message": "Автоматический вход после открытия",
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
