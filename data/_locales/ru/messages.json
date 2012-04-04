@@ -24,7 +24,7 @@
 		"description": "data/index.html"
 	},
 	"add_to_list": {
-		"message": "Add to list",
+		"message": "Добавить в список",
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
@@ -36,7 +36,7 @@
 		"description": "data/index.html"
 	},
 	"api_base": {
-		"message": "API Base",
+		"message": "База API",
 		"description": "data/index.html"
 	},
 	"api_setting": {
@@ -56,7 +56,7 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Авторизация ",
+		"message": "Авторизация успешна",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -92,11 +92,11 @@
 		"description": "data/index.html"
 	},
 	"cancel": {
-		"message": "Cancel",
+		"message": "Отмена",
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "Cannot authenticate you! Please check your username/password and API Base",
+		"message": "Не можем вас авторизировать! Пожалуйста проверьте ваш логин и пароль базу API",
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
@@ -108,15 +108,15 @@
 		"description": "data/index.html"
 	},
 	"clear": {
-		"message": "Clear",
+		"message": "Очистить",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
-		"message": "Clear & Close",
+		"message": "Очистить и закрыть",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "Click Me to Continue",
+		"message": "Нажмите что бы продолжить",
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
@@ -136,27 +136,27 @@
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
-		"message": "Close",
+		"message": "закрыть",
 		"description": "data/index.html"
 	},
 	"close_current_column": {
-		"message": "Close current column",
+		"message": "Закрыть текущую колонку",
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "Compose",
+		"message": "Сочинить",
 		"description": "data/index.html"
 	},
 	"compose_messages_to": {
-		"message": "COMPOSE MESSAGE To",
+		"message": "Сочинить сообщение к",
 		"description": "data/js/ui.status_box.js"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Copy the PIN Code and paste it into the box below",
+		"message": "Скопируйте PIN Code и вставте в поле ниже ",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
-		"message": "Copy into clipboard",
+		"message": "Копировать в буфер обмена",
 		"description": "date/index.html"
 	},
 	"create_a_list": {
@@ -172,27 +172,27 @@
 		"description": "data/index.html"
 	},
 	"debug": {
-		"message": "Debug",
+		"message": "Отладка",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "Default Picture Service",
+		"message": "Сервис по умолчанию",
 		"description": "data/index.html"
 	},
 	"delete": {
-		"message": "Delete",
+		"message": "Удалить",
 		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
-		"message": "Delete this tweet",
+		"message": "Удалить этот твит",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Destroyed Successfully!",
+		"message": "Удалено успешно",
 		"description": "data/js/ui.main.js"
 	},
 	"disable": {
-		"message": "Disable",
+		"message": "Не доступно",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
@@ -200,7 +200,7 @@
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "Disabled",
+		"message": "Не доступн",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -212,7 +212,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "Drag a photo here",
+		"message": "Переместите фото сюда",
 		"description": "data/index.html"
 	},
 	"drop": {
@@ -220,11 +220,11 @@
 		"description": "data/index.html"
 	},
 	"edit": {
-		"message": "Edit",
+		"message": "Редактировать",
 		"description": "data/js/ui.template.js"
 	},
 	"effects": {
-		"message": "Effects",
+		"message": "Ефекты",
 		"description": "data/index.html"
 	},
 	"effects_extra": {
