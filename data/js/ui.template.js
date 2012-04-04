@@ -500,7 +500,7 @@ view_t:
     <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
     <ul class="listview_body"></ul> \
     <div class="listview_footer"> \
-        <div class="load_more_info"><img src="image/ani_loading_bar_gray.gif"/></div> \
+        <div class="load_more_info"><img src="image/ani_loading_bar.gif"/></div> \
     </div> \
 </div>',
 
