@@ -1074,10 +1074,10 @@ form_status_draft:
 function form_status_draft(draft) {
     var m = ui.Template.status_draft_m;
     m.MODE = draft.mode;
-    m.TEXT = draft.text;
+    m.TEXT = draft.text.replace(/</g, "&lt;").replace(/>/g,"&gt;");
     if (m.MODE == ui.StatusBox.MODE_REPLY) {
         m.REPLY_TO_ID = draft.reply_to_id;
-        m.REPLY_TEXT = draft.reply_text;
+        m.REPLY_TEXT = draft.reply_text
     } else if (m.MODE == ui.StatusBox.MODE_DM) {
         m.RECIPIENT = draft.recipient;
     } else if (m.MODE == ui.StatusBox.MODE_IMG) {
