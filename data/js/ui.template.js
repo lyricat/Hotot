@@ -552,7 +552,7 @@ preview_link_reg: {
     tail: '/thumb/' 
 },
 'raw': {
-    reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif)', 'gi')
+    reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|jpeg|jpe|png|gif)', 'gi')
 },
 
 'youtube.com': {
