@@ -9,6 +9,13 @@ Version 0.9.7.52
 	* Update translation scanner script
 	* Allow to change language in welcome page
 	* Inline picture preview.
+	* Update loading hint in welcome page
+	* Support to preview .jpe, .jpeg files (issue #186)
+	* Open columns in background (issue #182)
+	* Improve database performance.
+	* Remove util.console
+	* Fix: Changing font size without restart (issue #193)
+	* Fix: XSS in drafts (issue #188)
 
 Version 0.9.7.51
 	* Fix: cannot remember the columns state (issue #174).
