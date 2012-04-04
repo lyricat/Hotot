@@ -365,7 +365,7 @@ function init_dialogs() {
     globals.imageuploader_dialog.create();
 
     globals.imagepreview_dialog = new widget.Dialog('#imagepreview_dlg');
-    globals.imagepreview_dialog.resize(600, 600);
+    globals.imagepreview_dialog.resize(1800, 1800);
     globals.imagepreview_dialog.place(widget.DialogManager.CENTER);
     globals.imagepreview_dialog.create();
 
