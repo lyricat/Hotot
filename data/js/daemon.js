@@ -46,6 +46,7 @@ daemon = {
         }
         ui.Slider.save_state();
         conf.save_prefs(conf.current_name);
+        db.reduce_db(); 
         daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
     },
 
