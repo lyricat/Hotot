@@ -84,7 +84,7 @@
     -webkit-box-shadow: 0 0 10px #4AC3FF;
     box-shadow: 0 0 10px #4AC3FF;
 }
-.tweetview > .listview_body {
+.tweetview .listview_body {
     border-color: #333 !important;
 }
 .card {
@@ -209,6 +209,15 @@ a {
 .btn_tweet_thread.expand {
     background-image: url(expand.png);
 }
-
+.scrollbar_handle {  
+	width: 8px;  
+}
+.scrollbar_track {  
+	background-color: rgba(80,80,80,0.1);  
+	width: 8px;
+}
+.scrollbar_track:hover {  
+	background-color: rgba(200,200,200,0.1);  
+}
 
 

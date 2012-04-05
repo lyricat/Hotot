@@ -87,6 +87,7 @@
     border-top: 1px #ddd solid;
     color: black;
     border-bottom: 1px #fafafa solid;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#fafafa));
 }
 
 .card:first-child {
@@ -126,7 +127,8 @@
     color: gray;
 }
 .profile_img_wrapper {
-    -webkit-box-reflect:below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(0,0,0, 0.6)));
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px #aaa;
 }
 ::selection {
     background: #a8d1ff;
@@ -134,4 +136,11 @@
 
 #indication_light {
     background: #73f;
+}
+.scrollbar_handle {  
+	background-color: orange;  
+	width: 8px;  
+}
+.scrollbar_track {  
+	width: 8px;
 }
