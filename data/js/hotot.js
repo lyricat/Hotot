@@ -91,6 +91,10 @@ function update_tweet_block_width() {
         status_box_w = 550;
     }
     $('#status_box').width(status_box_w);
+    // recalculate scrollbar layout
+    for (var k in ui.Main.views) {
+        ui.Main.views[k].scrollbar.recalculate_layout();
+    }
 }
 
 function hotot_action(uri) {
@@ -420,6 +424,8 @@ function init_ui() {
     ui.ActionMenu.init();
     ui.ContextMenu.init();
     init_dialogs();
+
+    widget.Scrollbar.register();
 
     globals.ratelimit_bubble = new widget.Bubble('#ratelimit_bubble', '#btn_my_profile');
     globals.ratelimit_bubble.create();
@@ -809,8 +815,7 @@ jQuery(function($) {
     });
 
 
-    $(window).resize(
-    function () {
+    var on_resize = function () {
         update_tweet_block_width();
         if (globals.load_flags) {
             if (globals.load_flags == 2) {
@@ -826,6 +831,12 @@ jQuery(function($) {
                 }
             }
         }
+    }
+    var resize_timer = false
+    $(window).resize(function () {
+        if (resize_timer !== false)
+            clearTimeout(resize_timer);
+        resize_timer = setTimeout(on_resize, 200);
     });
 
     $("#count").hover(

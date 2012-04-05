@@ -49,9 +49,11 @@ function WidgetListView(id, name, params) {
     self.init = function init(id, name, params) {
         self._me = $(id);
         self.name = name;
-        self._body = self._me.children('.listview_body');
-        self._header = self._me.children('.listview_header');
-        self._footer = self._me.children('.listview_footer');
+        self._body = self._me.find('.listview_body');
+        self._header = self._me.find('.listview_header');
+        self._footer = self._me.find('.listview_footer');
+        self._content = self._me.find('.listview_content');
+        self.scrollbar = new widget.Scrollbar(self._me.find('.scrollbar_track'), self._me.find('.scrollbar_content'))
 
         // notification
         var prefs = conf.profiles[conf.current_name].preferences;
@@ -127,7 +129,7 @@ function WidgetListView(id, name, params) {
     };
 
     self.create = function create(){
-        self._me.scroll(
+        self._content.scroll(
         function (event) {
             if (this.scrollTop != 0) {
                 self.resume_pos = true;
@@ -137,8 +139,10 @@ function WidgetListView(id, name, params) {
 
             if (this.scrollTop < 30) {
                 widget.ListView.compress_page(self);
+                self.scrollbar.recalculate_layout();
             } else if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
                 self._body.children('.card:hidden:lt(20)').show();
+                self.scrollbar.recalculate_layout();
                 // load more automaticly
                 if (this.scrollTop + this.clientHeight + 30 > this.scrollHeight) {
                     var now = Date.now();
@@ -164,6 +168,7 @@ function WidgetListView(id, name, params) {
         for (var k in self) {
             self[k] = null;
         }
+        self.scrollbar.destroy()
         self = null;
     };
 
@@ -224,12 +229,13 @@ function WidgetListView(id, name, params) {
             }
         }
         // thread container doesn't have a property '_me'
-        if (self.hasOwnProperty('_me') && self._me.get(0).scrollTop < 100) {
+        if (self.hasOwnProperty('_me') && self._content.get(0).scrollTop < 100) {
             if (self.is_trim) {
                 widget.ListView.trim_page(self);
             }
             widget.ListView.compress_page(self);
         }
+        self.scrollbar.recalculate_layout();
     };
     
     self.load_fail = function load_fail(json) {
@@ -274,6 +280,7 @@ function WidgetListView(id, name, params) {
                 self.since_id = tweets[0].id_str;
             }
         }
+        self.scrollbar.recalculate_layout();
     };
     
     self.loadmore_fail = function loadmore_fail(json) {
@@ -287,6 +294,7 @@ function WidgetListView(id, name, params) {
         self._body.find('.card').unbind();
         self._body.find('.card a').unbind();
         self._body.empty();
+        self.scrollbar.recalculate_layout();
     };
 
     self.init(id, name, params);

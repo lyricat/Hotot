@@ -496,11 +496,14 @@ trending_topics_header_t:
 
 view_t:
 '<div id="{%ID%}" \
-    name="{%NAME%}" class="listview {%CLASS%} {%ROLE%}"> \
-    <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
-    <ul class="listview_body"></ul> \
-    <div class="listview_footer"> \
-        <div class="load_more_info"><img src="image/ani_loading_bar.gif"/></div> \
+    name="{%NAME%}" class="listview scrollbar_container {%CLASS%} {%ROLE%}"> \
+    <div class="scrollbar_track"><div class="scrollbar_handle"></div></div>\
+    <div class="scrollbar_content listview_content">\
+        <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
+        <ul class="listview_body"></ul> \
+        <div class="listview_footer"> \
+            <div class="load_more_info"><img src="image/ani_loading_bar.gif"/></div> \
+        </div> \
     </div> \
 </div>',
 

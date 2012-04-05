@@ -248,7 +248,7 @@ function add_people(self, users) {
     // offset = N* (clientHeight + border-width)
     // @TODO
     if (self.hasOwnProperty('_me') && self.resume_pos) {
-        self._me.get(0).scrollTop += new_tweets_height + users.length;
+        self._content.get(0).scrollTop += new_tweets_height + users.length;
     }
 
     // @TODO dumps to cache
@@ -349,7 +349,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             self._me.animate(
                 {scrollTop: (self._me.get(0).scrollTop + new_tweets_height + json_obj.length) + 'px'}, 200);
                 */
-            self._me.get(0).scrollTop += new_tweets_height + json_obj.length;
+            self._content.get(0).scrollTop += new_tweets_height + json_obj.length;
         }
     //}, 50);
 
@@ -1020,7 +1020,7 @@ function move_to_tweet(pos) {
         // too bad
         return;
     }
-    cur_view._me.stop().animate(
+    cur_view._content.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}, 300);
     current.removeClass('selected');
     target.addClass('selected');

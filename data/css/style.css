@@ -926,8 +926,8 @@ label {
 .tweet_bar {
 	list-style-type: none;
 	height: 24px;
-	top: 0px;
-	right: 10px;
+	top: 5px;
+	right: 25px;
 	position: absolute;
 	text-align: right;
 	display: none;
@@ -1907,25 +1907,36 @@ label {
 	float: left;
 	width: 600px;
 	height: 100%;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	font-size: 12px;
 	-webkit-transition: all .2s ease-in-out;
+	position: relative;
 }
 
-.tweetview > .listview_header {
+.tweetview .listview_content {
+	height: 100%;
+	overflow: hidden;
+}
+
+.tweetview .scrollbar_track {
+	z-index: 20;
+	margin: 10px 5px;
+}
+
+.tweetview .listview_header {
 	font-size: 12px;
 	border: 0;
 	position: relative;
 }
 
-.tweetview > .listview_footer {
+.tweetview .listview_footer {
 	display: none;
 	padding: 0 20px;
 	text-align: center;
 }
 
-.tweetview > .listview_body {
+.tweetview .listview_body {
 	padding: 0px 0px;
 	list-style-type: none;
 	border-left: 1px #ddd solid;

@@ -486,3 +486,41 @@ disabled:
     
 }
 
+/* scrollbar */
+#scrollbar_container {  
+	position:relative;  
+} 
+ 
+.scrollbar_track {  
+	position:absolute;  
+	top:0;  
+	right:0;  
+	height:100%;  
+	width:10px;  
+	background-color: rgba(200,200,200,0.1);  
+	cursor:move;
+	border-radius: 5px;
+} 
+
+.scrollbar_track:hover {  
+	background-color: rgba(80,80,80,0.1);  
+}
+
+.scrollbar_handle {  
+	width:10px;  
+	background-color: gray;  
+	cursor:move;  
+	border-radius: 5px;  
+	opacity:0.5;  
+	min-height: 100px;
+	position: relative;
+	-webkit-transition: opacity 0.2s ease-in;
+} 
+
+.scrollbar_handle.active, .scrollbar_handle:hover {
+	opacity:0.9;  
+}
+
+.scrollbar_content {  
+	overflow:hidden;  
+}  
