@@ -75,7 +75,7 @@ class Scrollbar
     )
 
     @track.mousedown( (ev) =>
-      offsetY = @offset_check(ev.clientY - @track.get(0).offsetTop - @handle_height * 0.5)
+      offsetY = @offset_check(ev.clientY - @track.get(0).offsetTop - @handle_height)
       @scroll_to(offsetY)
     )
     @content.on('mousewheel', (ev) => @on_wheel ev)

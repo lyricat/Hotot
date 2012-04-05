@@ -92,7 +92,7 @@
       });
       this.track.mousedown(function(ev) {
         var offsetY;
-        offsetY = _this.offset_check(ev.clientY - _this.track.get(0).offsetTop - _this.handle_height * 0.5);
+        offsetY = _this.offset_check(ev.clientY - _this.track.get(0).offsetTop - _this.handle_height * 1);
         return _this.scroll_to(offsetY);
       });
       this.content.on('mousewheel', function(ev) {
