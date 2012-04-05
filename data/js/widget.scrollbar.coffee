@@ -9,7 +9,7 @@ class Scrollbar
     else
       @content = content
     @margin = margin
-    @handle = @track.children('.scrollbar_handle')
+    @handle = @track.find('.scrollbar_handle')
     @content_height = 0
     @handle_height = 0
     if @track.length ==0 and @content.length == 0 and @handle.length == 0
@@ -41,11 +41,11 @@ class Scrollbar
 
   activate: ->
     @on_active = true
-    @handle.addClass('active')
+    @track.addClass('active')
 
   deactivate: ->
     @on_active = false
-    @handle.removeClass('active')
+    @track.removeClass('active')
     
   show: ->
     @track.show()

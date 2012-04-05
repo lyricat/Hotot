@@ -212,11 +212,12 @@ a {
 .scrollbar_handle {  
 	width: 8px;  
 }
-.scrollbar_track {  
+.scrollbar_track .scrollbar_slot {  
 	background-color: rgba(80,80,80,0.1);  
 	width: 8px;
+	border-radius: 4px;
 }
-.scrollbar_track:hover {  
+.scrollbar_track:hover .scrollbar_slot {  
 	background-color: rgba(200,200,200,0.1);  
 }
 

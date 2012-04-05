@@ -15,7 +15,7 @@
         this.content = content;
       }
       this.margin = margin;
-      this.handle = this.track.children('.scrollbar_handle');
+      this.handle = this.track.find('.scrollbar_handle');
       this.content_height = 0;
       this.handle_height = 0;
       if (this.track.length === 0 && this.content.length === 0 && this.handle.length === 0) {
@@ -51,12 +51,12 @@
 
     Scrollbar.prototype.activate = function() {
       this.on_active = true;
-      return this.handle.addClass('active');
+      return this.track.addClass('active');
     };
 
     Scrollbar.prototype.deactivate = function() {
       this.on_active = false;
-      return this.handle.removeClass('active');
+      return this.track.removeClass('active');
     };
 
     Scrollbar.prototype.show = function() {

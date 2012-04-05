@@ -497,7 +497,11 @@ trending_topics_header_t:
 view_t:
 '<div id="{%ID%}" \
     name="{%NAME%}" class="listview scrollbar_container {%CLASS%} {%ROLE%}"> \
-    <div class="scrollbar_track"><div class="scrollbar_handle"></div></div>\
+    <div class="scrollbar_track">\
+        <div class="scrollbar_slot">\
+            <div class="scrollbar_handle"></div>\
+        </div>\
+    </div>\
     <div class="scrollbar_content listview_content">\
         <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
         <ul class="listview_body"></ul> \
