@@ -25,6 +25,7 @@
 // Qt
 #include <QApplication>
 #include <QGraphicsWebView>
+#include <QDesktopServices>
 #include <QWebDatabase>
 #include <QWebSettings>
 #include <QDir>
@@ -135,7 +136,16 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 
     m_page = new HototWebPage(this);
 
-    QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
+#ifdef Q_OS_UNIX
+    QDir dir(QDir::homePath().append("/.config/hotot-qt"));
+#else
+    QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation).append("/Hotot"));
+#endif
+
+    if (!dir.exists())
+        dir.mkpath(".");
+
+    QWebSettings::setOfflineStoragePath(dir.absolutePath());
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
     m_webView->setPage(m_page);
