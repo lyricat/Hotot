@@ -268,9 +268,11 @@ function apply_prefs(name, full) {
     var fonts = conf.get_default_font_settings();
     $('body').css('font-family', fonts[0]);
     if (prefs.use_custom_font) {
-        $('.listview, .dialog_block p').css('font-family', prefs.custom_font);
+        $('.listview, .dialog_block p, .card').css('font-family', prefs.custom_font);
+        globals.tweet_font = prefs.custom_font;
     } else {
-        $('.listview, .dialog_block p').css('font-family', fonts[1]);
+        $('.listview, .dialog_block p, .card').css('font-family', fonts[1]);
+        globals.tweet_font = fonts[1];
     }
     globals.twitterClient.api_base = prefs.api_base;
     globals.twitterClient.sign_api_base = prefs.sign_api_base;

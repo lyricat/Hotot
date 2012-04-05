@@ -23,7 +23,7 @@ reg_hash_tag: null,
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -48,7 +48,7 @@ tweet_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px;">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -83,7 +83,7 @@ trending_topic_t:
 </li>',
 
 retweeted_by_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="deleted_mark"></div>\
@@ -136,7 +136,7 @@ retweeted_by_t:
 </li>',
 
 message_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}\n\n{%DESCRIPTION%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -168,7 +168,7 @@ message_t:
 </li>',
 
 search_t:
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}" link="{%LINK%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}" link="{%LINK%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="deleted_mark"></div>\
@@ -205,7 +205,7 @@ search_t:
 </li>',
 
 people_t:
-'<li id="{%USER_ID%}" class="people_card card normal" type="people" following={%FOLLOWING%} screen_name={%SCREEN_NAME%}>\
+'<li id="{%USER_ID%}" class="people_card card normal" type="people" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -350,7 +350,7 @@ people_vcard_t_orig:
 </div></div>',
 
 list_t:
-'<li id="{%LIST_ID%}" class="list_card card normal" type="list" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} slug={%SLUG%}>\
+'<li id="{%LIST_ID%}" class="list_card card normal" type="list" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} slug={%SLUG%} style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="@{%USER_NAME%}/{%SLUG%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -600,7 +600,8 @@ function init() {
         , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
-        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT: ''
+        , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
@@ -619,7 +620,8 @@ function init() {
         , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
-        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
@@ -633,25 +635,28 @@ function init() {
           ID:'', TWEET_ID:'', SCREEN_NAME:'', RECIPIENT_SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:''
         , SCHEME:'', TIMESTAMP:''
-        , TWEET_FONT_SIZE:'', TRANS_Reply_Them:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TRANS_Reply_Them:''
     };
 
     ui.Template.search_m = {
           ID:'', TWEET_ID:'', SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
         , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
-        , TWEET_FONT_SIZE:'', TRANS_via:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TRANS_via:''
         , TWEET_BASE_URL: ''
     };
 
     ui.Template.people_m = {
           USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
-        , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+        , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
     };
 
     ui.Template.list_m = {
           LIST_ID:'', SCREEN_NAME:'', SLUG:'', NAME:'', MODE:''
-        , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+        , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
     };
 
     ui.Template.view_m = {
@@ -724,6 +729,7 @@ function form_dm(dm_obj, pagename) {
     m.SCHEME = 'message';
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.TRANS_Reply_Them = "Reply Them";
     return ui.Template.render(ui.Template.message_t, m);
 },
@@ -827,6 +833,7 @@ function form_tweet (tweet_obj, pagename) {
     m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -930,6 +937,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -991,6 +999,7 @@ function form_search(tweet_obj, pagename) {
     m.SHORT_TIMESTAMP = created_at_short_str;
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.TRANS_via = _('via');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
     m.LINK = link;
@@ -1007,6 +1016,7 @@ function form_people(user_obj, pagename) {
     m.PROFILE_IMG = user_obj.profile_image_url;
     m.FOLLOWING = user_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
 
     return ui.Template.render(ui.Template.people_t, m);
 },
@@ -1023,6 +1033,7 @@ function form_people(list_obj, pagename) {
     m.PROFILE_IMG = list_obj.user.profile_image_url;
     m.FOLLOWING = list_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     return ui.Template.render(ui.Template.list_t, m);
 },
 
