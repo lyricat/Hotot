@@ -1,18 +1,18 @@
 {
 	"about": {
-		"message": "关于",
+		"message": "这是俺",
 		"description": ""
 	},
 	"about_and_help": {
-		"message": "关于与帮助",
+		"message": "想让俺帮你么？",
 		"description": ""
 	},
 	"access_token_doesnt_exist": {
-		"message": "呜呜，访问令牌不存在",
+		"message": "靠，访问令牌竟然被你吃了！",
 		"description": "data/index.html"
 	},
 	"action": {
-		"message": "动作",
+		"message": "咸猪手",
 		"description": "data/index.html"
 	},
 	"add": {
@@ -20,15 +20,15 @@
 		"description": "data/index.html"
 	},
 	"add_new_views": {
-		"message": "添加新视图",
+		"message": "弄个新偷窥",
 		"description": "data/index.html"
 	},
 	"add_to_list": {
-		"message": "添加到列表",
+		"message": "弄到列表里",
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
-		"message": "高级",
+		"message": "Geek Only",
 		"description": ""
 	},
 	"all": {
@@ -44,7 +44,7 @@
 		"description": ""
 	},
 	"appearance": {
-		"message": "外观",
+		"message": "外貌",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -52,11 +52,11 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "壳酱的诡计",
+		"message": "外貌协会",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "验证通过！",
+		"message": "成功！你太NB了！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -72,7 +72,7 @@
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "在性能和养眼度之间保持平衡。",
+		"message": "在活好和身材之间保持平衡。",
 		"description": "data/index.html"
 	},
 	"behavior": {
@@ -84,7 +84,7 @@
 		"description": ""
 	},
 	"block": {
-		"message": "屏蔽",
+		"message": "B了Y的！",
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
@@ -96,15 +96,15 @@
 		"description": ""
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和 API 地址。",
+		"message": "不能验证屌丝的身份。请检查你的屌丝名/密码和 API 地址。",
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "不允许在账户前缀中使用`@`字符哦喵",
+		"message": "不允许在屌丝账户前缀中使用`@`字符哦",
 		"description": "data/js/ui.welcome.js"
 	},
 	"clean_token": {
-		"message": "清空令牌",
+		"message": "吃掉令牌",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -116,23 +116,23 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "点我继续",
+		"message": "轻按一下就可以继续～～嗯～～",
 		"description": ""
 	},
 	"click_the_button_below": {
-		"message": "点击下面的按钮",
+		"message": "轻按下面的按钮～～你好坏哦",
 		"description": ""
 	},
 	"click_to_compose_message": {
-		"message": "点击切换DM模式",
+		"message": "轻按我切换DM闷骚模式",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
-		"message": "点击查看",
+		"message": "轻按骚扰",
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "点我查看转发人",
+		"message": "亲我一下查看转发人",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -144,15 +144,15 @@
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "发推",
+		"message": "发推油",
 		"description": "data/index.html"
 	},
 	"compose_messages_to": {
-		"message": "写私信",
+		"message": "写私处信",
 		"description": "data/js/ui.status_box.js"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "复制 PIN Code 并且将它粘贴到下面的文本框",
+		"message": "复制 PIN Code 并将它无套插到下面的框里",
 		"description": ""
 	},
 	"copy_to_clipboard": {
@@ -164,7 +164,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "致谢",
+		"message": "感谢这帮屌丝的橹力！",
 		"description": ""
 	},
 	"cuddly": {
@@ -172,35 +172,35 @@
 		"description": "data/index.html"
 	},
 	"debug": {
-		"message": "调试",
+		"message": "调戏",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "默认贴图服务",
+		"message": "默认的图床服务",
 		"description": "data/index.html"
 	},
 	"delete": {
-		"message": "删除",
+		"message": "干掉",
 		"description": ""
 	},
 	"delete_this_tweet": {
-		"message": "删除",
+		"message": "干掉这推！",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "删除成功！",
+		"message": "成功干掉！",
 		"description": "data/js/ui.main.js"
 	},
 	"disable": {
-		"message": "禁用",
+		"message": "河蟹",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "禁用控件集装饰和部分动画。",
+		"message": "河蟹控件及装饰和部分动画。",
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "禁用的",
+		"message": "河蟹掉的",
 		"description": ""
 	},
 	"dots": {
@@ -208,7 +208,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "草稿",
+		"message": "草～搞",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
@@ -216,59 +216,59 @@
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "丢弃",
+		"message": "扔掉",
 		"description": "data/index.html"
 	},
 	"edit": {
-		"message": "编辑",
+		"message": "鞭挤",
 		"description": "data/js/ui.template.js"
 	},
 	"effects": {
-		"message": "效果",
+		"message": "笑果",
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "高",
+		"message": "E Cup",
 		"description": "data/index.html"
 	},
 	"effects_low": {
-		"message": "低",
+		"message": "A Cup",
 		"description": "data/index.html"
 	},
 	"effects_normal": {
-		"message": "中",
+		"message": "C Cup",
 		"description": "data/index.html"
 	},
 	"enable": {
-		"message": "启用",
+		"message": "使用",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_proxy": {
-		"message": "启用代理",
+		"message": "使用杰士邦代理",
 		"description": ""
 	},
 	"enable_verbose_mode": {
-		"message": "启用啰嗦模式",
+		"message": "使用贫嘴模式",
 		"description": ""
 	},
 	"enabled": {
-		"message": "已启用",
+		"message": "已戴上",
 		"description": ""
 	},
 	"errors": {
-		"message": "错误",
+		"message": "插错洞了！",
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "示例",
+		"message": "范例",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "关闭窗口时退出 Hotot",
+		"message": "关闭窗口时退出 Hotot（最好别选）",
 		"description": "data/index.html"
 	},
 	"extensions": {
-		"message": "扩展",
+		"message": "情趣扩展",
 		"description": ""
 	},
 	"fav_or_un_fav": {
@@ -300,7 +300,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "首次使用，用Twitter登录",
+		"message": "第一次哦，用Twitter破处",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -324,7 +324,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "我能吞下玻璃而不伤身体噢。",
+		"message": "跟你打赌，我吻你绝对不会碰到你身体的任何部位。",
 		"description": ""
 	},
 	"font_size": {
@@ -332,11 +332,11 @@
 		"description": ""
 	},
 	"friend_cnt": {
-		"message": "朋友",
+		"message": "基友",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "朋友",
+		"message": "基友",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
@@ -344,11 +344,11 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
+		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有屌丝账户噢。",
 		"description": ""
 	},
 	"greeting": {
-		"message": "殿下侬好！",
+		"message": "屌丝快来享受吧！！",
 		"description": ""
 	},
 	"help": {
@@ -356,7 +356,7 @@
 		"description": ""
 	},
 	"hey_it_is_you": {
-		"message": "殿下侬好！殿下再崴！",
+		"message": "屌丝你好！屌丝变成高富帅咯！",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
@@ -372,11 +372,11 @@
 		"description": "data/index.html"
 	},
 	"hotot": {
-		"message": "傲兔",
+		"message": "重口味的傲兔",
 		"description": ""
 	},
 	"http_proxy": {
-		"message": "HTTP 代理",
+		"message": "H套套P 代理",
 		"description": ""
 	},
 	"image_uploader": {
@@ -388,7 +388,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "插入颜文字",
+		"message": "插入彩色TT",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -396,7 +396,7 @@
 		"description": "data/index.html"
 	},
 	"interface_language": {
-		"message": "介面语言",
+		"message": "外貌语言",
 		"description": "data/index.html"
 	},
 	"join": {
@@ -404,23 +404,23 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "吾只是有点怀念这儿",
+		"message": "我很想念你的肉体",
 		"description": "data/index.html"
 	},
 	"keybinding": {
-		"message": "热键绑定",
+		"message": "热贱绑定",
 		"description": ""
 	},
 	"keyboard": {
-		"message": "键盘",
+		"message": "贱盘",
 		"description": ""
 	},
 	"keyboard_shortcuts": {
-		"message": "键盘快捷键",
+		"message": "贱盘快捷键",
 		"description": ""
 	},
 	"kismet_firewall": {
-		"message": "Kismet 防火墙",
+		"message": "Kismet 套套",
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
@@ -428,7 +428,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "警告：凡是具备如下特征的推都将被抛弃，不予显示。",
+		"message": "警告：凡是具备如下特征的推油都将被抛弃，不予显示。",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -440,7 +440,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "让傲兔兔收集匿名统计信息",
+		"message": "让重口味的傲兔兔收集匿名统计信息",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -468,11 +468,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "加载中…",
+		"message": "忐忑中…",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "加载资源中...",
+		"message": "正在脱衣服...",
 		"description": ""
 	},
 	"location": {
@@ -500,11 +500,11 @@
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "私信",
+		"message": "私处信",
 		"description": "data/js/ui.slider.js"
 	},
 	"messages_view": {
-		"message": "私信",
+		"message": "私处信",
 		"description": "data/index.html"
 	},
 	"misc": {
@@ -512,11 +512,11 @@
 		"description": "data/index.html"
 	},
 	"more_actions": {
-		"message": "更多动作",
+		"message": "更多咸猪手",
 		"description": "data/js/ui.template.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "开启更多特效，比如阴影和发光。",
+		"message": "要更有意思的CUP么？比如阴影和发光。",
 		"description": "data/index.html"
 	},
 	"move_to_bottom": {
@@ -544,11 +544,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "吾之旅程在那星辰大海",
+		"message": "小撸怡情，大撸伤身，强撸灰飞烟灭",
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "魔法值",
+		"message": "体力",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
@@ -556,15 +556,15 @@
 		"description": ""
 	},
 	"nearly_dead": {
-		"message": "都快挂了",
+		"message": "别撸了，都快挂了",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "网路故障，请稍候再试喵！",
+		"message": "网路故障，请稍候再撸阿！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "殿下，您的新账户已经创建成功！",
+		"message": "屌丝，您的新账户已经创建成功！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
@@ -572,7 +572,7 @@
 		"description": "data/index.html"
 	},
 	"no_extension": {
-		"message": "木有扩展",
+		"message": "没有情趣扩展",
 		"description": "data/index.html"
 	},
 	"notify": {
@@ -588,15 +588,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"ok": {
-		"message": "好呢",
+		"message": "好爽！",
 		"description": ""
 	},
 	"oops_a_network_error_occurs": {
-		"message": "矮油～ 发生了一个网路错误！",
+		"message": "我靠！ 网络又TM错了！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "矮油～ 发生了一个API错误",
+		"message": "我靠！ API又TM错了",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -616,7 +616,7 @@
 		"description": "data/index.html"
 	},
 	"operations": {
-		"message": "操作",
+		"message": "骚扰",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -640,7 +640,7 @@
 		"description": ""
 	},
 	"please_enter_the_recipient": {
-		"message": "殿下，请指定收件人！",
+		"message": "屌丝，收件人是谁阿！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
@@ -652,11 +652,11 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "发送中……",
+		"message": "抽查中……",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
-		"message": "地图炮充能完毕",
+		"message": "小钢炮充能完毕，准备插入！",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"preferences": {
@@ -692,7 +692,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
-		"message": "代理认证",
+		"message": "套套认证",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -700,7 +700,7 @@
 		"description": "data/index.html"
 	},
 	"quit_hotot": {
-		"message": "退出傲兔",
+		"message": "退出重口味傲兔",
 		"description": "data/index.html"
 	},
 	"quote": {
@@ -736,7 +736,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "技能冷却时间还剩",
+		"message": "离高潮还剩",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
@@ -804,7 +804,7 @@
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
-		"message": "保存草稿",
+		"message": "保存草～搞",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
@@ -832,15 +832,15 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "选择一个默认图片服务",
+		"message": "选择一个默认图床服务",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
-		"message": "选择语言",
+		"message": "选择叫床方式",
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "选择动作",
+		"message": "选择咸猪手",
 		"description": "data/index.html"
 	},
 	"select_fields": {
@@ -852,7 +852,7 @@
 		"description": ""
 	},
 	"send_message_to_them": {
-		"message": "发送私信",
+		"message": "发送私处信",
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
@@ -864,27 +864,27 @@
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "登入中……",
+		"message": "脱衣中……",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
-		"message": "登出",
+		"message": "穿上衣服",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
-		"message": "切换到下一页",
+		"message": "切换到下一妞",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "切换到前一页",
+		"message": "切换到前一妞",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "矮油～ 发生了点错误耶 >_<",
+		"message": "我靠！ 老娘忍不了你了！ >_<",
 		"description": "data/index.html"
 	},
 	"sound": {
-		"message": "提示音",
+		"message": "呻吟声",
 		"description": ""
 	},
 	"starts_minimized": {
@@ -896,7 +896,7 @@
 		"description": ""
 	},
 	"status_is_over_140_characters": {
-		"message": "超过140字了，亲！",
+		"message": "超过140字了，别插了！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
@@ -916,7 +916,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "召唤Hotot 『比如: <ALT>C』",
+		"message": "召唤重口味Hotot 『比如: <ALT>C』",
 		"description": ""
 	},
 	"system": {
@@ -928,15 +928,15 @@
 		"description": "data/index.html"
 	},
 	"theme": {
-		"message": "主题",
+		"message": "衣装",
 		"description": "data/index.html"
 	},
 	"themes": {
-		"message": "主题",
+		"message": "衣装",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "这个账户已经存在了噢！",
+		"message": "这个床已经有人占了噢！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -952,7 +952,7 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "透明",
+		"message": "黑丝透明",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
@@ -1044,7 +1044,7 @@
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
-		"message": "使用乌斑兔 Indicator",
+		"message": "使用Ubuntu的重口味Indicator",
 		"description": ""
 	},
 	"verify": {
@@ -1052,7 +1052,7 @@
 		"description": "data/index.html"
 	},
 	"version": {
-		"message": "版本",
+		"message": "长度",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"via": {
@@ -1084,23 +1084,23 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"whisper": {
-		"message": "低语",
+		"message": "闷骚语",
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "他／她／它默默地关注着你…",
+		"message": "他／她／它色色地盯着你…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "你默默地，关注着他／她／它…",
+		"message": "你色色地盯着他／她／它…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
-		"message": "你们默默地关注着对方…",
+		"message": "你们淫荡地注视着对方…",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "你们宛如路人，擦身而过，不相往来。",
+		"message": "你们俩都冷淡阿，竟然没有发生关系。",
 		"description": "data/js/ui.peopleview.js"
 	}
 }
