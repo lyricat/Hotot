@@ -253,13 +253,11 @@ function get_user_cache_size(callback) {
 
 reduce_db:
 function reduce_db () {
-    toast.set("Reducing ... ").show(-1);
     db.get_tweet_cache_size(function (size) {
         if (db.MAX_TWEET_CACHE_SIZE < size) {
             db.reduce_tweet_cache(
                 parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
             , function () {
-                toast.set("Reduce Successfully!").show();
             })
         }
     });
@@ -268,7 +266,6 @@ function reduce_db () {
             db.reduce_user_cache(
                 parseInt(db.MAX_USER_CACHE_SIZE*2/3)
             , function () {
-                toast.set("Reduce Successfully!").show();
             })
         }
     });
