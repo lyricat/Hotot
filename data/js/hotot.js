@@ -445,6 +445,30 @@ function init_hotkey() {
     hotkey.register(hotkey.calculate(67),
         function () {ui.StatusBox.open();});
     // Navigation
+    hotkey.register(hotkey.calculate(38), function () {
+        ui.Main.move_by_offset(-100);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(40), function () {
+        ui.Main.move_by_offset(100);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(33), function () {
+        ui.Main.move_by_offset(-500);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(34), function () {
+        ui.Main.move_by_offset(500);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(36), function () {
+        ui.Main.move_to_tweet("top");
+        return false;
+    });
+    hotkey.register(hotkey.calculate(35), function () {
+        ui.Main.move_to_tweet("bottom");
+        return false;
+    });
     // 'h' to slide to prev tab
     hotkey.register(hotkey.calculate(72), ui.Slider.slide_to_prev);
     // 'l' to slide to next tab

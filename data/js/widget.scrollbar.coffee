@@ -34,7 +34,7 @@ class Scrollbar
 
   on_wheel: (ev) ->
     if event.wheelDelta
-      delta = event.wheelDelta / 10
+      delta = event.wheelDelta / 20
     offsetY = @offset_check(@handle.get(0).offsetTop - delta)
     @scroll_to(offsetY)
     return false
@@ -85,7 +85,7 @@ class Scrollbar
         pos = @content.get(0).scrollTop * (@track_height - @handle_height) / @content.get(0).scrollHeight
         @handle.css('top', pos + 'px')
     )
-  
+
   destory: ->
     @track.off()
     @track = null

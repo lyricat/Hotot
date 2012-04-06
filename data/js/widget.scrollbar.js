@@ -43,7 +43,7 @@
 
     Scrollbar.prototype.on_wheel = function(ev) {
       var delta, offsetY;
-      if (event.wheelDelta) delta = event.wheelDelta / 10;
+      if (event.wheelDelta) delta = event.wheelDelta / 20;
       offsetY = this.offset_check(this.handle.get(0).offsetTop - delta);
       this.scroll_to(offsetY);
       return false;
@@ -92,7 +92,7 @@
       });
       this.track.mousedown(function(ev) {
         var offsetY;
-        offsetY = _this.offset_check(ev.clientY - _this.track.get(0).offsetTop - _this.handle_height * 1);
+        offsetY = _this.offset_check(ev.clientY - _this.track.get(0).offsetTop - _this.handle_height);
         return _this.scroll_to(offsetY);
       });
       this.content.on('mousewheel', function(ev) {

@@ -1029,6 +1029,27 @@ function move_to_tweet(pos) {
     target.focus();
 },
 
+move_by_offset:
+function move_by_offset(offset) {
+    var current = null;
+    var cur_view = null;
+    if (ui.Main.selected_tweet_id != null) {
+        current = $(ui.Main.selected_tweet_id);
+    }
+    // if we lose current placemarker ...
+    if (current == null || current.length == 0) {
+        cur_view = ui.Main.views[ui.Slider.current];
+        if (!cur_view.hasOwnProperty('selected_item_id')) {
+            cur_view.selected_item_id
+                = '#'+ cur_view._body.find('.card:first').attr('id');
+        }
+        current = $(cur_view.selected_item_id);
+    } else {
+        cur_view= ui.Main.views[current.parents('.listview').attr('name')];
+    }
+    cur_view._content.get(0).scrollTop += offset;
+},
+
 set_active_tweet_id:
 function set_active_tweet_id(id) {
     ui.Main.active_tweet_id = id;
