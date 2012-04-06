@@ -25,6 +25,7 @@
 // Qt
 #include <QApplication>
 #include <QGraphicsWebView>
+#include <QDesktopServices>
 #include <QWebDatabase>
 #include <QWebSettings>
 #include <QDir>
@@ -96,15 +97,10 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     page->setPannable(false);
 #endif
 
-#ifndef MEEGO_EDITION_HARMATTAN
-    QSettings settings("hotot-qt", "hotot");
-    restoreGeometry(settings.value("geometry").toByteArray());
-    restoreState(settings.value("windowState").toByteArray());
-#endif
-
     m_menu = new QMenu(this);
 
 #ifndef MEEGO_EDITION_HARMATTAN
+    QSettings settings("hotot-qt", "hotot");
     m_actionMinimizeToTray->setCheckable(true);
     m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
@@ -135,17 +131,26 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 
     m_page = new HototWebPage(this);
 
-    QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
+#ifdef Q_OS_UNIX
+    QDir dir(QDir::homePath().append("/.config/hotot-qt"));
+#else
+    QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation).append("/Hotot"));
+#endif
+
+    if (!dir.exists())
+        dir.mkpath(".");
+
+    QWebSettings::setOfflineStoragePath(dir.absolutePath());
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
     m_webView->setPage(m_page);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
+    m_webView->settings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
+    m_webView->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    m_webView->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
+    m_webView->settings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
+    m_webView->settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+    m_webView->settings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
+    m_webView->settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
 
     m_inspector = new QWebInspector;
     m_inspector->setPage(m_page);
@@ -176,9 +181,6 @@ void MainWindow::contentSizeChanged()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
 #ifndef MEEGO_EDITION_HARMATTAN
-    QSettings settings("hotot-qt", "hotot");
-    settings.setValue("geometry", saveGeometry());
-    settings.setValue("windowState", saveState());
     if (isCloseToExit()) {
         exit();
     }
@@ -229,6 +231,11 @@ bool MainWindow::isAutoSignIn() {
 
 MainWindow::~MainWindow()
 {
+#ifndef MEEGO_EDITION_HARMATTAN
+    QSettings settings("hotot-qt", "hotot");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("windowState", saveState());
+#endif
     delete m_inspector;
 }
 
@@ -240,8 +247,12 @@ void MainWindow::loadFinished(bool ok)
         m_webView->page()->currentFrame()->evaluateJavaScript(QString("i18n.locale = \"%1\";").arg(QLocale::system().name()));
         m_webView->page()->currentFrame()->evaluateJavaScript("globals.load_flags = 1;");
 #ifndef MEEGO_EDITION_HARMATTAN
-        if (!isStartMinimized() || !isAutoSignIn())
+        if (!isStartMinimized() || !isAutoSignIn()) {
             show();
+            QSettings settings("hotot-qt", "hotot");
+            restoreGeometry(settings.value("geometry").toByteArray());
+            restoreState(settings.value("windowState").toByteArray());
+        }
 #else
         show();
 #endif
@@ -376,7 +387,7 @@ void MainWindow::unreadAlert(QString number)
 
 void MainWindow::setEnableDeveloperTool(bool e)
 {
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
+    m_webView->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
     if (e)
         m_menu->insertAction(m_actionExit, m_actionDev);
     else
