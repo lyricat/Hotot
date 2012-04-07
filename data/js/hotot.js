@@ -446,13 +446,14 @@ function init_hotkey() {
         function () {ui.StatusBox.open();});
     // Navigation
     hotkey.register(hotkey.calculate(38), function () {
-        ui.Main.move_by_offset(-100);
+        ui.Main.move_by_offset(-50);
         return false;
     });
     hotkey.register(hotkey.calculate(40), function () {
-        ui.Main.move_by_offset(100);
+        ui.Main.move_by_offset(50);
         return false;
     });
+    // page up/down @TODO 500px is not accurate
     hotkey.register(hotkey.calculate(33), function () {
         ui.Main.move_by_offset(-500);
         return false;
@@ -826,9 +827,9 @@ jQuery(function($) {
         if (event.wheelDeltaY && (event.wheelDeltaX > 50 || event.wheelDeltaX < 50)){
             return true;
         }
-        if (event.wheelDeltaX && event.wheelDeltaX < -90){
+        if (event.wheelDeltaX && event.wheelDeltaX < -100){
             ui.Slider.slide_to_next();
-        } else if (event.wheelDeltaX && event.wheelDeltaX > 90){
+        } else if (event.wheelDeltaX && event.wheelDeltaX > 100){
             ui.Slider.slide_to_prev();
         }
     };
