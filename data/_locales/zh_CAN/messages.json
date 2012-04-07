@@ -8,7 +8,7 @@
 		"description": ""
 	},
 	"access_token_doesnt_exist": {
-		"message": "弊傢伙，无令牌",
+		"message": "弊傢伙，无令牌添",
 		"description": "data/index.html"
 	},
 	"action": {
@@ -84,7 +84,7 @@
 		"description": ""
 	},
 	"block": {
-		"message": "禁佐你",
+		"message": "屏蔽你",
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
@@ -100,7 +100,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "唔俾系账户前面用`@`符号喔",
+		"message": "唔俾系帐号前面用`@`符号喔",
 		"description": "data/js/ui.welcome.js"
 	},
 	"clean_token": {
@@ -160,7 +160,7 @@
 		"description": "date/index.html"
 	},
 	"create_a_list": {
-		"message": "整个一个新列表",
+		"message": "建立一个新列表",
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
@@ -200,7 +200,7 @@
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "禁用的",
+		"message": "已禁用",
 		"description": ""
 	},
 	"dots": {
@@ -284,7 +284,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "我 D 收藏",
+		"message": "我噶收藏",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
@@ -324,7 +324,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "我能吞下玻璃而不伤身体噢。",
+		"message": "心口碎大石系我噶绝技。",
 		"description": ""
 	},
 	"font_size": {
@@ -344,7 +344,7 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "修改哩度噶选项要重启先会生效，而且哩D选项会影响所有账户咖。",
+		"message": "修改哩度噶选项要重启先会生效，而且哩D选项会影响所有帐户咖。",
 		"description": ""
 	},
 	"greeting": {
@@ -564,7 +564,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "创建佐新账户啦！",
+		"message": "创建佐新帐户啦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
@@ -588,7 +588,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"ok": {
-		"message": "好啊",
+		"message": "好",
 		"description": ""
 	},
 	"oops_a_network_error_occurs": {
@@ -644,7 +644,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "请输入一个账户前缀",
+		"message": "请输入一个帐户前缀",
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
@@ -688,7 +688,7 @@
 		"description": "data/index.html"
 	},
 	"profile": {
-		"message": "账户",
+		"message": "帐户",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -732,11 +732,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
-		"message": "举报垃圾账户",
+		"message": "举报垃圾帐户",
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "技能冷却时间还剩",
+		"message": "技能冷却时间净低",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
@@ -844,7 +844,7 @@
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "选择您感兴趣噶部位",
+		"message": "选择你感兴趣噶部位",
 		"description": "data/index.html"
 	},
 	"send_message": {
@@ -936,7 +936,7 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "嚟个账户有佐啦",
+		"message": "嚟个帐户有佐啦",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -980,7 +980,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
-		"message": "唔禁你啦",
+		"message": "唔屏蔽你啦",
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
@@ -992,7 +992,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow_at": {
-		"message": "唔跟你@",
+		"message": "唔关注你@",
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
@@ -1088,11 +1088,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "佢地跟紧你",
+		"message": "佢地关注紧你",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "你跟紧",
+		"message": "你关注紧",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
