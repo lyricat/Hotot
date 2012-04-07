@@ -76,7 +76,7 @@
 		"description": "data/index.html"
 	},
 	"behavior": {
-		"message": "Behavior",
+		"message": "Поведение",
 		"description": "data/index.html"
 	},
 	"bio": {
@@ -88,7 +88,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
-		"message": "Bloody Marguerite",
+		"message": "Кровавая маргарита",
 		"description": "data/index.html"
 	},
 	"cancel": {
@@ -124,7 +124,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Click to compose message",
+		"message": "Нажмите что бы сочинить сообщение",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -208,7 +208,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "Drafts",
+		"message": "Черновик",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
@@ -216,7 +216,7 @@
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "Drop",
+		"message": "Падение",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -240,11 +240,11 @@
 		"description": "data/index.html"
 	},
 	"enable": {
-		"message": "Enable",
+		"message": "Включенные",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_proxy": {
-		"message": "Enable Proxy",
+		"message": "Включить прокси",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -252,7 +252,7 @@
 		"description": "data/index.html"
 	},
 	"enabled": {
-		"message": "Enabled",
+		"message": "Включено",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -272,7 +272,7 @@
 		"description": "data/index.html"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Un-fav",
+		"message": "В избранное/из избранного",
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
