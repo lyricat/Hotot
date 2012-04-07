@@ -4,7 +4,7 @@
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "Помощь",
+		"message": "О программе и помощь",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -1044,7 +1044,7 @@
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
-		"message": "Use Ubuntu Indicator",
+		"message": "Использовать иконку Ubuntu",
 		"description": "data/index.html"
 	},
 	"verify": {
@@ -1056,7 +1056,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"via": {
-		"message": "via",
+		"message": "С помощью",
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
@@ -1080,7 +1080,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"website": {
-		"message": "Website",
+		"message": "Сайт",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"whisper": {
@@ -1092,11 +1092,11 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "You are following",
+		"message": "Вы читаете ",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
-		"message": "You are friends.",
+		"message": "Вы друзья.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
