@@ -1,52 +1,3 @@
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment {
-    height: 0px;
-    display: block;
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-track-piece {
-    background: #fafafa;
-}
-
-::-webkit-scrollbar-thumb {
-    -webkit-transition: all 0.2s ease-in;
-    background: #fafafa;
-}
-::-webkit-scrollbar-thumb:vertical {
-    border-right: 4px orange solid;
-    height: 50px;
-}
-::-webkit-scrollbar-thumb:horizontal {
-    border-bottom: 4px orange solid;
-    width: 50px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: orange;
-    border:0;
-}
-
-#status_box ::-webkit-scrollbar-track-piece {
-    background: #fafafa;
-}
-#status_box ::-webkit-scrollbar-thumb {
-    background: #fff;
-}
-#status_box ::-webkit-scrollbar-thumb:hover {
-    background: orange;
-}
-.dialog ::-webkit-scrollbar-track-piece {
-    background-color: #fff;
-}
-.dialog ::-webkit-scrollbar-thumb {
-    background: #fff;
-}
-
 #header_inner {
     background: #333 url(../../image/mask.png);
     border-bottom: 1px #2d2d2d solid;
@@ -144,6 +95,7 @@
 .scrollbar_track .scrollbar_slot { 
 	width: 3px;
 	margin: 0 3px 0 4px;
+	background: transparent;
 }
 
 .scrollbar_handle {  
@@ -155,6 +107,7 @@
 .scrollbar_track:hover .scrollbar_slot { 
 	width: 10px;
 	margin: 0;
+	background: rgba(0,0,0,0.1);
 }
 .scrollbar_track.active .scrollbar_handle,
 .scrollbar_track:hover .scrollbar_handle { 
