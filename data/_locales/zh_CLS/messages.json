@@ -1063,12 +1063,16 @@
 		"message": "查看会话",
 		"description": "data/js/ui.template.js"
 	},
+	"view_original": {
+		"message": "溯源",
+		"description": "data/index.html"
+	},
 	"virushou_s_integrity": {
 		"message": "火炬的正直",
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "咸湿佬",
+		"message": "食色性也",
 		"description": "data/index.html"
 	},
 	"weakness": {

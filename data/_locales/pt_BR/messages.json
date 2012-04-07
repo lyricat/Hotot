@@ -1063,6 +1063,10 @@
 		"message": "Ver mais dessa conversa",
 		"description": "data/js/ui.template.js"
 	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"virushou_s_integrity": {
 		"message": "Integridade de Virushou",
 		"description": "data/index.html"
