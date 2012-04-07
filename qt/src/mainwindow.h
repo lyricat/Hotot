@@ -25,6 +25,7 @@
 // Qt
 #include <QMainWindow>
 #include <QSystemTrayIcon>
+#include <QFontDatabase>
 
 // Meego
 #ifdef MEEGO_EDITION_HARMATTAN
@@ -55,9 +56,11 @@ public:
     void activate();
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
+    const QString& avatarDir();
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
+    void notifyLoadFinished();
     void onLinkHovered(const QString & link, const QString & title, const QString & textContent );
     void showDeveloperTool();
     void exit();
@@ -76,6 +79,10 @@ protected:
 #ifndef MEEGO_EDITION_HARMATTAN
     void changeEvent(QEvent *event);
 #endif
+    QString extraFonts();
+    QString extraExtensions();
+    QString extraThemes();
+    static QString toJSArray(const QStringList &list = QStringList());
 
 private:
     HototWebPage* m_page;
@@ -90,6 +97,10 @@ private:
 #endif
     QWebInspector* m_inspector;
     bool m_useSocket;
+    QFontDatabase m_fontDB;
+    QString m_confDir;
+    QString m_cacheDir;
+    QString m_avatarCacheDir;
 };
 
 #endif // MAINWINDOW_H

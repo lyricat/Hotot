@@ -36,6 +36,8 @@
 #include <QWebFrame>
 #include <QNetworkProxy>
 #include <QSettings>
+#include <QFontDatabase>
+#include <QTimer>
 #include <QLocale>
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -71,8 +73,8 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
     m_inspector(0),
-    m_useSocket(useSocket)
-
+    m_useSocket(useSocket),
+    m_fontDB()
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -140,6 +142,13 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     if (!dir.exists())
         dir.mkpath(".");
 
+    dir.mkpath("cache");
+    dir.mkpath("avatar_cache");
+
+    m_confDir = dir.absolutePath();
+    m_cacheDir = dir.absoluteFilePath("cache");
+    m_avatarCacheDir = dir.absoluteFilePath("avatar_cache");
+
     QWebSettings::setOfflineStoragePath(dir.absolutePath());
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
@@ -203,7 +212,7 @@ bool MainWindow::isCloseToExit() {
     if (var.isValid()) {
         return var.toBool();
     }
-    else 
+    else
         return false;
 }
 
@@ -214,7 +223,7 @@ bool MainWindow::isStartMinimized() {
     if (mini.isValid()) {
         return mini.toBool();
     }
-    else 
+    else
         return false;
 }
 
@@ -225,7 +234,7 @@ bool MainWindow::isAutoSignIn() {
     if (mini.isValid()) {
         return mini.toBool();
     }
-    else 
+    else
         return false;
 }
 
@@ -244,8 +253,27 @@ void MainWindow::loadFinished(bool ok)
     disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
     if (ok) {
         initDatabases();
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("i18n.locale = \"%1\";").arg(QLocale::system().name()));
-        m_webView->page()->currentFrame()->evaluateJavaScript("globals.load_flags = 1;");
+
+        QString confString = QString(
+            "hotot_qt_variables = {"
+            "      'platform': 'Linux'"
+            "    , 'conf_dir': '%1'"
+            "    , 'cache_dir': '%2'"
+            "    , 'avatar_cache_dir': '%3'"
+            "    , 'extra_fonts': %4"
+            "    , 'extra_exts': %5"
+            "    , 'extra_themes': %6"
+            "    , 'locale': '%7'"
+            "};").arg(m_confDir)
+                 .arg(m_cacheDir)
+                 .arg(m_avatarCacheDir)
+                 .arg(extraFonts())
+                 .arg(extraExtensions())
+                 .arg(extraThemes())
+                 .arg(QLocale::system().name());
+
+        m_webView->page()->currentFrame()->evaluateJavaScript(confString);
+        QTimer::singleShot(0, this, SLOT(notifyLoadFinished()));
 #ifndef MEEGO_EDITION_HARMATTAN
         if (!isStartMinimized() || !isAutoSignIn()) {
             show();
@@ -261,6 +289,14 @@ void MainWindow::loadFinished(bool ok)
         show();
     }
 }
+
+void MainWindow::notifyLoadFinished()
+{
+    m_webView->page()->currentFrame()->evaluateJavaScript(
+        "overlay_variables(hotot_qt_variables);"
+        "globals.load_flags = 1;");
+}
+
 
 void MainWindow::initDatabases()
 {
@@ -290,7 +326,7 @@ void MainWindow::initDatabases()
                             QNetworkProxy proxy(m_useSocket ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
-                            
+
                             if (useHttpProxyAuth)
                             {
                                 proxy.setUser(httpProxyAuthName);
@@ -299,7 +335,7 @@ void MainWindow::initDatabases()
 
                             m_webView->page()->networkAccessManager()->setProxy(proxy);
                         }
-                        
+
                     }
                 }
                 sqldb.close();
@@ -393,7 +429,6 @@ void MainWindow::setEnableDeveloperTool(bool e)
     else
         m_menu->removeAction(m_actionDev);
     m_tray->setContextMenu(m_menu);
-
 }
 
 void MainWindow::showDeveloperTool()
@@ -425,4 +460,65 @@ void MainWindow::onLinkHovered(const QString & link, const QString & title, cons
     if (!link.isEmpty() && !title.isEmpty()) {
         QToolTip::showText(QCursor::pos(), title);
     }
+}
+
+QString MainWindow::extraFonts()
+{
+    return toJSArray(m_fontDB.families());
+}
+
+QString MainWindow::extraThemes()
+{
+    QDir dir(QString(m_confDir).append("/theme"));
+    if (!dir.exists())
+        return toJSArray();
+
+    QStringList dirList = dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+    QStringList themeList;
+
+    Q_FOREACH(const QString& themedir, dirList) {
+        QFileInfo info1(dir.absoluteFilePath(QString(themedir).append("/info.json")));
+        QFileInfo info2(dir.absoluteFilePath(QString(themedir).append("/style.css")));
+        if (info1.exists() && info1.isFile() && info2.exists() && info2.isFile())
+            themeList << QUrl::fromLocalFile(dir.absoluteFilePath(themedir)).toString();
+    }
+    return toJSArray(themeList);
+}
+
+QString MainWindow::extraExtensions()
+{
+    QDir dir(QString(m_confDir).append("/ext"));
+    if (!dir.exists())
+        return toJSArray();
+
+    QStringList dirList = dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+    QStringList extJSList;
+
+    Q_FOREACH(const QString& extdir, dirList) {
+        QFileInfo info(dir.absoluteFilePath(QString(extdir).append("/entry.js")));
+        if (info.exists() && info.isFile())
+            extJSList << QUrl::fromLocalFile(info.absoluteFilePath()).toString();
+    }
+    return toJSArray(extJSList);
+}
+
+QString MainWindow::toJSArray(const QStringList& list)
+{
+    QString itemString;
+    bool first = true;
+    Q_FOREACH(const QString& item, list)
+    {
+        if (!first) {
+            itemString.append(",");
+        }
+        itemString.append("'").append(item).append("'");
+        first = false;
+    }
+
+    return QString("[%1]").arg(itemString);
+}
+
+const QString& MainWindow::avatarDir()
+{
+    return m_avatarCacheDir;
 }
