@@ -1,0 +1,1106 @@
+{
+	"about": {
+		"message": "Par",
+		"description": "data/index.html"
+	},
+	"about_and_help": {
+		"message": "Par un palīdzība",
+		"description": "data/index.html"
+	},
+	"access_token_doesnt_exist": {
+		"message": "Piekļuves kods neeksistē",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "Darbība",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "Pievienot",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "Pievienot jaunus skatus",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "Pievienot sarakstam",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "Papildu",
+		"description": "data/index.html"
+	},
+	"all": {
+		"message": "Viss",
+		"description": "data/index.html"
+	},
+	"api_base": {
+		"message": "API bāze",
+		"description": "data/index.html"
+	},
+	"api_setting": {
+		"message": "API iestatījumi",
+		"description": "data/index.html"
+	},
+	"appearance": {
+		"message": "Noformējums",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "Arhīvs",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "Slepkavu Tango",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "Autentifikācija izdevās!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "Autors",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "Atjaunot automātiski",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "Automātiski pieteikties pēc atvēršanas",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "Balanss starp pievilcību un ātrdarbību.",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "Uzvedība",
+		"description": "data/index.html"
+	},
+	"bio": {
+		"message": "Bio",
+		"description": "data/index.html"
+	},
+	"block": {
+		"message": "Bloķēt",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "Asiņainā Mērija",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "Atcelt",
+		"description": "data/index.html"
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "Nevar autentificēt jūsu datus! Lūdzu, pārbaudiet savu lietotājvārdu/paroli un API bāzi",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "Simbos `@` nav atļauts kā profila prefikss",
+		"description": "data/js/ui.welcome.js"
+	},
+	"clean_token": {
+		"message": "Notīrīt piekļuves kodu",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "Notīrīt",
+		"description": "data/index.html"
+	},
+	"clear_and_close": {
+		"message": "Notīrīt un aizvērt",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "Noklikšķiniet MANI, lai turpinātu",
+		"description": "data/index.html"
+	},
+	"click_the_button_below": {
+		"message": "Noklikšķiniet zemāk esošo pogu",
+		"description": "data/index.html"
+	},
+	"click_to_compose_message": {
+		"message": "Noklikšķiniet, lai rakstītu ziņu",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "Noklikšķiniet, lai skatītu",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "Noklikšķiniet, lai apskatītu retvītotājus",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "Aizvērt",
+		"description": "data/index.html"
+	},
+	"close_current_column": {
+		"message": "Aizvērt pašreizējo kolonnu",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "Rakstīt",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "RAKSTĪT ZIŅU",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "Nokopējiet PIN kodu un ielīmējiet zemāk esošajā lauciņā",
+		"description": "data/index.html"
+	},
+	"copy_to_clipboard": {
+		"message": "Iekopēt starpliktuvē",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "Izveidot sarakstu",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "Veidotāji",
+		"description": "data/index.html"
+	},
+	"cuddly": {
+		"message": "Mīksts",
+		"description": "data/index.html"
+	},
+	"debug": {
+		"message": "Atkļūdošanas režīms",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "Noklusētais attēlu serviss",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "Izdzēst",
+		"description": "data/index.html"
+	},
+	"delete_this_tweet": {
+		"message": "Izdzēst šo tvītu",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "Veiksmīgi iznīcināts!",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "Izslēgt",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "Izslēgt sīkrīku dekorācijas un dažas animācijas.",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "Izslēgts",
+		"description": "data/index.html"
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "Melnraksti",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "Ievelciet attēlu šeit",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "Piliens",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "Rediģēt",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "Efekti",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "Ekstra",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "Nelieli",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "Vidēji",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "Ieslēgt",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "Ieslēgt proxy vārteju",
+		"description": "data/index.html"
+	},
+	"enable_verbose_mode": {
+		"message": "Ieslēgt detalizēto režīmu",
+		"description": "data/index.html"
+	},
+	"enabled": {
+		"message": "Ieslēgts",
+		"description": "data/index.html"
+	},
+	"errors": {
+		"message": "Kļūdas",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "Piemēri",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "Iziet no Hotot, kad aizver logu",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "Paplašinājumi",
+		"description": "data/index.html"
+	},
+	"fav_or_un_fav": {
+		"message": "Fav./Atfav.",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "Favorīto šo tvītu ...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "Fav.",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "Favorītu skats",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "Filtrēt šāda veida tvītus",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "Atrast",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "Labi",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "Pirmā reizi, kad piesakās tviterim",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "Sekot",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "Sekot @",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "Sekotājs",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "Sekotāji",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "Fonts",
+		"description": "data/index.html"
+	},
+	"font_preview_hint": {
+		"message": "Glāžšķūņa rūķīši dzērumā čiepj Baha koncertflīģeļu vākus.",
+		"description": "data/index.html"
+	},
+	"font_size": {
+		"message": "Fonta izmērs",
+		"description": "data/index.html"
+	},
+	"friend_cnt": {
+		"message": "Draugs",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "Draugi",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "Globālie",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "Jums JĀRESTARTĒ Hotot, lai zemāk minētās izmaiņas varētu sākt darboties. Šīs izmaiņas ietekmēs VISUS kontus",
+		"description": "data/index.html"
+	},
+	"greeting": {
+		"message": "Sveicieni!",
+		"description": "data/index.html"
+	},
+	"help": {
+		"message": "Palīdzība",
+		"description": "data/index.html"
+	},
+	"hey_it_is_you": {
+		"message": "Hei, tas esi Tu!",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "Slēptie, tumšie prāti",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "Sākuma laika līnija",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "Sākuma skats",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "Hotot",
+		"description": "data/index.html"
+	},
+	"http_proxy": {
+		"message": "HTTP proxy vārteja",
+		"description": "data/index.html"
+	},
+	"image_uploader": {
+		"message": "Attēlu augšupielādētājs",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "INFO",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "Ielikt smaidiņu",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "Gundrais filtrs",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "Saskarsmes valoda",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "Apvienot",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "Vienkārši nevar pārtraukt par to domāt",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "Taustiņsasaiste",
+		"description": "data/index.html"
+	},
+	"keyboard": {
+		"message": "Tastatūra",
+		"description": "data/index.html"
+	},
+	"keyboard_shortcuts": {
+		"message": "Tastatūras īsceļi",
+		"description": "data/index.html"
+	},
+	"kismet_firewall": {
+		"message": "Kismet ugunsmūris",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Kismet palīgs",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "BRĪDINĀJUMS: Tvīti, kuriem ir sekojošais atribūts, neparādīsies laika līnijā.",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "Birka ar krāsu",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "Valoda",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "Ļaut Hotot ievākt anonīmu statistikas informāciju",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "Licence",
+		"description": "data/index.html"
+	},
+	"list": {
+		"message": "Saraksts",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "Pievienots sarakstam",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "Saraksti",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "Saraksti, kuri seko lietotājam",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "Lietotāja saraksti",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "Ielādē ... ",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "Ielādē resursus ...",
+		"description": "data/index.html"
+	},
+	"location": {
+		"message": "Atrašanās vieta",
+		"description": "data/index.html"
+	},
+	"mark_deleted_tweets": {
+		"message": "Atzīmēt izdzēstos tvītus",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "Maska",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "Pieminējums",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "Pieminējumi",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "Pieminējumu skats",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "Ziņas",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "Ziņu skats",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "Citi",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "Vairāk",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "Vairāk efekti, piemēram, ēnas un sīkrīku mirdzums",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "Pāriet uz apakšu",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "Pāriet uz nāk. tvītu",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "Pāriet uz iepr. tvītu",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "Pāriet uz augšu",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "Skaņas filtrs",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "Mani favorīti",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "Mans ceļojums uz jūras zvaigznēm",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "Mans spēks",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "Nosaukums",
+		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "Gandrīz miris",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "Savienojuma kļūda! Lūdzu, vēlāk mēģiniet vēlreiz.",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "Tika izveidots jauns profils!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "Nākamais",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "Nav paplašinājumu",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "Paziņojums",
+		"description": "data/index.html"
+	},
+	"oauth_base": {
+		"message": "OAuth bāze",
+		"description": "data/index.html"
+	},
+	"official_retweet_this_tweet": {
+		"message": "Oficiāli retvītot šo tvītu",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "Labi",
+		"description": "data/index.html"
+	},
+	"oops_a_network_error_occurs": {
+		"message": "Ups, radās savienojuma kļūda",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "Ups, radās API kļūda!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "Atvērt sarakstu ...",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "Atvērt profilu ...",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "Atvērt pirmo saiti",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "Atvērt audio saiti",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "Darbības",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "Opcijas",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "Vai nokopējiet adresi un atveriet savā pārlūkprogrammā.",
+		"description": "data/index.html"
+	},
+	"panda_acts_cute": {
+		"message": "Panda uzvedas piemīlīgi",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "Ielīmēt no starpliktuves",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PIN kods",
+		"description": "data/index.html"
+	},
+	"please_enter_the_recipient": {
+		"message": "lūdzu, ievadiet saņēmēju!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "Lūdzu, ievadiet profila prefiksu",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "Veiksmīgi nosūtīts!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "Sūta ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "Spēcīgs",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "Iestatījumi",
+		"description": "data/index.html"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Pārlādēt pēdējos tvītus sarakstēs, ja iespējams.",
+		"description": "data/index.html"
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "Nospiediet Ctrl + Enter, lai nosūtītu",
+		"description": "data/index.html"
+	},
+	"pretty_wife": {
+		"message": "Skaistā sieva",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "Priekšskatījums",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "Priekšskatīt iegultos elementus",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "Priekšskatīt šeit",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "Profils",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "Autentifikācija",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "Ātrās atsauces",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "Iziet no Hotot",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "Citēt",
+		"description": "data/index.html"
+	},
+	"relation": {
+		"message": "Attiecība",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "Pārlādēt",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "Atbildēt",
+		"description": "data/index.html"
+	},
+	"reply_all": {
+		"message": "Atbildēt visiem",
+		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "Komentēt šo tvītu",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "atbildēt",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "Ziņot par spamu",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "Atiestatīt laiku",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "Atjaunot noklusējumus",
+		"description": "data/index.html"
+	},
+	"retweet": {
+		"message": "Retvītot",
+		"description": "data/index.html"
+	},
+	"retweet_or_un_retweet": {
+		"message": "Retvītot/Neretvītot",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "Veiksmīgi retvītots!",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "Retvītojis",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "Retvīto ...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "Retvīti",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "Retvītu skats",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "RT šo tvītu",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "Nosacījums",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "Nosacījumu filtrs",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "Nosacījumu redaktors",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "Nosacījuma nosaukums",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "Tāda pati pieteikšanās API bāze",
+		"description": "data/index.html"
+	},
+	"same_signing_oauth_base": {
+		"message": "Tāda pati pieteikšanās OAuth bāze",
+		"description": "data/index.html"
+	},
+	"save": {
+		"message": "Saglabāt",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "Saglabāt kā melnrakstu",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "Šizofrēnija",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "Meklēt",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "Meklēšanas API bāze",
+		"description": "data/index.html"
+	},
+	"search_in_google": {
+		"message": "Meklēt @ Google",
+		"description": "data/index.html"
+	},
+	"search_in_twitter": {
+		"message": "Meklēt @ tviterī",
+		"description": "data/index.html"
+	},
+	"search_view": {
+		"message": "Meklēšanas skati",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "Izvēlieties noklusēto attēlu servisu",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "Izvēlieties valodu",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "Izvēlieties darbību",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "Izvēlieties laukus",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "Nosūtīt ziņu",
+		"description": "data/index.html"
+	},
+	"send_message_to_them": {
+		"message": "Nosūtīt viņiem ziņu",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "Vecie labie laiki pirms kāzām",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "Īsceļi",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "Pieslēdzas ...",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "Atslēgties",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "Pāriet uz nāk. lapu",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "Pāriet uz iepr. lapu",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "Radās dažas kļūdas",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "Skaņa",
+		"description": "data/index.html"
+	},
+	"starts_minimized": {
+		"message": "Sākt minimizētu",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "STAT",
+		"description": "data/index.html"
+	},
+	"status_is_over_140_characters": {
+		"message": "Ziņa satur vairāk nekā 140 rakstzīmes!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "Solis 1",
+		"description": "data/index.html"
+	},
+	"step_two": {
+		"message": "Solis 2",
+		"description": "data/index.html"
+	},
+	"struggling_adventurers": {
+		"message": "Dēkaiņi",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "Veiksmīgi",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "Izsaukt Hotot (piemēram: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"system": {
+		"message": "Sistēma",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "Sistēmas integrācija",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "Ādiņa",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "Ādiņas",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "Šis profils var jau eksistēt!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "Ticiāna elegance",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "Līdz aukstajam skaistumam",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "Rāms",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "Caurspīdīgs",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "Populārākās tēmas",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "Populārāko tēmu skats",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "Tvīts",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "Tvītu skats",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "Tvīti",
+		"description": "data/index.html"
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "Atfavorītot šo tvītu ...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "Atbloķēt",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "Atsaukt retvītošanu ...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "Veiksmīgi atsaukts!",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "Atsekot @",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "Atjaunot",
+		"description": "data/index.html"
+	},
+	"update_successfully": {
+		"message": "Veiksmīgi atjaunots!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "Atjauno ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "Augšupielādēt",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "Augšupielādes API bāze",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "Augšupielādēt attēlu.",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "Augšupielādēt uz ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "URL saīsinātājs",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "Izmantot pielāgotu fontu",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "Izmantot parasto paziņojumu sistēmu",
+		"description": "data/index.html"
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "Izmantot CITĒT kā noklušeto retvītošanas darbību",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "Izmantot ATBILDĒT VISIEM kā noklusēto atbildēšanas darbību",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "Izmantot Ubuntu indikatoru",
+		"description": "data/index.html"
+	},
+	"verify": {
+		"message": "Pārbaudīt",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "Versija",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "izmantojot",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "Skatīt plašāku saraksti",
+		"description": "data/js/ui.template.js"
+	},
+	"virushou_s_integrity": {
+		"message": "Virušu integritāte",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "Vēlaties attiecības ar",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "Vājums",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "Tīmeklis",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "Mājas lapa",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "Balss",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "You are followed by them.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "Jūs sekojat",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "Jūs esat draugi.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "Jūs nesekojat viens otram.",
+		"description": "data/js/ui.peopleview.js"
+	}
+}
