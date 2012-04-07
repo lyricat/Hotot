@@ -1060,8 +1060,12 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-		"message":讲佐咩",
+		"message": "讲佐咩",
 		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "火炬的正直",
