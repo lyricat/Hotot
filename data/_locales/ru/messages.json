@@ -520,7 +520,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_bottom": {
-		"message": "Move to bottom",
+		"message": "Передвинуться вниз",
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
@@ -536,7 +536,7 @@
 		"description": "data/index.html"
 	},
 	"mute_filter": {
-		"message": "Mute Filter",
+		"message": "Выключить фильтры",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -544,11 +544,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "My Journey is to the sea of stars",
+		"message": "Мое путешествие к морю уже началось",
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "My Power",
+		"message": "Моя сила",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
@@ -556,7 +556,7 @@
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
-		"message": "Nearly Dead",
+		"message": "Почти мертв",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
@@ -576,7 +576,7 @@
 		"description": "data/index.html"
 	},
 	"notify": {
-		"message": "Notify",
+		"message": "Уведомление",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
@@ -592,11 +592,11 @@
 		"description": "data/index.html"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Oops, A Network Error Occurs",
+		"message": "Упс, Произошла ошибка сети!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Oops, An API Error Occurs!",
+		"message": "Упс, Произошла ошибка сети API!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -604,11 +604,11 @@
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "Open a Profile ...",
+		"message": "Открыть профиль ...",
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "Open first link",
+		"message": "Открыть первуею ссылку",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
@@ -624,7 +624,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Or copy the address and open it in your browser.",
+		"message": "Или скопируйте адресс и откройте в браузере.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
@@ -636,23 +636,23 @@
 		"description": "date/index.html"
 	},
 	"pin_code": {
-		"message": "PIN Code",
+		"message": "PIN код",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "please enter the recipient!",
+		"message": "Пожалуйста введите получателя!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "Please enter a profile prefix",
+		"message": "Пожалуйста введите префикс профиля",
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Posted Successfully!",
+		"message": "Запощено успешно Posted Successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "Posting ...",
+		"message": "Постим ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
@@ -664,19 +664,19 @@
 		"description": "data/index.html"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Preload latest tweets in conversations if possible.",
+		"message": "Предварительно загружать последнии твиты в обсуждении, если возможно.",
 		"description": "data/index.html"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "Press Ctrl + Enter to Update",
+		"message": "Нажмите Ctrl + Enter чтобы обновить",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "Pretty wife",
+		"message": "Приятная Жена",
 		"description": "data/index.html"
 	},
 	"preview": {
-		"message": "Preview",
+		"message": "Предварительный просмотр",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
@@ -688,11 +688,11 @@
 		"description": "data/index.html"
 	},
 	"profile": {
-		"message": "Profile",
+		"message": "Профиль",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
-		"message": "Authentication",
+		"message": "Авторизация",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -700,11 +700,11 @@
 		"description": "data/index.html"
 	},
 	"quit_hotot": {
-		"message": "Quit Hotot",
+		"message": "Выйти из Hotot",
 		"description": "data/index.html"
 	},
 	"quote": {
-		"message": "Quote",
+		"message": "цитировать",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -712,11 +712,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reload": {
-		"message": "Reload",
+		"message": "Перезагрузка",
 		"description": "data/index.html"
 	},
 	"reply": {
-		"message": "Reply",
+		"message": "Ответ",
 		"description": "data/index.html"
 	},
 	"reply_all": {
@@ -728,15 +728,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "reply to",
+		"message": "Ответить",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
-		"message": "Report Spam",
+		"message": "Сообщить о спаме",
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "Reset Time",
+		"message": "Сбросить время",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
@@ -744,7 +744,7 @@
 		"description": "data/index.html"
 	},
 	"retweet": {
-		"message": "Retweet",
+		"message": "Ретвит",
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
@@ -756,15 +756,15 @@
 		"description": "data/js/ui.main.js"
 	},
 	"retweeted_by": {
-		"message": "Retweeted by",
+		"message": "Ретвитнуто",
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Retweeting ...",
+		"message": "Ретвитаем ...",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
-		"message": "Retweets",
+		"message": "Ретвит",
 		"description": "data/js/ui.slider.js"
 	},
 	"retweets_view": {
@@ -772,11 +772,11 @@
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
-		"message": "RT this tweet",
+		"message": "Ретвитнуть этот твит",
 		"description": "data/js/ui.template.js"
 	},
 	"rule": {
-		"message": "Rule",
+		"message": "Правило",
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
@@ -800,7 +800,7 @@
 		"description": "data/index.html"
 	},
 	"save": {
-		"message": "Save",
+		"message": "Сохранить",
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
@@ -812,19 +812,19 @@
 		"description": "data/index.html"
 	},
 	"search": {
-		"message": "Search",
+		"message": "Поиск",
 		"description": "data/js/ui.slider.js"
 	},
 	"search_api_base2": {
-		"message": "Search API Base",
+		"message": "Поиск базы API",
 		"description": "data/index.html"
 	},
 	"search_in_google": {
-		"message": "Search @ in Google",
+		"message": "Поиск @ в Google",
 		"description": "data/index.html"
 	},
 	"search_in_twitter": {
-		"message": "Search @ in Twitter",
+		"message": "Поиск @ в Twitter",
 		"description": "data/index.html"
 	},
 	"search_view": {
@@ -836,23 +836,23 @@
 		"description": "data/index.html"
 	},
 	"select_a_language": {
-		"message": "Select a language",
+		"message": "Выбрать язык",
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "Select actions",
+		"message": "Выбрать действие",
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "Select fields",
+		"message": "Пометить поле",
 		"description": "data/index.html"
 	},
 	"send_message": {
-		"message": "Send Message",
+		"message": "Отослать сообщение",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
-		"message": "Send message to them",
+		"message": "Отослать им сообщение",
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
@@ -860,35 +860,35 @@
 		"description": "data/index.html"
 	},
 	"shortcuts": {
-		"message": "Shortcuts",
+		"message": "Ярлыки",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Sign in ...",
+		"message": "Вход ...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
-		"message": "Sign Out",
+		"message": "Выйти",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
-		"message": "Slide to next page",
+		"message": "Передвинуть на следующую страницу",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Slide to prev page",
+		"message": "Передвинуть на предыдущую страницу",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "Some Error Occured",
+		"message": "Обнурежена некоторая ошибка",
 		"description": "data/index.html"
 	},
 	"sound": {
-		"message": "Sound",
+		"message": "Звук",
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "Starts Minimized",
+		"message": "Стартовать свернутым",
 		"description": "data/index.html"
 	},
 	"stat": {
@@ -896,15 +896,15 @@
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Status is over 140 characters!",
+		"message": "Статус более 140 Символов!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
-		"message": "Step 1",
+		"message": "Шаг 1",
 		"description": "data/index.html"
 	},
 	"step_two": {
-		"message": "Step 2",
+		"message": "Шаг 2",
 		"description": "data/index.html"
 	},
 	"struggling_adventurers": {
@@ -912,7 +912,7 @@
 		"description": "data/index.html"
 	},
 	"successfully": {
-		"message": "Successfully",
+		"message": "Успешно",
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
@@ -920,23 +920,23 @@
 		"description": "data/index.html"
 	},
 	"system": {
-		"message": "System",
+		"message": "Система",
 		"description": "data/index.html"
 	},
 	"system_integration": {
-		"message": "System Integration",
+		"message": "Системная интеграция",
 		"description": "data/index.html"
 	},
 	"theme": {
-		"message": "Theme",
+		"message": "Тема",
 		"description": "data/index.html"
 	},
 	"themes": {
-		"message": "Themes",
+		"message": "Темы",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "This profile may already exist!",
+		"message": "Этот профиль уже существует!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -964,31 +964,31 @@
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "Tweet",
+		"message": "Твит",
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
-		"message": "Tweet View",
+		"message": "Вид твитов",
 		"description": "data/index.html"
 	},
 	"tweets": {
-		"message": "Tweets",
+		"message": "Твиты",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Un-favorite this tweet ...",
+		"message": "Убрать из избранного этот твит ...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
-		"message": "Unblock",
+		"message": "Разблокировать",
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "Undo retweeting ...",
+		"message": "Отменить ретвит ...",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
-		"message": "Undo Successful!",
+		"message": "Отменено успешно!",
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow_at": {
@@ -996,35 +996,35 @@
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
-		"message": "Update",
+		"message": "Обновить",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
-		"message": "Updated Successfully!",
+		"message": "Обновлено успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {
-		"message": "Updating ...",
+		"message": "Обновление ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"upload": {
-		"message": "Upload",
+		"message": "Загрузить",
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "Upload API Base",
+		"message": "Загрузить безу API",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
-		"message": "Upload Photo.",
+		"message": "Загрузить фото.",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "Upload to ...",
+		"message": "Загрузить на ...",
 		"description": "data/index.html"
 	},
 	"url_shortener": {
-		"message": "URL shortener",
+		"message": "Сокращение ссылок",
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
@@ -1052,7 +1052,7 @@
 		"description": "data/index.html"
 	},
 	"version": {
-		"message": "Version",
+		"message": "Версия",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"via": {
@@ -1076,7 +1076,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"web": {
-		"message": "Web",
+		"message": "Веб",
 		"description": "data/js/ui.template.js"
 	},
 	"website": {
@@ -1084,7 +1084,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"whisper": {
-		"message": "Whisper",
+		"message": "Подсказка",
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
@@ -1100,7 +1100,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "You are not following each other.",
+		"message": "Вы не читаете друг друга.",
 		"description": "data/js/ui.peopleview.js"
 	}
 }
