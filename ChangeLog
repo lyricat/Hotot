@@ -1,5 +1,17 @@
-The Latest Stable Version is 0.9.7.52
-The Latest Development Version is 0.9.7.53
+The Latest Stable Version is 0.9.7.54
+The Latest Development Version is 0.9.7.55
+
+Version 0.9.7.55
+	* Add Cantonese translation
+	* Fix Issue #198
+
+Version 0.9.7.54
+	* Fix: Wrong default font settings in Windows
+	* Fix: Incorrect scrollbar behaviors.
+	* Improve New hope and Iron Heart themes.
+	* Fix: Windows version cannot load settings.
+	* Fix: Window size saving (Qt)
+	* Several minor fixs.
 
 Version 0.9.7.53
 	* New scrollbar.
