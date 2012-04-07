@@ -56,7 +56,6 @@ public:
     void activate();
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
-    const QString& avatarDir();
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
@@ -99,8 +98,6 @@ private:
     bool m_useSocket;
     QFontDatabase m_fontDB;
     QString m_confDir;
-    QString m_cacheDir;
-    QString m_avatarCacheDir;
 };
 
 #endif // MAINWINDOW_H

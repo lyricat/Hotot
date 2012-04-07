@@ -142,12 +142,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     if (!dir.exists())
         dir.mkpath(".");
 
-    dir.mkpath("cache");
-    dir.mkpath("avatar_cache");
-
     m_confDir = dir.absolutePath();
-    m_cacheDir = dir.absoluteFilePath("cache");
-    m_avatarCacheDir = dir.absoluteFilePath("avatar_cache");
 
     QWebSettings::setOfflineStoragePath(dir.absolutePath());
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
@@ -257,16 +252,12 @@ void MainWindow::loadFinished(bool ok)
         QString confString = QString(
             "hotot_qt_variables = {"
             "      'platform': 'Linux'"
-            "    , 'conf_dir': '%1'"
-            "    , 'cache_dir': '%2'"
             "    , 'avatar_cache_dir': '%3'"
             "    , 'extra_fonts': %4"
             "    , 'extra_exts': %5"
             "    , 'extra_themes': %6"
             "    , 'locale': '%7'"
             "};").arg(m_confDir)
-                 .arg(m_cacheDir)
-                 .arg(m_avatarCacheDir)
                  .arg(extraFonts())
                  .arg(extraExtensions())
                  .arg(extraThemes())
@@ -516,9 +507,4 @@ QString MainWindow::toJSArray(const QStringList& list)
     }
 
     return QString("[%1]").arg(itemString);
-}
-
-const QString& MainWindow::avatarDir()
-{
-    return m_avatarCacheDir;
 }
