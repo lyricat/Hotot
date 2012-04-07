@@ -340,12 +340,12 @@ function normalize_settings(settings) {
 get_default_font_settings:
 function get_default_font_settings () {
     var platform = navigator.platform;
-    if (platform.indexOf('Windows') != -1) {
-        return ['"Segoe UI", "Microsoft YaHei", sans-serif', 'Verdana, "Microsoft YaHei",sans-serif;'];
+    if (platform.indexOf('Win') != -1) {
+        return ['\'Segoe UI\', \'Microsoft YaHei\', sans-serif', 'Verdana, \'Microsoft YaHei\', sans-serif'];
     } else if (platform.indexOf('Mac') != -1) {
-        return ['"Helvetica Neue", "Hiragino Sans GB", sans-serif;', '"Lucida Grande", "Hiragino Sans GB", sans-serif;'];
+        return ['\'Helvetica Neue\', \'Hiragino Sans GB\', sans-serif', '\'Lucida Grande\', \'Hiragino Sans GB\', sans-serif'];
     } else {
-        return ['"Helvetica Neue", "Hiragino Sans GB", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif', '"Droid Sans Fallback", "WenQuanYi Micro Hei", Simhei, Simsun, sans-serif'];
+        return ['\'Helvetica Neue\', \'Hiragino Sans GB\', \'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', sans-serif', '\'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', Simhei, Simsun, sans-serif'];
     }
 }
 
