@@ -534,6 +534,7 @@ pre {
 	width: 100%;
 	overflow: hidden;
 	background: #F2F2F2;
+	line-height: 22px;
 }
 
 #view_title_bar .view_title {
@@ -541,7 +542,6 @@ pre {
 	text-align: center;
 	font-size: 13px;
 	height: 21px;
-	line-height: 20px;
 	border-bottom: 1px #ddd solid;
 	border-left: 1px #ddd solid;
 	float: left;

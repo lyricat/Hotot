@@ -341,7 +341,7 @@ get_default_font_settings:
 function get_default_font_settings () {
     var platform = navigator.platform;
     if (platform.indexOf('Windows') != -1) {
-        return ['"Segoe UI", "Microsoft YaHei", sans-serif', 'Verdana, sans-serif;'];
+        return ['"Segoe UI", "Microsoft YaHei", sans-serif', 'Verdana, "Microsoft YaHei",sans-serif;'];
     } else if (platform.indexOf('Mac') != -1) {
         return ['"Helvetica Neue", "Hiragino Sans GB", sans-serif;', '"Lucida Grande", "Hiragino Sans GB", sans-serif;'];
     } else {

@@ -19,6 +19,7 @@ class Scrollbar
 
   recalculate_layout: ->
     @content_height = @content.height()
+    @track.css('height', (@content_height - (@track.outerHeight(true) - @track.outerHeight())) + 'px')
     @track_height = @track.height()
     if (@content.get(0).scrollHeight <= @content_height)
       @hide()
@@ -29,15 +30,17 @@ class Scrollbar
     @handle_height = @handle.height()
     pos = @content.get(0).scrollTop * (@track_height - @handle_height) / @content.get(0).scrollHeight
     @handle.css('top', pos + 'px')
-    @track.css('height', (@content_height - (@track.outerHeight(true) - @track.outerHeight())) + 'px')
     return
 
   on_wheel: (ev) ->
-    if event.wheelDelta
-      delta = event.wheelDelta / 20
-    offsetY = @offset_check(@handle.get(0).offsetTop - delta)
-    @scroll_to(offsetY)
-    return false
+    if event.wheelDeltaY > 100 or event.wheelDeltaY < -100
+      if event.wheelDelta
+        delta = event.wheelDelta / 2.5
+      offsetY = (@content.get(0).offsetTop - delta)
+      @scroll(offsetY)
+      return false
+    else
+      return true
 
   activate: ->
     @on_active = true
@@ -54,20 +57,34 @@ class Scrollbar
     @track.hide()
     
   scroll_to: (pos) ->
+    @content.get(0).scrollTop = pos
+
+  scroll: (offset) ->
+    pos = @content_pos_check(@content.get(0).scrollTop + offset)
+    @content.get(0).scrollTop = pos
+
+  scroll_by_handle: (pos) ->
     @handle.css('top', pos + 'px')
     @content.get(0).scrollTop = pos * @content.get(0).scrollHeight / (@track_height - @handle_height)
 
-  offset_check: (pos) ->
+  handle_pos_check: (pos) ->
     if pos < 0
       pos = 0
     if pos > @track_height - @handle_height
       pos = @track_height - @handle_height
     return pos
 
+  content_pos_check: (pos) ->
+    if pos < 0
+      pos = 0
+    if pos > @content.get(0).scrollHeight
+      pos = @content.get(0).scrollHeight
+    return pos
+
   bind: ->
     @handle.mousedown( (ev) =>
       @activate()
-      @scroll_drag_y = ev.clientY - @track.get(0).offsetTop - @handle.get(0).offsetTop
+      @track_scroll_y = ev.clientY - @track.get(0).offsetTop - @handle.get(0).offsetTop
       root._active_scrollbar = @
       return false
     ).mouseup( (ev) =>
@@ -75,8 +92,12 @@ class Scrollbar
     )
 
     @track.mousedown( (ev) =>
-      offsetY = @offset_check(ev.clientY - @track.get(0).offsetTop - @handle_height)
-      @scroll_to(offsetY)
+      @activate()
+      pos = @handle_pos_check(ev.clientY - @track.offset().top - @handle_height*0.5)
+      @scroll_by_handle(pos)
+      return false
+    ).mouseup( (ev) =>
+      @deactivate()
     )
     @content.on('mousewheel', (ev) => @on_wheel ev)
     @content.on('DOMMouseScroll', (ev) => @on_wheel ev)
@@ -102,15 +123,15 @@ root.widget.Scrollbar.register = ->
       # notify active scrollbar of its job
       if root._active_scrollbar
         sb = root._active_scrollbar
-        if sb.on_active
-          offsetY = sb.offset_check(ev.clientY - sb.track.get(0).offsetTop - sb.scroll_drag_y)
-          sb.scroll_to(offsetY)
+        if sb.on_active and sb.track_scroll_y
+          pos = sb.handle_pos_check(ev.clientY - sb.track.get(0).offsetTop - sb.track_scroll_y)
+          sb.scroll_by_handle(pos)
         return false
     ).mouseup( (ev) =>
       # notify active scrollbar of releasing mouse.
       if root._active_scrollbar
-        root._active_scrollbar.deactivate()
-        root._active_scrollbar = null
+        sb = root._active_scrollbar
+        sb.deactivate()
     )
     return
 

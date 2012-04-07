@@ -28,6 +28,7 @@
     Scrollbar.prototype.recalculate_layout = function() {
       var pos;
       this.content_height = this.content.height();
+      this.track.css('height', (this.content_height - (this.track.outerHeight(true) - this.track.outerHeight())) + 'px');
       this.track_height = this.track.height();
       if (this.content.get(0).scrollHeight <= this.content_height) {
         this.hide();
@@ -38,15 +39,18 @@
       this.handle_height = this.handle.height();
       pos = this.content.get(0).scrollTop * (this.track_height - this.handle_height) / this.content.get(0).scrollHeight;
       this.handle.css('top', pos + 'px');
-      this.track.css('height', (this.content_height - (this.track.outerHeight(true) - this.track.outerHeight())) + 'px');
     };
 
     Scrollbar.prototype.on_wheel = function(ev) {
       var delta, offsetY;
-      if (event.wheelDelta) delta = event.wheelDelta / 20;
-      offsetY = this.offset_check(this.handle.get(0).offsetTop - delta);
-      this.scroll_to(offsetY);
-      return false;
+      if (event.wheelDeltaY > 100 || event.wheelDeltaY < -100) {
+        if (event.wheelDelta) delta = event.wheelDelta / 2.5;
+        offsetY = this.content.get(0).offsetTop - delta;
+        this.scroll(offsetY);
+        return false;
+      } else {
+        return true;
+      }
     };
 
     Scrollbar.prototype.activate = function() {
@@ -68,14 +72,32 @@
     };
 
     Scrollbar.prototype.scroll_to = function(pos) {
+      return this.content.get(0).scrollTop = pos;
+    };
+
+    Scrollbar.prototype.scroll = function(offset) {
+      var pos;
+      pos = this.content_pos_check(this.content.get(0).scrollTop + offset);
+      return this.content.get(0).scrollTop = pos;
+    };
+
+    Scrollbar.prototype.scroll_by_handle = function(pos) {
       this.handle.css('top', pos + 'px');
       return this.content.get(0).scrollTop = pos * this.content.get(0).scrollHeight / (this.track_height - this.handle_height);
     };
 
-    Scrollbar.prototype.offset_check = function(pos) {
+    Scrollbar.prototype.handle_pos_check = function(pos) {
       if (pos < 0) pos = 0;
       if (pos > this.track_height - this.handle_height) {
         pos = this.track_height - this.handle_height;
+      }
+      return pos;
+    };
+
+    Scrollbar.prototype.content_pos_check = function(pos) {
+      if (pos < 0) pos = 0;
+      if (pos > this.content.get(0).scrollHeight) {
+        pos = this.content.get(0).scrollHeight;
       }
       return pos;
     };
@@ -84,16 +106,20 @@
       var _this = this;
       this.handle.mousedown(function(ev) {
         _this.activate();
-        _this.scroll_drag_y = ev.clientY - _this.track.get(0).offsetTop - _this.handle.get(0).offsetTop;
+        _this.track_scroll_y = ev.clientY - _this.track.get(0).offsetTop - _this.handle.get(0).offsetTop;
         root._active_scrollbar = _this;
         return false;
       }).mouseup(function(ev) {
         return _this.deactivate();
       });
       this.track.mousedown(function(ev) {
-        var offsetY;
-        offsetY = _this.offset_check(ev.clientY - _this.track.get(0).offsetTop - _this.handle_height);
-        return _this.scroll_to(offsetY);
+        var pos;
+        _this.activate();
+        pos = _this.handle_pos_check(ev.clientY - _this.track.offset().top - _this.handle_height * 0.5);
+        _this.scroll_by_handle(pos);
+        return false;
+      }).mouseup(function(ev) {
+        return _this.deactivate();
       });
       this.content.on('mousewheel', function(ev) {
         return _this.on_wheel(ev);
@@ -132,19 +158,20 @@
   root.widget.Scrollbar.register = function() {
     var _this = this;
     $(document).mousemove(function(ev) {
-      var offsetY, sb;
+      var pos, sb;
       if (root._active_scrollbar) {
         sb = root._active_scrollbar;
-        if (sb.on_active) {
-          offsetY = sb.offset_check(ev.clientY - sb.track.get(0).offsetTop - sb.scroll_drag_y);
-          sb.scroll_to(offsetY);
+        if (sb.on_active && sb.track_scroll_y) {
+          pos = sb.handle_pos_check(ev.clientY - sb.track.get(0).offsetTop - sb.track_scroll_y);
+          sb.scroll_by_handle(pos);
         }
         return false;
       }
     }).mouseup(function(ev) {
+      var sb;
       if (root._active_scrollbar) {
-        root._active_scrollbar.deactivate();
-        return root._active_scrollbar = null;
+        sb = root._active_scrollbar;
+        return sb.deactivate();
       }
     });
   };
