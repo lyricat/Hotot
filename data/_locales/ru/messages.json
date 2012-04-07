@@ -12,7 +12,7 @@
 		"description": "data/index.html"
 	},
 	"action": {
-		"message": "Action",
+		"message": "Действие",
 		"description": "data/index.html"
 	},
 	"add": {
@@ -44,7 +44,7 @@
 		"description": "data/index.html"
 	},
 	"appearance": {
-		"message": "Appearance",
+		"message": "Внешний вид",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -100,11 +100,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "Character `@` is not allowed in profile prefix",
+		"message": "Символ `@` не может быть использован в прексе профиля",
 		"description": "data/js/ui.welcome.js"
 	},
 	"clean_token": {
-		"message": "Clean token",
+		"message": "Очистить профили",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -128,11 +128,11 @@
 		"description": "data/index.html"
 	},
 	"click_to_show": {
-		"message": "Click to show",
+		"message": "Нажмите чтобы увидеть",
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Click to show retweeters",
+		"message": "Нажмите что бы увидеть ретвиты",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -168,7 +168,7 @@
 		"description": "data/index.html"
 	},
 	"cuddly": {
-		"message": "Cuddly",
+		"message": "приятный",
 		"description": "data/index.html"
 	},
 	"debug": {
