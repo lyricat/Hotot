@@ -148,13 +148,13 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
     m_webView->setPage(m_page);
-    m_webView->settings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
-    m_webView->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
-    m_webView->settings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
-    m_webView->settings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
-    m_webView->settings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
-    m_webView->settings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
-    m_webView->settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
 
     m_inspector = new QWebInspector;
     m_inspector->setPage(m_page);
@@ -414,7 +414,7 @@ void MainWindow::unreadAlert(QString number)
 
 void MainWindow::setEnableDeveloperTool(bool e)
 {
-    m_webView->settings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
     if (e)
         m_menu->insertAction(m_actionExit, m_actionDev);
     else
