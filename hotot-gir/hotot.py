@@ -247,9 +247,6 @@ class Hotot:
         Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
-        if hasattr(self, "xhk"):
-            self.xhk.clear()
-            self.xhk.stop()
         import sys
         sys.exit(0)
 
@@ -302,19 +299,9 @@ class Hotot:
             pass
 
     def release_hotkey(self):
-        try:
-            import xhotkey
-            xhk = xhotkey.XHotKey()
-            keydesc = config.settings['shortcut_summon_hotot']
-            keycode, modifiers = xhk.parse(keydesc)
-            if keycode is None:
-                print "cannot register hotkey: %s" % keydesc
-            else:
-                xhk.unbind(keycode, modifiers, self.on_hotkey_compose)
-                xhk.start()
-                self.xhk = xhk;
-        except:
-            pass
+        if hasattr(self, "xhk"):
+            self.xhk.clear()
+            self.xhk.stop()
 
     def create_trayicon(self):
         """
