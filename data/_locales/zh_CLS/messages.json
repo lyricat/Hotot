@@ -16,7 +16,7 @@
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "添加",
+		"message": "新",
 		"description": "data/index.html"
 	},
 	"add_new_views": {
@@ -28,11 +28,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
-		"message": "高级",
+		"message": "奇技",
 		"description": ""
 	},
 	"all": {
-		"message": "全部",
+		"message": "全",
 		"description": "All"
 	},
 	"api_base": {
@@ -56,7 +56,7 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "验证通过！",
+		"message": "准入",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -148,7 +148,7 @@
 		"description": "data/index.html"
 	},
 	"compose_messages_to": {
-		"message": "写私信",
+		"message": "撰写私信",
 		"description": "data/js/ui.status_box.js"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
@@ -324,7 +324,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "吾能吞下玻璃而不伤身耶。",
+		"message": "吾可囫囵吞玻璃而不伤身。",
 		"description": ""
 	},
 	"font_size": {
@@ -332,15 +332,15 @@
 		"description": ""
 	},
 	"friend_cnt": {
-		"message": "朋友",
+		"message": "友",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "朋友",
+		"message": "友",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
-		"message": "全局",
+		"message": "寰宇",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
