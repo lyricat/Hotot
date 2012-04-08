@@ -118,6 +118,8 @@ disabled:
     cursor: pointer;
     vertical-align: middle;
     text-shadow: #fff 0 1px 1px; 
+		-webkit-appearance: none;
+		position: relative;
 }
 
 .combo.dark {
