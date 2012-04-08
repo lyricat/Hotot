@@ -43,7 +43,7 @@
 
     Scrollbar.prototype.on_wheel = function(ev) {
       var delta, offsetY;
-      if (event.wheelDeltaY > 100 || event.wheelDeltaY < -100) {
+      if (event.wheelDeltaY > 1 || event.wheelDeltaY < -1) {
         if (event.wheelDelta) delta = event.wheelDelta / 2.5;
         offsetY = this.content.get(0).offsetTop - delta;
         this.scroll(offsetY);

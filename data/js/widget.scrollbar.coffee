@@ -33,7 +33,7 @@ class Scrollbar
     return
 
   on_wheel: (ev) ->
-    if event.wheelDeltaY > 100 or event.wheelDeltaY < -100
+    if event.wheelDeltaY > 1 or event.wheelDeltaY < -1
       if event.wheelDelta
         delta = event.wheelDelta / 2.5
       offsetY = (@content.get(0).offsetTop - delta)
