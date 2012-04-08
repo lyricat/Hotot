@@ -824,7 +824,7 @@ function addDefaultView(name, opts) {
             , 'header_html': ui.Template.retweets_header_t
             , 'former': ui.Template.form_tweet
             , 'method': 'poll'
-            , 'interval': 180
+            , 'interval': 120
             , 'item_type': 'id'
         }, opts));
     break;

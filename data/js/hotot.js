@@ -209,9 +209,9 @@ function open_search(query, additional_opts, in_background) {
             , 'former': ui.Template.form_search
             , 'destroy': ui.SearchView.destroy_view            
             , 'method': 'poll'
-            , 'interval': 240
+            , 'interval': 120
             , 'item_type': 'phoenix_search'
-            , 'is_trim': false
+            , 'is_trim': true
             , 'query': query
         }, additional_opts));
     ui.Main.views[name].load();
@@ -824,7 +824,7 @@ jQuery(function($) {
     };
 
     document.body.onmousewheel = function (event) {
-        if (event.wheelDeltaY && (event.wheelDeltaX > 50 || event.wheelDeltaX < 50)){
+        if (event.wheelDeltaY < -50 || event.wheelDeltaY > 50){
             return true;
         }
         if (event.wheelDeltaX && event.wheelDeltaX < -100){
