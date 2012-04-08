@@ -513,6 +513,11 @@ function bind_tweet_action(id) {
         $(id).children('.tweet_bar').hide();
     });
 
+    $(id).find('a[target]').click(function (ev) {
+        window.open($(this).attr('href'));
+        ev.preventDefault();
+    });
+
     $(id).find('a[direct_url]').click(function () {
         ui.Main.preview_image($(this).attr('direct_url'));
         return false;
