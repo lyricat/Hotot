@@ -514,14 +514,14 @@ function bind_tweet_action(id) {
     });
 
     $(id).find('a[target]').click(function (ev) {
+        $(id).find('a[direct_url]').click(function () {
+            ui.Main.preview_image($(this).attr('direct_url'));
+            return false;
+        });
         window.open($(this).attr('href'));
-        ev.preventDefault();
-    });
-
-    $(id).find('a[direct_url]').click(function () {
-        ui.Main.preview_image($(this).attr('direct_url'));
         return false;
     });
+
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {

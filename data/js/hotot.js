@@ -816,9 +816,9 @@ jQuery(function($) {
 
     document.getElementById('indication').onmousewheel = function (event) {
         if (event.wheelDelta < 0){
-            ui.Slider.slide_to_next();
+            ui.Slider.slide_to_next(true);
         } else {
-            ui.Slider.slide_to_prev();
+            ui.Slider.slide_to_prev(true);
         }
         return true;
     };
@@ -828,9 +828,9 @@ jQuery(function($) {
             return true;
         }
         if (event.wheelDeltaX && event.wheelDeltaX < -100){
-            ui.Slider.slide_to_next();
+            ui.Slider.slide_to_next(true);
         } else if (event.wheelDeltaX && event.wheelDeltaX > 100){
-            ui.Slider.slide_to_prev();
+            ui.Slider.slide_to_prev(true);
         }
     };
     $(window).bind('focus click', function () {
