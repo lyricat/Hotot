@@ -8,7 +8,7 @@
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
-		"message": "Access token doesn't exists",
+		"message": "Доступ о логіну ще не створено",
 		"description": "data/index.html"
 	},
 	"action": {
