@@ -1,5 +1,5 @@
 (function() {
-  var getActiveWindow, install, onExtRequest, onTabCreated, onTabUpdated, root, shareLink, sharePage, shareSelection, shareWithHotot, showHototTab, tabChangedHandler, uninstall;
+  var getActiveWindow, install, onExtRequest, onTabCreated, onTabRemoved, onTabUpdated, root, shareLink, sharePage, shareSelection, shareWithHotot, showHototTab, tabChangedHandler, uninstall;
 
   tabChangedHandler = function(tab) {
     if (tab.url.indexOf(chrome.extension.getURL("index.html")) !== -1) {
@@ -67,7 +67,11 @@
             win.ui.StatusBox.set_status_text(str);
             return win.ui.StatusBox.open();
           } else {
-            return win.toast.set('You must sign in to share content.').show(-1);
+            try {
+              return win.toast.set('You must sign in to share content.').show(-1);
+            } catch (e) {
+              return setTimeout(_testProc, 500);
+            }
           }
         } else {
           return setTimeout(_testProc, 500);
@@ -93,6 +97,10 @@
 
   onTabUpdated = function(id, info, tab) {
     tabChangedHandler(tab);
+  };
+
+  onTabRemoved = function(id, info) {
+    if (root._hototTab) if (root._hototTab.id === id) root._hototTab = null;
   };
 
   onExtRequest = function(req, sender, response) {
@@ -151,6 +159,8 @@
   chrome.tabs.onCreated.addListener(onTabCreated);
 
   chrome.tabs.onUpdated.addListener(onTabUpdated);
+
+  chrome.tabs.onRemoved.addListener(onTabRemoved);
 
   chrome.extension.onRequest.addListener(onExtRequest);
 

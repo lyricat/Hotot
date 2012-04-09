@@ -57,7 +57,10 @@ shareWithHotot = (str) ->
           win.ui.StatusBox.set_status_text(str)
           win.ui.StatusBox.open()
         else
-          win.toast.set('You must sign in to share content.').show(-1)
+          try
+            win.toast.set('You must sign in to share content.').show(-1)
+          catch e
+            setTimeout(_testProc, 1000)
       else
         setTimeout(_testProc, 500)
 
@@ -79,6 +82,12 @@ onTabCreated = (tab) ->
 
 onTabUpdated = (id, info, tab) ->
   tabChangedHandler(tab)
+  return
+
+onTabRemoved = (id, info) ->
+  if root._hototTab
+    if root._hototTab.id == id
+      root._hototTab = null
   return
 
 onExtRequest = (req, sender, response) ->
@@ -115,6 +124,7 @@ uninstall = () ->
 
 chrome.tabs.onCreated.addListener(onTabCreated)
 chrome.tabs.onUpdated.addListener(onTabUpdated)
+chrome.tabs.onRemoved.addListener(onTabRemoved)
 chrome.extension.onRequest.addListener(onExtRequest)
 
 root = exports ? this
