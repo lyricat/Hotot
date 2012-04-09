@@ -80,14 +80,14 @@ hide:
 function hide () {
     daemon.stop();
     ui.StatusBox.hide();
-    globals.in_main_view = false;
+    globals.signed_in = false;
     this.me.hide();
 },
 
 show:
 function show () {
     daemon.start();
-    globals.in_main_view = true;
+    globals.signed_in = true;
     this.me.show();
 },
 

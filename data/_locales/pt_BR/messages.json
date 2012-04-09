@@ -103,6 +103,10 @@
 		"message": "O carácter `@` não é permitido no prefixo do perfil",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Limpar token",
 		"description": "data/index.html"

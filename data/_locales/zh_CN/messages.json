@@ -103,6 +103,10 @@
 		"message": "不允许在账户前缀中使用`@`字符哦喵",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "集成到Chrome右键菜单",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "清空令牌",
 		"description": "data/index.html"

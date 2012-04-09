@@ -126,6 +126,13 @@ function load_settings() {
         , conf.settings.starts_minimized);
     $('#chk_prefs_use_anonymous_stat').prop('checked'
         , conf.settings.use_anonymous_stat);
+    // chrome only
+    if (!util.is_native_platform()) {
+        $('#chk_prefs_context_menu_integration').prop('checked'
+            , conf.settings.context_menu_integration);
+    } else {
+        $('#chk_prefs_context_menu_integration').attr('disabled', true);
+    }
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
@@ -167,6 +174,11 @@ function save_settings() {
         = $('#chk_prefs_use_anonymous_stat').prop('checked');
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
+    // chrome only
+    if (!util.is_native_platform()) {
+        conf.settings.context_menu_integration
+            = $('#chk_prefs_context_menu_integration').prop('checked'); 
+    }
     // proxy
     if (util.is_native_platform()) {
         conf.settings.use_http_proxy
@@ -186,6 +198,7 @@ function save_settings() {
         }
     }
     // save
+    conf.apply_settings();
     conf.save_settings();
 },
 
@@ -239,6 +252,7 @@ function load_prefs() {
         , prefs.use_alt_retweet);
     $('#chk_prefs_use_alt_reply').prop('checked'
         , prefs.use_alt_reply);
+
     $('#chk_prefs_use_media_preview').prop('checked'
         , prefs.use_media_preview);
     $('#chk_prefs_use_deleted_mark').prop('checked'
@@ -290,6 +304,7 @@ function save_prefs() {
         = $('#chk_prefs_use_alt_retweet').prop('checked'); 
     prefs['use_alt_reply']
         = $('#chk_prefs_use_alt_reply').prop('checked'); 
+
     prefs['use_media_preview']
         = $('#chk_prefs_use_media_preview').prop('checked'); 
     prefs['use_deleted_mark']

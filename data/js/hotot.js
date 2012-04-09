@@ -106,7 +106,7 @@ function hotot_action(uri) {
 function quit() {
     conf.save_settings(function () {
         if (conf.current_name.length != 0) {
-            if (globals.in_main_view) {
+            if (globals.signed_in) {
                 ui.Slider.save_state();
             }
             conf.save_prefs(conf.current_name, function(){
@@ -771,7 +771,7 @@ var globals = {
     , tweet_font_size: 12
     , tweet_font: ''
     , myself: {}
-    , in_main_view: false
+    , signed_in: false
     , load_flags: 0
     , ratelimit_bubble: null
     , unread_alert_timer: null
@@ -798,7 +798,7 @@ jQuery(function($) {
             //
             quit();
         }
-        if (focus_input || !globals.in_main_view)
+        if (focus_input || !globals.signed_in)
             return
         if (! ui.ActionMenu.is_hide) {
             return ui.ActionMenu.handle_keyup(event.keyCode);
@@ -839,7 +839,6 @@ jQuery(function($) {
     $('.card').live('click', function () {
         unread_alert(0);
     });
-
 
     var on_resize = function () {
         update_tweet_block_width();

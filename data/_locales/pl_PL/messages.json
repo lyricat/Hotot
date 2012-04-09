@@ -103,6 +103,10 @@
 		"message": "Znak `@` nie jest dozwolony w prefiksie profilu",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Wyczyść token",
 		"description": "data/index.html"

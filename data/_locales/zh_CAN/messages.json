@@ -103,6 +103,10 @@
 		"message": "唔俾系帐号前面用`@`符号喔",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "清空令牌",
 		"description": "data/index.html"

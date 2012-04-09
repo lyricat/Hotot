@@ -103,6 +103,10 @@
 		"message": "Das Zeichen `@` ist im Profil-Prefix nicht erlaubt",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Zugangstoken verwerfen",
 		"description": "data/index.html"
