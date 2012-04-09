@@ -1,0 +1,1106 @@
+{
+	"about": {
+		"message": "О программе",
+		"description": "data/index.html"
+	},
+	"about_and_help": {
+		"message": "О программе и помощь",
+		"description": "data/index.html"
+	},
+	"access_token_doesnt_exist": {
+		"message": "Доступ к логину еще не существует",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "Действие",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "Добавить",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "Добавить новые виды",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "Добавить в список",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "Расширенные",
+		"description": "data/index.html"
+	},
+	"all": {
+		"message": "Все",
+		"description": "data/index.html"
+	},
+	"api_base": {
+		"message": "База API",
+		"description": "data/index.html"
+	},
+	"api_setting": {
+		"message": "Настройка API ",
+		"description": "data/index.html"
+	},
+	"appearance": {
+		"message": "Внешний вид",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "Архив",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "Убийцы танго",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "Авторизация успешна",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "Автор",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "Авто обновления",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "Автоматический вход после открытия",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "Баланс между красотой и производтельностью.",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "Поведение",
+		"description": "data/index.html"
+	},
+	"bio": {
+		"message": "О себе",
+		"description": "data/index.html"
+	},
+	"block": {
+		"message": "Блокировать",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "Кровавая маргарита",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "Отмена",
+		"description": "data/index.html"
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "Не можем вас авторизировать! Пожалуйста проверьте ваш логин и пароль базу API",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "Символ `@` не может быть использован в префиксе профиля",
+		"description": "data/js/ui.welcome.js"
+	},
+	"clean_token": {
+		"message": "Очистить профили",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "Очистить",
+		"description": "data/index.html"
+	},
+	"clear_and_close": {
+		"message": "Очистить и закрыть",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "Нажмите что бы продолжить",
+		"description": "data/index.html"
+	},
+	"click_the_button_below": {
+		"message": "Нажмите на кнопку внизу",
+		"description": "data/index.html"
+	},
+	"click_to_compose_message": {
+		"message": "Нажмите что бы сочинить сообщение",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "Нажмите чтобы увидеть",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "Нажмите что бы увидеть ретвиты",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "закрыть",
+		"description": "data/index.html"
+	},
+	"close_current_column": {
+		"message": "Закрыть текущую колонку",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "Сочинить",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "Сочинить сообщение к",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "Скопируйте PIN Code и вставте в поле ниже ",
+		"description": "data/index.html"
+	},
+	"copy_to_clipboard": {
+		"message": "Копировать в буфер обмена",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "Создать список",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "Кредиты",
+		"description": "data/index.html"
+	},
+	"cuddly": {
+		"message": "Приятный",
+		"description": "data/index.html"
+	},
+	"debug": {
+		"message": "Отладка",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "Сервис фотохостинга по умолчанию",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "Удалить",
+		"description": "data/index.html"
+	},
+	"delete_this_tweet": {
+		"message": "Удалить этот твит",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "Удалено успешно",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "Не доступно",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "Недоступы эффекты виджетов и некоторая анимация.",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "Не доступно",
+		"description": "data/index.html"
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "Черновик",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "Переместите фото сюда",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "Падение",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "Редактировать",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "Ефекты",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "Екстра",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "Низкие",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "Нормальные",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "Включенные",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "Включить прокси",
+		"description": "data/index.html"
+	},
+	"enable_verbose_mode": {
+		"message": "Подробная информация",
+		"description": "data/index.html"
+	},
+	"enabled": {
+		"message": "Включено",
+		"description": "data/index.html"
+	},
+	"errors": {
+		"message": "Ошибки",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "Примеры",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "Выходит из Hotot при закрытии окна",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "Расширения",
+		"description": "data/index.html"
+	},
+	"fav_or_un_fav": {
+		"message": "В избранное/из избранного",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "Добавить в избранное ...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "Избранное",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "Лента избранных твитов",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "Блокировать твиты типа этого",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "Найти",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "Хорошо",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "Первый вход при помощи Twitter",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "Читать",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "Читать @",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "Читатели",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "Читатели",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "Шрифт",
+		"description": "data/index.html"
+	},
+	"font_preview_hint": {
+		"message": "съешь же ещё этих мягких французских булок, да выпей чаю.",
+		"description": "data/index.html"
+	},
+	"font_size": {
+		"message": "Размер шрифта",
+		"description": "data/index.html"
+	},
+	"friend_cnt": {
+		"message": "Друг",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "Друзья",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "Общие",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "Вы должны перезапустить Hotot для того что бы включились некоторые эффекты. И все изминения повлияют для всех аккаунтов",
+		"description": "data/index.html"
+	},
+	"greeting": {
+		"message": "Поздравляем!",
+		"description": "data/index.html"
+	},
+	"help": {
+		"message": "Помощь",
+		"description": "data/index.html"
+	},
+	"hey_it_is_you": {
+		"message": "Это вы",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "Скрыть негативные отзывы",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "Домашняя лента",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "Домашняя лента",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "Hotot",
+		"description": "data/index.html"
+	},
+	"http_proxy": {
+		"message": "Прокси HTTP",
+		"description": "data/index.html"
+	},
+	"image_uploader": {
+		"message": "Загрузка изображение",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "INFO",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "Вставить смайл",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "Интелектуальный фильтр",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "Язык интерфейса",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "Присоединиться",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "Не могу перестать думать о ней",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "Комбинации клавиш",
+		"description": "data/index.html"
+	},
+	"keyboard": {
+		"message": "Клавиатура",
+		"description": "data/index.html"
+	},
+	"keyboard_shortcuts": {
+		"message": "Иконки клавиатуры",
+		"description": "data/index.html"
+	},
+	"kismet_firewall": {
+		"message": "Фаервол Kismet",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Помощник Kismet",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "ВНИМЕНИЕ: Твиты содержащие данный атрибут не будут отображаться в ленте.",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "Метки с цветом",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "Язык",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "Позволить Hotot собирать анонимную статистику",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "Лицензия",
+		"description": "data/index.html"
+	},
+	"list": {
+		"message": "Список",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "В списке",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "Списки",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": " Lists following them",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "Его списки",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "Загрузка ... ",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "Загрузка ресурсов ...",
+		"description": "data/index.html"
+	},
+	"location": {
+		"message": "Местоположение",
+		"description": "data/index.html"
+	},
+	"mark_deleted_tweets": {
+		"message": "Помечать удаленные твиты",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "Маска",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "Упоминание",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "Упоминание",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "Лента упоминаний",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "Сообщение",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "Лента сообщений",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "Разное",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "Больше",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "Больше эффектов типа теней и отблески виджетов",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "Передвинуться вниз",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "Передвинуться к следующему твиту",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "Передвинуться к предыдущему твиту",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "Передвинуться на верх",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "Выключить фильтры",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "Мои избранные",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "Мое путешествие к морю уже началось",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "Моя сила",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "Имя",
+		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "Почти мертв",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "Ошибка Сети! повторите попытку позже.",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "Новый аккаунт был создан!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "Следующий",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "Без Расширений",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "Уведомление",
+		"description": "data/index.html"
+	},
+	"oauth_base": {
+		"message": "База OAuth",
+		"description": "data/index.html"
+	},
+	"official_retweet_this_tweet": {
+		"message": "официально ретвитнуть этот твит",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "OK",
+		"description": "data/index.html"
+	},
+	"oops_a_network_error_occurs": {
+		"message": "Упс, Произошла ошибка сети!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "Упс, Произошла ошибка сети API!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "Открыть список ...",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "Открыть профиль ...",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "Открыть первуею ссылку",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "Open speaker link",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "Operations",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "Настройки",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "Или скопируйте адресс и откройте в браузере.",
+		"description": "data/index.html"
+	},
+	"panda_acts_cute": {
+		"message": "Панда мило двигается",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "Вставить из буфера",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PIN код",
+		"description": "data/index.html"
+	},
+	"please_enter_the_recipient": {
+		"message": "Пожалуйста введите получателя!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "Пожалуйста введите префикс профиля",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "Запощено успешно Posted Successfully!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "Постим ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "Мощный",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "Настройки",
+		"description": "data/index.html"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Предварительно загружать последнии твиты в обсуждении, если возможно.",
+		"description": "data/index.html"
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "Нажмите Ctrl + Enter чтобы обновить",
+		"description": "data/index.html"
+	},
+	"pretty_wife": {
+		"message": "Приятная Жена",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "Предварительный просмотр",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "Предварительный просмотр встроенного медияа",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "Предварительный просмотр тут",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "Профиль",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "Авторизация",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "Быстрые ссылки",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "Выйти из Hotot",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "цитировать",
+		"description": "data/index.html"
+	},
+	"relation": {
+		"message": "Связь",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "Перезагрузка",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "Ответ",
+		"description": "data/index.html"
+	},
+	"reply_all": {
+		"message": "Ответить всем",
+		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "Ответить на этот твит",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "Ответить",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "Сообщить о спаме",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "Сбросить время",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "Восстановить значение по умолчанию",
+		"description": "data/index.html"
+	},
+	"retweet": {
+		"message": "Ретвит",
+		"description": "data/index.html"
+	},
+	"retweet_or_un_retweet": {
+		"message": "Ретвитнуть или отменить ретвит",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "Ретвитнуто успешно!",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "Ретвитнуто",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "Ретвитаем ...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "Ретвит",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "Лента ретвитов",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "Ретвитнуть этот твит",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "Правило",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "Фильтр на основе правил",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "Редактирование правил",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "Имя правила",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "то же подпись база API",
+		"description": "data/index.html"
+	},
+	"same_signing_oauth_base": {
+		"message": "то же подпись база OAuth",
+		"description": "data/index.html"
+	},
+	"save": {
+		"message": "Сохранить",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "Сохранить как проект",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "шизофрения",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "Поиск",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "Поиск базы API",
+		"description": "data/index.html"
+	},
+	"search_in_google": {
+		"message": "Поиск @ в Google",
+		"description": "data/index.html"
+	},
+	"search_in_twitter": {
+		"message": "Поиск @ в Twitter",
+		"description": "data/index.html"
+	},
+	"search_view": {
+		"message": "Лента поиска",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "Вібрать как фотохостинг по умолчанию",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "Выбрать язык",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "Выбрать действие",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "Пометить поле",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "Отослать сообщение",
+		"description": "data/index.html"
+	},
+	"send_message_to_them": {
+		"message": "Отослать им сообщение",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "Хорошие времена біли перед браком",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "Ярлыки",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "Вход ...",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "Выйти",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "Передвинуть на следующую страницу",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "Передвинуть на предыдущую страницу",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "Обнурежена некоторая ошибка",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "Звук",
+		"description": "data/index.html"
+	},
+	"starts_minimized": {
+		"message": "Стартовать свернутым",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "СТАТ",
+		"description": "data/index.html"
+	},
+	"status_is_over_140_characters": {
+		"message": "Статус более 140 Символов!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "Шаг 1",
+		"description": "data/index.html"
+	},
+	"step_two": {
+		"message": "Шаг 2",
+		"description": "data/index.html"
+	},
+	"struggling_adventurers": {
+		"message": "Борющиеся Авантюристы",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "Успешно",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "Запускать Hotot (Например: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"system": {
+		"message": "Система",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "Системная интеграция",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "Тема",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "Темы",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "Этот профиль уже существует!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "Золотисто-каштановая красота",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "Слишком холодная красота",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "Спокойный",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "Прозрачность",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "Темы трендов",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "Лента Трендов ",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "Твит",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "Вид твитов",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "Твиты",
+		"description": "data/index.html"
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "Убрать из избранного этот твит ...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "Разблокировать",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "Отменить ретвит ...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "Отменено успешно!",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "перестать читать @",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "Обновить",
+		"description": "data/index.html"
+	},
+	"update_successfully": {
+		"message": "Обновлено успешно!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "Обновление ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "Загрузить",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "Загрузить базу API",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "Загрузить фото.",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "Загрузить на ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "Сокращение ссылок",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "Использовать шрифт Use Custom Font",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "Использовать нативную систему нотификации Use native notify system",
+		"description": "data/index.html"
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "Использовать Цитирование твита по умолчание",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "Использовать ответить всем как по умолчанию",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "Использовать иконку Ubuntu",
+		"description": "data/index.html"
+	},
+	"verify": {
+		"message": "Проверить",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "Версия",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "С помощью",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": " View more conversation",
+		"description": "data/js/ui.template.js"
+	},
+	"virushou_s_integrity": {
+		"message": "Целосность Virushou's",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "Хотите иметь отношения с",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "Слабость",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "Веб",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "Сайт",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "Подсказка",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "Они вас читают.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "Вы читаете ",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "Вы друзья.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "Вы не читаете друг друга.",
+		"description": "data/js/ui.peopleview.js"
+	}
+}
