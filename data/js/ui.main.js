@@ -516,8 +516,15 @@ function bind_tweet_action(id) {
     if (!util.is_native_platform()) {
         $(id).find('a[target]').click(function (ev) {
             if (ev.which != 1 && ev.which != 2) {
-                return
+                return;
             }
+            /*
+            var direct_url = $(this).attr('direct_url');
+            if (typeof (direct_url) != 'undefined') {
+                ui.Main.preview_image(direct_url);
+                return false;
+            }
+            */
             var link = $(this).attr('href');
             chrome.tabs.create(
               { url: link, active: ev.which == 1 },
@@ -526,11 +533,12 @@ function bind_tweet_action(id) {
             return false;
         });
     }
-
+/*
     $(id).find('a[direct_url]').click(function () {
         ui.Main.preview_image($(this).attr('direct_url'));
         return false;
     });
+*/
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
