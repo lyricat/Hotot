@@ -44,7 +44,7 @@
 		"description": "data/index.html"
 	},
 	"appearance": {
-		"message": "",
+		"message": "Aparência",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -68,7 +68,7 @@
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
-		"message": "",
+		"message": "Conecte-se automaticamente ao abrir",
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
@@ -104,7 +104,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
-		"message": "",
+		"message": "Integração com o menu de contexto do Chrome",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -144,7 +144,7 @@
 		"description": "data/index.html"
 	},
 	"close_current_column": {
-		"message": "",
+		"message": "Fechar coluna atual",
 		"description": "data/index.html"
 	},
 	"compose": {
@@ -176,7 +176,7 @@
 		"description": "data/index.html"
 	},
 	"debug": {
-		"message": "",
+		"message": "Depurar",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -188,7 +188,7 @@
 		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
-		"message": "Remova esse tweet",
+		"message": "Remova esse tuíte",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
@@ -268,7 +268,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "",
+		"message": "Sair do Hotot quando fechar a janela",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -280,7 +280,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Adicione esse tweet aos favoritos ...",
+		"message": "Adicione esse tuíte aos favoritos ...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -292,7 +292,7 @@
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
-		"message": "",
+		"message": "Filtrar tuítes como esse",
 		"description": "data/index.html"
 	},
 	"find": {
@@ -304,7 +304,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "",
+		"message": "Primeira vez a se conectar ao Twitter",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -372,7 +372,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
-		"message": "",
+		"message": "Visão prinsipal",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -392,7 +392,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "",
+		"message": "Inserir smiley",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -432,11 +432,11 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "ATENÇÃO: Tweets que tenha os seguintes atributos não aparecerão na sua timeline.",
+		"message": "ATENÇÃO: Tuítes que tenha os seguintes atributos não aparecerão na sua timeline.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
-		"message": "",
+		"message": "Rotular com cor",
 		"description": "data/index.html"
 	},
 	"language": {
@@ -444,7 +444,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "",
+		"message": "Deixe que o Hotot colete informações estatísticas de forma anônima",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -452,7 +452,7 @@
 		"description": "data/index.html"
 	},
 	"list": {
-		"message": "",
+		"message": "Listar",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
@@ -484,7 +484,7 @@
 		"description": "data/index.html"
 	},
 	"mark_deleted_tweets": {
-		"message": "",
+		"message": "Marcar tuítes removidos",
 		"description": "data/index.html"
 	},
 	"mask": {
@@ -528,11 +528,11 @@
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Mover para o próximo tweet",
+		"message": "Mover para o próximo tuíte",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Mover par ao tweet anterior",
+		"message": "Mover para o tuíte anterior",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -588,7 +588,7 @@
 		"description": "data/index.html"
 	},
 	"official_retweet_this_tweet": {
-		"message": "Retuíte esse tweet",
+		"message": "Retuíte esse tuíte",
 		"description": "data/js/ui.template.js"
 	},
 	"ok": {
@@ -612,15 +612,15 @@
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "",
+		"message": "Abrir o primeiro link",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "",
+		"message": "Abrir link de quem fala",
 		"description": "data/index.html"
 	},
 	"operations": {
-		"message": "",
+		"message": "Operações",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -668,7 +668,7 @@
 		"description": "data/index.html"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Pre-carregar últimos tweets numa conversa se for possível.",
+		"message": "Pre-carregar últimos tuítes numa conversa se for possível.",
 		"description": "data/index.html"
 	},
 	"press_ctrl_and_enter_to_update": {
@@ -688,7 +688,7 @@
 		"description": "data/index.html"
 	},
 	"preview_here": {
-		"message": "",
+		"message": "Pré-visualizar aqui",
 		"description": "data/index.html"
 	},
 	"profile": {
@@ -728,7 +728,7 @@
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
-		"message": "Responder a esse tweet",
+		"message": "Responder a esse tuíte",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
@@ -776,7 +776,7 @@
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
-		"message": "RT esse tweet",
+		"message": "RT esse tuíte",
 		"description": "data/js/ui.template.js"
 	},
 	"rule": {
@@ -832,7 +832,7 @@
 		"description": "data/index.html"
 	},
 	"search_view": {
-		"message": "",
+		"message": "Visão de pesquisa",
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
@@ -892,7 +892,7 @@
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "",
+		"message": "Inicialize minimizado",
 		"description": "data/index.html"
 	},
 	"stat": {
@@ -924,11 +924,11 @@
 		"description": "data/index.html"
 	},
 	"system": {
-		"message": "",
+		"message": "Sistema",
 		"description": "data/index.html"
 	},
 	"system_integration": {
-		"message": "",
+		"message": "Integração com o sistema",
 		"description": "data/index.html"
 	},
 	"theme": {
@@ -960,11 +960,11 @@
 		"description": "data/index.html"
 	},
 	"trending_topics": {
-		"message": "",
+		"message": "Tendências",
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "",
+		"message": "Visão de tendências",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -972,7 +972,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
-		"message": "Visão de tweet",
+		"message": "Visão de tuítes",
 		"description": "data/index.html"
 	},
 	"tweets": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Remover tweet dos favoritos ...",
+		"message": "Remover tuíte dos favoritos ...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
@@ -1016,7 +1016,7 @@
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "",
+		"message": "API base para upload",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
@@ -1032,7 +1032,7 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "",
+		"message": "Usar fonte personalizada",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
@@ -1068,7 +1068,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
-		"message": "",
+		"message": "Ver o original",
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
@@ -1100,7 +1100,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "Vocês estão se seguindo",
+		"message": "Você está seguindo.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
