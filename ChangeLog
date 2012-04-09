@@ -1,13 +1,24 @@
-The Latest Stable Version is 0.9.7.54
-The Latest Development Version is 0.9.7.55
+The Latest Stable Version is 0.9.7.55
+The Latest Development Version is 0.9.7.56
+
+Version 0.9.7.56
+	* Fix: cannot open link(Gtk)
+	* Chrome integration: Share with Hotot
+	* Add Ukrainian and Russian translation (thank @alexsandrisimus)
+	* Add Latvietis translation (thank @fanfolet)
+	* Workaround: hook link event to prevent scrolling to top (Chrome)
 
 Version 0.9.7.55
-	* Add Cantonese translation
+	* Add Cantonese translation (thank @xsoul)
+	* Add Latvietis translation (thank @arvislacis)
 	* Fix Issue #198
+	* Fix scrolling problem when using trackpad on OS X
+	* Increase the refresh frequencey
+	* Fix: Horizontal slide
 
 Version 0.9.7.54
 	* Fix: Wrong default font settings in Windows
-	* Fix: Incorrect scrollbar behaviors.
+	* Fix: Incorrect scrollbar behaviors. (Issue #196, #197)
 	* Improve New hope and Iron Heart themes.
 	* Fix: Windows version cannot load settings.
 	* Fix: Window size saving (Qt)
