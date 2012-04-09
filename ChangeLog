@@ -7,6 +7,7 @@ Version 0.9.7.56
 	* Add Ukrainian and Russian translation (thank @alexsandrisimus)
 	* Add Latvietis translation (thank @fanfolet)
 	* Workaround: hook link event to prevent scrolling to top (Chrome)
+	* Fix Issue #201
 
 Version 0.9.7.55
 	* Add Cantonese translation (thank @xsoul)
