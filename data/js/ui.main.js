@@ -513,6 +513,20 @@ function bind_tweet_action(id) {
         $(id).children('.tweet_bar').hide();
     });
 
+    if (!util.is_native_platform()) {
+        $(id).find('a[target]').click(function (ev) {
+            if (ev.which != 1 && ev.which != 2) {
+                return
+            }
+            var link = $(this).attr('href');
+            chrome.tabs.create(
+              { url: link, active: ev.which == 1 },
+              function(){}
+            )
+            return false;
+        });
+    }
+
     $(id).find('a[direct_url]').click(function () {
         ui.Main.preview_image($(this).attr('direct_url'));
         return false;

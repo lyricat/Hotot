@@ -16,7 +16,7 @@
   };
 
   shareSelection = function(info, tab) {
-    shareWithHotot('"#{info.selectionText}" via: #{info.pageUrl}');
+    shareWithHotot("\"" + info.selectionText + "\" via: " + info.pageUrl);
   };
 
   shareLink = function(info, tab) {

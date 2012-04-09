@@ -14,7 +14,7 @@ sharePage = (info, tab) ->
   return
 
 shareSelection = (info, tab) ->
-  shareWithHotot('"#{info.selectionText}" via: #{info.pageUrl}')
+  shareWithHotot("\"#{info.selectionText}\" via: #{info.pageUrl}")
   return
 
 shareLink = (info, tab) ->
