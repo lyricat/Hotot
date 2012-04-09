@@ -51,7 +51,7 @@ shareWithHotot = (str) ->
   _doShare = () ->
     win = getActiveWindow()
     _testProc = () ->
-      if win.globals
+      if win and win.globals
         if win.globals.signed_in
           win.ui.StatusBox.change_mode(win.ui.StatusBox.MODE_TWEET)
           win.ui.StatusBox.set_status_text(str)

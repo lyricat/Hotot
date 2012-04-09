@@ -61,7 +61,7 @@
       var win, _testProc;
       win = getActiveWindow();
       _testProc = function() {
-        if (win.globals) {
+        if (win && win.globals) {
           if (win.globals.signed_in) {
             win.ui.StatusBox.change_mode(win.ui.StatusBox.MODE_TWEET);
             win.ui.StatusBox.set_status_text(str);
@@ -70,7 +70,7 @@
             try {
               return win.toast.set('You must sign in to share content.').show(-1);
             } catch (e) {
-              return setTimeout(_testProc, 500);
+              return setTimeout(_testProc, 1000);
             }
           }
         } else {
