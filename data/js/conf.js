@@ -241,7 +241,7 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
-    if (!util.is_native_platform()) {
+    if (conf.platform === 'Chrome') {
         chrome.extension.sendRequest(
             {'enableContextMenu':conf.settings.context_menu_integration},
             function (resp) {}

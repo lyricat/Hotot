@@ -110,19 +110,27 @@ function quit() {
                 ui.Slider.save_state();
             }
             conf.save_prefs(conf.current_name, function(){
-                if (conf.vars.platform == 'Chrome') {
-                    chrome.tabs.getCurrent(function (tab) {
-                        chrome.tabs.remove(tab.id);
-                    });
+                if (!util.is_native_platform()) {
+                    if (conf.vars.platform === 'Chrome') {
+                        chrome.tabs.getCurrent(function (tab) {
+                            chrome.tabs.remove(tab.id);
+                        });
+                    } else {
+                        // pass
+                    }
                 } else {
                     hotot_action('system/quit');
                 }
             });
         } else {
-            if (conf.vars.platform == 'Chrome') {
-                chrome.tabs.getCurrent(function (tab) {
-                    chrome.tabs.remove(tab.id);
-                });
+            if (!util.is_native_platform()) {
+                if (conf.vars.platform === 'Chrome') {
+                    chrome.tabs.getCurrent(function (tab) {
+                        chrome.tabs.remove(tab.id);
+                    });
+                } else {
+                    // pass
+                }
             } else {
                 hotot_action('system/quit');
             }

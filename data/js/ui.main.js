@@ -527,11 +527,13 @@ function bind_tweet_action(id) {
             }
             */
             var link = $(this).attr('href');
-            chrome.tabs.create(
-              { url: link, active: ev.which == 1 },
-              function(){}
-            )
-            return false;
+            if (conf.platform === 'Chrome') {
+                chrome.tabs.create(
+                  { url: link, active: ev.which == 1 },
+                  function(){}
+                )
+                return false;
+            }
         });
     }
 /*
