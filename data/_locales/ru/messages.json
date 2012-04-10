@@ -348,7 +348,7 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "Вы должны перезапустить Hotot для того что бы включились некоторые эффекты. И все изминения повлияют для всех аккаунтов",
+		"message": "Вы должны перезапустить Hotot для того что бы включились некоторые эффекты. Все изминения повлияют для всех аккаунтов",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -388,7 +388,7 @@
 		"description": "data/index.html"
 	},
 	"info": {
-		"message": "INFO",
+		"message": "Информация",
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
@@ -464,7 +464,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
-		"message": " Lists following them",
+		"message": " Читаемые им списки",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
@@ -616,11 +616,11 @@
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "Open speaker link",
+		"message": "Открыть ссылку говорящего",
 		"description": "data/index.html"
 	},
 	"operations": {
-		"message": "Operations",
+		"message": "Операции",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -652,7 +652,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Запощено успешно Posted Successfully!",
+		"message": "Запощено успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
@@ -684,7 +684,7 @@
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "Предварительный просмотр встроенного медияа",
+		"message": "Предварительный просмотр встроенного медия",
 		"description": "data/index.html"
 	},
 	"preview_here": {
@@ -836,7 +836,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Вібрать как фотохостинг по умолчанию",
+		"message": "Выбрать как фотохостинг по умолчанию",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -860,7 +860,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "Хорошие времена біли перед браком",
+		"message": "Хорошие времена были перед браком",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -1032,15 +1032,15 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "Использовать шрифт Use Custom Font",
+		"message": "Использовать другой шрифт",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
-		"message": "Использовать нативную систему нотификации Use native notify system",
+		"message": "Использовать нативную систему нотификации",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Использовать Цитирование твита по умолчание",
+		"message": "Использовать Цитирование твита по умолчанию",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -1064,7 +1064,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-		"message": " View more conversation",
+		"message": "Развернуть обсуждение",
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
@@ -1084,7 +1084,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"web": {
-		"message": "Веб",
+		"message": "Страница проекта",
 		"description": "data/js/ui.template.js"
 	},
 	"website": {
