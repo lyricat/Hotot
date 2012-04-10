@@ -104,7 +104,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
-		"message": "",
+		"message": "Интеграция в меню Chrome",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -140,7 +140,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
-		"message": "закрыть",
+		"message": "Закрыть",
 		"description": "data/index.html"
 	},
 	"close_current_column": {
@@ -464,7 +464,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
-		"message": " Lists following them",
+		"message": " Списки вслед за ними",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
@@ -652,7 +652,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Запощено успешно Posted Successfully!",
+		"message": "Запощено успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
@@ -708,7 +708,7 @@
 		"description": "data/index.html"
 	},
 	"quote": {
-		"message": "цитировать",
+		"message": "Цитировать",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -796,11 +796,11 @@
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
-		"message": "то же подпись база API",
+		"message": "Та же подпись база API",
 		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
-		"message": "то же подпись база OAuth",
+		"message": "Та же подпись база OAuth",
 		"description": "data/index.html"
 	},
 	"save": {
@@ -812,7 +812,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "шизофрения",
+		"message": "Шизофрения",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -836,7 +836,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Вібрать как фотохостинг по умолчанию",
+		"message": "Выбрать как фотохостинг по умолчанию",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -848,7 +848,7 @@
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "Пометить поле",
+		"message": "Пометить поля",
 		"description": "data/index.html"
 	},
 	"send_message": {
@@ -860,7 +860,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "Хорошие времена біли перед браком",
+		"message": "Хорошие времена были перед браком",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -1032,11 +1032,11 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "Использовать шрифт Use Custom Font",
+		"message": "Использовать шрифт",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
-		"message": "Использовать нативную систему нотификации Use native notify system",
+		"message": "Использовать нативную систему нотификации",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
@@ -1068,7 +1068,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
-		"message": "",
+		"message": "Посмотреть оригинал",
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
