@@ -127,7 +127,7 @@ function load_settings() {
     $('#chk_prefs_use_anonymous_stat').prop('checked'
         , conf.settings.use_anonymous_stat);
     // chrome only
-    if (conf.platform === 'Chrome') {
+    if (conf.vars.platform === 'Chrome') {
         $('#chk_prefs_context_menu_integration').prop('checked'
             , conf.settings.context_menu_integration);
     } else {
@@ -175,7 +175,7 @@ function save_settings() {
     conf.settings.shortcut_summon_hotot 
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // chrome only
-    if (conf.platform === 'Chrome') {
+    if (conf.vars.platform === 'Chrome') {
         conf.settings.context_menu_integration
             = $('#chk_prefs_context_menu_integration').prop('checked'); 
     }

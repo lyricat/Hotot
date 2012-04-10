@@ -527,7 +527,7 @@ function bind_tweet_action(id) {
             }
             */
             var link = $(this).attr('href');
-            if (conf.platform === 'Chrome') {
+            if (conf.vars.platform === 'Chrome') {
                 chrome.tabs.create(
                   { url: link, active: ev.which == 1 },
                   function(){}
