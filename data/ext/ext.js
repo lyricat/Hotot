@@ -40,13 +40,13 @@ listeners: {},
 
 exts_info: {},
 
-exts_enabled: [], 
+exts_enabled: [],
 
 extra_exts_path: {},
 
 prefs: null,
 
-init: 
+init:
 function init() {
     ext.prefs = window.openDatabase('hotot.exts_prefs', '', 'Preferences of extensions', 10);
     // listeners: {listener_type: [callbacks ... ], ... };
@@ -61,7 +61,7 @@ function init() {
         for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](tweet_obj, view);
         }
-        
+
         var ret = ui_main_add_tweets(view, tweet_obj, reversion, ignore_kismet);
 
         for (var i = 0, l = cbs_after.length; i < l; i += 1) {
@@ -77,7 +77,7 @@ function init() {
         for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](tweet_obj, pagename);
         }
-        
+
         var result_html = ui_template_form_tweet(tweet_obj, pagename);
 
         for (var i = 0, l = cbs_after.length; i < l; i += 1) {
@@ -104,7 +104,7 @@ function init() {
         for (var i = 0, l = cbs.length; i < l; i += 1) {
             cbs[i](text);
         }
-        
+
         text = ui_template_form_text(text);
 
         for (var i = 0, l = cbs_after.length; i < l; i += 1) {
@@ -126,10 +126,10 @@ function init_exts() {
     for (var key in ext) {
         // Extension package MUST be Capital
         // and MUST have two methods named 'enable' and 'disable'
-        if (65 <= key.charCodeAt(0) 
+        if (65 <= key.charCodeAt(0)
             && key.charCodeAt(0) <= 90
-            && typeof  ext[key].enable != 'undefined' 
-            && typeof  ext[key].disable != 'undefined') {
+            && typeof  ext[key].enable == 'function'
+            && typeof  ext[key].disable == 'function') {
 
             var extension = ext[key];
 
@@ -196,7 +196,7 @@ function load_builtin_exts(callback) {
     for (var i in ext.builtins) {
         path_arr.push('./ext/' + ext.builtins[i] + '/entry.js');
     }
-    ext.load_exts('builtin', path_arr, callback);    
+    ext.load_exts('builtin', path_arr, callback);
 },
 
 load_exts:
@@ -282,7 +282,7 @@ add_tweet_more_menuitem:
 function add_tweet_more_menuitem(id, label, type , callback) {
     $('#tweet_more_menu').append('<li><a id="ext_tweet_'+id+'" class="tweet_more_menu_btn ext_tweet_more_menu_btn" href="javascript:void(0);" title="'+label+'">'+label+'</a></li>');
     $('#ext_tweet_'+id).click(function() {
-        return callback(ui.Main.active_tweet_id); 
+        return callback(ui.Main.active_tweet_id);
     });
 },
 
@@ -299,7 +299,7 @@ function add_tweet_more_menuitem(id) {
 ext.Preferences = function (prefs_name) {
     function init(prefs_name) {
         ext.prefs.transaction(function (tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS "'+prefs_name+'" ("name" CHAR(64) PRIMARY KEY  NOT NULL  UNIQUE , "val" TEXT NOT NULL )', []);    
+            tx.executeSql('CREATE TABLE IF NOT EXISTS "'+prefs_name+'" ("name" CHAR(64) PRIMARY KEY  NOT NULL  UNIQUE , "val" TEXT NOT NULL )', []);
         });
     }
 
