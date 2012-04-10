@@ -103,6 +103,10 @@
 		"message": "Le caractère `@` n'est pas authorisé dans le nom du profil",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Effacer le jeton",
 		"description": "data/index.html"

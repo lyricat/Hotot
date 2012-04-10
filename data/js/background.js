@@ -1,96 +1,181 @@
-var _hotot_tab = null;
-function tab_change_handler(tab) {
-    if (tab.url == chrome.extension.getURL("index.html")) {
-        if (_hotot_tab) {
-            if (tab.id != _hotot_tab.id) {
-                // Duplicate
-                chrome.tabs.remove(tab.id);
-                show_hotot_tab();
-            }
-        } else {
-            _hotot_tab = tab;
-        } 
+(function() {
+  var getActiveWindow, install, onExtRequest, onTabCreated, onTabRemoved, onTabUpdated, root, shareLink, sharePage, shareSelection, shareWithHotot, showHototTab, tabChangedHandler, uninstall;
+
+  tabChangedHandler = function(tab) {
+    if (tab.url.indexOf(chrome.extension.getURL("index.html")) !== -1) {
+      if (root._hototTab) {
+        if (tab.id !== root._hototTab.id) showHototTab();
+      } else {
+        root._hototTab = tab;
+      }
     }
-}
-function share_page(info, tab) {
-    _share_with_hotot(tab.title + ' ' + info.pageUrl);
-}
-function share_selection(info, tab) {
-    _share_with_hotot(info.selectionText);
-}
-function share_link(info, tab) {
-    console.log("item " + info.menuItemId + " was clicked");
-    console.log("info: " + JSON.stringify(info));
-    console.log("tab: " + JSON.stringify(tab));
-    _share_with_hotot(info.linkUrl);
-}
-function get_active_window() {
-    var ret = null;
-    var v = chrome.extension.getViews();
-    for (var i = 0; i < v.length; i++) {
-        ret = v[i];
-        if (ret.location.href == _hotot_tab.url){
-            return ret;
-        }
+  };
+
+  sharePage = function(info, tab) {
+    shareWithHotot(tab.title + ' ' + info.pageUrl);
+  };
+
+  shareSelection = function(info, tab) {
+    shareWithHotot("\"" + info.selectionText + "\" via: " + info.pageUrl);
+  };
+
+  shareLink = function(info, tab) {
+    shareWithHotot(info.linkUrl);
+  };
+
+  getActiveWindow = function() {
+    var v, views, _i, _len;
+    views = chrome.extension.getViews();
+    for (_i = 0, _len = views.length; _i < _len; _i++) {
+      v = views[_i];
+      if (v.location.href === root._hototTab.url) return v;
     }
     return null;
-}
-function show_hotot_tab() {
-    if (_hotot_tab) {
-        var proc = function (c) {
-                c.focused || chrome.windows.update(c.id, {
-                    focused: true
-                });
-            };
-        chrome.tabs.get(_hotot_tab.id, function (c) {
-            _hotot_tab = c;
-            chrome.windows.get(c.windowId, proc)
-        });
-        chrome.tabs.update(_hotot_tab.id, {
-            selected: true
-        })
-    }
-};
-function _share_with_hotot(str) {
-    var _do_share = function () {
-        var win = get_active_window();
-        var _test_proc = function () {
-            if (win.globals && win.globals.myself) {
-                win.ui.StatusBox.change_mode(win.ui.StatusBox.MODE_TWEET);
-                win.ui.StatusBox.set_status_text(str);
-                win.ui.StatusBox.open();
-            } else {
-                setTimeout(_test_proc, 500);
-            }
+  };
+
+  showHototTab = function() {
+    var proc;
+    if (root._hototTab) {
+      proc = function(c) {
+                if (c.focused != null) {
+          c.focused;
+        } else {
+          chrome.windows.update(c.id, {
+            focused: true
+          });
         };
-        _test_proc()
-    };
-    if (_hotot_tab && _hotot_tab.id) {
-        show_hotot_tab(); 
-        _do_share();
-    } else {
-        chrome.tabs.create({
-            url: "index.html"
-        }, function () {
-            setTimeout(function () {
-                _do_share();
-            }, 500)
-        });
+      };
+      chrome.tabs.get(root._hototTab.id, function(c) {
+        root._hototTab = c;
+        return chrome.windows.get(c.windowId, proc);
+      });
+      chrome.tabs.update(root._hototTab.id, {
+        selected: true
+      });
     }
-}
+  };
 
-var contexts = ["page","selection","link"];
-chrome.contextMenus.create({"title": "Share Page with Hotot",
-    "contexts":["page"], "onclick": share_page});
-chrome.contextMenus.create({"title": "Share Selection with Hotot",
-    "contexts":["selection"], "onclick": share_selection});
-chrome.contextMenus.create({"title": "Share Link with Hotot",
-    "contexts":["link"], "onclick": share_link});
-chrome.tabs.onCreated.addListener(function (tab) {
-    tab_change_handler(tab);
-});
-chrome.tabs.onUpdated.addListener(function (id, info, tab) {
-    tab_change_handler(tab);
-});
+  shareWithHotot = function(str) {
+    var _doShare;
+    _doShare = function() {
+      var win, _testProc;
+      win = getActiveWindow();
+      _testProc = function() {
+        if (win && win.globals) {
+          if (win.globals.signed_in) {
+            win.ui.StatusBox.change_mode(win.ui.StatusBox.MODE_TWEET);
+            win.ui.StatusBox.set_status_text(str);
+            return win.ui.StatusBox.open();
+          } else {
+            try {
+              return win.toast.set('You must sign in to share content.').show(-1);
+            } catch (e) {
+              return setTimeout(_testProc, 1000);
+            }
+          }
+        } else {
+          return setTimeout(_testProc, 500);
+        }
+      };
+      return _testProc();
+    };
+    if (root._hototTab && root._hototTab.id) {
+      showHototTab();
+      _doShare();
+    } else {
+      chrome.tabs.create({
+        url: "index.html"
+      }, function() {
+        return setTimeout(_doShare, 500);
+      });
+    }
+  };
 
+  onTabCreated = function(tab) {
+    tabChangedHandler(tab);
+  };
 
+  onTabUpdated = function(id, info, tab) {
+    tabChangedHandler(tab);
+  };
+
+  onTabRemoved = function(id, info) {
+    if (root._hototTab) if (root._hototTab.id === id) root._hototTab = null;
+  };
+
+  onExtRequest = function(req, sender, response) {
+    if (req.enableContextMenu) {
+      install();
+      response({
+        'reply': 'getcha, context menu has been enabled.'
+      });
+    } else {
+      uninstall();
+      response({
+        'reply': 'getcha, context menu has been disabled.'
+      });
+    }
+  };
+
+  install = function() {
+    var contexts;
+    contexts = ["page", "selection", "link"];
+    if (root._menuItemSharePageId === null) {
+      root._menuItemSharePageId = chrome.contextMenus.create({
+        "title": "Share Page with Hotot",
+        "contexts": ["page"],
+        "onclick": sharePage
+      });
+    }
+    if (root._menuItemShareSelId === null) {
+      root._menuItemShareSelId = chrome.contextMenus.create({
+        "title": "Share Selection with Hotot",
+        "contexts": ["selection"],
+        "onclick": shareSelection
+      });
+    }
+    if (root._menuItemShareLinkId === null) {
+      root._menuItemShareLinkId = chrome.contextMenus.create({
+        "title": "Share Link with Hotot",
+        "contexts": ["link"],
+        "onclick": shareLink
+      });
+    }
+  };
+
+  uninstall = function() {
+    chrome.contextMenus.removeAll();
+    root._menuItemSharePageId = null;
+    root._menuItemShareSelId = null;
+    root._menuItemShareLinkId = null;
+    if (chrome.tabs.onCreated.hasListener(onTabCreated)) {
+      chrome.tabs.onCreated.removeListener(onTabCreated);
+    }
+    if (chrome.tabs.onUpdated.hasListener(onTabUpdated)) {
+      chrome.tabs.onUpdated.removeListener(onTabUpdated);
+    }
+  };
+
+  chrome.tabs.onCreated.addListener(onTabCreated);
+
+  chrome.tabs.onUpdated.addListener(onTabUpdated);
+
+  chrome.tabs.onRemoved.addListener(onTabRemoved);
+
+  chrome.extension.onRequest.addListener(onExtRequest);
+
+  root = typeof exports !== "undefined" && exports !== null ? exports : this;
+
+  root._hototTab = null;
+
+  root._install = install;
+
+  root._uninstall = uninstall;
+
+  root._menuItemSharePageId = null;
+
+  root._menuItemShareSelId = null;
+
+  root._menuItemShareLinkId = null;
+
+}).call(this);

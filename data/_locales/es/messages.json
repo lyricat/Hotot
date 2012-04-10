@@ -103,6 +103,10 @@
 		"message": "El caracter `@` no está permitido como prefijo en un perfil",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Borrar token",
 		"description": "data/index.html"

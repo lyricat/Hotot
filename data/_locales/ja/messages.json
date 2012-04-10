@@ -103,6 +103,10 @@
 		"message": "`@`を使えません",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "トークンを削除する",
 		"description": "data/index.html"

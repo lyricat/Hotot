@@ -3,7 +3,7 @@ conf = {
 
 vars: {
       'platform': 'Linux'
-    , 'version': '0.9.7.54'
+    , 'version': '0.9.7.56'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -29,6 +29,7 @@ default_settings: {
     , 'size_w': 500
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
+    , 'context_menu_integration': true
     , 'close_to_exit': false
     , 'sign_in_automatically': false
     , 'starts_minimized': false
@@ -240,6 +241,12 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
+    if (!util.is_native_platform()) {
+        chrome.extension.sendRequest(
+            {'enableContextMenu':conf.settings.context_menu_integration},
+            function (resp) {}
+        );
+    }
     globals.twitterClient.oauth.key = localStorage.consumer_key || conf.vars.consumer_key;
     globals.twitterClient.oauth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
 },
@@ -274,6 +281,7 @@ function apply_prefs(name, full) {
         $('.listview, .dialog_block p, .card').css('font-family', fonts[1]);
         globals.tweet_font = fonts[1];
     }
+
     globals.twitterClient.api_base = prefs.api_base;
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
     globals.twitterClient.search_api_base2 = prefs.search_api_base2;

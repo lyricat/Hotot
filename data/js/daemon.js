@@ -9,7 +9,7 @@ daemon = {
 
     timer: null,
 
-    timer_interval: 120000,
+    timer_interval: 60000, //default, 60 sec per loop
 
     home_queue: [],
 
@@ -40,7 +40,7 @@ daemon = {
             daemon.poll();
             daemon.push();
         }
-        daemon.time += 120;
+        daemon.time += 60;
         if (daemon.time == 3600) { // reset timer per hour
             daemon.time = 0;
         }
@@ -70,11 +70,11 @@ daemon = {
             }
             var interval = view.interval;
             if (daemon.use_streaming && globals.twitterClient.watch_user_streams.is_running) {
-                // poll push_views per 15 minutes when the Steaming xhr works
+                // poll push_views per 5 minutes when the Steaming xhr works
                 // poll them as normal if Streaming xhr is not running or the user stream is disabled.
-                interval = 900;
+                interval = 300;
             }
-            if (daemon.time % (Math.ceil(interval / 120) * 120) == 0) {
+            if (daemon.time % (Math.ceil(interval / 60) * 60) == 0) {
                 hotot_log('poll as push', view.name);
                 view.load();
                 step += 1;

@@ -103,6 +103,10 @@
 		"message": "Simbos `@` nav atļauts kā profila prefikss",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Notīrīt piekļuves kodu",
 		"description": "data/index.html"
@@ -1062,6 +1066,10 @@
 	"view_more_conversation": {
 		"message": "Skatīt plašāku saraksti",
 		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "Virušu integritāte",

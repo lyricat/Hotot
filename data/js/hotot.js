@@ -106,7 +106,7 @@ function hotot_action(uri) {
 function quit() {
     conf.save_settings(function () {
         if (conf.current_name.length != 0) {
-            if (globals.in_main_view) {
+            if (globals.signed_in) {
                 ui.Slider.save_state();
             }
             conf.save_prefs(conf.current_name, function(){
@@ -209,9 +209,9 @@ function open_search(query, additional_opts, in_background) {
             , 'former': ui.Template.form_search
             , 'destroy': ui.SearchView.destroy_view            
             , 'method': 'poll'
-            , 'interval': 240
+            , 'interval': 120
             , 'item_type': 'phoenix_search'
-            , 'is_trim': false
+            , 'is_trim': true
             , 'query': query
         }, additional_opts));
     ui.Main.views[name].load();
@@ -771,7 +771,7 @@ var globals = {
     , tweet_font_size: 12
     , tweet_font: ''
     , myself: {}
-    , in_main_view: false
+    , signed_in: false
     , load_flags: 0
     , ratelimit_bubble: null
     , unread_alert_timer: null
@@ -798,7 +798,7 @@ jQuery(function($) {
             //
             quit();
         }
-        if (focus_input || !globals.in_main_view)
+        if (focus_input || !globals.signed_in)
             return
         if (! ui.ActionMenu.is_hide) {
             return ui.ActionMenu.handle_keyup(event.keyCode);
@@ -816,21 +816,21 @@ jQuery(function($) {
 
     document.getElementById('indication').onmousewheel = function (event) {
         if (event.wheelDelta < 0){
-            ui.Slider.slide_to_next();
+            ui.Slider.slide_to_next(true);
         } else {
-            ui.Slider.slide_to_prev();
+            ui.Slider.slide_to_prev(true);
         }
         return true;
     };
 
     document.body.onmousewheel = function (event) {
-        if (event.wheelDeltaY && (event.wheelDeltaX > 50 || event.wheelDeltaX < 50)){
+        if (event.wheelDeltaY < -50 || event.wheelDeltaY > 50){
             return true;
         }
         if (event.wheelDeltaX && event.wheelDeltaX < -100){
-            ui.Slider.slide_to_next();
+            ui.Slider.slide_to_next(true);
         } else if (event.wheelDeltaX && event.wheelDeltaX > 100){
-            ui.Slider.slide_to_prev();
+            ui.Slider.slide_to_prev(true);
         }
     };
     $(window).bind('focus click', function () {
@@ -839,7 +839,6 @@ jQuery(function($) {
     $('.card').live('click', function () {
         unread_alert(0);
     });
-
 
     var on_resize = function () {
         update_tweet_block_width();

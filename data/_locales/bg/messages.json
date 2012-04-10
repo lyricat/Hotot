@@ -1,106 +1,106 @@
 {
 	"about": {
-		"message": "Über",
+		"message": "Относно",
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "Über & Hilfe",
+		"message": "Относно & Помощ",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
-		"message": "Zugangstoken existiert nicht",
+		"message": "Няма разрешение за достъп",
 		"description": "data/index.html"
 	},
 	"action": {
-		"message": "Aktion",
+		"message": "Действие",
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "Hinzufügen",
+		"message": "Добави",
 		"description": "data/index.html"
 	},
 	"add_new_views": {
-		"message": "Neue Ansicht hinzufügen",
+		"message": "Добави нови изгледи",
 		"description": "data/index.html"
 	},
 	"add_to_list": {
-		"message": "Zur Liste hinzufügen",
+		"message": "Добави към списък",
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
-		"message": "Erweitert",
+		"message": "Разширени",
 		"description": "data/index.html"
 	},
 	"all": {
-		"message": "Alle",
+		"message": "Всички",
 		"description": "data/index.html"
 	},
 	"api_base": {
-		"message": "API Base",
+		"message": "API база",
 		"description": "data/index.html"
 	},
 	"api_setting": {
-		"message": "API Einstellungen",
+		"message": "API настройки",
 		"description": "data/index.html"
 	},
 	"appearance": {
-		"message": "",
+		"message": "Изглед",
 		"description": "data/index.html"
 	},
 	"archive": {
-		"message": "Archiv",
+		"message": "Архив",
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "Assassin's Tango",
+		"message": "Тангото на убиеца",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Authentifizierung OK!",
+		"message": "Удостоверяването е ОК!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
-		"message": "Autor",
+		"message": "Автор",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_update": {
-		"message": "Auto Update",
+		"message": "Автоматичен Ъпдейт",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
-		"message": "",
+		"message": "Автоматично вписване",
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "Ausgewogen",
+		"message": "Баланс между атрактивност и производителност.",
 		"description": "data/index.html"
 	},
 	"behavior": {
-		"message": "Verhalten",
+		"message": "Поведение",
 		"description": "data/index.html"
 	},
 	"bio": {
-		"message": "Bio",
+		"message": "Биграфия",
 		"description": "data/index.html"
 	},
 	"block": {
-		"message": "Sperre",
+		"message": "Блокирай",
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
-		"message": "Bloody Marguerite",
+		"message": "Кървавата Маргерит",
 		"description": "data/index.html"
 	},
 	"cancel": {
-		"message": "Abbrechen",
+		"message": "Отказ",
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "Sie konnten nicht authentifiziert werden! Bitte überprüfen Sie die Zugangsdaten",
+		"message": "Грешно удостоверяване! Моля, проверете потребителското име/паролата и АПИ базата",
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "Das Zeichen `@` ist im Profil-Prefix nicht erlaubt",
+		"message": "Знакът `@` не е позволен",
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
@@ -108,103 +108,103 @@
 		"description": "data/index.html"
 	},
 	"clean_token": {
-		"message": "Zugangstoken verwerfen",
+		"message": "Премахни разрешението за достъп",
 		"description": "data/index.html"
 	},
 	"clear": {
-		"message": "Leeren",
+		"message": "Премахни",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
-		"message": "Leeren & Schließen",
+		"message": "Премахни & Затвори",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "Zum Fortfahren klicken",
+		"message": "Кликни за продължение",
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
-		"message": "Klicken Sie unten",
+		"message": "Кликни долния бутон",
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Zum Verfassen einer Nachricht klicken",
+		"message": "Кликни за създаване на съобщение",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
-		"message": "Zum Ansehen klicken",
+		"message": "Кликни за показване",
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Zur Retweeteranzeige klicken",
+		"message": "Клинки за да се покажат ретуитърите",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
-		"message": "Schließen",
+		"message": "Затвори",
 		"description": "data/index.html"
 	},
 	"close_current_column": {
-		"message": "",
+		"message": "Затвори настоящата колона",
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "Verfassen",
+		"message": "Създай",
 		"description": "data/index.html"
 	},
 	"compose_messages_to": {
-		"message": "Verfasse Nachricht an",
+		"message": "СЪЗДАЙ СЪОБЩЕНИЕ до",
 		"description": "data/js/ui.status_box.js"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Bitte kopieren Sie den PIN Code und fügen diesen unten ein",
+		"message": "Копирай PIN кода и го постави тук",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
-		"message": "In die Zwischenablage kopieren",
+		"message": "Копирай в клипборда",
 		"description": "date/index.html"
 	},
 	"create_a_list": {
-		"message": "Erstelle eine Liste",
+		"message": "Създай списък",
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "Impressum",
+		"message": "Заслуги",
 		"description": "data/index.html"
 	},
 	"cuddly": {
-		"message": "Kuschelig",
+		"message": "Пуфкаф",
 		"description": "data/index.html"
 	},
 	"debug": {
-		"message": "",
+		"message": "Дебъг",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "Standard Bilddienst",
+		"message": "Услуга за картинки по подразбиране",
 		"description": "data/index.html"
 	},
 	"delete": {
-		"message": "Löschen",
+		"message": "Изтрий",
 		"description": "data/index.html"
 	},
 	"delete_this_tweet": {
-		"message": "Lösche diesen Tweet",
+		"message": "Изтрий този туит",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Erfolgreich vernichtet!",
+		"message": "Унищожено успешно!",
 		"description": "data/js/ui.main.js"
 	},
 	"disable": {
-		"message": "Deaktiviere",
+		"message": "Забрани",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Deaktiviere Elementdekorationen und Animationen",
+		"message": "Забрани декорациите и някои анимации.",
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "Deaktiviert",
+		"message": "Забранено",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -212,135 +212,135 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "Vorlagen",
+		"message": "Drafts",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "Ziehen Sie ein Foto hierher",
+		"message": "Завлачи снимката тук",
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "Verwerfen",
+		"message": "Пусни",
 		"description": "data/index.html"
 	},
 	"edit": {
-		"message": "Bearbeiten",
+		"message": "Редактирай",
 		"description": "data/js/ui.template.js"
 	},
 	"effects": {
-		"message": "Effekte",
+		"message": "Ефекти",
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "Extra",
+		"message": "Екстра",
 		"description": "data/index.html"
 	},
 	"effects_low": {
-		"message": "Wenig",
+		"message": "Ниски",
 		"description": "data/index.html"
 	},
 	"effects_normal": {
-		"message": "Normal",
+		"message": "Нормални",
 		"description": "data/index.html"
 	},
 	"enable": {
-		"message": "Aktiviere",
+		"message": "Разреши",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_proxy": {
-		"message": "Benutze Proxy",
+		"message": "Разреши прокси",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
-		"message": "Aktiviere zusätzliche Ausgaben",
+		"message": "Рарзеши Verbose Mode",
 		"description": "data/index.html"
 	},
 	"enabled": {
-		"message": "Aktiviert",
+		"message": "Разрешено",
 		"description": "data/index.html"
 	},
 	"errors": {
-		"message": "Fehler",
+		"message": "Грешки",
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "Beispiele",
+		"message": "Примери",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "",
+		"message": "Спри Hotot при затваряне на прозореца",
 		"description": "data/index.html"
 	},
 	"extensions": {
-		"message": "Erweit.",
+		"message": "Разширения",
 		"description": "data/index.html"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Un-fav",
+		"message": "Харесвам/Не харесвам",
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Favorisiere diesen Tweet ...",
+		"message": "Харесай този туит ...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
-		"message": "Favs",
+		"message": "Любими",
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "Favoriten",
+		"message": "Изглед Любими",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
-		"message": "",
+		"message": "Филтрирай туитове като този",
 		"description": "data/index.html"
 	},
 	"find": {
-		"message": "Finden",
+		"message": "Търси",
 		"description": "data/index.html"
 	},
 	"fine": {
-		"message": "Gut",
+		"message": "Фино",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "",
+		"message": "Дата на регистрация в Twitter",
 		"description": "data/index.html"
 	},
 	"follow": {
-		"message": "Folgen",
+		"message": "Следвай",
 		"description": "data/js/ui.template.js"
 	},
 	"follow_at": {
-		"message": "Folge @",
+		"message": "Следвай @",
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "Follower",
+		"message": "Последовател",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
-		"message": "Followers",
+		"message": "Последователи",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
-		"message": "Schriftart",
+		"message": "Шрифт",
 		"description": "data/index.html"
 	},
 	"font_preview_hint": {
-		"message": "Der schnelle braune Fuchs springt über den faulen Hund.",
+		"message": "Ах, чудна българска земьо, полюшвай цъфтящи жита!",
 		"description": "data/index.html"
 	},
 	"font_size": {
-		"message": "Schriftgröße",
+		"message": "Големина на шрифта",
 		"description": "data/index.html"
 	},
 	"friend_cnt": {
-		"message": "Freund",
+		"message": "Приятел",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "Freunde",
+		"message": "Приятели",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
@@ -348,19 +348,19 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "Einige Änderungen erfordern einen Neustart von Hotot. Diese Änderungen betreffen ALLE Konten",
+		"message": "Трябва да рестартирате Hotot за да се приложат някои от промените. Това ще засегне ВСИЧКИ акаунти.",
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "Grüße!",
+		"message": "Поздравления!",
 		"description": "data/index.html"
 	},
 	"help": {
-		"message": "Hilfe",
+		"message": "Помощ",
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
-		"message": "Hey, das sind Sie!",
+		"message": "Хей, това си ти!",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
@@ -368,11 +368,11 @@
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Meine Timeline",
+		"message": "Личен поток",
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
-		"message": "",
+		"message": "Личен изглед",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -380,31 +380,31 @@
 		"description": "data/index.html"
 	},
 	"http_proxy": {
-		"message": "HTTP Proxy",
+		"message": "HTTP прокси",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
-		"message": "Bild-Uploader",
+		"message": "Публикуване на изображения",
 		"description": "data/index.html"
 	},
 	"info": {
-		"message": "INFO",
+		"message": "ИНФО",
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "",
+		"message": "Включи усмивка",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
-		"message": "Intelligenter Filter",
+		"message": "Интелигентен филтър",
 		"description": "data/index.html"
 	},
 	"interface_language": {
-		"message": "UI Sprache",
+		"message": "Език на интерфейса",
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "Beitreten",
+		"message": "Присъедини се",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -412,15 +412,15 @@
 		"description": "data/index.html"
 	},
 	"keybinding": {
-		"message": "Tastenbelegung",
+		"message": "Keybinding",
 		"description": "data/index.html"
 	},
 	"keyboard": {
-		"message": "Tastatur",
+		"message": "Клавиатура",
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
-		"message": "Tastenkombinationen",
+		"message": "Бързи клавиши",
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
@@ -432,119 +432,119 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "Warnung: Tweets mit den folgenden Attributen erscheinen nicht auf Ihrer Timeline.",
+		"message": "ВНИМАНИЕ: Туитове, които имат следните атрибути, няма да се появяват във Вашият поток.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
-		"message": "",
+		"message": "Цветен етикет",
 		"description": "data/index.html"
 	},
 	"language": {
-		"message": "Sprache",
+		"message": "Език",
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "",
+		"message": "Разреши Hotot да събира анонимно статистическа информация",
 		"description": "data/index.html"
 	},
 	"license": {
-		"message": "Lizenz",
+		"message": "Лиценз",
 		"description": "data/index.html"
 	},
 	"list": {
-		"message": "",
+		"message": "Списък",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
-		"message": "Gelistet",
+		"message": "В списък",
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
-		"message": "Listen",
+		"message": "Списъци",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
-		"message": "Listen die @ folgen",
+		"message": "Списъци на следващите ги",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
-		"message": "Listen von @",
+		"message": "Списъците им",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "Lade ... ",
+		"message": "Зареждане ... ",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "Lade Ressourcen ...",
+		"message": "Зареждане на източници ...",
 		"description": "data/index.html"
 	},
 	"location": {
-		"message": "Ort",
+		"message": "Местоположение",
 		"description": "data/index.html"
 	},
 	"mark_deleted_tweets": {
-		"message": "",
+		"message": "Маркирай изтритите туитове",
 		"description": "data/index.html"
 	},
 	"mask": {
-		"message": "Maske",
+		"message": "Маска",
 		"description": "data/index.html"
 	},
 	"mention_them": {
-		"message": "Erwähne",
+		"message": "Споменаване",
 		"description": "data/js/ui.template.js"
 	},
 	"mentions": {
-		"message": "Erwähnungen",
+		"message": "Споменавания",
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
-		"message": "Erwähnungen",
+		"message": "Изглед на споменаванията",
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "Nachrichten",
+		"message": "Съобщения",
 		"description": "data/js/ui.slider.js"
 	},
 	"messages_view": {
-		"message": "Nachrichten",
+		"message": "Изглед на съобщенията",
 		"description": "data/index.html"
 	},
 	"misc": {
-		"message": "Sonstiges",
+		"message": "Разни",
 		"description": "data/index.html"
 	},
 	"more_actions": {
-		"message": "Mehr",
+		"message": "Още",
 		"description": "data/js/ui.template.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Mehr Effekte (Schatten, glänzende Elemente)",
+		"message": "Повече ефекти като сенки и блясък",
 		"description": "data/index.html"
 	},
 	"move_to_bottom": {
-		"message": "Gehe nach unten",
+		"message": "Премести на дъното",
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Gehe zu nächstem Tweet",
+		"message": "Прмести до следващия туит",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Gehe zu vorigem Tweet",
+		"message": "Премести до предишния туит",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
-		"message": "Gehe nach oben",
+		"message": "Премести отгоре",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
-		"message": "Mute Filter",
+		"message": "Филтър за заглушаване",
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "Meine Favoriten",
+		"message": "Любими",
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
@@ -552,43 +552,43 @@
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "Meine Leistung",
+		"message": "Моята сила",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
-		"message": "Name",
+		"message": "Име",
 		"description": "data/index.html"
 	},
 	"nearly_dead": {
-		"message": "Fast tot",
+		"message": "Почти мъртъв",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "Netzwerk Fehler! Bitte versuchen Sie es später erneut.",
+		"message": "Грешка в Мрежата! Опитай пак по-късно.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "Neues Profil wurde erstellt!",
+		"message": "Създаден е нов профил!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
-		"message": "Weiter",
+		"message": "Следващ",
 		"description": "data/index.html"
 	},
 	"no_extension": {
-		"message": "Keine Erweiterung",
+		"message": "Без разширение",
 		"description": "data/index.html"
 	},
 	"notify": {
-		"message": "Benachrichtigen",
+		"message": "Уведоми",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
-		"message": "OAuth Base",
+		"message": "OAuth база",
 		"description": "data/index.html"
 	},
 	"official_retweet_this_tweet": {
-		"message": "Diesen Tweet offiziell retweeten",
+		"message": "Официално ретуитни този туит",
 		"description": "data/js/ui.template.js"
 	},
 	"ok": {
@@ -596,39 +596,39 @@
 		"description": "data/index.html"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Oops, ein Netzwerkfehler ist aufgetreten",
+		"message": "Опааа, грешка в Мрежата",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Oops, es ist ein API Fehler aufgetreten!",
+		"message": "Опаа, грешка в API!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
-		"message": "Öffne eine Liste ...",
+		"message": "Отвори списък ...",
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "Öffne ein Profil ...",
+		"message": "Отвори профил ...",
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "",
+		"message": "Отвори първия линк",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "",
+		"message": "Отвори speaker линк",
 		"description": "data/index.html"
 	},
 	"operations": {
-		"message": "",
+		"message": "Операции",
 		"description": "data/index.html"
 	},
 	"options": {
-		"message": "Optionen",
+		"message": "Опции",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Oder kopieren Sie die Adresse zum Öffnen in Ihren Browser.",
+		"message": "Или копирай адрес и го отвори в браузъра си.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
@@ -636,43 +636,43 @@
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
-		"message": "Aus der Zwischenablage einfügen",
+		"message": "Постави от клипборда",
 		"description": "date/index.html"
 	},
 	"pin_code": {
-		"message": "PIN Code",
+		"message": "PIN код",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "Bitte geben Sie einen Empfänger an!",
+		"message": "моля попълнете получателя!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "Bitte geben Sie einen Profil-Prefix an",
+		"message": "Моля попълнете префикса на получателя",
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Erfolgreich abgeschickt!",
+		"message": "Успешно публикуване!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "Schreibe ...",
+		"message": "Публикуване ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
-		"message": "Stark",
+		"message": "Силен",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"preferences": {
-		"message": "Einstellungen",
+		"message": "Настройки",
 		"description": "data/index.html"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Wenn möglich die neusten Tweets in Konversationen vorladen.",
+		"message": "Презареди последните туитове в разговори, ако е възможно.",
 		"description": "data/index.html"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "Strg + Enter zum Abschicken drücken",
+		"message": "Натисни Ctrl + Enter за публикуване",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -680,119 +680,119 @@
 		"description": "data/index.html"
 	},
 	"preview": {
-		"message": "Vorschau",
+		"message": "Преглед",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "Vorschau für eingebettete Medien",
+		"message": "Преглед на включените медии",
 		"description": "data/index.html"
 	},
 	"preview_here": {
-		"message": "",
+		"message": "Преглед тук",
 		"description": "data/index.html"
 	},
 	"profile": {
-		"message": "Profil",
+		"message": "Профил",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
-		"message": "Authentifizierung",
+		"message": "Удостоверяване",
 		"description": "data/index.html"
 	},
 	"quick_references": {
-		"message": "Kurzhinweise",
+		"message": "Бързи препратки",
 		"description": "data/index.html"
 	},
 	"quit_hotot": {
-		"message": "Hotot beenden",
+		"message": "Напусни Hotot",
 		"description": "data/index.html"
 	},
 	"quote": {
-		"message": "Zitiere",
+		"message": "Цитирай",
 		"description": "data/index.html"
 	},
 	"relation": {
-		"message": "Relation",
+		"message": "Отношение",
 		"description": "data/js/ui.template.js"
 	},
 	"reload": {
-		"message": "Neu laden",
+		"message": "Презареди",
 		"description": "data/index.html"
 	},
 	"reply": {
-		"message": "Antworten",
+		"message": "Отговор",
 		"description": "data/index.html"
 	},
 	"reply_all": {
-		"message": "Allen antworten",
+		"message": "Отговор на всички",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
-		"message": "Auf diesen Tweet antworten",
+		"message": "Отговори на този туит",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "Antworte",
+		"message": "отговор до",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
-		"message": "Spam melden",
+		"message": "Докладвай СПАМ",
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "Zeit zurücksetzen",
+		"message": "Време до зануляване",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
-		"message": "Standardwerte wiederherstellen",
+		"message": "Възстанови до подразбиране",
 		"description": "data/index.html"
 	},
 	"retweet": {
-		"message": "Retweet",
+		"message": "Ретуит",
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retweet/Un-retweet",
+		"message": "Ретуит/Отмяна",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retweet erfolgreich!",
+		"message": "Ретуита е успешен!",
 		"description": "data/js/ui.main.js"
 	},
 	"retweeted_by": {
-		"message": "Retweeted von",
+		"message": "Ретуитнато от",
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Retweeting ...",
+		"message": "Ретуитване ...",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
-		"message": "Retweets",
+		"message": "Ретуити",
 		"description": "data/js/ui.slider.js"
 	},
 	"retweets_view": {
-		"message": "Retweets",
+		"message": "Изглед на ретуитовете",
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
-		"message": "RT diesen Tweet",
+		"message": "RT този туит",
 		"description": "data/js/ui.template.js"
 	},
 	"rule": {
-		"message": "Regel",
+		"message": "Условие",
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
-		"message": "Regelbasierter Filter",
+		"message": "Филтър по условие",
 		"description": "data/index.html"
 	},
 	"rule_editor": {
-		"message": "Regel Editor",
+		"message": "Редактор на условията",
 		"description": "data/index.html"
 	},
 	"rule_name": {
-		"message": "Regel-Name",
+		"message": "Име на условие",
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
@@ -804,95 +804,95 @@
 		"description": "data/index.html"
 	},
 	"save": {
-		"message": "Speichern",
+		"message": "Запази",
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
-		"message": "Als Vorlage speichern",
+		"message": "Запази за по-късно",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "Schizophrenia",
+		"message": "Шизофрения",
 		"description": "data/index.html"
 	},
 	"search": {
-		"message": "Suchen",
+		"message": "Търси",
 		"description": "data/js/ui.slider.js"
 	},
 	"search_api_base2": {
-		"message": "Suche API Base",
+		"message": "Търси API база",
 		"description": "data/index.html"
 	},
 	"search_in_google": {
-		"message": "Suche @ in Google",
+		"message": "Търси @ в Google",
 		"description": "data/index.html"
 	},
 	"search_in_twitter": {
-		"message": "Suche @ in Twitter",
+		"message": "Търси @ в Twitter",
 		"description": "data/index.html"
 	},
 	"search_view": {
-		"message": "",
+		"message": "Изглед на търсенето",
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Wählen Sie einen Standard-Bild-Dienst",
+		"message": "Избери услуга за изображения по подразбиране",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
-		"message": "Wählen Sie eine Sprache",
+		"message": "Избери език",
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "Wähle Aktionen",
+		"message": "Избери действия",
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "Felder wählen",
+		"message": "Избери полета",
 		"description": "data/index.html"
 	},
 	"send_message": {
-		"message": "Sende Nachricht",
+		"message": "Изпрати съобщение",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
-		"message": "Sende Nachricht an sie",
+		"message": "Изпрати им съобщения",
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "Shiny old times before marriage",
+		"message": "Страхотните времена преди брака",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
-		"message": "Tastenkombinationen",
+		"message": "Бързи връзки",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Anmelden ...",
+		"message": "Вписване ...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
-		"message": "Abmelden",
+		"message": "Отписване",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
-		"message": "Blättere zu nächster Seite",
+		"message": "Плъзни до следващата страница",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Blättere zu voriger Seite",
+		"message": "Плъзни до предишната страница",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "Es sind Fehler aufgetreten",
+		"message": "Някаква грешка се появи",
 		"description": "data/index.html"
 	},
 	"sound": {
-		"message": "Ton",
+		"message": "Звук",
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "",
+		"message": "Стартирай намален",
 		"description": "data/index.html"
 	},
 	"stat": {
@@ -900,15 +900,15 @@
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Status ist länger alsr 140 Zeichen!",
+		"message": "Надвишили сте 140 знака!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
-		"message": "Schritt 1",
+		"message": "Стъпка 1",
 		"description": "data/index.html"
 	},
 	"step_two": {
-		"message": "Schritt 2",
+		"message": "Стъпка 2",
 		"description": "data/index.html"
 	},
 	"struggling_adventurers": {
@@ -916,31 +916,31 @@
 		"description": "data/index.html"
 	},
 	"successfully": {
-		"message": "Erfolgreich",
+		"message": "Успешно",
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "Aktiviere Hotot (z.B.: <ALT>C)",
+		"message": "Summon Hotot (like: <ALT>C)",
 		"description": "data/index.html"
 	},
 	"system": {
-		"message": "",
+		"message": "Система",
 		"description": "data/index.html"
 	},
 	"system_integration": {
-		"message": "",
+		"message": "Системна интеграция",
 		"description": "data/index.html"
 	},
 	"theme": {
-		"message": "Theme",
+		"message": "Тема",
 		"description": "data/index.html"
 	},
 	"themes": {
-		"message": "Themes",
+		"message": "Теми",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "Dieses Profil scheint bereits zu existieren!",
+		"message": "Този профил вече съществува!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -956,115 +956,115 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "Transparent",
+		"message": "Прозрачно",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
-		"message": "",
+		"message": "Най-дискутирани",
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "",
+		"message": "Изглед на най-дискутираните",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "Tweet",
+		"message": "Туит",
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
-		"message": "Tweet",
+		"message": "Изглед на туитовете",
 		"description": "data/index.html"
 	},
 	"tweets": {
-		"message": "Tweets",
+		"message": "Туитове",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Diesen Tweet nicht mehr favorisieren ...",
+		"message": "Не харесвам този туит ...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
-		"message": "Entsperren",
+		"message": "Деблокирай",
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "Widerrufe Retweeting ...",
+		"message": "Отмяна на ретуитването ...",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
-		"message": "Erfolgreich widerrufen",
+		"message": "Отмяната е успешна!",
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow_at": {
-		"message": "@ nicht mehr folgen",
+		"message": "Не следвай @",
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
-		"message": "Abschicken",
+		"message": "Обнови",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
-		"message": "Erfolgreich aktualisiert!",
+		"message": "Обновяването успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {
-		"message": "Aktualisiere ...",
+		"message": "Обновяване ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"upload": {
-		"message": "Upload",
+		"message": "Публикувай",
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "",
+		"message": "Публикувай API Base",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
-		"message": "Foto hochladen.",
+		"message": "Публикувай снимка.",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "Hochladen zu ...",
+		"message": "Публикувай в ...",
 		"description": "data/index.html"
 	},
 	"url_shortener": {
-		"message": "URL-Kürzer",
+		"message": "Съкращаване на адреси",
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "",
+		"message": "Използвай собствен шрифт",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
-		"message": "Natives Benachrichtigungssystem benutzen",
+		"message": "Използвай основата система за уведомяване",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Nutze ZITIEREN als Standard-Retweetmethode",
+		"message": "Използвай ЦИТИРАЙ за основно действие при ретуит",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
-		"message": "Nutze ALLEN ANTWORTEN als Standard-Antwortmethode",
+		"message": "Използвай ОТГОВОР ДО ВСИЧКИ като основно действие при отговор",
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
-		"message": "Benutze Ubuntu Indicator",
+		"message": "Използвай Ubuntu индикатор",
 		"description": "data/index.html"
 	},
 	"verify": {
-		"message": "Prüfen",
+		"message": "Потвърди",
 		"description": "data/index.html"
 	},
 	"version": {
-		"message": "Version",
+		"message": "Версия",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"via": {
-		"message": "via",
+		"message": "чрез",
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-		"message": "Zeige mehr Konversationen",
+		"message": "Покажи още от разговора",
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
@@ -1076,39 +1076,39 @@
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "Wanna have a relationship with",
+		"message": "Искам да се обържа с",
 		"description": "data/index.html"
 	},
 	"weakness": {
-		"message": "Schwach",
+		"message": "Слабост",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"web": {
-		"message": "URL",
+		"message": "Мрежа",
 		"description": "data/js/ui.template.js"
 	},
 	"website": {
-		"message": "Webseite",
+		"message": "Страница",
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"whisper": {
-		"message": "Flüstern",
+		"message": "Шепот",
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "Sie folgen Ihnen.",
+		"message": "Те Ви следват.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "Sie folgen",
+		"message": "Вие следвате",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
-		"message": "Sie sind Freunde.",
+		"message": "Вие сте приятели.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "Sie folgen sich nicht.",
+		"message": "Вие не се следвате един друг.",
 		"description": "data/js/ui.peopleview.js"
 	}
 }

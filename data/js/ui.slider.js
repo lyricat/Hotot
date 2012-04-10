@@ -525,24 +525,30 @@ function get_page_pos(id) {
 },
 
 slide_to_prev:
-function slide_to_prev() {
+function slide_to_prev(no_loop) {
     var prev_id = '';
     var idx = ui.Slider.get_page_pos(ui.Slider.current);
     if (idx != 0) {
         prev_id = ui.Slider.tweet_blocks[idx - 1];
     } else {
+        if (no_loop == true) {
+            return ;
+        }
         prev_id = ui.Slider.tweet_blocks[ui.Slider.tweet_blocks.length-1];
     }
     ui.Slider.slide_to(prev_id);
 },
 
 slide_to_next:
-function slide_to_next() {
+function slide_to_next(no_loop) {
     var next_id = '';
     var idx = ui.Slider.get_page_pos(ui.Slider.current);
     if (idx != ui.Slider.tweet_blocks.length - 1) {
         next_id = ui.Slider.tweet_blocks[idx + 1];
     } else {
+        if (no_loop == true) {
+            return ;
+        }
         next_id = ui.Slider.tweet_blocks[0];
     }
     ui.Slider.slide_to(next_id);
@@ -824,7 +830,7 @@ function addDefaultView(name, opts) {
             , 'header_html': ui.Template.retweets_header_t
             , 'former': ui.Template.form_tweet
             , 'method': 'poll'
-            , 'interval': 180
+            , 'interval': 120
             , 'item_type': 'id'
         }, opts));
     break;

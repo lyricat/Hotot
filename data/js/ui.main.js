@@ -80,14 +80,14 @@ hide:
 function hide () {
     daemon.stop();
     ui.StatusBox.hide();
-    globals.in_main_view = false;
+    globals.signed_in = false;
     this.me.hide();
 },
 
 show:
 function show () {
     daemon.start();
-    globals.in_main_view = true;
+    globals.signed_in = true;
     this.me.show();
 },
 
@@ -513,10 +513,32 @@ function bind_tweet_action(id) {
         $(id).children('.tweet_bar').hide();
     });
 
+    if (!util.is_native_platform()) {
+        $(id).find('a[target]').click(function (ev) {
+            if (ev.which != 1 && ev.which != 2) {
+                return;
+            }
+            /*
+            var direct_url = $(this).attr('direct_url');
+            if (typeof (direct_url) != 'undefined') {
+                ui.Main.preview_image(direct_url);
+                return false;
+            }
+            */
+            var link = $(this).attr('href');
+            chrome.tabs.create(
+              { url: link, active: ev.which == 1 },
+              function(){}
+            )
+            return false;
+        });
+    }
+/*
     $(id).find('a[direct_url]').click(function () {
         ui.Main.preview_image($(this).attr('direct_url'));
         return false;
     });
+*/
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
