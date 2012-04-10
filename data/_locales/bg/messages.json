@@ -248,7 +248,7 @@
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
-		"message": "Рарзеши Verbose Mode",
+		"message": "Разреши Verbose Mode",
 		"description": "data/index.html"
 	},
 	"enabled": {
@@ -624,7 +624,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Или копирай адрес и го отвори в браузъра си.",
+		"message": "или копирай адрес и го отвори в браузъра си.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
@@ -640,11 +640,11 @@
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "моля попълнете получателя!",
+		"message": "Моля, попълнете получателя!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "Моля попълнете префикса на получателя",
+		"message": "Моля, попълнете префикса на получателя",
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
@@ -672,7 +672,7 @@
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "Pretty wife",
+		"message": "Убава жена",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -832,7 +832,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Избери услуга за изображения по подразбиране",
+		"message": "Избери услуга за изображения",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -1032,7 +1032,7 @@
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
-		"message": "Използвай основата система за уведомяване",
+		"message": "Използвай основната система за уведомяване",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
