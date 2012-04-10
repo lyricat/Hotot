@@ -44,11 +44,11 @@
 		"description": ""
 	},
 	"appearance": {
-		"message": "",
+		"message": "外観設定",
 		"description": "data/index.html"
 	},
 	"archive": {
-		"message": "",
+		"message": "アーカイブ",
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
@@ -68,7 +68,7 @@
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
-		"message": "",
+		"message": "自動ログイン",
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
@@ -92,7 +92,7 @@
 		"description": "data/index.html"
 	},
 	"cancel": {
-		"message": "取り消す",
+		"message": "キャンセル",
 		"description": ""
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
@@ -104,7 +104,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
-		"message": "",
+		"message": "Chromeの右クリックメニューに追加",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -128,7 +128,7 @@
 		"description": ""
 	},
 	"click_to_compose_message": {
-		"message": "",
+		"message": "DMモードに変わる",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -176,11 +176,11 @@
 		"description": "data/index.html"
 	},
 	"debug": {
-		"message": "",
+		"message": "デバッグ",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "",
+		"message": "デフォルトの写真サービス",
 		"description": "data/index.html"
 	},
 	"delete": {
@@ -212,15 +212,15 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "",
+		"message": "下書き",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "",
+		"message": "ドラッグで写真を添付する",
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "",
+		"message": "削除",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -264,7 +264,7 @@
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "",
+		"message": "サンプル",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
