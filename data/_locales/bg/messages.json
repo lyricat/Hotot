@@ -4,7 +4,7 @@
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "Относно & Помощ",
+		"message": "Относно и Помощ",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
-		"message": "Премахни & Затвори",
+		"message": "Премахни и Затвори",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -132,7 +132,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Клинки за да се покажат ретуитърите",
+		"message": "Кликни за да се покажат ретуитърите",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -176,7 +176,7 @@
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "Услуга за картинки по подразбиране",
+		"message": "Услуга за картинки",
 		"description": "data/index.html"
 	},
 	"delete": {
@@ -208,7 +208,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "Drafts",
+		"message": "Задържани",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
@@ -284,7 +284,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "Изглед Любими",
+		"message": "Любими",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
@@ -300,7 +300,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "Дата на регистрация в Twitter",
+		"message": "Дата на регистрация",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -340,7 +340,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
-		"message": "Global",
+		"message": "Общи",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
@@ -364,11 +364,11 @@
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Личен поток",
+		"message": "Поток",
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
-		"message": "Личен изглед",
+		"message": "Поток",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -388,7 +388,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "Включи усмивка",
+		"message": "Включи емотикони",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -420,11 +420,11 @@
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Kismet Firewall",
+		"message": "Kismet Защитна стена",
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
-		"message": "Kismet Guide",
+		"message": "Kismet Ръководство",
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
@@ -496,15 +496,15 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
-		"message": "Изглед на споменаванията",
+		"message": "Споменавания",
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "Съобщения",
+		"message": "Лични",
 		"description": "data/js/ui.slider.js"
 	},
 	"messages_view": {
-		"message": "Изглед на съобщенията",
+		"message": "Лични",
 		"description": "data/index.html"
 	},
 	"misc": {
@@ -768,7 +768,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"retweets_view": {
-		"message": "Изглед на ретуитовете",
+		"message": "Ретуитове",
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
@@ -968,7 +968,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
-		"message": "Изглед на туитовете",
+		"message": "Туитове",
 		"description": "data/index.html"
 	},
 	"tweets": {
@@ -1068,7 +1068,7 @@
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "Искам да се обържа с",
+		"message": "Искам да се обвържа с",
 		"description": "data/index.html"
 	},
 	"weakness": {
