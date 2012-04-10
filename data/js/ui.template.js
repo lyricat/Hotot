@@ -739,7 +739,7 @@ function form_dm(dm_obj, pagename) {
 },
 
 form_tweet:
-function form_tweet (tweet_obj, pagename) {
+function form_tweet (tweet_obj, pagename, in_thread) {
     var retweet_name = '';
     var retweet_str = '';
     var retweet_id = '';
@@ -757,7 +757,7 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var in_thread = pagename.split('-').length < 2 ? false:true;
+    var in_thread = in_thread == true ? true: false;
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
@@ -823,8 +823,7 @@ function form_tweet (tweet_obj, pagename) {
     m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
-    
-    m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
+    m.IN_REPLY = (reply_id != null && !in_thread) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
     
     m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
@@ -965,6 +964,7 @@ function form_retweeted_by(tweet_obj, pagename) {
 form_search:
 function form_search(tweet_obj, pagename) {
     if (tweet_obj.user != undefined) {
+        // use phoenix_search ... well, in fact, the original parser is totally useless.
         return ui.Template.form_tweet(tweet_obj, pagename);
     }
     var id = tweet_obj.id_str;

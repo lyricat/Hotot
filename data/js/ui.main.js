@@ -309,7 +309,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // insert in batch
     ui.Main.sort(batch_arr, true);
     var batch_html = $.map(batch_arr, function (n, i) {
-        return self.former(n, self.name);
+        return self.former(n, self.name, self.thread_container);
     }).join('');
     if (reversion) {
         self._body.append(batch_html);
@@ -328,6 +328,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
             var listview = {'name': dom_id
+                , 'thread_container': true
                 , 'former': ui.Template.form_tweet
                 , '_body': thread_container};
             ui.Main.preload_thread(listview, json_obj[i]);
@@ -428,7 +429,7 @@ function insert_isolated_tweet(self, tweet, reversion) {
      * if the tweet is duplicate, return [-1, null]
      * */
     var this_one = tweet;
-    var this_one_html = self.former(this_one, self.name);
+    var this_one_html = self.former(this_one, self.name, self.thread_container);
     var next_one = ui.Main.get_next_tweet_dom(self, null, reversion);
     var c = 0;
     while (true) {
@@ -909,7 +910,9 @@ function on_thread_more_click(btn, event) {
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     var listview = {'name': li.attr('id')
-        , 'former': ui.Template.form_tweet, '_body': thread_container};
+        , 'thread_container': true
+        , 'former': ui.Template.form_tweet
+        , '_body': thread_container};
     li.find('.tweet_thread_hint').show();
 
     ui.Main.load_thread_proc(listview, reply_id, function () {
@@ -938,6 +941,7 @@ function on_expander_click(btn, event) {
             li.find('.btn_tweet_thread_more').hide();
 
             var listview = {'name': li.attr('id')
+                , 'thread_container': true
                 , 'former': ui.Template.form_tweet
                 , '_body': container};
             ui.Main.load_thread_proc(listview, reply_id, function () {
