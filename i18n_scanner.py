@@ -66,12 +66,17 @@ def walk_cb(empty_trans, dir_name, f_names):
         else:
             exists_trans = {}
         trans_file.close()
-        new_trans = format_out(merge_trans(empty_trans, exists_trans))
-        print '[Update]', file_path
+        total = len(exists_trans)
+        ret, cnt = merge_trans(empty_trans, exists_trans)
+        new_trans = format_out(ret)
+        print '[Update] %s, %d empty keys.' % (file_path, cnt)
     else:
         default_trans = json.loads(file(DEFAULT_LOCALE_FILE, 'r').read())
-        new_trans = format_out(merge_trans(empty_trans, default_trans))
-        print '[Create]', file_path
+        total = len(default_trans)
+        ret, cnt = merge_trans(empty_trans, default_trans)
+        new_trans = format_out(ret)
+        print '[Create] %s, %d empty keys.' % (file_path, cnt)
+    print '[Status] %d/%d, %0.2f%%\n' % (total - cnt, total, 100*(total-cnt+0.)/total)
     trans_file = open(file_path, 'w+')
     trans_file.write(new_trans.encode('utf-8'))
     trans_file.close()
@@ -85,10 +90,12 @@ def merge_trans(empty_trans, exists_trans):
         del exists_trans[key]
     new_trans = empty_trans.copy()
     new_trans.update(exists_trans)
+    keys = []
     for key in new_trans:
         if not new_trans[key]['message']:
-            print '[!] Empty Key: [%s]' % key
-    return new_trans 
+            keys.append(key)
+    # print '[!] Empty Key: [%s]' % ','.join(keys)
+    return new_trans, len(keys)
 
 def format_out(trans):
     arr = []
@@ -106,7 +113,6 @@ def format_out(trans):
 if __name__ == '__main__':
     keys = scan_template()
     scan_js_dir()
-    print 'keys: ', keys
     empty_trans = generate_trans_template(keys)
     empty_trans.update(js_tag_map)
     os.path.walk(LOCALE_FILE_DIR, walk_cb, empty_trans)

@@ -103,6 +103,10 @@
 		"message": "Character `@` is not allowed in profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"clean_token": {
 		"message": "Clean token",
 		"description": "data/index.html"
@@ -1062,6 +1066,10 @@
 	"view_more_conversation": {
 		"message": "View more conversation",
 		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "Virushou's Integrity",
