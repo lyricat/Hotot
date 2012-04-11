@@ -24,26 +24,13 @@ function crack(event) {
     var checkKey = function(map) {
         var matched = true;
         var key = map.seq[map.pos];
-        if (typeof key === "string") {
-            for (var i = 0, i_max = key.length - 1; i < i_max; i++) {
-                if (key[i] === "C") {
-                    if (!event.ctrlKey) {
-                        matched = false;
-                        break;
-                    }
-                } else if (key[i] === "A") {
-                    if (!event.altKey) {
-                        matched = false;
-                        break;
-                    }
-                } else {
-                    matched = false;
-                    break;
-                }
-            }
-            if (matched && key.charCodeAt(key.length - 1) !== event.charCode) {
-                matched = false;
-            }
+		if (typeof key === "string") {
+			var modkeys = key.substring(0, key.length - 1);
+			if (event.ctrlKey !== (modkeys.indexOf("C") >= 0)
+			     || event.altKey !== (modkeys.indexOf("A") >= 0)
+				 || key.charCodeAt(key.length - 1) !== event.charCode) {
+				matched = false;
+			}
         } else {
             var ckey = hotkey.calculate(event.keyCode,
                 event.shiftKey?hotkey.shiftKey:null,
