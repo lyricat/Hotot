@@ -64,7 +64,7 @@ function update_tweet_block_width() {
         $('#main_page_slider').hide();
         $('#indication_light').hide();
         $('#empty_view_hint').fadeIn();
-        $('.view_title').hide();    
+        $('.view_title').hide();
     }
 
     // no_stick indicators
@@ -215,7 +215,7 @@ function open_search(query, additional_opts, in_background) {
             , 'loadmore_success': ui.SearchView.loadmore_tweet_success
             , 'loadmore_fail': null
             , 'former': ui.Template.form_search
-            , 'destroy': ui.SearchView.destroy_view            
+            , 'destroy': ui.SearchView.destroy_view
             , 'method': 'poll'
             , 'interval': 120
             , 'item_type': 'phoenix_search'
@@ -443,86 +443,92 @@ function init_ui() {
 function init_hotkey() {
     hotkey.init();
     // Application
+    // <Ctrl> + q to quit
+    hotkey.register("<C-q>", "*", function () {
+        quit();
+    });
+    // '?' to open help & about dialog
+    hotkey.register("?", "g", function () {
+        globals.about_dialog.open();
+    });
     // 'r' to reload timeline
-    var ig = hotkey.calculate(71);
-    hotkey.register(hotkey.calculate(82),function () {
+    hotkey.register("r", function () {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67),
+    hotkey.register("c",
         function () {ui.StatusBox.open();});
     // Navigation
-    hotkey.register(hotkey.calculate(38), function () {
+    hotkey.register(hotkey.calculate(38), "D", function () {
         ui.Main.move_by_offset(-50);
         return false;
     });
-    hotkey.register(hotkey.calculate(40), function () {
+    hotkey.register(hotkey.calculate(40), "D", function () {
         ui.Main.move_by_offset(50);
         return false;
     });
     // page up/down @TODO 500px is not accurate
-    hotkey.register(hotkey.calculate(33), function () {
+    hotkey.register(hotkey.calculate(33), "D", function () {
         ui.Main.move_by_offset(-500);
         return false;
     });
-    hotkey.register(hotkey.calculate(34), function () {
+    hotkey.register(hotkey.calculate(34), "D", function () {
         ui.Main.move_by_offset(500);
         return false;
     });
-    hotkey.register(hotkey.calculate(36), function () {
+    hotkey.register(hotkey.calculate(36), "U", function () {
         ui.Main.move_to_tweet("top");
         return false;
     });
-    hotkey.register(hotkey.calculate(35), function () {
+    hotkey.register(hotkey.calculate(35), "U", function () {
         ui.Main.move_to_tweet("bottom");
         return false;
     });
     // 'h' to slide to prev tab
-    hotkey.register(hotkey.calculate(72), ui.Slider.slide_to_prev);
+    hotkey.register("h", ui.Slider.slide_to_prev);
     // 'l' to slide to next tab
-    hotkey.register(hotkey.calculate(76), ui.Slider.slide_to_next);
+    hotkey.register("l", ui.Slider.slide_to_next);
     // 'k' to move to prev tweet
-    hotkey.register(hotkey.calculate(75), function () {
+    hotkey.register("k", function () {
         ui.Main.move_to_tweet("prev");
     });
     // 'j' to move to next tweet
-    hotkey.register(hotkey.calculate(74), function () {
+    hotkey.register("j", function () {
         ui.Main.move_to_tweet("next");
     });
     // 'g' then 'g' to move to top
-    hotkey.register([ig ,ig], function () {
+    hotkey.register("gg", function () {
         ui.Main.move_to_tweet("top");
     });
     // shift + 'g' to move to bottom
-    hotkey.register(hotkey.calculate(71, hotkey.shiftKey), function () {
+    hotkey.register("G", function () {
         ui.Main.move_to_tweet("bottom");
     });
     // 'g' then 'h' to go home
-    hotkey.register([ig,hotkey.calculate(72)], function () {
+    hotkey.register("gh", function () {
         ui.Slider.slide_to('home');
     });
     // 'g' then 'm' to go mentions
-    hotkey.register([ig,hotkey.calculate(77)], function () {
+    hotkey.register("gm", function () {
         ui.Slider.slide_to('mentions');
     });
     // 'g' then 'd' to go messages
-    hotkey.register([ig,hotkey.calculate(68)], function () {
+    hotkey.register("gd", function () {
         ui.Slider.slide_to('messages');
     });
     // 'g' then 'r' to go retweets
-    hotkey.register([ig,hotkey.calculate(82)], function () {
+    hotkey.register("gr", function () {
         ui.Slider.slide_to('retweets');
     });
     // 'g' then 's' to go search
-    hotkey.register([ig,hotkey.calculate(83)], function () {
+    hotkey.register("gs", function () {
         ui.Slider.slide_to('search');
     });
 
     // @TODO Actions, prefix 'a'
-    var ia = hotkey.calculate(65);
     // 'a' then 'r' to reply
-    hotkey.register([ia, hotkey.calculate(82)], function() {
+    hotkey.register("ar", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -531,7 +537,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'q' to quote
-    hotkey.register([ia, hotkey.calculate(81)], function() {
+    hotkey.register("aq", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -540,7 +546,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 's' to favorite/un-fav
-    hotkey.register([ia, hotkey.calculate(83)], function() {
+    hotkey.register("as", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -550,7 +556,7 @@ function init_hotkey() {
     });
 
     // 'a' then 'a' to reply all
-    hotkey.register([ia, ia], function() {
+    hotkey.register("aa", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -560,7 +566,7 @@ function init_hotkey() {
     });
 
     // 'a' then <Shift>+'r' to retweet/undo-retweet
-    hotkey.register([ia, hotkey.calculate(82, hotkey.shiftKey)], function() {
+    hotkey.register("aR", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -569,7 +575,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'd' to delete
-    hotkey.register([ia, hotkey.calculate(68)], function() {
+    hotkey.register("ad", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -578,7 +584,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'm' to send msg
-    hotkey.register([ia, hotkey.calculate(77)], function() {
+    hotkey.register("am", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -586,22 +592,21 @@ function init_hotkey() {
             }
         }
     });
-    // 'a' then 'u' to open people of current selected tweet 
-    hotkey.register([ia, hotkey.calculate(85)], function () {
+    // 'a' then 'u' to open people of current selected tweet
+    hotkey.register("au", function () {
         ui.Main.on_open_people_btn_click(null, ui.Main.selected_tweet_id, null);
     });
     // 'a' then 'o' to open first link of the selected tweet
-    hotkey.register([ia, hotkey.calculate(79)], function () {
+    hotkey.register("ao", function () {
         ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
     });
     // 'a' then 'f' to open finder
-    hotkey.register([ia, hotkey.calculate(70)], function () {
+    hotkey.register("af", function () {
         ui.Finder.show();
     });
 
     // 'z' then 'o' to expand
-    var iz = hotkey.calculate(90);
-    hotkey.register([iz, hotkey.calculate(79)], function () {
+    hotkey.register("zo", function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first');
@@ -609,8 +614,8 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // 'z' then 'c' to fold 
-    hotkey.register([iz, hotkey.calculate(67)], function () {
+    // 'z' then 'c' to fold
+    hotkey.register("zc", function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first')
@@ -618,22 +623,17 @@ function init_hotkey() {
             btn.click();
         }
     });
-    
-    var it = hotkey.calculate(84);
+
     // 't' then 'x' to close current view
-    hotkey.register([it, hotkey.calculate(88)], function () {
+    hotkey.register("tx", function () {
         if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
             ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
         }
     });
     // :)
-    hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
-        , hotkey.calculate(50, hotkey.shiftKey)
-        , hotkey.calculate(49, hotkey.shiftKey)
-        , hotkey.calculate(54, hotkey.shiftKey)
-        , hotkey.calculate(55, hotkey.shiftKey)], function(){
-            $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
-        });
+    hotkey.register("#@!^&", function(){
+        $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
+    });
 }
 
 function overlay_variables(vars) {
@@ -747,7 +747,7 @@ function on_load_finish() {
             });
         // 7. run track code
         procs.push(function () {
-            if (conf.settings.use_anonymous_stat) { 
+            if (conf.settings.use_anonymous_stat) {
                track({
                    'platform': conf.vars.platform,
                    'version': conf.vars.version,
@@ -793,25 +793,9 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') && $(event.target).is(':visible');
-        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
-            if (event.keyCode == 191) {
-                // '?' to open help & about dialog
-                globals.about_dialog.open();
-                return;
-            }
-        }
-        if (event.ctrlKey && !event.shiftKey && !event.altKey && event.keyCode == 81) {
-            // <Ctrl> + q to quit
-            //
-            quit();
-        }
-        if (focus_input || !globals.signed_in)
-            return
         if (! ui.ActionMenu.is_hide) {
             return ui.ActionMenu.handle_keyup(event.keyCode);
         }
-        hotkey.crack(event);
         return true;
     });
 
@@ -880,7 +864,7 @@ jQuery(function($) {
         $("#count > ul").hide();
     });
 
-    jQuery.fx.interval = 50;    
+    jQuery.fx.interval = 50;
 
     init();
 
