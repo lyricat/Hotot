@@ -24,13 +24,13 @@ function crack(event) {
     var checkKey = function(map) {
         var matched = true;
         var key = map.seq[map.pos];
-		if (typeof key === "string") {
-			var modkeys = key.substring(0, key.length - 1);
-			if (event.ctrlKey !== (modkeys.indexOf("C") >= 0)
-			     || event.altKey !== (modkeys.indexOf("A") >= 0)
-				 || key.charCodeAt(key.length - 1) !== event.charCode) {
-				matched = false;
-			}
+        if (typeof key === "string") {
+            var modkeys = key.substring(0, key.length - 1);
+            if (event.ctrlKey !== (modkeys.indexOf("C") >= 0)
+                 || event.altKey !== (modkeys.indexOf("A") >= 0)
+                 || key.charCodeAt(key.length - 1) !== event.charCode) {
+                matched = false;
+            }
         } else {
             var ckey = hotkey.calculate(event.keyCode,
                 event.shiftKey?hotkey.shiftKey:null,
@@ -92,7 +92,11 @@ function register(keySeq, flags, callback) {
 //   "m": call callback function, even a popup menu showed
 //   "U": call callback function at keyup event
 //   "D": call callback function at keydown event
-//   "P": call callback function at keypress event (default)
+//   "P": call callback function at keypress event
+    if (typeof flags === "function") {
+        callback = flags;
+        flags = "";
+    }
     var keys;
     if (typeof keySeq === "string") {
         keys = [];
@@ -108,19 +112,22 @@ function register(keySeq, flags, callback) {
             }
             keys.push(keyChar);
         }
-    } else if (typeof keySeq === "number") {
-        keys = [ keySeq ];
-    } else if ((keySeq instanceof Array) && typeof keySeq[0] === "number") {
-        keys = [].concat(keySeq);
+        flags = flags.replace(/[UD]/g, "");
+        if (flags.indexOf("P") < 0) {
+            flags += "P";
+        }
     } else {
-        return false;
-    }
-    if (typeof flags === "function") {
-        callback = flags;
-        flags = "";
-    }
-    if (!/[UD]/.test(flags)) {
-        flags += "P";
+        if (typeof keySeq === "number") {
+            keys = [ keySeq ];
+        } else if (keySeq instanceof Array) {
+            keys = [].concat(keySeq);
+        } else {
+            return false;
+        }
+        flags = flags.replace(/P/g, "");
+        if (!/[UD]/.test(flags)) {
+            flags += "U";
+        }
     }
     hotkey.map.push({ seq:keys, f:callback, pos:0, flags:flags });
     return true;
