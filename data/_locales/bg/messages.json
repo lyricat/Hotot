@@ -20,7 +20,7 @@
 		"description": "data/index.html"
 	},
 	"add_new_views": {
-		"message": "Добави нови изгледи",
+		"message": "Добави нови колони",
 		"description": "data/index.html"
 	},
 	"add_to_list": {
@@ -64,7 +64,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_update": {
-		"message": "Автоматичен Ъпдейт",
+		"message": "Автоматично обновяване",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -300,7 +300,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "Дата на регистрация",
+		"message": "Регистриран",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -828,7 +828,7 @@
 		"description": "data/index.html"
 	},
 	"search_view": {
-		"message": "Изглед на търсенето",
+		"message": "Търсене",
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
@@ -960,7 +960,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "Изглед на най-дискутираните",
+		"message": "Най-дискутирани",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -996,15 +996,15 @@
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
-		"message": "Обнови",
+		"message": "Изпрати",
 		"description": "data/index.html"
 	},
 	"update_successfully": {
-		"message": "Обновяването успешно!",
+		"message": "Изпращането успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {
-		"message": "Обновяване ...",
+		"message": "Изпращане ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"upload": {
