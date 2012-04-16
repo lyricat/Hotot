@@ -219,24 +219,24 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
         content = '<p>%s</p><h3>- Technological Info -</h3><div class="dlg_group"><pre>%s</pre></div>' % (msg, tech_info)
         scripts = '''
             widget.DialogManager.alert('%s', '%s');
-            lib.network.error_task_table['%s']('');
+            globals.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
     except urllib2.URLError, e:
         content = '<p><label>Error Code:</label>%s<br/><label>Reason:</label> %s, %s<br/></p>' % (e.errno, e.reason, e.strerror)
         scripts = '''
             widget.DialogManager.alert('%s', '%s');
-            lib.network.error_task_table['%s']('');
+            globals.network.error_task_table['%s']('');
             ''' % ('Ooops, an Error occurred!', content, uuid);
     else:
         if uuid != None:
             if result[0] != '{' and result[0] != '[':
-                scripts = '''lib.network.success_task_table['%s']('%s');
+                scripts = '''globals.network.success_task_table['%s']('%s');
                 ''' % (uuid, result)
             else:
-                scripts = '''lib.network.success_task_table['%s'](%s);
+                scripts = '''globals.network.success_task_table['%s'](%s);
                 ''' % (uuid, result)
-    scripts += '''delete lib.network.success_task_table['%s'];
-    delete lib.network.error_task_table['%s'];
+    scripts += '''delete globals.network.success_task_table['%s'];
+    delete globals.network.error_task_table['%s'];
     '''  % (uuid, uuid);
     GObject.idle_add(webv.execute_script, scripts)
 

@@ -217,7 +217,7 @@ function TwitterClient() {
             'Authorization': auth_str
         };
 
-        self.network.do_request('POST', url, signed_params, headers, [['media', filename]], on_success, on_error);
+        self.network.do_request('POST', url, params, headers, [['media', filename]], on_success, on_error);
     };
 
     self.retweet_status = function retweet_status(retweet_id, on_success) {

@@ -5,7 +5,7 @@ cache: null,
 
 MAX_TWEET_CACHE_SIZE: 4096,
 
-MAX_USER_CACHE_SIZE: 512,
+MAX_USER_CACHE_SIZE: 1024,
 
 version: 2,
 
@@ -123,7 +123,8 @@ dump_tweets:
 function dump_tweets(json_obj) {
     var dump_single_user = function (tx, user) {
         tx.executeSql('INSERT or REPLACE INTO UserCache VALUES (?, ?, ?)', [user.id_str, user.screen_name, JSON.stringify(user)],
-        function (tx, rs) {},
+        function (tx, rs) {
+        },
         function (tx, error) {
             hotot_log('DB', 'INSERT ERROR: '+ error.code + ','+ error.message);
         });
@@ -219,7 +220,7 @@ function get_users_starts_with(starts, callback) {
 reduce_user_cache:
 function reduce_user_cache(limit, callback) {
     db.database.transaction(function (tx) {
-        tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM TweetCache ORDER BY id limit ?)', [limit], callback);
+        tx.executeSql('DELETE FROM UserCache WHERE id in (SELECT id FROM UserCache ORDER BY id limit ?)', [limit], callback);
     });
 },
 
@@ -247,6 +248,26 @@ function get_user_cache_size(callback) {
         function (tx, rs) {
             callback(rs.rows.item(0)['count(*)']);
         });
+    });
+},
+
+reduce_db:
+function reduce_db () {
+    db.get_tweet_cache_size(function (size) {
+        if (db.MAX_TWEET_CACHE_SIZE < size) {
+            db.reduce_tweet_cache(
+                parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
+            , function () {
+            })
+        }
+    });
+    db.get_user_cache_size(function (size) {
+        if (db.MAX_USER_CACHE_SIZE < size) {
+            db.reduce_user_cache(
+                parseInt(db.MAX_USER_CACHE_SIZE*2/3)
+            , function () {
+            })
+        }
     });
 },
 

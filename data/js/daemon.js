@@ -9,7 +9,7 @@ daemon = {
 
     timer: null,
 
-    timer_interval: 120000,
+    timer_interval: 60000, //default, 60 sec per loop
 
     home_queue: [],
 
@@ -40,12 +40,13 @@ daemon = {
             daemon.poll();
             daemon.push();
         }
-        daemon.time += 120;
+        daemon.time += 60;
         if (daemon.time == 3600) { // reset timer per hour
             daemon.time = 0;
         }
         ui.Slider.save_state();
         conf.save_prefs(conf.current_name);
+        db.reduce_db(); 
         daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
     },
 
@@ -69,11 +70,11 @@ daemon = {
             }
             var interval = view.interval;
             if (daemon.use_streaming && globals.twitterClient.watch_user_streams.is_running) {
-                // poll push_views per 15 minutes when the Steaming xhr works
+                // poll push_views per 5 minutes when the Steaming xhr works
                 // poll them as normal if Streaming xhr is not running or the user stream is disabled.
-                interval = 900;
+                interval = 300;
             }
-            if (daemon.time % (Math.ceil(interval / 120) * 120) == 0) {
+            if (daemon.time % (Math.ceil(interval / 60) * 60) == 0) {
                 hotot_log('poll as push', view.name);
                 view.load();
                 step += 1;
@@ -92,7 +93,9 @@ daemon = {
         if (globals.twitterClient.watch_user_streams.is_running) {
             if (daemon.home_queue.length > 0) {
                 hotot_log('daemon push, timeout', daemon.home_queue.length);
-                ui.Main.views.home.load_success(daemon.home_queue);
+                if (ui.Main.views.home) {
+                    ui.Main.views.home.load_success(daemon.home_queue);
+                }
                 daemon.home_queue.splice(0, daemon.home_queue.length);
             }
             return;
@@ -100,15 +103,22 @@ daemon = {
         function on_ret(ret) {
             if (ret.direct_message) {
                 if (ret.direct_message.recipient_screen_name == globals.myself.screen_name || ret.direct_message.sender_screen_name == globals.myself.screen_name) {
-                    if (ui.Main.views.messages.use_auto_update) {
+                    if (ui.Main.views.messages
+                        && ui.Main.views.messages.use_auto_update) {
                         ui.Main.views.messages.load_success([ret.direct_message]);
                     }
                 }
                 return;
             }
             if (ret['delete'] && ret['delete']['status']) {
-                id = "#home-" + ret['delete']['status'].id_str;
-                $(id).addClass('deleted');
+                id = ret['delete']['status'].id_str;
+                if (conf.get_current_profile().preferences.use_deleted_mark) {
+                    $('#home-' + id).addClass('deleted');
+                    $('#mentions-' + id).addClass('deleted');
+                } else {
+                    $('#home-' + id).remove();
+                    $('#mentions-' + id).remove();
+                }
                 return;
             }
             if (ret.text && ret.user) {
@@ -119,14 +129,16 @@ daemon = {
                 var now = Date.now();
                 if (now - daemon.home_last_time > 1000) {
                     hotot_log('daemon push', 1);
-                    if (ui.Main.views.home.use_auto_update) {
+                    if (ui.Main.views.home
+                        && ui.Main.views.home.use_auto_update) {
                         ui.Main.views.home.load_success([ret]);
                     }
                 } else {
                     daemon.home_queue.push(ret);
                     if (128 < daemon.home_queue.length) {
                         hotot_log('daemon push, batch', daemon.home_queue.length);
-                        if (ui.Main.views.home.use_auto_update) {
+                        if (ui.Main.views.home
+                            && ui.Main.views.home.use_auto_update) {
                             ui.Main.views.home.load_success(daemon.home_queue);
                         }
                         daemon.home_queue.splice(0, daemon.home_queue.length);
@@ -134,7 +146,8 @@ daemon = {
                 }
                 // mentions
                 if (ret.entities) {
-                    if (ui.Main.views.mentions && ui.Main.views.mentions.use_auto_update) {
+                    if (ui.Main.views.mentions 
+                        && ui.Main.views.mentions.use_auto_update) {
                         var user_mentions = ret.entities.user_mentions;
                         for (var i = 0, l = user_mentions.length; i < l; i += 1) {
                             if (user_mentions[i].screen_name == globals.myself.screen_name) {

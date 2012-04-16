@@ -445,7 +445,7 @@ function save_draft(draft) {
         var li = $(this).parent();
         var mode = parseInt(li.attr('mode'));
         ui.StatusBox.change_mode(mode);
-        ui.StatusBox.set_status_text($(this).text());
+        ui.StatusBox.set_status_text($(this).text().replace(/&lt;/g, "<").replace(/&gt;/g, ">"));
         switch (mode){
         case ui.StatusBox.MODE_REPLY:
             ui.StatusBox.reply_to_id = li.attr('reply_to_id')

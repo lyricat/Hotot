@@ -72,7 +72,7 @@ function init () {
 
     $('#tweet_more_menu').mouseleave(function(){
         $(this).hide();
-    })
+    });
 
 },
 
@@ -80,14 +80,14 @@ hide:
 function hide () {
     daemon.stop();
     ui.StatusBox.hide();
-    globals.in_main_view = false;
+    globals.signed_in = false;
     this.me.hide();
 },
 
 show:
 function show () {
     daemon.start();
-    globals.in_main_view = true;
+    globals.signed_in = true;
     this.me.show();
 },
 
@@ -248,7 +248,7 @@ function add_people(self, users) {
     // offset = N* (clientHeight + border-width)
     // @TODO
     if (self.hasOwnProperty('_me') && self.resume_pos) {
-        self._me.get(0).scrollTop += new_tweets_height + users.length;
+        self._content.get(0).scrollTop += new_tweets_height + users.length;
     }
 
     // @TODO dumps to cache
@@ -309,7 +309,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // insert in batch
     ui.Main.sort(batch_arr, true);
     var batch_html = $.map(batch_arr, function (n, i) {
-        return self.former(n, self.name);
+        return self.former(n, self.name, self.thread_container);
     }).join('');
     if (reversion) {
         self._body.append(batch_html);
@@ -320,13 +320,15 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // preload
     if (ui.Main.use_preload_conversation && self.hasOwnProperty('_me')) {
         for (var i = 0; i < json_obj.length; i += 1) {
-            if (json_obj[i].in_reply_to_status_id_str == null) {
+            if (json_obj[i].in_reply_to_status_id_str == null
+                && json_obj[i].in_reply_to_status_id == null) {
                 continue;
             }
             var dom_id = self.name + '-' + json_obj[i].id_str;
             var thread_container = $($(
                     '#'+dom_id+' .tweet_thread')[0]);
             var listview = {'name': dom_id
+                , 'thread_container': true
                 , 'former': ui.Template.form_tweet
                 , '_body': thread_container};
             ui.Main.preload_thread(listview, json_obj[i]);
@@ -348,7 +350,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
             self._me.animate(
                 {scrollTop: (self._me.get(0).scrollTop + new_tweets_height + json_obj.length) + 'px'}, 200);
                 */
-            self._me.get(0).scrollTop += new_tweets_height + json_obj.length;
+            self._content.get(0).scrollTop += new_tweets_height + json_obj.length;
         }
     //}, 50);
 
@@ -363,19 +365,7 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     }
     */
     // dumps to cache
-    db.get_tweet_cache_size(function (size) {
-        if (db.MAX_TWEET_CACHE_SIZE < size) {
-            toast.set("Reducing ... ").show(-1);
-            db.reduce_tweet_cache(
-                parseInt(db.MAX_TWEET_CACHE_SIZE*2/3)
-            , function () {
-                toast.set("Reduce Successfully!").show();
-                db.dump_tweets(json_obj);
-            })
-        } else {
-            db.dump_tweets(json_obj);
-        }
-    });
+    db.dump_tweets(json_obj);
 
     /*
     if (!reversion && json_obj.length != 0) {
@@ -439,7 +429,7 @@ function insert_isolated_tweet(self, tweet, reversion) {
      * if the tweet is duplicate, return [-1, null]
      * */
     var this_one = tweet;
-    var this_one_html = self.former(this_one, self.name);
+    var this_one_html = self.former(this_one, self.name, self.thread_container);
     var next_one = ui.Main.get_next_tweet_dom(self, null, reversion);
     var c = 0;
     while (true) {
@@ -524,6 +514,35 @@ function bind_tweet_action(id) {
         $(id).children('.tweet_bar').hide();
     });
 
+    if (!util.is_native_platform()) {
+        $(id).find('a[target]').click(function (ev) {
+            if (ev.which != 1 && ev.which != 2) {
+                return;
+            }
+            /*
+            var direct_url = $(this).attr('direct_url');
+            if (typeof (direct_url) != 'undefined') {
+                ui.Main.preview_image(direct_url);
+                return false;
+            }
+            */
+            var link = $(this).attr('href');
+            if (conf.vars.platform === 'Chrome') {
+                chrome.tabs.create(
+                  { url: link, active: ev.which == 1 },
+                  function(){}
+                )
+                return false;
+            }
+        });
+    }
+/*
+    $(id).find('a[direct_url]').click(function () {
+        ui.Main.preview_image($(this).attr('direct_url'));
+        return false;
+    });
+*/
+
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
         ui.Main.on_expander_click(this, event);
@@ -536,7 +555,11 @@ function bind_tweet_action(id) {
 
     $(id).find('.who_href').click(
     function (event) {
-        open_people($(this).attr('href').substring(1));
+        if (event.which == 1) {
+            open_people($(this).attr('href').substring(1));
+        }else if (event.which == 2) {
+            open_people($(this).attr('href').substring(1), {}, true);
+        }
         return false;
     });
 
@@ -549,8 +572,8 @@ function bind_tweet_action(id) {
 
     $(id).find('.hash_href').click(
     function (event) {
-        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
         ui.Slider.addDefaultView('search', {}) || ui.Slider.add('search');
+        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
         ui.Main.views.search._header.find('.search_tweet').click();
         return false;
     });
@@ -572,8 +595,12 @@ function bind_tweet_action(id) {
                 var li = $('<li/>');
                 var a = $('<a/>').appendTo(li).attr('href', '#' + p.screen_name);
                 $('<img height="24" width="24"/>').attr({'title': '@' + p.screen_name + ' (' + p.name + ')', 'src': p.profile_image_url}).appendTo(a);
-                a.click(function() {
-                    open_people($(this).attr('href').substring(1));
+                a.click(function(event) {
+                    if (event.which == 1) {
+                        open_people($(this).attr('href').substring(1));
+                    } else if (event.which == 2) {
+                        open_people($(this).attr('href').substring(1),{},true);
+                    }
                 });
                 li.appendTo(ul);
             }
@@ -885,7 +912,9 @@ function on_thread_more_click(btn, event) {
 
     var thread_container = $(li.find('.tweet_thread')[0]);
     var listview = {'name': li.attr('id')
-        , 'former': ui.Template.form_tweet, '_body': thread_container};
+        , 'thread_container': true
+        , 'former': ui.Template.form_tweet
+        , '_body': thread_container};
     li.find('.tweet_thread_hint').show();
 
     ui.Main.load_thread_proc(listview, reply_id, function () {
@@ -914,6 +943,7 @@ function on_expander_click(btn, event) {
             li.find('.btn_tweet_thread_more').hide();
 
             var listview = {'name': li.attr('id')
+                , 'thread_container': true
                 , 'former': ui.Template.form_tweet
                 , '_body': container};
             ui.Main.load_thread_proc(listview, reply_id, function () {
@@ -931,11 +961,13 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
         //listview.resume_pos = false;
         var count=ui.Main.add_tweets(listview, [prev_tweet_obj], true, true);
         // load the prev tweet in the thread.
-        var reply_id = prev_tweet_obj.in_reply_to_status_id_str;
+        var reply_id = prev_tweet_obj.hasOwnProperty('in_reply_to_status_id_str') 
+            ? prev_tweet_obj.in_reply_to_status_id_str: prev_tweet_obj.in_reply_to_status_id;
         if (reply_id == null) { // end of thread.
             on_finish();
             return ;
         } else {
+            reply_id = reply_id.toString();
             ui.Main.load_thread_proc(listview, reply_id, on_finish, on_error);
         }
     }
@@ -955,7 +987,10 @@ function load_thread_proc(listview, tweet_id, on_finish, on_error) {
 
 preload_thread:
 function preload_thread(listview, tweet_obj) {
-    db.get_tweet(tweet_obj.in_reply_to_status_id_str,
+    var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str') ? tweet_obj.in_reply_to_status_id_str: tweet_obj.in_reply_to_status_id;
+    if (reply_id == null) return;
+    reply_id = reply_id.toString();
+    db.get_tweet(reply_id,
     function (tx, rs) {
         if (rs.rows.length != 0) {
             var prev_tweet_obj = JSON.parse(rs.rows.item(0).json);
@@ -1013,13 +1048,34 @@ function move_to_tweet(pos) {
         // too bad
         return;
     }
-    cur_view._me.stop().animate(
+    cur_view._content.stop().animate(
         {scrollTop: target.get(0).offsetTop - current.height()}, 300);
     current.removeClass('selected');
     target.addClass('selected');
     ui.Main.selected_tweet_id = '#'+ target.attr('id');
     cur_view.selected_item_id = ui.Main.selected_tweet_id;
     target.focus();
+},
+
+move_by_offset:
+function move_by_offset(offset) {
+    var current = null;
+    var cur_view = null;
+    if (ui.Main.selected_tweet_id != null) {
+        current = $(ui.Main.selected_tweet_id);
+    }
+    // if we lose current placemarker ...
+    if (current == null || current.length == 0) {
+        cur_view = ui.Main.views[ui.Slider.current];
+        if (!cur_view.hasOwnProperty('selected_item_id')) {
+            cur_view.selected_item_id
+                = '#'+ cur_view._body.find('.card:first').attr('id');
+        }
+        current = $(cur_view.selected_item_id);
+    } else {
+        cur_view= ui.Main.views[current.parents('.listview').attr('name')];
+    }
+    cur_view._content.get(0).scrollTop += offset;
 },
 
 set_active_tweet_id:
@@ -1088,6 +1144,13 @@ function unique (items) {
 ctrl_btn_to_li:
 function ctrl_btn_to_li(btn) {
     return $($(btn).parents('.card')[0]);
+},
+
+preview_image:
+function preview_image (url) {
+    $('#imagepreview_dlg .preview').attr('src', url);
+    $('#imagepreview_dlg .orig_btn').attr('href', url);
+    globals.imagepreview_dialog.open();
 }
 
 };

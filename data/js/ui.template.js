@@ -23,7 +23,7 @@ reg_hash_tag: null,
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
 tweet_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="tweet_fav_indicator"></div>\
@@ -48,7 +48,7 @@ tweet_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px;">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -83,7 +83,7 @@ trending_topic_t:
 </li>',
 
 retweeted_by_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="deleted_mark"></div>\
@@ -136,7 +136,7 @@ retweeted_by_t:
 </li>',
 
 message_t: 
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}\n\n{%DESCRIPTION%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -168,7 +168,7 @@ message_t:
 </li>',
 
 search_t:
-'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}" link="{%LINK%}">\
+'<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="search" screen_name="{%SCREEN_NAME%}" link="{%LINK%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="deleted_mark"></div>\
@@ -205,7 +205,7 @@ search_t:
 </li>',
 
 people_t:
-'<li id="{%USER_ID%}" class="people_card card normal" type="people" following={%FOLLOWING%} screen_name={%SCREEN_NAME%}>\
+'<li id="{%USER_ID%}" class="people_card card normal" type="people" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -350,7 +350,7 @@ people_vcard_t_orig:
 </div></div>',
 
 list_t:
-'<li id="{%LIST_ID%}" class="list_card card normal" type="list" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} slug={%SLUG%}>\
+'<li id="{%LIST_ID%}" class="list_card card normal" type="list" following={%FOLLOWING%} screen_name={%SCREEN_NAME%} slug={%SLUG%} style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
     <div class="profile_img_wrapper" title="@{%USER_NAME%}/{%SLUG%}" style="background-image: url({%PROFILE_IMG%})">\
@@ -430,10 +430,10 @@ search_header_t:
     <div class="search_people_result"> \
         <span>One user matched: </span> <span class="search_people_inner"></span>\
     </div>\
-    <div class="saved_searches" style="display:none;">\
+    <div class="saved_searches">\
         <a id="create_saved_search_btn" class="button" \
-            href="javascript:void(0);"> +\
-        </a><div id="saved_searches_more_trigger">\
+            href="javascript:void(0);" title="Detach"> +\
+        </a><div id="saved_searches_more_trigger" style="display:none;">\
             <a id="saved_searches_btn" class="vcard_more button" \
                 href="javascript:void(0);"> &#x25BE;</a> \
             <ul id="saved_searches_more_menu" class="hotot_menu">\
@@ -496,16 +496,23 @@ trending_topics_header_t:
 
 view_t:
 '<div id="{%ID%}" \
-    name="{%NAME%}" class="listview {%CLASS%} {%ROLE%}"> \
-    <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
-    <ul class="listview_body"></ul> \
-    <div class="listview_footer"> \
-        <div class="load_more_info"><img src="image/ani_loading_bar_gray.gif"/></div> \
+    name="{%NAME%}" class="listview scrollbar_container {%CLASS%} {%ROLE%}"> \
+    <div class="scrollbar_track">\
+        <div class="scrollbar_slot">\
+            <div class="scrollbar_handle"></div>\
+        </div>\
+    </div>\
+    <div class="scrollbar_content listview_content">\
+        <div class="listview_header"><div class="header_content">{%HEADER%}</div></div> \
+        <ul class="listview_body"></ul> \
+        <div class="listview_footer"> \
+            <div class="load_more_info"><img src="image/ani_loading_bar.gif"/></div> \
+        </div> \
     </div> \
 </div>',
 
 indicator_t:
-    '<div class="{%STICK%} {%ROLE%}" name="{%TARGET%}"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><img class="icon"/><span class="icon" style="background-image:url({%ICON%})"></span></a><span class="shape"></span></div>',
+    '<div class="{%STICK%} {%ROLE%}" name="{%TARGET%}" draggable="true"><a class="indicator_btn" href="#{%TARGET%}" title="{%TITLE%}"><img class="icon" src="{%ICON%}"/><div class="icon_alt" style="background-image: url({%ICON%})"></div></a><span class="shape"></span></div>',
 
 kismet_rule_t:
 '<li><a class="kismet_rule" name="{%NAME%}" type="{%TYPE%}" method="{%METHOD%}"\
@@ -518,7 +525,8 @@ status_draft_t:
 preview_link_reg: {
 'img.ly': {
     reg: new RegExp('http:\\/\\/img.ly\\/([a-zA-Z0-9_\\-]+)','g'),
-    base: 'http://img.ly/show/thumb/'
+    base: 'http://img.ly/show/thumb/',
+    direct_base: 'http://img.ly/show/full/'
 },
 'twitpic.com': {
     reg: new RegExp('http:\\/\\/twitpic.com\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -526,7 +534,8 @@ preview_link_reg: {
 },
 'twitgoo.com': {
     reg: new RegExp('http:\\/\\/twitgoo.com\\/([a-zA-Z0-9_\\-]+)','g'),
-    base: 'http://twitgoo.com/show/thumb/'
+    base: 'http://twitgoo.com/show/thumb/',
+    direct_base: 'http://twitgoo.com/show/img/'
 },
 'yfrog.com': {
     reg: new RegExp('http:\\/\\/yfrog.com\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -538,7 +547,8 @@ preview_link_reg: {
 },
 'instagr.am': {
     reg: new RegExp('http:\\/\\/instagr.am\\/p\\/([a-zA-Z0-9_\\-]+)\\/?','g'),
-    tail: 'media?size=m'
+    tail: 'media?size=m',
+    direct_tail: 'media?size=l'
 },
 'plixi.com': {
     reg: new RegExp('http:\\/\\/plixi.com\\/p\\/([a-zA-Z0-9_\\-]+)','g'),
@@ -549,7 +559,7 @@ preview_link_reg: {
     tail: '/thumb/' 
 },
 'raw': {
-    reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|png|gif)', 'gi')
+    reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|jpeg|jpe|png|gif)', 'gi')
 },
 
 'youtube.com': {
@@ -568,7 +578,7 @@ function init() {
         + ui.Template.reg_url_path_chars
     + '+)';
 
-    ui.Template.reg_user = new RegExp('(^|\\s|"|“|'
+    ui.Template.reg_user = new RegExp('(^|\\s|"|“|\\.|'
             + ui.Template.reg_cn_chars + ')'
         + ui.Template.reg_user_name_chars, 'g');
 
@@ -594,7 +604,8 @@ function init() {
         , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
-        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT: ''
+        , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
@@ -613,7 +624,8 @@ function init() {
         , PROFILE_IMG:'', TEXT:'', SOURCE:'', SCHEME:''
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
-        , DELETABLE:'', TWEET_FONT_SIZE:'', STATUS_INDICATOR:'', TRANS_Delete:''
+        , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
         , TRANS_Send_Message:'', TRANS_Send_Message_to_them:''
@@ -627,25 +639,28 @@ function init() {
           ID:'', TWEET_ID:'', SCREEN_NAME:'', RECIPIENT_SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:''
         , SCHEME:'', TIMESTAMP:''
-        , TWEET_FONT_SIZE:'', TRANS_Reply_Them:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TRANS_Reply_Them:''
     };
 
     ui.Template.search_m = {
           ID:'', TWEET_ID:'', SCREEN_NAME:''
         , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
         , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
-        , TWEET_FONT_SIZE:'', TRANS_via:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TRANS_via:''
         , TWEET_BASE_URL: ''
     };
 
     ui.Template.people_m = {
           USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
-        , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+        , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
     };
 
     ui.Template.list_m = {
           LIST_ID:'', SCREEN_NAME:'', SLUG:'', NAME:'', MODE:''
-        , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:''
+        , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:''
+        , TWEET_FONT_SIZE:'', TWEET_FONT:''
     };
 
     ui.Template.view_m = {
@@ -718,12 +733,13 @@ function form_dm(dm_obj, pagename) {
     m.SCHEME = 'message';
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.TRANS_Reply_Them = "Reply Them";
     return ui.Template.render(ui.Template.message_t, m);
 },
 
 form_tweet:
-function form_tweet (tweet_obj, pagename) {
+function form_tweet (tweet_obj, pagename, in_thread) {
     var retweet_name = '';
     var retweet_str = '';
     var retweet_id = '';
@@ -741,7 +757,7 @@ function form_tweet (tweet_obj, pagename) {
             + reply_name + '">'
             + reply_name + '</a>'
         : '';
-    var in_thread = pagename.split('-').length < 2 ? false:true;
+    var in_thread = in_thread == true ? true: false;
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
@@ -807,8 +823,7 @@ function form_tweet (tweet_obj, pagename) {
     m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
-    
-    m.IN_REPLY = (reply_id != null && pagename.split('-').length < 2) ? 'block' : 'none';
+    m.IN_REPLY = (reply_id != null && !in_thread) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
     
     m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
@@ -821,6 +836,7 @@ function form_tweet (tweet_obj, pagename) {
     m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -924,6 +940,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.FAV_CLASS = tweet_obj.favorited? 'faved': '';
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -947,6 +964,7 @@ function form_retweeted_by(tweet_obj, pagename) {
 form_search:
 function form_search(tweet_obj, pagename) {
     if (tweet_obj.user != undefined) {
+        // use phoenix_search ... well, in fact, the original parser is totally useless.
         return ui.Template.form_tweet(tweet_obj, pagename);
     }
     var id = tweet_obj.id_str;
@@ -985,6 +1003,7 @@ function form_search(tweet_obj, pagename) {
     m.SHORT_TIMESTAMP = created_at_short_str;
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     m.TRANS_via = _('via');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
     m.LINK = link;
@@ -1001,6 +1020,7 @@ function form_people(user_obj, pagename) {
     m.PROFILE_IMG = user_obj.profile_image_url;
     m.FOLLOWING = user_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
 
     return ui.Template.render(ui.Template.people_t, m);
 },
@@ -1017,6 +1037,7 @@ function form_people(list_obj, pagename) {
     m.PROFILE_IMG = list_obj.user.profile_image_url;
     m.FOLLOWING = list_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_FONT = globals.tweet_font;
     return ui.Template.render(ui.Template.list_t, m);
 },
 
@@ -1071,10 +1092,10 @@ form_status_draft:
 function form_status_draft(draft) {
     var m = ui.Template.status_draft_m;
     m.MODE = draft.mode;
-    m.TEXT = draft.text;
+    m.TEXT = draft.text.replace(/</g, "&lt;").replace(/>/g,"&gt;");
     if (m.MODE == ui.StatusBox.MODE_REPLY) {
         m.REPLY_TO_ID = draft.reply_to_id;
-        m.REPLY_TEXT = draft.reply_text;
+        m.REPLY_TEXT = draft.reply_text
     } else if (m.MODE == ui.StatusBox.MODE_DM) {
         m.RECIPIENT = draft.recipient;
     } else if (m.MODE == ui.StatusBox.MODE_IMG) {
@@ -1162,8 +1183,12 @@ function form_text(tweet) {
 },
 
 form_media:
-function form_media(href, src) {
-    return '<a href="'+href+'" target="_blank"><img src="'+ src +'" /></a>'
+function form_media(href, src, direct_url) {
+    if (direct_url != undefined) {
+        return '<a direct_url="'+direct_url+'" href="'+href+'" target="_blank"><img src="'+ src +'" /></a>';
+    } else {
+        return '<a href="'+href+'" target="_blank"><img src="'+ src +'" /></a>';
+    }
 },
 
 form_preview:
@@ -1175,15 +1200,25 @@ function form_preview(tweet) {
         while (match != null) {
             switch (pvd_name) {
             case 'img.ly':
-            case 'twitpic.com':  
             case 'twitgoo.com':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[0], link_reg[pvd_name].base + match[1],
+                        link_reg[pvd_name].direct_base + match[1]));
+            break;
+            case 'twitpic.com':  
                 html_arr.push(
                     ui.Template.form_media(
                         match[0], link_reg[pvd_name].base + match[1]));
             break;
+            case 'instagr.am':
+                html_arr.push(
+                    ui.Template.form_media(
+                        match[0], match[0] + link_reg[pvd_name].tail,
+                        match[0] + link_reg[pvd_name].direct_tail));
+            break;
             case 'yfrog.com':
             case 'moby.to':
-            case 'instagr.am':
             case 'picplz.com':
                 html_arr.push(
                     ui.Template.form_media(
@@ -1197,7 +1232,7 @@ function form_preview(tweet) {
             case 'raw':
                 html_arr.push(
                     ui.Template.form_media(
-                        match[0], match[0]));
+                        match[0], match[0], match[0]));
             break;
             case 'youtube.com':
                 html_arr.push(
@@ -1216,7 +1251,8 @@ function form_preview(tweet) {
                 html_arr.push(
                     ui.Template.form_media(
                         tweet.entities.media[i].expanded_url,
-                        tweet.entities.media[i].media_url + ':thumb'
+                        tweet.entities.media[i].media_url + ':thumb',
+                        tweet.entities.media[i].media_url
                         ));
             }
         }

@@ -1,797 +1,57 @@
 {
-	"unfollow_at": {
-		"message": "フォロー解除@",
-		"description": "data/js/ui.main.js"
-	},
-	"all": {
-		"message": "すべて",
-		"description": "All"
-	},
-	"to_cold_beauty": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"global": {
-		"message": "グロバル",
-		"description": "data/index.html"
-	},
-	"please_entry_a_profile_prefix": {
-		"message": "プロフィールの名称を入力してください",
-		"description": "data/js/ui.welcome.js"
-	},
-	"themes": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"use_native_notify_system": {
-		"message": "ネイティブ通知システムを利用",
+	"about": {
+		"message": "ほっとっとについて",
 		"description": ""
 	},
-	"unblock": {
-		"message": "ブロック解除",
-		"description": "data/js/ui.template.js"
-	},
-	"relation": {
-		"message": "関係",
-		"description": "data/js/ui.template.js"
-	},
-	"follow": {
-		"message": "フォロー",
-		"description": "data/js/ui.template.js"
-	},
-	"font": {
-		"message": "フォント",
-		"description": ""
-	},
-	"fine": {
-		"message": "よし",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"find": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"compose": {
-		"message": "ツィート",
-		"description": "data/index.html"
-	},
-	"reply_this_tweet": {
-		"message": "返信",
-		"description": "data/js/ui.template.js"
-	},
-	"remember_password": {
-		"message": "パスワードを記憶する",
-		"description": ""
-	},
-	"click_the_button_below": {
-		"message": "次のバタンを押してください",
-		"description": ""
-	},
-	"theme": {
-		"message": "テーマ",
-		"description": "data/index.html"
-	},
-	"click_me_to_continue": {
-		"message": "続き",
-		"description": ""
-	},
-	"click_to_show_retweeters": {
-		"message": "拡散者を表示する",
-		"description": "data/js/ui.template.js"
-	},
-	"destroy_successfully": {
-		"message": "削除しました",
-		"description": "data/js/ui.main.js"
-	},
-	"interface_language": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"kismet_guide": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"some_error_occur": {
-		"message": "エラーが出ました",
-		"description": "data/index.html"
-	},
-	"nearly_dead": {
-		"message": "もう無理だ！",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"proxy_auth_password": {
-		"message": "パスワード",
-		"description": "data/index.html"
-	},
-	"automatically_sign_in_after_opening": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"disabled": {
-		"message": "無効",
+	"about_and_help": {
+		"message": "ほっとっとについて・ヘルプ",
 		"description": ""
 	},
 	"access_token_doesnt_exist": {
 		"message": "トークンはありません。",
 		"description": "data/index.html"
 	},
-	"upload": {
-		"message": "アップロード",
+	"action": {
+		"message": "アクション",
 		"description": "data/index.html"
 	},
-	"kismet_firewall": {
-		"message": "キスメット・ファイアウォール",
-		"description": "data/index.html"
-	},
-	"retweet_successfully": {
-		"message": "リツイートしました",
-		"description": "data/js/ui.main.js"
-	},
-	"search_in_twitter": {
-		"message": "ツイーターで検索",
-		"description": ""
-	},
-	"loading_resources_hint": {
-		"message": "ファイルをロードしています.",
-		"description": ""
-	},
-	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "すみません。もう一度ユーザネーム、パスワードまだはAPIをチェックしてください",
-		"description": "data/js/ui.welcome.js"
-	},
-	"rt_this_tweet": {
-		"message": "コメントして拡散",
-		"description": "data/js/ui.template.js"
-	},
-	"paste_from_clipboard": {
-		"message": "ペスト",
-		"description": "date/index.html"
-	},
-	"url_shortener": {
+	"add": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"schizophrenia": {
-		"message": "",
+	"add_new_views": {
+		"message": "ビューを追加する",
 		"description": "data/index.html"
-	},
-	"please_enter_the_recipient": {
-		"message": "宛先を選んでください",
-		"description": "data/js/ui.status_box.js"
-	},
-	"proxy_auth": {
-		"message": "プロキシー",
-		"description": "data/index.html"
-	},
-	"close": {
-		"message": "閉じる",
-		"description": ""
-	},
-	"font_preview_hint": {
-		"message": "色は匂へど 散りぬるを　フォントプレビュー",
-		"description": ""
-	},
-	"retweet": {
-		"message": "リツイート",
-		"description": ""
-	},
-	"enable_verbose_mode": {
-		"message": "詳細モードを表示する",
-		"description": ""
-	},
-	"errors": {
-		"message": "エラー",
-		"description": "data/index.html"
-	},
-	"preferences": {
-		"message": "設定",
-		"description": ""
-	},
-	"auto_update": {
-		"message": "自動更新",
-		"description": "data/index.html"
-	},
-	"sign_in_dots": {
-		"message": "ログインしています。。。",
-		"description": "data/js/ui.welcome.js"
-	},
-	"compose_messages_to": {
-		"message": "メッセージを作成してください",
-		"description": "data/js/ui.status_box.js"
 	},
 	"add_to_list": {
 		"message": "リストに追加する",
 		"description": "data/js/ui.template.js"
 	},
-	"version": {
-		"message": "バージョン",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"oauth_base": {
-		"message": "OAuth ベース",
+	"advanced": {
+		"message": "上級の設定",
 		"description": ""
 	},
-	"my_journey_is_to_the_sea_of_stars": {
-		"message": "",
-		"description": "data/index.html"
+	"all": {
+		"message": "すべて",
+		"description": "All"
 	},
-	"reply": {
-		"message": "返信",
-		"description": ""
-	},
-	"oops_an_api_error_occurs": {
-		"message": "APIエーラー出ました",
-		"description": "data/js/ui.welcome.js"
-	},
-	"hotot": {
-		"message": "ほっとっと",
-		"description": ""
-	},
-	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "ピンコードをコーピして下のテキストボックスに入れてください",
+	"api_base": {
+		"message": "APIベース",
 		"description": ""
 	},
 	"api_setting": {
 		"message": "API設定",
 		"description": ""
 	},
-	"undo_successfully": {
-		"message": "取り消す",
-		"description": "data/js/ui.main.js"
-	},
-	"kismet_mute_hint": {
-		"message": "",
+	"appearance": {
+		"message": "外観設定",
 		"description": "data/index.html"
 	},
-	"un_favorite_this_tweet_dots": {
-		"message": "お気に入りに登録解除",
-		"description": "data/js/ui.main.js"
-	},
-	"quit_hotot": {
-		"message": "閉じる",
+	"archive": {
+		"message": "アーカイブ",
 		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "エフェクト・エキストラ",
-		"description": "data/index.html"
-	},
-	"search": {
-		"message": "検索",
-		"description": "data/js/ui.slider.js"
-	},
-	"hidden_dark_minds": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"drag_a_photo_here": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"license": {
-		"message": "ライセンス",
-		"description": ""
-	},
-	"panda_acts_cute": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"move_to_top": {
-		"message": "トップに戻る",
-		"description": "data/index.html"
-	},
-	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "`@`を使えません",
-		"description": "data/js/ui.welcome.js"
-	},
-	"action": {
-		"message": "アクション",
-		"description": "data/index.html"
-	},
-	"mentions": {
-		"message": "@関連",
-		"description": "data/js/ui.slider.js"
-	},
-	"identica": {
-		"message": "Identi.ca",
-		"description": ""
-	},
-	"open_a_profile_dots": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"delete_this_tweet": {
-		"message": "削除する",
-		"description": "data/js/ui.template.js"
-	},
-	"trending_topics": {
-		"message": "",
-		"description": "data/js/ui.slider.js"
-	},
-	"via": {
-		"message": "via",
-		"description": "data/js/ui.template.js"
-	},
-	"about_and_help": {
-		"message": "ほっとっとについて・ヘルプ",
-		"description": ""
-	},
-	"open_speaker_link": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"regain_access_token": {
-		"message": "トークンを再び取る",
-		"description": ""
-	},
-	"globals": {
-		"message": "グロバル",
-		"description": ""
-	},
-	"create_profile": {
-		"message": "プロファイルを作る",
-		"description": ""
-	},
-	"retweet_or_un_retweet": {
-		"message": "リツイート・リツイート解除",
-		"description": "data/index.html"
-	},
-	"sign_out": {
-		"message": "ログアウト",
-		"description": "data/index.html"
-	},
-	"search_api_base2": {
-		"message": "APIベースを検索する",
-		"description": ""
-	},
-	"quick_references": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"px": {
-		"message": "ピクセル",
-		"description": ""
-	},
-	"new_profile_has_been_created": {
-		"message": "プロファイルを作りました",
-		"description": "data/js/ui.welcome.js"
-	},
-	"shiny_old_times_before_marriage": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"next": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"custom_font": {
-		"message": "フォント設定",
-		"description": ""
-	},
-	"preview": {
-		"message": "プレビュー",
-		"description": "data/index.html"
-	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "ウィジェットのデコレーションまたはアニメーションを無効にする",
-		"description": "data/index.html"
-	},
-	"retweets": {
-		"message": "リツイート",
-		"description": "data/js/ui.slider.js"
-	},
-	"dots": {
-		"message": "...",
-		"description": "data/js/ui.main.js"
-	},
-	"gain_access_token": {
-		"message": "トークンを取る",
-		"description": "data/js/ui.welcome.js"
-	},
-	"fav_or_un_fav": {
-		"message": "お気に入りに登録する・お気に入りから外す",
-		"description": "data/index.html"
-	},
-	"enable": {
-		"message": "有効にする",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"proxy_auth_name": {
-		"message": "ユーザネーム",
-		"description": "data/index.html"
-	},
-	"follow_at": {
-		"message": "フォロー@",
-		"description": "data/js/ui.main.js"
-	},
-	"friend_cnt": {
-		"message": "友達",
-		"description": "data/js/ui.template.js"
-	},
-	"retweeted_by": {
-		"message": "拡散者:",
-		"description": "data/js/ui.template.js"
-	},
-	"same_signing_api_base": {
-		"message": "同じAPIでサーンする",
-		"description": ""
-	},
-	"sound": {
-		"message": "サウンド",
-		"description": ""
-	},
-	"account": {
-		"message": "アカウント",
-		"description": ""
-	},
-	"join": {
-		"message": "登録する",
-		"description": "data/js/ui.template.js"
-	},
-	"image_uploader": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"my_power": {
-		"message": "魔法パワー",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"cuddly": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"keyboard_shortcuts": {
-		"message": "ショートカットキー",
-		"description": ""
-	},
-	"profile_name": {
-		"message": "プロファイル名",
-		"description": ""
-	},
-	"home_timeline": {
-		"message": "タイムライン",
-		"description": "data/js/ui.slider.js"
-	},
-	"behavior": {
-		"message": "行為",
-		"description": ""
-	},
-	"Insert_smiley": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"updating_dots": {
-		"message": "更新中……",
-		"description": "data/js/ui.status_box.js"
-	},
-	"effects_low": {
-		"message": "簡単なエフェクト",
-		"description": "data/index.html"
-	},
-	"click_to_show": {
-		"message": "表示する",
-		"description": "data/js/ui.template.js"
-	},
-	"open_a_list_dots": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"restore_defaults": {
-		"message": "既定値に戻す",
-		"description": ""
-	},
-	"upload_api_base": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"clean_token": {
-		"message": "トークンを削除する",
-		"description": "data/index.html"
-	},
-	"network_error_please_try_later": {
-		"message": "ネットワーク障害、後でもう一度アクセスしてみてください",
-		"description": "data/js/ui.welcome.js"
-	},
-	"save_as_draft": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"author": {
-		"message": "作者",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"verify": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"just_cannot_stop_thinking_of_here": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"followers": {
-		"message": "フォロワー",
-		"description": "data/js/ui.template.js"
-	},
-	"weakness": {
-		"message": "虚弱",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"select_fields": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"retweets_view": {
-		"message": "リツイート",
-		"description": "data/index.html"
-	},
-	"step_one": {
-		"message": "ステップ１",
-		"description": ""
-	},
-	"profile": {
-		"message": "プロファイル",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "普通なエフェクト",
-		"description": "data/index.html"
-	},
-	"select_a_default_picture_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"List": {
-		"message": "リスト",
-		"description": "data/index.html"
-	},
-	"tweet_cnt": {
-		"message": "状態",
-		"description": "data/js/ui.template.js"
-	},
-	"sign_in": {
-		"message": "ログイン",
-		"description": ""
-	},
-	"disable": {
-		"message": "無効にする",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"intelligent_filter": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"you_are_not_following_each_other": {
-		"message": "フォローしていません",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"font_size": {
-		"message": "フォントサイズ",
-		"description": ""
-	},
-	"bloody_marguerite": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"options": {
-		"message": "オプション",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"block": {
-		"message": "ブロック",
-		"description": "data/js/ui.template.js"
-	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "出来る限り最新ツイートの対話をプレロードする",
-		"description": ""
-	},
-	"open_first_link": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"step_two": {
-		"message": "ステップ２",
-		"description": ""
-	},
-	"help": {
-		"message": "ヘルプ",
-		"description": ""
-	},
-	"posting_dots": {
-		"message": "発信中……",
-		"description": "data/js/ui.status_box.js"
-	},
-	"http_proxy": {
-		"message": "HTTPプロクシー",
-		"description": ""
-	},
-	"use_reply_all_as_default_reply_action": {
-		"message": "「全員に返信する」を既定値にする",
-		"description": "data/index.html"
-	},
-	"summon_hotot": {
-		"message": "ほっとっとを呼び出す「例： <ALT>C」",
-		"description": ""
-	},
-	"send_message": {
-		"message": "メッセージを送る",
-		"description": ""
-	},
-	"undo_retweeting_dots": {
-		"message": "リツイートを解除する",
-		"description": "data/js/ui.main.js"
-	},
-	"favs_view": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"keyboard": {
-		"message": "キーボード",
-		"description": ""
-	},
-	"add_new_views": {
-		"message": "ビューを追加する",
-		"description": "data/index.html"
-	},
-	"favorite_this_tweet_dots": {
-		"message": "お気に入りに登録する...",
-		"description": "data/js/ui.main.js"
-	},
-	"web": {
-		"message": "サイト",
-		"description": "data/js/ui.template.js"
-	},
-	"regain_access_token_with_twitter": {
-		"message": "トークンを再び取る",
-		"description": ""
-	},
-	"hey_it_is_you": {
-		"message": "あなたです",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"add": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"send_message_to_them": {
-		"message": "メッセージを送る",
-		"description": "data/js/ui.template.js"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Ctrl+Enterでアップデートする",
-		"description": ""
-	},
-	"location": {
-		"message": "ロケーション",
-		"description": ""
-	},
-	"tweets": {
-		"message": "ツイート",
-		"description": ""
-	},
-	"save": {
-		"message": "保存する",
-		"description": "data/index.html"
-	},
-	"bio": {
-		"message": "自己紹介",
-		"description": ""
-	},
-	"close_current_column": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"reset_time": {
-		"message": "リセット・タイム",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"default_picture_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mentions_view": {
-		"message": "@関連",
-		"description": "data/index.html"
-	},
-	"official_retweet_this_tweet": {
-		"message": "リツイート",
-		"description": "data/js/ui.template.js"
-	},
-	"effects": {
-		"message": "エフェクト",
-		"description": "data/index.html"
-	},
-	"move_to_prev_tweet": {
-		"message": "前のツイートに行く",
-		"description": "data/index.html"
-	},
-	"trending_topics_view": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"password": {
-		"message": "パスワード",
-		"description": ""
-	},
-	"transparent": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"advanced": {
-		"message": "上級の設定",
-		"description": ""
-	},
-	"report_spam": {
-		"message": "スパムを報告する",
-		"description": "data/js/ui.template.js"
-	},
-	"name": {
-		"message": "名前",
-		"description": ""
-	},
-	"tweet_view": {
-		"message": "ツイート・ビュー",
-		"description": "data/index.html"
-	},
-	"edit": {
-		"message": "編集",
-		"description": "data/js/ui.template.js"
-	},
-	"powerfull": {
-		"message": "パワフル",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"drop": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"greeting": {
-		"message": "お帰りなさいませ",
-		"description": ""
 	},
 	"assassin_s_tango": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"system_font": {
-		"message": "システムフォント",
-		"description": ""
-	},
-	"twitter": {
-		"message": "ツイーター",
-		"description": ""
-	},
-	"successfully": {
-		"message": "完成",
-		"description": "data/js/ui.main.js"
-	},
-	"lists_following_them": {
-		"message": "こちらのユーザーを登録したリスト",
-		"description": "data/js/ui.template.js"
-	},
-	"cancel": {
-		"message": "取り消す",
-		"description": ""
-	},
-	"examples": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"search_in_google": {
-		"message": "グーグルで検索する：@",
-		"description": ""
-	},
-	"select_actions": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"post_successfully": {
-		"message": "ツイートしました",
-		"description": "data/js/ui.status_box.js"
-	},
-	"reload": {
-		"message": "リロード",
-		"description": "data/index.html"
-	},
-	"rule_based_filter": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -799,319 +59,435 @@
 		"message": "アクセスOK",
 		"description": "data/js/ui.welcome.js"
 	},
-	"mute_filter": {
+	"author": {
+		"message": "作者",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "自動更新",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "自動ログイン",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "性能とエフェクトとのバランスを取る",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "行為",
+		"description": ""
+	},
+	"bio": {
+		"message": "自己紹介",
+		"description": ""
+	},
+	"block": {
+		"message": "ブロック",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"view_more_conversation": {
-		"message": "もっと見る",
-		"description": "data/js/ui.template.js"
+	"cancel": {
+		"message": "キャンセル",
+		"description": ""
 	},
-	"wanna_have_relationship_with": {
-		"message": "",
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "すみません。もう一度ユーザネーム、パスワードまだはAPIをチェックしてください",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "`@`を使えません",
+		"description": "data/js/ui.welcome.js"
+	},
+	"chrome_context_menu_integration": {
+		"message": "Chromeの右クリックメニューに追加",
 		"description": "data/index.html"
 	},
-	"lists_of_them": {
-		"message": "このユーザーのリスト",
-		"description": "data/js/ui.template.js"
+	"clean_token": {
+		"message": "トークンを削除する",
+		"description": "data/index.html"
 	},
-	"reply_all": {
-		"message": "全員に返信する",
+	"clear": {
+		"message": "クリア",
 		"description": ""
 	},
 	"clear_and_close": {
 		"message": "クリアして閉じる",
 		"description": "data/index.html"
 	},
-	"listed_cnt": {
-		"message": "リスト",
+	"click_me_to_continue": {
+		"message": "続き",
+		"description": ""
+	},
+	"click_the_button_below": {
+		"message": "次のバタンを押してください",
+		"description": ""
+	},
+	"click_to_compose_message": {
+		"message": "DMモードに変わる",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "表示する",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "拡散者を表示する",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "閉じる",
+		"description": ""
+	},
+	"close_current_column": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "ツィート",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "メッセージを作成してください",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "ピンコードをコーピして下のテキストボックスに入れてください",
+		"description": ""
+	},
+	"copy_to_clipboard": {
+		"message": "コピー",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "リストを追加する",
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
 		"message": "感謝",
 		"description": ""
 	},
-	"slide_to_prev_page": {
-		"message": "前のページの戻る",
-		"description": "data/index.html"
-	},
-	"favs": {
-		"message": "お気に入り",
-		"description": "data/js/ui.template.js"
-	},
-	"create_a_list": {
-		"message": "リストを追加する",
-		"description": "data/js/ui.template.js"
-	},
-	"copy_to_clipboard": {
-		"message": "コピー",
-		"description": "date/index.html"
-	},
-	"about": {
-		"message": "ほっとっとについて",
-		"description": ""
-	},
-	"move_to_bottom": {
-		"message": "最後尾に行く",
-		"description": "data/index.html"
-	},
-	"ok": {
-		"message": "確認する",
-		"description": ""
-	},
-	"language": {
+	"cuddly": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"messages": {
-		"message": "メッセージ",
-		"description": "data/js/ui.slider.js"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Ubuntu Indicatorを使う",
-		"description": ""
-	},
-	"status_is_over_140_characters": {
-		"message": "140文字を超えてしまいました",
-		"description": "data/js/ui.status_box.js"
-	},
-	"titian_s_elegance": {
-		"message": "",
+	"debug": {
+		"message": "デバッグ",
 		"description": "data/index.html"
 	},
-	"select_a_language": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"virushou_s_integrity": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"upload_to_dots": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"preview_embedded_media": {
-		"message": "メディアをプレビューする",
-		"description": "data/index.html"
-	},
-	"rule_editor": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"api_base": {
-		"message": "APIベース",
-		"description": ""
-	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "性能とエフェクトとのバランスを取る",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "その他",
-		"description": "data/index.html"
-	},
-	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "ブラウザでリンクを開く",
-		"description": ""
-	},
-	"notify": {
-		"message": "通知システム",
-		"description": ""
-	},
-	"set_color_label": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"update_successfully": {
-		"message": "アップデートした",
-		"description": "data/js/ui.status_box.js"
-	},
-	"move_to_next_tweet": {
-		"message": "次のツイートに行く",
-		"description": "data/index.html"
-	},
-	"click_to_compose_message": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"you_are_following": {
-		"message": "フォローしています",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"same_signing_oauth_base": {
-		"message": "同じのOAuthでサーンする",
-		"description": ""
-	},
-	"loading_dots": {
-		"message": "ロードなう…",
-		"description": "data/js/ui.template.js"
-	},
-	"lists": {
-		"message": "リスト",
-		"description": "data/js/ui.template.js"
-	},
-	"you_are_followed_by_them": {
-		"message": "あなたをフォローしています",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"extensions": {
-		"message": "プラグイン",
-		"description": ""
-	},
-	"pin_code": {
-		"message": "PINコード",
-		"description": ""
-	},
-	"info": {
-		"message": "インフォ",
-		"description": "data/js/ui.template.js"
-	},
-	"follower_cnt": {
-		"message": "フォロワー",
-		"description": "data/js/ui.template.js"
-	},
-	"use_quote_as_default_retweet_action": {
-		"message": "「コメントして拡散」を既定値としてリツイートする",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "有効",
-		"description": ""
-	},
-	"globals_restart_hint": {
-		"message": "本ページの設定は、リスタートしてから有効になります",
-		"description": ""
-	},
-	"upload_photo": {
-		"message": "写真をアップロードする",
+	"default_picture_service": {
+		"message": "デフォルトの写真サービス",
 		"description": "data/index.html"
 	},
 	"delete": {
 		"message": "削除する",
 		"description": ""
 	},
-	"username": {
-		"message": "ユーザネーム",
+	"delete_this_tweet": {
+		"message": "削除する",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "削除しました",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "無効にする",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "ウィジェットのデコレーションまたはアニメーションを無効にする",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "無効",
 		"description": ""
 	},
-	"struggling_adventurers": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"shortcuts": {
-		"message": "ショートカットキー",
-		"description": "data/index.html"
-	},
-	"whisper": {
-		"message": "ウィスパー",
-		"description": "data/js/ui.welcome.js"
-	},
-	"no_extension": {
-		"message": "プラグインがありません",
-		"description": "data/index.html"
-	},
-	"pretty_wife": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"tranquil": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"archive": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"retweeting_dots": {
-		"message": "リツイートなう...",
+	"dots": {
+		"message": "...",
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "",
+		"message": "下書き",
 		"description": "data/js/ui.status_box.js"
 	},
-	"oops_a_network_error_occurs": {
-		"message": "インターネット障害",
-		"description": "data/js/ui.welcome.js"
+	"drag_a_photo_here": {
+		"message": "ドラッグで写真を添付する",
+		"description": "data/index.html"
 	},
-	"website": {
-		"message": "ウェブサイト",
+	"drop": {
+		"message": "削除",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "編集",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "エフェクト",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "エフェクト・エキストラ",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "簡単なエフェクト",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "普通なエフェクト",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "有効にする",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "もっとエフェクトを使う",
+	"enable_proxy": {
+		"message": "プロクシーを有効にする",
+		"description": ""
+	},
+	"enable_verbose_mode": {
+		"message": "詳細モードを表示する",
+		"description": ""
+	},
+	"enabled": {
+		"message": "有効",
+		"description": ""
+	},
+	"errors": {
+		"message": "エラー",
 		"description": "data/index.html"
 	},
-	"my_favs": {
-		"message": "",
-		"description": "data/js/ui.slider.js"
-	},
-	"slide_to_next_page": {
-		"message": "次のページにとばす",
+	"examples": {
+		"message": "サンプル",
 		"description": "data/index.html"
 	},
-	"stat": {
-		"message": "統計",
-		"description": ""
-	},
-	"this_profile_may_has_already_exists": {
-		"message": "このプロファイルはすでに存在していました",
-		"description": "data/js/ui.welcome.js"
-	},
-	"quote": {
-		"message": "引用",
-		"description": ""
-	},
-	"keybinding": {
-		"message": "ショートカットキー",
-		"description": ""
-	},
-	"update": {
-		"message": "アップデート",
-		"description": ""
-	},
-	"rule_name": {
+	"exit_hotot_when_close_window": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"filter_like_it": {
+	"extensions": {
+		"message": "プラグイン",
+		"description": ""
+	},
+	"fav_or_un_fav": {
+		"message": "お気に入りに登録する・お気に入りから外す",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "お気に入りに登録する...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "お気に入り",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"look_and_feels": {
-		"message": "外見",
+	"filter_tweets_like_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "よし",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "フォロー",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "フォロー@",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "フォロワー",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "フォロワー",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "フォント",
 		"description": ""
 	},
-	"more_actions": {
-		"message": "もっと",
+	"font_preview_hint": {
+		"message": "色は匂へど 散りぬるを　フォントプレビュー",
+		"description": ""
+	},
+	"font_size": {
+		"message": "フォントサイズ",
+		"description": ""
+	},
+	"friend_cnt": {
+		"message": "友達",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
 		"message": "友達",
 		"description": "data/js/ui.template.js"
 	},
-	"messages_view": {
-		"message": "メッセージ",
+	"global": {
+		"message": "グロバル",
 		"description": "data/index.html"
 	},
-	"enable_proxy": {
-		"message": "プロクシーを有効にする",
+	"globals_restart_hint": {
+		"message": "本ページの設定は、リスタートしてから有効になります",
 		"description": ""
 	},
-	"clear": {
-		"message": "クリア",
+	"greeting": {
+		"message": "お帰りなさいませ",
 		"description": ""
 	},
-	"you_are_friends": {
-		"message": "あなたたちは友達です",
+	"help": {
+		"message": "ヘルプ",
+		"description": ""
+	},
+	"hey_it_is_you": {
+		"message": "あなたです",
 		"description": "data/js/ui.peopleview.js"
 	},
-	"mask": {
+	"hidden_dark_minds": {
 		"message": "",
 		"description": "data/index.html"
 	},
-	"rule": {
+	"home_timeline": {
+		"message": "タイムライン",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "ほっとっと",
+		"description": ""
+	},
+	"http_proxy": {
+		"message": "HTTPプロクシー",
+		"description": ""
+	},
+	"image_uploader": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "インフォ",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "登録する",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "ショートカットキー",
+		"description": ""
+	},
+	"keyboard": {
+		"message": "キーボード",
+		"description": ""
+	},
+	"keyboard_shortcuts": {
+		"message": "ショートカットキー",
+		"description": ""
+	},
+	"kismet_firewall": {
+		"message": "キスメット・ファイアウォール",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "ライセンス",
+		"description": ""
+	},
+	"list": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "リスト",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "リスト",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "こちらのユーザーを登録したリスト",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "このユーザーのリスト",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "ロードなう…",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "ファイルをロードしています.",
+		"description": ""
+	},
+	"location": {
+		"message": "ロケーション",
+		"description": ""
+	},
+	"mark_deleted_tweets": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mask": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -1119,16 +495,620 @@
 		"message": "言及",
 		"description": "data/js/ui.template.js"
 	},
+	"mentions": {
+		"message": "@関連",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "@関連",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "メッセージ",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "メッセージ",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "その他",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "もっと",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "もっとエフェクトを使う",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "最後尾に行く",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "次のツイートに行く",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "前のツイートに行く",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "トップに戻る",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "魔法パワー",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "名前",
+		"description": ""
+	},
+	"nearly_dead": {
+		"message": "もう無理だ！",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "ネットワーク障害、後でもう一度アクセスしてみてください",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "プロファイルを作りました",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "プラグインがありません",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "通知システム",
+		"description": ""
+	},
+	"oauth_base": {
+		"message": "OAuth ベース",
+		"description": ""
+	},
+	"official_retweet_this_tweet": {
+		"message": "リツイート",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "確認する",
+		"description": ""
+	},
+	"oops_a_network_error_occurs": {
+		"message": "インターネット障害",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "APIエーラー出ました",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "オプション",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "ブラウザでリンクを開く",
+		"description": ""
+	},
+	"panda_acts_cute": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "ペスト",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PINコード",
+		"description": ""
+	},
+	"please_enter_the_recipient": {
+		"message": "宛先を選んでください",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "プロフィールの名称を入力してください",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "ツイートしました",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "発信中……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "パワフル",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "設定",
+		"description": ""
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "出来る限り最新ツイートの対話をプレロードする",
+		"description": ""
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "Ctrl+Enterでアップデートする",
+		"description": ""
+	},
+	"pretty_wife": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "プレビュー",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "メディアをプレビューする",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "プロファイル",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "プロキシー",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "閉じる",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "引用",
+		"description": ""
+	},
+	"relation": {
+		"message": "関係",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "リロード",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "返信",
+		"description": ""
+	},
+	"reply_all": {
+		"message": "全員に返信する",
+		"description": ""
+	},
+	"reply_this_tweet": {
+		"message": "返信",
+		"description": "data/js/ui.template.js"
+	},
 	"reply_to": {
 		"message": "返信",
 		"description": "data/js/ui.template.js"
 	},
-	"sign_in_with_twitter": {
-		"message": "Twitterにログインする",
+	"report_spam": {
+		"message": "スパムを報告する",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "リセット・タイム",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "既定値に戻す",
 		"description": ""
 	},
-	"exit_hotot_when_close_window": {
+	"retweet": {
+		"message": "リツイート",
+		"description": ""
+	},
+	"retweet_or_un_retweet": {
+		"message": "リツイート・リツイート解除",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "リツイートしました",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "拡散者:",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "リツイートなう...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "リツイート",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "リツイート",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "コメントして拡散",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
 		"message": "",
 		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "同じAPIでサーンする",
+		"description": ""
+	},
+	"same_signing_oauth_base": {
+		"message": "同じのOAuthでサーンする",
+		"description": ""
+	},
+	"save": {
+		"message": "保存する",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "検索",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "APIベースを検索する",
+		"description": ""
+	},
+	"search_in_google": {
+		"message": "グーグルで検索する：@",
+		"description": ""
+	},
+	"search_in_twitter": {
+		"message": "ツイーターで検索",
+		"description": ""
+	},
+	"search_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "メッセージを送る",
+		"description": ""
+	},
+	"send_message_to_them": {
+		"message": "メッセージを送る",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "ショートカットキー",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "ログインしています。。。",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "ログアウト",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "次のページにとばす",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "前のページの戻る",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "エラーが出ました",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "サウンド",
+		"description": ""
+	},
+	"starts_minimized": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "統計",
+		"description": ""
+	},
+	"status_is_over_140_characters": {
+		"message": "140文字を超えてしまいました",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "ステップ１",
+		"description": ""
+	},
+	"step_two": {
+		"message": "ステップ２",
+		"description": ""
+	},
+	"struggling_adventurers": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "完成",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "ほっとっとを呼び出す「例： <ALT>C」",
+		"description": ""
+	},
+	"system": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "テーマ",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "このプロファイルはすでに存在していました",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "状態",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "ツイート・ビュー",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "ツイート",
+		"description": ""
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "お気に入りに登録解除",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "ブロック解除",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "リツイートを解除する",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "取り消す",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "フォロー解除@",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "アップデート",
+		"description": ""
+	},
+	"update_successfully": {
+		"message": "アップデートした",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "更新中……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "アップロード",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "写真をアップロードする",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "ネイティブ通知システムを利用",
+		"description": ""
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "「コメントして拡散」を既定値としてリツイートする",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "「全員に返信する」を既定値にする",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "Ubuntu Indicatorを使う",
+		"description": ""
+	},
+	"verify": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "バージョン",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "via",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "もっと見る",
+		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"virushou_s_integrity": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "虚弱",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "サイト",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "ウェブサイト",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "ウィスパー",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "あなたをフォローしています",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "フォローしています",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "あなたたちは友達です",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "フォローしていません",
+		"description": "data/js/ui.peopleview.js"
 	}
 }

@@ -19,12 +19,12 @@
     <script type="text/javascript" src="js/widget.radio_group.js"></script>
     <script type="text/javascript" src="js/widget.dialog.js"></script>
     <script type="text/javascript" src="js/widget.bubble.js"></script>
+    <script type="text/javascript" src="js/widget.scrollbar.js"></script>
     <script type="text/javascript" src="js/widget.listview.js"></script>
     <script type="text/javascript" src="js/widget.autocomplete.js"></script>
 
     <script type="text/javascript" src="js/hotkey.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
-    <script type="text/javascript" src="js/console.js"></script>
     <script type="text/javascript" src="js/db.js"></script>
     <script type="text/javascript" src="js/conf.js"></script>
     <script type="text/javascript" src="js/i18n.js"></script>
@@ -65,166 +65,170 @@
     <script type="text/javascript" src="js/hotot.js"></script>
     <script type="text/javascript" src="ext/ext.js"></script>
 
-    <script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'></script>
+    
 </head>
 <body>
 
 <div id="container">
 
 <section id="center">
-<section id="welcome_page" class="page">
-    <h1 data-i18n-text="hotot">Hotot</h1>
-    <div id="welcome_page_main">
-    <ul id="profile_avatar_list">
-        <li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default"></a></li>
-    </ul>
-    <h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
-    <div id="sign_in_block">
-        <h2 id="profile_title"></h2>
-        <div id="service_tabs">
-        <ul class="service_tabs_btns">
-            <li>
-            <a id="btn_service_twitter" service="twitter" href="#service_page_twitter" class="service_tabs_btn" title="Twitter">Twitter</a>
-            </li>
-            <li>
-            <a id="btn_service_identica" service="identica" href="#service_page_identica" class="service_tabs_btn" title="Identi.ca">Identi.ca</a>
-            </li>
-        </ul>
-        <div id="service_page_twitter" class="service_tabs_page">
-        <p>
-            <label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
-        </p>
-        <p style="text-align:center; margin:10px 0 50px 0;">
-            <a id="btn_oauth_sign_in" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="sign_in_with_twitter">Sign in with Twitter</a>
-        </p>
-        <p style="text-align:right; font-size: 10px;">
-            <a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
-        </p>
-        </div>
+<div id="welcome_page" class="page">
+	<h1 data-i18n-text="hotot">Hotot</h1>
+	<div id="welcome_idicators">
+		<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
+		<select id="sel_welcome_lang" class="combo dark"
+				title="Select a language"
+				style="height: 24px; line-height: 24px; width: 100px;"
+				data-i18n-title="select_a_language">
+				<option value="auto" data-i18n-title="language">Language</option>
+				<option value="bg">Български </option>
+				<option value="de">Deutsch</option>
+				<option value="en">English</option>
+				<option value="es">Español</option>
+				<option value="fr">Français</option>
+				<option value="ja">日本語</option>
+				<option value="lv">Latviešu</option>
+				<option value="pl_PL">Polski</option>
+				<option value="pt_BR">Português(Brasil)</option>
+				<option value="ru">Русский</option>
+				<option value="uk">Українська</option>
+				<option value="zh_CN">简体中文</option>
+				<option value="zh_CLS">文言</option>
+				<option value="zh_CAN">粤语</option>
+		</select>
+	</div>
+	<div id="welcome_page_main">
+		<ul id="profile_avatar_list">
+			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0"></a></li>
+		</ul>
+		<h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
+		<div id="sign_in_block">
+			<div class="inner">
+				<a class="go" href="javascript:void(0)"></a>
+				<div class="profile_title"></div>
+				<div id="service_page_twitter" class="service_tabs_page">
+					<p style="font-style: italic;">
+					<label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
+					</p>
+					<p style="font-size: 10px; text-transform:uppercase">
+					<a id="clean_token_btn" style="color:red; text-decoration:none;" title="Clean token" href="javascript:void(0)" data-i18n-text="clean_token">clean token</a>
+					</p>
+				</div>
 
-        <div id="service_page_identica" class="service_tabs_page">
-        <p>
-            <label data-i18n-text="username">Username:</label><br/>
-            <input id="tbox_basic_auth_username" class="entry" style="width: 170px;" type="text" value=""/><br/>
-            <label data-i18n-text="password">Password:</label><br/>
-            <input id="tbox_basic_auth_password" class="entry" style="width: 170px;" type="password" value=""/><br/>
-            <input id="chk_remember_password" type="checkbox" class="checkbox" checked="checked"/>
-            <label for="chk_remember_password" class="label" data-i18n-text="remember_password">Remember Password</label><br/>
-            <div style="text-align:center">
-            	<a id="btn_basic_auth_sign_in" class="button" data-i18n-text="sign_in">Sign In</a>
-            </div>
-        </p>
-        </div>
+				<div id="service_page_identica" class="service_tabs_page">
+					<input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" placeholder="Username"/>
+					<input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" placeholder="Password"/><br/>
+				</div>
 
-        <div id="service_page_new" class="service_tabs_page">
-        <p>
-            <label data-i18n-text="profile_name">Profile Name:</label><br/>
-            <input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value=""/>
-            <label>@<span class="service_name"></span></label>
-            <div style="text-align:center;margin: 10px auto;">
-                <a id="btn_welcome_create_profile" class="button" title="Create a new Profile" data-i18n-title="create_profile" data-i18n-text="create_profile">Create Profile</a>
-            </div>
-        </p>
-        </div>
-        </div><!--tabs-->
-        <div style="clear:both"></div>
-        <div class="bottom">
-            <a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
-            <a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
-            <a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
-        </div>
-        <div style="clear:both"></div>
-    </div><!-- END of #sign_in_block -->
-    </div><!-- END of #welcome_page_main -->
-    <div id="welcome_page_loading">
-        <div class="inner">
-            <p><img src="image/ani_loading_bar.gif"/></p>
-            <p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
-        </div>
-    </div>
-    <div id="welcome_bottom">
-        <p>
-        <a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
-        </p>
-    </div>
-</section>
+				<div id="service_page_new" class="service_tabs_page">
+					<input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value="" placeholder="Profile Name"/>
+					<label>@</label>
+					<ul class="service_chooser">
+						<li><a href="#twitter" title="Twitter" class="twitter selected">Twitter</a></li>
+						<li><a href="#identica" title="Identi.ca" class="identica">Identi.ca</a></li>
+					</ul>
+				</div>
+			</div> <!-- END of #sign_in_block .inner -->
+			<div style="clear:both"></div>
+			<div class="bottom">
+				<a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
+				<a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
+				<a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
+			</div>
+		</div><!-- END of #sign_in_block -->
+	</div><!-- END of #welcome_page_main -->
+	<div id="welcome_page_loading">
+		<div class="inner">
+			<p><img src="image/ani_loading_bar.gif"/></p>
+			<p data-i18n-text="loading_resources_hint">Loading Resources ...</p>
+		</div>
+	</div>
+</div>
 
-<section id="main_page" class="page">
-    <div id="main_page_slider">
-    </div>
-    <ul id="tweet_more_menu" class="hotot_menu">
-    <li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
-        title="Retweet this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="retweet"
-        >Retweet</a></li>
-    <li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
-        title="Quote this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="quote"
-        >Quote</a></li>
-    <li><a id="tweet_reply_all_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Reply All"
-        data-i18n-text="reply_all"
-        >Reply All</a></li>
-    <li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
-        title="Reply this tweet"
-        href="javascript:void(0);"
-        data-i18n-text="reply"
-        >Reply</a></li>
-    <li><a id="tweet_dm_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Send Message to them"
-        data-i18n-text="send_message"
-        >Send Message</a></li>
-    <li>
-        <a id="tweet_del_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Delete this tweet"
-        data-i18n-text="delete"
-        >Delete</a>
-    </li>
-    <li class="separator"><span></span></li>
-    <li>
-        <a id="tweet_set_color_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Set color label to the sender"
-        data-i18n-text="set_color_label"
-        >Set Color Label</a>
-    </li>
-    <li>
-        <a id="tweet_filter_btn"
-        class="tweet_more_menu_btn"
-        href="javascript:void(0);"
-        title="Filter this tweet"
-        data-i18n-text="filter_like_it"
-        >Filter like it</a>
-    </li>
-    <li class="separator"><span></span></li>
-    </ul>
-    <a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
-</section>
+<div id="main_page" class="page">
+	<div id="main_page_slider">
+	</div>
+	<div id="empty_view_hint">
+		<h2>Hey!</h2>
+		<p>You don't have a view.</p>
+		<p>You should surely add one or more views by clicking the "Add" button above.</p>
+	</div>
+	<ul id="tweet_more_menu" class="hotot_menu">
+		<li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
+			title="Retweet this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="retweet"
+			>Retweet</a></li>
+		<li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
+			title="Quote this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="quote"
+			>Quote</a></li>
+		<li><a id="tweet_reply_all_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Reply All"
+			data-i18n-text="reply_all"
+			>Reply All</a></li>
+		<li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
+			title="Reply this tweet"
+			href="javascript:void(0);"
+			data-i18n-text="reply"
+			>Reply</a></li>
+		<li><a id="tweet_dm_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Send Message to them"
+			data-i18n-text="send_message"
+			>Send Message</a></li>
+		<li>
+		<a id="tweet_del_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Delete this tweet"
+			data-i18n-text="delete"
+			>Delete</a>
+		</li>
+		<li class="separator"><span></span></li>
+		<li>
+		<a id="tweet_set_color_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Set color label to the sender"
+			data-i18n-text="label_with_color"
+			>Label with color</a>
+		</li>
+		<li>
+		<a id="tweet_filter_btn"
+			class="tweet_more_menu_btn"
+			href="javascript:void(0);"
+			title="Filter this tweet"
+			data-i18n-text="filter_tweets_like_it"
+			>Filter tweets like it</a>
+		</li>
+		<li class="separator"><span></span></li>
+	</ul>
+	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
+</div>
 </section><!-- center -->
 <section id="header">
     <div id="header_inner">
     <div id="indication">
         <div id="indicator_btns">
             <div class="stick_left">
-                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot"></span></a>
-                <span class="shape"></span>
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
             </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
-                <a id="indicator_compose_btn" class="indicator_btn action_button" href="#compose" title="Compose"><span class="icon ic_compose" data-i18n-text="compose" data-i18n-title="compose">Compose</span></a>
-                <span class="shape"></span>
+							<a id="indicator_compose_btn" 
+								class="indicator_btn action_button" 
+								href="#compose" 
+								data-i18n-title="compose" title="Compose">
+								<span class="icon ic_compose"></span>
+								<span data-i18n-text="compose" style="float:left; margin-left: 10px;">Compose</span>
+							</a>
             </div>
-            <div>
+            <div class="no_stick">
                 <a id="indicator_add_btn" class="indicator_btn action_button" href="#add" title="Add new views" data-i18n-title="add_new_views"><span class="icon ic_add"></span></a>
-                <span class="shape"></span>
             </div>
 
         </div>
@@ -236,52 +240,52 @@
     <div id="view_title_bar">
         <div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="#" class="close_btn ic_close"></a>
-            <a href="#" class="setting_btn ic_gear"></a>
+            <a href="javascript:void(0)" class="close_btn ic_close"></a>
+            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
         </div>
     </div>
     <div id="hotot_menu">
@@ -313,6 +317,9 @@
     </div> <!-- hotot_menu -->
     <ul id="slider_menu" class="hotot_menu">
         <li>
+            <a href="#home" data-i18n-text="home_view">Home view</a>
+        </li>
+        <li>
             <a href="#mentions" data-i18n-text="mentions_view">Mentions view</a>
         </li>
         <li>
@@ -323,6 +330,9 @@
         </li>
         <li>
             <a href="#favs" data-i18n-text="favs_view">Favourites view</a>
+        </li>
+        <li>
+            <a href="#search" data-i18n-text="search_view">Search view</a>
         </li>
         <li>
             <a href="#trending_topics" data-i18n-text="trending_topics_view">Trending topics view</a>
@@ -351,60 +361,60 @@
         <div class="clear"></div>
     </div>
     <div id="status_image_preview_wrapper">
-        <a href="#" class="close_btn ic_close"></a>
+        <a href="javascript:void(0)" class="close_btn ic_close"></a>
         <div id="status_image_preview"></div>
     </div>
     <div id="tbox_status_wrapper" class="textarea">
         <textarea id="tbox_status" class="closed" placeholder="Type or drag a photo here."></textarea>
         <div id="status_smiley">
             <div id="status_smiley_header">
-                <a href="#" class="close_btn ic_close"></a>
+                <a href="javascript:void(0)" class="close_btn ic_close"></a>
             </div>
             <div id="status_smiley_inner">
-            <a href="#" class="smiley smiley_smile">:)</a>
-            <a href="#" class="smiley smiley_smile">:(</a>
-            <a href="#" class="smiley smiley_smile">:D</a>
-            <a href="#" class="smiley smiley_smile">;)</a>
-            <a href="#" class="smiley smiley_smile">:P</a>
-            <a href="#" class="smiley smiley_smile">:'(</a>
-            <a href="#" class="smiley smiley_smile">:O</a>
-            <a href="#" class="smiley smiley_smile">8)</a>
-            <a href="#" class="smiley smiley_smile">^_^</a>
-            <a href="#" class="smiley smiley_smile">^o^</a>
-            <a href="#" class="smiley smiley_smile">T_T</a>
-            <a href="#" class="smiley smiley_smile">&gt;_&lt;</a>
-            <a href="#" class="smiley smiley_smile">^_&lt;</a>
-            <a href="#" class="smiley smiley_smile">x_x</a>
-            <a href="#" class="smiley smiley_smile">@_@</a>
-            <a href="#" class="smiley smiley_smile">O_o</a>
-            <a href="#" class="smiley smiley_smile">-_-#</a>
-            <a href="#" class="smiley smiley_smile">-_-b</a>
-            <a href="#" class="smiley smiley_smile">&#x2267;^&#x25E1;^&#x2266;</a>
-            <a href="#" class="smiley smiley_smile">&#xFF1E;&#xFE4F;&#xFF1C;</a>
-            <a href="#" class="smiley smiley_smile">&#x256E;&#xFF08;&#x256F;&#xFF3F;&#x2570;&#xFF09;&#x256D;</a>
-            <a href="#" class="smiley smiley_smile">(&#x2267;&#x25BD;&#x2266;)y </a>
-            <a href="#" class="smiley smiley_smile">m(_ _)m</a>
-            <a href="#" class="smiley smiley_smile">(&#x3064;&#x0434;C)</a>
-            <a href="#" class="smiley smiley_smile">&#x03A3;(&#x3063;°&#x0434;°)&#x3063;</a>
-            <a href="#" class="smiley smiley_smile">&#x2261;(&#x2594;&#xFE4F;&#x2594;)&#x2261;</a>
-            <a href="#" class="smiley smiley_smile">(-''-)</a>
-            <a href="#" class="smiley smiley_smile">&#x25D5;&#x203F;&#x203F;&#x25D5;</a>
-            <a href="#" class="smiley smiley_smile">&#x25D5;&#x203F;&#x25D5;</a>
-            <a href="#" class="smiley smiley_smile">&#x25E1;&#x203F;&#x25E1;&#x273F;</a>
-            <a href="#" class="smiley smiley_smile">&#x273F;&#x25E0;&#x203F;&#x25E0;</a>
-            <a href="#" class="smiley smiley_smile">(^&#x03C9;^)</a>
-            <a href="#" class="smiley smiley_smile">(&#xFF9F;&#x2200;&#xFF9F;) </a>
-            <a href="#" class="smiley smiley_smile">(&#x25E3;_&#x25E2;)</a>
-            <a href="#" class="smiley smiley_smile">&#x2299;&#xFE4F;&#x2299;</a>
-            <a href="#" class="smiley smiley_smile">&#x2299;_&#x2609;</a>
-            <a href="#" class="smiley smiley_smile">&#x1F78;.&#x1F79;</a>
-            <a href="#" class="smiley smiley_smile">&#x1F79;,&#x1F78;</a>
-            <a href="#" class="smiley smiley_smile">&#x25A2;_&#x25A2;</a>
-            <a href="#" class="smiley smiley_smile">(&#xFFE3;(&#x5DE5;)&#xFFE3;)</a>
-            <a href="#" class="smiley smiley_smile">(&#x256C;&#xFFE3;&#x76BF;&#xFFE3;)&#x51F8; </a>
-            <a href="#" class="smiley smiley_smile">&#xFF0F;&#x4EBA;&#x25D5;&#x203F;&#x25D5;&#x4EBA;&#xFF3C;</a>
-            <a href="#" class="smiley smiley_smile">&#xFF08;&#x256F;&#x2035;&#x25A1;&#x2032;&#xFF09;&#x256F;&#xFE35;&#x2534;&#x2500;&#x2534;</a>
-            <a href="#" class="smiley smiley_smile">(&#xFFE3;&#x03B5;(#&#xFFE3;)&#x2606;((O==(&#xFFE3;&#x25BD;&#xFFE3;)o</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:(</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:D</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">;)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:P</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:'(</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">:O</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">8)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">^_^</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">^o^</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">T_T</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&gt;_&lt;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">^_&lt;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">x_x</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">@_@</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">O_o</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">-_-#</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">-_-b</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x2267;^&#x25E1;^&#x2266;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#xFF1E;&#xFE4F;&#xFF1C;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x256E;&#xFF08;&#x256F;&#xFF3F;&#x2570;&#xFF09;&#x256D;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#x2267;&#x25BD;&#x2266;)y </a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">m(_ _)m</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#x3064;&#x0434;C)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x03A3;(&#x3063;°&#x0434;°)&#x3063;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x2261;(&#x2594;&#xFE4F;&#x2594;)&#x2261;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(-''-)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x25D5;&#x203F;&#x203F;&#x25D5;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x25D5;&#x203F;&#x25D5;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x25E1;&#x203F;&#x25E1;&#x273F;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x273F;&#x25E0;&#x203F;&#x25E0;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(^&#x03C9;^)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#xFF9F;&#x2200;&#xFF9F;) </a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#x25E3;_&#x25E2;)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x2299;&#xFE4F;&#x2299;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x2299;_&#x2609;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x1F78;.&#x1F79;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x1F79;,&#x1F78;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#x25A2;_&#x25A2;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#xFFE3;(&#x5DE5;)&#xFFE3;)</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#x256C;&#xFFE3;&#x76BF;&#xFFE3;)&#x51F8; </a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#xFF0F;&#x4EBA;&#x25D5;&#x203F;&#x25D5;&#x4EBA;&#xFF3C;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">&#xFF08;&#x256F;&#x2035;&#x25A1;&#x2032;&#xFF09;&#x256F;&#xFE35;&#x2534;&#x2500;&#x2534;</a>
+            <a href="javascript:void(0)" class="smiley smiley_smile">(&#xFFE3;&#x03B5;(#&#xFFE3;)&#x2606;((O==(&#xFFE3;&#x25BD;&#xFFE3;)o</a>
         </div>
         </div>
     </div>
@@ -416,7 +426,7 @@
     <div id="status_ctrl">
         <a id="toggle_mode" class="button toolbar_button" data-i18n-title="click_to_compose_message" title="Click to compose message"></a>
         <a id="btn_shorturl" class="button toolbar_button" data-i18n-title="url_shortener" title="URL shortener"></a>
-        <a id="btn_smiley" class="button toolbar_button" data-i18n-title="Insert_smiley" title="Insert smiley"></a>
+        <a id="btn_smiley" class="button toolbar_button" data-i18n-title="insert_smiley" title="Insert smiley"></a>
         <a id="btn_imageuploader" class="button toolbar_button" data-i18n-title="image_uploader" title="Image uploader"></a>
         <a id="btn_save_draft" class="button toolbar_button" data-i18n-title="save_as_draft" title="Save as drafts"></a>
         <input id="tbox_status_speech" class="button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();a.focus();ui.StatusBox.move_cursor(ui.StatusBox.POS_END);};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
@@ -445,13 +455,6 @@
     </div>
 </section>
 
-<section id="console">
-    <h1>Console</h1>
-    <div id="console_out">
-    </div>
-    <input id="console_in" type="text" value=""/>
-</section>
-
 <section id="dialog_mask">
 </section>
 <!--dialogs-->
@@ -464,22 +467,18 @@
     <div class="dialog_container">
     <div class="dialog_header">
         <ul id="prefs_dlg_btns" class="radio_group dark">
-            <li><a id="btn_prefs_global"
-                    href="#prefs_global"
-                    class="radio_group_btn selected"
-                    data-i18n-text="globals">Globals</a>
-            </li><li><a id="btn_prefs_account"
-                    href="#prefs_account"
-                    class="radio_group_btn"
-                    data-i18n-text="account">Account</a>
-            </li><li><a id="btn_prefs_appearance"
+            <li><a id="btn_prefs_appearance"
                     href="#prefs_appearance"
                     class="radio_group_btn"
-                    data-i18n-text="look_and_feels">Looks &amp; Feels</a>
+                    data-i18n-text="appearance">Appearance</a>
             </li><li><a id="btn_prefs_behavior"
                     href="#prefs_behavior"
                     class="radio_group_btn"
                     data-i18n-text="behavior">Behavior</a>
+            </li><li><a id="btn_prefs_system"
+                    href="#prefs_system"
+                    class="radio_group_btn"
+                    data-i18n-text="system">System</a>
             </li><li><a id="btn_prefs_advanced"
                     href="#prefs_advanced"
                     class="radio_group_btn"
@@ -489,131 +488,38 @@
     </div>
     <div id="prefs_dlg_body" class="dialog_body">
         <div id='prefs_global' class="prefs_dlg_page">
-            <div class="dialog_block hint"
-                data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
-                And these options will affect ALL accounts
-            </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="http_proxy">HTTP Proxy</span> -</h3>
-            <p>
-                <input id="chk_prefs_use_http_proxy" class="checkbox"
-                    title="Use HTTP Proxy" type="checkbox"/>
-                <label id="label_prefs_use_http_proxy"
-                    for="chk_prefs_use_http_proxy"
-                    class="label" data-i18n-text="enable_proxy">
-                    Enable Proxy
-                </label><br/>
-                <input id="tbox_prefs_http_proxy_host"
-                    title="HTTP Proxy Host"
-                    style="width: 120px;"
-                    type="text" class="entry"/>
-                <label class="label">:</label>
-                <input id="tbox_prefs_http_proxy_port"
-                    title="HTTP Proxy Port"
-                    style="width: 40px;"
-                    type="text" class="entry"/><br/>
-                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
-                    title="Need Authentication" type="checkbox"/>
-                <label id="label_prefs_http_proxy_auth"
-                    for="chk_prefs_use_http_proxy_auth"
-                    class="label" data-i18n-text="proxy_auth">
-                    Authentication
-                </label><br/>
-                <label class="label" data-i18n-text="proxy_auth_name">Username</label>
-                <input id="tbox_prefs_http_proxy_auth_name"
-                    title="HTTP Proxy Authentication Name"
-                    style="width: 120px;"
-                    type="text" class="entry"/>
-                <label class="label" data-i18n-text="proxy_auth_password">Password</label>
-                <input id="tbox_prefs_http_proxy_auth_password"
-                    title="HTTP Proxy Authentication Password"
-                    style="width: 120px;"
-                    type="text" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="keybinding">Keybinding</span> -</h3>
-            <p>
-                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
-                <input id="tbox_prefs_shortcut_summon_hotot"
-                     title="Summon Hot Key"
-                     type="text" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="misc">Misc</span> -</h3>
-            <p>
-                <input id="chk_prefs_use_verbose_mode"
-                    title="Enable verbose mode or not"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_verbose_mode"
-                    class="label"
-                    data-i18n-text="enable_verbose_mode"
-                    >Enable verbose mode</label><br/>
-                <input id="chk_prefs_use_ubuntu_indicator"
-                    title="Use Ubuntu Indicator"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_ubuntu_indicator" class="label"
-                    data-i18n-text="use_ubuntu_indicator"
-                    >Use Ubuntu indicator</label><br/>
-                <input id="chk_prefs_close_to_exit"
-                    title="Exit Hotot when close main window"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_close_to_exit" class="label"
-                    data-i18n-text="exit_hotot_when_close_window"
-                    >Exit Hotot when close main window</label><br/>
-                 <input id="chk_prefs_sign_in_automatically"
-                     title="Automatically Sign in after opening"
-                     type="checkbox" class="checkbox"/>
-                 <label for="chk_prefs_sign_in_automatically" class="label"
-                     data-i18n-text="automatically_sign_in_after_opening"
-                     >Automatically Sign in after opening</label><br/>
-            </p>
+
             </div>
         </div><!-- END of #prefs_global -->
-        <div id='prefs_account' class="prefs_dlg_page">
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="twitter">Twitter</span> -</h3>
-            <p>
-                <label class="label" data-i18n-text="regain_access_token">Regain Access Token</label><br/>
-                <a id="btn_regain_token" class="button" title="Sign in with Twitter" data-i18n-title="sign_in_with_twitter" data-i18n-text="regain_access_token_with_twitter">Regain Access Token with Twitter</a>
-            </p>
-            </div>
-
-            <div class="dialog_block">
-            <h3>- <span data-i18n-text="identica">Identi.ca</span> -</h3>
-            <p>
-                <input id="chk_prefs_remember_password"
-                    type="checkbox" class="checkbox"
-                    title="Remember Password" checked="checked"/>
-                <label for="chk_prefs_remember_password" class="label"
-                    data-i18n-text="remember_password">Remember Password
-                </label><br/>
-            </p>
-            </div>
-        </div> <!-- END of #prefs_account -->
         <div id='prefs_appearance' class="prefs_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="language">Language</span> -</h3>
+            <h3 data-i18n-text="language">Language</h3>
             <p>
                 <label data-i18n-text="interface_language">Interface language: </label>
                 <select id="sel_prefs_lang" class="combo"
                     title="Select a language"
                     data-i18n-title="select_a_language">
-                    <option value="auto">Auto Detect</option>
-                    <option value="pt_BR">Brazilian Portuguese</option>
-                    <option value="zh_CN">Chinese (Simplified)</option>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="ja">Japanese</option>
-                    <option value="pl_PL">Polish</option>
-                    <option value="es">Spanish</option>
+										<option value="auto" data-i18n-title="language">Language</option>
+										<option value="bg">Български </option>
+										<option value="de">Deutsch</option>
+										<option value="en">English</option>
+										<option value="es">Español</option>
+										<option value="fr">Français</option>
+										<option value="ja">日本語</option>
+										<option value="lv">Latviešu</option>
+										<option value="pl_PL">Polski</option>
+										<option value="pt_BR">Português(Brasil)</option>
+										<option value="ru">Русский</option>
+										<option value="uk">Українська</option>
+										<option value="zh_CN">简体中文</option>
+										<option value="zh_CLS">文言</option>
+										<option value="zh_CAN">粤语</option>
                 </select>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="theme">Theme</span> -</h3>
+            <h3 data-i18n-text="theme">Theme</h3>
             <p>
                 <table class="void_table">
                     <tr>
@@ -626,7 +532,7 @@
                             <option value="Classic">Classic</option>
                         </select>
                         </td>
-                        <td rowspan="5" style="text-align: right">
+                        <td rowspan="4" style="text-align: right">
                             <img id="prefs_theme_preview" src="#"
                             alt="No Preview"/>
                         </td>
@@ -644,45 +550,41 @@
                     <tr>
                         <td><label class="label"
                                 data-i18n-text="web">Web</label></td>
-                        <td ><a class="label" id="prefs_theme_web" target="_blank" href="#"></a></td>
+                        <td ><a class="label" id="prefs_theme_web" target="_blank" href="javascript:void(0);"></a></td>
                     </tr>
                     <tr>
-                        <td colspan="2" id="prefs_theme_desc"></td>
+                        <td colspan="3" id="prefs_theme_desc"></td>
                     </tr>
                 </table>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="font">Font</span> -</h3>
+            <h3 data-i18n-text="font">Font</h3>
             <p>
-                <table><tbody>
-                <tr><td>
-                <input id="rdo_use_system_font" type="radio"
-                    class="radio" name="font" checked/>
-                <label class="label"
-                    data-i18n-text="system_font">System Font</label>
-                </td><td>
-                <input id="rdo_use_custom_font" type="radio"
-                    class="radio" name="font" />
-                <label class="label"
-                    data-i18n-text="custom_font">Custom Font</label>
-                </td><td>
+                <input id="chk_use_custom_font" type="checkbox"
+                    class="checkbox" name="font" />
+                <label class="label" for="chk_use_custom_font"
+                    data-i18n-text="use_custom_font">Use Custom Font</label>
+                <input id="tbox_prefs_custom_font"
+										title="Custom Font" 
+										style="vertical-align:middle;width:120px"
+										type="text" class="entry"/>
+                <select id="sel_prefs_sys_font" class="combo"
+										style="vertical-align:middle;width:10px"
+                    title="Font Family">
+                    <option value="more">...</option>
+                </select>
+						</p>
+						<p>
                 <label class="label"
                     data-i18n-text="font_size">Font Size</label>
-                </td></tr>
-                <tr><td>
-                <select id="sel_prefs_font_family" class="combo"
-                    title="Font Family" style="width:100px;">
-                    <option value="1">1</option>
-                </select></td><td>
-                <input id="tbox_prefs_custom_font"
-                    title="Custom Font"
-                    type="text" class="entry"/></td><td>
-                <input id="tbox_prefs_font_size"
+                <input id="range_prefs_font_size"
                     title="Font Size"
-                    style="width:30px" type="text" class="entry"/>
-                <label class="label" data-i18n-text="px">px</label></td></tr>
-                </tbody></table>
+										max="28" min="6" value="12" step="1"
+										style="width:80px;vertical-align:middle;"
+										type="range"/>
+                <label class="label" id="range_prefs_font_size_st"
+                    >12px</label>
             </p>
             <p>
                 <label class="label" data-i18n-text="preview">Preview:</label><br/>
@@ -691,7 +593,7 @@
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="effects">Effects</span> -</h3>
+            <h3 data-i18n-text="effects">Effects</h3>
             <p>
                 <input id="rdo_effects_level_low" type="radio"
                     class="radio" name="effects" value="0" checked/>
@@ -716,25 +618,11 @@
                 </label>
             </p>
             </div>
-
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
             <div class="dialog_block">
+            <h3 data-i18n-text="operations">Operations</h3>
             <p>
-                <input id="chk_prefs_use_native_notify"
-                    title="Use Native Notify" class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_native_notify" class="label"
-                    data-i18n-text="use_native_notify_system"
-                    >Use Native Notify System</label><br/>
-                <input id="chk_prefs_use_preload_conversation"
-                    title="Preload latest tweet in a conversation if it is cached."
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_preload_conversation"
-                    class="label"
-                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
-                    >Preload latest tweets in conversations if possible.</label><br/>
                 <input id="chk_prefs_use_alt_retweet"
                     title="Replace default retweet action with quote"
                     class="checkbox"
@@ -751,6 +639,19 @@
                     class="label"
                     data-i18n-text="use_reply_all_as_default_reply_action"
                     >Use reply all as default reply action.</label><br/>
+						</p>
+						</div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="misc">Misc</h3>
+            <p>
+                <input id="chk_prefs_use_preload_conversation"
+                    title="Preload latest tweet in a conversation if it is cached."
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_preload_conversation"
+                    class="label"
+                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
+                    >Preload latest tweets in conversations if possible.</label><br/>
                 <input id="chk_prefs_use_media_preview"
                     title="Preview the media if possible."
                     class="checkbox"
@@ -759,10 +660,18 @@
                     class="label"
                     data-i18n-text="preview_embedded_media"
                     >Preview embedded media.</label><br/>
+                <input id="chk_prefs_use_deleted_mark"
+                    title="Use a sign to mark deleted tweet instead of deleting it"
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_deleted_mark"
+                    class="label"
+                    data-i18n-text="mark_deleted_tweets"
+                    >Mark deleted tweets.</label><br/>
             </p>
             </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="default_picture_service">Default Picture Service</span> -</h3>
+            <h3 data-i18n-text="default_picture_service">Default Picture Service</h3>
             <p>
                 <select id="sel_prefs_default_picture_service"
                     class="combo"
@@ -775,10 +684,130 @@
                 </select>
             </p>
             </div>
-       </div><!-- END of prefs_behavior-->
-        <div id='prefs_advanced' class="prefs_dlg_page">
+        </div><!-- END of prefs_behavior-->
+				<div id='prefs_system' class="prefs_dlg_page">
+            <div class="dialog_block hint"
+                data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
+                And these options will affect ALL accounts
+            </div>
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="api_setting">API Settings</span> -</h3>
+            <h3 data-i18n-text="keybinding">Keybinding</h3>
+            <p>
+                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
+                <input id="tbox_prefs_shortcut_summon_hotot"
+                     title="Summon Hot Key"
+                     type="text" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="http_proxy">HTTP Proxy</h3>
+            <p>
+                <input id="chk_prefs_use_http_proxy" class="checkbox"
+                    title="Use HTTP Proxy" type="checkbox"/>
+                <label id="label_prefs_use_http_proxy"
+                    for="chk_prefs_use_http_proxy"
+                    class="label" data-i18n-text="enable_proxy">
+                    Enable Proxy
+                </label><br/>
+                <input id="tbox_prefs_http_proxy_host"
+                    title="HTTP Proxy Host"
+										style="width: 120px;"
+										placeholder="Proxy Host"
+                    type="text" class="entry"/>
+                <input id="tbox_prefs_http_proxy_port"
+                    title="HTTP Proxy Port"
+                    style="width: 120px;"
+										placeholder="Proxy Port"
+                    type="text" class="entry"/><br/>
+                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
+                    title="Need Authentication" type="checkbox"/>
+                <label id="label_prefs_http_proxy_auth"
+                    for="chk_prefs_use_http_proxy_auth"
+                    class="label" data-i18n-text="proxy_auth">
+                    Authentication
+                </label><br/>
+                <input id="tbox_prefs_http_proxy_auth_name"
+                    title="HTTP Proxy Authentication Name"
+                    style="width: 120px;"
+										placeholder="Username"
+                    type="text" class="entry"/>
+                <input id="tbox_prefs_http_proxy_auth_password"
+                    title="HTTP Proxy Authentication Password"
+                    style="width: 120px;"
+										placeholder="Password"
+                    type="password" class="entry"/><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="system_integration">System Integration</h3>
+            <p>
+                <input id="chk_prefs_use_ubuntu_indicator"
+                    title="Use Ubuntu Indicator"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_ubuntu_indicator" class="label"
+                    data-i18n-text="use_ubuntu_indicator"
+                    >Use Ubuntu indicator</label><br/>
+                <input id="chk_prefs_use_native_notify"
+                    title="Use Native Notify" class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_use_native_notify" class="label"
+                    data-i18n-text="use_native_notify_system"
+                    >Use Native Notify System</label><br/>
+                <input id="chk_prefs_context_menu_integration"
+                    title="Integrate to context menu."
+                    class="checkbox"
+                    type="checkbox"/>
+                <label for="chk_prefs_context_menu_integration"
+                    class="label"
+                    data-i18n-text="chrome_context_menu_integration"
+                    >Chrome context menu integration.</label><br/>
+            </p>
+            </div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="misc">Misc</h3>
+            <p>
+                <input id="chk_prefs_close_to_exit"
+                    title="Exit Hotot when close main window"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_close_to_exit" class="label"
+                    data-i18n-text="exit_hotot_when_close_window"
+                    >Exit Hotot when close main window</label><br/>
+                <input id="chk_prefs_sign_in_automatically"
+                     title="Automatically Sign in after opening"
+                     type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_sign_in_automatically" class="label"
+                     data-i18n-text="automatically_sign_in_after_opening"
+                     >Automatically Sign in after opening</label><br/>
+                <input id="chk_prefs_starts_minimized"
+                     title="Starts Minimized"
+                     type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_starts_minimized" class="label"
+                     data-i18n-text="starts_minimized"
+                     >Starts Minimized</label><br/>
+						</p>
+						</div>
+            <div class="dialog_block">
+            <h3 data-i18n-text="debug">Debug</h3>
+            <p>
+                <input id="chk_prefs_use_verbose_mode"
+                    title="Enable verbose mode or not"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_verbose_mode"
+                    class="label"
+                    data-i18n-text="enable_verbose_mode"
+                    >Enable verbose mode</label><br/>
+                <input id="chk_prefs_use_anonymous_stat"
+                    title="Let us colloect anonymous statistic information"
+                    type="checkbox" class="checkbox"/>
+                <label for="chk_prefs_use_anonymous_stat" class="label"
+                    data-i18n-text="let_hotot_collects_anonymous_statistic_information"
+                    >Let Hotot collects anonymous statistic information</label><br/>
+						</p>
+						</div>
+        </div><!-- END of prefs_system-->
+				<div id='prefs_advanced' class="prefs_dlg_page">
+            <div class="dialog_block">
+            <h3 data-i18n-text="api_setting">API Settings</h3>
             <p>
                 <label class="label"
                     data-i18n-text="api_base">API Base</label><br/>
@@ -836,14 +865,14 @@
 <!-- oauth dialog -->
 <div id="oauth_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title">First time to Sign in with Twitter</h2>
+        <h2 class="dialog_title" data-i18n-text="first_time_to_sign_in_with_twitter">First time to Sign in with Twitter</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
     <div id="oauth_dlg_body" class="dialog_body">
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="step_one">Step 1</span> -</h3>
+        <h3 data-i18n-text="step_one">Step 1</h3>
         <p data-i18n-text="click_the_button_below">Click the button below </p>
         <p style="text-align: center">
         <a id="btn_oauth_user_auth" class="button" data-i18n-text="click_me_to_continue">
@@ -857,7 +886,7 @@
         </p>
         </div>
         <div class="dialog_block">
-        <h3>- <span data-i18n-text="step_two">Step 2</span> -</h3>
+        <h3 data-i18n-text="step_two">Step 2</h3>
         <p data-i18n-text="copy_the_pin_code_and_paste_it_into_the_box_below"
         >Copy the PIN Code and paste it into the box below</p>
         <p style="text-align: center;">
@@ -906,8 +935,8 @@
     <div id="about_dlg_body" class="dialog_body">
         <div id="about_about" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="hotot">Hotot</span>
-                <span class="version"></span>-
+						<h3><span data-i18n-text="hotot">Hotot</span>
+                - version <span class="version"></span>
             </h3>
             <p>
             <strong data-i18n-text="hotot">Hotot</strong> is a lightweight client for the <a target="_blank" href="http://twitter.com">twitter</a> microblogging service.
@@ -921,7 +950,7 @@
         </div>
         <div id="about_keyboard" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="keyboard_shortcuts">Keyboard shortcuts</span> -</h3>
+            <h3 data-i18n-text="keyboard_shortcuts">Keyboard shortcuts</h3>
             <p>
                 <table id="shortcuts_table">
                 <tbody>
@@ -938,7 +967,7 @@
                 <tr><td data-i18n-text="move_to_prev_tweet">Move to prev tweet</td><td>k</td></tr>
                 <tr><td data-i18n-text="move_to_next_tweet">Move to next tweet</td><td>j</td></tr>
                 <tr><td data-i18n-text="move_to_top">Move to top</td><td>gg</td></tr>
-                <tr><td data-i18n-text="move_to_bottom">Move to bottom</td><td>&lt;Shift&gt;g</td></tr>
+                <tr><td data-i18n-text="move_to_bottom">Move to bottom</td><td>G</td></tr>
                 <tr><td data-i18n-text="compose">Compose</td><td>c</td></tr>
                 <tr><td data-i18n-text="close_current_column">Close current column</td><td>tx</td></tr>
                 <tr><td data-i18n-text="reply">Reply</td><td>ar</td></tr>
@@ -947,10 +976,10 @@
                 <tr><td data-i18n-text="fav_or_un_fav">Fav/Un-fav</td><td>as</td></tr>
                 <tr><td data-i18n-text="send_message">Send Message</td><td>am</td></tr>
                 <tr><td data-i18n-text="delete">Delete</td><td>ad</td></tr>
-                <tr><td data-i18n-text="retweet_or_un_retweet">Retweet/Un-retweet</td><td>a&lt;Shift&gt;r</td></tr>
+                <tr><td data-i18n-text="retweet_or_un_retweet">Retweet/Un-retweet</td><td>aR</td></tr>
                 <tr><td data-i18n-text="open_first_link">Open first link</td><td>ao</td></tr>
                 <tr><td data-i18n-text="open_speaker_link">Open speaker link</td><td>au</td></tr>
-                <tr><td data-i18n-text="find">Find</td><td>/</td></tr>
+                <tr><td data-i18n-text="find">Find</td><td>af</td></tr>
                 </tbody>
                 </table>
             </p>
@@ -958,7 +987,7 @@
         </div>
         <div id="about_credits" class="about_dlg_page" style="overflow:auto;">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="credits">Credits</span> -</h3>
+            <h3 data-i18n-text="credits">Credits</h3>
             <p>
                 <label>Written by</label>:<br/>
                 - Shellex Wai &lt;<a target="_blank" href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
@@ -992,7 +1021,7 @@
         </div>
         <div id="about_license" class="about_dlg_page">
             <div class="dialog_block">
-            <h3>- <span data-i18n-text="license">License</span> -</h3>
+            <h3 data-i18n-text="license">License</h3>
             <p>
 Hotot package is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -1056,7 +1085,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <!-- List Attribute dialog -->
 <div id="list_attr_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="List">List</h2>
+        <h2 class="dialog_title" data-i18n-text="list">List</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1098,7 +1127,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <!-- Add to List dialog -->
 <div id="add_to_list_dlg" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="List">Add to List</h2>
+        <h2 class="dialog_title" data-i18n-text="list">Add to List</h2>
         <a class="dialog_close_btn" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1214,12 +1243,12 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </div>
         <div class="rulebased_page kismet_page">
             <div class="ctrl">
-                <a id="kismet_add_rule_btn" href="#" class="button" data-i18n-text="add">Add</a>
-                <a style="display:none" href="#" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
+                <a id="kismet_add_rule_btn" href="javascript:void(0)" class="button" data-i18n-text="add">Add</a>
+                <a style="display:none" href="javascript:void(0)" class="button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
             </div>
             <ul id="kismet_rule_list" class="rule_list">
-                <li><a href="#" class="rule">aaa</a>
-                    <div class="item_ctrl"><a href="#" class="button edit_btn">Edit</a><a href="#" class="button delete_btn">Delete</a></div>
+                <li><a href="javascript:void(0)" class="rule">aaa</a>
+                    <div class="item_ctrl"><a href="javascript:void(0)" class="button edit_btn">Edit</a><a href="javascript:void(0)" class="button delete_btn">Delete</a></div>
                 </li>
             </ul>
         </div>
@@ -1245,11 +1274,11 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <div class="dialog_block">
-            <h3>- <span data-i18n-text="rule_name">Rule Name</span> -</h3>
+            <h3 data-i18n-text="rule_name">Rule Name</h3>
             <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
         </div>
         <div class="dialog_block">
-            <h3>- <span data-i18n-text="rule">Rule</span> -</h3>
+            <h3 data-i18n-text="rule">Rule</h3>
             <p><textarea id="kismet_rule_edit_data" class="textarea" style="width:450px; height: 40px;"></textarea></p>
         </div>
         <div id="kismet_quick_refs">
@@ -1257,12 +1286,12 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <summary class="sub_label" data-i18n-text="examples">Examples</summary>
         <p>
 	        <ul class="docs">
-	            <li><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
-	            <li><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
-	            <li><a href="#" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
-	            <li><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
-	            <li><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
-	            <li><a href="#" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">name:MentionTo</a>, drop tweets sent by @MentionTo.</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
+	            <li><a href="javascript:void(0)" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
 	        </ul>
         </p>
         </details>
@@ -1270,40 +1299,40 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <summary class="sub_label" data-i18n-text="quick_references">Quick References</summary>
         <p>
         <ul class="docs">
-            <li><h4><a href="#" class="kismet_sample">keyword</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">keyword</a></h4>
                 <p>simply a keyword</p>
             </li>
-            <li><h4><a href="#" class="kismet_sample">via:{source name}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">via:{source name}</a></h4>
                 <p>where this tweet comes form.</p>
-                <p>example: <a href="#" class="kismet_sample">via:foursquare</a></p>
+                <p>example: <a href="javascript:void(0)" class="kismet_sample">via:foursquare</a></p>
 
             </li>
-            <li><h4><a href="#" class="kismet_sample">tag:{tag name}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">tag:{tag name}</a></h4>
                 <p>What hash tag contained by this tweet.</p>
-                <p>example: <a href="#" class="kismet_sample">via:#FuckGFW</a></p>
+                <p>example: <a href="javascript:void(0)" class="kismet_sample">via:#FuckGFW</a></p>
             </li>
-            <li><h4><a href="#" class="kismet_sample">name:{screen name}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">name:{screen name}</a></h4>
                 <p>who post this tweet.</p>
-                <p>example: <a href="#" class="kismet_sample">name:MentionTo</a></p>
+                <p>example: <a href="javascript:void(0)" class="kismet_sample">name:MentionTo</a></p>
             </li>
-            <li><h4><a href="#" class="kismet_sample">mention:{screen name}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">mention:{screen name}</a></h4>
                 <p>who are mentioned in this tweet.</p>
-                <p>example: <a href="#" class="kismet_sample">mention:aiww</a></p>
+                <p>example: <a href="javascript:void(0)" class="kismet_sample">mention:aiww</a></p>
             </li>
-            <li><h4><a href="#" class="kismet_sample">has:{attribute}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">has:{attribute}</a></h4>
                 <p>what attribute this tweet has.</p>
-                <p>supported attributes: <a href="#" class="kismet_sample">has:geo</a>, <a href="#" class="kismet_sample">has:url</a></p>
+                <p>supported attributes: <a href="javascript:void(0)" class="kismet_sample">has:geo</a>, <a href="javascript:void(0)" class="kismet_sample">has:url</a></p>
             </li>
-            <li><h4><a href="#" class="kismet_sample">do:{action}</a></h4>
+            <li><h4><a href="javascript:void(0)" class="kismet_sample">do:{action}</a></h4>
                 <p>take action if all conditions are true.</p>
                 <p>supported action:
                     <ul style="list-style-type:circle; padding-left:20px;">
-                        <li><a href="#" class="kismet_sample">do:drop</a>, drop this tweet.</li>
-                        <li><a href="#" class="kismet_sample">do:mask</a>, mask this tweet.</li>
-                        <li><a href="#" class="kismet_sample">do:notify</a>, notify this tweet.</li>
-                        <li><a href="#" class="kismet_sample">do:archive</a>, archive this tweet.</li>
-                        <li><a href="#" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
-                        <li><a href="#" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:drop</a>, drop this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:mask</a>, mask this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:notify</a>, notify this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:archive</a>, archive this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
+                        <li><a href="javascript:void(0)" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
                     </ul>
                 </p>
             </li>
@@ -1352,7 +1381,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <div id="kismet_color_guide_dialog" class="dialog">
     <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="set_color_label">Set Color Label</h2>
+        <h2 class="dialog_title" data-i18n-text="label_with_color">Label with color</h2>
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
@@ -1360,22 +1389,22 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     <div class="dialog_body">
         <ul id="kismet_color_list">
             <li><span class="cell"></span><a href="transparent" data-i18n-text="transparent">Transparent</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="cuddly">Cuddly</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="wanna_have_relationship_with">Wanna have relationship with</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="my_journey_is_to_the_sea_of_stars">My journey is to the sea of stars</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="virushou_s_integrity">Virushuo's Integrity</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="shiny_old_times_before_marriage">Shiny old times before marriage</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="panda_acts_cute">Panda acts cute</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="schizophrenia">Schizophrenia</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="bloody_marguerite">Bloody Marguerite</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="hidden_dark_minds">Hidden Dark Minds</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="to_cold_beauty">To Cold Beauty</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="assassin_s_tango">Assassin's Tango</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="titian_s_elegance">Titian's Elegance</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="pretty_wife">Pretty Wife</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="tranquil">Tranquil</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="just_cannot_stop_thinking_of_here">Just can't stop thinking of here</a></li>
-            <li><span class="cell"></span><a href="#" data-i18n-text="struggling_adventurers">Struggling adventurers</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="cuddly">Cuddly</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="wanna_have_relationship_with">Wanna have relationship with</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="my_journey_is_to_the_sea_of_stars">My journey is to the sea of stars</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="virushou_s_integrity">Virushuo's Integrity</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="shiny_old_times_before_marriage">Shiny old times before marriage</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="panda_acts_cute">Panda acts cute</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="schizophrenia">Schizophrenia</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="bloody_marguerite">Bloody Marguerite</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="hidden_dark_minds">Hidden Dark Minds</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="to_cold_beauty">To Cold Beauty</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="assassin_s_tango">Assassin's Tango</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="titian_s_elegance">Titian's Elegance</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="pretty_wife">Pretty Wife</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="tranquil">Tranquil</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="just_cannot_stop_thinking_of_here">Just can't stop thinking of here</a></li>
+            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="struggling_adventurers">Struggling adventurers</a></li>
         </ul>
     </div><!-- .dialog_body -->
     <div class="dialog_footer">
@@ -1403,11 +1432,13 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             </p>
             <p>
             <div class="dragarea">
-                <span data-i18n-text="drag_a_photo_here">Drag a photo here</span>
+                <span class="drag_hint" data-i18n-text="drag_a_photo_here">Drag a photo here</span>
+                <span class="preview_hint" data-i18n-text="preview_here">Preivew Here</span>
                 <div class="preview"></div>
             </div>
             </p>
-            Or, select a photo from your computer:
+						<span class="drag_hint">Or, select a photo from your computer:</span>
+						<span class="preview_hint">select a photo from your computer:</span>
             <input class="fileselector" type="file"/>
             <a href="javascript:void(0);" class="button pyfileselector">Choose a file ...</a>
             </p>
@@ -1420,6 +1451,24 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div>
     </div><!-- END of .dialog_container -->
 </div>
+
+<!-- ImagePreview dialog -->
+<div id="imagepreview_dlg" class="dialog">
+    <div class="dialog_bar">
+        <h2 class="dialog_title" data-i18n-text="preview">Preview</h2>
+        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    </div>
+    <div class="dialog_container">
+    <div class="dialog_header"></div>
+		<div class="dialog_body">
+			<img class="preview" src="./image/ic64_hotot.png"/>
+    </div>
+    <div class="dialog_footer">
+    <a class="button orig_btn dialog_close_btn" target="_blank" data-i18n-text="view_original" href="#">View Original</a>
+    <a class="button dialog_close_btn" data-i18n-text="close">Close</a>
+    </div>
+    </div><!-- END of .dialog_container -->
+</div><!-- END of #imagepreview_dlg-->
 
 <!-- Error dialog -->
 <div id="error_dlg" class="dialog">

@@ -56,11 +56,16 @@ function init_search_view(view) {
 
     $('#create_saved_search_btn').click(function () {
         var query = search_entry.val().trim();
+        if (query.length == 0) return;
+        open_search(query);
+        /*
+        var query = search_entry.val().trim();
         globals.twitterClient.create_saved_search(query, function () {
             toast.set('Saved Query "'+query+'"').show();
         }, function () {
             console.log("Too more queries");
         });
+        */
     });
 
     widget.autocomplete.connect(search_entry);
@@ -117,13 +122,15 @@ function load_tweet(view, success, fail) {
     }
     view.page = 1;
     globals.twitterClient.search(view.query, view.page, view.since_id, null, success);
-    globals.twitterClient.show_user(view.query,
-    function (user) {
-        view._header.find('.search_people_result').show();
-        view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
-    }, function (xhr, textStatus, errorThrown) {
-        view._header.find('.search_people_result').hide();
-    });
+    if (view.type != 'saved_search') {
+        globals.twitterClient.show_user(view.query,
+        function (user) {
+            view._header.find('.search_people_result').show();
+            view._header.find('.search_people_inner').empty().append($('<a/>').text(user.screen_name).attr('href','javascript:open_people("'+user.screen_name+'")'));
+        }, function (xhr, textStatus, errorThrown) {
+            view._header.find('.search_people_result').hide();
+        });
+    }
 },
 
 loadmore_tweet:

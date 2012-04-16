@@ -1,8 +1,81 @@
-The Latest Stable Version is 0.9.7.47
-The Latest Development Version is 0.9.7.48
+The Latest Stable Version is 0.9.7.56
+The Latest Development Version is 0.9.7.57
+
+Version 0.9.7.57
+	* Update many translations
+	* New hotkey mechanism
+
+Version 0.9.7.56
+	* Fix: cannot open link(Gtk)
+	* Chrome integration: Share with Hotot
+	* Add Ukrainian and Russian translation (thank @alexsandrisimus)
+	* Add Latvietis translation (thank @fanfolet)
+	* Workaround: hook link event to prevent scrolling to top (Chrome)
+	* Fix Issue #201
+
+Version 0.9.7.55
+	* Add Cantonese translation (thank @xsoul)
+	* Add Latvietis translation (thank @arvislacis)
+	* Fix Issue #198
+	* Fix scrolling problem when using trackpad on OS X
+	* Increase the refresh frequencey
+	* Fix: Horizontal slide
+
+Version 0.9.7.54
+	* Fix: Wrong default font settings in Windows
+	* Fix: Incorrect scrollbar behaviors. (Issue #196, #197)
+	* Improve New hope and Iron Heart themes.
+	* Fix: Windows version cannot load settings.
+	* Fix: Window size saving (Qt)
+	* Several minor fixs.
+
+Version 0.9.7.53
+	* New scrollbar.
+	* Fix: Custom font doesn't apply
+
+Version 0.9.7.52
+	* Improvements about UI
+	* A Lot of minor fixs
+	* Rearrange preferences dialog.
+	* Update German, French and Traditional Chinese translations
+	* Update translation scanner script
+	* Allow to change language in welcome page
+	* Inline picture preview.
+	* Update loading hint in welcome page
+	* Support to preview .jpe, .jpeg files (issue #186)
+	* Open columns in background (issue #182)
+	* Improve database performance.
+	* Remove util.console
+	* Fix: Changing font size without restart (issue #193)
+	* Fix: XSS in drafts (issue #188)
+
+Version 0.9.7.51
+	* Fix: cannot remember the columns state (issue #174).
+	* Allow to save search result in Hotot (issue #52, #13)
+
+Version 0.9.7.50
+	* Allow to sort columns manually (issue #113, #97).
+	* Allow to add/close all columns.
+
+Version 0.9.7.49
+	* Fix: name not highlighted if it's following a char (issue #119).
+	* Fix: keep track identi.ca conversations (issue #48).
+	* Change the keybinding to invoke finder (form '/' to 'ff') (issue #42).
+	* Fix something about keysyms (Gir).
+	* Fix some icons problem in Qt version.
+	* Fix unconsidered copy-n-paste (Gtk/Gir).
+	* Fix: keyboard focus not working properly (issue #131).
+	* Workaround for libsoup runtime (Gtk/Gir).
+
+Version 0.9.7.48
+  * Auto sign in (GTK and Qt).
+	* Starts minimized (GTK and Qt).
+	* Chrome fix (correct layout in Chrome 19.0.1068.1).
 
 Version 0.9.7.47
-  * New login page
+  * New welcome page.
+	* Auto arrange the order of profiles.
+	* Use account avatar as profile avatar.
 
 Version 0.9.7.46
   * GTK/QT can be built in a single build through cmake.

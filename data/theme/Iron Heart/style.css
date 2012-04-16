@@ -5,40 +5,6 @@
     box-shadow: 2px 2px 3px #111;
     -webkit-box-shadow: 2px 2px 3px #111;
 }
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment {
-    height: 0px;
-    display: block;
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-track-piece {
-    background: #232223;
-}
-
-::-webkit-scrollbar-thumb {
-    -webkit-transition: all 0.2s ease-in;
-    background: #232223;
-}
-::-webkit-scrollbar-thumb:vertical {
-    border-right: 4px #6f6f6f solid;
-    height: 50px;
-}
-::-webkit-scrollbar-thumb:horizontal {
-    border-bottom: 4px #6f6f6f solid;
-    width: 50px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #6f6f6f;
-    border:0;
-}
-
 #main_page {
     display: none;
     background: #232223; 
@@ -84,7 +50,7 @@
     -webkit-box-shadow: 0 0 10px #4AC3FF;
     box-shadow: 0 0 10px #4AC3FF;
 }
-.tweetview > .listview_body {
+.tweetview .listview_body {
     border-color: #333 !important;
 }
 .card {
@@ -208,6 +174,33 @@ a {
 
 .btn_tweet_thread.expand {
     background-image: url(expand.png);
+}
+.scrollbar_track {  
+	width: 10px;
+}
+
+.scrollbar_track .scrollbar_slot { 
+	background-color: transparent;  
+	width: 3px;
+	margin: 0 3px 0 4px;
+}
+
+.scrollbar_handle {  
+  background: #4AC3FF;
+  box-shadow: 0 0 5px #4AC3FF;
+	width: 3px;  
+	opacity: 0.8;
+}
+.scrollbar_track.active .scrollbar_slot,
+.scrollbar_track:hover .scrollbar_slot { 
+	background-color: rgba(200,200,200,0.1);  
+	width: 10px;
+	margin: 0;
+}
+.scrollbar_track.active .scrollbar_handle,
+.scrollbar_track:hover .scrollbar_handle { 
+	width: 10px;
+	opacity: 0.8;
 }
 
 

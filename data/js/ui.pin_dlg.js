@@ -21,8 +21,7 @@ function init () {
             // change to main view
             globals.oauth_dialog.close();
             $('#profile_avatar_list a.selected').click();
-            ui.Welcome.btn_oauth_sign_in.set_sensitive(true);
-            ui.Welcome.btn_oauth_sign_in.click();
+            ui.Welcome.go.click();
         },
         function (xhr, textStatus, errorThrown) {
             globals.oauth_dialog.close();
@@ -32,6 +31,7 @@ function init () {
 
     $('#btn_oauth_pin_cancel').click(
     function (event) {
+        ui.Welcome.go.removeClass('loading');
         globals.oauth_dialog.close();
     });
 

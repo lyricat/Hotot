@@ -19,19 +19,19 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
 #, fuzzy
 msgid "%1 unread Messages"
-msgstr "Ecrire un message"
+msgstr "%1 Messages non lus"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
 msgid "&Developer Tool"
-msgstr ""
+msgstr "&Outils Developpeur"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
 msgid "&Exit"
-msgstr ""
+msgstr "&Quitter"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
 msgid "&Minimize to Tray"
-msgstr ""
+msgstr "&Minimiser"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
 msgid "(c) 2009-2011 Shellex Wai\n"
@@ -40,8 +40,8 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
 msgid "1 unread post"
 msgid_plural "%1 unread posts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 message non lu"
+msgstr[1] "%1 messages non lus"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 #, fuzzy
@@ -53,11 +53,11 @@ msgstr "Design de"
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Developer"
-msgstr ""
+msgstr "Developpeur"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
 msgid "Developer and Artwork"
-msgstr ""
+msgstr "Developpeur et Dessin"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
 #, fuzzy
@@ -66,7 +66,7 @@ msgstr "Documentation par"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
 msgid "Enable developer Tool"
-msgstr ""
+msgstr "Activer les outils developpeur"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 msgid "Evan"
@@ -94,7 +94,7 @@ msgstr "Notification Hotot"
 #: ../..//misc/hotot-qt.desktop.in.h:1
 #, fuzzy
 msgid "Hotot Qt"
-msgstr "Hotot"
+msgstr "Hotot Qt"
 
 #: ../..//misc/hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
@@ -126,13 +126,13 @@ msgstr "Un client léger pour twitter basé sur Gtk2 et Webkit"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
 msgid "Lightweight, Flexible Microblogging"
-msgstr ""
+msgstr "Miccroblogging Léger,Souple"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
 #, fuzzy, c-format
 msgid "Loading Search result %s ..."
-msgstr "Mise à jour..."
+msgstr "Chargement Recherche resultat %s ..."
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
 msgid "Marguerite Su"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
 msgid "Show &MainWindow"
-msgstr ""
+msgstr "Voir &MainWindow"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 msgid "Tualatrix Chou"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
 msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
-msgstr ""
+msgstr "Utiliser un Sock Proxy au lieu d'un Proxy HTTP"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Xu Zhen"
@@ -164,7 +164,7 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
 #, fuzzy
 msgid "_Compose"
-msgstr "Tweetbox"
+msgstr "_Tweetbox"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113
@@ -178,12 +178,12 @@ msgstr "_Aide"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:87
 msgid "_Hide"
-msgstr ""
+msgstr "_Cacher"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
 msgid "_Inspector"
-msgstr ""
+msgstr "_Inspecter"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
@@ -193,13 +193,13 @@ msgstr "_Afficher/Masquer"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:84
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:115
 msgid "_Show"
-msgstr ""
+msgstr "_Visible"
 
 #~ msgid " - did not match any result."
 #~ msgstr " - n'a abouti à aucun résultat."
 
 #~ msgid " Successfully!"
-#~ msgstr " réussi !"
+#~ msgstr " Réussi !"
 
 #~ msgid " errors in your change. Abort..."
 #~ msgstr " erreurs dans vos modifications. Annulation..."
@@ -216,8 +216,8 @@ msgstr ""
 #~ msgid "'Bio'"
 #~ msgstr "'Bio'"
 
-#~ msgid "'Click here to Compose a Meassage ...'"
-#~ msgstr "'Cliquer ici pour écrire un message...'"
+#~ msgid "'Click here to Compose a Message ...'"
+#~ msgstr "'Cliquer ici pour écrire un Message...'"
 
 #, fuzzy
 #~ msgid "'Create a new Profile'"
@@ -230,7 +230,7 @@ msgstr ""
 #~ msgstr "'Messagerie'"
 
 #~ msgid "'Extensions ... '"
-#~ msgstr "'Extensions...'"
+#~ msgstr "'Extensions ...'"
 
 #~ msgid "'Find someone you love.'"
 #~ msgstr "'Retrouver des amis'"
@@ -251,7 +251,7 @@ msgstr ""
 #~ msgstr "'Survoler pour ouvrir le champ de tweet'"
 
 #~ msgid "'Loading Tweets...'"
-#~ msgstr "'Chargement des tweets'"
+#~ msgstr "'Chargement des tweets ...'"
 
 #~ msgid "'Location'"
 #~ msgstr "'Localisation'"
@@ -308,10 +308,10 @@ msgstr ""
 #~ msgstr "'Signing OAuth Base'"
 
 #~ msgid "'Socks Proxy Port'"
-#~ msgstr "'Socks Proxy Port'"
+#~ msgstr "'Port Proxy Socks'"
 
 #~ msgid "'Summon Hot Key'"
-#~ msgstr "'Raccourci d'invocation'"
+#~ msgstr "'Raccourci clavier'"
 
 #~ msgid "'Type'"
 #~ msgstr "'Type'"
@@ -320,13 +320,13 @@ msgstr ""
 #~ msgstr "'Utiliser un proxy HTTP'"
 
 #~ msgid "'Use Native Input'"
-#~ msgstr "'Utiliser la boite de dialogue système'"
+#~ msgstr "'Utiliser la boite de dialogue Système'"
 
 #~ msgid "'Use Native Notify'"
-#~ msgstr "'Utiliser les notifications systèmes'"
+#~ msgstr "'Utiliser les notifications Systèmes'"
 
 #~ msgid "'Use Socks Proxy'"
-#~ msgstr "'Utiliser un proxy Socks'"
+#~ msgstr "'Utiliser un Proxy Socks'"
 
 #~ msgid "'Use Ubuntu Indicator'"
 #~ msgstr "'Utiliser l‘applet de notification Ubuntu'"
@@ -431,7 +431,7 @@ msgstr ""
 #~ msgstr "Identification OK!"
 
 #~ msgid "Authentication OK!"
-#~ msgstr "Identification OK!"
+#~ msgstr "Identification OK !"
 
 #, fuzzy
 #~ msgid "Auto Update"
@@ -492,10 +492,10 @@ msgstr ""
 #~ msgstr "Console"
 
 #~ msgid "Consumer Key"
-#~ msgstr "Benutzerschlüssel"
+#~ msgstr "Clé Client"
 
 #~ msgid "Consumer Secret"
-#~ msgstr "Benutzer Geheimnis"
+#~ msgstr "Clé Secrète"
 
 #, fuzzy
 #~ msgid "Copy the PIN Code and paste it into the box below"
@@ -503,7 +503,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Create A List"
-#~ msgstr "Liste des tweets"
+#~ msgstr "Créer une liste"
 
 #, fuzzy
 #~ msgid "Create Profile"
@@ -537,7 +537,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Enable Proxy"
-#~ msgstr "Activer"
+#~ msgstr "Activer Proxy"
 
 #, fuzzy
 #~ msgid "Enabled"
@@ -562,9 +562,6 @@ msgstr ""
 #~ msgstr "Masquer le filtre"
 
 #~ msgid "Extensions"
-#~ msgstr "Extensions"
-
-#~ msgid "Extenstions"
 #~ msgstr "Extensions"
 
 #, fuzzy
@@ -619,7 +616,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Friends"
-#~ msgstr "Abonnements: "
+#~ msgstr "Abonnements"
 
 #~ msgid "GO"
 #~ msgstr "GO"
@@ -697,10 +694,10 @@ msgstr ""
 #~ msgstr "Localisation"
 
 #~ msgid "Location: "
-#~ msgstr "Localisation: "
+#~ msgstr "Localisation : "
 
 #~ msgid "Look up: "
-#~ msgstr "Trouver un twittos:"
+#~ msgstr "Trouver un twittos :"
 
 #, fuzzy
 #~ msgid "Mention"
@@ -736,7 +733,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "My Favorites"
-#~ msgstr "Favoris:"
+#~ msgstr "Favoris :"
 
 #~ msgid "My Tweets, Retweeted"
 #~ msgstr "Mes tweets, retwittés"
@@ -745,7 +742,7 @@ msgstr ""
 #~ msgstr "Nom"
 
 #~ msgid "Name: "
-#~ msgstr "Nom: "
+#~ msgstr "Nom : "
 
 #~ msgid "Networks"
 #~ msgstr "Réseau"
@@ -869,7 +866,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Reply"
-#~ msgstr "Répondre à tous"
+#~ msgstr "Répondre"
 
 #, fuzzy
 #~ msgid "Reply All"
@@ -877,7 +874,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Reply this tweet"
-#~ msgstr "Répondre"
+#~ msgstr "Répondre a ce tweet"
 
 #~ msgid "Restore Defaults"
 #~ msgstr "Réinitialiser les paramètres"
@@ -933,10 +930,10 @@ msgstr ""
 #~ msgstr "Signing OAuth Base"
 
 #~ msgid "Same signing API base: "
-#~ msgstr "Signing API Base identique:"
+#~ msgstr "Signing API Base identique :"
 
 #~ msgid "Same signing OAuth base: "
-#~ msgstr "Base OAuth identique:"
+#~ msgstr "Base OAuth identique :"
 
 #, fuzzy
 #~ msgid "Search"
@@ -995,10 +992,10 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Successfully"
-#~ msgstr " réussi"
+#~ msgstr "Réussi"
 
 #~ msgid "Suggestions:"
-#~ msgstr "Suggestions:"
+#~ msgstr "Suggestions :"
 
 #, fuzzy
 #~ msgid "Summon Hotot (like: <ALT>C)"
@@ -1022,7 +1019,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Tweet"
-#~ msgstr "Tweets: "
+#~ msgstr "Tweets"
 
 #, fuzzy
 #~ msgid "Tweet View"
@@ -1030,14 +1027,14 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Tweets"
-#~ msgstr "Tweets: "
+#~ msgstr "Tweets"
 
 #~ msgid "Tweets per Day: "
 #~ msgstr "Tweets par jour: "
 
 #, fuzzy
 #~ msgid "Twitter"
-#~ msgstr "twitter"
+#~ msgstr "Twitter"
 
 #~ msgid "Type"
 #~ msgstr "Type"
@@ -1084,7 +1081,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Updated Successfully!"
-#~ msgstr "C'est bon!"
+#~ msgstr "C'est bon !"
 
 #, fuzzy
 #~ msgid "Updating ..."
@@ -1117,7 +1114,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Web"
-#~ msgstr "Web: "
+#~ msgstr "Web :"
 
 #~ msgid "Website"
 #~ msgstr "Site web"

@@ -1,0 +1,1114 @@
+{
+	"about": {
+		"message": "Относно",
+		"description": "data/index.html"
+	},
+	"about_and_help": {
+		"message": "Относно и Помощ",
+		"description": "data/index.html"
+	},
+	"access_token_doesnt_exist": {
+		"message": "Няма разрешение за достъп",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "Действие",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "Добави",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "Добави нови колони",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "Добави към списък",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "Разширени",
+		"description": "data/index.html"
+	},
+	"all": {
+		"message": "Всички",
+		"description": "data/index.html"
+	},
+	"api_base": {
+		"message": "API база",
+		"description": "data/index.html"
+	},
+	"api_setting": {
+		"message": "API настройки",
+		"description": "data/index.html"
+	},
+	"appearance": {
+		"message": "Изглед",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "Архив",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "Тангото на убиеца",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "Удостоверяването е ОК!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "Автор",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "Автоматично обновяване",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "Автоматично вписване",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "Баланс между атрактивност и производителност.",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "Поведение",
+		"description": "data/index.html"
+	},
+	"bio": {
+		"message": "Биграфия",
+		"description": "data/index.html"
+	},
+	"block": {
+		"message": "Блокирай",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "Кървавата Маргерит",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "Отказ",
+		"description": "data/index.html"
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "Грешно удостоверяване! Моля, проверете потребителското име/паролата и АПИ базата",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "Знакът `@` не е позволен",
+		"description": "data/js/ui.welcome.js"
+	},
+	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"clean_token": {
+		"message": "Премахни разрешението за достъп",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "Премахни",
+		"description": "data/index.html"
+	},
+	"clear_and_close": {
+		"message": "Премахни и Затвори",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "Кликни за продължение",
+		"description": "data/index.html"
+	},
+	"click_the_button_below": {
+		"message": "Кликни долния бутон",
+		"description": "data/index.html"
+	},
+	"click_to_compose_message": {
+		"message": "Кликни за създаване на съобщение",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "Кликни за показване",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "Кликни за да се покажат ретуитърите",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "Затвори",
+		"description": "data/index.html"
+	},
+	"close_current_column": {
+		"message": "Затвори настоящата колона",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "Създай",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "СЪЗДАЙ СЪОБЩЕНИЕ до",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "Копирай PIN кода и го постави тук",
+		"description": "data/index.html"
+	},
+	"copy_to_clipboard": {
+		"message": "Копирай в клипборда",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "Създай списък",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "Заслуги",
+		"description": "data/index.html"
+	},
+	"cuddly": {
+		"message": "Пуфкаф",
+		"description": "data/index.html"
+	},
+	"debug": {
+		"message": "Дебъг",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "Услуга за картинки",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "Изтрий",
+		"description": "data/index.html"
+	},
+	"delete_this_tweet": {
+		"message": "Изтрий този туит",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "Унищожено успешно!",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "Забрани",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "Забрани декорациите и някои анимации.",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "Забранено",
+		"description": "data/index.html"
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "Задържани",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "Завлачи снимката тук",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "Пусни",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "Редактирай",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "Ефекти",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "Екстра",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "Ниски",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "Нормални",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "Разреши",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "Разреши прокси",
+		"description": "data/index.html"
+	},
+	"enable_verbose_mode": {
+		"message": "Разреши Verbose Mode",
+		"description": "data/index.html"
+	},
+	"enabled": {
+		"message": "Разрешено",
+		"description": "data/index.html"
+	},
+	"errors": {
+		"message": "Грешки",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "Примери",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "Спри Hotot при затваряне на прозореца",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "Разширения",
+		"description": "data/index.html"
+	},
+	"fav_or_un_fav": {
+		"message": "Харесвам/Не харесвам",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "Харесай този туит ...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "Любими",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "Любими",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "Филтрирай туитове като този",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "Търси",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "Фино",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "Регистриран",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "Следвай",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "Следвай @",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "Последовател",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "Последователи",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "Шрифт",
+		"description": "data/index.html"
+	},
+	"font_preview_hint": {
+		"message": "Ах, чудна българска земьо, полюшвай цъфтящи жита!",
+		"description": "data/index.html"
+	},
+	"font_size": {
+		"message": "Големина на шрифта",
+		"description": "data/index.html"
+	},
+	"friend_cnt": {
+		"message": "Приятел",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "Приятели",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "Общи",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "Трябва да рестартирате Hotot за да се приложат някои от промените. Това ще засегне ВСИЧКИ акаунти.",
+		"description": "data/index.html"
+	},
+	"greeting": {
+		"message": "Поздравления!",
+		"description": "data/index.html"
+	},
+	"help": {
+		"message": "Помощ",
+		"description": "data/index.html"
+	},
+	"hey_it_is_you": {
+		"message": "Хей, това си ти!",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "Hidden dark minds",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "Поток",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "Поток",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "Hotot",
+		"description": "data/index.html"
+	},
+	"http_proxy": {
+		"message": "HTTP прокси",
+		"description": "data/index.html"
+	},
+	"image_uploader": {
+		"message": "Публикуване на изображения",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "ИНФО",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "Включи емотикони",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "Интелигентен филтър",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "Език на интерфейса",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "Присъедини се",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "Just can't stop thinking of here",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "Keybinding",
+		"description": "data/index.html"
+	},
+	"keyboard": {
+		"message": "Клавиатура",
+		"description": "data/index.html"
+	},
+	"keyboard_shortcuts": {
+		"message": "Бързи клавиши",
+		"description": "data/index.html"
+	},
+	"kismet_firewall": {
+		"message": "Kismet Защитна стена",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Kismet Ръководство",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "ВНИМАНИЕ: Туитове, които имат следните атрибути, няма да се появяват във Вашият поток.",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "Цветен етикет",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "Език",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "Разреши Hotot да събира анонимно статистическа информация",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "Лиценз",
+		"description": "data/index.html"
+	},
+	"list": {
+		"message": "Списък",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "В списък",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "Списъци",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "Списъци на следващите ги",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "Списъците им",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "Зареждане ... ",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "Зареждане на източници ...",
+		"description": "data/index.html"
+	},
+	"location": {
+		"message": "Местоположение",
+		"description": "data/index.html"
+	},
+	"mark_deleted_tweets": {
+		"message": "Маркирай изтритите туитове",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "Маска",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "Споменаване",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "Споменавания",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "Споменавания",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "Лични",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "Лични",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "Разни",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "Още",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "Повече ефекти като сенки и блясък",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "Премести на дъното",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "Прмести до следващия туит",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "Премести до предишния туит",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "Премести отгоре",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "Филтър за заглушаване",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "Любими",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "My Journey is to the sea of stars",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "Моята сила",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "Име",
+		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "Почти мъртъв",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "Грешка в Мрежата! Опитай пак по-късно.",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "Създаден е нов профил!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "Следващ",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "Без разширение",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "Уведоми",
+		"description": "data/index.html"
+	},
+	"oauth_base": {
+		"message": "OAuth база",
+		"description": "data/index.html"
+	},
+	"official_retweet_this_tweet": {
+		"message": "Официално ретуитни този туит",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "OK",
+		"description": "data/index.html"
+	},
+	"oops_a_network_error_occurs": {
+		"message": "Опааа, грешка в Мрежата",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "Опаа, грешка в API!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "Отвори списък ...",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "Отвори профил ...",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "Отвори първия линк",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "Отвори speaker линк",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "Операции",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "Опции",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "или копирай адрес и го отвори в браузъра си.",
+		"description": "data/index.html"
+	},
+	"panda_acts_cute": {
+		"message": "Panda acts cute",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "Постави от клипборда",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PIN код",
+		"description": "data/index.html"
+	},
+	"please_enter_the_recipient": {
+		"message": "Моля, попълнете получателя!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "Моля, попълнете префикса на получателя",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "Успешно публикуване!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "Публикуване ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "Силен",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "Настройки",
+		"description": "data/index.html"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "Презареди последните туитове в разговори, ако е възможно.",
+		"description": "data/index.html"
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "Натисни Ctrl + Enter за публикуване",
+		"description": "data/index.html"
+	},
+	"pretty_wife": {
+		"message": "Убава жена",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "Преглед",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "Преглед на включените медии",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "Преглед тук",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "Профил",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "Удостоверяване",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "Бързи препратки",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "Напусни Hotot",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "Цитирай",
+		"description": "data/index.html"
+	},
+	"relation": {
+		"message": "Отношение",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "Презареди",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "Отговор",
+		"description": "data/index.html"
+	},
+	"reply_all": {
+		"message": "Отговор на всички",
+		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "Отговори на този туит",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "отговор до",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "Докладвай СПАМ",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "Време до зануляване",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "Възстанови до подразбиране",
+		"description": "data/index.html"
+	},
+	"retweet": {
+		"message": "Ретуит",
+		"description": "data/index.html"
+	},
+	"retweet_or_un_retweet": {
+		"message": "Ретуит/Отмяна",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "Ретуита е успешен!",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "Ретуитнато от",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "Ретуитване ...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "Ретуити",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "Ретуитове",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "RT този туит",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "Условие",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "Филтър по условие",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "Редактор на условията",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "Име на условие",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "Same Signing API Base",
+		"description": "data/index.html"
+	},
+	"same_signing_oauth_base": {
+		"message": "Same Signing OAuth Base",
+		"description": "data/index.html"
+	},
+	"save": {
+		"message": "Запази",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "Запази за по-късно",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "Шизофрения",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "Търси",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "Търси API база",
+		"description": "data/index.html"
+	},
+	"search_in_google": {
+		"message": "Търси @ в Google",
+		"description": "data/index.html"
+	},
+	"search_in_twitter": {
+		"message": "Търси @ в Twitter",
+		"description": "data/index.html"
+	},
+	"search_view": {
+		"message": "Търсене",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "Избери услуга за изображения",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "Избери език",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "Избери действия",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "Избери полета",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "Изпрати съобщение",
+		"description": "data/index.html"
+	},
+	"send_message_to_them": {
+		"message": "Изпрати им съобщения",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "Страхотните времена преди брака",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "Бързи връзки",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "Вписване ...",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "Отписване",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "Плъзни до следващата страница",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "Плъзни до предишната страница",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "Някаква грешка се появи",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "Звук",
+		"description": "data/index.html"
+	},
+	"starts_minimized": {
+		"message": "Стартирай намален",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "STAT",
+		"description": "data/index.html"
+	},
+	"status_is_over_140_characters": {
+		"message": "Надвишили сте 140 знака!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "Стъпка 1",
+		"description": "data/index.html"
+	},
+	"step_two": {
+		"message": "Стъпка 2",
+		"description": "data/index.html"
+	},
+	"struggling_adventurers": {
+		"message": "Struggling Adventurers",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "Успешно",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "Summon Hotot (like: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"system": {
+		"message": "Система",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "Системна интеграция",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "Тема",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "Теми",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "Този профил вече съществува!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "Titian's elegance",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "Tranquil",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "Прозрачно",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "Най-дискутирани",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "Най-дискутирани",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "Туит",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "Туитове",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "Туитове",
+		"description": "data/index.html"
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "Не харесвам този туит ...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "Деблокирай",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "Отмяна на ретуитването ...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "Отмяната е успешна!",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "Не следвай @",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "Изпрати",
+		"description": "data/index.html"
+	},
+	"update_successfully": {
+		"message": "Изпращането успешно!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "Изпращане ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "Публикувай",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "Публикувай API Base",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "Публикувай снимка.",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "Публикувай в ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "Съкращаване на адреси",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "Използвай собствен шрифт",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "Използвай основната система за уведомяване",
+		"description": "data/index.html"
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "Използвай ЦИТИРАЙ за основно действие при ретуит",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "Използвай ОТГОВОР ДО ВСИЧКИ като основно действие при отговор",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "Използвай Ubuntu индикатор",
+		"description": "data/index.html"
+	},
+	"verify": {
+		"message": "Потвърди",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "Версия",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "чрез",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "Покажи още от разговора",
+		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"virushou_s_integrity": {
+		"message": "Virushou's Integrity",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "Искам да се обвържа с",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "Слабост",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "Мрежа",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "Страница",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "Шепот",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "Те Ви следват.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "Вие следвате",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "Вие сте приятели.",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "Вие не се следвате един друг.",
+		"description": "data/js/ui.peopleview.js"
+	}
+}

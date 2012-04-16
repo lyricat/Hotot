@@ -64,11 +64,14 @@ lib.Network = function Network (argument) {
     return [headers, body]
 };
 
-self.do_request = function do_request(req_method, req_url, req_params, req_headers, req_files,on_success, on_error) {
-
+self.do_request = function do_request(req_method, req_url, req_params, req_headers, req_files, on_success, on_error) {
     if (!req_headers) req_headers = {};
     if (self.py_request 
         || (req_files && req_files.constructor == Array && req_files.length != 0)) {
+
+        hotot_log('Req', JSON.stringify(
+            {'type':req_method, 'url': req_url, 'data':req_params, 'file': req_files}));
+
         var task_uuid = self.generate_uuid();
         self.success_task_table[task_uuid] = on_success;
         self.error_task_table[task_uuid] = on_error;

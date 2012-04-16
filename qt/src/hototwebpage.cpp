@@ -155,16 +155,16 @@ void HototWebPage::requestFinished(HototRequest* request, QByteArray result, QSt
     QString strresult = QString::fromUtf8(result);
     if (error) {
         QString scripts = QString("widget.DialogManager.alert('%1', '%2');\n"
-                                  "lib.network.error_task_table['%3']('');\n"
+                                  "globals.network.error_task_table['%3']('');\n"
                                  ).arg("Ooops, an Error occurred!", strresult, uuid);
         currentFrame()->evaluateJavaScript(scripts);
     } else {
         QString scripts;
         if (strresult.startsWith("[") || strresult.startsWith("{"))
-            scripts = QString("lib.network.success_task_table['%1'](%2);"
+            scripts = QString("globals.network.success_task_table['%1'](%2);"
                              ).arg(uuid, strresult);
         else
-            scripts = QString("lib.network.success_task_table['%1']('%2');"
+            scripts = QString("globals.network.success_task_table['%1']('%2');"
                              ).arg(uuid, strresult);
         currentFrame()->evaluateJavaScript(scripts);
     }

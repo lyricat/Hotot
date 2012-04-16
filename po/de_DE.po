@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Gerald Schmidhuber <gerald.schmidhuber@googlemail.com>, 2010.
 # Vinzenz Vietzke <vietzke@b1-systems.de>, 2012.
+# Poapfel <contact@poapfel.net>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
@@ -19,15 +21,15 @@ msgstr ""
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
 #, fuzzy
 msgid "%1 unread Messages"
-msgstr "Nachricht senden"
+msgstr "%1 ungelesene Nachrichten"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
 msgid "&Developer Tool"
-msgstr ""
+msgstr "&Entwickler Tool"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
 msgid "&Exit"
-msgstr ""
+msgstr "&Schließen"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
 msgid "&Minimize to Tray"
@@ -35,13 +37,13 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
 msgid "(c) 2009-2011 Shellex Wai\n"
-msgstr ""
+msgstr "(c) 2009-2011 Shellex Wai\n"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
 msgid "1 unread post"
 msgid_plural "%1 unread posts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 ungelesener Beitrag"
+msgstr[1] "%1 ungelesene Beiträge"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 #, fuzzy
@@ -53,11 +55,11 @@ msgstr "Grafik von"
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Developer"
-msgstr ""
+msgstr "Entwickler"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
 msgid "Developer and Artwork"
-msgstr ""
+msgstr "Entwickler und Grafiker"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
 #, fuzzy
@@ -66,11 +68,11 @@ msgstr "Dokument von"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
 msgid "Enable developer Tool"
-msgstr ""
+msgstr "Aktiviere Entwickler Tool"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 msgid "Evan"
-msgstr ""
+msgstr "Evan"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
@@ -94,7 +96,7 @@ msgstr "Hotot-Benachrichtigung"
 #: ../..//misc/hotot-qt.desktop.in.h:1
 #, fuzzy
 msgid "Hotot Qt"
-msgstr "Hotot"
+msgstr "Hotot Qt"
 
 #: ../..//misc/hotot.desktop.in.h:2
 msgid "Hotot Twitter Client"
@@ -109,11 +111,11 @@ msgstr "Hotot: Klicken zum aktivieren."
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
 msgid "Jiahua Huang"
-msgstr ""
+msgstr "Jiahua Huang"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
 msgid "Jimmy Xu"
-msgstr ""
+msgstr "Jimmy Xu"
 
 #: ../..//misc/hotot.desktop.in.h:3
 msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
@@ -122,33 +124,33 @@ msgstr "Ein schlanker Twitter Client basierend auf Gtk2 und Webkit"
 #: ../..//misc/hotot-qt.desktop.in.h:2
 #, fuzzy
 msgid "Lightweight Twitter Client base on Qt and Webkit"
-msgstr "Ein schlanker Twitter Client basierend auf Gtk2 und Webkit"
+msgstr "Ein schlanker Twitter Client basierend auf Qt und Webkit"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
 msgid "Lightweight, Flexible Microblogging"
-msgstr ""
+msgstr "Schlankes, flexibles Microblogging"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
 #, fuzzy, c-format
 msgid "Loading Search result %s ..."
-msgstr "Lade Tweets..."
+msgstr "Lade Suchergebnisse %s..."
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
 msgid "Marguerite Su"
-msgstr ""
+msgstr "Marguerite Su"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
 msgid "Shellex Wai"
-msgstr ""
+msgstr "Shellex Wai"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
 msgid "Show &MainWindow"
-msgstr ""
+msgstr "Zeige &HauptFenster"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
 msgid "Tualatrix Chou"
-msgstr ""
+msgstr "Tualatrix Chou"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
 msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
@@ -156,7 +158,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Xu Zhen"
-msgstr ""
+msgstr "Xu Zhen"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
@@ -178,12 +180,12 @@ msgstr "_Hilfe"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:87
 msgid "_Hide"
-msgstr ""
+msgstr "_Verstecken"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
 msgid "_Inspector"
-msgstr ""
+msgstr "_Inspektor"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
@@ -193,7 +195,7 @@ msgstr "_Weitermachen/Verstecken"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:84
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:115
 msgid "_Show"
-msgstr ""
+msgstr "_Zeigen"
 
 #~ msgid " - did not match any result."
 #~ msgstr " - liefert kein Ergebnis."

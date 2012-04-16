@@ -67,7 +67,7 @@ function load_dict(new_dict) {
 
 get_message:
 function get_message(msg) {
-    if (conf.vars.platform == 'Chrome' && !i18n.forced) {
+    if (conf.vars.platform === 'Chrome' && !i18n.forced) {
         return chrome.i18n.getMessage(msg);
     } else {
         if (i18n.dict != null && i18n.dict.hasOwnProperty(msg)) {

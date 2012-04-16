@@ -52,6 +52,13 @@ class Hotot:
             self.indicatorStatus = AppIndicator.IndicatorStatus
         else:
             self.create_trayicon()
+            # workaround for icon display issue in some cases
+            #  libgtk-3-0            => 3.4.0-0ubuntu5
+            #  libgdk-pixbuf2.0-0    => 2.26.0-1
+            #  trayer                => 1.1.1-1ubuntu1
+            # ugly but whoever cares
+            self.start_blinking()
+            self.stop_blinking()
 
     def build_gui(self):
         self.window = Gtk.Window()
@@ -242,13 +249,11 @@ class Hotot:
         self.quit()
 
     def quit(self, *args):
+        self.release_hotkey()
         self.stop_blinking()
         Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
-        if hasattr(self, "xhk"):
-            self.xhk.clear()
-            self.xhk.stop()
         import sys
         sys.exit(0)
 
@@ -262,6 +267,9 @@ class Hotot:
             , config.settings['size_h'])
         # apply proxy
         self.apply_proxy_setting()
+        # starts minimized
+        if config.settings['starts_minimized']:
+            self.window.hide()
 
 
     def apply_proxy_setting(self):
@@ -296,6 +304,11 @@ class Hotot:
                 self.xhk = xhk;
         except:
             pass
+
+    def release_hotkey(self):
+        if hasattr(self, "xhk"):
+            self.xhk.clear()
+            self.xhk.stop()
 
     def create_trayicon(self):
         """

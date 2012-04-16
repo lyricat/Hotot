@@ -3,7 +3,7 @@ conf = {
 
 vars: {
       'platform': 'Linux'
-    , 'version': '0.9.7.45'
+    , 'version': '0.9.7.56'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -24,12 +24,15 @@ default_settings: {
     , 'use_http_proxy_auth': false
     , 'http_proxy_auth_name': ''
     , 'http_proxy_auth_password': ''
+    , 'use_anonymous_stat': true
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
     , 'size_h': 550
     , 'use_ubuntu_indicator': true
+    , 'context_menu_integration': true
     , 'close_to_exit': false
     , 'sign_in_automatically': false
+    , 'starts_minimized': false
     , 'font_list': ['Arial', 'Wide', 'Narrow', 'Calibri', 'Cambria', 'Comic Sans MS', 'Consolas', 'Corsiva', 'Courier New', 'Droid Sans', 'Droid Serif', 'Syncopate', 'Times New Roman']
     , 'use_default_reply_all': false
     , 'pos_x': 0
@@ -49,14 +52,15 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
-        , 'font_size': 12
+        , 'font_size': 14
         , 'effects_level': 1
+          // Behaviors
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
@@ -67,7 +71,7 @@ default_prefs: {
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
         , 'upload_api_base': 'https://upload.twitter.com/1/'
-          // extensions:
+          // extensions and others
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
         , 'kismet_mute_list': {'name': [], 'word': [], 'source':[]}
@@ -75,6 +79,8 @@ default_prefs: {
         , 'base_url': 'https://twitter.com/'
         , 'slider_state': null
         , 'views_lastest_id': {}
+        , 'welcome_background': ''
+        , 'profile_avatar': '' 
       }
     , 'identica': {
           // Account:
@@ -88,14 +94,15 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_family_used': 'Droid Sans Fallback, WenQuanYi Micro Hei, Sans, Microsoft Yahei, Simhei, Simsun'
-        , 'font_size': 12
+        , 'font_size': 14
         , 'effects_level': 1
+          // Behaviors
         , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
@@ -114,6 +121,8 @@ default_prefs: {
         , 'base_url': 'https://identi.ca/'
         , 'slider_state': null
         , 'views_lastest_id': {}
+        , 'welcome_background': ''
+        , 'profile_avatar': '' 
       }
 },
 
@@ -208,6 +217,7 @@ function save_prefs(name, callback) {
     profile.protocol = conf.profiles[name].protocol;
     profile.preferences = JSON.stringify(conf.profiles[name].preferences);
     profile.order = conf.profiles[name].order;
+
     db.modify_profile(name, profile, function(result) {
         if (typeof (callback) != 'undefined') {
             callback();
@@ -231,24 +241,46 @@ apply_settings:
 function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
+    if (conf.vars.platform === 'Chrome') {
+        chrome.extension.sendRequest(
+            {'enableContextMenu':conf.settings.context_menu_integration},
+            function (resp) {}
+        );
+    }
     globals.twitterClient.oauth.key = localStorage.consumer_key || conf.vars.consumer_key;
     globals.twitterClient.oauth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
 },
 
 apply_prefs:
-function apply_prefs(name) {
+function apply_prefs(name, full) {
     var active_profile = conf.profiles[name];
     var prefs = active_profile.preferences;
     conf.current_name = name;
 
-    $('#chk_remember_password').attr('checked', prefs.remember_password);
-    i18n.change(prefs.lang);
-    change_theme(prefs.theme, prefs.theme_path);
-    $('body').css('font-family', prefs.use_custom_font
-        ? prefs.custom_font: prefs.font_family_used);
-    globals.tweet_font_size = prefs.font_size;
-    change_effects_level(prefs.effects_level);
-    ui.Main.use_preload_conversation = prefs.use_preload_conversation;
+    if (full == true) {
+        i18n.change(prefs.lang);
+        change_theme(prefs.theme, prefs.theme_path);
+        globals.tweet_font_size = prefs.font_size;
+        $('.card_body > .text').css('font-size', prefs.font_size + 'px');
+        change_effects_level(prefs.effects_level);
+        ui.Main.use_preload_conversation = prefs.use_preload_conversation;
+        for (var id in ext.exts_info) {
+            ext.disable_ext(id);
+            if (prefs.exts_enabled.indexOf(id) != -1) {
+                ext.enable_ext(id);
+            }
+        }
+        ui.ImageUploader.service_name = prefs.default_picture_service;
+    }
+    var fonts = conf.get_default_font_settings();
+    $('body').css('font-family', fonts[0]);
+    if (prefs.use_custom_font) {
+        $('.listview, .dialog_block p, .card').css('font-family', prefs.custom_font);
+        globals.tweet_font = prefs.custom_font;
+    } else {
+        $('.listview, .dialog_block p, .card').css('font-family', fonts[1]);
+        globals.tweet_font = fonts[1];
+    }
 
     globals.twitterClient.api_base = prefs.api_base;
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
@@ -263,15 +295,6 @@ function apply_prefs(name) {
     oauth.access_token = prefs.access_token;
     oauth.key = prefs.consumer_key || oauth.key;
     oauth.secret = prefs.consumer_secret || oauth.secret;
-    
-    ui.ImageUploader.service_name = prefs.default_picture_service;
-
-    for (var id in ext.exts_info) {
-        ext.disable_ext(id);
-        if (prefs.exts_enabled.indexOf(id) != -1) {
-            ext.enable_ext(id);
-        }
-    }
 },
 
 load_token:
@@ -320,6 +343,18 @@ function normalize_settings(settings) {
         } 
     }
     return settings;
+},
+
+get_default_font_settings:
+function get_default_font_settings () {
+    var platform = navigator.platform;
+    if (platform.indexOf('Win') != -1) {
+        return ['\'Segoe UI\', \'Microsoft YaHei\', sans-serif', 'Verdana, \'Microsoft YaHei\', sans-serif'];
+    } else if (platform.indexOf('Mac') != -1) {
+        return ['\'Helvetica Neue\', \'Hiragino Sans GB\', sans-serif', '\'Lucida Grande\', \'Hiragino Sans GB\', sans-serif'];
+    } else {
+        return ['\'Helvetica Neue\', \'Hiragino Sans GB\', \'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', sans-serif', '\'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', Simhei, Simsun, sans-serif'];
+    }
 }
 
 };

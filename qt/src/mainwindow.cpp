@@ -25,6 +25,7 @@
 // Qt
 #include <QApplication>
 #include <QGraphicsWebView>
+#include <QDesktopServices>
 #include <QWebDatabase>
 #include <QWebSettings>
 #include <QDir>
@@ -35,9 +36,13 @@
 #include <QWebFrame>
 #include <QNetworkProxy>
 #include <QSettings>
+#include <QFontDatabase>
+#include <QTimer>
 #include <QLocale>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QToolTip>
+#include <QCursor>
 #include <QWebInspector>
 #include <QGraphicsView>
 #include <QTimer>
@@ -68,8 +73,8 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
     m_inspector(0),
-    m_useSocket(useSocket)
-
+    m_useSocket(useSocket),
+    m_fontDB()
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -94,15 +99,10 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     page->setPannable(false);
 #endif
 
-#ifndef MEEGO_EDITION_HARMATTAN
-    QSettings settings("hotot-qt", "hotot");
-    restoreGeometry(settings.value("geometry").toByteArray());
-    restoreState(settings.value("windowState").toByteArray());
-#endif
-
     m_menu = new QMenu(this);
 
 #ifndef MEEGO_EDITION_HARMATTAN
+    QSettings settings("hotot-qt", "hotot");
     m_actionMinimizeToTray->setCheckable(true);
     m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
@@ -133,17 +133,28 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 
     m_page = new HototWebPage(this);
 
-    QWebSettings::setOfflineStoragePath(QDir::homePath().append("/.config/hotot-qt"));
+#ifdef Q_OS_UNIX
+    QDir dir(QDir::homePath().append("/.config/hotot-qt"));
+#else
+    QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation).append("/Hotot"));
+#endif
+
+    if (!dir.exists())
+        dir.mkpath(".");
+
+    m_confDir = dir.absolutePath();
+
+    QWebSettings::setOfflineStoragePath(dir.absolutePath());
     QWebSettings::setOfflineStorageDefaultQuota(15 * 1024 * 1024);
 
     m_webView->setPage(m_page);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::LocalStorageEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::OfflineStorageDatabaseEnabled, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptCanAccessClipboard, true);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptEnabled, true);
 
     m_inspector = new QWebInspector;
     m_inspector->setPage(m_page);
@@ -161,6 +172,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     m_webView->load(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
     connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
+    connect(m_page, SIGNAL(linkHovered(QString, QString, QString)), this, SLOT(onLinkHovered(QString, QString, QString)));
 }
 
 #ifdef MEEGO_EDITION_HARMATTAN
@@ -173,9 +185,6 @@ void MainWindow::contentSizeChanged()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
 #ifndef MEEGO_EDITION_HARMATTAN
-    QSettings settings("hotot-qt", "hotot");
-    settings.setValue("geometry", saveGeometry());
-    settings.setValue("windowState", saveState());
     if (isCloseToExit()) {
         exit();
     }
@@ -198,12 +207,39 @@ bool MainWindow::isCloseToExit() {
     if (var.isValid()) {
         return var.toBool();
     }
-    else 
+    else
+        return false;
+}
+
+bool MainWindow::isStartMinimized() {
+    QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.starts_minimized");
+    if (!mini.isValid())
+        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.starts_minimized");
+    if (mini.isValid()) {
+        return mini.toBool();
+    }
+    else
+        return false;
+}
+
+bool MainWindow::isAutoSignIn() {
+    QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.sign_in_automatically");
+    if (!mini.isValid())
+        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.sign_in_automatically");
+    if (mini.isValid()) {
+        return mini.toBool();
+    }
+    else
         return false;
 }
 
 MainWindow::~MainWindow()
 {
+#ifndef MEEGO_EDITION_HARMATTAN
+    QSettings settings("hotot-qt", "hotot");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("windowState", saveState());
+#endif
     delete m_inspector;
 }
 
@@ -212,12 +248,46 @@ void MainWindow::loadFinished(bool ok)
     disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
     if (ok) {
         initDatabases();
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_TWEET_CACHE_SIZE = 2048;"));
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("db.MAX_USER_CACHE_SIZE = 128;"));
-        m_webView->page()->currentFrame()->evaluateJavaScript(QString("i18n.locale = \"%1\";").arg(QLocale::system().name()));
-        m_webView->page()->currentFrame()->evaluateJavaScript("globals.load_flags = 1;");
+
+        QString confString = QString(
+            "hotot_qt_variables = {"
+            "      'platform': 'Linux'"
+            "    , 'avatar_cache_dir': '%3'"
+            "    , 'extra_fonts': %4"
+            "    , 'extra_exts': %5"
+            "    , 'extra_themes': %6"
+            "    , 'locale': '%7'"
+            "};").arg(m_confDir)
+                 .arg(extraFonts())
+                 .arg(extraExtensions())
+                 .arg(extraThemes())
+                 .arg(QLocale::system().name());
+
+        m_webView->page()->currentFrame()->evaluateJavaScript(confString);
+        QTimer::singleShot(0, this, SLOT(notifyLoadFinished()));
+#ifndef MEEGO_EDITION_HARMATTAN
+        if (!isStartMinimized() || !isAutoSignIn()) {
+            show();
+            QSettings settings("hotot-qt", "hotot");
+            restoreGeometry(settings.value("geometry").toByteArray());
+            restoreState(settings.value("windowState").toByteArray());
+        }
+#else
+        show();
+#endif
+    }
+    else {
+        show();
     }
 }
+
+void MainWindow::notifyLoadFinished()
+{
+    m_webView->page()->currentFrame()->evaluateJavaScript(
+        "overlay_variables(hotot_qt_variables);"
+        "globals.load_flags = 1;");
+}
+
 
 void MainWindow::initDatabases()
 {
@@ -247,7 +317,7 @@ void MainWindow::initDatabases()
                             QNetworkProxy proxy(m_useSocket ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
                                                 httpProxyHost,
                                                 httpProxyPort);
-                            
+
                             if (useHttpProxyAuth)
                             {
                                 proxy.setUser(httpProxyAuthName);
@@ -256,7 +326,7 @@ void MainWindow::initDatabases()
 
                             m_webView->page()->networkAccessManager()->setProxy(proxy);
                         }
-                        
+
                     }
                 }
                 sqldb.close();
@@ -344,13 +414,12 @@ void MainWindow::unreadAlert(QString number)
 
 void MainWindow::setEnableDeveloperTool(bool e)
 {
-    m_webView->settings()->globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
+    QWebSettings::globalSettings()->setAttribute(QWebSettings::DeveloperExtrasEnabled, e);
     if (e)
         m_menu->insertAction(m_actionExit, m_actionDev);
     else
         m_menu->removeAction(m_actionDev);
     m_tray->setContextMenu(m_menu);
-
 }
 
 void MainWindow::showDeveloperTool()
@@ -377,3 +446,65 @@ void MainWindow::changeEvent(QEvent *event)
 }
 #endif
 
+void MainWindow::onLinkHovered(const QString & link, const QString & title, const QString & textContent )
+{
+    if (!link.isEmpty() && !title.isEmpty()) {
+        QToolTip::showText(QCursor::pos(), title);
+    }
+}
+
+QString MainWindow::extraFonts()
+{
+    return toJSArray(m_fontDB.families());
+}
+
+QString MainWindow::extraThemes()
+{
+    QDir dir(QString(m_confDir).append("/theme"));
+    if (!dir.exists())
+        return toJSArray();
+
+    QStringList dirList = dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+    QStringList themeList;
+
+    Q_FOREACH(const QString& themedir, dirList) {
+        QFileInfo info1(dir.absoluteFilePath(QString(themedir).append("/info.json")));
+        QFileInfo info2(dir.absoluteFilePath(QString(themedir).append("/style.css")));
+        if (info1.exists() && info1.isFile() && info2.exists() && info2.isFile())
+            themeList << QUrl::fromLocalFile(dir.absoluteFilePath(themedir)).toString();
+    }
+    return toJSArray(themeList);
+}
+
+QString MainWindow::extraExtensions()
+{
+    QDir dir(QString(m_confDir).append("/ext"));
+    if (!dir.exists())
+        return toJSArray();
+
+    QStringList dirList = dir.entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+    QStringList extJSList;
+
+    Q_FOREACH(const QString& extdir, dirList) {
+        QFileInfo info(dir.absoluteFilePath(QString(extdir).append("/entry.js")));
+        if (info.exists() && info.isFile())
+            extJSList << QUrl::fromLocalFile(info.absoluteFilePath()).toString();
+    }
+    return toJSArray(extJSList);
+}
+
+QString MainWindow::toJSArray(const QStringList& list)
+{
+    QString itemString;
+    bool first = true;
+    Q_FOREACH(const QString& item, list)
+    {
+        if (!first) {
+            itemString.append(",");
+        }
+        itemString.append("'").append(item).append("'");
+        first = false;
+    }
+
+    return QString("[%1]").arg(itemString);
+}

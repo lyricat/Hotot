@@ -343,7 +343,7 @@ function render_people_view(self, user_obj, proc) {
 load_timeline_full:
 function load_timeline_full(view, success, fail) {
     var render_proc = function (user_obj) {
-        ui.Slider.set_icon(view.name, user_obj.profile_image_url);
+        ui.Slider.set_icon(view.name, user_obj.profile_image_url, ui.Slider.BOARD_ICON);
         ui.PeopleView.render_people_view(view, user_obj 
             , function () {
                 globals.twitterClient.get_user_timeline(null, view.screen_name

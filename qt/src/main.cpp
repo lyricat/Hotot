@@ -19,6 +19,9 @@
 
 #include "common.h"
 
+// System
+#include <getopt.h>
+
 // Qt
 #include <QApplication>
 
@@ -129,8 +132,6 @@ int main(int argc, char *argv[])
     w.setOrientationAngle(M::Angle0);
     w.setOrientationAngleLocked(true);
 #endif
-
-    w.show();
 
     return a.exec();
 }

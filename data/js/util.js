@@ -17,6 +17,14 @@ function compare_id(id1, id2) {
     }
 },
 
+generate_uuid:
+function generate_uuid() {
+    var S4 = function() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    }
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+},
+
 unserialize_dict:
 function unserialize_dict(str) {
     /* str = urlencode(key1)

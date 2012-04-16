@@ -48,21 +48,34 @@ function update_tweet_block_width() {
     if (view_width > 1280) {
         globals.tweet_block_width -= 1;
     }
-    $('.view_title:gt(ui.Slider.column_num)').hide();
-    $('.tweetview').width(globals.tweet_block_width);
-    $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
-    $('.view_title').width(globals.tweet_block_width-1);
-    $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
-        view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1);
+    if (ui.Slider.column_num != 0) {
+        $('#main_page_slider').show();
+        $('#indication_light').show();
+        $('#empty_view_hint').hide();
+        $('.view_title:gt('+ui.Slider.column_num+')').hide();
+        $('.view_title:lt('+ui.Slider.column_num+')').show();
+        $('.tweetview').width(globals.tweet_block_width);
+        $('.tweetview:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width);
+        $('.view_title').width(globals.tweet_block_width-1);
+        $('.view_title:eq('+(ui.Slider.column_num - 1)+')').width(
+            view_width - (ui.Slider.column_num-1) * globals.tweet_block_width - 1).show();
+    } else {
+        $('#main_page_slider').hide();
+        $('#indication_light').hide();
+        $('#empty_view_hint').fadeIn();
+        $('.view_title').hide();
+    }
 
     // no_stick indicators
     var idrs = $('#indicator_btns').children('.no_stick');
     $('#indicator_btns').children('.no_stick:eq(0)')
         .css('margin-left', (($(window).width()-(idrs.length+1) * 40)/2) + 'px');
+    $('#indicator_btns').children('.no_stick:gt(0)')
+        .css('margin-left', '0px');
 
     // adjust width of compose button
-    if (ui.Slider.column_num == 1) {
+    if (view_width < 800) {
         $('#indicator_compose_btn').removeClass('with_label');
     } else {
         $('#indicator_compose_btn').addClass('with_label');
@@ -78,6 +91,10 @@ function update_tweet_block_width() {
         status_box_w = 550;
     }
     $('#status_box').width(status_box_w);
+    // recalculate scrollbar layout
+    for (var k in ui.Main.views) {
+        ui.Main.views[k].scrollbar.recalculate_layout();
+    }
 }
 
 function hotot_action(uri) {
@@ -88,19 +105,42 @@ function hotot_action(uri) {
 
 function quit() {
     conf.save_settings(function () {
-        conf.save_prefs(conf.current_name, function(){
-            if (conf.vars.platform == 'Chrome') {
-                chrome.tabs.getCurrent(function (tab) {
-                    chrome.tabs.remove(tab.id);
-                });
+        if (conf.current_name.length != 0) {
+            if (globals.signed_in) {
+                ui.Slider.save_state();
+            }
+            conf.save_prefs(conf.current_name, function(){
+                if (!util.is_native_platform()) {
+                    if (conf.vars.platform === 'Chrome') {
+                        chrome.tabs.getCurrent(function (tab) {
+                            chrome.tabs.remove(tab.id);
+                        });
+                    } else {
+                        // pass
+                    }
+                } else {
+                    hotot_action('system/quit');
+                }
+            });
+        } else {
+            if (!util.is_native_platform()) {
+                if (conf.vars.platform === 'Chrome') {
+                    chrome.tabs.getCurrent(function (tab) {
+                        chrome.tabs.remove(tab.id);
+                    });
+                } else {
+                    // pass
+                }
             } else {
                 hotot_action('system/quit');
             }
-        });
+        }
     });
 }
-
-function open_people(screen_name, additional_opts) {
+$(window).unload(function() {
+    quit();
+});
+function open_people(screen_name, additional_opts, in_background) {
     // @TODO check this user if exists or not
     toast.set('Lookup @'+screen_name+'... ').show();
     var name = 'people_'+screen_name;
@@ -125,10 +165,12 @@ function open_people(screen_name, additional_opts) {
             , 'screen_name': screen_name
         }, additional_opts));
     ui.Main.views[name].load();
-    ui.Slider.slide_to(name);
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
 }
 
-function open_list(screen_name, slug, additional_opts) {
+function open_list(screen_name, slug, additional_opts, in_background) {
     // @TODO check this list if exists or not
     toast.set('Lookup @'+screen_name+'/'+slug+'... ').show();
     var name = 'list_'+screen_name+'_'+slug;
@@ -154,7 +196,36 @@ function open_list(screen_name, slug, additional_opts) {
             , 'slug': slug
         }, additional_opts));
     ui.Main.views[name].load();
-    ui.Slider.slide_to(name);
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
+}
+
+function open_search(query, additional_opts, in_background) {
+    toast.set('Lookup "'+ query +'"... ').show();
+    var name = 'search_'+ util.generate_uuid();
+    var title = 'Search Result of "' + query + '"';
+    ui.Slider.add(name
+        , {title: title, icon:'image/ic_search.png'}
+        , $.extend({ 'type': 'saved_search', 'title': title
+            , 'load': ui.SearchView.load_tweet
+            , 'loadmore': ui.SearchView.loadmore_tweet
+            , 'load_success': ui.SearchView.load_tweet_success
+            , 'load_fail': null
+            , 'loadmore_success': ui.SearchView.loadmore_tweet_success
+            , 'loadmore_fail': null
+            , 'former': ui.Template.form_search
+            , 'destroy': ui.SearchView.destroy_view
+            , 'method': 'poll'
+            , 'interval': 120
+            , 'item_type': 'phoenix_search'
+            , 'is_trim': true
+            , 'query': query
+        }, additional_opts));
+    ui.Main.views[name].load();
+    if (in_background != true) {
+        ui.Slider.slide_to(name);
+    }
 }
 
 function update_status(text) {
@@ -202,8 +273,6 @@ function hotot_log(label, content) {
                 + '/' + encodeURIComponent(content));
         } else if (conf.vars.platform == 'Chrome') {
             console.log('[' + label + '] ' + content);
-        } else {
-            util.console.out('[' + label + '] ' + content);
         }
     }
 }
@@ -277,7 +346,7 @@ function init(callback) {
 function init_dialogs() {
     hotot_log('init', 'init_dialogs()');
     globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
-    globals.oauth_dialog.resize(350, 350);
+    globals.oauth_dialog.resize(350, 400);
     globals.oauth_dialog.place(widget.DialogManager.CENTER);
     globals.oauth_dialog.create();
 
@@ -297,7 +366,7 @@ function init_dialogs() {
     globals.add_to_list_dialog.create();
 
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
-    globals.prefs_dialog.resize(500, 400);
+    globals.prefs_dialog.resize(600, 600);
     globals.prefs_dialog.place(widget.DialogManager.CENTER);
     globals.prefs_dialog.create();
 
@@ -310,6 +379,11 @@ function init_dialogs() {
     globals.imageuploader_dialog.resize(600, 600);
     globals.imageuploader_dialog.place(widget.DialogManager.CENTER);
     globals.imageuploader_dialog.create();
+
+    globals.imagepreview_dialog = new widget.Dialog('#imagepreview_dlg');
+    globals.imagepreview_dialog.resize(1800, 1800);
+    globals.imagepreview_dialog.place(widget.DialogManager.CENTER);
+    globals.imagepreview_dialog.create();
 
     globals.error_dialog= new widget.Dialog('#error_dlg');
     globals.error_dialog.resize(500, 400);
@@ -328,7 +402,6 @@ function init_dialogs() {
 }
 
 function init_ui() {
-    util.console.init();
     init_hotkey();
     kismet.init();
     notification.init();
@@ -360,6 +433,8 @@ function init_ui() {
     ui.ContextMenu.init();
     init_dialogs();
 
+    widget.Scrollbar.register();
+
     globals.ratelimit_bubble = new widget.Bubble('#ratelimit_bubble', '#btn_my_profile');
     globals.ratelimit_bubble.create();
     globals.ratelimit_bubble.set_content("0");
@@ -368,61 +443,92 @@ function init_ui() {
 function init_hotkey() {
     hotkey.init();
     // Application
+    // <Ctrl> + q to quit
+    hotkey.register("<C-q>", "*", function () {
+        quit();
+    });
+    // '?' to open help & about dialog
+    hotkey.register("?", "g", function () {
+        globals.about_dialog.open();
+    });
     // 'r' to reload timeline
-    var ig = hotkey.calculate(71);
-    hotkey.register(hotkey.calculate(82),function () {
+    hotkey.register("r", function () {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register(hotkey.calculate(67),
+    hotkey.register("c",
         function () {ui.StatusBox.open();});
     // Navigation
+    hotkey.register(hotkey.calculate(38), "D", function () {
+        ui.Main.move_by_offset(-50);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(40), "D", function () {
+        ui.Main.move_by_offset(50);
+        return false;
+    });
+    // page up/down @TODO 500px is not accurate
+    hotkey.register(hotkey.calculate(33), "D", function () {
+        ui.Main.move_by_offset(-500);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(34), "D", function () {
+        ui.Main.move_by_offset(500);
+        return false;
+    });
+    hotkey.register(hotkey.calculate(36), "U", function () {
+        ui.Main.move_to_tweet("top");
+        return false;
+    });
+    hotkey.register(hotkey.calculate(35), "U", function () {
+        ui.Main.move_to_tweet("bottom");
+        return false;
+    });
     // 'h' to slide to prev tab
-    hotkey.register(hotkey.calculate(72), ui.Slider.slide_to_prev);
+    hotkey.register("h", ui.Slider.slide_to_prev);
     // 'l' to slide to next tab
-    hotkey.register(hotkey.calculate(76), ui.Slider.slide_to_next);
+    hotkey.register("l", ui.Slider.slide_to_next);
     // 'k' to move to prev tweet
-    hotkey.register(hotkey.calculate(75), function () {
+    hotkey.register("k", function () {
         ui.Main.move_to_tweet("prev");
     });
     // 'j' to move to next tweet
-    hotkey.register(hotkey.calculate(74), function () {
+    hotkey.register("j", function () {
         ui.Main.move_to_tweet("next");
     });
     // 'g' then 'g' to move to top
-    hotkey.register([ig ,ig], function () {
+    hotkey.register("gg", function () {
         ui.Main.move_to_tweet("top");
     });
     // shift + 'g' to move to bottom
-    hotkey.register(hotkey.calculate(71, hotkey.shiftKey), function () {
+    hotkey.register("G", function () {
         ui.Main.move_to_tweet("bottom");
     });
     // 'g' then 'h' to go home
-    hotkey.register([ig,hotkey.calculate(72)], function () {
+    hotkey.register("gh", function () {
         ui.Slider.slide_to('home');
     });
     // 'g' then 'm' to go mentions
-    hotkey.register([ig,hotkey.calculate(77)], function () {
+    hotkey.register("gm", function () {
         ui.Slider.slide_to('mentions');
     });
     // 'g' then 'd' to go messages
-    hotkey.register([ig,hotkey.calculate(68)], function () {
+    hotkey.register("gd", function () {
         ui.Slider.slide_to('messages');
     });
     // 'g' then 'r' to go retweets
-    hotkey.register([ig,hotkey.calculate(82)], function () {
+    hotkey.register("gr", function () {
         ui.Slider.slide_to('retweets');
     });
     // 'g' then 's' to go search
-    hotkey.register([ig,hotkey.calculate(83)], function () {
+    hotkey.register("gs", function () {
         ui.Slider.slide_to('search');
     });
 
     // @TODO Actions, prefix 'a'
-    var ia = hotkey.calculate(65);
     // 'a' then 'r' to reply
-    hotkey.register([ia, hotkey.calculate(82)], function() {
+    hotkey.register("ar", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -431,7 +537,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'q' to quote
-    hotkey.register([ia, hotkey.calculate(81)], function() {
+    hotkey.register("aq", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -440,7 +546,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 's' to favorite/un-fav
-    hotkey.register([ia, hotkey.calculate(83)], function() {
+    hotkey.register("as", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -450,7 +556,7 @@ function init_hotkey() {
     });
 
     // 'a' then 'a' to reply all
-    hotkey.register([ia, ia], function() {
+    hotkey.register("aa", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -460,7 +566,7 @@ function init_hotkey() {
     });
 
     // 'a' then <Shift>+'r' to retweet/undo-retweet
-    hotkey.register([ia, hotkey.calculate(82, hotkey.shiftKey)], function() {
+    hotkey.register("aR", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -469,7 +575,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'd' to delete
-    hotkey.register([ia, hotkey.calculate(68)], function() {
+    hotkey.register("ad", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -478,7 +584,7 @@ function init_hotkey() {
         }
     });
     // 'a' then 'm' to send msg
-    hotkey.register([ia, hotkey.calculate(77)], function() {
+    hotkey.register("am", function() {
         if (ui.Main.selected_tweet_id != null) {
             var current = $(ui.Main.selected_tweet_id);
             if (current.length != 0) {
@@ -486,18 +592,21 @@ function init_hotkey() {
             }
         }
     });
-    // 'a' then 'u' to open people of current selected tweet 
-    hotkey.register([ia, hotkey.calculate(85)], function () {
+    // 'a' then 'u' to open people of current selected tweet
+    hotkey.register("au", function () {
         ui.Main.on_open_people_btn_click(null, ui.Main.selected_tweet_id, null);
     });
     // 'a' then 'o' to open first link of the selected tweet
-    hotkey.register([ia, hotkey.calculate(79)], function () {
+    hotkey.register("ao", function () {
         ui.Main.on_open_link_btn_click(null, ui.Main.selected_tweet_id, null);
+    });
+    // 'a' then 'f' to open finder
+    hotkey.register("af", function () {
+        ui.Finder.show();
     });
 
     // 'z' then 'o' to expand
-    var iz = hotkey.calculate(90);
-    hotkey.register([iz, hotkey.calculate(79)], function () {
+    hotkey.register("zo", function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first');
@@ -505,8 +614,8 @@ function init_hotkey() {
             btn.click();
         }
     });
-    // 'z' then 'c' to fold 
-    hotkey.register([iz, hotkey.calculate(67)], function () {
+    // 'z' then 'c' to fold
+    hotkey.register("zc", function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first')
@@ -514,27 +623,17 @@ function init_hotkey() {
             btn.click();
         }
     });
-    
-    var it = hotkey.calculate(84);
+
     // 't' then 'x' to close current view
-    hotkey.register([it, hotkey.calculate(88)], function () {
+    hotkey.register("tx", function () {
         if (ui.Slider.current != "home" && ui.Slider.current != "mentions" && ui.Slider.current != "search") {
             ui.Main.destroy_view(ui.Main.views[ui.Slider.current])
         }
     });
-
-    // '/' to open finder
-    hotkey.register([hotkey.calculate(191)], function () {
-        ui.Finder.show();
-    });
     // :)
-    hotkey.register([hotkey.calculate(51, hotkey.shiftKey)
-        , hotkey.calculate(50, hotkey.shiftKey)
-        , hotkey.calculate(49, hotkey.shiftKey)
-        , hotkey.calculate(54, hotkey.shiftKey)
-        , hotkey.calculate(55, hotkey.shiftKey)], function(){
-            $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
-        });
+    hotkey.register("#@!^&", function(){
+        $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
+    });
 }
 
 function overlay_variables(vars) {
@@ -613,31 +712,49 @@ function on_load_finish() {
             init_ui();
             $(window).dequeue('_on_load_finish');
         });
-        // 5. finish, hide loading prompt
+        // 5. platform relatd ui staffs
+        procs.push(function() {
+            // @TODO DND image uploading in native platform
+            // is disabled for conflicting with HTML5 DND
+            if (util.is_native_platform()) {
+                $('#tbox_status').attr('placeholder', 'Share something new ...');
+                $('#imageuploader_dlg .drag_hint').hide();
+            } else {
+                $('#imageuploader_dlg .preview_hint').hide();
+            }
+            $(window).dequeue('_on_load_finish');
+        });
+        // 6. finish, hide loading prompt
         procs.push(function () {
             $('#welcome_page_loading').fadeOut(function () {
                 hotot_log('init', 'done!');
                 $('#welcome_page_main').fadeIn();
                 ui.Welcome.load_daily_hint();
                 ui.Welcome.load_profiles_info();
-                $('#profile_avatar_list a:first').click();
+                if ($('#profile_avatar_list a').length == 1) {
+                    $('#profile_avatar_list a:first').click();
+                } else {
+                    $('#profile_avatar_list a:eq(1)').click();
+                }
                 $(window).dequeue('_on_load_finish');
-                if (conf.settings.sign_in_automatically)
-                $('#btn_oauth_sign_in').trigger('click');
+                if (conf.settings.sign_in_automatically) {
+                    ui.Welcome.go.addClass('loading');
+                    setTimeout(function () {
+                        ui.Welcome.go.trigger('click');
+                    }, 2000);
+                }
             });
             });
-        // 6. run track code
+        // 7. run track code
         procs.push(function () {
-            if (util.is_native_platform()) {
-                track_alt({
-                    'platform': conf.vars.platform,
-                    'version': conf.vars.version}
-                );
-            } else {
-                track({
-                    'platform': conf.vars.platform,
-                    'version': conf.vars.version}
-                );
+            if (conf.settings.use_anonymous_stat) {
+               track({
+                   'platform': conf.vars.platform,
+                   'version': conf.vars.version,
+                   'autologin': conf.settings.sign_in_automatically,
+                   'lang': window.navigator.language,
+                   'localeDate': new Date().toString()
+               });
             }
             $(window).dequeue('_on_load_finish');
         });
@@ -646,55 +763,23 @@ function on_load_finish() {
     }
 }
 function track(vars) {
-    try {
-        var pageTracker = _gat._getTracker("UA-18538886-4");
-        pageTracker._setCustomVar(1, 'Platform', vars.platform, 1);
-        pageTracker._setCustomVar(2, 'Version', vars.version, 1);
-        pageTracker._trackPageview();
-    } catch (e) {}
-    return;
-}
-
-function track_alt(vars) {  
-    function rand(min, max) {
-        return min + Math.floor(Math.random() * (max - min));
+    var url = 'http://stat.hotot.org/?';
+    var arr = [];
+    for (var k in vars) {
+        arr.push(k + '=' + vars[k]);
     }
-    var img = new Image();
-    var urchinCode = 'UA-18538886-4';
-    var i=1000000000;
-    var utmn=rand(i,9999999999);
-    var cookie=rand(10000000,99999999);
-    var random=rand(i,2147483647);
-    var today=(new Date()).getTime();
-    var win = window.location;
-    var urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=5.2.0'
-        + '&utms=6'
-        + '&utmn=' + utmn
-        + '&utme=' + '8(Platform*Version)9('+vars.platform+'*'+vars.version+')11(1*1)'
-        + '&utmcs=UTF-8&utmsr=1280x800&utmsc=24-bit&utmul=en-us&utmje=1&utmfl=11.0 d1'
-        + '&utmdt=' + encodeURIComponent(document.title)
-        + '&utmhn=' + win.host 
-        + '&utmr=-'
-        + '&utmp=' + win.pathname 
-        + '&utmac=' + urchinCode
-        + '&utmcc=__utma%3D' + cookie+'.'+random+'.'+today+'.'+today+'.'
-            +today+'.2%3B%2B__utmb%3D'
-            +cookie+'%3B%2B__utmc%3D'
-            +cookie+'%3B%2B__utmz%3D'
-            +cookie+'.'+today
-            +'.2.2.utmccn%3D(referral)%7Cutmcsr%3D'
-            + win.host + '%7Cutmcct%3D'
-            + win.pathname + '%7Cutmcmd%3Dreferral%3B%2B__utmv%3D'
-            +cookie+'.-%3B';
-    img.src = urchinUrl;
+    url += arr.join('&');
+    new Image().src = url;
+    return;
 }
 
 var globals = {
       tweet_block_width: 600
     , max_status_len: 140
     , tweet_font_size: 12
+    , tweet_font: ''
     , myself: {}
-    , in_main_view: false
+    , signed_in: false
     , load_flags: 0
     , ratelimit_bubble: null
     , unread_alert_timer: null
@@ -708,24 +793,9 @@ jQuery(function($) {
 
     $(document).keyup(
     function (event) {
-        var focus_input = (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA');
-        if (event.shiftKey && !event.ctrlKey && !event.metaKey && !event.altKey && !focus_input) {
-            if (event.keyCode == 191) {
-                // '?' to open help & about dialog
-                globals.about_dialog.open();
-                return;
-            }
-        }
-        if (event.ctrlKey && !event.shiftKey && !event.altKey && event.keyCode == 81) {
-            // <Ctrl> + q to quit
-            quit();
-        }
-        if (focus_input || !globals.in_main_view)
-            return
         if (! ui.ActionMenu.is_hide) {
             return ui.ActionMenu.handle_keyup(event.keyCode);
         }
-        hotkey.crack(event);
         return true;
     });
 
@@ -738,21 +808,21 @@ jQuery(function($) {
 
     document.getElementById('indication').onmousewheel = function (event) {
         if (event.wheelDelta < 0){
-            ui.Slider.slide_to_next();
+            ui.Slider.slide_to_next(true);
         } else {
-            ui.Slider.slide_to_prev();
+            ui.Slider.slide_to_prev(true);
         }
         return true;
     };
 
     document.body.onmousewheel = function (event) {
-        if (event.wheelDeltaY && (event.wheelDeltaX > 50 || event.wheelDeltaX < 50)){
+        if (event.wheelDeltaY < -50 || event.wheelDeltaY > 50){
             return true;
         }
-        if (event.wheelDeltaX && event.wheelDeltaX < -90){
-            ui.Slider.slide_to_next();
-        } else if (event.wheelDeltaX && event.wheelDeltaX > 90){
-            ui.Slider.slide_to_prev();
+        if (event.wheelDeltaX && event.wheelDeltaX < -100){
+            ui.Slider.slide_to_next(true);
+        } else if (event.wheelDeltaX && event.wheelDeltaX > 100){
+            ui.Slider.slide_to_prev(true);
         }
     };
     $(window).bind('focus click', function () {
@@ -762,18 +832,28 @@ jQuery(function($) {
         unread_alert(0);
     });
 
-
-    $(window).resize(
-    function () {
+    var on_resize = function () {
         update_tweet_block_width();
         if (globals.load_flags) {
             if (globals.load_flags == 2) {
                 conf.settings.size_w = $(window).width();
                 conf.settings.size_h = $(window).height();
                 conf.save_settings()
-                ui.Slider.slide_to(ui.Slider.current);
+                if (ui.Slider.column_num != 0) {
+                    if (ui.Slider.current.length == 0) {
+                        ui.Slider.slide_to(ui.Slider.tweet_blocks[0]);
+                    } else {
+                        ui.Slider.slide_to(ui.Slider.current);
+                    }
+                }
             }
         }
+    }
+    var resize_timer = false
+    $(window).resize(function () {
+        if (resize_timer !== false)
+            clearTimeout(resize_timer);
+        resize_timer = setTimeout(on_resize, 200);
     });
 
     $("#count").hover(
@@ -784,7 +864,7 @@ jQuery(function($) {
         $("#count > ul").hide();
     });
 
-    jQuery.fx.interval = 50;    
+    jQuery.fx.interval = 50;
 
     init();
 

@@ -76,7 +76,7 @@ function WidgetDialog(obj) {
                  if (self._drag) {
                      self.move(event.clientX - self._offsetX, event.clientY - self._offsetY);
                  }
-             })
+             });
     };
 
     self.move = function move(x, y) {
