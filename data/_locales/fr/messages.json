@@ -16,7 +16,7 @@
 		"description": "data/index.html"
 	},
 	"add": {
-		"message": "",
+		"message": "Ajouter",
 		"description": "data/index.html"
 	},
 	"add_new_views": {
@@ -44,7 +44,7 @@
 		"description": "data/index.html"
 	},
 	"appearance": {
-		"message": "",
+		"message": "Apparence",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -56,7 +56,7 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "Authentification OK!",
+		"message": "Authentification OK !",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -128,7 +128,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "",
+		"message": "Cliquez pour composer",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -144,7 +144,7 @@
 		"description": "data/index.html"
 	},
 	"close_current_column": {
-		"message": "",
+		"message": "Fermer la colonne",
 		"description": "data/index.html"
 	},
 	"compose": {
@@ -212,15 +212,15 @@
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "",
+		"message": "Brouillons",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "",
+		"message": "Faire glisser la photo ici",
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "",
+		"message": "Relâche",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -264,7 +264,7 @@
 		"description": "data/index.html"
 	},
 	"examples": {
-		"message": "",
+		"message": "Exemples",
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
@@ -280,7 +280,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Mettre ce tweet en favoris...",
+		"message": "Mettre ce tweet en favoris ...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -288,7 +288,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "",
+		"message": "Vue des Favoris",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
@@ -296,7 +296,7 @@
 		"description": "data/index.html"
 	},
 	"find": {
-		"message": "",
+		"message": "Trouver",
 		"description": "data/index.html"
 	},
 	"fine": {
@@ -368,7 +368,7 @@
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Home Timeline",
+		"message": "Timeline",
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
@@ -392,7 +392,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "",
+		"message": "Inserer un Smiley",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -436,7 +436,7 @@
 		"description": "data/index.html"
 	},
 	"label_with_color": {
-		"message": "",
+		"message": "Etiquette avec couleur",
 		"description": "data/index.html"
 	},
 	"language": {
@@ -452,7 +452,7 @@
 		"description": "data/index.html"
 	},
 	"list": {
-		"message": "",
+		"message": "Liste",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
@@ -484,11 +484,11 @@
 		"description": "data/index.html"
 	},
 	"mark_deleted_tweets": {
-		"message": "",
+		"message": "Marquez pour suppression",
 		"description": "data/index.html"
 	},
 	"mask": {
-		"message": "",
+		"message": "Masquer",
 		"description": "data/index.html"
 	},
 	"mention_them": {
@@ -544,7 +544,7 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "",
+		"message": "Mes Favoris",
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
@@ -572,7 +572,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
-		"message": "",
+		"message": "Suivant",
 		"description": "data/index.html"
 	},
 	"no_extension": {
@@ -780,7 +780,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"rule": {
-		"message": "",
+		"message": "Règle",
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
@@ -788,11 +788,11 @@
 		"description": "data/index.html"
 	},
 	"rule_editor": {
-		"message": "",
+		"message": "Editer la règle",
 		"description": "data/index.html"
 	},
 	"rule_name": {
-		"message": "",
+		"message": "Nom de règle",
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
@@ -808,7 +808,7 @@
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
-		"message": "",
+		"message": "Sauvegarder le brouillon",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
@@ -832,7 +832,7 @@
 		"description": "data/index.html"
 	},
 	"search_view": {
-		"message": "",
+		"message": "Vue de recherche",
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
@@ -936,7 +936,7 @@
 		"description": "data/index.html"
 	},
 	"themes": {
-		"message": "themes",
+		"message": "thèmes",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
