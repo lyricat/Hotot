@@ -5,13 +5,14 @@
 # Jeonkwan Chan <jeonkwan@gmail.com>
 # Jiahua Huang <jhuangjiahua@gmail.com>, 2010.
 # Weng Xuetian <wengxt@gmail.com>, 2012.
+# margurite <i@marguerite.su>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-10 15:56+0800\n"
-"PO-Revision-Date: 2012-03-10 15:57+0800\n"
-"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
+"PO-Revision-Date: 2012-04-16 20:51+0800\n"
+"Last-Translator: margurite <i@marguerite.su>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
 "Language: Chinese/Simplified\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +27,7 @@ msgstr "%1 条未读消息"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
 msgid "&Developer Tool"
-msgstr "开发工具 (&D)"
+msgstr "调教工具 (&D)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
 msgid "&Exit"
@@ -38,12 +39,12 @@ msgstr "最小化时隐藏到系统托盘 (&M)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
 msgid "(c) 2009-2011 Shellex Wai\n"
-msgstr "(c) 2009-2011 Shellex Wai\n"
+msgstr "(c) 2009-2012 Shellex Wai\n"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
 msgid "1 unread post"
 msgid_plural "%1 unread posts"
-msgstr[0] "%1 条未读状态"
+msgstr[0] "%1 条未读消息"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 msgid "Artwork"
@@ -66,7 +67,7 @@ msgstr "文档编写"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
 msgid "Enable developer Tool"
-msgstr "启用开发者工具"
+msgstr "启用调教工具"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
 msgid "Evan"
@@ -108,7 +109,7 @@ msgstr "Hotot: 单击激活"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
 msgid "Jiahua Huang"
-msgstr "Jiahua Huang"
+msgstr "花花"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
 msgid "Jimmy Xu"
@@ -134,11 +135,11 @@ msgstr "加载搜索结果 %s ..."
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
 msgid "Marguerite Su"
-msgstr "Marguerite Su"
+msgstr "土豪苏小姐"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
 msgid "Shellex Wai"
-msgstr "Shellex Wai"
+msgstr "壳酱"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
 msgid "Show &MainWindow"
@@ -161,7 +162,7 @@ msgstr "Xu Zhen"
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:90
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
 msgid "_Compose"
-msgstr "撰写 (_C)"
+msgstr "发推 (_C)"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113

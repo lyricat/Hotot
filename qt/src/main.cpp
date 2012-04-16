@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
                          "0.9.7",                             // app version 
                          ki18n("Lightweight, Flexible Microblogging"),  // short description
                          KAboutData::License_GPL_V2,                   // license
-                         ki18n("(c) 2009-2011 Shellex Wai\n"),   // copyright
+                         ki18n("(c) 2009-2012 Shellex Wai\n"),   // copyright
                          KLocalizedString(),
                          "http://www.hotot.org/",                   // home page
                          "https://github.com/shellex/Hotot/issues"               // address for bugs
