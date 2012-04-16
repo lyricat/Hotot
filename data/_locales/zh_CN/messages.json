@@ -1,0 +1,1114 @@
+{
+	"about": {
+		"message": "关于",
+		"description": ""
+	},
+	"about_and_help": {
+		"message": "关于与帮助",
+		"description": ""
+	},
+	"access_token_doesnt_exist": {
+		"message": "呜呜，访问令牌不存在",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "动作",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "添加",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "添加新视图",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "添加到列表",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "高级",
+		"description": ""
+	},
+	"all": {
+		"message": "全部",
+		"description": "All"
+	},
+	"api_base": {
+		"message": "API Base",
+		"description": ""
+	},
+	"api_setting": {
+		"message": "API 设置",
+		"description": ""
+	},
+	"appearance": {
+		"message": "外观",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "归档",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "壳酱的诡计",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "验证通过！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "作者",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "自动更新",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "打开以后自动登陆",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "在性能和养眼度之间保持平衡。",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "行为",
+		"description": ""
+	},
+	"bio": {
+		"message": "自述",
+		"description": ""
+	},
+	"block": {
+		"message": "屏蔽",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "血腥的苏酱",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "取消",
+		"description": ""
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "不能验证殿下的身份噢。请检查您的用户名/密码和 API 地址。",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "不允许在账户前缀中使用`@`字符哦喵",
+		"description": "data/js/ui.welcome.js"
+	},
+	"chrome_context_menu_integration": {
+		"message": "集成到Chrome右键菜单",
+		"description": "data/index.html"
+	},
+	"clean_token": {
+		"message": "清空令牌",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "清除",
+		"description": ""
+	},
+	"clear_and_close": {
+		"message": "清空并且关闭",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "点我继续",
+		"description": ""
+	},
+	"click_the_button_below": {
+		"message": "点击下面的按钮",
+		"description": ""
+	},
+	"click_to_compose_message": {
+		"message": "点击切换DM模式",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "点击查看",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "点我查看转发人",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "关闭",
+		"description": ""
+	},
+	"close_current_column": {
+		"message": "关闭当前列",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "发推",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "写私信",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "复制 PIN Code 并且将它粘贴到下面的文本框",
+		"description": ""
+	},
+	"copy_to_clipboard": {
+		"message": "复制到剪贴板",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "创建一个新列表",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "致谢",
+		"description": ""
+	},
+	"cuddly": {
+		"message": "可乐小V",
+		"description": "data/index.html"
+	},
+	"debug": {
+		"message": "调试",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "默认贴图服务",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "删除",
+		"description": ""
+	},
+	"delete_this_tweet": {
+		"message": "删除",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "删除成功！",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "禁用",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "禁用控件集装饰和部分动画。",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "禁用的",
+		"description": ""
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "草稿",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "拖拽一张照片至此处",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "丢弃",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "编辑",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "效果",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "高",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "低",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "中",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "启用",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "启用代理",
+		"description": ""
+	},
+	"enable_verbose_mode": {
+		"message": "启用啰嗦模式",
+		"description": ""
+	},
+	"enabled": {
+		"message": "已启用",
+		"description": ""
+	},
+	"errors": {
+		"message": "错误",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "示例",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "关闭窗口时退出 Hotot",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "扩展",
+		"description": ""
+	},
+	"fav_or_un_fav": {
+		"message": "收藏/取消收藏",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "收藏...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "收藏",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "我的收藏",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "过滤类似的推",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "查找",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "还能 hold 住",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "首次使用，用Twitter登录",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "关注",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "关注@",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "关注者",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "关注者",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "字体",
+		"description": ""
+	},
+	"font_preview_hint": {
+		"message": "我能吞下玻璃而不伤身体噢。",
+		"description": ""
+	},
+	"font_size": {
+		"message": "字体大小",
+		"description": ""
+	},
+	"friend_cnt": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "全局",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
+		"description": ""
+	},
+	"greeting": {
+		"message": "殿下侬好！",
+		"description": ""
+	},
+	"help": {
+		"message": "帮助",
+		"description": ""
+	},
+	"hey_it_is_you": {
+		"message": "殿下侬好！殿下再崴！",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "腹黑的老K",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "时间线",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "主时间线",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "傲兔",
+		"description": ""
+	},
+	"http_proxy": {
+		"message": "HTTP 代理",
+		"description": ""
+	},
+	"image_uploader": {
+		"message": "图片上传器",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "信息",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "插入颜文字",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "智能过滤器",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "介面语言",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "加入",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "吾只是有点怀念这儿",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "热键绑定",
+		"description": ""
+	},
+	"keyboard": {
+		"message": "键盘",
+		"description": ""
+	},
+	"keyboard_shortcuts": {
+		"message": "键盘快捷键",
+		"description": ""
+	},
+	"kismet_firewall": {
+		"message": "Kismet 防火墙",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Kismet 向导",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "警告：凡是具备如下特征的推都将被抛弃，不予显示。",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "染色",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "语言",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "让傲兔兔收集匿名统计信息",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "许可",
+		"description": ""
+	},
+	"list": {
+		"message": "列表",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "列表中",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "列表",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "包含该用户的列表",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "该用户的列表",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "加载中…",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "加载资源中...",
+		"description": ""
+	},
+	"location": {
+		"message": "位置",
+		"description": ""
+	},
+	"mark_deleted_tweets": {
+		"message": "标记被删除的推",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "屏蔽",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "提及",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "提到你的",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "提到我的",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "私信",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "私信",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "杂项",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "更多动作",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "开启更多特效，比如阴影和发光。",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "移到底部",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "移动到下一条状态",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "移动到上一条状态",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "移到顶部",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "屏蔽器",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "我的收藏",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "吾之旅程在那星辰大海",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "魔法值",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "名字",
+		"description": ""
+	},
+	"nearly_dead": {
+		"message": "都快挂了",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "网路故障，请稍候再试喵！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "殿下，您的新账户已经创建成功！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "下一步",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "木有扩展",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "通知",
+		"description": ""
+	},
+	"oauth_base": {
+		"message": "OAuth Base",
+		"description": ""
+	},
+	"official_retweet_this_tweet": {
+		"message": "转发",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "好呢",
+		"description": ""
+	},
+	"oops_a_network_error_occurs": {
+		"message": "矮油～ 发生了一个网路错误！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "矮油～ 发生了一个API错误",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "打开一个列表",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "打开一个用户页",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "打开第一个链接（如果存在的话）",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "打开此人的链接",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "操作",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "选项",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "或者在浏览器中打开以下地址",
+		"description": ""
+	},
+	"panda_acts_cute": {
+		"message": "卖萌的熊猫",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "从剪贴板粘贴",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PIN Code",
+		"description": ""
+	},
+	"please_enter_the_recipient": {
+		"message": "殿下，请指定收件人！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "请输入一个账户前缀",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "成功发送！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "发送中……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "地图炮充能完毕",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "偏好",
+		"description": ""
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "如果可能的话，预加载对话的上一条状态",
+		"description": ""
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "使用 Ctrl+Enter 更新",
+		"description": ""
+	},
+	"pretty_wife": {
+		"message": "俏人妻西乔",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "预览",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "预览嵌入的多媒体",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "预览",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "账户",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "代理认证",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "快速参考",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "退出傲兔",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "引用",
+		"description": ""
+	},
+	"relation": {
+		"message": "关系",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "重新加载",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "回复",
+		"description": ""
+	},
+	"reply_all": {
+		"message": "回复所有",
+		"description": ""
+	},
+	"reply_this_tweet": {
+		"message": "回复",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "回应",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "举报垃圾账户",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "技能冷却时间还剩",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "恢复默认值",
+		"description": ""
+	},
+	"retweet": {
+		"message": "转发",
+		"description": ""
+	},
+	"retweet_or_un_retweet": {
+		"message": "转发/取消转发",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "转发成功！",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "转发人:",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "转发中...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "转发与被转发",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "转发",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "引用",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "规则",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "规则过滤器",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "规则编辑器",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "规则名",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "使用相同 API 进行签名",
+		"description": ""
+	},
+	"same_signing_oauth_base": {
+		"message": "使用同样的 OAuth 地址进行签名",
+		"description": ""
+	},
+	"save": {
+		"message": "保存",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "保存草稿",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "裂裂的芬芳",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "搜索",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "Search API Base",
+		"description": ""
+	},
+	"search_in_google": {
+		"message": "在Google中搜索@",
+		"description": ""
+	},
+	"search_in_twitter": {
+		"message": "在Twitter中搜索@",
+		"description": ""
+	},
+	"search_view": {
+		"message": "搜索",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "选择一个默认图片服务",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "选择语言",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "选择动作",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "选择您感兴趣的部位",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "发送消息",
+		"description": ""
+	},
+	"send_message_to_them": {
+		"message": "发送私信",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "婚前的旧时光",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "快捷键",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "登入中……",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "登出",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "切换到下一页",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "切换到前一页",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "矮油～ 发生了点错误耶 >_<",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "提示音",
+		"description": ""
+	},
+	"starts_minimized": {
+		"message": "启动即最小化",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "统计",
+		"description": ""
+	},
+	"status_is_over_140_characters": {
+		"message": "超过140字了，亲！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "第一步",
+		"description": ""
+	},
+	"step_two": {
+		"message": "第二步",
+		"description": ""
+	},
+	"struggling_adventurers": {
+		"message": "苦逼的Kee叔",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "成功！",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "召唤Hotot 『比如: <ALT>C』",
+		"description": ""
+	},
+	"system": {
+		"message": "系统",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "系统集成",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "主题",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "主题",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "这个账户已经存在了噢！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "文艺的缇香",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "冷艳的嘉敏",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "祝汝幸福",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "透明",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "趋势",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "趋势",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "状态",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "状态视图",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "状态",
+		"description": ""
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "取消收藏...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "取消屏蔽",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "撤销转发...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "撤销成功！",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "解除关注@",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "更新",
+		"description": ""
+	},
+	"update_successfully": {
+		"message": "更新成功！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "更新中……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "上传",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "Upload API Base",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "上传照片",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "上传到 ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "URL缩短器",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "使用自定义字体",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "使用原生通知机制",
+		"description": ""
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "使用『引用』作为默认转发方式",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "使用『回复所有』作为默认回复方式",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "使用乌斑兔 Indicator",
+		"description": ""
+	},
+	"verify": {
+		"message": "校验",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "版本",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "发自",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "查看会话",
+		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "查看原图",
+		"description": "data/index.html"
+	},
+	"virushou_s_integrity": {
+		"message": "火炬的正直",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "咸湿佬",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "虚弱",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "网址",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "网址",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "低语",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "他／她／它默默地关注着你…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "你默默地，关注着他／她／它…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "你们默默地关注着对方…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "你们宛如路人，擦身而过，不相往来。",
+		"description": "data/js/ui.peopleview.js"
+	}
+}
