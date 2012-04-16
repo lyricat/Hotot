@@ -1,5 +1,9 @@
-The Latest Stable Version is 0.9.7.55
-The Latest Development Version is 0.9.7.56
+The Latest Stable Version is 0.9.7.56
+The Latest Development Version is 0.9.7.57
+
+Version 0.9.7.57
+	* Update many translations
+	* New hotkey mechanism
 
 Version 0.9.7.56
 	* Fix: cannot open link(Gtk)

@@ -7,8 +7,8 @@ File: data/_locales/lv/messages.json
 [Status] 276/278, 99.28%
 
 File: data/_locales/fr/messages.json
-[Update] data/_locales/fr/messages.json, 76 empty keys.
-[Status] 202/278, 72.66%
+[Update] data/_locales/fr/messages.json, 54 empty keys.
+[Status] 224/278, 80.58%
 
 File: data/_locales/pt_BR/messages.json
 [Update] data/_locales/pt_BR/messages.json, 0 empty keys.
@@ -19,8 +19,8 @@ File: data/_locales/de/messages.json
 [Status] 251/278, 90.29%
 
 File: data/_locales/ja/messages.json
-[Update] data/_locales/ja/messages.json, 80 empty keys.
-[Status] 198/278, 71.22%
+[Update] data/_locales/ja/messages.json, 69 empty keys.
+[Status] 209/278, 75.18%
 
 File: data/_locales/zh_CAN/messages.json
 [Update] data/_locales/zh_CAN/messages.json, 2 empty keys.
@@ -35,12 +35,12 @@ File: data/_locales/zh_CN/messages.json
 [Status] 278/278, 100.00%
 
 File: data/_locales/es/messages.json
-[Update] data/_locales/es/messages.json, 49 empty keys.
-[Status] 229/278, 82.37%
+[Update] data/_locales/es/messages.json, 0 empty keys.
+[Status] 278/278, 100.00%
 
 File: data/_locales/ru/messages.json
-[Update] data/_locales/ru/messages.json, 2 empty keys.
-[Status] 276/278, 99.28%
+[Update] data/_locales/ru/messages.json, 0 empty keys.
+[Status] 278/278, 100.00%
 
 File: data/_locales/pl_PL/messages.json
 [Update] data/_locales/pl_PL/messages.json, 23 empty keys.
