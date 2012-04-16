@@ -309,6 +309,7 @@ function update_status(status_text) {
             'text': status_text
         };
         if (ui.StatusBox.MODE_REPLY) {
+            draft.mode = ui.StatusBox.MODE_REPLY;
             draft.reply_to_id = ui.StatusBox.reply_to_id;
             draft.reply_text = encodeURIComponent($('#status_box .info_text').text());
         }
@@ -353,7 +354,7 @@ function post_message(message_text) {
     if (message_text.length != 0) {
         var name = $.trim($('#tbox_dm_target').val());
         var draft = {
-            'mode': ui.StatusBox.MODE_TWEET, 
+            'mode': ui.StatusBox.MODE_DM, 
             'text': message_text,
             'recipient': encodeURIComponent(name)
         };
