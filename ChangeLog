@@ -78,18 +78,33 @@ Version 0.9.7.47
 	* Use account avatar as profile avatar.
 
 Version 0.9.7.46
-  * Image uploader fixes.
-  * New option for delete mark.
+  * GTK/QT can be built in a single build through cmake.
+  * Fixed image uploader for gtk/qt.
+  * Fixed Qt text hover bubble effect.
+  * Fixed marguerite's email address.
+  * Fixed Qt desktop categories.
+  * Fixed UnicodeEncode error.
+  * Fixed DM recipient changed to undefined when clicking Reply or Reply All.
+  * Fixed hotkey for retweet.
+  * Some Windows fix.
+  * Refactored twitter api, oauth and network code to prepare for multi-signin.
+  * Quote tweet calculate remaining chars correctly now.
+  * zh_CN translation update.
+  * Added specfile examples for downstream packgers.
+  * DM box now show recipient.
+  * Added more keyboard shortcuts.
+  * Updated keyboard help.
+  * License updated to LGPL-3.0
+  * New Polish Translation.
+  * Auto Sign-in.
+  * Two new options
+    one for anonymous statistic, another for delete tweet from timeline, or just mark it deleted.
 
 Version 0.9.7.45
-  * Now KDE/GTK can be built at the same time.
-  * Translation update. New Polish Translation.
-  * Add more keyboard shortcuts.
-  * DM box now show recipient.
-  * Quote tweet calculate remaining chars correctly now.
-  * Documentation & Help update
-  * Auto Sign in.
-  * Universal image uploader for gir(gtk) and Chrome edition.
+  * Fix image uploading failure in gtk/gir edtion
+  * Universal image uploader for gtk/chrome edition. 
+    extension imguploader is officially dropped.
+  * Hotkey support for gir edition.
 
 Version 0.9.7.44
   * Improve accuracy of Speech Input for Chrome edition.

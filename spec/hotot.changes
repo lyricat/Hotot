@@ -1,15 +1,41 @@
 -------------------------------------------------------------------
+Tue Mar 20 13:54:01 UTC 2012 - i@marguerite.su
+
+- Updated version 0.9.7.47
+  * New login page
+
+- Previous version changelog
+  * Version 0.9.7.46
+    * GTK/QT can be built in a single build through cmake.
+    * Fixed image uploader for gtk/qt.
+    * Fixed Qt text hover bubble effect.
+    * Fixed marguerite's email address.
+    * Fixed Qt desktop categories.
+    * Fixed UnicodeEncode error.
+    * Fixed DM recipient changed to undefined when clicking Reply or Reply All.
+    * Fixed hotkey for retweet.
+    * Some Windows fix.
+    * Refactored twitter api, oauth and network code to prepare for multi-signin.
+    * Quote tweet calculate remaining chars correctly now.
+    * zh_CN translation update.
+    * Added specfile examples for downstream packgers.
+    * DM box now show recipient.
+    * Added more keyboard shortcuts.
+    * Updated keyboard help.
+    * License updated to LGPL-3.0
+    * New Polish Translation.
+    * Auto Sign-in.
+    * Two new options
+      one for anonymous statistic, another for delete tweet from timeline, or just mark it deleted.
+
+-------------------------------------------------------------------
 Mon Mar 12 15:46:56 UTC 2012 - i@marguerite.su
 
 - Updated version 0.9.7.45
-  * Now KDE/GTK can be built at the same time.
-  * Translation update. New Polish Translation.
-  * Add more keyboard shortcuts.
-  * DM box now show recipient.
-  * Quote tweet calculate remaining chars correctly now.
-  * Documentation & Help update
-  * Auto Sign in.
-  * Universal image uploader for gir(gtk) and Chrome edition.
+  * Fix image uploading failure in gtk/gir edtion
+  * Universal image uploader for gtk/chrome edition. 
+    extension imguploader is officially dropped.
+  * Hotkey support for gir edition.
 - Previous version changelog
   * Version 0.9.7.44
     * Improve accuracy of Speech Input for Chrome edition.
@@ -36,6 +62,8 @@ Mon Mar 12 15:46:56 UTC 2012 - i@marguerite.su
     * Socket proxy support.
 - No upstream changelog or release note available.
   * Use git commit log aggregated by packger instead.
+- Fixed python-bytecode-inconsistent-mtime rpmlint warning.
+  Thanks to Lazy Kent <lazy.kent@opensuse.org>, http://is.gd/E1GNg5
 
 -------------------------------------------------------------------
 Tue Jan 24 05:32:34 UTC 2012 - i@marguerite.su

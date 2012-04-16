@@ -56,7 +56,7 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "验证通过！",
+		"message": "验证通过呦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -120,11 +120,11 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "点我继续",
+		"message": "点我继续呦",
 		"description": ""
 	},
 	"click_the_button_below": {
-		"message": "点击下面的按钮",
+		"message": "点击下面的按钮呦",
 		"description": ""
 	},
 	"click_to_compose_message": {
@@ -136,7 +136,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "点我查看转发人",
+		"message": "点我查看转发人呦",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -192,7 +192,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "删除成功！",
+		"message": "删除成功呦！",
 		"description": "data/js/ui.main.js"
 	},
 	"disable": {
@@ -204,7 +204,7 @@
 		"description": "data/index.html"
 	},
 	"disabled": {
-		"message": "禁用的",
+		"message": "禁用的呢",
 		"description": ""
 	},
 	"dots": {
@@ -216,7 +216,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "拖拽一张照片至此处",
+		"message": "丢一张相片给我，小鱼也可以喵",
 		"description": "data/index.html"
 	},
 	"drop": {
@@ -280,7 +280,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "收藏...",
+		"message": "埋起来等下吃喵...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -300,7 +300,7 @@
 		"description": "data/index.html"
 	},
 	"fine": {
-		"message": "还能 hold 住",
+		"message": "还能 hold 住哈",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
@@ -432,7 +432,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "警告：凡是具备如下特征的推都将被抛弃，不予显示。",
+		"message": "警告：凡是具备如下特征的推都将被抛弃，不给你呦。",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -444,7 +444,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "让傲兔兔收集匿名统计信息",
+		"message": "让兔兔收集匿名统计信息",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -560,7 +560,7 @@
 		"description": ""
 	},
 	"nearly_dead": {
-		"message": "都快挂了",
+		"message": "抱不住树了喵",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
@@ -568,7 +568,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "殿下，您的新账户已经创建成功！",
+		"message": "殿下，您的新账户已经创建成功呦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
@@ -596,7 +596,7 @@
 		"description": ""
 	},
 	"oops_a_network_error_occurs": {
-		"message": "矮油～ 发生了一个网路错误！",
+		"message": "矮油～ 发生了一个网路错误呦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
@@ -644,7 +644,7 @@
 		"description": ""
 	},
 	"please_enter_the_recipient": {
-		"message": "殿下，请指定收件人！",
+		"message": "殿下，请指定收件人呦！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
@@ -652,11 +652,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "成功发送！",
+		"message": "成功发送呦！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "发送中……",
+		"message": "发送呢……",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
@@ -756,7 +756,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "转发成功！",
+		"message": "转发成功呦！",
 		"description": "data/js/ui.main.js"
 	},
 	"retweeted_by": {
@@ -868,7 +868,7 @@
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "登入中……",
+		"message": "爬墙呢喵……",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
@@ -900,7 +900,7 @@
 		"description": ""
 	},
 	"status_is_over_140_characters": {
-		"message": "超过140字了，亲！",
+		"message": "超过140字了喵！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
@@ -916,7 +916,7 @@
 		"description": "data/index.html"
 	},
 	"successfully": {
-		"message": "成功！",
+		"message": "成功了呢！",
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
@@ -940,7 +940,7 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "这个账户已经存在了噢！",
+		"message": "这个账户已经存在了呦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -980,7 +980,7 @@
 		"description": ""
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "取消收藏...",
+		"message": "取消收藏呢...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
@@ -988,11 +988,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "撤销转发...",
+		"message": "撤销转发呢...",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
-		"message": "撤销成功！",
+		"message": "撤销成功呦！",
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow_at": {
@@ -1004,7 +1004,7 @@
 		"description": ""
 	},
 	"update_successfully": {
-		"message": "更新成功！",
+		"message": "更新成功呦！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {

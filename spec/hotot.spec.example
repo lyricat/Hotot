@@ -18,7 +18,7 @@
 # norootforbuild
 
 Name: hotot
-Version: 0.9.7.45
+Version: 0.9.7.47
 Release: 1
 Summary: A lightweight, flexible microblogging client
 Group:  Productivity/Networking/Instant Messenger
@@ -26,30 +26,33 @@ License: LGPL-3.0
 Url: https://hotot.org
 Source:	%{name}-%{version}.tar.bz2
 BuildRequires: cmake gcc-c++ intltool
+%if 0%{?suse_version}
+%py_requires
+%endif
 
 # KDE Versions
 %if 0%{?suse_version}
 BuildRequires: libqt4-devel libQtWebKit-devel libkde4-devel
 BuildRequires:  update-desktop-files fdupes
 %else
-BuildRequires: qt-devel qt-webkit-devel kdelibs-devel
+BuildRequires: qt-devel qt-webkit-devel kdelibs-devel sane-backends-libs
 %endif
 
 # GTK/GIR Versions
 %if %{?suse_version}
 %if %{?suse_version} <= 1140
-BuildRequires:	python-devel python-keybinder
+BuildRequires:	python-keybinder
 BuildRequires:	libwebkitgtk-devel gtk2-devel python-gtk-devel python-webkitgtk-devel
 %else
 BuildRequires: libwebkitgtk3-devel gtk3-devel
-BuildRequires: python-gobject-devel python-devel
+BuildRequires: python-gobject-devel
 %endif
 %else
 %if %{?fedora_version} >= 15
 BuildRequires:	webkitgtk3-devel gtk3-devel pygobject2-devel python-devel
 %else
-BuildRequires:	python-devel python-keybinder
-BuildRequires:	pygtk2-devel gtk2-devel pywebkitgtk webkitgtk-devel
+BuildRequires:	python-keybinder
+BuildRequires:	pygtk2-devel gtk2-devel pywebkitgtk webkitgtk-devel python-devel
 %endif
 %endif
 
@@ -211,7 +214,9 @@ cd ..
 %suse_update_desktop_file %{name}-qt Network InstantMessaging
 
 # Fix python-bytecode-inconsistent-mtime
-python -m compileall %{buildroot}
+pushd %{buildroot}%{python_sitearch}/%{name}/
+%py_compile .
+popd
 
 %fdupes %{buildroot}
 %endif
