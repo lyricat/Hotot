@@ -280,7 +280,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Adicione esse tuíte aos favoritos ...",
+		"message": "Adicionando esse tuíte aos favoritos ...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Remover tuíte dos favoritos ...",
+		"message": "Removendo tuíte dos favoritos ...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
