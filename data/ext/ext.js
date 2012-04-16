@@ -71,17 +71,17 @@ function init() {
     };
 
     var ui_template_form_tweet = ui.Template.form_tweet;
-    ui.Template.form_tweet = function _form_tweet(tweet_obj, pagename) {
+    ui.Template.form_tweet = function _form_tweet(tweet_obj, pagename, in_thread) {
         var cbs = ext.listeners[ext.FORM_TWEET_LISTENER];
         var cbs_after = ext.listeners[ext.FORM_TWEET_LISTENER_AFTER];
         for (var i = 0, l = cbs.length; i < l; i += 1) {
-            cbs[i](tweet_obj, pagename);
+            cbs[i](tweet_obj, pagename, in_thread);
         }
 
-        var result_html = ui_template_form_tweet(tweet_obj, pagename);
+        var result_html = ui_template_form_tweet(tweet_obj, pagename, in_thread);
 
         for (var i = 0, l = cbs_after.length; i < l; i += 1) {
-            result_html = cbs_after[i](tweet_obj, pagename, result_html);
+            result_html = cbs_after[i](tweet_obj, pagename, result_html, in_thread);
         }
         return result_html;
     };
