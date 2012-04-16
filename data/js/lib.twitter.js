@@ -689,6 +689,29 @@ function TwitterClient() {
         return;
     };
 
+    //@TODO the two APIs is undocumented
+    self.get_activity_about_me = function get_activity_about_me(since_id, max_id, count, on_success) {
+        var url = 'https://api.twitter.com/i/' + 'activity/about_me.json';
+        var params = {
+            'include_entities': '1',
+            'count': count
+        };
+        if (since_id != null) params['since_id'] = since_id;
+        if (max_id != null) params['max_id'] = max_id;
+        self.get(url, params, on_success);
+    };
+
+    self.get_activity_by_friends = function get_activity_by_friends(since_id, max_id, count, on_success) {
+        var url = 'https://api.twitter.com/i/' + 'activity/by_friends.json';
+        var params = {
+            'include_entities': '1',
+            'count': count
+        };
+        if (since_id != null) params['since_id'] = since_id;
+        if (max_id != null) params['max_id'] = max_id;
+        self.get(url, params, on_success);
+    };
+
     self.search = function search(query, page, since_id, max_id, on_success, on_error) {
         var url = self.search_api_base2;
         if (url == 'https://twitter.com/phoenix_search.phoenix') {
