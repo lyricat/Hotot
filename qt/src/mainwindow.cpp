@@ -499,10 +499,13 @@ QString MainWindow::toJSArray(const QStringList& list)
     bool first = true;
     Q_FOREACH(const QString& item, list)
     {
+        QString s = item;
+        s.replace("\\", "\\\\");
+        s.replace("'", "\\'");
         if (!first) {
             itemString.append(",");
         }
-        itemString.append("'").append(item).append("'");
+        itemString.append("'").append(s).append("'");
         first = false;
     }
 
