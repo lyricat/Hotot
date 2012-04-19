@@ -391,7 +391,7 @@ function init_dialogs() {
     globals.error_dialog.create();
 
     globals.about_dialog = new widget.Dialog('#about_dlg');
-    globals.about_dialog.resize(500, 400);
+    globals.about_dialog.resize(500, 500);
     globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
 
