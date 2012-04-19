@@ -3,7 +3,7 @@ conf = {
 
 vars: {
       'platform': 'Linux'
-    , 'version': '0.9.7.56'
+    , 'version': '0.9.8'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
