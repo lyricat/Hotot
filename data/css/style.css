@@ -1990,10 +1990,6 @@ label {
 	border-top: 0; 
 }
 
-.card:last-child {
-	border-bottom: 1px #ddd solid;
-}
-
 .card.selected {
 	background-color: #f2f2f2;
 }
@@ -2220,7 +2216,7 @@ label {
 }
 
 .btn_tweet_thread_more {
-	margin: 3px 10px;
+	padding: 3px 10px;
 	display: block;
 	text-align: center;
 	cursor: pointer;

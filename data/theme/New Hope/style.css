@@ -45,10 +45,6 @@
     border-top: 0; 
 }
 
-.card:last-child {
-    border-bottom: 1px #ddd solid;
-}
-
 .card.selected {
     background-color: #fafafa;
     border-bottom: 1px #bbb solid;
@@ -76,6 +72,9 @@
 }
 .card.deleted .text {
     color: gray;
+}
+.btn_tweet_thread_more {
+    border-top: 1px #ddd solid;
 }
 .profile_img_wrapper {
 	border-radius: 3px;
