@@ -46,6 +46,10 @@ function crack(event) {
                 try {
                     event.preventDefault();
                     map.f(event);
+                    for (var i = 0, i_max = hotkey.map.length; i < i_max; i++) {
+                        hotkey.map[i].pos = 0;
+                    }
+
                 } catch(ex) {
                 }
                 map.pos = 0;

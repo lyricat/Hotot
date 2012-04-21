@@ -24,11 +24,6 @@ reg_fake_dots: null,
 last_sent_text: '',
 
 short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa64b6d311ff19d48030d6c&format=json&longUrl=',
-// @BUG (webkit for linux)
-// keyup and keydown will fire twice in Chrome
-// keydown will fire twice in WebkitGtk.
-// @WORKAROUND use the flag to ignore the first one.
-keydown_twice_flag: 0,
 
 get_status_len:
 function get_status_len(status_text) {

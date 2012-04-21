@@ -456,7 +456,7 @@ function init_hotkey() {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
-    // 'c' to compose
+    // 'cc' to compose
     hotkey.register("cc",
         function () {ui.StatusBox.open();});
     // Navigation
@@ -526,7 +526,7 @@ function init_hotkey() {
         ui.Slider.slide_to('search');
     });
 
-    // @TODO Actions, prefix 'a'
+    // Actions, prefix 'a'
     // 'a' then 'r' to reply
     hotkey.register("ar", function() {
         if (ui.Main.selected_tweet_id != null) {
@@ -610,7 +610,9 @@ function init_hotkey() {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first')
-            btn.click();
+            if (btn.is(':visible')) {
+                btn.click();
+            }
         }
     });
 
