@@ -63,6 +63,11 @@ function init () {
                 ui.Main.move_to_tweet('top');
             } else { 
                 ui.Slider.slide_to(view_name);
+                if (view_name === 'search') {
+                    setTimeout(function () {
+                    $('#search_tweetview .search_entry').focus();
+                    }, 1000);
+                }
             }
         }
         return false;
@@ -512,9 +517,6 @@ function slide_to(id) {
     $(ui.Main.selected_tweet_id).removeClass('selected'); 
     ui.Main.selected_tweet_id = null;
     $('#tweet_bar').hide();
-    if (id === 'search') {
-        $('#search_tweetview .search_entry').focus();
-    }
 },
 
 get_page_pos:
