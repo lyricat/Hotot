@@ -8,6 +8,7 @@ class Scrollbar
       @content = $(content)
     else
       @content = content
+    @disabled = false
     @margin = margin
     @handle = @track.find('.scrollbar_handle')
     @content_height = 0
@@ -17,7 +18,19 @@ class Scrollbar
     @recalculate_layout()
     @bind()
 
+  disable: ->
+    @disabled = true
+    @content.css({'overflow-y': 'auto', 'overflow-x': 'hidden'})
+    @track.hide()
+
+  enable: ->
+    @disabled = false
+    @content.css({'overflow-y': 'hidden', 'overflow-x': 'hidden'})
+    @track.show()
+
   recalculate_layout: ->
+    if @disabled
+      return
     @content_height = @content.height()
     @track.css('height', (@content_height - (@track.outerHeight(true) - @track.outerHeight())) + 'px')
     @track_height = @track.height()
@@ -33,6 +46,8 @@ class Scrollbar
     return
 
   on_wheel: (ev) ->
+    if @disabled
+      return
     if event.wheelDeltaY > 1 or event.wheelDeltaY < -1
       if event.wheelDelta
         delta = event.wheelDelta / 2.5
@@ -102,7 +117,7 @@ class Scrollbar
     @content.on('mousewheel', (ev) => @on_wheel ev)
     @content.on('DOMMouseScroll', (ev) => @on_wheel ev)
     @content.scroll( (ev) =>
-      if not @on_active
+      if not @on_active and not @disabled
         pos = @content.get(0).scrollTop * (@track_height - @handle_height) / @content.get(0).scrollHeight
         @handle.css('top', pos + 'px')
     )
@@ -123,7 +138,7 @@ root.widget.Scrollbar.register = ->
       # notify active scrollbar of its job
       if root._active_scrollbar
         sb = root._active_scrollbar
-        if sb.on_active and sb.track_scroll_y
+        if sb.on_active and not sb.disabled and sb.track_scroll_y
           pos = sb.handle_pos_check(ev.clientY - sb.track.get(0).offsetTop - sb.track_scroll_y)
           sb.scroll_by_handle(pos)
         return false

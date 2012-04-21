@@ -14,6 +14,7 @@
       } else {
         this.content = content;
       }
+      this.disabled = false;
       this.margin = margin;
       this.handle = this.track.find('.scrollbar_handle');
       this.content_height = 0;
@@ -25,8 +26,27 @@
       this.bind();
     }
 
+    Scrollbar.prototype.disable = function() {
+      this.disabled = true;
+      this.content.css({
+        'overflow-y': 'auto',
+        'overflow-x': 'hidden'
+      });
+      return this.track.hide();
+    };
+
+    Scrollbar.prototype.enable = function() {
+      this.disabled = false;
+      this.content.css({
+        'overflow-y': 'hidden',
+        'overflow-x': 'hidden'
+      });
+      return this.track.show();
+    };
+
     Scrollbar.prototype.recalculate_layout = function() {
       var pos;
+      if (this.disabled) return;
       this.content_height = this.content.height();
       this.track.css('height', (this.content_height - (this.track.outerHeight(true) - this.track.outerHeight())) + 'px');
       this.track_height = this.track.height();
@@ -43,6 +63,7 @@
 
     Scrollbar.prototype.on_wheel = function(ev) {
       var delta, offsetY;
+      if (this.disabled) return;
       if (event.wheelDeltaY > 1 || event.wheelDeltaY < -1) {
         if (event.wheelDelta) delta = event.wheelDelta / 2.5;
         offsetY = this.content.get(0).offsetTop - delta;
@@ -129,7 +150,7 @@
       });
       return this.content.scroll(function(ev) {
         var pos;
-        if (!_this.on_active) {
+        if (!_this.on_active && !_this.disabled) {
           pos = _this.content.get(0).scrollTop * (_this.track_height - _this.handle_height) / _this.content.get(0).scrollHeight;
           return _this.handle.css('top', pos + 'px');
         }
@@ -161,7 +182,7 @@
       var pos, sb;
       if (root._active_scrollbar) {
         sb = root._active_scrollbar;
-        if (sb.on_active && sb.track_scroll_y) {
+        if (sb.on_active && !sb.disabled && sb.track_scroll_y) {
           pos = sb.handle_pos_check(ev.clientY - sb.track.get(0).offsetTop - sb.track_scroll_y);
           sb.scroll_by_handle(pos);
         }
