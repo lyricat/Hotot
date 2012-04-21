@@ -132,9 +132,19 @@ settings: {},
 
 current_name: '',
 
+OS_MAC: false,
+
+OS_WINDOWS: false,
+
+OS_LINUX: false,
+
 init:
 function init(callback) {
     conf.reload(callback);
+    var platform = navigator.platform;
+    conf.OS_WINDOWS = (platform.indexOf('Win') != -1);
+    conf.OS_MAC = (platform.indexOf('Mac') != -1);
+    conf.OS_LINUX = (platform.indexOf('Linux') != -1);
 },
 
 reload:
@@ -348,9 +358,9 @@ function normalize_settings(settings) {
 get_default_font_settings:
 function get_default_font_settings () {
     var platform = navigator.platform;
-    if (platform.indexOf('Win') != -1) {
+    if (conf.OS_WINDOWS) {
         return ['\'Segoe UI\', \'Microsoft YaHei\', sans-serif', 'Verdana, \'Microsoft YaHei\', sans-serif'];
-    } else if (platform.indexOf('Mac') != -1) {
+    } else if (conf.OS_MAC) {
         return ['\'Helvetica Neue\', \'Hiragino Sans GB\', sans-serif', '\'Lucida Grande\', \'Hiragino Sans GB\', sans-serif'];
     } else {
         return ['\'Helvetica Neue\', \'Hiragino Sans GB\', \'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', sans-serif', '\'Droid Sans Fallback\', \'WenQuanYi Micro Hei\', Simhei, Simsun, sans-serif'];

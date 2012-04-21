@@ -282,7 +282,11 @@ function prompt(title, message, callback) {
     prompt_dialog.set_styles('body', {'padding':'10px'});
     prompt_dialog.resize(400, 280);
     prompt_dialog.open();
-    $(id).find('.entry').focus();
+    $(id).find('.entry').keydown(function (ev) {
+        if (ev.keyCode === 13) {
+            $(id + '_ok_btn').click();
+        }
+    }).focus();
 },
 
 build_dialog:

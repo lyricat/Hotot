@@ -157,23 +157,19 @@ function init () {
     });
 
     $('#tbox_status').keydown(
-    function (event) {
-        //ui.StatusBox.update_status_len();
-        // @WORKAROUND ignore the duplicate keydown event in WebkitGtk
-        // However, if ignore all keydown event will cause some bugs
-        // if user use IM to compose status text. 
-        // for example, 
-        // backspace doesn't work, can't type english characters, etc. 
-        // so i only ignore event associate with program's behaviors.
-        if (event.ctrlKey && event.keyCode == 13) {
-            ui.StatusBox.keydown_twice_flag += 1;
-            if (ui.StatusBox.keydown_twice_flag % 2 == 0 
-                && util.is_native_platform()) 
+    function (event) { 
+        // shortcut binding Ctrl+Enter or Command+Enter(Mac)
+        if (navigator.platform.indexOf('Mac') != -1) {
+            if (event.metaKey && event.keyCode === 13) {
+                $('#btn_update').click();
+            }
+        } else {
+            if (event.ctrlKey && event.keyCode === 13) {
+                $('#btn_update').click();
                 return false;
-            // shortcut binding Ctrl+Enter
-            $('#btn_update').click();
-            return false;
+            }
         }
+
         if (event.keyCode == 27) { // esc
             ui.StatusBox.close();
         }

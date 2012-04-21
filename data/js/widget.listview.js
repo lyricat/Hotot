@@ -168,7 +168,9 @@ function WidgetListView(id, name, params) {
         for (var k in self) {
             self[k] = null;
         }
-        self.scrollbar.destroy()
+        if (self.scrollbar) {
+            self.scrollbar.destroy()
+        }
         self = null;
     };
 

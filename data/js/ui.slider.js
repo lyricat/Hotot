@@ -512,6 +512,9 @@ function slide_to(id) {
     $(ui.Main.selected_tweet_id).removeClass('selected'); 
     ui.Main.selected_tweet_id = null;
     $('#tweet_bar').hide();
+    if (id === 'search') {
+        $('#search_tweetview .search_entry').focus();
+    }
 },
 
 get_page_pos:

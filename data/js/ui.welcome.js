@@ -31,6 +31,12 @@ function init () {
         $(this).addClass('selected');
     });
 
+    $('#tbox_new_profile_name').keydown(function (ev) {
+        if (ev.keyCode == 13) {
+            ui.Welcome.go.click();
+        }
+    }); 
+
     ui.Welcome.go = $('#sign_in_block .go');
     ui.Welcome.go.click(function () {
         if (ui.Welcome.selected_profile == 'default') {

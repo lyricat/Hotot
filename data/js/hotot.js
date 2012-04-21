@@ -457,7 +457,7 @@ function init_hotkey() {
         daemon.update_all();
     });
     // 'c' to compose
-    hotkey.register("c",
+    hotkey.register("cc",
         function () {ui.StatusBox.open();});
     // Navigation
     hotkey.register(hotkey.calculate(38), "D", function () {
@@ -605,21 +605,11 @@ function init_hotkey() {
         ui.Finder.show();
     });
 
-    // 'z' then 'o' to expand
-    hotkey.register("zo", function () {
-        if (ui.Main.selected_tweet_id != null) {
-            var btn = $(ui.Main.selected_tweet_id)
-                .find('.btn_tweet_thread:first');
-            btn.removeClass('expand');
-            btn.click();
-        }
-    });
-    // 'z' then 'c' to fold
+    // 'z' then 'c' to fold/un-fold conversation
     hotkey.register("zc", function () {
         if (ui.Main.selected_tweet_id != null) {
             var btn = $(ui.Main.selected_tweet_id)
                 .find('.btn_tweet_thread:first')
-            btn.addClass('expand');
             btn.click();
         }
     });
