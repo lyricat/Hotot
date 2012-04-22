@@ -254,7 +254,6 @@ class Hotot:
         Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
-        import sys
         sys.exit(0)
 
     def apply_settings(self):
