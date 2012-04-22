@@ -68,7 +68,7 @@
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
-		"message": "",
+		"message": "Connexion automatique après ouverture",
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
@@ -104,7 +104,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
-		"message": "",
+		"message": "Utiliser intégration contextuel Chrome",
 		"description": "data/index.html"
 	},
 	"clean_token": {
@@ -180,7 +180,7 @@
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "",
+		"message": "Service d'Image par Défaut",
 		"description": "data/index.html"
 	},
 	"delete": {
@@ -472,11 +472,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "Chargement... ",
+		"message": "Chargement ... ",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "Chargement des ressources...",
+		"message": "Chargement des ressources ...",
 		"description": "data/index.html"
 	},
 	"location": {
@@ -600,7 +600,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Oups, Une erreur au niveau de l'API est survenue!",
+		"message": "Oups, Une erreur au niveau de l'API est survenue !",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -652,11 +652,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Envoyé avec succès!",
+		"message": "Envoyé avec succès !",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "Envoi en cours...",
+		"message": "Envoi en cours ...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
@@ -688,7 +688,7 @@
 		"description": "data/index.html"
 	},
 	"preview_here": {
-		"message": "",
+		"message": "Prévisualiser Ici",
 		"description": "data/index.html"
 	},
 	"profile": {
@@ -764,7 +764,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Retweet...",
+		"message": "Retweet ...",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
@@ -836,7 +836,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "",
+		"message": "Sélectionner un Service d'Image par Défaut",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -868,7 +868,7 @@
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Connexion...",
+		"message": "Connexion ...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
@@ -892,11 +892,11 @@
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "",
+		"message": "Démarré Minimisé",
 		"description": "data/index.html"
 	},
 	"stat": {
-		"message": "STAT",
+		"message": "STATS",
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
@@ -924,11 +924,11 @@
 		"description": "data/index.html"
 	},
 	"system": {
-		"message": "",
+		"message": "Système",
 		"description": "data/index.html"
 	},
 	"system_integration": {
-		"message": "",
+		"message": "Intégration Système",
 		"description": "data/index.html"
 	},
 	"theme": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Enlever ce tweet des favoris...",
+		"message": "Enlever ce tweet des favoris ...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
@@ -988,7 +988,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "Annuler le retweet...",
+		"message": "Annuler le retweet ...",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
@@ -1032,7 +1032,7 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "",
+		"message": "Utiliser une police spéciale",
 		"description": "data/index.html"
 	},
 	"use_native_notify_system": {
