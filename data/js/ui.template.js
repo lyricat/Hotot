@@ -13,9 +13,9 @@ reg_user_name_chars: '[@＠](\\w+)',
 
 reg_list_name_template: '[@＠](\\w+/[a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]+)',
 
-// from https://si0.twimg.com/a/1310750171/javascripts/phoenix.bundle.js
-reg_hash_tag_latin_chars: 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþ\\303\\277',
-reg_hash_tag_nonlatin_chars: '\u0400-\u04ff\u0500-\u0527\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\u30a1-\u30fa\uff66-\uff9e\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3400-\u4dbf\u4e00-\u9fff\ua700-\ub73f\ub740-\ub81f\uf800-\ufa1f\u3005',
+// from https://si0.twimg.com/c/phoenix/en/bundle/t1-hogan-core.f760c184d1eaaf1cf27535473a7306ef.js
+reg_hash_tag_latin_chars: '\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u024f\u0253-\u0254\u0256-\u0257\u0259\u025b\u0263\u0268\u026f\u0272\u0289\u028b\u02bb\u1e00-\u1eff',
+reg_hash_tag_nonlatin_chars: '\u0400-\u04ff\u0500-\u0527\u2de0-\u2dff\ua640-\ua69f\u0591-\u05bd\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05c7\u05d0-\u05ea\u05f0-\u05f2\ufb12-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40-\ufb41\ufb43-\ufb44\ufb46-\ufb4f\u0610-\u061a\u0620-\u065f\u066e-\u06d3\u06d5-\u06dc\u06de-\u06e8\u06ea-\u06ef\u06fa-\u06fc\u06ff\u0750-\u077f\u08a0\u08a2-\u08ac\u08e4-\u08fe\ufb50-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\u200c\u0e01-\u0e3a\u0e40-\u0e4e\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\uffa1-\uffdc\u30a1-\u30fa\u30fc-\u30fe\uff66-\uff9f\uff70\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3099-\u309e\u3400-\u4dbf\u4e00-\u9fff\ua700-\ub73f\ub740-\ub81f\uf800-\ufa1f\u3003\u3005\u303b',
 reg_hash_tag_template: '(^|\\s)[#＃]([a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]*)',
 
 reg_hash_tag: null,
