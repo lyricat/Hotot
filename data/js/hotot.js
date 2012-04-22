@@ -456,8 +456,8 @@ function init_hotkey() {
         toast.set('Loading Tweets...').show(-1);
         daemon.update_all();
     });
-    // 'cc' to compose
-    hotkey.register("cc",
+    // 'c' to compose
+    hotkey.register("c",
         function () {ui.StatusBox.open();});
     // Navigation
     hotkey.register(hotkey.calculate(38), "D", function () {
@@ -625,6 +625,13 @@ function init_hotkey() {
     // :)
     hotkey.register("#@!^&", function(){
         $('.profile_img_wrapper').css('background-image', 'url(image/ic48_profile_image.png)');
+    });
+	hotkey.register("MIRROR", "gm", function(){
+		if ($('body').css('-webkit-transform') != 'none') {
+        	$('body').css('-webkit-transform', 'none');
+		} else {
+        	$('body').css('-webkit-transform', 'rotateY(180deg)');
+		}
     });
 }
 
