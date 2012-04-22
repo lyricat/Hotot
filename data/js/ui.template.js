@@ -3,15 +3,13 @@ ui.Template = {
 
 reg_vaild_preceding_chars: '(?:[^-\\/"\':!=a-zA-Z0-9_]|^)',
 
-reg_cn_chars: '[\u4E00-\u9FA5]|[\uEF30-\uFFA0]',
-
 reg_url_path_chars: '[a-zA-Z0-9!\\*\';:=\\+\\$/%#\\[\\]\\?\\-_,~\\(\\)&\\.`@]',
 
 reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 
-reg_user_name_chars: '[@＠](\\w+)',
+reg_user_name_chars: '[@＠]([a-zA-Z0-9_]{1,20})',
 
-reg_list_name_template: '[@＠](\\w+/[a-z0-9_{%LATIN_CHARS%}{%NONLATIN_CHARS%}]+)',
+reg_list_name_template: '[@＠]([a-zA-Z0-9_]{1,20}/[a-zA-Z][a-zA-Z0-9_\\-\u0080-\u00ff]{0,24})',
 
 // from https://si0.twimg.com/c/phoenix/en/bundle/t1-hogan-core.f760c184d1eaaf1cf27535473a7306ef.js
 reg_hash_tag_latin_chars: '\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u024f\u0253-\u0254\u0256-\u0257\u0259\u025b\u0263\u0268\u026f\u0272\u0289\u028b\u02bb\u1e00-\u1eff',
@@ -22,7 +20,7 @@ reg_hash_tag: null,
 
 reg_is_rtl: new RegExp('[\u0600-\u06ff]|[\ufe70-\ufeff]|[\ufb50-\ufdff]|[\u0590-\u05ff]'),
 
-tweet_t: 
+tweet_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" in_thread="{%IN_THREAD%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" link="{%LINK%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_color_label" style="background-color:{%COLOR_LABEL%}"></div>\
     <div class="tweet_selected_indicator"></div>\
@@ -82,7 +80,7 @@ trending_topic_t:
     <span class="shape_mask"></span>\
 </li>',
 
-retweeted_by_t: 
+retweeted_by_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%} {%FAV_CLASS%}" type="tweet"  retweet_id="{%RETWEET_ID%}" reply_id="{%REPLY_ID%}" reply_name="{%REPLY_NAME%}" screen_name="{%SCREEN_NAME%}" retweetable="{%RETWEETABLE%}" deletable="{%DELETABLE%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
@@ -135,7 +133,7 @@ retweeted_by_t:
     </div>\
 </li>',
 
-message_t: 
+message_t:
 '<li id="{%ID%}" tweet_id="{%TWEET_ID%}" class="card {%SCHEME%}" type="message" sender_screen_name="{%SCREEN_NAME%}" style="font-family: {%TWEET_FONT%};">\
     <div class="tweet_active_indicator"></div>\
     <div class="tweet_selected_indicator"></div>\
@@ -422,7 +420,7 @@ list_vcard_t:
 </div></div>',
 
 
-search_header_t: 
+search_header_t:
 '<div class="header_frame"> \
     <div class="search_box"> \
     <input class="search_entry entry" type="text" placeholder="Type and press enter to search."/> \
@@ -555,8 +553,8 @@ preview_link_reg: {
     base: 'http://api.plixi.com/api/tpapi.svc/imagefromurl?size=thumbnail&url='
 },
 'picplz.com': {
-    reg: new RegExp('http:\\/\\/picplz.com\\/([a-zA-Z0-9_\\-]+)','g'), 
-    tail: '/thumb/' 
+    reg: new RegExp('http:\\/\\/picplz.com\\/([a-zA-Z0-9_\\-]+)','g'),
+    tail: '/thumb/'
 },
 'raw': {
     reg: new RegExp('[a-zA-Z0-9]+:\\/\\/.+\\/.+\\.(jpg|jpeg|jpe|png|gif)', 'gi')
@@ -574,25 +572,20 @@ init:
 function init() {
     ui.Template.reg_url = ''//ui.Template.reg_vaild_preceding_chars
     + '('
-        + ui.Template.reg_url_proto_chars 
+        + ui.Template.reg_url_proto_chars
         + ui.Template.reg_url_path_chars
     + '+)';
 
-    ui.Template.reg_user = new RegExp('(^|\\s|"|“|\\.|'
-            + ui.Template.reg_cn_chars + ')'
+    ui.Template.reg_user = new RegExp('(^|[^a-zA-Z0-9_!#$%&*@＠])'
         + ui.Template.reg_user_name_chars, 'g');
 
-    ui.Template.reg_list = new RegExp('(^|\\s|'
-            + ui.Template.reg_cn_chars + ')'
-        + ui.Template.reg_list_name_template
-            .replace(/{%LATIN_CHARS%}/g, ui.Template.reg_hash_tag_latin_chars)
-            .replace(/{%NONLATIN_CHARS%}/g, ui.Template.reg_hash_tag_nonlatin_chars) 
-    , 'ig');
+    ui.Template.reg_list = new RegExp('(^|[^a-zA-Z0-9_!#$%&*@＠])'
+        + ui.Template.reg_list_name_template, 'ig');
 
     ui.Template.reg_link = new RegExp(ui.Template.reg_url);
 
     ui.Template.reg_link_g = new RegExp(ui.Template.reg_url, 'g');
-        
+
     ui.Template.reg_hash_tag = new RegExp(ui.Template.reg_hash_tag_template
         .replace(new RegExp('{%LATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_latin_chars)
         .replace(new RegExp('{%NONLATIN_CHARS%}', 'g'), ui.Template.reg_hash_tag_nonlatin_chars)
@@ -681,7 +674,7 @@ function init() {
         , RECIPIENT: ''
     };
 
-    ui.Template.update_trans(); 
+    ui.Template.update_trans();
 },
 
 update_trans:
@@ -751,7 +744,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     }
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str')
-            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;    
+            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;
     var reply_str = (reply_id != null) ?
         _('reply_to') + ' <a class="who_href" href="#'
             + reply_name + '">'
@@ -825,7 +818,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.SCHEME = scheme;
     m.IN_REPLY = (reply_id != null && !in_thread) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
-    
+
     m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
 
     m.REPLY_TEXT = reply_str;
@@ -879,7 +872,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     }
     var reply_name = tweet_obj.in_reply_to_screen_name;
     var reply_id = tweet_obj.hasOwnProperty('in_reply_to_status_id_str')
-            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;    
+            ? tweet_obj.in_reply_to_status_id_str:tweet_obj.in_reply_to_status_id;
     var reply_str = (reply_id != null) ?
         _('Reply to @') + ' <a class="who_href" href="#'
             + reply_name + '">'
@@ -1099,7 +1092,7 @@ function form_status_draft(draft) {
     } else if (m.MODE == ui.StatusBox.MODE_DM) {
         m.RECIPIENT = draft.recipient;
     } else if (m.MODE == ui.StatusBox.MODE_IMG) {
-        
+
     }
     return ui.Template.render(ui.Template.status_draft_t, m);
 },
@@ -1111,7 +1104,7 @@ function fill_people_vcard(user_obj, vcard_container) {
     var differ = Math.floor((now-created_at)/(1000 * 60 * 60 * 24));
 
     var created_at_str = ui.Template.format_time(created_at);
-    
+
     vcard_container.find('.profile_img_wrapper')
         .attr('href', user_obj.profile_image_url.replace(/_normal/, ''))
         .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
@@ -1206,7 +1199,7 @@ function form_preview(tweet) {
                         match[0], link_reg[pvd_name].base + match[1],
                         link_reg[pvd_name].direct_base + match[1]));
             break;
-            case 'twitpic.com':  
+            case 'twitpic.com':
                 html_arr.push(
                     ui.Template.form_media(
                         match[0], link_reg[pvd_name].base + match[1]));
@@ -1266,7 +1259,7 @@ function form_preview(tweet) {
 
 form_status_indicators:
 function form_status_indicators(tweet) {
-     
+
 },
 
 format_time:
