@@ -78,6 +78,7 @@ class XHotKey(threading.Thread):
             "Winkey": Xlib.X.Mod4Mask,
             "Win": Xlib.X.Mod4Mask,
             "Mod4": Xlib.X.Mod4Mask,
+            "Super": Xlib.X.Mod4Mask,
         }
         keys = re.split("<|><|>", keysdesc)
         modifiers = 0
