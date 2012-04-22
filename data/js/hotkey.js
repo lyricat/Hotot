@@ -21,42 +21,25 @@ function crack(event) {
         return;
     }
 
-    var checkKey = function(map) {
-        var matched = true;
+    var checkKey = function(map, evt) {
         var key = map.seq[map.pos];
         if (typeof key === "string") {
             var modkeys = key.substring(0, key.length - 1);
-            if (event.ctrlKey !== (modkeys.indexOf("C") >= 0)
-                 || event.altKey !== (modkeys.indexOf("A") >= 0)
-                 || key.charCodeAt(key.length - 1) !== event.charCode) {
-                matched = false;
+            if (evt.ctrlKey !== (modkeys.indexOf("C") >= 0)
+                 || evt.altKey !== (modkeys.indexOf("A") >= 0)
+                 || key.charCodeAt(key.length - 1) !== evt.charCode) {
+                return false;
             }
         } else {
-            var ckey = hotkey.calculate(event.keyCode,
-                event.shiftKey?hotkey.shiftKey:null,
-                event.ctrlKey?hotkey.ctrlKey:null,
-                event.altKey?hotkey.altKey:null);
+            var ckey = hotkey.calculate(evt.keyCode,
+                evt.shiftKey?hotkey.shiftKey:null,
+                evt.ctrlKey?hotkey.ctrlKey:null,
+                evt.altKey?hotkey.altKey:null);
             if (key !== ckey) {
-                matched = false;
+                return false;
             }
         }
-        if (matched) {
-            map.pos++;
-            if (map.pos >= map.seq.length) {
-                try {
-                    event.preventDefault();
-                    map.f(event);
-                    for (var i = 0, i_max = hotkey.map.length; i < i_max; i++) {
-                        hotkey.map[i].pos = 0;
-                    }
-
-                } catch(ex) {
-                }
-                map.pos = 0;
-            }
-        } else {
-            map.pos = 0;
-        }
+        return true;
     }
 
     var isFocusOnInput = (/^INPUT$|^TEXTAREA$/.test(event.target.tagName)) && $(event.target).is(':visible');
@@ -64,6 +47,7 @@ function crack(event) {
     var isMenuVisible = $(".hotot_menu:visible").length > 0;
 
     var etype = event.type[3].toUpperCase();
+    var mi = null, mpos = -1;
     for (var i = 0, i_max = hotkey.map.length; i < i_max; i++) {
         var map = hotkey.map[i];
         var flags = map.flags;
@@ -78,11 +62,28 @@ function crack(event) {
                     c = false;
                 }
             }
-            if (c) {
-                checkKey(map);
+            if (c && checkKey(map, event)) {
+                if (map.pos + 1 === map.seq.length) {
+                    // only the callback function of the longest sequence should be called.
+                    // e.g. "r" vs. "ar"
+                    if (map.pos > mpos) {
+                        mi = i;
+                        mpos = map.pos;
+                    }
+                    map.pos = 0;
+                } else {
+                    map.pos++;
+                }
             } else {
                 map.pos = 0;
             }
+        }
+    }
+    if (mi != null) {
+        event.preventDefault();
+        try {
+            hotkey.map[mi].f();
+        } catch(ex) {
         }
     }
 },
