@@ -647,7 +647,7 @@ function on_load_finish() {
     // if native_platform
     //      wait until the webview is ready.
     if (util.is_native_platform() && globals.load_flags == 0) {
-        setTimeout(on_load_finish, 1000);
+        setTimeout(on_load_finish, 100);
     } else {
         hotot_log('init', 'on_load_finish()');
         globals.load_flags = 1;
