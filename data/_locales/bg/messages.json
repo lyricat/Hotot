@@ -312,7 +312,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "Последовател",
+		"message": "Последователи",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
@@ -332,7 +332,7 @@
 		"description": "data/index.html"
 	},
 	"friend_cnt": {
-		"message": "Приятел",
+		"message": "Приятели",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
@@ -400,7 +400,7 @@
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "Присъедини се",
+		"message": "За първи път на",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -964,7 +964,7 @@
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "Туит",
+		"message": "Туитове",
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
