@@ -65,6 +65,10 @@ Following option can be applied, with On/Off as value.
 
 -DWITH_CHROME build chrome with mk-chrome-app.sh, will be placed under build directory/chrome/hotot-chrome.zip, need rsync
 
+Eg: just build gtk with gir rather than qt:
+
+$ cmake -DWITH_QT=off ..
+
 To build on arch:
 
 -DPYTHON_EXECUTABLE=/usr/bin/python2
