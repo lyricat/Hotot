@@ -288,15 +288,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "",
+		"message": "お気に入りリスト",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
-		"message": "",
+		"message": "似ているツイートをフィルターする",
 		"description": "data/index.html"
 	},
 	"find": {
-		"message": "",
+		"message": "検索",
 		"description": "data/index.html"
 	},
 	"fine": {
@@ -304,7 +304,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"first_time_to_sign_in_with_twitter": {
-		"message": "",
+		"message": "初めて使う、ツイッターでログイン",
 		"description": "data/index.html"
 	},
 	"follow": {
@@ -372,7 +372,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
-		"message": "",
+		"message": "ホームのタイムライン",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -384,7 +384,7 @@
 		"description": ""
 	},
 	"image_uploader": {
-		"message": "",
+		"message": "写真アップローダー",
 		"description": "data/index.html"
 	},
 	"info": {
@@ -392,15 +392,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "",
+		"message": "絵文字挿入",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
-		"message": "",
+		"message": "知能フィルター",
 		"description": "data/index.html"
 	},
 	"interface_language": {
-		"message": "",
+		"message": "インタフェース言語",
 		"description": "data/index.html"
 	},
 	"join": {
@@ -408,7 +408,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "",
+		"message": "ここを忘れられない",
 		"description": "data/index.html"
 	},
 	"keybinding": {
@@ -428,23 +428,23 @@
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
-		"message": "",
+		"message": "Kismet　ガイド",
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "",
+		"message": "警告：以下のような特徴のあるツイートを表示させなくなる",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
-		"message": "",
+		"message": "カラーを付け",
 		"description": "data/index.html"
 	},
 	"language": {
-		"message": "",
+		"message": "言語",
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "",
+		"message": "匿名に使用統計データを収集させる",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -452,7 +452,7 @@
 		"description": ""
 	},
 	"list": {
-		"message": "",
+		"message": "リスト",
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
@@ -484,11 +484,11 @@
 		"description": ""
 	},
 	"mark_deleted_tweets": {
-		"message": "",
+		"message": "消除したツイートをマークする",
 		"description": "data/index.html"
 	},
 	"mask": {
-		"message": "",
+		"message": "マスクする",
 		"description": "data/index.html"
 	},
 	"mention_them": {
@@ -544,11 +544,11 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "",
+		"message": "マイ・フェイバリット",
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "",
+		"message": "俺の旅はその遠い星の海へ",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -572,7 +572,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
-		"message": "",
+		"message": "次へ",
 		"description": "data/index.html"
 	},
 	"no_extension": {
