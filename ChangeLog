@@ -1,11 +1,20 @@
-The Latest Stable Version is 0.9.7.56
-The Latest Development Version is 0.9.7.57
+The Latest Stable Version is 0.9.8
+The Latest Development Version is 0.9.8.1
 
-Version 0.9.7.57
+Version 0.9.8.1
+	* Minor fixes for usability issues.
+	* Fix: duplicate translation result
+	* Improve hotkey
+	* Update legal hashtag characters
+	* Update several translation
+	* Greek Translation.
+
+Version 0.9.8
 	* Update many translations
 	* New hotkey mechanism
 	* Add undocumented activity API.
 	* Fix: Wrong draft metadata.
+	* Activity API
 
 Version 0.9.7.56
 	* Fix: cannot open link(Gtk)
