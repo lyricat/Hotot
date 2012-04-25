@@ -824,7 +824,7 @@
 		"description": ""
 	},
 	"search_in_google": {
-		"message": "ggrks：@",
+		"message": "グーグルで検索する：@",
 		"description": ""
 	},
 	"search_in_twitter": {
