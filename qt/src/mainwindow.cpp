@@ -60,7 +60,6 @@
 #include "hototwebpage.h"
 #include "trayiconinterface.h"
 #include "qttraybackend.h"
-#include "hototwebview.h"
 #ifdef HAVE_KDE
 #include "kdetraybackend.h"
 #endif
@@ -68,7 +67,7 @@
 MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
-    m_webView(new QGraphicsWebView),
+    m_webView(new QWebView),
 #ifndef MEEGO_EDITION_HARMATTAN
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
@@ -82,11 +81,9 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     setWindowTitle(i18n("Hotot"));
     setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot/image/ic64_hotot.png")));
     qApp->setWindowIcon(QIcon::fromTheme("hotot_qt", QIcon("share/hotot/image/ic64_hotot.png")));
-    m_webView->setPreferredSize(QSize(640, 480));
 #ifndef MEEGO_EDITION_HARMATTAN
-    HototWebView* view = new HototWebView(m_webView, this);
     this->resize(QSize(640, 480));
-    this->setCentralWidget(view);
+    this->setCentralWidget(m_webView);
     this->setMinimumSize(QSize(400, 400));
 #else
     MApplicationPage* page = new MApplicationPage;

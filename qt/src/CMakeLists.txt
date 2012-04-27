@@ -14,9 +14,7 @@ set(Hotot_QT_SRCS
     main.cpp
     mainwindow.cpp
     hototwebpage.cpp
-   
     qttraybackend.cpp
-    hototwebview.cpp
 )
 
 set(Hotot_QT_MOC_SRCS
@@ -25,7 +23,6 @@ set(Hotot_QT_MOC_SRCS
     hototrequest.h
     hototwebpage.h
     qttraybackend.h
-    hototwebview.h
 )
 
 if (HAVE_KDE)

@@ -32,6 +32,7 @@
 #include <MApplicationWindow>
 #endif
 
+class QWebView;
 class QWebInspector;
 struct TrayIconInterface;
 class KStatusNotifierItem;
@@ -85,7 +86,11 @@ protected:
 
 private:
     HototWebPage* m_page;
+#ifndef MEEGO_EDITION_HARMATTAN
+    QWebView* m_webView;
+#else
     QGraphicsWebView* m_webView;
+#endif
     QMenu* m_menu;
     TrayIconInterface* m_tray;
     QAction* m_actionShow;
