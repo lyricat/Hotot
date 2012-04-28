@@ -431,8 +431,8 @@
         <a id="btn_imageuploader" class="button toolbar_button" data-i18n-title="image_uploader" title="Image uploader"></a>
         <a id="btn_save_draft" class="button toolbar_button" data-i18n-title="save_as_draft" title="Save as drafts"></a>
         <input id="tbox_status_speech" class="button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();a.focus();ui.StatusBox.move_cursor(ui.StatusBox.POS_END);};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
-        <a id="btn_clear" class="button" data-i18n-text="clear">Clear</a>
-        <a id="btn_update" class="button" data-i18n-text="update">Update</a>
+        <a id="btn_clear" class="mochi_button" data-i18n-text="clear">Clear</a>
+        <a id="btn_update" class="mochi_button" data-i18n-text="update">Update</a>
         <span class="clear"></span>
         <div style="vertical-align:middle; padding-top: 5px;">
             <label id="status_len"></label>
@@ -465,29 +465,9 @@
         <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
-    <div class="dialog_header">
-        <ul id="prefs_dlg_btns" class="radio_group dark">
-            <li><a id="btn_prefs_appearance"
-                    href="#prefs_appearance"
-                    class="radio_group_btn"
-                    data-i18n-text="appearance">Appearance</a>
-            </li><li><a id="btn_prefs_behavior"
-                    href="#prefs_behavior"
-                    class="radio_group_btn"
-                    data-i18n-text="behavior">Behavior</a>
-            </li><li><a id="btn_prefs_system"
-                    href="#prefs_system"
-                    class="radio_group_btn"
-                    data-i18n-text="system">System</a>
-            </li><li><a id="btn_prefs_advanced"
-                    href="#prefs_advanced"
-                    class="radio_group_btn"
-                    data-i18n-text="advanced">Advanced</a>
-            </li>
-        </ul>
-    </div>
+    <div class="dialog_header"></div>
     <div id="prefs_dlg_body" class="dialog_body">
-        <div id='prefs_appearance' class="prefs_dlg_page">
+        <div id='prefs_main' class="prefs_dlg_page dialog_page">
 					<ul class="mochi_list">
 						<li class="mochi_list_item">
 							<select id="sel_prefs_lang" 
@@ -515,7 +495,7 @@
 						</li>
 						<li class="mochi_list_item">
 							<select id="sel_prefs_theme" class="mochi_combo widget"
-								title="Select a theme" style="width:150px;">
+								title="Select a theme">
 								<option value="New Hope">A New Hope</option>
 								<option value="Classic">Classic</option>
 							</select>
@@ -558,37 +538,26 @@
 					<div id="prefs_font_preview" class="value"
 						data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.
 					</div>
-          <h3 data-i18n-text="effects">Effects</h3>
 					<ul class="mochi_list">
-            <li class="mochi_list_item">
-              <input id="rdo_effects_level_low" type="radio"
-								class="mochi_radio widget" 
-								name="effects" value="0" checked/>
-              <label class="value" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
-                    >Disable decoration of widgets and some animations.</label>
-              <label class="label" data-i18n-text="effects_low"
-                    >Low</label>
-						</li><li class="mochi_list_item">
-              <input id="rdo_effects_level_normal" type="radio"
-								class="mochi_radio widget"
-								name="effects" value="1"/>
-              <label class="value" data-i18n-text="balance_between_attractiveness_and_preformance"
-                    >Balance between attractiveness and performance.</label>
-              <label class="label" data-i18n-text="effects_normal"
-                    >Normal</label></strong>
-						</li><li class="mochi_list_item">
-              <input id="rdo_effects_level_extra" type="radio"
-								class="mochi_radio widget"
-								name="effects" value="2"/>
-              <label class="value" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
-                	<span>More effects like shadows and glow of widgets.</span>
-                </label>
-              <label class="label" data-i18n-text="effects_extra"
-                    >Extra</label>
+						<li class="mochi_list_item with_trigger">
+						<a href="#prefs_behavior" class="trigger page_nav">
+							<span class="widget more"></span>
+							<label for="" class="label">Behavior Settings</label> 
+						</a>
+						</li><li class="mochi_list_item with_trigger">
+						<a href="#prefs_system" class="trigger page_nav">
+							<span class="widget more"></span>
+							<label for="" class="label">Global Settings</label> 
+						</a>
+						</li><li class="mochi_list_item with_trigger">
+						<a href="#prefs_advanced" class="trigger page_nav">
+							<span class="widget more"></span>
+							<label for="" class="label">Advanced Settings</label> 
+						</a>
 						</li>
 					</ul>
-        </div><!-- END of prefs_appearance -->
-        <div id='prefs_behavior' class="prefs_dlg_page">
+        </div><!-- END of prefs_main -->
+        <div id='prefs_behavior' class="prefs_dlg_page dialog_page">
 					<ul class="mochi_list">
             <li class="mochi_list_item">
 							<input id="chk_prefs_use_alt_retweet"
@@ -653,7 +622,7 @@
             </li>
           </ul>
         </div><!-- END of prefs_behavior-->
-				<div id='prefs_system' class="prefs_dlg_page">
+				<div id='prefs_system' class="prefs_dlg_page dialog_page">
           <div class="dialog_block hint"
                 data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
                 And these options will affect ALL accounts
@@ -781,9 +750,8 @@
 						</li>
 					</ul>
         </div><!-- END of prefs_system-->
-				<div id='prefs_advanced' class="prefs_dlg_page">
+				<div id='prefs_advanced' class="prefs_dlg_page dialog_page">
           <h3 data-i18n-text="api_setting">API Settings</h3>
-					<p>
 					<ul class="mochi_list">
             <li class="mochi_list_item">
 							<input id="tbox_prefs_api_base" title="API Base" 
@@ -848,12 +816,40 @@
 							</label>
             </li>
           </ul>
-					</p>
+          <h3 data-i18n-text="effects">Effects</h3>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+              <input id="rdo_effects_level_low" type="radio"
+								class="mochi_radio widget" 
+								name="effects" value="0" checked/>
+              <label class="value" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
+                    >Disable decoration of widgets and some animations.</label>
+              <label class="label" data-i18n-text="effects_low"
+                    >Low</label>
+						</li><li class="mochi_list_item">
+              <input id="rdo_effects_level_normal" type="radio"
+								class="mochi_radio widget"
+								name="effects" value="1"/>
+              <label class="value" data-i18n-text="balance_between_attractiveness_and_preformance"
+                    >Balance between attractiveness and performance.</label>
+              <label class="label" data-i18n-text="effects_normal"
+                    >Normal</label></strong>
+						</li><li class="mochi_list_item">
+              <input id="rdo_effects_level_extra" type="radio"
+								class="mochi_radio widget"
+								name="effects" value="2"/>
+              <label class="value" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
+                	<span>More effects like shadows and glow of widgets.</span>
+                </label>
+              <label class="label" data-i18n-text="effects_extra"
+                    >Extra</label>
+						</li>
+					</ul>
         </div><!-- END of prefs_advanced -->
     </div>
     <div class="dialog_footer">
+				<a id="btn_prefs_back" href="#prefs_main" style="float:left; display: none" class="mochi_button page_nav">Back</a>	
         <a id="btn_prefs_restore_defaults" class="mochi_button" data-i18n-text="restore_defaults">Restore Defaults</a>
-        <a id="btn_prefs_cancel" class="mochi_button" data-i18n-text="cancel">Cancel</a>
         <a id="btn_prefs_ok" class="mochi_button" data-i18n-text="ok">OK</a>
     </div>
     </div> <!-- END of .dialog_container -->

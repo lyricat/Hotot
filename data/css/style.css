@@ -898,9 +898,14 @@ label {
 .mochi_list_item .label {
 	font-weight: normal;
 }
-.dialog_footer .mochi_button {
+.dialog_footer .mochi_button, #status_ctrl .mochi_button {
 	min-width: 100px;
+	font-size: 14px;
 }
+.mochi_list_item .trigger {
+	color: #333;
+}
+
 
 /*===== Main Page ================================*/
 #main_page {
@@ -1513,13 +1518,13 @@ label {
 	height: 48px;
 }
 
-#prefs_dlg .dialog_header, #about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
+#about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
 	padding: 10px;
 	height: 32px;
 	background: #777777 url(../image/mask.png);
 }
 
-#oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
+#prefs_dlg .dialog_header, #oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
 	height: 0;
 	padding: 0;
 	display: none;
@@ -1545,13 +1550,14 @@ label {
 
 #prefs_font_preview {
 	text-align: center;
-	border: 1px #ccc solid;
+	border: 1px #CCC solid;
 	padding: 10px 0;
-	height: 30px;
-	margin: 0 10px;
+	height: 50px;
+	margin: 5px 0 20px 0;
 	overflow: auto;
-	width: 90%;
-	margin: 0 auto;
+	width: 100%;
+	border-radius: 6px;
+	box-sizing: border-box;
 }
 
 /*===== Extensions Dialog ================================*/
@@ -2341,10 +2347,13 @@ td {
 
 /*=====*/
 .hint {
-	background: #fef6a8 none no-repeat 20px center;
-	border: 1px solid #fcfc19;
-	color: #990000;
-	padding: 2px 4px;
+	background: #FEF6A8 none no-repeat 20px center;
+	border: 1px solid #FCFC19;
+	color: #900;
+	padding: 5px 10px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
 }
 .float_right {
 	float: right;

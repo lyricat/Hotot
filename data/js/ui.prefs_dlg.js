@@ -7,14 +7,18 @@ init:
 function init () {
     ui.PrefsDlg.id = '#prefs_dlg';
 
-    var btns = new widget.RadioGroup('#prefs_dlg_btns');
-    btns.on_clicked = function (btn, event) {
-        var page_name = btn.attr('href');
-        $(ui.PrefsDlg.id +' .prefs_dlg_page').not(page_name).hide();
-        $(page_name).show();
-    };
-    btns.create();
-    $('#btn_prefs_appearance').click();
+    ui.PrefsDlg.switchPage("#prefs_main");
+
+    $('#prefs_dlg .page_nav').click(function(){
+        var page_name = $(this).attr('href');
+        if (page_name == "#prefs_main") {
+            $('#btn_prefs_back').hide();
+        } else {
+            $('#btn_prefs_back').show();
+        }
+        ui.PrefsDlg.switchPage(page_name);
+        return false;
+    });
 
     $('#sel_prefs_theme').bind('change', function () {
         change_theme($(this).val(), $(this).children('option[value="'+$(this).val()+'"]').attr('path'));
@@ -92,10 +96,6 @@ function init () {
         }
     });
 
-    $('#btn_prefs_cancel').click(function (event) {
-        globals.prefs_dialog.close();
-    });
-
     $('#btn_prefs_restore_defaults').click(function (event) {
         if (confirm("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n"))
             ui.PrefsDlg.restore_defaults();
@@ -109,6 +109,12 @@ function init () {
     }
 
     return this;
+},
+
+switchPage:
+function switchPage (name) {
+    $(ui.PrefsDlg.id + ' .dialog_page').not(name).hide();
+    $(name).show();
 },
 
 load_settings:

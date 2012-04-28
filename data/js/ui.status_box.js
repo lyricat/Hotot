@@ -39,8 +39,7 @@ function get_status_len(status_text) {
 
 init:
 function init () {
-    ui.StatusBox.btn_update = new widget.Button('#btn_update');
-    ui.StatusBox.btn_update.on_clicked = function(event){
+    $('#btn_update').click(function(event){
         ui.StatusBox.formalize();
         var status_text = $.trim($('#tbox_status').attr('value'));
         if (ui.StatusBox.get_status_len(status_text) > 140) {
@@ -48,9 +47,6 @@ function init () {
                 _('status_is_over_140_characters')).show();
             return;
         }
-
-        // ui.StatusBox.btn_update.set_label(_('updating_dots'));
-
         if (status_text.length != 0) {
             if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
                 ui.StatusBox.post_message(status_text);
@@ -65,21 +61,18 @@ function init () {
                 }
             }
         }
-    };
-    ui.StatusBox.btn_update.create();
+    });
 
-    var btn_shorturl = new widget.Button('#btn_shorturl');
-    btn_shorturl.on_clicked = ui.StatusBox.on_btn_short_url_clicked;
-    btn_shorturl.create();
+    $('#btn_shorturl').click(function () {
+        ui.StatusBox.on_btn_short_url_clicked;
+    });
 
-    var btn_clear = new widget.Button('#btn_clear'); 
-    btn_clear.on_clicked = function (event) {
+    $('#btn_clear').click(function (event) {
         $('#tbox_status').attr('value', '');
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         ui.reply_to_id = null;
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
-    };
-    btn_clear.create();
+    });
 
     var toggle_mode = new widget.Button('#toggle_mode');
     toggle_mode.on_clicked = function (event) {
