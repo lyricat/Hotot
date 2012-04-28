@@ -55,7 +55,6 @@ default_prefs: {
         , 'font_size': 14
         , 'effects_level': 1
           // Behaviors
-        , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
@@ -97,7 +96,6 @@ default_prefs: {
         , 'font_size': 14
         , 'effects_level': 1
           // Behaviors
-        , 'use_native_notify': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false

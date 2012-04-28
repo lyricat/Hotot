@@ -196,16 +196,6 @@ disabled:
     outline: none;
 }
 
-/* = widget.label = */
-.label {
-    color: #333;
-    font-size: 12px;
-    vertical-align: middle;
-}
-
-.label.dark {
-    color:#eee;
-}
 /* = widget.entry & widget.textarea = */
 /* == entry & textarea == */
 .entry, .textarea {
@@ -395,8 +385,11 @@ disabled:
 .dialog_body {
     padding: 10px 10px;
     overflow-y: auto;
+		background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F6), to(#EDEDED));
 }
-
+.dialog_body .mochi_entry.widget {
+	width: 300px;
+}
 .dialog_footer {
     height: 59px;
     text-align: right; 
@@ -413,13 +406,10 @@ disabled:
     white-space:normal;
 }
 
-.dialog_block h3 {
-	margin: 10px 0;
-	font-size: 13px;
-	background: #F2F2F2;
+.dialog_body h3 {
+	margin: 0;
+	font-size: 15px;
 	padding: 2px 0 4px 10px;
-	border-radius: 2px;
-	border: 1px #E6E6E6 solid;
 	text-shadow: 0 1px 1px white;
 }
 

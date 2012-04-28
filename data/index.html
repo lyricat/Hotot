@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Home | Hotot</title>
     <link rel="stylesheet" href="css/hotot.widget.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/mochi.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" />
     <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" />
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="js/widget.scrollbar.js"></script>
     <script type="text/javascript" src="js/widget.listview.js"></script>
     <script type="text/javascript" src="js/widget.autocomplete.js"></script>
+    <script type="text/javascript" src="js/mochi.js"></script>
 
     <script type="text/javascript" src="js/hotkey.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
@@ -485,378 +487,374 @@
         </ul>
     </div>
     <div id="prefs_dlg_body" class="dialog_body">
-        <div id='prefs_global' class="prefs_dlg_page">
-            <div class="dialog_block">
-
-            </div>
-        </div><!-- END of #prefs_global -->
         <div id='prefs_appearance' class="prefs_dlg_page">
-            <div class="dialog_block">
-            <h3 data-i18n-text="language">Language</h3>
-            <p>
-                <label data-i18n-text="interface_language">Interface language: </label>
-                <select id="sel_prefs_lang" class="combo"
-                    title="Select a language"
-                    data-i18n-title="select_a_language">
-										<option value="auto" data-i18n-title="language">Language</option>
-										<option value="bg">Български </option>
-										<option value="de">Deutsch</option>
-										<option value="el">ελληνικά</option>
-										<option value="en">English</option>
-										<option value="es">Español</option>
-										<option value="fr">Français</option>
-										<option value="ja">日本語</option>
-										<option value="lv">Latviešu</option>
-										<option value="pl_PL">Polski</option>
-										<option value="pt_BR">Português(Brasil)</option>
-										<option value="ru">Русский</option>
-										<option value="uk">Українська</option>
-										<option value="zh_CN">简体中文</option>
-										<option value="zh_CLS">文言</option>
-										<option value="zh_CAN">粤语</option>
-                </select>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="theme">Theme</h3>
-            <p>
-                <table class="void_table">
-                    <tr>
-                        <td><label class="label"
-                                data-i18n-text="themes">Themes</label></td>
-                        <td>
-                        <select id="sel_prefs_theme" class="combo"
-                            title="Select a theme" style="width:150px;">
-                            <option value="New Hope">A New Hope</option>
-                            <option value="Classic">Classic</option>
-                        </select>
-                        </td>
-                        <td rowspan="4" style="text-align: right">
-                            <img id="prefs_theme_preview" src="#"
-                            alt="No Preview"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class="label"
-                                data-i18n-text="name">Name</label></td>
-                        <td><label class="label" id="prefs_theme_name"></label></td>
-                    </tr>
-                    <tr>
-                        <td><label class="label"
-                                data-i18n-text="author">Author</label></td>
-                        <td><label class="label" id="prefs_theme_author"></label></td>
-                    </tr>
-                    <tr>
-                        <td><label class="label"
-                                data-i18n-text="web">Web</label></td>
-                        <td ><a class="label" id="prefs_theme_web" target="_blank" href="javascript:void(0);"></a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" id="prefs_theme_desc"></td>
-                    </tr>
-                </table>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="font">Font</h3>
-            <p>
-                <input id="chk_use_custom_font" type="checkbox"
-                    class="checkbox" name="font" />
-                <label class="label" for="chk_use_custom_font"
-                    data-i18n-text="use_custom_font">Use Custom Font</label>
-                <input id="tbox_prefs_custom_font"
-										title="Custom Font" 
-										style="vertical-align:middle;width:120px"
-										type="text" class="entry"/>
-                <select id="sel_prefs_sys_font" class="combo"
-										style="vertical-align:middle;width:10px"
-                    title="Font Family">
-                    <option value="more">...</option>
-                </select>
-						</p>
-						<p>
-                <label class="label"
-                    data-i18n-text="font_size">Font Size</label>
-                <input id="range_prefs_font_size"
-                    title="Font Size"
-										max="28" min="6" value="12" step="1"
-										style="width:80px;vertical-align:middle;"
-										type="range"/>
-                <label class="label" id="range_prefs_font_size_st"
-                    >12px</label>
-            </p>
-            <p>
-                <label class="label" data-i18n-text="preview">Preview:</label><br/>
-                <div id="prefs_font_preview"
-                    data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.</div>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="effects">Effects</h3>
-            <p>
-                <input id="rdo_effects_level_low" type="radio"
-                    class="radio" name="effects" value="0" checked/>
-                <strong><label class="label" data-i18n-text="effects_low"
-                    >Low</label>:</strong>
-                <label class="label" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
+					<ul class="mochi_list">
+						<li class="mochi_list_item">
+							<select id="sel_prefs_lang" 
+								class="mochi_combo widget" 
+								title="Select a language"
+								data-i18n-title="select_a_language">
+								<option value="auto" data-i18n-title="language">Language</option>
+								<option value="bg">Български </option>
+								<option value="de">Deutsch</option>
+								<option value="el">ελληνικά</option>
+								<option value="en">English</option>
+								<option value="es">Español</option>
+								<option value="fr">Français</option>
+								<option value="ja">日本語</option>
+								<option value="lv">Latviešu</option>
+								<option value="pl_PL">Polski</option>
+								<option value="pt_BR">Português(Brasil)</option>
+								<option value="ru">Русский</option>
+								<option value="uk">Українська</option>
+								<option value="zh_CN">简体中文</option>
+								<option value="zh_CLS">文言</option>
+								<option value="zh_CAN">粤语</option>
+              </select>
+              <label class="label"data-i18n-text="interface_language">Interface language</label>
+						</li>
+						<li class="mochi_list_item">
+							<select id="sel_prefs_theme" class="mochi_combo widget"
+								title="Select a theme" style="width:150px;">
+								<option value="New Hope">A New Hope</option>
+								<option value="Classic">Classic</option>
+							</select>
+							<label class="label" data-i18n-text="themes">Themes</label>
+						</li>
+					</ul>
+					<h3 data-i18n-text="font">Font</h3>
+					<ul class="mochi_list">
+						<li class="mochi_list_item">
+							<input id="chk_use_custom_font" type="checkbox"
+									class="mochi_toggle widget" name="font" />
+							<label class="label" for="chk_use_custom_font"
+									data-i18n-text="use_custom_font">Use Custom Font</label>
+						</li>
+						<li class="mochi_list_item">
+							<select id="sel_prefs_sys_font" class="mochi_combo widget"
+									style="padding:0 3px;width:30px;min-width:30px"
+									title="Font Family">
+									<option value="more">...</option>
+							</select>
+							<input id="tbox_prefs_custom_font"
+									title="Custom Font" 
+									style="width:120px;float:right"
+									type="text" class="mochi_entry"/>
+							<label class="label" for="sel_prefs_sys_font"
+									data-i18n-text="custom_font">Custom Font</label>
+						</li>
+						<li class="mochi_list_item">
+							<input id="range_prefs_font_size"
+									title="Font Size" class="widget"
+									max="28" min="6" value="12" step="1"
+									style="width:200px;"
+									type="range"/>
+							<label class="value" id="range_prefs_font_size_st"
+									>12px</label>
+							<label class="label"
+									data-i18n-text="font_size">Font Size</label>
+						</li>
+					</ul>
+					<div id="prefs_font_preview" class="value"
+						data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.
+					</div>
+          <h3 data-i18n-text="effects">Effects</h3>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+              <input id="rdo_effects_level_low" type="radio"
+								class="mochi_radio widget" 
+								name="effects" value="0" checked/>
+              <label class="value" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
                     >Disable decoration of widgets and some animations.</label>
-                <br/>
-                <input id="rdo_effects_level_normal" type="radio"
-                    class="radio" name="effects" value="1"/>
-                <strong><label class="label" data-i18n-text="effects_normal"
-                    >Normal</label>:</strong>
-                <label class="label" data-i18n-text="balance_between_attractiveness_and_preformance"
+              <label class="label" data-i18n-text="effects_low"
+                    >Low</label>
+						</li><li class="mochi_list_item">
+              <input id="rdo_effects_level_normal" type="radio"
+								class="mochi_radio widget"
+								name="effects" value="1"/>
+              <label class="value" data-i18n-text="balance_between_attractiveness_and_preformance"
                     >Balance between attractiveness and performance.</label>
-                <br/>
-                <input id="rdo_effects_level_extra" type="radio"
-                    class="radio" name="effects" value="2"/>
-                <strong><label class="label" data-i18n-text="effects_extra"
-                    >Extra</label>:</strong>
-                <label class="label" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
+              <label class="label" data-i18n-text="effects_normal"
+                    >Normal</label></strong>
+						</li><li class="mochi_list_item">
+              <input id="rdo_effects_level_extra" type="radio"
+								class="mochi_radio widget"
+								name="effects" value="2"/>
+              <label class="value" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
                 	<span>More effects like shadows and glow of widgets.</span>
                 </label>
-            </p>
-            </div>
+              <label class="label" data-i18n-text="effects_extra"
+                    >Extra</label>
+						</li>
+					</ul>
         </div><!-- END of prefs_appearance -->
         <div id='prefs_behavior' class="prefs_dlg_page">
-            <div class="dialog_block">
-            <h3 data-i18n-text="operations">Operations</h3>
-            <p>
-                <input id="chk_prefs_use_alt_retweet"
-                    title="Replace default retweet action with quote"
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_alt_retweet"
-                    class="label"
-                    data-i18n-text="use_quote_as_default_retweet_action"
-                    >Use quote as default retweet action.</label><br/>
-                <input id="chk_prefs_use_alt_reply"
-                    title="Replace default reply action with reply all"
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_alt_reply"
-                    class="label"
-                    data-i18n-text="use_reply_all_as_default_reply_action"
-                    >Use reply all as default reply action.</label><br/>
-						</p>
-						</div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="misc">Misc</h3>
-            <p>
-                <input id="chk_prefs_use_preload_conversation"
-                    title="Preload latest tweet in a conversation if it is cached."
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_preload_conversation"
-                    class="label"
-                    data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
-                    >Preload latest tweets in conversations if possible.</label><br/>
-                <input id="chk_prefs_use_media_preview"
-                    title="Preview the media if possible."
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_media_preview"
-                    class="label"
-                    data-i18n-text="preview_embedded_media"
-                    >Preview embedded media.</label><br/>
-                <input id="chk_prefs_use_deleted_mark"
-                    title="Use a sign to mark deleted tweet instead of deleting it"
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_deleted_mark"
-                    class="label"
-                    data-i18n-text="mark_deleted_tweets"
-                    >Mark deleted tweets.</label><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="default_picture_service">Default Picture Service</h3>
-            <p>
-                <select id="sel_prefs_default_picture_service"
-                    class="combo"
-                    title="Select a default picture service"
-                    data-i18n-title="select_a_default_picture_service">
-                    <option value="twitter.com">Twitter Official Service</option>
-                    <option value="img.ly">Img.ly</option>
-                    <option value="twitpic.com">Twitpic.com</option>
-                    <option value="lockerz.com">Lockerz.com</option>
-                </select>
-            </p>
-            </div>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_use_alt_retweet"
+									title="Replace default retweet action with quote"
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_alt_retweet"
+									class="label"
+									data-i18n-text="use_quote_as_default_retweet_action"
+									>Use quote as default retweet action.</label>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_alt_reply"
+									title="Replace default reply action with reply all"
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_alt_reply"
+									class="label"
+									data-i18n-text="use_reply_all_as_default_reply_action"
+									>Use reply all as default reply action.</label>
+						</li>
+					</ul>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_use_preload_conversation"
+									title="Preload latest tweet in a conversation if it is cached."
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_preload_conversation"
+									class="label"
+									data-i18n-text="preload_latest_tweets_in_conversations_if_possible"
+									>Preload latest tweets in conversations if possible.</label>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_media_preview"
+									title="Preview the media if possible."
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_media_preview"
+									class="label"
+									data-i18n-text="preview_embedded_media"
+									>Preview embedded media.</label><br/>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_deleted_mark"
+									title="Use a sign to mark deleted tweet instead of deleting it"
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_deleted_mark"
+									class="label"
+									data-i18n-text="mark_deleted_tweets"
+									>Mark deleted tweets.</label><br/>
+            </li><li class="mochi_list_item">
+              <select id="sel_prefs_default_picture_service"
+								class="mochi_combo widget"
+								title="Select a default picture service"
+								data-i18n-title="select_a_default_picture_service">
+								<option value="twitter.com">Twitter Official Service</option>
+								<option value="img.ly">Img.ly</option>
+								<option value="twitpic.com">Twitpic.com</option>
+								<option value="lockerz.com">Lockerz.com</option>
+              </select>
+							<label data-i18n-text="default_picture_service"
+								class="label">Default Picture Service</label>
+            </li>
+          </ul>
         </div><!-- END of prefs_behavior-->
 				<div id='prefs_system' class="prefs_dlg_page">
-            <div class="dialog_block hint"
+          <div class="dialog_block hint"
                 data-i18n-text="globals_restart_hint">You MUST restart Hotot for some changes below to take effect.
                 And these options will affect ALL accounts
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="keybinding">Keybinding</h3>
-            <p>
-                <label class="label" data-i18n-text="summon_hotot">Summon Hotot (like: &lt;ALT&gt;C)</label><br/>
-                <input id="tbox_prefs_shortcut_summon_hotot"
+          </div>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+              <input id="tbox_prefs_shortcut_summon_hotot"
                      title="Summon Hot Key"
-                     type="text" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="http_proxy">HTTP Proxy</h3>
-            <p>
-                <input id="chk_prefs_use_http_proxy" class="checkbox"
-                    title="Use HTTP Proxy" type="checkbox"/>
-                <label id="label_prefs_use_http_proxy"
-                    for="chk_prefs_use_http_proxy"
-                    class="label" data-i18n-text="enable_proxy">
-                    Enable Proxy
-                </label><br/>
-                <input id="tbox_prefs_http_proxy_host"
-                    title="HTTP Proxy Host"
-										style="width: 120px;"
-										placeholder="Proxy Host"
-                    type="text" class="entry"/>
-                <input id="tbox_prefs_http_proxy_port"
-                    title="HTTP Proxy Port"
-                    style="width: 120px;"
-										placeholder="Proxy Port"
-                    type="text" class="entry"/><br/>
-                <input id="chk_prefs_use_http_proxy_auth" class="checkbox"
-                    title="Need Authentication" type="checkbox"/>
-                <label id="label_prefs_http_proxy_auth"
-                    for="chk_prefs_use_http_proxy_auth"
-                    class="label" data-i18n-text="proxy_auth">
-                    Authentication
-                </label><br/>
-                <input id="tbox_prefs_http_proxy_auth_name"
-                    title="HTTP Proxy Authentication Name"
-                    style="width: 120px;"
-										placeholder="Username"
-                    type="text" class="entry"/>
-                <input id="tbox_prefs_http_proxy_auth_password"
-                    title="HTTP Proxy Authentication Password"
-                    style="width: 120px;"
-										placeholder="Password"
-                    type="password" class="entry"/><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="system_integration">System Integration</h3>
-            <p>
-                <input id="chk_prefs_use_ubuntu_indicator"
-                    title="Use Ubuntu Indicator"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_ubuntu_indicator" class="label"
-                    data-i18n-text="use_ubuntu_indicator"
-                    >Use Ubuntu indicator</label><br/>
-                <input id="chk_prefs_use_native_notify"
-                    title="Use Native Notify" class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_native_notify" class="label"
-                    data-i18n-text="use_native_notify_system"
-                    >Use Native Notify System</label><br/>
-                <input id="chk_prefs_context_menu_integration"
-                    title="Integrate to context menu."
-                    class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_context_menu_integration"
-                    class="label"
-                    data-i18n-text="chrome_context_menu_integration"
-                    >Chrome context menu integration.</label><br/>
-            </p>
-            </div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="misc">Misc</h3>
-            <p>
+										 placeholder="e.g. <ALT>H"
+                     type="text" class="mochi_entry widget"/>
+              <label class="label" data-i18n-text="summon_hotot">Summon Hotot</label>
+						</li>
+					</ul>
+					<ul class="mochi_list proxy_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_use_http_proxy" type="checkbox"
+									title="Use HTTP Proxy" class="mochi_toggle widget"/>
+							<label id="label_prefs_use_http_proxy"
+									for="chk_prefs_use_http_proxy"
+									class="label" data-i18n-text="enable_proxy">
+									Enable Proxy
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_http_proxy_host"
+									title="HTTP Proxy Host"
+									placeholder="Proxy Host"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_http_proxy_host"
+									class="label" data-i18n-text="host">
+									Host	
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_http_proxy_port"
+									title="HTTP Proxy Port"
+									placeholder="Proxy Port"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_http_proxy_port"
+									class="label" data-i18n-text="port">
+									Port	
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_http_proxy_auth" type="checkbox"
+									title="Need Authentication" class="mochi_toggle widget"/>
+							<label id="label_prefs_http_proxy_auth"
+									for="chk_prefs_use_http_proxy_auth"
+									class="label" data-i18n-text="proxy_auth">
+									Authentication
+							</label>
+						</li>
+					</ul>
+					<ul class="mochi_list proxy_auth_list">
+						<li class="mochi_list_item">
+							<input id="tbox_prefs_http_proxy_auth_name"
+									title="HTTP Proxy Authentication Name"
+									placeholder="Username"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_http_proxy_auth_name"
+									class="label" data-i18n-text="username">
+									Username
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_http_proxy_auth_password"
+									title="HTTP Proxy Authentication Password"
+									placeholder="Password"
+									type="password" class="mochi_entry widget"/>
+							<label for="tbox_prefs_http_proxy_auth_password"
+									class="label" data-i18n-text="username">
+									Password	
+							</label>
+						</li>
+					</ul>
+					<ul class="mochi_list">
+						<li class="mochi_list_item ubuntu_indicator">
+							<input id="chk_prefs_use_ubuntu_indicator"
+									title="Use Ubuntu Indicator"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_use_ubuntu_indicator" class="label"
+									data-i18n-text="use_ubuntu_indicator"
+									>Use Ubuntu indicator</label>
+						</li><li class="mochi_list_item chrome_context_menu">
+							<input id="chk_prefs_context_menu_integration"
+									title="Integrate to context menu."
+									class="mochi_toggle widget" type="checkbox"/>
+							<label for="chk_prefs_context_menu_integration"
+									class="label"
+									data-i18n-text="chrome_context_menu_integration"
+									>Chrome context menu integration.</label>
+						</li><li class="mochi_list_item exit_when_close">
                 <input id="chk_prefs_close_to_exit"
                     title="Exit Hotot when close main window"
-                    type="checkbox" class="checkbox"/>
+                    type="checkbox" class="mochi_toggle widget"/>
                 <label for="chk_prefs_close_to_exit" class="label"
                     data-i18n-text="exit_hotot_when_close_window"
-                    >Exit Hotot when close main window</label><br/>
+                    >Exit Hotot when close main window</label>
+						</li><li class="mochi_list_item">
                 <input id="chk_prefs_sign_in_automatically"
                      title="Automatically Sign in after opening"
-                     type="checkbox" class="checkbox"/>
+                     type="checkbox" class="mochi_toggle widget"/>
                 <label for="chk_prefs_sign_in_automatically" class="label"
                      data-i18n-text="automatically_sign_in_after_opening"
-                     >Automatically Sign in after opening</label><br/>
+                     >Automatically Sign in after opening</label>
+						</li><li class="mochi_list_item starts_minimized">
                 <input id="chk_prefs_starts_minimized"
                      title="Starts Minimized"
-                     type="checkbox" class="checkbox"/>
+                     type="checkbox" class="mochi_toggle widget"/>
                 <label for="chk_prefs_starts_minimized" class="label"
                      data-i18n-text="starts_minimized"
-                     >Starts Minimized</label><br/>
-						</p>
-						</div>
-            <div class="dialog_block">
-            <h3 data-i18n-text="debug">Debug</h3>
-            <p>
-                <input id="chk_prefs_use_verbose_mode"
-                    title="Enable verbose mode or not"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_verbose_mode"
-                    class="label"
-                    data-i18n-text="enable_verbose_mode"
-                    >Enable verbose mode</label><br/>
-                <input id="chk_prefs_use_anonymous_stat"
-                    title="Let us colloect anonymous statistic information"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_anonymous_stat" class="label"
-                    data-i18n-text="let_hotot_collects_anonymous_statistic_information"
-                    >Let Hotot collects anonymous statistic information</label><br/>
-						</p>
-						</div>
+                     >Starts Minimized</label>
+						</li>
+						<li class="mochi_list_item">
+							<input id="chk_prefs_use_verbose_mode"
+									title="Enable verbose mode or not"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_use_verbose_mode"
+									class="label"
+									data-i18n-text="enable_verbose_mode"
+									>Enable verbose mode</label>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_anonymous_stat"
+									title="Let us colloect anonymous statistic information"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_use_anonymous_stat" class="label"
+									data-i18n-text="let_hotot_collects_anonymous_statistic_information"
+									>Let Hotot collects anonymous statistic information</label>
+						</li>
+					</ul>
         </div><!-- END of prefs_system-->
 				<div id='prefs_advanced' class="prefs_dlg_page">
-            <div class="dialog_block">
-            <h3 data-i18n-text="api_setting">API Settings</h3>
-            <p>
-                <label class="label"
-                    data-i18n-text="api_base">API Base</label><br/>
-                <input id="tbox_prefs_api_base"
-                    title="API Base" type="text" class="entry"/><br/>
-                <input id="chk_prefs_use_same_sign_api_base"
-                    title="Use same Signing Api" class="checkbox"
-                    type="checkbox"/>
-                <label for="chk_prefs_use_same_sign_api_base"
-                    data-i18n-text="same_signing_api_base" class="label"
-                    >Same signing API base:
-                </label><br/>
-                <input id="tbox_prefs_sign_api_base"
-                    title="Signing API Base"
-                    type="text" class="entry"/><br/>
-                <label class="label" data-i18n-text="oauth_base"
-                    >OAuth Base</label><br/>
-                <input id="tbox_prefs_oauth_base"
-                    title="OAuth Base" type="text" class="entry"/><br/>
-                <input id="chk_prefs_use_same_sign_oauth_base"
-                    title="Use same Signing OAuth Base"
-                    type="checkbox" class="checkbox"/>
-                <label for="chk_prefs_use_same_sign_oauth_base"
-                    class="label"
-                    data-i18n-text="same_signing_oauth_base"
-                    >Same signing OAuth base:
-                </label><br/>
-                <input id="tbox_prefs_sign_oauth_base"
-                    title="Signing OAuth Base"
-                    type="text" class="entry"/><br/>
-                <label class="label"
-                    data-i18n-text="search_api_base2"
-                    >Search API Base</label><br/>
-                <input id="tbox_prefs_search_api_base2"
-                    title="Search API Base"
-                    type="text" class="entry"/><br/>
-                <label class="label"
-                    data-i18n-text="upload_api_base"
-                    >Upload API Base</label><br/>
-                <input id="tbox_prefs_upload_api_base"
-                    title="Upload API Base"
-                    type="text" class="entry"/><br/>
-            </p>
-            </div>
+          <h3 data-i18n-text="api_setting">API Settings</h3>
+					<p>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="tbox_prefs_api_base" title="API Base" 
+								type="text" class="mochi_entry widget"/>
+							<label class="label"
+									data-i18n-text="api_base">API Base</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_oauth_base" title="OAuth Base"
+								type="text" class="mochi_entry widget"/>
+							<label class="label" data-i18n-text="oauth_base"
+									>OAuth Base</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_search_api_base2"
+									title="Search API Base"
+									type="text" class="mochi_entry widget"/>
+							<label class="label"
+									data-i18n-text="search_api_base2"
+									>Search API Base</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_upload_api_base"
+									title="Upload API Base"
+									type="text" class="mochi_entry widget"/>
+							<label class="label"
+									data-i18n-text="upload_api_base"
+									>Upload API Base</label>
+						</li>
+					</ul>		
+					<ul class="mochi_list">
+						<li class="mochi_list_item">
+							<input id="chk_prefs_use_same_sign_api_base"
+									title="Use same Signing Api" class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_same_sign_api_base"
+									data-i18n-text="same_signing_api_base" class="label"
+									>Same signing API base:
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_sign_api_base"
+									title="Signing API Base"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_sign_api_base"
+									data-i18n-text="signing_api_base" class="label"
+									>Signing API base:
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="chk_prefs_use_same_sign_oauth_base"
+									title="Use same Signing OAuth Base"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_use_same_sign_oauth_base"
+									class="label"
+									data-i18n-text="same_signing_oauth_base"
+									>Same signing OAuth base:
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_sign_oauth_base"
+									title="Signing OAuth Base"
+									type="text" class="mochi_entry widget"/>
+							<label for="chk_prefs_use_same_sign_oauth_base"
+									class="label"
+									data-i18n-text="signing_oauth_base"
+									>Signing OAuth base:
+							</label>
+            </li>
+          </ul>
+					</p>
         </div><!-- END of prefs_advanced -->
     </div>
     <div class="dialog_footer">
-        <a id="btn_prefs_restore_defaults" class="button" data-i18n-text="restore_defaults">Restore Defaults</a>
-        <a id="btn_prefs_cancel" class="button" data-i18n-text="cancel">Cancel</a>
-        <a id="btn_prefs_ok" class="button" data-i18n-text="ok">OK</a>
+        <a id="btn_prefs_restore_defaults" class="mochi_button" data-i18n-text="restore_defaults">Restore Defaults</a>
+        <a id="btn_prefs_cancel" class="mochi_button" data-i18n-text="cancel">Cancel</a>
+        <a id="btn_prefs_ok" class="mochi_button" data-i18n-text="ok">OK</a>
     </div>
     </div> <!-- END of .dialog_container -->
 </div>

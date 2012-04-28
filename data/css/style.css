@@ -890,10 +890,16 @@ pre {
 }
 
 
-/* ===== Widgets =================================== */
+/* ===== Overlay Widgets =================================== */
 label {
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 18px;
+}
+.mochi_list_item .label {
+	font-weight: normal;
+}
+.dialog_footer .mochi_button {
+	min-width: 100px;
 }
 
 /*===== Main Page ================================*/

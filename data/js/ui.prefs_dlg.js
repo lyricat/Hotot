@@ -76,8 +76,7 @@ function init () {
         $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
     });
 
-    var btn_prefs_ok = new widget.Button('#btn_prefs_ok');
-    btn_prefs_ok.on_clicked = function (event) {
+    $('#btn_prefs_ok').click(function (event) {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
@@ -91,22 +90,23 @@ function init () {
             ui.PrefsDlg.save_prefs();
             globals.prefs_dialog.close();
         }
-    };
-    btn_prefs_ok.create();
+    });
 
-    var btn_prefs_cancel = new widget.Button('#btn_prefs_cancel');
-    btn_prefs_cancel.on_clicked = function (event) {
+    $('#btn_prefs_cancel').click(function (event) {
         globals.prefs_dialog.close();
-    };
-    btn_prefs_cancel.create();
+    });
 
-    var btn_prefs_restore_defaults 
-        = new widget.Button('#btn_prefs_restore_defaults');
-    btn_prefs_restore_defaults.on_clicked = function (event) {
+    $('#btn_prefs_restore_defaults').click(function (event) {
         if (confirm("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n"))
             ui.PrefsDlg.restore_defaults();
-    };
-    btn_prefs_restore_defaults.create();
+    });
+
+    if (util.is_native_platform()) {
+        $('#prefs_system').find('.chrome_context_menu').hide()
+    } else {
+        $('#prefs_system').find('.proxy_list, .proxy_auth_list, .ubuntu_indicator, .exit_when_close, .starts_minimized').hide();
+        $('#prefs_system')
+    }
 
     return this;
 },
@@ -114,46 +114,52 @@ function init () {
 load_settings:
 function load_settings() {
     // Globals
-    $('#chk_prefs_use_verbose_mode').prop('checked'
-        , conf.settings.use_verbose_mode);
-    $('#chk_prefs_use_ubuntu_indicator').prop('checked'
-        , conf.settings.use_ubuntu_indicator);
-    $('#chk_prefs_close_to_exit').prop('checked'
-        , conf.settings.close_to_exit);
-    $('#chk_prefs_sign_in_automatically').prop('checked'
-        , conf.settings.sign_in_automatically);
-    $('#chk_prefs_starts_minimized').prop('checked'
-        , conf.settings.starts_minimized);
-    $('#chk_prefs_use_anonymous_stat').prop('checked'
-        , conf.settings.use_anonymous_stat);
+    $('#chk_prefs_use_verbose_mode')
+        .attr('checked', conf.settings.use_verbose_mode)
+        .prop('checked', conf.settings.use_verbose_mode);
+    $('#chk_prefs_use_ubuntu_indicator')
+        .attr('checked', conf.settings.use_ubuntu_indicator)
+        .prop('checked', conf.settings.use_ubuntu_indicator);
+    $('#chk_prefs_close_to_exit')
+        .attr('checked', conf.settings.close_to_exit)
+        .prop('checked', conf.settings.close_to_exit);
+    $('#chk_prefs_sign_in_automatically')
+        .attr('checked', conf.settings.sign_in_automatically)
+        .prop('checked', conf.settings.sign_in_automatically);
+    $('#chk_prefs_starts_minimized')
+        .attr('checked', conf.settings.starts_minimized)
+        .prop('checked', conf.settings.starts_minimized);
+    $('#chk_prefs_use_anonymous_stat')
+        .attr('checked', conf.settings.use_anonymous_stat)
+        .prop('checked', conf.settings.use_anonymous_stat);
     // chrome only
     if (conf.vars.platform === 'Chrome') {
-        $('#chk_prefs_context_menu_integration').prop('checked'
-            , conf.settings.context_menu_integration);
-    } else {
-        $('#chk_prefs_context_menu_integration').attr('disabled', true);
+        $('#chk_prefs_context_menu_integration')
+            .attr('checked'
+                , conf.settings.context_menu_integration)
+            .prop('checked'
+                , conf.settings.context_menu_integration);
     }
     $('#tbox_prefs_shortcut_summon_hotot').attr('value'
         , conf.settings.shortcut_summon_hotot);
     // proxy
     if (util.is_native_platform()) {
-        $('#chk_prefs_use_http_proxy').prop('checked'
-            , conf.settings.use_http_proxy);
+        $('#chk_prefs_use_http_proxy')
+            .attr('checked', conf.settings.use_http_proxy)
+            .prop('checked', conf.settings.use_http_proxy);
         $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
         $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
         if (! conf.settings.use_http_proxy) {
             $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
         }
-        $('#chk_prefs_use_http_proxy_auth').prop('checked'
-            , conf.settings.use_http_proxy_auth);
+        $('#chk_prefs_use_http_proxy_auth')
+            .attr('checked', conf.settings.use_http_proxy_auth)
+            .prop('checked', conf.settings.use_http_proxy_auth);
         $('#tbox_prefs_http_proxy_auth_name').val(conf.settings.http_proxy_auth_name);
         $('#tbox_prefs_http_proxy_auth_password').val(conf.settings.http_proxy_auth_password);
         if (! conf.settings.use_http_proxy_auth) {
             $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
         }
-    } else {
-        $('#label_prefs_use_http_proxy').text('Sorry, HTTP proxy doesn\'t work in this platform.');
-        $('#chk_prefs_use_http_proxy, #tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
     }
 },
 
@@ -233,9 +239,12 @@ function load_prefs() {
     $('#range_prefs_font_size').val(prefs.font_size);    
     $('#range_prefs_font_size_st').text(prefs.font_size + 'px');
     if (prefs.use_custom_font) {
-        $('#chk_use_custom_font').prop('checked', prefs.use_custom_font);
+        $('#chk_use_custom_font')
+            .attr('checked', prefs.use_custom_font)
+            .prop('checked', prefs.use_custom_font);
     } else {
-        $('#sel_prefs_sys_font, #tbox_prefs_custom_font').attr('disabled', true);
+        $('#sel_prefs_sys_font, #tbox_prefs_custom_font')
+            .attr('disabled', true);
     }
     switch (prefs.effects_level) {
     case 0: $('#rdo_effects_level_low').prop('checked', true); break;
@@ -244,20 +253,21 @@ function load_prefs() {
     default: $('#rdo_effects_level_normal').prop('checked', true); break;
     }  
     ui.PrefsDlg.update_font_preview();
-    $('#chk_prefs_use_native_notify').prop('checked'
-        , prefs.use_native_notify);
-    $('#chk_prefs_use_preload_conversation').prop('checked'
-        , prefs.use_preload_conversation);
-    $('#chk_prefs_use_alt_retweet').prop('checked'
-        , prefs.use_alt_retweet);
-    $('#chk_prefs_use_alt_reply').prop('checked'
-        , prefs.use_alt_reply);
-
-    $('#chk_prefs_use_media_preview').prop('checked'
-        , prefs.use_media_preview);
-    $('#chk_prefs_use_deleted_mark').prop('checked'
-        , prefs.use_deleted_mark);
-
+    $('#chk_prefs_use_preload_conversation')
+        .attr('checked', prefs.use_preload_conversation)
+        .prop('checked', prefs.use_preload_conversation);
+    $('#chk_prefs_use_alt_retweet')
+        .attr('checked', prefs.use_alt_retweet)
+        .prop('checked', prefs.use_alt_retweet);
+    $('#chk_prefs_use_alt_reply')
+        .attr('checked', prefs.use_alt_reply)
+        .prop('checked', prefs.use_alt_reply);
+    $('#chk_prefs_use_media_preview')
+        .attr('checked', prefs.use_media_preview)
+        .prop('checked', prefs.use_media_preview);
+    $('#chk_prefs_use_deleted_mark')
+        .attr('checked', prefs.use_deleted_mark)
+        .prop('checked', prefs.use_deleted_mark);
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
 
     // Advanced
@@ -267,10 +277,12 @@ function load_prefs() {
     $('#tbox_prefs_upload_api_base').val(prefs.upload_api_base);
     $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
     $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
-    $('#chk_prefs_use_same_sign_api_base').prop('checked'
-        , prefs.use_same_sign_api_base);
-    $('#chk_prefs_use_same_sign_oauth_base').prop('checked'
-        , prefs.use_same_sign_oauth_base);
+    $('#chk_prefs_use_same_sign_api_base')
+        .attr('checked', prefs.use_same_sign_api_base)
+        .prop('checked', prefs.use_same_sign_api_base);
+    $('#chk_prefs_use_same_sign_oauth_base')
+        .attr('checked', prefs.use_same_sign_oauth_base)
+        .prop('checked', prefs.use_same_sign_oauth_base);
     if (prefs.use_same_sign_api_base) {
         $('#tbox_prefs_sign_api_base').attr('disabled', true);
     }
@@ -296,8 +308,6 @@ function save_prefs() {
     prefs['effects_level'] 
         = parseInt($('input:radio[name="effects"]:checked').val());
     // behaviors
-    prefs['use_native_notify']
-        = $('#chk_prefs_use_native_notify').prop('checked');
     prefs['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').prop('checked'); 
     prefs['use_alt_retweet']

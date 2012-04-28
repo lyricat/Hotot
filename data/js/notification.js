@@ -24,22 +24,18 @@ notify:
 function notify(title, summary, image, type) {
     title = title.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     summary = summary.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
-    if (conf.get_current_profile().preferences.use_native_notify) {
-        if (util.is_native_platform()) {
-            hotot_action('system/notify/'
-                + type
-                + '/' + encodeURIComponent(title)
-                + '/' + encodeURIComponent(summary)
-                + '/' + encodeURIComponent(image));
-        } else if (conf.vars.platform == 'Chrome') {
-            var img_url = image? image: './image/ic64_hotot.png';
-            var notification = webkitNotifications.createNotification(
-              img_url, title, summary);
-            notification.show();
-            setTimeout(function() {notification.cancel()}, 5000);
-        }
-    } else {
-        // @TODO other notify way
+    if (util.is_native_platform()) {
+        hotot_action('system/notify/'
+            + type
+            + '/' + encodeURIComponent(title)
+            + '/' + encodeURIComponent(summary)
+            + '/' + encodeURIComponent(image));
+    } else if (conf.vars.platform == 'Chrome') {
+        var img_url = image? image: './image/ic64_hotot.png';
+        var notification = webkitNotifications.createNotification(
+          img_url, title, summary);
+        notification.show();
+        setTimeout(function() {notification.cancel()}, 5000);
     }
 },
 
