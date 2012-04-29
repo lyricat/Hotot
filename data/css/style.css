@@ -905,7 +905,13 @@ label {
 .mochi_list_item .trigger {
 	color: #333;
 }
-
+.dialog_bar .mochi_button {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	height: 28px;
+	line-height: 26px;
+}
 
 /*===== Main Page ================================*/
 #main_page {
@@ -1530,9 +1536,16 @@ label {
 	display: none;
 }
 
-#prefs_dlg .dialog_footer, #about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer, #add_to_list_dlg .dialog_footer{
+#about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer, #add_to_list_dlg .dialog_footer{
 	padding: 10px;
 	height: 32px; 
+}
+
+#prefs_dlg .dialog_footer {
+	padding: 0;
+	height: 0;
+	display: 0;
+	border: none;
 }
 
 #exts_dlg .dialog_body {

@@ -13,8 +13,10 @@ function init () {
         var page_name = $(this).attr('href');
         if (page_name == "#prefs_main") {
             $('#btn_prefs_back').hide();
+            $('#btn_prefs_ok').show();
         } else {
             $('#btn_prefs_back').show();
+            $('#btn_prefs_ok').hide();
         }
         ui.PrefsDlg.switchPage(page_name);
         return false;
@@ -104,7 +106,7 @@ function init () {
     if (util.is_native_platform()) {
         $('#prefs_system').find('.chrome_context_menu').hide()
     } else {
-        $('#prefs_system').find('.proxy_list, .proxy_auth_list, .ubuntu_indicator, .exit_when_close, .starts_minimized').hide();
+        $('#prefs_system').find('.summon_list, .proxy_list, .proxy_auth_list, .ubuntu_indicator, .exit_when_close, .starts_minimized').hide();
         $('#prefs_system')
     }
 

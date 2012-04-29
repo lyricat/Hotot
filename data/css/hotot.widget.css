@@ -339,34 +339,35 @@ disabled:
 }
 
 .dialog_bar {
-    height: 30px;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    position:relative;
-    border-bottom: 1px #CCC solid;
+	height: 38px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	position: relative;
+	border-bottom: 1px #333 solid;
 }
 
 .dialog_bar > .dialog_close_btn {
-    height: 24px;
-    width: 24px;
-    display: block;
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    background: transparent url(../image/ic16_close.png) center center no-repeat;
+	height: 38px;
+	width: 38px;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: transparent url(../image/ic16_close.png) center center no-repeat;
+	border-left: 1px #444 solid;
 }
 
 .dialog_bar > .dialog_title {
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    color: #333;
-    text-shadow: 0 1px 0px white;
-    background: #F2F2F2;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    margin: 0;
-    padding-left: 20px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	color: #F2F2F2;
+	text-shadow: 0 -1px 0px black;
+	background: #333 url(../../image/mask.png);
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	margin: 0;
+	text-align: center
 }
 
 .dialog_container {
