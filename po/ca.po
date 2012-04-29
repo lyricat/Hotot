@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# David Planella <david.planella@ubuntu.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-10 15:56+0800\n"
+"PO-Revision-Date: 2012-04-29 13:14+0200\n"
+"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"Language-Team: Catalan <ubuntu-l10n-ca@lists.ubuntu.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:37
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:45
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:38
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:46
+msgid "Hotot Notification"
+msgstr "Notificacions del Hotot"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, c-format
+msgid "Loading Search result %s ..."
+msgstr "S'està carregant el resultat de la cerca %s..."
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:77
+#: ../..//misc/hotot.desktop.in.h:1
+msgid "Hotot"
+msgstr "Hotot"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
+msgid "_Resume/Hide"
+msgstr "_Reprèn/oculta"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:90
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
+msgid "_Compose"
+msgstr "_Redacta"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113
+msgid "_File"
+msgstr "_Fitxer"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:152
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:135
+msgid "_Help"
+msgstr "A_juda"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:180
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:310
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:168
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:307
+msgid "Hotot: Click to Active."
+msgstr "Hotot: feu clic per activar-ho."
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:84
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:115
+msgid "_Show"
+msgstr "_Mostra"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:87
+msgid "_Hide"
+msgstr "_Oculta"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
+msgid "_Inspector"
+msgstr "_Inspector"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] "1 apunt per llegir"
+msgstr[1] "%1 apunts per llegir"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr ""
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+msgid "(c) 2009-2011 Shellex Wai\n"
+msgstr "(c) 2009-2011 Shellex Wai\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr "Shellex Wai"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr "Desenvolupador i disseny"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr "Jiahua Huang"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr "Desenvolupador"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr "Jimmy Xu"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr "Tualatrix Chou"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr "Xu Zhen"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr "Evan"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Artwork"
+msgstr "Disseny"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr "Marguerite Su"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Document"
+msgstr "Document"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr "Habilita l'eina per a desenvolupadors"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr "Utilitza el servidor intermediari com a servidor Socks en lloc d'HTTP"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
+msgid "&Minimize to Tray"
+msgstr "&Minimitza a l'àrea de notificació"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
+msgid "Show &MainWindow"
+msgstr "Mostra la &finestra principal"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
+msgid "&Exit"
+msgstr "&Surt"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
+msgid "&Developer Tool"
+msgstr "&Eina per a desenvolupadors"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+msgid "%1 unread Messages"
+msgstr "%1 missatges per llegir"
+
+#: ../..//misc/hotot.desktop.in.h:2
+msgid "Hotot Twitter Client"
+msgstr "Client de Twitter Hotot"
+
+#: ../..//misc/hotot.desktop.in.h:3
+msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgstr ""
+
+#: ../..//misc/hotot-qt.desktop.in.h:1
+msgid "Hotot Qt"
+msgstr "Hotot Qt"
+
+#: ../..//misc/hotot-qt.desktop.in.h:2
+msgid "Lightweight Twitter Client base on Qt and Webkit"
+msgstr ""
