@@ -57,6 +57,7 @@ public:
     void activate();
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
+    bool useSocks();
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
@@ -71,7 +72,6 @@ protected Q_SLOTS:
 #endif
 
 protected:
-    void initDatabases();
     bool isCloseToExit();
     bool isStartMinimized();
     bool isAutoSignIn();
@@ -100,7 +100,7 @@ private:
     QAction* m_actionMinimizeToTray;
 #endif
     QWebInspector* m_inspector;
-    bool m_useSocket;
+    bool m_useSocks;
     QFontDatabase m_fontDB;
     QString m_confDir;
 };

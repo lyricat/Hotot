@@ -31,8 +31,6 @@
 #include <QDir>
 #include <QWebSecurityOrigin>
 #include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QWebFrame>
 #include <QNetworkProxy>
 #include <QSettings>
@@ -64,7 +62,7 @@
 #include "kdetraybackend.h"
 #endif
 
-MainWindow::MainWindow(bool useSocket, QWidget *parent) :
+MainWindow::MainWindow(bool socks, QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
     m_webView(new QWebView),
@@ -72,7 +70,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
     m_inspector(0),
-    m_useSocket(useSocket),
+    m_useSocks(socks),
     m_fontDB()
 {
 #ifdef Q_OS_UNIX
@@ -101,7 +99,7 @@ MainWindow::MainWindow(bool useSocket, QWidget *parent) :
 #ifndef MEEGO_EDITION_HARMATTAN
     QSettings settings("hotot-qt", "hotot");
     m_actionMinimizeToTray->setCheckable(true);
-    m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", true).toBool());
+    m_actionMinimizeToTray->setChecked(settings.value("minimizeToTray", false).toBool());
     connect(m_actionMinimizeToTray, SIGNAL(toggled(bool)), this, SLOT(toggleMinimizeToTray(bool)));
     m_menu->addAction(m_actionMinimizeToTray);
 #endif
@@ -244,8 +242,6 @@ void MainWindow::loadFinished(bool ok)
 {
     disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
     if (ok) {
-        initDatabases();
-
         QString confString = QString(
             "hotot_qt_variables = {"
             "      'platform': 'Linux'"
@@ -283,54 +279,6 @@ void MainWindow::notifyLoadFinished()
     m_webView->page()->currentFrame()->evaluateJavaScript(
         "overlay_variables(hotot_qt_variables);"
         "globals.load_flags = 1;");
-}
-
-
-void MainWindow::initDatabases()
-{
-    const QWebSecurityOrigin& origin = m_webView->page()->currentFrame()->securityOrigin();
-    const QList<QWebDatabase>& databases = origin.databases();
-    Q_FOREACH(QWebDatabase webDatabase, databases) {
-        {
-            QSqlDatabase sqldb = QSqlDatabase::addDatabase("QSQLITE", "myconnection");
-            sqldb.setDatabaseName(webDatabase.fileName());
-            if (sqldb.open()) {
-                sqldb.exec("vacuum");
-
-                if (webDatabase.name() == "hotot.cache") {
-                    sqldb.exec("vacuum");
-                    QSqlQuery result = sqldb.exec("select value from Info where key=\"settings\"");
-                    while (result.next()) {
-                        QString settings = result.value(0).toString();
-                        m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt = " + settings + ";");
-                        bool useHttpProxy = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
-                        bool useHttpProxyAuth = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy_auth").toBool();
-                        int httpProxyPort = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
-                        QString httpProxyHost = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
-                        QString httpProxyAuthName = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_name").toString();
-                        QString httpProxyAuthPassword = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
-
-                        if (useHttpProxy) {
-                            QNetworkProxy proxy(m_useSocket ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
-                                                httpProxyHost,
-                                                httpProxyPort);
-
-                            if (useHttpProxyAuth)
-                            {
-                                proxy.setUser(httpProxyAuthName);
-                                proxy.setPassword(httpProxyAuthPassword);
-                            }
-
-                            m_webView->page()->networkAccessManager()->setProxy(proxy);
-                        }
-
-                    }
-                }
-                sqldb.close();
-            }
-        }
-        QSqlDatabase::removeDatabase("myconnection");
-    }
 }
 
 void MainWindow::triggerVisible()
@@ -507,4 +455,9 @@ QString MainWindow::toJSArray(const QStringList& list)
     }
 
     return QString("[%1]").arg(itemString);
+}
+
+bool MainWindow::useSocks()
+{
+    return m_useSocks;
 }

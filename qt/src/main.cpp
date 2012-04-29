@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData("hotot",                                        // internal name
                          "hotot-qt",                                     // catalog name
                          ki18n("Hotot"),                            // program name
-                         "0.9.7",                             // app version 
+                         "0.9.7",                             // app version
                          ki18n("Lightweight, Flexible Microblogging"),  // short description
                          KAboutData::License_GPL_V2,                   // license
                          ki18n("(c) 2009-2012 Shellex Wai\n"),   // copyright
