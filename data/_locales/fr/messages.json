@@ -268,7 +268,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "",
+		"message": "Quitter Hotot quand la fenêtre est fermée",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -384,7 +384,7 @@
 		"description": "data/index.html"
 	},
 	"image_uploader": {
-		"message": "",
+		"message": "Uploader une Image",
 		"description": "data/index.html"
 	},
 	"info": {
@@ -1068,7 +1068,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
-		"message": "",
+		"message": "Voir l'original",
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
