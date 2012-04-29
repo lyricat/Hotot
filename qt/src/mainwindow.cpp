@@ -19,9 +19,6 @@
 
 #include "common.h"
 
-// system
-#include <unistd.h>
-
 // Qt
 #include <QApplication>
 #include <QGraphicsWebView>

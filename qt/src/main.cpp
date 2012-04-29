@@ -19,9 +19,6 @@
 
 #include "common.h"
 
-// System
-#include <getopt.h>
-
 // Qt
 #include <QApplication>
 
