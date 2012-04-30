@@ -144,7 +144,7 @@ function WidgetDialog(obj) {
             clearUp();
         } else if (method == "slide") {
             var x = $(window).width()/2 - self._me.width() / 2;
-            var y = 0 - self._me.height() - 10;
+            var y = 0 - self._me.height() - 100;
             self._me.animate({'left': x, 'top': y}, 
                 {
                     duration:200,

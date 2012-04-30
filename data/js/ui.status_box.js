@@ -125,7 +125,7 @@ function init () {
         };
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
             draft.reply_to_id = ui.StatusBox.reply_to_id;
-            draft.reply_to_name = encodeURIComponent($('#status_box .who').text());
+            draft.recipient = encodeURIComponent($('#status_box .who').text());
             draft.reply_text = encodeURIComponent($('#status_box .quote').text())
         } else if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
             draft.recipient =encodeURIComponent($('#tbox_dm_target').val());
@@ -285,10 +285,10 @@ function update_status(status_text) {
             'mode': ui.StatusBox.MODE_TWEET, 
             'text': status_text
         };
-        if (ui.StatusBox.MODE_REPLY) {
+        if (draft.mode === ui.StatusBox.MODE_REPLY) {
             draft.mode = ui.StatusBox.MODE_REPLY;
             draft.reply_to_id = ui.StatusBox.reply_to_id;
-            draft.reply_to_name = encodeURIComponent($('#status_box .who').text());
+            draft.recipient = encodeURIComponent($('#status_box .who').text());
             draft.reply_text = encodeURIComponent($('#status_box .quote').text());
         }
         ui.StatusBox.reset();
@@ -426,7 +426,7 @@ function save_draft(draft) {
         switch (mode){
         case ui.StatusBox.MODE_REPLY:
             ui.StatusBox.reply_to_id = li.attr('reply_to_id')
-            ui.StatusBox.set_reply_info(reply_to_name, decodeURIComponent(li.attr('reply_text')));
+            ui.StatusBox.set_reply_info(decodeURIComponent(li.attr('recipient')), decodeURIComponent(li.attr('reply_text')));
         case ui.StatusBox.MODE_IMG:
         break;
         case ui.StatusBox.MODE_DM:
