@@ -119,7 +119,7 @@ function WidgetDialog(obj) {
         var x = $(window).width()/2 - self._me.width() / 2;
         var y = $(window).height()/2 - self._me.height() / 2;
         y = y > 100 ? y - 20: y;
-        if (method == "fade") {
+        if (method == "off") {
             self.move(x, y);
             self._me.show();
         } else if (method == 'slide') {
