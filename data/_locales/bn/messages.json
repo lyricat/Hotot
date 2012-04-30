@@ -268,7 +268,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "উইন্ডোটি বন্ধ করলে হোটট ত্যাগ করুন",
+		"message": "উইন্ডোটি বন্ধ করলে হটট ত্যাগ করুন",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -348,7 +348,7 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "কিছু ইফেক্ট ও পরিবর্তনসমূহ কার্যকর করার জন্য হোটট পুনরায় চালু করুন এবং এসকল পরিবর্তন সকল একাউন্টে কার্যকর হবে",
+		"message": "কিছু ইফেক্ট ও পরিবর্তনসমূহ কার্যকর করার জন্য হটট পুনরায় চালু করুন এবং এসকল পরিবর্তন সকল একাউন্টে কার্যকর হবে",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -376,7 +376,7 @@
 		"description": "data/index.html"
 	},
 	"hotot": {
-		"message": "হোটট",
+		"message": "হটট",
 		"description": "data/index.html"
 	},
 	"http_proxy": {
@@ -444,7 +444,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "হোটটকে কিছু পরিসংখ্যানগত তথ্য সংগ্রহ করতে দিন",
+		"message": "হটটকে কিছু পরিসংখ্যানগত তথ্য সংগ্রহ করতে দিন",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -704,7 +704,7 @@
 		"description": "data/index.html"
 	},
 	"quit_hotot": {
-		"message": "হোটট ত্যাগ করুন",
+		"message": "হটট ত্যাগ করুন",
 		"description": "data/index.html"
 	},
 	"quote": {
@@ -720,19 +720,19 @@
 		"description": "data/index.html"
 	},
 	"reply": {
-		"message": "রিপ্লাই",
+		"message": "উত্তর",
 		"description": "data/index.html"
 	},
 	"reply_all": {
-		"message": "সবাইকে রিপ্লাই দিন",
+		"message": "সবাইকে উত্তর দিন",
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
-		"message": "এই টুইটের রিপ্লাই দিন",
+		"message": "এই টুইটের উত্তর দিন",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "রিপ্লাই",
+		"message": "উত্তর",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
@@ -1044,7 +1044,7 @@
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
-		"message": "ডিফল্ট রিপ্লাই হিসাবে সবাইকে রিপ্লাই দিন ব্যবহার করুন",
+		"message": "ডিফল্ট উত্তর হিসাবে সবাইকে উত্তর দিন ব্যবহার করুন",
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
