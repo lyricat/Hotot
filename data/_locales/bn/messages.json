@@ -1,0 +1,1114 @@
+{
+	"about": {
+		"message": "সম্পর্কে",
+		"description": "data/index.html"
+	},
+	"about_and_help": {
+		"message": "সম্পর্কে ও সাহায্য",
+		"description": "data/index.html"
+	},
+	"access_token_doesnt_exist": {
+		"message": "এক্সেস টোকেন নেই",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "ক্রিয়াকলাপ",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "যুক্ত করুন",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "নতুন প্রদর্শণ যুক্ত করুন",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "তালিকায় যুক্ত করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "উন্নত",
+		"description": "data/index.html"
+	},
+	"all": {
+		"message": "সবগুলো",
+		"description": "data/index.html"
+	},
+	"api_base": {
+		"message": "API বেজ",
+		"description": "data/index.html"
+	},
+	"api_setting": {
+		"message": "API সেটিংস",
+		"description": "data/index.html"
+	},
+	"appearance": {
+		"message": "চেহারা",
+		"description": "data/index.html"
+	},
+	"archive": {
+		"message": "সংরক্ষণাগার",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "Assassin's Tango",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "অনুমতি ঠিক আছে!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "লেখক",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "স্বয়ংক্রিয় আপডেট",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "খোলার পর স্বয়ংক্রিয়ভাবে সাইন-ইন করুন",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "কার্যকারিতা ও সৌন্দর্যের মধ্যে সামঞ্জস্য",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "আচরণ",
+		"description": "data/index.html"
+	},
+	"bio": {
+		"message": "জীবনী",
+		"description": "data/index.html"
+	},
+	"block": {
+		"message": "ব্লক",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "Bloody Marguerite",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "বাতিল",
+		"description": "data/index.html"
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "আপনাকে অনুমতি দেওয়া যাচ্ছেনা! দয়া করে আপনার ইউজারনেম/পাসওয়ার্ড ও API বেজ যাচাই করুন",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "অক্ষর `@` পরিলেখে গ্রহনযোগ্য নয়",
+		"description": "data/js/ui.welcome.js"
+	},
+	"chrome_context_menu_integration": {
+		"message": "ক্রোমের কনটেক্স তালিকার সাথে একত্রীকরণ",
+		"description": "data/index.html"
+	},
+	"clean_token": {
+		"message": "টোকেন পরিষ্কার করুন",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "পরিষ্কার",
+		"description": "data/index.html"
+	},
+	"clear_and_close": {
+		"message": "পরিষ্কার ও বন্ধ",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "আমাকে ক্লিক করে অগ্রসর হোন",
+		"description": "data/index.html"
+	},
+	"click_the_button_below": {
+		"message": "নিচের বাটনে ক্লিক করুন",
+		"description": "data/index.html"
+	},
+	"click_to_compose_message": {
+		"message": "বার্তা লিখার জন্য ক্লিক করুন",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "দেখার জন্য ক্লিক করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "রিটুইটসমূহ দেখার জন্য ক্লিক করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "বন্ধ",
+		"description": "data/index.html"
+	},
+	"close_current_column": {
+		"message": "বর্তমান কলামটি বন্ধ করুন",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "লিখুন",
+		"description": "data/index.html"
+	},
+	"compose_messages_to": {
+		"message": "প্রতি",
+		"description": "data/js/ui.status_box.js"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "পিন কোডটি কপি করুন ও নিচের ঘরে পেস্ট করে দিন",
+		"description": "data/index.html"
+	},
+	"copy_to_clipboard": {
+		"message": "ক্লিপবোর্ডে কপি করুন",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "একটি তালিকা তৈরি করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "কৃতিত্বসমূহ",
+		"description": "data/index.html"
+	},
+	"cuddly": {
+		"message": "Cuddly",
+		"description": "data/index.html"
+	},
+	"debug": {
+		"message": "ডিবাগ",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "ডিফল্ট ছবি পরিসেবা",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "মুছে ফেলুন",
+		"description": "data/index.html"
+	},
+	"delete_this_tweet": {
+		"message": "এই টুইটটি মুছে ফেলুন",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "সফলভাবে নষ্ট করা হয়েছে!",
+		"description": "data/js/ui.main.js"
+	},
+	"disable": {
+		"message": "অকার্যকর",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "গ্যাজেটের সাজসজ্জা ও কিছু এনিমেশন অকার্যকর করুন",
+		"description": "data/index.html"
+	},
+	"disabled": {
+		"message": "অকার্যকর হয়েছে",
+		"description": "data/index.html"
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "খসড়াসমূহ",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "এখানে একটি ছবি টেনে আনুন",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "ফেলুন",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "ঠিক করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "প্রতিক্রিয়াসমূহ",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "বাড়তি",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "নিম্ন",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "স্বাভাবিক",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "কার্যকর",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "প্রক্সি কার্যকর",
+		"description": "data/index.html"
+	},
+	"enable_verbose_mode": {
+		"message": "ভারবোস অবস্থা কার্যকর",
+		"description": "data/index.html"
+	},
+	"enabled": {
+		"message": "কার্যকর হয়েছে",
+		"description": "data/index.html"
+	},
+	"errors": {
+		"message": "ত্রুটিসমূহ",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "উদাহরণসমূহ",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "উইন্ডোটি বন্ধ করলে হোটট ত্যাগ করুন",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "এক্সটেনশনসমূহ",
+		"description": "data/index.html"
+	},
+	"fav_or_un_fav": {
+		"message": "প্রিয়/অপ্রিয়",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "এই টুইটটি প্রিয়তে নিন ...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "প্রিয়",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "প্রিয়সমূহ প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "এভাবে টুইটসমূহ ফিল্টার করুন",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "খুঁজুন",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "সুন্দর",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "টুইটারে প্রথমবারের মত সাইন-ইন",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "অনুসরণ",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "অনুসরণ @",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "অনুসরণকারীদের তালিকা",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "অনুসরণকারীগণ",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "ফন্ট",
+		"description": "data/index.html"
+	},
+	"font_preview_hint": {
+		"message": "The quick brown fox jumps over the lazy dog.",
+		"description": "data/index.html"
+	},
+	"font_size": {
+		"message": "ফন্টের আকার",
+		"description": "data/index.html"
+	},
+	"friend_cnt": {
+		"message": "বন্ধু",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "বন্ধুগণ",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "বৈশ্বিক",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "কিছু প্রতিক্রিয়া ও পরিবর্তনসমূহ কার্যকর করার জন্য হোটট পুনরায় চালু করুন.এবং এসকল পরিবর্তন সকল একাউন্টে কার্যকর হবে",
+		"description": "data/index.html"
+	},
+	"greeting": {
+		"message": "স্বাগতম!",
+		"description": "data/index.html"
+	},
+	"help": {
+		"message": "সাহায্য",
+		"description": "data/index.html"
+	},
+	"hey_it_is_you": {
+		"message": "ওহে, এটি আপনি!",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "Hidden dark minds",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "নীড়পাতা",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "নীড়পাতা প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "হোটট",
+		"description": "data/index.html"
+	},
+	"http_proxy": {
+		"message": "HTTP প্রক্সি",
+		"description": "data/index.html"
+	},
+	"image_uploader": {
+		"message": "ছবি আপলোডার",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "তথ্য",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "ইমো যুক্ত করুন",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "বুদ্ধিমান ফিল্টার",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "ইন্টারফেসের ভাষা",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "যোগ দিন",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "Just can't stop thinking of here",
+		"description": "data/index.html"
+	},
+	"keybinding": {
+		"message": "কিবাইন্ডিং",
+		"description": "data/index.html"
+	},
+	"keyboard": {
+		"message": "কি-বোর্ড",
+		"description": "data/index.html"
+	},
+	"keyboard_shortcuts": {
+		"message": "কি-বোর্ড শর্টকাটসমূহ",
+		"description": "data/index.html"
+	},
+	"kismet_firewall": {
+		"message": "কিসমেট ফায়ারওয়াল",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "কিসমেট সহায়িকা",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "সতর্কীকরণ: যেসকল টুইটে নিম্নবর্ণিত উপাদানসমূহ আছে সেগুলো আপনার টাইমলাইনে প্রদর্শিত হবেনা.",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "রং দিয়ে চিহ্নিতকরণ",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "ভাষা",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "হোটটকে কিছু পরিসংখ্যানগত তথ্য সংগ্রহ করতে দিন",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "লাইসেন্স",
+		"description": "data/index.html"
+	},
+	"list": {
+		"message": "তালিকা",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "তালিকাভুক্ত হয়েছে",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "তালিকাসমূহ",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "তাকে অনুসরণকৃত তালিকাসমূহ",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "তার তালিকাসমূহ",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "লোড হচ্ছে ... ",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "উপাদানসমূহ লোড হচ্ছে ...",
+		"description": "data/index.html"
+	},
+	"location": {
+		"message": "স্থান",
+		"description": "data/index.html"
+	},
+	"mark_deleted_tweets": {
+		"message": "মুছে ফেলা টুইটসমূহ চিহ্নিত করুন",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "মুখোশ",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "উল্লেখ",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "উল্লেখসমূহ",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "উল্লেখসমূহ প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "বার্তাসমূহ",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "বার্তাসমূহ প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"misc": {
+		"message": "অন্যান্য",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "আরো",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "আরো প্রতিক্রিয়া যেমন ছায়া এবং উজ্জ্বল গ্যাজেট",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "নিচে পাঠান",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "পরবর্তী টুইটে পাঠান",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "পূর্ববর্তী টুইটে পাঠান",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "উপরে পাঠান",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "নিঃশব্দ ফিল্টার",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "আমার প্রিয়সমূহ",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "My Journey is to the sea of stars",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "আমার ক্ষমতা",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "নাম",
+		"description": "data/index.html"
+	},
+	"nearly_dead": {
+		"message": "প্রায় মৃত",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "সংযোগ ত্রুটি! দয়া করে পরে আবার চেষ্টা করুন",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "নতুন পরিলেখ তৈরি হয়েছে!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "পরবর্তী",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "কোন এক্সটেনশন নেই",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "নির্দেশনা",
+		"description": "data/index.html"
+	},
+	"oauth_base": {
+		"message": "OAuth বেজ",
+		"description": "data/index.html"
+	},
+	"official_retweet_this_tweet": {
+		"message": "অফিসিয়ালভাবে এই টুইটকে রিটুইট",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "ঠিক আছে",
+		"description": "data/index.html"
+	},
+	"oops_a_network_error_occurs": {
+		"message": "উফফ, একটি সংযোগ ত্রুটি ঘটেছে",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "উফফ, একটি API ত্রুটি ঘটেছে!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "একটি তালিকা খুলুন ...",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "একটি পরিলেখ খুলুন ...",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "প্রথম লিংকটি খুলুন",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "বক্তার তালিকা খুলুন",
+		"description": "data/index.html"
+	},
+	"operations": {
+		"message": "ক্রিয়াসমূহ",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "বাছাইসমূহ",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "অথবা এড্রেসটি কপি করে আপনার ব্রাউজারের সাহায্যে খুলুন",
+		"description": "data/index.html"
+	},
+	"panda_acts_cute": {
+		"message": "Panda acts cute",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "ক্লিপবোর্ড থেকে পেস্ট",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "পিন কোড",
+		"description": "data/index.html"
+	},
+	"please_enter_the_recipient": {
+		"message": "দয়া করে প্রাপকের বর্ননা দিন!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "দয়া করে একটি পরিলেখ সংকেত দিন",
+		"description": "data/js/ui.welcome.js"
+	},
+	"post_successfully": {
+		"message": "সফলভাবে পোস্ট হয়েছে!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "পোস্ট হচ্ছে ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "শক্তিশালী",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "পছন্দসমূহ",
+		"description": "data/index.html"
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "যখনই সম্ভব সর্বশেষ টুইটগুলো আলোচনায় আগে লোড করুন",
+		"description": "data/index.html"
+	},
+	"press_ctrl_and_enter_to_update": {
+		"message": "চাপুন Ctrl + Enter আপডেটের জন্য",
+		"description": "data/index.html"
+	},
+	"pretty_wife": {
+		"message": "Pretty wife",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "পূর্বপ্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "সংযুক্ত মিডিয়া পূর্বপ্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "এখানে পূর্বপ্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "পরিলেখ",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "অনুমতি",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "দ্রুত পছন্দসমূহ",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "হোটট ত্যাগ করুন",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "উক্তি",
+		"description": "data/index.html"
+	},
+	"relation": {
+		"message": "সম্পর্ক",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "পুনঃলোড",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "উত্তর",
+		"description": "data/index.html"
+	},
+	"reply_all": {
+		"message": "সবাইকে উত্তর দিন",
+		"description": "data/index.html"
+	},
+	"reply_this_tweet": {
+		"message": "এই টুইটের উত্তর দিন",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "উত্তর",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "স্প্যাম রিপোর্ট করুন",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "পুনরায় সময় ঠিক করুন",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "ডিফল্টসমূহ উদ্ধার",
+		"description": "data/index.html"
+	},
+	"retweet": {
+		"message": "রিটুইট",
+		"description": "data/index.html"
+	},
+	"retweet_or_un_retweet": {
+		"message": "রিটুইট/আন-রিটুইট",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "রিটুইট সফল!",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "রিটুইট করেছেন",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "রিটুইট হচ্ছে ...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "রিটুইটসমূহ",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "রিটুইট প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "RT এই টুইটটি",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "নিয়ম",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "নিয়মভিত্তিক ফিল্টার",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "নিয়ম ঠিক করুন",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "নিয়মের নাম",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "একই সাইনিং API বেজ",
+		"description": "data/index.html"
+	},
+	"same_signing_oauth_base": {
+		"message": "একই সাইনিং OAuth বেজ",
+		"description": "data/index.html"
+	},
+	"save": {
+		"message": "সংরক্ষণ",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "খসড়া হিসাবে সংরক্ষণ",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "Schizophrenia",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "অনুসন্ধান",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "API বেজে খুঁজুন",
+		"description": "data/index.html"
+	},
+	"search_in_google": {
+		"message": "সন্ধান @ গুগলে",
+		"description": "data/index.html"
+	},
+	"search_in_twitter": {
+		"message": "সন্ধান @ টুইটারে",
+		"description": "data/index.html"
+	},
+	"search_view": {
+		"message": "প্রদর্শনে খুঁজুন",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "একটি ছবি পরিসেবা নির্বাচন করুন",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "একটি ভাষা নির্বাচন করুন",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "ক্রিয়াকলাপ নির্বাচন করুন",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "ক্ষেত্র নির্বাচন করুন",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "বার্তা পাঠান",
+		"description": "data/index.html"
+	},
+	"send_message_to_them": {
+		"message": "তার কাছে বার্তা পাঠান",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "Shiny old times before marriage",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "শর্টকাটসমূহ",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "সাইন-ইন হচ্ছে ...",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "সাইন-আউট",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "পরের পাতায় যান",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "পূর্বের পাতায় যান",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "কোন একটি ত্রুটি সংঘটিত হয়েছে",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "শব্দ",
+		"description": "data/index.html"
+	},
+	"starts_minimized": {
+		"message": "মিনিমাইজডভাবে চালু করুন",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "পরিসংখ্যান",
+		"description": "data/index.html"
+	},
+	"status_is_over_140_characters": {
+		"message": "বক্তব্যটি ১৪০ অক্ষরের চেয়ে বেশি!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "ধাপ ১",
+		"description": "data/index.html"
+	},
+	"step_two": {
+		"message": "ধাপ ২",
+		"description": "data/index.html"
+	},
+	"struggling_adventurers": {
+		"message": "Struggling Adventurers",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "সফলভাবে",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "summon hotot (like: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"system": {
+		"message": "ব্যবস্থা",
+		"description": "data/index.html"
+	},
+	"system_integration": {
+		"message": "ব্যবস্থার সাথে একত্রীকরণ",
+		"description": "data/index.html"
+	},
+	"theme": {
+		"message": "থিম",
+		"description": "data/index.html"
+	},
+	"themes": {
+		"message": "থিমসমূহ",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "এই পরিলেখটি ইতমধ্যেই বর্তমান!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "Titian's elegance",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "Tranquil",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "transparent",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "চলতি বিষয়সমূহ",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "চলতি বিষয়সমূহ প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "টুইট",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "টুইট প্রদর্শণ",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "টুইটসমূহ",
+		"description": "data/index.html"
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "এই টুইটটি অপ্রিয় করুন ...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "আনব্লক",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "রিটুইট পূর্বাবস্থায় ফিরছে...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "সফলভাবে পূর্বাবস্থায় ফিরে গেলো!",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow_at": {
+		"message": "অননুসরণ @",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "আপডেট",
+		"description": "data/index.html"
+	},
+	"update_successfully": {
+		"message": "সফলভাবে আপডেট হয়েছে!",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "আপডেট হচ্ছে ...",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "আপলোড",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "API বেজ আপলোড",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "ছবি আপলোড",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "আপলোড ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "URL সংক্ষিপ্তকরণ",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "কাস্টম ফন্ট ব্যবহার করুন",
+		"description": "data/index.html"
+	},
+	"use_native_notify_system": {
+		"message": "স্থানীয় নির্দেশক ব্যবস্থা ব্যবহার করুন",
+		"description": "data/index.html"
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "ডিফল্ট রিটুইট হিসাবে উক্তি ব্যবহার করুন",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "ডিফল্ট উত্তর হিসাবে সবাইকে উত্তর দিন ব্যবহার করুন",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "উবুন্টুর নির্দেশক ব্যবহার করুন",
+		"description": "data/index.html"
+	},
+	"verify": {
+		"message": "যাচাই",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "সংস্করণ",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "মাধ্যমে",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "আরো আলোচনা দেখুন",
+		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "মূল বস্তুটি দেখুন",
+		"description": "data/index.html"
+	},
+	"virushou_s_integrity": {
+		"message": "Virushou's Integrity",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "Wanna have a relationship with",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "দূর্বলতা",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "অন্তর্জাল",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "অন্তর্জালের পাতা",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "Whisper",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "আপনি তার দ্বারা অনুসরণ হচ্ছেন",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "আপনি অনুসরণ করছেন",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "আপনারা পরস্পর বন্ধু",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "আপনারা একে অন্যকে অনুসরণ করছেন না",
+		"description": "data/js/ui.peopleview.js"
+	}
+}
