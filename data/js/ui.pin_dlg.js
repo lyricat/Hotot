@@ -53,7 +53,6 @@ function hide () {
 show:
 function show () {
     globals.oauth_dialog.open();
-    return this;
 },
 
 set_auth_url:

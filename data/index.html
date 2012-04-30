@@ -134,7 +134,6 @@
 			<div class="bottom">
 				<a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
 				<a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
-				<a id="btn_welcome_exts" title="Extensions" href="javascript:void(0)" data-i18n-text="extensions">Extensions</a>
 			</div>
 		</div><!-- END of #sign_in_block -->
 	</div><!-- END of #welcome_page_main -->
@@ -295,8 +294,6 @@
                 <li>
                     <a id="btn_prefs" title="Preferences" href="javascript:void(0);" data-i18n-text="preferences">Preferences</a>
                 </li><li>
-                    <a id="btn_exts" title="Extensions" href="javascript:void(0);" data-i18n-text="extensions">Extensions</a>
-                </li><li>
                     <a id="btn_kismet" title="Kismet Firewall" href="javascript:void(0);" data-i18n-text="kismet_firewall">Kismet Firewall</a>
                 </li><li>
                     <a id="btn_about" title="About & Help" href="javascript:void(0);" data-i18n-text="about_and_help">About &amp; Help</a>
@@ -432,7 +429,6 @@
 					<summary class="sub_label">Drafts</summary>
 					<p><ul></ul></p>
 			</details> <!-- #status_drafts -->
-
 			<div id="status_ctrl">
 					<a id="toggle_mode" class="button toolbar_button" data-i18n-title="click_to_compose_message" title="Click to compose message"></a>
 					<a id="btn_shorturl" class="button toolbar_button" data-i18n-title="url_shortener" title="URL shortener"></a>
@@ -471,11 +467,9 @@
 <!-- preferences dialog -->
 <div id="prefs_dlg" class="dialog">
     <div class="dialog_bar">
-				<a id="btn_prefs_back" href="#prefs_main" style="display: none" class="mochi_button black page_nav">Back</a>	
-				<a id="btn_prefs_ok" class="mochi_button blue" 
-					data-i18n-text="save">save</a>
+				<a id="btn_prefs_back" href="#prefs_main" style="display: none" class="mochi_button blue page_nav">Back</a>	
         <h2 class="dialog_title" data-i18n-text="preferences">Preferences</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a id="btn_prefs_ok" class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -555,17 +549,22 @@
 						<li class="mochi_list_item with_trigger">
 						<a href="#prefs_behavior" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label">Behavior Settings</label> 
+							<label for="" class="label" data-i18n-text="behavior">Behavior Settings</label> 
 						</a>
 						</li><li class="mochi_list_item with_trigger">
 						<a href="#prefs_system" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label">Global Settings</label> 
+							<label for="" class="label" data-i18n-text="global">Global Settings</label> 
 						</a>
 						</li><li class="mochi_list_item with_trigger">
 						<a href="#prefs_advanced" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label">Advanced Settings</label> 
+							<label for="" class="label" data-i18n-text="advanced">Advanced Settings</label> 
+						</a>
+						</li><li class="mochi_list_item with_trigger">
+						<a href="#prefs_exts" class="trigger page_nav">
+							<span class="widget more"></span>
+							<label for="" class="label" data-i18n-text="extensions">Extensions</label> 
 						</a>
 						</li>
 					</ul>
@@ -702,7 +701,7 @@
 									placeholder="Password"
 									type="password" class="mochi_entry widget"/>
 							<label for="tbox_prefs_http_proxy_auth_password"
-									class="label" data-i18n-text="username">
+									class="label" data-i18n-text="password">
 									Password	
 							</label>
 						</li>
@@ -859,10 +858,15 @@
 						</li>
 					</ul>
 					<p>
-        		<a id="btn_prefs_restore_defaults" class="mochi_button" style="margin: 10px auto; display: block" data-i18n-text="restore_defaults">Restore Defaults</a>
+        		<a id="btn_prefs_restore_defaults" class="mochi_button red" style="margin: 10px auto; display: block" data-i18n-text="restore_defaults">Restore Defaults</a>
 					</p>
         </div><!-- END of prefs_advanced -->
+				<div id="prefs_exts" class="prefs_dlg_page dialog_page">
+					<ul class="mochi_list">
+					</ul>
+        </div><!-- END of prefs_exts -->
     </div>
+
     <div class="dialog_footer"></div>
     </div> <!-- END of .dialog_container -->
 </div>
@@ -1183,38 +1187,6 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div><!-- END of .dialog_container -->
 </div>
 
-<!-- Extensions dialog -->
-<div id="exts_dlg" class="dialog">
-    <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="extensions">Extenstions</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
-    </div>
-    <div class="dialog_container">
-    <div class="dialog_header">
-        <ul id="exts_filter_btns" class="radio_group dark">
-            <li><a id="exts_filter_all_btn" href="#all"
-                class="radio_group_btn selected"
-                data-i18n-text="all">ALL</a>
-            </li><li>
-                <a id="exts_filter_enabled_btn" href="#enabled"
-                class="radio_group_btn"
-                data-i18n-text="enabled">Enabled</a>
-            </li><li>
-                <a id="exts_filter_disabled_btn" href="#disabled"
-                class="radio_group_btn"
-                data-i18n-text="disabled">Disabled</a>
-            </li>
-        </ul>
-    </div>
-    <div id="exts_container" class="dialog_body">
-        <ul>
-        </ul>
-    </div>
-    <div class="dialog_footer">
-    <a id="btn_exts_close" class="button" data-i18n-text="close">Close</a>
-    </div>
-    </div><!-- END of .dialog_container -->
-</div>
 
 <!-- Kismet Dialog -->
 <div id="kismet_dialog" class="dialog">

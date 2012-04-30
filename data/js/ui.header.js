@@ -23,12 +23,6 @@ function init () {
         ui.Header.closeHototMenu();
     });
 
-    $('#exts_menu_empty_hint').click(
-    function (event) {
-        ui.ExtsDlg.load_ext_list();
-        globals.exts_dialog.open();
-    });
-
     $('#btn_reload').click(
     function(event) {
         daemon.update_all();
@@ -39,12 +33,6 @@ function init () {
         ui.PrefsDlg.load_settings(conf.settings);
         ui.PrefsDlg.load_prefs();
         globals.prefs_dialog.open();
-    });
-     
-    $('#btn_exts').click(
-    function (event) {
-        ui.ExtsDlg.load_ext_list();
-        globals.exts_dialog.open();
     });
     
     $('#btn_kismet').click(

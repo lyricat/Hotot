@@ -5,39 +5,21 @@ id: '',
 
 init:
 function init () {
-    ui.ExtsDlg.id = '#exts_dlg';
-
-    var btn_exts_close = new widget.Button('#btn_exts_close');
-    btn_exts_close.on_clicked = function (event) {
-        globals.exts_dialog.close();
-    };
-    btn_exts_close.create();
-
-    var filter_btns = new widget.RadioGroup('#exts_filter_btns');
-    filter_btns.on_clicked = function (btn, event) {
-        var href = btn.attr('href');
-        switch (href) {
-        case '#all':
-            $('#exts_container .ext_item').show();
-        break;
-        case '#enabled':
-            $('#exts_container .ext_item').show();
-            $('#exts_container .ext_item.disabled').hide();
-        break;
-        case '#disabled':
-            $('#exts_container .ext_item').hide();
-            $('#exts_container .ext_item.disabled').show();
-        break;
-        }
-    };
-    filter_btns.create();
+    ui.ExtsDlg.id = '#prefs_exts';
 },
 
 load_ext_list:
 function load_ext_list() {
-    var exts_list = $('#exts_container > ul').empty();
+    var exts_list = $('#prefs_exts > ul').empty();
     for (var ext_id in ext.exts_info) {
         var info = ext.exts_info[ext_id];
+        var li = $('<li class="mochi_list_item" ext_id="'
+            + ext_id + '">'
+            + '<input type="checkbox" class="mochi_toggle widget"/>'
+            + (info.has_options ? '<a href="javascript:void(0);" class="value option"></a>': '')
+            + '<label class="label">' + info.name + '</label>'
+            + '</li>');
+        /*
         var li = $('<li class="ext_item"/>').attr('id', 'ext_' + ext_id);
         var div = $('<div class="ext_icon_wrap"/>').appendTo(li);
         $('<img class="ext_icon"/>').attr('src', info.icon).appendTo(div);
@@ -64,16 +46,14 @@ function load_ext_list() {
         if (info.has_options) {
             $('<a href="javascript:void(0);" class="button options_btn"/>').text(_('options')).appendTo(sdiv);
         }
+        */
         exts_list.append(li);
     }
 
-    // @TODO enable enabled ext items cause Issue 31
-    /*
-    */
     var prefs = conf.get_current_profile().preferences;
-    $('#exts_container .ext_item').each(
+    $('#prefs_exts .mochi_list_item').each(
     function (idx, obj) {
-        var id = $(obj).attr('id').substring(4);
+        var id = $(obj).attr('ext_id');
         var exists = (prefs.exts_enabled.indexOf(id) != -1);
         ui.ExtsDlg.enable_ext_item(obj, exists);
     });
@@ -82,25 +62,18 @@ function load_ext_list() {
 
 enable_ext_item:
 function enable_ext_item(item, enable) {
-    if (enable) {
-        $(item).removeClass('disabled');
-        $(item).find('.enable_btn')
-            .text(_('disable')).addClass('disable');
-    } else {
-        $(item).addClass('disabled');
-        $(item).find('.enable_btn')
-            .text(_('enable')).removeClass('disable');
-    }
+    $(item).find('.widget')
+        .attr('checked', enable).prop('checked', enable)
 },
 
 bind_exts_btns:
 function bind_exts_btns() {
     var prefs = conf.get_current_profile().preferences;
-    $('#exts_container .enable_btn').click(
+    $('#prefs_exts .widget').click(
     function (event) {
-        var item = $(this).parents('.ext_item').get(0);
-        var id = $(item).attr('id').substring(4);
-        var enable = !$(this).hasClass('disable');
+        var item = $(this).parent().get(0);
+        var id = $(item).attr('ext_id');
+        var enable = $(this).prop('checked');
         ext.exts_info[id].enable = enable;
         if (enable) {
             prefs.exts_enabled.push(id)
@@ -112,14 +85,13 @@ function bind_exts_btns() {
         ui.ExtsDlg.enable_ext_item(item, enable);
         conf.save_prefs(conf.current_name);
     });
-    $('#exts_container .options_btn').click(
+    $('#prefs_exts .option').click(
     function (event) {
-        var item = $(this).parents('.ext_item').get(0);
-        var id = $(item).attr('id').substring(4);
+        var item = $(this).parent().get(0);
+        var id = $(item).attr('ext_id');
         ext.config_ext(id);
         return false;
     });
-
 }
 
 }

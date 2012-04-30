@@ -82,7 +82,7 @@ function update_tweet_block_width() {
     }
 
     // adjust width of compose box
-    var status_box_w = $(window).width()*0.6;
+    var status_box_w = $(window).width() * 0.6;
     if (status_box_w < 550) {       // 550, max-width of #status_box
         if (status_box_w < 400) {   // 400, min-width of #status_box
             status_box_w = 400;
@@ -347,62 +347,46 @@ function init_dialogs() {
     hotot_log('init', 'init_dialogs()');
     globals.oauth_dialog = new widget.Dialog('#oauth_dlg');
     globals.oauth_dialog.resize(350, 400);
-    globals.oauth_dialog.place(widget.DialogManager.CENTER);
     globals.oauth_dialog.create();
 
     globals.profile_dialog = new widget.Dialog('#profile_dlg');
     globals.profile_dialog.resize(500, 450);
-    globals.profile_dialog.place(widget.DialogManager.CENTER);
     globals.profile_dialog.create();
 
     globals.list_attr_dialog = new widget.Dialog('#list_attr_dlg');
     globals.list_attr_dialog.resize(500, 330);
-    globals.list_attr_dialog.place(widget.DialogManager.CENTER);
     globals.list_attr_dialog.create();
 
     globals.add_to_list_dialog = new widget.Dialog('#add_to_list_dlg');
     globals.add_to_list_dialog.resize(400, 260);
-    globals.add_to_list_dialog.place(widget.DialogManager.CENTER);
     globals.add_to_list_dialog.create();
 
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
     globals.prefs_dialog.resize(600, 600);
-    globals.prefs_dialog.place(widget.DialogManager.CENTER);
     globals.prefs_dialog.create();
-
-    globals.exts_dialog = new widget.Dialog('#exts_dlg');
-    globals.exts_dialog.resize(500, 400);
-    globals.exts_dialog.place(widget.DialogManager.CENTER);
-    globals.exts_dialog.create();
 
     globals.imageuploader_dialog = new widget.Dialog('#imageuploader_dlg');
     globals.imageuploader_dialog.resize(600, 600);
-    globals.imageuploader_dialog.place(widget.DialogManager.CENTER);
     globals.imageuploader_dialog.create();
 
     globals.imagepreview_dialog = new widget.Dialog('#imagepreview_dlg');
     globals.imagepreview_dialog.resize(1800, 1800);
-    globals.imagepreview_dialog.place(widget.DialogManager.CENTER);
     globals.imagepreview_dialog.create();
 
     globals.error_dialog= new widget.Dialog('#error_dlg');
     globals.error_dialog.resize(500, 400);
-    globals.error_dialog.place(widget.DialogManager.CENTER);
     globals.error_dialog.create();
 
     globals.about_dialog = new widget.Dialog('#about_dlg');
     globals.about_dialog.resize(500, 500);
-    globals.about_dialog.place(widget.DialogManager.CENTER);
     globals.about_dialog.create();
 
     globals.kismet_dialog = new widget.Dialog('#kismet_dialog');
     globals.kismet_dialog.resize(600, 500);
-    globals.kismet_dialog.place(widget.DialogManager.CENTER);
     globals.kismet_dialog.create();
 
     globals.compose_dialog = new widget.Dialog('#status_box');
     globals.compose_dialog.resize(600, 'auto');
-    globals.compose_dialog.place(widget.DialogManager.CENTER);
     globals.compose_dialog.create();
 }
 

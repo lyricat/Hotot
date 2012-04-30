@@ -13,10 +13,11 @@ function init () {
         var page_name = $(this).attr('href');
         if (page_name == "#prefs_main") {
             $('#btn_prefs_back').hide();
-            $('#btn_prefs_ok').show();
         } else {
             $('#btn_prefs_back').show();
-            $('#btn_prefs_ok').hide();
+        }
+        if (page_name == "#prefs_exts") {
+            ui.ExtsDlg.load_ext_list();
         }
         ui.PrefsDlg.switchPage(page_name);
         return false;
@@ -82,7 +83,7 @@ function init () {
         $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
     });
 
-    $('#btn_prefs_ok').click(function (event) {
+    $('#btn_prefs_ok').unbind().click(function (event) {
         var err = ui.FormChecker.check_config_error(
             ui.PrefsDlg.id + ' input');
         if ( err.count != 0 ) {
@@ -92,10 +93,11 @@ function init () {
                 , "<p>There are something wrong in what your changes.<br/>Please check errors in the options below:<br/> - "
                 + err.error_values.join('<br/> - ') + '</p>');
         } else {
+            globals.prefs_dialog.close();
             ui.PrefsDlg.save_settings();
             ui.PrefsDlg.save_prefs();
-            globals.prefs_dialog.close();
         }
+        return false;
     });
 
     $('#btn_prefs_restore_defaults').click(function (event) {

@@ -247,11 +247,7 @@ pre {
 	max-width: 550px;
 	border-radius: 2px;
 	padding: 0;
-	position: absolute;
-	left: 0;
-	top: 35px;
-	z-index: 10000;
-	display: none;
+	position: fixed;
 	-webkit-box-shadow: 2px 2px 3px #888;
 	-moz-box-shadow: 2px 2px 3px #888;
 	box-shadow: 2px 2px 3px #888;
@@ -1407,9 +1403,6 @@ label {
 #sign_in_block .service_chooser .identica {
 	background-image: url(../image/ic24_identica.png);
 }
-#btn_welcome_exts {
-	float: right;
-}
 
 #btn_welcome_prefs {
 	float: right;
@@ -1494,7 +1487,7 @@ label {
 	height: 48px;
 }
 
-#about_dlg .dialog_header, #exts_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
+#about_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
 	padding: 10px;
 	height: 32px;
 	background: #777777 url(../image/mask.png);
@@ -1506,7 +1499,7 @@ label {
 	display: none;
 }
 
-#about_dlg .dialog_footer, #exts_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer, #add_to_list_dlg .dialog_footer{
+#about_dlg .dialog_footer, #oauth_dlg .dialog_footer, #profile_dlg .dialog_footer, #error_dlg .dialog_footer, #list_attr_dlg .dialog_footer, #add_to_list_dlg .dialog_footer{
 	padding: 10px;
 	height: 32px; 
 }
@@ -1516,10 +1509,6 @@ label {
 	height: 0;
 	display: 0;
 	border: none;
-}
-
-#exts_dlg .dialog_body {
-	padding: 0;
 }
 
 
@@ -1545,50 +1534,11 @@ label {
 
 /*===== Extensions Dialog ================================*/
 
-.ext_item {
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
-	color: #000;
-	min-height: 80px;
-	border-bottom: 1px #ccc solid; 
-	display: block;
-	font-size:12px;
+#prefs_exts .option {
+	background: transparent url(../image/ic16_gear.png) center center no-repeat;
+	width: 28px;
 }
 
-.ext_item:last {
-	border-bottom: none; 
-}
-
-.ext_item.disabled {
-	background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e3e3e3));
-	color: #777;
-}
-
-.ext_icon_wrap {
-	width: 70px;
-	padding: 5px;
-	float: left;
-}
-
-.ext_icon {
-	width: 64px;
-	height: 64px;
-	display:block;
-	border: 0;
-}
-
-.ext_item_body {
-	margin-left:  77px;
-	border-left: 1px #ccc solid;
-	padding: 5px;
-}
-
-.ext_name {
-	font-weight: bold;
-}
-
-.ext_description {
-	padding: 0 15px;
-}
 /*===== Errors Dialog ================================*/
 .error_item_header {
 	padding: 0 10px;

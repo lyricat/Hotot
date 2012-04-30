@@ -57,13 +57,6 @@ function init () {
         globals.prefs_dialog.open();
     });
         
-    $('#btn_welcome_exts').click(
-    function (event) {
-        $('#profile_avatar_list a.selected').click();
-        ui.ExtsDlg.load_ext_list();
-        globals.exts_dialog.open();
-    });
-    
     $('#clean_token_btn').click(
     function (event) {
         if (confirm('The operation will erases the access token of this profile.\n Are you sure you want to continue?!\n')) 

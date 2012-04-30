@@ -303,7 +303,7 @@ function update_status(status_text) {
                 ui.StatusBox.last_sent_text = '';
                 ui.StatusBox.save_draft(draft);
             });
-        globals.compose_dialog.close();
+        globals.compose_dialog.close('slide');
     }
     return this;
 },
@@ -351,7 +351,7 @@ function post_message(message_text) {
                     toast.set('Post failed! Save as draft.').show(3);
                     ui.StatusBox.save_draft(draft);
                 });
-            globals.compose_dialog.close();
+            globals.compose_dialog.close('slide');
         }
     }
 },
@@ -362,7 +362,6 @@ function post_message_cb(result) {
     toast.set(_('post_successfully')).show();
     $('#tbox_status').val(''); 
     $('#status_info').hide();
-    globals.compose_dialog.close();
     return this;
 },
 
@@ -399,7 +398,6 @@ function post_image_cb(result) {
     toast.set('Uploading Successfully!').show();
     if (ui.ImageUploader.service_name === 'twitter.com') {
         ui.StatusBox.reset(); 
-        globals.compose_dialog.close(); 
         ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
     } else {
         var text = result.text + ' '+ result.url;
@@ -504,7 +502,7 @@ function set_dm_target(screen_name) {
 
 open:
 function open(callback) {
-    globals.compose_dialog.open(function () {
+    globals.compose_dialog.open('fade', function () {
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
         if (callback && typeof (callback) === 'function') {
             callback();
