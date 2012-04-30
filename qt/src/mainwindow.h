@@ -32,6 +32,7 @@
 #include <MApplicationWindow>
 #endif
 
+class QWebView;
 class QWebInspector;
 struct TrayIconInterface;
 class KStatusNotifierItem;
@@ -56,6 +57,7 @@ public:
     void activate();
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
+    bool useSocks();
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
@@ -70,7 +72,6 @@ protected Q_SLOTS:
 #endif
 
 protected:
-    void initDatabases();
     bool isCloseToExit();
     bool isStartMinimized();
     bool isAutoSignIn();
@@ -85,7 +86,11 @@ protected:
 
 private:
     HototWebPage* m_page;
+#ifndef MEEGO_EDITION_HARMATTAN
+    QWebView* m_webView;
+#else
     QGraphicsWebView* m_webView;
+#endif
     QMenu* m_menu;
     TrayIconInterface* m_tray;
     QAction* m_actionShow;
@@ -95,7 +100,7 @@ private:
     QAction* m_actionMinimizeToTray;
 #endif
     QWebInspector* m_inspector;
-    bool m_useSocket;
+    bool m_useSocks;
     QFontDatabase m_fontDB;
     QString m_confDir;
 };

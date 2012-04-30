@@ -25,6 +25,7 @@
 #include <QClipboard>
 #include <QApplication>
 #include <QNetworkRequest>
+#include <QNetworkProxy>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QWebFrame>
@@ -69,6 +70,29 @@ bool HototWebPage::handleUri(const QString& originmsg)
             } else if (method == "unread_alert") {
                 QString number = QUrl::fromPercentEncoding(msg.section("/", 2, 2).toUtf8());
                 m_mainWindow->unreadAlert(number);
+            } else if (method == "load_settings") {
+                QString settingString = QUrl::fromPercentEncoding(msg.section("/", 2, -1).toUtf8());
+                currentFrame()->evaluateJavaScript("hotot_qt = " + settingString + ";");
+                bool useHttpProxy = currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
+                bool useHttpProxyAuth = currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy_auth").toBool();
+                int httpProxyPort = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
+                QString httpProxyHost = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
+                QString httpProxyAuthName = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_name").toString();
+                QString httpProxyAuthPassword = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
+
+                if (useHttpProxy) {
+                    QNetworkProxy proxy(m_mainWindow->useSocks() ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
+                                        httpProxyHost,
+                                        httpProxyPort);
+
+                    if (useHttpProxyAuth)
+                    {
+                        proxy.setUser(httpProxyAuthName);
+                        proxy.setPassword(httpProxyAuthPassword);
+                    }
+
+                    networkAccessManager()->setProxy(proxy);
+                }
             }
         } else if (type == "action") {
             if (method == "search") {

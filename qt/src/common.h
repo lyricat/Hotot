@@ -23,6 +23,14 @@
 #include <QtGlobal>
 #include "config.h"
 
+#ifndef _MSC_VER
+#include <getopt.h>
+#endif
+
+#ifndef Q_OS_WIN32
+#include <unistd.h>
+#endif
+
 #ifdef HAVE_KDE
 #   include <KLocalizedString>
 #else
