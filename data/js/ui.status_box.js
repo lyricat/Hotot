@@ -285,7 +285,7 @@ function update_status(status_text) {
             'mode': ui.StatusBox.MODE_TWEET, 
             'text': status_text
         };
-        if (draft.mode === ui.StatusBox.MODE_REPLY) {
+        if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
             draft.mode = ui.StatusBox.MODE_REPLY;
             draft.reply_to_id = ui.StatusBox.reply_to_id;
             draft.recipient = encodeURIComponent($('#status_box .who').text());
