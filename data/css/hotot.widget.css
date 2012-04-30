@@ -329,8 +329,6 @@ disabled:
     position: fixed;
     color: #333;
     display: none;
-    width: 500px;
-    height: 400px;
     top: 0;
     left: 0;
     -webkit-box-shadow: 1px 1px 5px #000;

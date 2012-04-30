@@ -399,6 +399,11 @@ function init_dialogs() {
     globals.kismet_dialog.resize(600, 500);
     globals.kismet_dialog.place(widget.DialogManager.CENTER);
     globals.kismet_dialog.create();
+
+    globals.compose_dialog = new widget.Dialog('#status_box');
+    globals.compose_dialog.resize(600, 'auto');
+    globals.compose_dialog.place(widget.DialogManager.CENTER);
+    globals.compose_dialog.create();
 }
 
 function init_ui() {
@@ -458,7 +463,7 @@ function init_hotkey() {
     });
     // 'c' to compose
     hotkey.register("c",
-        function () {ui.StatusBox.open();});
+        function () { ui.StatusBox.open();});
     // Navigation
     hotkey.register(hotkey.calculate(38), "D", function () {
         ui.Main.move_by_offset(-50);

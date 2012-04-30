@@ -86,20 +86,25 @@ function WidgetDialog(obj) {
     };
 
     self.resize = function resize(w, h) {
-        self._me_h = self._me.height();
-        self._header_h = parseInt(self._header.css('height'))
-            + parseInt(self._header.css('padding-top'))
-            + parseInt(self._header.css('padding-bottom'))+1;
-        self._footer_h = parseInt(self._footer.css('height')) 
-            + parseInt(self._footer.css('padding-top'))
-            + parseInt(self._footer.css('padding-bottom'))+1;
-        self._me_w = (w == -1? self._me_w: w);
-        self._me_h = (h == -1? self._me_h: h);
-        self._me.css({'width': self._me_w, 'height': self._me_h}); 
-        var body_h = self._me_h - self._header_h - self._footer_h;
-        var body_padding = parseInt(self._body.css('padding-top'))
-            + parseInt(self._body.css('padding-bottom'));
-        self._body.css({'height': (body_h - body_padding - 30) + 'px'});
+        if (h !== 'auto') {
+            self._me_h = self._me.height();
+            self._header_h = parseInt(self._header.css('height'))
+                + parseInt(self._header.css('padding-top'))
+                + parseInt(self._header.css('padding-bottom'))+1;
+            self._footer_h = parseInt(self._footer.css('height')) 
+                + parseInt(self._footer.css('padding-top'))
+                + parseInt(self._footer.css('padding-bottom'))+1;
+            self._me_h = (h == -1? self._me_h: h);
+            self._me.css({'height': self._me_h}); 
+            var body_h = self._me_h - self._header_h - self._footer_h;
+            var body_padding = parseInt(self._body.css('padding-top'))
+                + parseInt(self._body.css('padding-bottom'));
+            self._body.css({'height': (body_h - body_padding - 30) + 'px'});
+        }
+        if (w !== 'auto') {
+            self._me_w = (w == -1? self._me_w: w);
+            self._me.css({'width': self._me_w}); 
+        }
         // 20px = dialog_body.padding + border_num
     };
 
@@ -129,8 +134,11 @@ function WidgetDialog(obj) {
         self.place(widget.DialogManager.CENTER);
     };
 
-    self.open = function open(with_mask) {
-        if (with_mask) {
+    self.open = function open(param) {
+        var callback = null
+        if (typeof (param) === "function") {
+            callback = param
+        } else if (param) {
             $('#dialog_mask').show();
         }
         if ($(window).width() < self._me_w + 20) {
@@ -142,10 +150,14 @@ function WidgetDialog(obj) {
         self.place(widget.DialogManager.CENTER);
         widget.DialogManager.push(self);
         self._me.show();
+        if (callback) {
+            callback();
+        }
     };
     
     self.close = function close() {
         widget.DialogManager.pop(self);
+        $('#dialog_mask').hide();
         if (self.destroy_on_close) {
             self.destroy();
         } else {

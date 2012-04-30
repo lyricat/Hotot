@@ -499,7 +499,6 @@ function bind_tweet_action(id) {
             $(ui.Main.selected_tweet_id).removeClass('selected');
             ui.Main.selected_tweet_id = id;
             $(id).addClass('selected');
-            ui.StatusBox.close();
             ui.ContextMenu.hide();
             ui.Main.closeTweetMoreMenu();
         }
@@ -695,7 +694,7 @@ function on_reply_click(btn, li_id, event) {
     var orig_text = $('#tbox_status').val();
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info('Reply to @', screen_name + ': "' + text + '"');
+    ui.StatusBox.set_reply_info(screen_name, text);
     if (orig_text.indexOf('@'+screen_name) == -1) {
         ui.StatusBox.insert_status_text('@' + li.attr('screen_name') + ' ', null);
     }
@@ -767,7 +766,7 @@ function on_reply_all_click(btn, li_id, event) {
     }
 
     ui.StatusBox.reply_to_id = id;
-    ui.StatusBox.set_status_info(_('reply_to'), text);
+    ui.StatusBox.set_reply_info(screen_name, text);
     ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     ui.StatusBox.open(
     function() {
@@ -783,7 +782,8 @@ function on_dm_click(btn, li_id, event) {
     var screen_name = (li.attr('screen_name') == '' || li.attr('screen_name') == undefined)
         ?li.attr('sender_screen_name'):li.attr('screen_name');
     ui.StatusBox.set_dm_target(screen_name);
-    ui.StatusBox.open(function () {
+    ui.StatusBox.open(
+    function () {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
         ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
     });

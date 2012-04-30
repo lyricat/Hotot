@@ -72,6 +72,7 @@ function init () {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         ui.reply_to_id = null;
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+        ui.StatusBox.update_status_len();
     });
 
     var toggle_mode = new widget.Button('#toggle_mode');
@@ -111,6 +112,7 @@ function init () {
             content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
             widget.DialogManager.alert(title, content); 
         }
+        return false;
     });
 
     $('#btn_save_draft').click(function () {
@@ -123,20 +125,13 @@ function init () {
         };
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
             draft.reply_to_id = ui.StatusBox.reply_to_id;
-            draft.reply_text = encodeURIComponent($('#status_box .info_text').text())
+            draft.reply_to_name = encodeURIComponent($('#status_box .who').text());
+            draft.reply_text = encodeURIComponent($('#status_box .quote').text())
         } else if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
             draft.recipient =encodeURIComponent($('#tbox_dm_target').val());
         }
         ui.StatusBox.save_draft(draft);
         ui.StatusBox.reset();
-    });
-
-    $('#btn_clear_status_info').click(
-    function (event) {
-        $(this).parent().hide();
-        $('#status_info_text').empty();
-        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
-        ui.reply_to_id = null;
     });
 
     $('#tbox_status').keyup(
@@ -159,7 +154,7 @@ function init () {
         }
 
         if (event.keyCode == 27) { // esc
-            ui.StatusBox.close();
+            globals.compose_dialog.close();
         }
     });
     
@@ -214,7 +209,6 @@ function init () {
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 
-    ui.StatusBox.close(); 
 },
 
 on_btn_short_url_clicked:
@@ -266,7 +260,6 @@ function change_mode(mode) {
         $('#status_box').removeClass('reply_mode').addClass('dm_mode');
         $('#tbox_dm_target').show();
         $('#status_info').show();
-        ui.StatusBox.set_status_info(_('compose_messages_to'));
     } else if (mode == ui.StatusBox.MODE_REPLY){
         $('#status_box').removeClass('dm_mode').addClass('reply_mode');
         $('#status_info').show();
@@ -278,7 +271,7 @@ function change_mode(mode) {
         $('#status_box').removeClass('dm_mode').removeClass('reply_mode');
         $('#tbox_dm_target').hide();
         $('#status_info').hide();
-        $('#tbox_status_wrapper').css('margin-left', '5px');
+        $('#tbox_status_wrapper').css('margin-left', '0px');
         $('#status_image_preview_wrapper').hide();
     }
     ui.StatusBox.current_mode = mode;
@@ -295,7 +288,8 @@ function update_status(status_text) {
         if (ui.StatusBox.MODE_REPLY) {
             draft.mode = ui.StatusBox.MODE_REPLY;
             draft.reply_to_id = ui.StatusBox.reply_to_id;
-            draft.reply_text = encodeURIComponent($('#status_box .info_text').text());
+            draft.reply_to_name = encodeURIComponent($('#status_box .who').text());
+            draft.reply_text = encodeURIComponent($('#status_box .quote').text());
         }
         ui.StatusBox.reset();
 
@@ -309,7 +303,7 @@ function update_status(status_text) {
                 ui.StatusBox.last_sent_text = '';
                 ui.StatusBox.save_draft(draft);
             });
-        ui.StatusBox.close();
+        globals.compose_dialog.close();
     }
     return this;
 },
@@ -357,7 +351,7 @@ function post_message(message_text) {
                     toast.set('Post failed! Save as draft.').show(3);
                     ui.StatusBox.save_draft(draft);
                 });
-            ui.StatusBox.close();
+            globals.compose_dialog.close();
         }
     }
 },
@@ -368,7 +362,7 @@ function post_message_cb(result) {
     toast.set(_('post_successfully')).show();
     $('#tbox_status').val(''); 
     $('#status_info').hide();
-    ui.StatusBox.close();
+    globals.compose_dialog.close();
     return this;
 },
 
@@ -405,7 +399,7 @@ function post_image_cb(result) {
     toast.set('Uploading Successfully!').show();
     if (ui.ImageUploader.service_name === 'twitter.com') {
         ui.StatusBox.reset(); 
-        ui.StatusBox.close(); 
+        globals.compose_dialog.close(); 
         ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
     } else {
         var text = result.text + ' '+ result.url;
@@ -434,7 +428,7 @@ function save_draft(draft) {
         switch (mode){
         case ui.StatusBox.MODE_REPLY:
             ui.StatusBox.reply_to_id = li.attr('reply_to_id')
-            ui.StatusBox.set_status_info('Reply to', decodeURIComponent(li.attr('reply_text')));
+            ui.StatusBox.set_reply_info(reply_to_name, decodeURIComponent(li.attr('reply_text')));
         case ui.StatusBox.MODE_IMG:
         break;
         case ui.StatusBox.MODE_DM:
@@ -497,13 +491,10 @@ function set_status_text(text) {
     $('#tbox_status').removeClass('hint_style');
 },
 
-set_status_info:
-function set_status_info(hint, info) {
-    var textbar = $('#status_info_text').empty();
-    $('<span class="info_hint"/>').text(hint).appendTo(textbar);
-    if (info != null && info !== '') {
-        $(' <span class="info_text"/>').text(info).appendTo(textbar);
-    }
+set_reply_info:
+function set_reply_info(name, text) {
+    $('#status_box .quote').text(text);
+    $('#status_box .who').text(name);
 },
 
 set_dm_target:
@@ -511,48 +502,14 @@ function set_dm_target(screen_name) {
     $('#tbox_dm_target').val(screen_name);
 },
 
-show:
-function show() {
-    $('#status_box').show()
-},
-
-hide:
-function hide() {
-    $('#status_box').hide()
-},
-
-close:
-function close() {
-    $('#tbox_status').stop().animate({ 
-            height: "0px", 
-        }
-        , 100
-        , 'linear'
-        , function () {
-            ui.StatusBox.hide();
-            $('#tbox_status').blur();
-            $('#'+ui.Slider.current+'_tweetview .card:eq(0)').focus();
-        });
-    $('#indicator_compose_btn').removeClass('hlight');
-    ui.StatusBox.is_closed = true;
-},
-
 open:
-function open(on_finish) {
-    $('#tbox_status').stop().animate({ 
-            height: "150px", 
+function open(callback) {
+    globals.compose_dialog.open(function () {
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+        if (callback && typeof (callback) === 'function') {
+            callback();
         }
-        , 100
-        , 'linear'
-        , function () {
-            ui.StatusBox.show();
-            $('#tbox_status').focus();
-            if (on_finish) {
-                on_finish();
-            }
-        });
-    $('#indicator_compose_btn').addClass('hlight');
-    ui.StatusBox.is_closed = false;
+    });
 },
 
 move_cursor:
@@ -561,20 +518,19 @@ function move_cursor(pos) {
         return;
     if (pos == ui.StatusBox.POS_END) 
         pos = $('#tbox_status').attr('value').length;
-
     $('#tbox_status').focus();
     var box = $('#tbox_status').get(0);
-        if(box.setSelectionRange) {
-        // others
-                box.setSelectionRange(pos, pos);
-        } else if (box.createTextRange) {
-        // IE
-                var range = box.createTextRange();
-                range.collapse(true);
-                range.moveEnd('character', pos);
-                range.moveStart('character', pos);
-                range.select();
-        }
+    if(box.setSelectionRange) {
+    // others
+        box.setSelectionRange(pos, pos);
+    } else if (box.createTextRange) {
+    // IE
+        var range = box.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+    }
 }
 
 };

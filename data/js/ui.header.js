@@ -94,7 +94,6 @@ function closeAll() {
     ui.Slider.closeSliderMenu();
     ui.Header.closeHototMenu();
     ui.Main.closeTweetMoreMenu();
-    ui.StatusBox.close();
 }
 
 };

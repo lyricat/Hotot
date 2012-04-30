@@ -101,7 +101,8 @@ function init_view(view) {
     vcard.find('.message_menu_item').click(
     function (event) {
         ui.StatusBox.set_dm_target(view.screen_name);
-        ui.StatusBox.open(function () {
+        ui.StatusBox.open(
+        function () {
             ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
             ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
         });

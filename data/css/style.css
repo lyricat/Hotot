@@ -239,29 +239,6 @@ pre {
 	background-position: 3px center;
 }
 
-#bubble_shape {
-	content: "\00a0";
-	display: block;
-	position: absolute;
-	width: 0;
-	height: 0;
-	top: -14px;
-	left: 20px;
-	border-style: solid;
-	bottom: auto;
-	border-width: 7px 7px 7px;
-	border-color: transparent transparent white transparent;
-	display: none;
-}
-
-#status_box.dm_mode #bubble_shape {
-	border-color: transparent transparent #c7dbfc transparent; 
-}
-
-#status_box.reply_mode #bubble_shape {
-	border-color: transparent transparent #f4d3a1 transparent; 
-}
-
 #status_box {
 	background:-webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ededed));
 	background-repeat: no-repeat;
@@ -280,13 +257,15 @@ pre {
 	box-shadow: 2px 2px 3px #888;
 }
 
+#status_box .dialog_body {
+	padding: 0;
+}
+
 #tbox_status_wrapper {
-	margin:5px;
+	margin:0 0 5px 0;
 	height: 160px;
 	box-shadow: none !important;
 }
-
-
 
 #tbox_status {
 	width: 100%;
@@ -411,16 +390,9 @@ pre {
 }
 
 #status_len {
-	float: left;
 	font-size: 10px;
-}
-
-#status_info {
-	display: none;
-	padding: 2px 5px;
-	min-height: 24px;
-	border-top-right-radius: 2px;
-	border-top-left-radius: 2px;
+	padding: 5px 5px 0 0;
+	text-align: right;
 }
 
 #status_drafts{
@@ -465,13 +437,6 @@ pre {
 	color: blue;
 }
 
-#status_info_text {
-	font-size: 12px;
-	min-height: 20px;
-	border: none;
-	padding: 2px 30px 2px 10px;
-	float: left;
-}
 
 #status_drafts .btn_draft_clear {
 	position: absolute;
@@ -484,42 +449,47 @@ pre {
 	background-position: center;
 }
 
-#status_box.reply_mode #status_info{
+#status_box .status_info {
+	padding: 10px;
+	display: none;
+}
+
+#status_box .reply_status_info {
+
+}
+
+#status_box .dm_status_info .label {
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+#status_box.reply_mode .reply_status_info {
 	background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
 	border-bottom: 1px #c4987d solid;
 	color: #502805;
+	display: block;
 }
 
-#status_box.dm_mode #status_info{
-	background:-webkit-gradient(linear, left top, left bottom, from(#d3e3ff), to(#b9d2fa));
-	border-bottom: 1px #90abc4 solid;
-	color: #14465f;
+#status_box.dm_mode .dm_status_info {
+	display: block;
 }
 
 #tbox_dm_target {
-	height: 20px;
-	font-size: 12px;
-	line-height: 14px;
+	font-size: 14px;
 	display: block;
+	width: auto;
+	border: none;
+	border-bottom: 1px dashed #999;
+	background: transparent;
+	box-shadow: none;
 }
 
 .info_hint {
 	font-weight: bold;
-}
-
-#btn_clear_status_info {
-	height: 20px;
-	width: 20px;
-	right: 10px;
-	top: 4px;
-	position: absolute;
-	display: block;
-	background: transparent url(../image/ic16_close.png) no-repeat;
-	background-position: center;
-}
-
-#btn_clear_status_info:hover {
-	border-color: #fff;
 }
 
 #status_tips {
@@ -1530,7 +1500,7 @@ label {
 	background: #777777 url(../image/mask.png);
 }
 
-#prefs_dlg .dialog_header, #oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
+#prefs_dlg .dialog_header, #status_box .dialog_header, #oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
 	height: 0;
 	padding: 0;
 	display: none;
@@ -1541,7 +1511,7 @@ label {
 	height: 32px; 
 }
 
-#prefs_dlg .dialog_footer {
+#prefs_dlg .dialog_footer, #status_box .dialog_footer {
 	padding: 0;
 	height: 0;
 	display: 0;
