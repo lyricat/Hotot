@@ -255,23 +255,33 @@ pre {
 
 #status_box .dialog_body {
 	padding: 0;
+	overflow: hidden;
 }
 
 #tbox_status_wrapper {
-	margin:0 0 5px 0;
+	margin:0;
+	padding: 0;
+	border: none;
+	box-shadow: none;
 	height: 160px;
-	box-shadow: none !important;
+	background: transparent url(../image/compose_box_bg.png) left top no-repeat;
+	border-top: 1px solid #A6A16B;
+	border-bottom: 1px solid #A6A16B;
 }
 
 #tbox_status {
 	width: 100%;
-	height: 150px;
-	color: #333;
-	background-color: #fff;
+	height: 100%;
+	color: #492D00;
+	background: transparent;
 	font-size: 14px;
 	resize: none;
 	border: 0;
 	outline: none;
+	line-height: 24px;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding-left: 0 10px 0 24px;
 }
 
 #status_image_preview_wrapper {
@@ -300,13 +310,13 @@ pre {
 
 #status_smiley {
 	width: 100%;
-	height: 150px;
-	color: #333;
-	background-color: #fff;
+	background: transparent;
 	font-size: 14px;
 	border: 0;
 	display: none;
 	overflow: auto;
+	padding-left: 24px;
+	box-sizing: border-box;
 }
 
 #status_smiley_inner {
@@ -322,21 +332,23 @@ pre {
 }
 
 .smiley {
-	background: lightgray;
+	background: #807858;
 	border-radius: 5px;
 	display: block;
 	float: left;
 	margin: 5px;
 	text-align: center;
 	text-decoration: none;
-	color: black;
+	color: white;
 	padding: 3px 6px;
 }
 
 #status_ctrl {
-	margin: 0 5px 5px 5px;
+	padding: 5px 0;
 	text-align: right;
 	vertical-align: middle;
+	border-top: 1px solid white;
+	background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F6), to(#EDEDED));
 }
 #status_ctrl *{
 	vertical-align:top;
@@ -465,7 +477,6 @@ pre {
 
 #status_box.reply_mode .reply_status_info {
 	background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
-	border-bottom: 1px #c4987d solid;
 	color: #502805;
 	display: block;
 }

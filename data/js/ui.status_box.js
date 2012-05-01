@@ -73,6 +73,9 @@ function init () {
         ui.reply_to_id = null;
         ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
         ui.StatusBox.update_status_len();
+        ui.StatusBox.resetSize();
+        $('#status_smiley').hide();
+        $('#tbox_status').show();
     });
 
     var toggle_mode = new widget.Button('#toggle_mode');
@@ -85,6 +88,7 @@ function init () {
     $('#btn_smiley').click(function () {
         $('#tbox_status').hide();
         $('#status_smiley').show();
+        ui.StatusBox.autoResize();
     });
 
     $('#status_smiley .close_btn').click(function () {
@@ -137,6 +141,7 @@ function init () {
     $('#tbox_status').keyup(
     function (event) {
         ui.StatusBox.update_status_len();
+        ui.StatusBox.autoResize();
     });
 
     $('#tbox_status').keydown(
@@ -154,7 +159,7 @@ function init () {
         }
 
         if (event.keyCode == 27) { // esc
-            globals.compose_dialog.close();
+            ui.StatusBox.close();
         }
     });
     
@@ -209,6 +214,25 @@ function init () {
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 
+},
+
+autoResize:
+function autoResize () {
+    var tbox = $('#tbox_status').get(0);
+    if (tbox.scrollHeight > tbox.clientHeight) {
+        $('#tbox_status_wrapper').height(tbox.scrollHeight + 24);
+    }
+    tbox = null;
+    tbox = $('#status_smiley:visible');
+    if (tbox.length !== 0) {
+        $('#tbox_status_wrapper').height(tbox.height() + 24);
+    }
+    tbox = null;
+},
+
+resetSize:
+function resetSize () {  
+    $('#tbox_status_wrapper').height(160);
 },
 
 on_btn_short_url_clicked:
@@ -303,7 +327,7 @@ function update_status(status_text) {
                 ui.StatusBox.last_sent_text = '';
                 ui.StatusBox.save_draft(draft);
             });
-        globals.compose_dialog.close('slide');
+        ui.StatusBox.close('slide');
     }
     return this;
 },
@@ -351,7 +375,7 @@ function post_message(message_text) {
                     toast.set('Post failed! Save as draft.').show(3);
                     ui.StatusBox.save_draft(draft);
                 });
-            globals.compose_dialog.close('slide');
+            ui.StatusBox.close('slide');
         }
     }
 },
@@ -481,6 +505,7 @@ function reset() {
     $('#tbox_status').val(''); 
     ui.StatusBox.file = null;
     ui.StatusBox.reply_to_id = null;
+    ui.StatusBox.resetSize();
 },
 
 set_status_text:
@@ -508,6 +533,11 @@ function open(callback) {
             callback();
         }
     });
+},
+
+close:
+function close(method) {
+    globals.compose_dialog.method(method);
 },
 
 move_cursor:
