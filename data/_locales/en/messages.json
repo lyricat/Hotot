@@ -8,7 +8,7 @@
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
-		"message": "Access token doesn't exists",
+		"message": "Access token does not exist",
 		"description": "data/index.html"
 	},
 	"action": {
@@ -136,7 +136,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Click to show retweeters",
+		"message": "Click to show retweets",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -156,11 +156,11 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Copy the PIN Code and paste it into the box below",
+		"message": "Copy the PIN code and paste it into the box below",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
-		"message": "Copy into clipboard",
+		"message": "Copy to clipboard",
 		"description": "date/index.html"
 	},
 	"create_a_list": {
@@ -268,7 +268,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "Exit Hotot when close window",
+		"message": "Exit Hotot when window is closed",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -276,11 +276,11 @@
 		"description": "data/index.html"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Un-fav",
+		"message": "Favorited/Unfavorited",
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Favorite this tweet ...",
+		"message": "Favorite this tweet...",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -360,7 +360,7 @@
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
-		"message": "Hey, it's You!",
+		"message": "Hey, it's you!",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
@@ -432,7 +432,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "WARNNING: Tweets that have following attributes will not appear on your timeline.",
+		"message": "WARNNING: Tweets that have the  following attributes will not appear on your timeline.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -472,11 +472,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "Loading ... ",
+		"message": "Loading... ",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "Loading Resources ...",
+		"message": "Loading Resources...",
 		"description": "data/index.html"
 	},
 	"location": {
@@ -532,7 +532,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Move to prev tweet",
+		"message": "Move to previous tweet",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -548,7 +548,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "My Journey is to the sea of stars",
+		"message": "My journey is to the sea of stars",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -564,11 +564,11 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "Network Error! Please try later.",
+		"message": "Network error! Please try later.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "New Profile has been created!",
+		"message": "New profile has been created!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
@@ -596,19 +596,19 @@
 		"description": "data/index.html"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Oops, A Network Error Occurs",
+		"message": "Oops, a network error occured",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Oops, An API Error Occurs!",
+		"message": "Oops, an API error occured!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
-		"message": "Open a List ...",
+		"message": "Open a List...",
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "Open a Profile ...",
+		"message": "Open a Profile...",
 		"description": "data/index.html"
 	},
 	"open_first_link": {
@@ -640,11 +640,11 @@
 		"description": "date/index.html"
 	},
 	"pin_code": {
-		"message": "PIN Code",
+		"message": "PIN code",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
-		"message": "please enter the recipient!",
+		"message": "Please enter the recipient!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
@@ -652,11 +652,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"post_successfully": {
-		"message": "Posted Successfully!",
+		"message": "Posted successfully!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "Posting ...",
+		"message": "Posting...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
@@ -672,7 +672,7 @@
 		"description": "data/index.html"
 	},
 	"press_ctrl_and_enter_to_update": {
-		"message": "Press Ctrl + Enter to Update",
+		"message": "Press Ctrl + Enter to update",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -728,7 +728,7 @@
 		"description": "data/index.html"
 	},
 	"reply_this_tweet": {
-		"message": "Reply this tweet",
+		"message": "Reply to this tweet",
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
@@ -752,11 +752,11 @@
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retweet/Un-retweet",
+		"message": "Retweet/Unretweet",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
-		"message": "Retweet Successful!",
+		"message": "Retweet successful!",
 		"description": "data/js/ui.main.js"
 	},
 	"retweeted_by": {
@@ -764,7 +764,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Retweeting ...",
+		"message": "Retweeting...",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
@@ -784,7 +784,7 @@
 		"description": "data/index.html"
 	},
 	"rule_based_filter": {
-		"message": "Rule-based Filter",
+		"message": "Rule-based filter",
 		"description": "data/index.html"
 	},
 	"rule_editor": {
@@ -868,7 +868,7 @@
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Sign in ...",
+		"message": "Sign in...",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
@@ -880,7 +880,7 @@
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Slide to prev page",
+		"message": "Slide to previous page",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Un-favorite this tweet ...",
+		"message": "Unfavorite this tweet...",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
@@ -1008,7 +1008,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {
-		"message": "Updating ...",
+		"message": "Updating...",
 		"description": "data/js/ui.status_box.js"
 	},
 	"upload": {
@@ -1024,7 +1024,7 @@
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "Upload to ...",
+		"message": "Upload to...",
 		"description": "data/index.html"
 	},
 	"url_shortener": {
