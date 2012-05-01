@@ -537,7 +537,7 @@ function open(callback) {
 
 close:
 function close(method) {
-    globals.compose_dialog.method(method);
+    globals.compose_dialog.close(method);
 },
 
 move_cursor:
