@@ -52,7 +52,7 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "",
+		"message": "嗚呼…悪魔とはお前達のことだ",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -88,7 +88,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
-		"message": "",
+		"message": "貴方の白いシャツも今は鮮やかなスカーレット",
 		"description": "data/index.html"
 	},
 	"cancel": {
@@ -172,7 +172,7 @@
 		"description": ""
 	},
 	"cuddly": {
-		"message": "",
+		"message": "お揃いね私達　これでお揃いね　嗚呼幸せ",
 		"description": "data/index.html"
 	},
 	"debug": {
@@ -364,7 +364,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
-		"message": "",
+		"message": "超←重↓力↑",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -408,7 +408,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "ここを忘れられない",
+		"message": "忘レ物ハ有リマセンカ",
 		"description": "data/index.html"
 	},
 	"keybinding": {
@@ -548,7 +548,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "俺の旅はその遠い星の海へ",
+		"message": "それでも私は幸せになりたいのです",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -632,7 +632,7 @@
 		"description": ""
 	},
 	"panda_acts_cute": {
-		"message": "",
+		"message": "楽園へ行きましょう、お兄様",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -676,7 +676,7 @@
 		"description": ""
 	},
 	"pretty_wife": {
-		"message": "",
+		"message": "T・N・G",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -812,7 +812,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "",
+		"message": "冥府ヘヨゥコソ！",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -860,7 +860,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "",
+		"message": "コンキスタドーレス",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -912,7 +912,7 @@
 		"description": ""
 	},
 	"struggling_adventurers": {
-		"message": "",
+		"message": "我等クロニカの名の下に",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -944,19 +944,19 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
-		"message": "",
+		"message": "くたばれリア充",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
-		"message": "",
+		"message": "Moiraよ…これが貴女の望んだ世界なのか",
 		"description": "data/index.html"
 	},
 	"tranquil": {
-		"message": "",
+		"message": "し・あ・わ・せ・に・お・な・り・な・さ・い",
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "半透明",
+		"message": "ハジマリのクロニクル",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
@@ -1072,11 +1072,11 @@
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
-		"message": "",
+		"message": "蒼と白の境界線",
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "",
+		"message": "君の悲しみを因数分解してみようか",
 		"description": "data/index.html"
 	},
 	"weakness": {
