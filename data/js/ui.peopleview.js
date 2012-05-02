@@ -132,7 +132,7 @@ function init_view(view) {
     vcard.find('.unblock_menu_item').click(
     function (event) {
         toast.set("Unblock @" + view.screen_name + " ...").show();
-        globals.twitterClient.create_blocks(view.screen_name,
+        globals.twitterClient.destroy_blocks(view.screen_name,
         function () {
             toast.set(
                 "Unblock @"+ view.screen_name+" Successfully").show();
