@@ -209,6 +209,10 @@ function loadmore_people_success(view, json) {
 
 do_search:
 function do_search(view, query) {
+    if (!ui.Main.views.hasOwnProperty('search')) {
+        ui.Slider.addDefaultView('search', {});
+        view = ui.Main.views.search;
+    }
     ui.SearchView.clear(view);
     view.query = $.trim(query);
     if (view.query.length == 0) return;

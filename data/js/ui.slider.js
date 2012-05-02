@@ -45,7 +45,11 @@ function init () {
                 ui.Slider.closeSliderMenu();
             }
         } else if (view_name == 'compose') {
-            ui.StatusBox.open();
+            if (ui.StatusBox.isClosed) {
+                ui.StatusBox.open();
+            } else {
+                ui.StatusBox.close();
+            }
         } else if (view_name == 'hotot') {
             if (ui.Header.isHototMenuClosed) {
                 ui.Header.closeAll();

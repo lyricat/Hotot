@@ -17,7 +17,7 @@ POS_END: -1,
 
 current_mode: 0,
 
-is_closed: false,
+isClosed: true,
 
 reg_fake_dots: null,
 
@@ -88,7 +88,6 @@ function init () {
     $('#btn_smiley').click(function () {
         $('#tbox_status').hide();
         $('#status_smiley').show();
-        ui.StatusBox.autoResize();
     });
 
     $('#status_smiley .close_btn').click(function () {
@@ -141,7 +140,6 @@ function init () {
     $('#tbox_status').keyup(
     function (event) {
         ui.StatusBox.update_status_len();
-        ui.StatusBox.autoResize();
     });
 
     $('#tbox_status').keydown(
@@ -216,20 +214,6 @@ function init () {
 
 },
 
-autoResize:
-function autoResize () {
-    var tbox = $('#tbox_status').get(0);
-    if (tbox.scrollHeight > tbox.clientHeight) {
-        $('#tbox_status_wrapper').height(tbox.scrollHeight + 24);
-    }
-    tbox = null;
-    tbox = $('#status_smiley:visible');
-    if (tbox.length !== 0) {
-        $('#tbox_status_wrapper').height(tbox.height() + 24);
-    }
-    tbox = null;
-},
-
 resetSize:
 function resetSize () {  
     $('#tbox_status_wrapper').height(160);
@@ -274,7 +258,7 @@ function formalize() {
     var text = $('#tbox_status').val(); 
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
     text = text.replace(ui.StatusBox.reg_fake_dots2, '……');
-    text = text.replace('<3', '&#x2665;');
+    text = text.replace('<3', '♥');
     $('#tbox_status').val(text);
 },
 
@@ -532,12 +516,15 @@ function open(callback) {
         if (callback && typeof (callback) === 'function') {
             callback();
         }
+        ui.StatusBox.isClosed = false;
     });
 },
 
 close:
 function close(method) {
     globals.compose_dialog.close(method);
+    $('#tbox_status').blur();
+    ui.StatusBox.isClosed = true;
 },
 
 move_cursor:
