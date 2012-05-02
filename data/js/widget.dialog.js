@@ -137,10 +137,11 @@ function WidgetDialog(obj) {
         var clearUp = function () {
             if (self.destroy_on_close) {
                 self.destroy();
+            } else {
+                self._me.hide();
             }
         }
         if (method == 'off') {
-            self._me.hide();
             clearUp();
         } else if (method == "slide") {
             var x = $(window).width()/2 - self._me.width() / 2;

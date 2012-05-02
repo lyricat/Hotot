@@ -53,7 +53,7 @@ function create_map_dialog() {
     ext.HototGMap.map_dialog.resize(500, 500);
     ext.HototGMap.map_doc = $('#hotot_gmap_frame').get(0).contentWindow.document;
     ext.HototGMap.map_doc.open();
-    ext.HototGMap.map_doc.write("<html><head><script src=\"//maps.google.com/maps/api/js?sensor=false\"></script><script>\
+    ext.HototGMap.map_doc.write("<html><head><script src=\"https://maps.google.com/maps/api/js?sensor=false\"></script><script>\
 function load_map(x, y) {\
     var myLatlng = new google.maps.LatLng(x, y);\
     var myOptions = {\
