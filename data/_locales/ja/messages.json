@@ -232,15 +232,15 @@
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "エフェクト・フルパワー",
+		"message": "フルパワー",
 		"description": "data/index.html"
 	},
 	"effects_low": {
-		"message": "エフェクト・シンプル",
+		"message": "シンプル",
 		"description": "data/index.html"
 	},
 	"effects_normal": {
-		"message": "エフェクト・ノーマル",
+		"message": "ノーマル",
 		"description": "data/index.html"
 	},
 	"enable": {
@@ -328,7 +328,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "鳴かぬなら　魔法少女にならんか　ほととぎす",
+		"message": "鳴かぬなら　魔法少女になってよ　ほととぎす ／人◕ ‿‿ ◕人＼",
 		"description": ""
 	},
 	"font_size": {
