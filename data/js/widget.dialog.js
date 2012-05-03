@@ -120,7 +120,7 @@ function WidgetDialog(obj) {
     self.callUp = function callUp(method) {
         var x = $(window).width()/2 - self._me.width() / 2;
         var y = $(window).height()/2 - self._me.height() / 2;
-        y = y > 100 ? y - 20: y;
+        y = y > 100 ? y - y/2.0: y;
         if (method == "off") {
             self.move(x, y);
             self._me.show();
