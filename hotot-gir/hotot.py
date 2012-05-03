@@ -32,7 +32,7 @@ class Hotot:
         import dbusservice
         self.dbus_service = dbusservice.DbusService(self)
 
-        if os.environ.get('DESKTOP_SESSION') in ('gnome-2d', 'classic-gnome'):
+        if os.environ.get('DESKTOP_SESSION') not in ('ubuntu', 'ubuntu-2d'):
             self.has_indicator = False
         else:
             try:
@@ -254,6 +254,7 @@ class Hotot:
         Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
+        time.sleep(1)
         sys.exit(0)
 
     def apply_settings(self):

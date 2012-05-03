@@ -7,6 +7,7 @@ import sys
 from webbrowser import _iscommand as is_command
 from gi.repository import Gtk, Gdk, GLib, WebKit, Soup;
 import mimetypes, mimetools
+import re
 
 import config
 import locale
@@ -25,6 +26,12 @@ supported_locate = {
 
 _browser = ''
 
+def looseVersion(vstring):
+    '''reconstruct the version string
+    '''
+    component_re = re.compile(r'(\d+ | [a-z]+ | \.)', re.VERBOSE)
+    return [ (int(i) if i.isdigit() else i) for i in component_re.split(vstring) if i and i != '.' ]
+
 def open_webbrowser(uri):
     '''open a URI in the registered default application
     '''
@@ -40,8 +47,12 @@ def open_webbrowser(uri):
 def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
     try:
         session = WebKit.get_default_session()
-        session.set_property("max-conns", 3)
-        session.set_property("max-conns-per-host", 1)
+        if looseVersion(Soup._version) < looseVersion('2.4'):
+            session.set_property("max-conns", 3)
+            session.set_property("max-conns-per-host", 1)
+        else:
+            session.set_property("max-conns", 10)
+            session.set_property("max-conns-per-host", 5)
 
         if host:
             proxy_uri = Soup.URI.new("http://127.0.0.1")

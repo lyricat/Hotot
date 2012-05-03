@@ -1,7 +1,7 @@
 {
   "name": "Hotot",
   "description": "Hotot Twitter client for Chrome",
-  "version": "0.9.8.2",
+  "version": "0.9.8.3",
   "default_locale": "en",
   "background_page": "background.html",
   "app": {
