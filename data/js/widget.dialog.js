@@ -66,14 +66,16 @@ function WidgetDialog(obj) {
                 self._offsetY = event.clientY - pos.top;
                 event.target.style.cursor = "move";
 
-                $('body').css('-webkit-user-select', 'none');
+                $('body').css({'-webkit-user-select': 'none',
+                    '-khtml-user-select': 'none'});
             })
             .mouseup(function (event) {
-                 if (self._drag) {
-                     self._drag = false;
-                     event.target.style.cursor = null;
-                     $('body').css('-khtml-user-select', '');
-                 }
+                if (self._drag) {
+                    self._drag = false;
+                    event.target.style.cursor = null;
+                    $('body').css({'-webkit-user-select': '',
+                        '-khtml-user-select': ''});
+                }
              });
              $(document).mousemove(function (event) {
                  if (self._drag) {
