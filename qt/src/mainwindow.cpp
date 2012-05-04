@@ -266,12 +266,12 @@ void MainWindow::loadFinished(bool ok)
 
 void MainWindow::notifyLoadFinished()
 {
+    QSettings settings("hotot-qt", "hotot");
+    restoreGeometry(settings.value("geometry").toByteArray());
+    restoreState(settings.value("windowState").toByteArray());
 #ifndef MEEGO_EDITION_HARMATTAN
     if (!isStartMinimized() || !isAutoSignIn()) {
         show();
-        QSettings settings("hotot-qt", "hotot");
-        restoreGeometry(settings.value("geometry").toByteArray());
-        restoreState(settings.value("windowState").toByteArray());
     }
 #else
     show();
@@ -375,6 +375,7 @@ void MainWindow::toggleMinimizeToTray(bool checked)
     QSettings settings("hotot-qt", "hotot");
     settings.setValue("minimizeToTray", checked);
 }
+
 
 void MainWindow::changeEvent(QEvent *event)
 {
