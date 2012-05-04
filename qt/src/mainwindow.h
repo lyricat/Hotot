@@ -58,6 +58,7 @@ public:
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
     bool useSocks();
+    void setSignIn(bool sign);
 
 protected Q_SLOTS:
     void loadFinished(bool ok);
@@ -65,6 +66,7 @@ protected Q_SLOTS:
     void onLinkHovered(const QString & link, const QString & title, const QString & textContent );
     void showDeveloperTool();
     void exit();
+    void compose();
 #ifdef MEEGO_EDITION_HARMATTAN
     void contentSizeChanged();
 #else
@@ -72,6 +74,7 @@ protected Q_SLOTS:
 #endif
 
 protected:
+    void forceActivateWindow();
     bool isCloseToExit();
     bool isStartMinimized();
     bool isAutoSignIn();
@@ -96,6 +99,7 @@ private:
     QAction* m_actionShow;
     QAction* m_actionExit;
     QAction* m_actionDev;
+    QAction* m_actionCompose;
 #ifndef MEEGO_EDITION_HARMATTAN
     QAction* m_actionMinimizeToTray;
 #endif
@@ -103,6 +107,7 @@ private:
     bool m_useSocks;
     QFontDatabase m_fontDB;
     QString m_confDir;
+    bool m_signIn;
 };
 
 #endif // MAINWINDOW_H

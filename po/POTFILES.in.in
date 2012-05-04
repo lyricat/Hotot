@@ -27,8 +27,6 @@ ${REL_SOURCE_ROOT}/qt/src/hototrequest.cpp
 ${REL_SOURCE_ROOT}/qt/src/hototrequest.h
 ${REL_SOURCE_ROOT}/qt/src/hototwebpage.cpp
 ${REL_SOURCE_ROOT}/qt/src/hototwebpage.h
-${REL_SOURCE_ROOT}/qt/src/hototwebview.cpp
-${REL_SOURCE_ROOT}/qt/src/hototwebview.h
 ${REL_SOURCE_ROOT}/qt/src/kdetraybackend.cpp
 ${REL_SOURCE_ROOT}/qt/src/kdetraybackend.h
 ${REL_SOURCE_ROOT}/qt/src/main.cpp

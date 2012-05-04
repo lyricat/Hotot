@@ -93,6 +93,10 @@ bool HototWebPage::handleUri(const QString& originmsg)
 
                     networkAccessManager()->setProxy(proxy);
                 }
+            } else if (method == "sign_in") {
+                m_mainWindow->setSignIn(true);
+            } else if (method == "sign_out") {
+                m_mainWindow->setSignIn(false);
             }
         } else if (type == "action") {
             if (method == "search") {

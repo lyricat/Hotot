@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hotot 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-10 15:56+0800\n"
+"POT-Creation-Date: 2012-05-05 02:58+0800\n"
 "PO-Revision-Date: 2010-11-08 23:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français/France\n"
@@ -21,20 +21,25 @@ msgstr ""
 msgid "%1 unread Messages"
 msgstr "%1 Messages non lus"
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:120
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:97
+#, fuzzy
+msgid "&Compose"
+msgstr "Tweetbox"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:117
 msgid "&Developer Tool"
 msgstr "&Outils Developpeur"
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:115
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:112
 msgid "&Exit"
 msgstr "&Quitter"
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:68
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:67
 msgid "&Minimize to Tray"
 msgstr "&Minimiser"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
-msgid "(c) 2009-2011 Shellex Wai\n"
+msgid "(c) 2009-2012 Shellex Wai\n"
 msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
@@ -74,7 +79,7 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:63
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:70
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
@@ -101,9 +106,9 @@ msgid "Hotot Twitter Client"
 msgstr "Hotot Twitter Client"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:180
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:310
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:168
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:307
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:323
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:175
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:320
 msgid "Hotot: Click to Active."
 msgstr "Hotot: Cliquer pour activer"
 
@@ -142,7 +147,7 @@ msgstr ""
 msgid "Shellex Wai"
 msgstr ""
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:111
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:108
 msgid "Show &MainWindow"
 msgstr "Voir &MainWindow"
 
@@ -160,28 +165,28 @@ msgstr ""
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:90
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:118
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:97
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
 #, fuzzy
 msgid "_Compose"
 msgstr "_Tweetbox"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:113
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:120
 msgid "_File"
 msgstr "_Fichier"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:152
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:135
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:142
 msgid "_Help"
 msgstr "_Aide"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:87
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 msgid "_Hide"
 msgstr "_Cacher"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:101
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:132
 msgid "_Inspector"
 msgstr "_Inspecter"
 
@@ -190,8 +195,8 @@ msgstr "_Inspecter"
 msgid "_Resume/Hide"
 msgstr "_Afficher/Masquer"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:84
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:115
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:91
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:122
 msgid "_Show"
 msgstr "_Visible"
 
@@ -483,10 +488,6 @@ msgstr "_Visible"
 
 #~ msgid "Close"
 #~ msgstr "Fermer"
-
-#, fuzzy
-#~ msgid "Compose"
-#~ msgstr "Tweetbox"
 
 #~ msgid "Console"
 #~ msgstr "Console"
