@@ -254,17 +254,10 @@ void MainWindow::loadFinished(bool ok)
                  .arg(QLocale::system().name());
 
         m_webView->page()->currentFrame()->evaluateJavaScript(confString);
-        QTimer::singleShot(0, this, SLOT(notifyLoadFinished()));
-#ifndef MEEGO_EDITION_HARMATTAN
-        if (!isStartMinimized() || !isAutoSignIn()) {
-            show();
-            QSettings settings("hotot-qt", "hotot");
-            restoreGeometry(settings.value("geometry").toByteArray());
-            restoreState(settings.value("windowState").toByteArray());
-        }
-#else
-        show();
-#endif
+        m_webView->page()->currentFrame()->evaluateJavaScript(
+            "overlay_variables(hotot_qt_variables);"
+            "globals.load_flags = 1;");
+        QTimer::singleShot(300, this, SLOT(notifyLoadFinished()));
     }
     else {
         show();
@@ -273,9 +266,16 @@ void MainWindow::loadFinished(bool ok)
 
 void MainWindow::notifyLoadFinished()
 {
-    m_webView->page()->currentFrame()->evaluateJavaScript(
-        "overlay_variables(hotot_qt_variables);"
-        "globals.load_flags = 1;");
+#ifndef MEEGO_EDITION_HARMATTAN
+    if (!isStartMinimized() || !isAutoSignIn()) {
+        show();
+        QSettings settings("hotot-qt", "hotot");
+        restoreGeometry(settings.value("geometry").toByteArray());
+        restoreState(settings.value("windowState").toByteArray());
+    }
+#else
+    show();
+#endif
 }
 
 void MainWindow::triggerVisible()
