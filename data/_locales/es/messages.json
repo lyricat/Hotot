@@ -31,20 +31,12 @@
 		"message": "Avanzado",
 		"description": "data/index.html"
 	},
-	"all": {
-		"message": "Todas",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "API base",
 		"description": "data/index.html"
 	},
 	"api_setting": {
 		"message": "Configuración de la API",
-		"description": "data/index.html"
-	},
-	"appearance": {
-		"message": "Apariencia",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -151,10 +143,6 @@
 		"message": "Twittear",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "ENVIAR MENSAJE DIRECTO A",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Copia el código PIN y pégalo en la caja de abajo",
 		"description": "data/index.html"
@@ -175,8 +163,8 @@
 		"message": "Adorable",
 		"description": "data/index.html"
 	},
-	"debug": {
-		"message": "Depurar",
+	"custom_font": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -195,16 +183,12 @@
 		"message": "¡Borrado con éxito!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "Deshabilitar",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "Desactivar la decoración de los widgets y algunas animaciones.",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "Deshabilitadas",
+	"donate": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Habilitar el Modo Detallado",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "Habilitadas",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "Inicio",
 		"description": "data/index.html"
 	},
-	"hotot": {
-		"message": "Hotot",
+	"host": {
+		"message": "",
 		"description": "data/index.html"
 	},
-	"http_proxy": {
-		"message": "Proxy HTTP",
+	"hotot": {
+		"message": "Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -409,10 +389,6 @@
 	},
 	"just_cannot_stop_thinking_of_here": {
 		"message": "Just can't stop thinking of here",
-		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "Combinación de teclas",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "Mensajes directos",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "Miscelánea",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "Abrir enlace del que habla",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "Operaciones",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "Opciones",
 		"description": "data/js/ui.exts_dlg.js"
@@ -633,6 +601,10 @@
 	},
 	"panda_acts_cute": {
 		"message": "Panda acts cute",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -650,6 +622,10 @@
 	"please_entry_a_profile_prefix": {
 		"message": "Por favor, introduce un prefijo para el perfil",
 		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "¡Publicado con éxito!",
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "Precargar, si es posible, los tweets más recientes en las conversaciones",
-		"description": "data/index.html"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Presiona Ctrl + Enter para twittear",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "Cerrar sesión",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "Ir a la siguiente página",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "Invocar Hotot (ejemplo: <ALT>C)",
 		"description": "data/index.html"
 	},
-	"system": {
-		"message": "Sistema",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "Integración con el sistema",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "Tema",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "Tema",
 		"description": "data/index.html"
@@ -947,8 +915,16 @@
 		"message": "Titian's elegance",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
 		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -995,6 +971,10 @@
 		"message": "¡Deshacer con éxito!",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "Dejar de seguir a @",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "Usar fuente personalizada",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "Utilizar el sistema de notificación nativo",
-		"description": "data/index.html"
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Usar CITAR como acción por defecto al hacer retweet",
 		"description": "data/index.html"
@@ -1049,6 +1025,10 @@
 	},
 	"use_ubuntu_indicator": {
 		"message": "Utilizar el indicador de Ubuntu",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"verify": {

@@ -447,7 +447,11 @@ function init_hotkey() {
     });
     // 'c' to compose
     hotkey.register("c",
-        function () { ui.StatusBox.open();});
+    function () { 
+        ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+        ui.StatusBox.set_status_text('');
+        ui.StatusBox.open();
+    });
     // Navigation
     hotkey.register(hotkey.calculate(38), "D", function () {
         ui.Main.move_by_offset(-50);

@@ -31,20 +31,12 @@
 		"message": "Avancé",
 		"description": "data/index.html"
 	},
-	"all": {
-		"message": "Tout",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "API Base",
 		"description": "data/index.html"
 	},
 	"api_setting": {
 		"message": "Configuration de l'API",
-		"description": "data/index.html"
-	},
-	"appearance": {
-		"message": "Apparence",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -151,10 +143,6 @@
 		"message": "Composer",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "Écrire un message à",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Copiez le code PIN et collez-le dans le cadre ci-dessous",
 		"description": "data/index.html"
@@ -175,7 +163,7 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"debug": {
+	"custom_font": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -195,16 +183,12 @@
 		"message": "Suppression effectuée avec succès !",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "Désactiver",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "Désactiver la décoration des widgets et de quelques animations",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "Désactivé",
+	"donate": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Activer le mode verbeux",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "Activé",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"hotot": {
-		"message": "Hotot",
+	"host": {
+		"message": "",
 		"description": "data/index.html"
 	},
-	"http_proxy": {
-		"message": "Proxy HTTP",
+	"hotot": {
+		"message": "Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -409,10 +389,6 @@
 	},
 	"just_cannot_stop_thinking_of_here": {
 		"message": "",
-		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "Keybinding",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "Onglet messages",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "Divers",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "Options",
 		"description": "data/js/ui.exts_dlg.js"
@@ -632,6 +600,10 @@
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"password": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -651,6 +623,10 @@
 		"message": "Veuillez entrer un nom de profil",
 		"description": "data/js/ui.welcome.js"
 	},
+	"port": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"post_successfully": {
 		"message": "Envoyé avec succès !",
 		"description": "data/js/ui.status_box.js"
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "Précharger les derniers tweets des conversations si possible",
-		"description": "data/index.html"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Appuyez Ctrl + Entrer pour mettre à jour",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "Déconnexion",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "Aller à la page suivante",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "Summon Hotot (comme: <ALT>C)",
 		"description": "data/index.html"
 	},
-	"system": {
-		"message": "Système",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "Intégration Système",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "Thème",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "thèmes",
 		"description": "data/index.html"
@@ -947,7 +915,15 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -995,6 +971,10 @@
 		"message": "Annulation effectuée avec succès !",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "Désabonner @",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "Utiliser une police spéciale",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "Utiliser le système de notification natif",
-		"description": "data/index.html"
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Utiliser la CITATION comme retweet par défaut",
 		"description": "data/index.html"
@@ -1049,6 +1025,10 @@
 	},
 	"use_ubuntu_indicator": {
 		"message": "Utiliser l'indicateur d'Ubuntu",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"verify": {

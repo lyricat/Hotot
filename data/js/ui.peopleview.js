@@ -103,6 +103,7 @@ function init_view(view) {
     vcard.find('.message_menu_item').click(
     function (event) {
         ui.StatusBox.set_dm_target(view.screen_name);
+        ui.StatusBox.set_status_text('');
         ui.StatusBox.open(
         function () {
             ui.StatusBox.change_mode(ui.StatusBox.MODE_DM);
@@ -322,7 +323,7 @@ function render_people_view(self, user_obj, proc) {
                     + user_obj.screen_name);
             self.protected_user = true;
         } else {
-            btn_follow.text(_("Follow"));
+            btn_follow.text(_("follow"));
             btn_follow.removeClass('unfo');
             proc();
             self.protected_user = false;
@@ -337,7 +338,7 @@ function render_people_view(self, user_obj, proc) {
                 ui.PeopleView.relation_icon_set[rel]
             );
             if (rel == 1 || rel == 3) {
-                btn_follow.text(_("Unfollow"));
+                btn_follow.text(_("unfollow"));
                 btn_follow.addClass('unfo');
                 btn_follow.addClass('red').removeClass('blue');
             } else {

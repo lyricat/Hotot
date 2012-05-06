@@ -46,6 +46,8 @@ function init () {
             }
         } else if (view_name == 'compose') {
             if (ui.StatusBox.isClosed) {
+                ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
+                ui.StatusBox.set_status_text('');
                 ui.StatusBox.open();
             } else {
                 ui.StatusBox.close();

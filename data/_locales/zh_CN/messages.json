@@ -31,10 +31,6 @@
 		"message": "高级",
 		"description": ""
 	},
-	"all": {
-		"message": "全部",
-		"description": "All"
-	},
 	"api_base": {
 		"message": "API Base",
 		"description": ""
@@ -42,10 +38,6 @@
 	"api_setting": {
 		"message": "API 设置",
 		"description": ""
-	},
-	"appearance": {
-		"message": "外观",
-		"description": "data/index.html"
 	},
 	"archive": {
 		"message": "归档",
@@ -151,10 +143,6 @@
 		"message": "发推",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "写私信",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "复制 PIN Code 并且将它粘贴到下面的文本框",
 		"description": ""
@@ -175,8 +163,8 @@
 		"message": "可乐小V",
 		"description": "data/index.html"
 	},
-	"debug": {
-		"message": "调试",
+	"custom_font": {
+		"message": "自定义字体",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -195,17 +183,13 @@
 		"message": "删除成功呦！",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "禁用",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "禁用控件集装饰和部分动画。",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "禁用的呢",
-		"description": ""
+	"donate": {
+		"message": "捐赠",
+		"description": "data/index.html"
 	},
 	"dots": {
 		"message": "...",
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "启用啰嗦模式",
-		"description": ""
-	},
-	"enabled": {
-		"message": "已启用",
 		"description": ""
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "主时间线",
 		"description": "data/index.html"
 	},
+	"host": {
+		"message": "主机名",
+		"description": "data/index.html"
+	},
 	"hotot": {
 		"message": "傲兔",
-		"description": ""
-	},
-	"http_proxy": {
-		"message": "HTTP 代理",
 		"description": ""
 	},
 	"image_uploader": {
@@ -410,10 +390,6 @@
 	"just_cannot_stop_thinking_of_here": {
 		"message": "吾只是有点怀念这儿",
 		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "热键绑定",
-		"description": ""
 	},
 	"keyboard": {
 		"message": "键盘",
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "私信",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "杂项",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "打开此人的链接",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "操作",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "选项",
 		"description": "data/js/ui.exts_dlg.js"
@@ -633,6 +601,10 @@
 	},
 	"panda_acts_cute": {
 		"message": "卖萌的熊猫",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "密码",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -650,6 +622,10 @@
 	"please_entry_a_profile_prefix": {
 		"message": "请输入一个账户前缀",
 		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "端口",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "成功发送呦！",
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "如果可能的话，预加载对话的上一条状态",
-		"description": ""
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "使用 Ctrl+Enter 更新",
 		"description": ""
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "登出",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "Signing API Base",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "Signing OAuth Base",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "切换到下一页",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "召唤Hotot 『比如: <ALT>C』",
 		"description": ""
 	},
-	"system": {
-		"message": "系统",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "系统集成",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "主题",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "主题",
 		"description": "data/index.html"
@@ -947,8 +915,16 @@
 		"message": "文艺的缇香",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "To",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
 		"message": "冷艳的嘉敏",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "开关会话",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -995,6 +971,10 @@
 		"message": "撤销成功呦！",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "取消关注",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "解除关注@",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "使用自定义字体",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "使用原生通知机制",
-		"description": ""
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "使用『引用』作为默认转发方式",
 		"description": "data/index.html"
@@ -1050,6 +1026,10 @@
 	"use_ubuntu_indicator": {
 		"message": "使用乌斑兔 Indicator",
 		"description": ""
+	},
+	"username": {
+		"message": "用户名",
+		"description": "data/index.html"
 	},
 	"verify": {
 		"message": "校验",

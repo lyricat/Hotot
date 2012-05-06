@@ -31,20 +31,12 @@
 		"message": "Papildu",
 		"description": "data/index.html"
 	},
-	"all": {
-		"message": "Viss",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "API bāze",
 		"description": "data/index.html"
 	},
 	"api_setting": {
 		"message": "API iestatījumi",
-		"description": "data/index.html"
-	},
-	"appearance": {
-		"message": "Noformējums",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -151,10 +143,6 @@
 		"message": "Rakstīt",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "RAKSTĪT ZIŅU",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Nokopējiet PIN kodu un ielīmējiet zemāk esošajā lauciņā",
 		"description": "data/index.html"
@@ -175,8 +163,8 @@
 		"message": "Mīksts",
 		"description": "data/index.html"
 	},
-	"debug": {
-		"message": "Atkļūdošanas režīms",
+	"custom_font": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -195,16 +183,12 @@
 		"message": "Veiksmīgi iznīcināts!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "Izslēgt",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "Izslēgt sīkrīku dekorācijas un dažas animācijas.",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "Izslēgts",
+	"donate": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Ieslēgt detalizēto režīmu",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "Ieslēgts",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "Sākuma skats",
 		"description": "data/index.html"
 	},
-	"hotot": {
-		"message": "Hotot",
+	"host": {
+		"message": "",
 		"description": "data/index.html"
 	},
-	"http_proxy": {
-		"message": "HTTP proxy vārteja",
+	"hotot": {
+		"message": "Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -409,10 +389,6 @@
 	},
 	"just_cannot_stop_thinking_of_here": {
 		"message": "Vienkārši nevar pārtraukt par to domāt",
-		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "Taustiņsasaiste",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "Ziņu skats",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "Citi",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "Atvērt audio saiti",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "Darbības",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "Opcijas",
 		"description": "data/js/ui.exts_dlg.js"
@@ -633,6 +601,10 @@
 	},
 	"panda_acts_cute": {
 		"message": "Panda uzvedas piemīlīgi",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -650,6 +622,10 @@
 	"please_entry_a_profile_prefix": {
 		"message": "Lūdzu, ievadiet profila prefiksu",
 		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "Veiksmīgi nosūtīts!",
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "Pārlādēt pēdējos tvītus sarakstēs, ja iespējams.",
-		"description": "data/index.html"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Nospiediet Ctrl + Enter, lai nosūtītu",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "Atslēgties",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "Pāriet uz nāk. lapu",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "Izsaukt Hotot (piemēram: <ALT>C)",
 		"description": "data/index.html"
 	},
-	"system": {
-		"message": "Sistēma",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "Sistēmas integrācija",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "Ādiņa",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "Ādiņas",
 		"description": "data/index.html"
@@ -947,8 +915,16 @@
 		"message": "Ticiāna elegance",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
 		"message": "Līdz aukstajam skaistumam",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -995,6 +971,10 @@
 		"message": "Veiksmīgi atsaukts!",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "Atsekot @",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "Izmantot pielāgotu fontu",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "Izmantot parasto paziņojumu sistēmu",
-		"description": "data/index.html"
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Izmantot CITĒT kā noklušeto retvītošanas darbību",
 		"description": "data/index.html"
@@ -1049,6 +1025,10 @@
 	},
 	"use_ubuntu_indicator": {
 		"message": "Izmantot Ubuntu indikatoru",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"verify": {

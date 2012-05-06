@@ -260,6 +260,7 @@ function success(result) {
     if (ui.ImageUploader.service_name == 'twitter.com') {
         ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
     } else {
+        ui.StatusBox.set_status_text('');
         ui.StatusBox.open();
         var url = ''; var text = '';
         switch (ui.ImageUploader.service_name) {

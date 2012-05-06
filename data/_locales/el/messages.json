@@ -31,20 +31,12 @@
 		"message": "Για προχωρημένους",
 		"description": "data/index.html"
 	},
-	"all": {
-		"message": "Όλα",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "Βάση API",
 		"description": "data/index.html"
 	},
 	"api_setting": {
 		"message": "Ρυθμίσεις API",
-		"description": "data/index.html"
-	},
-	"appearance": {
-		"message": "Εμφάνιση",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -151,10 +143,6 @@
 		"message": "Σύνθεση",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "ΣΥΝΘΕΣΗ ΜΥΝΗΜΑΤΟΣ Προς",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Αντιγράψτε τον κωδικό PIN και επικολήστε τον παρακάτω",
 		"description": "data/index.html"
@@ -175,8 +163,8 @@
 		"message": "Cuddly",
 		"description": "data/index.html"
 	},
-	"debug": {
-		"message": "Αποσφαλμάτωση",
+	"custom_font": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -195,16 +183,12 @@
 		"message": "Καταστράφηκε επιτυχημένα!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "Απενεργοποίηση",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "Απενεργοποίηση της διακόσμησης των widget και μερικών animation.",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "Απενεργοποιημένα",
+	"donate": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Ενεργοποίηση Verbose Mode",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "Ενεργοποιημένα",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "Προβολή αρχικής",
 		"description": "data/index.html"
 	},
-	"hotot": {
-		"message": "Hotot",
+	"host": {
+		"message": "",
 		"description": "data/index.html"
 	},
-	"http_proxy": {
-		"message": "HTTP Proxy",
+	"hotot": {
+		"message": "Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -409,10 +389,6 @@
 	},
 	"just_cannot_stop_thinking_of_here": {
 		"message": "Just can't stop thinking of here",
-		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "Keybinding",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "Προβολή μυνημάτων",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "Misc",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "Open speaker link",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "Operations",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "Επιλογές",
 		"description": "data/js/ui.exts_dlg.js"
@@ -633,6 +601,10 @@
 	},
 	"panda_acts_cute": {
 		"message": "Τα πάντα αντιδρούν γλυκά",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -650,6 +622,10 @@
 	"please_entry_a_profile_prefix": {
 		"message": "Παρακαλώ εισάγετε ένα profile prefix",
 		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "Αναρτήθηκε επιτυχώς!",
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "Προφόρτωση των τελευταίων tweet στις συνομιλίες εάν είναι δυνατό.",
-		"description": "data/index.html"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Πιέστε Ctrl + Enter για ενημέρωση",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "Αποσύνδεση",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "Slide to next page",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "Καλέστε το Hotot (όπως: <ALT>C)",
 		"description": "data/index.html"
 	},
-	"system": {
-		"message": "Σύστημα",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "System Integration",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "Θέμα",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "Θέματα",
 		"description": "data/index.html"
@@ -947,8 +915,16 @@
 		"message": "Titian's elegance",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
 		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -995,6 +971,10 @@
 		"message": "Επιτυχής ανέραιση!",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "Διακοπή ακολουθίας @",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "Χρήση διαφορετικής γραμματοσειράς",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "Χρήση του συστήματος ειδοποιήσεων του τρέχοντος ΛΣ",
-		"description": "data/index.html"
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Χρήση της παράθεσης ως προεπιλεγμένης ενέργειας retweet",
 		"description": "data/index.html"
@@ -1049,6 +1025,10 @@
 	},
 	"use_ubuntu_indicator": {
 		"message": "Χρήση Ubuntu Indicator",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"verify": {

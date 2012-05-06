@@ -31,20 +31,12 @@
 		"message": "Advanced",
 		"description": "data/index.html"
 	},
-	"all": {
-		"message": "All",
-		"description": "data/index.html"
-	},
 	"api_base": {
 		"message": "API Base",
 		"description": "data/index.html"
 	},
 	"api_setting": {
 		"message": "API Setting",
-		"description": "data/index.html"
-	},
-	"appearance": {
-		"message": "Appearance",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -151,10 +143,6 @@
 		"message": "Compose",
 		"description": "data/index.html"
 	},
-	"compose_messages_to": {
-		"message": "COMPOSE MESSAGE To",
-		"description": "data/js/ui.status_box.js"
-	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Copy the PIN code and paste it into the box below",
 		"description": "data/index.html"
@@ -175,8 +163,8 @@
 		"message": "Cuddly",
 		"description": "data/index.html"
 	},
-	"debug": {
-		"message": "Debug",
+	"custom_font": {
+		"message": "Custom Font",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -195,16 +183,12 @@
 		"message": "Destroyed Successfully!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable": {
-		"message": "Disable",
-		"description": "data/js/ui.exts_dlg.js"
-	},
 	"disable_decoration_of_widgets_and_some_animations": {
 		"message": "Disable decoration of widgets and some animations.",
 		"description": "data/index.html"
 	},
-	"disabled": {
-		"message": "Disabled",
+	"donate": {
+		"message": "Donate",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -253,10 +237,6 @@
 	},
 	"enable_verbose_mode": {
 		"message": "Enable Verbose Mode",
-		"description": "data/index.html"
-	},
-	"enabled": {
-		"message": "Enabled",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -375,12 +355,12 @@
 		"message": "Home View",
 		"description": "data/index.html"
 	},
-	"hotot": {
-		"message": "Hotot",
+	"host": {
+		"message": "Host",
 		"description": "data/index.html"
 	},
-	"http_proxy": {
-		"message": "HTTP Proxy",
+	"hotot": {
+		"message": "Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -409,10 +389,6 @@
 	},
 	"just_cannot_stop_thinking_of_here": {
 		"message": "Just can't stop thinking of here",
-		"description": "data/index.html"
-	},
-	"keybinding": {
-		"message": "Keybinding",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -509,10 +485,6 @@
 	},
 	"messages_view": {
 		"message": "Messages View",
-		"description": "data/index.html"
-	},
-	"misc": {
-		"message": "Misc",
 		"description": "data/index.html"
 	},
 	"more_actions": {
@@ -619,10 +591,6 @@
 		"message": "Open speaker link",
 		"description": "data/index.html"
 	},
-	"operations": {
-		"message": "Operations",
-		"description": "data/index.html"
-	},
 	"options": {
 		"message": "Options",
 		"description": "data/js/ui.exts_dlg.js"
@@ -633,6 +601,10 @@
 	},
 	"panda_acts_cute": {
 		"message": "Panda acts cute",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "Password",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -650,6 +622,10 @@
 	"please_entry_a_profile_prefix": {
 		"message": "Please enter a profile prefix",
 		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "Port",
+		"description": "data/index.html"
 	},
 	"post_successfully": {
 		"message": "Posted successfully!",
@@ -669,10 +645,6 @@
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
 		"message": "Preload latest tweets in conversations if possible.",
-		"description": "data/index.html"
-	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "Press Ctrl + Enter to update",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -875,6 +847,14 @@
 		"message": "Sign Out",
 		"description": "data/index.html"
 	},
+	"signing_api_base": {
+		"message": "Signing API Base",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "Signing OAuth Base",
+		"description": "data/index.html"
+	},
 	"slide_to_next_page": {
 		"message": "Slide to next page",
 		"description": "data/index.html"
@@ -923,18 +903,6 @@
 		"message": "Summon Hotot (like: <ALT>C)",
 		"description": "data/index.html"
 	},
-	"system": {
-		"message": "System",
-		"description": "data/index.html"
-	},
-	"system_integration": {
-		"message": "System Integration",
-		"description": "data/index.html"
-	},
-	"theme": {
-		"message": "Theme",
-		"description": "data/index.html"
-	},
 	"themes": {
 		"message": "Themes",
 		"description": "data/index.html"
@@ -947,8 +915,16 @@
 		"message": "Titian's elegance",
 		"description": "data/index.html"
 	},
+	"to": {
+		"message": "To",
+		"description": "data/index.html"
+	},
 	"to_cold_beauty": {
 		"message": "To Cold Beauty",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "Toggle Conversation",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -995,6 +971,10 @@
 		"message": "Undo Successful!",
 		"description": "data/js/ui.main.js"
 	},
+	"unfollow": {
+		"message": "Unfollow",
+		"description": "data/js/ui.listview.js"
+	},
 	"unfollow_at": {
 		"message": "Unfollow @",
 		"description": "data/js/ui.main.js"
@@ -1035,10 +1015,6 @@
 		"message": "Use Custom Font",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "Use native notify system",
-		"description": "data/index.html"
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "Use QUOTE as default retweet action",
 		"description": "data/index.html"
@@ -1049,6 +1025,10 @@
 	},
 	"use_ubuntu_indicator": {
 		"message": "Use Ubuntu Indicator",
+		"description": "data/index.html"
+	},
+	"username": {
+		"message": "Username",
 		"description": "data/index.html"
 	},
 	"verify": {
