@@ -60,7 +60,7 @@ function init_view(view) {
             function () {
                 toast.set(
                     _("unfollow_at")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("follow")).removeClass('unfo');
+                $(_this).text(_("follow")).removeClass('unfo').removeClass('red').addClass('blue');
             });
         } else {
             toast.set(_("follow_at") + view.screen_name + " ...").show();
@@ -68,7 +68,7 @@ function init_view(view) {
             function () {
                 toast.set(
                     _("follow_at")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("unfollow")).addClass('unfo');
+                $(_this).text(_("unfollow")).addClass('unfo').removeClass('blue').addClass('red');
             });
         }
     });
