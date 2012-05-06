@@ -649,7 +649,16 @@ function TwitterClient() {
         self.post(url, params, on_success);
     };
 
-    self.update_list = function update_list(owner_screen_name, slug, description, mode, on_success) {
+    self.show_list = function show_list(owner_screen_name, slug, on_success, on_error) {
+        var url = self.api_base + 'lists/show.json';
+        var params = {
+            'owner_screen_name': owner_screen_name,
+            'slug': slug
+        };
+        self.get(url, params, on_success, on_error);
+    };
+
+    self.update_list = function update_list(owner_screen_name, slug, description, mode, on_success, on_error) {
         var url = self.api_base + 'lists/update.json';
         var params = {
             'owner_screen_name': owner_screen_name,
@@ -657,7 +666,7 @@ function TwitterClient() {
             'mode': mode,
             'description': description
         };
-        self.post(url, params, on_success);
+        self.post(url, params, on_success, on_error);
     };
 
     self.verify = function verify(on_success, on_error) {
@@ -775,8 +784,10 @@ function TwitterClient() {
         var xhr = new XMLHttpRequest();
         watch_user_streams.xhr = xhr;
         xhr.open('GET', url, true);
-        xhr.setRequestHeader('X-User-Agent', 'Hotot 0.9.6');
-        xhr.setRequestHeader('User-Agent', 'Hotot 0.9.6');
+        xhr.setRequestHeader('X-User-Agent', 'Hotot');
+        try {
+            xhr.setRequestHeader('User-Agent', 'Hotot');
+        } catch (e) {}
         xhr.createAt = new Date().toLocaleString();
         xhr.onabort = xhr.onerror = xhr.onload = function() {
             if (xhr.status == 401 || xhr.status == 407) {

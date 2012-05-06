@@ -232,9 +232,9 @@ people_vcard_t_orig:
     <a target="_blank" class="profile_img_wrapper"></a>\
     <div class="vcard_body">\
         <center>\
-        <ul class="people_vcard_radio_group radio_group"> \
-            <li><a class="radio_group_btn selected" href="#people_vcard_info_page">{%TRANS_info%}</a> \
-            </li><li><a class="radio_group_btn" href="#people_vcard_stat_page">{%TRANS_stat%}</a> \
+        <ul class="people_vcard_radio_group mochi_button_group"> \
+            <li><a class="mochi_button_group_item selected" href="#people_vcard_info_page" name="">{%TRANS_info%}</a> \
+            </li><li><a class="mochi_button_group_item" href="#people_vcard_stat_page">{%TRANS_stat%}</a> \
             </li></ul>\
         </center>\
         <div class="vcard_tabs_pages">\
@@ -278,13 +278,13 @@ people_vcard_t_orig:
     </div> <!-- vcard body --> \
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
-        <li><a class="vcard_follow button" \
+        <li><a class="vcard_follow mochi_button blue" \
                 href="javascript:void(0);" >{%TRANS_follow%}</a> \
         </li><li> \
-            <a class="vcard_edit button" \
+            <a class="vcard_edit mochi_button" \
                 href="javascript:void(0);" style="display:none;">{%TRANS_edit%}</a>\
         </li><li class="people_action_more_trigger"> \
-            <a class="vcard_more button" \
+            <a class="vcard_more mochi_button" \
                 href="javascript:void(0);">{%TRANS_more_actions%} &#x25BE;</a> \
             <ul class="people_action_more_memu hotot_menu">\
                 <li><a class="mention_menu_item" \
@@ -313,16 +313,16 @@ people_vcard_t_orig:
     </div><!-- #people_vcard_ctrl --> \
 </div> <!-- vcard --> \
 <div class="people_view_toggle"> \
-    <ol class="people_view_toggle_btns radio_group"> \
-        <li><a class="people_view_tweet_btn radio_group_btn selected" href="#tweet">{%TRANS_tweets%}</a> \
+    <ol class="people_view_toggle_btns mochi_button_group"> \
+        <li><a class="people_view_tweet_btn mochi_button_group_item selected" href="#tweet">{%TRANS_tweets%}</a> \
         </li><li> \
-        <a class="people_view_fav_btn radio_group_btn" href="#fav">{%TRANS_favs%}</a> \
+        <a class="people_view_fav_btn mochi_button_group_item" href="#fav">{%TRANS_favs%}</a> \
         </li><li> \
-        <a class="people_view_follower_btn radio_group_btn" href="#follower">{%TRANS_followers%}</a> \
+        <a class="people_view_follower_btn mochi_button_group_item" href="#follower">{%TRANS_followers%}</a> \
         </li><li> \
-        <a class="people_view_friend_btn radio_group_btn" href="#friend">{%TRANS_friends%}</a> \
+        <a class="people_view_friend_btn mochi_button_group_item" href="#friend">{%TRANS_friends%}</a> \
         </li><li class="people_view_list_trigger"> \
-        <a class="people_view_list_btn radio_group_btn" href="#list">{%TRANS_lists%} &#x25BE;\
+        <a class="people_view_list_btn mochi_button_group_item" href="#list">{%TRANS_lists%} &#x25BE;\
         </a> \
         <ul class="lists_memu hotot_menu">\
             <li><a class="user_lists_menu_item" \
@@ -343,7 +343,7 @@ people_vcard_t_orig:
     <h1>Them has protected his/her tweets.</span></h1> \
     <p>You need to go to twitter.com to send a request before you can start following this person...</p> \
     <div style="text-align:center;"> \
-    <a class="people_request_btn button" href="#" target="_blank">Send Request</a> \
+    <a class="people_request_btn mochi_button" href="#" target="_blank">Send Request</a> \
     </div> \
 </div></div>',
 
@@ -392,25 +392,25 @@ list_vcard_t:
     </div> <!-- vcard body --> \
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
-        <li><a class="vcard_follow button" \
+        <li><a class="vcard_follow mochi_button blue" \
                 href="javascript:void(0);" >Follow</a> \
         </li><li> \
-            <a class="vcard_delete button" \
+            <a class="vcard_delete mochi_button red" \
                 href="javascript:void(0);">Delete</a> \
         </li><li> \
-            <a class="vcard_edit button" \
+            <a class="vcard_edit mochi_button" \
                 href="javascript:void(0);" style="display:none;">Edit</a>\
         </li> \
         </ul> \
     </div><!-- #list_vcard_ctrl --> \
 </div> <!-- vcard --> \
 <div class="list_view_toggle"> \
-    <ol class="list_view_toggle_btns radio_group"> \
-        <li><a class="list_view_tweet_btn radio_group_btn selected" href="#tweet">Tweets</a> \
+    <ol class="list_view_toggle_btns mochi_button_group"> \
+        <li><a class="list_view_tweet_btn mochi_button_group_item selected" href="#tweet">Tweets</a> \
         </li><li> \
-        <a class="list_view_follower_btn radio_group_btn" href="#follower">Followers</a> \
+        <a class="list_view_follower_btn mochi_button_group_item" href="#follower">Followers</a> \
         </li><li> \
-        <a class="list_view_following_btn radio_group_btn" href="#following">Following</a> \
+        <a class="list_view_following_btn mochi_button_group_item" href="#following">Following</a> \
         </li> \
     </ol> \
 </div> \
@@ -423,16 +423,17 @@ list_vcard_t:
 search_header_t:
 '<div class="header_frame"> \
     <div class="search_box"> \
-    <input class="search_entry entry" type="text" placeholder="Type and press enter to search."/> \
+    <input class="search_entry mochi_entry" type="text" placeholder="Type and press enter to search."/> \
     <a href="#" class="search_entry_clear_btn"></a>\
     <div class="search_people_result"> \
         <span>One user matched: </span> <span class="search_people_inner"></span>\
     </div>\
     <div class="saved_searches">\
-        <a id="create_saved_search_btn" class="button" \
+        <a id="create_saved_search_btn" class="mochi_button" \
             href="javascript:void(0);" title="Detach"> +\
-        </a><div id="saved_searches_more_trigger" style="display:none;">\
-            <a id="saved_searches_btn" class="vcard_more button" \
+        </a>\
+        <div id="saved_searches_more_trigger" style="display:none;">\
+            <a id="saved_searches_btn" class="vcard_more mochi_button" \
                 href="javascript:void(0);"> &#x25BE;</a> \
             <ul id="saved_searches_more_menu" class="hotot_menu">\
                 <li><a class="" \
@@ -446,11 +447,11 @@ search_header_t:
         </div>\
     </div>\
     <div class="search_view_toggle">\
-        <ol class="search_view_toggle_btns radio_group">\
-            <li><a class="search_tweet radio_group_btn selected" \
+        <ol class="search_view_toggle_btns mochi_button_group">\
+            <li><a class="search_tweet mochi_button_group_item selected" \
                 href="#tweet">Tweet</a>\
             </li><li> \
-                <a class="search_people radio_group_btn"\
+                <a class="search_people mochi_button_group_item"\
                 href="#people">People</a>\
             </li> \
         </ol> \
@@ -1128,21 +1129,23 @@ function fill_people_vcard(user_obj, vcard_container) {
         vcard_container.find('.web').text('')
         vcard_container.find('.web').attr('href', '#');
     }
+    vcard_container.find('.people_vcard_radio_group .mochi_button_group_item').attr('name', 'people_'+user_obj.screen_name+'_vcard')
+    vcard_container.find('.people_view_toggle .mochi_button_group_item').attr('name', 'people_'+user_obj.screen_name+'_views')
 },
 
 fill_list_vcard:
-function fill_list_vcard(view) {
+function fill_list_vcard(view, list_obj) {
     var vcard_container = view._header;
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('
-            + globals.twitterClient.get_user_profile_image(view.screen_name, 'normal') + ');');
+            + list_obj.user.profile_image_url + ');');
     vcard_container.find('.name')
-        .attr('href', conf.get_current_profile().preferences.base_url + view.screen_name + '/' + view.slug)
-        .text(view.slug);
+        .attr('href', conf.get_current_profile().preferences.base_url + list_obj.user.screen_name + '/' + list_obj.slug)
+        .text(list_obj.full_name);
     vcard_container.find('.owner')
-        .attr('href', conf.get_current_profile().preferences.base_url + view.screen_name)
-        .text(view.screen_name);
-    vcard_container.find('.description').text('');
+        .attr('href', conf.get_current_profile().preferences.base_url + list_obj.user.screen_name)
+        .text(list_obj.user.screen_name);
+    vcard_container.find('.description').text(list_obj.description);
 },
 
 convert_chars:

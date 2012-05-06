@@ -206,6 +206,11 @@ function init () {
         event.stopPropagation();
     });
 
+    $('#status_box .dialog_close_btn').unbind().click(function(){
+        ui.StatusBox.close();
+        return false;
+    });
+
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
     ui.StatusBox.reg_fake_dots2 = new RegExp('(…\\.+)|(…。+)', 'g');
     

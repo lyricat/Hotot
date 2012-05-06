@@ -26,23 +26,25 @@ function init_view(view) {
     ui.PeopleView.update_trans();
 
     var vcard = view._header.find('.people_vcard');
-    var vcard_profile_btns = vcard.find('.radio_group_btn');
-    vcard_profile_btns.click(function (event) {
+    vcard.find('.mochi_button_group_item').click(function () {
         var pagename = '.' + $(this).attr('href').substring(1);
-        vcard_profile_btns.removeClass('selected');
-        $(this).addClass('selected');
         vcard.find('.vcard_tabs_page').hide();
         vcard.find(pagename).show();
+
+        var a = $(this).attr("name");
+        $(".mochi_button_group_item[name=" + a + "]").not(this).removeClass("selected");
+        $(this).addClass("selected");
         return false;
     });
     var toggle = view._header.find('.people_view_toggle');
-    var sub_view_btns = toggle.find('.radio_group_btn');
+    var sub_view_btns = toggle.find('.mochi_button_group_item');
     sub_view_btns.click(function (event) {
         var pagename = $(this).attr('href').substring(1);
         if (pagename == 'list') {
             toggle.find('.lists_memu').toggle();
         } else {
-            sub_view_btns.removeClass('selected');
+            var a = $(this).attr("name");
+            sub_view_btns.not(this).removeClass('selected');
             $(this).addClass('selected');
             ui.PeopleView.switch_sub_view(view, pagename);
         }
@@ -193,7 +195,7 @@ function init_view(view) {
     });
     
     lists_memu.find('.create_list_menu_item').click(function () {
-        ui.ListAttrDlg.load(globals.myself.screen_name,'', '', 'public');
+        ui.ListAttrDlg.load(globals.myself.screen_name,'');
         globals.list_attr_dialog.open(); 
         lists_memu.hide();
         return false;
@@ -337,14 +339,17 @@ function render_people_view(self, user_obj, proc) {
             if (rel == 1 || rel == 3) {
                 btn_follow.text(_("Unfollow"));
                 btn_follow.addClass('unfo');
+                btn_follow.addClass('red').removeClass('blue');
+            } else {
+                btn_follow.removeClass('red').addClass('blue');
             }
     });
+    ui.Slider.set_icon(self.name, user_obj.profile_image_url, ui.Slider.BOARD_ICON);
 },
 
 load_timeline_full:
 function load_timeline_full(view, success, fail) {
     var render_proc = function (user_obj) {
-        ui.Slider.set_icon(view.name, user_obj.profile_image_url, ui.Slider.BOARD_ICON);
         ui.PeopleView.render_people_view(view, user_obj 
             , function () {
                 globals.twitterClient.get_user_timeline(null, view.screen_name

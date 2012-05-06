@@ -31,8 +31,8 @@
     border-left: 1px #ddd solid;
 }
 .search_box, .vcard, .header_inner {
-    background-color: #F2F2F2;
-    border: #E5E5E5 solid 1px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F8), to(#EDEDED));
+  border: #E5E5E5 solid 1px;
 }
 .card {
     border-top: 1px #ddd solid;

@@ -178,7 +178,7 @@ function open_list(screen_name, slug, additional_opts, in_background) {
     ui.Slider.add(name
         , {title: title, icon:'image/ic_list.png'}
         , $.extend({   'type': 'list', 'title': title
-            , 'load': ui.ListView.load_timeline
+            , 'load': ui.ListView.load_timeline_full
             , 'loadmore': ui.ListView.loadmore_timeline
             , 'load_success': ui.Main.load_tweet_success
             , 'load_fail': null

@@ -121,18 +121,18 @@ a {
     border-top: 1px #333 solid;
 }
 
-#main_page .button {
+#main_page .mochi_button {
     color: #4ac3ff;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#282828));
     border: 1px #333 solid;
     text-shadow: #4ac3ff 0 0 15px; 
 }
 
-#main_page .button:hover {
+#main_page .mochi_button:hover {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#333));
 }
 
-#main_page .button:active {
+#main_page .mochi_button:active {
     -webkit-box-shadow: inset #222 0 0 10px;
     -moz-box-shadow: inset #222 0 0 10px;
     box-shadow: inset #222 0 0 10px;
@@ -148,7 +148,7 @@ a {
     background-color: #ccc;
 }
 
-#main_page .radio_group > li > .radio_group_btn {
+#main_page .mochi_button_group > li > .mochi_button_group_item {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#666), color-stop(4%,#444), color-stop(100%,#282828));
     color: #ddd;
     text-shadow: #333 0 -1px 1px; 
@@ -156,13 +156,13 @@ a {
     border-bottom: 1px #333 solid;
     border-top: 1px #333 solid;
 }
-#main_page .radio_group > li > .radio_group_btn:hover {
+#main_page .mochi_button_group > li > .mochi_button_group_item:hover {
     color: #eee;
 }
-#main_page .radio_group > li:first-child > .radio_group_btn {
+#main_page .mochi_button_group > li:first-child > .mochi_button_group_item {
     border-color: #333;
 }
-#main_page .radio_group > li > .radio_group_btn.selected {
+#main_page .mochi_button_group > li > .mochi_button_group_item.selected {
     color: #4ac3ff;
     text-shadow: #4ac3ff 0 0 15px; 
     background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#444));

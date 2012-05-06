@@ -634,7 +634,7 @@ pre {
 	width: 16px;
 	height: 16px;
 	margin-left: 6px;
-	margin-top: 6px;
+	margin-top: 8px;
 }
 
 #indication .indicator_btn.unread {
@@ -1009,6 +1009,7 @@ label {
 
 .vcard_body {
 	min-height: 50px;
+	margin-bottom: 5px;
 }
 
 .vcard_tabs_pages {
@@ -1017,9 +1018,8 @@ label {
 }
 
 .vcard_action_btns {
-	margin: 5px 10px;
 	border-top: 1px #ccc solid;
-	padding: 5px;
+	padding: 5px 0 2px 0;
 }
 
 .vcard_action_btns > li {
