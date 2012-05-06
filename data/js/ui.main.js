@@ -695,7 +695,7 @@ function on_reply_click(btn, li_id, event) {
 
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_reply_info(screen_name, text);
-    if (event.shiftKey) {
+    if (event && event.shiftKey) {
         if (orig_text.indexOf('@'+screen_name) == -1) {
             ui.StatusBox.insert_status_text('@' + li.attr('screen_name') + ' ', null);
         }
@@ -771,7 +771,7 @@ function on_reply_all_click(btn, li_id, event) {
 
     ui.StatusBox.reply_to_id = id;
     ui.StatusBox.set_reply_info(screen_name, text);
-    if (event.shiftKey) {
+    if (event && event.shiftKey) {
         ui.StatusBox.append_status_text(who_names.join(' ') + ' ');
     } else {
         ui.StatusBox.set_status_text(who_names.join(' ') + ' ');

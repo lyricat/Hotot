@@ -335,7 +335,7 @@ function do_notify(rule, act, incoming) {
 do_archive:
 function do_archive(rule, act, incoming) {
     // console.log('[ACT]','Archive the incoming!');
-    var formal_name = encodeBase64(rule.name).replace(/=/g, '_');
+    var formal_name = encodeBase64(rule.name).replace(/=|\s/g, '_');
     if (!ui.Main.views.hasOwnProperty('kismet_' + formal_name)) {
         ui.Slider.add('kismet_'+ formal_name, 
           {title:'Kismet # ' + rule.name, icon:'image/ic_archive.png'}

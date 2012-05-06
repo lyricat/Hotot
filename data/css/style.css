@@ -375,12 +375,16 @@ pre {
 }
 
 #status_ctrl .toolbar_button {
-	width: 6px;
-	min-width: 0;
+	width: 30px;
+	min-width: 30px !important;
 	float: left;
 	border: none;
 	padding: 0 12px;
 	background-color: transparent;
+	box-shadow: none;
+}
+#status_ctrl .toolbar_button:first-child {
+	margin-left: 5px;
 }
 
 #status_ctrl .toolbar_button:hover {
@@ -406,7 +410,6 @@ pre {
 
 #status_drafts{
 	display: none;
-	margin-bottom: 10px;
 	padding: 0;
 }
 
@@ -1648,7 +1651,7 @@ label {
 	display: none;
 }
 
-#kismet_dialog .ctrl .button {
+#kismet_dialog .ctrl .mochi_button {
 	vertical-align: middle;
 }
 
@@ -1719,7 +1722,7 @@ label {
 	text-align: right;
 	padding: 10px 30px;
 }
-#kismet_dialog .item_ctrl .button{
+#kismet_dialog .item_ctrl .mochi_button{
 	margin: 0 10px;
 }
 
