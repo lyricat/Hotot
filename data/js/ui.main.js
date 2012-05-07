@@ -79,7 +79,7 @@ function init () {
 hide:
 function hide () {
     daemon.stop();
-    ui.StatusBox.hide();
+    ui.StatusBox.close();
     globals.signed_in = false;
     this.me.hide();
 },

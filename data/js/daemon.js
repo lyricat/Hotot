@@ -132,7 +132,6 @@ daemon = {
                 }
                 // ignore tweets from blocking users
                 if (globals.blocking_ids.indexOf(ret.user.id_str) !== -1) {
-                    console.log("BLOCK USER:", ret.user.screen_name)
                     return;
                 }
                 var now = Date.now();
