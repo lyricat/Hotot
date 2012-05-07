@@ -40,13 +40,17 @@ daemon = {
             daemon.poll();
             daemon.push();
         }
+        if (daemon.time % 1800 === 0) { // sync per 30 minutes
+            syncMyself();
+        }
         daemon.time += 60;
-        if (daemon.time == 3600) { // reset timer per hour
+        if (daemon.time === 3600) { // reset timer per hour
             daemon.time = 0;
         }
         ui.Slider.save_state();
         conf.save_prefs(conf.current_name);
         db.reduce_db(); 
+
         daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
     },
 
@@ -111,7 +115,7 @@ daemon = {
                 return;
             }
             if (ret['delete'] && ret['delete']['status']) {
-                id = ret['delete']['status'].id_str;
+                var id = ret['delete']['status'].id_str;
                 if (conf.get_current_profile().preferences.use_deleted_mark) {
                     $('#home-' + id).addClass('deleted');
                     $('#mentions-' + id).addClass('deleted');
@@ -124,6 +128,11 @@ daemon = {
             if (ret.text && ret.user) {
                 // ignore retweets of me
                 if (ret.hasOwnProperty('retweeted_status') && ret.user.screen_name == globals.myself.screen_name) {
+                    return;
+                }
+                // ignore tweets from blocking users
+                if (globals.blocking_ids.indexOf(ret.user.id_str) !== -1) {
+                    console.log("BLOCK USER:", ret.user.screen_name)
                     return;
                 }
                 var now = Date.now();

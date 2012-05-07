@@ -125,9 +125,10 @@ function init_view(view) {
             return;
         toast.set("Block @" + view.screen_name + " ...").show();
         globals.twitterClient.create_blocks(view.screen_name,
-        function () {
+        function (result) {
             toast.set(
-                "Block @"+ view.screen_name+" Successfully!").show();
+                "Block @"+ result.screen_name+" Successfully!").show();
+            globals.blocking_ids.push(result.id_str);
         });
         people_action_more_memu.hide();
     });
@@ -136,9 +137,13 @@ function init_view(view) {
     function (event) {
         toast.set("Unblock @" + view.screen_name + " ...").show();
         globals.twitterClient.destroy_blocks(view.screen_name,
-        function () {
+        function (result) {
             toast.set(
-                "Unblock @"+ view.screen_name+" Successfully").show();
+                "Unblock @"+ result.screen_name+" Successfully").show();
+            var pos = globals.blocking_ids.indexOf(result.id_str);
+            if (pos !== -1) {
+                globals.blocking_ids.splice(pos, 1);
+            }
         });
         people_action_more_memu.hide();
     });

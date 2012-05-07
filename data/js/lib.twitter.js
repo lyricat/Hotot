@@ -540,6 +540,15 @@ function TwitterClient() {
         self.post(url, params, on_success);
     };
 
+    self.get_blocking_ids = function get_blocking_ids(cursor, on_success, on_error) {
+        var url = self.api_base + 'blocks/blocking/ids.json';
+        var params = {
+            'stringify_ids': true,
+            'cursor': cursor
+        };
+        self.get(url, params, on_success, on_error);
+    };
+
     self.get_user_listed_lists = function get_listed_lists(screen_name, cursor, on_success) {
         var url = self.api_base + 'lists/memberships.json';
         var params = {
