@@ -68,7 +68,8 @@ MainWindow::MainWindow(bool socks, QWidget *parent) :
 #endif
     m_inspector(0),
     m_useSocks(socks),
-    m_fontDB()
+    m_fontDB(),
+    m_signIn(false)
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -93,6 +94,10 @@ MainWindow::MainWindow(bool socks, QWidget *parent) :
 
     m_menu = new QMenu(this);
 
+    m_actionCompose = new QAction(QIcon(), i18n("&Compose"), this);
+    connect(m_actionCompose, SIGNAL(triggered()), this, SLOT(compose()));
+    m_menu->addAction(m_actionCompose);
+    m_actionCompose->setVisible(false);
 #ifndef MEEGO_EDITION_HARMATTAN
     QSettings settings("hotot-qt", "hotot");
     m_actionMinimizeToTray->setCheckable(true);
@@ -205,8 +210,6 @@ bool MainWindow::isCloseToExit() {
 
 bool MainWindow::isStartMinimized() {
     QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.starts_minimized");
-    if (!mini.isValid())
-        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.starts_minimized");
     if (mini.isValid()) {
         return mini.toBool();
     }
@@ -216,8 +219,6 @@ bool MainWindow::isStartMinimized() {
 
 bool MainWindow::isAutoSignIn() {
     QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.sign_in_automatically");
-    if (!mini.isValid())
-        mini = m_webView->page()->currentFrame()->evaluateJavaScript("hotot_qt.sign_in_automatically");
     if (mini.isValid()) {
         return mini.toBool();
     }
@@ -254,17 +255,10 @@ void MainWindow::loadFinished(bool ok)
                  .arg(QLocale::system().name());
 
         m_webView->page()->currentFrame()->evaluateJavaScript(confString);
-        QTimer::singleShot(0, this, SLOT(notifyLoadFinished()));
-#ifndef MEEGO_EDITION_HARMATTAN
-        if (!isStartMinimized() || !isAutoSignIn()) {
-            show();
-            QSettings settings("hotot-qt", "hotot");
-            restoreGeometry(settings.value("geometry").toByteArray());
-            restoreState(settings.value("windowState").toByteArray());
-        }
-#else
-        show();
-#endif
+        m_webView->page()->currentFrame()->evaluateJavaScript(
+            "overlay_variables(hotot_qt_variables);"
+            "globals.load_flags = 1;");
+        QTimer::singleShot(300, this, SLOT(notifyLoadFinished()));
     }
     else {
         show();
@@ -273,22 +267,39 @@ void MainWindow::loadFinished(bool ok)
 
 void MainWindow::notifyLoadFinished()
 {
-    m_webView->page()->currentFrame()->evaluateJavaScript(
-        "overlay_variables(hotot_qt_variables);"
-        "globals.load_flags = 1;");
+    QSettings settings("hotot-qt", "hotot");
+    restoreGeometry(settings.value("geometry").toByteArray());
+    restoreState(settings.value("windowState").toByteArray());
+#ifndef MEEGO_EDITION_HARMATTAN
+    if (!isStartMinimized() || !isAutoSignIn()) {
+        show();
+    }
+#else
+    show();
+#endif
+}
+
+void MainWindow::forceActivateWindow()
+{
+#ifndef Q_WS_MAC
+#ifdef HAVE_KDE
+    const int currentDesktop = KWindowSystem::currentDesktop();
+    KWindowSystem::setOnDesktop( winId(), currentDesktop );
+    KWindowSystem::forceActiveWindow( winId() );
+#else
+    activateWindow();
+#endif
+#endif
 }
 
 void MainWindow::triggerVisible()
 {
 #ifndef Q_WS_MAC
 #ifdef HAVE_KDE
-    const KWindowInfo info = KWindowSystem::windowInfo( winId(), 0, 0 );
-    const int currentDesktop = KWindowSystem::currentDesktop();
     if( !isVisible() )
     {
         setVisible( true );
-        KWindowSystem::setOnDesktop( winId(), currentDesktop );
-        KWindowSystem::forceActiveWindow( winId() );
+        forceActivateWindow();
     }
     else
     {
@@ -296,8 +307,7 @@ void MainWindow::triggerVisible()
         {
             if( !isActiveWindow() ) // not minimised and without focus
             {
-                KWindowSystem::setOnDesktop( winId(), currentDesktop );
-                KWindowSystem::forceActiveWindow( winId() );
+                forceActivateWindow();
             }
             else // Amarok has focus
             {
@@ -307,8 +317,7 @@ void MainWindow::triggerVisible()
         else // Amarok is minimised
         {
             setWindowState( windowState() & ~Qt::WindowMinimized );
-            KWindowSystem::setOnDesktop( winId(), currentDesktop );
-            KWindowSystem::forceActiveWindow( winId() );
+            forceActivateWindow();
         }
     }
 #else
@@ -318,7 +327,7 @@ void MainWindow::triggerVisible()
     else {
         setVisible(!isVisible());
         setWindowState(windowState() & ~Qt::WindowMinimized);
-        activateWindow();
+        forceActivateWindow();
     }
 
 #endif
@@ -375,6 +384,7 @@ void MainWindow::toggleMinimizeToTray(bool checked)
     QSettings settings("hotot-qt", "hotot");
     settings.setValue("minimizeToTray", checked);
 }
+
 
 void MainWindow::changeEvent(QEvent *event)
 {
@@ -458,3 +468,19 @@ bool MainWindow::useSocks()
 {
     return m_useSocks;
 }
+
+void MainWindow::setSignIn(bool sign)
+{
+    m_signIn = sign;
+    m_actionCompose->setVisible(m_signIn);
+}
+
+void MainWindow::compose()
+{
+    if (m_signIn) {
+        m_webView->page()->currentFrame()->evaluateJavaScript("ui.StatusBox.open();");
+        show();
+        forceActivateWindow();
+    }
+}
+

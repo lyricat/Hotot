@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 #ifdef HAVE_KDE
 
     KAboutData aboutData("hotot",                                        // internal name
-                         "hotot-qt",                                     // catalog name
+                         "hotot",                                     // catalog name
                          ki18n("Hotot"),                            // program name
                          "0.9.7",                             // app version
                          ki18n("Lightweight, Flexible Microblogging"),  // short description
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
     KApplication a;
 #else
 #if !defined(Q_OS_WIN32) && !defined(Q_OS_MAC)
-    bind_textdomain_codeset("hotot-qt", "UTF-8");
+    bind_textdomain_codeset("hotot", "UTF-8");
 #endif
 #ifdef MEEGO_EDITION_HARMATTAN
     MApplication a(argc, argv);
