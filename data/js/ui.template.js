@@ -293,7 +293,7 @@ people_vcard_t_orig:
                 </li><li><a class="message_menu_item" \
                     title="Send Message to them"\
                     href="javascript:void(0);">{%TRANS_message_them%}</a>\
-                </li><li style="display:none;"><a class="add_to_list_menu_item" \
+                </li><li><a class="add_to_list_menu_item" \
                     title="Add them to a list"\
                     href="javascript:void(0);">{%TRANS_add_to_list%}</a>\
                 </li><li class="separator"><span></span>\

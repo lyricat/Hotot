@@ -601,11 +601,10 @@ function TwitterClient() {
         self.get(url, params, on_success);
     };
 
-    self.create_list_member = function create_list_member(owner_screen_name, slug, screen_name, on_success) {
+    self.create_list_member = function create_list_member(id, screen_name, on_success, on_error) {
         var url = self.api_base + 'lists/members/create.json';
         var params = {
-            'owner_screen_name': owner_screen_name,
-            'slug': slug,
+            'list_id': id,
             'screen_name': screen_name
         };
         self.post(url, params, on_success);

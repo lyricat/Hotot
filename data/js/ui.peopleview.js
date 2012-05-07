@@ -115,7 +115,7 @@ function init_view(view) {
 
     vcard.find('.add_to_list_menu_item').click(
     function (event) {
-        ui.AddToListDlg.load();
+        ui.AddToListDlg.load(view.screen_name);
         globals.add_to_list_dialog.open(); 
     });
 

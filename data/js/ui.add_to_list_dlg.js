@@ -3,39 +3,36 @@ ui.AddToListDlg = {
 
 id: '',
 
-init:
-function init () {
-    ui.ListAttrDlg.id = '#add_to_list_dlg';
-
-    var btn_add_to_list_update =new widget.Button('#btn_add_to_list_update');
-    btn_add_to_list_update.on_clicked = function (event) {
-        globals.add_to_list_dialog.close();
-    };
-    btn_add_to_list_update.create();
-
-},
-
-update:
-function update() {
-},
+tpl: '<li class="mochi_list_item with_trigger"> \
+        <a href="#" list_id="{%ID%}" class="trigger page_nav"> \
+            <span class="widget more"></span> \
+            <label for="" class="label">{%NAME%}</label> \
+        </a> \
+    </li>',
 
 load:
-function load() {
-    var container = $('#add_to_list_list').empty();
-    globals.twitterClient.get_user_lists(globals.myself.screen_name, -1
-    , function (json) {
-        for (var i = 0; i < json.lists.length; i += 1) {
-            var li = $('<li/>');
-            $('<input type="checkbox" class="checkbox"/>').attr('value', json.lists[i].slug).appendTo(li);
-            $('<label class="label"/>').text(json.lists[i].name).appendTo(li);
-            container.append(li)
-        }
+function load(name) {
+    $('#add_to_list_dlg').find('.trigger').unbind();
+    var container = $('#add_to_list_dlg ul').empty();
+    var arr = [];
+    for (var i = 0; i < globals.my_lists.length; i += 1) {
+        var html = ui.AddToListDlg.tpl.replace(/{%ID%}/, globals.my_lists[i].id_str);
+        html = html.replace(/{%NAME%}/g, globals.my_lists[i].name);
+        arr.push(html);
+    }
+    container.append(arr.join('\n'));
+    container.find('.trigger').click(function () {
+        var id = $(this).attr('list_id');
+        globals.twitterClient.create_list_member(
+            id, name,
+            function () {
+                toast.set('Add @' + name + ' to List.'); 
+            },
+            function () {
+                toast.set('Failed to add @' + name + ' to List.'); 
+            });
+        globals.add_to_list_dialog.close();
     });
-},
-
-request:
-function request() {
-
 }
 
 }

@@ -358,7 +358,7 @@ function init_dialogs() {
     globals.list_attr_dialog.create();
 
     globals.add_to_list_dialog = new widget.Dialog('#add_to_list_dlg');
-    globals.add_to_list_dialog.resize(400, 260);
+    globals.add_to_list_dialog.resize(400, 500);
     globals.add_to_list_dialog.create();
 
     globals.prefs_dialog = new widget.Dialog('#prefs_dlg');
