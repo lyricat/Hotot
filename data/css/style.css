@@ -2093,7 +2093,8 @@ label {
 	border:1px #ccc solid;
 	background:#fff; 
 	margin:0;
-	height: 150px
+	height: 150px;
+	max-width: 100%;
 }
 .tweet_meta {
 	left: 10px;
