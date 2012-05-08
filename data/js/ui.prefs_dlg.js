@@ -108,7 +108,7 @@ function init () {
     if (util.is_native_platform()) {
         $('#prefs_system').find('.chrome_context_menu').hide()
     } else {
-        $('#prefs_system').find('.summon_list, .proxy_list, .proxy_auth_list, .ubuntu_indicator, .exit_when_close, .starts_minimized').hide();
+        $('#prefs_system').find('.summon_list, .proxy_list, .proxy_auth_list, .exit_when_close, .starts_minimized').hide();
         $('#prefs_system')
     }
 
@@ -127,9 +127,6 @@ function load_settings() {
     $('#chk_prefs_use_verbose_mode')
         .attr('checked', conf.settings.use_verbose_mode)
         .prop('checked', conf.settings.use_verbose_mode);
-    $('#chk_prefs_use_ubuntu_indicator')
-        .attr('checked', conf.settings.use_ubuntu_indicator)
-        .prop('checked', conf.settings.use_ubuntu_indicator);
     $('#chk_prefs_close_to_exit')
         .attr('checked', conf.settings.close_to_exit)
         .prop('checked', conf.settings.close_to_exit);
@@ -178,8 +175,6 @@ function save_settings() {
     // Globals
     conf.settings.use_verbose_mode 
         = $('#chk_prefs_use_verbose_mode').prop('checked');
-    conf.settings.use_ubuntu_indicator 
-        = $('#chk_prefs_use_ubuntu_indicator').prop('checked');
     conf.settings.close_to_exit 
         = $('#chk_prefs_close_to_exit').prop('checked');
     conf.settings.sign_in_automatically 
@@ -256,12 +251,6 @@ function load_prefs() {
         $('#sel_prefs_sys_font, #tbox_prefs_custom_font')
             .attr('disabled', true);
     }
-    switch (prefs.effects_level) {
-    case 0: $('#rdo_effects_level_low').prop('checked', true); break;
-    case 1: $('#rdo_effects_level_normal').prop('checked', true); break;
-    case 2: $('#rdo_effects_level_extra').prop('checked', true); break;
-    default: $('#rdo_effects_level_normal').prop('checked', true); break;
-    }  
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_preload_conversation')
         .attr('checked', prefs.use_preload_conversation)
@@ -315,8 +304,6 @@ function save_prefs() {
         prefs['font_size'] = 12;
     }
     prefs['use_custom_font'] = $('#chk_use_custom_font').prop('checked');
-    prefs['effects_level'] 
-        = parseInt($('input:radio[name="effects"]:checked').val());
     // behaviors
     prefs['use_preload_conversation']
         = $('#chk_prefs_use_preload_conversation').prop('checked'); 

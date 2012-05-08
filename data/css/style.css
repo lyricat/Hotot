@@ -2086,7 +2086,7 @@ label {
 .media_preview a {
 	margin:2px 5px;
 	padding:0;
-	display:inline-block;
+	display:block;
 }
 .media_preview img {
 	padding:4px;

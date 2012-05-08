@@ -94,11 +94,11 @@ function trans_html() {
             obj.attr('title', msg);
         }
     });
-    $('*[data-i18n-value]').each(function(idx, obj) {
+    $('*[data-i18n-placeholder]').each(function(idx, obj) {
         var obj = $(obj);
-        var msg = i18n.get_message(obj.attr('data-i18n-value'));
+        var msg = i18n.get_message(obj.attr('data-i18n-placeholder'));
         if (msg) {
-            obj.val(msg);
+            obj.attr('placeholder', msg);
         }
     });
 }

@@ -448,7 +448,8 @@ function slide_to(id) {
     $('#main_page_slider').css('width', max_col_num + '00%');
     // slide page
     if (conf.get_current_profile()) {
-        if (conf.get_current_profile().preferences.effects_level != 0) {
+        // @TODO
+        if (1) {
             ui.Slider.me.stop().animate(
                 {marginLeft: (0 - page_offset * width) +'px'}
                 , 500

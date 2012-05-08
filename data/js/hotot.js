@@ -21,10 +21,6 @@ var layout_opts = {
     ,   south__paneSelector:        '#bottom'
 };
 
-function change_effects_level(level) {
-    $('#effects_level').attr('href', 'css/effects_' + level + '.css');
-}
-
 function change_theme(theme_name, theme_path) {
     $('#hotot_theme').attr('href', theme_path + '/style.css');
     $.getJSON(theme_path + '/info.json',

@@ -28,7 +28,6 @@ default_settings: {
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
     , 'size_h': 550
-    , 'use_ubuntu_indicator': true
     , 'context_menu_integration': true
     , 'close_to_exit': false
     , 'sign_in_automatically': false
@@ -53,7 +52,6 @@ default_prefs: {
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_size': 14
-        , 'effects_level': 1
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -94,7 +92,6 @@ default_prefs: {
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_size': 14
-        , 'effects_level': 1
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -270,7 +267,6 @@ function apply_prefs(name, full) {
         change_theme(prefs.theme, prefs.theme_path);
         globals.tweet_font_size = prefs.font_size;
         $('.card_body > .text').css('font-size', prefs.font_size + 'px');
-        change_effects_level(prefs.effects_level);
         ui.Main.use_preload_conversation = prefs.use_preload_conversation;
         for (var id in ext.exts_info) {
             ext.disable_ext(id);

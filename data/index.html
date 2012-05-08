@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/mochi.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" />
-    <link id="effects_level" rel="stylesheet" href="css/effects_1.css" type="text/css" media="screen" />
 </head>
 <body style='background: transparent url(image/welcome_bg.jpg) no-repeat 0 0; background-size: cover;'>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -120,12 +119,12 @@
 				</div>
 
 				<div id="service_page_identica" class="service_tabs_page">
-					<input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" placeholder="Username"/>
-					<input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" placeholder="Password"/><br/>
+					<input id="tbox_basic_auth_username" class="entry" style="width: 120px;" type="text" value="" data-i18n-placeholder="username" placeholder="Username"/>
+					<input id="tbox_basic_auth_password" class="entry" style="width: 120px;" type="password" value="" data-i18n-placeholder="password" placeholder="Password"/><br/>
 				</div>
 
 				<div id="service_page_new" class="service_tabs_page">
-					<input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value="" placeholder="Profile Name"/>
+					<input id="tbox_new_profile_name" class="entry" style="width: 100px;" type="text" value="" placeholder="Profile Name" data-i18n-placeholder="profile_name"/>
 					<label>@</label>
 					<ul class="service_chooser">
 						<li><a href="#twitter" title="Twitter" class="twitter selected">Twitter</a></li>
@@ -375,7 +374,7 @@
 				<div id="status_image_preview"></div>
 			</div>
 			<div id="tbox_status_wrapper" class="mochi_textarea">
-					<textarea id="tbox_status" class="closed" placeholder="Type or drag a photo here."></textarea>
+					<textarea id="tbox_status" class="closed" placeholder="Type or drag a photo here." data-i18n-placeholder="type_or_drag_a_photo_here"></textarea>
 					<div id="status_smiley">
 							<div id="status_smiley_header">
 									<a href="javascript:void(0)" class="close_btn ic_close"></a>
@@ -649,6 +648,7 @@
               <input id="tbox_prefs_shortcut_summon_hotot"
                      title="Summon Hot Key"
 										 placeholder="e.g. <ALT>H"
+										 data-i18n-placeholder="eg_alt_h"
                      type="text" class="mochi_entry widget"/>
               <label class="label" data-i18n-text="summon_hotot">Summon Hotot</label>
 						</li>
@@ -666,6 +666,7 @@
 							<input id="tbox_prefs_http_proxy_host"
 									title="HTTP Proxy Host"
 									placeholder="Proxy Host"
+									data-i18n-placeholder="proxy_host"
 									type="text" class="mochi_entry widget"/>
 							<label for="tbox_prefs_http_proxy_host"
 									class="label" data-i18n-text="host">
@@ -675,6 +676,7 @@
 							<input id="tbox_prefs_http_proxy_port"
 									title="HTTP Proxy Port"
 									placeholder="Proxy Port"
+									data-i18n-placeholder="proxy_port"
 									type="text" class="mochi_entry widget"/>
 							<label for="tbox_prefs_http_proxy_port"
 									class="label" data-i18n-text="port">
@@ -695,6 +697,7 @@
 							<input id="tbox_prefs_http_proxy_auth_name"
 									title="HTTP Proxy Authentication Name"
 									placeholder="Username"
+									data-i18n-placeholder="username"
 									type="text" class="mochi_entry widget"/>
 							<label for="tbox_prefs_http_proxy_auth_name"
 									class="label" data-i18n-text="username">
@@ -704,6 +707,7 @@
 							<input id="tbox_prefs_http_proxy_auth_password"
 									title="HTTP Proxy Authentication Password"
 									placeholder="Password"
+									data-i18n-placeholder="password"
 									type="password" class="mochi_entry widget"/>
 							<label for="tbox_prefs_http_proxy_auth_password"
 									class="label" data-i18n-text="password">
@@ -712,14 +716,7 @@
 						</li>
 					</ul>
 					<ul class="mochi_list">
-						<li class="mochi_list_item ubuntu_indicator">
-							<input id="chk_prefs_use_ubuntu_indicator"
-									title="Use Ubuntu Indicator"
-									type="checkbox" class="mochi_toggle widget"/>
-							<label for="chk_prefs_use_ubuntu_indicator" class="label"
-									data-i18n-text="use_ubuntu_indicator"
-									>Use Ubuntu indicator</label>
-						</li><li class="mochi_list_item chrome_context_menu">
+						<li class="mochi_list_item chrome_context_menu">
 							<input id="chk_prefs_context_menu_integration"
 									title="Integrate to context menu."
 									class="mochi_toggle widget" type="checkbox"/>
@@ -833,35 +830,6 @@
 							</label>
             </li>
           </ul>
-          <h3 data-i18n-text="effects">Effects</h3>
-					<ul class="mochi_list">
-            <li class="mochi_list_item">
-              <input id="rdo_effects_level_low" type="radio"
-								class="mochi_radio widget" 
-								name="effects" value="0" checked/>
-              <label class="value" data-i18n-text="disable_decoration_of_widgets_and_some_animations"
-                    >Disable decoration of widgets and some animations.</label>
-              <label class="label" data-i18n-text="effects_low"
-                    >Low</label>
-						</li><li class="mochi_list_item">
-              <input id="rdo_effects_level_normal" type="radio"
-								class="mochi_radio widget"
-								name="effects" value="1"/>
-              <label class="value" data-i18n-text="balance_between_attractiveness_and_preformance"
-                    >Balance between attractiveness and performance.</label>
-              <label class="label" data-i18n-text="effects_normal"
-                    >Normal</label></strong>
-						</li><li class="mochi_list_item">
-              <input id="rdo_effects_level_extra" type="radio"
-								class="mochi_radio widget"
-								name="effects" value="2"/>
-              <label class="value" data-i18n-text="more_effects_like_shadows_and_glow_of_widgets">
-                	<span>More effects like shadows and glow of widgets.</span>
-                </label>
-              <label class="label" data-i18n-text="effects_extra"
-                    >Extra</label>
-						</li>
-					</ul>
 					<p>
         		<a id="btn_prefs_restore_defaults" class="mochi_button red" style="margin: 10px auto; display: block" data-i18n-text="restore_defaults">Restore Defaults</a>
 					</p>
