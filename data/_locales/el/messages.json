@@ -252,7 +252,7 @@
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
-		"message": "Ενεργοποίηση Verbose Mode",
+		"message": "Ενεργοποίηση λειτουργίας Verbose",
 		"description": "data/index.html"
 	},
 	"enabled": {
@@ -676,7 +676,7 @@
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "Pretty wife",
+		"message": "Όμορφη σύζυγος",
 		"description": "data/index.html"
 	},
 	"preview": {
