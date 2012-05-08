@@ -361,7 +361,7 @@ disabled:
 	font-size: 14px;
 	color: #F2F2F2;
 	text-shadow: 0 -1px 0px black;
-	background: #333 url(../../image/mask.png);
+	background: #333 url(../image/mask.png);
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	margin: 0;
