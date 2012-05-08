@@ -4,7 +4,7 @@
 		"description": ""
 	},
 	"about_and_help": {
-		"message": "关于和帮助",
+		"message": "关于同帮助",
 		"description": ""
 	},
 	"access_token_doesnt_exist": {
@@ -44,7 +44,7 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "壳酱的诡计",
+		"message": "猫嘅诡计",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -80,7 +80,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
-		"message": "血腥的苏酱",
+		"message": "血腥嘅苏小姐",
 		"description": "data/index.html"
 	},
 	"cancel": {
@@ -88,7 +88,7 @@
 		"description": ""
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "唔知你系边个喔，唔该检查你噶帐号/密码同 API 地址。",
+		"message": "唔知你系边个喔，唔该检查你嘅帐号/密码同 API 地址。",
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
@@ -128,7 +128,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "禁下睇边个转佐",
+		"message": "禁下睇边个转咗",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -136,7 +136,7 @@
 		"description": ""
 	},
 	"close_current_column": {
-		"message": "关闭当前列",
+		"message": "关闭列",
 		"description": "data/index.html"
 	},
 	"compose": {
@@ -144,7 +144,7 @@
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "复制 PIN Code 之后将佢粘贴到下面的文本框",
+		"message": "复制 PIN Code 之后将佢粘贴到下面嘅文本框",
 		"description": ""
 	},
 	"copy_to_clipboard": {
@@ -156,11 +156,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "多谢佢地",
+		"message": "多谢佢哋",
 		"description": ""
 	},
 	"cuddly": {
-		"message": "可乐小V",
+		"message": "可乐仔",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -176,15 +176,15 @@
 		"description": ""
 	},
 	"delete_this_tweet": {
-		"message": "删佐嚟条",
+		"message": "删咗嚟条",
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "删佐！",
+		"message": "删咗！",
 		"description": "data/js/ui.main.js"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "禁用控件集装饰和部分动画。",
+		"message": "禁用控件装饰同部分动画。",
 		"description": "data/index.html"
 	},
 	"donate": {
@@ -204,7 +204,7 @@
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "丢佐佢",
+		"message": "丢咗佢",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -268,15 +268,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "我噶收藏",
+		"message": "我嘅收藏",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
-		"message": "过滤差唔多噶推文",
+		"message": "过滤差唔多嘅推文",
 		"description": "data/index.html"
 	},
 	"find": {
-		"message": "查找",
+		"message": "搜索",
 		"description": "data/index.html"
 	},
 	"fine": {
@@ -308,7 +308,7 @@
 		"description": ""
 	},
 	"font_preview_hint": {
-		"message": "心口碎大石系我噶绝技。",
+		"message": "心口碎大石系我嘅绝技。",
 		"description": ""
 	},
 	"font_size": {
@@ -328,7 +328,7 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "修改哩度噶选项要重启先会生效，而且哩D选项会影响所有帐户咖。",
+		"message": "修改哩度嘅选项要重启先会生效，而且哩D选项会影响所有帐户咖。",
 		"description": ""
 	},
 	"greeting": {
@@ -344,7 +344,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
-		"message": "腹黑的老K",
+		"message": "腹黑嘅K记",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -388,7 +388,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "吾只是有点怀念这儿",
+		"message": "有小小挂住哩度",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -408,7 +408,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "警告：凡是有以下特征噶推文都将被抛弃，唔显示。",
+		"message": "警告：凡是有以下特征嘅推文都将被抛弃，唔显示。",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -440,11 +440,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
-		"message": "关注紧佢噶列表",
+		"message": "关注紧佢嘅列表",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
-		"message": "佢噶列表",
+		"message": "佢嘅列表",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
@@ -460,7 +460,7 @@
 		"description": ""
 	},
 	"mark_deleted_tweets": {
-		"message": "标记被人删佐噶推文",
+		"message": "标记被人删咗嘅推文",
 		"description": "data/index.html"
 	},
 	"mask": {
@@ -472,11 +472,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"mentions": {
-		"message": "提到你噶",
+		"message": "提到你嘅",
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
-		"message": "提到我噶",
+		"message": "提到我嘅",
 		"description": "data/index.html"
 	},
 	"messages": {
@@ -487,12 +487,19 @@
 		"message": "私信",
 		"description": "data/index.html"
 	},
+<<<<<<< HEAD
+	"misc": {
+		"message": "立杂嘢",
+		"description": "data/index.html"
+	},
+=======
+>>>>>>> upstream/master
 	"more_actions": {
 		"message": "更多动作",
 		"description": "data/js/ui.template.js"
 	},
 	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "开启更多特效，比如阴影同发光。",
+		"message": "开启更多特效，例如阴影同发光。",
 		"description": "data/index.html"
 	},
 	"move_to_bottom": {
@@ -516,15 +523,15 @@
 		"description": "data/index.html"
 	},
 	"my_favs": {
-		"message": "我噶收藏",
+		"message": "我嘅收藏",
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "吾之旅程在那星辰大海",
+		"message": "出海远行",
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "魔法值",
+		"message": "我嘅功力",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
@@ -532,7 +539,7 @@
 		"description": ""
 	},
 	"nearly_dead": {
-		"message": "就嚟死得",
+		"message": "内力耗尽",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
@@ -540,7 +547,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
-		"message": "创建佐新帐户啦！",
+		"message": "创建咗新帐户啦！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
@@ -584,11 +591,11 @@
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "打开第一个链接（如果有噶话）",
+		"message": "打开第一个链接（如果有嘅话）",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "打开佢噶链接",
+		"message": "打开佢嘅链接",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -596,11 +603,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "或者在浏览器中打开以下地址",
+		"message": "或者系浏览器中打开以下地址",
 		"description": ""
 	},
 	"panda_acts_cute": {
-		"message": "卖萌的熊猫",
+		"message": "扮可爱嘅熊猫",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -616,7 +623,7 @@
 		"description": ""
 	},
 	"please_enter_the_recipient": {
-		"message": "唔该指定收件人！",
+		"message": "唔该指定收信人！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
@@ -628,7 +635,7 @@
 		"description": "data/index.html"
 	},
 	"post_successfully": {
-		"message": "成功发送！",
+		"message": "发送咗啦！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
@@ -636,7 +643,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
-		"message": "地图炮充能完毕",
+		"message": "内力十足",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"preferences": {
@@ -644,9 +651,16 @@
 		"description": ""
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "如果可能噶话，俾我睇上一条对话",
+		"message": "如果可以嘅话，俾我睇上一条对话",
 		"description": ""
 	},
+<<<<<<< HEAD
+	"press_ctrl_and_enter_to_update": {
+		"message": "禁 Ctrl+Enter 更新",
+		"description": ""
+	},
+=======
+>>>>>>> upstream/master
 	"pretty_wife": {
 		"message": "俏人妻西乔",
 		"description": "data/index.html"
@@ -656,7 +670,7 @@
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "预览嵌入噶多媒体",
+		"message": "预览嵌入嘅多媒体",
 		"description": "data/index.html"
 	},
 	"preview_here": {
@@ -712,11 +726,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "技能冷却时间净低",
+		"message": "练功时间",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
-		"message": "恢复默认值",
+		"message": "恢复默认状态",
 		"description": ""
 	},
 	"retweet": {
@@ -768,11 +782,11 @@
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
-		"message": "使用相同 API 进行签名",
+		"message": "用同样嘅 API 进行签名",
 		"description": ""
 	},
 	"same_signing_oauth_base": {
-		"message": "使用同样噶 OAuth 地址进行签名",
+		"message": "用同样嘅 OAuth 地址进行签名",
 		"description": ""
 	},
 	"save": {
@@ -784,7 +798,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "裂裂的芬芳",
+		"message": "裂裂嘅芬芳",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -820,7 +834,7 @@
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "选择你感兴趣噶部位",
+		"message": "选择你感兴趣嘅部位",
 		"description": "data/index.html"
 	},
 	"send_message": {
@@ -832,7 +846,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "婚前的旧时光",
+		"message": "婚前旧时光",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -864,7 +878,7 @@
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "死火！出佐D差错 >_<",
+		"message": "死火！出咗D差错 >_<",
 		"description": "data/index.html"
 	},
 	"sound": {
@@ -880,7 +894,7 @@
 		"description": ""
 	},
 	"status_is_over_140_characters": {
-		"message": "超佐140啦！",
+		"message": "超咗140只字啦！",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
@@ -892,7 +906,7 @@
 		"description": ""
 	},
 	"struggling_adventurers": {
-		"message": "苦逼的Kee叔",
+		"message": "CoolBee嘅Kee叔",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -900,7 +914,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "弹出Hotot 『比如: <ALT>C』",
+		"message": "弹出Hotot 『例如: <ALT>C』",
 		"description": ""
 	},
 	"themes": {
@@ -908,11 +922,11 @@
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "嚟个帐户有佐啦",
+		"message": "嚟个帐户有咗啦",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
-		"message": "文艺的缇香",
+		"message": "文艺嘅缇香",
 		"description": "data/index.html"
 	},
 	"to": {
@@ -920,7 +934,7 @@
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
-		"message": "冷艳的嘉敏",
+		"message": "冷艳嘅嘉敏",
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
@@ -928,7 +942,7 @@
 		"description": "data/index.html"
 	},
 	"tranquil": {
-		"message": "祝汝幸福",
+		"message": "祝你幸福",
 		"description": "data/index.html"
 	},
 	"transparent": {
@@ -940,7 +954,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "人地讲紧咩",
+		"message": "人哋讲紧咩",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -960,7 +974,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
-		"message": "唔屏蔽你啦",
+		"message": "唔屏蔽你",
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
@@ -1012,11 +1026,18 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "用自己钟意噶字体",
+		"message": "用自己钟意嘅字体",
 		"description": "data/index.html"
 	},
+<<<<<<< HEAD
+	"use_native_notify_system": {
+		"message": "用原生提醒机制",
+		"description": ""
+	},
+=======
+>>>>>>> upstream/master
 	"use_quote_as_default_retweet_action": {
-		"message": "默认引用人地",
+		"message": "默认引用人哋",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -1024,7 +1045,7 @@
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
-		"message": "使用乌斑兔 Indicator",
+		"message": "用乌斑兔 Indicator",
 		"description": ""
 	},
 	"username": {
@@ -1044,7 +1065,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
+<<<<<<< HEAD
+		"message":"讲咗咩",
+=======
 		"message": "讲佐咩",
+>>>>>>> upstream/master
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
@@ -1052,11 +1077,11 @@
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
-		"message": "火炬的正直",
+		"message": "火炬嘅正直",
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "咸湿佬",
+		"message": "黄琴琴",
 		"description": "data/index.html"
 	},
 	"weakness": {
@@ -1076,7 +1101,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "佢地关注紧你",
+		"message": "佢哋关注紧你",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
