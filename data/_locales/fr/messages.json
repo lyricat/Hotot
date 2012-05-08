@@ -164,7 +164,7 @@
 		"description": "data/index.html"
 	},
 	"custom_font": {
-		"message": "",
+		"message": "Police spéciale",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -188,7 +188,7 @@
 		"description": "data/index.html"
 	},
 	"donate": {
-		"message": "",
+		"message": "Dons",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -420,7 +420,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "",
+		"message": "Laisser collecter a Hotot des informations de statistisques anonymes",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -576,11 +576,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
-		"message": "",
+		"message": "Ouvrir une liste",
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "",
+		"message": "Ouvrir un profil",
 		"description": "data/index.html"
 	},
 	"open_first_link": {
@@ -604,7 +604,7 @@
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "",
+		"message": "Mot de Passe",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -816,11 +816,11 @@
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "",
+		"message": "Sélectionner une action",
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "",
+		"message": "Sélectionner un champs",
 		"description": "data/index.html"
 	},
 	"send_message": {
