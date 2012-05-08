@@ -238,7 +238,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::loadFinished(bool ok)
 {
-    disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
+    // disconnect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
     if (ok) {
         QString confString = QString(
             "hotot_qt_variables = {"
