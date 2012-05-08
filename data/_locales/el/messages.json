@@ -72,7 +72,7 @@
 		"description": "data/index.html"
 	},
 	"balance_between_attractiveness_and_preformance": {
-		"message": "Ισοροποία μεταξύ ελκυστικότητα και απόδοσης.",
+		"message": "Ισορροποία μεταξύ ελκυστικότητα και απόδοσης.",
 		"description": "data/index.html"
 	},
 	"behavior": {
@@ -316,11 +316,11 @@
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "Ακόλουθος",
+		"message": "follower",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
-		"message": "Ακόλουθοι",
+		"message": "followers",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
@@ -344,7 +344,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
-		"message": "Global",
+		"message": "Γενικά",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
@@ -412,7 +412,7 @@
 		"description": "data/index.html"
 	},
 	"keybinding": {
-		"message": "Keybinding",
+		"message": "Συνδυασμός πλήκτρων",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -424,7 +424,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Kismet Firewall",
+		"message": "Τείχος προστασίας Kismet",
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
