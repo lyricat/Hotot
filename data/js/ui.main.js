@@ -804,27 +804,22 @@ function on_del_click(btn, li_id, event) {
     var id = (li.attr('retweet_id') == '' || li.attr('retweet_id') == undefined) ? li.attr('tweet_id'): li.attr('retweet_id');
 
     toast.set('Destroy ...').show(-1);
-    globals.twitterClient.destroy_status(id,
-    function (result) {
-        ui.Main.unbind_tweet_action(li_id);
-        li.remove();
-        toast.set(_('destroy_successfully')).show();
-    });
+    if (li.attr('type') === 'message') {
+        globals.twitterClient.destroy_direct_messages(id,
+        function (result) {
+            ui.Main.unbind_tweet_action(li_id);
+            li.remove();
+            toast.set(_('destroy_successfully')).show();
+        });
+    } else {
+        globals.twitterClient.destroy_status(id,
+        function (result) {
+            ui.Main.unbind_tweet_action(li_id);
+            li.remove();
+            toast.set(_('destroy_successfully')).show();
+        });
+    }
 },
-
-on_dm_delete_click:
-function on_dm_delete_click(btn, li_id, event) {
-    var li = $(li_id);
-    var id = li.attr('tweet_id');
-    toast.set('Destroy ...').show(-1);
-    globals.twitterClient.destroy_direct_messages(id,
-    function (result) {
-        ui.Main.unbind_tweet_action(li_id);
-        li.remove();
-        toast.set(_('destroy_successfully')).show();
-    });
-},
-
 
 on_fav_click:
 function on_fav_click(btn, li_id, event) {
@@ -1105,7 +1100,7 @@ function openTweetMoreMenu(li, btn) {
     break;
     }
     // deletable?
-    if (li.attr('deletable') == 'true') {
+    if (li.attr('deletable') === 'true' || li.attr('type') === 'message') {
         $('#tweet_del_btn').parent().css('display', 'block');
     } else {
         $('#tweet_del_btn').parent().css('display', 'none');

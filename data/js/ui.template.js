@@ -143,8 +143,6 @@ message_t:
         <li>\
         <a class="tweet_bar_btn tweet_dm_reply_btn" title="Reply them" href="#reply_dm" data-i18n-title="reply"></a>\
         </li><li>\
-        <a class="tweet_bar_btn tweet_dm_delete_btn" title="Delete" href="#delete" data-i18n-title="delete"></a>\
-        </li><li>\
         <a class="tweet_bar_btn tweet_more_menu_trigger" href="#more"></a>\
         </li>\
     </ul>\
@@ -209,7 +207,9 @@ people_t:
     <div class="profile_img_wrapper" title="{%USER_NAME%}" style="background-image: url({%PROFILE_IMG%})">\
     </div>\
     <ul class="tweet_bar">\
-        <li>\
+        <li style="display:none;">\
+        <a class="tweet_bar_btn add_to_list_btn" title="Add to list" href="#follow" data-i18n-title="add_to_list"></a>\
+        </li><li>\
         <a class="tweet_bar_btn follow_btn" title="Follow them" href="#follow" data-i18n-title="follow"></a>\
         </li><li>\
         <a class="tweet_bar_btn unfollow_btn" title="Unfollow them" href="#unfollow" data-i18n-title="unfollow"></a>\

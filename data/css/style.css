@@ -972,6 +972,10 @@ label {
 .tweet_dm_delete_btn {
 	background-position-x: -96px;
 }
+.add_to_list_btn {
+	background-position-x: -96px;
+	display: inline-block;
+}
 .follow_btn {
 	background-position-x: -72px;
 	display: inline-block;

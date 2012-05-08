@@ -26,10 +26,10 @@ function load(name) {
         globals.twitterClient.create_list_member(
             id, name,
             function () {
-                toast.set('Add @' + name + ' to List.'); 
+                toast.set('Add @' + name + ' to List.').show(); 
             },
             function () {
-                toast.set('Failed to add @' + name + ' to List.'); 
+                toast.set('Failed to add @' + name + ' to List.').show(); 
             });
         globals.add_to_list_dialog.close();
     });
