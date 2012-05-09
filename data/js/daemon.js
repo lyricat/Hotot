@@ -39,17 +39,18 @@ daemon = {
         if (daemon.running) {
             daemon.poll();
             daemon.push();
-        }
-        if (daemon.time % 1800 === 0) { // sync per 30 minutes
-            syncMyself();
+
+            ui.Slider.save_state();
+            conf.save_prefs(conf.current_name);
+            db.reduce_db(); 
+            if (daemon.time % 1800 === 0) { // sync per 30 minutes
+                syncMyself();
+            }
         }
         daemon.time += 60;
         if (daemon.time === 3600) { // reset timer per hour
             daemon.time = 0;
         }
-        ui.Slider.save_state();
-        conf.save_prefs(conf.current_name);
-        db.reduce_db(); 
 
         daemon.timer = setTimeout(daemon.work, daemon.timer_interval);
     },
