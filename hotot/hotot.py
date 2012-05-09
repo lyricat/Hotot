@@ -3,6 +3,7 @@
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
 '''
+import sys
 import gtk
 import gobject
 import os
@@ -257,11 +258,8 @@ class Hotot:
     def quit(self, *args):
         self.release_hotkey()
         self.stop_blinking()
-        gtk.gdk.threads_leave()
         self.window.destroy()
         gtk.main_quit()
-        import sys
-        sys.exit(0)
 
     def apply_settings(self):
         # init hotkey
@@ -395,4 +393,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    sys.exit(0)
 

@@ -251,11 +251,8 @@ class Hotot:
     def quit(self, *args):
         self.release_hotkey()
         self.stop_blinking()
-        Gdk.threads_leave()
         self.window.destroy()
         Gtk.main_quit()
-        time.sleep(1)
-        sys.exit(0)
 
     def apply_settings(self):
         # init hotkey
@@ -397,4 +394,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    sys.exit(0)
 
