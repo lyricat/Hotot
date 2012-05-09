@@ -137,12 +137,12 @@ function set_service_url(service_index) {
 				service_url+= 'action=shorturl&format=simple&';
             }
             service_url += service.params.long_url + '=';
+	    ext.HototShortUrl.service_url = service_url;
         } else {
             ext.HototShortUrl.prefs.get('other', function(key, val) {
-                var service_url = val;
+                ext.HototShortUrl.service_url = val;
             });
         }
-        ext.HototShortUrl.service_url = service_url;
     }); //
 },
 
@@ -190,10 +190,7 @@ function on_btn_save_prefs_clicked(event) {
         other: $('#ext_hotot_short_url_other input').val()
     };
     var service = ext.HototShortUrl.services[prefs.service];
-    if ((service.url
-        && (service.params.login && prefs.login == ''
-            || service.params.api_key && prefs.api_key == ''))
-        || (service.url == undefined && prefs.other == '')) {
+    if ((service.url && (service.params.login && prefs.login == '' || service.params.api_key && prefs.api_key == '')) || (service.url == undefined && prefs.other == '')) {
         toast.set(
             'Please fill form fields for ' + service.name + ' Service.').show();
         return;
@@ -307,13 +304,12 @@ function enable() {
         ext.HototShortUrl.set_service_url(val);
     });
     $('#btn_shorturl').unbind('click').bind(
-        'click', ext.HototShortUrl.on_btn_short_url_clicked);
+        'click', ext.HototShortUrl.on_btn_short_url_clicked).show();
 },
 
 disable:
 function disable() {
-    $('#btn_shorturl').unbind('click').bind(
-        'click', ui.StatusBox.on_btn_short_url_clicked);
+    $('#btn_shorturl').hide();
 },
 
 options:
