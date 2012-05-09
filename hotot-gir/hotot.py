@@ -299,7 +299,8 @@ class Hotot:
                 xhk.bind(keycode, modifiers, self.on_hotkey_compose)
                 xhk.start()
                 self.xhk = xhk;
-        except:
+        except ImportError:
+            print "python-xlib was not installed, global hotkey disabled."
             pass
 
     def release_hotkey(self):
