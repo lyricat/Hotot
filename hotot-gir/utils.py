@@ -4,7 +4,6 @@
 import subprocess
 import os
 import sys
-from webbrowser import _iscommand as is_command
 from gi.repository import Gtk, Gdk, GLib, WebKit, Soup;
 import mimetypes, mimetools
 import re
@@ -83,7 +82,6 @@ def open_file_chooser_dialog():
     if resp == Gtk.ResponseType.OK:
         sel_file =  fc_dlg.get_filename()
     fc_dlg.destroy()
-    Gdk.threads_leave()
     return sel_file
 
 def encode_multipart_formdata(fields, files):
