@@ -23,7 +23,7 @@ MACRO(PYTHON_INSTALL SOURCE_FILE DESINATION_DIR)
   # Install the source file.
   INSTALL(FILES ${SOURCE_FILE} DESTINATION ${DESINATION_DIR})
 
-  # Byte compile and install the .pyc file.        
+  # Byte compile and install the .pyc file.
   GET_FILENAME_COMPONENT(_absfilename ${SOURCE_FILE} ABSOLUTE)
   GET_FILENAME_COMPONENT(_filename ${SOURCE_FILE} NAME)
   GET_FILENAME_COMPONENT(_filenamebase ${SOURCE_FILE} NAME_WE)
@@ -38,20 +38,20 @@ MACRO(PYTHON_INSTALL SOURCE_FILE DESINATION_DIR)
 
   FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_basepath})
 
-  SET(_message "-DMESSAGE=Byte-compiling ${_bin_py}")
+  SET(message "Byte-compiling ${_bin_py}")
 
   GET_FILENAME_COMPONENT(_abs_bin_py ${_bin_py} ABSOLUTE)
   IF(_abs_bin_py STREQUAL ${_absfilename})    # Don't copy the file onto itself.
     ADD_CUSTOM_COMMAND(
       TARGET compile_python_files
-      COMMAND ${CMAKE_COMMAND} -E echo ${message}
+      COMMAND ${CMAKE_COMMAND} -E echo ${_message}
       COMMAND ${PYTHON_EXECUTABLE} ${_python_compile_py} ${_bin_py}
       DEPENDS ${_absfilename}
     )
   ELSE(_abs_bin_py STREQUAL ${_absfilename})
     ADD_CUSTOM_COMMAND(
       TARGET compile_python_files
-      COMMAND ${CMAKE_COMMAND} -E echo ${message} 
+      COMMAND ${CMAKE_COMMAND} -E echo ${_message}
       COMMAND ${CMAKE_COMMAND} -E copy ${_absfilename} ${_bin_py}
       COMMAND ${PYTHON_EXECUTABLE} ${_python_compile_py} ${_bin_py}
       DEPENDS ${_absfilename}
