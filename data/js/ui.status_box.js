@@ -42,10 +42,28 @@ function init () {
     $('#btn_update').click(function(event){
         ui.StatusBox.formalize();
         var status_text = $.trim($('#tbox_status').attr('value'));
-        if (ui.StatusBox.get_status_len(status_text) > 140) {
+        if (ui.StatusBox.get_status_len(status_text) > 140 && ui.StatusBox.current_mode === ui.StatusBox.MODE_DM) {
             toast.set(
                 _('status_is_over_140_characters')).show();
-            return;
+            return; 
+        }
+
+        if (ui.StatusBox.get_status_len(status_text) > 140) {
+            toast.set('hotot I have super power to compress ...').show();
+            globals.network.do_request('POST', 
+                'http://hotot.in/create.json', 
+                {'text': status_text},
+                {},
+                null,
+                function (result) {
+                    if (result && result.text) {
+                        ui.StatusBox.update_status(result.text);
+                    } 
+                },
+                function () {
+                    toast.set('but I failed :( ...').show();
+                });
+            return ;
         }
         if (status_text.length != 0) {
             if (ui.StatusBox.current_mode == ui.StatusBox.MODE_DM) {
