@@ -43,6 +43,7 @@ HototWebPage::HototWebPage(MainWindow *window, QObject* parent) :
     QWebPage(parent)
 {
     m_mainWindow = window;
+    networkAccessManager()->setProxy(QNetworkProxy::DefaultProxy);
 }
 
 bool HototWebPage::acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type)
@@ -90,8 +91,7 @@ bool HototWebPage::handleUri(const QString& originmsg)
                         proxy.setUser(httpProxyAuthName);
                         proxy.setPassword(httpProxyAuthPassword);
                     }
-
-                    networkAccessManager()->setProxy(proxy);
+                    QNetworkProxy::setApplicationProxy(proxy);
                 }
             } else if (method == "sign_in") {
                 m_mainWindow->setSignIn(true);

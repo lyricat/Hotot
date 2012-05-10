@@ -401,7 +401,7 @@ void MainWindow::changeEvent(QEvent *event)
 void MainWindow::onLinkHovered(const QString & link, const QString & title, const QString & textContent )
 {
     if (!link.isEmpty() && !title.isEmpty()) {
-        QToolTip::showText(QCursor::pos(), title);
+        //QToolTip::showText(QCursor::pos(), title);
     }
 }
 
