@@ -44,6 +44,7 @@
 
 #ifdef HAVE_KDE
 #include <KWindowSystem>
+#include <KIO/AccessManager>
 #endif
 
 #ifdef MEEGO_EDITION_HARMATTAN
@@ -129,6 +130,9 @@ MainWindow::MainWindow(bool socks, QWidget *parent) :
 #endif
 
     m_page = new HototWebPage(this);
+#ifdef HAVE_KDE
+    m_page->setNetworkAccessManager(new KIO::Integration::AccessManager(m_page));
+#endif
 
 #ifdef Q_OS_UNIX
     QDir dir(QDir::homePath().append("/.config/hotot-qt"));
