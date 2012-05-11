@@ -52,7 +52,11 @@ function init () {
             toast.set('hotot I have super power to compress ...').show();
             globals.network.do_request('POST', 
                 'http://hotot.in/create.json', 
-                {'text': status_text},
+                { 
+                    'text': status_text,
+                    'name': globals.myself.screen_name,
+                    'avatar': globals.myself.profile_image_url
+                },
                 {},
                 null,
                 function (result) {
