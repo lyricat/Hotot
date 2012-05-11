@@ -1,0 +1,1094 @@
+{
+	"about": {
+		"message": "關於",
+		"description": ""
+	},
+	"about_and_help": {
+		"message": "關於與說明",
+		"description": ""
+	},
+	"access_token_doesnt_exist": {
+		"message": "嗚嗚，Access Token 不存在",
+		"description": "data/index.html"
+	},
+	"action": {
+		"message": "動作",
+		"description": "data/index.html"
+	},
+	"add": {
+		"message": "增加",
+		"description": "data/index.html"
+	},
+	"add_new_views": {
+		"message": "增加新視圖",
+		"description": "data/index.html"
+	},
+	"add_to_list": {
+		"message": "增加到列表",
+		"description": "data/js/ui.template.js"
+	},
+	"advanced": {
+		"message": "進階",
+		"description": ""
+	},
+	"api_base": {
+		"message": "API Base",
+		"description": ""
+	},
+	"api_setting": {
+		"message": "API 設置",
+		"description": ""
+	},
+	"archive": {
+		"message": "歸檔",
+		"description": "data/index.html"
+	},
+	"assassin_s_tango": {
+		"message": "殼醬的詭計",
+		"description": "data/index.html"
+	},
+	"authentication_ok": {
+		"message": "驗證通過呦！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"author": {
+		"message": "作者",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"auto_update": {
+		"message": "自動更新",
+		"description": "data/index.html"
+	},
+	"automatically_sign_in_after_opening": {
+		"message": "打開以後自動登陸",
+		"description": "data/index.html"
+	},
+	"balance_between_attractiveness_and_preformance": {
+		"message": "在性能和養眼度之間保持平衡。",
+		"description": "data/index.html"
+	},
+	"behavior": {
+		"message": "行為",
+		"description": ""
+	},
+	"bio": {
+		"message": "自述",
+		"description": ""
+	},
+	"block": {
+		"message": "阻擋",
+		"description": "data/js/ui.template.js"
+	},
+	"bloody_marguerite": {
+		"message": "血腥的蘇醬",
+		"description": "data/index.html"
+	},
+	"cancel": {
+		"message": "取消",
+		"description": ""
+	},
+	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+		"message": "不能驗證殿下的身份噢。請檢查您的帳戶名/密碼和 API 網址。",
+		"description": "data/js/ui.welcome.js"
+	},
+	"charactor_at_is_not_allow_in_profile_prefix": {
+		"message": "不允許在帳號前綴中使用`@`字符哦喵",
+		"description": "data/js/ui.welcome.js"
+	},
+	"chrome_context_menu_integration": {
+		"message": "整合到Chrome右鍵菜單",
+		"description": "data/index.html"
+	},
+	"clean_token": {
+		"message": "清空 Token",
+		"description": "data/index.html"
+	},
+	"clear": {
+		"message": "清除",
+		"description": ""
+	},
+	"clear_and_close": {
+		"message": "清空並且關閉",
+		"description": "data/index.html"
+	},
+	"click_me_to_continue": {
+		"message": "點我繼續呦",
+		"description": ""
+	},
+	"click_the_button_below": {
+		"message": "點選下面的按鈕呦",
+		"description": ""
+	},
+	"click_to_compose_message": {
+		"message": "點選切換DM模式",
+		"description": "data/index.html"
+	},
+	"click_to_show": {
+		"message": "點選查看",
+		"description": "data/js/ui.template.js"
+	},
+	"click_to_show_retweeters": {
+		"message": "點我查看轉發人呦",
+		"description": "data/js/ui.template.js"
+	},
+	"close": {
+		"message": "關閉",
+		"description": ""
+	},
+	"close_current_column": {
+		"message": "關閉目前列",
+		"description": "data/index.html"
+	},
+	"compose": {
+		"message": "發推",
+		"description": "data/index.html"
+	},
+	"copy_the_pin_code_and_paste_it_into_the_box_below": {
+		"message": "複製 PIN Code 並且貼入下面的文字框",
+		"description": ""
+	},
+	"copy_to_clipboard": {
+		"message": "複製到剪貼簿",
+		"description": "date/index.html"
+	},
+	"create_a_list": {
+		"message": "新建一個新列表",
+		"description": "data/js/ui.template.js"
+	},
+	"credits": {
+		"message": "鳴謝",
+		"description": ""
+	},
+	"cuddly": {
+		"message": "可樂小V",
+		"description": "data/index.html"
+	},
+	"custom_font": {
+		"message": "自定字型",
+		"description": "data/index.html"
+	},
+	"default_picture_service": {
+		"message": "預設貼圖服務",
+		"description": "data/index.html"
+	},
+	"delete": {
+		"message": "刪除",
+		"description": ""
+	},
+	"delete_this_tweet": {
+		"message": "刪除",
+		"description": "data/js/ui.template.js"
+	},
+	"destroy_successfully": {
+		"message": "刪除成功呦！",
+		"description": "data/js/ui.main.js"
+	},
+	"disable_decoration_of_widgets_and_some_animations": {
+		"message": "停用控件集裝飾和部分動畫。",
+		"description": "data/index.html"
+	},
+	"donate": {
+		"message": "捐贈",
+		"description": "data/index.html"
+	},
+	"dots": {
+		"message": "...",
+		"description": "data/js/ui.main.js"
+	},
+	"drafts": {
+		"message": "草稿",
+		"description": "data/js/ui.status_box.js"
+	},
+	"drag_a_photo_here": {
+		"message": "丟一張相片給我，小魚也可以喵",
+		"description": "data/index.html"
+	},
+	"drop": {
+		"message": "丟棄",
+		"description": "data/index.html"
+	},
+	"edit": {
+		"message": "編輯",
+		"description": "data/js/ui.template.js"
+	},
+	"effects": {
+		"message": "效果",
+		"description": "data/index.html"
+	},
+	"effects_extra": {
+		"message": "高",
+		"description": "data/index.html"
+	},
+	"effects_low": {
+		"message": "低",
+		"description": "data/index.html"
+	},
+	"effects_normal": {
+		"message": "中",
+		"description": "data/index.html"
+	},
+	"enable": {
+		"message": "啟用",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_proxy": {
+		"message": "啟用代理伺服器",
+		"description": ""
+	},
+	"enable_verbose_mode": {
+		"message": "啟用囉嗦模式",
+		"description": ""
+	},
+	"errors": {
+		"message": "錯誤",
+		"description": "data/index.html"
+	},
+	"examples": {
+		"message": "範例",
+		"description": "data/index.html"
+	},
+	"exit_hotot_when_close_window": {
+		"message": "關閉視窗時退出 Hotot",
+		"description": "data/index.html"
+	},
+	"extensions": {
+		"message": "套件",
+		"description": ""
+	},
+	"fav_or_un_fav": {
+		"message": "最愛/取消最愛",
+		"description": "data/index.html"
+	},
+	"favorite_this_tweet_dots": {
+		"message": "埋起來等下吃喵...",
+		"description": "data/js/ui.main.js"
+	},
+	"favs": {
+		"message": "最愛",
+		"description": "data/js/ui.template.js"
+	},
+	"favs_view": {
+		"message": "我的最愛",
+		"description": "data/index.html"
+	},
+	"filter_tweets_like_it": {
+		"message": "過濾類似的推",
+		"description": "data/index.html"
+	},
+	"find": {
+		"message": "尋找",
+		"description": "data/index.html"
+	},
+	"fine": {
+		"message": "還能 hold 住哈",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"first_time_to_sign_in_with_twitter": {
+		"message": "首次使用，用Twitter登錄",
+		"description": "data/index.html"
+	},
+	"follow": {
+		"message": "關注",
+		"description": "data/js/ui.template.js"
+	},
+	"follow_at": {
+		"message": "關注@",
+		"description": "data/js/ui.main.js"
+	},
+	"follower_cnt": {
+		"message": "關注者",
+		"description": "data/js/ui.template.js"
+	},
+	"followers": {
+		"message": "關注者",
+		"description": "data/js/ui.template.js"
+	},
+	"font": {
+		"message": "字型",
+		"description": ""
+	},
+	"font_preview_hint": {
+		"message": "我能吞下玻璃而不傷身體噢。",
+		"description": ""
+	},
+	"font_size": {
+		"message": "字型大小",
+		"description": ""
+	},
+	"friend_cnt": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
+	"friends": {
+		"message": "朋友",
+		"description": "data/js/ui.template.js"
+	},
+	"global": {
+		"message": "全域",
+		"description": "data/index.html"
+	},
+	"globals_restart_hint": {
+		"message": "請在修改本頁選項後重啟Hotot來生效。對了，本頁選項會影響所有帳號噢。",
+		"description": ""
+	},
+	"greeting": {
+		"message": "殿下儂好！",
+		"description": ""
+	},
+	"help": {
+		"message": "說明",
+		"description": ""
+	},
+	"hey_it_is_you": {
+		"message": "殿下儂好！殿下再崴！",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"hidden_dark_minds": {
+		"message": "腹黑的老K",
+		"description": "data/index.html"
+	},
+	"home_timeline": {
+		"message": "時間軸",
+		"description": "data/js/ui.slider.js"
+	},
+	"home_view": {
+		"message": "主時間軸",
+		"description": "data/index.html"
+	},
+	"host": {
+		"message": "主機名稱",
+		"description": "data/index.html"
+	},
+	"hotot": {
+		"message": "Hotot",
+		"description": ""
+	},
+	"image_uploader": {
+		"message": "圖片上傳器",
+		"description": "data/index.html"
+	},
+	"info": {
+		"message": "資訊",
+		"description": "data/js/ui.template.js"
+	},
+	"insert_smiley": {
+		"message": "插入顏文字",
+		"description": "data/index.html"
+	},
+	"intelligent_filter": {
+		"message": "智慧過濾器",
+		"description": "data/index.html"
+	},
+	"interface_language": {
+		"message": "介面語言",
+		"description": "data/index.html"
+	},
+	"join": {
+		"message": "加入",
+		"description": "data/js/ui.template.js"
+	},
+	"just_cannot_stop_thinking_of_here": {
+		"message": "吾只是有點懷念這兒",
+		"description": "data/index.html"
+	},
+	"keyboard": {
+		"message": "鍵盤",
+		"description": ""
+	},
+	"keyboard_shortcuts": {
+		"message": "鍵盤快速鍵",
+		"description": ""
+	},
+	"kismet_firewall": {
+		"message": "Kismet 防火牆",
+		"description": "data/index.html"
+	},
+	"kismet_guide": {
+		"message": "Kismet 指南",
+		"description": "data/index.html"
+	},
+	"kismet_mute_hint": {
+		"message": "警告：凡是具備如下特徵的推文都將被拋棄，不給你呦。",
+		"description": "data/index.html"
+	},
+	"label_with_color": {
+		"message": "染色",
+		"description": "data/index.html"
+	},
+	"language": {
+		"message": "語言",
+		"description": "data/index.html"
+	},
+	"let_hotot_collects_anonymous_statistic_information": {
+		"message": "讓Hotot收集匿名統計資訊",
+		"description": "data/index.html"
+	},
+	"license": {
+		"message": "許可協議",
+		"description": ""
+	},
+	"list": {
+		"message": "列表",
+		"description": "data/index.html"
+	},
+	"listed_cnt": {
+		"message": "列表中",
+		"description": "data/js/ui.template.js"
+	},
+	"lists": {
+		"message": "列表",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_following_them": {
+		"message": "包含該帳戶的列表",
+		"description": "data/js/ui.template.js"
+	},
+	"lists_of_them": {
+		"message": "該帳戶的列表",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_dots": {
+		"message": "載入中…",
+		"description": "data/js/ui.template.js"
+	},
+	"loading_resources_hint": {
+		"message": "載入資源中...",
+		"description": ""
+	},
+	"location": {
+		"message": "位置",
+		"description": ""
+	},
+	"mark_deleted_tweets": {
+		"message": "標記被刪除的推文",
+		"description": "data/index.html"
+	},
+	"mask": {
+		"message": "過濾",
+		"description": "data/index.html"
+	},
+	"mention_them": {
+		"message": "提及",
+		"description": "data/js/ui.template.js"
+	},
+	"mentions": {
+		"message": "提到你的",
+		"description": "data/js/ui.slider.js"
+	},
+	"mentions_view": {
+		"message": "提到我的",
+		"description": "data/index.html"
+	},
+	"messages": {
+		"message": "訊息",
+		"description": "data/js/ui.slider.js"
+	},
+	"messages_view": {
+		"message": "訊息",
+		"description": "data/index.html"
+	},
+	"more_actions": {
+		"message": "更多動作",
+		"description": "data/js/ui.template.js"
+	},
+	"more_effects_like_shadows_and_glow_of_widgets": {
+		"message": "開啟更多特效，譬如陰影和發光。",
+		"description": "data/index.html"
+	},
+	"move_to_bottom": {
+		"message": "移到底部",
+		"description": "data/index.html"
+	},
+	"move_to_next_tweet": {
+		"message": "移動到下一條推文",
+		"description": "data/index.html"
+	},
+	"move_to_prev_tweet": {
+		"message": "移動到上一條推文",
+		"description": "data/index.html"
+	},
+	"move_to_top": {
+		"message": "移到頂部",
+		"description": "data/index.html"
+	},
+	"mute_filter": {
+		"message": "過濾器",
+		"description": "data/index.html"
+	},
+	"my_favs": {
+		"message": "我的最愛",
+		"description": "data/js/ui.slider.js"
+	},
+	"my_journey_is_to_the_sea_of_stars": {
+		"message": "吾之旅程在那星辰大海",
+		"description": "data/index.html"
+	},
+	"my_power": {
+		"message": "魔法值",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"name": {
+		"message": "名字",
+		"description": ""
+	},
+	"nearly_dead": {
+		"message": "抱不住樹了喵",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"network_error_please_try_later": {
+		"message": "網路故障，請稍候再試喵！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"new_profile_has_been_created": {
+		"message": "殿下，您的新帳號已經新建成功呦！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"next": {
+		"message": "下一步",
+		"description": "data/index.html"
+	},
+	"no_extension": {
+		"message": "沒有套件",
+		"description": "data/index.html"
+	},
+	"notify": {
+		"message": "通知",
+		"description": ""
+	},
+	"oauth_base": {
+		"message": "OAuth Base",
+		"description": ""
+	},
+	"official_retweet_this_tweet": {
+		"message": "轉發",
+		"description": "data/js/ui.template.js"
+	},
+	"ok": {
+		"message": "好呢",
+		"description": ""
+	},
+	"oops_a_network_error_occurs": {
+		"message": "矮油～ 發生了一個網路錯誤呦！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_api_error_occurs": {
+		"message": "矮油～ 發生了一個API錯誤",
+		"description": "data/js/ui.welcome.js"
+	},
+	"open_a_list_dots": {
+		"message": "打開一個列表",
+		"description": "data/index.html"
+	},
+	"open_a_profile_dots": {
+		"message": "打開一個帳戶頁",
+		"description": "data/index.html"
+	},
+	"open_first_link": {
+		"message": "打開第一個連結（如果存在的話）",
+		"description": "data/index.html"
+	},
+	"open_speaker_link": {
+		"message": "打開此人的連結",
+		"description": "data/index.html"
+	},
+	"options": {
+		"message": "選項",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"or_copy_the_address_and_open_it_in_your_browser": {
+		"message": "或者在瀏覽器中打開以下網址",
+		"description": ""
+	},
+	"panda_acts_cute": {
+		"message": "賣萌的熊貓",
+		"description": "data/index.html"
+	},
+	"password": {
+		"message": "密碼",
+		"description": "data/index.html"
+	},
+	"paste_from_clipboard": {
+		"message": "從剪貼簿貼上",
+		"description": "date/index.html"
+	},
+	"pin_code": {
+		"message": "PIN Code",
+		"description": ""
+	},
+	"please_enter_the_recipient": {
+		"message": "殿下，請指定收件人呦！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"please_entry_a_profile_prefix": {
+		"message": "請輸入一個帳號前綴",
+		"description": "data/js/ui.welcome.js"
+	},
+	"port": {
+		"message": "連接埠",
+		"description": "data/index.html"
+	},
+	"post_successfully": {
+		"message": "成功發送呦！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"posting_dots": {
+		"message": "發送呢……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"powerfull": {
+		"message": "地圖炮充能完畢",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"preferences": {
+		"message": "偏好設定設定設定",
+		"description": ""
+	},
+	"preload_latest_tweets_in_conversations_if_possible": {
+		"message": "如果可能的話，預載入對話的上一條推文",
+		"description": ""
+	},
+	"pretty_wife": {
+		"message": "俏人妻西喬",
+		"description": "data/index.html"
+	},
+	"preview": {
+		"message": "預覽",
+		"description": "data/index.html"
+	},
+	"preview_embedded_media": {
+		"message": "預覽嵌入的多媒體",
+		"description": "data/index.html"
+	},
+	"preview_here": {
+		"message": "預覽",
+		"description": "data/index.html"
+	},
+	"profile": {
+		"message": "個人檔案",
+		"description": "data/index.html"
+	},
+	"proxy_auth": {
+		"message": "代理伺服器認證",
+		"description": "data/index.html"
+	},
+	"quick_references": {
+		"message": "快速參考",
+		"description": "data/index.html"
+	},
+	"quit_hotot": {
+		"message": "退出Hotot",
+		"description": "data/index.html"
+	},
+	"quote": {
+		"message": "引用",
+		"description": ""
+	},
+	"relation": {
+		"message": "關係",
+		"description": "data/js/ui.template.js"
+	},
+	"reload": {
+		"message": "重新載入",
+		"description": "data/index.html"
+	},
+	"reply": {
+		"message": "回覆",
+		"description": ""
+	},
+	"reply_all": {
+		"message": "回覆所有",
+		"description": ""
+	},
+	"reply_this_tweet": {
+		"message": "回覆",
+		"description": "data/js/ui.template.js"
+	},
+	"reply_to": {
+		"message": "回應",
+		"description": "data/js/ui.template.js"
+	},
+	"report_spam": {
+		"message": "回報垃圾帳號",
+		"description": "data/js/ui.template.js"
+	},
+	"reset_time": {
+		"message": "技能冷卻時間還剩",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"restore_defaults": {
+		"message": "恢復預設值",
+		"description": ""
+	},
+	"retweet": {
+		"message": "轉發",
+		"description": ""
+	},
+	"retweet_or_un_retweet": {
+		"message": "轉發/取消轉發",
+		"description": "data/index.html"
+	},
+	"retweet_successfully": {
+		"message": "轉發成功呦！",
+		"description": "data/js/ui.main.js"
+	},
+	"retweeted_by": {
+		"message": "轉發人:",
+		"description": "data/js/ui.template.js"
+	},
+	"retweeting_dots": {
+		"message": "轉發中...",
+		"description": "data/js/ui.main.js"
+	},
+	"retweets": {
+		"message": "轉發與被轉發",
+		"description": "data/js/ui.slider.js"
+	},
+	"retweets_view": {
+		"message": "轉發",
+		"description": "data/index.html"
+	},
+	"rt_this_tweet": {
+		"message": "引用",
+		"description": "data/js/ui.template.js"
+	},
+	"rule": {
+		"message": "規則",
+		"description": "data/index.html"
+	},
+	"rule_based_filter": {
+		"message": "規則過濾器",
+		"description": "data/index.html"
+	},
+	"rule_editor": {
+		"message": "規則編輯器",
+		"description": "data/index.html"
+	},
+	"rule_name": {
+		"message": "規則名",
+		"description": "data/index.html"
+	},
+	"same_signing_api_base": {
+		"message": "使用相同 API 進行簽名",
+		"description": ""
+	},
+	"same_signing_oauth_base": {
+		"message": "使用同樣的 OAuth 網址進行簽名",
+		"description": ""
+	},
+	"save": {
+		"message": "保存",
+		"description": "data/index.html"
+	},
+	"save_as_draft": {
+		"message": "保存草稿",
+		"description": "data/index.html"
+	},
+	"schizophrenia": {
+		"message": "裂裂的芬芳",
+		"description": "data/index.html"
+	},
+	"search": {
+		"message": "搜尋",
+		"description": "data/js/ui.slider.js"
+	},
+	"search_api_base2": {
+		"message": "Search API Base",
+		"description": ""
+	},
+	"search_in_google": {
+		"message": "在Google中搜尋@",
+		"description": ""
+	},
+	"search_in_twitter": {
+		"message": "在Twitter中搜尋@",
+		"description": ""
+	},
+	"search_view": {
+		"message": "搜尋",
+		"description": "data/index.html"
+	},
+	"select_a_default_picture_service": {
+		"message": "選擇一個預設圖片服務",
+		"description": "data/index.html"
+	},
+	"select_a_language": {
+		"message": "選擇語言",
+		"description": "data/index.html"
+	},
+	"select_actions": {
+		"message": "選擇動作",
+		"description": "data/index.html"
+	},
+	"select_fields": {
+		"message": "選擇您感興趣的部位",
+		"description": "data/index.html"
+	},
+	"send_message": {
+		"message": "發送消息",
+		"description": ""
+	},
+	"send_message_to_them": {
+		"message": "發送訊息",
+		"description": "data/js/ui.template.js"
+	},
+	"shiny_old_times_before_marriage": {
+		"message": "婚前的舊時光",
+		"description": "data/index.html"
+	},
+	"shortcuts": {
+		"message": "快速鍵",
+		"description": "data/index.html"
+	},
+	"sign_in_dots": {
+		"message": "爬牆呢喵……",
+		"description": "data/js/ui.welcome.js"
+	},
+	"sign_out": {
+		"message": "登出",
+		"description": "data/index.html"
+	},
+	"signing_api_base": {
+		"message": "Signing API Base",
+		"description": "data/index.html"
+	},
+	"signing_oauth_base": {
+		"message": "Signing OAuth Base",
+		"description": "data/index.html"
+	},
+	"slide_to_next_page": {
+		"message": "切換到下一頁",
+		"description": "data/index.html"
+	},
+	"slide_to_prev_page": {
+		"message": "切換到前一頁",
+		"description": "data/index.html"
+	},
+	"some_error_occur": {
+		"message": "矮油～ 發生了點錯誤耶 >_<",
+		"description": "data/index.html"
+	},
+	"sound": {
+		"message": "提示音效",
+		"description": ""
+	},
+	"starts_minimized": {
+		"message": "啟動即最小化",
+		"description": "data/index.html"
+	},
+	"stat": {
+		"message": "統計",
+		"description": ""
+	},
+	"status_is_over_140_characters": {
+		"message": "超過140字了喵！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"step_one": {
+		"message": "第一步",
+		"description": ""
+	},
+	"step_two": {
+		"message": "第二步",
+		"description": ""
+	},
+	"struggling_adventurers": {
+		"message": "苦逼的Kee叔",
+		"description": "data/index.html"
+	},
+	"successfully": {
+		"message": "成功了呢！",
+		"description": "data/js/ui.main.js"
+	},
+	"summon_hotot": {
+		"message": "召喚Hotot 『譬如: C'",
+		"description": ""
+	},
+	"themes": {
+		"message": "主題",
+		"description": "data/index.html"
+	},
+	"this_profile_may_has_already_exists": {
+		"message": "這個帳號已經存在了呦！",
+		"description": "data/js/ui.welcome.js"
+	},
+	"titian_s_elegance": {
+		"message": "文藝的緹香",
+		"description": "data/index.html"
+	},
+	"to": {
+		"message": "To",
+		"description": "data/index.html"
+	},
+	"to_cold_beauty": {
+		"message": "冷豔的嘉敏",
+		"description": "data/index.html"
+	},
+	"toggle_conversation": {
+		"message": "開關對話",
+		"description": "data/index.html"
+	},
+	"tranquil": {
+		"message": "祝汝幸福",
+		"description": "data/index.html"
+	},
+	"transparent": {
+		"message": "透明",
+		"description": "data/index.html"
+	},
+	"trending_topics": {
+		"message": "趨勢",
+		"description": "data/js/ui.slider.js"
+	},
+	"trending_topics_view": {
+		"message": "趨勢",
+		"description": "data/index.html"
+	},
+	"tweet_cnt": {
+		"message": "推文",
+		"description": "data/js/ui.template.js"
+	},
+	"tweet_view": {
+		"message": "推文",
+		"description": "data/index.html"
+	},
+	"tweets": {
+		"message": "狀態",
+		"description": ""
+	},
+	"un_favorite_this_tweet_dots": {
+		"message": "取消最愛呢...",
+		"description": "data/js/ui.main.js"
+	},
+	"unblock": {
+		"message": "取消阻擋",
+		"description": "data/js/ui.template.js"
+	},
+	"undo_retweeting_dots": {
+		"message": "取消轉發呢...",
+		"description": "data/js/ui.main.js"
+	},
+	"undo_successfully": {
+		"message": "取消成功呦！",
+		"description": "data/js/ui.main.js"
+	},
+	"unfollow": {
+		"message": "取消關注",
+		"description": "data/js/ui.listview.js"
+	},
+	"unfollow_at": {
+		"message": "解除關注@",
+		"description": "data/js/ui.main.js"
+	},
+	"update": {
+		"message": "更新",
+		"description": ""
+	},
+	"update_successfully": {
+		"message": "更新成功呦！",
+		"description": "data/js/ui.status_box.js"
+	},
+	"updating_dots": {
+		"message": "更新中……",
+		"description": "data/js/ui.status_box.js"
+	},
+	"upload": {
+		"message": "上傳",
+		"description": "data/index.html"
+	},
+	"upload_api_base": {
+		"message": "Upload API Base",
+		"description": "data/index.html"
+	},
+	"upload_photo": {
+		"message": "上傳照片",
+		"description": "data/index.html"
+	},
+	"upload_to_dots": {
+		"message": "上傳到 ...",
+		"description": "data/index.html"
+	},
+	"url_shortener": {
+		"message": "URL縮短器",
+		"description": "data/index.html"
+	},
+	"use_custom_font": {
+		"message": "使用自定字型",
+		"description": "data/index.html"
+	},
+	"use_quote_as_default_retweet_action": {
+		"message": "使用『引用』作為預設轉發方式",
+		"description": "data/index.html"
+	},
+	"use_reply_all_as_default_reply_action": {
+		"message": "使用『回覆所有』作為預設回覆方式",
+		"description": "data/index.html"
+	},
+	"use_ubuntu_indicator": {
+		"message": "使用烏斑兔 Indicator",
+		"description": ""
+	},
+	"username": {
+		"message": "帳戶名",
+		"description": "data/index.html"
+	},
+	"verify": {
+		"message": "驗證",
+		"description": "data/index.html"
+	},
+	"version": {
+		"message": "版本",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"via": {
+		"message": "發自",
+		"description": "data/js/ui.template.js"
+	},
+	"view_more_conversation": {
+		"message": "查看對話",
+		"description": "data/js/ui.template.js"
+	},
+	"view_original": {
+		"message": "查看原圖",
+		"description": "data/index.html"
+	},
+	"virushou_s_integrity": {
+		"message": "火炬的正直",
+		"description": "data/index.html"
+	},
+	"wanna_have_relationship_with": {
+		"message": "鹹濕佬",
+		"description": "data/index.html"
+	},
+	"weakness": {
+		"message": "虛弱",
+		"description": "data/js/lib.twitterapi.js"
+	},
+	"web": {
+		"message": "網址",
+		"description": "data/js/ui.template.js"
+	},
+	"website": {
+		"message": "網址",
+		"description": "data/js/ui.exts_dlg.js"
+	},
+	"whisper": {
+		"message": "低語",
+		"description": "data/js/ui.welcome.js"
+	},
+	"you_are_followed_by_them": {
+		"message": "他／她／它默默地關注著你…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_following": {
+		"message": "你默默地，關注著他／她／它…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_friends": {
+		"message": "你們默默地關注著對方…",
+		"description": "data/js/ui.peopleview.js"
+	},
+	"you_are_not_following_each_other": {
+		"message": "你們宛如路人，擦身而過，不相往來。",
+		"description": "data/js/ui.peopleview.js"
+	}
+}
