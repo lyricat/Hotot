@@ -92,6 +92,11 @@ bool HototWebPage::handleUri(const QString& originmsg)
                         proxy.setPassword(httpProxyAuthPassword);
                     }
                     QNetworkProxy::setApplicationProxy(proxy);
+                    QNetworkAccessManager* nm = networkAccessManager();
+                    nm->setParent(NULL);
+                    nm->deleteLater();
+                    setNetworkAccessManager(new QNetworkAccessManager(this));
+                    networkAccessManager()->setProxy(QNetworkProxy::DefaultProxy);
                 }
             } else if (method == "sign_in") {
                 m_mainWindow->setSignIn(true);
