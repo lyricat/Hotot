@@ -1,0 +1,801 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Timothy Lee 2012
+# This file is distributed under the same license as the PACKAGE package.
+# Timothy Lee <marlboromoo@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotot 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-05 02:58+0800\n"
+"PO-Revision-Date: 2012-05-05 02:58+0800\n"
+"Last-Translator: Timothy Lee \n"
+"Language-Team: Chinese Traditional<>\n"
+"Language: Chinese/Traditional\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+msgid "%1 unread Messages"
+msgstr "%1 條未讀訊息"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:97
+msgid "&Compose"
+msgstr "發推 (&C)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:117
+msgid "&Developer Tool"
+msgstr "開發工具 (&D)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:112
+msgid "&Exit"
+msgstr "退出(&E)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:67
+msgid "&Minimize to Tray"
+msgstr "最小化時隱藏到系統列 (&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+#, fuzzy
+msgid "(c) 2009-2012 Shellex Wai\n"
+msgstr "(c) 2009-2012 Shellex Wai\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] "%1 條未讀訊息"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Artwork"
+msgstr "美工"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr "開發者"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr "美工/開發者"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Document"
+msgstr "文件編輯"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr "啟用開發工具"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr "Evan"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:70
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:49
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:53
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:63
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:77
+#: ../..//misc/hotot.desktop.in.h:1
+msgid "Hotot"
+msgstr "Hotot"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:37
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:45
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:38
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:46
+msgid "Hotot Notification"
+msgstr "Hotot 通知"
+
+#: ../..//misc/hotot-qt.desktop.in.h:1
+msgid "Hotot Qt"
+msgstr "Hotot (Qt)"
+
+#: ../..//misc/hotot.desktop.in.h:2
+msgid "Hotot Twitter Client"
+msgstr "Hotot Twitter 用戶端"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:180
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:323
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:175
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:320
+msgid "Hotot: Click to Active."
+msgstr "Hotot: 點選啟用"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr "花花"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr "Jimmy Xu"
+
+#: ../..//misc/hotot.desktop.in.h:3
+msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgstr "基於 Gtk2 Webkit 的輕巧 Twitter 用戶端"
+
+#: ../..//misc/hotot-qt.desktop.in.h:2
+msgid "Lightweight Twitter Client base on Qt and Webkit"
+msgstr "基於 Qt Webkit 的輕巧 Twitter 用戶端"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr "輕量靈活的微博客"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, c-format
+msgid "Loading Search result %s ..."
+msgstr "載入搜尋結果 %s ..."
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr "土豪蘇小姐"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr "殼醬"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:108
+msgid "Show &MainWindow"
+msgstr "顯示主視窗 (&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr "Tualatrix Chou"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr "使用 Socks 代理伺服器而不是 HTTP 代理伺服器"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr "Xu Zhen"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:97
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:125
+msgid "_Compose"
+msgstr "發推 (_C)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:133
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:120
+msgid "_File"
+msgstr "檔案(_F)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:152
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:142
+msgid "_Help"
+msgstr "說明(_H)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
+msgid "_Hide"
+msgstr "隱藏 (_H)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:101
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:132
+msgid "_Inspector"
+msgstr "檢查器 (_I)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
+msgid "_Resume/Hide"
+msgstr "復原/隱藏(_R)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:91
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:122
+msgid "_Show"
+msgstr "顯示 (_S)"
+
+#~ msgid " - did not match any result."
+#~ msgstr " - 沒有任何結果"
+
+#~ msgid " has protected his/her tweets."
+#~ msgstr " 為她/他的推文設定了隱私保護"
+
+#~ msgid "'Extensions ... '"
+#~ msgstr "'套件…'"
+
+#~ msgid "'Font Family'"
+#~ msgstr "'字型'"
+
+#~ msgid "'Font Size"
+#~ msgstr "'字型大小'"
+
+#~ msgid "'HTTP Proxy Host'"
+#~ msgstr "'HTTP 代理伺服器'"
+
+#~ msgid "'HTTP Proxy Port'"
+#~ msgstr "'HTTP 代理伺服器連接埠'"
+
+#~ msgid "'Hover to open tweet box'"
+#~ msgstr "'游標停留開啟訊息框'"
+
+#~ msgid "'More ...'"
+#~ msgstr "'更多…'"
+
+#~ msgid "'Notify when home page has new tweets'"
+#~ msgstr "'首頁有新推文時顯示通知'"
+
+#~ msgid "'Notify when some new direct messages coming.'"
+#~ msgstr "'有新訊息時顯示通知'"
+
+#~ msgid "'Notify when some new tweets mention me.'"
+#~ msgstr "'有新回覆時顯示通知'"
+
+#~ msgid "'Play sound when home page has new tweets'"
+#~ msgstr "首頁有新推文時播放音效"
+
+#~ msgid "'Play swhen some new tweets mention me.'"
+#~ msgstr "'有新回覆時播放音效'"
+
+#~ msgid "'Play when some new direct messages coming.'"
+#~ msgstr "'有新訊息時播放音效'"
+
+#~ msgid "'Preload latest tweet in a conversation if it is cached.'"
+#~ msgstr "'如果已有暫存，在對話中預先載入最新的訊息'"
+
+#~ msgid "'Reload timeline.'"
+#~ msgstr "'重新載入時間軸'"
+
+#~ msgid "'Sign in with Twitter'"
+#~ msgstr "'從 Twitter 官網登錄'"
+
+#~ msgid "'Socks Proxy Port'"
+#~ msgstr "'Socks 代理伺服器連接埠'"
+
+#~ msgid "'Summon Hot Key'"
+#~ msgstr "'召喚快速鍵'"
+
+#~ msgid "'Use HTTP Proxy'"
+#~ msgstr "'使用 HTTP 代理伺服器'"
+
+#~ msgid "'Use Native Input'"
+#~ msgstr "'使用原生輸入對話框'"
+
+#~ msgid "'Use Native Notify'"
+#~ msgstr "'使用原生通知機制'"
+
+#~ msgid "'Use Socks Proxy'"
+#~ msgstr "'使用 Socks 代理伺服器'"
+
+#~ msgid "'Use Ubuntu Indicator'"
+#~ msgstr "'使用 Ubuntu 指示器'"
+
+#~ msgid "'Use same Signing Api'"
+#~ msgstr "'使用相同的 Signing Api'"
+
+#~ msgid "'Use same Signing OAuth Base'"
+#~ msgstr "'使用相同的 Signing OAuth Base'"
+
+#~ msgid "'What is happening?'"
+#~ msgstr "'發生什麼事情了嗎？'"
+
+#~ msgid "- Display and Behavior -"
+#~ msgstr "- 行為 與 樣式 -"
+
+#~ msgid "- Font Settings -"
+#~ msgstr "- 字體設定 -"
+
+#~ msgid "- Make sure all words are spelled correctly."
+#~ msgstr "- 您是否有拼錯單字。"
+
+#~ msgid "- Notification -"
+#~ msgstr "- 通知及提示 -"
+
+#~ msgid "- Proxy Settings -"
+#~ msgstr "- 代理伺服器設定 -"
+
+#~ msgid "- Try different keywords."
+#~ msgstr "- 試試另一個關鍵字。"
+
+#~ msgid "- Try more general keywords."
+#~ msgstr "- 試試更一般的關鍵字。"
+
+#, fuzzy
+#~ msgid "API Setting"
+#~ msgstr "- API 設定 -"
+
+#~ msgid "About"
+#~ msgstr "關於"
+
+#, fuzzy
+#~ msgid "About & Help"
+#~ msgstr "關於 與 說明"
+
+#~ msgid "Account"
+#~ msgstr "帳號"
+
+#~ msgid "Action"
+#~ msgstr "動作"
+
+#~ msgid "Action Mode"
+#~ msgstr "操作模式"
+
+#~ msgid "Appearance"
+#~ msgstr "外觀"
+
+#~ msgid "Apply keywords"
+#~ msgstr "套用關鍵字"
+
+#, fuzzy
+#~ msgid "Authentication"
+#~ msgstr "認證"
+
+#, fuzzy
+#~ msgid "Auto Update"
+#~ msgstr "自動更新"
+
+#~ msgid "Bio"
+#~ msgstr "簡介"
+
+#~ msgid "Block"
+#~ msgstr "阻擋"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "Change avator"
+#~ msgstr "更換照片"
+
+#~ msgid "Clear"
+#~ msgstr "清除"
+
+#, fuzzy
+#~ msgid "Click Me to Continue"
+#~ msgstr "點我繼續"
+
+#, fuzzy
+#~ msgid "Click to compose message"
+#~ msgstr "'點選撰寫新訊息…'"
+
+#, fuzzy
+#~ msgid "Click to show"
+#~ msgstr "點我繼續"
+
+#~ msgid "Close"
+#~ msgstr "關閉"
+
+#~ msgid "Console"
+#~ msgstr "主控台"
+
+#~ msgid "Consumer Key"
+#~ msgstr "Consumer Key"
+
+#~ msgid "Consumer Secret"
+#~ msgstr "Consumer Secret"
+
+#, fuzzy
+#~ msgid "Create A List"
+#~ msgstr "清單"
+
+#, fuzzy
+#~ msgid "Create Profile"
+#~ msgstr "個人檔案"
+
+#~ msgid "Credits"
+#~ msgstr "工作人員"
+
+#~ msgid "DM"
+#~ msgstr "訊息"
+
+#~ msgid "Enter action mode"
+#~ msgstr "進入 操作模式"
+
+#~ msgid "Enter compose mode"
+#~ msgstr "進入 撰寫模式"
+
+#~ msgid "Enter filter mode"
+#~ msgstr "進入 過濾模式"
+
+#~ msgid "Exit action mode"
+#~ msgstr "退出 操作模式"
+
+#~ msgid "Exit compose mode"
+#~ msgstr "退出 撰寫模式"
+
+#~ msgid "Exit filter mode"
+#~ msgstr "退出 過濾模式"
+
+#~ msgid "Extensions"
+#~ msgstr "套件"
+
+#, fuzzy
+#~ msgid "Favorites View"
+#~ msgstr "我的最愛："
+
+#, fuzzy
+#~ msgid "Filter Like It"
+#~ msgstr "過濾模式"
+
+#~ msgid "First time to Sign in with Twitter"
+#~ msgstr "首次登入 Twitter"
+
+#~ msgid "Follow"
+#~ msgstr "關注"
+
+#, fuzzy
+#~ msgid "Follower"
+#~ msgstr "關注者"
+
+#, fuzzy
+#~ msgid "Followers"
+#~ msgstr "被關注："
+
+#, fuzzy
+#~ msgid "Font"
+#~ msgstr "字型"
+
+#~ msgid "Font Family"
+#~ msgstr "字型"
+
+#~ msgid "Font Size"
+#~ msgstr "字型大小"
+
+#, fuzzy
+#~ msgid "Friend"
+#~ msgstr "關注了："
+
+#, fuzzy
+#~ msgid "Friends"
+#~ msgstr "關注了："
+
+#~ msgid "GO"
+#~ msgstr "開始"
+
+#, fuzzy
+#~ msgid "Gain access token"
+#~ msgstr "Regain Access Token"
+
+#~ msgid "Global"
+#~ msgstr "全域"
+
+#, fuzzy
+#~ msgid "Globals"
+#~ msgstr "全域"
+
+#, fuzzy
+#~ msgid "Greetings!"
+#~ msgstr "您好！"
+
+#, fuzzy
+#~ msgid "HTTP Proxy"
+#~ msgstr "使用 HTTP 代理伺服器"
+
+#~ msgid "Help"
+#~ msgstr "說明"
+
+#~ msgid "Help & About"
+#~ msgstr "說明和關於"
+
+#~ msgid "Home"
+#~ msgstr "首頁"
+
+#~ msgid "Home | Hotot"
+#~ msgstr "首頁 | Hotot"
+
+#~ msgid "Hover to open tweet box"
+#~ msgstr "游標停留打開訊息框"
+
+#~ msgid "Inbox"
+#~ msgstr "收件匣"
+
+#~ msgid "Join"
+#~ msgstr "加入"
+
+#~ msgid "Join: "
+#~ msgstr "加入："
+
+#, fuzzy
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "快捷鍵"
+
+#~ msgid "Keyborad"
+#~ msgstr "鍵盤"
+
+#~ msgid "License"
+#~ msgstr "許可協議"
+
+#~ msgid "Load more"
+#~ msgstr "顯示更多"
+
+#~ msgid "Location"
+#~ msgstr "位置"
+
+#~ msgid "Location: "
+#~ msgstr "位置："
+
+#~ msgid "Login to Hotot"
+#~ msgstr "用 Hotot 登錄"
+
+#~ msgid "Look up: "
+#~ msgstr "查看："
+
+#, fuzzy
+#~ msgid "Mention"
+#~ msgstr "展開"
+
+#, fuzzy
+#~ msgid "Mentions"
+#~ msgstr "展開"
+
+#~ msgid "Move to bottom"
+#~ msgstr "移至底部"
+
+#~ msgid "Move to next tweet"
+#~ msgstr "移至下一推文"
+
+#~ msgid "Move to prev tweet"
+#~ msgstr "移至前一推文"
+
+#~ msgid "Move to top"
+#~ msgstr "移至頂部"
+
+#, fuzzy
+#~ msgid "My Favorites"
+#~ msgstr "收藏："
+
+#~ msgid "My Tweets, Retweeted"
+#~ msgstr "我被轉推的推文"
+
+#~ msgid "Name"
+#~ msgstr "名字"
+
+#~ msgid "Name: "
+#~ msgstr "名字："
+
+#~ msgid "Networks"
+#~ msgstr "網絡"
+
+#, fuzzy
+#~ msgid "No Extension"
+#~ msgstr "沒有套件圖示"
+
+#~ msgid "OK"
+#~ msgstr "確定"
+
+#, fuzzy
+#~ msgid "Options"
+#~ msgstr "選項"
+
+#~ msgid "Outbox"
+#~ msgstr "寄件匣"
+
+#, fuzzy
+#~ msgid "Password"
+#~ msgstr "密碼："
+
+#~ msgid "Port"
+#~ msgstr "連接埠"
+
+#~ msgid "Preferences"
+#~ msgstr "選項"
+
+#, fuzzy
+#~ msgid "Preload latest tweets in conversations if possible."
+#~ msgstr "如果可能在對話中預先載入最新的訊息"
+
+#, fuzzy
+#~ msgid "Press Ctrl + Enter to Update"
+#~ msgstr "按 Ctrl + Enter 發佈"
+
+#~ msgid "Preview"
+#~ msgstr "預覽"
+
+#~ msgid "Profile"
+#~ msgstr "個人檔案"
+
+#, fuzzy
+#~ msgid "Profile Name"
+#~ msgstr "個人檔案"
+
+#, fuzzy
+#~ msgid "Quick References"
+#~ msgstr "選項"
+
+#~ msgid "Quit Hotot"
+#~ msgstr "退出 Hotot"
+
+#~ msgid "Regain Access Token"
+#~ msgstr "Regain Access Token"
+
+#, fuzzy
+#~ msgid "Regain Access Token with Twitter"
+#~ msgstr "Regain Access Token"
+
+#, fuzzy
+#~ msgid "Relation"
+#~ msgstr "前一動作"
+
+#~ msgid "Reload"
+#~ msgstr "重新載入"
+
+#~ msgid "Remember Password"
+#~ msgstr "記住密碼"
+
+#~ msgid "Restore Defaults"
+#~ msgstr "還原預設值"
+
+#, fuzzy
+#~ msgid "Retweet"
+#~ msgstr "我的轉推"
+
+#~ msgid "Retweeted By Others"
+#~ msgstr "朋友的轉推"
+
+#, fuzzy
+#~ msgid "Retweeted by"
+#~ msgstr "我的轉推"
+
+#, fuzzy
+#~ msgid "Retweets"
+#~ msgstr "推文"
+
+#, fuzzy
+#~ msgid "Retweets View"
+#~ msgstr "我的轉推"
+
+#, fuzzy
+#~ msgid "Rule Name"
+#~ msgstr "名字"
+
+#, fuzzy
+#~ msgid "Same Signing API Base"
+#~ msgstr "相同的 signing API base: "
+
+#, fuzzy
+#~ msgid "Same Signing OAuth Base"
+#~ msgstr "相同的 signing OAuth base: "
+
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "搜尋："
+
+#, fuzzy
+#~ msgid "Search @ in Google"
+#~ msgstr "在 Google 搜尋"
+
+#, fuzzy
+#~ msgid "Search @ in Twitter"
+#~ msgstr "在 Twitter 搜尋"
+
+#, fuzzy
+#~ msgid "Select actions"
+#~ msgstr "選擇動作"
+
+#~ msgid "Send Request"
+#~ msgstr "發送請求"
+
+#, fuzzy
+#~ msgid "Shortcuts"
+#~ msgstr "快捷鍵"
+
+#~ msgid "Sign In"
+#~ msgstr "登錄"
+
+#, fuzzy
+#~ msgid "Sign Out"
+#~ msgstr "登出"
+
+#~ msgid "Sign in with Twitter"
+#~ msgstr "從 Twitter 官網登錄"
+
+#~ msgid "Slide to next page"
+#~ msgstr "滑動到下一頁"
+
+#~ msgid "Slide to prev page"
+#~ msgstr "滑動到前一頁"
+
+#~ msgid "Suggestions:"
+#~ msgstr "建議"
+
+#, fuzzy
+#~ msgid "Summon Hotot (like: C)"
+#~ msgstr "召喚 Hotot (like: <ALT>C)"
+
+#, fuzzy
+#~ msgid "System Font"
+#~ msgstr "系統字型"
+
+#~ msgid "Toggle nav tabs"
+#~ msgstr "啟用導航分頁"
+
+#~ msgid "Toggle toolbar"
+#~ msgstr "啟用工具列"
+
+#~ msgid "Trigger action"
+#~ msgstr "觸發 動作"
+
+#, fuzzy
+#~ msgid "Tweet"
+#~ msgstr "推文"
+
+#, fuzzy
+#~ msgid "Tweet View"
+#~ msgstr "列表"
+
+#~ msgid "Tweets"
+#~ msgstr "推文"
+
+#~ msgid "Tweets per Day"
+#~ msgstr "每天發推"
+
+#~ msgid "Tweets per Day: "
+#~ msgstr "每天發推："
+
+#~ msgid "Tweets: "
+#~ msgstr "推文："
+
+#, fuzzy
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Unblock"
+#~ msgstr "取消阻擋"
+
+#~ msgid "Update"
+#~ msgstr "發佈"
+
+#, fuzzy
+#~ msgid "Upload"
+#~ msgstr "重新載入"
+
+#~ msgid "Use Native Input Dialog"
+#~ msgstr "使用原生輸入對話框"
+
+#~ msgid "Use Socks Proxy"
+#~ msgstr "使用 Socks 代理伺服器"
+
+#~ msgid "Use Ubuntu Indicator"
+#~ msgstr "使用 Ubuntu 指示器"
+
+#, fuzzy
+#~ msgid "Use native notify system"
+#~ msgstr "使用原生通知機制"
+
+#, fuzzy
+#~ msgid "Username"
+#~ msgstr "帳號："
+
+#, fuzzy
+#~ msgid "Web"
+#~ msgstr "網站："
+
+#~ msgid "Website"
+#~ msgstr "網站首頁"
+
+#~ msgid "What's happening?"
+#~ msgstr "發生什麼事情了嗎？"
+
+#~ msgid "Written by"
+#~ msgstr "開發者"
+
+#, fuzzy
+#~ msgid ""
+#~ "You MUST restart Hotot for some changes below to take effect. And these "
+#~ "changes will affect ALL accounts"
+#~ msgstr "* 更改以下設定後，必須重啟 Hotot 才能生效"
+
+#~ msgid ""
+#~ "You need to go to twitter.com to send a request before you can start "
+#~ "following this person..."
+#~ msgstr "發送好友驗證請求給她/他"
+
+#~ msgid "Your search - "
+#~ msgstr "您的搜尋 - "
+
+#~ msgid "abcdefghijk ABCDEFGHIJK"
+#~ msgstr "ABCD 測試字體"
+
+#~ msgid "or use Basic Auth"
+#~ msgstr "或使用 Twitter OAuth 驗證登錄"
+
+#~ msgid "px"
+#~ msgstr "像素"
