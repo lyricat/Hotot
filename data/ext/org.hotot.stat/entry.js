@@ -410,7 +410,7 @@ function enable() {
             , [{  id:'#ext_hototstat_close_btn', label: 'Close'
                 , click: ext.HototStat.on_btn_close_clicked
                }, {
-                  id: '#ext_hototstat_update_btn', label: 'Uplate'
+                  id: '#ext_hototstat_update_btn', label: 'Update'
                 , click: ext.HototStat.on_btn_update_clicked
               }]
         );
