@@ -60,7 +60,7 @@
 #include "kdetraybackend.h"
 #endif
 
-MainWindow::MainWindow(bool socks, QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     ParentWindow(parent),
     m_page(0),
     m_webView(new QWebView),
@@ -68,7 +68,6 @@ MainWindow::MainWindow(bool socks, QWidget *parent) :
     m_actionMinimizeToTray(new QAction(i18n("&Minimize to Tray"), this)),
 #endif
     m_inspector(0),
-    m_useSocks(socks),
     m_fontDB(),
     m_signIn(false)
 {
@@ -247,6 +246,7 @@ void MainWindow::loadFinished(bool ok)
         QString confString = QString(
             "hotot_qt_variables = {"
             "      'platform': 'Linux'"
+            "    , 'wrapper': 'qt'"
             "    , 'avatar_cache_dir': '%3'"
             "    , 'extra_fonts': %4"
             "    , 'extra_exts': %5"
@@ -466,11 +466,6 @@ QString MainWindow::toJSArray(const QStringList& list)
     }
 
     return QString("[%1]").arg(itemString);
-}
-
-bool MainWindow::useSocks()
-{
-    return m_useSocks;
 }
 
 void MainWindow::setSignIn(bool sign)

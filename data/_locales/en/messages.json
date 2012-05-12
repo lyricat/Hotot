@@ -231,8 +231,20 @@
 		"message": "Enable",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"enable_proxy": {
-		"message": "Enable Proxy",
+	"proxy_type": {
+		"message": "Proxy",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "No Proxy",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http Proxy",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "System Proxy",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {

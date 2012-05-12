@@ -26,7 +26,7 @@ function init () {
     $('#sel_prefs_theme').bind('change', function () {
         change_theme($(this).val(), $(this).children('option[value="'+$(this).val()+'"]').attr('path'));
     });
-    
+
     $('#sel_prefs_lang').bind('change', function () {
         i18n.change($(this).val());
     });
@@ -48,7 +48,7 @@ function init () {
         $('#tbox_prefs_custom_font, #sel_prefs_sys_font').attr('disabled', !$(this).prop('checked'));
     });
 
-    $('#range_prefs_font_size, #tbox_prefs_http_proxy_port').blur(
+    $('#range_prefs_font_size, #tbox_prefs_proxy_port').blur(
     function (event) {
         ui.FormChecker.test_int_value(this);
     });
@@ -67,20 +67,24 @@ function init () {
     function (event) {
         $('#tbox_prefs_sign_oauth_base').attr('disabled', $(this).prop('checked'));
     });
-    
-    $('#chk_prefs_use_http_proxy').click(
-    function (event) {
-        $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth').attr('disabled', !$(this).prop('checked'));
-        if (! $('#chk_prefs_use_http_proxy_auth').attr('disabled')) { 
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$('#chk_prefs_use_http_proxy_auth').prop('checked'));
+
+	if (/python-gtk/.test(conf.vars.wrapper)) {
+		$('#sel_prefs_proxy_type option[value="socks"]').remove();
+	}
+
+    $('#sel_prefs_proxy_type').change(
+	function (event) {
+        $('#tbox_prefs_proxy_host, #tbox_prefs_proxy_port, #chk_prefs_proxy_auth').attr('disabled', ! /http|socks/.test($(this).val()));
+        if (! $('#chk_prefs_proxy_auth').attr('disabled')) {
+            $('#tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', !$('#chk_prefs_proxy_auth').prop('checked'));
         } else {
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+            $('#tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', true);
         }
     });
 
-    $('#chk_prefs_use_http_proxy_auth').click(
+    $('#chk_prefs_proxy_auth').click(
     function (event) {
-        $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
+        $('#tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
     });
 
     $('#btn_prefs_ok').unbind().click(function (event) {
@@ -151,21 +155,19 @@ function load_settings() {
         , conf.settings.shortcut_summon_hotot);
     // proxy
     if (util.is_native_platform()) {
-        $('#chk_prefs_use_http_proxy')
-            .attr('checked', conf.settings.use_http_proxy)
-            .prop('checked', conf.settings.use_http_proxy);
-        $('#tbox_prefs_http_proxy_host').val(conf.settings.http_proxy_host);
-        $('#tbox_prefs_http_proxy_port').val(conf.settings.http_proxy_port);
-        if (! conf.settings.use_http_proxy) {
-            $('#tbox_prefs_http_proxy_host, #tbox_prefs_http_proxy_port, #chk_prefs_use_http_proxy_auth, #tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        $('#sel_prefs_proxy_type').val(conf.settings.proxy_type);
+        $('#tbox_prefs_proxy_host').val(conf.settings.proxy_host);
+        $('#tbox_prefs_proxy_port').val(conf.settings.proxy_port);
+        if (! /http|socks/.test(conf.settings.proxy_type)) {
+            $('#tbox_prefs_proxy_host, #tbox_prefs_proxy_port, #chk_prefs_proxy_auth, #tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', true);
         }
-        $('#chk_prefs_use_http_proxy_auth')
-            .attr('checked', conf.settings.use_http_proxy_auth)
-            .prop('checked', conf.settings.use_http_proxy_auth);
-        $('#tbox_prefs_http_proxy_auth_name').val(conf.settings.http_proxy_auth_name);
-        $('#tbox_prefs_http_proxy_auth_password').val(conf.settings.http_proxy_auth_password);
-        if (! conf.settings.use_http_proxy_auth) {
-            $('#tbox_prefs_http_proxy_auth_name, #tbox_prefs_http_proxy_auth_password').attr('disabled', true);
+        $('#chk_prefs_proxy_auth')
+            .attr('checked', conf.settings.proxy_auth)
+            .prop('checked', conf.settings.proxy_auth);
+        $('#tbox_prefs_proxy_auth_name').val(conf.settings.proxy_auth_name);
+        $('#tbox_prefs_proxy_auth_password').val(conf.settings.proxy_auth_password);
+        if (! conf.settings.proxy_auth) {
+            $('#tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', true);
         }
     }
 },
@@ -173,39 +175,39 @@ function load_settings() {
 save_settings:
 function save_settings() {
     // Globals
-    conf.settings.use_verbose_mode 
+    conf.settings.use_verbose_mode
         = $('#chk_prefs_use_verbose_mode').prop('checked');
-    conf.settings.close_to_exit 
+    conf.settings.close_to_exit
         = $('#chk_prefs_close_to_exit').prop('checked');
-    conf.settings.sign_in_automatically 
+    conf.settings.sign_in_automatically
         = $('#chk_prefs_sign_in_automatically').prop('checked');
-    conf.settings.starts_minimized 
+    conf.settings.starts_minimized
         = $('#chk_prefs_starts_minimized').prop('checked');
-    conf.settings.use_anonymous_stat 
+    conf.settings.use_anonymous_stat
         = $('#chk_prefs_use_anonymous_stat').prop('checked');
-    conf.settings.shortcut_summon_hotot 
+    conf.settings.shortcut_summon_hotot
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // chrome only
     if (conf.vars.platform === 'Chrome') {
         conf.settings.context_menu_integration
-            = $('#chk_prefs_context_menu_integration').prop('checked'); 
+            = $('#chk_prefs_context_menu_integration').prop('checked');
     }
     // proxy
     if (util.is_native_platform()) {
-        conf.settings.use_http_proxy
-            = $('#chk_prefs_use_http_proxy').prop('checked');
-        conf.settings.http_proxy_host 
-            = $('#tbox_prefs_http_proxy_host').val();
-        conf.settings.http_proxy_port 
-            = parseInt($('#tbox_prefs_http_proxy_port').val());
-        conf.settings.use_http_proxy_auth
-            = $('#chk_prefs_use_http_proxy_auth').prop('checked');
-        conf.settings.http_proxy_auth_name
-            = $('#tbox_prefs_http_proxy_auth_name').val();
-        conf.settings.http_proxy_auth_password
-            = $('#tbox_prefs_http_proxy_auth_password').val();
-        if (isNaN(conf.settings.http_proxy_port)) {
-            conf.settings.http_proxy_port = 0;
+        conf.settings.proxy_type
+            = $('#sel_prefs_proxy_type').val();
+        conf.settings.proxy_host
+            = $('#tbox_prefs_proxy_host').val();
+        conf.settings.proxy_port
+            = parseInt($('#tbox_prefs_proxy_port').val());
+        conf.settings.proxy_auth
+            = $('#chk_prefs_proxy_auth').prop('checked');
+        conf.settings.proxy_auth_name
+            = $('#tbox_prefs_proxy_auth_name').val();
+        conf.settings.proxy_auth_password
+            = $('#tbox_prefs_proxy_auth_password').val();
+        if (isNaN(conf.settings.proxy_port)) {
+            conf.settings.proxy_port = 0;
         }
     }
     // save
@@ -230,7 +232,7 @@ function load_prefs() {
     }
     theme_list.val(prefs.theme);
     theme_list = null;
-    
+
     var ff_list = $('#sel_prefs_sys_font').empty();
     for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
         var ff_name = conf.settings.font_list[i];
@@ -239,9 +241,9 @@ function load_prefs() {
     $('<option/>').attr('value', 'more').text('...').appendTo(ff_list);
     ff_list.val('more');
     ff_list = null;
-    
-    $('#tbox_prefs_custom_font').val(prefs.custom_font);    
-    $('#range_prefs_font_size').val(prefs.font_size);    
+
+    $('#tbox_prefs_custom_font').val(prefs.custom_font);
+    $('#range_prefs_font_size').val(prefs.font_size);
     $('#range_prefs_font_size_st').text(prefs.font_size + 'px');
     if (prefs.use_custom_font) {
         $('#chk_use_custom_font')
@@ -306,30 +308,30 @@ function save_prefs() {
     prefs['use_custom_font'] = $('#chk_use_custom_font').prop('checked');
     // behaviors
     prefs['use_preload_conversation']
-        = $('#chk_prefs_use_preload_conversation').prop('checked'); 
+        = $('#chk_prefs_use_preload_conversation').prop('checked');
     prefs['use_alt_retweet']
-        = $('#chk_prefs_use_alt_retweet').prop('checked'); 
+        = $('#chk_prefs_use_alt_retweet').prop('checked');
     prefs['use_alt_reply']
-        = $('#chk_prefs_use_alt_reply').prop('checked'); 
+        = $('#chk_prefs_use_alt_reply').prop('checked');
 
     prefs['use_media_preview']
-        = $('#chk_prefs_use_media_preview').prop('checked'); 
+        = $('#chk_prefs_use_media_preview').prop('checked');
     prefs['use_deleted_mark']
-        = $('#chk_prefs_use_deleted_mark').prop('checked'); 
+        = $('#chk_prefs_use_deleted_mark').prop('checked');
     prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
 
     // Advanced
     prefs['api_base']
         = $('#tbox_prefs_api_base').attr('value');
-    prefs['sign_api_base'] 
+    prefs['sign_api_base']
         = $('#tbox_prefs_sign_api_base').attr('value');
-    prefs['search_api_base2'] 
+    prefs['search_api_base2']
         = $('#tbox_prefs_search_api_base2').attr('value');
     prefs['upload_api_base']
         = $('#tbox_prefs_upload_api_base').attr('value');
-    prefs['oauth_base'] 
-        = $('#tbox_prefs_oauth_base').attr('value');    
-    prefs['sign_oauth_base'] 
+    prefs['oauth_base']
+        = $('#tbox_prefs_oauth_base').attr('value');
+    prefs['sign_oauth_base']
         = $('#tbox_prefs_sign_oauth_base').attr('value');
     prefs['use_same_sign_api_base']
         = $('#chk_prefs_use_same_sign_api_base').prop('checked');
@@ -342,7 +344,7 @@ function save_prefs() {
 
 restore_defaults:
 function restore_defaults() {
-    conf.get_current_profile().preferences 
+    conf.get_current_profile().preferences
         = conf.get_default_prefs(conf.get_current_profile().protocol);
     conf.settings = conf.default_settings;
     ui.PrefsDlg.load_settings(conf.settings);
@@ -354,7 +356,7 @@ function update_font_preview() {
     $('#prefs_font_preview')
         .css('font-family'
             , $('#chk_use_custom_font').prop('checked')
-                ? $('#tbox_prefs_custom_font').val() 
+                ? $('#tbox_prefs_custom_font').val()
                     : conf.get_default_font_settings())
         .css('font-size'
             , $('#range_prefs_font_size').val() + 'px');

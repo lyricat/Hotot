@@ -221,9 +221,9 @@
                 <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
             </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
-							<a id="indicator_compose_btn" 
-								class="indicator_btn action_button" 
-								href="#compose" 
+							<a id="indicator_compose_btn"
+								class="indicator_btn action_button"
+								href="#compose"
 								data-i18n-title="compose" title="Compose">
 								<span class="icon ic_compose"></span>
 								<span data-i18n-text="compose" style="float:left; margin-left: 10px;">Compose</span>
@@ -469,7 +469,7 @@
 <!-- preferences dialog -->
 <div id="prefs_dlg" class="dialog">
     <div class="dialog_bar">
-				<a id="btn_prefs_back" href="#prefs_main" style="display: none" class="mochi_button blue page_nav">Back</a>	
+				<a id="btn_prefs_back" href="#prefs_main" style="display: none" class="mochi_button blue page_nav">Back</a>
         <h2 class="dialog_title" data-i18n-text="preferences">Preferences</h2>
         <a id="btn_prefs_ok" class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
     </div>
@@ -479,8 +479,8 @@
         <div id='prefs_main' class="prefs_dlg_page dialog_page">
 					<ul class="mochi_list">
 						<li class="mochi_list_item">
-							<select id="sel_prefs_lang" 
-								class="mochi_combo widget" 
+							<select id="sel_prefs_lang"
+								class="mochi_combo widget"
 								title="Select a language"
 								data-i18n-title="select_a_language">
 								<option value="auto" data-i18n-title="language">Language</option>
@@ -528,7 +528,7 @@
 									<option value="more">...</option>
 							</select>
 							<input id="tbox_prefs_custom_font"
-									title="Custom Font" 
+									title="Custom Font"
 									style="width:120px;float:right"
 									type="text" class="mochi_entry"/>
 							<label class="label" for="sel_prefs_sys_font"
@@ -553,22 +553,22 @@
 						<li class="mochi_list_item with_trigger">
 						<a href="#prefs_behavior" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label" data-i18n-text="behavior">Behavior Settings</label> 
+							<label for="" class="label" data-i18n-text="behavior">Behavior Settings</label>
 						</a>
 						</li><li class="mochi_list_item with_trigger">
 						<a href="#prefs_system" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label" data-i18n-text="global">Global Settings</label> 
+							<label for="" class="label" data-i18n-text="global">Global Settings</label>
 						</a>
 						</li><li class="mochi_list_item with_trigger">
 						<a href="#prefs_advanced" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label" data-i18n-text="advanced">Advanced Settings</label> 
+							<label for="" class="label" data-i18n-text="advanced">Advanced Settings</label>
 						</a>
 						</li><li class="mochi_list_item with_trigger">
 						<a href="#prefs_exts" class="trigger page_nav">
 							<span class="widget more"></span>
-							<label for="" class="label" data-i18n-text="extensions">Extensions</label> 
+							<label for="" class="label" data-i18n-text="extensions">Extensions</label>
 						</a>
 						</li>
 					</ul>
@@ -655,65 +655,70 @@
 					</ul>
 					<ul class="mochi_list proxy_list">
             <li class="mochi_list_item">
-							<input id="chk_prefs_use_http_proxy" type="checkbox"
-									title="Use HTTP Proxy" class="mochi_toggle widget"/>
-							<label id="label_prefs_use_http_proxy"
-									for="chk_prefs_use_http_proxy"
-									class="label" data-i18n-text="enable_proxy">
-									Enable Proxy
+							<select id="sel_prefs_proxy_type"
+									title="Proxy Setting" class="mochi_combo widget">
+								<option value="none" data-i18n-text="proxy_no_proxy">No Proxy</option>
+								<option value="system" data-i18n-text="proxy_system_proxy">System Proxy</option>
+								<option value="http" data-i18n-text="proxy_http_proxy">Http Proxy</option>
+								<option value="socks" data-i18n-text="proxy_socks_proxy">Socks Proxy</option>
+							</select>
+							<label id="label_prefs_use_proxy"
+									for="sel_prefs_use_proxy"
+									class="label" data-i18n-text="proxy">
+									Proxy
 							</label>
 						</li><li class="mochi_list_item">
-							<input id="tbox_prefs_http_proxy_host"
+							<input id="tbox_prefs_proxy_host"
 									title="HTTP Proxy Host"
 									placeholder="Proxy Host"
 									data-i18n-placeholder="proxy_host"
 									type="text" class="mochi_entry widget"/>
-							<label for="tbox_prefs_http_proxy_host"
+							<label for="tbox_prefs_proxy_host"
 									class="label" data-i18n-text="host">
-									Host	
+									Host
 							</label>
 						</li><li class="mochi_list_item">
-							<input id="tbox_prefs_http_proxy_port"
+							<input id="tbox_prefs_proxy_port"
 									title="HTTP Proxy Port"
 									placeholder="Proxy Port"
 									data-i18n-placeholder="proxy_port"
 									type="text" class="mochi_entry widget"/>
-							<label for="tbox_prefs_http_proxy_port"
+							<label for="tbox_prefs_proxy_port"
 									class="label" data-i18n-text="port">
-									Port	
+									Port
 							</label>
 						</li><li class="mochi_list_item">
-							<input id="chk_prefs_use_http_proxy_auth" type="checkbox"
+							<input id="chk_prefs_proxy_auth" type="checkbox"
 									title="Need Authentication" class="mochi_toggle widget"/>
-							<label id="label_prefs_http_proxy_auth"
-									for="chk_prefs_use_http_proxy_auth"
+							<label id="label_prefs_proxy_auth"
+									for="chk_prefs_proxy_auth"
 									class="label" data-i18n-text="proxy_auth">
 									Authentication
 							</label>
 						</li>
-					</ul>
-					<ul class="mochi_list proxy_auth_list">
-						<li class="mochi_list_item">
-							<input id="tbox_prefs_http_proxy_auth_name"
-									title="HTTP Proxy Authentication Name"
-									placeholder="Username"
-									data-i18n-placeholder="username"
-									type="text" class="mochi_entry widget"/>
-							<label for="tbox_prefs_http_proxy_auth_name"
-									class="label" data-i18n-text="username">
-									Username
-							</label>
-						</li><li class="mochi_list_item">
-							<input id="tbox_prefs_http_proxy_auth_password"
-									title="HTTP Proxy Authentication Password"
-									placeholder="Password"
-									data-i18n-placeholder="password"
-									type="password" class="mochi_entry widget"/>
-							<label for="tbox_prefs_http_proxy_auth_password"
-									class="label" data-i18n-text="password">
-									Password	
-							</label>
-						</li>
+						<ul class="proxy_auth_list">
+							<li class="mochi_list_item">
+								<input id="tbox_prefs_proxy_auth_name"
+										title="HTTP Proxy Authentication Name"
+										placeholder="Username"
+										data-i18n-placeholder="username"
+										type="text" class="mochi_entry widget"/>
+								<label for="tbox_prefs_proxy_auth_name"
+										class="label" data-i18n-text="username">
+										Username
+								</label>
+							</li><li class="mochi_list_item">
+								<input id="tbox_prefs_proxy_auth_password"
+										title="HTTP Proxy Authentication Password"
+										placeholder="Password"
+										data-i18n-placeholder="password"
+										type="password" class="mochi_entry widget"/>
+								<label for="tbox_prefs_proxy_auth_password"
+										class="label" data-i18n-text="password">
+										Password
+								</label>
+							</li>
+						</ul>
 					</ul>
 					<ul class="mochi_list">
 						<li class="mochi_list_item chrome_context_menu">
@@ -768,7 +773,7 @@
           <h3 data-i18n-text="api_setting">API Settings</h3>
 					<ul class="mochi_list">
             <li class="mochi_list_item">
-							<input id="tbox_prefs_api_base" title="API Base" 
+							<input id="tbox_prefs_api_base" title="API Base"
 								type="text" class="mochi_entry widget"/>
 							<label class="label"
 									data-i18n-text="api_base">API Base</label>
@@ -792,7 +797,7 @@
 									data-i18n-text="upload_api_base"
 									>Upload API Base</label>
 						</li>
-					</ul>		
+					</ul>
 					<ul class="mochi_list">
 						<li class="mochi_list_item">
 							<input id="chk_prefs_use_same_sign_api_base"

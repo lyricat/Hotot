@@ -28,11 +28,11 @@ http_code_msg_table = {
 }
 
 def do_notify(summary, body, icon_file = None):
-	global notifier
-	if (notifier == None):
-		import notification
-		notifier = notification.Notification()
-	notifier.show(summary, body, icon_file);
+    global notifier
+    if (notifier == None):
+        import notification
+        notifier = notification.Notification()
+    notifier.show(summary, body, icon_file);
 
 def crack_hotot(uri):
     params = uri.split('/')
@@ -201,23 +201,37 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
     GObject.idle_add(webv.execute_script, scripts)
 
 def get_urlopen():
-    if not get_prefs('use_http_proxy'):
-        return urllib2.urlopen
+    proxy_type = get_prefs('proxy_type');
+    if proxy_type == 'http':
+        scheme = 'https'
+        host = str(get_prefs('proxy_host'))
+        port = str(get_prefs('proxy_port'))
+        url = scheme + '://' + host + ':' + port
+        if get_prefs('proxy_auth'):
+            proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
+            username = str(get_prefs('proxy_auth_name'))
+            password = str(get_prefs('proxy_auth_password'))
+            auth_handler = urllib2.ProxyBasicAuthHandler()
+            auth_handler.add_password(None, url, username, password)
+            return urllib2.build_opener(proxy_support, auth_handler).open
+        else:
+            proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
+            return urllib2.build_opener(proxy_support).open
+    elif proxy_type == 'system':
+        if 'http_proxy' in os.environ and os.environ["http_proxy"]:
+            url = os.environ["http_proxy"]
+        elif 'HTTP_PROXY' in os.environ and os.environ["HTTP_PROXY"]:
+            url = os.environ["HTTP_PROXY"]
+        else:
+            url = None
 
-    scheme = 'https'
-    host = str(get_prefs('http_proxy_host'))
-    port = str(get_prefs('http_proxy_port'))
-    url = scheme + '://' + host + ':' + port
-    if get_prefs('use_http_proxy_auth'):
-        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
-        username = str(get_prefs('http_proxy_name'))
-        password = str(get_prefs('http_proxy_password'))
-        auth_handler = urllib2.ProxyBasicAuthHandler()
-        auth_handler.add_password(None, url, username, password)
-        return urllib2.build_opener(proxy_support, auth_handler).open
+        if not url:
+            return urllib2.urlopen
+        else:
+            proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
+            return urllib2.build_opener(proxy_support).open
     else:
-        proxy_support = urllib2.ProxyHandler({ 'http': url, 'https': url })
-        return urllib2.build_opener(proxy_support).open
+        return urllib2.urlopen
 
 def _get(url, params={}, req_headers={}, req_timeout=None):
     urlopen = get_urlopen()

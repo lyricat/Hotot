@@ -74,22 +74,22 @@ bool HototWebPage::handleUri(const QString& originmsg)
             } else if (method == "load_settings") {
                 QString settingString = QUrl::fromPercentEncoding(msg.section("/", 2, -1).toUtf8());
                 currentFrame()->evaluateJavaScript("hotot_qt = " + settingString + ";");
-                bool useHttpProxy = currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy").toBool();
-                bool useHttpProxyAuth = currentFrame()->evaluateJavaScript("hotot_qt.use_http_proxy_auth").toBool();
-                int httpProxyPort = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_port").toInt();
-                QString httpProxyHost = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_host").toString();
-                QString httpProxyAuthName = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_name").toString();
-                QString httpProxyAuthPassword = currentFrame()->evaluateJavaScript("hotot_qt.http_proxy_auth_password").toString();
+                QString proxyType = currentFrame()->evaluateJavaScript("hotot_qt.proxy_type").toString();
+                bool proxyAuth = currentFrame()->evaluateJavaScript("hotot_qt.proxy_auth").toBool();
+                int proxyPort = currentFrame()->evaluateJavaScript("hotot_qt.proxy_port").toInt();
+                QString proxyHost = currentFrame()->evaluateJavaScript("hotot_qt.proxy_host").toString();
+                QString proxyAuthName = currentFrame()->evaluateJavaScript("hotot_qt.proxy_auth_name").toString();
+                QString proxyAuthPassword = currentFrame()->evaluateJavaScript("hotot_qt.proxy_auth_password").toString();
 
-                if (useHttpProxy) {
-                    QNetworkProxy proxy(m_mainWindow->useSocks() ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
-                                        httpProxyHost,
-                                        httpProxyPort);
+                if (proxyType == "http" || proxyType == "socks") {
+                    QNetworkProxy proxy(proxyType == "socks" ? QNetworkProxy::Socks5Proxy : QNetworkProxy::HttpProxy,
+                                        proxyHost,
+                                        proxyPort);
 
-                    if (useHttpProxyAuth)
+                    if (proxyAuth)
                     {
-                        proxy.setUser(httpProxyAuthName);
-                        proxy.setPassword(httpProxyAuthPassword);
+                        proxy.setUser(proxyAuthName);
+                        proxy.setPassword(proxyAuthPassword);
                     }
                     QNetworkProxy::setApplicationProxy(proxy);
                     QNetworkAccessManager* nm = networkAccessManager();
@@ -97,6 +97,8 @@ bool HototWebPage::handleUri(const QString& originmsg)
                     nm->deleteLater();
                     setNetworkAccessManager(new QNetworkAccessManager(this));
                     networkAccessManager()->setProxy(QNetworkProxy::DefaultProxy);
+                } else if (proxyType == "system") {
+                    // not implemented yet
                 }
             } else if (method == "sign_in") {
                 m_mainWindow->setSignIn(true);

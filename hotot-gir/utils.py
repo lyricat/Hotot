@@ -43,7 +43,7 @@ def open_webbrowser(uri):
         browser = 'start'
     subprocess.Popen([browser, uri])
 
-def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
+def webkit_set_proxy_uri(scheme = None, host = None, port = None, user = None, passwd = None):
     try:
         session = WebKit.get_default_session()
         if looseVersion(Soup._version) < looseVersion('2.4'):
@@ -52,8 +52,12 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
         else:
             session.set_property("max-conns", 10)
             session.set_property("max-conns-per-host", 5)
-
-        if host:
+        
+        if scheme == None:
+            return True
+        elif ":" in scheme:
+            proxy_uri = Soup.URI.new(str(scheme))
+        elif host:
             proxy_uri = Soup.URI.new("http://127.0.0.1")
             proxy_uri.set_scheme(str(scheme))
             proxy_uri.set_host(str(host))
@@ -64,7 +68,7 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
             if passwd:
                 proxy_uri.set_password(str(passwd))
 
-            session.set_property("proxy-uri", proxy_uri)
+        session.set_property("proxy-uri", proxy_uri)
         return True
     except:
         exctype, value = sys.exc_info()[:2]

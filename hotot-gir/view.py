@@ -95,6 +95,7 @@ class MainView(WebKit.WebView):
         # overlay extra variables of web part
         variables = {
               'platform': 'Linux'
+			, 'wrapper': 'python-gtk3'
             , 'conf_dir': config.get_path("conf")
             , 'cache_dir': config.get_path("cache")
             , 'avatar_cache_dir': config.get_path("avatar")
