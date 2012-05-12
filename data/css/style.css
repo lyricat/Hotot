@@ -1943,7 +1943,7 @@ label {
 }
 
 .card {
-	padding: 10px;
+	padding: 5px 8px;
 	min-height: 50px;
 	position: relative;
 	border-top: 1px #ddd solid;
@@ -2055,8 +2055,8 @@ label {
 }
 
 .card_body {
-	margin: 0 0 0 65px;
-	padding: 0px 10px 0px 10px;
+	margin: 0 0 0 66px;
+	padding: 0px 10px 0px 0px;
 	min-height: 50px;
 	position: relative;
 }

@@ -535,12 +535,36 @@ function bind_tweet_action(id) {
             }
         });
     }
+
+    $(id).find('a[full_text_id]').unbind().click(function (ev) {
+        var full_text_id = $(this).attr('full_text_id');
+        globals.network.do_request('GET', 
+            'http://hotot.in/tweet/'+full_text_id+'.json', 
+            {}, {}, null,
+            function (result) {
+                if (result && result.full_text) {
+                    $(id).find('.text_inner a').unbind();
+                    $(id).find('.text_inner').empty();
+                    $(id).find('.text_inner').html(
+                        ui.Template.form_text_raw(result.full_text)
+                    );
+                    ui.Main.bind_tweet_text_action(id);
+                } 
+            },
+            function () {
+                toast.set('but I failed :( ...').show();
+            });
+        return false;
+    });
+
 /*
     $(id).find('a[direct_url]').click(function () {
         ui.Main.preview_image($(this).attr('direct_url'));
         return false;
     });
 */
+
+    ui.Main.bind_tweet_text_action(id);
 
     $(id).find('.btn_tweet_thread:first').click(
     function (event) {
@@ -550,31 +574,6 @@ function bind_tweet_action(id) {
     $(id).find('.btn_tweet_thread_more:first').click(
     function (event) {
         ui.Main.on_thread_more_click(this, event);
-    });
-
-    $(id).find('.who_href').click(
-    function (event) {
-        if (event.which == 1) {
-            open_people($(this).attr('href').substring(1));
-        }else if (event.which == 2) {
-            open_people($(this).attr('href').substring(1), {}, true);
-        }
-        return false;
-    });
-
-    $(id).find('.list_href').click(
-    function (event) {
-        var target = $(this).attr('href').substring(1).split('/');
-        open_list(target[0], target[1]);
-        return false;
-    });
-
-    $(id).find('.hash_href').click(
-    function (event) {
-        ui.Slider.addDefaultView('search', {}) || ui.Slider.add('search');
-        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
-        ui.Main.views.search._header.find('.search_tweet').click();
-        return false;
     });
 
     $(id).find('.tweet_source a.show').click(
@@ -676,6 +675,34 @@ function bind_tweet_action(id) {
     $(id).find('.unfollow_btn').click(
     function (event) {
         ui.Main.on_unfollow_btn_click(this, ui.Main.active_tweet_id, event);
+    });
+},
+
+bind_tweet_text_action:
+function bind_tweet_text_action(id) {
+    $(id).find('.who_href').click(
+    function (event) {
+        if (event.which == 1) {
+            open_people($(this).attr('href').substring(1));
+        }else if (event.which == 2) {
+            open_people($(this).attr('href').substring(1), {}, true);
+        }
+        return false;
+    });
+
+    $(id).find('.list_href').click(
+    function (event) {
+        var target = $(this).attr('href').substring(1).split('/');
+        open_list(target[0], target[1]);
+        return false;
+    });
+
+    $(id).find('.hash_href').click(
+    function (event) {
+        ui.Slider.addDefaultView('search', {}) || ui.Slider.add('search');
+        ui.Main.views.search._header.find('.search_entry').val($(this).attr('href'));
+        ui.Main.views.search._header.find('.search_tweet').click();
+        return false;
     });
 },
 

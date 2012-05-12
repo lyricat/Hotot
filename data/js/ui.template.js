@@ -1167,16 +1167,41 @@ function form_text(tweet) {
         , '$1@<a class="who_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
         , '$1<a class="hash_href" href="#$2">#$2</a>');
+    text = text.replace(/href="(http:\/\/hotot.in\/(\d+))"/g
+        , 'full_text_id="$2" href="$1"');
     text = text.replace(/[\r\n]\s+[\r\n]/g, '\n\n');
     text = text.replace(/\n/g, '<br/>');
     if (ui.Template.reg_is_rtl.test(text)) {
-        text = '<div align="right" dir="rtl">' + text + '</div>';
+        text = '<div class="text_inner" align="right" dir="rtl">' + text + '</div>';
+    } else {
+        text = '<div class="text_inner">' + text + '</div>';
     }
     if (conf.get_current_profile().preferences.use_media_preview) {
-        text += ui.Template.form_preview(tweet);
+        text += '<div class="preview">' 
+            + ui.Template.form_preview(tweet)
+            + '</div>';
     }
     return text;
 },
+
+form_text_raw:
+function form_text_raw(raw_text) {
+    var text = raw_text;
+    text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
+    text = text.replace(/href="www/g, 'href="http://www');
+    text = text.replace(ui.Template.reg_list
+        , '$1@<a class="list_href" href="#$2">$2</a>');
+    text = text.replace(ui.Template.reg_user
+        , '$1@<a class="who_href" href="#$2">$2</a>');
+    text = text.replace(ui.Template.reg_hash_tag
+        , '$1<a class="hash_href" href="#$2">#$2</a>');
+    text = text.replace(/href="(http:\/\/hotot.in\/(\d+))"/g
+        , 'full_text_id="$2" href="$1"');
+    text = text.replace(/[\r\n]\s+[\r\n]/g, '\n\n');
+    text = text.replace(/\n/g, '<br/>');
+    return text;
+},
+
 
 form_media:
 function form_media(href, src, direct_url) {
