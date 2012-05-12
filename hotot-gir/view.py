@@ -1,15 +1,9 @@
 # -*- coding: UTF-8 -*-
 from gi.repository import Gtk, Gdk, GObject, WebKit;
-Gdk.threads_init() ## fix issue 24
 import agent
 import config
 import utils
 import json
-
-try: import i18n
-except: from gettext import gettext as _
-TARGET_TYPE_URI_LIST = 80
-dnd_list = [ ( 'text/uri-list', 0, TARGET_TYPE_URI_LIST ) ]
 
 class MainView(WebKit.WebView):
     def __init__(self, parentWidget):
@@ -34,7 +28,7 @@ class MainView(WebKit.WebView):
         except:
             print 'Error: settings property was not set.'
 
-        WebKit.set_web_database_directory_path(config.DB_DIR)
+        WebKit.set_web_database_directory_path(config.get_path("db"))
         WebKit.set_default_web_database_quota(1024**3L)
         
         ## bind events
@@ -47,6 +41,8 @@ class MainView(WebKit.WebView):
 #       self.connect('drag_motion', self.on_drag_motion)
 #       self.connect('drag_drop', self.on_drag_drop)
 #       # @TODO DND for gir
+#       TARGET_TYPE_URI_LIST = 80
+#       dnd_list = [ ( 'text/uri-list', 0, TARGET_TYPE_URI_LIST ) ]
 #       te = Gtk.TargetEntry.new(
 #           'text/uri-list', 0, TARGET_TYPE_URI_LIST)
 #       self.drag_dest_set( Gtk.DestDefaults.ALL,
@@ -99,9 +95,9 @@ class MainView(WebKit.WebView):
         # overlay extra variables of web part
         variables = {
               'platform': 'Linux'
-            , 'conf_dir': config.CONF_DIR
-            , 'cache_dir': config.CACHE_DIR
-            , 'avatar_cache_dir': config.AVATAR_CACHE_DIR
+            , 'conf_dir': config.get_path("conf")
+            , 'cache_dir': config.get_path("cache")
+            , 'avatar_cache_dir': config.get_path("avatar")
             , 'extra_fonts': utils.get_extra_fonts()
             , 'extra_exts': utils.get_extra_exts()
             , 'extra_themes': utils.get_extra_themes()

@@ -1,15 +1,13 @@
 # -*- coding: UTF-8 -*-
 from gi.repository import Gtk, Gdk, GdkX11, GdkPixbuf, GObject
+import os
+import sys
 import json
-import config
 import time
 import base64
 import urllib, urllib2
-import threading 
-import utils
-import hotot
-import os
-import sys
+import threading
+import config, utils
 
 try: import i18n
 except: from gettext import gettext as _
@@ -17,37 +15,10 @@ except: from gettext import gettext as _
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
-
-## Disable GtkNotification on Gnome3
-screen = Gdk.Screen.get_default()
-try:
-    window_manager_name = screen.get_window_manager_name().lower() if screen else ''
-    if window_manager_name in ['metacity']:
-        USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
-except:
-    pass
-
-if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
-    import gtknotification
-    class  Notification(object):
-        def do_notify(self, summary, body, icon_file = None):
-            if (icon_file == None or not os.path.isfile(icon_file)):
-                icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
-            icon_file = 'file://' + icon_file
-            title = _("Hotot Notification")
-            text = summary + '\n' + body
-            GObject.idle_add(gtknotification.gtknotification, title, text, icon_file)
-        update = do_notify
-        show = str
-    notify = Notification()
-else:
-    from gi.repository import Notify
-    Notify.init(_("Hotot Notification"))
-    notify = Notify.Notification()
-
-webv = None 
+webv = None
 app = None
+notifier = None
+
 http_code_msg_table = {
       404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
     , 401: 'Server cannot authenticate you. Please check your username/password and API base.'
@@ -56,23 +27,12 @@ http_code_msg_table = {
     , 503: 'Server is overcapacity. Please try again later.'
 }
 
-def init_notify():
-    if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
-        return
-    notify.set_icon_from_pixbuf(
-        GdkPixbuf.Pixbuf.new_from_file(
-            utils.get_ui_object(os.path.join('image','ic64_hotot.png'))))
-    notify.set_timeout(5000)
-
 def do_notify(summary, body, icon_file = None):
-    if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
-        return notify.do_notify(summary, body, icon_file)
-    n = Notify.Notification.new(summary, body, None)
-    if (icon_file == None or not os.path.isfile(icon_file)):
-        icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
-    n.set_icon_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file(icon_file))    
-    n.set_timeout(5000)
-    n.show()
+	global notifier
+	if (notifier == None):
+		import notification
+		notifier = notification.Notification()
+	notifier.show(summary, body, icon_file);
 
 def crack_hotot(uri):
     params = uri.split('/')
@@ -101,11 +61,11 @@ def crack_action(params):
     elif params[1] == 'save_avatar':
         img_uri = urllib.unquote(params[2])
         avatar_file = urllib.unquote(params[3])
-        avatar_path = os.path.join(config.AVATAR_CACHE_DIR, avatar_file)
+        avatar_path = os.path.join(config.get_path("avatar"), avatar_file)
         if not (os.path.exists(avatar_path) and avatar_file.endswith(img_uri[img_uri.rfind('/')+1:])):
             print 'Download:', img_uri , 'To' , avatar_path
             th = threading.Thread(
-                target = save_file_proc, 
+                target = save_file_proc,
                 args=(img_uri, avatar_path))
             th.start()
     elif params[1] == 'log':
@@ -122,7 +82,7 @@ def crack_system(params):
         body = urllib.unquote(params[4])
         if type == 'content':
             try:
-                avatar_file = os.path.join(config.AVATAR_CACHE_DIR, urllib.unquote(params[5]))
+                avatar_file = os.path.join(config.get_path("avatar"), urllib.unquote(params[5]))
             except:
                 avatar_file = None
             do_notify(summary, body, avatar_file)
@@ -186,7 +146,7 @@ def set_style_scheme():
     style = app.window.get_style()
     base, fg, bg, text = style.base, style.fg, style.bg, style.text
     webv.execute_script('''
-        $('#header').css('background', '%s');    
+        $('#header').css('background', '%s');
     ''' % str(bg[Gtk.StateType.NORMAL]));
 
 def get_prefs(name):
@@ -243,7 +203,7 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
 def get_urlopen():
     if not get_prefs('use_http_proxy'):
         return urllib2.urlopen
-    
+
     scheme = 'https'
     host = str(get_prefs('http_proxy_host'))
     port = str(get_prefs('http_proxy_port'))
@@ -274,10 +234,10 @@ def _post(url, params={}, req_headers={}, files=[], additions='', req_timeout=No
 
     urlopen = get_urlopen()
     params = dict([(k.encode('utf8')
-            , v.encode('utf8') if type(v)==unicode else v) 
+            , v.encode('utf8') if type(v)==unicode else v)
                 for k, v in params.items()])
 
-    request = urllib2.Request(url, 
+    request = urllib2.Request(url,
         urlencode(params) + additions, headers=req_headers);
     ret = urlopen(request, timeout=req_timeout).read()
     return ret
@@ -329,7 +289,7 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     try:
         curl.perform()
     except pycurl.error, e:
-        raise e    
+        raise e
 
     http_code = curl.getinfo(pycurl.HTTP_CODE)
     if http_code != 200:
@@ -347,6 +307,6 @@ def urlencode(query):
             del query[k]
     return urllib.urlencode(query)
 
-def idle_it(fn): 
+def idle_it(fn):
     return lambda *args: GObject.idle_add(fn, *args)
 

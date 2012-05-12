@@ -13,7 +13,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('GdkX11', '3.0')
 gi.require_version('WebKit', '3.0')
-from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
+from gi.repository import Gtk, Gdk, GObject, GdkPixbuf, GLib
 import utils, agent, view
 
 class Hotot:
@@ -363,7 +363,7 @@ def main():
     for opt in sys.argv[1:]:
         if opt in ('-h', '--help'):
             usage()
-            sys.exit()
+            return
         elif opt in ('-d', '--dev'):
             config.ENABLE_INSPECTOR = True
         else:
@@ -382,12 +382,15 @@ def main():
     except:
         pass
 
-    GObject.threads_init()
-    config.loads();
+    #g_thread_init has been deprecated since version 2.32
+    if GLib.check_version(2, 32, 0):
+        GObject.threads_init()
+    Gdk.threads_init()
+    Gtk.init(None)
 
-    agent.init_notify()
-    app = Hotot()
-    agent.app = app
+    config.init();
+
+    agent.app = Hotot()
 
     Gdk.threads_enter()
     Gtk.main()
@@ -395,5 +398,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    sys.exit(0)
 

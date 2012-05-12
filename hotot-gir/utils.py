@@ -118,7 +118,7 @@ def get_content_type(filename):
     return mimetypes.guess_type(filename)[0] or 'application/octet-stream'
 
 def get_ui_object(name):
-    for base in config.DATA_DIRS:
+    for base in config.get_path("data"):
         fullpath = os.path.join(base, name)
         if os.path.exists(fullpath):
             return fullpath
@@ -126,7 +126,7 @@ def get_ui_object(name):
 def get_extra_exts():
     import glob
     exts = []
-    files = glob.glob(os.path.join(config.CONF_DIR, config.EXT_DIR_NAME) + '/*')
+    files = glob.glob(config.get_path("ext") + '/*')
     ext_dirs = filter(lambda x: os.path.isdir(x), files)
     for dir in ext_dirs:
         ext_js = os.path.join(dir, 'entry.js')
@@ -137,7 +137,7 @@ def get_extra_exts():
 def get_extra_themes():
     import glob
     themes = []
-    files = glob.glob(os.path.join(config.CONF_DIR, config.THEME_DIR_NAME) + '/*')
+    files = glob.glob(config.get_path("theme") + '/*')
     theme_dirs = filter(lambda x: os.path.isdir(x), files)
     for dir in theme_dirs:
         info_file = os.path.join(dir, 'info.json')

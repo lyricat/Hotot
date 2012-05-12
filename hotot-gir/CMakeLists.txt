@@ -3,7 +3,7 @@ set(hotot_gir_SRCS
     agent.py
     config.py
     dbusservice.py
-    gtknotification.py
+    notification.py
     hotot.py
     i18n.py
     inspector.py
