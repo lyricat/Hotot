@@ -466,11 +466,11 @@ function init_hotkey() {
         ui.Main.move_by_offset(500);
         return false;
     });
-    hotkey.register(hotkey.calculate(36), "U", function () {
+    hotkey.register(hotkey.calculate(36), "D", function () {
         ui.Main.move_to_tweet("top");
         return false;
     });
-    hotkey.register(hotkey.calculate(35), "U", function () {
+    hotkey.register(hotkey.calculate(35), "D", function () {
         ui.Main.move_to_tweet("bottom");
         return false;
     });
