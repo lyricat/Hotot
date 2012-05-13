@@ -4,6 +4,7 @@ function WidgetAutoComplete(obj) {
     self._me = null;
     self._inDetecting = false;
     self.inputText = '';
+    self.timer = null;
 
     self.init = function init(obj) {
         self._me = obj;
@@ -15,6 +16,7 @@ function WidgetAutoComplete(obj) {
     self.onKeyDown = function onKeyDown(event) {
         var key_code = event.keyCode;
         
+        clearInterval(self.timer);
         if (key_code == 13) {
             if (self._inDetecting) {
                 var selectedItem = self.candidate.children('.selected');
@@ -60,20 +62,24 @@ function WidgetAutoComplete(obj) {
             || 95 == key_code || key_code == 8) {
             self.detect(event);
         }
-
+        if (key_code === 229) { // for imeKey
+            self.timer = setInterval(function () {
+                self.detect(event)
+            }, 500);
+        }
     };
 
     self.startDetecting = function startDetect() { 
         self._inDetecting = true;
         self.candidate.css({
             'width': self._me.width() + 'px', 'left':self._me.get(0).offsetLeft+'px'});
-        self.candidate.slideDown();
+        self.candidate.slideDown('fast');
     };
 
     self.stopDetecting = function stopDetect() {
         self._inDetecting = false;
         self.inputText = '';
-        self.candidate.slideUp();
+        self.candidate.slideUp('fast');
     };
 
     self.detect = function detect(event) {
@@ -90,8 +96,10 @@ function WidgetAutoComplete(obj) {
         if (event.keyCode == 8) {
             self.inputText = rearText.substring(atIdx + 1, curPos - 1) 
         } else {
-            self.inputText = rearText.substring(atIdx + 1, curPos) 
-                + String.fromCharCode(event.keyCode);
+            self.inputText = rearText.substring(atIdx + 1, curPos);
+            if (event.keyCode !== 229) {
+                self.inputText += String.fromCharCode(event.keyCode);
+            }
         }
         if (self.inputText.match(/^[\S]+$/g) == null) {
             return;
@@ -100,7 +108,8 @@ function WidgetAutoComplete(obj) {
         if (!self._inDetecting) {
             self.startDetecting();
         }
-        self.filter(self.inputText, function (result_list) {
+
+        var handleResult = function (result_list) {
             if (result_list.length == 0) {
                 self.candidate.hide();
                 return;
@@ -116,8 +125,12 @@ function WidgetAutoComplete(obj) {
                 self.competeName(append);
                 self.stopDetecting();
             });
-            self.candidate.children('li:first').addClass('selected');
-        });
+            if (self.candidate.children('.selected').length === 0){
+                self.candidate.children('li:first').addClass('selected');
+            } 
+        }
+        handleResult(self.quickFilter(self.inputText));
+        // self.filter(self.inputText, handleResult);
     };
 
     self.competeName = function competeName(append) {
@@ -139,7 +152,15 @@ function WidgetAutoComplete(obj) {
             }
             callback(result_list);
         });
-    }
+    };
+
+    self.quickFilter = function quickFilter(text) {
+        var result_list = globals.conversant.filter(
+            function (x) {
+                return x.toLowerCase().indexOf(text.toLowerCase()) === 0;
+            });
+        return result_list;
+    };
 
     self.getCursorPos = function getCursorPos(){
         var pos = 0;

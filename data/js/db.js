@@ -217,6 +217,14 @@ function get_users_starts_with(starts, callback) {
     });
 },
 
+get_screen_names:
+function get_screen_names(callback) {
+    db.database.transaction(function (tx) {
+        tx.executeSql('SELECT screen_name FROM UserCache ORDER BY screen_name', [], 
+            function(tx, rs) {callback(tx,rs);});
+    });
+},
+
 reduce_user_cache:
 function reduce_user_cache(limit, callback) {
     db.database.transaction(function (tx) {

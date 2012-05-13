@@ -769,6 +769,13 @@ function syncMyself() {
     // sync my lists
     syncMyLists();
     // @TODO sync following users
+    db.get_screen_names(
+    function (tx, rs) {
+        globals.conversant = [];
+        for (var i = 0, l = rs.rows.length; i < l; i += 1) { 
+            globals.conversant.push(rs.rows.item(i).screen_name)
+        }
+    });
 }
 
 function syncBlockingUsers () {
@@ -819,7 +826,8 @@ var globals = {
     , unread_alert_timer: null
     , unread_count: null
     , blocking_ids: []
-    , my_lists: [],
+    , my_lists: []
+    , conversant: []
 };
 
 jQuery(function($) {
