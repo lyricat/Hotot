@@ -1119,7 +1119,9 @@ function fill_people_vcard(user_obj, vcard_container) {
     vcard_container.find('.follower_cnt').text(user_obj.followers_count);
     vcard_container.find('.friend_cnt').text(user_obj.friends_count);
     vcard_container.find('.listed_cnt').text(user_obj.listed_count);
-    vcard_container.find('.bio').text('').text(user_obj.description);
+    vcard_container.find('.bio').unbind().empty().html(
+        ui.Template.form_text_raw(user_obj.description));
+    ui.Main.bind_tweet_text_action(vcard_container.find('.bio'));
     vcard_container.find('.location').text('').text(user_obj.location);
     vcard_container.find('.join').text(created_at_str);
     if (user_obj.url) {
