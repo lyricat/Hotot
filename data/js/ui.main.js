@@ -552,7 +552,7 @@ function bind_tweet_action(id) {
                 } 
             },
             function () {
-                toast.set('but I failed :( ...').show();
+                toast.set('fetch full text failed.').show();
             });
         return false;
     });

@@ -59,13 +59,17 @@ function TwitterClient() {
         }
         switch (self.default_error_method) {
         case 'notify':
-            hotot_notify('Ooops, An Error Occurred!', msg + '\n' + tech_info, null, 'content');
+            if (xhr.status !== 0) {
+                hotot_notify('Ooops, An Error Occurred!', msg + '\n' + tech_info, null, 'content');
+            } else {
+                toast.set('Lost Connection').show(1);
+            }
             break;
         case 'dialog':
             ui.ErrorDlg.alert('Ooops, An Error Occurred!', msg, tech_info);
             break;
         case 'toast':
-            toast.set('Error #' + xhr.status + ': ' + msg);
+            toast.set('Error #' + xhr.status + ': ' + msg).show();
             break;
         default:
             break;
