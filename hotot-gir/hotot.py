@@ -13,7 +13,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
 gi.require_version('GdkX11', '3.0')
 gi.require_version('WebKit', '3.0')
-from gi.repository import Gtk, Gdk, GObject, GdkPixbuf
+from gi.repository import Gtk, Gdk, GObject, GdkPixbuf, GLib
 import utils, agent, view
 
 class Hotot:
@@ -270,18 +270,30 @@ class Hotot:
 
 
     def apply_proxy_setting(self):
-        if config.settings['use_http_proxy']:
-            proxy_host = config.settings['http_proxy_host']
-            proxy_port = config.settings['http_proxy_port']
+        proxy_type = agent.get_prefs('proxy_type')
+        if proxy_type == 'http':
+            proxy_host = agent.get_prefs('proxy_host')
+            proxy_port = agent.get_prefs('proxy_port')
             proxy_scheme = 'https'
-            if config.settings['use_http_proxy_auth']:
-                auth_user = config.settings['http_proxy_auth_name']
-                auth_pass = config.settings['http_proxy_auth_password']
+            if agent.get_prefs('proxy_auth'):
+                auth_user = agent.get_prefs('proxy_auth_name')
+                auth_pass = agent.get_prefs('proxy_auth_password')
                 utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, auth_user, auth_pass)
             else:
-                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, '', '')
+                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port)
+        elif proxy_type == 'system':
+            if 'HTTP_PROXY' in os.environ and os.environ["HTTP_PROXY"]:
+                url = os.environ["HTTP_PROXY"]
+            elif 'http_proxy' in os.environ and os.environ["http_proxy"]:
+                url = os.environ["http_proxy"]
+            else:
+                url = None
+            utils.webkit_set_proxy_uri(url)
+        elif proxy_type == 'socks':
+            # TODO not implemented yet
+            utils.webkit_set_proxy_uri()
         else:
-            utils.webkit_set_proxy_uri('', '', '', '', '')
+            utils.webkit_set_proxy_uri()
         # workaround for a BUG of webkitgtk/soupsession
         # proxy authentication
         agent.execute_script('''
@@ -363,7 +375,7 @@ def main():
     for opt in sys.argv[1:]:
         if opt in ('-h', '--help'):
             usage()
-            sys.exit()
+            return
         elif opt in ('-d', '--dev'):
             config.ENABLE_INSPECTOR = True
         else:
@@ -382,12 +394,15 @@ def main():
     except:
         pass
 
-    GObject.threads_init()
-    config.loads();
+    #g_thread_init has been deprecated since version 2.32
+    if GLib.check_version(2, 32, 0):
+        GObject.threads_init()
+    Gdk.threads_init()
+    Gtk.init(None)
 
-    agent.init_notify()
-    app = Hotot()
-    agent.app = app
+    config.init();
+
+    agent.app = Hotot()
 
     Gdk.threads_enter()
     Gtk.main()
@@ -395,5 +410,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    sys.exit(0)
 

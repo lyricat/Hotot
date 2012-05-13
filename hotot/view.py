@@ -92,6 +92,7 @@ class MainView(WebView):
         # overlay extra variables of web part
         variables = {
               'platform': 'Linux'
+            , 'wrapper': 'python-gtk2'
             , 'conf_dir': config.CONF_DIR
             , 'cache_dir': config.CACHE_DIR
             , 'avatar_cache_dir': config.AVATAR_CACHE_DIR

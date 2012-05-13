@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from gi.repository import GLib;
+from gi.repository import GLib
 import os
 import pickle
 import json
@@ -8,28 +8,10 @@ import sys
 import glob
 import shutil
 
-PROGRAM_NAME = 'hotot'
-EXT_DIR_NAME = 'ext'
-THEME_DIR_NAME = 'theme'
-CONF_DIR = os.path.join(GLib.get_user_config_dir(), PROGRAM_NAME)
-DB_DIR = os.path.join(CONF_DIR, 'db')
-CACHE_DIR = os.path.join(GLib.get_user_cache_dir(), PROGRAM_NAME)
-AVATAR_CACHE_DIR = os.path.join(CACHE_DIR, 'avatar')
-
+TEMPLATE = 'index.html'
 ENABLE_INSPECTOR = False
 
-DATA_DIRS = []
-
-DATA_BASE_DIRS = [
-      '/usr/local/share'
-    , '/usr/share'
-    , GLib.get_user_data_dir()
-    ]
-
-DATA_DIRS += [os.path.join(d, PROGRAM_NAME) for d in DATA_BASE_DIRS]
-DATA_DIRS.append(os.path.abspath('./data'))
-
-TEMPLATE = 'index.html'
+dirs = {}
 
 settings = {}
 
@@ -39,8 +21,8 @@ def getconf():
     config = {}
     ##
 
-    if not os.path.isdir(CONF_DIR): os.makedirs(CONF_DIR)
-    if not os.path.isdir(AVATAR_CACHE_DIR): os.makedirs(AVATAR_CACHE_DIR)
+    if not os.path.isdir(dirs["conf"]): os.makedirs(dirs["conf"])
+    if not os.path.isdir(dirs["avatar"]): os.makedirs(dirs["avatar"])
 
     for k, v in globals().items():
         if not k.startswith('__') and (
@@ -55,8 +37,20 @@ def getconf():
             config[k] = v
     return config
 
-def loads():
+def init():
+    program = 'hotot'
+    dirs["conf"] = os.path.join(GLib.get_user_config_dir(), program)
+    dirs["db"] = os.path.join(dirs["conf"], 'db')
+    dirs["cache"] = os.path.join(GLib.get_user_cache_dir(), program)
+    dirs["avatar"] = os.path.join(dirs["cache"], 'avatar')
+    dirs["data"] = [os.path.join(d, program) for d in ['/usr/local/share', '/usr/share', GLib.get_user_data_dir()]]
+    dirs["data"].append(os.path.abspath('./data'))
+    dirs["theme"] = os.path.join(dirs["conf"], 'theme')
+    dirs["ext"] = os.path.join(dirs["conf"], 'ext')
     config = getconf();
+
+def get_path(dirname):
+    return dirs[dirname]
 
 def load_settings(pushed_settings):
     pushed_settings = dict([(k.encode('utf8'), v) for k, v in pushed_settings.items()])

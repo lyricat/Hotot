@@ -43,7 +43,7 @@ def open_webbrowser(uri):
         browser = 'start'
     subprocess.Popen([browser, uri])
 
-def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
+def webkit_set_proxy_uri(scheme = None, host = None, port = None, user = None, passwd = None):
     try:
         session = WebKit.get_default_session()
         if looseVersion(Soup._version) < looseVersion('2.4'):
@@ -52,8 +52,12 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
         else:
             session.set_property("max-conns", 10)
             session.set_property("max-conns-per-host", 5)
-
-        if host:
+        
+        if scheme == None:
+            return True
+        elif ":" in scheme:
+            proxy_uri = Soup.URI.new(str(scheme))
+        elif host:
             proxy_uri = Soup.URI.new("http://127.0.0.1")
             proxy_uri.set_scheme(str(scheme))
             proxy_uri.set_host(str(host))
@@ -64,7 +68,7 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
             if passwd:
                 proxy_uri.set_password(str(passwd))
 
-            session.set_property("proxy-uri", proxy_uri)
+        session.set_property("proxy-uri", proxy_uri)
         return True
     except:
         exctype, value = sys.exc_info()[:2]
@@ -118,7 +122,7 @@ def get_content_type(filename):
     return mimetypes.guess_type(filename)[0] or 'application/octet-stream'
 
 def get_ui_object(name):
-    for base in config.DATA_DIRS:
+    for base in config.get_path("data"):
         fullpath = os.path.join(base, name)
         if os.path.exists(fullpath):
             return fullpath
@@ -126,7 +130,7 @@ def get_ui_object(name):
 def get_extra_exts():
     import glob
     exts = []
-    files = glob.glob(os.path.join(config.CONF_DIR, config.EXT_DIR_NAME) + '/*')
+    files = glob.glob(config.get_path("ext") + '/*')
     ext_dirs = filter(lambda x: os.path.isdir(x), files)
     for dir in ext_dirs:
         ext_js = os.path.join(dir, 'entry.js')
@@ -137,7 +141,7 @@ def get_extra_exts():
 def get_extra_themes():
     import glob
     themes = []
-    files = glob.glob(os.path.join(config.CONF_DIR, config.THEME_DIR_NAME) + '/*')
+    files = glob.glob(config.get_path("theme") + '/*')
     theme_dirs = filter(lambda x: os.path.isdir(x), files)
     for dir in theme_dirs:
         info_file = os.path.join(dir, 'info.json')

@@ -276,18 +276,30 @@ class Hotot:
             self.window.hide()
 
     def apply_proxy_setting(self):
-        if config.settings['use_http_proxy']:
-            proxy_host = config.settings['http_proxy_host']
-            proxy_port = config.settings['http_proxy_port']
+        proxy_type = agent.get_prefs('proxy_type')
+        if proxy_type == 'http':
+            proxy_host = agent.get_prefs('proxy_host')
+            proxy_port = agent.get_prefs('proxy_port')
             proxy_scheme = 'https'
-            if config.settings['use_http_proxy_auth']:
-                auth_user = config.settings['http_proxy_auth_name']
-                auth_pass = config.settings['http_proxy_auth_password']
+            if agent.get_prefs('proxy_auth'):
+                auth_user = agent.get_prefs('proxy_auth_name')
+                auth_pass = agent.get_prefs('proxy_auth_password')
                 utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, auth_user, auth_pass)
             else:
-                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port, '', '')
+                utils.webkit_set_proxy_uri(proxy_scheme, proxy_host, proxy_port)
+        elif proxy_type == 'system':
+            if 'HTTP_PROXY' in os.environ and os.environ["HTTP_PROXY"]:
+                url = os.environ["HTTP_PROXY"]
+            elif 'http_proxy' in os.environ and os.environ["http_proxy"]:
+                url = os.environ["http_proxy"]
+            else:
+                url = None
+            utils.webkit_set_proxy_uri(url)
+        elif proxy_type == 'socks':
+            # TODO not implemented yet
+            utils.webkit_set_proxy_uri()
         else:
-            utils.webkit_set_proxy_uri('', '', '', '', '')
+            utils.webkit_set_proxy_uri()
         # workaround for a BUG of webkitgtk/soupsession
         # proxy authentication
         agent.execute_script('''

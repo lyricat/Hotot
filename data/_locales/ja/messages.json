@@ -900,7 +900,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "ほっとっとを呼び出す「例： <ALT>C」",
+		"message": "Hototを呼び出す(例:<ALT>C)",
 		"description": ""
 	},
 	"themes": {

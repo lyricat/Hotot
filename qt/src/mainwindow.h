@@ -50,14 +50,13 @@ class MainWindow : public ParentWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(bool useSocket, QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void notification(QString type, QString title, QString message, QString image);
     void triggerVisible();
     void activate();
     void unreadAlert(QString number);
     void setEnableDeveloperTool(bool e);
-    bool useSocks();
     void setSignIn(bool sign);
 
 protected Q_SLOTS:
@@ -104,7 +103,6 @@ private:
     QAction* m_actionMinimizeToTray;
 #endif
     QWebInspector* m_inspector;
-    bool m_useSocks;
     QFontDatabase m_fontDB;
     QString m_confDir;
     bool m_signIn;

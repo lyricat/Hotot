@@ -3,7 +3,8 @@ conf = {
 
 vars: {
       'platform': 'Linux'
-    , 'version': '0.9.8.3'
+    , 'wrapper': 'unknown'
+    , 'version': '0.9.8.4'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -18,12 +19,12 @@ default_settings: {
       // Globals:
       'use_verbose_mode': true
       // Globals -> proxy:
-    , 'use_http_proxy': false
-    , 'http_proxy_host': ''
-    , 'http_proxy_port': 0
-    , 'use_http_proxy_auth': false
-    , 'http_proxy_auth_name': ''
-    , 'http_proxy_auth_password': ''
+    , 'proxy_type': 'none'
+    , 'proxy_host': ''
+    , 'proxy_port': 0
+    , 'proxy_auth': false
+    , 'proxy_auth_name': ''
+    , 'proxy_auth_password': ''
     , 'use_anonymous_stat': true
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
@@ -375,6 +376,5 @@ var daily_hints = [
     , 'すっかり冷え込んだ日にはホットミルクとラブレターが恋しい'
     , 'My only fear of death is comin\' back to this bitch reincarnated'
     , 'FACT: features are bugs, but beautifully dressed'
-    , '小心我dir溢出你'
     , 'Hotot is a kind of rabbit, but I really love Cats :)'
 ];

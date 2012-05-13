@@ -38,7 +38,7 @@ def open_webbrowser(uri):
         browser = 'start'
     subprocess.Popen([browser, uri])
 
-def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
+def webkit_set_proxy_uri(scheme = None, host = None, port = None, user = None, passwd = None):
     from ctypes import CDLL, c_void_p, c_char_p, c_int
     try:
         if os.name == 'nt':
@@ -65,7 +65,17 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
         g_object_set(session, "max-conns", 20, None)
         g_object_set(session, "max-conns-per-host", 5, None)
 
-        if host:
+        if not scheme:
+            return 1
+        elif ":" in scheme:
+            soup_uri_new = libsoup.soup_uri_new
+            soup_uri_new.restype = c_void_p
+            soup_uri_new.argtypes = [ c_char_p ]
+            proxy_uri = soup_uri_new(str(scheme))
+            
+            g_object_set.argtypes = [ c_void_p, c_char_p, c_void_p, c_void_p ]
+            g_object_set(session, "proxy-uri", proxy_uri, None)
+        elif host:
             soup_uri_new = libsoup.soup_uri_new
             soup_uri_new.restype = c_void_p
             soup_uri_new.argtypes = [ c_char_p ]
@@ -95,10 +105,6 @@ def webkit_set_proxy_uri(scheme, host, port, user = None, passwd = None):
 
             g_object_set.argtypes = [ c_void_p, c_char_p, c_void_p, c_void_p ]
             g_object_set(session, "proxy-uri", proxy_uri, None)
-
-            soup_uri_free = libsoup.soup_uri_free
-            soup_uri_free.argtypes = [ c_void_p ]
-            soup_uri_free(proxy_uri)
         return 0
     except:
         exctype, value = sys.exc_info()[:2]
