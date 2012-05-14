@@ -28,7 +28,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
-		"message": "Erweitert",
+		"message": "Erweiterte Einstellungen",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -68,11 +68,11 @@
 		"description": "data/index.html"
 	},
 	"behavior": {
-		"message": "Verhalten",
+		"message": "Verhaltens Einstellungen",
 		"description": "data/index.html"
 	},
 	"bio": {
-		"message": "Bio",
+		"message": "Beschreibung",
 		"description": "data/index.html"
 	},
 	"block": {
@@ -128,7 +128,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Zur Retweeteranzeige klicken",
+		"message": "Zum anzeigen der Retweeter klicken",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -136,7 +136,7 @@
 		"description": "data/index.html"
 	},
 	"close_current_column": {
-		"message": "Schließe aktuelle reihe",
+		"message": "Schließe aktuelle spalte",
 		"description": "data/index.html"
 	},
 	"compose": {
@@ -144,7 +144,7 @@
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Bitte kopieren Sie den PIN Code und fügen diesen unten ein",
+		"message": "Bitte kopiere den PIN Code und fügen diesen unten ein",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
@@ -168,7 +168,7 @@
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
-		"message": "Standard Bilddienst",
+		"message": "Standard Bildhoster",
 		"description": "data/index.html"
 	},
 	"delete": {
@@ -180,7 +180,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"destroy_successfully": {
-		"message": "Erfolgreich vernichtet!",
+		"message": "Erfolgreich gelöscht!",
 		"description": "data/js/ui.main.js"
 	},
 	"disable_decoration_of_widgets_and_some_animations": {
@@ -188,7 +188,7 @@
 		"description": "data/index.html"
 	},
 	"donate": {
-		"message": "Spenden",
+		"message": "Spende",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -200,7 +200,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "Ziehen Sie ein Foto hierher",
+		"message": "Ziehen Sie ein Foto hier hin",
 		"description": "data/index.html"
 	},
 	"drop": {
@@ -236,7 +236,7 @@
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
-		"message": "Aktiviere zusätzliche Ausgaben",
+		"message": "Aktiviere Debug Modus",
 		"description": "data/index.html"
 	},
 	"errors": {
@@ -256,7 +256,7 @@
 		"description": "data/index.html"
 	},
 	"fav_or_un_fav": {
-		"message": "Fav/Un-fav",
+		"message": "Favorisiere/Unfavorisiere",
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
@@ -264,7 +264,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
-		"message": "Favs",
+		"message": "Fav.",
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
@@ -324,11 +324,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
-		"message": "Global",
+		"message": "Generelle Einstellungen",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "Einige Änderungen erfordern einen Neustart von Hotot. Diese Änderungen betreffen ALLE Konten",
+		"message": "Einige Änderungen erfordern einen Neustart von Hotot. Diese Änderungen betreffen alle Konten",
 		"description": "data/index.html"
 	},
 	"greeting": {
@@ -368,7 +368,7 @@
 		"description": "data/index.html"
 	},
 	"info": {
-		"message": "INFO",
+		"message": "Info",
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
@@ -380,7 +380,7 @@
 		"description": "data/index.html"
 	},
 	"interface_language": {
-		"message": "UI Sprache",
+		"message": "Interface Sprache",
 		"description": "data/index.html"
 	},
 	"join": {
@@ -388,7 +388,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "Just can't stop thinking of here",
+		"message": "Kann nicht aufhören über das hier nachzudenken",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -404,7 +404,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
-		"message": "Kismet Guide",
+		"message": "Kismet Einführung",
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
@@ -412,7 +412,7 @@
 		"description": "data/index.html"
 	},
 	"label_with_color": {
-		"message": "Label mit Farbe",
+		"message": "Farbige Markierung",
 		"description": "data/index.html"
 	},
 	"language": {
@@ -460,7 +460,7 @@
 		"description": "data/index.html"
 	},
 	"mark_deleted_tweets": {
-		"message": "Markiere gelöschte Tweets",
+		"message": "Gelöschte Tweets markieren (anstelle von Entfernen)",
 		"description": "data/index.html"
 	},
 	"mask": {
@@ -504,7 +504,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Gehe zu vorigem Tweet",
+		"message": "Gehe zu vorherigem Tweet",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -512,7 +512,7 @@
 		"description": "data/index.html"
 	},
 	"mute_filter": {
-		"message": "Mute Filter",
+		"message": "Stumm Filter",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -520,11 +520,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "My Journey is to the sea of stars",
+		"message": "Meine Reise führt mich zum See der Sterne",
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "Meine Leistung",
+		"message": "Meine Stärke",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
@@ -544,7 +544,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"next": {
-		"message": "Weiter",
+		"message": "Fortfahren",
 		"description": "data/index.html"
 	},
 	"no_extension": {
@@ -568,11 +568,11 @@
 		"description": "data/index.html"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Oops, ein Netzwerkfehler ist aufgetreten",
+		"message": "Ups, ein Netzwerkfehler ist aufgetreten",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Oops, es ist ein API Fehler aufgetreten!",
+		"message": "Ups, es ist ein API Fehler aufgetreten!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -584,11 +584,11 @@
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "",
+		"message": "Öffne den ersten Link",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "",
+		"message": "Öffne sprecher",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -596,11 +596,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Oder kopieren Sie die Adresse zum Öffnen in Ihren Browser.",
+		"message": "Oder kopieren Sie die Adresse und Öffnen Sie sie in Ihrem Browser.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
-		"message": "Panda acts cute",
+		"message": "Pands verhalten sich süß",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -620,7 +620,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"please_entry_a_profile_prefix": {
-		"message": "Bitte geben Sie einen Profil-Prefix an",
+		"message": "Bitte geben Sie ein Profil-Präfix an",
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
@@ -644,11 +644,11 @@
 		"description": "data/index.html"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Wenn möglich die neusten Tweets in Konversationen vorladen.",
+		"message": "Wenn möglich die letzten Tweets in Konversationen vorladen.",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "Pretty wife",
+		"message": "Schöne Frau",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -684,7 +684,7 @@
 		"description": "data/index.html"
 	},
 	"relation": {
-		"message": "Relation",
+		"message": "Verhältnis",
 		"description": "data/js/ui.template.js"
 	},
 	"reload": {
@@ -724,7 +724,7 @@
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
-		"message": "Retweet/Un-retweet",
+		"message": "Retweet/Un-Retweet",
 		"description": "data/index.html"
 	},
 	"retweet_successfully": {
@@ -736,7 +736,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Retweeting ...",
+		"message": "Retweete ...",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
@@ -748,7 +748,7 @@
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
-		"message": "RT diesen Tweet",
+		"message": "Retweete diesen Tweet",
 		"description": "data/js/ui.template.js"
 	},
 	"rule": {
@@ -768,11 +768,11 @@
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
-		"message": "Same Signing API Base",
+		"message": "Gleiche Anmelde- wie API-Adresse",
 		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
-		"message": "Same Signing OAuth Base",
+		"message": "Gleiche OAuth- Wie API-Adresse",
 		"description": "data/index.html"
 	},
 	"save": {
@@ -784,7 +784,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "Schizophrenia",
+		"message": "Schizophrenie",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -796,19 +796,19 @@
 		"description": "data/index.html"
 	},
 	"search_in_google": {
-		"message": "Suche @ in Google",
+		"message": "Google durchsuchen",
 		"description": "data/index.html"
 	},
 	"search_in_twitter": {
-		"message": "Suche @ in Twitter",
+		"message": "Twitter durchsuchen",
 		"description": "data/index.html"
 	},
 	"search_view": {
-		"message": "",
+		"message": "Suchanzeige",
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Wählen Sie einen Standard-Bild-Dienst",
+		"message": "Wählen Sie einen Standard-Bild-Hoster",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -832,7 +832,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "Shiny old times before marriage",
+		"message": "Sonnige alte Zeiten vor der Hochzeit",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -848,19 +848,19 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "",
+		"message": "Anmelde-API-Adresse",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "",
+		"message": "Anmelde-OAuth-Adresse",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
-		"message": "Blättere zu nächster Seite",
+		"message": "Blättere zur nächsten Seite",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Blättere zu voriger Seite",
+		"message": "Blättere zur vorigen Seite",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
@@ -868,7 +868,7 @@
 		"description": "data/index.html"
 	},
 	"sound": {
-		"message": "Ton",
+		"message": "Töne",
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
@@ -876,7 +876,7 @@
 		"description": "data/index.html"
 	},
 	"stat": {
-		"message": "STAT",
+		"message": "Stats",
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
@@ -964,7 +964,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "Widerrufe Retweeting ...",
+		"message": "Widerrufe Retweet ...",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
@@ -976,7 +976,7 @@
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
-		"message": "@ nicht mehr folgen",
+		"message": "Benutzer nicht mehr folgen",
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
@@ -996,7 +996,7 @@
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "",
+		"message": "Upload-API-Adresse",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
@@ -1016,11 +1016,11 @@
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Nutze ZITIEREN als Standard-Retweetmethode",
+		"message": "Nutze \"Zitieren\" als Standard-Retweetmethode",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
-		"message": "Nutze ALLEN ANTWORTEN als Standard-Antwortmethode",
+		"message": "Nutze \"allen Antworten\" als Standard-Antwortmethode",
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
