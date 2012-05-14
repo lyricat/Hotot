@@ -28,7 +28,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"advanced": {
-		"message": "Erweitert",
+		"message": "Erweiterte Einstellungen",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -68,7 +68,7 @@
 		"description": "data/index.html"
 	},
 	"behavior": {
-		"message": "Verhalten",
+		"message": "Verhaltens Einstellungen",
 		"description": "data/index.html"
 	},
 	"bio": {
