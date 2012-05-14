@@ -2109,7 +2109,8 @@ label {
 	line-height: 10px;
 }
 .tweet_source {
-	height: 15px;
+	height: 45px;
+        line-height:15px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

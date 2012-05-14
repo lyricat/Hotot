@@ -112,12 +112,14 @@ retweeted_by_t:
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
                 {%REPLY_TEXT%}\
             </div>\
+            <div style="clear:both;"></div>\
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
                 <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
+                <br/>\
                 {%TRANS_Retweeted_by%}: <a class="show" href="javascript:void(0)" title="{%TRANS_Click_to_show_retweeters%}"  tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
             </div>\
             <div class="tweet_retweeters" tweet_id="{%TWEET_ID%}"></div>\
