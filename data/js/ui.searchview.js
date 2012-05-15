@@ -19,7 +19,7 @@ function init_search_view(view) {
         ui.SearchView.clear(view);    
     });
     var toggle = view._header.find('.search_view_toggle');
-    var sub_view_btns = toggle.find('.mochi_list_item');
+    var sub_view_btns = toggle.find('.mochi_button_group_item');
     sub_view_btns.click(function (event) {
         var pagename = $(this).attr('href').substring(1);
         sub_view_btns.removeClass('selected');
