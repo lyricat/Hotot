@@ -25,6 +25,11 @@ class MainView(WebKit.WebView):
             settings.set_property('enable-spell-checking', False)
             settings.set_property('enable-caret-browsing', False)
             settings.set_property('enable-developer-extras', config.ENABLE_INSPECTOR)
+            try:
+                # Since 1.7.5
+                settings.set_property('enable-accelerated-compositing', True)
+            except TypeError:
+                pass
         except:
             print 'Error: settings property was not set.'
 
@@ -95,7 +100,7 @@ class MainView(WebKit.WebView):
         # overlay extra variables of web part
         variables = {
               'platform': 'Linux'
-			, 'wrapper': 'python-gtk3'
+            , 'wrapper': 'python-gtk3'
             , 'conf_dir': config.get_path("conf")
             , 'cache_dir': config.get_path("cache")
             , 'avatar_cache_dir': config.get_path("avatar")
