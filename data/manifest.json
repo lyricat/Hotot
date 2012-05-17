@@ -19,6 +19,7 @@
     "unlimitedStorage",
     "notifications",
     "contextMenus",
-    "tabs"
+    "tabs",
+    "management"
   ]
 }
