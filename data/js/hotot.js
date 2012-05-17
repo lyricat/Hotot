@@ -817,7 +817,7 @@ function syncMyLists () {
 var globals = {
       tweet_block_width: 600
     , max_status_len: 140
-    , tweet_font_size: 12
+    , tweet_font_size: 10
     , tweet_font: ''
     , myself: {}
     , signed_in: false

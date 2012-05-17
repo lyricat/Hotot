@@ -267,7 +267,7 @@ function apply_prefs(name, full) {
         i18n.change(prefs.lang);
         change_theme(prefs.theme, prefs.theme_path);
         globals.tweet_font_size = prefs.font_size;
-        $('.card_body > .text').css('font-size', prefs.font_size + 'px');
+        $('.card_body > .text').css('font-size', prefs.font_size + 'pt');
         ui.Main.use_preload_conversation = prefs.use_preload_conversation;
         for (var id in ext.exts_info) {
             ext.disable_ext(id);

@@ -46,7 +46,7 @@ tweet_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px;">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -106,7 +106,7 @@ retweeted_by_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -152,7 +152,7 @@ message_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -187,7 +187,7 @@ search_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}px">{%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
@@ -221,7 +221,7 @@ people_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -366,7 +366,7 @@ list_t:
             @{%SCREEN_NAME%}/{%SLUG%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}px">{%DESCRIPTION%}</div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
