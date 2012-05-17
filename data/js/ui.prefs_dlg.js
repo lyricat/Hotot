@@ -54,7 +54,7 @@ function init () {
     });
     $('#range_prefs_font_size').change(
     function (event) {
-        $('#range_prefs_font_size_st').text($(this).val() + 'px');
+        $('#range_prefs_font_size_st').text($(this).val() + 'pt');
         ui.PrefsDlg.update_font_preview();
     });
 
@@ -244,7 +244,7 @@ function load_prefs() {
 
     $('#tbox_prefs_custom_font').val(prefs.custom_font);
     $('#range_prefs_font_size').val(prefs.font_size);
-    $('#range_prefs_font_size_st').text(prefs.font_size + 'px');
+    $('#range_prefs_font_size_st').text(prefs.font_size + 'pt');
     if (prefs.use_custom_font) {
         $('#chk_use_custom_font')
             .attr('checked', prefs.use_custom_font)
@@ -359,7 +359,7 @@ function update_font_preview() {
                 ? $('#tbox_prefs_custom_font').val()
                     : conf.get_default_font_settings())
         .css('font-size'
-            , $('#range_prefs_font_size').val() + 'px');
+            , $('#range_prefs_font_size').val() + 'pt');
 }
 
 }
