@@ -69,7 +69,8 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
     m_inspector(0),
     m_fontDB(),
-    m_signIn(false)
+    m_signIn(false),
+    m_firstLoad(true)
 {
 #ifdef Q_OS_UNIX
     chdir(PREFIX);
@@ -264,7 +265,11 @@ void MainWindow::loadFinished(bool ok)
         m_webView->page()->currentFrame()->evaluateJavaScript(
             "overlay_variables(hotot_qt_variables);"
             "globals.load_flags = 1;");
-        QTimer::singleShot(300, this, SLOT(notifyLoadFinished()));
+
+        if (m_firstLoad) {
+            m_firstLoad = false;
+            QTimer::singleShot(300, this, SLOT(notifyLoadFinished()));
+        }
     }
     else {
         show();

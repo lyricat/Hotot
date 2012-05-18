@@ -106,6 +106,7 @@ private:
     QFontDatabase m_fontDB;
     QString m_confDir;
     bool m_signIn;
+    bool m_firstLoad;
 };
 
 #endif // MAINWINDOW_H
