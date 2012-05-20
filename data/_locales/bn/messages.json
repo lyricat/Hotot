@@ -164,7 +164,7 @@
 		"description": "data/index.html"
 	},
 	"custom_font": {
-		"message": "",
+		"message": "কাস্টম ফন্ট",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -188,7 +188,7 @@
 		"description": "data/index.html"
 	},
 	"donate": {
-		"message": "",
+		"message": "অনুদান",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -356,7 +356,7 @@
 		"description": "data/index.html"
 	},
 	"host": {
-		"message": "",
+		"message": "হোস্ট",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -588,7 +588,7 @@
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "বক্তার তালিকা খুলুন",
+		"message": "বক্তার লিংকটি খুলুন",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -848,11 +848,11 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "",
+		"message": "সাইনিং API বেজ",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "",
+		"message": "সাইনিং OAuth বেজ",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
@@ -916,7 +916,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "",
+		"message": "প্রতি",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -924,7 +924,7 @@
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
-		"message": "",
+		"message": "আলোচনা স্থানান্তর",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -972,7 +972,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow": {
-		"message": "",
+		"message": "অননুসরণ",
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
@@ -1028,7 +1028,7 @@
 		"description": "data/index.html"
 	},
 	"username": {
-		"message": "",
+		"message": "ব্যবহারকারীর নাম",
 		"description": "data/index.html"
 	},
 	"verify": {
@@ -1040,7 +1040,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"via": {
-		"message": "মাধ্যমে",
+		"message": "মাধ্যম",
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
@@ -1090,5 +1090,21 @@
 	"you_are_not_following_each_other": {
 		"message": "আপনারা একে অন্যকে অনুসরণ করছেন না",
 		"description": "data/js/ui.peopleview.js"
+	},
+          "proxy_type": {
+		"message": "প্রক্সি",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "কোন প্রক্সি নেই",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http প্রক্সি",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "সিস্টেম প্রক্সি",
+		"description": "data/index.html"
 	}
 }
