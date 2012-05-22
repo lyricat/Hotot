@@ -272,7 +272,7 @@ function load_profiles_info() {
             $('#tbox_basic_auth_password').val(
                 conf.profiles[profile_name].preferences.default_password);
             // apply preferences
-            conf.apply_prefs(profile_name, false);
+            conf.apply_prefs(profile_name, true);
             if (globals.twitterClient.oauth.access_token == ''
                 || globals.twitterClient.oauth.access_token.constructor != Object) {
                 $('#access_token_status_hint').css('visibility', 'visible');

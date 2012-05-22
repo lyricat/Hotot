@@ -7,7 +7,7 @@ name: 'AppMask',
 
 description: 'Change your source application name.',
 
-version: '0.2',
+version: '0.3',
 
 author: 'Xu Zhen',
 
@@ -124,6 +124,10 @@ function enable() {
 
 disable:
 function disable() {
+	var key = ext.AppMask.def_prefs.consumer_key;
+	var secret = ext.AppMask.def_prefs.consumer_secret;
+	conf.vars.consumer_key = globals.twitterClient.oauth.key = key;
+	conf.vars.consumer_secret = globals.twitterClient.oauth.secret = secret;
 },
 
 options:
@@ -143,6 +147,5 @@ ext.AppMask.db.get('prefs', function(key, val) {
 		if (prefs.consumer_secret != null) {
 			ext.AppMask.prefs.consumer_secret = prefs.consumer_secret;
 		}
-		ext.AppMask.enable();
 	}
 });
