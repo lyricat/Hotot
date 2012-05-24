@@ -4,7 +4,7 @@
 		"description": "data/index.html"
 	},
 	"about_and_help": {
-		"message": "Sobre & ajuda",
+		"message": "Sobre e ajuda",
 		"description": "data/index.html"
 	},
 	"access_token_doesnt_exist": {
@@ -108,7 +108,7 @@
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
-		"message": "Limpar & fechar",
+		"message": "Limpar e fechar",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -164,7 +164,7 @@
 		"description": "data/index.html"
 	},
 	"custom_font": {
-		"message": "",
+		"message": "Fonte personalizada",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -188,7 +188,7 @@
 		"description": "data/index.html"
 	},
 	"donate": {
-		"message": "",
+		"message": "Doe",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -348,15 +348,15 @@
 		"description": "data/index.html"
 	},
 	"home_timeline": {
-		"message": "Timeline principal",
+		"message": "Principal",
 		"description": "data/js/ui.slider.js"
 	},
 	"home_view": {
-		"message": "Visão prinsipal",
+		"message": "Visão principal",
 		"description": "data/index.html"
 	},
 	"host": {
-		"message": "",
+		"message": "Servidor",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -604,7 +604,7 @@
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "",
+		"message": "Senha",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -624,7 +624,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
-		"message": "",
+		"message": "Porta",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -848,11 +848,11 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "",
+		"message": "Base da API de conexão",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "",
+		"message": "Base da API de conexão OAuth",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
@@ -916,7 +916,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "",
+		"message": "Para",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -924,7 +924,7 @@
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
-		"message": "",
+		"message": "Alternar conversa",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -972,7 +972,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow": {
-		"message": "",
+		"message": "Deixar de seguir",
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
@@ -1028,7 +1028,7 @@
 		"description": "data/index.html"
 	},
 	"username": {
-		"message": "",
+		"message": "Nome de usuário",
 		"description": "data/index.html"
 	},
 	"verify": {
