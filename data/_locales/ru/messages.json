@@ -36,7 +36,7 @@
 		"description": "data/index.html"
 	},
 	"api_setting": {
-		"message": "Настройка API ",
+		"message": "Настройка API",
 		"description": "data/index.html"
 	},
 	"archive": {
@@ -44,7 +44,7 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "Убийцы танго",
+		"message": "Танго убийцы",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -56,7 +56,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_update": {
-		"message": "Авто обновления",
+		"message": "Автообновление",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -88,7 +88,7 @@
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "Не можем вас авторизировать! Пожалуйста проверьте ваш логин и пароль базу API",
+		"message": "Не можем вас авторизовать! Пожалуйста проверьте ваш логин или пароль и базу API",
 		"description": "data/js/ui.welcome.js"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "Нажмите что бы продолжить",
+		"message": "Нажмите чтобы продолжить",
 		"description": "data/index.html"
 	},
 	"click_the_button_below": {
@@ -120,7 +120,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Нажмите что бы сочинить сообщение",
+		"message": "Нажмите чтобы составить сообщение",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -128,7 +128,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"click_to_show_retweeters": {
-		"message": "Нажмите что бы увидеть ретвиты",
+		"message": "Нажмите чтобы увидеть ретвиты",
 		"description": "data/js/ui.template.js"
 	},
 	"close": {
@@ -140,11 +140,11 @@
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "Сочинить",
+		"message": "Отправить",
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Скопируйте PIN Code и вставте в поле ниже ",
+		"message": "Скопируйте PIN Code и вставте в поле ниже",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
@@ -156,7 +156,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"credits": {
-		"message": "Кредиты",
+		"message": "Разработчики",
 		"description": "data/index.html"
 	},
 	"cuddly": {
@@ -164,7 +164,7 @@
 		"description": "data/index.html"
 	},
 	"custom_font": {
-		"message": "",
+		"message": "Свой шрифт",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -188,15 +188,15 @@
 		"description": "data/index.html"
 	},
 	"donate": {
-		"message": "",
+		"message": "Жертвовать",
 		"description": "data/index.html"
 	},
 	"dots": {
-		"message": "...",
+		"message": "…",
 		"description": "data/js/ui.main.js"
 	},
 	"drafts": {
-		"message": "Черновик",
+		"message": "Черновики",
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
@@ -204,7 +204,7 @@
 		"description": "data/index.html"
 	},
 	"drop": {
-		"message": "Падение",
+		"message": "Пропустить",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -212,11 +212,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"effects": {
-		"message": "Ефекты",
+		"message": "Эффекты",
 		"description": "data/index.html"
 	},
 	"effects_extra": {
-		"message": "Екстра",
+		"message": "Экстра",
 		"description": "data/index.html"
 	},
 	"effects_low": {
@@ -228,12 +228,25 @@
 		"description": "data/index.html"
 	},
 	"enable": {
-		"message": "Включенные",
+		"message": "Включено",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"enable_proxy": {
-		"message": "Включить прокси",
+	"proxy_type": {
+		"message": "Прокси",
 		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "Нет",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http прокси",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "система",
+		"description": "data/index.html"
+	},
 	},
 	"enable_verbose_mode": {
 		"message": "Подробная информация",
@@ -248,7 +261,7 @@
 		"description": "data/index.html"
 	},
 	"exit_hotot_when_close_window": {
-		"message": "Выходит из Hotot при закрытии окна",
+		"message": "Выходить из Hotot при закрытии окна",
 		"description": "data/index.html"
 	},
 	"extensions": {
@@ -260,7 +273,7 @@
 		"description": "data/index.html"
 	},
 	"favorite_this_tweet_dots": {
-		"message": "Добавить в избранное ...",
+		"message": "Добавить в избранное…",
 		"description": "data/js/ui.main.js"
 	},
 	"favs": {
@@ -268,11 +281,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"favs_view": {
-		"message": "Лента избранных твитов",
+		"message": "Лента избранных",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
-		"message": "Блокировать твиты типа этого",
+		"message": "Блокировать подобные твиты",
 		"description": "data/index.html"
 	},
 	"find": {
@@ -296,7 +309,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "Читатели",
+		"message": "Читателей",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
@@ -316,11 +329,11 @@
 		"description": "data/index.html"
 	},
 	"friend_cnt": {
-		"message": "Друг",
+		"message": "Читает",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "Друзья",
+		"message": "Читает",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
@@ -328,11 +341,11 @@
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
-		"message": "Вы должны перезапустить Hotot для того что бы включились некоторые эффекты. И все изминения повлияют для всех аккаунтов",
+		"message": "Вы ДОЛЖНЫ перезапустить Hotot для того, чтобы включились некоторые эффекты. И все изменения повлияют для всех аккаунтов",
 		"description": "data/index.html"
 	},
 	"greeting": {
-		"message": "Поздравляем!",
+		"message": "Приветствуем!",
 		"description": "data/index.html"
 	},
 	"help": {
@@ -340,7 +353,7 @@
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
-		"message": "Это вы",
+		"message": "Это вы!",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
@@ -356,7 +369,7 @@
 		"description": "data/index.html"
 	},
 	"host": {
-		"message": "",
+		"message": "Хост",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -364,11 +377,11 @@
 		"description": "data/index.html"
 	},
 	"image_uploader": {
-		"message": "Загрузка изображение",
+		"message": "Загрузка изображения",
 		"description": "data/index.html"
 	},
 	"info": {
-		"message": "INFO",
+		"message": "ИНФО",
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
@@ -376,7 +389,7 @@
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
-		"message": "Интелектуальный фильтр",
+		"message": "Интеллектуальный фильтр",
 		"description": "data/index.html"
 	},
 	"interface_language": {
@@ -396,7 +409,7 @@
 		"description": "data/index.html"
 	},
 	"keyboard_shortcuts": {
-		"message": "Иконки клавиатуры",
+		"message": "Горячие клавиши",
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
@@ -432,7 +445,7 @@
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
-		"message": "В списке",
+		"message": "В списках",
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
@@ -440,7 +453,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"lists_following_them": {
-		"message": " Списки вслед за ними",
+		"message": "Значится в списках",
 		"description": "data/js/ui.template.js"
 	},
 	"lists_of_them": {
@@ -448,11 +461,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"loading_dots": {
-		"message": "Загрузка ... ",
+		"message": "Загрузка… ",
 		"description": "data/js/ui.template.js"
 	},
 	"loading_resources_hint": {
-		"message": "Загрузка ресурсов ...",
+		"message": "Загрузка ресурсов…",
 		"description": "data/index.html"
 	},
 	"location": {
@@ -468,11 +481,11 @@
 		"description": "data/index.html"
 	},
 	"mention_them": {
-		"message": "Упоминание",
+		"message": "Написать ему",
 		"description": "data/js/ui.template.js"
 	},
 	"mentions": {
-		"message": "Упоминание",
+		"message": "Упоминания",
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
@@ -480,7 +493,7 @@
 		"description": "data/index.html"
 	},
 	"messages": {
-		"message": "Сообщение",
+		"message": "Сообщения",
 		"description": "data/js/ui.slider.js"
 	},
 	"messages_view": {
@@ -508,7 +521,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_top": {
-		"message": "Передвинуться на верх",
+		"message": "Передвинуться наверх",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
@@ -536,7 +549,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "Ошибка Сети! повторите попытку позже.",
+		"message": "Ошибка сети! повторите попытку позже.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
@@ -548,7 +561,7 @@
 		"description": "data/index.html"
 	},
 	"no_extension": {
-		"message": "Без Расширений",
+		"message": "Без расширений",
 		"description": "data/index.html"
 	},
 	"notify": {
@@ -568,27 +581,27 @@
 		"description": "data/index.html"
 	},
 	"oops_a_network_error_occurs": {
-		"message": "Упс, Произошла ошибка сети!",
+		"message": "Упс, произошла ошибка сети!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_api_error_occurs": {
-		"message": "Упс, Произошла ошибка сети API!",
+		"message": "Упс, произошла ошибка API!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
-		"message": "Открыть список ...",
+		"message": "Открыть список…",
 		"description": "data/index.html"
 	},
 	"open_a_profile_dots": {
-		"message": "Открыть профиль ...",
+		"message": "Открыть профиль…",
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "Открыть первуею ссылку",
+		"message": "Открыть первую ссылку",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "Open speaker link",
+		"message": "Открыть профиль сказавшего",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -596,7 +609,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "Или скопируйте адресс и откройте в браузере.",
+		"message": "или скопируйте адресс и откройте в браузере.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
@@ -604,7 +617,7 @@
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "",
+		"message": "Пароль",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -624,15 +637,15 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
-		"message": "",
+		"message": "Порт",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
-		"message": "Запощено успешно!",
+		"message": "Отправлено успешно!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"posting_dots": {
-		"message": "Постим ...",
+		"message": "Отправляем…",
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
@@ -644,7 +657,7 @@
 		"description": "data/index.html"
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Предварительно загружать последнии твиты в обсуждении, если возможно.",
+		"message": "Предварительно загружать последние твиты в обсуждении, если возможно.",
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
@@ -656,7 +669,7 @@
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
-		"message": "Предварительный просмотр встроенного медияа",
+		"message": "Предварительный просмотр встроенного медиа",
 		"description": "data/index.html"
 	},
 	"preview_here": {
@@ -716,7 +729,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
-		"message": "Восстановить значение по умолчанию",
+		"message": "Восстановить значения по умолчанию",
 		"description": "data/index.html"
 	},
 	"retweet": {
@@ -736,11 +749,11 @@
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
-		"message": "Ретвитаем ...",
+		"message": "Ретвитим…",
 		"description": "data/js/ui.main.js"
 	},
 	"retweets": {
-		"message": "Ретвит",
+		"message": "Ретвиты",
 		"description": "data/js/ui.slider.js"
 	},
 	"retweets_view": {
@@ -768,11 +781,11 @@
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
-		"message": "Та же подпись база API",
+		"message": "Та же API база подписей",
 		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
-		"message": "Та же подпись база OAuth",
+		"message": "Та же OAuth база подписей",
 		"description": "data/index.html"
 	},
 	"save": {
@@ -780,7 +793,7 @@
 		"description": "data/index.html"
 	},
 	"save_as_draft": {
-		"message": "Сохранить как проект",
+		"message": "Сохранить как черновик",
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
@@ -792,7 +805,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"search_api_base2": {
-		"message": "Поиск базы API",
+		"message": "API база поиска",
 		"description": "data/index.html"
 	},
 	"search_in_google": {
@@ -808,7 +821,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "Выбрать как фотохостинг по умолчанию",
+		"message": "Выбрать фотохостинг по умолчанию",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -816,7 +829,7 @@
 		"description": "data/index.html"
 	},
 	"select_actions": {
-		"message": "Выбрать действие",
+		"message": "Выбрать действия",
 		"description": "data/index.html"
 	},
 	"select_fields": {
@@ -824,11 +837,11 @@
 		"description": "data/index.html"
 	},
 	"send_message": {
-		"message": "Отослать сообщение",
+		"message": "Отправить сообщение",
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
-		"message": "Отослать им сообщение",
+		"message": "Отправить ему сообщение",
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
@@ -840,7 +853,7 @@
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
-		"message": "Вход ...",
+		"message": "Вход…",
 		"description": "data/js/ui.welcome.js"
 	},
 	"sign_out": {
@@ -848,11 +861,11 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "",
+		"message": "API база входов",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "",
+		"message": "OAuth база входов",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
@@ -864,7 +877,7 @@
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
-		"message": "Обнурежена некоторая ошибка",
+		"message": "Произошла ошибка",
 		"description": "data/index.html"
 	},
 	"sound": {
@@ -872,7 +885,7 @@
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "Стартовать свернутым",
+		"message": "Запускать свернутым",
 		"description": "data/index.html"
 	},
 	"stat": {
@@ -880,7 +893,7 @@
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Статус более 140 Символов!",
+		"message": "Статус более 140 символов!",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
@@ -892,7 +905,7 @@
 		"description": "data/index.html"
 	},
 	"struggling_adventurers": {
-		"message": "Борющиеся Авантюристы",
+		"message": "Борющиеся авантюристы",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -900,7 +913,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "Запускать Hotot (Например: <ALT>C)",
+		"message": "Вызов Hotot (Например: <ALT>C)",
 		"description": "data/index.html"
 	},
 	"themes": {
@@ -912,7 +925,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
-		"message": "Золотисто-каштановая красота",
+		"message": "Элегантность Тициана",
 		"description": "data/index.html"
 	},
 	"to": {
@@ -924,7 +937,7 @@
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
-		"message": "",
+		"message": "Переключение разговора",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -940,11 +953,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "Лента Трендов ",
+		"message": "Лента Трендов",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "Твит",
+		"message": "Твитов",
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
@@ -956,7 +969,7 @@
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
-		"message": "Убрать из избранного этот твит ...",
+		"message": "Убрать из избранного этот твит…",
 		"description": "data/js/ui.main.js"
 	},
 	"unblock": {
@@ -964,7 +977,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"undo_retweeting_dots": {
-		"message": "Отменить ретвит ...",
+		"message": "Отменить ретвит…",
 		"description": "data/js/ui.main.js"
 	},
 	"undo_successfully": {
@@ -972,11 +985,11 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow": {
-		"message": "",
+		"message": "Не читать",
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
-		"message": "перестать читать @",
+		"message": "Перестать читать @",
 		"description": "data/js/ui.main.js"
 	},
 	"update": {
@@ -988,7 +1001,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"updating_dots": {
-		"message": "Обновление ...",
+		"message": "Обновление…",
 		"description": "data/js/ui.status_box.js"
 	},
 	"upload": {
@@ -996,7 +1009,7 @@
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "Загрузить базу API",
+		"message": "API база загрузки",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
@@ -1004,7 +1017,7 @@
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
-		"message": "Загрузить на ...",
+		"message": "Загрузить на…",
 		"description": "data/index.html"
 	},
 	"url_shortener": {
@@ -1012,15 +1025,15 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "Использовать шрифт",
+		"message": "Использовать свой шрифт",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
-		"message": "Использовать Цитирование твита по умолчание",
+		"message": "Использовать ЦИТАТУ твита как ретвит по умолчанию",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
-		"message": "Использовать ответить всем как по умолчанию",
+		"message": "Использовать ОТВЕТ ВСЕМ как ответ по умолчанию",
 		"description": "data/index.html"
 	},
 	"use_ubuntu_indicator": {
@@ -1028,7 +1041,7 @@
 		"description": "data/index.html"
 	},
 	"username": {
-		"message": "",
+		"message": "Имя пользователя",
 		"description": "data/index.html"
 	},
 	"verify": {
@@ -1044,7 +1057,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-		"message": " View more conversation",
+		"message": "Посмотреть весь разговор",
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {
@@ -1052,7 +1065,7 @@
 		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
-		"message": "Целосность Virushou's",
+		"message": "Вирушоу в целостности",
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
@@ -1076,11 +1089,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
-		"message": "Они вас читают.",
+		"message": "Читает вас.",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
-		"message": "Вы читаете ",
+		"message": "Вы читаете",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
