@@ -48,13 +48,22 @@
 #     license. For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+function(__GET_UNIQUE_TARGET_NAME _name _unique_name)
+   set(propertyName "_PYTHON_UNIQUE_COUNTER_${_name}")
+   get_property(currentCounter GLOBAL PROPERTY "${propertyName}")
+   if(NOT currentCounter)
+      set(currentCounter 1)
+   endif()
+   set(${_unique_name} "${_name}_${currentCounter}" PARENT_SCOPE)
+   math(EXPR currentCounter "${currentCounter} + 1")
+   set_property(GLOBAL PROPERTY ${propertyName} ${currentCounter} )
+endfunction()
+
 get_filename_component(PYTHON_MACROS_MODULE_PATH
   ${CMAKE_CURRENT_LIST_FILE} PATH)
 
 # Hopefully this will not break anything
 find_package(PythonLibrary REQUIRED)
-
-set(_python_compile_count "0")
 
 macro(_PYTHON_COMPILE SOURCE_FILE)
   find_file(_python_compile_py PythonCompile.py PATHS ${CMAKE_MODULE_PATH})
@@ -67,7 +76,7 @@ macro(_PYTHON_COMPILE SOURCE_FILE)
 
   if(WIN32)
     string(REGEX REPLACE ".:/" "/" _basepath "${_basepath}")
-  endif(WIN32)
+  endif()
 
   set(_bin_py ${CMAKE_CURRENT_BINARY_DIR}/${_basepath}/${_filename})
   file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_basepath})
@@ -76,10 +85,10 @@ macro(_PYTHON_COMPILE SOURCE_FILE)
     set(_bin_pyc ${CMAKE_CURRENT_BINARY_DIR}/${_basepath}/__pycache__/${_filenamebase}.${PYTHON_MAGIC_TAG}.pyc)
     # show be fine, just in case
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${_basepath}/__pycache__)
-  else(PYTHON_MAGIC_TAG)
+  else()
     # python2
     set(_bin_pyc ${CMAKE_CURRENT_BINARY_DIR}/${_basepath}/${_filenamebase}.pyc)
-  endif(PYTHON_MAGIC_TAG)
+  endif()
 
   set(_message "Byte-compiling ${_bin_py}")
 
@@ -92,7 +101,7 @@ macro(_PYTHON_COMPILE SOURCE_FILE)
       COMMAND ${CMAKE_COMMAND} -E copy ${_absfilename} ${_bin_py}
       DEPENDS ${_absfilename}
     )
-  endif(NOT _abs_bin_py STREQUAL ${_absfilename})
+  endif()
   add_custom_command(
     OUTPUT ${_bin_pyc}
     COMMAND ${CMAKE_COMMAND} -E echo "${_message}"
@@ -111,24 +120,25 @@ macro(PYTHON_COMPILE)
     set(PYTHON_COMPILED_FILES ${PYTHON_COMPILED_FILES} ${PYTHON_COMPILED_FILE})
     set(PYTHON_COMPILE_PY_FILES ${PYTHON_COMPILE_PY_FILES}
       ${PYTHON_COMPILE_PY_FILE})
-  endforeach(pyfile ${ARGN})
+  endforeach()
 endmacro(PYTHON_COMPILE)
 
 macro(PYTHON_INSTALL_ALL DEST_DIR)
   python_compile(${ARGN})
 
   # PLEASE tell me if there is better solutions
-  math(EXPR _python_compile_count "${_python_compile_count} + 1")
-  add_custom_target("python_compile_target_${_python_compile_count}" ALL
+  __get_unique_target_name(python_compile_target _py_compile_target)
+
+  add_custom_target("${_py_compile_target}" ALL
     DEPENDS ${PYTHON_COMPILED_FILES})
   install(FILES ${PYTHON_COMPILE_PY_FILES} DESTINATION ${DEST_DIR})
   if(PYTHON_MAGIC_TAG)
     # PEP 3147
     set(PYC_DEST_DIR ${DEST_DIR}/__pycache__)
-  else(PYTHON_MAGIC_TAG)
+  else()
     # python2
     set(PYC_DEST_DIR ${DEST_DIR})
-  endif(PYTHON_MAGIC_TAG)
+  endif()
   install(FILES ${PYTHON_COMPILED_FILES} DESTINATION ${PYC_DEST_DIR})
 endmacro(PYTHON_INSTALL_ALL DEST_DIR)
 
