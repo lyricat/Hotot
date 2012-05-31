@@ -120,7 +120,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Cliquez pour composer",
+		"message": "Cliquez pour composer un message",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -160,7 +160,7 @@
 		"description": "data/index.html"
 	},
 	"cuddly": {
-		"message": "",
+		"message": "Calin",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -356,7 +356,7 @@
 		"description": "data/index.html"
 	},
 	"host": {
-		"message": "",
+		"message": "Hôte",
 		"description": "data/index.html"
 	},
 	"hotot": {
@@ -376,7 +376,7 @@
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
-		"message": "",
+		"message": "Filtre intélligent",
 		"description": "data/index.html"
 	},
 	"interface_language": {
@@ -400,15 +400,15 @@
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Kismet Firewall",
+		"message": "Parefeux Kismet",
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
-		"message": "",
+		"message": "Guide d'utilisation de Kismet",
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "",
+		"message": "ATTENTION: Les tweets comportants ces attributs n'apparaîtront plus sur votre timeline.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -476,7 +476,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
-		"message": "Mentions View",
+		"message": Onglet mentions,
 		"description": "data/index.html"
 	},
 	"messages": {
@@ -584,11 +584,11 @@
 		"description": "data/index.html"
 	},
 	"open_first_link": {
-		"message": "",
+		"message": "Ouvrir le premier lien",
 		"description": "data/index.html"
 	},
 	"open_speaker_link": {
-		"message": "",
+		"message": "Ovurir le lien de l'intervenant",
 		"description": "data/index.html"
 	},
 	"options": {
@@ -624,7 +624,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
-		"message": "",
+		"message": "Port",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -652,7 +652,7 @@
 		"description": "data/index.html"
 	},
 	"preview": {
-		"message": "Prévisualisation",
+		"message": "Prévisualiser",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
@@ -708,7 +708,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
-		"message": "Marquer comme spam",
+		"message": "Signaler comme spam",
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
@@ -744,7 +744,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"retweets_view": {
-		"message": "Vue Retweet",
+		"message": "Onglet Retweet",
 		"description": "data/index.html"
 	},
 	"rt_this_tweet": {
@@ -784,7 +784,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "",
+		"message": "Schizophréne",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -820,7 +820,7 @@
 		"description": "data/index.html"
 	},
 	"select_fields": {
-		"message": "Sélectionner un champs",
+		"message": "Sélectionner un champ",
 		"description": "data/index.html"
 	},
 	"send_message": {
@@ -872,7 +872,7 @@
 		"description": "data/index.html"
 	},
 	"starts_minimized": {
-		"message": "Démarré Minimisé",
+		"message": "Démarrer Minimisé",
 		"description": "data/index.html"
 	},
 	"stat": {
@@ -880,7 +880,7 @@
 		"description": "data/index.html"
 	},
 	"status_is_over_140_characters": {
-		"message": "Le status dépasse les 140 caractères",
+		"message": "Le statut dépasse les 140 caractères",
 		"description": "data/js/ui.status_box.js"
 	},
 	"step_one": {
@@ -904,11 +904,11 @@
 		"description": "data/index.html"
 	},
 	"themes": {
-		"message": "thèmes",
+		"message": "Thèmes",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
-		"message": "Ce profil existe peut-être déjà!",
+		"message": "Ce profil doit déjà exister!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
@@ -916,7 +916,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "",
+		"message": "Vers",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -924,23 +924,23 @@
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
-		"message": "",
+		"message": "Basculer vers la conversation",
 		"description": "data/index.html"
 	},
 	"tranquil": {
-		"message": "",
+		"message": "Doucement",
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "",
+		"message": "Transparent",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
-		"message": "",
+		"message": "Sujets populaires",
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "",
+		"message": "Vue des sujets populaires",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -972,7 +972,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow": {
-		"message": "",
+		"message": "Se désabonner",
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
@@ -1008,7 +1008,7 @@
 		"description": "data/index.html"
 	},
 	"url_shortener": {
-		"message": "",
+		"message": "Raccourci d'URL",
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
@@ -1028,11 +1028,11 @@
 		"description": "data/index.html"
 	},
 	"username": {
-		"message": "",
+		"message": "Nom d'utilisateur",
 		"description": "data/index.html"
 	},
 	"verify": {
-		"message": "",
+		"message": "Vérifier",
 		"description": "data/index.html"
 	},
 	"version": {
