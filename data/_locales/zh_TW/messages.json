@@ -99,7 +99,7 @@
 		"message": "整合到Chrome右鍵菜單",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "清空 Token",
 		"description": "data/index.html"
 	},

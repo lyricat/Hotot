@@ -99,7 +99,7 @@
 		"message": "集成到Chrome右键菜单",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "清空令牌",
 		"description": "data/index.html"
 	},

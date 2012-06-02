@@ -99,7 +99,7 @@
 		"message": "ক্রোমের কনটেক্স তালিকার সাথে একত্রীকরণ",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "টোকেন পরিষ্কার করুন",
 		"description": "data/index.html"
 	},

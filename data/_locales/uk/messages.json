@@ -99,7 +99,7 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Clean token",
 		"description": "data/index.html"
 	},

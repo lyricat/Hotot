@@ -99,7 +99,7 @@
 		"message": "Integrierung in das Chrome Kontextmenü",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Zugangstoken verwerfen",
 		"description": "data/index.html"
 	},

@@ -99,7 +99,7 @@
 		"message": "Integración con el menú contextual de Chrome",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Borrar token",
 		"description": "data/index.html"
 	},

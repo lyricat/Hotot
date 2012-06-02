@@ -99,7 +99,7 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Премахни разрешението за достъп",
 		"description": "data/index.html"
 	},

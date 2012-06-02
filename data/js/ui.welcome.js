@@ -57,18 +57,18 @@ function init () {
         globals.prefs_dialog.open();
     });
         
-    $('#clean_token_btn').click(
+    $('#clear_token_btn').click(
     function (event) {
-        if (confirm('The operation will erases the access token of this profile.\n Are you sure you want to continue?!\n')) 
+        if (confirm('The operation will erase the access token of this profile.\n Are you sure you want to continue?!\n')) 
         {
-            conf.clean_token(conf.current_name);
+            conf.clear_token(conf.current_name);
             $('#profile_avatar_list a.selected').click();
         }
     });
 
     $('#btn_welcome_delete_profile').click(
     function (event) {
-        if (confirm('The operation will erases all data of this profile.\n Are you sure you want to continue?!\n')) 
+        if (confirm('The operation will erase all data of this profile.\n Are you sure you want to continue?!\n')) 
         {
             db.remove_profile(ui.Welcome.selected_profile, 
             function (result) {
@@ -261,7 +261,7 @@ function load_profiles_info() {
             $('.service_tabs_page').hide();
             $("#service_page_new").show();
         } else {
-            $('#clean_token_btn').css('visibility', 'visibility');
+            $('#clear_token_btn').css('visibility', 'visibility');
             $("#service_page_new").hide();
             $('#service_page_' + type).show();
             $('.service_tabs_page').not('#service_page_' + type).hide();
@@ -276,10 +276,10 @@ function load_profiles_info() {
             if (globals.twitterClient.oauth.access_token == ''
                 || globals.twitterClient.oauth.access_token.constructor != Object) {
                 $('#access_token_status_hint').css('visibility', 'visible');
-                $('#clean_token_btn').css('visibility', 'hidden');
+                $('#clear_token_btn').css('visibility', 'hidden');
             } else {
                 $('#access_token_status_hint').css('visibility', 'hidden');
-                $('#clean_token_btn').css('visibility', 'visibility');
+                $('#clear_token_btn').css('visibility', 'visibility');
             }
         }
         $('#profile_avatar_list a').not(this).removeClass('selected');

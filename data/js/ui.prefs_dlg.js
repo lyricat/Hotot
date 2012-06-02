@@ -105,7 +105,7 @@ function init () {
     });
 
     $('#btn_prefs_restore_defaults').click(function (event) {
-        if (confirm("Restore defaults will erases all changes you make.\n Are you sure you want to continue?!\n"))
+        if (confirm("Restore defaults will erase all changes you make.\n Are you sure you want to continue?!\n"))
             ui.PrefsDlg.restore_defaults();
     });
 

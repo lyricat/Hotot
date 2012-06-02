@@ -99,7 +99,7 @@
 		"message": "Utiliser intégration contextuel Chrome",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Effacer le jeton",
 		"description": "data/index.html"
 	},

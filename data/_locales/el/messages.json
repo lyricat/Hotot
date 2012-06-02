@@ -99,7 +99,7 @@
 		"message": "Chrome context menu integration",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Εκκαθάριση τεκμηρίου",
 		"description": "data/index.html"
 	},

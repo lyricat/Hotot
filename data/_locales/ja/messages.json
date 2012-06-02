@@ -99,7 +99,7 @@
 		"message": "Chromeの右クリックメニューに追加",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "トークンを削除する",
 		"description": "data/index.html"
 	},

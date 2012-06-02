@@ -99,8 +99,8 @@
 		"message": "Chrome context menu integration",
 		"description": "data/index.html"
 	},
-	"clean_token": {
-		"message": "Clean token",
+	"clear_token": {
+		"message": "Clear token",
 		"description": "data/index.html"
 	},
 	"clear": {

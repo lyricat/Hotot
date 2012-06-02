@@ -99,7 +99,7 @@
 		"message": "Интеграция в меню Chrome",
 		"description": "data/index.html"
 	},
-	"clean_token": {
+	"clear_token": {
 		"message": "Очистить профили",
 		"description": "data/index.html"
 	},
