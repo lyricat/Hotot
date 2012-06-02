@@ -52,7 +52,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_size': 14
+        , 'font_size': 11
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -92,7 +92,7 @@ default_prefs: {
         , 'theme_path': 'theme/New Hope'
         , 'use_custom_font': false
         , 'custom_font': ''
-        , 'font_size': 14
+        , 'font_size': 11
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
