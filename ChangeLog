@@ -1,6 +1,30 @@
 The Latest Stable Version is 0.9.8
 The Latest Development Version is 0.9.8.1
 
+Version 0.9.8.4
+	* Support System proxy and ssh proxy.
+	* Fix: #296, #274.
+	* Improve performance of autocomplete.
+	* Imporve performance of GTK wrapper.
+
+Version 0.9.8.3
+	* Some improvement for Qt/GTK wrappers.
+	* Support to edit list description.
+	* Support add person to list, #fix #275.
+	* Begin to use mochi widget set.
+	* Minor fix about kimset.
+	* Kismet will drop tweet posted by blocked person, fix #4.
+	* Fix #276, #271, #263, #154.
+	* Fix crash on exit(GTK wrapper).
+	* Fix proxy problem of Qt wrappers.
+
+
+Version 0.9.8.2
+	* Redesign prefs dialog and compose box
+	* Add Bangla translation (thank @mukoabhi)
+	* Add Catalan translation (thank @dplanella)
+	* Fix #227, #221
+
 Version 0.9.8.1
 	* Minor fixes for usability issues.
 	* Fix: duplicate translation result
