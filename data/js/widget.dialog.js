@@ -127,8 +127,8 @@ function WidgetDialog(obj) {
         } else if (method == 'slide') {
             self._me.show();
             self.move(x, $(window).height() + 10);
-            self._me.animate({'left': x, 'top': y}, 
-                {duration:200, easing: "swing"});
+            self._me.transition({'left': x, 'top': y}, 
+                200, 'ease');
         } else {
             self.move(x, y);
             self._me.fadeIn('fast');
@@ -148,12 +148,8 @@ function WidgetDialog(obj) {
         } else if (method == "slide") {
             var x = $(window).width()/2 - self._me.width() / 2;
             var y = 0 - self._me.height() - 100;
-            self._me.animate({'left': x, 'top': y}, 
-                {
-                    duration:200,
-                    easing: "swing",
-                    complete: clearUp
-                }
+            self._me.transition({'left': x, 'top': y}, 
+                200, "ease", clearUp
             );
         } else {
             self._me.fadeOut('fast', clearUp);

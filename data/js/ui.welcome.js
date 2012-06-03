@@ -254,7 +254,7 @@ function load_profiles_info() {
             type = profile_name.split('@')[1];
         }
         var width_per_page = {'default': 480, 'twitter': 360, 'identica': 460};
-        $('#sign_in_block .inner').stop().animate({'width': width_per_page[type]}, 200);
+        $('#sign_in_block .inner').stop().transition({'width': width_per_page[type]}, 200);
         if (profile_name == 'default') {
             $('#btn_welcome_prefs, #btn_welcome_delete_profile, #btn_welcome_exts').hide();
             $('#sign_in_block .profile_title').text('New Profile');
@@ -288,7 +288,7 @@ function load_profiles_info() {
         $(this).parent().addClass('selected');
 
         var offset = parseInt($(this).attr('idx')) * (74 + 7);
-        $('#profile_avatar_list').stop().animate(
+        $('#profile_avatar_list').stop().transition(
             {'margin-top': '-' + (offset + 165) + 'px'}, 300);
         return false;
     });

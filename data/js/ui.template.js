@@ -407,6 +407,7 @@ list_vcard_t:
         </ul> \
     </div><!-- #list_vcard_ctrl --> \
 </div> <!-- vcard --> \
+<div class="expand_wrapper"><a href="#" class="expand">…</a></div>\
 <div class="list_view_toggle"> \
     <ol class="list_view_toggle_btns mochi_button_group"> \
         <li><a class="list_view_tweet_btn mochi_button_group_item selected" href="#tweet">Tweets</a> \

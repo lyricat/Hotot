@@ -52,7 +52,7 @@ function WidgetAutoComplete(obj) {
                 }
             }
             target.addClass('selected');
-            self.candidate.stop().animate({scrollTop: target.get(0).offsetTop - self.candidate.get(0).offsetTop}); 
+            self.candidate.stop().transition({scrollTop: target.get(0).offsetTop - self.candidate.get(0).offsetTop}); 
             current.removeClass('selected');
             return false;
         }

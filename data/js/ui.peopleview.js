@@ -60,7 +60,7 @@ function init_view(view) {
             function () {
                 toast.set(
                     _("unfollow_at")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("follow")).removeClass('unfo').removeClass('red').addClass('blue');
+                $(_this).text(_("follow")).removeClass('unfo').addClass('blue');
             });
         } else {
             toast.set(_("follow_at") + view.screen_name + " ...").show();
@@ -68,7 +68,7 @@ function init_view(view) {
             function () {
                 toast.set(
                     _("follow_at")+ view.screen_name+" Successfully!").show();
-                $(_this).text(_("unfollow")).addClass('unfo').removeClass('blue').addClass('red');
+                $(_this).text(_("unfollow")).addClass('unfo').removeClass('blue');
             });
         }
     });
@@ -222,6 +222,7 @@ function destroy_view(view) {
     var vcard = view._header.find('.people_vcard');
     vcard.find('.button').unbind();
     vcard.find('.radio_group_btn').unbind();
+    view._header.find('expand').unbind();
     // remove slide, view and DOM
     ui.Slider.remove(view.name);
 },
@@ -352,9 +353,9 @@ function render_people_view(self, user_obj, proc) {
             if (rel == 1 || rel == 3) {
                 btn_follow.text(_("unfollow"));
                 btn_follow.addClass('unfo');
-                btn_follow.addClass('red').removeClass('blue');
+                btn_follow.removeClass('blue');
             } else {
-                btn_follow.removeClass('red').addClass('blue');
+                btn_follow.addClass('blue');
             }
     });
     ui.Slider.set_icon(self.name, user_obj.profile_image_url, ui.Slider.BOARD_ICON);

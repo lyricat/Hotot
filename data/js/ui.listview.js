@@ -34,7 +34,7 @@ function init_view(view) {
                 , view.slug, function () {
                 toast.set(
                     "Unfollow @"+ view.screen_name + '/' + view.slug + " Successfully!").show();
-                $(_this).text(_('follow')).removeClass('unfo').removeClass('red').addClass('blue');
+                $(_this).text(_('follow')).removeClass('unfo').addClass('blue');
             });
         } else {
             toast.set("Follow @" + view.screen_name + " ...").show();
@@ -42,7 +42,7 @@ function init_view(view) {
                 , view.slug, function () {
                 toast.set(
                     "Follow @"+ view.screen_name +'/' + view.slug+" Successfully!").show();
-                $(_this).text(_('unfollow')).addClass('unfo').removeClass('blue').addClass('red');
+                $(_this).text(_('unfollow')).addClass('unfo').removeClass('blue');
             });
         }
     });
@@ -65,6 +65,14 @@ function init_view(view) {
         }
         return false;
     });
+
+    view._header.find('.expand').click(function () {
+        if (vcard.is(':hidden')) {
+            vcard.slideDown('fast');
+        } else {
+            vcard.slideUp('fast');
+        }
+    });
 },
     
 destroy_view:
@@ -73,6 +81,7 @@ function destroy_view(view) {
     var vcard = view._header.find('.list_vcard');
     vcard.find('.button').unbind();
     vcard.find('.radio_group_btn').unbind();
+    view._header.find('expand').unbind();
     // remove slide, view and DOM
     ui.Slider.remove(view.name);
 },

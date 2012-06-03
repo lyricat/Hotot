@@ -450,7 +450,7 @@ function slide_to(id) {
     if (conf.get_current_profile()) {
         // @TODO
         if (1) {
-            ui.Slider.me.stop().animate(
+            ui.Slider.me.stop().transition(
                 {marginLeft: (0 - page_offset * width) +'px'}
                 , 500
                 , function () {
@@ -489,13 +489,12 @@ function slide_to(id) {
         return $('#indication .indicator_btn[href="#'+item+'"]');
     });
     if (cur_sel.length == 0) return;
-    $('#indication_light').stop().animate(
-          { 'left': (cur_sel[0].parent().get(0).offsetLeft + 1) + 'px',
-            'width': (
+    $('#indication_light').stop().transition(
+          { 'left': cur_sel[0].parent().get(0).offsetLeft + 1,
+            'width':
                   cur_sel[cur_sel.length - 1].parent().get(0).offsetLeft 
                 + cur_sel[cur_sel.length - 1].parent().width()
-                - cur_sel[0].parent().get(0).offsetLeft  
-                ) + 'px'
+                - cur_sel[0].parent().get(0).offsetLeft
           }
         , 200 
         , function () {
