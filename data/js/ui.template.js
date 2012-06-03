@@ -229,7 +229,8 @@ people_t:
 </li>',
 
 people_vcard_t_orig:
-'<div class="header_frame"><div class="people_vcard vcard">\
+'<div class="header_frame">\
+  <div class="people_vcard vcard">\
     <a target="_blank" class="profile_img_wrapper"></a>\
     <div class="vcard_body">\
         <center>\
@@ -313,6 +314,7 @@ people_vcard_t_orig:
         </ul> \
     </div><!-- #people_vcard_ctrl --> \
 </div> <!-- vcard --> \
+<div class="expand_wrapper"><a href="#" class="expand">…</a></div>\
 <div class="people_view_toggle"> \
     <ol class="people_view_toggle_btns mochi_button_group"> \
         <li><a class="people_view_tweet_btn mochi_button_group_item selected" href="#tweet">{%TRANS_tweets%}</a> \

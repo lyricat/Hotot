@@ -1004,7 +1004,6 @@ label {
 	z-index: 10004;
 }
 .people_vcard, .list_vcard {
-	display: block !important;
 	color: #333;
 	padding: 5px;
 	position: relative;
@@ -1110,8 +1109,26 @@ label {
 }
 
 .header_frame {
-	margin: 5px 5px 0 5px;
+	padding: 5px 5px 0 5px;
 	text-align: center;
+}
+
+.header_frame .expand_wrapper {
+	margin-top: -5px;
+	margin-bottom: 5px;
+}
+.header_frame .expand {
+	background: #EDEDED;
+	color: black;
+	text-decoration: none;
+	padding: 0 15px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom: #E5E5E5 solid 1px;
+	border-right: #E5E5E5 solid 1px;
+	border-left: #E5E5E5 solid 1px;
+	display: inline-block;
+	height: 14px;
 }
 
 .header_inner {

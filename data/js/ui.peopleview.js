@@ -206,7 +206,14 @@ function init_view(view) {
         lists_memu.hide();
         return false;
     });
-    
+
+    view._header.find('.expand').click(function () {
+        if (vcard.is(':hidden')) {
+            vcard.slideDown('fast');
+        } else {
+            vcard.slideUp('fast');
+        }
+    });
 },
     
 destroy_view:
