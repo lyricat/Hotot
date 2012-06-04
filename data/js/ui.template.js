@@ -47,7 +47,7 @@ tweet_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -107,7 +107,7 @@ retweeted_by_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt">{%TEXT%}</div>\
+        <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
                 <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
@@ -153,7 +153,7 @@ message_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
@@ -188,7 +188,7 @@ search_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt">{%TEXT%}</div>\
+        <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
@@ -222,7 +222,7 @@ people_t:
             {%SCREEN_NAME%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt">{%DESCRIPTION%}</div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -369,7 +369,7 @@ list_t:
             @{%SCREEN_NAME%}/{%SLUG%}\
         </a>\
         </div>\
-        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt">{%DESCRIPTION%}</div>\
+        <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%DESCRIPTION%}</div>\
     </div>\
     <span class="shape"></span>\
     <span class="shape_mask"></span>\
@@ -605,6 +605,7 @@ function init() {
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
         , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT: ''
+        , TWEET_LINE_HEIGHT:''
         , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
@@ -625,6 +626,7 @@ function init() {
         , IN_REPLY:'', RETWEETABLE:'', REPLY_TEXT:'', RETWEET_TEXT:''
         , RETWEET_MARK:'', SHORT_TIMESTAMP:'', TIMESTAMP:'', FAV_CLASS:''
         , DELETABLE:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TWEET_LINE_HEIGHT:''
         , STATUS_INDICATOR:'', TRANS_Delete:''
         , TRANS_Official_retweet_this_tweet:'', TRANS_Reply_All:''
         , TRANS_Reply_this_tweet:'', TRANS_RT_this_tweet:''
@@ -640,6 +642,7 @@ function init() {
         , USER_NAME:'', PROFILE_IMG:'', TEXT:''
         , SCHEME:'', TIMESTAMP:''
         , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TWEET_LINE_HEIGHT:''
         , TRANS_Reply_Them:''
     };
 
@@ -648,6 +651,7 @@ function init() {
         , USER_NAME:'', PROFILE_IMG:'', TEXT:'', SOURCE:''
         , SCHEME:'', SHORT_TIMESTAMP:'', TIMESTAMP:''
         , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TWEET_LINE_HEIGHT:''
         , TRANS_via:''
         , TWEET_BASE_URL: ''
     };
@@ -655,12 +659,14 @@ function init() {
     ui.Template.people_m = {
           USER_ID:'', SCREEN_NAME:'', USER_NAME:'', DESCRIPTION:''
         , PROFILE_IMG:'', FOLLOWING:'', TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TWEET_LINE_HEIGHT:''
     };
 
     ui.Template.list_m = {
           LIST_ID:'', SCREEN_NAME:'', SLUG:'', NAME:'', MODE:''
         , DESCRIPTION:'', PROFILE_IMG:'', FOLLOWING:''
         , TWEET_FONT_SIZE:'', TWEET_FONT:''
+        , TWEET_LINE_HEIGHT:''
     };
 
     ui.Template.view_m = {
@@ -733,6 +739,7 @@ function form_dm(dm_obj, pagename) {
     m.SCHEME = 'message';
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     m.TWEET_FONT = globals.tweet_font;
     m.TRANS_Reply_Them = "Reply Them";
     return ui.Template.render(ui.Template.message_t, m);
@@ -837,6 +844,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -941,6 +949,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.DELETABLE = scheme == 'me'? 'true': 'false';
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     m.STATUS_INDICATOR = ui.Template.form_status_indicators(tweet_obj);
     m.TRANS_Delete = _('delete');
     m.TRANS_Delete_this_tweet = _('delete_this_tweet');
@@ -1004,6 +1013,7 @@ function form_search(tweet_obj, pagename) {
     m.TIMESTAMP = created_at_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     m.TRANS_via = _('via');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.from_user + '/status':'https://identi.ca/notice';
     m.LINK = link;
@@ -1021,6 +1031,7 @@ function form_people(user_obj, pagename) {
     m.FOLLOWING = user_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
 
     return ui.Template.render(ui.Template.people_t, m);
 },
@@ -1038,6 +1049,7 @@ function form_people(list_obj, pagename) {
     m.FOLLOWING = list_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
+    m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     return ui.Template.render(ui.Template.list_t, m);
 },
 

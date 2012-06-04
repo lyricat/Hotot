@@ -550,6 +550,17 @@
 							<label class="label"
 									data-i18n-text="font_size">Font Size</label>
 						</li>
+						<li class="mochi_list_item">
+							<input id="range_prefs_line_height"
+									title="Line Height" class="widget"
+									max="2" min="1" value="1.4" step="0.1"
+									style="width:200px;"
+									type="range"/>
+							<label class="value" id="range_prefs_line_height_st"
+									>1.4</label>
+							<label class="label"
+									data-i18n-text="font_size">Line Height</label>
+						</li>
 					</ul>
 					<div id="prefs_font_preview" class="value"
 						data-i18n-text="font_preview_hint">The quick brown fox jumps over the lazy dog.
@@ -775,6 +786,30 @@
 					</ul>
         </div><!-- END of prefs_system-->
 				<div id='prefs_advanced' class="prefs_dlg_page dialog_page">
+          <h3 data-i18n-text="animation">Animation</h3>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_enable_animation"
+									title="Use Animation"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_enable_animation"
+									class="label"
+									data-i18n-text="enable_animation"
+									>Enable Animation
+							</label>
+            </li>
+            <li class="mochi_list_item">
+							<input id="chk_prefs_enable_gpu_acceleration"
+									title="GPU Acceleration"
+									type="checkbox" class="mochi_toggle widget"/>
+							<label for="chk_prefs_enable_gpu_acceleration"
+									class="label"
+									data-i18n-text="enable_gpu_acceleration"
+									>Enable GPU Acceleration
+							</label>
+            </li>
+          </ul>
+
           <h3 data-i18n-text="api_setting">API Settings</h3>
 					<ul class="mochi_list">
             <li class="mochi_list_item">

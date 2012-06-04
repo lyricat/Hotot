@@ -57,6 +57,11 @@ function init () {
         $('#range_prefs_font_size_st').text($(this).val() + 'pt');
         ui.PrefsDlg.update_font_preview();
     });
+    $('#range_prefs_line_height').change(
+    function (event) {
+        $('#range_prefs_line_height_st').text($(this).val());
+        ui.PrefsDlg.update_font_preview();
+    });
 
     $('#chk_prefs_use_same_sign_api_base').click(
     function (event) {
@@ -85,6 +90,11 @@ function init () {
     $('#chk_prefs_proxy_auth').click(
     function (event) {
         $('#tbox_prefs_proxy_auth_name, #tbox_prefs_proxy_auth_password').attr('disabled', !$(this).prop('checked'));
+    });
+
+    $('#chk_prefs_enable_animation').click(
+    function (event) {
+        $('#chk_prefs_enable_gpu_acceleration').attr('disabled', !$(this).prop('checked'));
     });
 
     $('#btn_prefs_ok').unbind().click(function (event) {
@@ -253,6 +263,8 @@ function load_prefs() {
         $('#sel_prefs_sys_font, #tbox_prefs_custom_font')
             .attr('disabled', true);
     }
+    $('#range_prefs_line_height').val(prefs.line_height);
+    $('#range_prefs_line_height_st').text(prefs.line_height);
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_preload_conversation')
         .attr('checked', prefs.use_preload_conversation)
@@ -272,6 +284,13 @@ function load_prefs() {
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
 
     // Advanced
+    $('#chk_prefs_enable_animation')
+        .attr('checked', prefs.enable_animation)
+        .prop('checked', prefs.enable_animation);
+    $('#chk_prefs_enable_gpu_acceleration')
+        .attr('disabled', !prefs.enable_animation)
+        .attr('checked', prefs.enable_gpu_acceleration)
+        .prop('checked', prefs.enable_gpu_acceleration);
     $('#tbox_prefs_api_base').val(prefs.api_base);
     $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
     $('#tbox_prefs_search_api_base2').val(prefs.search_api_base2);
@@ -305,6 +324,10 @@ function save_prefs() {
     if (prefs['font_size'] == '') {
         prefs['font_size'] = 12;
     }
+    prefs['line_height'] = $('#range_prefs_line_height').val();
+    if (prefs['line_height'] == '') {
+        prefs['line_height'] = 1.4;
+    }
     prefs['use_custom_font'] = $('#chk_use_custom_font').prop('checked');
     // behaviors
     prefs['use_preload_conversation']
@@ -321,6 +344,10 @@ function save_prefs() {
     prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
 
     // Advanced
+    prefs['enable_animation']
+        = $('#chk_prefs_enable_animation').prop('checked');
+    prefs['enable_gpu_acceleration']
+        = $('#chk_prefs_enable_gpu_acceleration').prop('checked');
     prefs['api_base']
         = $('#tbox_prefs_api_base').attr('value');
     prefs['sign_api_base']
@@ -358,8 +385,7 @@ function update_font_preview() {
             , $('#chk_use_custom_font').prop('checked')
                 ? $('#tbox_prefs_custom_font').val()
                     : conf.get_default_font_settings())
-        .css('font-size'
-            , $('#range_prefs_font_size').val() + 'pt');
+        .css({'font-size': $('#range_prefs_font_size').val() + 'pt', 'line-height': $('#range_prefs_line_height').val()});
 }
 
 }

@@ -128,7 +128,7 @@ function WidgetDialog(obj) {
             self._me.show();
             self.move(x, $(window).height() + 10);
             self._me.transition({'left': x, 'top': y}, 
-                200, 'ease');
+                200);
         } else {
             self.move(x, y);
             self._me.fadeIn('fast');
@@ -149,7 +149,7 @@ function WidgetDialog(obj) {
             var x = $(window).width()/2 - self._me.width() / 2;
             var y = 0 - self._me.height() - 100;
             self._me.transition({'left': x, 'top': y}, 
-                200, "ease", clearUp
+                200, clearUp
             );
         } else {
             self._me.fadeOut('fast', clearUp);

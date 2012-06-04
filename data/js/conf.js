@@ -53,6 +53,9 @@ default_prefs: {
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_size': 11
+        , 'line_height': 1.4
+        , 'enable_animation': true
+        , 'enable_gpu_acceleration': false 
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -93,6 +96,9 @@ default_prefs: {
         , 'use_custom_font': false
         , 'custom_font': ''
         , 'font_size': 11
+        , 'line_height': 1.4
+        , 'enable_animation': true
+        , 'enable_gpu_acceleration': false
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -267,7 +273,8 @@ function apply_prefs(name, full) {
         i18n.change(prefs.lang);
         change_theme(prefs.theme, prefs.theme_path);
         globals.tweet_font_size = prefs.font_size;
-        $('.card_body > .text').css('font-size', prefs.font_size + 'pt');
+        globals.tweet_line_height = prefs.line_height;
+        $('.card_body > .text').css({'font-size': prefs.font_size + 'pt', 'line-height': prefs.line_height});
         ui.Main.use_preload_conversation = prefs.use_preload_conversation;
         for (var id in ext.exts_info) {
             ext.disable_ext(id);
@@ -285,6 +292,11 @@ function apply_prefs(name, full) {
     } else {
         $('.listview, .dialog_block p, .card').css('font-family', fonts[1]);
         globals.tweet_font = fonts[1];
+    }
+    // animation
+    $.fx.off = !prefs.enable_animation;
+    if ($.fx.off || !prefs.enable_gpu_acceleration) {
+        $.fn.transition = $.fn.animate;
     }
 
     globals.twitterClient.api_base = prefs.api_base;
