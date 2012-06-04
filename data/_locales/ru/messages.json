@@ -247,7 +247,6 @@
 		"message": "система",
 		"description": "data/index.html"
 	},
-	},
 	"enable_verbose_mode": {
 		"message": "Подробная информация",
 		"description": "data/index.html"

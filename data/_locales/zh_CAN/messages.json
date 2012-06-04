@@ -487,13 +487,10 @@
 		"message": "私信",
 		"description": "data/index.html"
 	},
-<<<<<<< HEAD
 	"misc": {
 		"message": "立杂嘢",
 		"description": "data/index.html"
 	},
-=======
->>>>>>> upstream/master
 	"more_actions": {
 		"message": "更多动作",
 		"description": "data/js/ui.template.js"
@@ -654,13 +651,10 @@
 		"message": "如果可以嘅话，俾我睇上一条对话",
 		"description": ""
 	},
-<<<<<<< HEAD
 	"press_ctrl_and_enter_to_update": {
 		"message": "禁 Ctrl+Enter 更新",
 		"description": ""
 	},
-=======
->>>>>>> upstream/master
 	"pretty_wife": {
 		"message": "俏人妻西乔",
 		"description": "data/index.html"
@@ -1029,13 +1023,10 @@
 		"message": "用自己钟意嘅字体",
 		"description": "data/index.html"
 	},
-<<<<<<< HEAD
 	"use_native_notify_system": {
 		"message": "用原生提醒机制",
 		"description": ""
 	},
-=======
->>>>>>> upstream/master
 	"use_quote_as_default_retweet_action": {
 		"message": "默认引用人哋",
 		"description": "data/index.html"
@@ -1065,11 +1056,8 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-<<<<<<< HEAD
 		"message":"讲咗咩",
-=======
 		"message": "讲佐咩",
->>>>>>> upstream/master
 		"description": "data/js/ui.template.js"
 	},
 	"view_original": {

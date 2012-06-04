@@ -476,7 +476,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"mentions_view": {
-		"message": Onglet mentions,
+		"message": "Onglet mentions",
 		"description": "data/index.html"
 	},
 	"messages": {
