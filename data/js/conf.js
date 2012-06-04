@@ -55,7 +55,7 @@ default_prefs: {
         , 'font_size': 11
         , 'line_height': 1.4
         , 'enable_animation': true
-        , 'enable_gpu_acceleration': false 
+        , 'enable_gpu_acceleration': true 
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
@@ -98,7 +98,7 @@ default_prefs: {
         , 'font_size': 11
         , 'line_height': 1.4
         , 'enable_animation': true
-        , 'enable_gpu_acceleration': false
+        , 'enable_gpu_acceleration': true
           // Behaviors
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
