@@ -1,8 +1,16 @@
-The Latest Stable Version is 0.9.8
-The Latest Development Version is 0.9.8.1
+The Latest Stable Version is 0.9.8.6
+The Latest Development Version is 0.9.8.5
+
+Version 0.9.8.5
+	* Support to expand/fold people vcard.
+	* CSS3 animation support.
+	* Improve autocomplete result.
+	* New Extension: App Mask
+	* Change the unit of font size from pixel to point.
+	* Support System proxy and ssh proxy.
+	* Support Hotot.in service(support to post tweet more than 140 characters).
 
 Version 0.9.8.4
-	* Support System proxy and ssh proxy.
 	* Fix: #296, #274.
 	* Improve performance of autocomplete.
 	* Imporve performance of GTK wrapper.
