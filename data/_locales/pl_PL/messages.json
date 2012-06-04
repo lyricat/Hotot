@@ -63,10 +63,6 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Równowaga pomiędzy atrakcyjnym wyglądem a wydajnością",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Zachowanie",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Wyczyść token",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Wyczyść",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Wyczyść i zamknij",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Wyczyść token",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Zniszczono pomyślnie!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Wyłącz dekoracje widgetów i niektórych animacji",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "Edytuj",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Efekty",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Extra",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Niskie",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Normalne",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Włącz",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "Aktywuj Proxy",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Aktywuj tryb gadatliwy",
@@ -491,10 +467,6 @@
 		"message": "Więcej",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Więcej efektów jak cienie i błyszczące widgety",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Przejdź do końca",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "Profil",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Uwierzytelnianie",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "Ćwierknięcia",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Usuń to ćwierknięcia z ulubionych...",
 		"description": "data/js/ui.main.js"
@@ -1021,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Użyj ODPOWIEDZ WSZYSTKIM jako domyślna akcja odpowiedzi",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Użyj Ubuntu Indicator",
 		"description": "data/index.html"
 	},
 	"username": {

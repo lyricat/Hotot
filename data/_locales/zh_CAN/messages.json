@@ -63,10 +63,6 @@
 		"message": "开启以后自动登陆",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "好睇又好用",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "行为",
 		"description": ""
@@ -99,16 +95,16 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "清空令牌",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "清除",
 		"description": ""
 	},
 	"clear_and_close": {
 		"message": "清除同关闭",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "清空令牌",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "删咗！",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "禁用控件装饰同部分动画。",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "编辑",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "效果",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "高",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "低",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "中",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "启用",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "启用代理",
-		"description": ""
 	},
 	"enable_verbose_mode": {
 		"message": "启用啰嗦模式",
@@ -487,17 +463,9 @@
 		"message": "私信",
 		"description": "data/index.html"
 	},
-	"misc": {
-		"message": "立杂嘢",
-		"description": "data/index.html"
-	},
 	"more_actions": {
 		"message": "更多动作",
 		"description": "data/js/ui.template.js"
-	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "开启更多特效，例如阴影同发光。",
-		"description": "data/index.html"
 	},
 	"move_to_bottom": {
 		"message": "移去底部",
@@ -651,10 +619,6 @@
 		"message": "如果可以嘅话，俾我睇上一条对话",
 		"description": ""
 	},
-	"press_ctrl_and_enter_to_update": {
-		"message": "禁 Ctrl+Enter 更新",
-		"description": ""
-	},
 	"pretty_wife": {
 		"message": "俏人妻西乔",
 		"description": "data/index.html"
@@ -675,8 +639,40 @@
 		"message": "帐户",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "代理认证",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -963,6 +959,10 @@
 		"message": "状态",
 		"description": ""
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "唔收藏啦...",
 		"description": "data/js/ui.main.js"
@@ -1023,10 +1023,6 @@
 		"message": "用自己钟意嘅字体",
 		"description": "data/index.html"
 	},
-	"use_native_notify_system": {
-		"message": "用原生提醒机制",
-		"description": ""
-	},
 	"use_quote_as_default_retweet_action": {
 		"message": "默认引用人哋",
 		"description": "data/index.html"
@@ -1034,10 +1030,6 @@
 	"use_reply_all_as_default_reply_action": {
 		"message": "默认回复所有人",
 		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "用乌斑兔 Indicator",
-		"description": ""
 	},
 	"username": {
 		"message": "",
@@ -1056,7 +1048,6 @@
 		"description": "data/js/ui.template.js"
 	},
 	"view_more_conversation": {
-		"message":"讲咗咩",
 		"message": "讲佐咩",
 		"description": "data/js/ui.template.js"
 	},

@@ -63,10 +63,6 @@
 		"message": "打开以后自动登陆",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "在性能和养眼度之间保持平衡。",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "行为",
 		"description": ""
@@ -99,16 +95,16 @@
 		"message": "集成到Chrome右键菜单",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "清空令牌",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "清除",
 		"description": ""
 	},
 	"clear_and_close": {
 		"message": "清空并且关闭",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "清空令牌",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "删除成功呦！",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "禁用控件集装饰和部分动画。",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "捐赠",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "编辑",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "效果",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "高",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "低",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "中",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "启用",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "启用代理",
-		"description": ""
 	},
 	"enable_verbose_mode": {
 		"message": "启用啰嗦模式",
@@ -491,10 +467,6 @@
 		"message": "更多动作",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "开启更多特效，比如阴影和发光。",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "移到底部",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "账户",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "代理认证",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "状态",
 		"description": ""
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "取消收藏呢...",
 		"description": "data/js/ui.main.js"
@@ -1022,10 +1030,6 @@
 	"use_reply_all_as_default_reply_action": {
 		"message": "使用『回复所有』作为默认回复方式",
 		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "使用乌斑兔 Indicator",
-		"description": ""
 	},
 	"username": {
 		"message": "用户名",

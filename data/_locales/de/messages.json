@@ -63,10 +63,6 @@
 		"message": "Automatisches Einloggen beim öffnen",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Ausgewogen",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Verhaltens Einstellungen",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "Integrierung in das Chrome Kontextmenü",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Zugangstoken verwerfen",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Leeren",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Leeren & Schließen",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Zugangstoken verwerfen",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Erfolgreich gelöscht!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Deaktiviere Elementdekorationen und Animationen",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "Spende",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "Bearbeiten",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Effekte",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Extra",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Wenig",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Normal",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Aktiviere",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "Benutze Proxy",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Aktiviere Debug Modus",
@@ -491,10 +467,6 @@
 		"message": "Mehr",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Mehr Effekte (Schatten, glänzende Elemente)",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Gehe nach unten",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "Profil",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Authentifizierung",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "Tweets",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Diesen Tweet nicht mehr favorisieren ...",
 		"description": "data/js/ui.main.js"
@@ -1021,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Nutze \"allen Antworten\" als Standard-Antwortmethode",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Benutze Ubuntu Indicator",
 		"description": "data/index.html"
 	},
 	"username": {

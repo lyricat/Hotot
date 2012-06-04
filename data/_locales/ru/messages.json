@@ -63,10 +63,6 @@
 		"message": "Автоматический вход после открытия",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Баланс между красотой и производтельностью.",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Поведение",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "Интеграция в меню Chrome",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Очистить профили",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Очистить",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Очистить и закрыть",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Очистить профили",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Удалено успешно",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Недоступы эффекты виджетов и некоторая анимация.",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "Жертвовать",
 		"description": "data/index.html"
@@ -211,41 +203,13 @@
 		"message": "Редактировать",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Эффекты",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Экстра",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Низкие",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Нормальные",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Включено",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"proxy_type": {
-		"message": "Прокси",
-		"description": "data/index.html"
-	},
-	"proxy_no_proxy": {
-		"message": "Нет",
-		"description": "data/index.html"
-	},
-	"proxy_http_proxy": {
-		"message": "Http прокси",
-		"description": "data/index.html"
-	},
-	"proxy_system_proxy": {
-		"message": "система",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Подробная информация",
@@ -503,10 +467,6 @@
 		"message": "Больше",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Больше эффектов типа теней и отблески виджетов",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Передвинуться вниз",
 		"description": "data/index.html"
@@ -679,8 +639,40 @@
 		"message": "Профиль",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Авторизация",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http прокси",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "Нет",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "система",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -967,6 +959,10 @@
 		"message": "Твиты",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Убрать из избранного этот твит…",
 		"description": "data/js/ui.main.js"
@@ -1033,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Использовать ОТВЕТ ВСЕМ как ответ по умолчанию",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Использовать иконку Ubuntu",
 		"description": "data/index.html"
 	},
 	"username": {

@@ -63,10 +63,6 @@
 		"message": "Automātiski pieteikties pēc atvēršanas",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Balanss starp pievilcību un ātrdarbību.",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Uzvedība",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Notīrīt piekļuves kodu",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Notīrīt",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Notīrīt un aizvērt",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Notīrīt piekļuves kodu",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Veiksmīgi iznīcināts!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Izslēgt sīkrīku dekorācijas un dažas animācijas.",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "Rediģēt",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Efekti",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Ekstra",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Nelieli",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Vidēji",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Ieslēgt",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "Ieslēgt proxy vārteju",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Ieslēgt detalizēto režīmu",
@@ -491,10 +467,6 @@
 		"message": "Vairāk",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Vairāk efekti, piemēram, ēnas un sīkrīku mirdzums",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Pāriet uz apakšu",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "Profils",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Autentifikācija",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "Tvīti",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Atfavorītot šo tvītu ...",
 		"description": "data/js/ui.main.js"
@@ -1021,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Izmantot ATBILDĒT VISIEM kā noklusēto atbildēšanas darbību",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Izmantot Ubuntu indikatoru",
 		"description": "data/index.html"
 	},
 	"username": {

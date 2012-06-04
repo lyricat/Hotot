@@ -63,10 +63,6 @@
 		"message": "Automatically sign in after opening",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Balance between attractiveness and performance.",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Behavior",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "Chrome context menu integration",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Clear token",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Clear",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Clear & Close",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Clear token",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Destroyed Successfully!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Disable decoration of widgets and some animations.",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "Donate",
 		"description": "data/index.html"
@@ -211,41 +203,13 @@
 		"message": "Edit",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Effects",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Extra",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Low",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Normal",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Enable",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"proxy_type": {
-		"message": "Proxy",
-		"description": "data/index.html"
-	},
-	"proxy_no_proxy": {
-		"message": "No Proxy",
-		"description": "data/index.html"
-	},
-	"proxy_http_proxy": {
-		"message": "Http Proxy",
-		"description": "data/index.html"
-	},
-	"proxy_system_proxy": {
-		"message": "System Proxy",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Enable Verbose Mode",
@@ -503,10 +467,6 @@
 		"message": "More",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "More effects like shadows and glow of widgets",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Move to bottom",
 		"description": "data/index.html"
@@ -679,8 +639,40 @@
 		"message": "Profile",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Authentication",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http Proxy",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "No Proxy",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "System Proxy",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -967,6 +959,10 @@
 		"message": "Tweets",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Unfavorite this tweet...",
 		"description": "data/js/ui.main.js"
@@ -1033,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Use REPLY ALL as default reply action",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Use Ubuntu Indicator",
 		"description": "data/index.html"
 	},
 	"username": {

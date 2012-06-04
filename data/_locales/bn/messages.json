@@ -63,10 +63,6 @@
 		"message": "খোলার পর স্বয়ংক্রিয়ভাবে সাইন-ইন করুন",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "কার্যকারিতা ও সৌন্দর্যের মধ্যে সামঞ্জস্য",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "আচরণ",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "ক্রোমের কনটেক্স তালিকার সাথে একত্রীকরণ",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "টোকেন পরিষ্কার করুন",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "পরিষ্কার",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "পরিষ্কার ও বন্ধ",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "টোকেন পরিষ্কার করুন",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "সফলভাবে নষ্ট করা হয়েছে!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "গ্যাজেটের সাজসজ্জা ও কিছু এনিমেশন অকার্যকর করুন",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "অনুদান",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "এডিট",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "ইফেক্টসমূহ",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "বাড়তি",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "নিম্ন",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "স্বাভাবিক",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "কার্যকর",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "প্রক্সি কার্যকর",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "ভারবোস অবস্থা কার্যকর",
@@ -491,10 +467,6 @@
 		"message": "আরো",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "আরো ইফেক্ট যেমন ছায়া এবং উজ্জ্বল গ্যাজেট",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "নিচে পাঠান",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "প্রোফাইল",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "অনুমতি",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "Http প্রক্সি",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "কোন প্রক্সি নেই",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "সিস্টেম প্রক্সি",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "টুইটসমূহ",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "এই টুইটটি আন-ফেভারিট করুন ...",
 		"description": "data/js/ui.main.js"
@@ -1023,10 +1031,6 @@
 		"message": "ডিফল্ট উত্তর হিসাবে সবাইকে উত্তর দিন ব্যবহার করুন",
 		"description": "data/index.html"
 	},
-	"use_ubuntu_indicator": {
-		"message": "উবুন্টুর নির্দেশক ব্যবহার করুন",
-		"description": "data/index.html"
-	},
 	"username": {
 		"message": "ব্যবহারকারীর নাম",
 		"description": "data/index.html"
@@ -1090,21 +1094,5 @@
 	"you_are_not_following_each_other": {
 		"message": "আপনারা একে অন্যকে অনুসরণ করছেন না",
 		"description": "data/js/ui.peopleview.js"
-	},
-          "proxy_type": {
-		"message": "প্রক্সি",
-		"description": "data/index.html"
-	},
-	"proxy_no_proxy": {
-		"message": "কোন প্রক্সি নেই",
-		"description": "data/index.html"
-	},
-	"proxy_http_proxy": {
-		"message": "Http প্রক্সি",
-		"description": "data/index.html"
-	},
-	"proxy_system_proxy": {
-		"message": "সিস্টেম প্রক্সি",
-		"description": "data/index.html"
 	}
 }

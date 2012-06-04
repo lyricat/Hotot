@@ -63,10 +63,6 @@
 		"message": "Αυτόματη σύνδεση",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Ισοροποία μεταξύ ελκυστικότητα και απόδοσης.",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Συμπεριφορά",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "Chrome context menu integration",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Εκκαθάριση τεκμηρίου",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Εκκαθάριση",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Εκκαθάριση και κλείσιμο",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Εκκαθάριση τεκμηρίου",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Καταστράφηκε επιτυχημένα!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Απενεργοποίηση της διακόσμησης των widget και μερικών animation.",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "Επεξεργασία",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Εφέ",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Πολλά",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Λίγα",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Κανονικά",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Ενεργοποίηση",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "Ενεργοποίηση Proxy",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Ενεργοποίηση Verbose Mode",
@@ -491,10 +467,6 @@
 		"message": "Περισσότερα",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Περισσότερα εφέ όπως σκιές και λάμψεις στα widget",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Μετακίνηση στο τέλος",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "Προφίλ",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Πιστοποίηση",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "Tweets",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Αφαίρεση από τα αγαπημένα ...",
 		"description": "data/js/ui.main.js"
@@ -1021,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Χρήση της ΑΠΑΝΤΗΣΗΣ ΣΕ ΟΛΟΥΣ ως προεπιλεγμένης ενέργειας απάντησης",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Χρήση Ubuntu Indicator",
 		"description": "data/index.html"
 	},
 	"username": {

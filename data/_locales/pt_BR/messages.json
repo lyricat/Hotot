@@ -63,10 +63,6 @@
 		"message": "Conecte-se automaticamente ao abrir",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "Equilíbrio entre atratividade e preformance.",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "Comportamento",
 		"description": "data/index.html"
@@ -99,16 +95,16 @@
 		"message": "Integração com o menu de contexto do Chrome",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "Limpar token",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "Limpar",
 		"description": "data/index.html"
 	},
 	"clear_and_close": {
 		"message": "Limpar e fechar",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "Limpar token",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "Removido com sucesso!",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "Desativa a decoração dos widgets e algumas animações.",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "Doe",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "Editar",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "Efeitos",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "Extra",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "Baixo",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "Normal",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Ativar",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "Ativar Proxy",
-		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Ativar o modo verboso",
@@ -491,10 +467,6 @@
 		"message": "Mais",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "Mais efeitos como sombras e brilho de widgets",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "Mover para baixo",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "Prefil",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "Autenticação",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "Tweets",
 		"description": "data/index.html"
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "Removendo tuíte dos favoritos ...",
 		"description": "data/js/ui.main.js"
@@ -1021,10 +1029,6 @@
 	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Usar RESPONDER A TODOS como ação padrão de resposta",
-		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Usar o indicador do Ubuntu",
 		"description": "data/index.html"
 	},
 	"username": {

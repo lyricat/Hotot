@@ -63,10 +63,6 @@
 		"message": "自動ログイン",
 		"description": "data/index.html"
 	},
-	"balance_between_attractiveness_and_preformance": {
-		"message": "コストパフォーマンスのバランスを取ります",
-		"description": "data/index.html"
-	},
 	"behavior": {
 		"message": "動作",
 		"description": ""
@@ -99,16 +95,16 @@
 		"message": "Chromeの右クリックメニューに追加",
 		"description": "data/index.html"
 	},
-	"clear_token": {
-		"message": "トークンを削除する",
-		"description": "data/index.html"
-	},
 	"clear": {
 		"message": "クリア",
 		"description": ""
 	},
 	"clear_and_close": {
 		"message": "クリアして閉じる",
+		"description": "data/index.html"
+	},
+	"clear_token": {
+		"message": "トークンを削除する",
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
@@ -183,10 +179,6 @@
 		"message": "削除しました",
 		"description": "data/js/ui.main.js"
 	},
-	"disable_decoration_of_widgets_and_some_animations": {
-		"message": "ウィジェットのデコレーションまたはアニメーションを無効にします",
-		"description": "data/index.html"
-	},
 	"donate": {
 		"message": "",
 		"description": "data/index.html"
@@ -211,29 +203,13 @@
 		"message": "編集",
 		"description": "data/js/ui.template.js"
 	},
-	"effects": {
-		"message": "エフェクト",
-		"description": "data/index.html"
-	},
-	"effects_extra": {
-		"message": "フルパワー",
-		"description": "data/index.html"
-	},
-	"effects_low": {
-		"message": "シンプル",
-		"description": "data/index.html"
-	},
-	"effects_normal": {
-		"message": "ノーマル",
+	"eg_alt_h": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "有効にする",
 		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_proxy": {
-		"message": "プロキシを有効にする",
-		"description": ""
 	},
 	"enable_verbose_mode": {
 		"message": "詳細モードを表示する",
@@ -491,10 +467,6 @@
 		"message": "その他",
 		"description": "data/js/ui.template.js"
 	},
-	"more_effects_like_shadows_and_glow_of_widgets": {
-		"message": "さらなるライトエフェクトを使います",
-		"description": "data/index.html"
-	},
 	"move_to_bottom": {
 		"message": "最後尾へ移動",
 		"description": "data/index.html"
@@ -667,8 +639,40 @@
 		"message": "プロファイル",
 		"description": "data/index.html"
 	},
+	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"proxy_auth": {
 		"message": "プロキシ",
+		"description": "data/index.html"
+	},
+	"proxy_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_http_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_no_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_port": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_socks_proxy": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"proxy_system_proxy": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -955,6 +959,10 @@
 		"message": "ツイート",
 		"description": ""
 	},
+	"type_or_drag_a_photo_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"un_favorite_this_tweet_dots": {
 		"message": "お気に入り登録を解除",
 		"description": "data/js/ui.main.js"
@@ -1022,10 +1030,6 @@
 	"use_reply_all_as_default_reply_action": {
 		"message": "「全員に返信する」を既定値にする",
 		"description": "data/index.html"
-	},
-	"use_ubuntu_indicator": {
-		"message": "Ubuntu Indicatorを使う",
-		"description": ""
 	},
 	"username": {
 		"message": "",
