@@ -106,6 +106,7 @@ def format_out(trans):
     for k, v in sorted_trans:
         sub_arr = []
         for sub_k, sub_v in v.items():
+            sub_v = sub_v.replace('\\"', '"').replace('"', '\\"')
             sub_arr.append('\t\t"%s": "%s"' % (sub_k, sub_v))
         arr.append(('\t"%s": {\n' % k )+ ',\n'.join(sub_arr) + '\n\t}')
     return '{\n'+',\n'.join(arr)+'\n}'
