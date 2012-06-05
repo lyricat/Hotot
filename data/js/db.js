@@ -33,7 +33,7 @@ function init (callback) {
 },
 
 create_sys:
-function create_sys() {
+function create_sys(callback) {
     db.database.transaction(function (tx) {
     var procs = [
     function () {
@@ -78,7 +78,7 @@ function create_sys() {
 },
 
 update_version:
-function update_version() {
+function update_version(callback) {
     db.database.transaction(function (tx) {
     var procs = [
     function () {
