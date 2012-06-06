@@ -980,7 +980,7 @@
 		"description": ""
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "在此键入或者拖拽照片到此",
+		"message": "写点什么或者拖拽照片到此",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
