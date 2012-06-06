@@ -392,6 +392,10 @@ function filter_proc(single) {
     var ret = true;
     var user = single.hasOwnProperty('user')? single.user:
                 single.hasOwnProperty('sender')?single.sender: null;
+    if (single.hasOwnProperty('retweeted_status')) {
+        var orig_tweet = single['retweeted_status'];
+        user = orig_tweet['user'];
+    }
     // check mute_list
     for (var i = 0; i < kismet.mute_list.name.length; i += 1) {
         if (user && user.screen_name === kismet.mute_list.name[i]) {
@@ -428,39 +432,45 @@ get_holder_value:
 function get_holder_value(name, tweet) {
     var user = tweet.hasOwnProperty('user')? tweet.user:
                 tweet.hasOwnProperty('sender')?tweet.sender: null;
+    var orig_tweet = tweet;
+    if (orig_tweet.hasOwnProperty('retweeted_status')) {
+        orig_tweet = single['retweeted_status'];
+        user = orig_tweet.hasOwnProperty('user')? orig_tweet.user:
+            orig_tweet.hasOwnProperty('sender')? orig_tweet.sender: null;
+    }
     switch(name) {
     case '$NAME':
         return user?user.screen_name:'';
     break;
     case '$TEXT':
-        return tweet.text;
+        return orig_tweet.text;
     break;
     case '$SOURCE':
-        if (tweet.source)
-            return tweet.source.replace(/<.*?>/g, '');
+        if (orig_tweet.source)
+            return orig_tweet.source.replace(/<.*?>/g, '');
         else
             return '';
     break;
     case '$HASHTAGS':
-        if (tweet.entities && tweet.entities.hashtags)
-            return tweet.entities.hashtags.map(function (t) {return t.text});
+        if (orig_tweet.entities && orig_tweet.entities.hashtags)
+            return orig_tweet.entities.hashtags.map(function (t) {return t.text});
         else
             return [];
     break;
     case '$MENTIONS':
-        if (tweet.entities && tweet.entities.user_mentions)
-            return tweet.entities.user_mentions.map(function(t){return t.screen_name});
+        if (orig_tweet.entities && orig_tweet.entities.user_mentions)
+            return orig_tweet.entities.user_mentions.map(function(t){return t.screen_name});
         else
             return [];
     break;
     case '$LINKS':
-        if (tweet.entities && tweet.entities.urls)
-            return tweet.entities.urls.map(function(t){return t.expanded_url});
+        if (orig_tweet.entities && orig_tweet.entities.urls)
+            return orig_tweet.entities.urls.map(function(t){return t.expanded_url});
         else
             return [];
     break;
     case '$GEO':
-        return tweet.geo;
+        return orig_tweet.geo;
     break;
     default:
         return name;
@@ -683,7 +693,7 @@ function read_tokens(str) {
         }
     }
     return token_list;
-    return str.split(/\s/).filter(function (x) {return x.length != 0;} )
+    // return str.split(/\s/).filter(function (x) {return x.length != 0;} )
 },
 
 compile:

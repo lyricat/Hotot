@@ -4,7 +4,7 @@ ui.Template = {
 reg_vaild_preceding_chars: '(?:[^-\\/"\':!=a-zA-Z0-9_]|^)',
 
 reg_url_path_chars_1: '[a-zA-Z0-9!\\*\';:=\\+\\$/%#\\[\\]\\?\\-_,~\\(\\)&\\.`@]',
-reg_url_path_chars_2: '[a-zA-Z0-9!\':=\\+\\$/%#~&`@]',
+reg_url_path_chars_2: '[a-zA-Z0-9!\':=\\+\\$/%#~\\(\\)&`@]',
 
 reg_url_proto_chars: '([a-zA-Z]+:\\/\\/|www\\.)',
 

@@ -863,7 +863,7 @@ function on_fav_click(btn, li_id, event) {
         toast.set(_('favorite_this_tweet_dots')).show(-1);
         globals.twitterClient.create_favorite(id,
         function (result) {
-            toast.set(_('Successfully')).show();
+            toast.set(_('successfully')).show();
             li.addClass('faved');
         });
     }

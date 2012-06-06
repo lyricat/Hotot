@@ -17,7 +17,7 @@ vars: {
 
 default_settings: {
       // Globals:
-      'use_verbose_mode': true
+      'use_verbose_mode': false
       // Globals -> proxy:
     , 'proxy_type': 'none'
     , 'proxy_host': ''
