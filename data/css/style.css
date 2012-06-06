@@ -1087,11 +1087,11 @@ label {
 	margin: 5px 0 5px 60px;
 }
 
-.people_view_list_trigger {
+.people_view_list_trigger, .people_view_people_trigger {
 	position: relative;
 }
 
-.people_view_list_trigger .lists_memu {
+.people_view_list_trigger .lists_menu, .people_view_people_trigger .people_menu {
 	display: none;
 	position: absolute;
 	z-index: 10;

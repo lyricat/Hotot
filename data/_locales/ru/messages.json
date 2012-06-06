@@ -31,6 +31,10 @@
 		"message": "Расширенные",
 		"description": "data/index.html"
 	},
+	"animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"api_base": {
 		"message": "База API",
 		"description": "data/index.html"
@@ -211,6 +215,14 @@
 		"message": "Включено",
 		"description": "data/js/ui.exts_dlg.js"
 	},
+	"enable_animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"enable_gpu_acceleration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"enable_verbose_mode": {
 		"message": "Подробная информация",
 		"description": "data/index.html"
@@ -246,6 +258,10 @@
 	"favs_view": {
 		"message": "Лента избранных",
 		"description": "data/index.html"
+	},
+	"fellowship": {
+		"message": "",
+		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
 		"message": "Блокировать подобные твиты",
@@ -401,6 +417,10 @@
 	},
 	"license": {
 		"message": "Лицензия",
+		"description": "data/index.html"
+	},
+	"line_height": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"list": {

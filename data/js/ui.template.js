@@ -320,14 +320,21 @@ people_vcard_t_orig:
         <li><a class="people_view_tweet_btn mochi_button_group_item selected" href="#tweet">{%TRANS_tweets%}</a> \
         </li><li> \
         <a class="people_view_fav_btn mochi_button_group_item" href="#fav">{%TRANS_favs%}</a> \
-        </li><li> \
-        <a class="people_view_follower_btn mochi_button_group_item" href="#follower">{%TRANS_followers%}</a> \
-        </li><li> \
-        <a class="people_view_friend_btn mochi_button_group_item" href="#friend">{%TRANS_friends%}</a> \
+        </li><li class="people_view_people_trigger"> \
+        <a class="people_view_people_btn mochi_button_group_item" href="#people">{%TRANS_fellowship%} &#x25BE;</a> \
+        <ul class="people_menu hotot_menu">\
+            <li><a class="followers_menu_item" \
+                title="People who follow them."\
+                href="javascript:void(0);">{%TRANS_followers%}</a>\
+            </li><li><a class="friends_menu_item"\
+                href="People them is following" \
+                title="All Lists following Them">{%TRANS_friends%}</a>\
+            </li>\
+        </ul>\
         </li><li class="people_view_list_trigger"> \
         <a class="people_view_list_btn mochi_button_group_item" href="#list">{%TRANS_lists%} &#x25BE;\
         </a> \
-        <ul class="lists_memu hotot_menu">\
+        <ul class="lists_menu hotot_menu">\
             <li><a class="user_lists_menu_item" \
                 title="Lists of Them"\
                 href="javascript:void(0);">{%TRANS_lists_of_them%}</a>\
@@ -712,6 +719,7 @@ function update_trans() {
         , TRANS_report_spam: _('report_spam')
         , TRANS_tweets: _('tweets'), TRANS_favs: _('favs')
         , TRANS_followers: _('followers'), TRANS_friends: _('friends')
+        , TRANS_fellowship: _('fellowship')
         , TRANS_lists: _('lists'), TRANS_lists_of_them: _('lists_of_them')
         , TRANS_lists_following_them: _('lists_following_them')
         , TRANS_create_a_list: _('create_a_list')

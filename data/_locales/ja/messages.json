@@ -31,6 +31,10 @@
 		"message": "更なる設定",
 		"description": ""
 	},
+	"animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"api_base": {
 		"message": "APIベース",
 		"description": ""
@@ -211,6 +215,14 @@
 		"message": "有効にする",
 		"description": "data/js/ui.exts_dlg.js"
 	},
+	"enable_animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"enable_gpu_acceleration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"enable_verbose_mode": {
 		"message": "詳細モードを表示する",
 		"description": ""
@@ -246,6 +258,10 @@
 	"favs_view": {
 		"message": "お気に入り",
 		"description": "data/index.html"
+	},
+	"fellowship": {
+		"message": "",
+		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
 		"message": "フィルター作成",
@@ -402,6 +418,10 @@
 	"license": {
 		"message": "ライセンス",
 		"description": ""
+	},
+	"line_height": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"list": {
 		"message": "リスト",
