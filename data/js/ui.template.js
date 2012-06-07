@@ -1301,7 +1301,7 @@ function form_preview(tweet) {
                     ui.Template.form_media(
                         tweet.entities.media[i].expanded_url,
                         tweet.entities.media[i].media_url + ':thumb',
-                        tweet.entities.media[i].media_url
+                        tweet.entities.media[i].media_url + ':large'
                         ));
             }
         }

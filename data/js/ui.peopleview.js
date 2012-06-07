@@ -53,6 +53,12 @@ function init_view(view) {
         return false;
     });
 
+    vcard.find('.profile_img_wrapper').click(function() {
+        ui.Previewer.reload($(this).attr('href'))
+        ui.Previewer.open();
+        return false;
+    });
+
     vcard.find('.vcard_follow').click('click',
     function (event) {
         var _this = this;

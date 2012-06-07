@@ -18,6 +18,9 @@ function crack(event) {
         for (var i = 0, i_max = hotkey.map.length; i < i_max; i++) {
             hotkey.map[i].pos = 0;
         }
+        if (ui.Previewer.visible)
+            ui.Previewer.close();
+        // @TODO close dialog.
         return;
     }
 

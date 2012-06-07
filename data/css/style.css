@@ -1856,26 +1856,42 @@ label {
 	height: 30px;
 }
 
-/*===== Image Preview Dialog ================================*/
-#imagepreview_dlg {
-
+/*===== Previewer ================================*/
+#previewer {
+	display: none;
+	opacity: 0;
+	padding: 10px;
+	background: rgba(0,0,0, 0.8);
+	position: absolute;
+	z-index: 500;
+	top: 50%;
+	left: 50%;
+	min-width: 64px;
+	min-height: 64px;
+	margin-left: -32px;
+	margin-top: -62px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+	border-radius: 5px;
 }
 
-#imagepreview_dlg .dialog_header {
-	height: 10px;
-	padding: 0;
-	border: none;
-}
-
-#imagepreview_dlg .dialog_body {
-	padding: 0;
-}
-
-#imagepreview_dlg .preview {
-	max-width: 95%;
-	max-height: 95%;
+#previewer .image {
 	display: block;
 	margin: 0 auto;
+	height: 64px;
+	width: 64px;
+}
+
+#previewer .close {
+	display: block;
+	margin: 0 auto;
+	color: white;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	height: 20px;
+	margin-top: 10px;
+	line-height: 20px;
 }
 
 /*===== Class styles ================================*/
