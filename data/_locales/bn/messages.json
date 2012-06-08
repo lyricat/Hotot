@@ -576,7 +576,7 @@
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "",
+		"message": "পাসওয়ার্ড",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -596,7 +596,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
-		"message": "",
+		"message": "পোর্ট",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
