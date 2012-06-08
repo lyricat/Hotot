@@ -31,6 +31,10 @@
 		"message": "Advanced",
 		"description": "data/index.html"
 	},
+	"animation": {
+		"message": "Animation",
+		"description": "data/index.html"
+	},
 	"api_base": {
 		"message": "API Base",
 		"description": "data/index.html"
@@ -204,12 +208,20 @@
 		"description": "data/js/ui.template.js"
 	},
 	"eg_alt_h": {
-		"message": "",
+		"message": "e.g. <Alt>H",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "Enable",
 		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_animation": {
+		"message": "Enable animation",
+		"description": "data/index.html"
+	},
+	"enable_gpu_acceleration": {
+		"message": "Enable GPU acceleration",
+		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "Enable Verbose Mode",
@@ -246,6 +258,10 @@
 	"favs_view": {
 		"message": "Favorites View",
 		"description": "data/index.html"
+	},
+	"fellowship": {
+		"message": "Fellowship",
+		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
 		"message": "Filter Tweets Like It",
@@ -401,6 +417,10 @@
 	},
 	"license": {
 		"message": "License",
+		"description": "data/index.html"
+	},
+	"line_height": {
+		"message": "Line height",
 		"description": "data/index.html"
 	},
 	"list": {
@@ -640,11 +660,11 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "",
+		"message": "Profile name",
 		"description": "data/index.html"
 	},
 	"proxy": {
-		"message": "",
+		"message": "Proxy",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -652,7 +672,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_host": {
-		"message": "",
+		"message": "Proxy host",
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
@@ -664,11 +684,11 @@
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "",
+		"message": "Proxy port",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
-		"message": "",
+		"message": "SOCKS Proxy",
 		"description": "data/index.html"
 	},
 	"proxy_system_proxy": {
@@ -960,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "",
+		"message": "Type or drag a photo here",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 cmake_policy(SET CMP0002 OLD)
-project(hotot)
+project(hotot NONE)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 
 find_package(Gettext REQUIRED)

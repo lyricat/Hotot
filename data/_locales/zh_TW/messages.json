@@ -31,6 +31,10 @@
 		"message": "進階",
 		"description": ""
 	},
+	"animation": {
+		"message": "動畫",
+		"description": "data/index.html"
+	},
 	"api_base": {
 		"message": "API Base",
 		"description": ""
@@ -204,12 +208,20 @@
 		"description": "data/js/ui.template.js"
 	},
 	"eg_alt_h": {
-		"message": "",
+		"message": "例:<Alt>H",
 		"description": "data/index.html"
 	},
 	"enable": {
 		"message": "啟用",
 		"description": "data/js/ui.exts_dlg.js"
+	},
+	"enable_animation": {
+		"message": "啓用動畫效果",
+		"description": "data/index.html"
+	},
+	"enable_gpu_acceleration": {
+		"message": "啓用GPU加速",
+		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
 		"message": "啟用囉嗦模式",
@@ -246,6 +258,10 @@
 	"favs_view": {
 		"message": "我的最愛",
 		"description": "data/index.html"
+	},
+	"fellowship": {
+		"message": "外交",
+		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
 		"message": "過濾類似的推",
@@ -402,6 +418,10 @@
 	"license": {
 		"message": "許可協議",
 		"description": ""
+	},
+	"line_height": {
+		"message": "行高",
+		"description": "data/index.html"
 	},
 	"list": {
 		"message": "列表",
@@ -640,11 +660,11 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "",
+		"message": "賬戶名稱",
 		"description": "data/index.html"
 	},
 	"proxy": {
-		"message": "",
+		"message": "代理",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -652,27 +672,27 @@
 		"description": "data/index.html"
 	},
 	"proxy_host": {
-		"message": "",
+		"message": "代理主機",
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
-		"message": "",
+		"message": "HTTP代理",
 		"description": "data/index.html"
 	},
 	"proxy_no_proxy": {
-		"message": "",
+		"message": "不使用代理",
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "",
+		"message": "代理端口",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
-		"message": "",
+		"message": "SOCKS代理",
 		"description": "data/index.html"
 	},
 	"proxy_system_proxy": {
-		"message": "",
+		"message": "系統代理",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -960,7 +980,7 @@
 		"description": ""
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "",
+		"message": "要麼寫點，要麼拖拽一張照片進來",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {

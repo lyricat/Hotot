@@ -66,6 +66,7 @@
     <script type="text/javascript" src="js/ui.finder.js"></script>
     <script type="text/javascript" src="js/ui.action_menu.js"></script>
     <script type="text/javascript" src="js/ui.context_menu.js"></script>
+    <script type="text/javascript" src="js/ui.previewer.js"></script>
 
     <script type="text/javascript" src="js/hotot.js"></script>
     <script type="text/javascript" src="ext/ext.js"></script>
@@ -1429,23 +1430,11 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
     </div><!-- END of .dialog_container -->
 </div>
 
-<!-- ImagePreview dialog -->
-<div id="imagepreview_dlg" class="dialog">
-    <div class="dialog_bar">
-        <h2 class="dialog_title" data-i18n-text="preview">Preview</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
-    </div>
-    <div class="dialog_container">
-    <div class="dialog_header"></div>
-		<div class="dialog_body">
-			<img class="preview" src="./image/ic64_hotot.png"/>
-    </div>
-    <div class="dialog_footer">
-    <a class="mochi_button orig_btn dialog_close_btn" target="_blank" data-i18n-text="view_original" href="#">View Original</a>
-    <a class="mochi_button dialog_close_btn" data-i18n-text="close">Close</a>
-    </div>
-    </div><!-- END of .dialog_container -->
-</div><!-- END of #imagepreview_dlg-->
+<!-- Previewer -->
+<div id="previewer">
+	<a class="image_wrapper" target="_blank" href="#"><img class="image" src="#" alt="Loading"/></a>
+	<a class="close" href="#" data-i18n-text="close">CLOSE</a>
+</div><!-- END of #previewer -->
 
 <!-- Error dialog -->
 <div id="error_dlg" class="dialog">

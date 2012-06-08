@@ -31,6 +31,10 @@
 		"message": "এডভান্সড",
 		"description": "data/index.html"
 	},
+	"animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"api_base": {
 		"message": "API বেজ",
 		"description": "data/index.html"
@@ -211,6 +215,14 @@
 		"message": "কার্যকর",
 		"description": "data/js/ui.exts_dlg.js"
 	},
+	"enable_animation": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"enable_gpu_acceleration": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"enable_verbose_mode": {
 		"message": "ভারবোস অবস্থা কার্যকর",
 		"description": "data/index.html"
@@ -246,6 +258,10 @@
 	"favs_view": {
 		"message": "ফেভারিটসমূহ ভিউ",
 		"description": "data/index.html"
+	},
+	"fellowship": {
+		"message": "",
+		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
 		"message": "এভাবে টুইটসমূহ ফিল্টার করুন",
@@ -401,6 +417,10 @@
 	},
 	"license": {
 		"message": "লাইসেন্স",
+		"description": "data/index.html"
+	},
+	"line_height": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"list": {
