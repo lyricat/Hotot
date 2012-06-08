@@ -25,11 +25,11 @@ add_custom_target(uninstall
 ##################### GTK Version ######################
 if (WITH_GTK)
     FIND_PACKAGE(PythonLibrary REQUIRED)
-    
+
     if (NOT PYTHONLIBRARY_FOUND)
         message(FATAL_ERROR "GTK Wrapper for Hotot need python")
     endif (NOT PYTHONLIBRARY_FOUND)
-    
+
     INCLUDE(PythonMacros)
     if (WITH_GIR)
         add_subdirectory(hotot-gir)
@@ -48,30 +48,6 @@ endif (WITH_CHROME)
 
 ##################### Qt Version ######################
 if (WITH_QT)
-
-# Setup KDE4 support
-    if(WITH_KDE)
-        find_package(KDE4)
-        if(KDE4_FOUND)
-            message(STATUS "Enabling KDE4 integration")
-            include_directories(${KDE4_INCLUDES})
-            add_definitions(${KDE4_DEFINITIONS})
-            set(HAVE_KDE 1)
-        else(KDE4_FOUND)
-            message(STATUS "KDE4 not found, disabling KDE integration")
-        endif(KDE4_FOUND)
-        else(WITH_KDE)
-            message(STATUS "Not enabling KDE4 integration")
-    endif(WITH_KDE)
-
-    if(NOT HAVE_KDE)
-        find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
-    endif(NOT HAVE_KDE)
-
-    set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
-    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
-    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_MODULE_LINKER_FLAGS}")
-
     add_subdirectory(qt)
 endif (WITH_QT)
 
