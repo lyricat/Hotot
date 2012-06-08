@@ -32,7 +32,7 @@
 		"description": "data/index.html"
 	},
 	"animation": {
-		"message": "",
+		"message": "এনিমেশন",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -208,7 +208,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"eg_alt_h": {
-		"message": "",
+		"message": "e.g. <Alt>H",
 		"description": "data/index.html"
 	},
 	"enable": {
@@ -216,11 +216,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_animation": {
-		"message": "",
+		"message": "এনিমেশন কার্যকর",
 		"description": "data/index.html"
 	},
 	"enable_gpu_acceleration": {
-		"message": "",
+		"message": "জিপিইউ এক্সিলেরেশন কার্যকর",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -260,7 +260,7 @@
 		"description": "data/index.html"
 	},
 	"fellowship": {
-		"message": "",
+		"message": "ফেলোশিপ",
 		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
@@ -300,7 +300,7 @@
 		"description": "data/index.html"
 	},
 	"font_preview_hint": {
-		"message": "The quick brown fox jumps over the lazy dog.",
+		"message": "আমি বাংলায় গান গাই",
 		"description": "data/index.html"
 	},
 	"font_size": {
@@ -420,7 +420,7 @@
 		"description": "data/index.html"
 	},
 	"line_height": {
-		"message": "",
+		"message": "লাইনের উচ্চতা",
 		"description": "data/index.html"
 	},
 	"list": {
@@ -660,11 +660,11 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "",
+		"message": "প্রোফাইলের নাম",
 		"description": "data/index.html"
 	},
 	"proxy": {
-		"message": "",
+		"message": "প্রক্সি",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -672,7 +672,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_host": {
-		"message": "",
+		"message": "প্রক্সি হোস্ট",
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
@@ -684,11 +684,11 @@
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "",
+		"message": "প্রক্সি পোর্ট",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
-		"message": "",
+		"message": "SOCKS প্রক্সি",
 		"description": "data/index.html"
 	},
 	"proxy_system_proxy": {
@@ -956,7 +956,7 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "transparent",
+		"message":"Transparent",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "",
+		"message": "টাইপ করুন অথবা একটি ছবি এখানে টেনে আনুন",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
