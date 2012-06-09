@@ -20,7 +20,7 @@
 		"description": "data/index.html"
 	},
 	"add_new_views": {
-		"message": "新しいコラムを追加する",
+		"message": "新しいカラムを追加する",
 		"description": "data/index.html"
 	},
 	"add_to_list": {
@@ -112,7 +112,7 @@
 		"description": "data/index.html"
 	},
 	"click_me_to_continue": {
-		"message": "クリックして続ける",
+		"message": "続ける",
 		"description": ""
 	},
 	"click_the_button_below": {
@@ -136,15 +136,15 @@
 		"description": ""
 	},
 	"close_current_column": {
-		"message": "コラムを閉じる",
+		"message": "現在のカラムを閉じる",
 		"description": "data/index.html"
 	},
 	"compose": {
-		"message": "作成",
+		"message": "メッセージ作成",
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "PINコードを下のテキストボックスにコピー&ペーストしてください",
+		"message": "PINコードをコピーし、下のテキストボックスにペーストしてください",
 		"description": ""
 	},
 	"copy_to_clipboard": {
@@ -260,7 +260,7 @@
 		"description": "data/index.html"
 	},
 	"fellowship": {
-		"message": "",
+		"message": "交流",
 		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
@@ -288,7 +288,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "フォロワー数",
+		"message": "フォロワー",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
@@ -308,15 +308,15 @@
 		"description": ""
 	},
 	"friend_cnt": {
-		"message": "友達数",
+		"message": "フォロー",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "友達",
+		"message": "フォロー",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
-		"message": "グローバル",
+		"message": "全般",
 		"description": "data/index.html"
 	},
 	"globals_restart_hint": {
@@ -332,7 +332,7 @@
 		"description": ""
 	},
 	"hey_it_is_you": {
-		"message": "これはあなたです",
+		"message": "あなたです",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
@@ -376,7 +376,7 @@
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "登録する",
+		"message": "登録日",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -412,7 +412,7 @@
 		"description": "data/index.html"
 	},
 	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "Hototが匿名で使用統計データを収集することを許可する",
+		"message": "Hototによる匿名の統計データ収集を許可する",
 		"description": "data/index.html"
 	},
 	"license": {
@@ -428,7 +428,7 @@
 		"description": "data/index.html"
 	},
 	"listed_cnt": {
-		"message": "リスト数",
+		"message": "リスト",
 		"description": "data/js/ui.template.js"
 	},
 	"lists": {
@@ -456,11 +456,11 @@
 		"description": ""
 	},
 	"mark_deleted_tweets": {
-		"message": "消除されたツイートにマークを付ける",
+		"message": "削除されたツイートにマークを付ける",
 		"description": "data/index.html"
 	},
 	"mask": {
-		"message": "",
+		"message": "マスク",
 		"description": "data/index.html"
 	},
 	"mention_them": {
@@ -488,15 +488,15 @@
 		"description": "data/js/ui.template.js"
 	},
 	"move_to_bottom": {
-		"message": "最後尾へ移動",
+		"message": "最後尾に移動",
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "次のツイートへ移動",
+		"message": "次のツイートに移動",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "前のツイートへ移動",
+		"message": "前のツイートに移動",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
@@ -548,7 +548,7 @@
 		"description": ""
 	},
 	"oauth_base": {
-		"message": "OAuth ベース",
+		"message": "OAuthベース",
 		"description": ""
 	},
 	"official_retweet_this_tweet": {
@@ -628,7 +628,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"powerfull": {
-		"message": "",
+		"message": "パワフル",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"preferences": {
@@ -636,11 +636,11 @@
 		"description": ""
 	},
 	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "できる限り最新ツイートを事前にロードする",
+		"message": "可能なら最新ツイートを事前にロードする",
 		"description": ""
 	},
 	"pretty_wife": {
-		"message": "",
+		"message": "かわいい妻",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -676,11 +676,11 @@
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
-		"message": "",
+		"message": "HTTPプロキシ",
 		"description": "data/index.html"
 	},
 	"proxy_no_proxy": {
-		"message": "",
+		"message": "プロキシなし",
 		"description": "data/index.html"
 	},
 	"proxy_port": {
@@ -688,11 +688,11 @@
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
-		"message": "",
+		"message": "SOCKSプロキシ",
 		"description": "data/index.html"
 	},
 	"proxy_system_proxy": {
-		"message": "",
+		"message": "システムプロキシ",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -728,7 +728,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "返信元：",
+		"message": "返信先",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
@@ -808,7 +808,7 @@
 		"description": "data/index.html"
 	},
 	"schizophrenia": {
-		"message": "",
+		"message": "統合失調症",
 		"description": "data/index.html"
 	},
 	"search": {
@@ -816,7 +816,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"search_api_base2": {
-		"message": "APIベース2で検索する",
+		"message": "APIベース2で検索",
 		"description": ""
 	},
 	"search_in_google": {
@@ -832,7 +832,7 @@
 		"description": "data/index.html"
 	},
 	"select_a_default_picture_service": {
-		"message": "デフォルトの写真サービスを選択してください",
+		"message": "デフォルトの画像サービスを選択してください",
 		"description": "data/index.html"
 	},
 	"select_a_language": {
@@ -872,11 +872,11 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "APIベースでログイン",
+		"message": "APIベース",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "OAuthベースでログイン",
+		"message": "OAuthベース",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
@@ -916,7 +916,7 @@
 		"description": ""
 	},
 	"struggling_adventurers": {
-		"message": "",
+		"message": "もがいている冒険",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -924,7 +924,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"summon_hotot": {
-		"message": "Hototを呼び出す(例:<ALT>C)",
+		"message": "Hototを呼び出す",
 		"description": ""
 	},
 	"themes": {
@@ -952,7 +952,7 @@
 		"description": "data/index.html"
 	},
 	"tranquil": {
-		"message": "",
+		"message": "穏やか",
 		"description": "data/index.html"
 	},
 	"transparent": {
@@ -968,7 +968,7 @@
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
-		"message": "ツイート数",
+		"message": "ツイート",
 		"description": "data/js/ui.template.js"
 	},
 	"tweet_view": {
@@ -1056,7 +1056,7 @@
 		"description": "data/index.html"
 	},
 	"verify": {
-		"message": "",
+		"message": "確認",
 		"description": "data/index.html"
 	},
 	"version": {
@@ -1080,7 +1080,7 @@
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "",
+		"message": "あなたと関係を持ちたがっています",
 		"description": "data/index.html"
 	},
 	"weakness": {
@@ -1096,7 +1096,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"whisper": {
-		"message": "精霊のささやき",
+		"message": "ヒント",
 		"description": "data/js/ui.welcome.js"
 	},
 	"you_are_followed_by_them": {
@@ -1108,7 +1108,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
-		"message": "あなたたちは友達です",
+		"message": "友達です",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
