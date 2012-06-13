@@ -17,18 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:37
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:45
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:38
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:46
-msgid "Hotot Notification"
-msgstr "Hotot通知"
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
+msgid "%1 unread Messages"
+msgstr "未読メッセージ %1"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
-#, c-format
-msgid "Loading Search result %s ..."
-msgstr "検索結果 %s をロード中..."
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:97
+msgid "&Compose"
+msgstr "メッセージ作成(&C)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:117
+msgid "&Developer Tool"
+msgstr "開発ツール(&D)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:112
+msgid "&Exit"
+msgstr "終了(&E)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:67
+msgid "&Minimize to Tray"
+msgstr "トレイに最小化(&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
+msgid "(c) 2009-2012 Shellex Wai\n"
+msgstr "(c) 2009-2012 Shellex Wai\n"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
+msgid "1 unread post"
+msgid_plural "%1 unread posts"
+msgstr[0] "未読メッセージ 1"
+msgstr[1] "未読メッセージ %1"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Artwork"
+msgstr "アートワーク"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Developer"
+msgstr "開発者"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Developer and Artwork"
+msgstr "開発とアートワーク"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Document"
+msgstr "ドキュメント"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
+msgid "Enable developer Tool"
+msgstr "開発ツールを有効にする"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
+msgid "Evan"
+msgstr "Evan"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:35
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:98
@@ -42,10 +86,77 @@ msgstr "検索結果 %s をロード中..."
 msgid "Hotot"
 msgstr "Hotot"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
-msgid "_Resume/Hide"
-msgstr "再開/隠す(_R)"
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:37
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:45
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:38
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:46
+msgid "Hotot Notification"
+msgstr "Hotot通知"
+
+#: ../..//misc/hotot-qt.desktop.in.h:1
+msgid "Hotot Qt"
+msgstr "Hotot Qt"
+
+#: ../..//misc/hotot.desktop.in.h:2
+msgid "Hotot Twitter Client"
+msgstr "Hotot Twitterクライアント"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:180
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:323
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:175
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:320
+msgid "Hotot: Click to Active."
+msgstr "Hotot: クリックでアクティブになります。"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
+msgid "Jiahua Huang"
+msgstr "Jiahua Huang"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
+msgid "Jimmy Xu"
+msgstr "Jimmy Xu"
+
+#: ../..//misc/hotot.desktop.in.h:3
+msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgstr "Gtk2とWebkitベースの軽量なTwitterクライアント"
+
+#: ../..//misc/hotot-qt.desktop.in.h:2
+msgid "Lightweight Twitter Client base on Qt and Webkit"
+msgstr "QtとWebkitベースの軽量なTwitterクライアント"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
+msgid "Lightweight, Flexible Microblogging"
+msgstr "軽量で柔軟なマイクロブログクライアント"
+
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/agent.py:186
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/agent.py:181
+#, c-format
+msgid "Loading Search result %s ..."
+msgstr "検索結果 %s をロード中..."
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
+msgid "Marguerite Su"
+msgstr "Marguerite Su"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
+msgid "Shellex Wai"
+msgstr "Shellex Wai"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:108
+msgid "Show &MainWindow"
+msgstr "メインウィンドウを表示(&M)"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
+msgid "Tualatrix Chou"
+msgstr "Tualatrix Chou"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
+msgstr "HTTPプロキシの代わりにSOCKSプロキシを使用する"
+
+#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
+msgid "Xu Zhen"
+msgstr "Xu Zhen"
 
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:116
 #: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:139
@@ -64,18 +175,6 @@ msgstr "ファイル(_F)"
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:180
-#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:323
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:175
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:320
-msgid "Hotot: Click to Active."
-msgstr "Hotot: クリックでアクティブになります。"
-
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:91
-#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:122
-msgid "_Show"
-msgstr "表示(_S)"
-
 #: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:94
 msgid "_Hide"
 msgstr "隠す(_H)"
@@ -85,112 +184,12 @@ msgstr "隠す(_H)"
 msgid "_Inspector"
 msgstr "インスペクタ(_I)"
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
-msgid "1 unread post"
-msgid_plural "%1 unread posts"
-msgstr[0] "未読メッセージ 1"
-msgstr[1] "未読メッセージ %1"
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:113
+#: /home/saber/Develop/Hotot/build/po/../..//hotot/hotot.py:136
+msgid "_Resume/Hide"
+msgstr "再開/隠す(_R)"
 
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
-msgid "Lightweight, Flexible Microblogging"
-msgstr "軽量で柔軟なマイクロブログクライアント"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
-msgid "(c) 2009-2012 Shellex Wai\n"
-msgstr "(c) 2009-2012 Shellex Wai\n"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
-msgid "Shellex Wai"
-msgstr "Shellex Wai"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:73
-msgid "Developer and Artwork"
-msgstr "開発とアートワーク"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
-msgid "Jiahua Huang"
-msgstr "Jiahua Huang"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:74
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
-msgid "Developer"
-msgstr "開発者"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:75
-msgid "Jimmy Xu"
-msgstr "Jimmy Xu"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:76
-msgid "Tualatrix Chou"
-msgstr "Tualatrix Chou"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
-msgid "Xu Zhen"
-msgstr "Xu Zhen"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
-msgid "Evan"
-msgstr "Evan"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:78
-msgid "Artwork"
-msgstr "アートワーク"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
-msgid "Marguerite Su"
-msgstr "Marguerite Su"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:79
-msgid "Document"
-msgstr "ドキュメント"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:83
-msgid "Enable developer Tool"
-msgstr "開発ツールを有効にする"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
-msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
-msgstr "HTTPプロキシの代わりにSOCKSプロキシを使用する"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:67
-msgid "&Minimize to Tray"
-msgstr "トレイに最小化(&M)"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:97
-msgid "&Compose"
-msgstr "メッセージ作成(&C)"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:108
-msgid "Show &MainWindow"
-msgstr "メインウィンドウを表示(&M)"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:112
-msgid "&Exit"
-msgstr "終了(&E)"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:117
-msgid "&Developer Tool"
-msgstr "開発ツール(&D)"
-
-#: /home/saber/Develop/Hotot/build/po/../..//qt/src/qttraybackend.cpp:72
-msgid "%1 unread Messages"
-msgstr "未読メッセージ %1"
-
-#: ../..//misc/hotot.desktop.in.h:2
-msgid "Hotot Twitter Client"
-msgstr "Hotot Twitterクライアント"
-
-#: ../..//misc/hotot.desktop.in.h:3
-msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
-msgstr "Gtk2とWebkitベースの軽量なTwitterクライアント"
-
-#: ../..//misc/hotot-qt.desktop.in.h:1
-msgid "Hotot Qt"
-msgstr "Hotot Qt"
-
-#: ../..//misc/hotot-qt.desktop.in.h:2
-msgid "Lightweight Twitter Client base on Qt and Webkit"
-msgstr "QtとWebkitベースの軽量なTwitterクライアント"
-
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:91
+#: /home/saber/Develop/Hotot/build/po/../..//hotot-gir/hotot.py:122
+msgid "_Show"
+msgstr "表示(_S)"
