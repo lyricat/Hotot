@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*-
+# vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
 '''Hotot
 @author: U{Shellex Wei <5h3ll3x@gmail.com>}
 @license: LGPLv3+
@@ -52,13 +53,6 @@ class Hotot:
             self.indicatorStatus = AppIndicator.IndicatorStatus
         else:
             self.create_trayicon()
-            # workaround for icon display issue in some cases
-            #  libgtk-3-0            => 3.4.0-0ubuntu5
-            #  libgdk-pixbuf2.0-0    => 2.26.0-1
-            #  trayer                => 1.1.1-1ubuntu1
-            # ugly but whoever cares
-            self.start_blinking()
-            self.stop_blinking()
 
     def build_gui(self):
         self.window = Gtk.Window()
