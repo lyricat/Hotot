@@ -48,7 +48,7 @@
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
-		"message": "",
+		"message": "暗殺者のタンゴ",
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
@@ -80,7 +80,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"bloody_marguerite": {
-		"message": "",
+		"message": "真っ赤なマーガレット",
 		"description": "data/index.html"
 	},
 	"cancel": {
@@ -160,7 +160,7 @@
 		"description": ""
 	},
 	"cuddly": {
-		"message": "",
+		"message": "かわいい",
 		"description": "data/index.html"
 	},
 	"custom_font": {
@@ -336,7 +336,7 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"hidden_dark_minds": {
-		"message": "",
+		"message": "暗い心を隠して",
 		"description": "data/index.html"
 	},
 	"home_timeline": {
@@ -380,7 +380,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
-		"message": "ここを忘れられない",
+		"message": "この考えをやめれない",
 		"description": "data/index.html"
 	},
 	"keyboard": {
@@ -512,11 +512,11 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "俺の旅はその遠い星の海へ",
+		"message": "私の旅は星の海へ",
 		"description": "data/index.html"
 	},
 	"my_power": {
-		"message": "魔力ゲージ",
+		"message": "パワー",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"name": {
@@ -592,7 +592,7 @@
 		"description": ""
 	},
 	"panda_acts_cute": {
-		"message": "",
+		"message": "パンダの可愛い振る舞い",
 		"description": "data/index.html"
 	},
 	"password": {
@@ -640,7 +640,7 @@
 		"description": ""
 	},
 	"pretty_wife": {
-		"message": "かわいい妻",
+		"message": "かわいい奥さん",
 		"description": "data/index.html"
 	},
 	"preview": {
@@ -736,7 +736,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reset_time": {
-		"message": "リセット時限",
+		"message": "リセット時刻",
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"restore_defaults": {
@@ -856,7 +856,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
-		"message": "",
+		"message": "結婚前の輝かしい日々",
 		"description": "data/index.html"
 	},
 	"shortcuts": {
@@ -916,7 +916,7 @@
 		"description": ""
 	},
 	"struggling_adventurers": {
-		"message": "もがいている冒険",
+		"message": "必死の冒険",
 		"description": "data/index.html"
 	},
 	"successfully": {
@@ -936,7 +936,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"titian_s_elegance": {
-		"message": "",
+		"message": "ティツィアーノの気品",
 		"description": "data/index.html"
 	},
 	"to": {
@@ -944,7 +944,7 @@
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
-		"message": "",
+		"message": "冷たい美しさ",
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
@@ -956,7 +956,7 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message": "半透明",
+		"message": "透明",
 		"description": "data/index.html"
 	},
 	"trending_topics": {
@@ -1040,7 +1040,7 @@
 		"description": "data/index.html"
 	},
 	"use_custom_font": {
-		"message": "カスタムフォント",
+		"message": "カスタムフォントを使用",
 		"description": "data/index.html"
 	},
 	"use_quote_as_default_retweet_action": {
@@ -1080,7 +1080,7 @@
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
-		"message": "あなたと関係を持ちたがっています",
+		"message": "お友達になりたい",
 		"description": "data/index.html"
 	},
 	"weakness": {
