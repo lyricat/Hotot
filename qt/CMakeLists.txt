@@ -1,4 +1,4 @@
-project(hotot_qt CXX)
+project(hotot_qt C CXX)
 
 # Setup KDE4 support
 if(WITH_KDE)
