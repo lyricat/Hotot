@@ -37,13 +37,14 @@ msgid "&Exit"
 msgstr "&Schließen"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/mainwindow.cpp:67
+#, fuzzy
 msgid "&Minimize to Tray"
-msgstr ""
+msgstr "Als Icon in die &Taskleiste minimieren"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:67
 #, fuzzy
 msgid "(c) 2009-2012 Shellex Wai\n"
-msgstr "(c) 2009-2011 Shellex Wai\n"
+msgstr "(c) 2009-2012 Shellex Wai\n"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/kdetraybackend.cpp:90
 msgid "1 unread post"
@@ -159,8 +160,9 @@ msgid "Tualatrix Chou"
 msgstr "Tualatrix Chou"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:85
+#, fuzzy
 msgid "Use Proxy as Socks Proxy instead of HTTP Proxy"
-msgstr ""
+msgstr "Den Proxy als Socks Proxy benutzen, nicht als HTTP Proxy"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:77
 msgid "Xu Zhen"
