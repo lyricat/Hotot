@@ -32,7 +32,7 @@
 		"description": "data/index.html"
 	},
 	"animation": {
-		"message": "",
+		"message": "Анимация",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -184,7 +184,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"donate": {
-		"message": "Жертвовать",
+		"message": "Пожертвовать",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -208,7 +208,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"eg_alt_h": {
-		"message": "",
+		"message": "e.g. <Alt>H",
 		"description": "data/index.html"
 	},
 	"enable": {
@@ -216,11 +216,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_animation": {
-		"message": "",
+		"message": "Включить анимацию",
 		"description": "data/index.html"
 	},
 	"enable_gpu_acceleration": {
-		"message": "",
+		"message": "Включить Аппартное ускорение",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -260,7 +260,7 @@
 		"description": "data/index.html"
 	},
 	"fellowship": {
-		"message": "",
+		"message": "Братсвто",
 		"description": "data/js/ui.template.js"
 	},
 	"filter_tweets_like_it": {
@@ -420,7 +420,7 @@
 		"description": "data/index.html"
 	},
 	"line_height": {
-		"message": "",
+		"message": "Высота строки",
 		"description": "data/index.html"
 	},
 	"list": {
@@ -660,19 +660,19 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "",
+		"message": "Имя профайла",
 		"description": "data/index.html"
 	},
 	"proxy": {
-		"message": "",
+		"message": "Прокси-сервер",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
-		"message": "Авторизация",
+		"message": "Авторизация на прокси-сервере",
 		"description": "data/index.html"
 	},
 	"proxy_host": {
-		"message": "",
+		"message": "Хост прокси",
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
@@ -684,7 +684,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "",
+		"message": "Порт проскси-сервера",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
@@ -728,7 +728,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "Ответить",
+		"message": "В ответ на",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
@@ -940,7 +940,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "",
+		"message": "к",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -980,7 +980,7 @@
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "",
+		"message": "Выбирете или переместите фотографию сюда",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
