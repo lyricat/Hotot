@@ -43,7 +43,7 @@ var kismet = {
 
     MASK_TEXT: '******** Masked Text Field ********',
 
-    reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention'],
+    reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention', 'retweet'],
 
     mute_list: {},
 
@@ -175,6 +175,8 @@ function remove_rule(name) {
 
 update_mute_list:
 function update_mute_list(field, value) {
+    // covert all to lowercase.
+    value = value.toLowerCase()
     if (kismet.mute_list[field].indexOf(value) == -1) {
         kismet.mute_list[field].push(value);
     }
@@ -296,7 +298,7 @@ function do_action(rule, incoming) {
         var act = rule.action[i];
         switch (act[0]) {
         case kismet.ACT_DROP:
-            kismet.do_drop(rule, act,  incoming);
+            kismet.do_drop(rule, act, incoming);
             ret = false;
         break;
         case kismet.ACT_MASK:
@@ -398,7 +400,7 @@ function filter_proc(single) {
     }
     // check mute_list
     for (var i = 0; i < kismet.mute_list.name.length; i += 1) {
-        if (user && user.screen_name === kismet.mute_list.name[i]) {
+        if (user && user.screen_name.toLowerCase() === kismet.mute_list.name[i]) {
             return false;
         }
     }
@@ -415,7 +417,7 @@ function filter_proc(single) {
     // check rules
     for (var i = 0; i < kismet.enforcers.length; i += 1) {
         if (kismet.eval_cond(kismet.enforcers[i].cond, single)) {
-            // console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
+            console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
             ret = kismet.do_action(kismet.enforcers[i], single);
             if (!ret) break;
         }
@@ -432,45 +434,48 @@ get_holder_value:
 function get_holder_value(name, tweet) {
     var user = tweet.hasOwnProperty('user')? tweet.user:
                 tweet.hasOwnProperty('sender')?tweet.sender: null;
-    var orig_tweet = tweet;
-    if (orig_tweet.hasOwnProperty('retweeted_status')) {
-        orig_tweet = single['retweeted_status'];
-        user = orig_tweet.hasOwnProperty('user')? orig_tweet.user:
-            orig_tweet.hasOwnProperty('sender')? orig_tweet.sender: null;
+    var real_tweet = tweet;
+    if (tweet.hasOwnProperty('retweeted_status')) {
+        real_tweet = tweet['retweeted_status'];
+        user = real_tweet.hasOwnProperty('user')? real_tweet.user:
+            real_tweet.hasOwnProperty('sender')? real_tweet.sender: null;
     }
     switch(name) {
     case '$NAME':
-        return user?user.screen_name:'';
+        return user?user.screen_name.toLowerCase():'';
     break;
     case '$TEXT':
-        return orig_tweet.text;
+        return real_tweet.text;
     break;
     case '$SOURCE':
-        if (orig_tweet.source)
-            return orig_tweet.source.replace(/<.*?>/g, '');
+        if (real_tweet.source)
+            return real_tweet.source.replace(/<.*?>/g, '');
         else
             return '';
     break;
     case '$HASHTAGS':
-        if (orig_tweet.entities && orig_tweet.entities.hashtags)
-            return orig_tweet.entities.hashtags.map(function (t) {return t.text});
+        if (real_tweet.entities && real_tweet.entities.hashtags)
+            return real_tweet.entities.hashtags.map(function (t) {return t.text});
         else
             return [];
     break;
     case '$MENTIONS':
-        if (orig_tweet.entities && orig_tweet.entities.user_mentions)
-            return orig_tweet.entities.user_mentions.map(function(t){return t.screen_name});
+        if (real_tweet.entities && real_tweet.entities.user_mentions)
+            return real_tweet.entities.user_mentions.map(function(t){return t.screen_name.toLowerCase()});
         else
             return [];
     break;
     case '$LINKS':
-        if (orig_tweet.entities && orig_tweet.entities.urls)
-            return orig_tweet.entities.urls.map(function(t){return t.expanded_url});
+        if (real_tweet.entities && real_tweet.entities.urls)
+            return real_tweet.entities.urls.map(function(t){return t.expanded_url});
         else
             return [];
     break;
     case '$GEO':
-        return orig_tweet.geo;
+        return real_tweet.geo;
+    break;
+    case '$RETWEETER':
+        return tweet.user&&tweet.retweeted_status?tweet.user.screen_name.toLowerCase():'';
     break;
     default:
         return name;
@@ -596,6 +601,15 @@ function process_field(tokens, pos) {
         } else {
             kismet.cond_string_array.push('MENTIONS @' + second[1]);
             return [[kismet.OP_MENTION_HAS, '$MENTIONS', second[1]], 3];
+        }
+    break;
+    case 'retweet':
+        if (second[0] == kismet.TYPE_RE) {
+            kismet.cond_string_array.push('RETWEETED BY @/'+second[1]+'/'+second[2]);
+            return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$RETWEETER'], 3];
+        } else {
+            kismet.cond_string_array.push('RETWEETED BY @' + second[1]);
+            return [[kismet.OP_TEQ, '$RETWEETER', second[1].toLowerCase()], 3];
         }
     break;
     case 'has':
