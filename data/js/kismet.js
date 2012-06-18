@@ -294,6 +294,10 @@ function eval_cond(cond, incoming) {
 do_action:
 function do_action(rule, incoming) {
     var ret = true;
+    if (rule.action.length === 0) {
+        kismet.do_drop(rule, [kismet.ACT_DROP, 3], incoming);
+        return false;
+    }
     for (var i = 0; i < rule.action.length; i += 1) {
         var act = rule.action[i];
         switch (act[0]) {
