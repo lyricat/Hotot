@@ -59,7 +59,7 @@ function init () {
     });
     $('#range_prefs_line_height').change(
     function (event) {
-        $('#range_prefs_line_height_st').text($(this).val());
+        $('#range_prefs_line_height_st').text(Number($(this).val()).toFixed(1));
         ui.PrefsDlg.update_font_preview();
     });
 
@@ -264,7 +264,7 @@ function load_prefs() {
             .attr('disabled', true);
     }
     $('#range_prefs_line_height').val(prefs.line_height);
-    $('#range_prefs_line_height_st').text(prefs.line_height);
+    $('#range_prefs_line_height_st').text(Number(prefs.line_height).toFixed(1));
     ui.PrefsDlg.update_font_preview();
     $('#chk_prefs_use_preload_conversation')
         .attr('checked', prefs.use_preload_conversation)
