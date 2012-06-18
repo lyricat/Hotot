@@ -118,11 +118,9 @@ daemon = {
             if (ret['delete'] && ret['delete']['status']) {
                 var id = ret['delete']['status'].id_str;
                 if (conf.get_current_profile().preferences.use_deleted_mark) {
-                    $('#home-' + id).addClass('deleted');
-                    $('#mentions-' + id).addClass('deleted');
+                    $('.card[tweet_id="'+id+'"]').addClass('deleted');
                 } else {
-                    $('#home-' + id).remove();
-                    $('#mentions-' + id).remove();
+                    $('.card[tweet_id="'+id+'"]').remove();
                 }
                 return;
             }
