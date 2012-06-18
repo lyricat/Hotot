@@ -233,7 +233,7 @@ function save() {
     names = names.filter(function (x) { return !(/^\s*$/.test(x));});
     words = words.filter(function (x) { return !(/^\s*$/.test(x));});
     sources = sources.filter(function (x) { return !(/^\s*$/.test(x));});
-    names = names.map(function (x) { return $.trim(x);});
+    names = names.map(function (x) { return $.trim(x).toLowerCase();});
     words = words.map(function (x) { return $.trim(x);});
     sources = sources.map(function (x) { return $.trim(x);});
     kismet.mute_list = {

@@ -177,7 +177,7 @@ update_mute_list:
 function update_mute_list(field, value) {
     // covert all to lowercase.
     value = value.toLowerCase()
-    if (kismet.mute_list[field].indexOf(value) == -1) {
+    if (kismet.mute_list[field].indexOf(value) === -1) {
         kismet.mute_list[field].push(value);
     }
 },
