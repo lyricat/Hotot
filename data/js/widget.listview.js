@@ -27,6 +27,7 @@ function WidgetListView(id, name, params) {
     self.former = null;
     self.method = '';
     self.header_html = '';
+    self.header_html_ex = '';
     self.type = '';
     self.title = 'New Page';
     self.interval = 0;
@@ -129,6 +130,20 @@ function WidgetListView(id, name, params) {
         if (self._init != null) {
             self._init(self);
         }
+        // mochi widget
+        self._header.find(".mochi_toggle").click(
+            function(){
+                $(this).attr("checked", this.checked);
+            }
+        );
+        self._header.find(".mochi_button_group_item").click(
+            function(){
+                var a = $(this).attr("name");
+                self._header.find(".mochi_button_group_item[name="+a+"]").not(this).removeClass("selected");
+                self._header.find(this).addClass("selected");
+            }
+        );
+        ui.Slider.bind_common_settings(self);
     };
 
     self.create = function create(){
@@ -159,7 +174,7 @@ function WidgetListView(id, name, params) {
             // hide tweet bar
             ui.Main.closeTweetMoreMenu();
         });
-        self._header.children('.header_content').html(self.header_html);
+        self._header.children('.header_content').html(self.header_html+self.header_html_ex);
     };
 
     self.destroy = function destroy() {

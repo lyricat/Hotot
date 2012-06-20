@@ -78,7 +78,6 @@ function closeHototMenu() {
 
 closeAll:
 function closeAll() {
-    ui.Slider.closeViewSettingMenu();
     ui.Slider.closeSliderMenu();
     ui.Header.closeHototMenu();
     ui.Main.closeTweetMoreMenu();

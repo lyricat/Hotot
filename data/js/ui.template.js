@@ -504,6 +504,25 @@ trending_topics_header_t:
     </ol> \
 </div></div>',
 
+common_column_header_t:
+'<div class="column_settings"> \
+    <ul class="mochi_list dark">\
+    <li class="mochi_list_item dark"> \
+    <input type="checkbox" href="#use_auto_update" class="mochi_toggle dark widget"/>\
+    <label class="label">Auto Update</label>\
+    </li>\
+    <li class="mochi_list_item dark"> \
+    <input type="checkbox" href="#use_notify" class="mochi_toggle dark widget"/>\
+    <label class="label">Notify</label>\
+    </li>\
+    <li class="mochi_list_item dark"> \
+    <input type="checkbox" href="#use_notify_sound" class="mochi_toggle dark widget"/>\
+    <label class="label">Sound</label>\
+    </li>\
+    </ul>\
+</div>\
+',
+
 view_t:
 '<div id="{%ID%}" \
     name="{%NAME%}" class="listview scrollbar_container {%CLASS%} {%ROLE%}"> \

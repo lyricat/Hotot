@@ -153,7 +153,8 @@ function open_people(screen_name, additional_opts, in_background) {
             , 'former': ui.Template.form_tweet
             , 'init': ui.PeopleView.init_view
             , 'destroy': ui.PeopleView.destroy_view
-            , 'header_html': ui.Template.people_vcard_t
+            , 'header_html': ui.Template.common_column_header_t
+            , 'header_html_ex': ui.Template.people_vcard_t
             , 'method': 'poll'
             , 'interval': 120
             , 'item_type': 'id'
@@ -183,7 +184,8 @@ function open_list(screen_name, slug, additional_opts, in_background) {
             , 'former': ui.Template.form_tweet
             , 'init': ui.ListView.init_view
             , 'destroy': ui.ListView.destroy_view
-            , 'header_html': ui.Template.list_vcard_t
+            , 'header_html': ui.Template.common_column_header_t
+            , 'header_html_ex': ui.Template.list_vcard_t
             , 'method': 'poll'
             , 'interval': 120
             , 'item_type': 'id'
@@ -212,6 +214,7 @@ function open_search(query, additional_opts, in_background) {
             , 'loadmore_fail': null
             , 'former': ui.Template.form_search
             , 'destroy': ui.SearchView.destroy_view
+            , 'header_html': ui.Template.common_column_header_t
             , 'method': 'poll'
             , 'interval': 120
             , 'item_type': 'phoenix_search'
