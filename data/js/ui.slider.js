@@ -15,8 +15,6 @@ displayed: [],
 
 isSliderMenuClosed: true,
 
-isViewSettingMenuClosed: true,
-
 state: null,
 
 FLOAT_ICON: 1,
@@ -127,12 +125,13 @@ function init () {
     
     $('#view_title_bar .setting_btn').click(function () {
         var name = $(this).parent().attr('name');
-        if (ui.Slider.isViewSettingMenuClosed) {
+        var view = ui.Main.views[name];
+        if (view._header.find('.column_settings:visible').length === 0) {
             ui.Header.closeAll();
-            ui.Slider.openViewSettingPanel(ui.Main.views[name], $(this));
-            ui.Slider.settingView = ui.Main.views[name];
+            ui.Slider.openViewSettingPanel(view, $(this));
+            ui.Slider.settingView = view;
         } else {
-            ui.Slider.closeViewSettingPanel(ui.Main.views[name]);
+            ui.Slider.closeViewSettingPanel(view);
             ui.Slider.settingView = null;
         }
         return false;
@@ -585,13 +584,11 @@ function openViewSettingPanel(view, btn) {
             $(n).attr('checked',false).prop('checked', false);
         }
     });
-    ui.Slider.isViewSettingMenuClosed = false;
 },
 
 closeViewSettingPanel:
 function closeViewSettingPanel(view) {
     view._header.find('.column_settings').slideUp('fast');
-    ui.Slider.isViewSettingMenuClosed = true;
 },
 
 indicator_btn_drag_start:
