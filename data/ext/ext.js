@@ -206,14 +206,14 @@ function load_exts(type, exts, callback) {
     var _load = function (idx) {
         var path = exts[idx];
         procs.push(function () {
-            $.ajax(path, {
-                cache: true,
-                dataType: "script",
-                success: function () {
+            var script = document.createElement("script");
+            script.src = path;
+            script.type = "text/javascript";
+            script.onload = function() {
                     hotot_log('Load Extension', path);
                     $(window).dequeue('_load_exts' + type);
-                }
-            });
+            };
+            document.body.appendChild(script);
         });
     };
     for (var i = 0, l = exts.length; i < l; i += 1) {
