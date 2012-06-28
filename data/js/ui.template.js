@@ -50,7 +50,7 @@ tweet_t:
         <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
-                <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
+                <a class="btn_tweet_thread" href="#"></a>\
                 {%REPLY_TEXT%}\
             </div>\
             <div class="tweet_source"> \
@@ -110,7 +110,7 @@ retweeted_by_t:
         <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_thread_info" style="display:{%IN_REPLY%}">\
-                <a class="btn_tweet_thread" href="javascript:void(0);"></a>\
+                <a class="btn_tweet_thread" href="#"></a>\
                 {%REPLY_TEXT%}\
             </div>\
             <div class="tweet_source"> \
@@ -119,7 +119,7 @@ retweeted_by_t:
                 <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
-                {%TRANS_Retweeted_by%}: <a class="show" href="javascript:void(0)" title="{%TRANS_Click_to_show_retweeters%}"  tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
+                {%TRANS_Retweeted_by%}: <a class="show" href="#" title="{%TRANS_Click_to_show_retweeters%}"  tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
             </div>\
             <div class="tweet_retweeters" tweet_id="{%TWEET_ID%}"></div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
@@ -281,32 +281,32 @@ people_vcard_t_orig:
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
         <li><a class="vcard_follow mochi_button blue" \
-                href="javascript:void(0);" >{%TRANS_follow%}</a> \
+                href="#" >{%TRANS_follow%}</a> \
         </li><li> \
             <a class="vcard_edit mochi_button" \
-                href="javascript:void(0);" style="display:none;">{%TRANS_edit%}</a>\
+                href="#" style="display:none;">{%TRANS_edit%}</a>\
         </li><li class="people_action_more_trigger"> \
             <a class="vcard_more mochi_button" \
-                href="javascript:void(0);">{%TRANS_more_actions%} &#x25BE;</a> \
+                href="#">{%TRANS_more_actions%} &#x25BE;</a> \
             <ul class="people_action_more_memu hotot_menu">\
                 <li><a class="mention_menu_item" \
                     title="Mention them"\
-                    href="javascript:void(0);">{%TRANS_mention_them%}</a>\
+                    href="#">{%TRANS_mention_them%}</a>\
                 </li><li><a class="message_menu_item" \
                     title="Send Message to them"\
-                    href="javascript:void(0);">{%TRANS_message_them%}</a>\
+                    href="#">{%TRANS_message_them%}</a>\
                 </li><li><a class="add_to_list_menu_item" \
                     title="Add them to a list"\
-                    href="javascript:void(0);">{%TRANS_add_to_list%}</a>\
+                    href="#">{%TRANS_add_to_list%}</a>\
                 </li><li class="separator"><span></span>\
                 </li><li><a class="block_menu_item" \
                     title="Block"\
-                    href="javascript:void(0);">{%TRANS_block%}</a>\
+                    href="#">{%TRANS_block%}</a>\
                 </li><li><a class="unblock_menu_item"\
-                    href="javascript:void(0);" \
+                    href="#" \
                     title="Unblock">{%TRANS_unblock%}</a>\
                 </li><li><a class="report_spam_menu_item" \
-                    href="javascript:void(0);" \
+                    href="#" \
                     title="Report Spam">{%TRANS_report_spam%}</a>\
                 </li>\
             </ul>\
@@ -325,7 +325,7 @@ people_vcard_t_orig:
         <ul class="people_menu hotot_menu">\
             <li><a class="followers_menu_item" \
                 title="People who follow them."\
-                href="javascript:void(0);">{%TRANS_followers%}</a>\
+                href="#">{%TRANS_followers%}</a>\
             </li><li><a class="friends_menu_item"\
                 href="People them is following" \
                 title="All Lists following Them">{%TRANS_friends%}</a>\
@@ -337,12 +337,12 @@ people_vcard_t_orig:
         <ul class="lists_menu hotot_menu">\
             <li><a class="user_lists_menu_item" \
                 title="Lists of Them"\
-                href="javascript:void(0);">{%TRANS_lists_of_them%}</a>\
+                href="#">{%TRANS_lists_of_them%}</a>\
             </li><li><a class="listed_lists_menu_item"\
-                href="javascript:void(0);" \
+                href="#" \
                 title="All Lists following Them">{%TRANS_lists_following_them%}</a>\
             </li><li><a class="create_list_menu_item" \
-                href="javascript:void(0);" \
+                href="#" \
                 title="Create A List">{%TRANS_create_a_list%}</a>\
             </li>\
         </ul>\
@@ -403,13 +403,13 @@ list_vcard_t:
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
         <li><a class="vcard_follow mochi_button blue" \
-                href="javascript:void(0);" >Follow</a> \
+                href="#" >Follow</a> \
         </li><li> \
             <a class="vcard_delete mochi_button red" \
-                href="javascript:void(0);">Delete</a> \
+                href="#">Delete</a> \
         </li><li> \
             <a class="vcard_edit mochi_button" \
-                href="javascript:void(0);" style="display:none;">Edit</a>\
+                href="#" style="display:none;">Edit</a>\
         </li> \
         </ul> \
     </div><!-- #list_vcard_ctrl --> \
@@ -441,18 +441,18 @@ search_header_t:
     </div>\
     <div class="saved_searches">\
         <a id="create_saved_search_btn" class="mochi_button" \
-            href="javascript:void(0);" title="Detach"> +\
+            href="#" title="Detach"> +\
         </a>\
         <div id="saved_searches_more_trigger" style="display:none;">\
             <a id="saved_searches_btn" class="vcard_more mochi_button" \
-                href="javascript:void(0);"> &#x25BE;</a> \
+                href="#"> &#x25BE;</a> \
             <ul id="saved_searches_more_menu" class="hotot_menu">\
                 <li><a class="" \
                     title="Clear ALL"\
-                    href="javascript:void(0);">Clear All</a>\
+                    href="#">Clear All</a>\
                 </li><li class="separator"><span></span>\
                 </li><li>\
-                    <a class="saved_search_item" href="javascript:void(0)">a</a>\
+                    <a class="saved_search_item" href="#">a</a>\
                 </li>\
             </ul>\
         </div>\
