@@ -314,6 +314,7 @@ function init(callback) {
     globals.twitterClient.network = globals.network;
     globals.twitterClient.oauth = new lib.OAuth();
     globals.twitterClient.oauth.network = globals.network;
+    globals.readLaterServ = new ReadLaterServ();
     var procs = [];
     procs.push(function() {
         db.init(function () {

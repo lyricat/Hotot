@@ -70,6 +70,28 @@ function init () {
         $('#kismet_color_guide_dialog').data('screen_name', screen_name);
     });
 
+    $('#tweet_readlater_btn').click(
+    function (ev) {
+        var text = $(ui.Main.active_tweet_id + ' .card_body').children('.text').text();
+        var reg_url = new RegExp('[a-zA-Z]+:\\/\\/(' + ui.Template.reg_url_path_chars_1+'+)');
+        var m = text.match(reg_url);
+        console.log(m)
+        if (m == null) return;
+        var url = m[1];
+
+        toast.set('Save to ..').show();
+        globals.readLaterServ.addItem(
+            conf.get_current_profile().preferences.readlater_service,
+            url, text,
+            function (ret) {
+                if (ret.indexOf('200')!=-1 || ret.indexOf('201')!=-1) {
+                    toast.set('Saved!').show();
+                } else {
+                    toast.set('Error Code:' + result).show()
+                }
+            });
+    });
+
     $('#tweet_more_menu').mouseleave(function(){
         $(this).hide();
     });

@@ -63,6 +63,10 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
+    $('#chk_prefs_use_readlater_serv').click(function (event) {
+        $('#tbox_prefs_readlater_username, #tbox_prefs_readlater_password, #sel_prefs_readlater_service').attr('disabled', !$(this).prop('checked'));
+    });
+
     $('#chk_prefs_use_same_sign_api_base').click(
     function (event) {
         $('#tbox_prefs_sign_api_base').attr('disabled', $(this).prop('checked'));
@@ -283,6 +287,18 @@ function load_prefs() {
         .prop('checked', prefs.use_deleted_mark);
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
 
+    $('#chk_prefs_use_readlater_serv')
+        .attr('checked', prefs.use_readlater_serv)
+        .prop('checked', prefs.use_readlater_serv);
+    $('#sel_prefs_readlater_service').val(prefs.readlater_service);
+    $('#tbox_prefs_readlater_username').val(prefs.readlater_username);
+    $('#tbox_prefs_readlater_password').val(prefs.readlater_password);
+    if (prefs.use_readlater_serv) {
+        $('#tbox_prefs_readlater_password, #tbox_prefs_readlater_username, #sel_prefs_readlater_service').attr('disabled', false);
+    } else {
+        $('#tbox_prefs_readlater_password, #tbox_prefs_readlater_username, #sel_prefs_readlater_service').attr('disabled', true);
+    }
+
     // Advanced
     $('#chk_prefs_enable_animation')
         .attr('checked', prefs.enable_animation)
@@ -342,6 +358,11 @@ function save_prefs() {
     prefs['use_deleted_mark']
         = $('#chk_prefs_use_deleted_mark').prop('checked');
     prefs['default_picture_service'] = $('#sel_prefs_default_picture_service').val();
+
+    prefs['use_readlater_serv'] = $('#chk_prefs_use_readlater_serv').prop('checked');
+    prefs['readlater_service'] = $('#sel_prefs_readlater_service').val();
+    prefs['readlater_username'] = $('#tbox_prefs_readlater_username').val();
+    prefs['readlater_password'] = $('#tbox_prefs_readlater_password').val();
 
     // Advanced
     prefs['enable_animation']

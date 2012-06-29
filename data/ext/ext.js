@@ -4,12 +4,10 @@ ext = {
 builtins: [
     , 'org.hotot.cfw'
     , 'org.hotot.gmap'
-    , 'org.hotot.instapaper'
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
     , 'org.hotot.translate'
     , 'org.hotot.stat'
-    , 'org.hotot.readitlater'
     , 'org.hotot.appmask'
 ],
 

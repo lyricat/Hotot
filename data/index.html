@@ -35,6 +35,7 @@
     <script type="text/javascript" src="js/kismet.js"></script>
     <script type="text/javascript" src="js/toast.js"></script>
     <script type="text/javascript" src="js/notification.js"></script>
+    <script type="text/javascript" src="js/readlater.js"></script>
     <script type="text/javascript" src="js/daemon.js"></script>
 
     <script type="text/javascript" src="js/ui.header.js"></script>
@@ -212,6 +213,14 @@
 			title="Filter this tweet"
 			data-i18n-text="filter_tweets_like_it"
 			>Filter tweets like it</a>
+		</li>
+		<li>
+		<a id="tweet_readlater_btn"
+			class="tweet_more_menu_btn"
+			href="#"
+			title="Read Later"
+			data-i18n-text="read_later"
+			>Read Later</a>
 		</li>
 		<li class="separator"><span></span></li>
 	</ul>
@@ -656,6 +665,48 @@
 								class="label">Default Picture Service</label>
             </li>
           </ul>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_use_readlater_serv"
+									title="Use Read Later service."
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_readlater_serv"
+									class="label"
+									data-i18n-text="use_read_later_service"
+									>Use Read Later Service.</label>
+            </li><li class="mochi_list_item">
+              <select id="sel_prefs_readlater_service"
+								class="mochi_combo widget"
+								title="Select a default picture service"
+								data-i18n-title="select_a_read_later_service">
+								<option value="pocket">Pocket</option>
+								<option value="instapaper">Instapaper</option>
+              </select>
+							<label data-i18n-text="Read_later_service"
+								class="label">Read Later Service</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_readlater_username"
+									title="Username of service"
+									placeholder="Username"
+									data-i18n-placeholder="username"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_readlater_username"
+									class="label" data-i18n-text="username">
+									Username
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_readlater_password"
+									title="HTTP Proxy Authentication Password"
+									placeholder="Password"
+									data-i18n-placeholder="password"
+									type="password" class="mochi_entry widget"/>
+							<label for="tbox_prefs_readlater_password"
+									class="label" data-i18n-text="password">
+									Password
+							</label>
+            </li>
+					</ul>
         </div><!-- END of prefs_behavior-->
 				<div id='prefs_system' class="prefs_dlg_page dialog_page">
           <div class="dialog_block hint"

@@ -63,6 +63,10 @@ default_prefs: {
         , 'use_media_preview': true
         , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
+        , 'use_readlater_serv': false
+        , 'readlater_service': 'pocket'
+        , 'readlater_username': ''
+        , 'readlater_password': ''
           // Advanced:
         , 'api_base': 'https://api.twitter.com/1/'
         , 'sign_api_base': 'https://api.twitter.com/1/'
@@ -106,6 +110,10 @@ default_prefs: {
         , 'use_media_preview': true
         , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
+        , 'use_readlater_serv': false
+        , 'readlater_service': 'pocket'
+        , 'readlater_username': ''
+        , 'readlater_password': ''
           // Advanced:
         , 'api_base': 'https://identi.ca/api/'
         , 'sign_api_base': 'https://identi.ca/api/'
@@ -312,6 +320,13 @@ function apply_prefs(name, full) {
     oauth.access_token = prefs.access_token;
     oauth.key = prefs.consumer_key || oauth.key;
     oauth.secret = prefs.consumer_secret || oauth.secret;
+    // read later
+    globals.readLaterServ.init(prefs.readlater_username, prefs.readlater_password);
+    if (prefs.use_readlater_serv) {
+        $('#tweet_readlater_btn').parent().show();
+    } else {
+        $('#tweet_readlater_btn').parent().hide();
+    }
 },
 
 load_token:
