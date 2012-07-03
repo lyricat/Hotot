@@ -780,6 +780,10 @@
 		"message": "输入相片描述么么哒",
 		"description": "data/index.html"
 	},
+	"basic_auth_not_supported": {
+		"message": "Basic Auth 不支持图片上传，请使用 OAuth。",
+		"description": "data/js/ui.statusbox.js"
+	},
 	"profile": {
 		"message": "账户",
 		"description": "data/index.html"

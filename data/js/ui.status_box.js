@@ -134,7 +134,7 @@ function init () {
             ui.ImageUploader.show();
         } else {
             title = 'Error !'
-            content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
+            content = '<p data-i18n-text="basic_auth_not_supported">Basic Auth is not supported, Please use OAuth to upload images.</p>'
             widget.DialogManager.alert(title, content); 
         }
         return false;

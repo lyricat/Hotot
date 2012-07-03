@@ -786,6 +786,10 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Write down description here",
 		"description": "data/index.html"
 	},
+        "basic_auth_not_supported": {
+                "message": "Basic Auth is not supported, Please use OAuth to upload images.",
+                "description": "data/js/ui.statusbox.js"
+        },
 	"profile": {
 		"message": "Profile",
 		"description": "data/index.html"
