@@ -512,7 +512,7 @@
 		"description": "data/index.html"
 	},
 	"license_text3": {
-		"message": "您应该已经随着该软件获得了一份许可证副本，要丢了请去",，多退少补。",
+		"message": "您应该已经随着该软件获得了一份许可证副本，要丢了请去，多退少补。",
 		"description": "data/index.html"
 	},
 	"line_height": {
@@ -1192,7 +1192,7 @@
 		"description": "data/index.html"
 	},
 	"A_New_Hope": {
-		"message": "码农界的希望",
+		"message": "码农的野望",
 		"description": "data/index.html"
 	},
 	"Classic": {
