@@ -914,15 +914,15 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "RT this tweet",
 		"description": "data/js/ui.template.js"
 	},
-	"By_Others": {
+	"by_others": {
 		"message": "By Others",
 		"description": "data/js/ui.template.js"
 	},
-	"By_Me": {
+	"by_me": {
 		"message": "By Me",
 		"description": "data/js/ui.template.js"
 	},
-	"My_Tweets_Retweeted": {
+	"my_tweets_retweeted": {
 		"message": "My Tweets Retweeded",
 		"description": "data/js/ui.template.js"
 	},

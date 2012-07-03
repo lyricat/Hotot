@@ -481,13 +481,13 @@ retweets_header_t:
 '<div class="header_frame"><div class="retweets_view_toggle"> \
     <ol class="retweets_view_toggle_btns radio_group">\
         <li><a class="btn_retweeted_to_me radio_group_btn selected" \
-            href="#retweeted_to_me" data-i18n-text="By_Others">By Others</a>\
+            href="#retweeted_to_me" data-i18n-text="by_others">By Others</a>\
         </li><li> \
             <a class="btn_retweeted_by_me radio_group_btn"\
-            href="#retweeted_by_me" data-i18n-text="By_Me">By Me</a>\
+            href="#retweeted_by_me" data-i18n-text="by_me">By Me</a>\
         </li><li> \
             <a class="btn_retweets_of_me radio_group_btn" \
-            href="#retweets_of_me" data-i18n-text="My_Tweets_Retweeted">My Tweets, Retweeted</a> \
+            href="#retweets_of_me" data-i18n-text="my_tweets_retweeted">My Tweets, Retweeted</a> \
         </li> \
     </ol> \
 </div></div>',

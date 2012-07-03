@@ -78,7 +78,6 @@
 	"auto_update": {
 		"message": "自动更新",
 		"description": "data/index.html"
-		"description": "data/js/ui.template.js"
 	},
 	"automatically_sign_in_after_opening": {
 		"message": "打开以后自动登陆",
@@ -425,7 +424,7 @@
 		"description": "data/index.html"
 	},
 	"hotot_description": {
-		"message": "<strong data-i18n-text=\"hotot\">Hotot</strong>是一个轻量级 <a target=\"_blank\" href=\"http://twitter.com\">twitter</a> 微博服务客户端。",
+		"message": "是一个轻量级 微博客户端。",
 		"description": "data/index.html"
 	},
 	"project_host": {
@@ -513,7 +512,7 @@
 		"description": "data/index.html"
 	},
 	"license_text3": {
-		"message": "您应该已经随着该软件获得了一份许可证副本，要丢了请去 <a target=\"_blank\" href=\"http://www.gnu.org/licenses/\"/>http://www.gnu.org/licenses/</a>，多退少补。",
+		"message": "您应该已经随着该软件获得了一份许可证副本，要丢了请去",，多退少补。",
 		"description": "data/index.html"
 	},
 	"line_height": {
@@ -908,15 +907,15 @@
 		"message": "引用",
 		"description": "data/js/ui.template.js"
 	},
-	"By_Others": {
+	"by_others": {
 		"message": "由大家",
 		"description": "data/js/ui.template.js"
 	},
-	"By_Me": {
+	"by_me": {
 		"message": "由我",
 		"description": "data/js/ui.template.js"
 	},
-	"My_Tweets_Retweeted": {
+	"my_tweets_retweeted": {
 		"message": "转的我的",
 		"description": "data/js/ui.template.js"
 	},
