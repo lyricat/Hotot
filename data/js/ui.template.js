@@ -350,10 +350,10 @@ people_vcard_t_orig:
     </ol> \
 </div> \
 <div class="people_request_hint"> \
-    <h1>Them has protected his/her tweets.</span></h1> \
-    <p>You need to go to twitter.com to send a request before you can start following this person...</p> \
+    <h1 data-i18n-text="He/She_has_protexted_his/her_tweets">He/She has protected his/her tweets.</span></h1> \
+    <p data-i18n-text="You_need_to_go_to_twitter_com_to_send_a_request_before_you_can_start_following_this_persion">You need to go to twitter.com to send a request before you can start following this person...</p> \
     <div style="text-align:center;"> \
-    <a class="people_request_btn mochi_button" href="#" target="_blank">Send Request</a> \
+    <a class="people_request_btn mochi_button" href="#" target="_blank" data-i18n-text="Send_Request">Send Request</a> \
     </div> \
 </div></div>',
 
@@ -388,13 +388,13 @@ list_vcard_t:
     <div class="vcard_body">\
         <div class="vcard_tabs_pages">\
         <table border="0" cellpadding="0" cellspacing="0" class="vcard_tabs_page" style="display:block;"> \
-            <tr><td>Name: </td><td> \
+            <tr><td data-i18n-text="name">Name: </td><td> \
                 <a class="name" target="_blank" href="#"></a></td> \
             </tr> \
             <tr><td>Owner: </td> \
-                <td><a class="owner" target="_blank" href="#"></a></td> \
+                <td><a class="owner" target="_blank" href="#" data-i18n-text="Owner"></a></td> \
             </tr> \
-            <tr><td>Description: </td> \
+            <tr><td data-i18n-text="Description">Description: </td> \
                 <td><span class="description"></span></td> \
             </tr> \
         </table> \
@@ -403,13 +403,13 @@ list_vcard_t:
     <div class="vcard_ctrl"> \
         <ul class="vcard_action_btns"> \
         <li><a class="vcard_follow mochi_button blue" \
-                href="#" >Follow</a> \
+                href="#" data-i18n-text="follow">Follow</a> \
         </li><li> \
             <a class="vcard_delete mochi_button red" \
-                href="#">Delete</a> \
+                href="#" data-i18n-text="delete">Delete</a> \
         </li><li> \
             <a class="vcard_edit mochi_button" \
-                href="#" style="display:none;">Edit</a>\
+                href="#" style="display:none;" data-i18n-text="edit">Edit</a>\
         </li> \
         </ul> \
     </div><!-- #list_vcard_ctrl --> \
@@ -417,31 +417,31 @@ list_vcard_t:
 <div class="expand_wrapper"><a href="#" class="expand">…</a></div>\
 <div class="list_view_toggle"> \
     <ol class="list_view_toggle_btns mochi_button_group"> \
-        <li><a class="list_view_tweet_btn mochi_button_group_item selected" href="#tweet">Tweets</a> \
+        <li><a class="list_view_tweet_btn mochi_button_group_item selected" href="#tweet" data-i18n-text="tweets">Tweets</a> \
         </li><li> \
-        <a class="list_view_follower_btn mochi_button_group_item" href="#follower">Followers</a> \
+        <a class="list_view_follower_btn mochi_button_group_item" href="#follower" data-i18n-text="followers">Followers</a> \
         </li><li> \
-        <a class="list_view_following_btn mochi_button_group_item" href="#following">Following</a> \
+        <a class="list_view_following_btn mochi_button_group_item" href="#following" data-i18n-text="following">Following</a> \
         </li> \
     </ol> \
 </div> \
 <div class="list_lock_hint"> \
-    <h1>Them has protected his/her list.</span></h1> \
-    <p>Only the owner can access this list.</p> \
+    <h1 data-i18n-text="He/She_has_protected_his/her_list">He/She has protected his/her list.</span></h1> \
+    <p data-i18n-text="Only_the_owner_can_access_this_list">Only the owner can access this list.</p> \
 </div></div>',
 
 
 search_header_t:
 '<div class="header_frame"> \
     <div class="search_box"> \
-    <input class="search_entry mochi_entry" type="text" placeholder="Type and press enter to search."/> \
+    <input class="search_entry mochi_entry" type="text" placeholder="Type and press enter to search." data-i18n-placeholder="Type_and_press_enter_to_search"/> \
     <a href="#" class="search_entry_clear_btn"></a>\
     <div class="search_people_result"> \
-        <span>One user matched: </span> <span class="search_people_inner"></span>\
+        <span data-i18n-text="One_user_matched">One user matched: </span> <span class="search_people_inner"></span>\
     </div>\
     <div class="saved_searches">\
         <a id="create_saved_search_btn" class="mochi_button" \
-            href="#" title="Detach"> +\
+            href="#" title="Detach" data-i18n-title="Detach"> +\
         </a>\
         <div id="saved_searches_more_trigger" style="display:none;">\
             <a id="saved_searches_btn" class="vcard_more mochi_button" \
@@ -449,7 +449,7 @@ search_header_t:
             <ul id="saved_searches_more_menu" class="hotot_menu">\
                 <li><a class="" \
                     title="Clear ALL"\
-                    href="#">Clear All</a>\
+                    href="#" data-i18n-title="clear_all" data-i18n-text="Clear_All">Clear All</a>\
                 </li><li class="separator"><span></span>\
                 </li><li>\
                     <a class="saved_search_item" href="#">a</a>\
@@ -460,19 +460,19 @@ search_header_t:
     <div class="search_view_toggle">\
         <ol class="search_view_toggle_btns mochi_button_group">\
             <li><a class="search_tweet mochi_button_group_item selected" \
-                href="#tweet">Tweet</a>\
+                href="#tweet" data-i18n-text="tweets">Tweet</a>\
             </li><li> \
                 <a class="search_people mochi_button_group_item"\
-                href="#people">People</a>\
+                href="#people" data-i18n-text="people">People</a>\
             </li> \
         </ol> \
     </div> \
     <div class="search_no_result_hint"> \
-        <p><span>Your search</span> - <label class="keywords"></label> - <span>did not match any result.</span></p> \
-        <p><span>Suggestions</span>: <br/> \
-         - <span>Make sure all words are spelled correctly.</span><br/> \
-         - <span>Try different keywords.</span><br/> \
-         - <span>Try more general keywords.</span><br/></p> \
+        <p><span data-i18n-text="Your_search">Your search</span> - <label class="keywords"></label> - <span data-i18n-text="did_not_match_any_result">did not match any result.</span></p> \
+        <p><span data-i18n-text="Suggestions">Suggestions</span>: <br/> \
+         - <span data-i18n-text="Make_sure_all_words_are_spelled_correctly">Make sure all words are spelled correctly.</span><br/> \
+         - <span data-i18n-text="Try_different_keywords">Try different keywords.</span><br/> \
+         - <span data-i18n-text="Try_more_general_keywords">Try more general keywords.</span><br/></p> \
     </div> \
     </div> \
 </div>',
@@ -481,13 +481,13 @@ retweets_header_t:
 '<div class="header_frame"><div class="retweets_view_toggle"> \
     <ol class="retweets_view_toggle_btns radio_group">\
         <li><a class="btn_retweeted_to_me radio_group_btn selected" \
-            href="#retweeted_to_me">By Others</a>\
+            href="#retweeted_to_me" data-i18n-text="By_Others">By Others</a>\
         </li><li> \
             <a class="btn_retweeted_by_me radio_group_btn"\
-            href="#retweeted_by_me">By Me</a>\
+            href="#retweeted_by_me" data-i18n-text="By_Me">By Me</a>\
         </li><li> \
             <a class="btn_retweets_of_me radio_group_btn" \
-            href="#retweets_of_me">My Tweets, Retweeted</a> \
+            href="#retweets_of_me" data-i18n-text="My_Tweets_Retweeted">My Tweets, Retweeted</a> \
         </li> \
     </ol> \
 </div></div>',
@@ -496,10 +496,10 @@ trending_topics_header_t:
 '<div class="header_frame"><div class="trending_topics_view_toggle"> \
     <ol class="trending_topics_view_toggle_btns radio_group">\
         <li><a class="trending_topics_local radio_group_btn selected" \
-            href="#trending_topics_local">Local</a>\
+            href="#trending_topics_local" data-i18n-text="Local">Local</a>\
         </li><li> \
             <a class="trending_topics_worldwide radio_group_btn"\
-            href="#trending_topics_worldwide">Worldwide</a>\
+            href="#trending_topics_worldwide" data-i18n-text="Worldwide">Worldwide</a>\
         </li>\
     </ol> \
 </div></div>',
@@ -509,15 +509,15 @@ common_column_header_t:
     <ul class="mochi_list dark">\
     <li class="mochi_list_item dark"> \
     <input type="checkbox" href="#use_auto_update" class="mochi_toggle dark widget"/>\
-    <label class="label">Auto Update</label>\
+    <label class="label" data-i18n-text="auto_update">Auto Update</label>\
     </li>\
     <li class="mochi_list_item dark"> \
     <input type="checkbox" href="#use_notify" class="mochi_toggle dark widget"/>\
-    <label class="label">Notify</label>\
+    <label class="label" data-i18n-text="notify">Notify</label>\
     </li>\
     <li class="mochi_list_item dark"> \
     <input type="checkbox" href="#use_notify_sound" class="mochi_toggle dark widget"/>\
-    <label class="label">Sound</label>\
+    <label class="label" data-i18n-text="sound">Sound</label>\
     </li>\
     </ul>\
 </div>\
