@@ -48,7 +48,7 @@
 #     license. For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-function(__GET_UNIQUE_TARGET_NAME _name _unique_name)
+function(__PYTHON_GET_UNIQUE_TARGET_NAME _name _unique_name)
    set(propertyName "_PYTHON_UNIQUE_COUNTER_${_name}")
    get_property(currentCounter GLOBAL PROPERTY "${propertyName}")
    if(NOT currentCounter)
@@ -127,7 +127,7 @@ macro(PYTHON_INSTALL_ALL DEST_DIR)
   python_compile(${ARGN})
 
   # PLEASE tell me if there is better solutions
-  __get_unique_target_name(python_compile_target _py_compile_target)
+  __python_get_unique_target_name(python_compile_target _py_compile_target)
 
   add_custom_target("${_py_compile_target}" ALL
     DEPENDS ${PYTHON_COMPILED_FILES})
