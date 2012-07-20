@@ -62,6 +62,7 @@ function init () {
             ui.KismetDlg.guide_dialog.open();
         });
     });
+
     $('#tweet_set_color_btn').click(
     function (ev) {
         var li = $(ui.Main.active_tweet_id);
@@ -75,12 +76,10 @@ function init () {
         var text = $(ui.Main.active_tweet_id + ' .card_body').children('.text').text();
         var reg_url = new RegExp('[a-zA-Z]+:\\/\\/(' + ui.Template.reg_url_path_chars_1+'+)');
         var m = text.match(reg_url);
-        console.log(m)
         if (m == null){
             toast.set('No URL found in tweet...').show();
         } else {
             var url = m[1];
-
             toast.set('Save to ..').show();
             globals.readLaterServ.addItem(
                 conf.get_current_profile().preferences.readlater_service,
