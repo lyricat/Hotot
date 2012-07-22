@@ -52,7 +52,7 @@
 		"description": "data/index.html"
 	},
 	"authentication_ok": {
-		"message": "验证通过呦！",
+		"message": "验证通过嗷！",
 		"description": "data/js/ui.welcome.js"
 	},
 	"author": {
@@ -288,11 +288,11 @@
 		"description": "data/js/ui.main.js"
 	},
 	"follower_cnt": {
-		"message": "关注者",
+		"message": "仰慕者",
 		"description": "data/js/ui.template.js"
 	},
 	"followers": {
-		"message": "关注者",
+		"message": "仰慕者",
 		"description": "data/js/ui.template.js"
 	},
 	"font": {
@@ -308,11 +308,11 @@
 		"description": ""
 	},
 	"friend_cnt": {
-		"message": "朋友",
+		"message": "基友",
 		"description": "data/js/ui.template.js"
 	},
 	"friends": {
-		"message": "朋友",
+		"message": "基友",
 		"description": "data/js/ui.template.js"
 	},
 	"global": {
@@ -816,7 +816,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"search_api_base2": {
-		"message": "Search API Base",
+		"message": "搜索 API Base",
 		"description": ""
 	},
 	"search_in_google": {
@@ -872,11 +872,11 @@
 		"description": "data/index.html"
 	},
 	"signing_api_base": {
-		"message": "Signing API Base",
+		"message": "登录 API Base",
 		"description": "data/index.html"
 	},
 	"signing_oauth_base": {
-		"message": "Signing OAuth Base",
+		"message": "登录 OAuth Base",
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
@@ -940,7 +940,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "To",
+		"message": "给",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -960,11 +960,11 @@
 		"description": "data/index.html"
 	},
 	"trending_topics": {
-		"message": "趋势",
+		"message": "天下大势",
 		"description": "data/js/ui.slider.js"
 	},
 	"trending_topics_view": {
-		"message": "趋势",
+		"message": "天下大势",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -1024,7 +1024,7 @@
 		"description": "data/index.html"
 	},
 	"upload_api_base": {
-		"message": "Upload API Base",
+		"message": "上传 API Base",
 		"description": "data/index.html"
 	},
 	"upload_photo": {
