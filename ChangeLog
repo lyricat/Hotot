@@ -1,5 +1,16 @@
-The Latest Stable Version is 0.9.8.6
-The Latest Development Version is 0.9.8.5
+The Latest Stable Version is 0.9.8.7
+The Latest Development Version is 0.9.8.8
+
+Version 0.9.8.7
+        * merge follower and following into a single tab
+	* Kismet now can handle retweet tweets
+	* picture preview for gtk/qt
+	* native support for read-it-later and instapaper
+
+Version 0.9.8.6
+        * remove Linux native notification
+	* enable GPU acceleration by default
+	* new options for line-height, css3 animation, and GPU acceleration
 
 Version 0.9.8.5
 	* Support to expand/fold people vcard.
