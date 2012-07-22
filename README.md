@@ -4,6 +4,37 @@ Twitter and Identi.ca at this point of development. You may visit our
 official website at http://hotot.org/ . Check it out for any updates
 on Hotot.
 
+## Install in Distrubtion:
+
+### openSUSE
+	sudo zypper ar -f http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_12.2 KDE:Extra
+	//Change 12.2 string to your version.
+GNOME 3:
+	sudo zypper in hotot-gir
+GNOME 2 (11.4- Only)
+	sudo zypper in hotot-gtk
+QT with KDE:
+	sudo zypper in hotot-qt
+
+### Fedora
+	[fix me!]yum install hotot
+
+### Arch / Charka
+	to be finished by marguerite on OBS
+
+### Debian / Ubuntu
+	sudo add-apt-repository ppa:hotot-team
+	sudo apt-get update
+	sudo apt-get install hotot
+
+### Mandriva
+	urpmi.addmedia --wget --distrib ftp://ftp.blogdrake.net/mandriva/"mandriva-version"/"arch"
+	urpmi --auto-update
+	urpmi hotot
+
+### Gentoo
+	emerge hotot
+
 ## Building from source:
 Since Hotot core is largely based on HTML5, Javascript and webkit technology,
 It can be run under many Webkit implementation. Hotot Offically support Gtk,
