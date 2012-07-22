@@ -9,11 +9,17 @@ on Hotot.
 ### openSUSE
 	sudo zypper ar -f http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_12.2 KDE:Extra
 	//Change 12.2 string to your version.
+
 GNOME 3:
+
 	sudo zypper in hotot-gir
+
 GNOME 2 (11.4- Only)
+
 	sudo zypper in hotot-gtk
+
 QT with KDE:
+
 	sudo zypper in hotot-qt
 
 ### Fedora
