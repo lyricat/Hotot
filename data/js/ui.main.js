@@ -77,21 +77,21 @@ function init () {
         var reg_url = new RegExp('[a-zA-Z]+:\\/\\/(' + ui.Template.reg_url_path_chars_1+'+)');
         var m = text.match(reg_url);
         if (m == null){
-            toast.set('No URL found in tweet...').show();
+            var url = 'http://twitter.com/' + $(ui.Main.active_tweet_id).attr('screen_name') + '/status/' + $(ui.Main.active_tweet_id).attr('tweet_id');
         } else {
             var url = m[1];
-            toast.set('Save to ..').show();
-            globals.readLaterServ.addItem(
-                conf.get_current_profile().preferences.readlater_service,
-                url, text,
-                function (ret) {
-                    if (ret.indexOf('200')!=-1 || ret.indexOf('201')!=-1) {
-                        toast.set('Saved!').show();
-                    } else {
-                        toast.set('Error Code:' + result).show()
-                    }
-                });
         };
+        toast.set('Save to ..').show();
+        globals.readLaterServ.addItem(
+            conf.get_current_profile().preferences.readlater_service,
+            url, text,
+            function (ret) {
+                if (ret.indexOf('200')!=-1 || ret.indexOf('201')!=-1) {
+                    toast.set('Saved!').show();
+                } else {
+                    toast.set('Error Code:' + result).show()
+                }
+            });        
     });
 
     $('#tweet_more_menu').mouseleave(function(){
