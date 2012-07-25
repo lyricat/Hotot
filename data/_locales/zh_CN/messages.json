@@ -27,6 +27,22 @@
 		"message": "添加到列表",
 		"description": "data/js/ui.template.js"
 	},
+	"Owner": {
+		"message": "所有者",
+		"description": "data/js/ui.template.js"
+	},
+	"Description": {
+		"message": "描述",
+		"description": "data/js/ui.template.js"
+	},
+	"He/She_has_protected_his/her_list": {
+		"message": "他/她已保护了他/她的列表哇",
+		"description": "data/js/ui.template.js"
+	},
+	"Only_the_owner_can_access_this_list": {
+		"message": "只有所有者能访问此列表哼",
+		"description": "data/js/ui.template.js"
+	},
 	"advanced": {
 		"message": "高级",
 		"description": ""
@@ -157,7 +173,19 @@
 	},
 	"credits": {
 		"message": "致谢",
-		"description": ""
+		"description": "data/index.html"
+	},
+	"written_by": {
+		"message": "开发",
+		"description": "data/index.html"
+	},
+	"artwork_by": {
+		"message": "美工",
+		"description": "data/index.html"
+	},
+	"supervised_by": {
+		"message": "督造",
+		"description": "data/index.html"
 	},
 	"cuddly": {
 		"message": "可乐小V",
@@ -187,6 +215,14 @@
 		"message": "捐赠",
 		"description": "data/index.html"
 	},
+	"donate_hint1": {
+		"message": "为了让傲兔修妖成功，我们需要您的援助。",
+		"description": "data/index.html"
+	},
+	"donate_hint2": {
+		"message": "考虑给我们一个大大的惊喜？请联系甜软萌的壳酱 @shellex <5h3ll3x@gmail.com>。",
+		"description": "data/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -198,6 +234,10 @@
 	"drag_a_photo_here": {
 		"message": "丢一张相片给我，小鱼也可以喵",
 		"description": "data/index.html"
+	},
+	"drag_hint": {
+		"message": "需要你！我要一条鱼",
+		"description": "data/index/html"
 	},
 	"drop": {
 		"message": "丢弃",
@@ -267,6 +307,30 @@
 		"message": "过滤类似的推",
 		"description": "data/index.html"
 	},
+	"read_later": {
+		"message": "马克",
+		"description": "data/index.html"
+	},
+	"use_read_later_service": {
+		"message": "使用马克服务",
+		"description": "data/index.html"
+	},
+	"select_a_read_later_service": {
+		"message": "选择一个马克服务",
+		"description": "data/index.html"
+	},
+	"Read_later_service": {
+		"message": "马克服务",
+		"description": "data/index.html"
+	},
+	"Your_profile": {
+		"message": "您的档案",
+		"description": "data/index.html"
+	},
+	"Click_to_expand_menu": {
+		"message": "点击扩展菜单",
+		"description": "data/index.html"
+	},
 	"find": {
 		"message": "查找",
 		"description": "data/index.html"
@@ -323,9 +387,13 @@
 		"message": "请在修改本页选项后重启傲兔来让修改生效。对了，本页选项会影响所有账户噢。",
 		"description": ""
 	},
+	"Create_a_new_profile": {
+		"message": "创建一个新的档案",
+		"description": "data/index.html"
+	},
 	"greeting": {
 		"message": "殿下侬好！",
-		"description": ""
+		"description": "data/index.html"
 	},
 	"help": {
 		"message": "帮助",
@@ -353,7 +421,19 @@
 	},
 	"hotot": {
 		"message": "傲兔",
-		"description": ""
+		"description": "data/index.html"
+	},
+	"hotot_description": {
+		"message": "是一个轻量级 微博客户端。",
+		"description": "data/index.html"
+	},
+	"project_host": {
+		"message": "傲兔源代码：",
+		"description": "data/index.html"
+	},
+	"project_site": {
+		"message": "傲兔的小窝：",
+		"description": "data/index.html"
 	},
 	"image_uploader": {
 		"message": "图片上传器",
@@ -403,6 +483,10 @@
 		"message": "警告：凡是具备如下特征的推都将被抛弃，不给你呦。",
 		"description": "data/index.html"
 	},
+	"not_available_yet": {
+		"message": "壳酱还在憋大招哦",
+		"description": "data/index.html"
+	},
 	"label_with_color": {
 		"message": "染色",
 		"description": "data/index.html"
@@ -418,6 +502,18 @@
 	"license": {
 		"message": "许可",
 		"description": ""
+	},
+	"license_text1": {
+		"message": "傲兔是一个自由软件，您可以在由自由软件基金会发布的 GNU 宽松通用公共许可证第三版或之后版本授权下自由分发或修改。",
+		"description": "data/index.html"
+	},
+	"license_text2": {
+		"message": "我们希望它能跑得飞起，但也不保证不挂; 甚至没有任何隐含或专用的保证。详情见许可证。",
+		"description": "data/index.html"
+	},
+	"license_text3": {
+		"message": "您应该已经随着该软件获得了一份许可证副本，要丢了请去，多退少补。",
+		"description": "data/index.html"
 	},
 	"line_height": {
 		"message": "行高",
@@ -449,7 +545,19 @@
 	},
 	"loading_resources_hint": {
 		"message": "加载资源中...",
-		"description": ""
+		"description": "data/index.html"
+	},
+	"Hey": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"You_dont_have_a_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"You_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"location": {
 		"message": "位置",
@@ -539,13 +647,17 @@
 		"message": "下一步",
 		"description": "data/index.html"
 	},
+	"previous": {
+		"message": "上一不",
+		"description": "data/index.html"
+	},
 	"no_extension": {
 		"message": "木有扩展",
 		"description": "data/index.html"
 	},
 	"notify": {
 		"message": "通知",
-		"description": ""
+		"description": "data/js/ui.template.js"
 	},
 	"oauth_base": {
 		"message": "OAuth Base",
@@ -651,9 +763,25 @@
 		"message": "预览嵌入的多媒体",
 		"description": "data/index.html"
 	},
+	"preview_hint": {
+		"message": "select a photo from your computer:",
+		"description": "data/index.html"
+	},
+	"Twitter_Official_Service": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"preview_here": {
 		"message": "预览",
 		"description": "data/index.html"
+	},
+	"write_down_description_here": {
+		"message": "输入相片描述么么哒",
+		"description": "data/index.html"
+	},
+	"basic_auth_not_supported": {
+		"message": "Basic Auth 不支持图片上传，请使用 OAuth。",
+		"description": "data/js/ui.statusbox.js"
 	},
 	"profile": {
 		"message": "账户",
@@ -661,6 +789,10 @@
 	},
 	"profile_name": {
 		"message": "帐户名",
+		"description": "data/index.html"
+	},
+	"change_your_profile_picture_by_clicking_it": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"proxy": {
@@ -775,6 +907,18 @@
 		"message": "引用",
 		"description": "data/js/ui.template.js"
 	},
+	"by_others": {
+		"message": "由大家",
+		"description": "data/js/ui.template.js"
+	},
+	"by_me": {
+		"message": "由我",
+		"description": "data/js/ui.template.js"
+	},
+	"my_tweets_retweeted": {
+		"message": "转的我的",
+		"description": "data/js/ui.template.js"
+	},
 	"rule": {
 		"message": "规则",
 		"description": "data/index.html"
@@ -791,13 +935,77 @@
 		"message": "规则名",
 		"description": "data/index.html"
 	},
+	"type_a_name_here": {
+		"message": "输入一个名称",
+		"description": "data/index.html"
+	},
+	"mute_by_user_name": {
+		"message": "按用户名过滤",
+		"description": "data/index.html"
+	},
+	"mute_by_containing_words": {
+		"message": "按关键词过滤",
+		"description": "data/index.html"
+	},
+	"mute_by_source": {
+		"message": "按客户端过滤",
+		"description": "data/index.html"
+	},
+	"screen_name1_screen_name2": {
+		"message": "用户名1,用户名2",
+		"description": "data/index.html"
+	},
+	"word1_word2": {
+		"message": "关键词1,关键词2",
+		"description": "data/index.html"
+	},
+	"client_name1_client_name2": {
+		"message": "客户端名1,客户端名2",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_word_abc": {
+		"message": "丢弃包含关键词 abc 的推",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_from_foursquare": {
+		"message": "丢弃发自 foursquare 的推",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_by_abc": {
+		"message": "丢弃由 @abc 发出的推",
+		"description": "data/index.html"
+	},
+	"drop_tweets_retweeted_by_abc":	{
+		"message": "丢弃由 abc 转发的推",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_hash_tag_nowplaying": {
+		"message": "丢弃含有标签 #现在播放 的推",
+		"description": "data/index.html"
+	},
+	"notify_me_if_incoming_tweets_mention_hotot": {
+		"message": "当有推提及傲兔时通知我",
+		"description": "data/index.html"
+	},
+	"mask_tweets_contain_hash_tag_callmemaybe": {
+		"message": "描黑含有标签 #callmemaybe 的推",
+		"description": "data/index.html"
+	},
+	"selected_fields": {
+		"message": "选中的字段",
+		"description": "data/index.html"
+	},
+	"selected_actions": {
+		"message": "选择的操作",
+		"description": "data/index.html"
+	},
 	"same_signing_api_base": {
 		"message": "使用相同 API 进行签名",
-		"description": ""
+		"description": "data/index.html"
 	},
 	"same_signing_oauth_base": {
 		"message": "使用同样的 OAuth 地址进行签名",
-		"description": ""
+		"description": "data/index.html"
 	},
 	"save": {
 		"message": "保存",
@@ -814,6 +1022,54 @@
 	"search": {
 		"message": "搜索",
 		"description": "data/js/ui.slider.js"
+	},
+	"Type_and_press_enter_to_search": {
+		"message": "录入并按回车搜索",
+		"description": "data/js/ui.template.js"
+	},
+	"people": {
+		"message": "推油",
+		"description": "data/js/ui.template.js"
+	},
+	"One_user_matched": {
+		"message": "找到一个推油",
+		"description": "data/js/ui.template.js"
+	},
+	"Detach": {
+		"message": "分离",
+		"description": "data/js/ui.template.js"
+	},
+	"clear_all": {
+		"message": "全部清空",
+		"description": "data/js/ui.template.js"
+	},
+	"Clear_All": {
+		"message": "全部清空",
+		"description": "data/js/ui.template.js"
+	},
+	"Your_search": {
+		"message": "您的搜索",
+		"description": "data/js/ui.template.js"
+	},
+	"did_not_match_any_result": {
+		"message": "没有匹配任何结果",
+		"description": "data/js/ui.template.js"
+	},
+	"Suggestions": {
+		"message": "建议",
+		"description": "data/js/ui.template.js"
+	},
+	"Make_sure_all_words_are_spelled_correctly": {
+		"message": "你保证单词没拼错？",
+		"description": "data/js/ui.template.js"
+	},
+	"Try_different_keywords": {
+		"message": "试试不同的关键词",
+		"description": "data/js/ui.template.js"
+	},
+	"Try_more_general_keywords": {
+		"message": "试试更笼统的关键词",
+		"description": "data/js/ui.template.js"
 	},
 	"search_api_base2": {
 		"message": "搜索 API Base",
@@ -893,7 +1149,7 @@
 	},
 	"sound": {
 		"message": "提示音",
-		"description": ""
+		"description": "data/js/ui.template.js"
 	},
 	"starts_minimized": {
 		"message": "启动即最小化",
@@ -929,6 +1185,18 @@
 	},
 	"themes": {
 		"message": "主题",
+		"description": "data/index.html"
+	},
+	"Select_a_theme": {
+		"message": "选择一个主题",
+		"description": "data/index.html"
+	},
+	"A_New_Hope": {
+		"message": "码农的野望",
+		"description": "data/index.html"
+	},
+	"Classic": {
+		"message": "经典",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
@@ -967,6 +1235,14 @@
 		"message": "天下大势",
 		"description": "data/index.html"
 	},
+	"Local": {
+		"message": "本地",
+		"description": "data/js/ui.template.js"
+	},
+	"Worldwide": {
+		"message": "全宇宙",
+		"description": "data/js/ui.template.js"
+	},
 	"tweet_cnt": {
 		"message": "状态",
 		"description": "data/js/ui.template.js"
@@ -977,7 +1253,7 @@
 	},
 	"tweets": {
 		"message": "状态",
-		"description": ""
+		"description": "data/js/ui.template.js"
 	},
 	"type_or_drag_a_photo_here": {
 		"message": "写点什么或者拖拽照片到此",
@@ -1114,5 +1390,17 @@
 	"you_are_not_following_each_other": {
 		"message": "你们宛如路人，擦身而过，不相往来。",
 		"description": "data/js/ui.peopleview.js"
+	},
+	"He/She_has_protected_his/her_tweets": {
+		"message": "他/她保护了他/她的推，",
+		"description": "data/js/ui.template.js"
+	},
+	"You_need_to_go_to_twitter_com_to_send_a_request_before_you_can_start_following_this_persion": {
+		"message": "您得去推特点靠姆发一条申请来 fo 他/她才能看",
+		"description": "data/js/ui.template.js"
+	},
+	"Send_Request": {
+		"message": "发送申请",
+		"description": "data/js/ui.template.js"
 	}
 }

@@ -110,6 +110,9 @@ a {
     background-color: #1D1D1D;
     border: #333 solid 1px;
 }
+.search_box, .search_people_result span:first-child {
+    color: #4e4e4e;
+}
 .vcard_tabs_page {
     color: #eee;
 }
