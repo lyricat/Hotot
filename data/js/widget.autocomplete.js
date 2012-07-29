@@ -29,6 +29,10 @@ function WidgetAutoComplete(obj) {
                 return false;
             }
         }
+        
+        if (event.keyCode == 27) { // esc
+            self.candidate.hide();
+        }
 
         if (key_code == 32) {
             if (self._inDetecting) {
@@ -177,6 +181,10 @@ function WidgetAutoComplete(obj) {
         }
         return pos;
     },
+
+    self.hide = function hide() {
+        self.candidate.hide();
+    }
 
     self.init(obj);
 }
