@@ -562,9 +562,9 @@ function bind_tweet_action(id) {
             {}, {}, null,
             function (result) {
                 if (result && result.full_text) {
-                    $(id).find('.text_inner a').unbind();
-                    $(id).find('.text_inner').empty();
-                    $(id).find('.text_inner').html(
+                    $(id).find('.text_inner:eq(0) a').unbind();
+                    $(id).find('.text_inner:eq(0)').empty();
+                    $(id).find('.text_inner:eq(0)').html(
                         ui.Template.form_text_raw(result.full_text)
                     );
                     ui.Main.bind_tweet_text_action(id);
