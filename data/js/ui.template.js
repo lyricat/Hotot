@@ -492,18 +492,6 @@ retweets_header_t:
     </ol> \
 </div></div>',
 
-trending_topics_header_t:
-'<div class="header_frame"><div class="trending_topics_view_toggle"> \
-    <ol class="trending_topics_view_toggle_btns radio_group">\
-        <li><a class="trending_topics_local radio_group_btn selected" \
-            href="#trending_topics_local">Local</a>\
-        </li><li> \
-            <a class="trending_topics_worldwide radio_group_btn"\
-            href="#trending_topics_worldwide">Worldwide</a>\
-        </li>\
-    </ol> \
-</div></div>',
-
 common_column_header_t:
 '<div class="column_settings"> \
     <ul class="mochi_list dark">\

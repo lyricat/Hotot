@@ -1,9 +1,14 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.SearchView = {
 since_id: null,
+alter_load: null,
+alter_load_success: null,
+alter_item_type: null,
 init:
 function init() {
-
+    ui.SearchView.alter_item_type = 'phoenix_search';
+    ui.SearchView.alter_load = ui.SearchView.load_tweet;
+    ui.SearchView.alter_load_success = ui.SearchView.load_tweet_success;
 },
 
 init_view:
@@ -15,8 +20,11 @@ function init_search_view(view) {
         }
     });
     view._header.find('.search_entry_clear_btn').click(function () {
+        // clear
         search_entry.val('');
         ui.SearchView.clear(view);    
+        // switch to trending view
+
     });
     var toggle = view._header.find('.search_view_toggle');
     var sub_view_btns = toggle.find('.mochi_button_group_item');
@@ -69,6 +77,7 @@ function init_search_view(view) {
     });
 
     widget.autocomplete.connect(search_entry);
+    ui.SearchView.clear(view);
 },
     
 destroy_view:
@@ -103,6 +112,11 @@ function switch_sub_view(view, name) {
     break;
     default: break;
     }
+
+    ui.SearchView.alter_item_type = view.item_type;
+    ui.SearchView.alter_load = view._load;
+    ui.SearchView.alter_load_success = view._load_success;
+
     var search_entry = view._header.find('.search_entry');
     ui.SearchView.do_search(view, search_entry.val());    
 },
@@ -209,18 +223,24 @@ function loadmore_people_success(view, json) {
 
 do_search:
 function do_search(view, query) {
+
     if (!ui.Main.views.hasOwnProperty('search')) {
         ui.Slider.addDefaultView('search', {});
         view = ui.Main.views.search;
     }
-    ui.SearchView.clear(view);
+    ui.SearchView.clear(view, true);
+    if (ui.SearchView.alter_load != null) {
+        view.item_type = ui.SearchView.alter_item_type;
+        view._load = ui.SearchView.alter_load;
+        view._load_success = ui.SearchView.alter_load_success;
+    }
     view.query = $.trim(query);
     if (view.query.length == 0) return;
     view.load();
 },
 
 clear:
-function clear(view) {
+function clear(view, noTrend) {
     view._header.find('.search_people_result').hide();
     ui.SearchView.since_id = null;
     view.max_id = null;
@@ -228,7 +248,50 @@ function clear(view) {
     view.query = ''; 
     view.clear();
     ui.SearchView.since_id = 0;
+    if (noTrend !== true) {
+        view.item_type = "page";
+        view._load = ui.SearchView.get_trending_topics_worldwide;
+        view._load_success = ui.SearchView.get_trending_topics_success;
+        view.former = ui.Template.form_tweet;
+        view.load();
+    }
+},
+
+get_trending_topics_local:
+function get_trending_topics_local(view, success, fail) {
+    if (ui.TrendingTopicsView.woeid == null) {
+        $.get('http://www.loc4lize.me/localize.json', function(data) {
+            ui.TrendingTopicsView.woeid = data.geo.woeid;
+            ui.TrendingTopicsView.city = data.geo.city;
+            $('.trending_topics_local').html('Local (' + data.geo.city + ')');
+            globals.twitterClient.get_trending_topics(ui.TrendingTopicsView.woeid, success);
+        });
+    } else {
+        globals.twitterClient.get_trending_topics(ui.TrendingTopicsView.woeid, success);
+    }
+    return 1; // There are always trend topics
+},
+
+get_trending_topics_worldwide:
+function get_trending_topics_worldwide(view, success, fail) {
+    globals.twitterClient.get_trending_topics(1, success);
+    return 1; // There are always trend topics
+},
+
+get_trending_topics_success:
+function get_trending_topics_success(self, json) {
+    var trend_list = json[0].trends;
+    var i = 1;
+    for (trend_name in trend_list) {
+        var m = ui.Template.trending_topic_m;
+        m.ID = i;
+        m.NAME = trend_list[trend_name].name;
+        self._body.append(ui.Template.render(ui.Template.trending_topic_t, m));
+        i++;
+    }
+    ui.Main.bind_tweet_action(self._body);
 }
+
 
 };
 
