@@ -49,24 +49,28 @@ function init () {
         }
 
         if (ui.StatusBox.get_status_len(status_text) > 140) {
-            toast.set('hotot I have super power to compress ...').show();
-            globals.network.do_request('POST', 
-                'http://hotot.in/create.json', 
-                { 
-                    'text': status_text,
-                    'name': globals.myself.screen_name,
-                    'avatar': globals.myself.profile_image_url
-                },
-                {},
-                null,
-                function (result) {
-                    if (result && result.text) {
-                        ui.StatusBox.update_status(result.text);
-                    } 
-                },
-                function () {
-                    toast.set('but I failed :( ...').show();
-                });
+            if (!conf.get_current_profile().preferences.auto_longer_tweet) {
+                toast.set(_('status_is_over_140_characters')).show();
+            } else {
+                toast.set('hotot I have super power to compress ...').show();
+                globals.network.do_request('POST', 
+                    'http://hotot.in/create.json', 
+                    { 
+                        'text': status_text,
+                        'name': globals.myself.screen_name,
+                        'avatar': globals.myself.profile_image_url
+                    },
+                    {},
+                    null,
+                    function (result) {
+                        if (result && result.text) {
+                            ui.StatusBox.update_status(result.text);
+                        } 
+                    },
+                    function () {
+                        toast.set('but I failed :( ...').show();
+                    });
+            }
             return ;
         }
         if (status_text.length != 0) {

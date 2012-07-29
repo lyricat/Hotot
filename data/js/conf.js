@@ -57,6 +57,7 @@ default_prefs: {
         , 'enable_animation': true
         , 'enable_gpu_acceleration': true 
           // Behaviors
+        , 'auto_longer_tweet': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
@@ -104,6 +105,7 @@ default_prefs: {
         , 'enable_animation': true
         , 'enable_gpu_acceleration': true
           // Behaviors
+        , 'auto_longer_tweet': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
