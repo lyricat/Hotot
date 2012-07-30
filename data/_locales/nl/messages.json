@@ -1,8 +1,4 @@
 {
-	"Read_later_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
 	"a_new_hope": {
 		"message": "",
 		"description": "data/index.html"
@@ -824,6 +820,10 @@
 		"description": "data/index.html"
 	},
 	"read_later": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"read_later_service": {
 		"message": "",
 		"description": "data/index.html"
 	},
