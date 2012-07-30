@@ -4,7 +4,7 @@ conf = {
 vars: {
       'platform': 'Linux'
     , 'wrapper': 'unknown'
-    , 'version': '0.9.8.7'
+    , 'version': '0.9.8.8'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -57,6 +57,7 @@ default_prefs: {
         , 'enable_animation': true
         , 'enable_gpu_acceleration': true 
           // Behaviors
+        , 'auto_longer_tweet': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
@@ -104,6 +105,7 @@ default_prefs: {
         , 'enable_animation': true
         , 'enable_gpu_acceleration': true
           // Behaviors
+        , 'auto_longer_tweet': true
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
@@ -397,7 +399,7 @@ var daily_hints = [
     , 'Wanna quit hotot? try <Ctrl>+Q'
     , 'I can act like VIM!'
     , 'Need more columns? Try to extend my window'
-    , 'Need less columns? Try to resize my window to a small size'
+    , 'Need fewer columns? Try to resize my window to a small size'
     , 'Go to "STAT" page, You\'ll see how addicted to twitter you are'
     , 'This is a ALPHA version, full of bugs, and features'
     , 'すっかり冷え込んだ日にはホットミルクとラブレターが恋しい'

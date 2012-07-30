@@ -575,6 +575,7 @@ function TwitterClient() {
         var url = self.api_base + 'lists/statuses.json';
         var params = {
             'include_entities': '1',
+            'include_rts': '1',
             'owner_screen_name': owner_screen_name,
             'slug': slug
         };

@@ -845,25 +845,6 @@ function addDefaultView(name, opts) {
             , 'is_trim': false
         }, opts));
     break;
-    case 'trending_topics':
-    ui.Slider.add('trending_topics'
-        , {title: _('trending_topics'), icon:'image/ic_list.png'}
-        , $.extend({ 'type':'tweet', 'title': _('trending_topics')
-            , '_load': ui.TrendingTopicsView.get_trending_topics_local
-            , '_load_success': ui.TrendingTopicsView.get_trending_topics_success
-            , 'init': ui.TrendingTopicsView.init_view
-            , 'destroy': function (view) {
-                    ui.Slider.remove(view.name);
-                }
-            , 'header_html': ui.Template.common_column_header_t
-            , 'header_html_ex': ui.Template.trending_topics_header_t
-            , 'former': ui.Template.form_tweet
-            , 'method': 'poll'
-            , 'interval': 360
-            , 'item_type': 'page'
-            , 'is_trim': false
-        }, opts));
-    break;
     default: break;
     }
     return true;
