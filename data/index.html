@@ -50,7 +50,6 @@
     <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.peopleview.js"></script>
-    <script type="text/javascript" src="js/ui.trending_topicsview.js"></script>
     <script type="text/javascript" src="js/ui.listview.js"></script>
     <script type="text/javascript" src="js/ui.searchview.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
@@ -108,7 +107,7 @@
 	</div>
 	<div id="welcome_page_main">
 		<ul id="profile_avatar_list">
-			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0" data-i18n-title="Create_a_new_profile"></a></li>
+			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0" data-i18n-title="create_a_new_profile"></a></li>
 		</ul>
 		<h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
 		<div id="sign_in_block">
@@ -157,9 +156,9 @@
 	<div id="main_page_slider">
 	</div>
 	<div id="empty_view_hint">
-		<h2 data-i18n-text="Hey">Hey!</h2>
-		<p data-i18n-text="You_dont_have_a_view">You don't have a view.</p>
-		<p data-i18n-text="You_should_surely_add_one_or_more_views_by_clicking_the_add_button_above">You should surely add one or more views by clicking the "Add" button above.</p>
+		<h2 data-i18n-text="hey">Hey!</h2>
+		<p data-i18n-text="you_dont_have_a_view">You don't have a view.</p>
+		<p data-i18n-text="you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above">You should surely add one or more views by clicking the "Add" button above.</p>
 	</div>
 	<ul id="tweet_more_menu" class="hotot_menu">
 		<li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
@@ -224,7 +223,7 @@
 		</li>
 		<li class="separator"><span></span></li>
 	</ul>
-	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="#" data-i18n-title="Your_profile"></a>
+	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="#" data-i18n-title="your_profile"></a>
 </div>
 </section><!-- center -->
 <section id="header">
@@ -232,7 +231,7 @@
     <div id="indication">
         <div id="indicator_btns">
             <div class="stick_left">
-                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu" data-i18n-title="Click_to_expand_menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu" data-i18n-title="click_to_expand_menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
             </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
 							<a id="indicator_compose_btn"
@@ -347,9 +346,6 @@
         </li>
         <li>
             <a href="#search" data-i18n-text="search_view">Search view</a>
-        </li>
-        <li>
-            <a href="#trending_topics" data-i18n-text="trending_topics_view">Trending topics view</a>
         </li>
         <li>
             <a href="#people" data-i18n-text="open_a_profile_dots">Open a Profile...</a>
@@ -523,9 +519,9 @@
 						</li>
 						<li class="mochi_list_item">
 							<select id="sel_prefs_theme" class="mochi_combo widget"
-								title="Select a theme" data-i18n-title="Select_a_theme">
-								<option value="New Hope" data-i18n-text="A_New_Hope">A New Hope</option>
-								<option value="Classic" data-i18n-text="Classic">Classic</option>
+								title="Select a theme" data-i18n-title="select_a_theme">
+								<option value="New Hope" data-i18n-text="a_new_hope">A New Hope</option>
+								<option value="Classic" data-i18n-text="classic">Classic</option>
 							</select>
 							<label class="label" data-i18n-text="themes">Themes</label>
 						</li>
@@ -625,6 +621,15 @@
 					</ul>
 					<ul class="mochi_list">
             <li class="mochi_list_item">
+							<input id="chk_prefs_auto_longer_tweet"
+									title="Compress tweet use hotot.in service if the tweet contains more than 140 charactors."
+									class="mochi_toggle widget"
+									type="checkbox" data-i18n-title="compress_tweet"/>
+							<label for="chk_prefs_auto_longer_tweet"
+									class="label"
+									data-i18n-text="auto_longer_tweet"
+									>Automated longer tweet.</label>
+						</li><li class="mochi_list_item">
 							<input id="chk_prefs_use_preload_conversation"
 									title="Preload latest tweet in a conversation if it is cached."
 									class="mochi_toggle widget"
@@ -656,7 +661,7 @@
 								class="mochi_combo widget"
 								title="Select a default picture service"
 								data-i18n-title="select_a_default_picture_service">
-								<option value="twitter.com" data-i18n-text="Twitter_Official_Service">Twitter Official Service</option>
+								<option value="twitter.com" data-i18n-text="twitter_official_service">Twitter Official Service</option>
 								<option value="img.ly">Img.ly</option>
 								<option value="twitpic.com">Twitpic.com</option>
 								<option value="lockerz.com">Lockerz.com</option>
