@@ -399,7 +399,7 @@ var daily_hints = [
     , 'Wanna quit hotot? try <Ctrl>+Q'
     , 'I can act like VIM!'
     , 'Need more columns? Try to extend my window'
-    , 'Need less columns? Try to resize my window to a small size'
+    , 'Need fewer columns? Try to resize my window to a small size'
     , 'Go to "STAT" page, You\'ll see how addicted to twitter you are'
     , 'This is a ALPHA version, full of bugs, and features'
     , 'すっかり冷え込んだ日にはホットミルクとラブレターが恋しい'
