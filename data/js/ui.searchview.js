@@ -248,7 +248,7 @@ function clear(view, noTrend) {
     view.query = ''; 
     view.clear();
     ui.SearchView.since_id = 0;
-    if (noTrend !== true) {
+    if (noTrend !== true && conf.get_current_profile().protocol === 'twitter') {
         view.item_type = "page";
         view._load = ui.SearchView.get_trending_topics_worldwide;
         view._load_success = ui.SearchView.get_trending_topics_success;
