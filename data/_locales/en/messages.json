@@ -1,4 +1,12 @@
 {
+	"Read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"a_new_hope": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "About",
 		"description": "data/index.html"
@@ -27,22 +35,6 @@
 		"message": "Add to list",
 		"description": "data/js/ui.template.js"
 	},
-	"Owner": {
-		"message": "Owner:",
-		"description": "data/js/ui.template.js"
-	},
-	"Description": {
-		"message": "Description:",
-		"description": "data/js/ui.template.js"
-	},
-	"He/She_has_protected_his/her_list": {
-		"message": "He/She has protected his/her list",
-		"description": "data/js/ui.template.js"
-	},
-	"Only_the_owner_can_access_this_list": {
-		"message": "Only the owner can access this list",
-		"description": "data/js/ui.template.js"
-	},
 	"advanced": {
 		"message": "Advanced",
 		"description": "data/index.html"
@@ -63,6 +55,10 @@
 		"message": "Archive",
 		"description": "data/index.html"
 	},
+	"artwork_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"assassin_s_tango": {
 		"message": "Assassin's Tango",
 		"description": "data/index.html"
@@ -75,8 +71,8 @@
 		"message": "Author",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"auto_update": {
-		"message": "Auto Update",
+	"auto_longer_tweet": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -107,12 +103,20 @@
 		"message": "Cannot authenticate you! Please check your username/password and API Base",
 		"description": "data/js/ui.welcome.js"
 	},
+	"change_your_profile_picture_by_clicking_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "Character `@` is not allowed in profile prefix",
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
 		"message": "Chrome context menu integration",
+		"description": "data/index.html"
+	},
+	"classic": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -139,6 +143,10 @@
 		"message": "Click to compose message",
 		"description": "data/index.html"
 	},
+	"click_to_expand_menu": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"click_to_show": {
 		"message": "Click to show",
 		"description": "data/js/ui.template.js"
@@ -146,6 +154,10 @@
 	"click_to_show_retweeters": {
 		"message": "Click to show retweets",
 		"description": "data/js/ui.template.js"
+	},
+	"client_name1_client_name2": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "Close",
@@ -157,6 +169,10 @@
 	},
 	"compose": {
 		"message": "Compose",
+		"description": "data/index.html"
+	},
+	"compress_tweet": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
@@ -171,20 +187,12 @@
 		"message": "Create A List",
 		"description": "data/js/ui.template.js"
 	},
+	"create_a_new_profile": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"credits": {
 		"message": "Credits",
-		"description": "data/index.html"
-	},
-	"written_by": {
-		"message": "Written by",
-		"description": "data/index.html"
-	},
-	"artwork_by": {
-		"message": "Artwork by",
-		"description": "data/index.html"
-	},
-	"supervised_by": {
-		"message": "Supervised by",
 		"description": "data/index.html"
 	},
 	"cuddly": {
@@ -216,11 +224,11 @@
 		"description": "data/index.html"
 	},
 	"donate_hint1": {
-		"message": "To keep Hotot alive and improving, we really need your help.",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"donate_hint2": {
-		"message": "Considering a larger gift to support our work? please contact: @shellex 5h3ll3x@gmail.com",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"dots": {
@@ -235,12 +243,28 @@
 		"message": "Drag a photo here",
 		"description": "data/index.html"
 	},
-	"drag_hint": {
-		"message": "Drag a photo here",
-		"description": "data/index/html"
-	},
 	"drop": {
 		"message": "Drop",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_hash_tag_nowplaying": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_word_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_retweeted_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_from_foursquare": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -307,30 +331,6 @@
 		"message": "Filter Tweets Like It",
 		"description": "data/index.html"
 	},
-	"read_later": {
-		"message": "read later",
-		"description": "data/index.html"
-	},
-	"use_read_later_service": {
-		"message": "Use Read Later service",
-		"description": "data/index.html"
-	},
-	"select_a_read_later_service": {
-		"message": "Select a Read Later service",
-		"description": "data/index.html"
-	},
-	"Read_later_service": {
-		"message": "Read Later Service",
-		"description": "data/index.html"
-	},
-	"Your_profile": {
-		"message": "Your Profile",
-		"description": "data/index.html"
-	},
-	"Click_to_expand_menu": {
-		"message": "Click to expand menu",
-		"description": "data/index.html"
-	},
 	"find": {
 		"message": "Find",
 		"description": "data/index.html"
@@ -387,16 +387,16 @@
 		"message": "You MUST restart Hotot for some changes below to take effect. And these changes will affect ALL accounts",
 		"description": "data/index.html"
 	},
-	"Create_a_new_profile": {
-		"message": "Create a new profile",
-		"description": "data/index.html"
-	},
 	"greeting": {
 		"message": "Greetings!",
 		"description": "data/index.html"
 	},
 	"help": {
 		"message": "Help",
+		"description": "data/index.html"
+	},
+	"hey": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
@@ -424,15 +424,7 @@
 		"description": "data/index.html"
 	},
 	"hotot_description": {
-		"message": "<strong data-i18n-text=\"hotot\">Hotot</strong> is a lightweight client for the <a target=\"_blank\" href=\"http://twitter.com\">twitter</a> microblogging service.",
-		"description": "data/index.html"
-	},
-	"project_host": {
-		"message": "Project host:",
-		"description": "data/index.html"
-	},
-	"project_site": {
-		"message": "Project site:",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -483,10 +475,6 @@
 		"message": "WARNNING: Tweets that have the  following attributes will not appear on your timeline.",
 		"description": "data/index.html"
 	},
-	"not_available_yet": {
-		"message": "not available yet :)",
-		"description": "data/index.html"
-	},
 	"label_with_color": {
 		"message": "Label with Color",
 		"description": "data/index.html"
@@ -504,22 +492,15 @@
 		"description": "data/index.html"
 	},
 	"license_text1": {
-		"message": "Hotot package is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-Licenseas published by the Free Software Foundation; either
-version3 of the License, or (at your option) any later version.",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"license_text2": {
-		"message": "This package is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"license_text3": {
-		"message": "You should have received a copy of the GNU General Public License
-along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.org/licenses/\"/>http://www.gnu.org/licenses/</a>.",
+		"message": "",
 		"description": "data/index.html"
 	},
 	"line_height": {
@@ -554,18 +535,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Loading Resources...",
 		"description": "data/index.html"
 	},
-	"Hey": {
-		"message": "Hey!",
-		"description": "data/index.html"
-	},
-	"You_dont_have_a_view": {
-		"message": "I just met you, and it's crazy, but you don't have a view",
-		"description": "data/index.html"
-	},
-	"You_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
-		"message": "so add one maybe",
-		"description": "data/index.html"
-	},
 	"location": {
 		"message": "Location",
 		"description": "data/index.html"
@@ -576,6 +545,10 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	},
 	"mask": {
 		"message": "Mask",
+		"description": "data/index.html"
+	},
+	"mask_tweets_contain_hash_tag_callmemaybe": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"mention_them": {
@@ -618,6 +591,18 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Move to top",
 		"description": "data/index.html"
 	},
+	"mute_by_containing_words": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_user_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"mute_filter": {
 		"message": "Mute Filter",
 		"description": "data/index.html"
@@ -654,16 +639,20 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Next",
 		"description": "data/index.html"
 	},
-	"previous": {
-		"message": "Previous",
-		"description": "data/index.html"
-	},
 	"no_extension": {
 		"message": "No Extension",
 		"description": "data/index.html"
 	},
+	"not_avaiable_yet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"notify": {
 		"message": "Notify",
+		"description": "data/index.html"
+	},
+	"notify_me_if_incoming_tweets_mention_hotot": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
@@ -762,34 +751,18 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Pretty wife",
 		"description": "data/index.html"
 	},
-	"preview": {
-		"message": "Preview",
-		"description": "data/index.html"
-	},
 	"preview_embedded_media": {
 		"message": "Preview Embedded Media",
-		"description": "data/index.html"
-	},
-	"preview_hint": {
-		"message": "select a photo from your computer:",
-		"description": "data/index.html"
-	},
-	"Twitter_Official_Service": {
-		"message": "Twitter Official Service",
 		"description": "data/index.html"
 	},
 	"preview_here": {
 		"message": "Preview Here",
 		"description": "data/index.html"
 	},
-	"write_down_description_here": {
-		"message": "Write down description here",
+	"previous": {
+		"message": "",
 		"description": "data/index.html"
 	},
-        "basic_auth_not_supported": {
-                "message": "Basic Auth is not supported, Please use OAuth to upload images.",
-                "description": "data/js/ui.statusbox.js"
-        },
 	"profile": {
 		"message": "Profile",
 		"description": "data/index.html"
@@ -798,8 +771,12 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Profile name",
 		"description": "data/index.html"
 	},
-	"change_your_profile_picture_by_clicking_it": {
-		"message": "Change your profile picture by clicking it",
+	"project_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"project_site": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"proxy": {
@@ -844,6 +821,10 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	},
 	"quote": {
 		"message": "Quote",
+		"description": "data/index.html"
+	},
+	"read_later": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -914,18 +895,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "RT this tweet",
 		"description": "data/js/ui.template.js"
 	},
-	"by_others": {
-		"message": "By Others",
-		"description": "data/js/ui.template.js"
-	},
-	"by_me": {
-		"message": "By Me",
-		"description": "data/js/ui.template.js"
-	},
-	"my_tweets_retweeted": {
-		"message": "My Tweets Retweeded",
-		"description": "data/js/ui.template.js"
-	},
 	"rule": {
 		"message": "Rule",
 		"description": "data/index.html"
@@ -940,70 +909,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	},
 	"rule_name": {
 		"message": "Rule Name",
-		"description": "data/index.html"
-	},
-	"type_a_name_here": {
-		"message": "Type a name here",
-		"description": "data/index.html"
-	},
-	"mute_by_user_name": {
-		"message": "Mute by username",
-		"description": "data/index.html"
-	},
-	"mute_by_containing_words": {
-		"message": "Mute by containing words",
-		"description": "data/index.html"
-	},
-	"mute_by_source": {
-		"message": "Mute by source",
-		"description": "data/index.html"
-	},
-	"screen_name1_screen_name2": {
-		"message": "Screen Name 1, Screen Name 2",
-		"description": "data/index.html"
-	},
-	"word1_word2": {
-		"message": "Word 1, Word 2",
-		"description": "data/index.html"
-	},
-	"client_name1_client_name2": {
-		"message": "Client Name 1, Client Name 2",
-		"description": "data/index.html"
-	},
-	"drop_tweets_contain_word_abc": {
-		"message": "drop tweets contain word ABC",
-		"description": "data/index.html"
-	},
-	"drop_tweets_sent_from_foursquare": {
-		"message": "drop tweets sent from foursquare",
-		"description": "data/index.html"
-	},
-	"drop_tweets_sent_by_abc": {
-		"message": "drop tweets sent by @ABC",
-		"description": "data/index.html"
-	},
-	"drop_tweets_retweeted_by_abc":	{
-		"message": "drop tweets retweeted by @ABC",
-		"description": "data/index.html"
-	},
-	"drop_tweets_contain_hash_tag_nowplaying": {
-		"message": "drop tweets contain hashtag #nowplaying",
-		"description": "data/index.html"
-	},
-	"notify_me_if_incoming_tweets_mention_hotot": {
-		"message": "notify me if incoming tweets mention @hotot",
-		"description": "data/index.html"
-	},
-	"mask_tweets_contain_hash_tag_callmemaybe": {
-		"message": "mask tweets contain hashtag #callmemaybe",
-		"description": "data/index.html"
-	},
-	"selected_fields": {
-		"message": "Selected Fields",
-		"description": "data/index.html"
-	},
-	"selected_actions": {
-		"message": "Selected Actions",
 		"description": "data/index.html"
 	},
 	"same_signing_api_base": {
@@ -1026,57 +931,13 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Schizophrenia",
 		"description": "data/index.html"
 	},
+	"screen_name1_screen_name2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"search": {
 		"message": "Search",
 		"description": "data/js/ui.slider.js"
-	},
-	"Type_and_press_enter_to_search": {
-		"message": "Type and press enter to search",
-		"description": "data/js/ui.template.js"
-	},
-	"people": {
-		"message": "people",
-		"description": "data/js/ui.template.js"
-	},
-	"One_user_matched": {
-		"message": "One user matched",
-		"description": "data/js/ui.template.js"
-	},
-	"Detach": {
-		"message": "Detach",
-		"description": "data/js/ui.template.js"
-	},
-	"clear_all": {
-		"message": "Clear all",
-		"description": "data/js/ui.template.js"
-	},
-	"Clear_All": {
-		"message": "Clear all",
-		"description": "data/js/ui.template.js"
-	},
-	"Your_search": {
-		"message": "Your search",
-		"description": "data/js/ui.template.js"
-	},
-	"did_not_match_any_result": {
-		"message": "did not match any result",
-		"description": "data/js/ui.template.js"
-	},
-	"Suggestions": {
-		"message": "Suggestions",
-		"description": "data/js/ui.template.js"
-	},
-	"Make_sure_all_words_are_spelled_correctly": {
-		"message": "Make sure all words are spelled correctly",
-		"description": "data/js/ui.template.js"
-	},
-	"Try_different_keywords": {
-		"message": "Try different keywords",
-		"description": "data/js/ui.template.js"
-	},
-	"Try_more_general_keywords": {
-		"message": "Try more general keywords",
-		"description": "data/js/ui.template.js"
 	},
 	"search_api_base2": {
 		"message": "Search API Base",
@@ -1100,6 +961,14 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	},
 	"select_a_language": {
 		"message": "Select a language",
+		"description": "data/index.html"
+	},
+	"select_a_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_theme": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"select_actions": {
@@ -1154,10 +1023,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Some Error Occured",
 		"description": "data/index.html"
 	},
-	"sound": {
-		"message": "Sound",
-		"description": "data/index.html"
-	},
 	"starts_minimized": {
 		"message": "Starts Minimized",
 		"description": "data/index.html"
@@ -1190,20 +1055,12 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Summon Hotot (like: <ALT>C)",
 		"description": "data/index.html"
 	},
+	"supervised_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"themes": {
 		"message": "Themes",
-		"description": "data/index.html"
-	},
-	"Select_a_theme": {
-		"message": "Select a theme",
-		"description": "data/index.html"
-	},
-	"A_New_Hope": {
-		"message": "A New Hope",
-		"description": "data/index.html"
-	},
-	"Classic": {
-		"message": "Classic",
 		"description": "data/index.html"
 	},
 	"this_profile_may_has_already_exists": {
@@ -1234,22 +1091,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Transparent",
 		"description": "data/index.html"
 	},
-	"trending_topics": {
-		"message": "Trending topics",
-		"description": "data/js/ui.slider.js"
-	},
-	"trending_topics_view": {
-		"message": "Trending topics View",
-		"description": "data/index.html"
-	},
-	"Local": {
-		"message": "Local",
-		"description": "data/js/ui.template.js"
-	},
-	"Worldwide": {
-		"message": "Universe",
-		"description": "data/js/ui.template.js"
-	},
 	"tweet_cnt": {
 		"message": "Tweet",
 		"description": "data/js/ui.template.js"
@@ -1260,6 +1101,14 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	},
 	"tweets": {
 		"message": "Tweets",
+		"description": "data/index.html"
+	},
+	"twitter_official_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"type_a_name_here": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
@@ -1330,6 +1179,10 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Use QUOTE as default retweet action",
 		"description": "data/index.html"
 	},
+	"use_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Use REPLY ALL as default reply action",
 		"description": "data/index.html"
@@ -1353,10 +1206,6 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	"view_more_conversation": {
 		"message": "View more conversation",
 		"description": "data/js/ui.template.js"
-	},
-	"view_original": {
-		"message": "View Original",
-		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "Virushou's Integrity",
@@ -1382,6 +1231,18 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 		"message": "Whisper",
 		"description": "data/js/ui.welcome.js"
 	},
+	"word1_word2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"write_down_description_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"written_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_followed_by_them": {
 		"message": "You are followed by them.",
 		"description": "data/js/ui.peopleview.js"
@@ -1397,17 +1258,17 @@ along with this program. If not, see <a target=\"_blank\" href=\"http://www.gnu.
 	"you_are_not_following_each_other": {
 		"message": "You are not following each other.",
 		"description": "data/js/ui.peopleview.js"
-	}
-		"He/She_has_protected_his/her_tweets": {
-		"message": "He/She has protected his/her tweets",
-		"description": "data/js/ui.template.js"
 	},
-	"You_need_to_go_to_twitter_com_to_send_a_request_before_you_can_start_following_this_persion": {
-		"message": "You need to go to twitter com to send a request before you can start following this person",
-		"description": "data/js/ui.template.js"
+	"you_dont_have_a_view": {
+		"message": "",
+		"description": "data/index.html"
 	},
-	"Send_Request": {
-		"message": "Send Request",
-		"description": "data/js/ui.template.js"
+	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"your_profile": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }

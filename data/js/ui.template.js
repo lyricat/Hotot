@@ -441,7 +441,7 @@ search_header_t:
     </div>\
     <div class="saved_searches">\
         <a id="create_saved_search_btn" class="mochi_button" \
-            href="#" title="Detach" data-i18n-title="Detach"> +\
+            href="#" title="Detach" data-i18n-title="detach"> +\
         </a>\
         <div id="saved_searches_more_trigger" style="display:none;">\
             <a id="saved_searches_btn" class="vcard_more mochi_button" \
