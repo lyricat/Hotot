@@ -4,7 +4,7 @@ Twitter and Identi.ca at this point of development. You may visit our
 official website at http://hotot.org/ . Check it out for any updates
 on Hotot.
 
-## Install in Distrubtion:
+## Install in Distrubtions:
 
 ### openSUSE
 	sudo zypper ar -f http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_12.2 KDE:Extra
@@ -23,7 +23,7 @@ QT with KDE:
 	sudo zypper in hotot-qt
 
 ### Fedora
-	[fix me!]yum install hotot
+	sudo yum install hotot
 
 ### Arch / Charka
 	to be finished by marguerite on OBS
@@ -42,19 +42,19 @@ QT with KDE:
 	emerge hotot
 
 ## Building from source:
-Since Hotot core is largely based on HTML5, Javascript and webkit technology,
-It can be run under many Webkit implementation. Hotot Offically support Gtk,
+Since Hotot core is largely based on HTML5, JavaScript and Webkit technology,
+It can be run under many Webkit implementations. Hotot officially supports Gtk,
 Qt, and Chrome webkit wrapper.
 
 Dependencies:
 
-Common Requirement:
+Common Requirements:
 * cmake
 * intltool
 
 Qt Wrapper
 * Qt4 (newer than 4.7)
-* KDE Libs (optional, for better kde integration)
+* KDE Libs (optional, for better KDE integration)
 
 Gtk2 Wrapper
 * python2
@@ -67,7 +67,7 @@ Gtk3 Wrapper
 * gtk3
 * libwebkit3
 
-On Ubuntu 11.10 all of these ressources are available in the standard repositories.
+On Ubuntu 11.10 all of these resources are available in the standard repositories.
 
 ```shell
 $ sudo apt-get install libqt4-dev cmake intltool
@@ -85,16 +85,17 @@ To install as root:
 sudo make install
 ```
 
-This will install in the default prefix: /usr/local, in order to change to different prefix, use:
--DCMAKE_INSTALL_PREFIX=/prefix/you/want
+This will install Hotot in the default prefix: `/usr/local`, in order to change
+to a different prefix, use:
+`-DCMAKE_INSTALL_PREFIX=/prefix/you/want`
 
-By default gtk with gir,and qt will be built.
+By default gtk with gir, and qt will be built.
 
-Following option can be applied, with On/Off as value.
+The following options can be applied, with On/Off as value.
 
 -DWITH_GTK build gtk version
 
--DWITH_GIR build gir(gtk3) verson (need gtk enabled)
+-DWITH_GIR build gir(gtk3) version (need gtk enabled)
 
 -DWITH_QT build qt version
 
@@ -102,13 +103,15 @@ Following option can be applied, with On/Off as value.
 
 -DWITH_CHROME build chrome with mk-chrome-app.sh, will be placed under build directory/chrome/hotot-chrome.zip, need rsync
 
-Eg: just build gtk with gir rather than qt:
+For example, to just build gtk with gir rather than qt, the `cmake` command
+will be:
 
+```shell
 $ cmake -DWITH_QT=off ..
+```
 
-To build on arch:
-
--DPYTHON_EXECUTABLE=/usr/bin/python2
+To build on Arch, use:
+`-DPYTHON_EXECUTABLE=/usr/bin/python2`
 
 
 There is something about a Gtk version in Python using some sort of
