@@ -553,7 +553,7 @@ msgstr "_Visualizza"
 #~ msgstr "Estensioni"
 
 #~ msgid "Fav it!"
-#~ msgstr "Aggiungi a preferiti!"
+#~ msgstr "Aggiungi ai preferiti!"
 
 #, fuzzy
 #~ msgid "Favorite this tweet ..."
@@ -655,7 +655,7 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Keybinding"
-#~ msgstr "- Scorciatoie da tastiera -"
+#~ msgstr "Tasti personalizzati"
 
 #~ msgid "Keyboard"
 #~ msgstr "Tastiera"
@@ -860,16 +860,16 @@ msgstr "_Visualizza"
 #~ msgstr "Rispondi a tutti"
 
 #~ msgid "Reply Them."
-#~ msgstr "Rispondi"
+#~ msgstr "Rispondi a loro"
 
 #~ msgid "Reply this tweet"
 #~ msgstr "Rispondi a questo tweet"
 
 #~ msgid "Reply this tweet."
-#~ msgstr "Rispondi a questo tweet"
+#~ msgstr "Rispondi a questo tweet."
 
 #~ msgid "Restore Defaults"
-#~ msgstr "Ripristina impostazioni"
+#~ msgstr "Ripristina impostazioni iniziali"
 
 #~ msgid ""
 #~ "Restore defaults will erases all changes you make.\n"
@@ -888,21 +888,21 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Retweet/Un-retweet"
-#~ msgstr "'Retweets and Retweeted'"
+#~ msgstr "'Retweet/annulla-Retweet'"
 
 #~ msgid "Retweeted By Others"
 #~ msgstr "Retweet di altri"
 
 #, fuzzy
 #~ msgid "Retweeted by"
-#~ msgstr "retweettato da "
+#~ msgstr "Retweettato da "
 
 #~ msgid "Retweeting ..."
 #~ msgstr "Retweet ..."
 
 #, fuzzy
 #~ msgid "Retweets"
-#~ msgstr "Retweet ..."
+#~ msgstr "Retweets ..."
 
 #, fuzzy
 #~ msgid "Retweets View"
@@ -910,21 +910,21 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Rule Name"
-#~ msgstr "Nome del Profilo:"
+#~ msgstr "Nome della regola"
 
 #, fuzzy
 #~ msgid "Same Signing API Base"
-#~ msgstr "Accesso API Base"
+#~ msgstr "Stessa firma digitale API base"
 
 #, fuzzy
 #~ msgid "Same Signing OAuth Base"
-#~ msgstr "Signing OAuth Base"
+#~ msgstr "Stessa firma digitale 0Auth base"
 
 #~ msgid "Same signing API base: "
-#~ msgstr "Stessa API base di accesso:"
+#~ msgstr "Stessa firma digitale API base:"
 
 #~ msgid "Same signing OAuth base: "
-#~ msgstr "stessa OAuth Base di accesso:"
+#~ msgstr "Stessa firma digitale 0Auth base:"
 
 #, fuzzy
 #~ msgid "Search"
@@ -932,28 +932,28 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Search @ in Google"
-#~ msgstr "Cerca con Google"
+#~ msgstr "Cerca @ con Google"
 
 #, fuzzy
 #~ msgid "Search @ in Twitter"
-#~ msgstr "Cerca con Twitter"
+#~ msgstr "Cerca @ con Twitter"
 
 #~ msgid "Search API Base"
-#~ msgstr "Search API Base"
+#~ msgstr "Cerca API Base"
 
 #, fuzzy
 #~ msgid "Select actions"
-#~ msgstr "Seleziona tweet successivo"
+#~ msgstr "Seleziona azioni"
 
 #~ msgid "Send Request"
 #~ msgstr "Invia richiesta"
 
 #~ msgid "Send message to them"
-#~ msgstr "Invia un messaggio"
+#~ msgstr "Invia un messaggio a loro"
 
 #, fuzzy
 #~ msgid "Shortcuts"
-#~ msgstr "Collegamento"
+#~ msgstr "Scorciatoie"
 
 #~ msgid "Sign In"
 #~ msgstr "Accedi"
@@ -983,42 +983,42 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Successfully"
-#~ msgstr " eseguito"
+#~ msgstr "Eseguito"
 
 #~ msgid "Suggestions:"
 #~ msgstr "Consigli:"
 
 #, fuzzy
 #~ msgid "Summon Hotot (like: <ALT>C)"
-#~ msgstr "Chiamata a Hotot (Es.: &lt;ALT&gt;C)"
+#~ msgstr "Chiamata a Hotot (Es.: <ALT>C)"
 
 #, fuzzy
 #~ msgid "System Font"
-#~ msgstr "Sistema"
+#~ msgstr "Font del Sistema"
 
 #~ msgid "There are "
 #~ msgstr "Ci sono "
 
 #~ msgid "Toggle nav tabs"
-#~ msgstr "Mostra tabella navigazione"
+#~ msgstr "Abilita/disabilita tabella navigazione"
 
 #~ msgid "Toggle toolbar"
-#~ msgstr "Mostra toolbar"
+#~ msgstr "Abilita/disabilita toolbar"
 
 #~ msgid "Trigger action"
-#~ msgstr "Seleziona"
+#~ msgstr "Avvia azione"
 
 #, fuzzy
 #~ msgid "Tweet"
-#~ msgstr "Tweets: "
+#~ msgstr "Tweet: "
 
 #, fuzzy
 #~ msgid "Tweet View"
-#~ msgstr "Lista Tweet"
+#~ msgstr "Visualizzazione tweet"
 
 #, fuzzy
 #~ msgid "Tweets"
-#~ msgstr "Tweets: "
+#~ msgstr "Tweets"
 
 #~ msgid "Tweets per Day: "
 #~ msgstr "Tweets al Giorno: "
@@ -1032,7 +1032,7 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Un-favorite this tweet ..."
-#~ msgstr "'I miei tweets preferiti'"
+#~ msgstr "'Rimuovi dai preferiti'"
 
 #~ msgid "Unblock"
 #~ msgstr "Sblocca"
@@ -1060,8 +1060,8 @@ msgstr "_Visualizza"
 #~ msgid "Update"
 #~ msgstr "Aggiorna"
 
-#~ msgid "Update page "
-#~ msgstr "Aggiornata pagina "
+#~ msgid "Update page"
+#~ msgstr "Aggiorna pagina "
 
 #~ msgid "Update profile successfully!"
 #~ msgstr "Aggiornamento profilo eseguito!"
@@ -1072,14 +1072,14 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Updating ..."
-#~ msgstr "Aggiornamento..."
+#~ msgstr "Aggiornamento ..."
 
 #, fuzzy
 #~ msgid "Upload"
 #~ msgstr "Ricarica"
 
 #~ msgid "Use Native Input Dialog"
-#~ msgstr "Usa dialogo input nativo"
+#~ msgstr "Usa inserimento nativo"
 
 #~ msgid "Use Socks Proxy"
 #~ msgstr "Usa Proxy Socks"
@@ -1089,7 +1089,7 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Use native notify system"
-#~ msgstr "Usa sistema di notifiche"
+#~ msgstr "Usa sistema di notifiche nativo"
 
 #, fuzzy
 #~ msgid "Username"
@@ -1097,14 +1097,14 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "View more conversation"
-#~ msgstr "Continua..."
+#~ msgstr "Visualizza altre conversazioni"
 
 #, fuzzy
 #~ msgid "Web"
 #~ msgstr "Web: "
 
 #~ msgid "Website"
-#~ msgstr "Website"
+#~ msgstr "Sito web"
 
 #~ msgid "What's happening?"
 #~ msgstr "Che c'è di nuovo?"
@@ -1116,7 +1116,7 @@ msgstr "_Visualizza"
 #~ msgid ""
 #~ "You MUST restart Hotot for some changes below to take effect. And these "
 #~ "changes will affect ALL accounts"
-#~ msgstr "* Devi RIAVVIARE Hotot affinche le modifiche abbiano effetto."
+#~ msgstr "* Devi RIAVVIARE Hotot affinche\' le modifiche abbiano effetto. I cambiamenti influiranno su TUTTI gli account"
 
 #~ msgid ""
 #~ "You need to go to twitter.com to send a request before you can start "
