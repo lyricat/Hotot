@@ -990,7 +990,7 @@ msgstr "_Visualizza"
 
 #, fuzzy
 #~ msgid "Summon Hotot (like: <ALT>C)"
-#~ msgstr "Chiamata a Hotot (Es.: <ALT>C)"
+#~ msgstr "Chiamata a Hotot (Es.: &lt;ALT&gt;C)"
 
 #, fuzzy
 #~ msgid "System Font"
