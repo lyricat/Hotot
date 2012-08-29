@@ -221,6 +221,13 @@ function eval_bool_exp (exp, incoming) {
         t1 = arg1;
     }
     // console.log('eval:', exp[0],':', t0,',' ,t1)
+
+    // I just convert t0 and t1 to lowercase, to resolve #388.
+    // Not sure whether this causes no other problems :-)
+
+    t0 = t0.toLowerCase();
+    t1 = t1.toLowerCase();
+
     switch (exp[0]) {
     case kismet.OP_NOT:
         return (!t0);
