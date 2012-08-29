@@ -232,7 +232,7 @@ msgstr "_Visualizza"
 #~ msgstr "'Cerca qualcuno che ti piace'"
 
 #~ msgid "'Font Family'"
-#~ msgstr "'Famiglia di font""
+#~ msgstr "'Famiglia di font'"
 
 #~ msgid "'Font Size'"
 #~ msgstr "'Dimensione del font'"
@@ -337,7 +337,7 @@ msgstr "_Visualizza"
 #~ msgstr "'Website'"
 
 #~ msgid "'What is happening?'"
-#~ msgstr "'Che c\'è di nuovo?'"
+#~ msgstr "'Che c'è di nuovo?'"
 
 #~ msgid "- Credits -"
 #~ msgstr "- Ringraziamenti -"
@@ -533,7 +533,7 @@ msgstr "_Visualizza"
 #~ msgstr "Abilita"
 
 #~ msgid "Enter action mode"
-#~ msgstr "Inserisci modalità d\'azione "
+#~ msgstr "Inserisci modalità d'azione "
 
 #~ msgid "Enter compose mode"
 #~ msgstr "Inserisci modalità di scrittura"
@@ -1117,7 +1117,7 @@ msgstr "_Visualizza"
 #~ msgid ""
 #~ "You MUST restart Hotot for some changes below to take effect. And these "
 #~ "changes will affect ALL accounts"
-#~ msgstr "* Devi RIAVVIARE Hotot affinche\' le modifiche abbiano effetto. I cambiamenti influiranno su TUTTI gli account"
+#~ msgstr "* Devi RIAVVIARE Hotot affinche' le modifiche abbiano effetto. I cambiamenti influiranno su TUTTI gli account"
 
 #~ msgid ""
 #~ "You need to go to twitter.com to send a request before you can start "
