@@ -1,3 +1,5 @@
+// ui.status_box.js - contains the logic for the status update dialog box
+
 if (typeof ui == 'undefined') var ui = {};
 ui.StatusBox = {
 
@@ -37,6 +39,7 @@ function get_status_len(status_text) {
     return status_text.replace(ui.Template.reg_link_g, rep_url).length
 },
 
+// This inits all jquery events for the status update dialog box
 init:
 function init () {
     $('#btn_update').click(function(event){
@@ -239,7 +242,8 @@ function init () {
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
     ui.StatusBox.reg_fake_dots2 = new RegExp('(…\\.+)|(…。+)', 'g');
-    
+
+    // setup autocomplete for user name
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 
