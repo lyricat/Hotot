@@ -25,23 +25,21 @@ longurl_service:
         name: 'longurlplease',
         // TODO: make q-param below configurable
         service_url: 'https://longurlplease.appspot.com/api/v1.1?q=',
-        short_url_regexp: /(https?:\/\/)?(is\.gd|t\.co|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
+        short_url_regexp: /(https?:\/\/)?(goo\.gl|is\.gd|t\.co|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
     },
 
-// I will register the function below with ADD_TWEETS_LISTENER_AFTER. When I find
-// a shortened URL, I will (try to) replace the short url by a long url in the
+// I will register the function below with ADD_TWEETS_LISTENER_AFTER. When I 
+// find a short URL, I will (try to) replace the short url by a long url in the
 // html already displayed. (I think this is the only option, because I
 // do the call to longurlplease asynchronously.)
 
 // Twitter seems to use its own URL shortener, which is called t.co. So if
 // a user submits a shortened url to Twitter, Twitter just shortens it again.
-// However, Hotot does not display t.co urls. So I guess it should be possible
-// to retrive the original urls from the tweets I get.
+// However, Hotot does not display t.co urls, it finds out the long url
+// by itself. So for Twitter the code below does not work, because I 
+// cannot find the short url anymore.
 on_add_tweets:
 function on_add_tweets(tweets, view) {
-    hotot_log('ExpandUrls',
-        'Update ['+view.name+'], '+ tweets.length +' items');
-
     // scan all tweets for shortened urls.
     for (var i = 0, l = tweets.length; i < l; ++i)
     {
@@ -51,11 +49,6 @@ function on_add_tweets(tweets, view) {
         while (match != null)
         {
             hotot_log('ExpandUrls', 'MATCH! short url found: ' + match);
-
-            var tweet_id=tweets[i].id_str;
-            // I will have to pass this tweet_id to the function called when
-            // the call returns. Not sure yet how to do this.
-
 
             var req_url=ext.ExpandUrls.longurl_service.service_url 
                 + encodeURIComponent(match[0]);
@@ -77,15 +70,11 @@ function on_add_tweets(tweets, view) {
                     {
                         // Log what I found
                         hotot_log('ExpandUrls', index + ' : ' + results[index]);
-                        hotot_log('ExpandUrls', index + ' : ' + tweet_id);
 
-                        // If tweet_id contains the id of the tweet, I can find
-                        // the tweet (possibly tweets) using jquery, as below.
-                        // But I still have to find out how i can pass this parameter.
-
-                        hotot_log('ExpandUrls', $("li[tweet_id='"+tweet_id+"']").html());
-
-                        // TODO: replace short url by long url.
+                        // If I would know the tweet_id at this moment, I could
+                        // output the tweet html for debugging.
+                        // hotot_log('Tweet', $("li[tweet_id='"+tweet_id+"']").html());
+                        $("a[href='"+index+"']").html(results[index]);
                     }
                 },
                 function () {}
