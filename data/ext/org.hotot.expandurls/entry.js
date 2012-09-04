@@ -28,24 +28,15 @@ longurl_service:
         short_url_regexp: /(https?:\/\/)?(is\.gd|t\.co|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
     },
 
-// If I register the function below with ADD_TWEETS_LISTENER, this gets called 
-// before a tweet is displayed. Here I have the ability to change tweets[i].text.
-//
-// I plan to search each tweet for shortened urls. If I find one, I submit
-// it to longurlplease, and then I want to either replace the url by the
-// long one, or either adding the long one to the tweet (I don't know yet,
-// maybe make it configurable.)
-//
-// With Twitter there is an additional problem:
+// I will register the function below with ADD_TWEETS_LISTENER_AFTER. When I find
+// a shortened URL, I will (try to) replace the short url by a long url in the
+// html already displayed. (I think this is the only option, because I
+// do the call to longurlplease asynchronously.)
+
 // Twitter seems to use its own URL shortener, which is called t.co. So if
 // a user submits a shortened url to Twitter, Twitter just shortens it again.
-// This means that for tweets, I might have to call longurlplease twice.
-//
-// The strange thing is that hotot shows actual urls, and not the t.co ones.
-// So probably somewhere in Hotot there is already code that expands the
-// t.co-urls. I've noticed that when I register this function with
-// ADD_TWEETS_LISTENER_AFTER, I do get the expanded urls. But then I am
-// unable to change the actual tweet contents.
+// However, Hotot does not display t.co urls. So I guess it should be possible
+// to retrive the original urls from the tweets I get.
 on_add_tweets:
 function on_add_tweets(tweets, view) {
     hotot_log('ExpandUrls',
@@ -60,6 +51,10 @@ function on_add_tweets(tweets, view) {
         while (match != null)
         {
             hotot_log('ExpandUrls', 'MATCH! short url found: ' + match);
+
+            var tweet_id=tweets[i].id_str;
+            // I will have to pass this tweet_id to the function called when
+            // the call returns. Not sure yet how to do this.
 
 
             var req_url=ext.ExpandUrls.longurl_service.service_url 
@@ -82,10 +77,15 @@ function on_add_tweets(tweets, view) {
                     {
                         // Log what I found
                         hotot_log('ExpandUrls', index + ' : ' + results[index]);
+                        hotot_log('ExpandUrls', index + ' : ' + tweet_id);
 
-                        // Problem here is that at this point, I cannot access
-                        // the tweets any more. I will have to look up how to
-                        // do this; I am kind of new to Javascript :-)
+                        // If tweet_id contains the id of the tweet, I can find
+                        // the tweet (possibly tweets) using jquery, as below.
+                        // But I still have to find out how i can pass this parameter.
+
+                        hotot_log('ExpandUrls', $("li[tweet_id='"+tweet_id+"']").html());
+
+                        // TODO: replace short url by long url.
                     }
                 },
                 function () {}
@@ -96,18 +96,17 @@ function on_add_tweets(tweets, view) {
     }
 
     //hotot_log('ExpandUrls', JSON.stringify(tweets[0]));
-    //tweets[0].text='At this point, you can replace the text of a tweet.';    
 },
 
 enable:
 function enable() {
-    ext.register_listener(ext.ADD_TWEETS_LISTENER
+    ext.register_listener(ext.ADD_TWEETS_LISTENER_AFTER
         , ext.ExpandUrls.on_add_tweets);
 },
 
 disable:
 function disable() {
-    ext.unregister_listener(ext.ADD_TWEETS_LISTENER
+    ext.unregister_listener(ext.ADD_TWEETS_LISTENER_AFTER
         , ext.ExpandUrls.on_add_tweets);
 }
 
