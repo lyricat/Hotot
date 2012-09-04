@@ -8,9 +8,9 @@ ext.ExpandUrls = {
 
 id: 'org.hotot.expandurls',
 
-name: 'Expand shortened urls',
+name: 'Expand shortened urls (on hover)',
 
-description: 'This extension expands urls shortened by a shortening service.',
+description: 'When you hover over a short url, the original long url is shown.',
 
 version: '0.1',
 
@@ -25,19 +25,22 @@ longurl_service:
         name: 'longurlplease',
         // TODO: make q-param below configurable
         service_url: 'https://longurlplease.appspot.com/api/v1.1?q=',
-        short_url_regexp: /(https?:\/\/)?(goo\.gl|is\.gd|t\.co|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
+        short_url_regexp: /(https?:\/\/)?(tinyurl\.com|goo\.gl|is\.gd|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
+        // Twitter has its own url shortener, t.co. If you add t.co to the
+        // short_url_regexp, t.co-urls are effectively found. But if you 
+        // leave away out t.co, everything still works. 
+        // I do not understand; it is probably some hotot magic :-)
+        // But hey, it works. No worries.
     },
 
 // I will register the function below with ADD_TWEETS_LISTENER_AFTER. When I 
-// find a short URL, I will (try to) replace the short url by a long url in the
-// html already displayed. (I think this is the only option, because I
-// do the call to longurlplease asynchronously.)
+// find a short URL, I will replace the short url by a long url in the
+// html already displayed. 
+// TODO: I think there is a message cache somewhere, and it would probably
+// be better to save the expanded URLS in the cache, instead of looking them
+// up each time again. On the other hand, the cache should be invalidated
+// each time this extension is enabled or diabled.
 
-// Twitter seems to use its own URL shortener, which is called t.co. So if
-// a user submits a shortened url to Twitter, Twitter just shortens it again.
-// However, Hotot does not display t.co urls, it finds out the long url
-// by itself. So for Twitter the code below does not work, because I 
-// cannot find the short url anymore.
 on_add_tweets:
 function on_add_tweets(tweets, view) {
     // scan all tweets for shortened urls.
@@ -48,8 +51,6 @@ function on_add_tweets(tweets, view) {
         // loop through all matches
         while (match != null)
         {
-            hotot_log('ExpandUrls', 'MATCH! short url found: ' + match);
-
             var req_url=ext.ExpandUrls.longurl_service.service_url 
                 + encodeURIComponent(match[0]);
 
@@ -62,19 +63,17 @@ function on_add_tweets(tweets, view) {
                 [],
                 function (results) {
                     // longurlplease returns a key-value pair, where the key is
-                    // the short url, and the value the long url. I don't know
-                    // how to just get the first value, so I copied some code from
-                    // http://www.electrictoolbox.com/loop-key-value-pairs-associative-array-javascript/
-                    // which is probably overkill.
+                    // the short url, and the value the long url. 
+                    // Because I submitted only one url, the result is only
+                    // one key-value-pair as well. So strictly spoken, the
+                    // for loop is not necessary.
                     for(var index in results)
                     {
-                        // Log what I found
+                        // Log what has been found
                         hotot_log('ExpandUrls', index + ' : ' + results[index]);
 
-                        // If I would know the tweet_id at this moment, I could
-                        // output the tweet html for debugging.
-                        // hotot_log('Tweet', $("li[tweet_id='"+tweet_id+"']").html());
-                        $("a[href='"+index+"']").html(results[index]);
+                        //$("a[href='"+index+"']").html(results[index]);
+                        $("a[href='"+index+"']").attr('href', results[index]);
                     }
                 },
                 function () {}
@@ -83,8 +82,6 @@ function on_add_tweets(tweets, view) {
             match = the_regexp.exec(tweets[i].text);
         }
     }
-
-    //hotot_log('ExpandUrls', JSON.stringify(tweets[0]));
 },
 
 enable:
