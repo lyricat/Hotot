@@ -6,6 +6,7 @@ builtins: [
     , 'org.hotot.gmap'
     , 'org.hotot.sample'
     , 'org.hotot.shorturl'
+    , 'org.hotot.expandurls'
     , 'org.hotot.translate'
     , 'org.hotot.stat'
     , 'org.hotot.appmask'
