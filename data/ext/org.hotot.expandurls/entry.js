@@ -19,13 +19,16 @@ author: 'Johan Vervloet',
 url: 'http://johanv.org',
 
 // Configuration of service for getting long url
-// (TODO: make it changeable via configuration dialog)
+// TODO: add configurability
+//  - url of the unshortening service
+//  - parameters for the api
+//  - the way the result has to be interpreted
 longurl_service:
     {
         name: 'longurlplease',
-        // TODO: make q-param below configurable
-        service_url: 'https://longurlplease.appspot.com/api/v1.1?q=',
-        short_url_regexp: /(https?:\/\/)?(tinyurl\.com|goo\.gl|is\.gd|ur1\.ca|bit\.ly)\/[A-Za-z0-9]+/g,
+        service_url: 'http://api.longurl.org/v2/expand?user-agent=Hotot&format=json&url=',
+        // TODO: get short urls from http://api.longurl.org/v2/services
+        short_url_regexp: /(https?:\/\/)?(tinyurl\.com|goo\.gl|is\.gd|ur1\.ca|bit\.ly|ow\.ly|b1t\.it)\/[A-Za-z0-9]+/g,
         // Twitter has its own url shortener, t.co. If you add t.co to the
         // short_url_regexp, t.co-urls are effectively found. But if you 
         // leave away out t.co, everything still works. 
@@ -54,30 +57,30 @@ function on_add_tweets(tweets, view) {
             var req_url=ext.ExpandUrls.longurl_service.service_url 
                 + encodeURIComponent(match[0]);
 
-            // call longurlplease.
-            // I just did something similar as in the shorturl extension
-            globals.network.do_request('GET',
-                req_url,
-                {},
-                {},
-                [],
-                function (results) {
-                    // longurlplease returns a key-value pair, where the key is
-                    // the short url, and the value the long url. 
-                    // Because I submitted only one url, the result is only
-                    // one key-value-pair as well. So strictly spoken, the
-                    // for loop is not necessary.
-                    for(var index in results)
-                    {
-                        // Log what has been found
-                        hotot_log('ExpandUrls', index + ' : ' + results[index]);
+            // TODO: find out whether I can use do_request from 
+            // lib.network.js with this context thingy :)
 
-                        //$("a[href='"+index+"']").html(results[index]);
-                        $("a[href='"+index+"']").attr('href', results[index]);
-                    }
-                },
-                function () {}
-            );
+            $.ajax({
+                url: req_url
+                , context: {short_url:match[0]} // definition of 'this' in callback
+                , success: function (results) {
+                    var long_url = results["long-url"];
+
+                    // Log what has been found
+                    hotot_log('ExpandUrls', this.short_url + ' : ' + long_url);
+
+                    // The line below would replace the text of the link
+                    // as well.
+                    //$("a[href='"+this.short_url+"']").html(long_url);
+
+                    $("a[href='"+this.short_url+"']").attr('href', long_url);
+
+                    // TODO: Change urls without http(s)-prefix as well.
+                    // Using a context, this should not be hard to do.
+                    // (Only applies to identi.ca, because twitter does this
+                    // already with it's t.co shortener)
+                }
+            });
 
             match = the_regexp.exec(tweets[i].text);
         }
