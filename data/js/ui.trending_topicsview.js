@@ -30,40 +30,6 @@ function init_view(view) {
     }
 },
 
-get_trending_topics_local:
-function get_trending_topics_local(view, success, fail) {
-    if (ui.TrendingTopicsView.woeid == null) {
-        $.get('http://www.loc4lize.me/localize.json', function(data) {
-            ui.TrendingTopicsView.woeid = data.geo.woeid;
-            ui.TrendingTopicsView.city = data.geo.city;
-            $('.trending_topics_local').html('Local (' + data.geo.city + ')');
-            globals.twitterClient.get_trending_topics(ui.TrendingTopicsView.woeid, success);
-        });
-    } else {
-        globals.twitterClient.get_trending_topics(ui.TrendingTopicsView.woeid, success);
-    }
-    return 1; // There are always trend topics
-},
-
-get_trending_topics_worldwide:
-function get_trending_topics_worldwide(view, success, fail) {
-    globals.twitterClient.get_trending_topics(1, success);
-    return 1; // There are always trend topics
-},
-
-get_trending_topics_success:
-function get_trending_topics_success(self, json) {
-    var trend_list = json[0].trends;
-    var i = 1;
-    for (trend_name in trend_list) {
-        var m = ui.Template.trending_topic_m;
-        m.ID = i;
-        m.NAME = trend_list[trend_name].name;
-        self._body.append(ui.Template.render(ui.Template.trending_topic_t, m));
-        i++;
-    }
-    ui.Main.bind_tweet_action(self._body);
-},
 
 switch_sub_view:
 function switch_sub_view(view, name) {

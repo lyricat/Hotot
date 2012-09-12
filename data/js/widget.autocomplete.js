@@ -1,3 +1,5 @@
+// widget.autocomplete.js - user name autocomplete
+
 if (typeof(widget) == 'undefined') widget = {}
 function WidgetAutoComplete(obj) {
     var self = this;
@@ -19,15 +21,24 @@ function WidgetAutoComplete(obj) {
         clearInterval(self.timer);
         if (key_code == 13) {
             if (self._inDetecting) {
+                // Do username autocompletion because user pressed enter.
                 var selectedItem = self.candidate.children('.selected');
                 if (selectedItem.length != 0) {
-                    self.competeName(
-                        selectedItem.text().substring(self.inputText.length)
+                    // At this point self.inputText is the part of the
+                    // user name that already has been typed (but with
+                    // some strange casing).  selectedItem.text() is
+                    // the username to be autocompleted.
+                    self.replaceName(
+                        selectedItem.text(), self.inputText.length 
                     );
                 }
                 self.stopDetecting();
                 return false;
             }
+        }
+        
+        if (event.keyCode == 27) { // esc
+            self.candidate.hide();
         }
 
         if (key_code == 32) {
@@ -121,8 +132,13 @@ function WidgetAutoComplete(obj) {
             }
             self.candidate.show();
             self.candidate.children('li').click(function (event) {
-                var append = $(this).text().substring(self.inputText.length); 
-                self.competeName(append);
+                // Do username autocompletion because user clicked
+                // a name from the list
+
+                // self.inputText is the part of the name that has 
+                // already be entered. $(this).text() is the username
+                // to be autocompleted.
+                self.replaceName($(this).text(), self.inputText.length);
                 self.stopDetecting();
             });
             if (self.candidate.children('.selected').length === 0){
@@ -133,6 +149,9 @@ function WidgetAutoComplete(obj) {
         // self.filter(self.inputText, handleResult);
     };
 
+    // This function does the actual autocomplete for user names.
+    // 'append' is the part that is to be added to the part that
+    // has already been typed
     self.competeName = function competeName(append) {
         var text = self._me.val();
         var curPos = self.getCursorPos();
@@ -142,6 +161,25 @@ function WidgetAutoComplete(obj) {
         self._me.get(0).selectionStart = curPos + append.length;
         self._me.get(0).selectionEnd = curPos + append.length;
     };
+
+    // This function replaces the last nChars of the text of the
+    // calling window by name. This keeps the casing of name intact
+    // (see #371)
+    self.replaceName = function(name, nChars) {
+        var text = self._me.val();  // the current text
+        var curPos = self.getCursorPos();  // location of the cursor
+        var namePos = curPos - nChars;  // location for autocompleted name
+
+        self._me.val(
+            text.substr(0, namePos)
+                + name + text.substring(curPos));
+       
+        // Not sure what the following lines do; I just copied and
+        // adapted them from competeName.
+ 
+        self._me.get(0).selectionStart = namePos + name.length;
+        self._me.get(0).selectionEnd = namePos + name.length;
+    }
 
     self.filter = function filter(text, callback) {
         db.get_screen_names_starts_with(text,
@@ -177,6 +215,10 @@ function WidgetAutoComplete(obj) {
         }
         return pos;
     },
+
+    self.hide = function hide() {
+        self.candidate.hide();
+    }
 
     self.init(obj);
 }

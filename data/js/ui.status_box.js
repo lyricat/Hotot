@@ -1,3 +1,5 @@
+// ui.status_box.js - contains the logic for the status update dialog box
+
 if (typeof ui == 'undefined') var ui = {};
 ui.StatusBox = {
 
@@ -37,6 +39,7 @@ function get_status_len(status_text) {
     return status_text.replace(ui.Template.reg_link_g, rep_url).length
 },
 
+// This inits all jquery events for the status update dialog box
 init:
 function init () {
     $('#btn_update').click(function(event){
@@ -49,24 +52,28 @@ function init () {
         }
 
         if (ui.StatusBox.get_status_len(status_text) > 140) {
-            toast.set('hotot I have super power to compress ...').show();
-            globals.network.do_request('POST', 
-                'http://hotot.in/create.json', 
-                { 
-                    'text': status_text,
-                    'name': globals.myself.screen_name,
-                    'avatar': globals.myself.profile_image_url
-                },
-                {},
-                null,
-                function (result) {
-                    if (result && result.text) {
-                        ui.StatusBox.update_status(result.text);
-                    } 
-                },
-                function () {
-                    toast.set('but I failed :( ...').show();
-                });
+            if (!conf.get_current_profile().preferences.auto_longer_tweet) {
+                toast.set(_('status_is_over_140_characters')).show();
+            } else {
+                toast.set('hotot I have super power to compress ...').show();
+                globals.network.do_request('POST', 
+                    'http://hotot.in/create.json', 
+                    { 
+                        'text': status_text,
+                        'name': globals.myself.screen_name,
+                        'avatar': globals.myself.profile_image_url
+                    },
+                    {},
+                    null,
+                    function (result) {
+                        if (result && result.text) {
+                            ui.StatusBox.update_status(result.text);
+                        } 
+                    },
+                    function () {
+                        toast.set('but I failed :( ...').show();
+                    });
+            }
             return ;
         }
         if (status_text.length != 0) {
@@ -134,7 +141,7 @@ function init () {
             ui.ImageUploader.show();
         } else {
             title = 'Error !'
-            content = '<p>Basic Auth is not supported, Please use OAuth to upload images.</p>'
+            content = '<p data-i18n-text="basic_auth_not_supported">Basic Auth is not supported, Please use OAuth to upload images.</p>'
             widget.DialogManager.alert(title, content); 
         }
         return false;
@@ -235,7 +242,8 @@ function init () {
 
     ui.StatusBox.reg_fake_dots = new RegExp('(\\.\\.\\.)|(。。。)', 'g');
     ui.StatusBox.reg_fake_dots2 = new RegExp('(…\\.+)|(…。+)', 'g');
-    
+
+    // setup autocomplete for user name
     widget.autocomplete.connect($('#tbox_status'));
     widget.autocomplete.connect($('#tbox_dm_target'));
 

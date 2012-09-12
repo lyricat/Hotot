@@ -314,6 +314,7 @@ function init(callback) {
     globals.twitterClient.network = globals.network;
     globals.twitterClient.oauth = new lib.OAuth();
     globals.twitterClient.oauth.network = globals.network;
+    globals.readLaterServ = new ReadLaterServ();
     var procs = [];
     procs.push(function() {
         db.init(function () {
@@ -648,7 +649,7 @@ function on_load_finish() {
     // if native_platform
     //      wait until the webview is ready.
     if (util.is_native_platform() && globals.load_flags == 0) {
-        setTimeout(on_load_finish, 100);
+        setTimeout(on_load_finish, 1000);
     } else {
         hotot_log('init', 'on_load_finish()');
         globals.load_flags = 1;
@@ -660,19 +661,20 @@ function on_load_finish() {
                 $(window).dequeue('_on_load_finish');
             });
         });
-        procs.push(function() {
-            hotot_log('init', 'on_load_finish() -> ext.load_exts();');
-            ext.load_exts('extra', ext.extras, function () {
-                $(window).dequeue('_on_load_finish');
+        if (util.is_native_platform()) {
+            procs.push(function() {
+                hotot_log('init', 'on_load_finish() -> ext.load_exts();');
+                ext.load_exts('extra', ext.extras, function () {
+                    $(window).dequeue('_on_load_finish');
+                });
             });
-        });
+        }
         // init enabled extensions
         procs.push(function () {
             hotot_log('init', 'on_load_finish() -> ext.init_exts();');
             ext.init_exts();
             $(window).dequeue('_on_load_finish');
         });
-
         // 2. push settings to native platform
         if (util.is_native_platform()) {
             procs.push(function () {

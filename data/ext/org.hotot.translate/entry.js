@@ -179,27 +179,34 @@ function do_translate_selection(dst_lang) {
 do_translate:
 function do_translate(dst_lang, text, callback) {
     var url = 'http://translate.google.com/translate_a/t?client=t&text=' + encodeURIComponent(text) + '&hl=' + dst_lang + '&sl=auto&tl=' + dst_lang + '&multires=1&otf=2&ssel=0&tsel=0&uptl=' + dst_lang + '&alttl=en&sc=1';
+    var processData = function (data) {
+        var result = {};
+        result.responseData = {};
+        var res = JSON.parse(data.replace(/,,+/g, ','));
+        var translatedText = '';
+        if (res[0]) {
+            for (var i = 0; i < res[0].length; i += 1) {
+                translatedText += res[0][i][0];
+            }
+        }
+        result.lang = res[1];
+        result.responseStatus = 200;
+        result.responseData.translatedText = translatedText;
+        callback(result);
+    }
     $.ajax({
         url: url,
         success: function(data, textStatus, jqXHR) {
-            var result = {};
-            result.responseData = {};
-            var res = JSON.parse(data.replace(/,,+/g, ','));
-            var translatedText = '';
-            if (res[0]) {
-                for (var i = 0; i < res[0].length; i += 1) {
-                    translatedText += res[0][i][0];
-                }
-            }
-            result.lang = res[1];
-            result.responseStatus = 200;
-            result.responseData.translatedText = translatedText;
-            callback(result);
+            processData(data);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            var data = {};
-            data.responseDetails = 'Err...';
-            callback(data);
+            if (jqXHR.status === 200) {
+                processData(jqXHR.responseText);
+            } else {
+                var data = {};
+                data.responseDetails = 'Err...';
+                callback(data);
+            }
         }
     });
 },
@@ -226,7 +233,7 @@ function do_translate_tweet(li_id, dst_lang) {
             text.after(
                 '<div class="hotot_translate" style="background-color:rgba(0,0,0,0.1); padding: 5px; border-radius: 5px;">'+content+'</div>');
         } else {
-            ht.text(content);
+            ht.html(content);
         }
     });
 },

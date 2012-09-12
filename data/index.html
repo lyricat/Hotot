@@ -35,6 +35,7 @@
     <script type="text/javascript" src="js/kismet.js"></script>
     <script type="text/javascript" src="js/toast.js"></script>
     <script type="text/javascript" src="js/notification.js"></script>
+    <script type="text/javascript" src="js/readlater.js"></script>
     <script type="text/javascript" src="js/daemon.js"></script>
 
     <script type="text/javascript" src="js/ui.header.js"></script>
@@ -49,7 +50,6 @@
     <script type="text/javascript" src="js/ui.mention_tabs.js"></script>
     <script type="text/javascript" src="js/ui.dm_tabs.js"></script>
     <script type="text/javascript" src="js/ui.peopleview.js"></script>
-    <script type="text/javascript" src="js/ui.trending_topicsview.js"></script>
     <script type="text/javascript" src="js/ui.listview.js"></script>
     <script type="text/javascript" src="js/ui.searchview.js"></script>
     <script type="text/javascript" src="js/ui.pin_dlg.js"></script>
@@ -77,7 +77,7 @@
 <div id="welcome_page" class="page">
 	<h1 data-i18n-text="hotot">Hotot</h1>
 	<div id="welcome_idicators">
-		<a id="btn_welcome_about" title="Help" href="javascript:void(0)" data-i18n-text="help">Help</a>
+		<a id="btn_welcome_about" title="Help" href="#" data-i18n-text="help">Help</a>
 		<select id="sel_welcome_lang" class="combo dark"
 				title="Select a language"
 				style="height: 24px; line-height: 24px; width: 100px;"
@@ -107,19 +107,19 @@
 	</div>
 	<div id="welcome_page_main">
 		<ul id="profile_avatar_list">
-			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0"></a></li>
+			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0" data-i18n-title="create_a_new_profile"></a></li>
 		</ul>
 		<h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
 		<div id="sign_in_block">
 			<div class="inner">
-				<a class="go" href="javascript:void(0)"></a>
+				<a class="go" href="#"></a>
 				<div class="profile_title"></div>
 				<div id="service_page_twitter" class="service_tabs_page">
 					<p style="font-style: italic;">
 					<label id="access_token_status_hint" class="label" data-i18n-text="access_token_doesnt_exist">Access token doesn't exist.</label>
 					</p>
 					<p style="font-size: 10px; text-transform:uppercase">
-					<a id="clear_token_btn" style="color:red; text-decoration:none;" title="Clear token" href="javascript:void(0)" data-i18n-text="clear_token">clear token</a>
+					<a id="clear_token_btn" style="color:red; text-decoration:none;" title="Clear token" href="#" data-i18n-text="clear_token">clear token</a>
 					</p>
 				</div>
 
@@ -139,8 +139,8 @@
 			</div> <!-- END of #sign_in_block .inner -->
 			<div style="clear:both"></div>
 			<div class="bottom">
-				<a id="btn_welcome_delete_profile" title="Delete this account" href="javascript:void(0)" data-i18n-text="delete">Delete</a>
-				<a id="btn_welcome_prefs" title="Preferences" href="javascript:void(0)" data-i18n-text="preferences">Preferences</a>
+				<a id="btn_welcome_delete_profile" title="Delete this account" href="#" data-i18n-text="delete">Delete</a>
+				<a id="btn_welcome_prefs" title="Preferences" href="#" data-i18n-text="preferences">Preferences</a>
 			</div>
 		</div><!-- END of #sign_in_block -->
 	</div><!-- END of #welcome_page_main -->
@@ -156,42 +156,42 @@
 	<div id="main_page_slider">
 	</div>
 	<div id="empty_view_hint">
-		<h2>Hey!</h2>
-		<p>You don't have a view.</p>
-		<p>You should surely add one or more views by clicking the "Add" button above.</p>
+		<h2 data-i18n-text="hey">Hey!</h2>
+		<p data-i18n-text="you_dont_have_a_view">You don't have a view.</p>
+		<p data-i18n-text="you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above">You should surely add one or more views by clicking the "Add" button above.</p>
 	</div>
 	<ul id="tweet_more_menu" class="hotot_menu">
 		<li><a id="tweet_alt_retweet_btn" class="tweet_retweet tweet_more_menu_btn"
 			title="Retweet this tweet"
-			href="javascript:void(0);"
+			href="#"
 			data-i18n-text="retweet"
 			>Retweet</a></li>
 		<li><a id="tweet_rt_btn" class="tweet_rt tweet_more_menu_btn"
 			title="Quote this tweet"
-			href="javascript:void(0);"
+			href="#"
 			data-i18n-text="quote"
 			>Quote</a></li>
 		<li><a id="tweet_reply_all_btn"
 			class="tweet_more_menu_btn"
-			href="javascript:void(0);"
+			href="#"
 			title="Reply All"
 			data-i18n-text="reply_all"
 			>Reply All</a></li>
 		<li><a id="tweet_alt_reply_btn" class="tweet_reply tweet_more_menu_btn"
 			title="Reply this tweet"
-			href="javascript:void(0);"
+			href="#"
 			data-i18n-text="reply"
 			>Reply</a></li>
 		<li><a id="tweet_dm_btn"
 			class="tweet_more_menu_btn"
-			href="javascript:void(0);"
+			href="#"
 			title="Send Message to them"
 			data-i18n-text="send_message"
 			>Send Message</a></li>
 		<li>
 		<a id="tweet_del_btn"
 			class="tweet_more_menu_btn"
-			href="javascript:void(0);"
+			href="#"
 			title="Delete this tweet"
 			data-i18n-text="delete"
 			>Delete</a>
@@ -200,7 +200,7 @@
 		<li>
 		<a id="tweet_set_color_btn"
 			class="tweet_more_menu_btn"
-			href="javascript:void(0);"
+			href="#"
 			title="Set color label to the sender"
 			data-i18n-text="label_with_color"
 			>Label with color</a>
@@ -208,14 +208,22 @@
 		<li>
 		<a id="tweet_filter_btn"
 			class="tweet_more_menu_btn"
-			href="javascript:void(0);"
+			href="#"
 			title="Filter this tweet"
 			data-i18n-text="filter_tweets_like_it"
 			>Filter tweets like it</a>
 		</li>
+		<li>
+		<a id="tweet_readlater_btn"
+			class="tweet_more_menu_btn"
+			href="#"
+			title="Read Later"
+			data-i18n-text="read_later"
+			>Read Later</a>
+		</li>
 		<li class="separator"><span></span></li>
 	</ul>
-	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="javascript:void(0);"></a>
+	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="#" data-i18n-title="your_profile"></a>
 </div>
 </section><!-- center -->
 <section id="header">
@@ -223,7 +231,7 @@
     <div id="indication">
         <div id="indicator_btns">
             <div class="stick_left">
-                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
+                <a id="hotot_button" class="indicator_btn action_button" href="#hotot" title="Click to expand menu" data-i18n-title="click_to_expand_menu"><span class="icon ic_hotot" style="margin-top: 6px;"></span></a>
             </div>
             <div class="stick_left" style="width: 150px; left: 40px;">
 							<a id="indicator_compose_btn"
@@ -247,67 +255,67 @@
     <div id="view_title_bar">
         <div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div><div class="view_title">
             <span class="title"></span>
-            <a href="javascript:void(0)" class="close_btn ic_close"></a>
-            <a href="javascript:void(0)" class="setting_btn ic_gear"></a>
+            <a href="#" class="close_btn ic_close"></a>
+            <a href="#" class="setting_btn ic_gear"></a>
         </div>
     </div>
     <div id="hotot_menu">
         <div id="sys_menu_frame">
             <ul id="sys_menu" class="hotot_menu">
                 <li>
-                    <a id="btn_prefs" title="Preferences" href="javascript:void(0);" data-i18n-text="preferences">Preferences</a>
+                    <a id="btn_prefs" title="Preferences" href="#" data-i18n-text="preferences">Preferences</a>
                 </li><li>
-                    <a id="btn_kismet" title="Kismet Firewall" href="javascript:void(0);" data-i18n-text="kismet_firewall">Kismet Firewall</a>
+                    <a id="btn_kismet" title="Kismet Firewall" href="#" data-i18n-text="kismet_firewall">Kismet Firewall</a>
                 </li><li>
-                    <a id="btn_about" title="About & Help" href="javascript:void(0);" data-i18n-text="about_and_help">About &amp; Help</a>
+                    <a id="btn_about" title="About & Help" href="#" data-i18n-text="about_and_help">About &amp; Help</a>
                 </li>
                 <li class="separator"><span></span></li>
                 <li>
-                     <a id="btn_sign_out" title="Sign out" href="javascript:void(0);" data-i18n-text="sign_out">Sign out</a>
+                     <a id="btn_sign_out" title="Sign out" href="#" data-i18n-text="sign_out">Sign out</a>
                 </li>
             </ul>
         </div>
@@ -315,7 +323,7 @@
             <h2 style="padding: 5px 0; margin-left: 5px;" data-i18n-text="extensions">Extensions</h2>
             <ul id="exts_menu" class="hotot_menu">
                 <li id="exts_menu_empty_hint">
-                    <a title="No Extension" href="javascript:void(0);" data-i18n-text="no_extension">No Extension</a>
+                    <a title="No Extension" href="#" data-i18n-text="no_extension">No Extension</a>
                 </li>
             </ul>
         </div>
@@ -340,9 +348,6 @@
             <a href="#search" data-i18n-text="search_view">Search view</a>
         </li>
         <li>
-            <a href="#trending_topics" data-i18n-text="trending_topics_view">Trending topics view</a>
-        </li>
-        <li>
             <a href="#people" data-i18n-text="open_a_profile_dots">Open a Profile...</a>
         </li>
         <li>
@@ -357,16 +362,18 @@
 
 </div><!-- container -->
 
+<!-- The section below is the definition of the 'dialog' where you enter a new status.
+     The scripts for this dialog are in data/js/ui.status_box.js -->
 <section id="status_box" class="closed dialog">
   <div class="dialog_bar">
     <h2 class="dialog_title" data-i18n-text="compose">Compose</h2>
-    <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+    <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
   </div>
   <div class="dialog_container">
     <div class="dialog_header"></div>
     <div class="dialog_body">
 			<div class="reply_status_info status_info">
-				<span class="label" data-i18n-text="reply">Replay</span>
+				<span class="label" data-i18n-text="reply">Reply</span>
 				<span class="who"></span>
 				<span class="quote"></span>
 			</div>
@@ -375,65 +382,65 @@
 				<input type="text" id="tbox_dm_target" class="mochi_entry" value="">
 			</div>
 			<div id="status_image_preview_wrapper">
-				<a href="javascript:void(0)" class="close_btn ic_close"></a>
+				<a href="#" class="close_btn ic_close"></a>
 				<div id="status_image_preview"></div>
 			</div>
 			<div id="tbox_status_wrapper" class="mochi_textarea">
 					<textarea id="tbox_status" class="closed" placeholder="Type or drag a photo here." data-i18n-placeholder="type_or_drag_a_photo_here"></textarea>
 					<div id="status_smiley">
 							<div id="status_smiley_header">
-									<a href="javascript:void(0)" class="close_btn ic_close"></a>
+									<a href="#" class="close_btn ic_close"></a>
 							</div>
 							<div id="status_smiley_inner">
-							<a href="javascript:void(0)" class="smiley smiley_smile">:)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">:(</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">:D</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">;)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">:P</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">:'(</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">:O</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">8)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">^_^</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">^o^</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">T_T</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&gt;_&lt;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">^_&lt;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">x_x</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">@_@</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">O_o</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">-_-#</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">-_-b</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x2267;^&#x25E1;^&#x2266;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#xFF1E;&#xFE4F;&#xFF1C;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x256E;&#xFF08;&#x256F;&#xFF3F;&#x2570;&#xFF09;&#x256D;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#x2267;&#x25BD;&#x2266;)y </a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">m(_ _)m</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#x3064;&#x0434;C)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x03A3;(&#x3063;°&#x0434;°)&#x3063;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x2261;(&#x2594;&#xFE4F;&#x2594;)&#x2261;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(-''-)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x25D5;&#x203F;&#x203F;&#x25D5;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x25D5;&#x203F;&#x25D5;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x25E1;&#x203F;&#x25E1;&#x273F;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x273F;&#x25E0;&#x203F;&#x25E0;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(^&#x03C9;^)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#xFF9F;&#x2200;&#xFF9F;) </a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#x25E3;_&#x25E2;)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x2299;&#xFE4F;&#x2299;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x2299;_&#x2609;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x1F78;.&#x1F79;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x1F79;,&#x1F78;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#x25A2;_&#x25A2;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#xFFE3;(&#x5DE5;)&#xFFE3;)</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#x256C;&#xFFE3;&#x76BF;&#xFFE3;)&#x51F8; </a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#xFF0F;&#x4EBA;&#x25D5;&#x203F;&#x25D5;&#x4EBA;&#xFF3C;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">&#xFF08;&#x256F;&#x2035;&#x25A1;&#x2032;&#xFF09;&#x256F;&#xFE35;&#x2534;&#x2500;&#x2534;</a>
-							<a href="javascript:void(0)" class="smiley smiley_smile">(&#xFFE3;&#x03B5;(#&#xFFE3;)&#x2606;((O==(&#xFFE3;&#x25BD;&#xFFE3;)o</a>
+							<a href="#" class="smiley smiley_smile">:)</a>
+							<a href="#" class="smiley smiley_smile">:(</a>
+							<a href="#" class="smiley smiley_smile">:D</a>
+							<a href="#" class="smiley smiley_smile">;)</a>
+							<a href="#" class="smiley smiley_smile">:P</a>
+							<a href="#" class="smiley smiley_smile">:'(</a>
+							<a href="#" class="smiley smiley_smile">:O</a>
+							<a href="#" class="smiley smiley_smile">8)</a>
+							<a href="#" class="smiley smiley_smile">^_^</a>
+							<a href="#" class="smiley smiley_smile">^o^</a>
+							<a href="#" class="smiley smiley_smile">T_T</a>
+							<a href="#" class="smiley smiley_smile">&gt;_&lt;</a>
+							<a href="#" class="smiley smiley_smile">^_&lt;</a>
+							<a href="#" class="smiley smiley_smile">x_x</a>
+							<a href="#" class="smiley smiley_smile">@_@</a>
+							<a href="#" class="smiley smiley_smile">O_o</a>
+							<a href="#" class="smiley smiley_smile">-_-#</a>
+							<a href="#" class="smiley smiley_smile">-_-b</a>
+							<a href="#" class="smiley smiley_smile">&#x2267;^&#x25E1;^&#x2266;</a>
+							<a href="#" class="smiley smiley_smile">&#xFF1E;&#xFE4F;&#xFF1C;</a>
+							<a href="#" class="smiley smiley_smile">&#x256E;&#xFF08;&#x256F;&#xFF3F;&#x2570;&#xFF09;&#x256D;</a>
+							<a href="#" class="smiley smiley_smile">(&#x2267;&#x25BD;&#x2266;)y </a>
+							<a href="#" class="smiley smiley_smile">m(_ _)m</a>
+							<a href="#" class="smiley smiley_smile">(&#x3064;&#x0434;C)</a>
+							<a href="#" class="smiley smiley_smile">&#x03A3;(&#x3063;°&#x0434;°)&#x3063;</a>
+							<a href="#" class="smiley smiley_smile">&#x2261;(&#x2594;&#xFE4F;&#x2594;)&#x2261;</a>
+							<a href="#" class="smiley smiley_smile">(-''-)</a>
+							<a href="#" class="smiley smiley_smile">&#x25D5;&#x203F;&#x203F;&#x25D5;</a>
+							<a href="#" class="smiley smiley_smile">&#x25D5;&#x203F;&#x25D5;</a>
+							<a href="#" class="smiley smiley_smile">&#x25E1;&#x203F;&#x25E1;&#x273F;</a>
+							<a href="#" class="smiley smiley_smile">&#x273F;&#x25E0;&#x203F;&#x25E0;</a>
+							<a href="#" class="smiley smiley_smile">(^&#x03C9;^)</a>
+							<a href="#" class="smiley smiley_smile">(&#xFF9F;&#x2200;&#xFF9F;) </a>
+							<a href="#" class="smiley smiley_smile">(&#x25E3;_&#x25E2;)</a>
+							<a href="#" class="smiley smiley_smile">&#x2299;&#xFE4F;&#x2299;</a>
+							<a href="#" class="smiley smiley_smile">&#x2299;_&#x2609;</a>
+							<a href="#" class="smiley smiley_smile">&#x1F78;.&#x1F79;</a>
+							<a href="#" class="smiley smiley_smile">&#x1F79;,&#x1F78;</a>
+							<a href="#" class="smiley smiley_smile">&#x25A2;_&#x25A2;</a>
+							<a href="#" class="smiley smiley_smile">(&#xFFE3;(&#x5DE5;)&#xFFE3;)</a>
+							<a href="#" class="smiley smiley_smile">(&#x256C;&#xFFE3;&#x76BF;&#xFFE3;)&#x51F8; </a>
+							<a href="#" class="smiley smiley_smile">&#xFF0F;&#x4EBA;&#x25D5;&#x203F;&#x25D5;&#x4EBA;&#xFF3C;</a>
+							<a href="#" class="smiley smiley_smile">&#xFF08;&#x256F;&#x2035;&#x25A1;&#x2032;&#xFF09;&#x256F;&#xFE35;&#x2534;&#x2500;&#x2534;</a>
+							<a href="#" class="smiley smiley_smile">(&#xFFE3;&#x03B5;(#&#xFFE3;)&#x2606;((O==(&#xFFE3;&#x25BD;&#xFFE3;)o</a>
 					</div>
 					</div>
 			</div>
 			<details id="status_drafts">
-					<summary class="sub_label">Drafts</summary>
+					<summary class="sub_label" data-i18n-text="drafts">Drafts</summary>
 					<p><ul></ul></p>
 			</details> <!-- #status_drafts -->
 			<div id="status_ctrl">
@@ -462,9 +469,9 @@
     <input type="text" class="entry" id="tbox_finder"/>
     <label for="tbox_finder" class="label"
         id="finder_matched_info"></label>
-    <a id="btn_finder_prev" title="Previous" href="javascript:void(0);"></a>
-    <a id="btn_finder_next" title="Next" href="javascript:void(0);"></a>
-    <a id="btn_finder_close" title="Close" href="javascript:void(0);"></a>
+    <a id="btn_finder_prev" title="Previous" href="#" data-i18n-title="previous"></a>
+    <a id="btn_finder_next" title="Next" href="#" data-i18n-title="next"></a>
+    <a id="btn_finder_close" title="Close" href="#" data-i18n-title="close"></a>
     </div>
 </section>
 
@@ -476,7 +483,7 @@
     <div class="dialog_bar">
 				<a id="btn_prefs_back" href="#prefs_main" style="display: none" class="mochi_button blue page_nav">Back</a>
         <h2 class="dialog_title" data-i18n-text="preferences">Preferences</h2>
-        <a id="btn_prefs_ok" class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a id="btn_prefs_ok" class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -514,9 +521,9 @@
 						</li>
 						<li class="mochi_list_item">
 							<select id="sel_prefs_theme" class="mochi_combo widget"
-								title="Select a theme">
-								<option value="New Hope">A New Hope</option>
-								<option value="Classic">Classic</option>
+								title="Select a theme" data-i18n-title="select_a_theme">
+								<option value="New Hope" data-i18n-text="a_new_hope">A New Hope</option>
+								<option value="Classic" data-i18n-text="classic">Classic</option>
 							</select>
 							<label class="label" data-i18n-text="themes">Themes</label>
 						</li>
@@ -616,6 +623,15 @@
 					</ul>
 					<ul class="mochi_list">
             <li class="mochi_list_item">
+							<input id="chk_prefs_auto_longer_tweet"
+									title="Compress tweet use hotot.in service if the tweet contains more than 140 charactors."
+									class="mochi_toggle widget"
+									type="checkbox" data-i18n-title="compress_tweet"/>
+							<label for="chk_prefs_auto_longer_tweet"
+									class="label"
+									data-i18n-text="auto_longer_tweet"
+									>Automated longer tweet.</label>
+						</li><li class="mochi_list_item">
 							<input id="chk_prefs_use_preload_conversation"
 									title="Preload latest tweet in a conversation if it is cached."
 									class="mochi_toggle widget"
@@ -647,7 +663,7 @@
 								class="mochi_combo widget"
 								title="Select a default picture service"
 								data-i18n-title="select_a_default_picture_service">
-								<option value="twitter.com">Twitter Official Service</option>
+								<option value="twitter.com" data-i18n-text="twitter_official_service">Twitter Official Service</option>
 								<option value="img.ly">Img.ly</option>
 								<option value="twitpic.com">Twitpic.com</option>
 								<option value="lockerz.com">Lockerz.com</option>
@@ -656,6 +672,48 @@
 								class="label">Default Picture Service</label>
             </li>
           </ul>
+					<ul class="mochi_list">
+            <li class="mochi_list_item">
+							<input id="chk_prefs_use_readlater_serv"
+									title="Use Read Later service."
+									class="mochi_toggle widget"
+									type="checkbox"/>
+							<label for="chk_prefs_use_readlater_serv"
+									class="label"
+									data-i18n-text="use_read_later_service"
+									>Use Read Later Service.</label>
+            </li><li class="mochi_list_item">
+              <select id="sel_prefs_readlater_service"
+								class="mochi_combo widget"
+								title="Select a default picture service"
+								data-i18n-title="select_a_read_later_service">
+								<option value="pocket">Pocket</option>
+								<option value="instapaper">Instapaper</option>
+              </select>
+							<label data-i18n-text="read_later_service"
+								class="label">Read Later Service</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_readlater_username"
+									title="Username of service"
+									placeholder="Username"
+									data-i18n-placeholder="username"
+									type="text" class="mochi_entry widget"/>
+							<label for="tbox_prefs_readlater_username"
+									class="label" data-i18n-text="username">
+									Username
+							</label>
+						</li><li class="mochi_list_item">
+							<input id="tbox_prefs_readlater_password"
+									title="HTTP Proxy Authentication Password"
+									placeholder="Password"
+									data-i18n-placeholder="password"
+									type="password" class="mochi_entry widget"/>
+							<label for="tbox_prefs_readlater_password"
+									class="label" data-i18n-text="password">
+									Password
+							</label>
+            </li>
+					</ul>
         </div><!-- END of prefs_behavior-->
 				<div id='prefs_system' class="prefs_dlg_page dialog_page">
           <div class="dialog_block hint"
@@ -896,7 +954,7 @@
 <div id="oauth_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="first_time_to_sign_in_with_twitter">First time to Sign in with Twitter</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -928,8 +986,8 @@
         </div>
     </div>
     <div class="dialog_footer">
-    <a id="btn_oauth_pin_cancel" class="mochi_button" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="btn_oauth_pin_ok" class="mochi_button blue" title="OK" href="javascript:void(0);" data-i18n-text="ok">OK</a>
+    <a id="btn_oauth_pin_cancel" class="mochi_button" title="Cancel" href="#" data-i18n-text="cancel">Cancel</a>
+    <a id="btn_oauth_pin_ok" class="mochi_button blue" title="OK" href="#" data-i18n-text="ok">OK</a>
     </div>
     </div><!-- END of .dialog_container -->
 </div>
@@ -938,7 +996,7 @@
 <div id="about_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="about_and_help">About &amp; Help</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -968,23 +1026,23 @@
 						<h3><span data-i18n-text="hotot">Hotot</span>
                 - version <span class="version"></span>
             </h3>
-            <p>
+            <p data-i18n-text="hotot_description">
             <strong data-i18n-text="hotot">Hotot</strong> is a lightweight client for the <a target="_blank" href="http://twitter.com">twitter</a> microblogging service.
             </p>
             <p style="text-align:center;">Copyright © 2009-2012 Shellex Wai</p>
-            <p>
+            <p data-i18n-text="project_host">
             Project Host: <a target="_blank" href="https://github.com/shellex/Hotot/">https://github.com/shellex/Hotot/</a>
             </p>
-            <p>Project Site: <a target="_blank" href="http://hotot.org">http://hotot.org</a></p>
+            <p data-i18n-text="project_site">Project Site: <a target="_blank" href="http://hotot.org">http://hotot.org</a></p>
             </div>
 
             <div class="dialog_block">
 						<h3><span data-i18n-text="donate">Hotot Need Your Help</span></h3>
-						<p>To keep Hotot alive and improving, we really need your help.</p>
+						<p data-i18n-text="donate_hint1">To keep Hotot alive and improving, we really need your help.</p>
 						<p style="text-align:center;">
 							<a class="mochi_button blue" target="_blank" href="http://hotot.org/about#donate">Donate!</a>
 						</p>
-						<p>Considering a larger gift to support our work? please contact: 5h3ll3x@gmail.com</p>
+						<p data-i18n-text="donate_hint2">Considering a larger gift to support our work? please contact: 5h3ll3x@gmail.com</p>
 						</div>
         </div>
         <div id="about_keyboard" class="about_dlg_page">
@@ -1029,7 +1087,7 @@
             <div class="dialog_block">
             <h3 data-i18n-text="credits">Credits</h3>
             <p>
-                <label>Written by</label>:<br/>
+                <label data-i18n-text="written_by">Written by</label>:<br/>
                 - Shellex Wai &lt;<a target="_blank" href="mailto:5h3ll3x@gmail.com">5h3ll3x@gmail.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/shellex">@shellex</a>)<br/>
 
@@ -1046,13 +1104,13 @@
 
             </p>
             <p>
-                <label>Artwork by</label>: <br/>
+                <label data-i18n-text="artwork_by">Artwork by</label>: <br/>
                 - Evan &lt;<a target="_blank" href="http://www.freemagi.com">www.freemagi.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
                 - Shellex Wai <br/>
             </p>
             <p>
-                <label>Pushed by</label>: <br/>
+                <label data-i18n-text="supervised_by">Pushed by</label>: <br/>
                 - Marguerite Su &lt;<a target="_blank" href="mailto:i@marguerite.su">i@marguerite.su</a>&gt;
                 (<a target="_blank" href="http://twitter.com/doublechou">@doublechou</a>)<br/>
 
@@ -1062,19 +1120,19 @@
         <div id="about_license" class="about_dlg_page">
             <div class="dialog_block">
             <h3 data-i18n-text="license">License</h3>
-            <p>
+            <p data-i18n-text="license_text1">
 Hotot package is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 Licenseas published by the Free Software Foundation; either
 version3 of the License, or (at your option) any later version.
             </p>
-            <p>
+            <p data-i18n-text="license_text2">
 This package is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 Lesser General Public License for more details.
             </p>
-            <p>
+            <p data-i18n-text="license_text3">
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <a target="_blank" href="http://www.gnu.org/licenses/"/>http://www.gnu.org/licenses/</a>.
             </p>
@@ -1091,14 +1149,14 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="profile_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="profile">Profile</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
         <div style="position: relative; height: 48px">
         <div id="profile_avatar" class="profile_img_wrapper" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px;-webkit-box-reflect:none;margin:0;"></div>
         <input id="btn_change_profile_avatar" type="file" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px; z-index: 10; cursor: pointer; opacity: 0;"/>
-        <p style="position: absolute; left: 60px; bottom: 0px;"> Change your Profile picture by clicking it.</p>
+        <p style="position: absolute; left: 60px; bottom: 0px;" data-i18n-text="change_your_profile_picture_by_clicking_it"> Change your Profile picture by clicking it.</p>
         </div>
     </div>
     <div id="profile_dlg_body" class="dialog_body">
@@ -1126,7 +1184,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="list_attr_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="list">List</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1162,7 +1220,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="add_to_list_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="list">Add to List</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1185,7 +1243,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="kismet_dialog" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="kismet_firewall">Kismet Firewall</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1203,44 +1261,44 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="mute_page kismet_page">
             <div class="dialog_block hint" data-i18n-text="kismet_mute_hint">WARNING: Tweets that have following attributes will not appear on your timeline.</div>
             <div class="dialog_block">
-                <h3>Mute by user name</h3>
+                <h3 data-i18n-text="mute_by_user_name">Mute by user name</h3>
                 <p>
-                    <input type="text" class="entry mute_name_list" placeholder="screen_name1, screen_name2"/>
+                    <input type="text" class="entry mute_name_list" placeholder="screen_name1, screen_name2" data-i18n-placeholder="screen_name1_screen_name2"/>
                 </p>
             </div>
             <div class="dialog_block">
-                <h3>Mute by containing words</h3>
+                <h3 data-i18n-text="mute_by_containing_words">Mute by containing words</h3>
                 <p>
-                    <input type="text" class="entry mute_word_list" placeholder="word1, word2"/>
+                    <input type="text" class="entry mute_word_list" placeholder="word1, word2" data-i18n-placeholder="word1_word2"/>
                 </p>
             </div>
             <div class="dialog_block">
-                <h3>Mute by source</h3>
+                <h3 data-i18n-text="mute_by_source">Mute by source</h3>
                 <p>
-                    <input type="text" class="entry mute_source_list" placeholder="client name1, client name2"/>
+                    <input type="text" class="entry mute_source_list" placeholder="client name1, client name2" data-i18n-placeholder="client_name1_client_name2"/>
                 </p>
             </div>
         </div>
         <div class="rulebased_page kismet_page">
             <div class="ctrl">
-                <a id="kismet_add_rule_btn" href="javascript:void(0)" class="mochi_button" data-i18n-text="add">Add</a>
-                <a style="display:none" href="javascript:void(0)" class="mochi_button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
+                <a id="kismet_add_rule_btn" href="#" class="mochi_button" data-i18n-text="add">Add</a>
+                <a style="display:none" href="#" class="mochi_button"><span class="icon" style="background: transparent url(./image/ic16_gear.png) no-repeat center center"></span></a>
             </div>
             <ul id="kismet_rule_list" class="rule_list">
-                <li><a href="javascript:void(0)" class="rule">aaa</a>
-                    <div class="item_ctrl"><a href="javascript:void(0)" class="mochi_button edit_btn">Edit</a><a href="javascript:void(0)" class="mochi_button delete_btn">Delete</a></div>
+                <li><a href="#" class="rule">aaa</a>
+                    <div class="item_ctrl"><a href="#" class="mochi_button edit_btn">Edit</a><a href="#" class="mochi_button delete_btn">Delete</a></div>
                 </li>
             </ul>
         </div>
         <div class="intelligent_page kismet_page">
             <div class="dialog_block">
-                <p>Not available yet :)</p>
+                <p data-i18n-text="not_avaiable_yet">Not available yet :)</p>
             </div>
         </div>
     </div> <!-- .body -->
     <div class="dialog_footer">
-    <a class="mochi_button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_save_btn" class="mochi_button blue" title="Save changes" href="javascript:void(0);" data-i18n-text="save">Save</a>
+    <a class="mochi_button dialog_close_btn" title="Cancel" href="#" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_save_btn" class="mochi_button blue" title="Save changes" href="#" data-i18n-text="save">Save</a>
     </div>
     </div>
 </div>
@@ -1248,14 +1306,14 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="kismet_rule_edit_dialog" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="rule_editor">Rule Editor</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <div class="dialog_block">
             <h3 data-i18n-text="rule_name">Rule Name</h3>
-            <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px"/></p>
+            <p><input id="kismet_rule_edit_name" class="entry" placeholder="Type a name here." value="" style="width:450px" data-i18n-placeholder="type_a_name_here"/></p>
         </div>
         <div class="dialog_block">
             <h3 data-i18n-text="rule">Rule</h3>
@@ -1266,13 +1324,13 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <summary class="sub_label" data-i18n-text="examples">Examples</summary>
         <p>
 	        <ul class="docs">
-	            <li><a href="javascript:void(0)" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">name:ABC</a>, drop tweets sent by @ABC.</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">retweet:ABC</a>, drop tweets retweeted by @ABC.</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
-	            <li><a href="javascript:void(0)" class="kismet_sample">#GossipGirl do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
+	            <li data-i18n-text="drop_tweets_contain_word_abc"><a href="#" class="kismet_sample">ABC</a>, drop tweets contain word "ABC".</li>
+	            <li data-i18n-text="drop_tweets_sent_from_foursquare"><a href="#" class="kismet_sample">via:foursquare</a>, drop tweets sent from foursquare.</li>
+	            <li data-i18n-text="drop_tweets_sent_by_abc"><a href="#" class="kismet_sample">name:ABC</a>, drop tweets sent by @ABC.</li>
+	            <li data-i18n-text="drop_tweets_retweeted_by_abc"><a href="#" class="kismet_sample">retweet:ABC</a>, drop tweets retweeted by @ABC.</li>
+	            <li data-i18n-text="drop_tweets_contain_hash_tag_nowplaying"><a href="#" class="kismet_sample">tag:nowplaying</a>, drop tweets contain hash tag #nowplaying.</li>
+	            <li data-i18n-text="notify_me_if_incoming_tweets_mention_hotot"><a href="#" class="kismet_sample">mention:hotot do:notify</a>notify me if incoming tweets mention @hotot</li>
+	            <li data-i18n-text="mask_tweets_contain_hash_tag_callmemaybe"><a href="#" class="kismet_sample">#callmemaybe do:mask</a>, mask tweets contain hash tag #GossipGirl.</li>
 	        </ul>
         </p>
         </details>
@@ -1280,44 +1338,44 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <summary class="sub_label" data-i18n-text="quick_references">Quick References</summary>
         <p>
         <ul class="docs">
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">keyword</a></h4>
+            <li><h4><a href="#" class="kismet_sample">keyword</a></h4>
                 <p>simply a keyword</p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">via:{source name}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">via:{source name}</a></h4>
                 <p>where this tweet comes form.</p>
-                <p>example: <a href="javascript:void(0)" class="kismet_sample">via:foursquare</a></p>
+                <p>example: <a href="#" class="kismet_sample">via:foursquare</a></p>
 
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">tag:{tag name}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">tag:{tag name}</a></h4>
                 <p>What hash tag contained by this tweet.</p>
-                <p>example: <a href="javascript:void(0)" class="kismet_sample">via:#FuckGFW</a></p>
+                <p>example: <a href="#" class="kismet_sample">via:#FuckGFW</a></p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">name:{screen name}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">name:{screen name}</a></h4>
                 <p>who post this tweet.</p>
-                <p>example: <a href="javascript:void(0)" class="kismet_sample">name:ABC</a></p>
+                <p>example: <a href="#" class="kismet_sample">name:ABC</a></p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">retweet:{screen name}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">retweet:{screen name}</a></h4>
                 <p>who retweet this tweet.</p>
-                <p>example: <a href="javascript:void(0)" class="kismet_sample">retweet:ABC</a></p>
+                <p>example: <a href="#" class="kismet_sample">retweet:ABC</a></p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">mention:{screen name}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">mention:{screen name}</a></h4>
                 <p>who are mentioned in this tweet.</p>
-                <p>example: <a href="javascript:void(0)" class="kismet_sample">mention:aiww</a></p>
+                <p>example: <a href="#" class="kismet_sample">mention:aiww</a></p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">has:{attribute}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">has:{attribute}</a></h4>
                 <p>what attribute this tweet has.</p>
-                <p>supported attributes: <a href="javascript:void(0)" class="kismet_sample">has:geo</a>, <a href="javascript:void(0)" class="kismet_sample">has:url</a></p>
+                <p>supported attributes: <a href="#" class="kismet_sample">has:geo</a>, <a href="#" class="kismet_sample">has:url</a></p>
             </li>
-            <li><h4><a href="javascript:void(0)" class="kismet_sample">do:{action}</a></h4>
+            <li><h4><a href="#" class="kismet_sample">do:{action}</a></h4>
                 <p>take action if all conditions are true.</p>
                 <p>supported action:
                     <ul style="list-style-type:circle; padding-left:20px;">
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:drop</a>, drop this tweet.</li>
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:mask</a>, mask this tweet.</li>
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:notify</a>, notify this tweet.</li>
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:archive</a>, archive this tweet.</li>
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
-                        <li><a href="javascript:void(0)" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:drop</a>, drop this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:mask</a>, mask this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:notify</a>, notify this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:archive</a>, archive this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:reply({text})</a>, reply this tweet.</li>
+                        <li><a href="#" class="kismet_sample">do:quote({text})</a>, quote this tweet.</li>
                     </ul>
                 </p>
             </li>
@@ -1327,9 +1385,9 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </div>
     </div><!-- .dialog_body -->
     <div class="dialog_footer">
-    <a id="kismet_rule_edit_verify" class="mochi_button" title="Verify" href="javascript:void(0);" data-i18n-text="verify">Verify</a>
-    <a class="mochi_button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_rule_edit_ok" class="mochi_button blue" title="OK" href="javascript:void(0);" data-i18n-text="ok">OK</a>
+    <a id="kismet_rule_edit_verify" class="mochi_button" title="Verify" href="#" data-i18n-text="verify">Verify</a>
+    <a class="mochi_button dialog_close_btn" title="Cancel" href="#" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_rule_edit_ok" class="mochi_button blue" title="OK" href="#" data-i18n-text="ok">OK</a>
     </div>
     </div> <!-- .dialog_container -->
 </div> <!-- #kismet_rule_edit_dialog -->
@@ -1337,7 +1395,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="kismet_guide_dialog" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="kismet_guide">Kismet Guide</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div> <!-- .dialog_header -->
@@ -1358,8 +1416,8 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         </div>
     </div><!-- .dialog_body -->
     <div class="dialog_footer">
-    <a class="mochi_button dialog_close_btn" title="Cancel" href="javascript:void(0);" data-i18n-text="cancel">Cancel</a>
-    <a id="kismet_guide_next_btn" class="mochi_button blue" title="Cancel" href="javascript:void(0);" data-i18n-text="next">Next</a>
+    <a class="mochi_button dialog_close_btn" title="Cancel" href="#" data-i18n-text="cancel">Cancel</a>
+    <a id="kismet_guide_next_btn" class="mochi_button blue" title="Cancel" href="#" data-i18n-text="next">Next</a>
     </div>
     </div> <!-- .dialog_container -->
 </div> <!-- #kismet_guide_dialog -->
@@ -1367,29 +1425,29 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="kismet_color_guide_dialog" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="label_with_color">Label with color</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div> <!-- .dialog_header -->
     <div class="dialog_body">
         <ul id="kismet_color_list">
             <li><span class="cell"></span><a href="transparent" data-i18n-text="transparent">Transparent</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="cuddly">Cuddly</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="wanna_have_relationship_with">Wanna have relationship with</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="my_journey_is_to_the_sea_of_stars">My journey is to the sea of stars</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="virushou_s_integrity">Virushuo's Integrity</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="shiny_old_times_before_marriage">Shiny old times before marriage</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="panda_acts_cute">Panda acts cute</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="schizophrenia">Schizophrenia</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="bloody_marguerite">Bloody Marguerite</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="hidden_dark_minds">Hidden Dark Minds</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="to_cold_beauty">To Cold Beauty</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="assassin_s_tango">Assassin's Tango</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="titian_s_elegance">Titian's Elegance</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="pretty_wife">Pretty Wife</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="tranquil">Tranquil</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="just_cannot_stop_thinking_of_here">Just can't stop thinking of here</a></li>
-            <li><span class="cell"></span><a href="javascript:void(0)" data-i18n-text="struggling_adventurers">Struggling adventurers</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="cuddly">Cuddly</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="wanna_have_relationship_with">Wanna have relationship with</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="my_journey_is_to_the_sea_of_stars">My journey is to the sea of stars</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="virushou_s_integrity">Virushuo's Integrity</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="shiny_old_times_before_marriage">Shiny old times before marriage</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="panda_acts_cute">Panda acts cute</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="schizophrenia">Schizophrenia</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="bloody_marguerite">Bloody Marguerite</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="hidden_dark_minds">Hidden Dark Minds</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="to_cold_beauty">To Cold Beauty</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="assassin_s_tango">Assassin's Tango</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="titian_s_elegance">Titian's Elegance</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="pretty_wife">Pretty Wife</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="tranquil">Tranquil</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="just_cannot_stop_thinking_of_here">Just can't stop thinking of here</a></li>
+            <li><span class="cell"></span><a href="#" data-i18n-text="struggling_adventurers">Struggling adventurers</a></li>
         </ul>
     </div><!-- .dialog_body -->
     <div class="dialog_footer">
@@ -1401,7 +1459,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="imageuploader_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="upload_photo">Upload Photo</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header"></div>
@@ -1425,9 +1483,9 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 						<span class="drag_hint">Or, select a photo from your computer:</span>
 						<span class="preview_hint">select a photo from your computer:</span>
             <input class="fileselector" type="file"/>
-            <a href="javascript:void(0);" class="mochi_button pyfileselector">Choose a file ...</a>
+            <a href="#" class="mochi_button pyfileselector">Choose a file ...</a>
             </p>
-            <textarea class="message textarea" placeholder="Write down descriptions here"></textarea>
+            <textarea class="message textarea" placeholder="Write down descriptions here" data-i18n-placeholder="write_down_description_here"></textarea>
         </div>
     </div>
     <div class="dialog_footer">
@@ -1447,7 +1505,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 <div id="error_dlg" class="dialog">
     <div class="dialog_bar">
         <h2 class="dialog_title" data-i18n-text="errors">Errors</h2>
-        <a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+        <a class="dialog_close_btn" title="Close" href="#" data-i18n-title="close"></a>
     </div>
     <div class="dialog_container">
     <div class="dialog_header">
@@ -1471,10 +1529,10 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <section id="context_menu">
     <ul class="hotot_menu">
-        <li><a id="context_menuitem_copy" class="select_only native_only" title="Copy" href="javascript:void(0);" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
-        <li><a id="context_menuitem_paste" class="editable_only native_only" title="Paste" href="javascript:void(0);" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
-        <li><a id="context_menuitem_web_search" class="select_only" title="Search in Google" href="javascript:void(0);" data-i18n-text="search_in_google">Search in Google</a></li>
-        <li><a id="context_menuitem_twitter_search" class="select_only" title="Search in Twitter" href="javascript:void(0);" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
+        <li><a id="context_menuitem_copy" class="select_only native_only" title="Copy" href="#" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
+        <li><a id="context_menuitem_paste" class="editable_only native_only" title="Paste" href="#" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
+        <li><a id="context_menuitem_web_search" class="select_only" title="Search in Google" href="#" data-i18n-text="search_in_google">Search in Google</a></li>
+        <li><a id="context_menuitem_twitter_search" class="select_only" title="Search in Twitter" href="#" data-i18n-text="search_in_twitter">Search in Twitter</a></li>
     </ul>
 </section>
 

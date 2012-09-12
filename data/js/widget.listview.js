@@ -212,9 +212,9 @@ function WidgetListView(id, name, params) {
         if (json.hasOwnProperty('length') && json.length == 0) { return; }
         var tweets = json;
         if (self.item_type == 'phoenix_search') {
-            tweets = json.statuses;
+            if (json.statuses)
+                tweets = json.statuses;
         }
-
         if (tweets.hasOwnProperty('length')) {
             for (var i = 0, l = tweets.length; i < l; i+= 1) {
                 if (!tweets[i].hasOwnProperty('id_str') && tweets[i].hasOwnProperty('id')) {

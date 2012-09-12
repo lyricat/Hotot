@@ -62,12 +62,36 @@ function init () {
             ui.KismetDlg.guide_dialog.open();
         });
     });
+
     $('#tweet_set_color_btn').click(
     function (ev) {
         var li = $(ui.Main.active_tweet_id);
         var screen_name = li.attr('screen_name');
         ui.KismetDlg.color_guide_dialog.open();
         $('#kismet_color_guide_dialog').data('screen_name', screen_name);
+    });
+
+    $('#tweet_readlater_btn').click(
+    function (ev) {
+        var text = $(ui.Main.active_tweet_id + ' .card_body').children('.text').text();
+        var reg_url = new RegExp('[a-zA-Z]+:\\/\\/(' + ui.Template.reg_url_path_chars_1+'+)');
+        var m = text.match(reg_url);
+        if (m == null){
+            var url = 'http://twitter.com/' + $(ui.Main.active_tweet_id).attr('screen_name') + '/status/' + $(ui.Main.active_tweet_id).attr('tweet_id');
+        } else {
+            var url = m[1];
+        };
+        toast.set('Save to ..').show();
+        globals.readLaterServ.addItem(
+            conf.get_current_profile().preferences.readlater_service,
+            url, text,
+            function (ret) {
+                if (ret.indexOf('200')!=-1 || ret.indexOf('201')!=-1) {
+                    toast.set('Saved!').show();
+                } else {
+                    toast.set('Error Code:' + result).show()
+                }
+            });        
     });
 
     $('#tweet_more_menu').mouseleave(function(){
@@ -538,9 +562,9 @@ function bind_tweet_action(id) {
             {}, {}, null,
             function (result) {
                 if (result && result.full_text) {
-                    $(id).find('.text_inner a').unbind();
-                    $(id).find('.text_inner').empty();
-                    $(id).find('.text_inner').html(
+                    $(id).find('.text_inner:eq(0) a').unbind();
+                    $(id).find('.text_inner:eq(0)').empty();
+                    $(id).find('.text_inner:eq(0)').html(
                         ui.Template.form_text_raw(result.full_text)
                     );
                     ui.Main.bind_tweet_text_action(id);

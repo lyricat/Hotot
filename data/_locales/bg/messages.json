@@ -1,4 +1,8 @@
 {
+	"a_new_hope": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "Относно",
 		"description": "data/index.html"
@@ -47,6 +51,10 @@
 		"message": "Архив",
 		"description": "data/index.html"
 	},
+	"artwork_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"assassin_s_tango": {
 		"message": "Тангото на убиеца",
 		"description": "data/index.html"
@@ -59,8 +67,8 @@
 		"message": "Автор",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"auto_update": {
-		"message": "Автоматично обновяване",
+	"auto_longer_tweet": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -91,11 +99,19 @@
 		"message": "Грешно удостоверяване! Моля, проверете потребителското име/паролата и АПИ базата",
 		"description": "data/js/ui.welcome.js"
 	},
+	"change_your_profile_picture_by_clicking_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "Знакът `@` не е позволен",
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"classic": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -123,6 +139,10 @@
 		"message": "Кликни за създаване на съобщение",
 		"description": "data/index.html"
 	},
+	"click_to_expand_menu": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"click_to_show": {
 		"message": "Кликни за показване",
 		"description": "data/js/ui.template.js"
@@ -130,6 +150,10 @@
 	"click_to_show_retweeters": {
 		"message": "Кликни за да се покажат ретуитърите",
 		"description": "data/js/ui.template.js"
+	},
+	"client_name1_client_name2": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "Затвори",
@@ -143,6 +167,10 @@
 		"message": "Създай",
 		"description": "data/index.html"
 	},
+	"compress_tweet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "Копирай PIN кода и го постави тук",
 		"description": "data/index.html"
@@ -154,6 +182,10 @@
 	"create_a_list": {
 		"message": "Създай списък",
 		"description": "data/js/ui.template.js"
+	},
+	"create_a_new_profile": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "Заслуги",
@@ -187,6 +219,14 @@
 		"message": "",
 		"description": "data/index.html"
 	},
+	"donate_hint1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"donate_hint2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -201,6 +241,26 @@
 	},
 	"drop": {
 		"message": "Пусни",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_hash_tag_nowplaying": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_word_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_retweeted_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_from_foursquare": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -331,6 +391,10 @@
 		"message": "Помощ",
 		"description": "data/index.html"
 	},
+	"hey": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"hey_it_is_you": {
 		"message": "Хей, това си ти!",
 		"description": "data/js/ui.peopleview.js"
@@ -353,6 +417,10 @@
 	},
 	"hotot": {
 		"message": "Hotot",
+		"description": "data/index.html"
+	},
+	"hotot_description": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -419,6 +487,18 @@
 		"message": "Лиценз",
 		"description": "data/index.html"
 	},
+	"license_text1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text3": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"line_height": {
 		"message": "",
 		"description": "data/index.html"
@@ -463,6 +543,10 @@
 		"message": "Маска",
 		"description": "data/index.html"
 	},
+	"mask_tweets_contain_hash_tag_callmemaybe": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"mention_them": {
 		"message": "Споменаване",
 		"description": "data/js/ui.template.js"
@@ -501,6 +585,18 @@
 	},
 	"move_to_top": {
 		"message": "Премести отгоре",
+		"description": "data/index.html"
+	},
+	"mute_by_containing_words": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_user_name": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
@@ -543,8 +639,16 @@
 		"message": "Без разширение",
 		"description": "data/index.html"
 	},
+	"not_avaiable_yet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"notify": {
 		"message": "Уведоми",
+		"description": "data/index.html"
+	},
+	"notify_me_if_incoming_tweets_mention_hotot": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
@@ -643,10 +747,6 @@
 		"message": "Убава жена",
 		"description": "data/index.html"
 	},
-	"preview": {
-		"message": "Преглед",
-		"description": "data/index.html"
-	},
 	"preview_embedded_media": {
 		"message": "Преглед на включените медии",
 		"description": "data/index.html"
@@ -655,11 +755,23 @@
 		"message": "Преглед тук",
 		"description": "data/index.html"
 	},
+	"previous": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"profile": {
 		"message": "Профил",
 		"description": "data/index.html"
 	},
 	"profile_name": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"project_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"project_site": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -705,6 +817,14 @@
 	},
 	"quote": {
 		"message": "Цитирай",
+		"description": "data/index.html"
+	},
+	"read_later": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"read_later_service": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -811,6 +931,10 @@
 		"message": "Шизофрения",
 		"description": "data/index.html"
 	},
+	"screen_name1_screen_name2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"search": {
 		"message": "Търси",
 		"description": "data/js/ui.slider.js"
@@ -837,6 +961,14 @@
 	},
 	"select_a_language": {
 		"message": "Избери език",
+		"description": "data/index.html"
+	},
+	"select_a_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_theme": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"select_actions": {
@@ -891,10 +1023,6 @@
 		"message": "Някаква грешка се появи",
 		"description": "data/index.html"
 	},
-	"sound": {
-		"message": "Звук",
-		"description": "data/index.html"
-	},
 	"starts_minimized": {
 		"message": "Стартирай намален",
 		"description": "data/index.html"
@@ -925,6 +1053,10 @@
 	},
 	"summon_hotot": {
 		"message": "Summon Hotot (like: <ALT>C)",
+		"description": "data/index.html"
+	},
+	"supervised_by": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"themes": {
@@ -959,14 +1091,6 @@
 		"message": "Прозрачно",
 		"description": "data/index.html"
 	},
-	"trending_topics": {
-		"message": "Най-дискутирани",
-		"description": "data/js/ui.slider.js"
-	},
-	"trending_topics_view": {
-		"message": "Най-дискутирани",
-		"description": "data/index.html"
-	},
 	"tweet_cnt": {
 		"message": "Туитове",
 		"description": "data/js/ui.template.js"
@@ -977,6 +1101,14 @@
 	},
 	"tweets": {
 		"message": "Туитове",
+		"description": "data/index.html"
+	},
+	"twitter_official_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"type_a_name_here": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
@@ -1047,6 +1179,10 @@
 		"message": "Използвай ЦИТИРАЙ за основно действие при ретуит",
 		"description": "data/index.html"
 	},
+	"use_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "Използвай ОТГОВОР ДО ВСИЧКИ като основно действие при отговор",
 		"description": "data/index.html"
@@ -1070,10 +1206,6 @@
 	"view_more_conversation": {
 		"message": "Покажи още от разговора",
 		"description": "data/js/ui.template.js"
-	},
-	"view_original": {
-		"message": "",
-		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "Virushou's Integrity",
@@ -1099,6 +1231,18 @@
 		"message": "Шепот",
 		"description": "data/js/ui.welcome.js"
 	},
+	"word1_word2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"write_down_description_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"written_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_followed_by_them": {
 		"message": "Те Ви следват.",
 		"description": "data/js/ui.peopleview.js"
@@ -1114,5 +1258,17 @@
 	"you_are_not_following_each_other": {
 		"message": "Вие не се следвате един друг.",
 		"description": "data/js/ui.peopleview.js"
+	},
+	"you_dont_have_a_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"your_profile": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }

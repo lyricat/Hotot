@@ -1,9 +1,12 @@
 {
+  "manifest_version": 2,
   "name": "Hotot",
   "description": "Hotot Twitter client for Chrome",
-  "version": "0.9.8.7",
+  "version": "0.9.8.8",
   "default_locale": "en",
-  "background_page": "background.html",
+  "background": {
+    "page": "background.html"
+  },
   "app": {
     "launch": {
       "local_path": "index.html"
@@ -19,6 +22,7 @@
     "unlimitedStorage",
     "notifications",
     "contextMenus",
+    "background",
     "tabs"
   ]
 }

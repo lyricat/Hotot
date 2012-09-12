@@ -1,4 +1,8 @@
 {
+	"a_new_hope": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "সম্পর্কে",
 		"description": "data/index.html"
@@ -47,6 +51,10 @@
 		"message": "আর্কাইভ",
 		"description": "data/index.html"
 	},
+	"artwork_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"assassin_s_tango": {
 		"message": "Assassin's Tango",
 		"description": "data/index.html"
@@ -59,8 +67,8 @@
 		"message": "ডেভেলপার",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"auto_update": {
-		"message": "স্বয়ংক্রিয় আপডেট",
+	"auto_longer_tweet": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -91,12 +99,20 @@
 		"message": "আপনাকে অনুমতি দেওয়া যাচ্ছেনা! দয়া করে আপনার ইউজারনেম/পাসওয়ার্ড ও API বেজ যাচাই করুন",
 		"description": "data/js/ui.welcome.js"
 	},
+	"change_your_profile_picture_by_clicking_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "অক্ষর `@` প্রোফাইলে গ্রহনযোগ্য নয়",
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
 		"message": "ক্রোমের কনটেক্স তালিকার সাথে একত্রীকরণ",
+		"description": "data/index.html"
+	},
+	"classic": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -123,6 +139,10 @@
 		"message": "বার্তা লিখার জন্য ক্লিক করুন",
 		"description": "data/index.html"
 	},
+	"click_to_expand_menu": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"click_to_show": {
 		"message": "দেখার জন্য ক্লিক করুন",
 		"description": "data/js/ui.template.js"
@@ -130,6 +150,10 @@
 	"click_to_show_retweeters": {
 		"message": "রিটুইটসমূহ দেখার জন্য ক্লিক করুন",
 		"description": "data/js/ui.template.js"
+	},
+	"client_name1_client_name2": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "বন্ধ",
@@ -143,6 +167,10 @@
 		"message": "লিখুন",
 		"description": "data/index.html"
 	},
+	"compress_tweet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "পিন কোডটি কপি করুন ও নিচের ঘরে পেস্ট করে দিন",
 		"description": "data/index.html"
@@ -154,6 +182,10 @@
 	"create_a_list": {
 		"message": "একটি তালিকা তৈরি করুন",
 		"description": "data/js/ui.template.js"
+	},
+	"create_a_new_profile": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "কৃতিত্বসমূহ",
@@ -187,6 +219,14 @@
 		"message": "অনুদান",
 		"description": "data/index.html"
 	},
+	"donate_hint1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"donate_hint2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -201,6 +241,26 @@
 	},
 	"drop": {
 		"message": "ড্রপ",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_hash_tag_nowplaying": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_word_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_retweeted_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_from_foursquare": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -331,6 +391,10 @@
 		"message": "সাহায্য",
 		"description": "data/index.html"
 	},
+	"hey": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"hey_it_is_you": {
 		"message": "হ্যালো, এটি আপনি!",
 		"description": "data/js/ui.peopleview.js"
@@ -353,6 +417,10 @@
 	},
 	"hotot": {
 		"message": "হটট",
+		"description": "data/index.html"
+	},
+	"hotot_description": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -419,6 +487,18 @@
 		"message": "লাইসেন্স",
 		"description": "data/index.html"
 	},
+	"license_text1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text3": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"line_height": {
 		"message": "লাইনের উচ্চতা",
 		"description": "data/index.html"
@@ -463,6 +543,10 @@
 		"message": "মাস্ক",
 		"description": "data/index.html"
 	},
+	"mask_tweets_contain_hash_tag_callmemaybe": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"mention_them": {
 		"message": "মেনশন",
 		"description": "data/js/ui.template.js"
@@ -501,6 +585,18 @@
 	},
 	"move_to_top": {
 		"message": "উপরে পাঠান",
+		"description": "data/index.html"
+	},
+	"mute_by_containing_words": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_user_name": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
@@ -543,8 +639,16 @@
 		"message": "কোন এক্সটেনশন নেই",
 		"description": "data/index.html"
 	},
+	"not_avaiable_yet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"notify": {
 		"message": "নির্দেশনা",
+		"description": "data/index.html"
+	},
+	"notify_me_if_incoming_tweets_mention_hotot": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
@@ -643,10 +747,6 @@
 		"message": "Pretty wife",
 		"description": "data/index.html"
 	},
-	"preview": {
-		"message": "প্রিভিউ",
-		"description": "data/index.html"
-	},
 	"preview_embedded_media": {
 		"message": "সংযুক্ত মিডিয়া প্রিভিউ",
 		"description": "data/index.html"
@@ -655,12 +755,24 @@
 		"message": "এখানে প্রিভিউ",
 		"description": "data/index.html"
 	},
+	"previous": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"profile": {
 		"message": "প্রোফাইল",
 		"description": "data/index.html"
 	},
 	"profile_name": {
 		"message": "প্রোফাইলের নাম",
+		"description": "data/index.html"
+	},
+	"project_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"project_site": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"proxy": {
@@ -705,6 +817,14 @@
 	},
 	"quote": {
 		"message": "উক্তি",
+		"description": "data/index.html"
+	},
+	"read_later": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"read_later_service": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -811,6 +931,10 @@
 		"message": "Schizophrenia",
 		"description": "data/index.html"
 	},
+	"screen_name1_screen_name2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"search": {
 		"message": "অনুসন্ধান",
 		"description": "data/js/ui.slider.js"
@@ -837,6 +961,14 @@
 	},
 	"select_a_language": {
 		"message": "একটি ভাষা নির্বাচন করুন",
+		"description": "data/index.html"
+	},
+	"select_a_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_theme": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"select_actions": {
@@ -891,10 +1023,6 @@
 		"message": "কোন একটি ত্রুটি সংঘটিত হয়েছে",
 		"description": "data/index.html"
 	},
-	"sound": {
-		"message": "শব্দ",
-		"description": "data/index.html"
-	},
 	"starts_minimized": {
 		"message": "মিনিমাইজডভাবে চালু করুন",
 		"description": "data/index.html"
@@ -927,6 +1055,10 @@
 		"message": "summon hotot (like: <ALT>C)",
 		"description": "data/index.html"
 	},
+	"supervised_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"themes": {
 		"message": "থিমসমূহ",
 		"description": "data/index.html"
@@ -956,15 +1088,7 @@
 		"description": "data/index.html"
 	},
 	"transparent": {
-		"message":"Transparent",
-		"description": "data/index.html"
-	},
-	"trending_topics": {
-		"message": "চলতি বিষয়সমূহ",
-		"description": "data/js/ui.slider.js"
-	},
-	"trending_topics_view": {
-		"message": "চলতি বিষয়সমূহ ভিউ",
+		"message": "Transparent",
 		"description": "data/index.html"
 	},
 	"tweet_cnt": {
@@ -977,6 +1101,14 @@
 	},
 	"tweets": {
 		"message": "টুইটসমূহ",
+		"description": "data/index.html"
+	},
+	"twitter_official_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"type_a_name_here": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
@@ -1047,6 +1179,10 @@
 		"message": "ডিফল্ট রিটুইট হিসাবে উক্তি ব্যবহার করুন",
 		"description": "data/index.html"
 	},
+	"use_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "ডিফল্ট উত্তর হিসাবে সবাইকে উত্তর দিন ব্যবহার করুন",
 		"description": "data/index.html"
@@ -1070,10 +1206,6 @@
 	"view_more_conversation": {
 		"message": "আরো আলোচনা দেখুন",
 		"description": "data/js/ui.template.js"
-	},
-	"view_original": {
-		"message": "মূল বস্তুটি দেখুন",
-		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "Virushou's Integrity",
@@ -1099,6 +1231,18 @@
 		"message": "Whisper",
 		"description": "data/js/ui.welcome.js"
 	},
+	"word1_word2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"write_down_description_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"written_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_followed_by_them": {
 		"message": "আপনি তার দ্বারা অনুসরণ হচ্ছেন",
 		"description": "data/js/ui.peopleview.js"
@@ -1114,5 +1258,17 @@
 	"you_are_not_following_each_other": {
 		"message": "আপনারা একে অন্যকে অনুসরণ করছেন না",
 		"description": "data/js/ui.peopleview.js"
+	},
+	"you_dont_have_a_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"your_profile": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }

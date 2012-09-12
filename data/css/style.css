@@ -1189,6 +1189,7 @@ label {
 }
 .search_people_result {
 	display: none;
+	margin-top: 5px;
 }
 .search_no_result_hint {
 	display: none;

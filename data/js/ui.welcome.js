@@ -314,6 +314,8 @@ function authenticate_pass(result) {
         ui.Main.show();
         globals.layout.open('north');
         kismet.load();
+        var prefs = conf.get_current_profile().preferences;
+        globals.readLaterServ.init(prefs.readlater_username, prefs.readlater_password);
         document.title = _('hotot') + ' | ' + conf.current_name;
 
         hotot_action('system/sign_in');    

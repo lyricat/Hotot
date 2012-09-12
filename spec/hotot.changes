@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Jul 22 22:16:34 UTC 2012 - i@marguerite.su
+
+- update version 0.9.8.7
+  * merge follower and following into a same tab
+  * Kismet now can handle retweet tweets.
+  * picture preview for gtk/qt.
+  * native support for read it later and instapaper.
+  
+- Change in 0.9.8.6
+  * remove Linux native notification
+  * enable GPU acceleration by default
+  * new options for line-height, css3 animation, and GPU acceleration.
+
+-------------------------------------------------------------------
+Mon Jun  4 10:44:27 UTC 2012 - i@marguerite.su
+
+- update version 0.9.8.5
+  * Support to expand/fold people vcard.
+  * CSS3 animation support.
+  * Improve autocomplete result.
+  * New Extension: App Mask
+  * Change the unit of font size from pixel to point.
+  * Support System proxy and ssh proxy.
+  * Support Hotot.in service(support to post tweet more than 140 characters).
+
+-------------------------------------------------------------------
+Fri May  4 13:26:09 UTC 2012 - i@marguerite.su
+
+- Updated version 0.9.8.1
+  * Minor fixes for usability issues.
+  * Fix: duplicate translation result
+  * Improve hotkey
+  * Update legal hashtag characters
+  * Update several translation
+  * Greek Translation.
+
+-------------------------------------------------------------------
+Thu Apr 19 15:32:09 UTC 2012 - i@marguerite.su
+
+- first beta (0.9.8).
+  * http://hotot.org/hotot-0.9.8-released-many-updates-involved
+
+-------------------------------------------------------------------
+Mon Apr  9 09:43:44 UTC 2012 - i@marguerite.su
+
+- Updated version 0.9.7.55
+  * Add Cantonese translation (thank @xsoul)
+  * Add Latvietis translation (thank @arvislacis)
+  * Fix Issue #198
+  * Fix scrolling problem when using trackpad on OS X
+  * Increase the refresh frequencey
+  * Fix: Horizontal slide
+- Historic Changes see ChangeLog.
+
+-------------------------------------------------------------------
 Tue Mar 20 13:54:01 UTC 2012 - i@marguerite.su
 
 - Updated version 0.9.7.47

@@ -1,4 +1,8 @@
 {
+	"a_new_hope": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"about": {
 		"message": "Hototについて",
 		"description": ""
@@ -47,6 +51,10 @@
 		"message": "アーカイブ",
 		"description": "data/index.html"
 	},
+	"artwork_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"assassin_s_tango": {
 		"message": "暗殺者のタンゴ",
 		"description": "data/index.html"
@@ -59,8 +67,8 @@
 		"message": "作者",
 		"description": "data/js/ui.exts_dlg.js"
 	},
-	"auto_update": {
-		"message": "自動更新",
+	"auto_longer_tweet": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -91,12 +99,20 @@
 		"message": "認証に失敗しました。もう一度ユーザー名またはパスワードとAPIベースを確認してください",
 		"description": "data/js/ui.welcome.js"
 	},
+	"change_your_profile_picture_by_clicking_it": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
 		"message": "プロファイル名の前半に`@`は使えません",
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
 		"message": "Chromeの右クリックメニューに追加",
+		"description": "data/index.html"
+	},
+	"classic": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -123,6 +139,10 @@
 		"message": "クリックしてメッセージを作成",
 		"description": "data/index.html"
 	},
+	"click_to_expand_menu": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"click_to_show": {
 		"message": "クリックして表示",
 		"description": "data/js/ui.template.js"
@@ -130,6 +150,10 @@
 	"click_to_show_retweeters": {
 		"message": "クリックしてリツイートした人を表示",
 		"description": "data/js/ui.template.js"
+	},
+	"client_name1_client_name2": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"close": {
 		"message": "閉じる",
@@ -143,6 +167,10 @@
 		"message": "メッセージ作成",
 		"description": "data/index.html"
 	},
+	"compress_tweet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
 		"message": "PINコードをコピーし、下のテキストボックスにペーストしてください",
 		"description": ""
@@ -154,6 +182,10 @@
 	"create_a_list": {
 		"message": "リストを作成する",
 		"description": "data/js/ui.template.js"
+	},
+	"create_a_new_profile": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"credits": {
 		"message": "クレジット",
@@ -187,6 +219,14 @@
 		"message": "寄付",
 		"description": "data/index.html"
 	},
+	"donate_hint1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"donate_hint2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"dots": {
 		"message": "...",
 		"description": "data/js/ui.main.js"
@@ -201,6 +241,26 @@
 	},
 	"drop": {
 		"message": "ドロップ",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_hash_tag_nowplaying": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_contain_word_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_retweeted_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_by_abc": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"drop_tweets_sent_from_foursquare": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -331,6 +391,10 @@
 		"message": "ヘルプ",
 		"description": ""
 	},
+	"hey": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"hey_it_is_you": {
 		"message": "あなたです",
 		"description": "data/js/ui.peopleview.js"
@@ -354,6 +418,10 @@
 	"hotot": {
 		"message": "Hotot",
 		"description": ""
+	},
+	"hotot_description": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"image_uploader": {
 		"message": "画像アップローダー",
@@ -419,6 +487,18 @@
 		"message": "ライセンス",
 		"description": ""
 	},
+	"license_text1": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"license_text3": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"line_height": {
 		"message": "行の高さ",
 		"description": "data/index.html"
@@ -463,6 +543,10 @@
 		"message": "マスク",
 		"description": "data/index.html"
 	},
+	"mask_tweets_contain_hash_tag_callmemaybe": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"mention_them": {
 		"message": "このユーザーに@ツイート",
 		"description": "data/js/ui.template.js"
@@ -501,6 +585,18 @@
 	},
 	"move_to_top": {
 		"message": "トップに戻る",
+		"description": "data/index.html"
+	},
+	"mute_by_containing_words": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_by_user_name": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
@@ -543,9 +639,17 @@
 		"message": "プラグインがありません",
 		"description": "data/index.html"
 	},
+	"not_avaiable_yet": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"notify": {
 		"message": "通知システム",
 		"description": ""
+	},
+	"notify_me_if_incoming_tweets_mention_hotot": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"oauth_base": {
 		"message": "OAuthベース",
@@ -643,10 +747,6 @@
 		"message": "かわいい奥さん",
 		"description": "data/index.html"
 	},
-	"preview": {
-		"message": "プレビュー",
-		"description": "data/index.html"
-	},
 	"preview_embedded_media": {
 		"message": "埋め込まれたメディアをプレビューする",
 		"description": "data/index.html"
@@ -655,12 +755,24 @@
 		"message": "プレビュー",
 		"description": "data/index.html"
 	},
+	"previous": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"profile": {
 		"message": "プロファイル",
 		"description": "data/index.html"
 	},
 	"profile_name": {
 		"message": "プロファイル名",
+		"description": "data/index.html"
+	},
+	"project_host": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"project_site": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"proxy": {
@@ -706,6 +818,14 @@
 	"quote": {
 		"message": "引用",
 		"description": ""
+	},
+	"read_later": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"read_later_service": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"relation": {
 		"message": "関係",
@@ -811,6 +931,10 @@
 		"message": "統合失調症",
 		"description": "data/index.html"
 	},
+	"screen_name1_screen_name2": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"search": {
 		"message": "検索",
 		"description": "data/js/ui.slider.js"
@@ -837,6 +961,14 @@
 	},
 	"select_a_language": {
 		"message": "インターフェース言語を選択してください",
+		"description": "data/index.html"
+	},
+	"select_a_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"select_a_theme": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"select_actions": {
@@ -891,10 +1023,6 @@
 		"message": "エラーが発生しました",
 		"description": "data/index.html"
 	},
-	"sound": {
-		"message": "サウンド",
-		"description": ""
-	},
 	"starts_minimized": {
 		"message": "起動時に最小化する",
 		"description": "data/index.html"
@@ -926,6 +1054,10 @@
 	"summon_hotot": {
 		"message": "Hototを呼び出す",
 		"description": ""
+	},
+	"supervised_by": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"themes": {
 		"message": "テーマ",
@@ -959,14 +1091,6 @@
 		"message": "透明",
 		"description": "data/index.html"
 	},
-	"trending_topics": {
-		"message": "トレンド",
-		"description": "data/js/ui.slider.js"
-	},
-	"trending_topics_view": {
-		"message": "トレンド",
-		"description": "data/index.html"
-	},
 	"tweet_cnt": {
 		"message": "ツイート",
 		"description": "data/js/ui.template.js"
@@ -978,6 +1102,14 @@
 	"tweets": {
 		"message": "ツイート",
 		"description": ""
+	},
+	"twitter_official_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"type_a_name_here": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
 		"message": "文字を入力するかここに写真をドラッグ",
@@ -1047,6 +1179,10 @@
 		"message": "引用してのリツイートをデフォルトにする",
 		"description": "data/index.html"
 	},
+	"use_read_later_service": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"use_reply_all_as_default_reply_action": {
 		"message": "「全員に返信する」をデフォルトにする",
 		"description": "data/index.html"
@@ -1070,10 +1206,6 @@
 	"view_more_conversation": {
 		"message": "会話をもっと表示",
 		"description": "data/js/ui.template.js"
-	},
-	"view_original": {
-		"message": "元の画像を表示",
-		"description": "data/index.html"
 	},
 	"virushou_s_integrity": {
 		"message": "",
@@ -1099,6 +1231,18 @@
 		"message": "ヒント",
 		"description": "data/js/ui.welcome.js"
 	},
+	"word1_word2": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"write_down_description_here": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"written_by": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"you_are_followed_by_them": {
 		"message": "このユーザーにフォローされています",
 		"description": "data/js/ui.peopleview.js"
@@ -1114,5 +1258,17 @@
 	"you_are_not_following_each_other": {
 		"message": "お互いフォローしていません",
 		"description": "data/js/ui.peopleview.js"
+	},
+	"you_dont_have_a_view": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"your_profile": {
+		"message": "",
+		"description": "data/index.html"
 	}
 }
