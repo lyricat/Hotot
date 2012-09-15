@@ -951,16 +951,16 @@ label {
 .tweet_fav_btn {
 	background-position-x: -48px;
 }
-.card.faved .tweet_fav_btn {
+.card.faved > .tweet_bar .tweet_fav_btn {
 	background-position: -48px -96px !important;
 }
 .tweet_retweet_btn {
 	background-position-x: -24px;
 }
-.card.retweeted .tweet_retweet_btn{
+.card.retweeted > .tweet_bar .tweet_retweet_btn {
 	background-position: -24px -96px !important;
 }
-.card[retweetable="false"] .tweet_retweet_btn {
+.card[retweetable="false"] > .tweet_bar .tweet_retweet_btn {
 	display: none;
 }
 .tweet_more_menu_trigger {
