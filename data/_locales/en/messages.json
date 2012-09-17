@@ -603,6 +603,18 @@
 		"message": "Mute Filter",
 		"description": "data/index.html"
 	},
+	"mute_this_user": {
+		"message": "Filtrer cet utilisateur",
+		"description": "data/index.html"
+	},
+	"mute_this_word": {
+		"message": "Filtrer ce mot",
+		"description": "data/index.html"
+	},
+	"mute_this_source": {
+		"message": "Filtrer cette source",
+		"description": "data/index.html"
+	},
 	"my_favs": {
 		"message": "My Favorites",
 		"description": "data/js/ui.slider.js"
