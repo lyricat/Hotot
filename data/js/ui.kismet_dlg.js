@@ -179,6 +179,28 @@ function init() {
         conf.save_prefs(conf.current_name);
         return false;
     });
+
+    $('#context_menuitem_kismet_username').click(function () {
+        kismet.update_mute_list('name', ui.ContextMenu.selected_string);
+        kismet.save();
+        toast.set('You muted @'+ui.ContextMenu.selected_string).show(3);
+        return false;
+    });
+
+    $('#context_menuitem_kismet_word').click(function () {
+        kismet.update_mute_list('word', ui.ContextMenu.selected_string);
+        kismet.save();
+        toast.set('You muted tweets containing '+ui.ContextMenu.selected_string).show(3);
+        return false;
+    });
+
+    $('#context_menuitem_kismet_source').click(function () {
+        kismet.update_mute_list('source', ui.ContextMenu.selected_string);
+        kismet.save();
+        toast.set('You muted tweets from '+ui.ContextMenu.selected_string).show(3);
+        return false;
+    });
+
     ui.KismetDlg.reload();
 },
 
