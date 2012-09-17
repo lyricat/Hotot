@@ -468,7 +468,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "WARNNING: Tweets that have the  following attributes will not appear on your timeline.",
+		"message": "WARNING: Tweets that have the  following attributes will not appear on your timeline.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -601,6 +601,18 @@
 	},
 	"mute_filter": {
 		"message": "Mute Filter",
+		"description": "data/index.html"
+	},
+	"mute_this_user": {
+		"message": "Filtrer cet utilisateur",
+		"description": "data/index.html"
+	},
+	"mute_this_word": {
+		"message": "Filtrer ce mot",
+		"description": "data/index.html"
+	},
+	"mute_this_source": {
+		"message": "Filtrer cette source",
 		"description": "data/index.html"
 	},
 	"my_favs": {
