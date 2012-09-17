@@ -520,6 +520,7 @@ function bind_tweet_action(id) {
     $(id).click(
     function (event) {
         if (event.button == 0) {
+            var id = '#' + this.id;
             $(ui.Main.selected_tweet_id).removeClass('selected');
             ui.Main.selected_tweet_id = id;
             $(id).addClass('selected');
@@ -527,14 +528,23 @@ function bind_tweet_action(id) {
             ui.Main.closeTweetMoreMenu();
         }
         event.stopPropagation();
-    }).mouseover(function () {
-        ui.Main.set_active_tweet_id(id);
+    }).mouseover(function (event) {
+        ui.Main.set_active_tweet_id('#' + this.id);
         event.stopPropagation();
-    }).hover(function (){
-        $(id).children('.tweet_bar').show();
-        ui.Main.closeTweetMoreMenu();
-    }, function () {
-        $(id).children('.tweet_bar').hide();
+    }).hover(function (event) {
+        event.stopPropagation();
+        $(this).children('.tweet_bar').show();
+        var p = $(event.target).parents('.tweet_thread_wrapper');
+        if (p.length > 0) {
+            p.siblings('.tweet_bar').hide();
+        }
+    }, function (event) {
+        event.stopPropagation();
+        $(this).children('.tweet_bar').hide();
+        var p = $(event.target).parents('.tweet_thread_wrapper');
+        if (p.length > 0 && $(event.relatedTarget).parents('.card')[0] === p.parents('.card')[0]) {
+            p.siblings('.tweet_bar').show();
+        }
     });
 
     if (!util.is_native_platform()) {
