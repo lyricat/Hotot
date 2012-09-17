@@ -468,7 +468,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "WARNNING: Tweets that have the  following attributes will not appear on your timeline.",
+		"message": "WARNING: Tweets that have the  following attributes will not appear on your timeline.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
