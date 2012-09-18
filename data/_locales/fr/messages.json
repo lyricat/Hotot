@@ -604,15 +604,15 @@
 		"description": "data/index.html"
 	},
 	"mute_this_user": {
-		"message": "Mute this user",
+		"message": "Filtrer cet utilisateur",
 		"description": "data/index.html"
 	},
 	"mute_this_word": {
-		"message": "Mute this word",
+		"message": "Filtrer ce mot",
 		"description": "data/index.html"
 	},
 	"mute_this_source": {
-		"message": "Mute this source",
+		"message": "Filtrer cette source",
 		"description": "data/index.html"
 	},
 	"my_favs": {
