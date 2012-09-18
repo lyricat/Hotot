@@ -603,6 +603,18 @@
 		"message": "Silenciar con filtros",
 		"description": "data/index.html"
 	},
+	"mute_this_user": {
+		"message": "Silenciar este usuario",
+		"description": "data/index.html"
+	},
+	"mute_this_word": {
+		"message": "Silenciar esta palabra",
+		"description": "data/index.html"
+	},
+	"mute_this_source": {
+		"message": "Silenciar esta origen",
+		"description": "data/index.html"
+	},
 	"my_favs": {
 		"message": "Mis favoritos",
 		"description": "data/js/ui.slider.js"

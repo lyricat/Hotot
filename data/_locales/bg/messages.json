@@ -603,6 +603,18 @@
 		"message": "Филтър за заглушаване",
 		"description": "data/index.html"
 	},
+	"mute_this_user": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_this_word": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_this_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"my_favs": {
 		"message": "Любими",
 		"description": "data/js/ui.slider.js"
