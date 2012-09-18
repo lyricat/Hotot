@@ -603,6 +603,18 @@
 		"message": "過濾器",
 		"description": "data/index.html"
 	},
+	"mute_this_user": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_this_word": {
+		"message": "",
+		"description": "data/index.html"
+	},
+	"mute_this_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"my_favs": {
 		"message": "我的最愛",
 		"description": "data/js/ui.slider.js"
