@@ -4,3 +4,6 @@ You have to copy all contents in hotot.changes into %changelog section of hotot.
 For SuSE Packager:
 _service is used on openSUSE Build Service Web(build.opensuse.org) for automatically source handling.
 But due to openSUSE Factory Repository Policy, you can _ONLY_ use it in your own home repository to get a really fast changing Hotot distribution(Nightly).
+
+For Windows Packager:
+MingW is not your style. it's used for linuxer to compile for Windows. basically it's an experimental solution based on openSUSE Build Service. take care.

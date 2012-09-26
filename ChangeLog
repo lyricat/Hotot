@@ -1,5 +1,31 @@
-The Latest Stable Version is 0.9.8.7
+The Latest Stable Version is 0.9.8.9
 The Latest Development Version is 0.9.8.8
+
+Version 0.9.8.9
+	* fix issue#378, Trend-API in identi.ca throws errors
+	* fix issue#390, translator doesn't work.
+	* it_IT translation update and fix issue#403 (it_IT)
+	* fix issue#388, Kismet "name" filter breaks with upper case
+	* fix issue#371, @ autocompletion is case-insensitive
+	* fix issue#368, Plugin to expand url in dm or tweet.
+	* fix issue#411, 'expand short url' extension support ow.ly and b1t.it.
+
+Version 0.9.8.8
+	* Kismet should handle retweeted tweets now
+	* Brackets are now considered part of url.
+	* Disable verbose mode by default.
+	* Support to ban tweets retweeted.
+	* Show images on fullscreen (issue#170)
+	* picture previewer for gtk/qt wrapper (and fix issue#170)
+	* absorb read later extensions to mainstream.
+ 	* add toast notice in readlater support
+	* auto longer tweet now can be disabled.
+        * fix issue#348, a long tweet bug.
+        * fix issue#309, Ampersands in Chrome popups
+        * remove local trend, which never worked.
+	* now lists can show retweets too (issue#372)
+	* fix issue#356, autocomplete is not closed when cancel compose
+	* bn,de,du,ja,zh translation update
 
 Version 0.9.8.7
         * merge follower and following into a single tab
