@@ -13,8 +13,6 @@ option(WITH_KDE "Enable KDE4 integration for Qt" On)
 
 option(WITH_CHROME "Enable Chrome Version" Off)
 
-option(WITH_WIN32 "Enable Windows 32-bit MingW Version" Off)
-
 # uninstall target
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
@@ -52,11 +50,6 @@ endif (WITH_CHROME)
 if (WITH_QT)
     add_subdirectory(qt)
 endif (WITH_QT)
-
-##################### Win32 Version ######################
-if (WITH_WIN32)
-	include(cmake/lin-mingw.cmake)
-endif (WITH_WIN32)
 
 add_subdirectory(po)
 add_subdirectory(misc)

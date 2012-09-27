@@ -22,6 +22,7 @@
 %define __find_provides %{_mingw32_findprovides}
 %define __os_install_post %{_mingw32_debug_install_post} \
 			%{_mingw32_install_post}
+%define appname hotot
 
 Name:           mingw32-hotot
 Version:        0.9.8.8
@@ -31,6 +32,7 @@ License:        LGPL-3.0
 Group:          Productivity/Networking/Instant Messenger
 Url:            https://hotot.org
 Source:         hotot-%{version}.tar.xz
+BuildRequires:  ccache
 BuildRequires:  cmake
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:	mingw32-cross-gcc-c++
@@ -41,6 +43,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  mingw32-libqtwebkit
 BuildRequires:  mingw32-libqt4-devel
+BuildArch:      noarch
 
 
 %description
@@ -66,39 +69,48 @@ and Video Preview like Youtube, Url shorten and unshorten(
 many beautiful prefixes), and User Stat through inside extensions.
 
 %prep
-%setup -q -n hotot-%{version}
+%setup -q -n %{appname}-%{version}
 # Already Fix Upstream. Will be droped next major release.
 sed -i "s/Categories=Qt;Network;/Categories=Qt;Network;InstantMessaging;/" misc/hotot-qt.desktop.in
 
 %build
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_mingw32_prefix} -DLIB_INSTALL_DIR=%{_mingw32_libdir} \
+mkdir winbuild
+cd winbuild
+cmake -DCMAKE_TOOLCHAIN_FILE=cmake/Toolchain-windows-mingw32-openSUSE.cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_mingw32_prefix} -DLIB_INSTALL_DIR=%{buildroot}%{_mingw32_libdir} \
       -DWITH_GIR=OFF \
       -DWITH_GTK=OFF \
       -DWITH_QT=ON \
       -DWITH_KDE=OFF \
-      -DWITH_WIN32=ON \
 	..
 %{_mingw32_make} %{?_smp_mflags}
 
 %install
-cd build
+cd winbuild
 %{_mingw32_makeinstall}
 cd ..
 
-%suse_update_desktop_file %{name} Network InstantMessaging
-%suse_update_desktop_file %{name}-qt Network InstantMessaging
+# Rename Binaries
+mv %{buildroot}%{_mingw32_bindir}/%{appname}-qt.exe %{buildroot}%{_mingw32_bindir}/%{appname}.exe
 
-%find_lang %{name}
+# Rename Desktopfiles
+mv %{buildroot}%{_mingw32_datadir}/applications/%{appname}-qt.desktop %{buildroot}%{_mingw32_datadir}/applications/%{appname}.desktop
 
+%suse_update_desktop_file %{appname} Network InstantMessaging
 
-%files -f %{name}.lang
+# Install Documents
+mkdir -p %{buildroot}%{_mingw32_docdir}/%{appname}/
+cp -r ChangeLog %{buildroot}%{_mingw32_docdir}/%{appname}/
+cp -r LGPL-license.txt %{buildroot}%{_mingw32_docdir}/%{appname}/
+
+%find_lang %{appname}
+
+%files -f %{appname}.lang
 %defattr(-,root,root)
-%doc ChangeLog LGPL-license.txt
-%{_mingw32_bindir}/%{name}-qt
-%{_mingw32_datadir}/applications/%{name}-qt.desktop
-%{_mingw32_datadir}/%{name}/
-%{_mingw32_datadir}/icons/*
+%{_mingw32_bindir}/%{appname}.exe
+%dir %{_mingw32_datadir}/applications
+%{_mingw32_datadir}/applications/%{appname}.desktop
+%{_mingw32_datadir}/%{appname}/
+%{_mingw32_datadir}/icons/
+%{_mingw32_datadir}/locale/
 
 %changelog
