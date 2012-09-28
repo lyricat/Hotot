@@ -84,7 +84,7 @@ function init () {
             } else {
                 if (ui.StatusBox.last_sent_text == status_text) {
                     toast.set(
-                        'Oops! You already tweeted that..').show();
+                        'Oops! You\'ve already tweeted that..').show();
                 } else {
                     ui.StatusBox.update_status(status_text);
                 }
@@ -141,7 +141,7 @@ function init () {
             ui.ImageUploader.show();
         } else {
             title = 'Error !'
-            content = '<p data-i18n-text="basic_auth_not_supported">Basic Auth is not supported, Please use OAuth to upload images.</p>'
+            content = '<p data-i18n-text="basic_auth_not_supported">Basic Auth is not supported, please use OAuth to upload images.</p>'
             widget.DialogManager.alert(title, content); 
         }
         return false;
@@ -342,7 +342,7 @@ function update_status(status_text) {
                 ui.StatusBox.last_sent_text = status_text;
                 ui.StatusBox.update_status_cb(result);
             }, function (xhr, textStatus, errorThrown) {
-                toast.set('Update failed! Save as draft.').show(3);
+                toast.set('Update failed! Saved as a draft.').show(3);
                 ui.StatusBox.last_sent_text = '';
                 ui.StatusBox.save_draft(draft);
             });
@@ -391,7 +391,7 @@ function post_message(message_text) {
                 , name
                 , ui.StatusBox.post_message_cb
                 , function (xhr, textStatus, errorThrown) {
-                    toast.set('Post failed! Save as draft.').show(3);
+                    toast.set('Post failed! Saved as a draft.').show(3);
                     ui.StatusBox.save_draft(draft);
                 });
             ui.StatusBox.close('slide');
