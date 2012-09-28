@@ -32,7 +32,7 @@ function TwitterClient() {
         404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.',
         500: 'Server is broken. Please try again later.',
         502: 'Server is down or being upgraded. Please try again later.',
-        503: 'Server is overcapacity. Please try again later.'
+        503: 'Server is in overcapacity. Please try again later.'
     };
 
     self.default_error_handler = function default_error_handler(url, xhr, textStatus, errorThrown) {
