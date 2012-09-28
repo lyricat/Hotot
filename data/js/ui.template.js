@@ -1213,8 +1213,8 @@ function form_text(tweet) {
     }
     if (conf.get_current_profile().preferences.use_media_preview) {
         text += '<div class="preview">' 
-            + ui.Template.form_preview(tweet)
-            + '</div>';
+             + ui.Template.form_preview(tweet)
+             + '</div>';
     }
     return text;
 },
@@ -1313,6 +1313,8 @@ function form_preview(tweet) {
             }
         }
     }
+    if (conf.get_current_profile().preferences.filter_nsfw_media && tweet.text.match(/nsfw/ig))
+        html_arr = ['<i>NSFW image hidden</i>'];
     if (html_arr.length != 0) {
         return '<p class="media_preview">'+ html_arr.join('')+'</p>';
     }
