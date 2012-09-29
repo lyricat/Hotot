@@ -285,6 +285,9 @@ function load_prefs() {
     $('#chk_prefs_use_media_preview')
         .attr('checked', prefs.use_media_preview)
         .prop('checked', prefs.use_media_preview);
+    $('#chk_prefs_filter_nsfw_media')
+        .attr('checked', prefs.filter_nsfw_media)
+        .prop('checked', prefs.filter_nsfw_media);        
     $('#chk_prefs_use_deleted_mark')
         .attr('checked', prefs.use_deleted_mark)
         .prop('checked', prefs.use_deleted_mark);
