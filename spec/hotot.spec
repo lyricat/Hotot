@@ -15,11 +15,10 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-# norootforbuild
 
 Name: hotot
-Version: 0.9.7.47
-Release: 1
+Version: 0.9.8.8
+Release: beta4
 Summary: A lightweight, flexible microblogging client
 Group:  Productivity/Networking/Instant Messenger
 License: LGPL-3.0
@@ -158,7 +157,7 @@ For geek it has native notification system, Ubuntu appindicator and Me menu, Htt
 It supports Instapaper/ReadItLater, Google Tweet Translate, Geo information shown on Google Maps, Plenty of image upload service including Twtter Official one(and their previews) and Video Preview like Youtube, Url shorten and unshorten(many beautiful prefixes), and User Stat through inside extensions.
 
 This package provides Hotot GTK2 edition.
-%else 
+%else
 %package gir
 Summary: A lightweight, flexible microblogging client
 Group:  Productivity/Networking/Instant Messenger

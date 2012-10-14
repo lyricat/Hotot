@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Sep 26 09:25:48 UTC 2012 - i@marguerite.su
 
-- update Version 0.9.8.8
+- update version 0.9.8.8
   * Kismet should handle retweeted tweets now
   * Brackets are now considered part of url.
   * Disable verbose mode by default.
