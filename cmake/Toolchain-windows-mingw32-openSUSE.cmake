@@ -9,7 +9,7 @@ SET(CMAKE_C_COMPILER ccache ${MINGW_PREFIX}-gcc)
 SET(CMAKE_CXX_COMPILER ccache ${MINGW_PREFIX}-g++)
 SET(CMAKE_C_FLAGS "-fno-keep-inline-dllexport")
 SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -march=pentium4 -mtune=pentium4 -mwindows -O2")
-SET(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "-Wl,--no-undefined -static-libgcc -Wl,-O1 -Wl,--as-needed -Wl,--sort-common -s")
+SET(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "-Wl,--no-undefined -static-libgcc -static-libstdc++ -Wl,-O1 -Wl,--as-needed -Wl,--sort-common -s")
 SET(CMAKE_RC_COMPILER /usr/bin/${MINGW_PREFIX}-windres)
 
 SET(CMAKE_FIND_ROOT_PATH /usr/${MINGW_PREFIX}/sys-root/mingw)

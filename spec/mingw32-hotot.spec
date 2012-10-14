@@ -76,7 +76,10 @@ sed -i "s/Categories=Qt;Network;/Categories=Qt;Network;InstantMessaging;/" misc/
 %build
 mkdir winbuild
 cd winbuild
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/Toolchain-windows-mingw32-openSUSE.cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_mingw32_prefix} -DLIB_INSTALL_DIR=%{buildroot}%{_mingw32_libdir} \
+cmake -DCMAKE_TOOLCHAIN_FILE=cmake/Toolchain-windows-mingw32-openSUSE.cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_mingw32_prefix} \
+      -DLIB_INSTALL_DIR=%{buildroot}%{_mingw32_libdir} \
       -DWITH_GIR=OFF \
       -DWITH_GTK=OFF \
       -DWITH_QT=ON \
@@ -112,5 +115,6 @@ cp -r LGPL-license.txt %{buildroot}%{_mingw32_docdir}/%{appname}/
 %{_mingw32_datadir}/%{appname}/
 %{_mingw32_datadir}/icons/
 %{_mingw32_datadir}/locale/
+%{_mingw32_docdir}/%{appname}/
 
 %changelog
