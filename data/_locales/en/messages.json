@@ -639,6 +639,14 @@
 		"message": "Network error! Please try later.",
 		"description": "data/js/ui.welcome.js"
 	},
+	"cannot_get_token_from_server": {
+		"message": "Can not get token from the server.",
+		"description": "data/js/ui.welcome.js"
+	},
+	"cannot_authenticate_you_please_try_later": {
+		"message": "Can not authenticate you. Please try later.",
+		"description": "data/js/ui.welcome.js"
+	},
 	"new_profile_has_been_created": {
 		"message": "New profile has been created!",
 		"description": "data/js/ui.welcome.js"
@@ -681,6 +689,10 @@
 	},
 	"oops_an_api_error_occurs": {
 		"message": "Oops, an API error occured!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_authentication_error_occurs": {
+		"message": "Oops, an authentication error occured!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {

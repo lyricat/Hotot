@@ -35,7 +35,7 @@ function init () {
         if (ev.keyCode == 13) {
             ui.Welcome.go.click();
         }
-    }); 
+    });
 
     ui.Welcome.go = $('#sign_in_block .go');
     ui.Welcome.go.click(function () {
@@ -49,17 +49,17 @@ function init () {
             }
         }
     });
-    
+
     $('#btn_welcome_prefs').click(
     function (event) {
         ui.PrefsDlg.load_settings(conf.settings);
         ui.PrefsDlg.load_prefs();
         globals.prefs_dialog.open();
     });
-        
+
     $('#clear_token_btn').click(
     function (event) {
-        if (confirm('The operation will erase the access token of this profile.\n Are you sure you want to continue?!\n')) 
+        if (confirm('The operation will erase the access token of this profile.\n Are you sure you want to continue?!\n'))
         {
             conf.clear_token(conf.current_name);
             $('#profile_avatar_list a.selected').click();
@@ -68,9 +68,9 @@ function init () {
 
     $('#btn_welcome_delete_profile').click(
     function (event) {
-        if (confirm('The operation will erase all data of this profile.\n Are you sure you want to continue?!\n')) 
+        if (confirm('The operation will erase all data of this profile.\n Are you sure you want to continue?!\n'))
         {
-            db.remove_profile(ui.Welcome.selected_profile, 
+            db.remove_profile(ui.Welcome.selected_profile,
             function (result) {
                 if (result) {
                     delete conf.profiles[conf.current_name];
@@ -80,7 +80,7 @@ function init () {
                     } else {
                         $('#profile_avatar_list a:eq(1)').click();
                     }
-                }        
+                }
             });
         }
     });
@@ -94,7 +94,7 @@ function init () {
         i18n.change($(this).val());
         if (conf.current_name.length != 0) {
             conf.get_current_profile().preferences['lang'] = $('#sel_welcome_lang').val();
-            conf.save_prefs(conf.current_name);    
+            conf.save_prefs(conf.current_name);
         }
     });
     return this;
@@ -134,12 +134,12 @@ function oauth_sign_in(event) {
 
     ui.Welcome.go.addClass('loading');
 
-    if (globals.twitterClient.oauth.access_token == ''
-        || globals.twitterClient.oauth.access_token.constructor != Object) { 
+    if (!globals.twitterClient.oauth.access_token || typeof globals.twitterClient.oauth.access_token !== "object" || !("oauth_token" in globals.twitterClient.oauth.access_token)) {
     // access_token is not existed
     // then get a new one.
         globals.twitterClient.oauth.get_request_token(
         function (result) {
+            ui.Welcome.go.removeClass('loading');
             if (result == '') {
                 ui.ErrorDlg.alert(
                     _('oops_a_network_error_occurs')
@@ -148,13 +148,19 @@ function oauth_sign_in(event) {
                 ui.PinDlg.set_auth_url(globals.twitterClient.oauth.get_auth_url());
                 globals.oauth_dialog.open();
             }
-        }); 
+        }, function (result) {
+            ui.Welcome.go.removeClass('loading');
+            ui.ErrorDlg.alert(
+                _('oops_a_network_error_occurs')
+                , _('network_error_please_try_later'), _('cannot_get_token_from_server'));
+        });
     } else {
     // access_token is existed
     // then test it
         globals.twitterClient.verify(
-        function (result) { 
+        function (result) {
         // access_token is valid
+            ui.Welcome.go.removeClass('loading');
             if (result.screen_name) {
                 ui.Welcome.authenticate_pass(result);
             } else if (result == '') {
@@ -167,8 +173,12 @@ function oauth_sign_in(event) {
                     , _('cannot_authenticate_you_please_check_your_username_or_password_and_api_base')
                     , result);
             }
-        }, 
+        },
         function (xhr, textStatus, errorThrown) {
+            ui.ErrorDlg.alert(
+                  _('oops_an_authentication_error_occurs')
+                , _('cannot_authenticate_you_please_try_later')
+                , '');
             ui.Welcome.go.removeClass('loading');
         });
     }
@@ -176,16 +186,16 @@ function oauth_sign_in(event) {
 
 basic_auth_sign_in:
 function basic_auth_sign_in(event) {
-    globals.twitterClient.username 
+    globals.twitterClient.username
         = $('#tbox_basic_auth_username').attr('value');
-    globals.twitterClient.password 
+    globals.twitterClient.password
         = $('#tbox_basic_auth_password').attr('value');
-    globals.twitterClient.use_oauth 
+    globals.twitterClient.use_oauth
         = false;
     var cur_profile = conf.get_current_profile();
     cur_profile.preferences.remember_password = true;
     cur_profile.preferences.default_username
-        = globals.twitterClient.username; 
+        = globals.twitterClient.username;
     toast.set(_('sign_in_dots')).show();
     if (cur_profile.preferences.remember_password) {
         cur_profile.preferences.default_password
@@ -318,7 +328,7 @@ function authenticate_pass(result) {
         globals.readLaterServ.init(prefs.readlater_username, prefs.readlater_password);
         document.title = _('hotot') + ' | ' + conf.current_name;
 
-        hotot_action('system/sign_in');    
+        hotot_action('system/sign_in');
         ui.Welcome.go.removeClass('loading');
         setTimeout(function () {
             ui.Slider.slide_to('home');

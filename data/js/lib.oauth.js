@@ -110,7 +110,7 @@ lib.OAuth = function OAuth(argument) {
         }
     };
 
-    self.get_request_token = function get_request_token(on_success) {
+    self.get_request_token = function get_request_token(on_success, on_error) {
         /*
     self.form_signed_url(self.request_token_url, null, 'GET', null),
     */
@@ -123,6 +123,10 @@ lib.OAuth = function OAuth(argument) {
             self.request_token = util.unserialize_dict(token_info)
             if (on_success != null) {
                 on_success(result);
+            }
+        }, function(result) {
+            if (on_error != null) {
+                on_error(result);
             }
         });
     };
