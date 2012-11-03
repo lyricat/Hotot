@@ -52,6 +52,7 @@ def webkit_set_proxy_uri(scheme = None, host = None, port = None, user = None, p
         else:
             session.set_property("max-conns", 10)
             session.set_property("max-conns-per-host", 5)
+        session.set_property("timeout", 10)
         
         if scheme == None:
             return True
