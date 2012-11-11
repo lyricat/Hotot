@@ -860,7 +860,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"reply_to": {
-		"message": "Responder a ",
+		"message": "En respuesta a ",
 		"description": "data/js/ui.template.js"
 	},
 	"report_spam": {
@@ -876,7 +876,7 @@
 		"description": "data/index.html"
 	},
 	"retweet": {
-		"message": "Retweet",
+		"message": "Retwittear",
 		"description": "data/index.html"
 	},
 	"retweet_or_un_retweet": {
@@ -888,7 +888,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"retweeted_by": {
-		"message": "Retweet por",
+		"message": "Retwitteado por",
 		"description": "data/js/ui.template.js"
 	},
 	"retweeting_dots": {
