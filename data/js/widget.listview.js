@@ -323,7 +323,7 @@ function WidgetListView(id, name, params) {
         var prefs = conf.profiles[conf.current_name].preferences;
         if(prefs.show_relative_timestamp) {
             //Update relative timestamp, update first 20 tweets
-            self._content.find('.tweet_link:lt(20)').each(function () {
+            self._content.find('.tweet_update_timestamp:lt(20)').each(function () {
                 var a = $(this);
                 var m = moment(a.attr("title"));
 

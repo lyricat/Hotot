@@ -56,7 +56,7 @@ tweet_t:
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link tweet_update_timestamp" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
             <div class="status_bar">{%STATUS_INDICATOR%}</div>\
@@ -116,7 +116,7 @@ retweeted_by_t:
             <div class="tweet_source"> \
                 {%RETWEET_TEXT%} \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link tweet_update_timestamp" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}\
                 {%TRANS_Retweeted_by%}: <a class="show" href="#" title="{%TRANS_Click_to_show_retweeters%}"  tweet_id="{%TWEET_ID%}">{%TRANS_Show_retweeters%}</a>\
@@ -156,7 +156,7 @@ message_t:
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
         <div class="tweet_meta">\
             <div class="tweet_source"> \
-                <span class="tweet_timestamp">{%TIMESTAMP%}</span>\
+                <span class="tweet_timestamp tweet_update_timestamp" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</span>\
             </div>\
         </div>\
     </div>\
@@ -192,7 +192,7 @@ search_t:
         <div class="tweet_meta">\
             <div class="tweet_source"> \
                 <span class="tweet_timestamp">\
-                <a class="tweet_link" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
+                <a class="tweet_link tweet_update_timestamp" target="_blank" href="{%TWEET_BASE_URL%}/{%TWEET_ID%}" title="{%TIMESTAMP%}">{%SHORT_TIMESTAMP%}</a>\
                 </span>\
                 {%TRANS_via%}: {%SOURCE%}</div>\
         </div>\
@@ -739,7 +739,8 @@ function form_dm(dm_obj, pagename) {
     var timestamp = Date.parse(dm_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
-    var created_at_str = ui.Template.format_time(created_at);
+    var created_at_str = ui.Template.to_long_time_string(created_at);
+    var created_at_short_str = ui.Template.to_short_time_string(created_at);
     var text = ui.Template.form_text(dm_obj);
 
     var m = ui.Template.message_m;
@@ -753,6 +754,7 @@ function form_dm(dm_obj, pagename) {
     m.TEXT = text;
     m.SCHEME = 'message';
     m.TIMESTAMP = created_at_str;
+    m.SHORT_TIMESTAMP = created_at_short_str;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_LINE_HEIGHT = globals.tweet_line_height;
     m.TWEET_FONT = globals.tweet_font;
@@ -783,8 +785,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
-    var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_time_string(created_at);
+    var created_at_str = ui.Template.to_long_time_string(created_at);
+    var created_at_short_str = ui.Template.to_short_time_string(created_at);
 
 
     // choose color scheme
@@ -910,8 +912,8 @@ function form_retweeted_by(tweet_obj, pagename) {
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
-    var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_time_string(created_at);
+    var created_at_str = ui.Template.to_long_time_string(created_at);
+    var created_at_short_str = ui.Template.to_short_time_string(created_at);
 
     // choose color scheme
     var scheme = 'normal';
@@ -991,8 +993,8 @@ function form_search(tweet_obj, pagename) {
     var timestamp = Date.parse(tweet_obj.created_at);
     var created_at = new Date();
     created_at.setTime(timestamp);
-    var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_time_string(created_at);
+    var created_at_str = ui.Template.to_long_time_string(created_at);
+    var created_at_short_str = ui.Template.to_short_time_string(created_at);
     var text = ui.Template.form_text(tweet_obj);
     // choose color scheme
     var scheme = 'normal';
@@ -1129,7 +1131,7 @@ function fill_people_vcard(user_obj, vcard_container) {
     var now = new Date();
     var differ = Math.floor((now-created_at)/(1000 * 60 * 60 * 24));
 
-    var created_at_str = ui.Template.format_time(created_at);
+    var created_at_str = ui.Template.to_long_time_string(created_at);
 
     vcard_container.find('.profile_img_wrapper')
         .attr('href', user_obj.profile_image_url.replace(/_normal/, ''))
@@ -1319,11 +1321,6 @@ function form_status_indicators(tweet) {
 
 },
 
-format_time:
-function format_time(datetime) {
-    return moment(datetime).toLocaleString();
-},
-
 render:
 function render(tpl, map) {
     var text = tpl
@@ -1333,7 +1330,12 @@ function render(tpl, map) {
     return text;
 },
 
-to_time_string:
+to_long_time_string:
+function (datetime) {
+    return moment(datetime).toLocaleString();
+},
+
+to_short_time_string:
 function (dataObj) {
     var is_human = conf.get_current_profile().preferences.show_relative_timestamp,
     mobj = moment(dataObj),
