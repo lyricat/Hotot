@@ -5,7 +5,7 @@
     var lang = {
             months : "一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),
             monthsShort : "1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),
-            weekdays : "星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),
+            weekdays : "禮拜日_禮拜一_禮拜二_禮拜三_禮拜四_禮拜五_禮拜六".split("_"),
             weekdaysShort : "週日_週一_週二_週三_週四_週五_週六".split("_"),
             weekdaysMin : "日_一_二_三_四_五_六".split("_"),
             longDateFormat : {
@@ -17,22 +17,22 @@
             },
             meridiem : function (hour, minute, isLower) {
                 if (hour < 9) {
-                    return "早上";
+                    return "朝早";
                 } else if (hour < 11 && minute < 30) {
                     return "上午";
                 } else if (hour < 13 && minute < 30) {
                     return "中午";
                 } else if (hour < 18) {
-                    return "下午";
+                    return "晏晝";
                 } else {
-                    return "晚上";
+                    return "晚黑";
                 }
             },
             calendar : {
-                sameDay : '[今天]LT',
-                nextDay : '[明天]LT',
+                sameDay : '[今日]LT',
+                nextDay : '[聽日]LT',
                 nextWeek : '[下]ddddLT',
-                lastDay : '[昨天]LT',
+                lastDay : '[尋日]LT',
                 lastWeek : '[上]ddddLT',
                 sameElse : 'L'
             },
@@ -44,8 +44,8 @@
                 mm : "%d分鐘",
                 h : "一小時",
                 hh : "%d小時",
-                d : "一天",
-                dd : "%d天",
+                d : "一日",
+                dd : "%d日",
                 M : "一個月",
                 MM : "%d個月",
                 y : "一年",
@@ -62,6 +62,6 @@
     }
     // Browser
     if (typeof window !== 'undefined' && this.moment && this.moment.lang) {
-        this.moment.lang('zh-tw', lang);
+        this.moment.lang('zh-CAN', lang);
     }
 }());
