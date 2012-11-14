@@ -1321,13 +1321,7 @@ function form_status_indicators(tweet) {
 
 format_time:
 function format_time(datetime) {
-    var str = '';
-    try {
-        str = decodeURIComponent(escape(datetime.toLocaleTimeString())) + ' ' + decodeURIComponent(escape(datetime.toLocaleDateString()));
-    } catch (e) {
-        str = datetime.toLocaleTimeString() + ' ' + datetime.toLocaleDateString();
-    }
-    return str;
+    return moment(datetime).toLocaleString();
 },
 
 render:
@@ -1346,7 +1340,7 @@ function (dataObj) {
     time_str;
 
     if (is_human) {
-        if(moment().diff(mobj, 'hours', true) > 1) {
+        if(moment().diff(mobj, 'hours', true) > 6) {
             time_str = mobj.calendar();
         } else {
             time_str = mobj.fromNow();

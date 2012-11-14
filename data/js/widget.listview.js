@@ -197,6 +197,7 @@ function WidgetListView(id, name, params) {
             self._footer.show();
             self._load(self, self.load_success, self.load_fail);
         }
+        self.update_timestamp();
     };
 
     self.loadmore = function loadmore() {
@@ -204,6 +205,7 @@ function WidgetListView(id, name, params) {
             self._footer.show();
             self._loadmore(self, self.loadmore_success, self.loadmore_fail);
         }
+        self.update_timestamp();
     };
 
     self.load_success = function load_success(json) {
@@ -315,6 +317,23 @@ function WidgetListView(id, name, params) {
         self._body.find('.card a').unbind();
         self._body.empty();
         self.scrollbar.recalculate_layout();
+    };
+
+    self.update_timestamp = function () {
+        var prefs = conf.profiles[conf.current_name].preferences;
+        if(prefs.show_relative_timestamp) {
+            //Update relative timestamp, update first 20 tweets
+            self._content.find('.tweet_link:lt(20)').each(function () {
+                var a = $(this);
+                var m = moment(a.attr("title"));
+
+                // only update DOM created today
+                if(moment().diff(m, "days") === 0) {
+                    a.text(m.fromNow());
+                    console.log("title:" + a.attr("title") + "    " + moment(a.attr("title")).fromNow());
+                }
+            });
+        }
     };
 
     self.init(id, name, params);
