@@ -784,10 +784,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = created_at.toTimeString().split(' ')[0];
-    if (created_at.toDateString() != new Date().toDateString()){
-        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
-    }
+    var created_at_short_str = ui.Template.to_human_time_string(created_at);
+
 
     // choose color scheme
     var scheme = 'normal';
@@ -913,10 +911,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = created_at.toTimeString().split(' ')[0];
-    if (created_at.toDateString() != new Date().toDateString()){
-        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
-    }
+    var created_at_short_str = ui.Template.to_human_time_string(created_at);
 
     // choose color scheme
     var scheme = 'normal';
@@ -997,10 +992,7 @@ function form_search(tweet_obj, pagename) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = created_at.toTimeString().split(' ')[0];
-    if (created_at.toDateString() != new Date().toDateString()){
-        created_at_short_str = created_at.getFullYear() + '-' + (created_at.getMonth()+1) + '-' +  created_at.getDate() + ' ' + created_at_short_str;
-    }
+    var created_at_short_str = ui.Template.to_human_time_string(created_at);
     var text = ui.Template.form_text(tweet_obj);
     // choose color scheme
     var scheme = 'normal';
@@ -1345,6 +1337,16 @@ function render(tpl, map) {
         text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
     }
     return text;
+},
+
+to_human_time_string:
+function to_human_time_string(dataObj) {
+    var mobj = moment(dataObj);
+    if(moment().diff(mobj, 'weeks', true) > 1) {
+        return mobj.format('LLL');
+    } else {
+        return mobj.fromNow();
+    }
 }
 
 }
