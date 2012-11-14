@@ -54,6 +54,13 @@ function change(code, callback) {
                     callback();
             });
         });
+
+        $.getScript('_locales/' + code + '/timestring.js')
+            .success(function () {
+            })
+            .error (function() {
+            });
+
     }
     if (conf.vars.platform == 'Chrome') {
         $('#tbox_status_speech').attr('lang', i18n.current.replace('_', '-'));
