@@ -1341,12 +1341,21 @@ function render(tpl, map) {
 
 to_human_time_string:
 function to_human_time_string(dataObj) {
-    var mobj = moment(dataObj);
-    if(moment().diff(mobj, 'weeks', true) > 1) {
-        return mobj.format('LLL');
+    var is_human = conf.get_current_profile().preferences.show_relative_timestamp,
+    mobj = moment(dataObj),
+    time_str;
+
+    if (is_human) {
+        if(moment().diff(mobj, 'weeks', true) > 1) {
+            time_str = mobj.format('LLL');
+        } else {
+            time_str = mobj.fromNow();
+        }
     } else {
-        return mobj.fromNow();
+        time_str = mobj.format('LLL');
     }
+
+    return time_str;
 }
 
 }

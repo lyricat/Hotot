@@ -111,6 +111,7 @@ default_prefs: {
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
+        , 'show_relative_timestamp': true
         , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
         , 'use_readlater_serv': false
