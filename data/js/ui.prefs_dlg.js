@@ -285,7 +285,6 @@ function load_prefs() {
     $('#chk_prefs_use_media_preview')
         .attr('checked', prefs.use_media_preview)
         .prop('checked', prefs.use_media_preview);
-
     $('#chk_prefs_show_relative_timestamp')
         .attr('checked', prefs.show_relative_timestamp)
         .prop('checked', prefs.show_relative_timestamp);

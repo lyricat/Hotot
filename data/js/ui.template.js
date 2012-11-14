@@ -784,7 +784,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_human_time_string(created_at);
+    var created_at_short_str = ui.Template.to_time_string(created_at);
 
 
     // choose color scheme
@@ -911,7 +911,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_human_time_string(created_at);
+    var created_at_short_str = ui.Template.to_time_string(created_at);
 
     // choose color scheme
     var scheme = 'normal';
@@ -992,7 +992,7 @@ function form_search(tweet_obj, pagename) {
     var created_at = new Date();
     created_at.setTime(timestamp);
     var created_at_str = ui.Template.format_time(created_at);
-    var created_at_short_str = ui.Template.to_human_time_string(created_at);
+    var created_at_short_str = ui.Template.to_time_string(created_at);
     var text = ui.Template.form_text(tweet_obj);
     // choose color scheme
     var scheme = 'normal';
@@ -1339,20 +1339,24 @@ function render(tpl, map) {
     return text;
 },
 
-to_human_time_string:
-function to_human_time_string(dataObj) {
+to_time_string:
+function (dataObj) {
     var is_human = conf.get_current_profile().preferences.show_relative_timestamp,
     mobj = moment(dataObj),
     time_str;
 
     if (is_human) {
-        if(moment().diff(mobj, 'weeks', true) > 1) {
-            time_str = mobj.format('LLL');
+        if(moment().diff(mobj, 'hours', true) > 1) {
+            time_str = mobj.calendar();
         } else {
             time_str = mobj.fromNow();
         }
     } else {
-        time_str = mobj.format('LLL');
+        if(moment().diff(mobj, 'days', true) > 1) {
+            time_str = mobj.format('MM-DD-YYYY HH:mm:ss');
+        } else {
+            time_str = mobj.format('HH:mm:ss');
+        }
     }
 
     return time_str;
