@@ -322,13 +322,14 @@ function WidgetListView(id, name, params) {
     self.update_timestamp = function () {
         var prefs = conf.profiles[conf.current_name].preferences;
         if(prefs.show_relative_timestamp) {
+            var now = moment();
             //Update relative timestamp, update first 20 tweets
             self._content.find('.tweet_update_timestamp:lt(20)').each(function () {
                 var a = $(this);
                 var m = moment(a.attr("title"));
 
                 // only update DOM created today
-                if(moment().diff(m, "days") === 0) {
+                if(now.diff(m, "days") === 0) {
                     a.text(ui.Template.to_short_time_string(m));
                     //console.log(ui.Template.to_short_time_string(m));
                 }
