@@ -1,6 +1,6 @@
 // moment.js language configuration
-// language : traditional chinese (zh-tw)
-// author : Ben : https://github.com/ben-lin
+// language : cantonese chinese (zh-CAN)
+// author : Preston: https://github.com/pentie
 (function () {
     var lang = {
             months : "一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),
@@ -16,14 +16,20 @@
                 LLLL : "YYYY年MMMD日ddddLT"
             },
             meridiem : function (hour, minute, isLower) {
-                if (hour < 9) {
+                if (hour < 3) {
+                    return "半夜";
+                } else if (hour < 6) {
+                    return "清晨";
+                } else if (hour < 9) {
                     return "朝早";
                 } else if (hour < 11 && minute < 30) {
-                    return "上午";
-                } else if (hour < 13 && minute < 30) {
+                    return "上晝";
+                } else if (hour < 13) {
                     return "中午";
-                } else if (hour < 18) {
+                } else if (hour < 17) {
                     return "晏晝";
+                } else if (hour < 19) {
+                    return "挨晚";
                 } else {
                     return "晚黑";
                 }
@@ -38,12 +44,12 @@
             },
             relativeTime : {
                 future : "%s內",
-                past : "%s前",
+                past : "%s之前",
                 s : "幾秒",
                 m : "一分鐘",
                 mm : "%d分鐘",
-                h : "一小時",
-                hh : "%d小時",
+                h : "一個鐘",
+                hh : "%d個鐘,
                 d : "一日",
                 dd : "%d日",
                 M : "一個月",
