@@ -75,6 +75,7 @@ target_link_libraries(hotot-qt
 
 if(HAVE_KDE)
     target_link_libraries(hotot-qt ${KDE4_KDEUI_LIBRARY} ${KDE4_KIO_LIBS})
-endif(HAVE_KDE)
+    install(FILES ../misc/hotot_qt.svg DESTINATION ${KDE4_DATA_INSTALL_DIR}/desktoptheme/default/icons)
+endif (HAVE_KDE)
 
 install(TARGETS hotot-qt DESTINATION bin)

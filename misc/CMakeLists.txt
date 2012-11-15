@@ -13,10 +13,6 @@ foreach(size ${ICON_SIZE})
             DESTINATION share/icons/hicolor/${size}/apps/)
 endforeach(size ${ICON_SIZE})
 
-if (HAVE_KDE)
-install(FILES hotot_qt.svg DESTINATION ${KDE4_DATA_INSTALL_DIR}/desktoptheme/default/icons)
-endif (HAVE_KDE)
-
 find_program(INTLTOOL_MERGE intltool-merge)
 
 if (NOT INTLTOOL_MERGE)
