@@ -99,6 +99,14 @@
 		"message": "¡No puedo autorizarte! Por favor, comprueba tus credenciales y la API base",
 		"description": "data/js/ui.welcome.js"
 	},
+	"cannot_authenticate_you_please_try_later": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
+	"cannot_get_token_from_server": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
 	"change_your_profile_picture_by_clicking_it": {
 		"message": "",
 		"description": "data/index.html"
@@ -322,6 +330,10 @@
 	"fellowship": {
 		"message": "",
 		"description": "data/js/ui.template.js"
+	},
+	"filter_nsfw_media": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
 		"message": "Filtrar",
@@ -603,16 +615,16 @@
 		"message": "Silenciar con filtros",
 		"description": "data/index.html"
 	},
+	"mute_this_source": {
+		"message": "Silenciar esta origen",
+		"description": "data/index.html"
+	},
 	"mute_this_user": {
 		"message": "Silenciar este usuario",
 		"description": "data/index.html"
 	},
 	"mute_this_word": {
 		"message": "Silenciar esta palabra",
-		"description": "data/index.html"
-	},
-	"mute_this_source": {
-		"message": "Silenciar esta origen",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -681,6 +693,10 @@
 	},
 	"oops_an_api_error_occurs": {
 		"message": "Ups, ¡ha ocurrido un error de API!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_authentication_error_occurs": {
+		"message": "",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -1005,6 +1021,10 @@
 	},
 	"shortcuts": {
 		"message": "Atajos",
+		"description": "data/index.html"
+	},
+	"show_relative_timestamp": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
