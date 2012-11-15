@@ -1345,6 +1345,7 @@ function (dataObj) {
     if (is_human) {
         try {
             mobj.lang(i18n.current);
+            mobj.lang();
         } catch (e) {
             mobj.lang(false);
         }
