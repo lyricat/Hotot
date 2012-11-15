@@ -57,8 +57,11 @@ function change(code, callback) {
 
         $.getScript('_locales/' + code + '/timestring.js')
             .success(function () {
+                // yei, that's great, nothing to do here
             })
             .error (function() {
+                // have to switch back to English
+                moment.lang('en');
             });
 
     }
