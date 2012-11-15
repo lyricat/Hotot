@@ -1338,17 +1338,24 @@ function (datetime) {
 to_short_time_string:
 function (dataObj) {
     var is_human = conf.get_current_profile().preferences.show_relative_timestamp,
+    now = moment(),
     mobj = moment(dataObj),
     time_str;
 
     if (is_human) {
-        if(moment().diff(mobj, 'hours', true) > 6) {
+        try {
+            mobj.lang(i18n.current);
+        } catch (e) {
+            mobj.lang(false);
+        }
+
+        if(now.diff(mobj, 'hours', true) > 6) {
             time_str = mobj.calendar();
         } else {
             time_str = mobj.fromNow();
         }
     } else {
-        if(moment().diff(mobj, 'days', true) > 1) {
+        if(now.diff(mobj, 'days', true) > 1) {
             time_str = mobj.format('MM-DD-YYYY HH:mm:ss');
         } else {
             time_str = mobj.format('HH:mm:ss');

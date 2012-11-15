@@ -49,7 +49,7 @@
                 m : "一分鐘",
                 mm : "%d分鐘",
                 h : "一個鐘",
-                hh : "%d個鐘,
+                hh : "%d個鐘",
                 d : "一日",
                 dd : "%d日",
                 M : "一個月",
@@ -68,6 +68,6 @@
     }
     // Browser
     if (typeof window !== 'undefined' && this.moment && this.moment.lang) {
-        this.moment.lang('zh-CAN', lang);
+        this.moment.lang('zh_CAN', lang);
     }
 }());

@@ -53,6 +53,6 @@
     }
     // Browser
     if (typeof window !== 'undefined' && this.moment && this.moment.lang) {
-        this.moment.lang('pt-br', lang);
+        this.moment.lang('pt_BR', lang);
     }
 }());

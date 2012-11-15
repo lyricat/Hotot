@@ -55,17 +55,10 @@ function change(code, callback) {
             });
         });
 
-        var prefs = conf.get_current_profile().preferences;
-        if(prefs.show_relative_timestamp) {
-            $.getScript('_locales/' + code + '/timestring.js')
-                .success(function () {
-                    // yei, nothing to do here
-                })
-                .error (function() {
-                    // have to switch back to English
-                    moment.lang('en');
-                });
-        }
+        $.getScript('_locales/' + code + '/timestring.js')
+            .always(function () {
+                moment.lang(false);
+            });
     }
     if (conf.vars.platform == 'Chrome') {
         $('#tbox_status_speech').attr('lang', i18n.current.replace('_', '-'));
