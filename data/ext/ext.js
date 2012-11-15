@@ -10,6 +10,7 @@ builtins: [
     , 'org.hotot.translate'
     , 'org.hotot.stat'
     , 'org.hotot.appmask'
+    , 'org.hotot.imghp'
 ],
 
 extras: [],
