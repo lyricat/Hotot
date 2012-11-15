@@ -285,6 +285,9 @@ function load_prefs() {
     $('#chk_prefs_use_media_preview')
         .attr('checked', prefs.use_media_preview)
         .prop('checked', prefs.use_media_preview);
+    $('#chk_prefs_show_relative_timestamp')
+        .attr('checked', prefs.show_relative_timestamp)
+        .prop('checked', prefs.show_relative_timestamp);
 
     if (prefs.filter_nsfw_media!=undefined)
     {
@@ -367,6 +370,8 @@ function save_prefs() {
     prefs.use_alt_reply
         = $('#chk_prefs_use_alt_reply').prop('checked');
 
+    prefs.show_relative_timestamp
+        = $('#chk_prefs_show_relative_timestamp').prop('checked');
     prefs.use_media_preview
         = $('#chk_prefs_use_media_preview').prop('checked');
     prefs.use_deleted_mark

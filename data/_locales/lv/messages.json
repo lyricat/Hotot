@@ -99,6 +99,14 @@
 		"message": "Nevar autentificēt jūsu datus! Lūdzu, pārbaudiet savu lietotājvārdu/paroli un API bāzi",
 		"description": "data/js/ui.welcome.js"
 	},
+	"cannot_authenticate_you_please_try_later": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
+	"cannot_get_token_from_server": {
+		"message": "",
+		"description": "data/js/ui.welcome.js"
+	},
 	"change_your_profile_picture_by_clicking_it": {
 		"message": "",
 		"description": "data/index.html"
@@ -322,6 +330,10 @@
 	"fellowship": {
 		"message": "",
 		"description": "data/js/ui.template.js"
+	},
+	"filter_nsfw_media": {
+		"message": "",
+		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
 		"message": "Filtrēt šāda veida tvītus",
@@ -603,15 +615,15 @@
 		"message": "Skaņas filtrs",
 		"description": "data/index.html"
 	},
+	"mute_this_source": {
+		"message": "",
+		"description": "data/index.html"
+	},
 	"mute_this_user": {
 		"message": "",
 		"description": "data/index.html"
 	},
 	"mute_this_word": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mute_this_source": {
 		"message": "",
 		"description": "data/index.html"
 	},
@@ -681,6 +693,10 @@
 	},
 	"oops_an_api_error_occurs": {
 		"message": "Ups, radās API kļūda!",
+		"description": "data/js/ui.welcome.js"
+	},
+	"oops_an_authentication_error_occurs": {
+		"message": "",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -1005,6 +1021,10 @@
 	},
 	"shortcuts": {
 		"message": "Īsceļi",
+		"description": "data/index.html"
+	},
+	"show_relative_timestamp": {
+		"message": "",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
