@@ -329,8 +329,8 @@ function WidgetListView(id, name, params) {
 
                 // only update DOM created today
                 if(moment().diff(m, "days") === 0) {
-                    a.text(m.fromNow());
-                    console.log("title:" + a.attr("title") + "    " + moment(a.attr("title")).fromNow());
+                    a.text(ui.Template.to_short_time_string(m));
+                    //console.log(ui.Template.to_short_time_string(m));
                 }
             });
         }
