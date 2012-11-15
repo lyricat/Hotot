@@ -4,7 +4,7 @@ conf = {
 vars: {
       'platform': 'Linux'
     , 'wrapper': 'unknown'
-    , 'version': '0.9.8.9'
+    , 'version': '0.9.8.10'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'

@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Hotot",
   "description": "Hotot Twitter client for Chrome",
-  "version": "0.9.8.8",
+  "version": "0.9.8.10",
   "default_locale": "en",
 	"content_security_policy": "script-src 'self' https://maps.google.com'; object-src 'self'",
   "background": {

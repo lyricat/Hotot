@@ -294,6 +294,10 @@ function formalize() {
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
     text = text.replace(ui.StatusBox.reg_fake_dots2, '……');
     text = text.replace('<3', '♥');
+    text = text.replace('“', '「');
+    text = text.replace('”', '」');
+    text = text.replace('‘', '『');
+    text = text.replace('’', '』');
     $('#tbox_status').val(text);
 },
 
