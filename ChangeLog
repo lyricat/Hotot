@@ -1,6 +1,10 @@
 The Latest Stable Version is 0.9.8.9
 The Latest Development Version is 0.9.8.8
 
+Version 0.9.8.10
+  * relative timestamp.
+	* formalize quotation marks.
+
 Version 0.9.8.9
 	* fix issue#378, Trend-API in identi.ca throws errors
 	* fix issue#390, translator doesn't work.
