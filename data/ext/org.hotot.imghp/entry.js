@@ -17,14 +17,24 @@ url: 'https://twitter.com/mmyjona',
 
 search_image_with_google:
 function search_image_with_google(li_id) {
-    $(li_id +' .card_body .preview .media_preview > a').each(
-        function(i,e){
-            var search_img_url = 'https://www.google.com/searchbyimage?image_url=' + $(this).attr('direct_url');
+    var media_array = $(li_id +' .card_body .preview .media_preview > a');
+    hotot_log('Imghp', 'img_num: '+media_array.length);
+    if (media_array.length == 0) {
+        toast.set('No image found in this tweet!').show(-1);
+        return;
+    } else {
+        $.each(
+            media_array,
+            function(i,e){
+                var search_img_url = 'https://www.google.com/searchbyimage?image_url=' + $(this).attr('direct_url');
 
-            navigate_action(search_img_url);
-            hotot_log('Imghp', search_img_url);
-        }
-    )
+                navigate_action(search_img_url);
+                hotot_log('Imghp', 'search_url: '+search_img_url);
+            }
+        );
+        return;
+    }
+
 },
 
 enable:
