@@ -283,8 +283,8 @@ pre {
 }
 
 #status_image_preview_wrapper {
-	height: 161px;
-	width: 145px;
+	max-height: 161px;
+	max-width: 145px;
 	float: left;
 	padding: 5px;
 	box-sizing: border-box;
@@ -303,8 +303,8 @@ pre {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
-	height: 161px;
-	width: 145px;
+	max-height: 161px;
+	max-width: 145px;
 }
 
 #status_smiley {
