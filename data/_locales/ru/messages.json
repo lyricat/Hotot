@@ -96,7 +96,7 @@
 		"description": "data/index.html"
 	},
 	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "Не можем вас авторизовать! Пожалуйста проверьте ваш логин или пароль и базу API",
+		"message": "Не можем вас авторизовать! Пожалуйста, проверьте ваш логин или пароль и базу API",
 		"description": "data/js/ui.welcome.js"
 	},
 	"cannot_authenticate_you_please_try_later": {
@@ -144,7 +144,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_compose_message": {
-		"message": "Нажмите чтобы составить сообщение",
+		"message": "Составить сообщение",
 		"description": "data/index.html"
 	},
 	"click_to_expand_menu": {
@@ -180,7 +180,7 @@
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Скопируйте PIN Code и вставте в поле ниже",
+		"message": "Скопируйте PIN-код и вставьте в поле ниже",
 		"description": "data/index.html"
 	},
 	"copy_to_clipboard": {
@@ -244,7 +244,7 @@
 		"description": "data/js/ui.status_box.js"
 	},
 	"drag_a_photo_here": {
-		"message": "Переместите фото сюда",
+		"message": "Перетащите фото сюда",
 		"description": "data/index.html"
 	},
 	"drop": {
@@ -288,7 +288,7 @@
 		"description": "data/index.html"
 	},
 	"enable_gpu_acceleration": {
-		"message": "Включить Аппартное ускорение",
+		"message": "Включить аппаратное ускорение",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -328,7 +328,7 @@
 		"description": "data/index.html"
 	},
 	"fellowship": {
-		"message": "Братсвто",
+		"message": "Братство",
 		"description": "data/js/ui.template.js"
 	},
 	"filter_nsfw_media": {
@@ -372,7 +372,7 @@
 		"description": "data/index.html"
 	},
 	"font_preview_hint": {
-		"message": "съешь же ещё этих мягких французских булок, да выпей чаю.",
+		"message": "Любя, съешь щипцы, — вздохнёт мэр, — кайф жгуч.",
 		"description": "data/index.html"
 	},
 	"font_size": {
@@ -444,7 +444,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"insert_smiley": {
-		"message": "Вставить смайл",
+		"message": "Вставить смайлик",
 		"description": "data/index.html"
 	},
 	"intelligent_filter": {
@@ -456,7 +456,7 @@
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "Присоединиться",
+		"message": "Присоединился(ась)",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -472,7 +472,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_firewall": {
-		"message": "Фаервол Kismet",
+		"message": "Файервол Kismet",
 		"description": "data/index.html"
 	},
 	"kismet_guide": {
@@ -480,7 +480,7 @@
 		"description": "data/index.html"
 	},
 	"kismet_mute_hint": {
-		"message": "ВНИМЕНИЕ: Твиты содержащие данный атрибут не будут отображаться в ленте.",
+		"message": "ВНИМАНИЕ: Твиты, содержащие данный атрибут, не будут отображаться в ленте.",
 		"description": "data/index.html"
 	},
 	"label_with_color": {
@@ -560,7 +560,7 @@
 		"description": "data/index.html"
 	},
 	"mention_them": {
-		"message": "Написать ему",
+		"message": "Написать ему (ей)",
 		"description": "data/js/ui.template.js"
 	},
 	"mentions": {
@@ -584,19 +584,19 @@
 		"description": "data/js/ui.template.js"
 	},
 	"move_to_bottom": {
-		"message": "Передвинуться вниз",
+		"message": "Перейти вниз",
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Передвинуться к следующему твиту",
+		"message": "Перейти к следующему твиту",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
-		"message": "Передвинуться к предыдущему твиту",
+		"message": "Перейти к предыдущему твиту",
 		"description": "data/index.html"
 	},
 	"move_to_top": {
-		"message": "Передвинуться наверх",
+		"message": "Перейти наверх",
 		"description": "data/index.html"
 	},
 	"mute_by_containing_words": {
@@ -632,7 +632,7 @@
 		"description": "data/js/ui.slider.js"
 	},
 	"my_journey_is_to_the_sea_of_stars": {
-		"message": "Мое путешествие к морю уже началось",
+		"message": "Мое путешествие к морю звезд",
 		"description": "data/index.html"
 	},
 	"my_power": {
@@ -648,7 +648,7 @@
 		"description": "data/js/lib.twitterapi.js"
 	},
 	"network_error_please_try_later": {
-		"message": "Ошибка сети! повторите попытку позже.",
+		"message": "Ошибка сети! Повторите попытку позже.",
 		"description": "data/js/ui.welcome.js"
 	},
 	"new_profile_has_been_created": {
@@ -720,7 +720,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "или скопируйте адресс и откройте в браузере.",
+		"message": "или скопируйте адрес и откройте в браузере.",
 		"description": "data/index.html"
 	},
 	"panda_acts_cute": {
@@ -736,7 +736,7 @@
 		"description": "date/index.html"
 	},
 	"pin_code": {
-		"message": "PIN код",
+		"message": "PIN-код",
 		"description": "data/index.html"
 	},
 	"please_enter_the_recipient": {
@@ -816,7 +816,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
-		"message": "Http прокси",
+		"message": "HTTP-прокси",
 		"description": "data/index.html"
 	},
 	"proxy_no_proxy": {
@@ -824,7 +824,7 @@
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "Порт проскси-сервера",
+		"message": "Порт прокси-сервера",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
@@ -848,7 +848,7 @@
 		"description": "data/index.html"
 	},
 	"read_later": {
-		"message": "",
+		"message": "Прочесть позже",
 		"description": "data/index.html"
 	},
 	"read_later_service": {
@@ -1012,7 +1012,7 @@
 		"description": "data/index.html"
 	},
 	"send_message_to_them": {
-		"message": "Отправить ему сообщение",
+		"message": "Личное сообщение",
 		"description": "data/js/ui.template.js"
 	},
 	"shiny_old_times_before_marriage": {
@@ -1044,11 +1044,11 @@
 		"description": "data/index.html"
 	},
 	"slide_to_next_page": {
-		"message": "Передвинуть на следующую страницу",
+		"message": "Перейти на следующую страницу",
 		"description": "data/index.html"
 	},
 	"slide_to_prev_page": {
-		"message": "Передвинуть на предыдущую страницу",
+		"message": "Перейти на предыдущую страницу",
 		"description": "data/index.html"
 	},
 	"some_error_occur": {
@@ -1144,7 +1144,7 @@
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "Выбирете или переместите фотографию сюда",
+		"message": "Выберите или перетащите фотографию сюда",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
@@ -1192,7 +1192,7 @@
 		"description": "data/index.html"
 	},
 	"upload_photo": {
-		"message": "Загрузить фото.",
+		"message": "Загрузить фото",
 		"description": "data/index.html"
 	},
 	"upload_to_dots": {
@@ -1240,7 +1240,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"virushou_s_integrity": {
-		"message": "Вирушоу в целостности",
+		"message": "Целостность Вирушоу",
 		"description": "data/index.html"
 	},
 	"wanna_have_relationship_with": {
@@ -1276,7 +1276,7 @@
 		"description": "data/index.html"
 	},
 	"you_are_followed_by_them": {
-		"message": "Читает вас.",
+		"message": "Читает вас",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_following": {
@@ -1284,11 +1284,11 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_friends": {
-		"message": "Вы друзья.",
+		"message": "Вы друзья",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_are_not_following_each_other": {
-		"message": "Вы не читаете друг друга.",
+		"message": "Вы не читаете друг друга",
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_dont_have_a_view": {
