@@ -4,6 +4,7 @@ import agent
 import config
 import utils
 import json
+import platform
 
 class MainView(WebKit.WebView):
     def __init__(self, parentWidget):
@@ -99,7 +100,7 @@ class MainView(WebKit.WebView):
         agent.webv = self
         # overlay extra variables of web part
         variables = {
-              'platform': 'Linux'
+              'platform': platform.system()
             , 'wrapper': 'python-gtk3'
             , 'conf_dir': config.get_path("conf")
             , 'cache_dir': config.get_path("cache")

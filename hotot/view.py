@@ -9,6 +9,7 @@ import utils
 import json
 import gobject
 import os
+import platform
 
 try: import i18n
 except: from gettext import gettext as _
@@ -96,7 +97,7 @@ class MainView(WebView):
         agent.webv = self
         # overlay extra variables of web part
         variables = {
-              'platform': 'Linux'
+              'platform': platform.system()
             , 'wrapper': 'python-gtk2'
             , 'conf_dir': config.CONF_DIR
             , 'cache_dir': config.CACHE_DIR
