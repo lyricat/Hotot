@@ -820,6 +820,13 @@ function syncMyLists () {
     );
 }
 
+function removeTokensFromUrl(url) {
+	return url.replace(/oauth_consumer_key=[^&]+/g, 'oauth_consumer_key=***')
+			.replace(/oauth_nonce=[^&]+/g, 'oauth_nonce=***')
+			.replace(/oauth_signature=[^&]+/g, 'oauth_signature=***')
+			.replace(/oauth_token=[^&]+/g, 'oauth_token=***');
+}
+
 var globals = {
       tweet_block_width: 600
     , max_status_len: 140

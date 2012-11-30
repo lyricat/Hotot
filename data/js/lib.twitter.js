@@ -1,3 +1,5 @@
+// vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
+
 if (typeof(lib) == 'undefined') var lib = {};
 if (typeof(lib.twitter) == 'undefined') lib.twitter = {};
 
@@ -792,7 +794,7 @@ function TwitterClient() {
         url = url + '?' + signed_params;
         params = {};
 
-        hotot_log('Streams Open', url);
+        hotot_log('Streams Open', removeTokensFromUrl(url));
 
         var xhr = new XMLHttpRequest();
         watch_user_streams.xhr = xhr;

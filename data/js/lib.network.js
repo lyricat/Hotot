@@ -72,7 +72,7 @@ lib.Network = function Network (argument) {
             || (req_files && req_files.constructor == Array && req_files.length != 0)) {
     
             hotot_log('Req', JSON.stringify(
-                {'type':req_method, 'url': req_url, 'data':req_params, 'file': req_files}));
+                {'type':req_method, 'url': removeTokensFromUrl(req_url), 'data':req_params, 'file': req_files}));
     
             var task_uuid = self.generate_uuid();
             self.success_task_table[task_uuid] = on_success;
@@ -90,7 +90,7 @@ lib.Network = function Network (argument) {
             self.success_task_table[task_uuid] = on_success;
             self.error_task_table[task_uuid] = on_error;
             
-            hotot_log('Req', JSON.stringify({'type':req_method, 'url': req_url, 'data':req_params}));
+            hotot_log('Req', JSON.stringify({'type':req_method, 'url': removeTokensFromUrl(req_url), 'data':req_params}));
     
             jQuery.ajax({    
                 type: req_method,
