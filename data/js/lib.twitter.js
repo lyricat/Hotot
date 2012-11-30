@@ -802,9 +802,10 @@ function TwitterClient() {
         xhr.setRequestHeader('X-User-Agent', 'Hotot');
         try {
             xhr.setRequestHeader('User-Agent', 'Hotot');
-        } catch (e) {}
+        } catch (e) {
+        }
         xhr.createAt = new Date().toLocaleString();
-        xhr.onabort = xhr.onerror = xhr.onload = function() {
+        xhr.onabort = xhr.onerror = function() {
             if (xhr.status == 401 || xhr.status == 407) {
                 hotot_log('Streams XHR', 'OAuth error');
                 watch_user_streams.disable = true;
@@ -817,41 +818,55 @@ function TwitterClient() {
             hotot_log('Streams Exit', xhr.createAt + ' -> ' + new Date().toLocaleString());
         }
         xhr.onreadystatechange = function() {
-            newText = xhr.responseText.substr(watch_user_streams.last_text_length);
-            hotot_log('Streams XHR', 'readyState: ' + xhr.readyState + ', status: ' + xhr.status + ', responseText.length: ' + xhr.responseText.length + ', times: ' + watch_user_streams.times + ', createAt: ' + xhr.createAt);
-            watch_user_streams.last_text_length = xhr.responseText.length;
-            // limit xhr.responseText length & abort 
-            if (xhr.responseText.length > 500000) {
-                hotot_log('Streams Rec', xhr.responseText.length);
-                setTimeout(function() {
-                    xhr.abort();
-                },
-                100);
-            }
-            // empty reply, twitter use newline to keep stream alive
-            if (empty_tester.test(newText)) {
-                hotot_log('Streams XHR', 'res nothing');
-                return;
-            }
-            if (callback) {
-                // @TODO the procedure to process tweets can be simpler.
-                // because all json objects are complete.
-                var lines = newText.split(/[\n\r]/g);
-                for (var i = 0; i < lines.length; i += 1) {
-                    var line = lines[i].split(/({[^\0]+})/gm);
-                    for (var j = 0; j < line.length; j += 1) {
-                        if (!empty_tester.test(line[j])) {
-                            try {
-                                ret = JSON.parse(line[j]);
-                                callback(ret);
-                            } catch(e) {
-                                console.log('Streams callback', e.message, 'j=' + j, line);
-                                return;
+            if (xhr.readyState === 2 && xhr.status === 200) {
+                hotot_log('Streams Start', 'Connected');
+            } else if (xhr.readyState === 3) {
+                // Receiving
+
+                var newText = xhr.responseText.substr(watch_user_streams.last_text_length);
+                watch_user_streams.last_text_length = xhr.responseText.length;
+                // limit xhr.responseText length & abort 
+                if (xhr.responseText.length > 500000) {
+                    hotot_log('Streams Rec', xhr.responseText.length);
+                    setTimeout(function() {
+                        xhr.abort();
+                    },
+                    100);
+                }
+                // empty reply, twitter use newline to keep stream alive
+                if (empty_tester.test(newText)) {
+                    hotot_log('Streams XHR', 'Got nothing useful');
+                    return;
+                }
+                if (callback) {
+                    // @TODO the procedure to process tweets can be simpler.
+                    // because all json objects are complete.
+                    var lines = newText.split(/[\n\r]/g);
+                    for (var i = 0; i < lines.length; i += 1) {
+                        var line = lines[i].split(/({[^\0]+})/gm);
+                        for (var j = 0; j < line.length; j += 1) {
+                            if (!empty_tester.test(line[j])) {
+                                try {
+                                    ret = JSON.parse(line[j]);
+                                } catch(e) {
+                                    hotot_log('Streams XHR', e.message + '\n' + line);
+                                    return;
+                                }
+                                try {
+                                    callback(ret);
+                                } catch(e) {
+                                    console.log('Streams callback: ' + e.message + '\n' + line);
+                                    return;
+                                }
                             }
                         }
                     }
                 }
+
+            } else if (xhr.readyState === 4) {
+                hotot_log('Streams End', 'Connection completed');
             }
+
         }
         xhr.send(null);
         self.abort_watch_user_streams = function() {
