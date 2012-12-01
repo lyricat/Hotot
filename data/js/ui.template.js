@@ -762,6 +762,7 @@ function form_dm(dm_obj, pagename) {
     return ui.Template.render(ui.Template.message_t, m);
 },
 
+// This function returns the html for the given tweet_obj.
 form_tweet:
 function form_tweet (tweet_obj, pagename, in_thread) {
     var retweet_name = '';
@@ -876,14 +877,29 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.LINK = link;
     var msg = ui.Template.render(ui.Template.tweet_t, m);
 
+    // if the tweet contains user_mentions (which are provided by the Twitter
+    // API, not by the StatusNet API), it will here replace the 
+    // contents of the 'who_ref'-a-tag by the full name of this user.
+
     if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
         for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
         {
+            // hotot_log('form_tweet', 'user mention: ' + tweet_obj.entities.user_mentions[i].screen_name);
             var screen_name = tweet_obj.entities.user_mentions[i].screen_name;
             var name = tweet_obj.entities.user_mentions[i].name.replace(/"/g, '&quot;');
             var reg_ulink = new RegExp('>(' + screen_name + ')<', 'ig');
             msg = msg.replace(reg_ulink, ' title="' + name + '">$1<')
         }
+        // If we get here, and there are still <a who_href="...">-tags
+        // without title attribute, the user name was probably misspelled. 
+        // If I then remove the tag, the incorrect user name is not 
+        // highlighted any more, which fixes #415 for twitter.
+        // (It does not work for identi.ca, because the identi.ca API
+        // does not provide user_mentions.)
+
+        var re = /\<a class=\"who_href\" href=\"[^"]*\"\>([^<]*)\<\/a\>/gi
+        msg = msg.replace(re, '$1');
+        // hotot_log('form_tweet', 'resulting msg: ' + msg);
     }
 
     return msg;
@@ -1185,8 +1201,14 @@ function convert_chars(text) {
     return text;
 },
 
+// This function applies some basic replacements to tweet.text, and returns
+// the resulting string.
+// This is not the final text that will appear in the UI, form_tweet will also do
+// some modifications. from_tweet will search for the a-tags added in this
+// function, to do the modifications.
 form_text:
 function form_text(tweet) {
+    //hotot_log('form_text in', tweet.text);
     var text = ui.Template.convert_chars(tweet.text);
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
@@ -1210,6 +1232,7 @@ function form_text(tweet) {
              + ui.Template.form_preview(tweet)
              + '</div>';
     }
+    //hotot_log('form_text out', text);
     return text;
 },
 
