@@ -1974,8 +1974,8 @@ label {
 }
 
 .vcard_tabs_page td:first-child {
-	width: 50px;
 	text-align: left;
+	white-space: nowrap;
 }
 
 
