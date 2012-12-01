@@ -211,7 +211,7 @@ def request(uuid, method, url, params={}, headers={},files=[],additions=''):
 def get_urlopen():
     proxy_type = get_prefs('proxy_type');
     if proxy_type == 'http':
-        scheme = 'https'
+        scheme = 'http'
         host = str(get_prefs('proxy_host'))
         port = str(get_prefs('proxy_port'))
         url = scheme + '://' + host + ':' + port
