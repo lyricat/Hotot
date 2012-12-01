@@ -21,7 +21,7 @@ except: from gettext import gettext as _
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
+USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 
 ## Disable GtkNotification on Gnome3
 screen = gtk.gdk.screen_get_default()
