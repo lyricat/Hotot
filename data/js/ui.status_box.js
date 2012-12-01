@@ -48,7 +48,7 @@ function init () {
         if (ui.StatusBox.get_status_len(status_text) > 140 && ui.StatusBox.current_mode === ui.StatusBox.MODE_DM) {
             toast.set(
                 _('status_is_over_140_characters')).show();
-            return; 
+            return;
         }
 
         if (ui.StatusBox.get_status_len(status_text) > 140) {
@@ -56,9 +56,9 @@ function init () {
                 toast.set(_('status_is_over_140_characters')).show();
             } else {
                 toast.set('hotot I have super power to compress ...').show();
-                globals.network.do_request('POST', 
-                    'http://hotot.in/create.json', 
-                    { 
+                globals.network.do_request('POST',
+                    'http://hotot.in/create.json',
+                    {
                         'text': status_text,
                         'name': globals.myself.screen_name,
                         'avatar': globals.myself.profile_image_url
@@ -68,7 +68,7 @@ function init () {
                     function (result) {
                         if (result && result.text) {
                             ui.StatusBox.update_status(result.text);
-                        } 
+                        }
                     },
                     function () {
                         toast.set('but I failed :( ...').show();
@@ -137,12 +137,12 @@ function init () {
                 ui.ImageUploader.mode = ui.ImageUploader.MODE_PY;
             } else {
                 ui.ImageUploader.mode = ui.ImageUploader.MODE_HTML5;
-            } 
+            }
             ui.ImageUploader.show();
         } else {
             title = 'Error !'
             content = '<p data-i18n-text="basic_auth_not_supported">Basic Auth is not supported, please use OAuth to upload images.</p>'
-            widget.DialogManager.alert(title, content); 
+            widget.DialogManager.alert(title, content);
         }
         return false;
     });
@@ -172,7 +172,7 @@ function init () {
     });
 
     $('#tbox_status').keydown(
-    function (event) { 
+    function (event) {
         // shortcut binding Ctrl+Enter or Command+Enter(Mac)
         if (navigator.platform.indexOf('Mac') != -1) {
             if (event.metaKey && event.keyCode === 13) {
@@ -189,18 +189,18 @@ function init () {
             ui.StatusBox.close();
         }
     });
-    
+
     $('#tbox_status').blur(function (event) {
         ui.StatusBox.update_status_len();
         ui.StatusBox.formalize();
     });
 
     $('#status_box').bind('dragover', function () {
-        return false;    
+        return false;
     }).bind('dragend', function () {
         return false;
     }).bind('drop', function (ev) {
-        ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0]; 
+        ui.StatusBox.file = ev.originalEvent.dataTransfer.files[0];
 
         if (! ui.FormChecker.test_file_image(ui.StatusBox.file)) {
             toast.set(ui.FormChecker.ERR_STR_FILE_IS_NOT_IMAGE).show(3);
@@ -229,7 +229,7 @@ function init () {
         return false;
     });
 
-    $('#status_len').text('0/' + globals.max_status_len);      
+    $('#status_len').text('0/' + globals.max_status_len);
 
     $('#status_box').click(function (event) {
         event.stopPropagation();
@@ -250,7 +250,7 @@ function init () {
 },
 
 resetSize:
-function resetSize () {  
+function resetSize () {
     $('#tbox_status_wrapper').height(160);
 },
 
@@ -262,7 +262,7 @@ function on_btn_short_url_clicked(event) {
         var req_url = ui.StatusBox.short_url_base + urls[i];
         procs.push(function () {
             globals.network.do_request('GET',
-            req_url, 
+            req_url,
             {},
             {},
             [],
@@ -290,7 +290,11 @@ function on_btn_short_url_clicked(event) {
 
 formalize:
 function formalize() {
-    var text = $('#tbox_status').val(); 
+    /*
+     * TODO: customization
+     * the following implementation is ugly and unpredictable
+     *
+    var text = $('#tbox_status').val();
     text = text.replace(ui.StatusBox.reg_fake_dots, '…');
     text = text.replace(ui.StatusBox.reg_fake_dots2, '……');
     text = text.replace('<3', '♥');
@@ -299,6 +303,7 @@ function formalize() {
     text = text.replace('‘', '『');
     text = text.replace('’', '』');
     $('#tbox_status').val(text);
+    */
 },
 
 change_mode:
@@ -329,7 +334,7 @@ function update_status(status_text) {
     if (status_text.length != 0) {
         toast.set(_('updating_dots')).show(-1);
         var draft = {
-            'mode': ui.StatusBox.MODE_TWEET, 
+            'mode': ui.StatusBox.MODE_TWEET,
             'text': status_text
         };
         if (ui.StatusBox.current_mode == ui.StatusBox.MODE_REPLY) {
@@ -379,7 +384,7 @@ function post_message(message_text) {
     if (message_text.length != 0) {
         var name = $.trim($('#tbox_dm_target').val());
         var draft = {
-            'mode': ui.StatusBox.MODE_DM, 
+            'mode': ui.StatusBox.MODE_DM,
             'text': message_text,
             'recipient': encodeURIComponent(name)
         };
@@ -407,7 +412,7 @@ post_message_cb:
 function post_message_cb(result) {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     toast.set(_('post_successfully')).show();
-    $('#tbox_status').val(''); 
+    $('#tbox_status').val('');
     $('#status_info').hide();
     return this;
 },
@@ -434,7 +439,7 @@ function post_image(msg) {
         , function () {
             toast.set('Failed!').show();
             $('#status_image_preview').css('background-image', 'none');
-            $('#tbox_status').val(''); 
+            $('#tbox_status').val('');
             ui.StatusBox.file = null;
             ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         });
@@ -444,7 +449,7 @@ post_image_cb:
 function post_image_cb(result) {
     toast.set('Uploading Successfully!').show();
     if (ui.ImageUploader.service_name === 'twitter.com') {
-        ui.StatusBox.reset(); 
+        ui.StatusBox.reset();
         ui.Main.add_tweets(ui.Main.views['home'], [result], false, true);
     } else {
         var text = result.text + ' '+ result.url;
@@ -479,7 +484,7 @@ function save_draft(draft) {
         case ui.StatusBox.MODE_DM:
             ui.StatusBox.set_dm_target(decodeURIComponent(li.attr('recipient')));
         break;
-        default: 
+        default:
         break;
         }
         li.remove();
@@ -516,7 +521,7 @@ function insert_status_text(text, pos) {
     }
     $('#tbox_status').val(
         $('#tbox_status').val().substr(0, pos)
-        + text 
+        + text
         + $('#tbox_status').val().substring(pos));
 },
 
@@ -525,7 +530,7 @@ function reset() {
     ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     $('#status_info').hide();
     $('#status_image_preview').css('background-image', 'none');
-    $('#tbox_status').val(''); 
+    $('#tbox_status').val('');
     ui.StatusBox.file = null;
     ui.StatusBox.reply_to_id = null;
     ui.StatusBox.resetSize();
@@ -570,7 +575,7 @@ move_cursor:
 function move_cursor(pos) {
     if (typeof pos == 'undefined')
         return;
-    if (pos == ui.StatusBox.POS_END) 
+    if (pos == ui.StatusBox.POS_END)
         pos = $('#tbox_status').attr('value').length;
     $('#tbox_status').focus();
     var box = $('#tbox_status').get(0);
