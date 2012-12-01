@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*-
+# vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
 from gi.repository import Gtk, Gdk, GdkX11, GdkPixbuf, GObject
 import os
 import sys
@@ -7,6 +8,7 @@ import time
 import base64
 import urllib, urllib2
 import threading
+import hashlib
 import config, utils
 
 try: import i18n
@@ -62,12 +64,10 @@ def crack_action(params):
         img_uri = urllib.unquote(params[2])
         avatar_file = urllib.unquote(params[3])
         avatar_path = os.path.join(config.get_path("avatar"), avatar_file)
-        if not (os.path.exists(avatar_path) and avatar_file.endswith(img_uri[img_uri.rfind('/')+1:])):
-            print 'Download:', img_uri , 'To' , avatar_path
-            th = threading.Thread(
-                target = save_file_proc,
-                args=(img_uri, avatar_path))
-            th.start()
+        th = threading.Thread(
+            target = save_file_proc,
+            args=(img_uri, avatar_path))
+        th.start()
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
     elif params[1] == 'paste_clipboard_text':
@@ -82,7 +82,13 @@ def crack_system(params):
         body = urllib.unquote(params[4])
         if type == 'content':
             try:
-                avatar_file = os.path.join(config.get_path("avatar"), urllib.unquote(params[5]))
+                img_uri = urllib.unquote(params[5])
+                avatar_file = os.path.join(config.get_path("avatar"), hashlib.new("sha1", img_uri).hexdigest())
+                avatar_path = avatar_file
+                th = threading.Thread(
+                    target = save_file_proc,
+                    args=(img_uri, avatar_path))
+                th.start()
             except:
                 avatar_file = None
             do_notify(summary, body, avatar_file)
@@ -114,16 +120,18 @@ def crack_request(req_params):
     th.start()
 
 def save_file_proc(uri, save_path):
-    if (not os.path.isfile(save_path)):
+    if (not os.path.isfile(save_path)) or os.path.getsize(save_path) == 0:
         try:
+            data = _get(uri);
             avatar = open(save_path, "wb")
-            avatar.write(_get(uri, req_timeout=5))
+            avatar.write(data)
             avatar.close()
         except:
             import traceback
             print "Exception:"
             traceback.print_exc(file=sys.stdout)
-            os.unlink(save_path)
+            if os.path.isfile(save_path):
+                os.unlink(save_path)
 
 
 def execute_script(scripts):

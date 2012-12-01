@@ -1,17 +1,19 @@
 # -*- coding: UTF-8 -*-
+# vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
 import json
 import config
 import time
 import base64
 import urllib, urllib2
 import gtk
-import threading 
+import threading
 import gobject
 import utils
 import hotot
 import os
 import sys
 import subprocess
+import hashlib
 
 try: import i18n
 except: from gettext import gettext as _
@@ -19,7 +21,7 @@ except: from gettext import gettext as _
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
+USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
 
 ## Disable GtkNotification on Gnome3
 screen = gtk.gdk.screen_get_default()
@@ -31,7 +33,7 @@ if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
     import gtknotification
     class  Notification(object):
         def do_notify(self, summary, body, icon_file = None):
-            if (icon_file == None or not os.path.isfile(icon_file)):
+            if (icon_file == None or not os.path.isfile(icon_file) or os.path.getsize(icon_file) == 0):
                 icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
             icon_file = 'file://' + icon_file
             title = _("Hotot Notification")
@@ -45,7 +47,7 @@ else:
     pynotify.init(_("Hotot Notification"))
     notify = pynotify.Notification('Init', '')
 
-webv = None 
+webv = None
 app = None
 http_code_msg_table = {
       404: 'The URL you request does not exist. Please check your API Base/OAuth Base/Search Base.'
@@ -67,9 +69,9 @@ def do_notify(summary, body, icon_file = None):
     if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
         return notify.do_notify(summary, body, icon_file)
     n = pynotify.Notification(summary, body)
-    if (icon_file == None or not os.path.isfile(icon_file)):
+    if (icon_file == None or not os.path.isfile(icon_file) or os.path.getsize(icon_file) == 0):
         icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
-    n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))    
+    n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))
     n.set_timeout(5000)
     n.show()
 
@@ -101,12 +103,10 @@ def crack_action(params):
         img_uri = urllib.unquote(params[2])
         avatar_file = urllib.unquote(params[3])
         avatar_path = os.path.join(config.AVATAR_CACHE_DIR, avatar_file)
-        if not (os.path.exists(avatar_path) and avatar_file.endswith(img_uri[img_uri.rfind('/')+1:])):
-            print 'Download:', img_uri , 'To' , avatar_path
-            th = threading.Thread(
-                target = save_file_proc, 
-                args=(img_uri, avatar_path))
-            th.start()
+        th = threading.Thread(
+            target = save_file_proc,
+            args=(img_uri, avatar_path))
+        th.start()
     elif params[1] == 'log':
         print '\033[1;31;40m[%s]\033[0m %s' % (urllib.unquote(params[2]) ,urllib.unquote(params[3]))
     elif params[1] == 'paste_clipboard_text':
@@ -124,7 +124,13 @@ def crack_system(params):
         body = urllib.unquote(params[4])
         if type == 'content':
             try:
-                avatar_file = os.path.join(config.AVATAR_CACHE_DIR, urllib.unquote(params[5]))
+                img_uri = urllib.unquote(params[5])
+                avatar_file = os.path.join(config.AVATAR_CACHE_DIR, hashlib.new("sha1", img_uri).hexdigest())
+                avatar_path = avatar_file
+                th = threading.Thread(
+                    target = save_file_proc,
+                    args=(img_uri, avatar_path))
+                th.start()
             except:
                 avatar_file = None
             do_notify(summary, body, avatar_file)
@@ -159,16 +165,18 @@ def crack_request(req_params):
     th.start()
 
 def save_file_proc(uri, save_path):
-    if (not os.path.isfile(save_path)):
+    if (not os.path.isfile(save_path)) or os.path.getsize(save_path) == 0:
         try:
+            data = _get(uri)
             avatar = open(save_path, "wb")
-            avatar.write(_get(uri, req_timeout=5))
+            avatar.write(data)
             avatar.close()
         except:
             import traceback
             print "Exception:"
             traceback.print_exc(file=sys.stdout)
-            os.unlink(save_path)
+            if os.path.isfile(save_path):
+                os.unlink(save_path)
 
 
 def execute_script(scripts):
@@ -191,7 +199,7 @@ def set_style_scheme():
     style = app.window.get_style()
     base, fg, bg, text = style.base, style.fg, style.bg, style.text
     webv.execute_script('''
-        $('#header').css('background', '%s');    
+        $('#header').css('background', '%s');
     ''' % str(bg[gtk.STATE_NORMAL]));
 
 def get_prefs(name):
@@ -269,7 +277,7 @@ def get_urlopen():
             url = os.environ["HTTP_PROXY"]
         else:
             url = None
-        
+
         if not url:
             return urllib2.urlopen
         else:
@@ -294,10 +302,10 @@ def _post(url, params={}, req_headers={}, files=[], additions='', req_timeout=No
 
     urlopen = get_urlopen()
     params = dict([(k.encode('utf8')
-            , v.encode('utf8') if type(v)==unicode else v) 
+            , v.encode('utf8') if type(v)==unicode else v)
                 for k, v in params.items()])
 
-    request = urllib2.Request(url, 
+    request = urllib2.Request(url,
         urlencode(params) + additions, headers=req_headers);
     ret = urlopen(request, timeout=req_timeout).read()
     return ret
@@ -349,7 +357,7 @@ def _curl(url, params=None, post=False, username=None, password=None, header=Non
     try:
         curl.perform()
     except pycurl.error, e:
-        raise e    
+        raise e
 
     http_code = curl.getinfo(pycurl.HTTP_CODE)
     if http_code != 200:
@@ -367,6 +375,6 @@ def urlencode(query):
             del query[k]
     return urllib.urlencode(query)
 
-def idle_it(fn): 
+def idle_it(fn):
     return lambda *args: gobject.idle_add(fn, *args)
 

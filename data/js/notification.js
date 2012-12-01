@@ -9,6 +9,7 @@ _k_limit: 3,
 init:
 function init() {
     notification.check_proc();
+    setInterval(notification.check_proc, 1000);
 },
 
 check_proc:
@@ -17,7 +18,6 @@ function check_proc() {
         var tuple = notification._queue.shift();
         notification.notify(tuple[0], tuple[1], tuple[2], tuple[3]);
     }
-    setTimeout(notification.check_proc, 1000);
 },
 
 notify:

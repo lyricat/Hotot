@@ -15,7 +15,7 @@ class Notification:
         self.notification = Notify.Notification
 
     def show(self, summary, body, icon_file = None):
-        if (icon_file == None or not os.path.isfile(icon_file)):
+        if icon_file == None or (not os.path.isfile(icon_file)) or os.path.getsize(icon_file) == 0:
             icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'))
         n = self.notification.new(self.escape(summary), self.escape(body), icon_file)
         n.set_timeout(5000)
