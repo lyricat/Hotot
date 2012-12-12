@@ -195,9 +195,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
         hide();
     }
-#else
-    ParentWindow::closeEvent(event);
 #endif
+    ParentWindow::closeEvent(event);
 }
 
 void MainWindow::exit()
