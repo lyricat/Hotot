@@ -1,6 +1,6 @@
 {
 	"a_new_hope": {
-		"message": "",
+		"message": "Нова надежда",
 		"description": "data/index.html"
 	},
 	"about": {
@@ -36,7 +36,7 @@
 		"description": "data/index.html"
 	},
 	"animation": {
-		"message": "",
+		"message": "Анимация",
 		"description": "data/index.html"
 	},
 	"api_base": {
@@ -52,7 +52,7 @@
 		"description": "data/index.html"
 	},
 	"artwork_by": {
-		"message": "",
+		"message": "Създадено от",
 		"description": "data/index.html"
 	},
 	"assassin_s_tango": {
@@ -68,7 +68,7 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"auto_longer_tweet": {
-		"message": "",
+		"message": "Aвтоматично удължаване на туита",
 		"description": "data/index.html"
 	},
 	"automatically_sign_in_after_opening": {
@@ -80,7 +80,7 @@
 		"description": "data/index.html"
 	},
 	"bio": {
-		"message": "Биграфия",
+		"message": "Биография",
 		"description": "data/index.html"
 	},
 	"block": {
@@ -100,15 +100,15 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"cannot_authenticate_you_please_try_later": {
-		"message": "",
+		"message": "Не сте удостоверени! Моля, опитайте по-късно!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"cannot_get_token_from_server": {
-		"message": "",
+		"message": "Няма отговор от сървъра",
 		"description": "data/js/ui.welcome.js"
 	},
 	"change_your_profile_picture_by_clicking_it": {
-		"message": "",
+		"message": "Променете профилната си снимка като кликнете върху нея.",
 		"description": "data/index.html"
 	},
 	"charactor_at_is_not_allow_in_profile_prefix": {
@@ -116,11 +116,11 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"chrome_context_menu_integration": {
-		"message": "",
+		"message": "Интеграция с контекстното меню на Chrome",
 		"description": "data/index.html"
 	},
 	"classic": {
-		"message": "",
+		"message": "класик",
 		"description": "data/index.html"
 	},
 	"clear": {
@@ -148,7 +148,7 @@
 		"description": "data/index.html"
 	},
 	"click_to_expand_menu": {
-		"message": "",
+		"message": "Кликни за да разшириш менюто",
 		"description": "data/index.html"
 	},
 	"click_to_show": {
@@ -160,7 +160,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"client_name1_client_name2": {
-		"message": "",
+		"message": "Клиент1_Клиент2",
 		"description": "data/index.html"
 	},
 	"close": {
@@ -176,7 +176,7 @@
 		"description": "data/index.html"
 	},
 	"compress_tweet": {
-		"message": "",
+		"message": "Смали туита",
 		"description": "data/index.html"
 	},
 	"copy_the_pin_code_and_paste_it_into_the_box_below": {
@@ -192,7 +192,7 @@
 		"description": "data/js/ui.template.js"
 	},
 	"create_a_new_profile": {
-		"message": "",
+		"message": "Създай нов профил",
 		"description": "data/index.html"
 	},
 	"credits": {
@@ -204,7 +204,7 @@
 		"description": "data/index.html"
 	},
 	"custom_font": {
-		"message": "",
+		"message": "Потребителски шрифт",
 		"description": "data/index.html"
 	},
 	"default_picture_service": {
@@ -224,7 +224,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"donate": {
-		"message": "",
+		"message": "Дари!",
 		"description": "data/index.html"
 	},
 	"donate_hint1": {
@@ -252,23 +252,23 @@
 		"description": "data/index.html"
 	},
 	"drop_tweets_contain_hash_tag_nowplaying": {
-		"message": "",
+		"message": "Пропускай туитовe, съдържащи таг nowplaying",
 		"description": "data/index.html"
 	},
 	"drop_tweets_contain_word_abc": {
-		"message": "",
+		"message": "Пропускай туитове, съдържащи думата",
 		"description": "data/index.html"
 	},
 	"drop_tweets_retweeted_by_abc": {
-		"message": "",
+		"message": "Пропускай туитове, ретуитнати от",
 		"description": "data/index.html"
 	},
 	"drop_tweets_sent_by_abc": {
-		"message": "",
+		"message": "Пропускай туитове, изпратени от",
 		"description": "data/index.html"
 	},
 	"drop_tweets_sent_from_foursquare": {
-		"message": "",
+		"message": "Пропускай туитове, публикувани от forsquare",
 		"description": "data/index.html"
 	},
 	"edit": {
@@ -284,11 +284,11 @@
 		"description": "data/js/ui.exts_dlg.js"
 	},
 	"enable_animation": {
-		"message": "",
+		"message": "Разереши анимация",
 		"description": "data/index.html"
 	},
 	"enable_gpu_acceleration": {
-		"message": "",
+		"message": "Рарзреши графичното ускорение",
 		"description": "data/index.html"
 	},
 	"enable_verbose_mode": {
@@ -328,11 +328,11 @@
 		"description": "data/index.html"
 	},
 	"fellowship": {
-		"message": "",
+		"message": "Приятелство",
 		"description": "data/js/ui.template.js"
 	},
 	"filter_nsfw_media": {
-		"message": "",
+		"message": "Филтрирай NSFW съдържание",
 		"description": "data/index.html"
 	},
 	"filter_tweets_like_it": {
@@ -404,7 +404,7 @@
 		"description": "data/index.html"
 	},
 	"hey": {
-		"message": "",
+		"message": "Хей",
 		"description": "data/index.html"
 	},
 	"hey_it_is_you": {
@@ -432,7 +432,7 @@
 		"description": "data/index.html"
 	},
 	"hotot_description": {
-		"message": "",
+		"message": "Описание на Hotot",
 		"description": "data/index.html"
 	},
 	"image_uploader": {
@@ -456,7 +456,7 @@
 		"description": "data/index.html"
 	},
 	"join": {
-		"message": "За първи път на",
+		"message": "Тук от",
 		"description": "data/js/ui.template.js"
 	},
 	"just_cannot_stop_thinking_of_here": {
@@ -512,7 +512,7 @@
 		"description": "data/index.html"
 	},
 	"line_height": {
-		"message": "",
+		"message": "Височина на реда",
 		"description": "data/index.html"
 	},
 	"list": {
@@ -556,7 +556,7 @@
 		"description": "data/index.html"
 	},
 	"mask_tweets_contain_hash_tag_callmemaybe": {
-		"message": "",
+		"message": "Маскирай туитове, съдържащи хаштаг callmemaybe",
 		"description": "data/index.html"
 	},
 	"mention_them": {
@@ -588,7 +588,7 @@
 		"description": "data/index.html"
 	},
 	"move_to_next_tweet": {
-		"message": "Прмести до следващия туит",
+		"message": "Прeмести до следващия туит",
 		"description": "data/index.html"
 	},
 	"move_to_prev_tweet": {
@@ -600,15 +600,15 @@
 		"description": "data/index.html"
 	},
 	"mute_by_containing_words": {
-		"message": "",
+		"message": "Заглуши по съдържащи се думи",
 		"description": "data/index.html"
 	},
 	"mute_by_source": {
-		"message": "",
+		"message": "Заглуши по източник",
 		"description": "data/index.html"
 	},
 	"mute_by_user_name": {
-		"message": "",
+		"message": "Заглуши по потребител",
 		"description": "data/index.html"
 	},
 	"mute_filter": {
@@ -616,15 +616,15 @@
 		"description": "data/index.html"
 	},
 	"mute_this_source": {
-		"message": "",
+		"message": "Заглуши този източник",
 		"description": "data/index.html"
 	},
 	"mute_this_user": {
-		"message": "",
+		"message": "Заглуши този потребител",
 		"description": "data/index.html"
 	},
 	"mute_this_word": {
-		"message": "",
+		"message": "Заглуши следните думи",
 		"description": "data/index.html"
 	},
 	"my_favs": {
@@ -664,7 +664,7 @@
 		"description": "data/index.html"
 	},
 	"not_avaiable_yet": {
-		"message": "",
+		"message": "Не е налично все още",
 		"description": "data/index.html"
 	},
 	"notify": {
@@ -672,7 +672,7 @@
 		"description": "data/index.html"
 	},
 	"notify_me_if_incoming_tweets_mention_hotot": {
-		"message": "",
+		"message": "Уведоми ме за туитове, споменаващи hotot",
 		"description": "data/index.html"
 	},
 	"oauth_base": {
@@ -696,7 +696,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"oops_an_authentication_error_occurs": {
-		"message": "",
+		"message": "Опаа, грешка в удостоверяването!",
 		"description": "data/js/ui.welcome.js"
 	},
 	"open_a_list_dots": {
@@ -728,7 +728,7 @@
 		"description": "data/index.html"
 	},
 	"password": {
-		"message": "",
+		"message": "Парола",
 		"description": "data/index.html"
 	},
 	"paste_from_clipboard": {
@@ -748,7 +748,7 @@
 		"description": "data/js/ui.welcome.js"
 	},
 	"port": {
-		"message": "",
+		"message": "Порт",
 		"description": "data/index.html"
 	},
 	"post_successfully": {
@@ -772,7 +772,7 @@
 		"description": "data/index.html"
 	},
 	"pretty_wife": {
-		"message": "Убава жена",
+		"message": "Убава булка",
 		"description": "data/index.html"
 	},
 	"preview_embedded_media": {
@@ -784,7 +784,7 @@
 		"description": "data/index.html"
 	},
 	"previous": {
-		"message": "",
+		"message": "Предишен",
 		"description": "data/index.html"
 	},
 	"profile": {
@@ -792,19 +792,19 @@
 		"description": "data/index.html"
 	},
 	"profile_name": {
-		"message": "",
+		"message": "Име на профила",
 		"description": "data/index.html"
 	},
 	"project_host": {
-		"message": "",
+		"message": "Хост на проекта",
 		"description": "data/index.html"
 	},
 	"project_site": {
-		"message": "",
+		"message": "Сайт на проекта",
 		"description": "data/index.html"
 	},
 	"proxy": {
-		"message": "",
+		"message": "Прокси",
 		"description": "data/index.html"
 	},
 	"proxy_auth": {
@@ -812,27 +812,27 @@
 		"description": "data/index.html"
 	},
 	"proxy_host": {
-		"message": "",
+		"message": "Хост на проксито",
 		"description": "data/index.html"
 	},
 	"proxy_http_proxy": {
-		"message": "",
+		"message": "HTTP Прокси",
 		"description": "data/index.html"
 	},
 	"proxy_no_proxy": {
-		"message": "",
+		"message": "Без прокси",
 		"description": "data/index.html"
 	},
 	"proxy_port": {
-		"message": "",
+		"message": "Порт на проксито",
 		"description": "data/index.html"
 	},
 	"proxy_socks_proxy": {
-		"message": "",
+		"message": "Socks",
 		"description": "data/index.html"
 	},
 	"proxy_system_proxy": {
-		"message": "",
+		"message": "Системно прокси",
 		"description": "data/index.html"
 	},
 	"quick_references": {
@@ -848,11 +848,11 @@
 		"description": "data/index.html"
 	},
 	"read_later": {
-		"message": "",
+		"message": "Прочети по-късно",
 		"description": "data/index.html"
 	},
 	"read_later_service": {
-		"message": "",
+		"message": "Услуга за по-късно прочитане",
 		"description": "data/index.html"
 	},
 	"relation": {
@@ -992,11 +992,11 @@
 		"description": "data/index.html"
 	},
 	"select_a_read_later_service": {
-		"message": "",
+		"message": "Избери услуга за по-късно четене",
 		"description": "data/index.html"
 	},
 	"select_a_theme": {
-		"message": "",
+		"message": "Избери тема",
 		"description": "data/index.html"
 	},
 	"select_actions": {
@@ -1024,7 +1024,7 @@
 		"description": "data/index.html"
 	},
 	"show_relative_timestamp": {
-		"message": "",
+		"message": "Покажи относителна дата",
 		"description": "data/index.html"
 	},
 	"sign_in_dots": {
@@ -1088,7 +1088,7 @@
 		"description": "data/index.html"
 	},
 	"supervised_by": {
-		"message": "",
+		"message": "Надзиравано от",
 		"description": "data/index.html"
 	},
 	"themes": {
@@ -1104,7 +1104,7 @@
 		"description": "data/index.html"
 	},
 	"to": {
-		"message": "",
+		"message": "до",
 		"description": "data/index.html"
 	},
 	"to_cold_beauty": {
@@ -1112,7 +1112,7 @@
 		"description": "data/index.html"
 	},
 	"toggle_conversation": {
-		"message": "",
+		"message": "Включи разговорите",
 		"description": "data/index.html"
 	},
 	"tranquil": {
@@ -1136,15 +1136,15 @@
 		"description": "data/index.html"
 	},
 	"twitter_official_service": {
-		"message": "",
+		"message": "Официална услуга на Twitter",
 		"description": "data/index.html"
 	},
 	"type_a_name_here": {
-		"message": "",
+		"message": "Попълнете име",
 		"description": "data/index.html"
 	},
 	"type_or_drag_a_photo_here": {
-		"message": "",
+		"message": "Напишете или довлачете снимката тук",
 		"description": "data/index.html"
 	},
 	"un_favorite_this_tweet_dots": {
@@ -1164,7 +1164,7 @@
 		"description": "data/js/ui.main.js"
 	},
 	"unfollow": {
-		"message": "",
+		"message": "Не следвай",
 		"description": "data/js/ui.listview.js"
 	},
 	"unfollow_at": {
@@ -1212,7 +1212,7 @@
 		"description": "data/index.html"
 	},
 	"use_read_later_service": {
-		"message": "",
+		"message": "Използвай услуга за по-късно прочитане",
 		"description": "data/index.html"
 	},
 	"use_reply_all_as_default_reply_action": {
@@ -1220,7 +1220,7 @@
 		"description": "data/index.html"
 	},
 	"username": {
-		"message": "",
+		"message": "Потребител",
 		"description": "data/index.html"
 	},
 	"verify": {
@@ -1268,11 +1268,11 @@
 		"description": "data/index.html"
 	},
 	"write_down_description_here": {
-		"message": "",
+		"message": "Напишете описанието тук",
 		"description": "data/index.html"
 	},
 	"written_by": {
-		"message": "",
+		"message": "Написано от",
 		"description": "data/index.html"
 	},
 	"you_are_followed_by_them": {
@@ -1292,15 +1292,15 @@
 		"description": "data/js/ui.peopleview.js"
 	},
 	"you_dont_have_a_view": {
-		"message": "",
+		"message": "Нямате изглед",
 		"description": "data/index.html"
 	},
 	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
-		"message": "",
+		"message": "Трябва да добавите един или повече изгледи от бутона горе",
 		"description": "data/index.html"
 	},
 	"your_profile": {
-		"message": "",
+		"message": "Вашият профил",
 		"description": "data/index.html"
 	}
 }
