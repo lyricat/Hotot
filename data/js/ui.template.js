@@ -1239,6 +1239,8 @@ function form_text(tweet) {
 form_text_raw:
 function form_text_raw(raw_text) {
     var text = raw_text;
+    text = text.replace(/</g, "&lt;");
+    text = text.replace(/>/g, "&gt;");
     text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
