@@ -93,15 +93,11 @@ By default gtk with gir, and qt will be built.
 
 The following options can be applied, with On/Off as value.
 
--DWITH_GTK build gtk version
-
--DWITH_GIR build gir(gtk3) version (need gtk enabled)
-
--DWITH_QT build qt version
-
--DWITH_KDE build qt with kde support
-
--DWITH_CHROME build chrome with mk-chrome-app.sh, will be placed under build directory/chrome/hotot-chrome.zip, need rsync
+* `-DWITH_GTK` build gtk version
+* `-DWITH_GIR` build gir(gtk3) version (need gtk enabled)
+* `-DWITH_QT` build qt version
+* `-DWITH_KDE` build qt with kde support
+* `-DWITH_CHROME` build chrome with mk-chrome-app.sh, will be placed under build directory/chrome/hotot-chrome.zip, need rsync
 
 For example, to just build gtk with gir rather than qt, the `cmake` command
 will be:
