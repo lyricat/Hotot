@@ -184,7 +184,7 @@ msgid "Hotot Twitter Client"
 msgstr ""
 
 #: ../..//misc/hotot.desktop.in.h:3
-msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
+msgid "Lightweight Twitter Client base on Gtk and Webkit"
 msgstr ""
 
 #: ../..//misc/hotot-qt.desktop.in.h:1
