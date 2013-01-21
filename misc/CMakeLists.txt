@@ -15,14 +15,3 @@ foreach(size ${ICON_SIZE})
   install(FILES "${PROJECT_SOURCE_DIR}/data/icons/${size}/apps/hotot.png"
     DESTINATION "share/icons/hicolor/${size}/apps/")
 endforeach()
-
-intltool_merge_translation(${CMAKE_CURRENT_SOURCE_DIR}/hotot-qt.desktop.in
-  ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop)
-
-add_custom_target(desktopfile ALL
-  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop)
-
-if(WITH_QT)
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/hotot-qt.desktop
-    DESTINATION share/applications/)
-endif()

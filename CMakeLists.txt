@@ -13,6 +13,7 @@ option(WITH_GTK3 "Enable GTK3 Version" Off)
 
 option(WITH_QT "Enable Qt Version" On)
 option(WITH_KDE "Enable KDE4 integration for Qt" On)
+option(WITH_KDE_QT "Build Qt and KDE versions at the same time" Off)
 
 option(WITH_CHROME "Enable Chrome Version" Off)
 
@@ -22,10 +23,12 @@ if(NOT INTLTOOL_MERGE)
   message(FATAL_ERROR "intltool-merge required for i18n generation")
 endif()
 
+set(INTLTOOL_PO_DIR "${PROJECT_SOURCE_DIR}/po")
+
 function(intltool_merge_translation infile outfile)
   add_custom_command(
     OUTPUT ${outfile}
-    COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${PROJECT_SOURCE_DIR}/po
+    COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u "${INTLTOOL_PO_DIR}"
     ${infile} ${outfile}
     DEPENDS ${infile})
 endfunction()
@@ -97,7 +100,7 @@ if(WITH_CHROME)
 endif()
 
 ##################### Qt Version ######################
-if(WITH_QT)
+if(WITH_QT OR WITH_KDE_QT)
   add_subdirectory(qt)
 endif()
 
