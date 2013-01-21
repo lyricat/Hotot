@@ -3,6 +3,6 @@ _Name=Hotot Qt
 GenericName=Twitter Client
 Type=Application
 _Comment=Lightweight Twitter client based on Qt and WebKit
-Exec=hotot-qt
+Exec=@HOTOT_QT_BIN@
 Icon=hotot
 Categories=Qt;Network;InstantMessaging;
