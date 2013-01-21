@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=Hotot Qt
-GenericName=Twitter Client
+_GenericName=Hotot Twitter Client
 Type=Application
 _Comment=Lightweight Twitter client based on Qt and WebKit
 Exec=@HOTOT_QT_BIN@
