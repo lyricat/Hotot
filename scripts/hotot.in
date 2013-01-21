@@ -1,5 +1,5 @@
 #!@PYTHON_EXECUTABLE@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
 # Author: Shellex Wai <5h3ll3x@gmail.com>
 # License: GNU LGPL
@@ -10,8 +10,5 @@
 __revision__ = '0.1'
 
 if __name__=="__main__":
-    import hotot.hotot
+    import @HOTOT_PY_NAME@.hotot
     hotot.hotot.main()
-
-
-

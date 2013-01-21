@@ -121,13 +121,12 @@ msgid "Jimmy Xu"
 msgstr ""
 
 #: ../..//misc/hotot.desktop.in.h:3
-msgid "Lightweight Twitter Client base on Gtk2 and Webkit"
-msgstr "Cliente de Twitter basado en Gtk2 y Webkit"
+msgid "Lightweight Twitter Client base on Gtk and Webkit"
+msgstr "Cliente de Twitter basado en Gtk y Webkit"
 
 #: ../..//misc/hotot-qt.desktop.in.h:2
-#, fuzzy
 msgid "Lightweight Twitter Client base on Qt and Webkit"
-msgstr "Cliente de Twitter basado en Gtk2 y Webkit"
+msgstr "Cliente de Twitter basado en Qt y Webkit"
 
 #: /home/saber/Develop/Hotot/build/po/../..//qt/src/main.cpp:65
 msgid "Lightweight, Flexible Microblogging"
