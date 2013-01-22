@@ -29,7 +29,11 @@ else()
     set(BUILD_QT On)
     set(HOTOT_KDE_BIN_NAME hotot-kde)
   else()
-    set(HOTOT_KDE_BIN_NAME hotot-qt)
+    # specify HOTOT_KDE_BIN_NAME if you want to rename hotot-qt executable
+    # with KDE support even if the version without KDE support is not enabled
+    if(NOT HOTOT_KDE_BIN_NAME)
+      set(HOTOT_KDE_BIN_NAME hotot-qt)
+    endif()
   endif()
 endif()
 
