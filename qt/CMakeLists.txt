@@ -114,7 +114,7 @@ if(BUILD_KDE)
   install(FILES ../misc/hotot_qt.svg
     DESTINATION ${KDE4_DATA_INSTALL_DIR}/desktoptheme/default/icons)
   set(HOTOT_QT_BIN "${HOTOT_KDE_BIN_NAME}")
-  configure_file("${PROJECT_SOURCE_DIR}/../misc/hotot-qt.desktop.in.in"
+  configure_file("${PROJECT_SOURCE_DIR}/../misc/hotot-kde.desktop.in.in"
     "${HOTOT_KDE_BIN_NAME}.desktop.in" @ONLY)
   intltool_merge_translation(
     "${CMAKE_CURRENT_BINARY_DIR}/${HOTOT_KDE_BIN_NAME}.desktop.in"
