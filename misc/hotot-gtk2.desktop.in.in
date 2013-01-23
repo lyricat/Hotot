@@ -1,9 +1,9 @@
 [Desktop Entry]
-_Name=Hotot
+_Name=Hotot Gtk2
 _GenericName=Hotot Twitter Client
 _X-GNOME-FullName=Hotot Twitter Client
 Type=Application
-_Comment=Lightweight Twitter client based on Gtk and WebKit
+_Comment=Lightweight Twitter client based on Gtk2 and WebKit
 Exec=@HOTOT_BIN_NAME@
 Icon=hotot
 Categories=GTK;GNOME;Network;

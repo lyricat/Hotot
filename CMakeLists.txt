@@ -70,7 +70,7 @@ if(WITH_GTK OR WITH_GTK2 OR WITH_GTK3)
       "${hotot_bin}" @ONLY)
     install(PROGRAMS "${hotot_bin}" DESTINATION bin)
     add_subdirectory("${dir}")
-    configure_file(misc/hotot.desktop.in.in
+    configure_file("misc/hotot-${suffix}.desktop.in.in"
       "misc/${HOTOT_BIN_NAME}.desktop.in")
     intltool_merge_translation(
       "${CMAKE_CURRENT_BINARY_DIR}/misc/${HOTOT_BIN_NAME}.desktop.in"
