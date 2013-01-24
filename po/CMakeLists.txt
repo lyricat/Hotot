@@ -7,7 +7,6 @@ endif("${REL_SOURCE_ROOT}" STREQUAL "")
 set(POT_FILE hotot.pot)
 
 configure_file(POTFILES.in.in ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in)
-                   
 find_program(INTLTOOL_EXTRACT intltool-extract)
 find_program(INTLTOOL_UPDATE intltool-update)
 
