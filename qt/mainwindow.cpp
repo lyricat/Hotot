@@ -190,13 +190,13 @@ void MainWindow::closeEvent(QCloseEvent *event)
 #ifndef MEEGO_EDITION_HARMATTAN
     if (isCloseToExit()) {
         exit();
-    }
-    else {
+    } else {
         event->ignore();
         hide();
     }
-#endif
+#else
     ParentWindow::closeEvent(event);
+#endif
 }
 
 void MainWindow::exit()
@@ -208,18 +208,18 @@ bool MainWindow::isCloseToExit() {
     QVariant var = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.close_to_exit");
     if (var.isValid()) {
         return var.toBool();
-    }
-    else
+    } else {
         return false;
+    }
 }
 
 bool MainWindow::isStartMinimized() {
     QVariant mini = m_webView->page()->currentFrame()->evaluateJavaScript("conf.settings.starts_minimized");
     if (mini.isValid()) {
         return mini.toBool();
-    }
-    else
+    } else {
         return false;
+    }
 }
 
 bool MainWindow::isAutoSignIn() {
