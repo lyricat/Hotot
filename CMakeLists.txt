@@ -57,6 +57,9 @@ function(hotot_convert_flags __flags_var __defs_var)
     COMPILE_FLAGS "${_old_flags}"
     COMPILE_DEFINITIONS "${_old_defs}")
 endfunction()
+if(NOT DEFINED LOCALEDIR)
+  set(LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
+endif()
 
 ##################### GTK Version ######################
 if(WITH_GTK OR WITH_GTK2 OR WITH_GTK3)
