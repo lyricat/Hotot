@@ -68,7 +68,7 @@ add_executable(hotot-qt5 ${Hotot_QT_SRCS} ${Hotot_QT_MOCS})
 hotot_set_qt5_target(hotot-qt5)
 install(TARGETS hotot-qt5 DESTINATION bin)
 set(HOTOT_QT_BIN hotot-qt5)
-configure_file("${PROJECT_SOURCE_DIR}/../misc/hotot-qt.desktop.in.in"
+configure_file("${PROJECT_SOURCE_DIR}/../misc/hotot-qt5.desktop.in.in"
   hotot-qt5.desktop.in @ONLY)
 intltool_merge_translation(
   "${CMAKE_CURRENT_BINARY_DIR}/hotot-qt5.desktop.in"
