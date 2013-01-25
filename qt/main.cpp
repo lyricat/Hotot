@@ -89,7 +89,10 @@ int main(int argc, char *argv[])
     KApplication a;
 #else
 #if !defined(Q_OS_WIN32) && !defined(Q_OS_MAC)
+    setlocale(LC_ALL, "");
+    bindtextdomain("hotot", LOCALEDIR);
     bind_textdomain_codeset("hotot", "UTF-8");
+    textdomain("hotot");
 #endif
 #ifdef MEEGO_EDITION_HARMATTAN
     MApplication a(argc, argv);

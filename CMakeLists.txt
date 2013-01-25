@@ -13,7 +13,9 @@ option(WITH_GTK3 "Enable GTK3 Version" Off)
 
 option(WITH_QT "Enable Qt Version" On)
 option(WITH_KDE "Enable KDE4 integration for Qt" On)
+
 option(WITH_KDE_QT "Build Qt and KDE versions at the same time" Off)
+option(WITH_QT5 "Enable Qt5 Version" Off)
 
 option(WITH_CHROME "Enable Chrome Version" Off)
 
@@ -41,6 +43,23 @@ configure_file(
 
 add_custom_target(uninstall
   COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+
+function(hotot_convert_flags __flags_var __defs_var)
+  get_directory_property(_old_flags COMPILE_FLAGS)
+  get_directory_property(_old_defs COMPILE_DEFINITIONS)
+  set_directory_properties(PROPERTIES
+    COMPILE_FLAGS ""
+    COMPILE_DEFINITIONS "")
+  add_definitions(${ARGN})
+  get_directory_property(_new_flags COMPILE_FLAGS)
+  get_directory_property(_new_defs COMPILE_DEFINITIONS)
+  set_directory_properties(PROPERTIES
+    COMPILE_FLAGS "${_old_flags}"
+    COMPILE_DEFINITIONS "${_old_defs}")
+endfunction()
+if(NOT DEFINED LOCALEDIR)
+  set(LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
+endif()
 
 ##################### GTK Version ######################
 if(WITH_GTK OR WITH_GTK2 OR WITH_GTK3)
@@ -100,6 +119,11 @@ if(WITH_CHROME)
 endif()
 
 ##################### Qt Version ######################
+
+if(WITH_QT5)
+  add_subdirectory(qt5)
+endif()
+
 if(WITH_QT OR WITH_KDE_QT)
   add_subdirectory(qt)
 endif()
