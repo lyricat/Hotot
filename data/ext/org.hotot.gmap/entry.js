@@ -25,7 +25,7 @@ function on_form_indicator(tweet, html) {
         var x = tweet.geo.coordinates[0];
         var y = tweet.geo.coordinates[1];
         var tag = "geo1_" + tweet.id + Date.now();
-        console.log(tag);
+        
         setTimeout(function() {
             $('#' + tag).click(function(e) {
                 e.preventDefault();
