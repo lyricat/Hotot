@@ -312,7 +312,15 @@ function apply_prefs(name, full) {
         $.fn.transition = $.fn.animate;
     }
 
-    globals.twitterClient.api_base = prefs.api_base;
+    globals.twitterClient.api_base = (function(api_base) {
+        if(api_base.indexOf('/1/') !== -1) {
+            return api_base.replace(/\/1\/$/, '/');
+        } else if(api_base.indexOf('/1.1/') !== -1) {
+            return api_base.replace(/\/1\.1\/$/, '/');
+        } else {
+            return api_base;
+        }
+    })(prefs.api_base);
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
     globals.twitterClient.search_api_base2 = prefs.search_api_base2;
     globals.twitterClient.upload_api_base = prefs.upload_api_base;
