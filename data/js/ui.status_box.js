@@ -224,6 +224,22 @@ function init () {
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
     });
 
+    $('#tbox_status_speech').bind('focus', function (event) {
+        event.stopPropagation();
+    });
+
+    $('#tbox_status_speech').bind('webkitspeechchange', function() {
+        var a = document.getElementById('tbox_status');
+        a.value += a.value + this.value;
+
+        document.getElementById('tbox_status_speech').value='';
+
+        this.blur();
+        a.focus();
+
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
+    });
+
     $('#tbox_dm_target').click(
     function (event) {
         return false;
