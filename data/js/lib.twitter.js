@@ -186,10 +186,10 @@ function TwitterClient() {
     };
 
     self.update_status = function update_status(text, reply_to_id, on_success, on_error) {
-        var url = self.api_base_url(1) + 'statuses/update.json';
+        var url = self.api_base_url(1.1) + 'statuses/update.json';
         var params = {
             'status': text,
-            'include_entities': '1'
+            'include_entities': '1'     
         };
         if (reply_to_id) {
             params['in_reply_to_status_id'] = reply_to_id;
@@ -643,7 +643,7 @@ function TwitterClient() {
     };
 
     self.create_list_member = function create_list_member(id, screen_name, on_success, on_error) {
-        var url = self.api_base_url(1) + 'lists/members/create.json';
+        var url = self.api_base_url(1.1) + 'lists/members/create.json';
         var params = {
             'list_id': id,
             'screen_name': screen_name
