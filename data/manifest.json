@@ -4,7 +4,7 @@
   "description": "Hotot Twitter client for Chrome",
   "version": "0.9.8.11",
   "default_locale": "en",
-	"content_security_policy": "script-src 'self' https://maps.google.com'; object-src 'self'",
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://maps.google.com; object-src 'self'",
   "background": {
     "page": "background.html"
   },
