@@ -53,19 +53,25 @@ function create_map_dialog() {
     ext.HototGMap.map_dialog.resize(500, 500);
     ext.HototGMap.map_doc = $('#hotot_gmap_frame').get(0).contentWindow.document;
     ext.HototGMap.map_doc.open();
-    ext.HototGMap.map_doc.write("<html><head><script src=\"https://maps.google.com/maps/api/js?sensor=false\"></script><script>\
-function load_map(x, y) {\
-    var myLatlng = new google.maps.LatLng(x, y);\
-    var myOptions = {\
-      zoom: 13,\
-      center: myLatlng,\
-      mapTypeId: google.maps.MapTypeId.ROADMAP\
-    };\
-    var map = new google.maps.Map(document.getElementById('map'),\ myOptions);\
-    var marker = new google.maps.Marker({position: myLatlng, title:'Here!'});\
-    marker.setMap(map);\
-}\
-    </script></head><body><div id=\"map\" style=\"width:100%;height:100%;\"></div></body></html>");
+    $(ext.HototGMap.map_doc).
+    ext.HototGMap.map_doc.write("<html><head></head><body><div id=\"map\" style=\"width:100%;height:100%;\"></div></body></html>");
+    $(ext.HototGMap.map_doc).ready(function() {
+        var child = document.createElement('script');
+        child.setAttribute("type", "text/javascript");
+        child.setAttribute("src", "https://maps.google.com/maps/api/js?sensor=false");
+        child.onload = function() {
+            var myLatlng = new google.maps.LatLng(x, y);
+            var myOptions = {
+              zoom: 13,
+              center: myLatlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById('map'), myOptions);
+            var marker = new google.maps.Marker({position: myLatlng, title:'Here!'});
+            marker.setMap(map);
+        };
+        this.getElementsByTagName("head")[0].appendChild(child);
+    });
     ext.HototGMap.map_doc.close();
 },
 
