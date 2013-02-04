@@ -10,5 +10,5 @@
 __revision__ = '0.1'
 
 if __name__=="__main__":
-    import @HOTOT_PY_NAME@.hotot
-    hotot.hotot.main()
+    from @HOTOT_PY_NAME@ import hotot
+    hotot.main()
