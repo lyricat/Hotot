@@ -249,21 +249,30 @@ function TwitterClient() {
     };
 
     self.destroy_direct_messages = function destroy_direct_messages(id, on_success) {
-        var url = self.api_base + '1.1/direct_messages/destroy/' + id + '.json';
-        self.post(url, {},
-        on_success);
+        var url = self.api_base + '1.1/direct_messages/destroy.json';
+        var params = {
+            'id': id,
+            'include_entities': '1'
+        };
+        self.post(url, params, on_success);
     };
 
     self.create_favorite = function create_favorite(fav_id, on_success) {
-        var url = self.api_base + '1.1/favorites/create/' + fav_id + '.json';
-        self.post(url, {},
-        on_success);
+        var url = self.api_base + '1.1/favorites/create.json';
+        var params = {
+            'id': fav_id,
+            'include_entities': '1'
+        };
+        self.post(url, params, on_success);
     };
 
     self.destroy_favorite = function destroy_favorite(fav_id, on_success) {
-        var url = self.api_base + '1.1/favorites/destroy/' + fav_id + '.json';
-        self.post(url, {},
-        on_success);
+        var url = self.api_base + '1.1/favorites/destroy.json';
+        var params = {
+            'id': fav_id,
+            'include_entities': '1'
+        };
+        self.post(url, params, on_success);
     };
 
     self.get_home_timeline = function get_home_timeline(since_id, max_id, count, on_success) {
