@@ -220,6 +220,15 @@ function load_people_success(self, json) {
 
 load_list_success:
 function load_list_success(self, json) {
+    var ret = ui.Main.add_people(self, json);
+    if (0 < self.incoming_num) {
+        ui.Slider.set_unread(self.name);
+    }
+    return ret;
+},
+
+load_listed_list_success:
+function load_listed_list_success(self, json) {
     var ret = ui.Main.add_people(self, json.lists);
     if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);
@@ -245,8 +254,8 @@ function loadmore_people_success(self, json) {
     return ret;
 },
 
-loadmore_list_success:
-function loadmore_list_success(self, json) {
+loadmore_listed_list_success:
+function loadmore_listed_list_success(self, json) {
     var ret = ui.Main.add_people(self, json.lists);
     if (0 < self.incoming_num) {
         ui.Slider.set_unread(self.name);

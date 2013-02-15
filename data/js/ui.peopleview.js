@@ -222,9 +222,9 @@ function init_view(view) {
         view.cursor = '';
         view.former = ui.Template.form_list;
         view._load = ui.PeopleView.load_lists;
-        view._loadmore = ui.PeopleView.loadmore_lists;
+        view._loadmore = null;
         view._load_success = ui.Main.load_list_success;
-        view._loadmore_success = ui.Main.loadmore_list_success;
+        view._loadmore_success = null;
         lists_menu.hide();
         sub_view_btns.removeClass('selected');
         $('.people_view_list_btn').addClass('selected');
@@ -240,8 +240,8 @@ function init_view(view) {
         view.former = ui.Template.form_list;
         view._load = ui.PeopleView.load_listed_lists;
         view._loadmore = ui.PeopleView.loadmore_listed_lists;
-        view._load_success = ui.Main.load_list_success;
-        view._loadmore_success = ui.Main.loadmore_list_success;
+        view._load_success = ui.Main.load_listed_list_success;
+        view._loadmore_success = ui.Main.loadmore_listed_list_success;
         lists_menu.hide();
         sub_view_btns.removeClass('selected');
         $('.people_view_list_btn').addClass('selected');
@@ -462,11 +462,6 @@ function loadmore_friend(view, success, fail) {
 load_lists:
 function load_lists(view, success, fail) {
     globals.twitterClient.get_user_lists(view.screen_name, -1, success);
-},
-
-loadmore_lists:
-function loadmore_lists(view, success, fail) {
-    globals.twitterClient.get_user_lists(view.screen_name, view.cursor, success);
 },
 
 load_listed_lists:
