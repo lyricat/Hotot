@@ -802,13 +802,7 @@ function syncBlockingUsers () {
 
 function syncMyLists () {
     var proc = function (result) {
-        globals.my_lists = globals.my_lists.concat(result.lists)
-        if (result.next_cursor_str !== '0') {
-            globals.twitterClient.get_user_lists(
-                globals.myself.screen_name,
-                result.next_cursor_str,
-                proc);
-        }
+        globals.my_lists = globals.my_lists.concat(result)
     }
     globals.twitterClient.get_user_lists(
         globals.myself.screen_name, -1,
