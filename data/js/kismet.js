@@ -429,6 +429,10 @@ function filter_proc(single) {
     }
     // check rules
     for (var i = 0; i < kismet.enforcers.length; i += 1) {
+		if (kismet.enforcers[i].column.length !== 0 && kismet.enforcers[i].column.join(',').indexOf(single.column) === -1){
+			console.log('rule column not pass',kismet.enforcers[i].column,single);
+			return true;
+		}
         if (kismet.eval_cond(kismet.enforcers[i].cond, single)) {
             console.log('Match rule #' + i +' "'+kismet.enforcers[i].name+'" @', single);
             ret = kismet.do_action(kismet.enforcers[i], single);
@@ -729,7 +733,7 @@ function compile(str) {
     var field_key = null;
     var field_value = null;
     var inst = null;
-    var rule = {name: '', cond: [], action: []};
+    var rule = {name: '', cond: [], action: [],column:[]};
     var i = 0;
     var token = null;
     kismet.rule_string = '';
@@ -740,7 +744,10 @@ function compile(str) {
         inst = null;
         switch (token[0]) {
         case kismet.TYPE_WORD:
-            if (kismet.reserved_words.indexOf(token[1]) == -1) {
+			if (token[1] === "column"){
+                rule.column.push(tokens[i + 2][1]);
+                i += 3;
+			} else if (kismet.reserved_words.indexOf(token[1]) == -1) {
                 kismet.cond_string_array.push('CONTAINS ' + token[1]);
                 inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
                 i += 1;
@@ -783,7 +790,7 @@ function compile(str) {
     kismet.rule_string = kismet.action_string_array.join(' and ')
         + ' if it '
         + kismet.cond_string_array.join(' and ');
-    // console.log('Compile:', rule)
+    console.log('Compile:', rule)
     return rule;
 }
 
