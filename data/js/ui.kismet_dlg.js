@@ -115,12 +115,13 @@ function init() {
 
     $('#kismet_guide_next_btn').click(function () {
         var marked = $('#kismet_guide_dialog .marked');
-        var actions = $('#kismet_guide_dialog .checkbox:checked');
+        var actions = $('#kismet_guide_dialog .action_block .checkbox:checked');
+        var columns = $('#kismet_guide_dialog .column_block .checkbox:checked');
         if (marked.length === 0) { //  
             toast.set('Please select a field!').show(3);
             return false;
         }
-        if (marked.length === 1 
+        if (marked.length === 1 && columns.length == 0
             && (actions.length == 0 || actions.length === 1 
                 && actions.val() === 'drop')) { // simple, use mute list
             var field = 'word';
@@ -155,6 +156,11 @@ function init() {
             actions.each(
                 function (i, n) {
                     rule_data_arr.push('do:' + $(n).val());
+                }
+            );
+            columns.each(
+                function (i, n) {
+                    rule_data_arr.push('column:' + $(n).val());
                 }
             );
             var rule_data = rule_data_arr.join(' ');
