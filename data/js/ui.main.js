@@ -312,9 +312,6 @@ function add_tweets(self, json_obj, reversion, ignore_kismet) {
     // apply kismet filter
     if (ignore_kismet == undefined || ignore_kismet == false) {
         if (self.name.indexOf('kismet_') != 0){
-			for(var i=0;i<json_obj.length;i++){
-				json_obj[i].column =/^[^-]*/.exec(self.name)[0] ;
-			}
             json_obj = kismet.filter(json_obj);
         }
     }
