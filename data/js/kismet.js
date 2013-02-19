@@ -241,7 +241,16 @@ function eval_bool_exp (exp, incoming) {
         return (t1 != t0); 
     break;
     case kismet.OP_TEQ:
-        return (t1 === t0); 
+		if(t1.indexOf('|') === -1){
+			return (t1 === t0); 
+		}
+		ts = t1.split('|')
+		for(var i=0;i<ts.length;i++){
+			if(ts[i] === t0 ){
+				return true;
+			}
+		}
+		return false;
     break;
     case kismet.OP_GT:
         return (t0 > t1);
@@ -256,7 +265,17 @@ function eval_bool_exp (exp, incoming) {
         return (t0 <= t1);
     break;
     case kismet.OP_STR_HAS:
-        return (t0.indexOf(t1) != -1);
+		if(t1.indexOf('|') === -1){
+			return (t0.indexOf(t1) !== -1);
+		}
+		ts = t1.split('|')
+		console.log(ts);
+		for(var i=0;i<ts.length;i++){
+			if(t0.indexOf(ts[i]) !== -1 ){
+				return true;
+			}
+		}
+		return false;
     break;
     case kismet.OP_STR_STARTSWITH:
         return (t0.indexOf(t1) == 0);
@@ -705,7 +724,7 @@ function read_tokens(str) {
             if (flag.length != 0) pos += 1;
         } else if (ch === ' ') {
             pos += 1;
-        } else if (/[a-zA-Z]/.test(ch)) {
+        } else if (/[^():,]/.test(ch)) {
             end_pos = kismet.recognize_keyword(str, pos);
             token = [kismet.TYPE_WORD, str.slice(pos, end_pos)];
             token_list.push(token);
