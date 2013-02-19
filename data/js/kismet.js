@@ -587,7 +587,7 @@ process_field:
 function process_field(tokens, pos) {
     var first = tokens[pos], second = null, third = null;
     if (pos + 2 >= tokens.length) {
-        kismet.cond_string_array.push('CONTAINS ' + first[1]);
+        kismet.cond_string_array.push('CONTAINS ' + first[1].replace('|',' or '));
         return [[kismet.OP_STR_HAS, '$TEXT', first[1]], 1];
     }
     if (tokens[pos + 1][0] != kismet.TYPE_COLON) {
@@ -605,7 +605,7 @@ function process_field(tokens, pos) {
             kismet.cond_string_array.push('COMES FROM /'+second[1]+'/'+second[2]);
             return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$SOURCE'], 3];
         } else {
-            kismet.cond_string_array.push('COMES FROM ' + second[1]);
+            kismet.cond_string_array.push('COMES FROM ' + second[1].replace('|',' or '));
             return [[kismet.OP_TEQ, '$SOURCE', second[1]], 3];
         }
     break;
@@ -617,7 +617,7 @@ function process_field(tokens, pos) {
             kismet.cond_string_array.push('TAGGED @' + second[1]);
             return [[kismet.OP_HASH_HAS, '$HASHTAGS', new RegExp(second[1],second[2])], 3];
         } else {
-            kismet.cond_string_array.push('TAGGED AS #' + second[1]);
+            kismet.cond_string_array.push('TAGGED AS #' + second[1].replace('|',' or #'));
             return [[kismet.OP_HASH_HAS, '$HASHTAGS', second[1]], 3];
         }
     break;
@@ -626,7 +626,7 @@ function process_field(tokens, pos) {
             kismet.cond_string_array.push('SENT BY @/'+second[1]+'/'+second[2]);
             return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$NAME'], 3];
         } else {
-            kismet.cond_string_array.push('SENT BY @' + second[1]);
+            kismet.cond_string_array.push('SENT BY @' + second[1].replace('|',' or @'));
             return [[kismet.OP_TEQ, '$NAME', second[1]], 3];
         }
     break;
@@ -635,7 +635,7 @@ function process_field(tokens, pos) {
             kismet.cond_string_array.push('MENTIONS @' + second[1]);
             return [[kismet.OP_MENTION_HAS, '$MENTIONS', new RegExp(second[1],second[2])], 3];
         } else {
-            kismet.cond_string_array.push('MENTIONS @' + second[1]);
+            kismet.cond_string_array.push('MENTIONS @' + second[1].replace('|',' or '));
             return [[kismet.OP_MENTION_HAS, '$MENTIONS', second[1]], 3];
         }
     break;
@@ -644,7 +644,7 @@ function process_field(tokens, pos) {
             kismet.cond_string_array.push('RETWEETED BY @/'+second[1]+'/'+second[2]);
             return [[kismet.OP_REG_TEST, new RegExp(second[1],second[2]), '$RETWEETER'], 3];
         } else {
-            kismet.cond_string_array.push('RETWEETED BY @' + second[1]);
+            kismet.cond_string_array.push('RETWEETED BY @' + second[1].replace('|',' or @'));
             return [[kismet.OP_TEQ, '$RETWEETER', second[1].toLowerCase()], 3];
         }
     break;
@@ -764,10 +764,19 @@ function compile(str) {
         switch (token[0]) {
         case kismet.TYPE_WORD:
 			if (token[1] === "column"){
-                rule.column.push(tokens[i + 2][1]);
+				column = tokens[i + 2][1]
+                kismet.cond_string_array.push('ON COLUMN ' + column.replace('|',' or '));
+				if(column.indexOf('|') === -1){
+					rule.column.push(column);
+				}else{
+					columns = column.split('|')
+					for(var i=0;i<columns.length;i++){
+						rule.column.push(columns[i]);
+					}
+				}
                 i += 3;
 			} else if (kismet.reserved_words.indexOf(token[1]) == -1) {
-                kismet.cond_string_array.push('CONTAINS ' + token[1]);
+                kismet.cond_string_array.push('CONTAINS ' + token[1].replace('|',' or '));
                 inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
                 i += 1;
             } else {
@@ -778,7 +787,7 @@ function compile(str) {
             }
         break;
         case kismet.TYPE_STR:
-            kismet.cond_string_array.push('CONTAINS ' + token[1]);
+            kismet.cond_string_array.push('CONTAINS ' + token[1].replace('|',' or '));
             inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
             i += 1;
         break;
