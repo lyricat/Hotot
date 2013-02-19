@@ -71,7 +71,6 @@
 
     <script type="text/javascript" src="js/hotot.js"></script>
     <script type="text/javascript" src="ext/ext.js"></script>
-    <script type="text/javascript" src="js/debug.js"></script>
 
 <div id="container">
 
@@ -453,7 +452,7 @@
 					<a id="btn_smiley" class="mochi_button toolbar_button" data-i18n-title="insert_smiley" title="Insert smiley"></a>
 					<a id="btn_imageuploader" class="mochi_button toolbar_button" data-i18n-title="image_uploader" title="Image uploader"></a>
 					<a id="btn_save_draft" class="mochi_button toolbar_button" data-i18n-title="save_as_draft" title="Save as drafts"></a>
-					<input id="tbox_status_speech" class="mochi_button toolbar_button" x-webkit-speech lang="zh-CN"/>
+					<input id="tbox_status_speech" class="mochi_button toolbar_button" x-webkit-speech onwebkitspeechchange="var f=function(t) { var a=getElementById('tbox_status');a.value=a.value+t.value;getElementById('tbox_status_speech').value='';t.blur();a.focus();ui.StatusBox.move_cursor(ui.StatusBox.POS_END);};f(this);" onclick="var f=function(t) {t.blur();};f(this);" lang="zh-CN"/>
 					<a id="btn_clear" class="mochi_button" data-i18n-text="clear">Clear</a>
 					<a id="btn_update" class="mochi_button blue" data-i18n-text="update">Update</a>
 					<span class="clear"></span>
@@ -1121,6 +1120,8 @@
 
                 - Tualatrix Chou &lt;<a target="_blank" href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
+                - Xu Zhen &lt;<a target="_blank" href="mailto:xnreformer@gmail.com">xnreformer@gmail.com</a>&gt;
+                (<a target="_blank" href="http://twitter.com/xnreformer">@xnreformer</a>)<br/>
 
             </p>
             <p>
@@ -1434,6 +1435,14 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
             <input type="checkbox" class="checkbox" value="archive"/><label data-i18n-text="archive">Archive</label>
             </p>
         </div>
+        <div class="dialog_block column_block">
+            <h3>3. <span data-i18n-data="select_columns">Select Columns</span></h3>
+            <p>
+            <input type="checkbox" class="checkbox" value="home" /><label data-i18n-text="home">Home</label>
+            <input type="checkbox" class="checkbox" value="mentions" /><label data-i18n-text="mentions">Mentions</label>
+            <input type="checkbox" class="checkbox" value="messages" /><label data-i18n-text="messages">Messages</label>
+            </p>
+        </div>
     </div><!-- .dialog_body -->
     <div class="dialog_footer">
     <a class="mochi_button dialog_close_btn" title="Cancel" href="#" data-i18n-text="cancel">Cancel</a>
@@ -1549,7 +1558,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
 
 <section id="context_menu">
     <ul class="hotot_menu">
-        <li><a id="context_menuitem_copy" class="select_only" title="Copy" href="#" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
+        <li><a id="context_menuitem_copy" class="select_only native_only" title="Copy" href="#" data-i18n-text="copy_to_clipboard">Copy to clipboard</a></li>
         <li><a id="context_menuitem_paste" class="editable_only native_only" title="Paste" href="#" data-i18n-text="paste_from_clipboard">Paste from clipboard</a></li>
         <li><a id="context_menuitem_kismet_username" class="select_only native_only" title="Mute this user" href="#" data-i18n-text="mute_this_user">Mute this user</a></li>
         <li><a id="context_menuitem_kismet_word" class="select_only native_only" title="Mute this word" href="#" data-i18n-text="mute_this_word">Mute this word</a></li>
