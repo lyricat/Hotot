@@ -830,6 +830,32 @@ function form_tweet (tweet_obj, pagename, in_thread) {
             link = tweet_obj.entities.urls[0].expanded_url;
         }
     }
+    
+	var text = ui.Template.form_text(tweet_obj);
+    // if the tweet contains user_mentions (which are provided by the Twitter
+    // API, not by the StatusNet API), it will here replace the 
+    // contents of the 'who_ref'-a-tag by the full name of this user.
+
+    if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
+        for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
+        {
+            // hotot_log('form_tweet', 'user mention: ' + tweet_obj.entities.user_mentions[i].screen_name);
+            var screen_name = tweet_obj.entities.user_mentions[i].screen_name;
+            var name = tweet_obj.entities.user_mentions[i].name.replace(/"/g, '&quot;');
+            var reg_ulink = new RegExp('>(' + screen_name + ')<', 'ig');
+            text = text.replace(reg_ulink, ' title="' + name + '">$1<')
+        }
+        // If we get here, and there are still <a who_href="...">-tags
+        // without title attribute, the user name was probably misspelled. 
+        // If I then remove the tag, the incorrect user name is not 
+        // highlighted any more, which fixes #415 for twitter.
+        // (It does not work for identi.ca, because the identi.ca API
+        // does not provide user_mentions.)
+
+        var re = /\<a class=\"who_href\" href=\"[^"]*\"\>([^<]*)\<\/a\>/gi
+        text = text.replace(re, '$1');
+        // hotot_log('form_tweet', 'resulting text: ' + text);
+    }
 
     var m = ui.Template.tweet_m;
     m.ID = pagename+'-'+id;
@@ -842,7 +868,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.USER_NAME = tweet_obj.user.name;
     m.DESCRIPTION = tweet_obj.user.description;
     m.PROFILE_IMG = tweet_obj.user.profile_image_url;
-    m.TEXT = ui.Template.form_text(tweet_obj);
+    m.TEXT = text;
     m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
@@ -875,34 +901,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.TRANS_View_more_conversation = _('view_more_conversation');
     m.TWEET_BASE_URL = conf.current_name.split('@')[1] == 'twitter'?'https://twitter.com/' + tweet_obj.user.screen_name + '/status':'https://identi.ca/notice';
     m.LINK = link;
-    var msg = ui.Template.render(ui.Template.tweet_t, m);
 
-    // if the tweet contains user_mentions (which are provided by the Twitter
-    // API, not by the StatusNet API), it will here replace the 
-    // contents of the 'who_ref'-a-tag by the full name of this user.
-
-    if (tweet_obj.entities && tweet_obj.entities.user_mentions) {
-        for (var i = 0, l = tweet_obj.entities.user_mentions.length; i < l; i+=1)
-        {
-            // hotot_log('form_tweet', 'user mention: ' + tweet_obj.entities.user_mentions[i].screen_name);
-            var screen_name = tweet_obj.entities.user_mentions[i].screen_name;
-            var name = tweet_obj.entities.user_mentions[i].name.replace(/"/g, '&quot;');
-            var reg_ulink = new RegExp('>(' + screen_name + ')<', 'ig');
-            msg = msg.replace(reg_ulink, ' title="' + name + '">$1<')
-        }
-        // If we get here, and there are still <a who_href="...">-tags
-        // without title attribute, the user name was probably misspelled. 
-        // If I then remove the tag, the incorrect user name is not 
-        // highlighted any more, which fixes #415 for twitter.
-        // (It does not work for identi.ca, because the identi.ca API
-        // does not provide user_mentions.)
-
-        var re = /\<a class=\"who_href\" href=\"[^"]*\"\>([^<]*)\<\/a\>/gi
-        msg = msg.replace(re, '$1');
-        // hotot_log('form_tweet', 'resulting msg: ' + msg);
-    }
-
-    return msg;
+    return ui.Template.render(ui.Template.tweet_t, m);
 },
 
 form_retweeted_by:
