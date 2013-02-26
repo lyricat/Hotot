@@ -31,6 +31,45 @@ lib.Network = function Network (argument) {
     };
 
     self.encode_multipart_formdata = function encode_multipart_formdata(fields, file, name, data) {
+        if (window.BlobBuilder || window.WebKitBlobBuilder)
+            return encode_multipart_formdata_blobbuilder(fields, file, name, data);
+        
+        var blob_arr = [];
+        
+        var BOUNDARY = 'HototFormBoundary31415926535897932384626'
+        var CRLF = '\r\n'
+        var L = [];
+        var bytes = [];
+        for (var key in fields) {
+            L.push('--' + BOUNDARY);
+            L.push('Content-Disposition: form-data; name="'+key+'"');
+            L.push('');
+            L.push(fields[key]);
+        }
+        L.push('--' + BOUNDARY);
+        L.push('Content-Disposition: form-data; name="'+name+'"; filename="'+file.name+'"');
+        L.push('Content-Type: ' + file.type);
+        L.push('');
+        blob_arr.push(L.join(CRLF) + CRLF);
+        
+        var bufview = new Uint8Array(data);
+        blob_arr.push(bufview);
+        blob_arr.push(CRLF);
+        
+        L = [];
+        L.push('--' + BOUNDARY + '--');
+        L.push('');
+        blob_arr.push(L.join(CRLF));
+        
+        var body = new Blob(blob_arr);
+        var headers = {'content-type':'multipart/form-data; boundary=' + BOUNDARY
+            , 'content-length': body.size};
+        return [headers, body]
+    };
+	
+	// BlodBuilder is deprecated.
+	// The old function using BlobBuilder is kept for compatible.
+	self.encode_multipart_formdata_blobbuilder = function encode_multipart_formdata_blobbuilder(fields, file, name, data) {
         if (!window.BlobBuilder) {
             window.BlobBuilder = window.WebKitBlobBuilder;
         }
