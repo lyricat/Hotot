@@ -771,6 +771,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     var id = tweet_obj.id_str;
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         retweet_name = tweet_obj['user']['screen_name'];
+        tweet_obj['retweeted_status'].favorited = tweet_obj.favorited;  // The favorite status of the embedded tweet is not reliable, use outer one.
         tweet_obj = tweet_obj['retweeted_status'];
         retweet_id = tweet_obj.id_str;
     }
@@ -913,6 +914,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     var id = tweet_obj.id_str;
     if (tweet_obj.hasOwnProperty('retweeted_status')) {
         retweet_name = tweet_obj['user']['screen_name'];
+        tweet_obj['retweeted_status'].favorited = tweet_obj.favorited;  // The favorite status of the embedded tweet is not reliable, use outer one.
         tweet_obj = tweet_obj['retweeted_status'];
         retweet_id = tweet_obj.id_str;
     }
