@@ -813,6 +813,11 @@ function TwitterClient() {
             'with': 'followings'
         };
 
+        // since some browsers trigger readystatechange rather randomly we need 
+        // to reassemble broken stream responses
+        // the var is used to store the intermediate response
+        var interrupted_response = ''
+
         var signed_params = self.oauth.form_signed_params(
         sign_url, self.oauth.access_token, 'GET', params, false);
         url = url + '?' + signed_params;
@@ -865,6 +870,12 @@ function TwitterClient() {
                 if (callback) {
                     // @TODO the procedure to process tweets can be simpler.
                     // because all json objects are complete.
+                    
+                    // prepend the unprocessed data from the
+                    // interrupted_response
+                    newText = interrupted_response + newText;
+                    interrupted_response = ''
+
                     var lines = newText.split(/[\n\r]/g);
                     for (var i = 0; i < lines.length; i += 1) {
                         var line = lines[i].split(/({[^\0]+})/gm);
@@ -873,8 +884,14 @@ function TwitterClient() {
                                 try {
                                     ret = JSON.parse(line[j]);
                                 } catch(e) {
-                                    hotot_log('Streams XHR', e.message + '\n' + line);
-                                    return;
+                                    // The log is disabled to not trigger
+                                    // irritations with users
+                                    // hotot_log('Streams XHR', e.message + '\n' + line);
+                                    // store the interrupted response for later
+                                    // processing
+                                    interrupted_response = newText;
+                                    // do not quit streaming
+                                    //return;
                                 }
                                 try {
                                     callback(ret);
