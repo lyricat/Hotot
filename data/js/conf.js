@@ -267,10 +267,14 @@ function apply_settings() {
     $('.version').text(conf.vars.version 
         + ' (' + conf.vars.codename + ')');
     if (conf.vars.platform === 'Chrome') {
+        try {
         chrome.extension.sendRequest(
             {'enableContextMenu':conf.settings.context_menu_integration},
             function (resp) {}
         );
+        }
+        catch(err){
+        }
     }
     globals.twitterClient.oauth.key = localStorage.consumer_key || conf.vars.consumer_key;
     globals.twitterClient.oauth.secret = localStorage.consumer_secret || conf.vars.consumer_secret;
