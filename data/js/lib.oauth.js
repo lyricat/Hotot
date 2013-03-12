@@ -93,6 +93,8 @@ lib.OAuth = function OAuth(argument) {
             kwargs['oauth_token'] = token['oauth_token']
             service_key = service_key + self.quote(
             token['oauth_token_secret']);
+        } else {
+            kwargs['oauth_callback'] = 'oob';
         }
 
         // normalize_params
