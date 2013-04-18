@@ -313,9 +313,9 @@ function eval_cond(cond, incoming) {
     if (cond.length == 1) {
         return kismet.eval_bool_exp(cond[0], incoming);
     } else {
-        return cond.reduce(function (a, b) {
-            return kismet.eval_bool_exp(a, incoming) && kismet.eval_bool_exp(b, incoming);
-        });
+        return cond.reduce(function (acc, item) {
+            return acc && kismet.eval_bool_exp(item, incoming);
+        }, true);
     }
 },
 
