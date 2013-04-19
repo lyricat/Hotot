@@ -1212,7 +1212,11 @@ form_text:
 function form_text(tweet) {
     //hotot_log('form_text in', tweet.text);
     var text = ui.Template.convert_chars(tweet.text);
-    text = text.replace(ui.Template.reg_link_g, ' <a href="$1" target="_blank">$1</a>');
+    text = text.replace(ui.Template.reg_link_g, function replace_url(url) {
+		if (url.length > 51) url_short = url.substring(0,48) + '...';
+		else url_short = url;
+		return ' <a href="'+url+'" target="_blank">' + url_short + '</a>';
+	});
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
         , '$1@<a class="list_href" href="#$2">$2</a>');
