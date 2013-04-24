@@ -1357,7 +1357,7 @@ function render(tpl, map) {
     var text = tpl
     var replace = false;
     for (var k in map) {
-		replace = typeof map[k] == 'string' ? map[k] : '';
+        replace = typeof map[k] == 'string' ? map[k] : '';
         text = text.replace(new RegExp('{%'+k+'%}', 'g'), replace);
     }
     return text;
