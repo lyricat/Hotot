@@ -1355,8 +1355,10 @@ function form_status_indicators(tweet) {
 render:
 function render(tpl, map) {
     var text = tpl
+    var replace = false;
     for (var k in map) {
-        text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
+		replace = typeof map[k] == 'string' ? map[k] : '';
+        text = text.replace(new RegExp('{%'+k+'%}', 'g'), replace);
     }
     return text;
 },
