@@ -218,7 +218,10 @@ function TwitterClient() {
         }
         $.extend(params, signed_params);
 
-        var auth_str = 'OAuth oauth_consumer_key="' + signed_params.oauth_consumer_key + '"' + ', oauth_signature_method="' + signed_params.oauth_signature_method + '"' + ', oauth_token="' + signed_params.oauth_token + '"' + ', oauth_timestamp="' + signed_params.oauth_timestamp + '"' + ', oauth_nonce="' + signed_params.oauth_nonce + '"' + ', oauth_version="' + signed_params.oauth_version + '"' + ', oauth_signature="' + encodeURIComponent(signed_params.oauth_signature) + '"';
+        var auth_str = 'OAuth oauth_consumer_key="' + signed_params.oauth_consumer_key + '"'
+                + ', oauth_signature_method="' + signed_params.oauth_signature_method + '"'
+                + ', oauth_token="' + signed_params.oauth_token + '"'
+                + ', oauth_timestamp="' + signed_params.oauth_timestamp + '"' + ', oauth_nonce="' + signed_params.oauth_nonce + '"' + ', oauth_version="' + signed_params.oauth_version + '"' + ', oauth_signature="' + encodeURIComponent(signed_params.oauth_signature) + '"';
         var headers = {
             'Authorization': auth_str
         };
