@@ -24,6 +24,7 @@ var kismet = {
     OP_MENTION_HAS: 16,
     OP_HAS_GEO: 17,
     OP_HAS_LINK: 18,
+    OP_COLUMN: 19,
 
     ACT_DROP: 100,
     ACT_NOTIFY: 101,
@@ -43,7 +44,7 @@ var kismet = {
 
     MASK_TEXT: '******** Masked Text Field ********',
 
-    reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention', 'retweet'],
+    reserved_words: ['has', 'name', 'tag', 'via', 'do', 'mention', 'retweet', 'column'],
 
     mute_list: {},
 
@@ -313,9 +314,9 @@ function eval_cond(cond, incoming) {
     if (cond.length == 1) {
         return kismet.eval_bool_exp(cond[0], incoming);
     } else {
-        return cond.reduce(function (a, b) {
-            return kismet.eval_bool_exp(a, incoming) && kismet.eval_bool_exp(b, incoming);
-        });
+        return cond.reduce(function (acc, item) {
+            return acc && kismet.eval_bool_exp(item, incoming);
+        }, true);
     }
 },
 
@@ -651,6 +652,10 @@ function process_field(tokens, pos) {
     case 'has':
         return kismet.process_has(val);
     break;
+    case 'column':
+        kismet.cond_string_array.push('ON COLUMN ' + second[1].replace('|',' or '));
+        return [[kismet.OP_COLUMN, second[1].split('|')], 3];
+    break;
     default:
         return [kismet.ERROR, 3];
     break;
@@ -724,13 +729,11 @@ function read_tokens(str) {
             if (flag.length != 0) pos += 1;
         } else if (ch === ' ') {
             pos += 1;
-/*
         } else if (/[^():,]/.test(ch)) {
             end_pos = kismet.recognize_keyword(str, pos);
             token = [kismet.TYPE_WORD, str.slice(pos, end_pos)];
             token_list.push(token);
             pos = end_pos;
-*/
         } else if (ch === '(') {
             token_list.push([kismet.TYPE_LBRA, '(']); 
             pos += 1;
@@ -765,19 +768,7 @@ function compile(str) {
         inst = null;
         switch (token[0]) {
         case kismet.TYPE_WORD:
-			if (token[1] === "column"){
-				column = tokens[i + 2][1]
-                kismet.cond_string_array.push('ON COLUMN ' + column.replace('|',' or '));
-				if(column.indexOf('|') === -1){
-					rule.column.push(column);
-				}else{
-					columns = column.split('|')
-					for(var i=0;i<columns.length;i++){
-						rule.column.push(columns[i]);
-					}
-				}
-                i += 3;
-			} else if (kismet.reserved_words.indexOf(token[1]) == -1) {
+            if (kismet.reserved_words.indexOf(token[1]) == -1) {
                 kismet.cond_string_array.push('CONTAINS ' + token[1].replace('|',' or '));
                 inst = [kismet.OP_STR_HAS, "$TEXT", token[1]];
                 i += 1;
@@ -805,6 +796,10 @@ function compile(str) {
         if (inst != null) {
             if (kismet.act_code_map.indexOf(inst[0]) != -1) {
                 rule.action.push(inst);
+            } else if (kismet.OP_COLUMN == inst[0]) {
+                $.each(inst[1], function(i, c) {
+                    rule.column.push(c);
+                });
             } else {
                 rule.cond.push(inst);
             }

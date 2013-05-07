@@ -1,1306 +1,1306 @@
 {
-	"a_new_hope": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"about": {
-		"message": "Acerca de",
-		"description": "data/index.html"
-	},
-	"about_and_help": {
-		"message": "Acerca de y ayuda",
-		"description": "data/index.html"
-	},
-	"access_token_doesnt_exist": {
-		"message": "El token de acceso no existe",
-		"description": "data/index.html"
-	},
-	"action": {
-		"message": "Acción",
-		"description": "data/index.html"
-	},
-	"add": {
-		"message": "Añadir",
-		"description": "data/index.html"
-	},
-	"add_new_views": {
-		"message": "Añadir nueva vista",
-		"description": "data/index.html"
-	},
-	"add_to_list": {
-		"message": "Añadir a una lista",
-		"description": "data/js/ui.template.js"
-	},
-	"advanced": {
-		"message": "Avanzado",
-		"description": "data/index.html"
-	},
-	"animation": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"api_base": {
-		"message": "API base",
-		"description": "data/index.html"
-	},
-	"api_setting": {
-		"message": "Configuración de la API",
-		"description": "data/index.html"
-	},
-	"archive": {
-		"message": "Archivar",
-		"description": "data/index.html"
-	},
-	"artwork_by": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"assassin_s_tango": {
-		"message": "Assassin's Tango",
-		"description": "data/index.html"
-	},
-	"authentication_ok": {
-		"message": "¡Autorización válida!",
-		"description": "data/js/ui.welcome.js"
-	},
-	"author": {
-		"message": "Autor",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"auto_longer_tweet": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"automatically_sign_in_after_opening": {
-		"message": "Iniciar sesión automáticamente",
-		"description": "data/index.html"
-	},
-	"behavior": {
-		"message": "Comportamiento",
-		"description": "data/index.html"
-	},
-	"bio": {
-		"message": "Bio",
-		"description": "data/index.html"
-	},
-	"block": {
-		"message": "Bloquear",
-		"description": "data/js/ui.template.js"
-	},
-	"bloody_marguerite": {
-		"message": "Bloody Marguerite",
-		"description": "data/index.html"
-	},
-	"cancel": {
-		"message": "Cancelar",
-		"description": "data/index.html"
-	},
-	"cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
-		"message": "¡No puedo autorizarte! Por favor, comprueba tus credenciales y la API base",
-		"description": "data/js/ui.welcome.js"
-	},
-	"cannot_authenticate_you_please_try_later": {
-		"message": "",
-		"description": "data/js/ui.welcome.js"
-	},
-	"cannot_get_token_from_server": {
-		"message": "",
-		"description": "data/js/ui.welcome.js"
-	},
-	"change_your_profile_picture_by_clicking_it": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"charactor_at_is_not_allow_in_profile_prefix": {
-		"message": "El caracter `@` no está permitido como prefijo en un perfil",
-		"description": "data/js/ui.welcome.js"
-	},
-	"chrome_context_menu_integration": {
-		"message": "Integración con el menú contextual de Chrome",
-		"description": "data/index.html"
-	},
-	"classic": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"clear": {
-		"message": "Limpiar",
-		"description": "data/index.html"
-	},
-	"clear_and_close": {
-		"message": "Limpiar y cerrar",
-		"description": "data/index.html"
-	},
-	"clear_token": {
-		"message": "Borrar token",
-		"description": "data/index.html"
-	},
-	"click_me_to_continue": {
-		"message": "Clic para continuar",
-		"description": "data/index.html"
-	},
-	"click_the_button_below": {
-		"message": "Haz clic en el botón de abajo",
-		"description": "data/index.html"
-	},
-	"click_to_compose_message": {
-		"message": "Redactar mensaje directo",
-		"description": "data/index.html"
-	},
-	"click_to_expand_menu": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"click_to_show": {
-		"message": "Haz clic para mostrar",
-		"description": "data/js/ui.template.js"
-	},
-	"click_to_show_retweeters": {
-		"message": "Clic para mostrar retweets",
-		"description": "data/js/ui.template.js"
-	},
-	"client_name1_client_name2": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"close": {
-		"message": "Cerrar",
-		"description": "data/index.html"
-	},
-	"close_current_column": {
-		"message": "Cerrar columna actual",
-		"description": "data/index.html"
-	},
-	"compose": {
-		"message": "Twittear",
-		"description": "data/index.html"
-	},
-	"compress_tweet": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"copy_the_pin_code_and_paste_it_into_the_box_below": {
-		"message": "Copia el código PIN y pégalo en la caja de abajo",
-		"description": "data/index.html"
-	},
-	"copy_to_clipboard": {
-		"message": "Copiar al portapapeles",
-		"description": "date/index.html"
-	},
-	"create_a_list": {
-		"message": "Crear una lista",
-		"description": "data/js/ui.template.js"
-	},
-	"create_a_new_profile": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"credits": {
-		"message": "Créditos",
-		"description": "data/index.html"
-	},
-	"cuddly": {
-		"message": "Adorable",
-		"description": "data/index.html"
-	},
-	"custom_font": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"default_picture_service": {
-		"message": "Servicio de imágenes por defecto",
-		"description": "data/index.html"
-	},
-	"delete": {
-		"message": "Borrar",
-		"description": "data/index.html"
-	},
-	"delete_this_tweet": {
-		"message": "Borrar este tweet",
-		"description": "data/js/ui.template.js"
-	},
-	"destroy_successfully": {
-		"message": "¡Borrado con éxito!",
-		"description": "data/js/ui.main.js"
-	},
-	"donate": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"donate_hint1": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"donate_hint2": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"dots": {
-		"message": "...",
-		"description": "data/js/ui.main.js"
-	},
-	"drafts": {
-		"message": "Borradores",
-		"description": "data/js/ui.status_box.js"
-	},
-	"drag_a_photo_here": {
-		"message": "Arrastra una foto aquí",
-		"description": "data/index.html"
-	},
-	"drop": {
-		"message": "Tirar",
-		"description": "data/index.html"
-	},
-	"drop_tweets_contain_hash_tag_nowplaying": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"drop_tweets_contain_word_abc": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"drop_tweets_retweeted_by_abc": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"drop_tweets_sent_by_abc": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"drop_tweets_sent_from_foursquare": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"edit": {
-		"message": "Editar",
-		"description": "data/js/ui.template.js"
-	},
-	"eg_alt_h": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"enable": {
-		"message": "Habilitar",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"enable_animation": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"enable_gpu_acceleration": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"enable_verbose_mode": {
-		"message": "Habilitar el Modo Detallado",
-		"description": "data/index.html"
-	},
-	"errors": {
-		"message": "Errores",
-		"description": "data/index.html"
-	},
-	"examples": {
-		"message": "Ejemplos",
-		"description": "data/index.html"
-	},
-	"exit_hotot_when_close_window": {
-		"message": "Salir de Hotot al cerrar la ventana",
-		"description": "data/index.html"
-	},
-	"extensions": {
-		"message": "Extensiones",
-		"description": "data/index.html"
-	},
-	"fav_or_un_fav": {
-		"message": "Fav/Borrar Fav",
-		"description": "data/index.html"
-	},
-	"favorite_this_tweet_dots": {
-		"message": "Agregar a favoritos ...",
-		"description": "data/js/ui.main.js"
-	},
-	"favs": {
-		"message": "Favs",
-		"description": "data/js/ui.template.js"
-	},
-	"favs_view": {
-		"message": "Favoritos",
-		"description": "data/index.html"
-	},
-	"fellowship": {
-		"message": "",
-		"description": "data/js/ui.template.js"
-	},
-	"filter_nsfw_media": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"filter_tweets_like_it": {
-		"message": "Filtrar",
-		"description": "data/index.html"
-	},
-	"find": {
-		"message": "Buscar",
-		"description": "data/index.html"
-	},
-	"fine": {
-		"message": "Bien",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"first_time_to_sign_in_with_twitter": {
-		"message": "Tu primera sesión en Twitter",
-		"description": "data/index.html"
-	},
-	"follow": {
-		"message": "Seguir",
-		"description": "data/js/ui.template.js"
-	},
-	"follow_at": {
-		"message": "Seguir @",
-		"description": "data/js/ui.main.js"
-	},
-	"follower_cnt": {
-		"message": "Seguidores",
-		"description": "data/js/ui.template.js"
-	},
-	"followers": {
-		"message": "Seguidores",
-		"description": "data/js/ui.template.js"
-	},
-	"font": {
-		"message": "Fuente",
-		"description": "data/index.html"
-	},
-	"font_preview_hint": {
-		"message": "La cigüeña tocaba cada vez mejor el saxofón y el búho pedía kiwi y queso.",
-		"description": "data/index.html"
-	},
-	"font_size": {
-		"message": "Tamaño de la fuente",
-		"description": "data/index.html"
-	},
-	"friend_cnt": {
-		"message": "Siguiendo",
-		"description": "data/js/ui.template.js"
-	},
-	"friends": {
-		"message": "Siguiendo",
-		"description": "data/js/ui.template.js"
-	},
-	"global": {
-		"message": "Global",
-		"description": "data/index.html"
-	},
-	"globals_restart_hint": {
-		"message": "DEBES reiniciar Hotot para que algunos cambios tengan efecto. Estos cambios afectaran a TODAS las cuentas",
-		"description": "data/index.html"
-	},
-	"greeting": {
-		"message": "¡Hola!",
-		"description": "data/index.html"
-	},
-	"help": {
-		"message": "Ayuda",
-		"description": "data/index.html"
-	},
-	"hey": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"hey_it_is_you": {
-		"message": "¡Ey! ¡Eres tú!",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"hidden_dark_minds": {
-		"message": "Hidden dark minds",
-		"description": "data/index.html"
-	},
-	"home_timeline": {
-		"message": "Inicio",
-		"description": "data/js/ui.slider.js"
-	},
-	"home_view": {
-		"message": "Inicio",
-		"description": "data/index.html"
-	},
-	"host": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"hotot": {
-		"message": "Hotot",
-		"description": "data/index.html"
-	},
-	"hotot_description": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"image_uploader": {
-		"message": "Subir imagen",
-		"description": "data/index.html"
-	},
-	"info": {
-		"message": "INFO",
-		"description": "data/js/ui.template.js"
-	},
-	"insert_smiley": {
-		"message": "Añadir emoticono",
-		"description": "data/index.html"
-	},
-	"intelligent_filter": {
-		"message": "Filtro inteligente",
-		"description": "data/index.html"
-	},
-	"interface_language": {
-		"message": "Idioma de la interfaz",
-		"description": "data/index.html"
-	},
-	"join": {
-		"message": "Usuario desde",
-		"description": "data/js/ui.template.js"
-	},
-	"just_cannot_stop_thinking_of_here": {
-		"message": "Just can't stop thinking of here",
-		"description": "data/index.html"
-	},
-	"keyboard": {
-		"message": "Atajos",
-		"description": "data/index.html"
-	},
-	"keyboard_shortcuts": {
-		"message": "Atajos de teclado",
-		"description": "data/index.html"
-	},
-	"kismet_firewall": {
-		"message": "Kismet",
-		"description": "data/index.html"
-	},
-	"kismet_guide": {
-		"message": "Guía Kismet",
-		"description": "data/index.html"
-	},
-	"kismet_mute_hint": {
-		"message": "CUIDADO: Los tweets con los siguientes atributos no se mostrarán en tu timeline.",
-		"description": "data/index.html"
-	},
-	"label_with_color": {
-		"message": "Etiquetar",
-		"description": "data/index.html"
-	},
-	"language": {
-		"message": "Idioma",
-		"description": "data/index.html"
-	},
-	"let_hotot_collects_anonymous_statistic_information": {
-		"message": "Permitir a Hotot enviar información anónima",
-		"description": "data/index.html"
-	},
-	"license": {
-		"message": "Licencia",
-		"description": "data/index.html"
-	},
-	"license_text1": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"license_text2": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"license_text3": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"line_height": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"list": {
-		"message": "Lista",
-		"description": "data/index.html"
-	},
-	"listed_cnt": {
-		"message": "Listado en",
-		"description": "data/js/ui.template.js"
-	},
-	"lists": {
-		"message": "Listas",
-		"description": "data/js/ui.template.js"
-	},
-	"lists_following_them": {
-		"message": "Listas que siguen al usuario",
-		"description": "data/js/ui.template.js"
-	},
-	"lists_of_them": {
-		"message": "Listas del usuario ",
-		"description": "data/js/ui.template.js"
-	},
-	"loading_dots": {
-		"message": "Cargando ... ",
-		"description": "data/js/ui.template.js"
-	},
-	"loading_resources_hint": {
-		"message": "Cargando recursos ...",
-		"description": "data/index.html"
-	},
-	"location": {
-		"message": "Ubicación",
-		"description": "data/index.html"
-	},
-	"mark_deleted_tweets": {
-		"message": "Marcar los tweets borrados",
-		"description": "data/index.html"
-	},
-	"mask": {
-		"message": "Enmascarar",
-		"description": "data/index.html"
-	},
-	"mask_tweets_contain_hash_tag_callmemaybe": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mention_them": {
-		"message": "Mencionar",
-		"description": "data/js/ui.template.js"
-	},
-	"mentions": {
-		"message": "Menciones",
-		"description": "data/js/ui.slider.js"
-	},
-	"mentions_view": {
-		"message": "Menciones",
-		"description": "data/index.html"
-	},
-	"messages": {
-		"message": "Mensajes directos",
-		"description": "data/js/ui.slider.js"
-	},
-	"messages_view": {
-		"message": "Mensajes directos",
-		"description": "data/index.html"
-	},
-	"more_actions": {
-		"message": "Más",
-		"description": "data/js/ui.template.js"
-	},
-	"move_to_bottom": {
-		"message": "Ir abajo",
-		"description": "data/index.html"
-	},
-	"move_to_next_tweet": {
-		"message": "Ir al siguiente tweet",
-		"description": "data/index.html"
-	},
-	"move_to_prev_tweet": {
-		"message": "Ir al tweet anterior",
-		"description": "data/index.html"
-	},
-	"move_to_top": {
-		"message": "Ir hasta arriba",
-		"description": "data/index.html"
-	},
-	"mute_by_containing_words": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mute_by_source": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mute_by_user_name": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"mute_filter": {
-		"message": "Silenciar con filtros",
-		"description": "data/index.html"
-	},
-	"mute_this_source": {
-		"message": "Silenciar esta origen",
-		"description": "data/index.html"
-	},
-	"mute_this_user": {
-		"message": "Silenciar este usuario",
-		"description": "data/index.html"
-	},
-	"mute_this_word": {
-		"message": "Silenciar esta palabra",
-		"description": "data/index.html"
-	},
-	"my_favs": {
-		"message": "Mis favoritos",
-		"description": "data/js/ui.slider.js"
-	},
-	"my_journey_is_to_the_sea_of_stars": {
-		"message": "My Journey is to the sea of stars",
-		"description": "data/index.html"
-	},
-	"my_power": {
-		"message": "Mi poder",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"name": {
-		"message": "Nombre",
-		"description": "data/index.html"
-	},
-	"nearly_dead": {
-		"message": "Casi muerto",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"network_error_please_try_later": {
-		"message": "¡Error de red! Por favor inténtalo mas tarde.",
-		"description": "data/js/ui.welcome.js"
-	},
-	"new_profile_has_been_created": {
-		"message": "Se ha creado un perfil nuevo",
-		"description": "data/js/ui.welcome.js"
-	},
-	"next": {
-		"message": "Siguiente",
-		"description": "data/index.html"
-	},
-	"no_extension": {
-		"message": "Sin extensión",
-		"description": "data/index.html"
-	},
-	"not_avaiable_yet": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"notify": {
-		"message": "Notificar",
-		"description": "data/index.html"
-	},
-	"notify_me_if_incoming_tweets_mention_hotot": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"oauth_base": {
-		"message": "OAuth base",
-		"description": "data/index.html"
-	},
-	"official_retweet_this_tweet": {
-		"message": "Retweet oficial",
-		"description": "data/js/ui.template.js"
-	},
-	"ok": {
-		"message": "Aceptar",
-		"description": "data/index.html"
-	},
-	"oops_a_network_error_occurs": {
-		"message": "Ups, ha ocurrido un error de red",
-		"description": "data/js/ui.welcome.js"
-	},
-	"oops_an_api_error_occurs": {
-		"message": "Ups, ¡ha ocurrido un error de API!",
-		"description": "data/js/ui.welcome.js"
-	},
-	"oops_an_authentication_error_occurs": {
-		"message": "",
-		"description": "data/js/ui.welcome.js"
-	},
-	"open_a_list_dots": {
-		"message": "Abrir lista",
-		"description": "data/index.html"
-	},
-	"open_a_profile_dots": {
-		"message": "Abrir perfil",
-		"description": "data/index.html"
-	},
-	"open_first_link": {
-		"message": "Abrir primer enlace",
-		"description": "data/index.html"
-	},
-	"open_speaker_link": {
-		"message": "Abrir enlace del que habla",
-		"description": "data/index.html"
-	},
-	"options": {
-		"message": "Opciones",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"or_copy_the_address_and_open_it_in_your_browser": {
-		"message": "O copia la dirección y abrela en tu navegador.",
-		"description": "data/index.html"
-	},
-	"panda_acts_cute": {
-		"message": "Panda acts cute",
-		"description": "data/index.html"
-	},
-	"password": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"paste_from_clipboard": {
-		"message": "Pegar desde el portapapeles",
-		"description": "date/index.html"
-	},
-	"pin_code": {
-		"message": "Código PIN",
-		"description": "data/index.html"
-	},
-	"please_enter_the_recipient": {
-		"message": "¡Por favor, introduce el destinatario!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"please_entry_a_profile_prefix": {
-		"message": "Por favor, introduce un prefijo para el perfil",
-		"description": "data/js/ui.welcome.js"
-	},
-	"port": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"post_successfully": {
-		"message": "¡Publicado con éxito!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"posting_dots": {
-		"message": "Publicando ...",
-		"description": "data/js/ui.status_box.js"
-	},
-	"powerfull": {
-		"message": "Poderoso",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"preferences": {
-		"message": "Preferencias",
-		"description": "data/index.html"
-	},
-	"preload_latest_tweets_in_conversations_if_possible": {
-		"message": "Precargar, si es posible, los tweets más recientes en las conversaciones",
-		"description": "data/index.html"
-	},
-	"pretty_wife": {
-		"message": "Pretty wife",
-		"description": "data/index.html"
-	},
-	"preview_embedded_media": {
-		"message": "Mostrar fotos y vídeos",
-		"description": "data/index.html"
-	},
-	"preview_here": {
-		"message": "Vista previa aquí",
-		"description": "data/index.html"
-	},
-	"previous": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"profile": {
-		"message": "Perfil",
-		"description": "data/index.html"
-	},
-	"profile_name": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"project_host": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"project_site": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_auth": {
-		"message": "Credenciales",
-		"description": "data/index.html"
-	},
-	"proxy_host": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_http_proxy": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_no_proxy": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_port": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_socks_proxy": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"proxy_system_proxy": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"quick_references": {
-		"message": "Referencias rápidas",
-		"description": "data/index.html"
-	},
-	"quit_hotot": {
-		"message": "Cerrar Hotot",
-		"description": "data/index.html"
-	},
-	"quote": {
-		"message": "Citar",
-		"description": "data/index.html"
-	},
-	"read_later": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"read_later_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"relation": {
-		"message": "Relación",
-		"description": "data/js/ui.template.js"
-	},
-	"reload": {
-		"message": "Recargar",
-		"description": "data/index.html"
-	},
-	"reply": {
-		"message": "Responder",
-		"description": "data/index.html"
-	},
-	"reply_all": {
-		"message": "Responder a todos",
-		"description": "data/index.html"
-	},
-	"reply_this_tweet": {
-		"message": "Responder este tweet",
-		"description": "data/js/ui.template.js"
-	},
-	"reply_to": {
-		"message": "En respuesta a ",
-		"description": "data/js/ui.template.js"
-	},
-	"report_spam": {
-		"message": "Reportar Spam",
-		"description": "data/js/ui.template.js"
-	},
-	"reset_time": {
-		"message": "Hora de reinicio",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"restore_defaults": {
-		"message": "Restaurar valores predeterminados",
-		"description": "data/index.html"
-	},
-	"retweet": {
-		"message": "Retwittear",
-		"description": "data/index.html"
-	},
-	"retweet_or_un_retweet": {
-		"message": "Retweet/Deshacer retweet",
-		"description": "data/index.html"
-	},
-	"retweet_successfully": {
-		"message": "¡Retweet con éxito!",
-		"description": "data/js/ui.main.js"
-	},
-	"retweeted_by": {
-		"message": "Retwitteado por",
-		"description": "data/js/ui.template.js"
-	},
-	"retweeting_dots": {
-		"message": "Haciendo retweet ...",
-		"description": "data/js/ui.main.js"
-	},
-	"retweets": {
-		"message": "Retweets",
-		"description": "data/js/ui.slider.js"
-	},
-	"retweets_view": {
-		"message": "Retweets",
-		"description": "data/index.html"
-	},
-	"rt_this_tweet": {
-		"message": "RT este tweet",
-		"description": "data/js/ui.template.js"
-	},
-	"rule": {
-		"message": "Regla",
-		"description": "data/index.html"
-	},
-	"rule_based_filter": {
-		"message": "Filtro basado en reglas",
-		"description": "data/index.html"
-	},
-	"rule_editor": {
-		"message": "Editor de reglas",
-		"description": "data/index.html"
-	},
-	"rule_name": {
-		"message": "Nombre de la regla",
-		"description": "data/index.html"
-	},
-	"same_signing_api_base": {
-		"message": "Misma firma en API base",
-		"description": "data/index.html"
-	},
-	"same_signing_oauth_base": {
-		"message": "Misma firma en OAuth base",
-		"description": "data/index.html"
-	},
-	"save": {
-		"message": "Guardar",
-		"description": "data/index.html"
-	},
-	"save_as_draft": {
-		"message": "Guardar como borrador",
-		"description": "data/index.html"
-	},
-	"schizophrenia": {
-		"message": "Esquizofrenia",
-		"description": "data/index.html"
-	},
-	"screen_name1_screen_name2": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"search": {
-		"message": "Buscar",
-		"description": "data/js/ui.slider.js"
-	},
-	"search_api_base2": {
-		"message": "API base de búsqueda",
-		"description": "data/index.html"
-	},
-	"search_in_google": {
-		"message": "Buscar @ en Google",
-		"description": "data/index.html"
-	},
-	"search_in_twitter": {
-		"message": "Buscar @ en Twitter",
-		"description": "data/index.html"
-	},
-	"search_view": {
-		"message": "Búsqueda",
-		"description": "data/index.html"
-	},
-	"select_a_default_picture_service": {
-		"message": "Elige el servicio de imágenes por defecto",
-		"description": "data/index.html"
-	},
-	"select_a_language": {
-		"message": "Selecciona un idioma",
-		"description": "data/index.html"
-	},
-	"select_a_read_later_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"select_a_theme": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"select_actions": {
-		"message": "Seleccionar acciones",
-		"description": "data/index.html"
-	},
-	"select_fields": {
-		"message": "Seleccionar campos",
-		"description": "data/index.html"
-	},
-	"send_message": {
-		"message": "Enviar DM",
-		"description": "data/index.html"
-	},
-	"send_message_to_them": {
-		"message": "Enviar mensaje a todos",
-		"description": "data/js/ui.template.js"
-	},
-	"shiny_old_times_before_marriage": {
-		"message": "Shiny old times before marriage",
-		"description": "data/index.html"
-	},
-	"shortcuts": {
-		"message": "Atajos",
-		"description": "data/index.html"
-	},
-	"show_relative_timestamp": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"sign_in_dots": {
-		"message": "Iniciando sesión ...",
-		"description": "data/js/ui.welcome.js"
-	},
-	"sign_out": {
-		"message": "Cerrar sesión",
-		"description": "data/index.html"
-	},
-	"signing_api_base": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"signing_oauth_base": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"slide_to_next_page": {
-		"message": "Ir a la siguiente página",
-		"description": "data/index.html"
-	},
-	"slide_to_prev_page": {
-		"message": "Ir a página anterior",
-		"description": "data/index.html"
-	},
-	"some_error_occur": {
-		"message": "Ups, ¡ha ocurrido un error!",
-		"description": "data/index.html"
-	},
-	"starts_minimized": {
-		"message": "Iniciar minimizado",
-		"description": "data/index.html"
-	},
-	"stat": {
-		"message": "ESTADO",
-		"description": "data/index.html"
-	},
-	"status_is_over_140_characters": {
-		"message": "¡Tu tweet contiene más de 140 caracteres!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"step_one": {
-		"message": "Paso 1",
-		"description": "data/index.html"
-	},
-	"step_two": {
-		"message": "Paso 2",
-		"description": "data/index.html"
-	},
-	"struggling_adventurers": {
-		"message": "Struggling Adventurers",
-		"description": "data/index.html"
-	},
-	"successfully": {
-		"message": "Exitosamente",
-		"description": "data/js/ui.main.js"
-	},
-	"summon_hotot": {
-		"message": "Invocar Hotot (ejemplo: <ALT>C)",
-		"description": "data/index.html"
-	},
-	"supervised_by": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"themes": {
-		"message": "Tema",
-		"description": "data/index.html"
-	},
-	"this_profile_may_has_already_exists": {
-		"message": "¡Este perfil puede que ya exista!",
-		"description": "data/js/ui.welcome.js"
-	},
-	"titian_s_elegance": {
-		"message": "Titian's elegance",
-		"description": "data/index.html"
-	},
-	"to": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"to_cold_beauty": {
-		"message": "To Cold Beauty",
-		"description": "data/index.html"
-	},
-	"toggle_conversation": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"tranquil": {
-		"message": "Tranquilo",
-		"description": "data/index.html"
-	},
-	"transparent": {
-		"message": "Transparente",
-		"description": "data/index.html"
-	},
-	"tweet_cnt": {
-		"message": "Tweets",
-		"description": "data/js/ui.template.js"
-	},
-	"tweet_view": {
-		"message": "Mostrar tweets",
-		"description": "data/index.html"
-	},
-	"tweets": {
-		"message": "Tweets",
-		"description": "data/index.html"
-	},
-	"twitter_official_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"type_a_name_here": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"type_or_drag_a_photo_here": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"un_favorite_this_tweet_dots": {
-		"message": "Borrar de favoritos ...",
-		"description": "data/js/ui.main.js"
-	},
-	"unblock": {
-		"message": "Desbloquear",
-		"description": "data/js/ui.template.js"
-	},
-	"undo_retweeting_dots": {
-		"message": "Deshaciendo retweet ...",
-		"description": "data/js/ui.main.js"
-	},
-	"undo_successfully": {
-		"message": "¡Deshacer con éxito!",
-		"description": "data/js/ui.main.js"
-	},
-	"unfollow": {
-		"message": "",
-		"description": "data/js/ui.listview.js"
-	},
-	"unfollow_at": {
-		"message": "Dejar de seguir a @",
-		"description": "data/js/ui.main.js"
-	},
-	"update": {
-		"message": "Twittear",
-		"description": "data/index.html"
-	},
-	"update_successfully": {
-		"message": "¡Publicado con éxito!",
-		"description": "data/js/ui.status_box.js"
-	},
-	"updating_dots": {
-		"message": "Publicando ...",
-		"description": "data/js/ui.status_box.js"
-	},
-	"upload": {
-		"message": "Subir",
-		"description": "data/index.html"
-	},
-	"upload_api_base": {
-		"message": "API base de subida",
-		"description": "data/index.html"
-	},
-	"upload_photo": {
-		"message": "Subir foto.",
-		"description": "data/index.html"
-	},
-	"upload_to_dots": {
-		"message": "Subiendo ...",
-		"description": "data/index.html"
-	},
-	"url_shortener": {
-		"message": "Acortador de URLs",
-		"description": "data/index.html"
-	},
-	"use_custom_font": {
-		"message": "Usar fuente personalizada",
-		"description": "data/index.html"
-	},
-	"use_quote_as_default_retweet_action": {
-		"message": "Usar CITAR como acción por defecto al hacer retweet",
-		"description": "data/index.html"
-	},
-	"use_read_later_service": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"use_reply_all_as_default_reply_action": {
-		"message": "Usar RESPONDER A TODOS como acción por defecto al responder",
-		"description": "data/index.html"
-	},
-	"username": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"verify": {
-		"message": "Verificar",
-		"description": "data/index.html"
-	},
-	"version": {
-		"message": "Versión",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"via": {
-		"message": "vía",
-		"description": "data/js/ui.template.js"
-	},
-	"view_more_conversation": {
-		"message": "Ver más conversación",
-		"description": "data/js/ui.template.js"
-	},
-	"virushou_s_integrity": {
-		"message": "Virushou's Integrity",
-		"description": "data/index.html"
-	},
-	"wanna_have_relationship_with": {
-		"message": "Quiero tener una relación con",
-		"description": "data/index.html"
-	},
-	"weakness": {
-		"message": "Débil",
-		"description": "data/js/lib.twitterapi.js"
-	},
-	"web": {
-		"message": "Web",
-		"description": "data/js/ui.template.js"
-	},
-	"website": {
-		"message": "Sitio web",
-		"description": "data/js/ui.exts_dlg.js"
-	},
-	"whisper": {
-		"message": "Secreto",
-		"description": "data/js/ui.welcome.js"
-	},
-	"word1_word2": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"write_down_description_here": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"written_by": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"you_are_followed_by_them": {
-		"message": "Él te sigue.",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"you_are_following": {
-		"message": "Le estás siguiendo.",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"you_are_friends": {
-		"message": "Sois amigos.",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"you_are_not_following_each_other": {
-		"message": "No os seguís mutuamente.",
-		"description": "data/js/ui.peopleview.js"
-	},
-	"you_dont_have_a_view": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
-		"message": "",
-		"description": "data/index.html"
-	},
-	"your_profile": {
-		"message": "",
-		"description": "data/index.html"
-	}
+   "a_new_hope": {
+      "description": "data/index.html",
+      "message": "Una nueva esperanza"
+   },
+   "about": {
+      "description": "data/index.html",
+      "message": "Acerca de"
+   },
+   "about_and_help": {
+      "description": "data/index.html",
+      "message": "Acerca de y ayuda"
+   },
+   "access_token_doesnt_exist": {
+      "description": "data/index.html",
+      "message": "El token de acceso no existe"
+   },
+   "action": {
+      "description": "data/index.html",
+      "message": "Acci\u00F3n"
+   },
+   "add": {
+      "description": "data/index.html",
+      "message": "A\u00F1adir"
+   },
+   "add_new_views": {
+      "description": "data/index.html",
+      "message": "A\u00F1adir nueva vista"
+   },
+   "add_to_list": {
+      "description": "data/js/ui.template.js",
+      "message": "A\u00F1adir a una lista"
+   },
+   "advanced": {
+      "description": "data/index.html",
+      "message": "Avanzado"
+   },
+   "animation": {
+      "description": "data/index.html",
+      "message": "Animacion"
+   },
+   "api_base": {
+      "description": "data/index.html",
+      "message": "API base"
+   },
+   "api_setting": {
+      "description": "data/index.html",
+      "message": "Configuraci\u00F3n de la API"
+   },
+   "archive": {
+      "description": "data/index.html",
+      "message": "Archivar"
+   },
+   "artwork_by": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "assassin_s_tango": {
+      "description": "data/index.html",
+      "message": "Assassin's Tango"
+   },
+   "authentication_ok": {
+      "description": "data/js/ui.welcome.js",
+      "message": "\u00A1Autorizaci\u00F3n v\u00E1lida!"
+   },
+   "author": {
+      "description": "data/js/ui.exts_dlg.js",
+      "message": "Autor"
+   },
+   "auto_longer_tweet": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "automatically_sign_in_after_opening": {
+      "description": "data/index.html",
+      "message": "Iniciar sesi\u00F3n autom\u00E1ticamente"
+   },
+   "behavior": {
+      "description": "data/index.html",
+      "message": "Comportamiento"
+   },
+   "bio": {
+      "description": "data/index.html",
+      "message": "Bio"
+   },
+   "block": {
+      "description": "data/js/ui.template.js",
+      "message": "Bloquear"
+   },
+   "bloody_marguerite": {
+      "description": "data/index.html",
+      "message": "Bloody Marguerite"
+   },
+   "cancel": {
+      "description": "data/index.html",
+      "message": "Cancelar"
+   },
+   "cannot_authenticate_you_please_check_your_username_or_password_and_api_base": {
+      "description": "data/js/ui.welcome.js",
+      "message": "\u00A1No puedo autorizarte! Por favor, comprueba tus credenciales y la API base"
+   },
+   "cannot_authenticate_you_please_try_later": {
+      "description": "data/js/ui.welcome.js",
+      "message": "No puedo autenticarte por favor intenta luego."
+   },
+   "cannot_get_token_from_server": {
+      "description": "data/js/ui.welcome.js",
+      "message": "No puedo obtener el token desde el servifor"
+   },
+   "change_your_profile_picture_by_clicking_it": {
+      "description": "data/index.html",
+      "message": "Cambia tu imagen de perfil haciendo click en ella"
+   },
+   "charactor_at_is_not_allow_in_profile_prefix": {
+      "description": "data/js/ui.welcome.js",
+      "message": "El caracter `@` no est\u00E1 permitido como prefijo en un perfil"
+   },
+   "chrome_context_menu_integration": {
+      "description": "data/index.html",
+      "message": "Integraci\u00F3n con el men\u00FA contextual de Chrome"
+   },
+   "classic": {
+      "description": "data/index.html",
+      "message": "Clasico"
+   },
+   "clear": {
+      "description": "data/index.html",
+      "message": "Limpiar"
+   },
+   "clear_and_close": {
+      "description": "data/index.html",
+      "message": "Limpiar y cerrar"
+   },
+   "clear_token": {
+      "description": "data/index.html",
+      "message": "Borrar token"
+   },
+   "click_me_to_continue": {
+      "description": "data/index.html",
+      "message": "Clic para continuar"
+   },
+   "click_the_button_below": {
+      "description": "data/index.html",
+      "message": "Haz clic en el bot\u00F3n de abajo"
+   },
+   "click_to_compose_message": {
+      "description": "data/index.html",
+      "message": "Redactar mensaje directo"
+   },
+   "click_to_expand_menu": {
+      "description": "data/index.html",
+      "message": "Click para expander el menu"
+   },
+   "click_to_show": {
+      "description": "data/js/ui.template.js",
+      "message": "Haz clic para mostrar"
+   },
+   "click_to_show_retweeters": {
+      "description": "data/js/ui.template.js",
+      "message": "Clic para mostrar retweets"
+   },
+   "client_name1_client_name2": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "close": {
+      "description": "data/index.html",
+      "message": "Cerrar"
+   },
+   "close_current_column": {
+      "description": "data/index.html",
+      "message": "Cerrar columna actual"
+   },
+   "compose": {
+      "description": "data/index.html",
+      "message": "Twittear"
+   },
+   "compress_tweet": {
+      "description": "data/index.html",
+      "message": "Comprimir tweet"
+   },
+   "copy_the_pin_code_and_paste_it_into_the_box_below": {
+      "description": "data/index.html",
+      "message": "Copia el c\u00F3digo PIN y p\u00E9galo en la caja de abajo"
+   },
+   "copy_to_clipboard": {
+      "description": "date/index.html",
+      "message": "Copiar al portapapeles"
+   },
+   "create_a_list": {
+      "description": "data/js/ui.template.js",
+      "message": "Crear una lista"
+   },
+   "create_a_new_profile": {
+      "description": "data/index.html",
+      "message": "Crear un nuevo perfil"
+   },
+   "credits": {
+      "description": "data/index.html",
+      "message": "Cr\u00E9ditos"
+   },
+   "cuddly": {
+      "description": "data/index.html",
+      "message": "Adorable"
+   },
+   "custom_font": {
+      "description": "data/index.html",
+      "message": "Fuente personalizada"
+   },
+   "default_picture_service": {
+      "description": "data/index.html",
+      "message": "Servicio de im\u00E1genes por defecto"
+   },
+   "delete": {
+      "description": "data/index.html",
+      "message": "Borrar"
+   },
+   "delete_this_tweet": {
+      "description": "data/js/ui.template.js",
+      "message": "Borrar este tweet"
+   },
+   "destroy_successfully": {
+      "description": "data/js/ui.main.js",
+      "message": "\u00A1Borrado con \u00E9xito!"
+   },
+   "donate": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "donate_hint1": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "donate_hint2": {
+      "description": "data/index.html",
+      "message": "Donar"
+   },
+   "dots": {
+      "description": "data/js/ui.main.js",
+      "message": "..."
+   },
+   "drafts": {
+      "description": "data/js/ui.status_box.js",
+      "message": "Borradores"
+   },
+   "drag_a_photo_here": {
+      "description": "data/index.html",
+      "message": "Arrastra una foto aqu\u00ED"
+   },
+   "drop": {
+      "description": "data/index.html",
+      "message": "Tirar"
+   },
+   "drop_tweets_contain_hash_tag_nowplaying": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "drop_tweets_contain_word_abc": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "drop_tweets_retweeted_by_abc": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "drop_tweets_sent_by_abc": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "drop_tweets_sent_from_foursquare": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "edit": {
+      "description": "data/js/ui.template.js",
+      "message": "Editar"
+   },
+   "eg_alt_h": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "enable": {
+      "description": "data/js/ui.exts_dlg.js",
+      "message": "Habilitar"
+   },
+   "enable_animation": {
+      "description": "data/index.html",
+      "message": "Habilitar animacion"
+   },
+   "enable_gpu_acceleration": {
+      "description": "data/index.html",
+      "message": "Habilitar aceleraci\u00F3n GPU"
+   },
+   "enable_verbose_mode": {
+      "description": "data/index.html",
+      "message": "Habilitar el Modo Detallado"
+   },
+   "errors": {
+      "description": "data/index.html",
+      "message": "Errores"
+   },
+   "examples": {
+      "description": "data/index.html",
+      "message": "Ejemplos"
+   },
+   "exit_hotot_when_close_window": {
+      "description": "data/index.html",
+      "message": "Salir de Hotot al cerrar la ventana"
+   },
+   "extensions": {
+      "description": "data/index.html",
+      "message": "Extensiones"
+   },
+   "fav_or_un_fav": {
+      "description": "data/index.html",
+      "message": "Fav/Borrar Fav"
+   },
+   "favorite_this_tweet_dots": {
+      "description": "data/js/ui.main.js",
+      "message": "Agregar a favoritos ..."
+   },
+   "favs": {
+      "description": "data/js/ui.template.js",
+      "message": "Favs"
+   },
+   "favs_view": {
+      "description": "data/index.html",
+      "message": "Favoritos"
+   },
+   "fellowship": {
+      "description": "data/js/ui.template.js",
+      "message": ""
+   },
+   "filter_nsfw_media": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "filter_tweets_like_it": {
+      "description": "data/index.html",
+      "message": "Filtrar"
+   },
+   "find": {
+      "description": "data/index.html",
+      "message": "Buscar"
+   },
+   "fine": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "Bien"
+   },
+   "first_time_to_sign_in_with_twitter": {
+      "description": "data/index.html",
+      "message": "Tu primera sesi\u00F3n en Twitter"
+   },
+   "follow": {
+      "description": "data/js/ui.template.js",
+      "message": "Seguir"
+   },
+   "follow_at": {
+      "description": "data/js/ui.main.js",
+      "message": "Seguir @"
+   },
+   "follower_cnt": {
+      "description": "data/js/ui.template.js",
+      "message": "Seguidores"
+   },
+   "followers": {
+      "description": "data/js/ui.template.js",
+      "message": "Seguidores"
+   },
+   "font": {
+      "description": "data/index.html",
+      "message": "Fuente"
+   },
+   "font_preview_hint": {
+      "description": "data/index.html",
+      "message": "La cig\u00FCe\u00F1a tocaba cada vez mejor el saxof\u00F3n y el b\u00FAho ped\u00EDa kiwi y queso."
+   },
+   "font_size": {
+      "description": "data/index.html",
+      "message": "Tama\u00F1o de la fuente"
+   },
+   "friend_cnt": {
+      "description": "data/js/ui.template.js",
+      "message": "Siguiendo"
+   },
+   "friends": {
+      "description": "data/js/ui.template.js",
+      "message": "Siguiendo"
+   },
+   "global": {
+      "description": "data/index.html",
+      "message": "Global"
+   },
+   "globals_restart_hint": {
+      "description": "data/index.html",
+      "message": "DEBES reiniciar Hotot para que algunos cambios tengan efecto. Estos cambios afectaran a TODAS las cuentas"
+   },
+   "greeting": {
+      "description": "data/index.html",
+      "message": "\u00A1Hola!"
+   },
+   "help": {
+      "description": "data/index.html",
+      "message": "Ayuda"
+   },
+   "hey": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "hey_it_is_you": {
+      "description": "data/js/ui.peopleview.js",
+      "message": "\u00A1Ey! \u00A1Eres t\u00FA!"
+   },
+   "hidden_dark_minds": {
+      "description": "data/index.html",
+      "message": "Hidden dark minds"
+   },
+   "home_timeline": {
+      "description": "data/js/ui.slider.js",
+      "message": "Inicio"
+   },
+   "home_view": {
+      "description": "data/index.html",
+      "message": "Inicio"
+   },
+   "host": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "hotot": {
+      "description": "data/index.html",
+      "message": "Hotot"
+   },
+   "hotot_description": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "image_uploader": {
+      "description": "data/index.html",
+      "message": "Subir imagen"
+   },
+   "info": {
+      "description": "data/js/ui.template.js",
+      "message": "INFO"
+   },
+   "insert_smiley": {
+      "description": "data/index.html",
+      "message": "A\u00F1adir emoticono"
+   },
+   "intelligent_filter": {
+      "description": "data/index.html",
+      "message": "Filtro inteligente"
+   },
+   "interface_language": {
+      "description": "data/index.html",
+      "message": "Idioma de la interfaz"
+   },
+   "join": {
+      "description": "data/js/ui.template.js",
+      "message": "Usuario desde"
+   },
+   "just_cannot_stop_thinking_of_here": {
+      "description": "data/index.html",
+      "message": "Just can't stop thinking of here"
+   },
+   "keyboard": {
+      "description": "data/index.html",
+      "message": "Atajos"
+   },
+   "keyboard_shortcuts": {
+      "description": "data/index.html",
+      "message": "Atajos de teclado"
+   },
+   "kismet_firewall": {
+      "description": "data/index.html",
+      "message": "Kismet"
+   },
+   "kismet_guide": {
+      "description": "data/index.html",
+      "message": "Gu\u00EDa Kismet"
+   },
+   "kismet_mute_hint": {
+      "description": "data/index.html",
+      "message": "CUIDADO: Los tweets con los siguientes atributos no se mostrar\u00E1n en tu timeline."
+   },
+   "label_with_color": {
+      "description": "data/index.html",
+      "message": "Etiquetar"
+   },
+   "language": {
+      "description": "data/index.html",
+      "message": "Idioma"
+   },
+   "let_hotot_collects_anonymous_statistic_information": {
+      "description": "data/index.html",
+      "message": "Permitir a Hotot enviar informaci\u00F3n an\u00F3nima"
+   },
+   "license": {
+      "description": "data/index.html",
+      "message": "Licencia"
+   },
+   "license_text1": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "license_text2": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "license_text3": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "line_height": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "list": {
+      "description": "data/index.html",
+      "message": "Lista"
+   },
+   "listed_cnt": {
+      "description": "data/js/ui.template.js",
+      "message": "Listado en"
+   },
+   "lists": {
+      "description": "data/js/ui.template.js",
+      "message": "Listas"
+   },
+   "lists_following_them": {
+      "description": "data/js/ui.template.js",
+      "message": "Listas que siguen al usuario"
+   },
+   "lists_of_them": {
+      "description": "data/js/ui.template.js",
+      "message": "Listas del usuario "
+   },
+   "loading_dots": {
+      "description": "data/js/ui.template.js",
+      "message": "Cargando ... "
+   },
+   "loading_resources_hint": {
+      "description": "data/index.html",
+      "message": "Cargando recursos ..."
+   },
+   "location": {
+      "description": "data/index.html",
+      "message": "Ubicaci\u00F3n"
+   },
+   "mark_deleted_tweets": {
+      "description": "data/index.html",
+      "message": "Marcar los tweets borrados"
+   },
+   "mask": {
+      "description": "data/index.html",
+      "message": "Enmascarar"
+   },
+   "mask_tweets_contain_hash_tag_callmemaybe": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "mention_them": {
+      "description": "data/js/ui.template.js",
+      "message": "Mencionar"
+   },
+   "mentions": {
+      "description": "data/js/ui.slider.js",
+      "message": "Menciones"
+   },
+   "mentions_view": {
+      "description": "data/index.html",
+      "message": "Menciones"
+   },
+   "messages": {
+      "description": "data/js/ui.slider.js",
+      "message": "Mensajes directos"
+   },
+   "messages_view": {
+      "description": "data/index.html",
+      "message": "Mensajes directos"
+   },
+   "more_actions": {
+      "description": "data/js/ui.template.js",
+      "message": "M\u00E1s"
+   },
+   "move_to_bottom": {
+      "description": "data/index.html",
+      "message": "Ir abajo"
+   },
+   "move_to_next_tweet": {
+      "description": "data/index.html",
+      "message": "Ir al siguiente tweet"
+   },
+   "move_to_prev_tweet": {
+      "description": "data/index.html",
+      "message": "Ir al tweet anterior"
+   },
+   "move_to_top": {
+      "description": "data/index.html",
+      "message": "Ir hasta arriba"
+   },
+   "mute_by_containing_words": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "mute_by_source": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "mute_by_user_name": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "mute_filter": {
+      "description": "data/index.html",
+      "message": "Silenciar con filtros"
+   },
+   "mute_this_source": {
+      "description": "data/index.html",
+      "message": "Silenciar esta origen"
+   },
+   "mute_this_user": {
+      "description": "data/index.html",
+      "message": "Silenciar este usuario"
+   },
+   "mute_this_word": {
+      "description": "data/index.html",
+      "message": "Silenciar esta palabra"
+   },
+   "my_favs": {
+      "description": "data/js/ui.slider.js",
+      "message": "Mis favoritos"
+   },
+   "my_journey_is_to_the_sea_of_stars": {
+      "description": "data/index.html",
+      "message": "My Journey is to the sea of stars"
+   },
+   "my_power": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "Mi poder"
+   },
+   "name": {
+      "description": "data/index.html",
+      "message": "Nombre"
+   },
+   "nearly_dead": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "Casi muerto"
+   },
+   "network_error_please_try_later": {
+      "description": "data/js/ui.welcome.js",
+      "message": "\u00A1Error de red! Por favor int\u00E9ntalo mas tarde."
+   },
+   "new_profile_has_been_created": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Se ha creado un perfil nuevo"
+   },
+   "next": {
+      "description": "data/index.html",
+      "message": "Siguiente"
+   },
+   "no_extension": {
+      "description": "data/index.html",
+      "message": "Sin extensi\u00F3n"
+   },
+   "not_avaiable_yet": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "notify": {
+      "description": "data/index.html",
+      "message": "Notificar"
+   },
+   "notify_me_if_incoming_tweets_mention_hotot": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "oauth_base": {
+      "description": "data/index.html",
+      "message": "OAuth base"
+   },
+   "official_retweet_this_tweet": {
+      "description": "data/js/ui.template.js",
+      "message": "Retweet oficial"
+   },
+   "ok": {
+      "description": "data/index.html",
+      "message": "Aceptar"
+   },
+   "oops_a_network_error_occurs": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Ups, ha ocurrido un error de red"
+   },
+   "oops_an_api_error_occurs": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Ups, \u00A1ha ocurrido un error de API!"
+   },
+   "oops_an_authentication_error_occurs": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Ooops, un error de autenticaci\u00F3n ha ocurrido"
+   },
+   "open_a_list_dots": {
+      "description": "data/index.html",
+      "message": "Abrir lista"
+   },
+   "open_a_profile_dots": {
+      "description": "data/index.html",
+      "message": "Abrir perfil"
+   },
+   "open_first_link": {
+      "description": "data/index.html",
+      "message": "Abrir primer enlace"
+   },
+   "open_speaker_link": {
+      "description": "data/index.html",
+      "message": "Abrir enlace del que habla"
+   },
+   "options": {
+      "description": "data/js/ui.exts_dlg.js",
+      "message": "Opciones"
+   },
+   "or_copy_the_address_and_open_it_in_your_browser": {
+      "description": "data/index.html",
+      "message": "O copia la direcci\u00F3n y abrela en tu navegador."
+   },
+   "panda_acts_cute": {
+      "description": "data/index.html",
+      "message": "Panda acts cute"
+   },
+   "password": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "paste_from_clipboard": {
+      "description": "date/index.html",
+      "message": "Pegar desde el portapapeles"
+   },
+   "pin_code": {
+      "description": "data/index.html",
+      "message": "C\u00F3digo PIN"
+   },
+   "please_enter_the_recipient": {
+      "description": "data/js/ui.status_box.js",
+      "message": "\u00A1Por favor, introduce el destinatario!"
+   },
+   "please_entry_a_profile_prefix": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Por favor, introduce un prefijo para el perfil"
+   },
+   "port": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "post_successfully": {
+      "description": "data/js/ui.status_box.js",
+      "message": "\u00A1Publicado con \u00E9xito!"
+   },
+   "posting_dots": {
+      "description": "data/js/ui.status_box.js",
+      "message": "Publicando ..."
+   },
+   "powerfull": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "Poderoso"
+   },
+   "preferences": {
+      "description": "data/index.html",
+      "message": "Preferencias"
+   },
+   "preload_latest_tweets_in_conversations_if_possible": {
+      "description": "data/index.html",
+      "message": "Precargar, si es posible, los tweets m\u00E1s recientes en las conversaciones"
+   },
+   "pretty_wife": {
+      "description": "data/index.html",
+      "message": "Pretty wife"
+   },
+   "preview_embedded_media": {
+      "description": "data/index.html",
+      "message": "Mostrar fotos y v\u00EDdeos"
+   },
+   "preview_here": {
+      "description": "data/index.html",
+      "message": "Vista previa aqu\u00ED"
+   },
+   "previous": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "profile": {
+      "description": "data/index.html",
+      "message": "Perfil"
+   },
+   "profile_name": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "project_host": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "project_site": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_auth": {
+      "description": "data/index.html",
+      "message": "Credenciales"
+   },
+   "proxy_host": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_http_proxy": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_no_proxy": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_port": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_socks_proxy": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "proxy_system_proxy": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "quick_references": {
+      "description": "data/index.html",
+      "message": "Referencias r\u00E1pidas"
+   },
+   "quit_hotot": {
+      "description": "data/index.html",
+      "message": "Cerrar Hotot"
+   },
+   "quote": {
+      "description": "data/index.html",
+      "message": "Citar"
+   },
+   "read_later": {
+      "description": "data/index.html",
+      "message": "Leer despues"
+   },
+   "read_later_service": {
+      "description": "data/index.html",
+      "message": "Servicio de leer despues"
+   },
+   "relation": {
+      "description": "data/js/ui.template.js",
+      "message": "Relaci\u00F3n"
+   },
+   "reload": {
+      "description": "data/index.html",
+      "message": "Recargar"
+   },
+   "reply": {
+      "description": "data/index.html",
+      "message": "Responder"
+   },
+   "reply_all": {
+      "description": "data/index.html",
+      "message": "Responder a todos"
+   },
+   "reply_this_tweet": {
+      "description": "data/js/ui.template.js",
+      "message": "Responder este tweet"
+   },
+   "reply_to": {
+      "description": "data/js/ui.template.js",
+      "message": "En respuesta a "
+   },
+   "report_spam": {
+      "description": "data/js/ui.template.js",
+      "message": "Reportar Spam"
+   },
+   "reset_time": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "Hora de reinicio"
+   },
+   "restore_defaults": {
+      "description": "data/index.html",
+      "message": "Restaurar valores predeterminados"
+   },
+   "retweet": {
+      "description": "data/index.html",
+      "message": "Retwittear"
+   },
+   "retweet_or_un_retweet": {
+      "description": "data/index.html",
+      "message": "Retweet/Deshacer retweet"
+   },
+   "retweet_successfully": {
+      "description": "data/js/ui.main.js",
+      "message": "\u00A1Retweet con \u00E9xito!"
+   },
+   "retweeted_by": {
+      "description": "data/js/ui.template.js",
+      "message": "Retwitteado por"
+   },
+   "retweeting_dots": {
+      "description": "data/js/ui.main.js",
+      "message": "Haciendo retweet..."
+   },
+   "retweets": {
+      "description": "data/js/ui.slider.js",
+      "message": "Retweets"
+   },
+   "retweets_view": {
+      "description": "data/index.html",
+      "message": "Retweets"
+   },
+   "rt_this_tweet": {
+      "description": "data/js/ui.template.js",
+      "message": "RT este tweet"
+   },
+   "rule": {
+      "description": "data/index.html",
+      "message": "Regla"
+   },
+   "rule_based_filter": {
+      "description": "data/index.html",
+      "message": "Filtro basado en reglas"
+   },
+   "rule_editor": {
+      "description": "data/index.html",
+      "message": "Editor de reglas"
+   },
+   "rule_name": {
+      "description": "data/index.html",
+      "message": "Nombre de la regla"
+   },
+   "same_signing_api_base": {
+      "description": "data/index.html",
+      "message": "Misma firma en API base"
+   },
+   "same_signing_oauth_base": {
+      "description": "data/index.html",
+      "message": "Misma firma en OAuth base"
+   },
+   "save": {
+      "description": "data/index.html",
+      "message": "Guardar"
+   },
+   "save_as_draft": {
+      "description": "data/index.html",
+      "message": "Guardar como borrador"
+   },
+   "schizophrenia": {
+      "description": "data/index.html",
+      "message": "Esquizofrenia"
+   },
+   "screen_name1_screen_name2": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "search": {
+      "description": "data/js/ui.slider.js",
+      "message": "Buscar"
+   },
+   "search_api_base2": {
+      "description": "data/index.html",
+      "message": "API base de b\u00FAsqueda"
+   },
+   "search_in_google": {
+      "description": "data/index.html",
+      "message": "Buscar @ en Google"
+   },
+   "search_in_twitter": {
+      "description": "data/index.html",
+      "message": "Buscar @ en Twitter"
+   },
+   "search_view": {
+      "description": "data/index.html",
+      "message": "B\u00FAsqueda"
+   },
+   "select_a_default_picture_service": {
+      "description": "data/index.html",
+      "message": "Elige el servicio de im\u00E1genes por defecto"
+   },
+   "select_a_language": {
+      "description": "data/index.html",
+      "message": "Selecciona un idioma"
+   },
+   "select_a_read_later_service": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "select_a_theme": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "select_actions": {
+      "description": "data/index.html",
+      "message": "Seleccionar acciones"
+   },
+   "select_fields": {
+      "description": "data/index.html",
+      "message": "Seleccionar campos"
+   },
+   "send_message": {
+      "description": "data/index.html",
+      "message": "Enviar DM"
+   },
+   "send_message_to_them": {
+      "description": "data/js/ui.template.js",
+      "message": "Enviar mensaje a todos"
+   },
+   "shiny_old_times_before_marriage": {
+      "description": "data/index.html",
+      "message": "Shiny old times before marriage"
+   },
+   "shortcuts": {
+      "description": "data/index.html",
+      "message": "Atajos"
+   },
+   "show_relative_timestamp": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "sign_in_dots": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Iniciando sesi\u00F3n ..."
+   },
+   "sign_out": {
+      "description": "data/index.html",
+      "message": "Cerrar sesi\u00F3n"
+   },
+   "signing_api_base": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "signing_oauth_base": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "slide_to_next_page": {
+      "description": "data/index.html",
+      "message": "Ir a la siguiente p\u00E1gina"
+   },
+   "slide_to_prev_page": {
+      "description": "data/index.html",
+      "message": "Ir a p\u00E1gina anterior"
+   },
+   "some_error_occur": {
+      "description": "data/index.html",
+      "message": "Ups, \u00A1ha ocurrido un error!"
+   },
+   "starts_minimized": {
+      "description": "data/index.html",
+      "message": "Iniciar minimizado"
+   },
+   "stat": {
+      "description": "data/index.html",
+      "message": "ESTADO"
+   },
+   "status_is_over_140_characters": {
+      "description": "data/js/ui.status_box.js",
+      "message": "\u00A1Tu tweet contiene m\u00E1s de 140 caracteres!"
+   },
+   "step_one": {
+      "description": "data/index.html",
+      "message": "Paso 1"
+   },
+   "step_two": {
+      "description": "data/index.html",
+      "message": "Paso 2"
+   },
+   "struggling_adventurers": {
+      "description": "data/index.html",
+      "message": "Struggling Adventurers"
+   },
+   "successfully": {
+      "description": "data/js/ui.main.js",
+      "message": "Exitosamente"
+   },
+   "summon_hotot": {
+      "description": "data/index.html",
+      "message": "Invocar Hotot (ejemplo: \u003CALT\u003EC)"
+   },
+   "supervised_by": {
+      "description": "data/index.html",
+      "message": "Supervisado por"
+   },
+   "themes": {
+      "description": "data/index.html",
+      "message": "Tema"
+   },
+   "this_profile_may_has_already_exists": {
+      "description": "data/js/ui.welcome.js",
+      "message": "\u00A1Este perfil puede que ya exista!"
+   },
+   "titian_s_elegance": {
+      "description": "data/index.html",
+      "message": "Titian's elegance"
+   },
+   "to": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "to_cold_beauty": {
+      "description": "data/index.html",
+      "message": "To Cold Beauty"
+   },
+   "toggle_conversation": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "tranquil": {
+      "description": "data/index.html",
+      "message": "Tranquilo"
+   },
+   "transparent": {
+      "description": "data/index.html",
+      "message": "Transparente"
+   },
+   "tweet_cnt": {
+      "description": "data/js/ui.template.js",
+      "message": "Tweets"
+   },
+   "tweet_view": {
+      "description": "data/index.html",
+      "message": "Mostrar tweets"
+   },
+   "tweets": {
+      "description": "data/index.html",
+      "message": "Tweets"
+   },
+   "twitter_official_service": {
+      "description": "data/index.html",
+      "message": "Servicio oficial de twitter"
+   },
+   "type_a_name_here": {
+      "description": "data/index.html",
+      "message": "Escribe un nombre aqui"
+   },
+   "type_or_drag_a_photo_here": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "un_favorite_this_tweet_dots": {
+      "description": "data/js/ui.main.js",
+      "message": "Borrar de favoritos..."
+   },
+   "unblock": {
+      "description": "data/js/ui.template.js",
+      "message": "Desbloquear"
+   },
+   "undo_retweeting_dots": {
+      "description": "data/js/ui.main.js",
+      "message": "Deshaciendo retweet..."
+   },
+   "undo_successfully": {
+      "description": "data/js/ui.main.js",
+      "message": "\u00A1Deshacer con \u00E9xito!"
+   },
+   "unfollow": {
+      "description": "data/js/ui.listview.js",
+      "message": "unfollow"
+   },
+   "unfollow_at": {
+      "description": "data/js/ui.main.js",
+      "message": "Dejar de seguir a @"
+   },
+   "update": {
+      "description": "data/index.html",
+      "message": "Actualizar"
+   },
+   "update_successfully": {
+      "description": "data/js/ui.status_box.js",
+      "message": "\u00A1Publicado con \u00E9xito!"
+   },
+   "updating_dots": {
+      "description": "data/js/ui.status_box.js",
+      "message": "Publicando..."
+   },
+   "upload": {
+      "description": "data/index.html",
+      "message": "Subir"
+   },
+   "upload_api_base": {
+      "description": "data/index.html",
+      "message": "API base de subida"
+   },
+   "upload_photo": {
+      "description": "data/index.html",
+      "message": "Subir foto."
+   },
+   "upload_to_dots": {
+      "description": "data/index.html",
+      "message": "Subiendo..."
+   },
+   "url_shortener": {
+      "description": "data/index.html",
+      "message": "Acortador de URLs"
+   },
+   "use_custom_font": {
+      "description": "data/index.html",
+      "message": "Usar fuente personalizada"
+   },
+   "use_quote_as_default_retweet_action": {
+      "description": "data/index.html",
+      "message": "Usar CITAR como acci\u00F3n por defecto al hacer retweet"
+   },
+   "use_read_later_service": {
+      "description": "data/index.html",
+      "message": "Usar servicio de leer despues"
+   },
+   "use_reply_all_as_default_reply_action": {
+      "description": "data/index.html",
+      "message": "Usar RESPONDER A TODOS como acci\u00F3n por defecto al responder"
+   },
+   "username": {
+      "description": "data/index.html",
+      "message": "username"
+   },
+   "verify": {
+      "description": "data/index.html",
+      "message": "Verificar"
+   },
+   "version": {
+      "description": "data/js/ui.exts_dlg.js",
+      "message": "Versi\u00F3n"
+   },
+   "via": {
+      "description": "data/js/ui.template.js",
+      "message": "v\u00EDa"
+   },
+   "view_more_conversation": {
+      "description": "data/js/ui.template.js",
+      "message": "Ver m\u00E1s conversaci\u00F3n"
+   },
+   "virushou_s_integrity": {
+      "description": "data/index.html",
+      "message": "Virushou's Integrity"
+   },
+   "wanna_have_relationship_with": {
+      "description": "data/index.html",
+      "message": "Quiero tener una relaci\u00F3n con"
+   },
+   "weakness": {
+      "description": "data/js/lib.twitterapi.js",
+      "message": "D\u00E9bil"
+   },
+   "web": {
+      "description": "data/js/ui.template.js",
+      "message": "Web"
+   },
+   "website": {
+      "description": "data/js/ui.exts_dlg.js",
+      "message": "Sitio web"
+   },
+   "whisper": {
+      "description": "data/js/ui.welcome.js",
+      "message": "Secreto"
+   },
+   "word1_word2": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "write_down_description_here": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "written_by": {
+      "description": "data/index.html",
+      "message": "Escrito por"
+   },
+   "you_are_followed_by_them": {
+      "description": "data/js/ui.peopleview.js",
+      "message": "\u00C9l te sigue."
+   },
+   "you_are_following": {
+      "description": "data/js/ui.peopleview.js",
+      "message": "Le est\u00E1s siguiendo."
+   },
+   "you_are_friends": {
+      "description": "data/js/ui.peopleview.js",
+      "message": "Sois amigos."
+   },
+   "you_are_not_following_each_other": {
+      "description": "data/js/ui.peopleview.js",
+      "message": "No os segu\u00EDs mutuamente."
+   },
+   "you_dont_have_a_view": {
+      "description": "data/index.html",
+      "message": "No tienes una vista"
+   },
+   "you_should_surely_add_one_or_more_views_by_clicking_the_add_button_above": {
+      "description": "data/index.html",
+      "message": ""
+   },
+   "your_profile": {
+      "description": "data/index.html",
+      "message": "Tu perfil"
+   }
 }
