@@ -6,6 +6,7 @@ endif()
 
 # Setup KDE4 support
 if(WITH_KDE)
+  find_package(Qt4 4.7 REQUIRED COMPONENTS QtCore QtGui QtWebkit QtSql)
   find_package(KDE4)
   if(KDE4_FOUND)
     message(STATUS "Enabling KDE4 integration")
@@ -26,7 +27,9 @@ elseif(HAVE_KDE)
   set(BUILD_KDE On)
   if(WITH_KDE_QT)
     set(BUILD_QT On)
-    set(HOTOT_KDE_BIN_NAME hotot-kde)
+    if(NOT HOTOT_KDE_BIN_NAME)
+      set(HOTOT_KDE_BIN_NAME hotot-kde)
+    endif()
   else()
     # specify HOTOT_KDE_BIN_NAME if you want to rename hotot-qt executable
     # with KDE support even if the version without KDE support is not enabled
