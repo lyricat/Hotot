@@ -43,7 +43,7 @@ tweet_t:
     </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
+        <a class="who_href" style="color:{%COLOR_LABEL%}" ref="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -875,8 +875,12 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.SCHEME = scheme;
     m.IN_REPLY = (reply_id != null && !in_thread) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
-
+	
     m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
+	if (m.COLOR_LABEL == 'transparent')
+	{
+		m.COLOR_LABEL = '';
+	}
 
     m.REPLY_TEXT = reply_str;
     m.RETWEET_TEXT = retweet_str;
