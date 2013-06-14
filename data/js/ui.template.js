@@ -43,7 +43,7 @@ tweet_t:
     </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
-        <a class="who_href" style="color:{%COLOR_LABEL%}" ref="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
+        <a class="who_href" style="color:{%COLOR_LABEL%}" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
