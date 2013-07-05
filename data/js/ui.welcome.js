@@ -271,7 +271,7 @@ function load_profiles_info() {
             $('.service_tabs_page').hide();
             $("#service_page_new").show();
         } else {
-            $('#clear_token_btn').css('visibility', 'visibility');
+            $('#clear_token_btn').css('visibility', 'visibile');
             $("#service_page_new").hide();
             $('#service_page_' + type).show();
             $('.service_tabs_page').not('#service_page_' + type).hide();
@@ -289,7 +289,7 @@ function load_profiles_info() {
                 $('#clear_token_btn').css('visibility', 'hidden');
             } else {
                 $('#access_token_status_hint').css('visibility', 'hidden');
-                $('#clear_token_btn').css('visibility', 'visibility');
+                $('#clear_token_btn').css('visibility', 'visibile');
             }
         }
         $('#profile_avatar_list a').not(this).removeClass('selected');
