@@ -1,5 +1,5 @@
-if (typeof conf == 'undefined') var conf = {};
-conf = {
+
+var conf = {
 
 vars: {
       'platform': 'Chrome'
@@ -71,14 +71,14 @@ default_prefs: {
         , 'readlater_username': ''
         , 'readlater_password': ''
           // Advanced:
-        , 'api_base': 'https://api.twitter.com/1/'
-        , 'sign_api_base': 'https://api.twitter.com/1/'
+        , 'api_base': 'https://api.twitter.com/1.1/'
+        , 'sign_api_base': 'https://api.twitter.com/1.1/'
         , 'use_same_sign_api_base': true
         , 'oauth_base': 'https://api.twitter.com/oauth/'
         , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
-        , 'upload_api_base': 'https://upload.twitter.com/1/'
+        , 'upload_api_base': 'https://upload.twitter.com/1.1/'
           // extensions and others
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []
