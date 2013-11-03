@@ -26,7 +26,7 @@ USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 ## Disable GtkNotification on Gnome3
 screen = gtk.gdk.screen_get_default()
 window_manager_name = screen.get_window_manager_name().lower() if screen else ''
-if 'mutter' in window_manager_name:
+if 'mutter' in window_manager_name or 'i3' in window_manager_name:
     USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
 
 if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
