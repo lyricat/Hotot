@@ -323,7 +323,6 @@ function load_prefs() {
         .prop('checked', prefs.enable_gpu_acceleration);
     $('#tbox_prefs_api_base').val(prefs.api_base);
     $('#tbox_prefs_sign_api_base').val(prefs.sign_api_base);
-    $('#tbox_prefs_search_api_base2').val(prefs.search_api_base2);
     $('#tbox_prefs_upload_api_base').val(prefs.upload_api_base);
     $('#tbox_prefs_oauth_base').val(prefs.oauth_base);
     $('#tbox_prefs_sign_oauth_base').val(prefs.sign_oauth_base);
@@ -393,8 +392,6 @@ function save_prefs() {
         = $('#tbox_prefs_api_base').attr('value');
     prefs.sign_api_base
         = $('#tbox_prefs_sign_api_base').attr('value');
-    prefs.search_api_base2
-        = $('#tbox_prefs_search_api_base2').attr('value');
     prefs.upload_api_base
         = $('#tbox_prefs_upload_api_base').attr('value');
     prefs.oauth_base

@@ -10,7 +10,6 @@ function TwitterClient() {
     self.password = '';
     self.api_base = 'https://api.twitter.com/';
     self.sign_api_base = 'https://api.twitter.com/';
-    self.search_api_base2 = 'https://twitter.com/phoenix_search.phoenix';
     self.upload_api_base = 'https://upload.twitter.com/1/';
 
     self.use_same_sign_api_base = true;
@@ -764,35 +763,14 @@ function TwitterClient() {
     };
 
     self.search = function search(query, page, since_id, max_id, on_success, on_error) {
-        var url = self.search_api_base2;
-        if (url == 'https://twitter.com/phoenix_search.phoenix') {
-            var params = {
-                'q': query
-            };
-            params['format'] = 'phoenix';
-            params['include_entities'] = 'true';
-            if (since_id != null) params['since_id'] = since_id;
-            if (max_id != null) params['max_id'] = max_id;
-            _page = [];
-            _page.push('rpp=100');
-            _page.push('q=' + encodeURI(query));
-            if (max_id != null) _page.push('max_id=' + max_id);
-            if (page != null) _page.push('page=' + page);
-            params['page'] = _page.join('&');
-            self.source = '';
-            self.get(url, params, on_success, on_error);
-            self.source = 'Hotot';
-        } else {
-            var params = {
-                'q': query
-            };
-            if (since_id != null) params['since_id'] = since_id;
-            if (max_id != null) params['max_id'] = max_id;
-            if (page != null) params['page'] = page;
-            self.source = '';
-            self.get(url, params, on_success, on_error);
-            self.source = 'Hotot';
-        }
+        var url = self.api_base + '1.1/search/tweets.json';
+
+        var params = {
+            'q': query
+        };
+        if (since_id != null) params['since_id'] = since_id;
+        if (max_id != null) params['max_id'] = max_id;
+        self.get(url, params, on_success, on_error);
 
     };
 
