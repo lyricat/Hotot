@@ -43,7 +43,7 @@ tweet_t:
     </ul>\
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
-        <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
+        <a class="who_href" style="color:{%COLOR_LABEL%}" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
             {%SCREEN_NAME%}\
         </a>\
         </div>\
@@ -852,7 +852,6 @@ function form_tweet (tweet_obj, pagename, in_thread) {
         // highlighted any more, which fixes #415 for twitter.
         // (It does not work for identi.ca, because the identi.ca API
         // does not provide user_mentions.)
-
         var re = /\<a class=\"who_href\" href=\"[^"]*\"\>([^<]*)\<\/a\>/gi
         text = text.replace(re, '$1');
         // hotot_log('form_tweet', 'resulting text: ' + text);
@@ -875,8 +874,12 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.SCHEME = scheme;
     m.IN_REPLY = (reply_id != null && !in_thread) ? 'block' : 'none';
     m.RETWEETABLE = (tweet_obj.user.protected || scheme == 'me' )? 'false':'true';
-
+	
     m.COLOR_LABEL = kismet.get_user_color(tweet_obj.user.screen_name);
+	if (m.COLOR_LABEL == 'transparent')
+	{
+		m.COLOR_LABEL = '';
+	}
 
     m.REPLY_TEXT = reply_str;
     m.RETWEET_TEXT = retweet_str;
@@ -1212,18 +1215,24 @@ form_text:
 function form_text(tweet) {
     //hotot_log('form_text in', tweet.text);
     var text = ui.Template.convert_chars(tweet.text);
+    var COLOR_LABEL = kismet.get_user_color(tweet.user.screen_name);
+    if (COLOR_LABEL == 'transparent')
+    {
+        COLOR_LABEL = '';
+    }
+
     text = text.replace(ui.Template.reg_link_g, function replace_url(url) {
 		if (url.length > 51) url_short = url.substring(0,48) + '...';
 		else url_short = url;
-		return ' <a href="'+url+'" target="_blank">' + url_short + '</a>';
+		return ' <a href="'+url+'" style="color:' + COLOR_LABEL + '"" target="_blank">' + url_short + '</a>';
 	});
     text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
         , '$1@<a class="list_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_user
-        , '$1@<a class="who_href" href="#$2">$2</a>');
+        , '$1@<a class="who_href"  style="color:' + COLOR_LABEL + '" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_hash_tag
-        , '$1<a class="hash_href" href="#$2">#$2</a>');
+        , '$1<a class="hash_href" style="color:' + COLOR_LABEL + '" href="#$2">#$2</a>');
     text = text.replace(/href="(http:\/\/hotot.in\/(\d+))"/g
         , 'full_text_id="$2" href="$1"');
     text = text.replace(/[\r\n]\s+[\r\n]/g, '\n\n');
