@@ -10,7 +10,7 @@ function TwitterClient() {
     self.password = '';
     self.api_base = 'https://api.twitter.com/';
     self.sign_api_base = 'https://api.twitter.com/';
-    self.search_api_base2 = 'https://twitter.com/phoenix_search.phoenix';
+    self.search_api_base3 = 'https://api.twitter.com/1.1/search/tweets.json';
     self.upload_api_base = 'https://upload.twitter.com/1/';
 
     self.use_same_sign_api_base = true;
@@ -218,7 +218,10 @@ function TwitterClient() {
         }
         $.extend(params, signed_params);
 
-        var auth_str = 'OAuth oauth_consumer_key="' + signed_params.oauth_consumer_key + '"' + ', oauth_signature_method="' + signed_params.oauth_signature_method + '"' + ', oauth_token="' + signed_params.oauth_token + '"' + ', oauth_timestamp="' + signed_params.oauth_timestamp + '"' + ', oauth_nonce="' + signed_params.oauth_nonce + '"' + ', oauth_version="' + signed_params.oauth_version + '"' + ', oauth_signature="' + encodeURIComponent(signed_params.oauth_signature) + '"';
+        var auth_str = 'OAuth oauth_consumer_key="' + signed_params.oauth_consumer_key + '"'
+                + ', oauth_signature_method="' + signed_params.oauth_signature_method + '"'
+                + ', oauth_token="' + signed_params.oauth_token + '"'
+                + ', oauth_timestamp="' + signed_params.oauth_timestamp + '"' + ', oauth_nonce="' + signed_params.oauth_nonce + '"' + ', oauth_version="' + signed_params.oauth_version + '"' + ', oauth_signature="' + encodeURIComponent(signed_params.oauth_signature) + '"';
         var headers = {
             'Authorization': auth_str
         };
@@ -761,7 +764,7 @@ function TwitterClient() {
     };
 
     self.search = function search(query, page, since_id, max_id, on_success, on_error) {
-        var url = self.search_api_base2;
+        var url = self.search_api_base3;
         if (url == 'https://twitter.com/phoenix_search.phoenix') {
             var params = {
                 'q': query
@@ -783,9 +786,10 @@ function TwitterClient() {
             var params = {
                 'q': query
             };
-            if (since_id != null) params['since_id'] = since_id;
+            params['count'] = 100;
+            params['include_entities'] = 'true';
+            params['result_type'] = 'recent';
             if (max_id != null) params['max_id'] = max_id;
-            if (page != null) params['page'] = page;
             self.source = '';
             self.get(url, params, on_success, on_error);
             self.source = 'Hotot';
