@@ -1,7 +1,7 @@
 The Latest Stable Version is 0.9.8.9
 The Latest Development Version is 0.9.8.8
 
-Version 0.9.9
+Version 0.9.9.0
   * Removed support for a number of features making it difficult to maintain.
         * Platform-specific builds. Only Chrome is supported going forward.
         * Read later

@@ -52,7 +52,7 @@ pre {
 #header_inner {
 	position:relative;
 	padding: 0px;
-	height: 69px;
+	height: 73px;
 	background: #222;
 }
 
@@ -492,7 +492,7 @@ pre {
 }
 
 #view_title_bar {
-	height: 22px;
+	height: 26px;
 	width: 100%;
 	overflow: hidden;
 	background: #F2F2F2;
@@ -503,7 +503,7 @@ pre {
 	color: #333;
 	text-align: center;
 	font-size: 13px;
-	height: 21px;
+	height: 25px;
 	border-bottom: 1px #ddd solid;
 	border-left: 1px #ddd solid;
 	float: left;
@@ -520,7 +520,7 @@ pre {
 	display: block;
 	position: absolute;
 	top: 2px;
-	left: 2px;
+	left: 7px;
 }
 
 #view_title_bar .close_btn {
@@ -529,7 +529,7 @@ pre {
 	display: block;
 	position: absolute;
 	top: 2px;
-	right: 2px;
+	right: 7px;
 }
 
 

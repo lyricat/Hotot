@@ -790,7 +790,7 @@ input[type=checkbox]{
     border-bottom:1px solid #666
 }
 .mochi_list_item.dark {
-    background:#525253 url(../image/binding-dark.png);
+    background:#525253;
     border-top:1px solid #666;
     border-bottom:1px solid #333
 }

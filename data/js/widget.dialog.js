@@ -66,15 +66,13 @@ function WidgetDialog(obj) {
                 self._offsetY = event.clientY - pos.top;
                 event.target.style.cursor = "move";
 
-                $('body').css({'-webkit-user-select': 'none',
-                    '-khtml-user-select': 'none'});
+                $('body').css({'-webkit-user-select': 'none'});
             })
             .mouseup(function (event) {
                 if (self._drag) {
                     self._drag = false;
                     event.target.style.cursor = null;
-                    $('body').css({'-webkit-user-select': '',
-                        '-khtml-user-select': ''});
+                    $('body').css({'-webkit-user-select': ''});
                 }
              });
              $(document).mousemove(function (event) {
@@ -235,12 +233,6 @@ current_index: 10001,
 push:
 function push(dialog) {
     dialog.set_order(this.current_index);
-    if (this.dialog_stack.length != 0) {
-        this.dialog_stack[this.dialog_stack.length-1]
-            ._me.css('-webkit-box-shadow'
-                , '0px 0px 5px #000');
-    }
-    dialog._me.css('-webkit-box-shadow', '0px 0px 8px #000');
     this.dialog_stack.push(dialog);
     this.current_index += 1;
 },

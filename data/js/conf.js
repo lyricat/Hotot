@@ -4,7 +4,7 @@ conf = {
 vars: {
       'platform': 'Chrome'
     , 'wrapper': 'unknown'
-    , 'version': '0.9.8.15'
+    , 'version': '0.9.9.0'
     , 'codename': 'Ada'
     , 'consumer_key': 'U98ZKc9v0kThfKdZbn8NRQ'
     , 'consumer_secret': 'RcwCNFKsNFMHIf8D756QpWdZHAD1Vus2rbIrBjibtg'
