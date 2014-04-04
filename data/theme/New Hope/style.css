@@ -1,11 +1,6 @@
 #header_inner {
-    background: #333 url(../../image/mask.png);
+    background: #333;
     border-bottom: 1px #2d2d2d solid;
-}
-#indication {
-    -webkit-box-shadow: inset 0 0 5px black;
-    -moz-box-shadow: inset 0 0 5px black;
-    box-shadow: inset 0 0 5px black;
 }
 #main_page {
     background: #fafafa; 
@@ -31,14 +26,14 @@
     border-left: 1px #ddd solid;
 }
 .search_box, .vcard, .header_inner {
-	background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F8), to(#EDEDED));
+	background: #EDEDED;
   border: #E5E5E5 solid 1px;
 }
 .card {
     border-top: 1px #ddd solid;
     color: black;
     border-bottom: 1px #fafafa solid;
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#fafafa));
+	background: #fafafa;
 }
 
 .card:first-child {
@@ -76,14 +71,9 @@
 .btn_tweet_thread_more {
     border-top: 1px #ddd solid;
 }
-.profile_img_wrapper {
-	border-radius: 3px;
-	box-shadow: 1px 1px 3px #aaa;
-}
 ::selection {
     background: #a8d1ff;
 }
-
 #indication_light {
     background: #73f;
 }

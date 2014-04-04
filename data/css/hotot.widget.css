@@ -46,22 +46,22 @@ disabled:
     border-radius: 2px;
     cursor: pointer;
     text-shadow: #fff 0 1px 1px; 
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, #FCFCFC), color-stop(4%,#F2F2F2), color-stop(100%,#EEE));
+		background: #F2F2F2;
 }
 
 .button.dark {
     color: #4ac3ff;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
+    background: #282828;
     border: 1px #444 solid;
     text-shadow: #4ac3ff 0 0 15px; 
 }
 
 .button:hover {
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(2%, #FCFCFC), color-stop(4%,#F8F8F8), color-stop(100%,#F2f2f2));
+		background: #F2f2f2;
 }
 
 .button.dark:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: #666;
 }
 
 .button:active {
@@ -85,7 +85,7 @@ disabled:
 }
 .button.dark.disabled {
     color: #aaa !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
+    background: #282828;
 }
 .button:focus {
     border-color: #4D90FE !important;
@@ -124,17 +124,17 @@ disabled:
 
 .combo.dark {
     color: #ddd;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#555), color-stop(100%,#282828));
+    background: #282828;
     border: 1px #444 solid;
     text-shadow: #333 0 -1px 1px; 
 }
 
 .combo:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+    background: #DEDEDE;
 }
 
 .combo.dark:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: #666;
 }
 
 .combo:focus {
@@ -163,14 +163,14 @@ disabled:
 
 .checkbox:checked, .radio:checked {
     border: 3px #fff solid;
-    background: -webkit-gradient(linear, left top, left bottom, from(#bbeaff), to(#4ac3ff));
+    background: #4ac3ff;
     -webkit-box-shadow:  0 0 1px #333;
     -moz-box-shadow:  0 0 1px #333;
     box-shadow:  0 0 1px #333;
 }
 
 .checkbox:checked:disabled, .radio:checked:disabled {
-    background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#b0b0b0));
+    background: #b0b0b0;
 }
 
 .checkbox.dark, .radio.dark {
@@ -180,11 +180,11 @@ disabled:
 
 .checkbox.dark:checked, .radio.dark:checked {
     border: 3px #444 solid;
-    background: -webkit-gradient(linear, left top, left bottom, from(#bbeaff), to(#4ac3ff));
+    background: #4ac3ff;
 }
 
 .checkbox.dark:checked:disabled, .radio.dark:checked:disabled {
-    background: -webkit-gradient(linear, left top, left bottom, from(#e2e2e2), to(#b0b0b0));
+    background: #b0b0b0;
 }
 
 .checked:focus, .radio:focus {
@@ -250,7 +250,7 @@ disabled:
 }
 
 .radio_group > li > .radio_group_btn {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#fff), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+    background: #DEDEDE;
     display: inline-block;
     text-align: center;
     height: 30px;
@@ -274,7 +274,7 @@ disabled:
 }
 
 .radio_group.dark > li > .radio_group_btn {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#888), color-stop(4%,#666), color-stop(100%,#333));
+    background: #666;
     color: #ddd;
     text-shadow: #333 0 -1px 1px; 
     border-right: 1px #444 solid;
@@ -304,7 +304,7 @@ disabled:
 .radio_group > li > .radio_group_btn.selected {
     color: #555;
     border-color: #bbb;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bbb), color-stop(100%,#DEDEDE));
+    background: #DEDEDE;
 }
 
 .radio_group.dark > li > .radio_group_btn.selected {
@@ -361,7 +361,7 @@ disabled:
 	font-size: 14px;
 	color: #F2F2F2;
 	text-shadow: 0 -1px 0px black;
-	background: #333 url(../image/mask.png);
+	background: #333;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	margin: 0;
@@ -384,7 +384,7 @@ disabled:
 .dialog_body {
     padding: 10px 10px;
     overflow-y: auto;
-		background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F6), to(#EDEDED));
+		background: #EDEDED;
 }
 .dialog_body .mochi_entry.widget {
 	width: 300px;
