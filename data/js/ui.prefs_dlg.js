@@ -31,21 +31,9 @@ function init () {
         i18n.change($(this).val());
     });
 
-    $('#sel_prefs_sys_font, #range_prefs_font_size, #tbox_prefs_custom_font, #chk_use_custom_font').bind('click change keypress blur',
+    $('#range_prefs_font_size').bind('click change keypress blur',
     function (event) {
         ui.PrefsDlg.update_font_preview();
-    });
-
-    $('#sel_prefs_sys_font').change(function (event) {
-        var val = $(this).val();
-        if (val != 'more') {
-            $('#tbox_prefs_custom_font').val(val);
-            $(this).val('more');
-        }
-    });
-
-    $('#chk_use_custom_font').click(function (event) {
-        $('#tbox_prefs_custom_font, #sel_prefs_sys_font').attr('disabled', !$(this).prop('checked'));
     });
 
     $('#range_prefs_font_size, #tbox_prefs_proxy_port').blur(
@@ -63,10 +51,6 @@ function init () {
         ui.PrefsDlg.update_font_preview();
     });
 
-    $('#chk_prefs_use_readlater_serv').click(function (event) {
-        $('#tbox_prefs_readlater_username, #tbox_prefs_readlater_password, #sel_prefs_readlater_service').attr('disabled', !$(this).prop('checked'));
-    });
-
     $('#chk_prefs_use_same_sign_api_base').click(
     function (event) {
         $('#tbox_prefs_sign_api_base').attr('disabled', $(this).prop('checked'));
@@ -76,10 +60,6 @@ function init () {
     function (event) {
         $('#tbox_prefs_sign_oauth_base').attr('disabled', $(this).prop('checked'));
     });
-
-	if (/python-gtk/.test(conf.vars.wrapper)) {
-		$('#sel_prefs_proxy_type option[value="socks"]').remove();
-	}
 
     $('#sel_prefs_proxy_type').change(
 	function (event) {
@@ -194,8 +174,6 @@ function save_settings() {
         = $('#chk_prefs_sign_in_automatically').prop('checked');
     conf.settings.starts_minimized
         = $('#chk_prefs_starts_minimized').prop('checked');
-    conf.settings.use_anonymous_stat
-        = $('#chk_prefs_use_anonymous_stat').prop('checked');
     conf.settings.shortcut_summon_hotot
         = $('#tbox_prefs_shortcut_summon_hotot').val();
     // chrome only
@@ -244,32 +222,11 @@ function load_prefs() {
     theme_list.val(prefs.theme);
     theme_list = null;
 
-    var ff_list = $('#sel_prefs_sys_font').empty();
-    for (var i = 0, l = conf.settings.font_list.length; i < l; i += 1) {
-        var ff_name = conf.settings.font_list[i];
-        $('<option/>').attr('value', ff_name).text(ff_name).appendTo(ff_list);
-    }
-    $('<option/>').attr('value', 'more').text('...').appendTo(ff_list);
-    ff_list.val('more');
-    ff_list = null;
-
-    $('#tbox_prefs_custom_font').val(prefs.custom_font);
     $('#range_prefs_font_size').val(prefs.font_size);
     $('#range_prefs_font_size_st').text(prefs.font_size + 'pt');
-    if (prefs.use_custom_font) {
-        $('#chk_use_custom_font')
-            .attr('checked', prefs.use_custom_font)
-            .prop('checked', prefs.use_custom_font);
-    } else {
-        $('#sel_prefs_sys_font, #tbox_prefs_custom_font')
-            .attr('disabled', true);
-    }
     $('#range_prefs_line_height').val(prefs.line_height);
     $('#range_prefs_line_height_st').text(Number(prefs.line_height).toFixed(1));
     ui.PrefsDlg.update_font_preview();
-    $('#chk_prefs_auto_longer_tweet')
-        .attr('checked', prefs.auto_longer_tweet)
-        .prop('checked', prefs.auto_longer_tweet);
     $('#chk_prefs_use_preload_conversation')
         .attr('checked', prefs.use_preload_conversation)
         .prop('checked', prefs.use_preload_conversation);
@@ -297,18 +254,6 @@ function load_prefs() {
         .attr('checked', prefs.use_deleted_mark)
         .prop('checked', prefs.use_deleted_mark);
     $('#sel_prefs_default_picture_service').val(prefs.default_picture_service);
-
-    $('#chk_prefs_use_readlater_serv')
-        .attr('checked', prefs.use_readlater_serv)
-        .prop('checked', prefs.use_readlater_serv);
-    $('#sel_prefs_readlater_service').val(prefs.readlater_service);
-    $('#tbox_prefs_readlater_username').val(prefs.readlater_username);
-    $('#tbox_prefs_readlater_password').val(prefs.readlater_password);
-    if (prefs.use_readlater_serv) {
-        $('#tbox_prefs_readlater_password, #tbox_prefs_readlater_username, #sel_prefs_readlater_service').attr('disabled', false);
-    } else {
-        $('#tbox_prefs_readlater_password, #tbox_prefs_readlater_username, #sel_prefs_readlater_service').attr('disabled', true);
-    }
 
     // Advanced
     $('#chk_prefs_enable_animation')
@@ -346,7 +291,6 @@ function save_prefs() {
 
     prefs.theme = $('#sel_prefs_theme').val();
     prefs.theme_path = $('#sel_prefs_theme').children('option[value="'+$('#sel_prefs_theme').val()+'"]').attr('path');
-    prefs.custom_font = $('#tbox_prefs_custom_font').val();
     prefs.font_size = $('#range_prefs_font_size').val();
     if (prefs.font_size === '') {
         prefs.font_size = 12;
@@ -355,7 +299,6 @@ function save_prefs() {
     if (prefs.line_height === '') {
         prefs.line_height = 1.4;
     }
-    prefs.use_custom_font = $('#chk_use_custom_font').prop('checked');
     // behaviors
     prefs.auto_longer_tweet
         = $('#chk_prefs_auto_longer_tweet').prop('checked');
@@ -375,11 +318,6 @@ function save_prefs() {
         = $('#chk_prefs_use_deleted_mark').prop('checked');
     prefs.default_picture_service
         = $('#sel_prefs_default_picture_service').val();
-
-    prefs.use_readlater_serv = $('#chk_prefs_use_readlater_serv').prop('checked');
-    prefs.readlater_service = $('#sel_prefs_readlater_service').val();
-    prefs.readlater_username = $('#tbox_prefs_readlater_username').val();
-    prefs.readlater_password = $('#tbox_prefs_readlater_password').val();
 
     // Advanced
     prefs.enable_animation

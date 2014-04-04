@@ -211,7 +211,7 @@ function open_option_dialog() {
 		'#ext_hotot_cfw_opt_dialog', title, '', body,
 		[{id:'#ext_btn_cfw_save', label: 'Save', click: ext.ContentFirewall.on_btn_save_prefs_clicked}]);
 	ext.ContentFirewall.option_dialog.set_styles('header', {'display': 'none', 'height': '0'});
-	ext.ContentFirewall.option_dialog.resize(400, 300);
+	ext.ContentFirewall.option_dialog.resize(444, 300);
 
 	var prefs = ext.ContentFirewall.prefs;
 
