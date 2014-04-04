@@ -61,7 +61,7 @@ function init () {
                     {
                         'text': status_text,
                         'name': globals.myself.screen_name,
-                        'avatar': globals.myself.profile_image_url
+                        'avatar': util.big_avatar(globals.myself.profile_image_url_https)
                     },
                     {},
                     null,

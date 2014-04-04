@@ -364,7 +364,7 @@ function do_notify(rule, act, incoming) {
     var user = incoming.hasOwnProperty('user')? 
             incoming.user: incoming.sender;
     hotot_notify(user.screen_name, incoming.text
-        , user.profile_image_url , 'content');
+        , util.big_avatar(user.profile_image_url_https) , 'content');
 },
 
 do_archive:

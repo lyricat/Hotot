@@ -188,7 +188,7 @@ function load_tweet_success(self, json) {
             if (user.screen_name == globals.myself.screen_name)
                 continue;
             text = json[i].text;
-            hotot_notify(user.screen_name, text, user.profile_image_url , 'content');
+            hotot_notify(user.screen_name, text, util.big_avatar(user.profile_image_url_https) , 'content');
             notify_count += 1;
         }
         if (3 < notify_count) {
@@ -636,7 +636,7 @@ function bind_tweet_action(id) {
                 var p = result[i];
                 var li = $('<li/>');
                 var a = $('<a/>').appendTo(li).attr('href', '#' + p.screen_name);
-                $('<img height="24" width="24"/>').attr({'title': '@' + p.screen_name + ' (' + p.name + ')', 'src': p.profile_image_url}).appendTo(a);
+                $('<img height="24" width="24"/>').attr({'title': '@' + p.screen_name + ' (' + p.name + ')', 'src': util.big_avatar(p.profile_image_url_https)}).appendTo(a);
                 a.click(function(event) {
                     if (event.which == 1) {
                         open_people($(this).attr('href').substring(1));
