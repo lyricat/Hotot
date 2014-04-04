@@ -25,7 +25,6 @@ default_settings: {
     , 'proxy_auth': false
     , 'proxy_auth_name': ''
     , 'proxy_auth_password': ''
-    , 'use_anonymous_stat': true
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
     , 'size_h': 550
