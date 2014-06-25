@@ -1388,9 +1388,9 @@ function (dataObj) {
         }
     } else {
         if(now.diff(mobj, 'days', true) > 1) {
-            time_str = mobj.format('MM-DD-YYYY HH:mm:ss');
+            time_str = mobj.format('YYYY-MM-DD HH:mm:ss');
         } else {
-            time_str = mobj.format('HH:mm:ss');
+            time_str = mobj.format('YYYY-MM-DD HH:mm:ss');
         }
     }
 

@@ -10,7 +10,7 @@ function TwitterClient() {
     self.password = '';
     self.api_base = 'https://api.twitter.com/';
     self.sign_api_base = 'https://api.twitter.com/';
-    self.search_api_base2 = 'https://twitter.com/phoenix_search.phoenix';
+    self.search_api_base3 = 'https://api.twitter.com/1.1/search/tweets.json';
     self.upload_api_base = 'https://upload.twitter.com/1/';
 
     self.use_same_sign_api_base = true;
@@ -764,7 +764,7 @@ function TwitterClient() {
     };
 
     self.search = function search(query, page, since_id, max_id, on_success, on_error) {
-        var url = self.search_api_base2;
+        var url = self.search_api_base3;
         if (url == 'https://twitter.com/phoenix_search.phoenix') {
             var params = {
                 'q': query
@@ -786,9 +786,10 @@ function TwitterClient() {
             var params = {
                 'q': query
             };
-            if (since_id != null) params['since_id'] = since_id;
+            params['count'] = 100;
+            params['include_entities'] = 'true';
+            params['result_type'] = 'recent';
             if (max_id != null) params['max_id'] = max_id;
-            if (page != null) params['page'] = page;
             self.source = '';
             self.get(url, params, on_success, on_error);
             self.source = 'Hotot';

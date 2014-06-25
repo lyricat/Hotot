@@ -4,7 +4,7 @@ conf = {
 vars: {
       'platform': 'Chrome'
     , 'wrapper': 'unknown'
-    , 'version': '0.9.8.14'
+    , 'version': '0.9.8.15'
     , 'codename': 'Ada'
     , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
     , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
@@ -78,6 +78,7 @@ default_prefs: {
         , 'sign_oauth_base': 'https://api.twitter.com/oauth/'
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
+        , 'search_api_base3': 'https://api.twitter.com/1.1/search/tweets.json'
         , 'upload_api_base': 'https://upload.twitter.com/1/'
           // extensions and others
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
@@ -126,7 +127,7 @@ default_prefs: {
         , 'oauth_base': 'https://identi.ca/api/oauth/'
         , 'sign_oauth_base': 'https://identi.ca/api/oauth/'
         , 'use_same_sign_oauth_base': true
-        , 'search_api_base2': 'https://identi.ca/api/'
+        , 'search_api_base3': 'https://identi.ca/api/'
         , 'upload_api_base': 'https://identi.ca/api/'
           // extensions:
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
@@ -326,7 +327,7 @@ function apply_prefs(name, full) {
         }
     })(prefs.api_base);
     globals.twitterClient.sign_api_base = prefs.sign_api_base;
-    globals.twitterClient.search_api_base2 = prefs.search_api_base2;
+    globals.twitterClient.search_api_base3 = prefs.search_api_base3;
     globals.twitterClient.upload_api_base = prefs.upload_api_base;
     globals.twitterClient.use_same_sign_api_base = prefs.use_same_sign_api_base;
     var oauth = globals.twitterClient.oauth;
