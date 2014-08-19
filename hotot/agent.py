@@ -68,10 +68,10 @@ def init_notify():
 def do_notify(summary, body, icon_file = None):
     if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
         return notify.do_notify(summary, body, icon_file)
-    n = pynotify.Notification(summary, body)
     if (icon_file == None or not os.path.isfile(icon_file) or os.path.getsize(icon_file) == 0):
         icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
-    n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))
+    n = pynotify.Notification(summary, body, 'file://' + icon_file)
+    #n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))
     n.set_timeout(30000)
     n.show()
 
