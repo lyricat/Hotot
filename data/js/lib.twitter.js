@@ -21,6 +21,9 @@ function TwitterClient() {
 
     self.default_error_method = 'notify';
 
+    self.short_url_length = 22;
+    self.short_url_length_https = 23;
+
     self.http_code_msg_table = {
         0: 'Lost connection with server.',
         400: 'Bad Request: The request was invalid.',
@@ -715,6 +718,16 @@ function TwitterClient() {
         var url = self.api_base + '1.1/account/verify_credentials.json';
         self.get(url, {},
         on_success, on_error);
+    };
+
+    self.get_configuration = function get_configuration() {
+        var url = self.api_base + '1.1/help/configuration.json';
+        self.get(url, {},
+        function (result) {
+            self.short_url_length = result.short_url_length;
+            self.short_url_length_https = result.short_url_length_https;
+        });
+
     };
 
     self.create_saved_search = function create_saved_search(query, on_success, on_error) {

@@ -314,6 +314,8 @@ function authenticate_pass(result) {
     conf.get_current_profile().order = Date.now();
     conf.save_prefs(conf.current_name);
 
+    globals.twitterClient.get_configuration();
+
     setTimeout(function () {
         $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
         }, 100);

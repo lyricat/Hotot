@@ -30,11 +30,17 @@ short_url_base: 'http://api.bit.ly/v3/shorten?login=shellex&apiKey=R_81c9ac2c7aa
 get_status_len:
 function get_status_len(status_text) {
     var rep_url = function (url) {
-        if (url.length > 20) {
-            return '01234567890123456789';
+        var rep = '';
+        var length;
+        if (url.slice(0,5) === 'https') {
+            length = globals.twitterClient.short_url_length_https;
         } else {
-            return url;
+            length = globals.twitterClient.short_url_length;
         }
+        for (var i=0; i<length; i++) {
+            rep += ' ';
+        }
+        return rep;
     }
     return status_text.replace(ui.Template.reg_link_g, rep_url).length
 },
