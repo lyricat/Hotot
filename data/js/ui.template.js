@@ -1325,15 +1325,15 @@ function form_preview(tweet) {
         }
     }
     // twitter official picture service
-    if (tweet.entities && tweet.entities.media) {
-        for (var i = 0; i < tweet.entities.media.length; i += 1) {
-            var media = tweet.entities.media[i];
+    if (tweet.extended_entities && tweet.entities.media) {
+        for (var i = 0; i < tweet.extended_entities.media.length; i += 1) {
+            var media = tweet.extended_entities.media[i];
             if (media.expanded_url && media.media_url) {
                 html_arr.push(
                     ui.Template.form_media(
-                        tweet.entities.media[i].expanded_url,
-                        tweet.entities.media[i].media_url + ':thumb',
-                        tweet.entities.media[i].media_url + ':large'
+                        tweet.extended_entities.media[i].expanded_url,
+                        tweet.extended_entities.media[i].media_url + ':thumb',
+                        tweet.extended_entities.media[i].media_url + ':large'
                         ));
             }
         }
