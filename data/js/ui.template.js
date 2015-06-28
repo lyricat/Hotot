@@ -814,6 +814,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
 
     var alt_text = tweet_obj.text;
     var link = '';
+
+    var text = ui.Template.form_text(tweet_obj);
     if (tweet_obj.entities && tweet_obj.entities.urls) {
         var urls = null;
         if (tweet_obj.entities.media) {
@@ -824,7 +826,12 @@ function form_tweet (tweet_obj, pagename, in_thread) {
         for (var i = 0, l = urls.length; i < l; i += 1) {
             var url = urls[i];
             if (url.url && url.expanded_url) {
-              tweet_obj.text = tweet_obj.text.replace(url.url, url.expanded_url);
+                url_html = url.expanded_url.replace(ui.Template.reg_link_g, function replace_url(url) {
+                    if (url.length > 51) url_short = url.substring(0,48) + '...';
+                    else url_short = url;
+                    return '<a href="'+url+'" target="_blank">' + url_short + '</a>';
+                });
+                text = text.replace(url.url, url_html);
             }
         }
         if (tweet_obj.entities.urls.length > 0) {
@@ -832,7 +839,6 @@ function form_tweet (tweet_obj, pagename, in_thread) {
         }
     }
     
-	var text = ui.Template.form_text(tweet_obj);
     // if the tweet contains user_mentions (which are provided by the Twitter
     // API, not by the StatusNet API), it will here replace the 
     // contents of the 'who_ref'-a-tag by the full name of this user.
@@ -1212,12 +1218,6 @@ form_text:
 function form_text(tweet) {
     //hotot_log('form_text in', tweet.text);
     var text = ui.Template.convert_chars(tweet.text);
-    text = text.replace(ui.Template.reg_link_g, function replace_url(url) {
-		if (url.length > 51) url_short = url.substring(0,48) + '...';
-		else url_short = url;
-		return ' <a href="'+url+'" target="_blank">' + url_short + '</a>';
-	});
-    text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
         , '$1@<a class="list_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_user
