@@ -1,19 +1,8 @@
 if (typeof ui == 'undefined') var ui = {};
 ui.ImageUploader = {
 services : {
-    'img.ly': {
-          url: 'http://img.ly/api/2/upload.json'
-    },
-    'twitpic.com': {
-          url: 'http://api.twitpic.com/2/upload.json'
-        , key: 'de89b69c11e1ac0f874ec5266c5c4f46'
-    },
-    'lockerz.com': {
-          url: 'http://api.plixi.com/api/upload.aspx'
-        , key: 'a3beab3a-d1ae-46c0-a4ab-5ac73d8eb43a'
-    },
     'twitter.com': {
-          url: 'https://upload.twitter.com/1/update_with_media.json'
+          url: 'https://api.twitter.com/1.1/update_with_media.json'
     }
 },
 
@@ -102,7 +91,7 @@ function pyupload(filename) {
     }
 
     var signed_params = globals.twitterClient.oauth.form_signed_params(
-              'https://api.twitter.com/1/account/verify_credentials.json'
+              'https://api.twitter.com/1.1/account/verify_credentials.json'
             , globals.twitterClient.oauth.access_token
             , 'GET'
             , {}
@@ -118,20 +107,10 @@ function pyupload(filename) {
         + encodeURIComponent(signed_params.oauth_signature)+'"';
 
     var headers = {'X-Verify-Credentials-Authorization': auth_str
-        , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
+        , 'X-Auth-Service-Provider': 'https://api.twitter.com/1.1/account/verify_credentials.json'};
     var msg = ui.ImageUploader.me.find('.message').val();
     var service_name = ui.ImageUploader.service_name;
     var params = {'message': msg};
-    switch (service_name) {
-    case 'twitpic.com' :
-        params['key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    case 'plixi.com' :
-        params['isoauth'] = 'true';
-        params['response_format'] = 'JSON';
-        params['api_key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    }
 
     toast.set('Uploading ... ').show();
     globals.network.do_request(
@@ -155,16 +134,6 @@ function upload(file) {
     var msg = ui.ImageUploader.me.find('.message').val();
     var service_name = ui.ImageUploader.service_name;
     var params = {'message': msg};
-    switch (service_name) {
-    case 'twitpic.com' :
-        params['key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    case 'lockerz.com' :
-        params['isoauth'] = 'true';
-        params['response_format'] = 'JSON';
-        params['api_key'] = ui.ImageUploader.services[service_name].key;
-    break;
-    }
 
     toast.set('Uploading ... ').show();
     ui.ImageUploader.upload_image(
@@ -205,7 +174,7 @@ function upload_image_official(params, file, success, fail) {
 upload_image_oauth_echo:
 function upload_image_oauth_echo(url, params, file, success, fail) {
     var signed_params = globals.twitterClient.oauth.form_signed_params(
-              'https://api.twitter.com/1/account/verify_credentials.json'
+              'https://api.twitter.com/1.1/account/verify_credentials.json'
             , globals.twitterClient.oauth.access_token
             , 'GET'
             , {}
@@ -221,7 +190,7 @@ function upload_image_oauth_echo(url, params, file, success, fail) {
         + encodeURIComponent(signed_params.oauth_signature)+'"';
 
     var headers = {'X-Verify-Credentials-Authorization': auth_str
-        , 'X-Auth-Service-Provider': 'https://api.twitter.com/1/account/verify_credentials.json'};
+        , 'X-Auth-Service-Provider': 'https://api.twitter.com/1.1/account/verify_credentials.json'};
 
     if (ui.ImageUploader.mode == ui.ImageUploader.MODE_HTML5) {
         var reader = new FileReader();
@@ -263,16 +232,8 @@ function success(result) {
         ui.StatusBox.set_status_text('');
         ui.StatusBox.open();
         var url = ''; var text = '';
-        switch (ui.ImageUploader.service_name) {
-        case 'lockerz.com':
-            url = result.MediaUrl;
-            text = ui.ImageUploader.me.find('.message').val();
-        break;
-        default:
-            url = result.url;
-            text = result.text;
-        break;
-        }
+        url = result.url;
+        text = result.text;
         ui.StatusBox.append_status_text(text + ' '+ url);
         ui.ImageUploader.file = null;
         ui.ImageUploader.me.find('.message').val('');

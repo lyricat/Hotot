@@ -742,31 +742,11 @@ function on_load_finish() {
             });
         // 7. run track code
         procs.push(function () {
-            if (conf.settings.use_anonymous_stat) {
-               track({
-                   'platform': conf.vars.platform,
-                   'version': conf.vars.version,
-                   'autologin': conf.settings.sign_in_automatically,
-                   'lang': window.navigator.language,
-                   'localeDate': new Date().toString()
-               });
-            }
             $(window).dequeue('_on_load_finish');
         });
         $(window).queue('_on_load_finish', procs);
         $(window).dequeue('_on_load_finish');
     }
-}
-
-function track(vars) {
-    var url = 'http://stat.hotot.org/?';
-    var arr = [];
-    for (var k in vars) {
-        arr.push(k + '=' + vars[k]);
-    }
-    url += arr.join('&');
-    new Image().src = url;
-    return;
 }
 
 function syncMyself() {

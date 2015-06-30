@@ -4,10 +4,10 @@ conf = {
 vars: {
       'platform': 'Chrome'
     , 'wrapper': 'unknown'
-    , 'version': '0.9.8.15'
+    , 'version': '0.9.9.0'
     , 'codename': 'Ada'
-    , 'consumer_key': 'SCEdx4ZEOO68QDCTC7FFUQ'
-    , 'consumer_secret': '2IBoGkVrpwOo7UZhjkYYekw0ciXG1WHpsqQtUqZCSw'
+    , 'consumer_key': 'U98ZKc9v0kThfKdZbn8NRQ'
+    , 'consumer_secret': 'RcwCNFKsNFMHIf8D756QpWdZHAD1Vus2rbIrBjibtg'
     , 'column_max_width': 400
     , 'items_per_request': 50
     , 'trim_bound': 100
@@ -25,7 +25,6 @@ default_settings: {
     , 'proxy_auth': false
     , 'proxy_auth_name': ''
     , 'proxy_auth_password': ''
-    , 'use_anonymous_stat': true
     , 'shortcut_summon_hotot': '<Alt>C'
     , 'size_w': 500
     , 'size_h': 550
@@ -57,13 +56,13 @@ default_prefs: {
         , 'enable_animation': true
         , 'enable_gpu_acceleration': true 
           // Behaviors
-        , 'auto_longer_tweet': true
+        , 'auto_longer_tweet': false
         , 'use_preload_conversation': true
         , 'use_alt_retweet': false
         , 'use_alt_reply': false
         , 'use_media_preview': true
         , 'show_relative_timestamp': true
-        , 'filter_nsfw_media': false
+        , 'filter_nsfw_media': true
         , 'use_deleted_mark': false
         , 'default_picture_service': 'twitter.com'
         , 'use_readlater_serv': false
@@ -79,7 +78,7 @@ default_prefs: {
         , 'use_same_sign_oauth_base': true
         , 'search_api_base2': 'https://twitter.com/phoenix_search.phoenix'
         , 'search_api_base3': 'https://api.twitter.com/1.1/search/tweets.json'
-        , 'upload_api_base': 'https://upload.twitter.com/1/'
+        , 'upload_api_base': 'https://api.twitter.com/1.1/'
           // extensions and others
         , 'exts_enabled': ["org.hotot.imagepreview", "org.hotot.gmap", "org.hotot.translate", "org.hotot.imageupload", "org.hotot.videopreview", "org.hotot.shorturl", "org.hotot.cfw"]
         , 'kismet_rules': []

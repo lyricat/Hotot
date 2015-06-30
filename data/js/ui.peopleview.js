@@ -388,7 +388,7 @@ function render_people_view(self, user_obj, proc) {
                 btn_follow.addClass('blue');
             }
     });
-    ui.Slider.set_icon(self.name, user_obj.profile_image_url, ui.Slider.BOARD_ICON);
+    ui.Slider.set_icon(self.name, util.big_avatar(user_obj.profile_image_url_https), ui.Slider.BOARD_ICON);
 },
 
 load_timeline_full:

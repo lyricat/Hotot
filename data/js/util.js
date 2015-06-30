@@ -1,5 +1,4 @@
-if (typeof util == 'undefined') var util = {};
-util = {
+window.util = {
 
 native_platform: ['Linux', 'Windows', 'Mac'],
 
@@ -98,7 +97,7 @@ function trace() {
 cache_avatar:
 function cache_avatar(user_obj) {
     db.get_user(user_obj.screen_name, function (exists_user) {
-        var imgurl = user_obj.profile_image_url;
+        var imgurl = util.big_avatar(user_obj.profile_image_url_https);
         var imgname = imgurl.substring(imgurl.lastIndexOf('/')+1);
         var avatar_file = user_obj.screen_name + '_' + imgname;
         hotot_action('action/save_avatar/'
@@ -111,13 +110,13 @@ get_avatar:
 function get_avatar(screen_name, callback) {
     if (util.is_native_platform()) {
         db.get_user(screen_name, function (user) {
-            var imgurl = user.profile_image_url;
+            var imgurl = util.big_avatar(user.profile_image_url_https);
             var avatar_file = user.screen_name + '_' + imgurl.substring(imgurl.lastIndexOf('/')+1);
             callback(conf.vars.avatar_cache_dir + '/' + avatar_file);
         });
     } else {
         db.get_user(screen_name, function (user) {
-            callback(user.profile_image_url);
+            callback(util.big_avatar(user.profile_image_url_https));
         }); 
     }
 },
@@ -128,6 +127,11 @@ function concat(arr, lst) {
         arr.push(lst[i]);
     }
     return arr;
+},
+
+big_avatar: 
+function big_avatar(url){
+    return String(url).replace('normal','bigger');
 }
 
 };

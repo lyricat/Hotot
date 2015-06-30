@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <link id="hotot_theme" rel="stylesheet" href="theme/New Hope/style.css" type="text/css" media="screen" />
 </head>
-<body style='background: transparent url(image/welcome_bg.jpg) no-repeat 0 0; background-size: cover;'>
+<body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.layout.js"></script>
     <script type="text/javascript" src="js/jquery.transit.min.js"></script>
@@ -110,7 +110,6 @@
 		<ul id="profile_avatar_list">
 			<li class="new_profile_item"><a id="btn_new_profile_item" title="Create a new profile" href="default" idx="0" data-i18n-title="create_a_new_profile"></a></li>
 		</ul>
-		<h2 id="daily_hint" data-i18n-text="greeting">Greeting!</h2>
 		<div id="sign_in_block">
 			<div class="inner">
 				<a class="go" href="#"></a>
@@ -214,14 +213,6 @@
 			data-i18n-text="filter_tweets_like_it"
 			>Filter tweets like it</a>
 		</li>
-		<li>
-		<a id="tweet_readlater_btn"
-			class="tweet_more_menu_btn"
-			href="#"
-			title="Read Later"
-			data-i18n-text="read_later"
-			>Read Later</a>
-		</li>
 		<li class="separator"><span></span></li>
 	</ul>
 	<a id="btn_my_profile" class="profile_img_wrapper" title="Your profile" href="#" data-i18n-title="your_profile"></a>
@@ -312,7 +303,7 @@
                 </li><li>
                     <a id="btn_kismet" title="Kismet Firewall" href="#" data-i18n-text="kismet_firewall">Kismet Firewall</a>
                 </li><li>
-                    <a id="btn_about" title="About & Help" href="#" data-i18n-text="about_and_help">About &amp; Help</a>
+                    <a id="btn_about" title="About &amp; Help" href="#" data-i18n-text="about_and_help">About &amp; Help</a>
                 </li>
                 <li class="separator"><span></span></li>
                 <li>
@@ -534,25 +525,6 @@
 					<h3 data-i18n-text="font">Font</h3>
 					<ul class="mochi_list">
 						<li class="mochi_list_item">
-							<input id="chk_use_custom_font" type="checkbox"
-									class="mochi_toggle widget" name="font" />
-							<label class="label" for="chk_use_custom_font"
-									data-i18n-text="use_custom_font">Use Custom Font</label>
-						</li>
-						<li class="mochi_list_item" style="position:relative">
-							<select id="sel_prefs_sys_font" class="mochi_combo widget"
-									style="padding:0 3px;width:150px;min-width:150px"
-									title="Font Family">
-									<option value="more">...</option>
-							</select>
-							<input id="tbox_prefs_custom_font"
-									title="Custom Font"
-									style="width:120px;float:right;position: absolute;right: 40px;border: 1px #B2B3B4 solid;"
-									type="text" class="mochi_entry"/>
-							<label class="label" for="sel_prefs_sys_font"
-									data-i18n-text="custom_font">Custom Font</label>
-						</li>
-						<li class="mochi_list_item">
 							<input id="range_prefs_font_size"
 									title="Font Size" class="widget"
 									max="28" min="8" value="10" step="0.5"
@@ -685,56 +657,11 @@
 								title="Select a default picture service"
 								data-i18n-title="select_a_default_picture_service">
 								<option value="twitter.com" data-i18n-text="twitter_official_service">Twitter Official Service</option>
-								<option value="img.ly">Img.ly</option>
-								<option value="twitpic.com">Twitpic.com</option>
-								<option value="lockerz.com">Lockerz.com</option>
               </select>
 							<label data-i18n-text="default_picture_service"
 								class="label">Default Picture Service</label>
             </li>
           </ul>
-					<ul class="mochi_list">
-            <li class="mochi_list_item">
-							<input id="chk_prefs_use_readlater_serv"
-									title="Use Read Later service."
-									class="mochi_toggle widget"
-									type="checkbox"/>
-							<label for="chk_prefs_use_readlater_serv"
-									class="label"
-									data-i18n-text="use_read_later_service"
-									>Use Read Later Service.</label>
-            </li><li class="mochi_list_item">
-              <select id="sel_prefs_readlater_service"
-								class="mochi_combo widget"
-								title="Select a default picture service"
-								data-i18n-title="select_a_read_later_service">
-								<option value="pocket">Pocket</option>
-								<option value="instapaper">Instapaper</option>
-              </select>
-							<label data-i18n-text="read_later_service"
-								class="label">Read Later Service</label>
-						</li><li class="mochi_list_item">
-							<input id="tbox_prefs_readlater_username"
-									title="Username of service"
-									placeholder="Username"
-									data-i18n-placeholder="username"
-									type="text" class="mochi_entry widget"/>
-							<label for="tbox_prefs_readlater_username"
-									class="label" data-i18n-text="username">
-									Username
-							</label>
-						</li><li class="mochi_list_item">
-							<input id="tbox_prefs_readlater_password"
-									title="HTTP Proxy Authentication Password"
-									placeholder="Password"
-									data-i18n-placeholder="password"
-									type="password" class="mochi_entry widget"/>
-							<label for="tbox_prefs_readlater_password"
-									class="label" data-i18n-text="password">
-									Password
-							</label>
-            </li>
-					</ul>
         </div><!-- END of prefs_behavior-->
 				<div id='prefs_system' class="prefs_dlg_page dialog_page">
           <div class="dialog_block hint"
@@ -857,13 +784,6 @@
 									class="label"
 									data-i18n-text="enable_verbose_mode"
 									>Enable verbose mode</label>
-						</li><li class="mochi_list_item">
-							<input id="chk_prefs_use_anonymous_stat"
-									title="Let us colloect anonymous statistic information"
-									type="checkbox" class="mochi_toggle widget"/>
-							<label for="chk_prefs_use_anonymous_stat" class="label"
-									data-i18n-text="let_hotot_collects_anonymous_statistic_information"
-									>Let Hotot collects anonymous statistic information</label>
 						</li>
 					</ul>
         </div><!-- END of prefs_system-->
@@ -1050,21 +970,11 @@
             <p data-i18n-text="hotot_description">
             <strong data-i18n-text="hotot">Hotot</strong> is a lightweight client for the <a target="_blank" href="http://twitter.com">twitter</a> microblogging service.
             </p>
-            <p style="text-align:center;">Copyright © 2009-2012 Shellex Wai</p>
             <p data-i18n-text="project_host">
-            Project Host: <a target="_blank" href="https://github.com/shellex/Hotot/">https://github.com/shellex/Hotot/</a>
+            Project Host: <a target="_blank" href="https://github.com/ashkyd/Hotot/">https://github.com/ashkyd/Hotot/</a>
             </p>
-            <p data-i18n-text="project_site">Project Site: <a target="_blank" href="http://hotot.org">http://hotot.org</a></p>
+            <p style="text-align:center;">Copyright © 2009-2014 Shellex Wai, Ash Kyd &amp; contributors.</p>
             </div>
-
-            <div class="dialog_block">
-						<h3><span data-i18n-text="donate">Hotot Need Your Help</span></h3>
-						<p data-i18n-text="donate_hint1">To keep Hotot alive and improving, we really need your help.</p>
-						<p style="text-align:center;">
-							<a class="mochi_button blue" target="_blank" href="http://hotot.org/about#donate">Donate!</a>
-						</p>
-						<p data-i18n-text="donate_hint2">Considering a larger gift to support our work? please contact: 5h3ll3x@gmail.com</p>
-						</div>
         </div>
         <div id="about_keyboard" class="about_dlg_page">
             <div class="dialog_block">
@@ -1120,8 +1030,7 @@
 
                 - Tualatrix Chou &lt;<a target="_blank" href="mailto:tualatrix@gmail.com">tualatrix@gmail.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/tualatrix">@tualatrix</a>)<br/>
-                - Xu Zhen &lt;<a target="_blank" href="mailto:xnreformer@gmail.com">xnreformer@gmail.com</a>&gt;
-                (<a target="_blank" href="http://twitter.com/xnreformer">@xnreformer</a>)<br/>
+                - Xu Zhen &lt;<a target="_blank" href="mailto:xnreformer@gmail.com">xnreformer@gmail.com</a><br/>
 
             </p>
             <p>
@@ -1129,6 +1038,7 @@
                 - Evan &lt;<a target="_blank" href="http://www.freemagi.com">www.freemagi.com</a>&gt;
                 (<a target="_blank" href="http://twitter.com/OiCKilL">@OiCKilL</a>)<br/>
                 - Shellex Wai <br/>
+                - <a href="http://subtlepatterns.com/binding-dark/">Binding Dark</a> background by Tia Newbury<br/>
             </p>
             <p>
                 <label data-i18n-text="supervised_by">Pushed by</label>: <br/>
@@ -1496,10 +1406,7 @@ along with this program. If not, see <a target="_blank" href="http://www.gnu.org
         <div class="dialog_block">
             <p><label data-i18n-text="upload_to_dots">Upload to ... </label>
             <ul class="service_list">
-                <li><a class="service" href="#img.ly">img.ly</a></li>
                 <li><a class="service" href="#twitter.com">twitter.com</a></li>
-                <li><a class="service" href="#twitpic.com">twitpic.com</a></li>
-                <li><a class="service" href="#lockerz.com">lockerz.com</a></li>
             </ul>
             </p>
             <p>

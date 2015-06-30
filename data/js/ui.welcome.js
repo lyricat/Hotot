@@ -308,14 +308,13 @@ authenticate_pass:
 function authenticate_pass(result) {
     globals.myself = result;
     // apply preferences
-    conf.get_current_profile().preferences.profile_avatar
-        = globals.myself.profile_image_url;
+    conf.get_current_profile().preferences.profile_avatar = util.big_avatar(globals.myself.profile_image_url_https);
     conf.apply_prefs(ui.Welcome.selected_profile, true);
     conf.get_current_profile().order = Date.now();
     conf.save_prefs(conf.current_name);
 
     setTimeout(function () {
-        $('#btn_my_profile').attr('style', 'background-image: url('+globals.myself.profile_image_url+');');
+        $('#btn_my_profile').attr('style', 'background-image: url('+util.big_avatar(globals.myself.profile_image_url_https)+');');
         }, 100);
     toast.set(_('authentication_ok')).show();
     conf.load_prefs(conf.current_name, function() {

@@ -11,7 +11,7 @@ function TwitterClient() {
     self.api_base = 'https://api.twitter.com/';
     self.sign_api_base = 'https://api.twitter.com/';
     self.search_api_base3 = 'https://api.twitter.com/1.1/search/tweets.json';
-    self.upload_api_base = 'https://upload.twitter.com/1/';
+    self.upload_api_base = 'https://api.twitter.com/1.1/';
 
     self.use_same_sign_api_base = true;
     self.source = 'Hotot';

@@ -17,7 +17,8 @@ html, body {
 }
 
 body {
-	background: None repeat-x scroll left top #fff;
+	background: #000 url("../image/binding-dark.png");
+	background-size:180px;
 	color: #333;
 	font-family: arial, sans-serif;
 }
@@ -51,8 +52,8 @@ pre {
 #header_inner {
 	position:relative;
 	padding: 0px;
-	height: 69px;
-	background: #333;
+	height: 73px;
+	background: #222;
 }
 
 #btn_my_profile {
@@ -65,9 +66,6 @@ pre {
 	display: block;
 	background-image: url(../image/ic48_profile_image.png);
 	opacity: 0.4;
-	-webkit-box-shadow: 1px 1px 5px #333;
-	-moz-box-shadow: 1px 1px 5px #333;
-	box-shadow: 1px 1px 5px #333;
 }
 
 #btn_my_profile:hover {
@@ -142,10 +140,10 @@ pre {
 	left: 0px;
 	width: 330px;
 	background: white;
-	-webkit-box-shadow: 2px 2px 3px #888;
-	-moz-box-shadow: 2px 2px 3px #888;
-	box-shadow: 2px 2px 3px #888;
 	display: none;
+	border:1px solid #eee;
+	box-shadow:0 0 10px rgba(0,0,0,.1);
+
 }
 
 #sys_menu_frame {
@@ -156,16 +154,10 @@ pre {
 
 #sys_menu {
 	display: block;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
 }
 
 #exts_menu {
 	display: block;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
 }
 
 #exts_menu_frame {
@@ -178,9 +170,6 @@ pre {
 	top: 35px;
 	max-width: 180px;
 	border-radius: 0;
-	-webkit-box-shadow: 2px 2px 3px #888;
-	-moz-box-shadow: 2px 2px 3px #888;
-	box-shadow: 2px 2px 3px #888;
 }
 
 .hotot_menu {
@@ -192,9 +181,7 @@ pre {
 	background: white;
 	border-radius: 2px;
 	position:relative;
-	-webkit-box-shadow: 1px 1px 5px #333;
-	-moz-box-shadow: 1px 1px 5px #333;
-	box-shadow: 1px 1px 5px #333;
+	box-shadow:0 0 10px rgba(0,0,0,.1);
 }
 
 .hotot_menu > li {
@@ -240,7 +227,7 @@ pre {
 }
 
 #status_box {
-	background:-webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ededed));
+	background:#ededed;
 	background-repeat: no-repeat;
 	background-position: right top;
 	min-width: 300px;
@@ -248,9 +235,6 @@ pre {
 	border-radius: 2px;
 	padding: 0;
 	position: fixed;
-	-webkit-box-shadow: 2px 2px 3px #888;
-	-moz-box-shadow: 2px 2px 3px #888;
-	box-shadow: 2px 2px 3px #888;
 }
 
 #status_box .dialog_body {
@@ -262,7 +246,6 @@ pre {
 	margin:0;
 	padding: 0;
 	border: none;
-	box-shadow: none;
 	height: 160px;
 	border-top: 1px solid #c8c8c8;
 	border-bottom: 1px solid #c8c8c8;
@@ -349,7 +332,7 @@ pre {
 	text-align: right;
 	vertical-align: middle;
 	border-top: 1px solid white;
-	background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F6), to(#EDEDED));
+	background: #F4F4F6;
 }
 #status_ctrl *{
 	vertical-align:top;
@@ -381,7 +364,6 @@ pre {
 	border: none;
 	padding: 0 12px;
 	background-color: transparent;
-	box-shadow: none;
 }
 #status_ctrl .toolbar_button:first-child {
 	margin-left: 5px;
@@ -420,7 +402,7 @@ pre {
 	line-height: 24px;
 	font-size: 10px;
 	font-weight: bold;
-	background: #666 url(../image/mask.png);
+	background: #666;
 	color: white;
 	cursor: pointer;
 	vertical-align: middle;
@@ -480,7 +462,7 @@ pre {
 }
 
 #status_box.reply_mode .reply_status_info {
-	background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
+	background:#f3c889;
 	color: #502805;
 	display: block;
 }
@@ -494,9 +476,8 @@ pre {
 	display: block;
 	width: auto;
 	border: none;
-	border-bottom: 1px dashed #999;
+	border-bottom: 1px damageshed #999;
 	background: transparent;
-	box-shadow: none;
 }
 
 .info_hint {
@@ -511,7 +492,7 @@ pre {
 }
 
 #view_title_bar {
-	height: 22px;
+	height: 26px;
 	width: 100%;
 	overflow: hidden;
 	background: #F2F2F2;
@@ -522,7 +503,7 @@ pre {
 	color: #333;
 	text-align: center;
 	font-size: 13px;
-	height: 21px;
+	height: 25px;
 	border-bottom: 1px #ddd solid;
 	border-left: 1px #ddd solid;
 	float: left;
@@ -539,7 +520,7 @@ pre {
 	display: block;
 	position: absolute;
 	top: 2px;
-	left: 2px;
+	left: 7px;
 }
 
 #view_title_bar .close_btn {
@@ -548,16 +529,13 @@ pre {
 	display: block;
 	position: absolute;
 	top: 2px;
-	right: 2px;
+	right: 7px;
 }
 
 
 /* ===== Buttom =================================== */
 #indication {
 	text-align: center;
-	-webkit-box-shadow: inset 0 0 5px black;
-	-moz-box-shadow: inset 0 0 5px black;
-	box-shadow: inset 0 0 5px black;
 }
 
 #indicator_btns {
@@ -627,9 +605,6 @@ pre {
 #indication .indicator_btn > .icon.board, #indication .indicator_btn > .icon.float {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	-webkit-box-shadow: 0 1px 3px #000;
-	-moz-box-shadow: 0 1px 3px #000;
-	box-shadow: 0 1px 3px #000;
 }
 
 #indication .indicator_btn > .icon.float {
@@ -699,7 +674,6 @@ pre {
 #indication_slot {
 	height: 8px;
 	position: relative;
-	border-bottom: 1px #d2d2d2 solid;
 	background-color: #f2f2f2;
 }
 
@@ -1112,7 +1086,6 @@ label {
 	padding: 10px;
 	color: #ccc;
 	background: #343434;
-	box-shadow: inset 0 0 10px #111;
 	display: none;
 }
 
@@ -1209,8 +1182,6 @@ label {
 
 /*===== Welcome Page ================================*/
 #welcome_page {
-	background: transparent url(../image/welcome_bg.jpg) no-repeat 0 0;
-	background-size: cover;
 	width: 100%;
 	position: relative;
 }
@@ -1221,9 +1192,8 @@ label {
 	line-height: 35px;
 	font-size: 24px;
 	color: #fff;
-	background:url(../image/ic32_hotot_mono_light.png) 20px 0 no-repeat, rgba(0,0,0,0.8) url(../image/mask.png);
+	background:black url(../image/ic32_hotot_mono_light.png) 20px 0 no-repeat;
 	text-shadow: 0 1px 0px white;
-	box-shadow: 0 1px 10px black;
 	position: absolute;
 	width: 100%;
 	top: 0;
@@ -1319,7 +1289,6 @@ label {
 
 #profile_avatar_list > li > a:hover {
 	background-color: rgba(255,255,255,0.2);
-	box-shadow: 0 0 3px rgba(255,255,255,0.2);
 	opacity: 1;
 }
 
@@ -1441,7 +1410,6 @@ label {
 	background: transparent none no-repeat center center;
 }
 #sign_in_block .service_chooser a.selected {
-	box-shadow: 0 0 8px white;
 }
 #sign_in_block .service_chooser .twitter {
 	background-image: url(../image/ic24_twitter.png);
@@ -1479,7 +1447,6 @@ label {
 	background: transparent;
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	color: white;
-	box-shadow: none !important;
 }
 
 #sign_in_block .profile_title {
@@ -1498,9 +1465,6 @@ label {
 }
 
 #btn_regain_token {
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
 }
 
 /*===== Dialog ================================*/
@@ -1536,7 +1500,7 @@ label {
 #about_dlg .dialog_header, #error_dlg .dialog_header, #kismet_dialog .dialog_header {
 	padding: 10px;
 	height: 32px;
-	background: #777777 url(../image/mask.png);
+	background: #777777;
 }
 
 #prefs_dlg .dialog_header, #status_box .dialog_header, #oauth_dlg .dialog_header, #list_attr_dlg .dialog_header, #add_to_list_dlg .dialog_header {
@@ -1589,7 +1553,7 @@ label {
 .error_item_header {
 	padding: 0 10px;
 	border: 1px #CCC solid;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,white), color-stop(4%,#EEE), color-stop(100%,#DEDEDE));
+	background: #DEDEDE;
 	height: 30px;
 	line-height: 30px;
 	text-shadow: 0 1px 1px white;
@@ -1690,7 +1654,7 @@ label {
 	background: lightgray;
 }
 #kismet_dialog .rule.selected {
-	background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3)) !important;
+	background: #2048F3 !important;
 	color: white;
 }
 #kismet_guide_dialog .sample_area {
@@ -1879,7 +1843,6 @@ label {
 	min-height: 64px;
 	margin-left: -32px;
 	margin-top: -62px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 	border-radius: 5px;
 }
 
@@ -2247,16 +2210,13 @@ label {
 }
 
 #action_menu_info{
-	background:-webkit-gradient(linear, left top, left bottom, from(#f6dcb5), to(#f3c889));
+	background:#f3c889;
 	border: 1px #c4987d solid;
 	border-radius: 5px;
 	color: #502805;
 	padding: 10px;
 	font-size: 12px;
 	margin-bottom: 10px;
-	-webkit-box-shadow: 1px 1px 5px #333;
-	-moz-box-shadow: 1px 1px 5px #333;
-	box-shadow: 1px 1px 5px #333;
 }
 
 #action_menu ul {
@@ -2271,7 +2231,7 @@ label {
 }
 
 #action_menu li > a.selected {
-	background: -webkit-gradient(linear, left top, left bottom, from(#4C6CF5), to(#2048F3));
+	background: #2048F3;
 	color: white;
 }
 

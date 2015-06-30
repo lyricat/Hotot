@@ -750,7 +750,7 @@ function form_dm(dm_obj, pagename) {
     m.RECIPIENT_SCREEN_NAME = dm_obj.recipient.screen_name;
     m.USER_NAME = dm_obj.sender.name;
     m.DESCRIPTION = dm_obj.sender.description;
-    m.PROFILE_IMG = dm_obj.sender.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(dm_obj.sender.profile_image_url_https);
     m.TEXT = text;
     m.SCHEME = 'message';
     m.TIMESTAMP = created_at_str;
@@ -868,7 +868,7 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
     m.DESCRIPTION = tweet_obj.user.description;
-    m.PROFILE_IMG = tweet_obj.user.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(tweet_obj.user.profile_image_url_https);
     m.TEXT = text;
     m.ALT = ui.Template.convert_chars(alt_text);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
@@ -962,7 +962,7 @@ function form_retweeted_by(tweet_obj, pagename) {
     m.SCREEN_NAME = tweet_obj.user.screen_name;
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
-    m.PROFILE_IMG = tweet_obj.user.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(tweet_obj.user.profile_image_url_https);
     m.TEXT = ui.Template.form_text(tweet_obj);
     m.SOURCE = tweet_obj.source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
@@ -1032,7 +1032,7 @@ function form_search(tweet_obj, pagename) {
     m.TWEET_ID = id;
     m.SCREEN_NAME = tweet_obj.from_user;
     m.USER_NAME = tweet_obj.from_user_name;
-    m.PROFILE_IMG = tweet_obj.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(tweet_obj.profile_image_url_https);
     m.TEXT = text;
     m.SOURCE = source.replace('href', 'target="_blank" href');
     m.SCHEME = scheme;
@@ -1054,7 +1054,7 @@ function form_people(user_obj, pagename) {
     m.SCREEN_NAME = user_obj.screen_name;
     m.USER_NAME = user_obj.name;
     m.DESCRIPTION = user_obj.description;
-    m.PROFILE_IMG = user_obj.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(user_obj.profile_image_url_https);
     m.FOLLOWING = user_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
@@ -1072,7 +1072,7 @@ function form_people(list_obj, pagename) {
     m.NAME = list_obj.name;
     m.MODE = list_obj.mode;
     m.DESCRIPTION = list_obj.description;
-    m.PROFILE_IMG = list_obj.user.profile_image_url;
+    m.PROFILE_IMG = util.big_avatar(list_obj.user.profile_image_url_https);
     m.FOLLOWING = list_obj.following;
     m.TWEET_FONT_SIZE = globals.tweet_font_size;
     m.TWEET_FONT = globals.tweet_font;
@@ -1152,8 +1152,8 @@ function fill_people_vcard(user_obj, vcard_container) {
     var created_at_str = ui.Template.to_long_time_string(created_at);
 
     vcard_container.find('.profile_img_wrapper')
-        .attr('href', user_obj.profile_image_url.replace(/_normal/, ''))
-        .attr('style', 'background-image:url('+user_obj.profile_image_url+');');
+        .attr('href', user_obj.profile_image_url_https.replace(/_normal/, ''))
+        .attr('style', 'background-image:url('+util.big_avatar(user_obj.profile_image_url_https)+');');
     vcard_container.find('.screen_name')
         .attr('href', conf.get_current_profile().preferences.base_url + user_obj.screen_name)
         .text(user_obj.screen_name);
@@ -1185,7 +1185,7 @@ function fill_list_vcard(view, list_obj) {
     var vcard_container = view._header;
     vcard_container.find('.profile_img_wrapper')
         .attr('style', 'background-image:url('
-            + list_obj.user.profile_image_url + ');');
+            + util.big_avatar(list_obj.user.profile_image_url_https) + ');');
     vcard_container.find('.name')
         .attr('href', conf.get_current_profile().preferences.base_url + list_obj.user.screen_name + '/' + list_obj.slug)
         .text(list_obj.full_name);
@@ -1355,8 +1355,10 @@ function form_status_indicators(tweet) {
 render:
 function render(tpl, map) {
     var text = tpl
+    var replace = false;
     for (var k in map) {
-        text = text.replace(new RegExp('{%'+k+'%}', 'g'), map[k]);
+        replace = typeof map[k] == 'string' ? map[k] : '';
+        text = text.replace(new RegExp('{%'+k+'%}', 'g'), replace);
     }
     return text;
 },
