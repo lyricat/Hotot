@@ -1276,52 +1276,56 @@ form_preview:
 function form_preview(tweet) {
     var html_arr = [];
     var link_reg = ui.Template.preview_link_reg;
+    urls = tweet.entities.urls
     for (var pvd_name in link_reg) {
-        var match = link_reg[pvd_name].reg.exec(tweet.text);
-        while (match != null) {
-            switch (pvd_name) {
-            case 'img.ly':
-            case 'twitgoo.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[1],
-                        link_reg[pvd_name].direct_base + match[1]));
-            break;
-            case 'twitpic.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[1]));
-            break;
-            case 'instagr.am':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0] + link_reg[pvd_name].tail,
-                        match[0] + link_reg[pvd_name].direct_tail));
-            break;
-            case 'yfrog.com':
-            case 'moby.to':
-            case 'picplz.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0] + link_reg[pvd_name].tail));
-            break;
-            case 'plixi.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base +match[0]));
-            break;
-            case 'raw':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0], match[0]));
-            break;
-            case 'youtube.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[2] + link_reg[pvd_name].tail));
-            break;
+        for (var i = 0, l = urls.length; i < l; i += 1) {
+            var url = urls[i]
+            var match = link_reg[pvd_name].reg.exec(url.expanded_url);
+            while (match != null) {
+                switch (pvd_name) {
+                case 'img.ly':
+                case 'twitgoo.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[1],
+                            link_reg[pvd_name].direct_base + match[1]));
+                break;
+                case 'twitpic.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[1]));
+                break;
+                case 'instagr.am':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0] + link_reg[pvd_name].tail,
+                            match[0] + link_reg[pvd_name].direct_tail));
+                break;
+                case 'yfrog.com':
+                case 'moby.to':
+                case 'picplz.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0] + link_reg[pvd_name].tail));
+                break;
+                case 'plixi.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base +match[0]));
+                break;
+                case 'raw':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0], match[0]));
+                break;
+                case 'youtube.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[2] + link_reg[pvd_name].tail));
+                break;
+                }
+                match = link_reg[pvd_name].reg.exec(url.expanded_url);
             }
-            match = link_reg[pvd_name].reg.exec(tweet.text);
         }
     }
     // twitter official picture service
