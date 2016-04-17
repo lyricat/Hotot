@@ -893,10 +893,13 @@ function TwitterClient() {
                     newText = interrupted_response + newText;
                     interrupted_response = ''
 
-                    var lines = newText.split(/[\n\r]/g);
+                    var lines = newText.split(/[\n\r]/g),
+                        ret
                     for (var i = 0; i < lines.length; i += 1) {
                         var line = lines[i].split(/({[^\0]+})/gm);
                         for (var j = 0; j < line.length; j += 1) {
+                            ret = null
+
                             if (!empty_tester.test(line[j])) {
                                 try {
                                     ret = JSON.parse(line[j]);
@@ -911,7 +914,9 @@ function TwitterClient() {
                                     //return;
                                 }
                                 try {
-                                    callback(ret);
+                                    if(ret) {
+                                      callback(ret)
+                                    }
                                 } catch(e) {
                                     console.log('Streams callback: ' + e.message + '\n' + line);
                                     return;
