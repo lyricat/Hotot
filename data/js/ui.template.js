@@ -814,6 +814,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
 
     var alt_text = tweet_obj.text;
     var link = '';
+
+    var text = ui.Template.form_text(tweet_obj);
     if (tweet_obj.entities && tweet_obj.entities.urls) {
         var urls = null;
         if (tweet_obj.entities.media) {
@@ -824,7 +826,12 @@ function form_tweet (tweet_obj, pagename, in_thread) {
         for (var i = 0, l = urls.length; i < l; i += 1) {
             var url = urls[i];
             if (url.url && url.expanded_url) {
-              tweet_obj.text = tweet_obj.text.replace(url.url, url.expanded_url);
+                url_html = url.expanded_url.replace(ui.Template.reg_link_g, function replace_url(url) {
+                    if (url.length > 51) url_short = url.substring(0,48) + '...';
+                    else url_short = url;
+                    return '<a href="'+url+'" target="_blank">' + url_short + '</a>';
+                });
+                text = text.replace(url.url, url_html);
             }
         }
         if (tweet_obj.entities.urls.length > 0) {
@@ -832,7 +839,6 @@ function form_tweet (tweet_obj, pagename, in_thread) {
         }
     }
     
-	var text = ui.Template.form_text(tweet_obj);
     // if the tweet contains user_mentions (which are provided by the Twitter
     // API, not by the StatusNet API), it will here replace the 
     // contents of the 'who_ref'-a-tag by the full name of this user.
@@ -1212,12 +1218,6 @@ form_text:
 function form_text(tweet) {
     //hotot_log('form_text in', tweet.text);
     var text = ui.Template.convert_chars(tweet.text);
-    text = text.replace(ui.Template.reg_link_g, function replace_url(url) {
-		if (url.length > 51) url_short = url.substring(0,48) + '...';
-		else url_short = url;
-		return ' <a href="'+url+'" target="_blank">' + url_short + '</a>';
-	});
-    text = text.replace(/href="www/g, 'href="http://www');
     text = text.replace(ui.Template.reg_list
         , '$1@<a class="list_href" href="#$2">$2</a>');
     text = text.replace(ui.Template.reg_user
@@ -1276,64 +1276,68 @@ form_preview:
 function form_preview(tweet) {
     var html_arr = [];
     var link_reg = ui.Template.preview_link_reg;
+    urls = tweet.entities.urls
     for (var pvd_name in link_reg) {
-        var match = link_reg[pvd_name].reg.exec(tweet.text);
-        while (match != null) {
-            switch (pvd_name) {
-            case 'img.ly':
-            case 'twitgoo.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[1],
-                        link_reg[pvd_name].direct_base + match[1]));
-            break;
-            case 'twitpic.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[1]));
-            break;
-            case 'instagr.am':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0] + link_reg[pvd_name].tail,
-                        match[0] + link_reg[pvd_name].direct_tail));
-            break;
-            case 'yfrog.com':
-            case 'moby.to':
-            case 'picplz.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0] + link_reg[pvd_name].tail));
-            break;
-            case 'plixi.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base +match[0]));
-            break;
-            case 'raw':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], match[0], match[0]));
-            break;
-            case 'youtube.com':
-                html_arr.push(
-                    ui.Template.form_media(
-                        match[0], link_reg[pvd_name].base + match[2] + link_reg[pvd_name].tail));
-            break;
+        for (var i = 0, l = urls.length; i < l; i += 1) {
+            var url = urls[i]
+            var match = link_reg[pvd_name].reg.exec(url.expanded_url);
+            while (match != null) {
+                switch (pvd_name) {
+                case 'img.ly':
+                case 'twitgoo.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[1],
+                            link_reg[pvd_name].direct_base + match[1]));
+                break;
+                case 'twitpic.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[1]));
+                break;
+                case 'instagr.am':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0] + link_reg[pvd_name].tail,
+                            match[0] + link_reg[pvd_name].direct_tail));
+                break;
+                case 'yfrog.com':
+                case 'moby.to':
+                case 'picplz.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0] + link_reg[pvd_name].tail));
+                break;
+                case 'plixi.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base +match[0]));
+                break;
+                case 'raw':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], match[0], match[0]));
+                break;
+                case 'youtube.com':
+                    html_arr.push(
+                        ui.Template.form_media(
+                            match[0], link_reg[pvd_name].base + match[2] + link_reg[pvd_name].tail));
+                break;
+                }
+                match = link_reg[pvd_name].reg.exec(url.expanded_url);
             }
-            match = link_reg[pvd_name].reg.exec(tweet.text);
         }
     }
     // twitter official picture service
-    if (tweet.entities && tweet.entities.media) {
-        for (var i = 0; i < tweet.entities.media.length; i += 1) {
-            var media = tweet.entities.media[i];
+    if (tweet.extended_entities && tweet.entities.media) {
+        for (var i = 0; i < tweet.extended_entities.media.length; i += 1) {
+            var media = tweet.extended_entities.media[i];
             if (media.expanded_url && media.media_url) {
                 html_arr.push(
                     ui.Template.form_media(
-                        tweet.entities.media[i].expanded_url,
-                        tweet.entities.media[i].media_url + ':thumb',
-                        tweet.entities.media[i].media_url + ':large'
+                        tweet.extended_entities.media[i].expanded_url,
+                        tweet.extended_entities.media[i].media_url + ':thumb',
+                        tweet.extended_entities.media[i].media_url + ':large'
                         ));
             }
         }

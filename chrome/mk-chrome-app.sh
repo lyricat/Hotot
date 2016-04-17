@@ -16,6 +16,7 @@ VER=`sed -n -e 's/.*version\": \"\([0-9.]*\)\",/\1/p' ${SRC}manifest.json`
 sed -i "s/'version': '[0-9.]*'/'version': '${VER}'/g" ${SRC}js/conf.js
 
 echo "\033[1;31;40m[i]Sync ...\033[0m"
+rm -rf "$DEST"
 # ignore .*.swp, .hgignore, etc
 rsync -av --exclude '.*.*' $SRC $DEST
 
@@ -28,8 +29,6 @@ sed -i "s/'consumer_secret': '\w*'/'consumer_secret': 'vt8Dw8a4cnrubcm9E0Zny72YM
 
 echo "\033[1;31;40m[i] Done!\033[0m"
 
-rm -f hotot-chrome.zip
-zip -r hotot-chrome.zip "$DEST"
-rm -rf "$DEST" "$SRC"
+rm -rf "$SRC"
 
 
