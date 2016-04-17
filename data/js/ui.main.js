@@ -168,9 +168,17 @@ function loadmore_messages(self, success, fail) {
 getDisplayName:
 function getDisplayName(user) {
   const
-    displayName = '@' + user.screen_name
+    displayName = '@' + user.screen_name,
+
+    sanitize = function(text) {
+      return text.replace(/\s/, '').toLowerCase()
+    }
 
   if(user.hasOwnProperty('name')) {
+    if(sanitize(user.name) === sanitize(user.screen_name)) {
+      return user.name
+    }
+
     return user.name + ' (' + displayName + ')'
   }
 
