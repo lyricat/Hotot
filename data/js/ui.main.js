@@ -171,7 +171,7 @@ function getDisplayName(user) {
     displayName = '@' + user.screen_name,
 
     sanitize = function(text) {
-      return text.replace(/\s/, '').toLowerCase()
+      return text.replace(/[^a-z0-9_]/i, '').toLowerCase()
     }
 
   if(user.hasOwnProperty('name')) {
