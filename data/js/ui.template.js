@@ -44,7 +44,7 @@ tweet_t:
     <div class="card_body">\
         <div class="who {%RETWEET_MARK%}">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
-            {%SCREEN_NAME%}\
+            {%DISPLAY_NAME%}\
         </a>\
         </div>\
         <div class="text" alt="{%ALT%}" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
@@ -150,7 +150,7 @@ message_t:
     <div class="card_body">\
         <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}\n\n{%DESCRIPTION%}">\
-            {%SCREEN_NAME%}\
+            {%DISPLAY_NAME%}\
         </a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">@<a class="who_href" href="#{%RECIPIENT_SCREEN_NAME%}">{%RECIPIENT_SCREEN_NAME%}</a> {%TEXT%}</div>\
@@ -185,7 +185,7 @@ search_t:
     <div class="card_body">\
         <div class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
-            {%SCREEN_NAME%}\
+            {%DISPLAY_NAME%}\
         </a>\
         </div>\
         <div class="text" style="font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%TEXT%}</div>\
@@ -219,7 +219,7 @@ people_t:
     <div class="card_body">\
         <div id="{%USER_ID%}" class="who">\
         <a class="who_href" href="#{%SCREEN_NAME%}" title="{%USER_NAME%}">\
-            {%SCREEN_NAME%}\
+            {%DISPLAY_NAME%}\
         </a>\
         </div>\
         <div class="text" style="font-style:italic font-size:{%TWEET_FONT_SIZE%}pt;line-height:{%TWEET_LINE_HEIGHT%}">{%DESCRIPTION%}</div>\
@@ -747,6 +747,7 @@ function form_dm(dm_obj, pagename) {
     m.ID = pagename + '-' + dm_obj.id_str;
     m.TWEET_ID = dm_obj.id_str;
     m.SCREEN_NAME = dm_obj.sender.screen_name;
+    m.DISPLAY_NAME = ui.Main.getDisplayName(dm_obj.sender)
     m.RECIPIENT_SCREEN_NAME = dm_obj.recipient.screen_name;
     m.USER_NAME = dm_obj.sender.name;
     m.DESCRIPTION = dm_obj.sender.description;
@@ -870,7 +871,8 @@ function form_tweet (tweet_obj, pagename, in_thread) {
     m.RETWEET_ID = retweet_id;
     m.REPLY_ID = reply_id != null? reply_id:'';
     m.IN_THREAD = in_thread;
-    m.SCREEN_NAME = tweet_obj.user.screen_name;
+    m.SCREEN_NAME = tweet_obj.user.screen_name
+    m.DISPLAY_NAME = ui.Main.getDisplayName(tweet_obj.user)
     m.REPLY_NAME = reply_id != null? reply_name: '';
     m.USER_NAME = tweet_obj.user.name;
     m.DESCRIPTION = tweet_obj.user.description;
@@ -1037,6 +1039,7 @@ function form_search(tweet_obj, pagename) {
     m.ID = pagename + '-' + id;
     m.TWEET_ID = id;
     m.SCREEN_NAME = tweet_obj.from_user;
+    m.DISPLAY_NAME = ui.Main.getDisplayName({ 'screen_name': tweet_obj.from_user, 'name': tweet_obj.from_user_name })
     m.USER_NAME = tweet_obj.from_user_name;
     m.PROFILE_IMG = tweet_obj.profile_image_url;
     m.TEXT = text;
@@ -1058,6 +1061,7 @@ function form_people(user_obj, pagename) {
     var m = ui.Template.people_m;
     m.USER_ID = pagename + '-' + user_obj.id_str;
     m.SCREEN_NAME = user_obj.screen_name;
+    m.DISPLAY_NAME = ui.Main.getDisplayName(user_obj)
     m.USER_NAME = user_obj.name;
     m.DESCRIPTION = user_obj.description;
     m.PROFILE_IMG = user_obj.profile_image_url;
