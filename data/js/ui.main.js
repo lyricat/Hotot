@@ -787,11 +787,11 @@ function on_rt_click(btn, li_id, event) {
     var _text = $(li.find('.text')[0]);
     var text = _text.attr('alt') || _text.text();
 
-    ui.StatusBox.set_status_text(" RT @" + screen_name
-        + ': ' + text + ' ');
+    ui.StatusBox.set_status_text("RT @" + screen_name
+        + ': ' + text );
     ui.StatusBox.open(
     function() {
-        ui.StatusBox.move_cursor(ui.StatusBox.POS_BEGIN);
+        ui.StatusBox.move_cursor(ui.StatusBox.POS_END);
         ui.StatusBox.change_mode(ui.StatusBox.MODE_TWEET);
         ui.StatusBox.update_status_len();
     });
