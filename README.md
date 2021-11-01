@@ -1,4 +1,7 @@
 # Hotot
+
+**Seeking new maintainers: Hotot has discontinued for a long time. if you are interested in this project, please contact me. Thank you.**
+
 Hotot is a "Lightweight, Flexible Microblogging Client" supporting
 Twitter and Identi.ca at this point of development. You may visit our
 official website at http://hotot.org/ . Check it out for any updates
