@@ -165,6 +165,26 @@ function loadmore_messages(self, success, fail) {
         success);
 },
 
+getDisplayName:
+function getDisplayName(user) {
+  const
+    displayName = '@' + user.screen_name,
+
+    sanitize = function(text) {
+      return text.replace(/[^a-z0-9_]/i, '').toLowerCase()
+    }
+
+  if(user.hasOwnProperty('name')) {
+    if(sanitize(user.name) === sanitize(user.screen_name)) {
+      return user.name
+    }
+
+    return user.name + ' (' + displayName + ')'
+  }
+
+  return displayName
+},
+
 load_tweet_success:
 function load_tweet_success(self, json) {
     var ret = ui.Main.add_tweets(self, json, false);
@@ -188,7 +208,8 @@ function load_tweet_success(self, json) {
             if (user.screen_name == globals.myself.screen_name)
                 continue;
             text = json[i].text;
-            hotot_notify(user.screen_name, text, user.profile_image_url , 'content');
+
+            hotot_notify(ui.Main.getDisplayName(user), text, user.profile_image_url , 'content');
             notify_count += 1;
         }
         if (3 < notify_count) {

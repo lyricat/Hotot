@@ -26,7 +26,7 @@ USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = True
 ## Disable GtkNotification on Gnome3
 screen = gtk.gdk.screen_get_default()
 window_manager_name = screen.get_window_manager_name().lower() if screen else ''
-if 'mutter' in window_manager_name:
+if 'mutter' in window_manager_name or 'i3' in window_manager_name:
     USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM = False
 
 if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
@@ -63,16 +63,16 @@ def init_notify():
     notify.set_icon_from_pixbuf(
         gtk.gdk.pixbuf_new_from_file(
             utils.get_ui_object(os.path.join('image','ic64_hotot.png'))))
-    notify.set_timeout(5000)
+    notify.set_timeout(30000)
 
 def do_notify(summary, body, icon_file = None):
     if USE_GTKNOTIFICATION_IN_NATIVE_PLATFORM:
         return notify.do_notify(summary, body, icon_file)
-    n = pynotify.Notification(summary, body)
     if (icon_file == None or not os.path.isfile(icon_file) or os.path.getsize(icon_file) == 0):
         icon_file = utils.get_ui_object(os.path.join('image','ic64_hotot.png'));
-    n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))
-    n.set_timeout(5000)
+    n = pynotify.Notification(summary, body, 'file://' + icon_file)
+    #n.set_icon_from_pixbuf(gtk.gdk.pixbuf_new_from_file(icon_file))
+    n.set_timeout(30000)
     n.show()
 
 def crack_hotot(uri):
@@ -203,6 +203,9 @@ def set_style_scheme():
     ''' % str(bg[gtk.STATE_NORMAL]));
 
 def get_prefs(name):
+    if name not in config.settings:
+        return ''
+
     return config.settings[name]
 
 def set_prefs(name, value):

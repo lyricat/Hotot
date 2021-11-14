@@ -158,6 +158,9 @@ def set_style_scheme():
     ''' % str(bg[Gtk.StateType.NORMAL]));
 
 def get_prefs(name):
+    if name not in config.settings:
+        return ''
+
     return config.settings[name]
 
 def set_prefs(name, value):
