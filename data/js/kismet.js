@@ -729,7 +729,7 @@ function read_tokens(str) {
             if (flag.length != 0) pos += 1;
         } else if (ch === ' ') {
             pos += 1;
-        } else if (/[^():,]/.test(ch)) {
+        } else if (/[|a-zA-Z\u4e00-\u9fa5]/.test(ch)) {
             end_pos = kismet.recognize_keyword(str, pos);
             token = [kismet.TYPE_WORD, str.slice(pos, end_pos)];
             token_list.push(token);
