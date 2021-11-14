@@ -50,6 +50,11 @@ to be finished by marguerite on OBS
 
     $ emerge hotot
 
+## Releases
+
+Distributors and regular users can find releases of Hotot in
+[the GitHub tags directory](https://github.com/lyricat/Hotot/tags) .
+
 ## Building from source:
 Since Hotot core is largely based on HTML5, JavaScript and Webkit technology,
 It can be run under many Webkit implementations. Hotot officially supports Gtk,
